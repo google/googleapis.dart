@@ -920,11 +920,9 @@ class BatchDeleteAlertsRequest {
 
   BatchDeleteAlertsRequest.fromJson(core.Map json_)
       : this(
-          alertId: json_.containsKey('alertId')
-              ? (json_['alertId'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          alertId: (json_['alertId'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           customerId: json_['customerId'] as core.String?,
         );
 
@@ -949,22 +947,17 @@ class BatchDeleteAlertsResponse {
 
   BatchDeleteAlertsResponse.fromJson(core.Map json_)
       : this(
-          failedAlertStatus: json_.containsKey('failedAlertStatus')
-              ? (json_['failedAlertStatus']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    Status.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          successAlertIds: json_.containsKey('successAlertIds')
-              ? (json_['successAlertIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          failedAlertStatus: (json_['failedAlertStatus']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              Status.fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          successAlertIds: (json_['successAlertIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -997,11 +990,9 @@ class BatchUndeleteAlertsRequest {
 
   BatchUndeleteAlertsRequest.fromJson(core.Map json_)
       : this(
-          alertId: json_.containsKey('alertId')
-              ? (json_['alertId'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          alertId: (json_['alertId'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           customerId: json_['customerId'] as core.String?,
         );
 
@@ -1026,22 +1017,17 @@ class BatchUndeleteAlertsResponse {
 
   BatchUndeleteAlertsResponse.fromJson(core.Map json_)
       : this(
-          failedAlertStatus: json_.containsKey('failedAlertStatus')
-              ? (json_['failedAlertStatus']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    Status.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          successAlertIds: json_.containsKey('successAlertIds')
-              ? (json_['successAlertIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          failedAlertStatus: (json_['failedAlertStatus']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              Status.fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          successAlertIds: (json_['successAlertIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1109,12 +1095,10 @@ class ListAlertFeedbackResponse {
 
   ListAlertFeedbackResponse.fromJson(core.Map json_)
       : this(
-          feedback: json_.containsKey('feedback')
-              ? (json_['feedback'] as core.List)
-                  .map((value) => AlertFeedback.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          feedback: (json_['feedback'] as core.List?)
+              ?.map((value) => AlertFeedback.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1141,12 +1125,10 @@ class ListAlertsResponse {
 
   ListAlertsResponse.fromJson(core.Map json_)
       : this(
-          alerts: json_.containsKey('alerts')
-              ? (json_['alerts'] as core.List)
-                  .map((value) => Alert.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          alerts: (json_['alerts'] as core.List?)
+              ?.map((value) =>
+                  Alert.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1192,12 +1174,10 @@ class Settings {
 
   Settings.fromJson(core.Map json_)
       : this(
-          notifications: json_.containsKey('notifications')
-              ? (json_['notifications'] as core.List)
-                  .map((value) => Notification.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          notifications: (json_['notifications'] as core.List?)
+              ?.map((value) => Notification.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

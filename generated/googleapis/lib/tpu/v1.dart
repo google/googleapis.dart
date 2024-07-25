@@ -887,18 +887,14 @@ class ListAcceleratorTypesResponse {
 
   ListAcceleratorTypesResponse.fromJson(core.Map json_)
       : this(
-          acceleratorTypes: json_.containsKey('acceleratorTypes')
-              ? (json_['acceleratorTypes'] as core.List)
-                  .map((value) => AcceleratorType.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          acceleratorTypes: (json_['acceleratorTypes'] as core.List?)
+              ?.map((value) => AcceleratorType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -923,12 +919,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -958,17 +952,13 @@ class ListNodesResponse {
   ListNodesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          nodes: json_.containsKey('nodes')
-              ? (json_['nodes'] as core.List)
-                  .map((value) => Node.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          nodes: (json_['nodes'] as core.List?)
+              ?.map((value) =>
+                  Node.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -994,12 +984,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1028,17 +1016,13 @@ class ListTensorFlowVersionsResponse {
   ListTensorFlowVersionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          tensorflowVersions: json_.containsKey('tensorflowVersions')
-              ? (json_['tensorflowVersions'] as core.List)
-                  .map((value) => TensorFlowVersion.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          tensorflowVersions: (json_['tensorflowVersions'] as core.List?)
+              ?.map((value) => TensorFlowVersion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1264,22 +1248,19 @@ class Node {
           health: json_['health'] as core.String?,
           healthDescription: json_['healthDescription'] as core.String?,
           ipAddress: json_['ipAddress'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           network: json_['network'] as core.String?,
-          networkEndpoints: json_.containsKey('networkEndpoints')
-              ? (json_['networkEndpoints'] as core.List)
-                  .map((value) => NetworkEndpoint.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          networkEndpoints: (json_['networkEndpoints'] as core.List?)
+              ?.map((value) => NetworkEndpoint.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           port: json_['port'] as core.String?,
           schedulingConfig: json_.containsKey('schedulingConfig')
               ? SchedulingConfig.fromJson(json_['schedulingConfig']
@@ -1287,12 +1268,10 @@ class Node {
               : null,
           serviceAccount: json_['serviceAccount'] as core.String?,
           state: json_['state'] as core.String?,
-          symptoms: json_.containsKey('symptoms')
-              ? (json_['symptoms'] as core.List)
-                  .map((value) => Symptom.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          symptoms: (json_['symptoms'] as core.List?)
+              ?.map((value) => Symptom.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           tensorflowVersion: json_['tensorflowVersion'] as core.String?,
           useServiceNetworking: json_['useServiceNetworking'] as core.bool?,
         );

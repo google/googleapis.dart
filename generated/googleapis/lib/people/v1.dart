@@ -1748,18 +1748,14 @@ class BatchCreateContactsRequest {
 
   BatchCreateContactsRequest.fromJson(core.Map json_)
       : this(
-          contacts: json_.containsKey('contacts')
-              ? (json_['contacts'] as core.List)
-                  .map((value) => ContactToCreate.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          contacts: (json_['contacts'] as core.List?)
+              ?.map((value) => ContactToCreate.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           readMask: json_['readMask'] as core.String?,
-          sources: json_.containsKey('sources')
-              ? (json_['sources'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          sources: (json_['sources'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1783,12 +1779,10 @@ class BatchCreateContactsResponse {
 
   BatchCreateContactsResponse.fromJson(core.Map json_)
       : this(
-          createdPeople: json_.containsKey('createdPeople')
-              ? (json_['createdPeople'] as core.List)
-                  .map((value) => PersonResponse.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          createdPeople: (json_['createdPeople'] as core.List?)
+              ?.map((value) => PersonResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1811,11 +1805,9 @@ class BatchDeleteContactsRequest {
 
   BatchDeleteContactsRequest.fromJson(core.Map json_)
       : this(
-          resourceNames: json_.containsKey('resourceNames')
-              ? (json_['resourceNames'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          resourceNames: (json_['resourceNames'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1834,12 +1826,10 @@ class BatchGetContactGroupsResponse {
 
   BatchGetContactGroupsResponse.fromJson(core.Map json_)
       : this(
-          responses: json_.containsKey('responses')
-              ? (json_['responses'] as core.List)
-                  .map((value) => ContactGroupResponse.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          responses: (json_['responses'] as core.List?)
+              ?.map((value) => ContactGroupResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1900,21 +1890,17 @@ class BatchUpdateContactsRequest {
 
   BatchUpdateContactsRequest.fromJson(core.Map json_)
       : this(
-          contacts: json_.containsKey('contacts')
-              ? (json_['contacts'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    Person.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          contacts:
+              (json_['contacts'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              Person.fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           readMask: json_['readMask'] as core.String?,
-          sources: json_.containsKey('sources')
-              ? (json_['sources'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          sources: (json_['sources'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           updateMask: json_['updateMask'] as core.String?,
         );
 
@@ -1941,16 +1927,15 @@ class BatchUpdateContactsResponse {
 
   BatchUpdateContactsResponse.fromJson(core.Map json_)
       : this(
-          updateResult: json_.containsKey('updateResult')
-              ? (json_['updateResult'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    PersonResponse.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          updateResult:
+              (json_['updateResult'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              PersonResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2229,21 +2214,17 @@ class ContactGroup {
 
   ContactGroup.fromJson(core.Map json_)
       : this(
-          clientData: json_.containsKey('clientData')
-              ? (json_['clientData'] as core.List)
-                  .map((value) => GroupClientData.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          clientData: (json_['clientData'] as core.List?)
+              ?.map((value) => GroupClientData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           formattedName: json_['formattedName'] as core.String?,
           groupType: json_['groupType'] as core.String?,
           memberCount: json_['memberCount'] as core.int?,
-          memberResourceNames: json_.containsKey('memberResourceNames')
-              ? (json_['memberResourceNames'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          memberResourceNames: (json_['memberResourceNames'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           metadata: json_.containsKey('metadata')
               ? ContactGroupMetadata.fromJson(
                   json_['metadata'] as core.Map<core.String, core.dynamic>)
@@ -2440,11 +2421,9 @@ class CopyOtherContactToMyContactsGroupRequest {
       : this(
           copyMask: json_['copyMask'] as core.String?,
           readMask: json_['readMask'] as core.String?,
-          sources: json_.containsKey('sources')
-              ? (json_['sources'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          sources: (json_['sources'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2877,12 +2856,10 @@ class GetPeopleResponse {
 
   GetPeopleResponse.fromJson(core.Map json_)
       : this(
-          responses: json_.containsKey('responses')
-              ? (json_['responses'] as core.List)
-                  .map((value) => PersonResponse.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          responses: (json_['responses'] as core.List?)
+              ?.map((value) => PersonResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3047,12 +3024,10 @@ class ListConnectionsResponse {
 
   ListConnectionsResponse.fromJson(core.Map json_)
       : this(
-          connections: json_.containsKey('connections')
-              ? (json_['connections'] as core.List)
-                  .map((value) => Person.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          connections: (json_['connections'] as core.List?)
+              ?.map((value) =>
+                  Person.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           nextSyncToken: json_['nextSyncToken'] as core.String?,
           totalItems: json_['totalItems'] as core.int?,
@@ -3093,12 +3068,10 @@ class ListContactGroupsResponse {
 
   ListContactGroupsResponse.fromJson(core.Map json_)
       : this(
-          contactGroups: json_.containsKey('contactGroups')
-              ? (json_['contactGroups'] as core.List)
-                  .map((value) => ContactGroup.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          contactGroups: (json_['contactGroups'] as core.List?)
+              ?.map((value) => ContactGroup.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           nextSyncToken: json_['nextSyncToken'] as core.String?,
           totalItems: json_['totalItems'] as core.int?,
@@ -3138,12 +3111,10 @@ class ListDirectoryPeopleResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           nextSyncToken: json_['nextSyncToken'] as core.String?,
-          people: json_.containsKey('people')
-              ? (json_['people'] as core.List)
-                  .map((value) => Person.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          people: (json_['people'] as core.List?)
+              ?.map((value) =>
+                  Person.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3186,12 +3157,10 @@ class ListOtherContactsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           nextSyncToken: json_['nextSyncToken'] as core.String?,
-          otherContacts: json_.containsKey('otherContacts')
-              ? (json_['otherContacts'] as core.List)
-                  .map((value) => Person.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          otherContacts: (json_['otherContacts'] as core.List?)
+              ?.map((value) =>
+                  Person.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           totalSize: json_['totalSize'] as core.int?,
         );
 
@@ -3430,16 +3399,12 @@ class ModifyContactGroupMembersRequest {
 
   ModifyContactGroupMembersRequest.fromJson(core.Map json_)
       : this(
-          resourceNamesToAdd: json_.containsKey('resourceNamesToAdd')
-              ? (json_['resourceNamesToAdd'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          resourceNamesToRemove: json_.containsKey('resourceNamesToRemove')
-              ? (json_['resourceNamesToRemove'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          resourceNamesToAdd: (json_['resourceNamesToAdd'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          resourceNamesToRemove: (json_['resourceNamesToRemove'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3467,17 +3432,12 @@ class ModifyContactGroupMembersResponse {
   ModifyContactGroupMembersResponse.fromJson(core.Map json_)
       : this(
           canNotRemoveLastContactGroupResourceNames:
-              json_.containsKey('canNotRemoveLastContactGroupResourceNames')
-                  ? (json_['canNotRemoveLastContactGroupResourceNames']
-                          as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
-          notFoundResourceNames: json_.containsKey('notFoundResourceNames')
-              ? (json_['notFoundResourceNames'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+              (json_['canNotRemoveLastContactGroupResourceNames'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+          notFoundResourceNames: (json_['notFoundResourceNames'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4043,217 +4003,149 @@ class Person {
 
   Person.fromJson(core.Map json_)
       : this(
-          addresses: json_.containsKey('addresses')
-              ? (json_['addresses'] as core.List)
-                  .map((value) => Address.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          addresses: (json_['addresses'] as core.List?)
+              ?.map((value) => Address.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           ageRange: json_['ageRange'] as core.String?,
-          ageRanges: json_.containsKey('ageRanges')
-              ? (json_['ageRanges'] as core.List)
-                  .map((value) => AgeRangeType.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          biographies: json_.containsKey('biographies')
-              ? (json_['biographies'] as core.List)
-                  .map((value) => Biography.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          birthdays: json_.containsKey('birthdays')
-              ? (json_['birthdays'] as core.List)
-                  .map((value) => Birthday.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          braggingRights: json_.containsKey('braggingRights')
-              ? (json_['braggingRights'] as core.List)
-                  .map((value) => BraggingRights.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          calendarUrls: json_.containsKey('calendarUrls')
-              ? (json_['calendarUrls'] as core.List)
-                  .map((value) => CalendarUrl.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          clientData: json_.containsKey('clientData')
-              ? (json_['clientData'] as core.List)
-                  .map((value) => ClientData.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          coverPhotos: json_.containsKey('coverPhotos')
-              ? (json_['coverPhotos'] as core.List)
-                  .map((value) => CoverPhoto.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          emailAddresses: json_.containsKey('emailAddresses')
-              ? (json_['emailAddresses'] as core.List)
-                  .map((value) => EmailAddress.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          ageRanges: (json_['ageRanges'] as core.List?)
+              ?.map((value) => AgeRangeType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          biographies: (json_['biographies'] as core.List?)
+              ?.map((value) => Biography.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          birthdays: (json_['birthdays'] as core.List?)
+              ?.map((value) => Birthday.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          braggingRights: (json_['braggingRights'] as core.List?)
+              ?.map((value) => BraggingRights.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          calendarUrls: (json_['calendarUrls'] as core.List?)
+              ?.map((value) => CalendarUrl.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          clientData: (json_['clientData'] as core.List?)
+              ?.map((value) => ClientData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          coverPhotos: (json_['coverPhotos'] as core.List?)
+              ?.map((value) => CoverPhoto.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          emailAddresses: (json_['emailAddresses'] as core.List?)
+              ?.map((value) => EmailAddress.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
-          events: json_.containsKey('events')
-              ? (json_['events'] as core.List)
-                  .map((value) => Event.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          externalIds: json_.containsKey('externalIds')
-              ? (json_['externalIds'] as core.List)
-                  .map((value) => ExternalId.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          fileAses: json_.containsKey('fileAses')
-              ? (json_['fileAses'] as core.List)
-                  .map((value) => FileAs.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          genders: json_.containsKey('genders')
-              ? (json_['genders'] as core.List)
-                  .map((value) => Gender.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          imClients: json_.containsKey('imClients')
-              ? (json_['imClients'] as core.List)
-                  .map((value) => ImClient.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          interests: json_.containsKey('interests')
-              ? (json_['interests'] as core.List)
-                  .map((value) => Interest.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          locales: json_.containsKey('locales')
-              ? (json_['locales'] as core.List)
-                  .map((value) => Locale.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          memberships: json_.containsKey('memberships')
-              ? (json_['memberships'] as core.List)
-                  .map((value) => Membership.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          events: (json_['events'] as core.List?)
+              ?.map((value) =>
+                  Event.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          externalIds: (json_['externalIds'] as core.List?)
+              ?.map((value) => ExternalId.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          fileAses: (json_['fileAses'] as core.List?)
+              ?.map((value) =>
+                  FileAs.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          genders: (json_['genders'] as core.List?)
+              ?.map((value) =>
+                  Gender.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          imClients: (json_['imClients'] as core.List?)
+              ?.map((value) => ImClient.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          interests: (json_['interests'] as core.List?)
+              ?.map((value) => Interest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          locales: (json_['locales'] as core.List?)
+              ?.map((value) =>
+                  Locale.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          memberships: (json_['memberships'] as core.List?)
+              ?.map((value) => Membership.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           metadata: json_.containsKey('metadata')
               ? PersonMetadata.fromJson(
                   json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
-          miscKeywords: json_.containsKey('miscKeywords')
-              ? (json_['miscKeywords'] as core.List)
-                  .map((value) => MiscKeyword.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          names: json_.containsKey('names')
-              ? (json_['names'] as core.List)
-                  .map((value) => Name.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          nicknames: json_.containsKey('nicknames')
-              ? (json_['nicknames'] as core.List)
-                  .map((value) => Nickname.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          occupations: json_.containsKey('occupations')
-              ? (json_['occupations'] as core.List)
-                  .map((value) => Occupation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          organizations: json_.containsKey('organizations')
-              ? (json_['organizations'] as core.List)
-                  .map((value) => Organization.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          phoneNumbers: json_.containsKey('phoneNumbers')
-              ? (json_['phoneNumbers'] as core.List)
-                  .map((value) => PhoneNumber.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          photos: json_.containsKey('photos')
-              ? (json_['photos'] as core.List)
-                  .map((value) => Photo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          relations: json_.containsKey('relations')
-              ? (json_['relations'] as core.List)
-                  .map((value) => Relation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          relationshipInterests: json_.containsKey('relationshipInterests')
-              ? (json_['relationshipInterests'] as core.List)
-                  .map((value) => RelationshipInterest.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          relationshipStatuses: json_.containsKey('relationshipStatuses')
-              ? (json_['relationshipStatuses'] as core.List)
-                  .map((value) => RelationshipStatus.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          residences: json_.containsKey('residences')
-              ? (json_['residences'] as core.List)
-                  .map((value) => Residence.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          miscKeywords: (json_['miscKeywords'] as core.List?)
+              ?.map((value) => MiscKeyword.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          names: (json_['names'] as core.List?)
+              ?.map((value) =>
+                  Name.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nicknames: (json_['nicknames'] as core.List?)
+              ?.map((value) => Nickname.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          occupations: (json_['occupations'] as core.List?)
+              ?.map((value) => Occupation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          organizations: (json_['organizations'] as core.List?)
+              ?.map((value) => Organization.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          phoneNumbers: (json_['phoneNumbers'] as core.List?)
+              ?.map((value) => PhoneNumber.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          photos: (json_['photos'] as core.List?)
+              ?.map((value) =>
+                  Photo.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          relations: (json_['relations'] as core.List?)
+              ?.map((value) => Relation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          relationshipInterests: (json_['relationshipInterests'] as core.List?)
+              ?.map((value) => RelationshipInterest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          relationshipStatuses: (json_['relationshipStatuses'] as core.List?)
+              ?.map((value) => RelationshipStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          residences: (json_['residences'] as core.List?)
+              ?.map((value) => Residence.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           resourceName: json_['resourceName'] as core.String?,
-          sipAddresses: json_.containsKey('sipAddresses')
-              ? (json_['sipAddresses'] as core.List)
-                  .map((value) => SipAddress.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          skills: json_.containsKey('skills')
-              ? (json_['skills'] as core.List)
-                  .map((value) => Skill.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          taglines: json_.containsKey('taglines')
-              ? (json_['taglines'] as core.List)
-                  .map((value) => Tagline.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          urls: json_.containsKey('urls')
-              ? (json_['urls'] as core.List)
-                  .map((value) => Url.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          userDefined: json_.containsKey('userDefined')
-              ? (json_['userDefined'] as core.List)
-                  .map((value) => UserDefined.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          sipAddresses: (json_['sipAddresses'] as core.List?)
+              ?.map((value) => SipAddress.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          skills: (json_['skills'] as core.List?)
+              ?.map((value) =>
+                  Skill.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          taglines: (json_['taglines'] as core.List?)
+              ?.map((value) => Tagline.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          urls: (json_['urls'] as core.List?)
+              ?.map((value) =>
+                  Url.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          userDefined: (json_['userDefined'] as core.List?)
+              ?.map((value) => UserDefined.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4355,23 +4247,17 @@ class PersonMetadata {
       : this(
           deleted: json_['deleted'] as core.bool?,
           linkedPeopleResourceNames:
-              json_.containsKey('linkedPeopleResourceNames')
-                  ? (json_['linkedPeopleResourceNames'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
+              (json_['linkedPeopleResourceNames'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           objectType: json_['objectType'] as core.String?,
-          previousResourceNames: json_.containsKey('previousResourceNames')
-              ? (json_['previousResourceNames'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          sources: json_.containsKey('sources')
-              ? (json_['sources'] as core.List)
-                  .map((value) => Source.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          previousResourceNames: (json_['previousResourceNames'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          sources: (json_['sources'] as core.List?)
+              ?.map((value) =>
+                  Source.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4562,11 +4448,9 @@ class ProfileMetadata {
   ProfileMetadata.fromJson(core.Map json_)
       : this(
           objectType: json_['objectType'] as core.String?,
-          userTypes: json_.containsKey('userTypes')
-              ? (json_['userTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          userTypes: (json_['userTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4765,12 +4649,10 @@ class SearchDirectoryPeopleResponse {
   SearchDirectoryPeopleResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          people: json_.containsKey('people')
-              ? (json_['people'] as core.List)
-                  .map((value) => Person.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          people: (json_['people'] as core.List?)
+              ?.map((value) =>
+                  Person.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           totalSize: json_['totalSize'] as core.int?,
         );
 
@@ -4792,12 +4674,10 @@ class SearchResponse {
 
   SearchResponse.fromJson(core.Map json_)
       : this(
-          results: json_.containsKey('results')
-              ? (json_['results'] as core.List)
-                  .map((value) => SearchResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          results: (json_['results'] as core.List?)
+              ?.map((value) => SearchResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5114,11 +4994,9 @@ class UpdateContactPhotoRequest {
       : this(
           personFields: json_['personFields'] as core.String?,
           photoBytes: json_['photoBytes'] as core.String?,
-          sources: json_.containsKey('sources')
-              ? (json_['sources'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          sources: (json_['sources'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

@@ -134,14 +134,11 @@ class GoogleSecuritySafebrowsingV5FullHash {
   GoogleSecuritySafebrowsingV5FullHash.fromJson(core.Map json_)
       : this(
           fullHash: json_['fullHash'] as core.String?,
-          fullHashDetails: json_.containsKey('fullHashDetails')
-              ? (json_['fullHashDetails'] as core.List)
-                  .map((value) =>
-                      GoogleSecuritySafebrowsingV5FullHashFullHashDetail
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          fullHashDetails: (json_['fullHashDetails'] as core.List?)
+              ?.map((value) =>
+                  GoogleSecuritySafebrowsingV5FullHashFullHashDetail.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -206,11 +203,9 @@ class GoogleSecuritySafebrowsingV5FullHashFullHashDetail {
 
   GoogleSecuritySafebrowsingV5FullHashFullHashDetail.fromJson(core.Map json_)
       : this(
-          attributes: json_.containsKey('attributes')
-              ? (json_['attributes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          attributes: (json_['attributes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           threatType: json_['threatType'] as core.String?,
         );
 
@@ -259,12 +254,10 @@ class GoogleSecuritySafebrowsingV5SearchHashesResponse {
   GoogleSecuritySafebrowsingV5SearchHashesResponse.fromJson(core.Map json_)
       : this(
           cacheDuration: json_['cacheDuration'] as core.String?,
-          fullHashes: json_.containsKey('fullHashes')
-              ? (json_['fullHashes'] as core.List)
-                  .map((value) => GoogleSecuritySafebrowsingV5FullHash.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          fullHashes: (json_['fullHashes'] as core.List?)
+              ?.map((value) => GoogleSecuritySafebrowsingV5FullHash.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

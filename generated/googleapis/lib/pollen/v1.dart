@@ -305,18 +305,14 @@ class DayInfo {
               ? Date.fromJson(
                   json_['date'] as core.Map<core.String, core.dynamic>)
               : null,
-          plantInfo: json_.containsKey('plantInfo')
-              ? (json_['plantInfo'] as core.List)
-                  .map((value) => PlantInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          pollenTypeInfo: json_.containsKey('pollenTypeInfo')
-              ? (json_['pollenTypeInfo'] as core.List)
-                  .map((value) => PollenTypeInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          plantInfo: (json_['plantInfo'] as core.List?)
+              ?.map((value) => PlantInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          pollenTypeInfo: (json_['pollenTypeInfo'] as core.List?)
+              ?.map((value) => PollenTypeInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -439,12 +435,10 @@ class LookupForecastResponse {
 
   LookupForecastResponse.fromJson(core.Map json_)
       : this(
-          dailyInfo: json_.containsKey('dailyInfo')
-              ? (json_['dailyInfo'] as core.List)
-                  .map((value) => DayInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          dailyInfo: (json_['dailyInfo'] as core.List?)
+              ?.map((value) => DayInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           regionCode: json_['regionCode'] as core.String?,
         );
@@ -648,11 +642,9 @@ class PollenTypeInfo {
       : this(
           code: json_['code'] as core.String?,
           displayName: json_['displayName'] as core.String?,
-          healthRecommendations: json_.containsKey('healthRecommendations')
-              ? (json_['healthRecommendations'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          healthRecommendations: (json_['healthRecommendations'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           inSeason: json_['inSeason'] as core.bool?,
           indexInfo: json_.containsKey('indexInfo')
               ? IndexInfo.fromJson(

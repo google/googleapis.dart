@@ -200,11 +200,9 @@ class PlatformSummary {
           enforcementTime: json_['enforcementTime'] as core.String?,
           filterStatus: json_['filterStatus'] as core.String?,
           lastChangeTime: json_['lastChangeTime'] as core.String?,
-          region: json_.containsKey('region')
-              ? (json_['region'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          region: (json_['region'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           reportUrl: json_['reportUrl'] as core.String?,
           underReview: json_['underReview'] as core.bool?,
         );
@@ -268,12 +266,10 @@ class ViolatingSitesResponse {
 
   ViolatingSitesResponse.fromJson(core.Map json_)
       : this(
-          violatingSites: json_.containsKey('violatingSites')
-              ? (json_['violatingSites'] as core.List)
-                  .map((value) => SiteSummaryResponse.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          violatingSites: (json_['violatingSites'] as core.List?)
+              ?.map((value) => SiteSummaryResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

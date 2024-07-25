@@ -538,12 +538,10 @@ class ListAnswersResponse {
 
   ListAnswersResponse.fromJson(core.Map json_)
       : this(
-          answers: json_.containsKey('answers')
-              ? (json_['answers'] as core.List)
-                  .map((value) => Answer.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          answers: (json_['answers'] as core.List?)
+              ?.map((value) =>
+                  Answer.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -579,12 +577,10 @@ class ListQuestionsResponse {
   ListQuestionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          questions: json_.containsKey('questions')
-              ? (json_['questions'] as core.List)
-                  .map((value) => Question.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          questions: (json_['questions'] as core.List?)
+              ?.map((value) => Question.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           totalSize: json_['totalSize'] as core.int?,
         );
 
@@ -667,12 +663,10 @@ class Question {
           createTime: json_['createTime'] as core.String?,
           name: json_['name'] as core.String?,
           text: json_['text'] as core.String?,
-          topAnswers: json_.containsKey('topAnswers')
-              ? (json_['topAnswers'] as core.List)
-                  .map((value) => Answer.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          topAnswers: (json_['topAnswers'] as core.List?)
+              ?.map((value) =>
+                  Answer.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           totalAnswerCount: json_['totalAnswerCount'] as core.int?,
           updateTime: json_['updateTime'] as core.String?,
           upvoteCount: json_['upvoteCount'] as core.int?,

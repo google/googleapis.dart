@@ -1071,11 +1071,9 @@ class Form {
   Form.fromJson(core.Map json_)
       : this(
           actionUri: json_['actionUri'] as core.String?,
-          fields: json_.containsKey('fields')
-              ? (json_['fields'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          fields: (json_['fields'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1186,12 +1184,10 @@ class ListCrawledUrlsResponse {
 
   ListCrawledUrlsResponse.fromJson(core.Map json_)
       : this(
-          crawledUrls: json_.containsKey('crawledUrls')
-              ? (json_['crawledUrls'] as core.List)
-                  .map((value) => CrawledUrl.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          crawledUrls: (json_['crawledUrls'] as core.List?)
+              ?.map((value) => CrawledUrl.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1212,12 +1208,10 @@ class ListFindingTypeStatsResponse {
 
   ListFindingTypeStatsResponse.fromJson(core.Map json_)
       : this(
-          findingTypeStats: json_.containsKey('findingTypeStats')
-              ? (json_['findingTypeStats'] as core.List)
-                  .map((value) => FindingTypeStats.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          findingTypeStats: (json_['findingTypeStats'] as core.List?)
+              ?.map((value) => FindingTypeStats.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1241,12 +1235,10 @@ class ListFindingsResponse {
 
   ListFindingsResponse.fromJson(core.Map json_)
       : this(
-          findings: json_.containsKey('findings')
-              ? (json_['findings'] as core.List)
-                  .map((value) => Finding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          findings: (json_['findings'] as core.List?)
+              ?.map((value) => Finding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1273,12 +1265,10 @@ class ListScanConfigsResponse {
   ListScanConfigsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          scanConfigs: json_.containsKey('scanConfigs')
-              ? (json_['scanConfigs'] as core.List)
-                  .map((value) => ScanConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          scanConfigs: (json_['scanConfigs'] as core.List?)
+              ?.map((value) => ScanConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1304,12 +1294,10 @@ class ListScanRunsResponse {
   ListScanRunsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          scanRuns: json_.containsKey('scanRuns')
-              ? (json_['scanRuns'] as core.List)
-                  .map((value) => ScanRun.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          scanRuns: (json_['scanRuns'] as core.List?)
+              ?.map((value) => ScanRun.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1337,11 +1325,9 @@ class OutdatedLibrary {
 
   OutdatedLibrary.fromJson(core.Map json_)
       : this(
-          learnMoreUrls: json_.containsKey('learnMoreUrls')
-              ? (json_['learnMoreUrls'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          learnMoreUrls: (json_['learnMoreUrls'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           libraryName: json_['libraryName'] as core.String?,
           version: json_['version'] as core.String?,
         );
@@ -1452,11 +1438,9 @@ class ScanConfig {
               ? Authentication.fromJson(json_['authentication']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          blacklistPatterns: json_.containsKey('blacklistPatterns')
-              ? (json_['blacklistPatterns'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          blacklistPatterns: (json_['blacklistPatterns'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           displayName: json_['displayName'] as core.String?,
           exportToSecurityCommandCenter:
               json_['exportToSecurityCommandCenter'] as core.String?,
@@ -1469,11 +1453,9 @@ class ScanConfig {
               ? Schedule.fromJson(
                   json_['schedule'] as core.Map<core.String, core.dynamic>)
               : null,
-          startingUrls: json_.containsKey('startingUrls')
-              ? (json_['startingUrls'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          startingUrls: (json_['startingUrls'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           staticIpScan: json_['staticIpScan'] as core.bool?,
           userAgent: json_['userAgent'] as core.String?,
         );
@@ -1735,12 +1717,10 @@ class ScanRun {
           startTime: json_['startTime'] as core.String?,
           urlsCrawledCount: json_['urlsCrawledCount'] as core.String?,
           urlsTestedCount: json_['urlsTestedCount'] as core.String?,
-          warningTraces: json_.containsKey('warningTraces')
-              ? (json_['warningTraces'] as core.List)
-                  .map((value) => ScanRunWarningTrace.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          warningTraces: (json_['warningTraces'] as core.List?)
+              ?.map((value) => ScanRunWarningTrace.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1948,18 +1928,14 @@ class VulnerableHeaders {
 
   VulnerableHeaders.fromJson(core.Map json_)
       : this(
-          headers: json_.containsKey('headers')
-              ? (json_['headers'] as core.List)
-                  .map((value) => Header.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          missingHeaders: json_.containsKey('missingHeaders')
-              ? (json_['missingHeaders'] as core.List)
-                  .map((value) => Header.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          headers: (json_['headers'] as core.List?)
+              ?.map((value) =>
+                  Header.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          missingHeaders: (json_['missingHeaders'] as core.List?)
+              ?.map((value) =>
+                  Header.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1979,11 +1955,9 @@ class VulnerableParameters {
 
   VulnerableParameters.fromJson(core.Map json_)
       : this(
-          parameterNames: json_.containsKey('parameterNames')
-              ? (json_['parameterNames'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          parameterNames: (json_['parameterNames'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2039,11 +2013,9 @@ class Xss {
       : this(
           attackVector: json_['attackVector'] as core.String?,
           errorMessage: json_['errorMessage'] as core.String?,
-          stackTraces: json_.containsKey('stackTraces')
-              ? (json_['stackTraces'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          stackTraces: (json_['stackTraces'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           storedXssSeedingUrl: json_['storedXssSeedingUrl'] as core.String?,
         );
 

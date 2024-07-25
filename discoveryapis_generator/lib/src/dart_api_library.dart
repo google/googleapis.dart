@@ -49,8 +49,9 @@ class DartApiImports {
         http = namer.import('http'),
         commons = namer.import('commons');
 
-  String get coreJsonMap =>
-      '${core.ref()}Map<${core.ref()}String, ${core.ref()}dynamic>';
+  String get coreJsonTypeArgs => '<${core.ref()}String, ${core.ref()}dynamic>';
+
+  String get coreJsonMap => '${core.ref()}Map$coreJsonTypeArgs';
 
   String get deprecatedMsg => "@${core.ref()}Deprecated('Not supported. "
       "Member documentation may have more information.',)";

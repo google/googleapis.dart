@@ -640,12 +640,10 @@ class V2AndroidKeyRestrictions {
 
   V2AndroidKeyRestrictions.fromJson(core.Map json_)
       : this(
-          allowedApplications: json_.containsKey('allowedApplications')
-              ? (json_['allowedApplications'] as core.List)
-                  .map((value) => V2AndroidApplication.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          allowedApplications: (json_['allowedApplications'] as core.List?)
+              ?.map((value) => V2AndroidApplication.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -684,11 +682,9 @@ class V2ApiTarget {
 
   V2ApiTarget.fromJson(core.Map json_)
       : this(
-          methods: json_.containsKey('methods')
-              ? (json_['methods'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          methods: (json_['methods'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           service: json_['service'] as core.String?,
         );
 
@@ -710,11 +706,9 @@ class V2BrowserKeyRestrictions {
 
   V2BrowserKeyRestrictions.fromJson(core.Map json_)
       : this(
-          allowedReferrers: json_.containsKey('allowedReferrers')
-              ? (json_['allowedReferrers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          allowedReferrers: (json_['allowedReferrers'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -752,11 +746,9 @@ class V2IosKeyRestrictions {
 
   V2IosKeyRestrictions.fromJson(core.Map json_)
       : this(
-          allowedBundleIds: json_.containsKey('allowedBundleIds')
-              ? (json_['allowedBundleIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          allowedBundleIds: (json_['allowedBundleIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -843,15 +835,14 @@ class V2Key {
 
   V2Key.fromJson(core.Map json_)
       : this(
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           createTime: json_['createTime'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
@@ -895,12 +886,10 @@ class V2ListKeysResponse {
 
   V2ListKeysResponse.fromJson(core.Map json_)
       : this(
-          keys: json_.containsKey('keys')
-              ? (json_['keys'] as core.List)
-                  .map((value) => V2Key.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          keys: (json_['keys'] as core.List?)
+              ?.map((value) =>
+                  V2Key.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -973,12 +962,10 @@ class V2Restrictions {
                   json_['androidKeyRestrictions']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          apiTargets: json_.containsKey('apiTargets')
-              ? (json_['apiTargets'] as core.List)
-                  .map((value) => V2ApiTarget.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          apiTargets: (json_['apiTargets'] as core.List?)
+              ?.map((value) => V2ApiTarget.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           browserKeyRestrictions: json_.containsKey('browserKeyRestrictions')
               ? V2BrowserKeyRestrictions.fromJson(
                   json_['browserKeyRestrictions']
@@ -1019,11 +1006,9 @@ class V2ServerKeyRestrictions {
 
   V2ServerKeyRestrictions.fromJson(core.Map json_)
       : this(
-          allowedIps: json_.containsKey('allowedIps')
-              ? (json_['allowedIps'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          allowedIps: (json_['allowedIps'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

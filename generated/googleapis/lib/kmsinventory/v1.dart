@@ -302,12 +302,10 @@ class GoogleCloudKmsInventoryV1ListCryptoKeysResponse {
 
   GoogleCloudKmsInventoryV1ListCryptoKeysResponse.fromJson(core.Map json_)
       : this(
-          cryptoKeys: json_.containsKey('cryptoKeys')
-              ? (json_['cryptoKeys'] as core.List)
-                  .map((value) => GoogleCloudKmsV1CryptoKey.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          cryptoKeys: (json_['cryptoKeys'] as core.List?)
+              ?.map((value) => GoogleCloudKmsV1CryptoKey.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -390,19 +388,16 @@ class GoogleCloudKmsInventoryV1ProtectedResource {
           cloudProduct: json_['cloudProduct'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           cryptoKeyVersion: json_['cryptoKeyVersion'] as core.String?,
-          cryptoKeyVersions: json_.containsKey('cryptoKeyVersions')
-              ? (json_['cryptoKeyVersions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          cryptoKeyVersions: (json_['cryptoKeyVersions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           location: json_['location'] as core.String?,
           name: json_['name'] as core.String?,
           project: json_['project'] as core.String?,
@@ -461,35 +456,32 @@ class GoogleCloudKmsInventoryV1ProtectedResourcesSummary {
 
   GoogleCloudKmsInventoryV1ProtectedResourcesSummary.fromJson(core.Map json_)
       : this(
-          cloudProducts: json_.containsKey('cloudProducts')
-              ? (json_['cloudProducts'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          cloudProducts:
+              (json_['cloudProducts'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          locations:
+              (json_['locations'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           projectCount: json_['projectCount'] as core.int?,
           resourceCount: json_['resourceCount'] as core.String?,
-          resourceTypes: json_.containsKey('resourceTypes')
-              ? (json_['resourceTypes'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          resourceTypes:
+              (json_['resourceTypes'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -521,13 +513,11 @@ class GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse {
       core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          protectedResources: json_.containsKey('protectedResources')
-              ? (json_['protectedResources'] as core.List)
-                  .map((value) =>
-                      GoogleCloudKmsInventoryV1ProtectedResource.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          protectedResources: (json_['protectedResources'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudKmsInventoryV1ProtectedResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -658,14 +648,13 @@ class GoogleCloudKmsV1CryptoKey {
           destroyScheduledDuration:
               json_['destroyScheduledDuration'] as core.String?,
           importOnly: json_['importOnly'] as core.bool?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           nextRotationTime: json_['nextRotationTime'] as core.String?,
           primary: json_.containsKey('primary')

@@ -478,12 +478,10 @@ class AndCondition {
 
   AndCondition.fromJson(core.Map json_)
       : this(
-          conditions: json_.containsKey('conditions')
-              ? (json_['conditions'] as core.List)
-                  .map((value) => Condition.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          conditions: (json_['conditions'] as core.List?)
+              ?.map((value) => Condition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -708,16 +706,14 @@ class FetchRemoteConfigRequest {
 
   FetchRemoteConfigRequest.fromJson(core.Map json_)
       : this(
-          analyticsUserProperties: json_.containsKey('analyticsUserProperties')
-              ? (json_['analyticsUserProperties']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          analyticsUserProperties: (json_['analyticsUserProperties']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           appBuild: json_['appBuild'] as core.String?,
           appId: json_['appId'] as core.String?,
           appInstanceId: json_['appInstanceId'] as core.String?,
@@ -802,37 +798,31 @@ class FetchRemoteConfigResponse {
   FetchRemoteConfigResponse.fromJson(core.Map json_)
       : this(
           appName: json_['appName'] as core.String?,
-          entries: json_.containsKey('entries')
-              ? (json_['entries'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
-          experimentDescriptions: json_.containsKey('experimentDescriptions')
-              ? (json_['experimentDescriptions'] as core.List)
-                  .map((value) => ExperimentDescription.fromJson(
+          entries:
+              (json_['entries'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          experimentDescriptions:
+              (json_['experimentDescriptions'] as core.List?)
+                  ?.map((value) => ExperimentDescription.fromJson(
                       value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          personalizationMetadata: json_.containsKey('personalizationMetadata')
-              ? (json_['personalizationMetadata']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    PersonalizationMetadata.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          rolloutMetadata: json_.containsKey('rolloutMetadata')
-              ? (json_['rolloutMetadata'] as core.List)
-                  .map((value) => RolloutMetadata.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                  .toList(),
+          personalizationMetadata: (json_['personalizationMetadata']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              PersonalizationMetadata.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          rolloutMetadata: (json_['rolloutMetadata'] as core.List?)
+              ?.map((value) => RolloutMetadata.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           state: json_['state'] as core.String?,
           templateVersion: json_['templateVersion'] as core.String?,
         );
@@ -867,12 +857,10 @@ class ListVersionsResponse {
   ListVersionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          versions: json_.containsKey('versions')
-              ? (json_['versions'] as core.List)
-                  .map((value) => Version.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          versions: (json_['versions'] as core.List?)
+              ?.map((value) => Version.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -929,12 +917,10 @@ class OrCondition {
 
   OrCondition.fromJson(core.Map json_)
       : this(
-          conditions: json_.containsKey('conditions')
-              ? (json_['conditions'] as core.List)
-                  .map((value) => Condition.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          conditions: (json_['conditions'] as core.List?)
+              ?.map((value) => Condition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1146,33 +1132,28 @@ class RemoteConfig {
 
   RemoteConfig.fromJson(core.Map json_)
       : this(
-          conditions: json_.containsKey('conditions')
-              ? (json_['conditions'] as core.List)
-                  .map((value) => RemoteConfigCondition.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          parameterGroups: json_.containsKey('parameterGroups')
-              ? (json_['parameterGroups']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    RemoteConfigParameterGroup.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          parameters: json_.containsKey('parameters')
-              ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    RemoteConfigParameter.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          conditions: (json_['conditions'] as core.List?)
+              ?.map((value) => RemoteConfigCondition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          parameterGroups:
+              (json_['parameterGroups'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              RemoteConfigParameterGroup.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          parameters:
+              (json_['parameters'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              RemoteConfigParameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           version: json_.containsKey('version')
               ? Version.fromJson(
                   json_['version'] as core.Map<core.String, core.dynamic>)
@@ -1295,17 +1276,15 @@ class RemoteConfigParameter {
 
   RemoteConfigParameter.fromJson(core.Map json_)
       : this(
-          conditionalValues: json_.containsKey('conditionalValues')
-              ? (json_['conditionalValues']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    RemoteConfigParameterValue.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          conditionalValues: (json_['conditionalValues']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              RemoteConfigParameterValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           defaultValue: json_.containsKey('defaultValue')
               ? RemoteConfigParameterValue.fromJson(
                   json_['defaultValue'] as core.Map<core.String, core.dynamic>)
@@ -1351,16 +1330,15 @@ class RemoteConfigParameterGroup {
   RemoteConfigParameterGroup.fromJson(core.Map json_)
       : this(
           description: json_['description'] as core.String?,
-          parameters: json_.containsKey('parameters')
-              ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    RemoteConfigParameter.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          parameters:
+              (json_['parameters'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              RemoteConfigParameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1505,11 +1483,9 @@ class RolloutMetadata {
 
   RolloutMetadata.fromJson(core.Map json_)
       : this(
-          affectedParameterKeys: json_.containsKey('affectedParameterKeys')
-              ? (json_['affectedParameterKeys'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          affectedParameterKeys: (json_['affectedParameterKeys'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           rolloutId: json_['rolloutId'] as core.String?,
           variantId: json_['variantId'] as core.String?,
         );
@@ -1580,22 +1556,19 @@ class ServerRemoteConfig {
 
   ServerRemoteConfig.fromJson(core.Map json_)
       : this(
-          conditions: json_.containsKey('conditions')
-              ? (json_['conditions'] as core.List)
-                  .map((value) => ServerRemoteConfigCondition.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          parameters: json_.containsKey('parameters')
-              ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    ServerRemoteConfigParameter.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          conditions: (json_['conditions'] as core.List?)
+              ?.map((value) => ServerRemoteConfigCondition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          parameters:
+              (json_['parameters'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              ServerRemoteConfigParameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           version: json_.containsKey('version')
               ? Version.fromJson(
                   json_['version'] as core.Map<core.String, core.dynamic>)
@@ -1666,17 +1639,15 @@ class ServerRemoteConfigParameter {
 
   ServerRemoteConfigParameter.fromJson(core.Map json_)
       : this(
-          conditionalValues: json_.containsKey('conditionalValues')
-              ? (json_['conditionalValues']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    ServerRemoteConfigParameterValue.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          conditionalValues: (json_['conditionalValues']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              ServerRemoteConfigParameterValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           defaultValue: json_.containsKey('defaultValue')
               ? ServerRemoteConfigParameterValue.fromJson(
                   json_['defaultValue'] as core.Map<core.String, core.dynamic>)

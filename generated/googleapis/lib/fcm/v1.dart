@@ -200,14 +200,12 @@ class AndroidConfig {
   AndroidConfig.fromJson(core.Map json_)
       : this(
           collapseKey: json_['collapseKey'] as core.String?,
-          data: json_.containsKey('data')
-              ? (json_['data'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          data: (json_['data'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           directBootOk: json_['directBootOk'] as core.bool?,
           fcmOptions: json_.containsKey('fcmOptions')
               ? AndroidFcmOptions.fromJson(
@@ -502,11 +500,9 @@ class AndroidNotification {
   AndroidNotification.fromJson(core.Map json_)
       : this(
           body: json_['body'] as core.String?,
-          bodyLocArgs: json_.containsKey('bodyLocArgs')
-              ? (json_['bodyLocArgs'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          bodyLocArgs: (json_['bodyLocArgs'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           bodyLocKey: json_['bodyLocKey'] as core.String?,
           bypassProxyNotification:
               json_['bypassProxyNotification'] as core.bool?,
@@ -532,17 +528,13 @@ class AndroidNotification {
           tag: json_['tag'] as core.String?,
           ticker: json_['ticker'] as core.String?,
           title: json_['title'] as core.String?,
-          titleLocArgs: json_.containsKey('titleLocArgs')
-              ? (json_['titleLocArgs'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          titleLocArgs: (json_['titleLocArgs'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           titleLocKey: json_['titleLocKey'] as core.String?,
-          vibrateTimings: json_.containsKey('vibrateTimings')
-              ? (json_['vibrateTimings'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          vibrateTimings: (json_['vibrateTimings'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           visibility: json_['visibility'] as core.String?,
         );
 
@@ -619,14 +611,13 @@ class ApnsConfig {
               ? ApnsFcmOptions.fromJson(
                   json_['fcmOptions'] as core.Map<core.String, core.dynamic>)
               : null,
-          headers: json_.containsKey('headers')
-              ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          headers:
+              (json_['headers'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           payload: json_.containsKey('payload')
               ? json_['payload'] as core.Map<core.String, core.dynamic>
               : null,
@@ -847,14 +838,12 @@ class Message {
                   json_['apns'] as core.Map<core.String, core.dynamic>)
               : null,
           condition: json_['condition'] as core.String?,
-          data: json_.containsKey('data')
-              ? (json_['data'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          data: (json_['data'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           fcmOptions: json_.containsKey('fcmOptions')
               ? FcmOptions.fromJson(
                   json_['fcmOptions'] as core.Map<core.String, core.dynamic>)
@@ -991,26 +980,23 @@ class WebpushConfig {
 
   WebpushConfig.fromJson(core.Map json_)
       : this(
-          data: json_.containsKey('data')
-              ? (json_['data'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          data: (json_['data'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           fcmOptions: json_.containsKey('fcmOptions')
               ? WebpushFcmOptions.fromJson(
                   json_['fcmOptions'] as core.Map<core.String, core.dynamic>)
               : null,
-          headers: json_.containsKey('headers')
-              ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          headers:
+              (json_['headers'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           notification: json_.containsKey('notification')
               ? json_['notification'] as core.Map<core.String, core.dynamic>
               : null,

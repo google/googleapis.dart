@@ -301,11 +301,9 @@ class CreateProfileRequest {
               ? Deployment.fromJson(
                   json_['deployment'] as core.Map<core.String, core.dynamic>)
               : null,
-          profileType: json_.containsKey('profileType')
-              ? (json_['profileType'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          profileType: (json_['profileType'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -350,14 +348,13 @@ class Deployment {
 
   Deployment.fromJson(core.Map json_)
       : this(
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           projectId: json_['projectId'] as core.String?,
           target: json_['target'] as core.String?,
         );
@@ -397,12 +394,10 @@ class ListProfilesResponse {
   ListProfilesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          profiles: json_.containsKey('profiles')
-              ? (json_['profiles'] as core.List)
-                  .map((value) => Profile.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          profiles: (json_['profiles'] as core.List?)
+              ?.map((value) => Profile.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           skippedProfiles: json_['skippedProfiles'] as core.int?,
         );
 
@@ -497,14 +492,13 @@ class Profile {
                   json_['deployment'] as core.Map<core.String, core.dynamic>)
               : null,
           duration: json_['duration'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           profileBytes: json_['profileBytes'] as core.String?,
           profileType: json_['profileType'] as core.String?,

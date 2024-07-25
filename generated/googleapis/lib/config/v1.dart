@@ -1745,15 +1745,14 @@ class ApplyResults {
       : this(
           artifacts: json_['artifacts'] as core.String?,
           content: json_['content'] as core.String?,
-          outputs: json_.containsKey('outputs')
-              ? (json_['outputs'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    TerraformOutput.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          outputs:
+              (json_['outputs'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              TerraformOutput.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1797,12 +1796,10 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
       : this(
-          auditLogConfigs: json_.containsKey('auditLogConfigs')
-              ? (json_['auditLogConfigs'] as core.List)
-                  .map((value) => AuditLogConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+              ?.map((value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           service: json_['service'] as core.String?,
         );
 
@@ -1912,11 +1909,9 @@ class Binding {
               ? Expr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -2180,15 +2175,14 @@ class Deployment {
 
   Deployment.fromJson(core.Map json_)
       : this(
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           artifactsGcsBucket: json_['artifactsGcsBucket'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           deleteBuild: json_['deleteBuild'] as core.String?,
@@ -2201,14 +2195,13 @@ class Deployment {
           errorLogs: json_['errorLogs'] as core.String?,
           importExistingResources:
               json_['importExistingResources'] as core.bool?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           latestRevision: json_['latestRevision'] as core.String?,
           lockState: json_['lockState'] as core.String?,
           name: json_['name'] as core.String?,
@@ -2220,12 +2213,10 @@ class Deployment {
               ? TerraformBlueprint.fromJson(json_['terraformBlueprint']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          tfErrors: json_.containsKey('tfErrors')
-              ? (json_['tfErrors'] as core.List)
-                  .map((value) => TerraformError.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tfErrors: (json_['tfErrors'] as core.List?)
+              ?.map((value) => TerraformError.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           tfVersion: json_['tfVersion'] as core.String?,
           tfVersionConstraint: json_['tfVersionConstraint'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -2431,18 +2422,14 @@ class ListDeploymentsResponse {
 
   ListDeploymentsResponse.fromJson(core.Map json_)
       : this(
-          deployments: json_.containsKey('deployments')
-              ? (json_['deployments'] as core.List)
-                  .map((value) => Deployment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          deployments: (json_['deployments'] as core.List?)
+              ?.map((value) => Deployment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2467,12 +2454,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -2498,12 +2483,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2535,17 +2518,13 @@ class ListPreviewsResponse {
   ListPreviewsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          previews: json_.containsKey('previews')
-              ? (json_['previews'] as core.List)
-                  .map((value) => Preview.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          previews: (json_['previews'] as core.List?)
+              ?.map((value) => Preview.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2581,17 +2560,13 @@ class ListResourcesResponse {
   ListResourcesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          resources: json_.containsKey('resources')
-              ? (json_['resources'] as core.List)
-                  .map((value) => Resource.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          resources: (json_['resources'] as core.List?)
+              ?.map((value) => Resource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2627,17 +2602,13 @@ class ListRevisionsResponse {
   ListRevisionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          revisions: json_.containsKey('revisions')
-              ? (json_['revisions'] as core.List)
-                  .map((value) => Revision.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          revisions: (json_['revisions'] as core.List?)
+              ?.map((value) => Revision.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2668,17 +2639,13 @@ class ListTerraformVersionsResponse {
   ListTerraformVersionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          terraformVersions: json_.containsKey('terraformVersions')
-              ? (json_['terraformVersions'] as core.List)
-                  .map((value) => TerraformVersion.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          terraformVersions: (json_['terraformVersions'] as core.List?)
+              ?.map((value) => TerraformVersion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2914,18 +2881,14 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
       : this(
-          auditConfigs: json_.containsKey('auditConfigs')
-              ? (json_['auditConfigs'] as core.List)
-                  .map((value) => AuditConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          bindings: json_.containsKey('bindings')
-              ? (json_['bindings'] as core.List)
-                  .map((value) => Binding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditConfigs: (json_['auditConfigs'] as core.List?)
+              ?.map((value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
         );
@@ -3133,15 +3096,14 @@ class Preview {
 
   Preview.fromJson(core.Map json_)
       : this(
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           artifactsGcsBucket: json_['artifactsGcsBucket'] as core.String?,
           build: json_['build'] as core.String?,
           createTime: json_['createTime'] as core.String?,
@@ -3152,14 +3114,13 @@ class Preview {
               ? Status.fromJson(
                   json_['errorStatus'] as core.Map<core.String, core.dynamic>)
               : null,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           logs: json_['logs'] as core.String?,
           name: json_['name'] as core.String?,
           previewArtifacts: json_.containsKey('previewArtifacts')
@@ -3173,12 +3134,10 @@ class Preview {
               ? TerraformBlueprint.fromJson(json_['terraformBlueprint']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          tfErrors: json_.containsKey('tfErrors')
-              ? (json_['tfErrors'] as core.List)
-                  .map((value) => TerraformError.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tfErrors: (json_['tfErrors'] as core.List?)
+              ?.map((value) => TerraformError.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           tfVersion: json_['tfVersion'] as core.String?,
           tfVersionConstraint: json_['tfVersionConstraint'] as core.String?,
           workerPool: json_['workerPool'] as core.String?,
@@ -3334,15 +3293,14 @@ class Resource {
 
   Resource.fromJson(core.Map json_)
       : this(
-          caiAssets: json_.containsKey('caiAssets')
-              ? (json_['caiAssets'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    ResourceCAIInfo.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          caiAssets:
+              (json_['caiAssets'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              ResourceCAIInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           intent: json_['intent'] as core.String?,
           name: json_['name'] as core.String?,
           state: json_['state'] as core.String?,
@@ -3630,12 +3588,10 @@ class Revision {
               ? TerraformBlueprint.fromJson(json_['terraformBlueprint']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          tfErrors: json_.containsKey('tfErrors')
-              ? (json_['tfErrors'] as core.List)
-                  .map((value) => TerraformError.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tfErrors: (json_['tfErrors'] as core.List?)
+              ?.map((value) => TerraformError.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           tfVersion: json_['tfVersion'] as core.String?,
           tfVersionConstraint: json_['tfVersionConstraint'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -3767,16 +3723,15 @@ class TerraformBlueprint {
               ? GitSource.fromJson(
                   json_['gitSource'] as core.Map<core.String, core.dynamic>)
               : null,
-          inputValues: json_.containsKey('inputValues')
-              ? (json_['inputValues'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    TerraformVariable.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          inputValues:
+              (json_['inputValues'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              TerraformVariable.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

@@ -488,26 +488,18 @@ class GoogleIamV2DenyRule {
               ? GoogleTypeExpr.fromJson(json_['denialCondition']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          deniedPermissions: json_.containsKey('deniedPermissions')
-              ? (json_['deniedPermissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          deniedPrincipals: json_.containsKey('deniedPrincipals')
-              ? (json_['deniedPrincipals'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          exceptionPermissions: json_.containsKey('exceptionPermissions')
-              ? (json_['exceptionPermissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          exceptionPrincipals: json_.containsKey('exceptionPrincipals')
-              ? (json_['exceptionPrincipals'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          deniedPermissions: (json_['deniedPermissions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          deniedPrincipals: (json_['deniedPrincipals'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          exceptionPermissions: (json_['exceptionPermissions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          exceptionPrincipals: (json_['exceptionPrincipals'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -540,12 +532,10 @@ class GoogleIamV2ListPoliciesResponse {
   GoogleIamV2ListPoliciesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          policies: json_.containsKey('policies')
-              ? (json_['policies'] as core.List)
-                  .map((value) => GoogleIamV2Policy.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          policies: (json_['policies'] as core.List?)
+              ?.map((value) => GoogleIamV2Policy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -638,27 +628,24 @@ class GoogleIamV2Policy {
 
   GoogleIamV2Policy.fromJson(core.Map json_)
       : this(
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           createTime: json_['createTime'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           etag: json_['etag'] as core.String?,
           kind: json_['kind'] as core.String?,
           name: json_['name'] as core.String?,
-          rules: json_.containsKey('rules')
-              ? (json_['rules'] as core.List)
-                  .map((value) => GoogleIamV2PolicyRule.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          rules: (json_['rules'] as core.List?)
+              ?.map((value) => GoogleIamV2PolicyRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );

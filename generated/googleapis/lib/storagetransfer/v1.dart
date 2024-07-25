@@ -1483,12 +1483,10 @@ class ListAgentPoolsResponse {
 
   ListAgentPoolsResponse.fromJson(core.Map json_)
       : this(
-          agentPools: json_.containsKey('agentPools')
-              ? (json_['agentPools'] as core.List)
-                  .map((value) => AgentPool.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          agentPools: (json_['agentPools'] as core.List?)
+              ?.map((value) => AgentPool.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1514,12 +1512,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1544,12 +1540,10 @@ class ListTransferJobsResponse {
   ListTransferJobsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          transferJobs: json_.containsKey('transferJobs')
-              ? (json_['transferJobs'] as core.List)
-                  .map((value) => TransferJob.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          transferJobs: (json_['transferJobs'] as core.List?)
+              ?.map((value) => TransferJob.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1592,16 +1586,12 @@ class LoggingConfig {
       : this(
           enableOnpremGcsTransferLogs:
               json_['enableOnpremGcsTransferLogs'] as core.bool?,
-          logActionStates: json_.containsKey('logActionStates')
-              ? (json_['logActionStates'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          logActions: json_.containsKey('logActions')
-              ? (json_['logActions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          logActionStates: (json_['logActionStates'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          logActions: (json_['logActions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1818,11 +1808,9 @@ class NotificationConfig {
 
   NotificationConfig.fromJson(core.Map json_)
       : this(
-          eventTypes: json_.containsKey('eventTypes')
-              ? (json_['eventTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          eventTypes: (json_['eventTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           payloadFormat: json_['payloadFormat'] as core.String?,
           pubsubTopic: json_['pubsubTopic'] as core.String?,
         );
@@ -1935,16 +1923,12 @@ class ObjectConditions {
 
   ObjectConditions.fromJson(core.Map json_)
       : this(
-          excludePrefixes: json_.containsKey('excludePrefixes')
-              ? (json_['excludePrefixes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          includePrefixes: json_.containsKey('includePrefixes')
-              ? (json_['includePrefixes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          excludePrefixes: (json_['excludePrefixes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          includePrefixes: (json_['includePrefixes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           lastModifiedBefore: json_['lastModifiedBefore'] as core.String?,
           lastModifiedSince: json_['lastModifiedSince'] as core.String?,
           maxTimeElapsedSinceLastModification:

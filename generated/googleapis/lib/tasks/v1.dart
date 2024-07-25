@@ -863,12 +863,10 @@ class Task {
           hidden: json_['hidden'] as core.bool?,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
-          links: json_.containsKey('links')
-              ? (json_['links'] as core.List)
-                  .map((value) => TaskLinks.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          links: (json_['links'] as core.List?)
+              ?.map((value) => TaskLinks.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           notes: json_['notes'] as core.String?,
           parent: json_['parent'] as core.String?,
           position: json_['position'] as core.String?,
@@ -984,12 +982,10 @@ class TaskLists {
   TaskLists.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => TaskList.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => TaskList.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1027,12 +1023,10 @@ class Tasks {
   Tasks.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => Task.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) =>
+                  Task.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
         );

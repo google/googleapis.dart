@@ -608,11 +608,9 @@ class Action {
       : this(
           alwaysRun: json_['alwaysRun'] as core.bool?,
           blockExternalNetwork: json_['blockExternalNetwork'] as core.bool?,
-          commands: json_.containsKey('commands')
-              ? (json_['commands'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          commands: (json_['commands'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           containerName: json_['containerName'] as core.String?,
           credentials: json_.containsKey('credentials')
               ? Secret.fromJson(
@@ -627,41 +625,36 @@ class Action {
                   as core.Map<core.String, core.dynamic>)
               : null,
           entrypoint: json_['entrypoint'] as core.String?,
-          environment: json_.containsKey('environment')
-              ? (json_['environment'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          environment:
+              (json_['environment'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           ignoreExitStatus: json_['ignoreExitStatus'] as core.bool?,
           imageUri: json_['imageUri'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
-          mounts: json_.containsKey('mounts')
-              ? (json_['mounts'] as core.List)
-                  .map((value) => Mount.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          mounts: (json_['mounts'] as core.List?)
+              ?.map((value) =>
+                  Mount.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           pidNamespace: json_['pidNamespace'] as core.String?,
-          portMappings: json_.containsKey('portMappings')
-              ? (json_['portMappings'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.int,
-                  ),
-                )
-              : null,
+          portMappings:
+              (json_['portMappings'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.int,
+            ),
+          ),
           publishExposedPorts: json_['publishExposedPorts'] as core.bool?,
           runInBackground: json_['runInBackground'] as core.bool?,
           timeout: json_['timeout'] as core.String?,
@@ -803,12 +796,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -834,12 +825,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1097,25 +1086,22 @@ class Pipeline {
 
   Pipeline.fromJson(core.Map json_)
       : this(
-          actions: json_.containsKey('actions')
-              ? (json_['actions'] as core.List)
-                  .map((value) => Action.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          actions: (json_['actions'] as core.List?)
+              ?.map((value) =>
+                  Action.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           encryptedEnvironment: json_.containsKey('encryptedEnvironment')
               ? Secret.fromJson(json_['encryptedEnvironment']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          environment: json_.containsKey('environment')
-              ? (json_['environment'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          environment:
+              (json_['environment'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           resources: json_.containsKey('resources')
               ? Resources.fromJson(
                   json_['resources'] as core.Map<core.String, core.dynamic>)
@@ -1158,20 +1144,16 @@ class Resources {
 
   Resources.fromJson(core.Map json_)
       : this(
-          regions: json_.containsKey('regions')
-              ? (json_['regions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          regions: (json_['regions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           virtualMachine: json_.containsKey('virtualMachine')
               ? VirtualMachine.fromJson(json_['virtualMachine']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          zones: json_.containsKey('zones')
-              ? (json_['zones'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          zones: (json_['zones'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1215,14 +1197,13 @@ class RunPipelineRequest {
 
   RunPipelineRequest.fromJson(core.Map json_)
       : this(
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           pipeline: json_.containsKey('pipeline')
               ? Pipeline.fromJson(
                   json_['pipeline'] as core.Map<core.String, core.dynamic>)
@@ -1289,11 +1270,9 @@ class ServiceAccount {
   ServiceAccount.fromJson(core.Map json_)
       : this(
           email: json_['email'] as core.String?,
-          scopes: json_.containsKey('scopes')
-              ? (json_['scopes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          scopes: (json_['scopes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1441,36 +1420,29 @@ class VirtualMachine {
 
   VirtualMachine.fromJson(core.Map json_)
       : this(
-          accelerators: json_.containsKey('accelerators')
-              ? (json_['accelerators'] as core.List)
-                  .map((value) => Accelerator.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          accelerators: (json_['accelerators'] as core.List?)
+              ?.map((value) => Accelerator.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           bootDiskSizeGb: json_['bootDiskSizeGb'] as core.int?,
           bootImage: json_['bootImage'] as core.String?,
           cpuPlatform: json_['cpuPlatform'] as core.String?,
-          disks: json_.containsKey('disks')
-              ? (json_['disks'] as core.List)
-                  .map((value) => Disk.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          dockerCacheImages: json_.containsKey('dockerCacheImages')
-              ? (json_['dockerCacheImages'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          disks: (json_['disks'] as core.List?)
+              ?.map((value) =>
+                  Disk.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          dockerCacheImages: (json_['dockerCacheImages'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           enableStackdriverMonitoring:
               json_['enableStackdriverMonitoring'] as core.bool?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           machineType: json_['machineType'] as core.String?,
           network: json_.containsKey('network')
               ? Network.fromJson(
@@ -1483,12 +1455,10 @@ class VirtualMachine {
               ? ServiceAccount.fromJson(json_['serviceAccount']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          volumes: json_.containsKey('volumes')
-              ? (json_['volumes'] as core.List)
-                  .map((value) => Volume.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          volumes: (json_['volumes'] as core.List?)
+              ?.map((value) =>
+                  Volume.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

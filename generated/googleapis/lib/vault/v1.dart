@@ -1596,11 +1596,9 @@ class AccountInfo {
 
   AccountInfo.fromJson(core.Map json_)
       : this(
-          emails: json_.containsKey('emails')
-              ? (json_['emails'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          emails: (json_['emails'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1661,16 +1659,12 @@ class AddHeldAccountsRequest {
 
   AddHeldAccountsRequest.fromJson(core.Map json_)
       : this(
-          accountIds: json_.containsKey('accountIds')
-              ? (json_['accountIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          emails: json_.containsKey('emails')
-              ? (json_['emails'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          accountIds: (json_['accountIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          emails: (json_['emails'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1690,12 +1684,10 @@ class AddHeldAccountsResponse {
 
   AddHeldAccountsResponse.fromJson(core.Map json_)
       : this(
-          responses: json_.containsKey('responses')
-              ? (json_['responses'] as core.List)
-                  .map((value) => AddHeldAccountResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          responses: (json_['responses'] as core.List?)
+              ?.map((value) => AddHeldAccountResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1794,26 +1786,18 @@ class CalendarOptions {
 
   CalendarOptions.fromJson(core.Map json_)
       : this(
-          locationQuery: json_.containsKey('locationQuery')
-              ? (json_['locationQuery'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          minusWords: json_.containsKey('minusWords')
-              ? (json_['minusWords'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          peopleQuery: json_.containsKey('peopleQuery')
-              ? (json_['peopleQuery'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          responseStatuses: json_.containsKey('responseStatuses')
-              ? (json_['responseStatuses'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          locationQuery: (json_['locationQuery'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          minusWords: (json_['minusWords'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          peopleQuery: (json_['peopleQuery'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          responseStatuses: (json_['responseStatuses'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           versionDate: json_['versionDate'] as core.String?,
         );
 
@@ -1915,12 +1899,10 @@ class CloudStorageSink {
 
   CloudStorageSink.fromJson(core.Map json_)
       : this(
-          files: json_.containsKey('files')
-              ? (json_['files'] as core.List)
-                  .map((value) => CloudStorageFile.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          files: (json_['files'] as core.List?)
+              ?.map((value) => CloudStorageFile.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2379,11 +2361,9 @@ class HangoutsChatInfo {
 
   HangoutsChatInfo.fromJson(core.Map json_)
       : this(
-          roomId: json_.containsKey('roomId')
-              ? (json_['roomId'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          roomId: (json_['roomId'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2571,11 +2551,9 @@ class HeldVoiceQuery {
 
   HeldVoiceQuery.fromJson(core.Map json_)
       : this(
-          coveredData: json_.containsKey('coveredData')
-              ? (json_['coveredData'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          coveredData: (json_['coveredData'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2643,12 +2621,10 @@ class Hold {
 
   Hold.fromJson(core.Map json_)
       : this(
-          accounts: json_.containsKey('accounts')
-              ? (json_['accounts'] as core.List)
-                  .map((value) => HeldAccount.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          accounts: (json_['accounts'] as core.List?)
+              ?.map((value) => HeldAccount.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           corpus: json_['corpus'] as core.String?,
           holdId: json_['holdId'] as core.String?,
           name: json_['name'] as core.String?,
@@ -2689,12 +2665,10 @@ class ListExportsResponse {
 
   ListExportsResponse.fromJson(core.Map json_)
       : this(
-          exports: json_.containsKey('exports')
-              ? (json_['exports'] as core.List)
-                  .map((value) => Export.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          exports: (json_['exports'] as core.List?)
+              ?.map((value) =>
+                  Export.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -2715,12 +2689,10 @@ class ListHeldAccountsResponse {
 
   ListHeldAccountsResponse.fromJson(core.Map json_)
       : this(
-          accounts: json_.containsKey('accounts')
-              ? (json_['accounts'] as core.List)
-                  .map((value) => HeldAccount.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          accounts: (json_['accounts'] as core.List?)
+              ?.map((value) => HeldAccount.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2745,12 +2717,10 @@ class ListHoldsResponse {
 
   ListHoldsResponse.fromJson(core.Map json_)
       : this(
-          holds: json_.containsKey('holds')
-              ? (json_['holds'] as core.List)
-                  .map((value) => Hold.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          holds: (json_['holds'] as core.List?)
+              ?.map((value) =>
+                  Hold.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -2775,12 +2745,10 @@ class ListMattersResponse {
 
   ListMattersResponse.fromJson(core.Map json_)
       : this(
-          matters: json_.containsKey('matters')
-              ? (json_['matters'] as core.List)
-                  .map((value) => Matter.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          matters: (json_['matters'] as core.List?)
+              ?.map((value) =>
+                  Matter.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -2806,12 +2774,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2838,12 +2804,10 @@ class ListSavedQueriesResponse {
   ListSavedQueriesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          savedQueries: json_.containsKey('savedQueries')
-              ? (json_['savedQueries'] as core.List)
-                  .map((value) => SavedQuery.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          savedQueries: (json_['savedQueries'] as core.List?)
+              ?.map((value) => SavedQuery.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2986,12 +2950,10 @@ class Matter {
       : this(
           description: json_['description'] as core.String?,
           matterId: json_['matterId'] as core.String?,
-          matterPermissions: json_.containsKey('matterPermissions')
-              ? (json_['matterPermissions'] as core.List)
-                  .map((value) => MatterPermission.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          matterPermissions: (json_['matterPermissions'] as core.List?)
+              ?.map((value) => MatterPermission.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           name: json_['name'] as core.String?,
           state: json_['state'] as core.String?,
         );
@@ -3386,11 +3348,9 @@ class RemoveHeldAccountsRequest {
 
   RemoveHeldAccountsRequest.fromJson(core.Map json_)
       : this(
-          accountIds: json_.containsKey('accountIds')
-              ? (json_['accountIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          accountIds: (json_['accountIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3411,12 +3371,10 @@ class RemoveHeldAccountsResponse {
 
   RemoveHeldAccountsResponse.fromJson(core.Map json_)
       : this(
-          statuses: json_.containsKey('statuses')
-              ? (json_['statuses'] as core.List)
-                  .map((value) => Status.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          statuses: (json_['statuses'] as core.List?)
+              ?.map((value) =>
+                  Status.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3539,11 +3497,9 @@ class SharedDriveInfo {
 
   SharedDriveInfo.fromJson(core.Map json_)
       : this(
-          sharedDriveIds: json_.containsKey('sharedDriveIds')
-              ? (json_['sharedDriveIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          sharedDriveIds: (json_['sharedDriveIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3562,11 +3518,9 @@ class SitesUrlInfo {
 
   SitesUrlInfo.fromJson(core.Map json_)
       : this(
-          urls: json_.containsKey('urls')
-              ? (json_['urls'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          urls: (json_['urls'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3598,11 +3552,9 @@ class TeamDriveInfo {
 
   TeamDriveInfo.fromJson(core.Map json_)
       : this(
-          teamDriveIds: json_.containsKey('teamDriveIds')
-              ? (json_['teamDriveIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          teamDriveIds: (json_['teamDriveIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3652,11 +3604,9 @@ class VoiceOptions {
 
   VoiceOptions.fromJson(core.Map json_)
       : this(
-          coveredData: json_.containsKey('coveredData')
-              ? (json_['coveredData'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          coveredData: (json_['coveredData'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

@@ -953,12 +953,10 @@ class Attribute {
               ? RepeatedEnumAttributeValue.fromJson(json_['repeatedEnumValue']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          uriValues: json_.containsKey('uriValues')
-              ? (json_['uriValues'] as core.List)
-                  .map((value) => UriAttributeValue.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          uriValues: (json_['uriValues'] as core.List?)
+              ?.map((value) => UriAttributeValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           valueType: json_['valueType'] as core.String?,
           values:
               json_.containsKey('values') ? json_['values'] as core.List : null,
@@ -1038,12 +1036,10 @@ class AttributeMetadata {
           groupDisplayName: json_['groupDisplayName'] as core.String?,
           parent: json_['parent'] as core.String?,
           repeatable: json_['repeatable'] as core.bool?,
-          valueMetadata: json_.containsKey('valueMetadata')
-              ? (json_['valueMetadata'] as core.List)
-                  .map((value) => AttributeValueMetadata.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          valueMetadata: (json_['valueMetadata'] as core.List?)
+              ?.map((value) => AttributeValueMetadata.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           valueType: json_['valueType'] as core.String?,
         );
 
@@ -1109,12 +1105,10 @@ class Attributes {
 
   Attributes.fromJson(core.Map json_)
       : this(
-          attributes: json_.containsKey('attributes')
-              ? (json_['attributes'] as core.List)
-                  .map((value) => Attribute.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          attributes: (json_['attributes'] as core.List?)
+              ?.map((value) => Attribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           name: json_['name'] as core.String?,
         );
 
@@ -1137,12 +1131,10 @@ class BatchGetCategoriesResponse {
 
   BatchGetCategoriesResponse.fromJson(core.Map json_)
       : this(
-          categories: json_.containsKey('categories')
-              ? (json_['categories'] as core.List)
-                  .map((value) => Category.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          categories: (json_['categories'] as core.List?)
+              ?.map((value) => Category.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1168,12 +1160,10 @@ class BusinessHours {
 
   BusinessHours.fromJson(core.Map json_)
       : this(
-          periods: json_.containsKey('periods')
-              ? (json_['periods'] as core.List)
-                  .map((value) => TimePeriod.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          periods: (json_['periods'] as core.List?)
+              ?.map((value) => TimePeriod.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1210,12 +1200,10 @@ class Categories {
 
   Categories.fromJson(core.Map json_)
       : this(
-          additionalCategories: json_.containsKey('additionalCategories')
-              ? (json_['additionalCategories'] as core.List)
-                  .map((value) => Category.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          additionalCategories: (json_['additionalCategories'] as core.List?)
+              ?.map((value) => Category.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           primaryCategory: json_.containsKey('primaryCategory')
               ? Category.fromJson(json_['primaryCategory']
                   as core.Map<core.String, core.dynamic>)
@@ -1271,19 +1259,15 @@ class Category {
   Category.fromJson(core.Map json_)
       : this(
           displayName: json_['displayName'] as core.String?,
-          moreHoursTypes: json_.containsKey('moreHoursTypes')
-              ? (json_['moreHoursTypes'] as core.List)
-                  .map((value) => MoreHoursType.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          moreHoursTypes: (json_['moreHoursTypes'] as core.List?)
+              ?.map((value) => MoreHoursType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           name: json_['name'] as core.String?,
-          serviceTypes: json_.containsKey('serviceTypes')
-              ? (json_['serviceTypes'] as core.List)
-                  .map((value) => ServiceType.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          serviceTypes: (json_['serviceTypes'] as core.List?)
+              ?.map((value) => ServiceType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1319,20 +1303,16 @@ class Chain {
 
   Chain.fromJson(core.Map json_)
       : this(
-          chainNames: json_.containsKey('chainNames')
-              ? (json_['chainNames'] as core.List)
-                  .map((value) => ChainName.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          chainNames: (json_['chainNames'] as core.List?)
+              ?.map((value) => ChainName.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           locationCount: json_['locationCount'] as core.int?,
           name: json_['name'] as core.String?,
-          websites: json_.containsKey('websites')
-              ? (json_['websites'] as core.List)
-                  .map((value) => ChainUri.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          websites: (json_['websites'] as core.List?)
+              ?.map((value) => ChainUri.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1597,12 +1577,10 @@ class ListAttributeMetadataResponse {
 
   ListAttributeMetadataResponse.fromJson(core.Map json_)
       : this(
-          attributeMetadata: json_.containsKey('attributeMetadata')
-              ? (json_['attributeMetadata'] as core.List)
-                  .map((value) => AttributeMetadata.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          attributeMetadata: (json_['attributeMetadata'] as core.List?)
+              ?.map((value) => AttributeMetadata.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1629,12 +1607,10 @@ class ListCategoriesResponse {
 
   ListCategoriesResponse.fromJson(core.Map json_)
       : this(
-          categories: json_.containsKey('categories')
-              ? (json_['categories'] as core.List)
-                  .map((value) => Category.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          categories: (json_['categories'] as core.List?)
+              ?.map((value) => Category.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1670,12 +1646,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -1879,11 +1853,9 @@ class Location {
               ? Categories.fromJson(
                   json_['categories'] as core.Map<core.String, core.dynamic>)
               : null,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          labels: (json_['labels'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           languageCode: json_['languageCode'] as core.String?,
           latlng: json_.containsKey('latlng')
               ? LatLng.fromJson(
@@ -1893,12 +1865,10 @@ class Location {
               ? Metadata.fromJson(
                   json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
-          moreHours: json_.containsKey('moreHours')
-              ? (json_['moreHours'] as core.List)
-                  .map((value) => MoreHours.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          moreHours: (json_['moreHours'] as core.List?)
+              ?.map((value) => MoreHours.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           name: json_['name'] as core.String?,
           openInfo: json_.containsKey('openInfo')
               ? OpenInfo.fromJson(
@@ -1924,12 +1894,10 @@ class Location {
               ? ServiceAreaBusiness.fromJson(
                   json_['serviceArea'] as core.Map<core.String, core.dynamic>)
               : null,
-          serviceItems: json_.containsKey('serviceItems')
-              ? (json_['serviceItems'] as core.List)
-                  .map((value) => ServiceItem.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          serviceItems: (json_['serviceItems'] as core.List?)
+              ?.map((value) => ServiceItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           specialHours: json_.containsKey('specialHours')
               ? SpecialHours.fromJson(
                   json_['specialHours'] as core.Map<core.String, core.dynamic>)
@@ -2143,12 +2111,10 @@ class MoreHours {
   MoreHours.fromJson(core.Map json_)
       : this(
           hoursTypeId: json_['hoursTypeId'] as core.String?,
-          periods: json_.containsKey('periods')
-              ? (json_['periods'] as core.List)
-                  .map((value) => TimePeriod.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          periods: (json_['periods'] as core.List?)
+              ?.map((value) => TimePeriod.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2277,11 +2243,9 @@ class PhoneNumbers {
 
   PhoneNumbers.fromJson(core.Map json_)
       : this(
-          additionalPhones: json_.containsKey('additionalPhones')
-              ? (json_['additionalPhones'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          additionalPhones: (json_['additionalPhones'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           primaryPhone: json_['primaryPhone'] as core.String?,
         );
 
@@ -2338,12 +2302,10 @@ class Places {
 
   Places.fromJson(core.Map json_)
       : this(
-          placeInfos: json_.containsKey('placeInfos')
-              ? (json_['placeInfos'] as core.List)
-                  .map((value) => PlaceInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          placeInfos: (json_['placeInfos'] as core.List?)
+              ?.map((value) => PlaceInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2408,12 +2370,10 @@ class RelationshipData {
 
   RelationshipData.fromJson(core.Map json_)
       : this(
-          childrenLocations: json_.containsKey('childrenLocations')
-              ? (json_['childrenLocations'] as core.List)
-                  .map((value) => RelevantLocation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          childrenLocations: (json_['childrenLocations'] as core.List?)
+              ?.map((value) => RelevantLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           parentChain: json_['parentChain'] as core.String?,
           parentLocation: json_.containsKey('parentLocation')
               ? RelevantLocation.fromJson(json_['parentLocation']
@@ -2490,16 +2450,12 @@ class RepeatedEnumAttributeValue {
 
   RepeatedEnumAttributeValue.fromJson(core.Map json_)
       : this(
-          setValues: json_.containsKey('setValues')
-              ? (json_['setValues'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          unsetValues: json_.containsKey('unsetValues')
-              ? (json_['unsetValues'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          setValues: (json_['setValues'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          unsetValues: (json_['unsetValues'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2522,12 +2478,10 @@ class SearchChainsResponse {
 
   SearchChainsResponse.fromJson(core.Map json_)
       : this(
-          chains: json_.containsKey('chains')
-              ? (json_['chains'] as core.List)
-                  .map((value) => Chain.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          chains: (json_['chains'] as core.List?)
+              ?.map((value) =>
+                  Chain.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2590,12 +2544,10 @@ class SearchGoogleLocationsResponse {
 
   SearchGoogleLocationsResponse.fromJson(core.Map json_)
       : this(
-          googleLocations: json_.containsKey('googleLocations')
-              ? (json_['googleLocations'] as core.List)
-                  .map((value) => GoogleLocation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          googleLocations: (json_['googleLocations'] as core.List?)
+              ?.map((value) => GoogleLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2852,12 +2804,10 @@ class SpecialHours {
 
   SpecialHours.fromJson(core.Map json_)
       : this(
-          specialHourPeriods: json_.containsKey('specialHourPeriods')
-              ? (json_['specialHourPeriods'] as core.List)
-                  .map((value) => SpecialHourPeriod.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          specialHourPeriods: (json_['specialHourPeriods'] as core.List?)
+              ?.map((value) => SpecialHourPeriod.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

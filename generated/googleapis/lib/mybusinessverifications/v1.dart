@@ -475,12 +475,10 @@ class FetchVerificationOptionsResponse {
 
   FetchVerificationOptionsResponse.fromJson(core.Map json_)
       : this(
-          options: json_.containsKey('options')
-              ? (json_['options'] as core.List)
-                  .map((value) => VerificationOption.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          options: (json_['options'] as core.List?)
+              ?.map((value) => VerificationOption.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -509,12 +507,10 @@ class ListVerificationsResponse {
   ListVerificationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          verifications: json_.containsKey('verifications')
-              ? (json_['verifications'] as core.List)
-                  .map((value) => Verification.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          verifications: (json_['verifications'] as core.List?)
+              ?.map((value) => Verification.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

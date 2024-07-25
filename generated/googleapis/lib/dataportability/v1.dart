@@ -523,11 +523,9 @@ class InitiatePortabilityArchiveRequest {
 
   InitiatePortabilityArchiveRequest.fromJson(core.Map json_)
       : this(
-          resources: json_.containsKey('resources')
-              ? (json_['resources'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          resources: (json_['resources'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -587,11 +585,9 @@ class PortabilityArchiveState {
       : this(
           name: json_['name'] as core.String?,
           state: json_['state'] as core.String?,
-          urls: json_.containsKey('urls')
-              ? (json_['urls'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          urls: (json_['urls'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

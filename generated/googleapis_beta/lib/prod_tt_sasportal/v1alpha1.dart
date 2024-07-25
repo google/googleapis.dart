@@ -3801,30 +3801,24 @@ class SasPortalDevice {
               ? SasPortalDeviceConfig.fromJson(
                   json_['activeConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          currentChannels: json_.containsKey('currentChannels')
-              ? (json_['currentChannels'] as core.List)
-                  .map((value) => SasPortalChannelWithScore.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          currentChannels: (json_['currentChannels'] as core.List?)
+              ?.map((value) => SasPortalChannelWithScore.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           deviceMetadata: json_.containsKey('deviceMetadata')
               ? SasPortalDeviceMetadata.fromJson(json_['deviceMetadata']
                   as core.Map<core.String, core.dynamic>)
               : null,
           displayName: json_['displayName'] as core.String?,
           fccId: json_['fccId'] as core.String?,
-          grantRangeAllowlists: json_.containsKey('grantRangeAllowlists')
-              ? (json_['grantRangeAllowlists'] as core.List)
-                  .map((value) => SasPortalFrequencyRange.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          grants: json_.containsKey('grants')
-              ? (json_['grants'] as core.List)
-                  .map((value) => SasPortalDeviceGrant.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          grantRangeAllowlists: (json_['grantRangeAllowlists'] as core.List?)
+              ?.map((value) => SasPortalFrequencyRange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          grants: (json_['grants'] as core.List?)
+              ?.map((value) => SasPortalDeviceGrant.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           name: json_['name'] as core.String?,
           preloadedConfig: json_.containsKey('preloadedConfig')
               ? SasPortalDeviceConfig.fromJson(json_['preloadedConfig']
@@ -3923,11 +3917,10 @@ class SasPortalDeviceConfig {
                   as core.Map<core.String, core.dynamic>)
               : null,
           isSigned: json_['isSigned'] as core.bool?,
-          measurementCapabilities: json_.containsKey('measurementCapabilities')
-              ? (json_['measurementCapabilities'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          measurementCapabilities:
+              (json_['measurementCapabilities'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           model: json_.containsKey('model')
               ? SasPortalDeviceModel.fromJson(
                   json_['model'] as core.Map<core.String, core.dynamic>)
@@ -4027,18 +4020,14 @@ class SasPortalDeviceGrant {
           lastHeartbeatTransmitExpireTime:
               json_['lastHeartbeatTransmitExpireTime'] as core.String?,
           maxEirp: (json_['maxEirp'] as core.num?)?.toDouble(),
-          moveList: json_.containsKey('moveList')
-              ? (json_['moveList'] as core.List)
-                  .map((value) => SasPortalDpaMoveList.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          moveList: (json_['moveList'] as core.List?)
+              ?.map((value) => SasPortalDpaMoveList.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           state: json_['state'] as core.String?,
-          suspensionReason: json_.containsKey('suspensionReason')
-              ? (json_['suspensionReason'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          suspensionReason: (json_['suspensionReason'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4225,12 +4214,10 @@ class SasPortalListCustomersResponse {
 
   SasPortalListCustomersResponse.fromJson(core.Map json_)
       : this(
-          customers: json_.containsKey('customers')
-              ? (json_['customers'] as core.List)
-                  .map((value) => SasPortalCustomer.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          customers: (json_['customers'] as core.List?)
+              ?.map((value) => SasPortalCustomer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -4258,12 +4245,10 @@ class SasPortalListDeploymentsResponse {
 
   SasPortalListDeploymentsResponse.fromJson(core.Map json_)
       : this(
-          deployments: json_.containsKey('deployments')
-              ? (json_['deployments'] as core.List)
-                  .map((value) => SasPortalDeployment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          deployments: (json_['deployments'] as core.List?)
+              ?.map((value) => SasPortalDeployment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -4291,12 +4276,10 @@ class SasPortalListDevicesResponse {
 
   SasPortalListDevicesResponse.fromJson(core.Map json_)
       : this(
-          devices: json_.containsKey('devices')
-              ? (json_['devices'] as core.List)
-                  .map((value) => SasPortalDevice.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          devices: (json_['devices'] as core.List?)
+              ?.map((value) => SasPortalDevice.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -4319,12 +4302,10 @@ class SasPortalListGcpProjectDeploymentsResponse {
 
   SasPortalListGcpProjectDeploymentsResponse.fromJson(core.Map json_)
       : this(
-          deployments: json_.containsKey('deployments')
-              ? (json_['deployments'] as core.List)
-                  .map((value) => SasPortalGcpProjectDeployment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          deployments: (json_['deployments'] as core.List?)
+              ?.map((value) => SasPortalGcpProjectDeployment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4347,12 +4328,10 @@ class SasPortalListLegacyOrganizationsResponse {
 
   SasPortalListLegacyOrganizationsResponse.fromJson(core.Map json_)
       : this(
-          organizations: json_.containsKey('organizations')
-              ? (json_['organizations'] as core.List)
-                  .map((value) => SasPortalOrganization.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          organizations: (json_['organizations'] as core.List?)
+              ?.map((value) => SasPortalOrganization.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4379,12 +4358,10 @@ class SasPortalListNodesResponse {
   SasPortalListNodesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          nodes: json_.containsKey('nodes')
-              ? (json_['nodes'] as core.List)
-                  .map((value) => SasPortalNode.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          nodes: (json_['nodes'] as core.List?)
+              ?.map((value) => SasPortalNode.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4526,12 +4503,10 @@ class SasPortalPolicy {
 
   SasPortalPolicy.fromJson(core.Map json_)
       : this(
-          assignments: json_.containsKey('assignments')
-              ? (json_['assignments'] as core.List)
-                  .map((value) => SasPortalAssignment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          assignments: (json_['assignments'] as core.List?)
+              ?.map((value) => SasPortalAssignment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
         );
 

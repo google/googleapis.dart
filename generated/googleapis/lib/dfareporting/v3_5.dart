@@ -279,29 +279,21 @@ class CreativeAssetMetadata {
               ? CreativeAssetId.fromJson(json_['assetIdentifier']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          clickTags: json_.containsKey('clickTags')
-              ? (json_['clickTags'] as core.List)
-                  .map((value) => ClickTag.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          counterCustomEvents: json_.containsKey('counterCustomEvents')
-              ? (json_['counterCustomEvents'] as core.List)
-                  .map((value) => CreativeCustomEvent.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          detectedFeatures: json_.containsKey('detectedFeatures')
-              ? (json_['detectedFeatures'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          exitCustomEvents: json_.containsKey('exitCustomEvents')
-              ? (json_['exitCustomEvents'] as core.List)
-                  .map((value) => CreativeCustomEvent.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          clickTags: (json_['clickTags'] as core.List?)
+              ?.map((value) => ClickTag.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          counterCustomEvents: (json_['counterCustomEvents'] as core.List?)
+              ?.map((value) => CreativeCustomEvent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          detectedFeatures: (json_['detectedFeatures'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          exitCustomEvents: (json_['exitCustomEvents'] as core.List?)
+              ?.map((value) => CreativeCustomEvent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           id: json_['id'] as core.String?,
           idDimensionValue: json_.containsKey('idDimensionValue')
               ? DimensionValue.fromJson(json_['idDimensionValue']
@@ -317,17 +309,13 @@ class CreativeAssetMetadata {
                   as core.Map<core.String, core.dynamic>)
               : null,
           richMedia: json_['richMedia'] as core.bool?,
-          timerCustomEvents: json_.containsKey('timerCustomEvents')
-              ? (json_['timerCustomEvents'] as core.List)
-                  .map((value) => CreativeCustomEvent.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          warnedValidationRules: json_.containsKey('warnedValidationRules')
-              ? (json_['warnedValidationRules'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          timerCustomEvents: (json_['timerCustomEvents'] as core.List?)
+              ?.map((value) => CreativeCustomEvent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          warnedValidationRules: (json_['warnedValidationRules'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

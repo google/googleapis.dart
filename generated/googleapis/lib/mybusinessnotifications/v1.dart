@@ -188,11 +188,9 @@ class NotificationSetting {
   NotificationSetting.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
-          notificationTypes: json_.containsKey('notificationTypes')
-              ? (json_['notificationTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          notificationTypes: (json_['notificationTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           pubsubTopic: json_['pubsubTopic'] as core.String?,
         );
 

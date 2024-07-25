@@ -2375,13 +2375,10 @@ class GoogleFirebaseAppcheckV1BatchGetAppAttestConfigsResponse {
   GoogleFirebaseAppcheckV1BatchGetAppAttestConfigsResponse.fromJson(
       core.Map json_)
       : this(
-          configs: json_.containsKey('configs')
-              ? (json_['configs'] as core.List)
-                  .map((value) =>
-                      GoogleFirebaseAppcheckV1AppAttestConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          configs: (json_['configs'] as core.List?)
+              ?.map((value) => GoogleFirebaseAppcheckV1AppAttestConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2401,13 +2398,11 @@ class GoogleFirebaseAppcheckV1BatchGetDeviceCheckConfigsResponse {
   GoogleFirebaseAppcheckV1BatchGetDeviceCheckConfigsResponse.fromJson(
       core.Map json_)
       : this(
-          configs: json_.containsKey('configs')
-              ? (json_['configs'] as core.List)
-                  .map((value) =>
-                      GoogleFirebaseAppcheckV1DeviceCheckConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          configs: (json_['configs'] as core.List?)
+              ?.map((value) =>
+                  GoogleFirebaseAppcheckV1DeviceCheckConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2427,13 +2422,11 @@ class GoogleFirebaseAppcheckV1BatchGetPlayIntegrityConfigsResponse {
   GoogleFirebaseAppcheckV1BatchGetPlayIntegrityConfigsResponse.fromJson(
       core.Map json_)
       : this(
-          configs: json_.containsKey('configs')
-              ? (json_['configs'] as core.List)
-                  .map((value) =>
-                      GoogleFirebaseAppcheckV1PlayIntegrityConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          configs: (json_['configs'] as core.List?)
+              ?.map((value) =>
+                  GoogleFirebaseAppcheckV1PlayIntegrityConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2453,14 +2446,11 @@ class GoogleFirebaseAppcheckV1BatchGetRecaptchaEnterpriseConfigsResponse {
   GoogleFirebaseAppcheckV1BatchGetRecaptchaEnterpriseConfigsResponse.fromJson(
       core.Map json_)
       : this(
-          configs: json_.containsKey('configs')
-              ? (json_['configs'] as core.List)
-                  .map((value) =>
-                      GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          configs: (json_['configs'] as core.List?)
+              ?.map((value) =>
+                  GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2480,13 +2470,11 @@ class GoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse {
   GoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse.fromJson(
       core.Map json_)
       : this(
-          configs: json_.containsKey('configs')
-              ? (json_['configs'] as core.List)
-                  .map((value) =>
-                      GoogleFirebaseAppcheckV1RecaptchaV3Config.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          configs: (json_['configs'] as core.List?)
+              ?.map((value) =>
+                  GoogleFirebaseAppcheckV1RecaptchaV3Config.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2506,13 +2494,10 @@ class GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse {
   GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse.fromJson(
       core.Map json_)
       : this(
-          configs: json_.containsKey('configs')
-              ? (json_['configs'] as core.List)
-                  .map((value) =>
-                      GoogleFirebaseAppcheckV1SafetyNetConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          configs: (json_['configs'] as core.List?)
+              ?.map((value) => GoogleFirebaseAppcheckV1SafetyNetConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2545,13 +2530,11 @@ class GoogleFirebaseAppcheckV1BatchUpdateServicesRequest {
 
   GoogleFirebaseAppcheckV1BatchUpdateServicesRequest.fromJson(core.Map json_)
       : this(
-          requests: json_.containsKey('requests')
-              ? (json_['requests'] as core.List)
-                  .map((value) =>
-                      GoogleFirebaseAppcheckV1UpdateServiceRequest.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          requests: (json_['requests'] as core.List?)
+              ?.map((value) =>
+                  GoogleFirebaseAppcheckV1UpdateServiceRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           updateMask: json_['updateMask'] as core.String?,
         );
 
@@ -2572,12 +2555,10 @@ class GoogleFirebaseAppcheckV1BatchUpdateServicesResponse {
 
   GoogleFirebaseAppcheckV1BatchUpdateServicesResponse.fromJson(core.Map json_)
       : this(
-          services: json_.containsKey('services')
-              ? (json_['services'] as core.List)
-                  .map((value) => GoogleFirebaseAppcheckV1Service.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          services: (json_['services'] as core.List?)
+              ?.map((value) => GoogleFirebaseAppcheckV1Service.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3209,12 +3190,10 @@ class GoogleFirebaseAppcheckV1ListDebugTokensResponse {
 
   GoogleFirebaseAppcheckV1ListDebugTokensResponse.fromJson(core.Map json_)
       : this(
-          debugTokens: json_.containsKey('debugTokens')
-              ? (json_['debugTokens'] as core.List)
-                  .map((value) => GoogleFirebaseAppcheckV1DebugToken.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          debugTokens: (json_['debugTokens'] as core.List?)
+              ?.map((value) => GoogleFirebaseAppcheckV1DebugToken.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -3246,12 +3225,10 @@ class GoogleFirebaseAppcheckV1ListServicesResponse {
   GoogleFirebaseAppcheckV1ListServicesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          services: json_.containsKey('services')
-              ? (json_['services'] as core.List)
-                  .map((value) => GoogleFirebaseAppcheckV1Service.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          services: (json_['services'] as core.List?)
+              ?.map((value) => GoogleFirebaseAppcheckV1Service.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3376,12 +3353,10 @@ class GoogleFirebaseAppcheckV1PublicJwkSet {
 
   GoogleFirebaseAppcheckV1PublicJwkSet.fromJson(core.Map json_)
       : this(
-          keys: json_.containsKey('keys')
-              ? (json_['keys'] as core.List)
-                  .map((value) => GoogleFirebaseAppcheckV1PublicJwk.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          keys: (json_['keys'] as core.List?)
+              ?.map((value) => GoogleFirebaseAppcheckV1PublicJwk.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

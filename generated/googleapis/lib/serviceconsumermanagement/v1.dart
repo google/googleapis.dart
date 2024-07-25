@@ -966,12 +966,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -996,12 +994,10 @@ class ListTenancyUnitsResponse {
   ListTenancyUnitsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          tenancyUnits: json_.containsKey('tenancyUnits')
-              ? (json_['tenancyUnits'] as core.List)
-                  .map((value) => TenancyUnit.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tenancyUnits: (json_['tenancyUnits'] as core.List?)
+              ?.map((value) => TenancyUnit.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1107,11 +1103,9 @@ class PolicyBinding {
 
   PolicyBinding.fromJson(core.Map json_)
       : this(
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -1140,12 +1134,10 @@ class SearchTenancyUnitsResponse {
   SearchTenancyUnitsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          tenancyUnits: json_.containsKey('tenancyUnits')
-              ? (json_['tenancyUnits'] as core.List)
-                  .map((value) => TenancyUnit.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tenancyUnits: (json_['tenancyUnits'] as core.List?)
+              ?.map((value) => TenancyUnit.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1175,11 +1167,9 @@ class ServiceAccountConfig {
   ServiceAccountConfig.fromJson(core.Map json_)
       : this(
           accountId: json_['accountId'] as core.String?,
-          tenantProjectRoles: json_.containsKey('tenantProjectRoles')
-              ? (json_['tenantProjectRoles'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          tenantProjectRoles: (json_['tenantProjectRoles'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1242,12 +1232,10 @@ class TenancyUnit {
           createTime: json_['createTime'] as core.String?,
           name: json_['name'] as core.String?,
           service: json_['service'] as core.String?,
-          tenantResources: json_.containsKey('tenantResources')
-              ? (json_['tenantResources'] as core.List)
-                  .map((value) => TenantResource.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tenantResources: (json_['tenantResources'] as core.List?)
+              ?.map((value) => TenantResource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1311,23 +1299,20 @@ class TenantProjectConfig {
                   json_['billingConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           folder: json_['folder'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           serviceAccountConfig: json_.containsKey('serviceAccountConfig')
               ? ServiceAccountConfig.fromJson(json_['serviceAccountConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          services: json_.containsKey('services')
-              ? (json_['services'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          services: (json_['services'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           tenantProjectPolicy: json_.containsKey('tenantProjectPolicy')
               ? TenantProjectPolicy.fromJson(json_['tenantProjectPolicy']
                   as core.Map<core.String, core.dynamic>)
@@ -1360,12 +1345,10 @@ class TenantProjectPolicy {
 
   TenantProjectPolicy.fromJson(core.Map json_)
       : this(
-          policyBindings: json_.containsKey('policyBindings')
-              ? (json_['policyBindings'] as core.List)
-                  .map((value) => PolicyBinding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          policyBindings: (json_['policyBindings'] as core.List?)
+              ?.map((value) => PolicyBinding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

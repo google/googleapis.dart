@@ -354,12 +354,10 @@ class ReaderEntitlements {
 
   ReaderEntitlements.fromJson(core.Map json_)
       : this(
-          entitlements: json_.containsKey('entitlements')
-              ? (json_['entitlements'] as core.List)
-                  .map((value) => Entitlement.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          entitlements: (json_['entitlements'] as core.List?)
+              ?.map((value) => Entitlement.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           name: json_['name'] as core.String?,
         );
 

@@ -900,18 +900,14 @@ class Conversion {
           countMillis: json_['countMillis'] as core.String?,
           criterionId: json_['criterionId'] as core.String?,
           currencyCode: json_['currencyCode'] as core.String?,
-          customDimension: json_.containsKey('customDimension')
-              ? (json_['customDimension'] as core.List)
-                  .map((value) => CustomDimension.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          customMetric: json_.containsKey('customMetric')
-              ? (json_['customMetric'] as core.List)
-                  .map((value) => CustomMetric.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          customDimension: (json_['customDimension'] as core.List?)
+              ?.map((value) => CustomDimension.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          customMetric: (json_['customMetric'] as core.List?)
+              ?.map((value) => CustomMetric.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           customerId: json_['customerId'] as core.String?,
           deviceType: json_['deviceType'] as core.String?,
           dsConversionId: json_['dsConversionId'] as core.String?,
@@ -991,12 +987,10 @@ class ConversionList {
 
   ConversionList.fromJson(core.Map json_)
       : this(
-          conversion: json_.containsKey('conversion')
-              ? (json_['conversion'] as core.List)
-                  .map((value) => Conversion.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          conversion: (json_['conversion'] as core.List?)
+              ?.map((value) => Conversion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
         );
 
@@ -1153,12 +1147,10 @@ class Report {
 
   Report.fromJson(core.Map json_)
       : this(
-          files: json_.containsKey('files')
-              ? (json_['files'] as core.List)
-                  .map((value) => ReportFiles.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          files: (json_['files'] as core.List?)
+              ?.map((value) => ReportFiles.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           id: json_['id'] as core.String?,
           isReportReady: json_['isReportReady'] as core.bool?,
           kind: json_['kind'] as core.String?,
@@ -1167,11 +1159,9 @@ class Report {
                   json_['request'] as core.Map<core.String, core.dynamic>)
               : null,
           rowCount: json_['rowCount'] as core.int?,
-          rows: json_.containsKey('rows')
-              ? (json_['rows'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
+          rows: (json_['rows'] as core.List?)
+              ?.map((value) => value as core.Map<core.String, core.dynamic>)
+              .toList(),
           statisticsCurrencyCode:
               json_['statisticsCurrencyCode'] as core.String?,
           statisticsTimeZone: json_['statisticsTimeZone'] as core.String?,
@@ -1585,28 +1575,22 @@ class ReportRequest {
 
   ReportRequest.fromJson(core.Map json_)
       : this(
-          columns: json_.containsKey('columns')
-              ? (json_['columns'] as core.List)
-                  .map((value) => ReportApiColumnSpec.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          columns: (json_['columns'] as core.List?)
+              ?.map((value) => ReportApiColumnSpec.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           downloadFormat: json_['downloadFormat'] as core.String?,
-          filters: json_.containsKey('filters')
-              ? (json_['filters'] as core.List)
-                  .map((value) => ReportRequestFilters.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          filters: (json_['filters'] as core.List?)
+              ?.map((value) => ReportRequestFilters.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           includeDeletedEntities: json_['includeDeletedEntities'] as core.bool?,
           includeRemovedEntities: json_['includeRemovedEntities'] as core.bool?,
           maxRowsPerFile: json_['maxRowsPerFile'] as core.int?,
-          orderBy: json_.containsKey('orderBy')
-              ? (json_['orderBy'] as core.List)
-                  .map((value) => ReportRequestOrderBy.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          orderBy: (json_['orderBy'] as core.List?)
+              ?.map((value) => ReportRequestOrderBy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           reportScope: json_.containsKey('reportScope')
               ? ReportRequestReportScope.fromJson(
                   json_['reportScope'] as core.Map<core.String, core.dynamic>)
@@ -1704,12 +1688,10 @@ class SavedColumnList {
 
   SavedColumnList.fromJson(core.Map json_)
       : this(
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => SavedColumn.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => SavedColumn.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
         );
 
@@ -1730,12 +1712,10 @@ class UpdateAvailabilityRequest {
 
   UpdateAvailabilityRequest.fromJson(core.Map json_)
       : this(
-          availabilities: json_.containsKey('availabilities')
-              ? (json_['availabilities'] as core.List)
-                  .map((value) => Availability.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          availabilities: (json_['availabilities'] as core.List?)
+              ?.map((value) => Availability.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1754,12 +1734,10 @@ class UpdateAvailabilityResponse {
 
   UpdateAvailabilityResponse.fromJson(core.Map json_)
       : this(
-          availabilities: json_.containsKey('availabilities')
-              ? (json_['availabilities'] as core.List)
-                  .map((value) => Availability.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          availabilities: (json_['availabilities'] as core.List?)
+              ?.map((value) => Availability.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

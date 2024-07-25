@@ -450,14 +450,11 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest {
               ? GoogleSecuritySafebrowsingV4ClientInfo.fromJson(
                   json_['client'] as core.Map<core.String, core.dynamic>)
               : null,
-          listUpdateRequests: json_.containsKey('listUpdateRequests')
-              ? (json_['listUpdateRequests'] as core.List)
-                  .map((value) =>
-                      GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          listUpdateRequests: (json_['listUpdateRequests'] as core.List?)
+              ?.map((value) =>
+                  GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -617,11 +614,9 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
           maxDatabaseEntries: json_['maxDatabaseEntries'] as core.int?,
           maxUpdateEntries: json_['maxUpdateEntries'] as core.int?,
           region: json_['region'] as core.String?,
-          supportedCompressions: json_.containsKey('supportedCompressions')
-              ? (json_['supportedCompressions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          supportedCompressions: (json_['supportedCompressions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -660,14 +655,11 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse {
   GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse.fromJson(
       core.Map json_)
       : this(
-          listUpdateResponses: json_.containsKey('listUpdateResponses')
-              ? (json_['listUpdateResponses'] as core.List)
-                  .map((value) =>
-                      GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          listUpdateResponses: (json_['listUpdateResponses'] as core.List?)
+              ?.map((value) =>
+                  GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           minimumWaitDuration: json_['minimumWaitDuration'] as core.String?,
         );
 
@@ -791,26 +783,22 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateRespon
   GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse.fromJson(
       core.Map json_)
       : this(
-          additions: json_.containsKey('additions')
-              ? (json_['additions'] as core.List)
-                  .map((value) =>
-                      GoogleSecuritySafebrowsingV4ThreatEntrySet.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          additions: (json_['additions'] as core.List?)
+              ?.map((value) =>
+                  GoogleSecuritySafebrowsingV4ThreatEntrySet.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           checksum: json_.containsKey('checksum')
               ? GoogleSecuritySafebrowsingV4Checksum.fromJson(
                   json_['checksum'] as core.Map<core.String, core.dynamic>)
               : null,
           newClientState: json_['newClientState'] as core.String?,
           platformType: json_['platformType'] as core.String?,
-          removals: json_.containsKey('removals')
-              ? (json_['removals'] as core.List)
-                  .map((value) =>
-                      GoogleSecuritySafebrowsingV4ThreatEntrySet.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          removals: (json_['removals'] as core.List?)
+              ?.map((value) =>
+                  GoogleSecuritySafebrowsingV4ThreatEntrySet.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           responseType: json_['responseType'] as core.String?,
           threatEntryType: json_['threatEntryType'] as core.String?,
           threatType: json_['threatType'] as core.String?,
@@ -860,11 +848,9 @@ class GoogleSecuritySafebrowsingV4FindFullHashesRequest {
               ? GoogleSecuritySafebrowsingV4ClientInfo.fromJson(
                   json_['client'] as core.Map<core.String, core.dynamic>)
               : null,
-          clientStates: json_.containsKey('clientStates')
-              ? (json_['clientStates'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          clientStates: (json_['clientStates'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           threatInfo: json_.containsKey('threatInfo')
               ? GoogleSecuritySafebrowsingV4ThreatInfo.fromJson(
                   json_['threatInfo'] as core.Map<core.String, core.dynamic>)
@@ -902,13 +888,10 @@ class GoogleSecuritySafebrowsingV4FindFullHashesResponse {
 
   GoogleSecuritySafebrowsingV4FindFullHashesResponse.fromJson(core.Map json_)
       : this(
-          matches: json_.containsKey('matches')
-              ? (json_['matches'] as core.List)
-                  .map((value) =>
-                      GoogleSecuritySafebrowsingV4ThreatMatch.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          matches: (json_['matches'] as core.List?)
+              ?.map((value) => GoogleSecuritySafebrowsingV4ThreatMatch.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           minimumWaitDuration: json_['minimumWaitDuration'] as core.String?,
           negativeCacheDuration: json_['negativeCacheDuration'] as core.String?,
         );
@@ -963,13 +946,10 @@ class GoogleSecuritySafebrowsingV4FindThreatMatchesResponse {
 
   GoogleSecuritySafebrowsingV4FindThreatMatchesResponse.fromJson(core.Map json_)
       : this(
-          matches: json_.containsKey('matches')
-              ? (json_['matches'] as core.List)
-                  .map((value) =>
-                      GoogleSecuritySafebrowsingV4ThreatMatch.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          matches: (json_['matches'] as core.List?)
+              ?.map((value) => GoogleSecuritySafebrowsingV4ThreatMatch.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -987,13 +967,11 @@ class GoogleSecuritySafebrowsingV4ListThreatListsResponse {
 
   GoogleSecuritySafebrowsingV4ListThreatListsResponse.fromJson(core.Map json_)
       : this(
-          threatLists: json_.containsKey('threatLists')
-              ? (json_['threatLists'] as core.List)
-                  .map((value) =>
-                      GoogleSecuritySafebrowsingV4ThreatListDescriptor.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          threatLists: (json_['threatLists'] as core.List?)
+              ?.map((value) =>
+                  GoogleSecuritySafebrowsingV4ThreatListDescriptor.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1170,14 +1148,11 @@ class GoogleSecuritySafebrowsingV4ThreatEntryMetadata {
 
   GoogleSecuritySafebrowsingV4ThreatEntryMetadata.fromJson(core.Map json_)
       : this(
-          entries: json_.containsKey('entries')
-              ? (json_['entries'] as core.List)
-                  .map((value) =>
-                      GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          entries: (json_['entries'] as core.List?)
+              ?.map((value) =>
+                  GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1373,14 +1348,11 @@ class GoogleSecuritySafebrowsingV4ThreatHit {
                   json_['entry'] as core.Map<core.String, core.dynamic>)
               : null,
           platformType: json_['platformType'] as core.String?,
-          resources: json_.containsKey('resources')
-              ? (json_['resources'] as core.List)
-                  .map((value) =>
-                      GoogleSecuritySafebrowsingV4ThreatHitThreatSource
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          resources: (json_['resources'] as core.List?)
+              ?.map((value) =>
+                  GoogleSecuritySafebrowsingV4ThreatHitThreatSource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           threatType: json_['threatType'] as core.String?,
           userInfo: json_.containsKey('userInfo')
               ? GoogleSecuritySafebrowsingV4ThreatHitUserInfo.fromJson(
@@ -1503,28 +1475,19 @@ class GoogleSecuritySafebrowsingV4ThreatInfo {
 
   GoogleSecuritySafebrowsingV4ThreatInfo.fromJson(core.Map json_)
       : this(
-          platformTypes: json_.containsKey('platformTypes')
-              ? (json_['platformTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          threatEntries: json_.containsKey('threatEntries')
-              ? (json_['threatEntries'] as core.List)
-                  .map((value) =>
-                      GoogleSecuritySafebrowsingV4ThreatEntry.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          threatEntryTypes: json_.containsKey('threatEntryTypes')
-              ? (json_['threatEntryTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          threatTypes: json_.containsKey('threatTypes')
-              ? (json_['threatTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          platformTypes: (json_['platformTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          threatEntries: (json_['threatEntries'] as core.List?)
+              ?.map((value) => GoogleSecuritySafebrowsingV4ThreatEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          threatEntryTypes: (json_['threatEntryTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          threatTypes: (json_['threatTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

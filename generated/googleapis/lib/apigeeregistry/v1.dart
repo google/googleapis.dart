@@ -5080,27 +5080,25 @@ class Api {
 
   Api.fromJson(core.Map json_)
       : this(
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           availability: json_['availability'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           recommendedDeployment: json_['recommendedDeployment'] as core.String?,
           recommendedVersion: json_['recommendedVersion'] as core.String?,
@@ -5229,15 +5227,14 @@ class ApiDeployment {
   ApiDeployment.fromJson(core.Map json_)
       : this(
           accessGuidance: json_['accessGuidance'] as core.String?,
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           apiSpecRevision: json_['apiSpecRevision'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
@@ -5245,14 +5242,13 @@ class ApiDeployment {
           endpointUri: json_['endpointUri'] as core.String?,
           externalChannelUri: json_['externalChannelUri'] as core.String?,
           intendedAudience: json_['intendedAudience'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           revisionCreateTime: json_['revisionCreateTime'] as core.String?,
           revisionId: json_['revisionId'] as core.String?,
@@ -5405,28 +5401,26 @@ class ApiSpec {
 
   ApiSpec.fromJson(core.Map json_)
       : this(
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           contents: json_['contents'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           filename: json_['filename'] as core.String?,
           hash: json_['hash'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           mimeType: json_['mimeType'] as core.String?,
           name: json_['name'] as core.String?,
           revisionCreateTime: json_['revisionCreateTime'] as core.String?,
@@ -5525,26 +5519,24 @@ class ApiVersion {
 
   ApiVersion.fromJson(core.Map json_)
       : this(
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           primarySpec: json_['primarySpec'] as core.String?,
           state: json_['state'] as core.String?,
@@ -5657,26 +5649,24 @@ class Artifact {
 
   Artifact.fromJson(core.Map json_)
       : this(
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           contents: json_['contents'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           hash: json_['hash'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           mimeType: json_['mimeType'] as core.String?,
           name: json_['name'] as core.String?,
           sizeBytes: json_['sizeBytes'] as core.int?,
@@ -5764,11 +5754,9 @@ class Binding {
               ? Expr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -6003,12 +5991,10 @@ class ListApiDeploymentRevisionsResponse {
 
   ListApiDeploymentRevisionsResponse.fromJson(core.Map json_)
       : this(
-          apiDeployments: json_.containsKey('apiDeployments')
-              ? (json_['apiDeployments'] as core.List)
-                  .map((value) => ApiDeployment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          apiDeployments: (json_['apiDeployments'] as core.List?)
+              ?.map((value) => ApiDeployment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -6035,12 +6021,10 @@ class ListApiDeploymentsResponse {
 
   ListApiDeploymentsResponse.fromJson(core.Map json_)
       : this(
-          apiDeployments: json_.containsKey('apiDeployments')
-              ? (json_['apiDeployments'] as core.List)
-                  .map((value) => ApiDeployment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          apiDeployments: (json_['apiDeployments'] as core.List?)
+              ?.map((value) => ApiDeployment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -6067,12 +6051,10 @@ class ListApiSpecRevisionsResponse {
 
   ListApiSpecRevisionsResponse.fromJson(core.Map json_)
       : this(
-          apiSpecs: json_.containsKey('apiSpecs')
-              ? (json_['apiSpecs'] as core.List)
-                  .map((value) => ApiSpec.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          apiSpecs: (json_['apiSpecs'] as core.List?)
+              ?.map((value) => ApiSpec.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -6099,12 +6081,10 @@ class ListApiSpecsResponse {
 
   ListApiSpecsResponse.fromJson(core.Map json_)
       : this(
-          apiSpecs: json_.containsKey('apiSpecs')
-              ? (json_['apiSpecs'] as core.List)
-                  .map((value) => ApiSpec.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          apiSpecs: (json_['apiSpecs'] as core.List?)
+              ?.map((value) => ApiSpec.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -6131,12 +6111,10 @@ class ListApiVersionsResponse {
 
   ListApiVersionsResponse.fromJson(core.Map json_)
       : this(
-          apiVersions: json_.containsKey('apiVersions')
-              ? (json_['apiVersions'] as core.List)
-                  .map((value) => ApiVersion.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          apiVersions: (json_['apiVersions'] as core.List?)
+              ?.map((value) => ApiVersion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -6163,12 +6141,10 @@ class ListApisResponse {
 
   ListApisResponse.fromJson(core.Map json_)
       : this(
-          apis: json_.containsKey('apis')
-              ? (json_['apis'] as core.List)
-                  .map((value) => Api.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          apis: (json_['apis'] as core.List?)
+              ?.map((value) =>
+                  Api.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -6195,12 +6171,10 @@ class ListArtifactsResponse {
 
   ListArtifactsResponse.fromJson(core.Map json_)
       : this(
-          artifacts: json_.containsKey('artifacts')
-              ? (json_['artifacts'] as core.List)
-                  .map((value) => Artifact.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          artifacts: (json_['artifacts'] as core.List?)
+              ?.map((value) => Artifact.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -6225,12 +6199,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -6256,12 +6228,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6440,12 +6410,10 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
       : this(
-          bindings: json_.containsKey('bindings')
-              ? (json_['bindings'] as core.List)
-                  .map((value) => Binding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
         );

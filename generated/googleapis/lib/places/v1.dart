@@ -573,16 +573,12 @@ class GoogleMapsPlacesV1AutocompletePlacesRequest {
       : this(
           includeQueryPredictions:
               json_['includeQueryPredictions'] as core.bool?,
-          includedPrimaryTypes: json_.containsKey('includedPrimaryTypes')
-              ? (json_['includedPrimaryTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          includedRegionCodes: json_.containsKey('includedRegionCodes')
-              ? (json_['includedRegionCodes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          includedPrimaryTypes: (json_['includedPrimaryTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          includedRegionCodes: (json_['includedRegionCodes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           input: json_['input'] as core.String?,
           inputOffset: json_['inputOffset'] as core.int?,
           languageCode: json_['languageCode'] as core.String?,
@@ -703,14 +699,11 @@ class GoogleMapsPlacesV1AutocompletePlacesResponse {
 
   GoogleMapsPlacesV1AutocompletePlacesResponse.fromJson(core.Map json_)
       : this(
-          suggestions: json_.containsKey('suggestions')
-              ? (json_['suggestions'] as core.List)
-                  .map((value) =>
-                      GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          suggestions: (json_['suggestions'] as core.List?)
+              ?.map((value) =>
+                  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -780,14 +773,11 @@ class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText {
   GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText.fromJson(
       core.Map json_)
       : this(
-          matches: json_.containsKey('matches')
-              ? (json_['matches'] as core.List)
-                  .map((value) =>
-                      GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          matches: (json_['matches'] as core.List?)
+              ?.map((value) =>
+                  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           text: json_['text'] as core.String?,
         );
 
@@ -873,11 +863,9 @@ class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction {
                   .fromJson(
                       json_['text'] as core.Map<core.String, core.dynamic>)
               : null,
-          types: json_.containsKey('types')
-              ? (json_['types'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          types: (json_['types'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1120,25 +1108,19 @@ class GoogleMapsPlacesV1ContextualContent {
 
   GoogleMapsPlacesV1ContextualContent.fromJson(core.Map json_)
       : this(
-          justifications: json_.containsKey('justifications')
-              ? (json_['justifications'] as core.List)
-                  .map((value) =>
-                      GoogleMapsPlacesV1ContextualContentJustification.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          photos: json_.containsKey('photos')
-              ? (json_['photos'] as core.List)
-                  .map((value) => GoogleMapsPlacesV1Photo.fromJson(
+          justifications: (json_['justifications'] as core.List?)
+              ?.map((value) =>
+                  GoogleMapsPlacesV1ContextualContentJustification.fromJson(
                       value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          reviews: json_.containsKey('reviews')
-              ? (json_['reviews'] as core.List)
-                  .map((value) => GoogleMapsPlacesV1Review.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+              .toList(),
+          photos: (json_['photos'] as core.List?)
+              ?.map((value) => GoogleMapsPlacesV1Photo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          reviews: (json_['reviews'] as core.List?)
+              ?.map((value) => GoogleMapsPlacesV1Review.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1293,14 +1275,11 @@ class GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlig
   GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText.fromJson(
       core.Map json_)
       : this(
-          highlightedTextRanges: json_.containsKey('highlightedTextRanges')
-              ? (json_['highlightedTextRanges'] as core.List)
-                  .map((value) =>
-                      GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          highlightedTextRanges: (json_['highlightedTextRanges'] as core.List?)
+              ?.map((value) =>
+                  GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           text: json_['text'] as core.String?,
         );
 
@@ -1360,14 +1339,11 @@ class GoogleMapsPlacesV1EVChargeOptions {
 
   GoogleMapsPlacesV1EVChargeOptions.fromJson(core.Map json_)
       : this(
-          connectorAggregation: json_.containsKey('connectorAggregation')
-              ? (json_['connectorAggregation'] as core.List)
-                  .map((value) =>
-                      GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          connectorAggregation: (json_['connectorAggregation'] as core.List?)
+              ?.map((value) =>
+                  GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           connectorCount: json_['connectorCount'] as core.int?,
         );
 
@@ -1468,13 +1444,10 @@ class GoogleMapsPlacesV1FuelOptions {
 
   GoogleMapsPlacesV1FuelOptions.fromJson(core.Map json_)
       : this(
-          fuelPrices: json_.containsKey('fuelPrices')
-              ? (json_['fuelPrices'] as core.List)
-                  .map((value) =>
-                      GoogleMapsPlacesV1FuelOptionsFuelPrice.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          fuelPrices: (json_['fuelPrices'] as core.List?)
+              ?.map((value) => GoogleMapsPlacesV1FuelOptionsFuelPrice.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1563,12 +1536,10 @@ class GoogleMapsPlacesV1Photo {
 
   GoogleMapsPlacesV1Photo.fromJson(core.Map json_)
       : this(
-          authorAttributions: json_.containsKey('authorAttributions')
-              ? (json_['authorAttributions'] as core.List)
-                  .map((value) => GoogleMapsPlacesV1AuthorAttribution.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          authorAttributions: (json_['authorAttributions'] as core.List?)
+              ?.map((value) => GoogleMapsPlacesV1AuthorAttribution.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           heightPx: json_['heightPx'] as core.int?,
           name: json_['name'] as core.String?,
           widthPx: json_['widthPx'] as core.int?,
@@ -1969,25 +1940,20 @@ class GoogleMapsPlacesV1Place {
                   json_['accessibilityOptions']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          addressComponents: json_.containsKey('addressComponents')
-              ? (json_['addressComponents'] as core.List)
-                  .map((value) =>
-                      GoogleMapsPlacesV1PlaceAddressComponent.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          addressComponents: (json_['addressComponents'] as core.List?)
+              ?.map((value) => GoogleMapsPlacesV1PlaceAddressComponent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           adrFormatAddress: json_['adrFormatAddress'] as core.String?,
           allowsDogs: json_['allowsDogs'] as core.bool?,
           areaSummary: json_.containsKey('areaSummary')
               ? GoogleMapsPlacesV1PlaceAreaSummary.fromJson(
                   json_['areaSummary'] as core.Map<core.String, core.dynamic>)
               : null,
-          attributions: json_.containsKey('attributions')
-              ? (json_['attributions'] as core.List)
-                  .map((value) => GoogleMapsPlacesV1PlaceAttribution.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          attributions: (json_['attributions'] as core.List?)
+              ?.map((value) => GoogleMapsPlacesV1PlaceAttribution.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           businessStatus: json_['businessStatus'] as core.String?,
           curbsidePickup: json_['curbsidePickup'] as core.bool?,
           currentOpeningHours: json_.containsKey('currentOpeningHours')
@@ -1995,13 +1961,11 @@ class GoogleMapsPlacesV1Place {
                   json_['currentOpeningHours']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          currentSecondaryOpeningHours: json_
-                  .containsKey('currentSecondaryOpeningHours')
-              ? (json_['currentSecondaryOpeningHours'] as core.List)
-                  .map((value) => GoogleMapsPlacesV1PlaceOpeningHours.fromJson(
+          currentSecondaryOpeningHours:
+              (json_['currentSecondaryOpeningHours'] as core.List?)
+                  ?.map((value) => GoogleMapsPlacesV1PlaceOpeningHours.fromJson(
                       value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                  .toList(),
           delivery: json_['delivery'] as core.bool?,
           dineIn: json_['dineIn'] as core.bool?,
           displayName: json_.containsKey('displayName')
@@ -2055,12 +2019,10 @@ class GoogleMapsPlacesV1Place {
                   json_['paymentOptions']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          photos: json_.containsKey('photos')
-              ? (json_['photos'] as core.List)
-                  .map((value) => GoogleMapsPlacesV1Photo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          photos: (json_['photos'] as core.List?)
+              ?.map((value) => GoogleMapsPlacesV1Photo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           plusCode: json_.containsKey('plusCode')
               ? GoogleMapsPlacesV1PlacePlusCode.fromJson(
                   json_['plusCode'] as core.Map<core.String, core.dynamic>)
@@ -2077,21 +2039,17 @@ class GoogleMapsPlacesV1Place {
                   json_['regularOpeningHours']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          regularSecondaryOpeningHours: json_
-                  .containsKey('regularSecondaryOpeningHours')
-              ? (json_['regularSecondaryOpeningHours'] as core.List)
-                  .map((value) => GoogleMapsPlacesV1PlaceOpeningHours.fromJson(
+          regularSecondaryOpeningHours:
+              (json_['regularSecondaryOpeningHours'] as core.List?)
+                  ?.map((value) => GoogleMapsPlacesV1PlaceOpeningHours.fromJson(
                       value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                  .toList(),
           reservable: json_['reservable'] as core.bool?,
           restroom: json_['restroom'] as core.bool?,
-          reviews: json_.containsKey('reviews')
-              ? (json_['reviews'] as core.List)
-                  .map((value) => GoogleMapsPlacesV1Review.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          reviews: (json_['reviews'] as core.List?)
+              ?.map((value) => GoogleMapsPlacesV1Review.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           servesBeer: json_['servesBeer'] as core.bool?,
           servesBreakfast: json_['servesBreakfast'] as core.bool?,
           servesBrunch: json_['servesBrunch'] as core.bool?,
@@ -2103,19 +2061,14 @@ class GoogleMapsPlacesV1Place {
           servesVegetarianFood: json_['servesVegetarianFood'] as core.bool?,
           servesWine: json_['servesWine'] as core.bool?,
           shortFormattedAddress: json_['shortFormattedAddress'] as core.String?,
-          subDestinations: json_.containsKey('subDestinations')
-              ? (json_['subDestinations'] as core.List)
-                  .map((value) =>
-                      GoogleMapsPlacesV1PlaceSubDestination.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          subDestinations: (json_['subDestinations'] as core.List?)
+              ?.map((value) => GoogleMapsPlacesV1PlaceSubDestination.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           takeout: json_['takeout'] as core.bool?,
-          types: json_.containsKey('types')
-              ? (json_['types'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          types: (json_['types'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           userRatingCount: json_['userRatingCount'] as core.int?,
           utcOffsetMinutes: json_['utcOffsetMinutes'] as core.int?,
           viewport: json_.containsKey('viewport')
@@ -2282,11 +2235,9 @@ class GoogleMapsPlacesV1PlaceAddressComponent {
           languageCode: json_['languageCode'] as core.String?,
           longText: json_['longText'] as core.String?,
           shortText: json_['shortText'] as core.String?,
-          types: json_.containsKey('types')
-              ? (json_['types'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          types: (json_['types'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2314,12 +2265,10 @@ class GoogleMapsPlacesV1PlaceAreaSummary {
 
   GoogleMapsPlacesV1PlaceAreaSummary.fromJson(core.Map json_)
       : this(
-          contentBlocks: json_.containsKey('contentBlocks')
-              ? (json_['contentBlocks'] as core.List)
-                  .map((value) => GoogleMapsPlacesV1ContentBlock.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          contentBlocks: (json_['contentBlocks'] as core.List?)
+              ?.map((value) => GoogleMapsPlacesV1ContentBlock.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2455,26 +2404,20 @@ class GoogleMapsPlacesV1PlaceOpeningHours {
   GoogleMapsPlacesV1PlaceOpeningHours.fromJson(core.Map json_)
       : this(
           openNow: json_['openNow'] as core.bool?,
-          periods: json_.containsKey('periods')
-              ? (json_['periods'] as core.List)
-                  .map((value) =>
-                      GoogleMapsPlacesV1PlaceOpeningHoursPeriod.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          periods: (json_['periods'] as core.List?)
+              ?.map((value) =>
+                  GoogleMapsPlacesV1PlaceOpeningHoursPeriod.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           secondaryHoursType: json_['secondaryHoursType'] as core.String?,
-          specialDays: json_.containsKey('specialDays')
-              ? (json_['specialDays'] as core.List)
-                  .map((value) =>
-                      GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          weekdayDescriptions: json_.containsKey('weekdayDescriptions')
-              ? (json_['weekdayDescriptions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          specialDays: (json_['specialDays'] as core.List?)
+              ?.map((value) =>
+                  GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          weekdayDescriptions: (json_['weekdayDescriptions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2752,17 +2695,13 @@ class GoogleMapsPlacesV1References {
 
   GoogleMapsPlacesV1References.fromJson(core.Map json_)
       : this(
-          places: json_.containsKey('places')
-              ? (json_['places'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          reviews: json_.containsKey('reviews')
-              ? (json_['reviews'] as core.List)
-                  .map((value) => GoogleMapsPlacesV1Review.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          places: (json_['places'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          reviews: (json_['reviews'] as core.List?)
+              ?.map((value) => GoogleMapsPlacesV1Review.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2960,26 +2899,18 @@ class GoogleMapsPlacesV1SearchNearbyRequest {
 
   GoogleMapsPlacesV1SearchNearbyRequest.fromJson(core.Map json_)
       : this(
-          excludedPrimaryTypes: json_.containsKey('excludedPrimaryTypes')
-              ? (json_['excludedPrimaryTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          excludedTypes: json_.containsKey('excludedTypes')
-              ? (json_['excludedTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          includedPrimaryTypes: json_.containsKey('includedPrimaryTypes')
-              ? (json_['includedPrimaryTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          includedTypes: json_.containsKey('includedTypes')
-              ? (json_['includedTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          excludedPrimaryTypes: (json_['excludedPrimaryTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          excludedTypes: (json_['excludedTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          includedPrimaryTypes: (json_['includedPrimaryTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          includedTypes: (json_['includedTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           languageCode: json_['languageCode'] as core.String?,
           locationRestriction: json_.containsKey('locationRestriction')
               ? GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction
@@ -3042,12 +2973,10 @@ class GoogleMapsPlacesV1SearchNearbyResponse {
 
   GoogleMapsPlacesV1SearchNearbyResponse.fromJson(core.Map json_)
       : this(
-          places: json_.containsKey('places')
-              ? (json_['places'] as core.List)
-                  .map((value) => GoogleMapsPlacesV1Place.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          places: (json_['places'] as core.List?)
+              ?.map((value) => GoogleMapsPlacesV1Place.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3220,11 +3149,9 @@ class GoogleMapsPlacesV1SearchTextRequest {
           openNow: json_['openNow'] as core.bool?,
           pageSize: json_['pageSize'] as core.int?,
           pageToken: json_['pageToken'] as core.String?,
-          priceLevels: json_.containsKey('priceLevels')
-              ? (json_['priceLevels'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          priceLevels: (json_['priceLevels'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           rankPreference: json_['rankPreference'] as core.String?,
           regionCode: json_['regionCode'] as core.String?,
           strictTypeFiltering: json_['strictTypeFiltering'] as core.bool?,
@@ -3276,11 +3203,9 @@ class GoogleMapsPlacesV1SearchTextRequestEVOptions {
 
   GoogleMapsPlacesV1SearchTextRequestEVOptions.fromJson(core.Map json_)
       : this(
-          connectorTypes: json_.containsKey('connectorTypes')
-              ? (json_['connectorTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          connectorTypes: (json_['connectorTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           minimumChargingRateKw:
               (json_['minimumChargingRateKw'] as core.num?)?.toDouble(),
         );
@@ -3395,19 +3320,15 @@ class GoogleMapsPlacesV1SearchTextResponse {
 
   GoogleMapsPlacesV1SearchTextResponse.fromJson(core.Map json_)
       : this(
-          contextualContents: json_.containsKey('contextualContents')
-              ? (json_['contextualContents'] as core.List)
-                  .map((value) => GoogleMapsPlacesV1ContextualContent.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          contextualContents: (json_['contextualContents'] as core.List?)
+              ?.map((value) => GoogleMapsPlacesV1ContextualContent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
-          places: json_.containsKey('places')
-              ? (json_['places'] as core.List)
-                  .map((value) => GoogleMapsPlacesV1Place.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          places: (json_['places'] as core.List?)
+              ?.map((value) => GoogleMapsPlacesV1Place.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

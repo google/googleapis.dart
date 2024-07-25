@@ -794,11 +794,9 @@ class ApplyParametersRequest {
   ApplyParametersRequest.fromJson(core.Map json_)
       : this(
           applyAll: json_['applyAll'] as core.bool?,
-          nodeIds: json_.containsKey('nodeIds')
-              ? (json_['nodeIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          nodeIds: (json_['nodeIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -856,12 +854,11 @@ class GoogleCloudMemcacheV1MaintenancePolicy {
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
-          weeklyMaintenanceWindow: json_.containsKey('weeklyMaintenanceWindow')
-              ? (json_['weeklyMaintenanceWindow'] as core.List)
-                  .map((value) => WeeklyMaintenanceWindow.fromJson(
+          weeklyMaintenanceWindow:
+              (json_['weeklyMaintenanceWindow'] as core.List?)
+                  ?.map((value) => WeeklyMaintenanceWindow.fromJson(
                       value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1075,20 +1072,17 @@ class Instance {
           createTime: json_['createTime'] as core.String?,
           discoveryEndpoint: json_['discoveryEndpoint'] as core.String?,
           displayName: json_['displayName'] as core.String?,
-          instanceMessages: json_.containsKey('instanceMessages')
-              ? (json_['instanceMessages'] as core.List)
-                  .map((value) => InstanceMessage.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          instanceMessages: (json_['instanceMessages'] as core.List?)
+              ?.map((value) => InstanceMessage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           maintenancePolicy: json_.containsKey('maintenancePolicy')
               ? GoogleCloudMemcacheV1MaintenancePolicy.fromJson(
                   json_['maintenancePolicy']
@@ -1099,12 +1093,10 @@ class Instance {
                   as core.Map<core.String, core.dynamic>)
               : null,
           memcacheFullVersion: json_['memcacheFullVersion'] as core.String?,
-          memcacheNodes: json_.containsKey('memcacheNodes')
-              ? (json_['memcacheNodes'] as core.List)
-                  .map((value) => Node.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          memcacheNodes: (json_['memcacheNodes'] as core.List?)
+              ?.map((value) =>
+                  Node.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           memcacheVersion: json_['memcacheVersion'] as core.String?,
           name: json_['name'] as core.String?,
           nodeConfig: json_.containsKey('nodeConfig')
@@ -1116,20 +1108,16 @@ class Instance {
               ? MemcacheParameters.fromJson(
                   json_['parameters'] as core.Map<core.String, core.dynamic>)
               : null,
-          reservedIpRangeId: json_.containsKey('reservedIpRangeId')
-              ? (json_['reservedIpRangeId'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          reservedIpRangeId: (json_['reservedIpRangeId'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
           satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           state: json_['state'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
-          zones: json_.containsKey('zones')
-              ? (json_['zones'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          zones: (json_['zones'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1211,18 +1199,14 @@ class ListInstancesResponse {
 
   ListInstancesResponse.fromJson(core.Map json_)
       : this(
-          instances: json_.containsKey('instances')
-              ? (json_['instances'] as core.List)
-                  .map((value) => Instance.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          instances: (json_['instances'] as core.List?)
+              ?.map((value) => Instance.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1247,12 +1231,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1278,12 +1260,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1356,14 +1336,13 @@ class MemcacheParameters {
   MemcacheParameters.fromJson(core.Map json_)
       : this(
           id: json_['id'] as core.String?,
-          params: json_.containsKey('params')
-              ? (json_['params'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          params:
+              (json_['params'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

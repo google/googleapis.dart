@@ -527,11 +527,9 @@ class Connector {
 
   Connector.fromJson(core.Map json_)
       : this(
-          connectedProjects: json_.containsKey('connectedProjects')
-              ? (json_['connectedProjects'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          connectedProjects: (json_['connectedProjects'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           ipCidrRange: json_['ipCidrRange'] as core.String?,
           machineType: json_['machineType'] as core.String?,
           maxInstances: json_['maxInstances'] as core.int?,
@@ -577,12 +575,10 @@ class ListConnectorsResponse {
 
   ListConnectorsResponse.fromJson(core.Map json_)
       : this(
-          connectors: json_.containsKey('connectors')
-              ? (json_['connectors'] as core.List)
-                  .map((value) => Connector.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          connectors: (json_['connectors'] as core.List?)
+              ?.map((value) => Connector.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -607,12 +603,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -638,12 +632,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

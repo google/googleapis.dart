@@ -556,11 +556,9 @@ class DataLayers {
       : this(
           annualFluxUrl: json_['annualFluxUrl'] as core.String?,
           dsmUrl: json_['dsmUrl'] as core.String?,
-          hourlyShadeUrls: json_.containsKey('hourlyShadeUrls')
-              ? (json_['hourlyShadeUrls'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          hourlyShadeUrls: (json_['hourlyShadeUrls'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           imageryDate: json_.containsKey('imageryDate')
               ? Date.fromJson(
                   json_['imageryDate'] as core.Map<core.String, core.dynamic>)
@@ -1200,11 +1198,9 @@ class SizeAndSunshineStats {
           areaMeters2: (json_['areaMeters2'] as core.num?)?.toDouble(),
           groundAreaMeters2:
               (json_['groundAreaMeters2'] as core.num?)?.toDouble(),
-          sunshineQuantiles: json_.containsKey('sunshineQuantiles')
-              ? (json_['sunshineQuantiles'] as core.List)
-                  .map((value) => (value as core.num).toDouble())
-                  .toList()
-              : null,
+          sunshineQuantiles: (json_['sunshineQuantiles'] as core.List?)
+              ?.map((value) => (value as core.num).toDouble())
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1296,12 +1292,10 @@ class SolarPanelConfig {
   SolarPanelConfig.fromJson(core.Map json_)
       : this(
           panelsCount: json_['panelsCount'] as core.int?,
-          roofSegmentSummaries: json_.containsKey('roofSegmentSummaries')
-              ? (json_['roofSegmentSummaries'] as core.List)
-                  .map((value) => RoofSegmentSummary.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          roofSegmentSummaries: (json_['roofSegmentSummaries'] as core.List?)
+              ?.map((value) => RoofSegmentSummary.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           yearlyEnergyDcKwh:
               (json_['yearlyEnergyDcKwh'] as core.num?)?.toDouble(),
         );
@@ -1425,12 +1419,10 @@ class SolarPotential {
               : null,
           carbonOffsetFactorKgPerMwh:
               (json_['carbonOffsetFactorKgPerMwh'] as core.num?)?.toDouble(),
-          financialAnalyses: json_.containsKey('financialAnalyses')
-              ? (json_['financialAnalyses'] as core.List)
-                  .map((value) => FinancialAnalysis.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          financialAnalyses: (json_['financialAnalyses'] as core.List?)
+              ?.map((value) => FinancialAnalysis.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           maxArrayAreaMeters2:
               (json_['maxArrayAreaMeters2'] as core.num?)?.toDouble(),
           maxArrayPanelsCount: json_['maxArrayPanelsCount'] as core.int?,
@@ -1443,24 +1435,18 @@ class SolarPotential {
           panelLifetimeYears: json_['panelLifetimeYears'] as core.int?,
           panelWidthMeters:
               (json_['panelWidthMeters'] as core.num?)?.toDouble(),
-          roofSegmentStats: json_.containsKey('roofSegmentStats')
-              ? (json_['roofSegmentStats'] as core.List)
-                  .map((value) => RoofSegmentSizeAndSunshineStats.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          solarPanelConfigs: json_.containsKey('solarPanelConfigs')
-              ? (json_['solarPanelConfigs'] as core.List)
-                  .map((value) => SolarPanelConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          solarPanels: json_.containsKey('solarPanels')
-              ? (json_['solarPanels'] as core.List)
-                  .map((value) => SolarPanel.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          roofSegmentStats: (json_['roofSegmentStats'] as core.List?)
+              ?.map((value) => RoofSegmentSizeAndSunshineStats.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          solarPanelConfigs: (json_['solarPanelConfigs'] as core.List?)
+              ?.map((value) => SolarPanelConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          solarPanels: (json_['solarPanels'] as core.List?)
+              ?.map((value) => SolarPanel.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           wholeRoofStats: json_.containsKey('wholeRoofStats')
               ? SizeAndSunshineStats.fromJson(json_['wholeRoofStats']
                   as core.Map<core.String, core.dynamic>)

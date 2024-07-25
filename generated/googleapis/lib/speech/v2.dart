@@ -1520,12 +1520,10 @@ class BatchRecognizeRequest {
                   json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
           configMask: json_['configMask'] as core.String?,
-          files: json_.containsKey('files')
-              ? (json_['files'] as core.List)
-                  .map((value) => BatchRecognizeFileMetadata.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          files: (json_['files'] as core.List?)
+              ?.map((value) => BatchRecognizeFileMetadata.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           processingStrategy: json_['processingStrategy'] as core.String?,
           recognitionOutputConfig: json_.containsKey('recognitionOutputConfig')
               ? RecognitionOutputConfig.fromJson(
@@ -1721,26 +1719,23 @@ class CustomClass {
 
   CustomClass.fromJson(core.Map json_)
       : this(
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           createTime: json_['createTime'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           etag: json_['etag'] as core.String?,
           expireTime: json_['expireTime'] as core.String?,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => ClassItem.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => ClassItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kmsKeyName: json_['kmsKeyName'] as core.String?,
           kmsKeyVersionName: json_['kmsKeyVersionName'] as core.String?,
           name: json_['name'] as core.String?,
@@ -1862,12 +1857,10 @@ class ListCustomClassesResponse {
 
   ListCustomClassesResponse.fromJson(core.Map json_)
       : this(
-          customClasses: json_.containsKey('customClasses')
-              ? (json_['customClasses'] as core.List)
-                  .map((value) => CustomClass.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          customClasses: (json_['customClasses'] as core.List?)
+              ?.map((value) => CustomClass.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1892,12 +1885,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1923,12 +1914,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1956,12 +1945,10 @@ class ListPhraseSetsResponse {
   ListPhraseSetsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          phraseSets: json_.containsKey('phraseSets')
-              ? (json_['phraseSets'] as core.List)
-                  .map((value) => PhraseSet.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          phraseSets: (json_['phraseSets'] as core.List?)
+              ?.map((value) => PhraseSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1989,12 +1976,10 @@ class ListRecognizersResponse {
   ListRecognizersResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          recognizers: json_.containsKey('recognizers')
-              ? (json_['recognizers'] as core.List)
-                  .map((value) => Recognizer.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          recognizers: (json_['recognizers'] as core.List?)
+              ?.map((value) => Recognizer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2302,15 +2287,14 @@ class PhraseSet {
 
   PhraseSet.fromJson(core.Map json_)
       : this(
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           boost: (json_['boost'] as core.num?)?.toDouble(),
           createTime: json_['createTime'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
@@ -2320,12 +2304,10 @@ class PhraseSet {
           kmsKeyName: json_['kmsKeyName'] as core.String?,
           kmsKeyVersionName: json_['kmsKeyVersionName'] as core.String?,
           name: json_['name'] as core.String?,
-          phrases: json_.containsKey('phrases')
-              ? (json_['phrases'] as core.List)
-                  .map((value) => Phrase.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          phrases: (json_['phrases'] as core.List?)
+              ?.map((value) =>
+                  Phrase.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           reconciling: json_['reconciling'] as core.bool?,
           state: json_['state'] as core.String?,
           uid: json_['uid'] as core.String?,
@@ -2439,11 +2421,9 @@ class RecognitionConfig {
               ? RecognitionFeatures.fromJson(
                   json_['features'] as core.Map<core.String, core.dynamic>)
               : null,
-          languageCodes: json_.containsKey('languageCodes')
-              ? (json_['languageCodes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          languageCodes: (json_['languageCodes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           model: json_['model'] as core.String?,
           transcriptNormalization: json_.containsKey('transcriptNormalization')
               ? TranscriptNormalization.fromJson(
@@ -2755,12 +2735,10 @@ class RecognizeResponse {
               ? RecognitionResponseMetadata.fromJson(
                   json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
-          results: json_.containsKey('results')
-              ? (json_['results'] as core.List)
-                  .map((value) => SpeechRecognitionResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          results: (json_['results'] as core.List?)
+              ?.map((value) => SpeechRecognitionResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2923,15 +2901,14 @@ class Recognizer {
 
   Recognizer.fromJson(core.Map json_)
       : this(
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           createTime: json_['createTime'] as core.String?,
           defaultRecognitionConfig:
               json_.containsKey('defaultRecognitionConfig')
@@ -2944,11 +2921,9 @@ class Recognizer {
           expireTime: json_['expireTime'] as core.String?,
           kmsKeyName: json_['kmsKeyName'] as core.String?,
           kmsKeyVersionName: json_['kmsKeyVersionName'] as core.String?,
-          languageCodes: json_.containsKey('languageCodes')
-              ? (json_['languageCodes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          languageCodes: (json_['languageCodes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           model: json_['model'] as core.String?,
           name: json_['name'] as core.String?,
           reconciling: json_['reconciling'] as core.bool?,
@@ -3037,18 +3012,14 @@ class SpeechAdaptation {
 
   SpeechAdaptation.fromJson(core.Map json_)
       : this(
-          customClasses: json_.containsKey('customClasses')
-              ? (json_['customClasses'] as core.List)
-                  .map((value) => CustomClass.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          phraseSets: json_.containsKey('phraseSets')
-              ? (json_['phraseSets'] as core.List)
-                  .map((value) => AdaptationPhraseSet.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          customClasses: (json_['customClasses'] as core.List?)
+              ?.map((value) => CustomClass.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          phraseSets: (json_['phraseSets'] as core.List?)
+              ?.map((value) => AdaptationPhraseSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3088,12 +3059,10 @@ class SpeechRecognitionAlternative {
       : this(
           confidence: (json_['confidence'] as core.num?)?.toDouble(),
           transcript: json_['transcript'] as core.String?,
-          words: json_.containsKey('words')
-              ? (json_['words'] as core.List)
-                  .map((value) => WordInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          words: (json_['words'] as core.List?)
+              ?.map((value) => WordInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3140,12 +3109,10 @@ class SpeechRecognitionResult {
 
   SpeechRecognitionResult.fromJson(core.Map json_)
       : this(
-          alternatives: json_.containsKey('alternatives')
-              ? (json_['alternatives'] as core.List)
-                  .map((value) => SpeechRecognitionAlternative.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          alternatives: (json_['alternatives'] as core.List?)
+              ?.map((value) => SpeechRecognitionAlternative.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           channelTag: json_['channelTag'] as core.int?,
           languageCode: json_['languageCode'] as core.String?,
           resultEndOffset: json_['resultEndOffset'] as core.String?,
@@ -3194,12 +3161,10 @@ class TranscriptNormalization {
 
   TranscriptNormalization.fromJson(core.Map json_)
       : this(
-          entries: json_.containsKey('entries')
-              ? (json_['entries'] as core.List)
-                  .map((value) => Entry.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          entries: (json_['entries'] as core.List?)
+              ?.map((value) =>
+                  Entry.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

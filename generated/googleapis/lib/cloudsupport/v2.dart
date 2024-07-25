@@ -1241,11 +1241,9 @@ class Case {
           priority: json_['priority'] as core.String?,
           state: json_['state'] as core.String?,
           subscriberEmailAddresses:
-              json_.containsKey('subscriberEmailAddresses')
-                  ? (json_['subscriberEmailAddresses'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
+              (json_['subscriberEmailAddresses'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           testCase: json_['testCase'] as core.bool?,
           timeZone: json_['timeZone'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -1842,12 +1840,10 @@ class ListAttachmentsResponse {
 
   ListAttachmentsResponse.fromJson(core.Map json_)
       : this(
-          attachments: json_.containsKey('attachments')
-              ? (json_['attachments'] as core.List)
-                  .map((value) => Attachment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          attachments: (json_['attachments'] as core.List?)
+              ?.map((value) => Attachment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1876,12 +1872,10 @@ class ListCasesResponse {
 
   ListCasesResponse.fromJson(core.Map json_)
       : this(
-          cases: json_.containsKey('cases')
-              ? (json_['cases'] as core.List)
-                  .map((value) => Case.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          cases: (json_['cases'] as core.List?)
+              ?.map((value) =>
+                  Case.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1909,12 +1903,10 @@ class ListCommentsResponse {
 
   ListCommentsResponse.fromJson(core.Map json_)
       : this(
-          comments: json_.containsKey('comments')
-              ? (json_['comments'] as core.List)
-                  .map((value) => Comment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          comments: (json_['comments'] as core.List?)
+              ?.map((value) => Comment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -2143,12 +2135,10 @@ class Media {
               ? Blobstore2Info.fromJson(json_['blobstore2Info']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          compositeMedia: json_.containsKey('compositeMedia')
-              ? (json_['compositeMedia'] as core.List)
-                  .map((value) => CompositeMedia.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          compositeMedia: (json_['compositeMedia'] as core.List?)
+              ?.map((value) => CompositeMedia.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           contentType: json_['contentType'] as core.String?,
           contentTypeInfo: json_.containsKey('contentTypeInfo')
               ? ContentTypeInfo.fromJson(json_['contentTypeInfo']
@@ -2290,12 +2280,10 @@ class SearchCaseClassificationsResponse {
 
   SearchCaseClassificationsResponse.fromJson(core.Map json_)
       : this(
-          caseClassifications: json_.containsKey('caseClassifications')
-              ? (json_['caseClassifications'] as core.List)
-                  .map((value) => CaseClassification.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          caseClassifications: (json_['caseClassifications'] as core.List?)
+              ?.map((value) => CaseClassification.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -2325,12 +2313,10 @@ class SearchCasesResponse {
 
   SearchCasesResponse.fromJson(core.Map json_)
       : this(
-          cases: json_.containsKey('cases')
-              ? (json_['cases'] as core.List)
-                  .map((value) => Case.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          cases: (json_['cases'] as core.List?)
+              ?.map((value) =>
+                  Case.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 

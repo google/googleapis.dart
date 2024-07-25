@@ -1495,19 +1495,15 @@ class AccessApprovalSettings {
           ancestorHasActiveKeyVersion:
               json_['ancestorHasActiveKeyVersion'] as core.bool?,
           enrolledAncestor: json_['enrolledAncestor'] as core.bool?,
-          enrolledServices: json_.containsKey('enrolledServices')
-              ? (json_['enrolledServices'] as core.List)
-                  .map((value) => EnrolledService.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          enrolledServices: (json_['enrolledServices'] as core.List?)
+              ?.map((value) => EnrolledService.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           invalidKeyVersion: json_['invalidKeyVersion'] as core.bool?,
           name: json_['name'] as core.String?,
-          notificationEmails: json_.containsKey('notificationEmails')
-              ? (json_['notificationEmails'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          notificationEmails: (json_['notificationEmails'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           notificationPubsubTopic:
               json_['notificationPubsubTopic'] as core.String?,
           preferNoBroadApprovalRequests:
@@ -1915,12 +1911,10 @@ class ListApprovalRequestsResponse {
 
   ListApprovalRequestsResponse.fromJson(core.Map json_)
       : this(
-          approvalRequests: json_.containsKey('approvalRequests')
-              ? (json_['approvalRequests'] as core.List)
-                  .map((value) => ApprovalRequest.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          approvalRequests: (json_['approvalRequests'] as core.List?)
+              ?.map((value) => ApprovalRequest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 

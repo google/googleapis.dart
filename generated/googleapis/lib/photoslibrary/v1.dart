@@ -1160,11 +1160,9 @@ class BatchAddMediaItemsToAlbumRequest {
 
   BatchAddMediaItemsToAlbumRequest.fromJson(core.Map json_)
       : this(
-          mediaItemIds: json_.containsKey('mediaItemIds')
-              ? (json_['mediaItemIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          mediaItemIds: (json_['mediaItemIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1215,12 +1213,10 @@ class BatchCreateMediaItemsRequest {
               ? AlbumPosition.fromJson(
                   json_['albumPosition'] as core.Map<core.String, core.dynamic>)
               : null,
-          newMediaItems: json_.containsKey('newMediaItems')
-              ? (json_['newMediaItems'] as core.List)
-                  .map((value) => NewMediaItem.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          newMediaItems: (json_['newMediaItems'] as core.List?)
+              ?.map((value) => NewMediaItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1243,12 +1239,10 @@ class BatchCreateMediaItemsResponse {
 
   BatchCreateMediaItemsResponse.fromJson(core.Map json_)
       : this(
-          newMediaItemResults: json_.containsKey('newMediaItemResults')
-              ? (json_['newMediaItemResults'] as core.List)
-                  .map((value) => NewMediaItemResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          newMediaItemResults: (json_['newMediaItemResults'] as core.List?)
+              ?.map((value) => NewMediaItemResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1274,12 +1268,10 @@ class BatchGetMediaItemsResponse {
 
   BatchGetMediaItemsResponse.fromJson(core.Map json_)
       : this(
-          mediaItemResults: json_.containsKey('mediaItemResults')
-              ? (json_['mediaItemResults'] as core.List)
-                  .map((value) => MediaItemResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          mediaItemResults: (json_['mediaItemResults'] as core.List?)
+              ?.map((value) => MediaItemResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1303,11 +1295,9 @@ class BatchRemoveMediaItemsFromAlbumRequest {
 
   BatchRemoveMediaItemsFromAlbumRequest.fromJson(core.Map json_)
       : this(
-          mediaItemIds: json_.containsKey('mediaItemIds')
-              ? (json_['mediaItemIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          mediaItemIds: (json_['mediaItemIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1353,17 +1343,13 @@ class ContentFilter {
   ContentFilter.fromJson(core.Map json_)
       : this(
           excludedContentCategories:
-              json_.containsKey('excludedContentCategories')
-                  ? (json_['excludedContentCategories'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
+              (json_['excludedContentCategories'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           includedContentCategories:
-              json_.containsKey('includedContentCategories')
-                  ? (json_['includedContentCategories'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
+              (json_['includedContentCategories'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1496,18 +1482,14 @@ class DateFilter {
 
   DateFilter.fromJson(core.Map json_)
       : this(
-          dates: json_.containsKey('dates')
-              ? (json_['dates'] as core.List)
-                  .map((value) => Date.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          ranges: json_.containsKey('ranges')
-              ? (json_['ranges'] as core.List)
-                  .map((value) => DateRange.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          dates: (json_['dates'] as core.List?)
+              ?.map((value) =>
+                  Date.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          ranges: (json_['ranges'] as core.List?)
+              ?.map((value) => DateRange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1584,11 +1566,9 @@ class FeatureFilter {
 
   FeatureFilter.fromJson(core.Map json_)
       : this(
-          includedFeatures: json_.containsKey('includedFeatures')
-              ? (json_['includedFeatures'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          includedFeatures: (json_['includedFeatures'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1769,12 +1749,10 @@ class ListAlbumsResponse {
 
   ListAlbumsResponse.fromJson(core.Map json_)
       : this(
-          albums: json_.containsKey('albums')
-              ? (json_['albums'] as core.List)
-                  .map((value) => Album.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          albums: (json_['albums'] as core.List?)
+              ?.map((value) =>
+                  Album.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1806,12 +1784,10 @@ class ListMediaItemsResponse {
 
   ListMediaItemsResponse.fromJson(core.Map json_)
       : this(
-          mediaItems: json_.containsKey('mediaItems')
-              ? (json_['mediaItems'] as core.List)
-                  .map((value) => MediaItem.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          mediaItems: (json_['mediaItems'] as core.List?)
+              ?.map((value) => MediaItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1843,12 +1819,10 @@ class ListSharedAlbumsResponse {
   ListSharedAlbumsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          sharedAlbums: json_.containsKey('sharedAlbums')
-              ? (json_['sharedAlbums'] as core.List)
-                  .map((value) => Album.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          sharedAlbums: (json_['sharedAlbums'] as core.List?)
+              ?.map((value) =>
+                  Album.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2139,11 +2113,9 @@ class MediaTypeFilter {
 
   MediaTypeFilter.fromJson(core.Map json_)
       : this(
-          mediaTypes: json_.containsKey('mediaTypes')
-              ? (json_['mediaTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          mediaTypes: (json_['mediaTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2421,12 +2393,10 @@ class SearchMediaItemsResponse {
 
   SearchMediaItemsResponse.fromJson(core.Map json_)
       : this(
-          mediaItems: json_.containsKey('mediaItems')
-              ? (json_['mediaItems'] as core.List)
-                  .map((value) => MediaItem.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          mediaItems: (json_['mediaItems'] as core.List?)
+              ?.map((value) => MediaItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 

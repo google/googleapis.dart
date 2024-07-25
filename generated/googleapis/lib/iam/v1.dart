@@ -5406,12 +5406,10 @@ class AccessRestrictions {
 
   AccessRestrictions.fromJson(core.Map json_)
       : this(
-          allowedServices: json_.containsKey('allowedServices')
-              ? (json_['allowedServices'] as core.List)
-                  .map((value) => ServiceConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          allowedServices: (json_['allowedServices'] as core.List?)
+              ?.map((value) => ServiceConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           disableProgrammaticSignin:
               json_['disableProgrammaticSignin'] as core.bool?,
         );
@@ -5457,12 +5455,10 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
       : this(
-          auditLogConfigs: json_.containsKey('auditLogConfigs')
-              ? (json_['auditLogConfigs'] as core.List)
-                  .map((value) => AuditLogConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+              ?.map((value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           service: json_['service'] as core.String?,
         );
 
@@ -5614,11 +5610,9 @@ class Binding {
               ? Expr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -6175,11 +6169,9 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig {
 
   GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig.fromJson(core.Map json_)
       : this(
-          additionalScopes: json_.containsKey('additionalScopes')
-              ? (json_['additionalScopes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          additionalScopes: (json_['additionalScopes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           assertionClaimsBehavior:
               json_['assertionClaimsBehavior'] as core.String?,
           responseType: json_['responseType'] as core.String?,
@@ -6348,12 +6340,10 @@ class LintPolicyResponse {
 
   LintPolicyResponse.fromJson(core.Map json_)
       : this(
-          lintResults: json_.containsKey('lintResults')
-              ? (json_['lintResults'] as core.List)
-                  .map((value) => LintResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          lintResults: (json_['lintResults'] as core.List?)
+              ?.map((value) => LintResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6457,12 +6447,11 @@ class ListOauthClientCredentialsResponse {
 
   ListOauthClientCredentialsResponse.fromJson(core.Map json_)
       : this(
-          oauthClientCredentials: json_.containsKey('oauthClientCredentials')
-              ? (json_['oauthClientCredentials'] as core.List)
-                  .map((value) => OauthClientCredential.fromJson(
+          oauthClientCredentials:
+              (json_['oauthClientCredentials'] as core.List?)
+                  ?.map((value) => OauthClientCredential.fromJson(
                       value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6491,12 +6480,10 @@ class ListOauthClientsResponse {
   ListOauthClientsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          oauthClients: json_.containsKey('oauthClients')
-              ? (json_['oauthClients'] as core.List)
-                  .map((value) => OauthClient.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          oauthClients: (json_['oauthClients'] as core.List?)
+              ?.map((value) => OauthClient.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6522,12 +6509,10 @@ class ListRolesResponse {
   ListRolesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          roles: json_.containsKey('roles')
-              ? (json_['roles'] as core.List)
-                  .map((value) => Role.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          roles: (json_['roles'] as core.List?)
+              ?.map((value) =>
+                  Role.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6547,12 +6532,10 @@ class ListServiceAccountKeysResponse {
 
   ListServiceAccountKeysResponse.fromJson(core.Map json_)
       : this(
-          keys: json_.containsKey('keys')
-              ? (json_['keys'] as core.List)
-                  .map((value) => ServiceAccountKey.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          keys: (json_['keys'] as core.List?)
+              ?.map((value) => ServiceAccountKey.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6576,12 +6559,10 @@ class ListServiceAccountsResponse {
 
   ListServiceAccountsResponse.fromJson(core.Map json_)
       : this(
-          accounts: json_.containsKey('accounts')
-              ? (json_['accounts'] as core.List)
-                  .map((value) => ServiceAccount.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          accounts: (json_['accounts'] as core.List?)
+              ?.map((value) => ServiceAccount.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -6610,12 +6591,10 @@ class ListWorkforcePoolProviderKeysResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           workforcePoolProviderKeys:
-              json_.containsKey('workforcePoolProviderKeys')
-                  ? (json_['workforcePoolProviderKeys'] as core.List)
-                      .map((value) => WorkforcePoolProviderKey.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
+              (json_['workforcePoolProviderKeys'] as core.List?)
+                  ?.map((value) => WorkforcePoolProviderKey.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6643,12 +6622,11 @@ class ListWorkforcePoolProvidersResponse {
   ListWorkforcePoolProvidersResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          workforcePoolProviders: json_.containsKey('workforcePoolProviders')
-              ? (json_['workforcePoolProviders'] as core.List)
-                  .map((value) => WorkforcePoolProvider.fromJson(
+          workforcePoolProviders:
+              (json_['workforcePoolProviders'] as core.List?)
+                  ?.map((value) => WorkforcePoolProvider.fromJson(
                       value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6676,12 +6654,10 @@ class ListWorkforcePoolsResponse {
   ListWorkforcePoolsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          workforcePools: json_.containsKey('workforcePools')
-              ? (json_['workforcePools'] as core.List)
-                  .map((value) => WorkforcePool.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          workforcePools: (json_['workforcePools'] as core.List?)
+              ?.map((value) => WorkforcePool.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6709,12 +6685,10 @@ class ListWorkloadIdentityPoolProviderKeysResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           workloadIdentityPoolProviderKeys:
-              json_.containsKey('workloadIdentityPoolProviderKeys')
-                  ? (json_['workloadIdentityPoolProviderKeys'] as core.List)
-                      .map((value) => WorkloadIdentityPoolProviderKey.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
+              (json_['workloadIdentityPoolProviderKeys'] as core.List?)
+                  ?.map((value) => WorkloadIdentityPoolProviderKey.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6743,12 +6717,10 @@ class ListWorkloadIdentityPoolProvidersResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           workloadIdentityPoolProviders:
-              json_.containsKey('workloadIdentityPoolProviders')
-                  ? (json_['workloadIdentityPoolProviders'] as core.List)
-                      .map((value) => WorkloadIdentityPoolProvider.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
+              (json_['workloadIdentityPoolProviders'] as core.List?)
+                  ?.map((value) => WorkloadIdentityPoolProvider.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6776,12 +6748,10 @@ class ListWorkloadIdentityPoolsResponse {
   ListWorkloadIdentityPoolsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          workloadIdentityPools: json_.containsKey('workloadIdentityPools')
-              ? (json_['workloadIdentityPools'] as core.List)
-                  .map((value) => WorkloadIdentityPool.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          workloadIdentityPools: (json_['workloadIdentityPools'] as core.List?)
+              ?.map((value) => WorkloadIdentityPool.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6897,21 +6867,15 @@ class OauthClient {
 
   OauthClient.fromJson(core.Map json_)
       : this(
-          allowedGrantTypes: json_.containsKey('allowedGrantTypes')
-              ? (json_['allowedGrantTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          allowedRedirectUris: json_.containsKey('allowedRedirectUris')
-              ? (json_['allowedRedirectUris'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          allowedScopes: json_.containsKey('allowedScopes')
-              ? (json_['allowedScopes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          allowedGrantTypes: (json_['allowedGrantTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          allowedRedirectUris: (json_['allowedRedirectUris'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          allowedScopes: (json_['allowedScopes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           clientId: json_['clientId'] as core.String?,
           clientType: json_['clientType'] as core.String?,
           description: json_['description'] as core.String?,
@@ -7040,11 +7004,9 @@ class Oidc {
 
   Oidc.fromJson(core.Map json_)
       : this(
-          allowedAudiences: json_.containsKey('allowedAudiences')
-              ? (json_['allowedAudiences'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          allowedAudiences: (json_['allowedAudiences'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           issuerUri: json_['issuerUri'] as core.String?,
           jwksJson: json_['jwksJson'] as core.String?,
         );
@@ -7373,18 +7335,14 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
       : this(
-          auditConfigs: json_.containsKey('auditConfigs')
-              ? (json_['auditConfigs'] as core.List)
-                  .map((value) => AuditConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          bindings: json_.containsKey('bindings')
-              ? (json_['bindings'] as core.List)
-                  .map((value) => Binding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditConfigs: (json_['auditConfigs'] as core.List?)
+              ?.map((value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
         );
@@ -7433,12 +7391,10 @@ class QueryAuditableServicesResponse {
 
   QueryAuditableServicesResponse.fromJson(core.Map json_)
       : this(
-          services: json_.containsKey('services')
-              ? (json_['services'] as core.List)
-                  .map((value) => AuditableService.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          services: (json_['services'] as core.List?)
+              ?.map((value) => AuditableService.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7513,12 +7469,10 @@ class QueryGrantableRolesResponse {
   QueryGrantableRolesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          roles: json_.containsKey('roles')
-              ? (json_['roles'] as core.List)
-                  .map((value) => Role.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          roles: (json_['roles'] as core.List?)
+              ?.map((value) =>
+                  Role.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7584,12 +7538,10 @@ class QueryTestablePermissionsResponse {
   QueryTestablePermissionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          permissions: json_.containsKey('permissions')
-              ? (json_['permissions'] as core.List)
-                  .map((value) => Permission.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          permissions: (json_['permissions'] as core.List?)
+              ?.map((value) => Permission.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7671,11 +7623,9 @@ class Role {
           deleted: json_['deleted'] as core.bool?,
           description: json_['description'] as core.String?,
           etag: json_['etag'] as core.String?,
-          includedPermissions: json_.containsKey('includedPermissions')
-              ? (json_['includedPermissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          includedPermissions: (json_['includedPermissions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           name: json_['name'] as core.String?,
           stage: json_['stage'] as core.String?,
           title: json_['title'] as core.String?,
@@ -8020,12 +7970,10 @@ class ServiceAccountKey {
           description: json_['description'] as core.String?,
           disableReason: json_['disableReason'] as core.String?,
           disabled: json_['disabled'] as core.bool?,
-          extendedStatus: json_.containsKey('extendedStatus')
-              ? (json_['extendedStatus'] as core.List)
-                  .map((value) => ExtendedStatus.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          extendedStatus: (json_['extendedStatus'] as core.List?)
+              ?.map((value) => ExtendedStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           keyAlgorithm: json_['keyAlgorithm'] as core.String?,
           keyOrigin: json_['keyOrigin'] as core.String?,
           keyType: json_['keyType'] as core.String?,
@@ -8660,16 +8608,14 @@ class WorkforcePoolProvider {
   WorkforcePoolProvider.fromJson(core.Map json_)
       : this(
           attributeCondition: json_['attributeCondition'] as core.String?,
-          attributeMapping: json_.containsKey('attributeMapping')
-              ? (json_['attributeMapping']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          attributeMapping: (json_['attributeMapping']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           description: json_['description'] as core.String?,
           disabled: json_['disabled'] as core.bool?,
           displayName: json_['displayName'] as core.String?,
@@ -8988,16 +8934,14 @@ class WorkloadIdentityPoolProvider {
   WorkloadIdentityPoolProvider.fromJson(core.Map json_)
       : this(
           attributeCondition: json_['attributeCondition'] as core.String?,
-          attributeMapping: json_.containsKey('attributeMapping')
-              ? (json_['attributeMapping']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          attributeMapping: (json_['attributeMapping']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           aws: json_.containsKey('aws')
               ? Aws.fromJson(
                   json_['aws'] as core.Map<core.String, core.dynamic>)

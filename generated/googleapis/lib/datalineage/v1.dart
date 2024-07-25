@@ -1130,11 +1130,9 @@ class GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest {
   GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest.fromJson(
       core.Map json_)
       : this(
-          links: json_.containsKey('links')
-              ? (json_['links'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          links: (json_['links'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           pageSize: json_['pageSize'] as core.int?,
           pageToken: json_['pageToken'] as core.String?,
         );
@@ -1166,13 +1164,11 @@ class GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse {
       core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          processLinks: json_.containsKey('processLinks')
-              ? (json_['processLinks'] as core.List)
-                  .map((value) =>
-                      GoogleCloudDatacatalogLineageV1ProcessLinks.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          processLinks: (json_['processLinks'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDatacatalogLineageV1ProcessLinks.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1288,13 +1284,11 @@ class GoogleCloudDatacatalogLineageV1LineageEvent {
   GoogleCloudDatacatalogLineageV1LineageEvent.fromJson(core.Map json_)
       : this(
           endTime: json_['endTime'] as core.String?,
-          links: json_.containsKey('links')
-              ? (json_['links'] as core.List)
-                  .map((value) =>
-                      GoogleCloudDatacatalogLineageV1EventLink.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          links: (json_['links'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDatacatalogLineageV1EventLink.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           name: json_['name'] as core.String?,
           startTime: json_['startTime'] as core.String?,
         );
@@ -1383,13 +1377,11 @@ class GoogleCloudDatacatalogLineageV1ListLineageEventsResponse {
   GoogleCloudDatacatalogLineageV1ListLineageEventsResponse.fromJson(
       core.Map json_)
       : this(
-          lineageEvents: json_.containsKey('lineageEvents')
-              ? (json_['lineageEvents'] as core.List)
-                  .map((value) =>
-                      GoogleCloudDatacatalogLineageV1LineageEvent.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          lineageEvents: (json_['lineageEvents'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDatacatalogLineageV1LineageEvent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1418,13 +1410,10 @@ class GoogleCloudDatacatalogLineageV1ListProcessesResponse {
   GoogleCloudDatacatalogLineageV1ListProcessesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          processes: json_.containsKey('processes')
-              ? (json_['processes'] as core.List)
-                  .map((value) =>
-                      GoogleCloudDatacatalogLineageV1Process.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          processes: (json_['processes'] as core.List?)
+              ?.map((value) => GoogleCloudDatacatalogLineageV1Process.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1452,12 +1441,10 @@ class GoogleCloudDatacatalogLineageV1ListRunsResponse {
   GoogleCloudDatacatalogLineageV1ListRunsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          runs: json_.containsKey('runs')
-              ? (json_['runs'] as core.List)
-                  .map((value) => GoogleCloudDatacatalogLineageV1Run.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          runs: (json_['runs'] as core.List?)
+              ?.map((value) => GoogleCloudDatacatalogLineageV1Run.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1627,13 +1614,11 @@ class GoogleCloudDatacatalogLineageV1ProcessLinks {
 
   GoogleCloudDatacatalogLineageV1ProcessLinks.fromJson(core.Map json_)
       : this(
-          links: json_.containsKey('links')
-              ? (json_['links'] as core.List)
-                  .map((value) =>
-                      GoogleCloudDatacatalogLineageV1ProcessLinkInfo.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          links: (json_['links'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDatacatalogLineageV1ProcessLinkInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           process: json_['process'] as core.String?,
         );
 
@@ -1671,11 +1656,9 @@ class GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse {
   GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse.fromJson(
       core.Map json_)
       : this(
-          lineageEvents: json_.containsKey('lineageEvents')
-              ? (json_['lineageEvents'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          lineageEvents: (json_['lineageEvents'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           process: json_['process'] as core.String?,
           run: json_['run'] as core.String?,
         );
@@ -1855,12 +1838,10 @@ class GoogleCloudDatacatalogLineageV1SearchLinksResponse {
 
   GoogleCloudDatacatalogLineageV1SearchLinksResponse.fromJson(core.Map json_)
       : this(
-          links: json_.containsKey('links')
-              ? (json_['links'] as core.List)
-                  .map((value) => GoogleCloudDatacatalogLineageV1Link.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          links: (json_['links'] as core.List?)
+              ?.map((value) => GoogleCloudDatacatalogLineageV1Link.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1889,12 +1870,10 @@ class GoogleLongrunningListOperationsResponse {
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => GoogleLongrunningOperation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => GoogleLongrunningOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

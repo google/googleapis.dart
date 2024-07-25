@@ -264,28 +264,21 @@ class AutoText {
 
   AutoText.fromJson(core.Map json_)
       : this(
-          suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
-              ? (json_['suggestedDeletionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedInsertionIds: json_.containsKey('suggestedInsertionIds')
-              ? (json_['suggestedInsertionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedTextStyleChanges:
-              json_.containsKey('suggestedTextStyleChanges')
-                  ? (json_['suggestedTextStyleChanges']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        SuggestedTextStyle.fromJson(
-                            value as core.Map<core.String, core.dynamic>),
-                      ),
-                    )
-                  : null,
+          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              SuggestedTextStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           textStyle: json_.containsKey('textStyle')
               ? TextStyle.fromJson(
                   json_['textStyle'] as core.Map<core.String, core.dynamic>)
@@ -367,12 +360,10 @@ class BatchUpdateDocumentRequest {
 
   BatchUpdateDocumentRequest.fromJson(core.Map json_)
       : this(
-          requests: json_.containsKey('requests')
-              ? (json_['requests'] as core.List)
-                  .map((value) => Request.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          requests: (json_['requests'] as core.List?)
+              ?.map((value) => Request.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           writeControl: json_.containsKey('writeControl')
               ? WriteControl.fromJson(
                   json_['writeControl'] as core.Map<core.String, core.dynamic>)
@@ -408,12 +399,10 @@ class BatchUpdateDocumentResponse {
   BatchUpdateDocumentResponse.fromJson(core.Map json_)
       : this(
           documentId: json_['documentId'] as core.String?,
-          replies: json_.containsKey('replies')
-              ? (json_['replies'] as core.List)
-                  .map((value) => Response.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          replies: (json_['replies'] as core.List?)
+              ?.map((value) => Response.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           writeControl: json_.containsKey('writeControl')
               ? WriteControl.fromJson(
                   json_['writeControl'] as core.Map<core.String, core.dynamic>)
@@ -443,12 +432,10 @@ class Body {
 
   Body.fromJson(core.Map json_)
       : this(
-          content: json_.containsKey('content')
-              ? (json_['content'] as core.List)
-                  .map((value) => StructuralElement.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          content: (json_['content'] as core.List?)
+              ?.map((value) => StructuralElement.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -590,28 +577,21 @@ class ColumnBreak {
 
   ColumnBreak.fromJson(core.Map json_)
       : this(
-          suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
-              ? (json_['suggestedDeletionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedInsertionIds: json_.containsKey('suggestedInsertionIds')
-              ? (json_['suggestedInsertionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedTextStyleChanges:
-              json_.containsKey('suggestedTextStyleChanges')
-                  ? (json_['suggestedTextStyleChanges']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        SuggestedTextStyle.fromJson(
-                            value as core.Map<core.String, core.dynamic>),
-                      ),
-                    )
-                  : null,
+          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              SuggestedTextStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           textStyle: json_.containsKey('textStyle')
               ? TextStyle.fromJson(
                   json_['textStyle'] as core.Map<core.String, core.dynamic>)
@@ -1437,101 +1417,83 @@ class Document {
               ? DocumentStyle.fromJson(
                   json_['documentStyle'] as core.Map<core.String, core.dynamic>)
               : null,
-          footers: json_.containsKey('footers')
-              ? (json_['footers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    Footer.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          footnotes: json_.containsKey('footnotes')
-              ? (json_['footnotes'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    Footnote.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          headers: json_.containsKey('headers')
-              ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    Header.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          inlineObjects: json_.containsKey('inlineObjects')
-              ? (json_['inlineObjects'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    InlineObject.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          lists: json_.containsKey('lists')
-              ? (json_['lists'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    List.fromJson(value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          namedRanges: json_.containsKey('namedRanges')
-              ? (json_['namedRanges'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    NamedRanges.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          footers:
+              (json_['footers'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              Footer.fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          footnotes:
+              (json_['footnotes'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              Footnote.fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          headers:
+              (json_['headers'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              Header.fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          inlineObjects:
+              (json_['inlineObjects'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              InlineObject.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          lists: (json_['lists'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              List.fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          namedRanges:
+              (json_['namedRanges'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              NamedRanges.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           namedStyles: json_.containsKey('namedStyles')
               ? NamedStyles.fromJson(
                   json_['namedStyles'] as core.Map<core.String, core.dynamic>)
               : null,
-          positionedObjects: json_.containsKey('positionedObjects')
-              ? (json_['positionedObjects']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    PositionedObject.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          positionedObjects: (json_['positionedObjects']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              PositionedObject.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           revisionId: json_['revisionId'] as core.String?,
-          suggestedDocumentStyleChanges:
-              json_.containsKey('suggestedDocumentStyleChanges')
-                  ? (json_['suggestedDocumentStyleChanges']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        SuggestedDocumentStyle.fromJson(
-                            value as core.Map<core.String, core.dynamic>),
-                      ),
-                    )
-                  : null,
-          suggestedNamedStylesChanges:
-              json_.containsKey('suggestedNamedStylesChanges')
-                  ? (json_['suggestedNamedStylesChanges']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        SuggestedNamedStyles.fromJson(
-                            value as core.Map<core.String, core.dynamic>),
-                      ),
-                    )
-                  : null,
+          suggestedDocumentStyleChanges: (json_['suggestedDocumentStyleChanges']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              SuggestedDocumentStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          suggestedNamedStylesChanges: (json_['suggestedNamedStylesChanges']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              SuggestedNamedStyles.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           suggestionsViewMode: json_['suggestionsViewMode'] as core.String?,
           title: json_['title'] as core.String?,
         );
@@ -2339,16 +2301,12 @@ class Equation {
 
   Equation.fromJson(core.Map json_)
       : this(
-          suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
-              ? (json_['suggestedDeletionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedInsertionIds: json_.containsKey('suggestedInsertionIds')
-              ? (json_['suggestedInsertionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2376,12 +2334,10 @@ class Footer {
 
   Footer.fromJson(core.Map json_)
       : this(
-          content: json_.containsKey('content')
-              ? (json_['content'] as core.List)
-                  .map((value) => StructuralElement.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          content: (json_['content'] as core.List?)
+              ?.map((value) => StructuralElement.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           footerId: json_['footerId'] as core.String?,
         );
 
@@ -2408,12 +2364,10 @@ class Footnote {
 
   Footnote.fromJson(core.Map json_)
       : this(
-          content: json_.containsKey('content')
-              ? (json_['content'] as core.List)
-                  .map((value) => StructuralElement.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          content: (json_['content'] as core.List?)
+              ?.map((value) => StructuralElement.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           footnoteId: json_['footnoteId'] as core.String?,
         );
 
@@ -2466,28 +2420,21 @@ class FootnoteReference {
       : this(
           footnoteId: json_['footnoteId'] as core.String?,
           footnoteNumber: json_['footnoteNumber'] as core.String?,
-          suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
-              ? (json_['suggestedDeletionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedInsertionIds: json_.containsKey('suggestedInsertionIds')
-              ? (json_['suggestedInsertionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedTextStyleChanges:
-              json_.containsKey('suggestedTextStyleChanges')
-                  ? (json_['suggestedTextStyleChanges']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        SuggestedTextStyle.fromJson(
-                            value as core.Map<core.String, core.dynamic>),
-                      ),
-                    )
-                  : null,
+          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              SuggestedTextStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           textStyle: json_.containsKey('textStyle')
               ? TextStyle.fromJson(
                   json_['textStyle'] as core.Map<core.String, core.dynamic>)
@@ -2524,12 +2471,10 @@ class Header {
 
   Header.fromJson(core.Map json_)
       : this(
-          content: json_.containsKey('content')
-              ? (json_['content'] as core.List)
-                  .map((value) => StructuralElement.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          content: (json_['content'] as core.List?)
+              ?.map((value) => StructuralElement.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           headerId: json_['headerId'] as core.String?,
         );
 
@@ -2572,28 +2517,21 @@ class HorizontalRule {
 
   HorizontalRule.fromJson(core.Map json_)
       : this(
-          suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
-              ? (json_['suggestedDeletionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedInsertionIds: json_.containsKey('suggestedInsertionIds')
-              ? (json_['suggestedInsertionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedTextStyleChanges:
-              json_.containsKey('suggestedTextStyleChanges')
-                  ? (json_['suggestedTextStyleChanges']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        SuggestedTextStyle.fromJson(
-                            value as core.Map<core.String, core.dynamic>),
-                      ),
-                    )
-                  : null,
+          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              SuggestedTextStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           textStyle: json_.containsKey('textStyle')
               ? TextStyle.fromJson(
                   json_['textStyle'] as core.Map<core.String, core.dynamic>)
@@ -2795,23 +2733,19 @@ class InlineObject {
                   as core.Map<core.String, core.dynamic>)
               : null,
           objectId: json_['objectId'] as core.String?,
-          suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
-              ? (json_['suggestedDeletionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           suggestedInlineObjectPropertiesChanges:
-              json_.containsKey('suggestedInlineObjectPropertiesChanges')
-                  ? (json_['suggestedInlineObjectPropertiesChanges']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        SuggestedInlineObjectProperties.fromJson(
-                            value as core.Map<core.String, core.dynamic>),
-                      ),
-                    )
-                  : null,
+              (json_['suggestedInlineObjectPropertiesChanges']
+                      as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              SuggestedInlineObjectProperties.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           suggestedInsertionId: json_['suggestedInsertionId'] as core.String?,
         );
 
@@ -2867,28 +2801,21 @@ class InlineObjectElement {
   InlineObjectElement.fromJson(core.Map json_)
       : this(
           inlineObjectId: json_['inlineObjectId'] as core.String?,
-          suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
-              ? (json_['suggestedDeletionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedInsertionIds: json_.containsKey('suggestedInsertionIds')
-              ? (json_['suggestedInsertionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedTextStyleChanges:
-              json_.containsKey('suggestedTextStyleChanges')
-                  ? (json_['suggestedTextStyleChanges']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        SuggestedTextStyle.fromJson(
-                            value as core.Map<core.String, core.dynamic>),
-                      ),
-                    )
-                  : null,
+          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              SuggestedTextStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           textStyle: json_.containsKey('textStyle')
               ? TextStyle.fromJson(
                   json_['textStyle'] as core.Map<core.String, core.dynamic>)
@@ -3462,24 +3389,20 @@ class List {
               ? ListProperties.fromJson(json_['listProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
-              ? (json_['suggestedDeletionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           suggestedInsertionId: json_['suggestedInsertionId'] as core.String?,
           suggestedListPropertiesChanges:
-              json_.containsKey('suggestedListPropertiesChanges')
-                  ? (json_['suggestedListPropertiesChanges']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        SuggestedListProperties.fromJson(
-                            value as core.Map<core.String, core.dynamic>),
-                      ),
-                    )
-                  : null,
+              (json_['suggestedListPropertiesChanges']
+                      as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              SuggestedListProperties.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3510,12 +3433,10 @@ class ListProperties {
 
   ListProperties.fromJson(core.Map json_)
       : this(
-          nestingLevels: json_.containsKey('nestingLevels')
-              ? (json_['nestingLevels'] as core.List)
-                  .map((value) => NestingLevel.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          nestingLevels: (json_['nestingLevels'] as core.List?)
+              ?.map((value) => NestingLevel.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3542,12 +3463,10 @@ class ListPropertiesSuggestionState {
   ListPropertiesSuggestionState.fromJson(core.Map json_)
       : this(
           nestingLevelsSuggestionStates:
-              json_.containsKey('nestingLevelsSuggestionStates')
-                  ? (json_['nestingLevelsSuggestionStates'] as core.List)
-                      .map((value) => NestingLevelSuggestionState.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
+              (json_['nestingLevelsSuggestionStates'] as core.List?)
+                  ?.map((value) => NestingLevelSuggestionState.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3645,12 +3564,10 @@ class NamedRange {
       : this(
           name: json_['name'] as core.String?,
           namedRangeId: json_['namedRangeId'] as core.String?,
-          ranges: json_.containsKey('ranges')
-              ? (json_['ranges'] as core.List)
-                  .map((value) => Range.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          ranges: (json_['ranges'] as core.List?)
+              ?.map((value) =>
+                  Range.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3676,12 +3593,10 @@ class NamedRanges {
   NamedRanges.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
-          namedRanges: json_.containsKey('namedRanges')
-              ? (json_['namedRanges'] as core.List)
-                  .map((value) => NamedRange.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          namedRanges: (json_['namedRanges'] as core.List?)
+              ?.map((value) => NamedRange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3816,12 +3731,10 @@ class NamedStyles {
 
   NamedStyles.fromJson(core.Map json_)
       : this(
-          styles: json_.containsKey('styles')
-              ? (json_['styles'] as core.List)
-                  .map((value) => NamedStyle.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          styles: (json_['styles'] as core.List?)
+              ?.map((value) => NamedStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3844,12 +3757,11 @@ class NamedStylesSuggestionState {
 
   NamedStylesSuggestionState.fromJson(core.Map json_)
       : this(
-          stylesSuggestionStates: json_.containsKey('stylesSuggestionStates')
-              ? (json_['stylesSuggestionStates'] as core.List)
-                  .map((value) => NamedStyleSuggestionState.fromJson(
+          stylesSuggestionStates:
+              (json_['stylesSuggestionStates'] as core.List?)
+                  ?.map((value) => NamedStyleSuggestionState.fromJson(
                       value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4082,11 +3994,9 @@ class ObjectReferences {
 
   ObjectReferences.fromJson(core.Map json_)
       : this(
-          objectIds: json_.containsKey('objectIds')
-              ? (json_['objectIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          objectIds: (json_['objectIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4153,28 +4063,21 @@ class PageBreak {
 
   PageBreak.fromJson(core.Map json_)
       : this(
-          suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
-              ? (json_['suggestedDeletionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedInsertionIds: json_.containsKey('suggestedInsertionIds')
-              ? (json_['suggestedInsertionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedTextStyleChanges:
-              json_.containsKey('suggestedTextStyleChanges')
-                  ? (json_['suggestedTextStyleChanges']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        SuggestedTextStyle.fromJson(
-                            value as core.Map<core.String, core.dynamic>),
-                      ),
-                    )
-                  : null,
+          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              SuggestedTextStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           textStyle: json_.containsKey('textStyle')
               ? TextStyle.fromJson(
                   json_['textStyle'] as core.Map<core.String, core.dynamic>)
@@ -4239,56 +4142,45 @@ class Paragraph {
               ? Bullet.fromJson(
                   json_['bullet'] as core.Map<core.String, core.dynamic>)
               : null,
-          elements: json_.containsKey('elements')
-              ? (json_['elements'] as core.List)
-                  .map((value) => ParagraphElement.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          elements: (json_['elements'] as core.List?)
+              ?.map((value) => ParagraphElement.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           paragraphStyle: json_.containsKey('paragraphStyle')
               ? ParagraphStyle.fromJson(json_['paragraphStyle']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          positionedObjectIds: json_.containsKey('positionedObjectIds')
-              ? (json_['positionedObjectIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedBulletChanges: json_.containsKey('suggestedBulletChanges')
-              ? (json_['suggestedBulletChanges']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    SuggestedBullet.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          positionedObjectIds: (json_['positionedObjectIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedBulletChanges: (json_['suggestedBulletChanges']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              SuggestedBullet.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           suggestedParagraphStyleChanges:
-              json_.containsKey('suggestedParagraphStyleChanges')
-                  ? (json_['suggestedParagraphStyleChanges']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        SuggestedParagraphStyle.fromJson(
-                            value as core.Map<core.String, core.dynamic>),
-                      ),
-                    )
-                  : null,
-          suggestedPositionedObjectIds:
-              json_.containsKey('suggestedPositionedObjectIds')
-                  ? (json_['suggestedPositionedObjectIds']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        ObjectReferences.fromJson(
-                            value as core.Map<core.String, core.dynamic>),
-                      ),
-                    )
-                  : null,
+              (json_['suggestedParagraphStyleChanges']
+                      as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              SuggestedParagraphStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          suggestedPositionedObjectIds: (json_['suggestedPositionedObjectIds']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              ObjectReferences.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4734,12 +4626,10 @@ class ParagraphStyle {
                   json_['spaceBelow'] as core.Map<core.String, core.dynamic>)
               : null,
           spacingMode: json_['spacingMode'] as core.String?,
-          tabStops: json_.containsKey('tabStops')
-              ? (json_['tabStops'] as core.List)
-                  .map((value) => TabStop.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tabStops: (json_['tabStops'] as core.List?)
+              ?.map((value) => TabStop.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4994,28 +4884,21 @@ class Person {
               ? PersonProperties.fromJson(json_['personProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
-              ? (json_['suggestedDeletionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedInsertionIds: json_.containsKey('suggestedInsertionIds')
-              ? (json_['suggestedInsertionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedTextStyleChanges:
-              json_.containsKey('suggestedTextStyleChanges')
-                  ? (json_['suggestedTextStyleChanges']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        SuggestedTextStyle.fromJson(
-                            value as core.Map<core.String, core.dynamic>),
-                      ),
-                    )
-                  : null,
+          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              SuggestedTextStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           textStyle: json_.containsKey('textStyle')
               ? TextStyle.fromJson(
                   json_['textStyle'] as core.Map<core.String, core.dynamic>)
@@ -5141,24 +5024,20 @@ class PositionedObject {
                       json_['positionedObjectProperties']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
-              ? (json_['suggestedDeletionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           suggestedInsertionId: json_['suggestedInsertionId'] as core.String?,
           suggestedPositionedObjectPropertiesChanges:
-              json_.containsKey('suggestedPositionedObjectPropertiesChanges')
-                  ? (json_['suggestedPositionedObjectPropertiesChanges']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        SuggestedPositionedObjectProperties.fromJson(
-                            value as core.Map<core.String, core.dynamic>),
-                      ),
-                    )
-                  : null,
+              (json_['suggestedPositionedObjectPropertiesChanges']
+                      as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              SuggestedPositionedObjectProperties.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5975,28 +5854,21 @@ class RichLink {
               ? RichLinkProperties.fromJson(json_['richLinkProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
-              ? (json_['suggestedDeletionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedInsertionIds: json_.containsKey('suggestedInsertionIds')
-              ? (json_['suggestedInsertionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedTextStyleChanges:
-              json_.containsKey('suggestedTextStyleChanges')
-                  ? (json_['suggestedTextStyleChanges']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        SuggestedTextStyle.fromJson(
-                            value as core.Map<core.String, core.dynamic>),
-                      ),
-                    )
-                  : null,
+          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              SuggestedTextStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           textStyle: json_.containsKey('textStyle')
               ? TextStyle.fromJson(
                   json_['textStyle'] as core.Map<core.String, core.dynamic>)
@@ -6093,16 +5965,12 @@ class SectionBreak {
               ? SectionStyle.fromJson(
                   json_['sectionStyle'] as core.Map<core.String, core.dynamic>)
               : null,
-          suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
-              ? (json_['suggestedDeletionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedInsertionIds: json_.containsKey('suggestedInsertionIds')
-              ? (json_['suggestedInsertionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6351,12 +6219,10 @@ class SectionStyle {
 
   SectionStyle.fromJson(core.Map json_)
       : this(
-          columnProperties: json_.containsKey('columnProperties')
-              ? (json_['columnProperties'] as core.List)
-                  .map((value) => SectionColumnProperties.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          columnProperties: (json_['columnProperties'] as core.List?)
+              ?.map((value) => SectionColumnProperties.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           columnSeparatorStyle: json_['columnSeparatorStyle'] as core.String?,
           contentDirection: json_['contentDirection'] as core.String?,
           defaultFooterId: json_['defaultFooterId'] as core.String?,
@@ -7140,22 +7006,16 @@ class Table {
       : this(
           columns: json_['columns'] as core.int?,
           rows: json_['rows'] as core.int?,
-          suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
-              ? (json_['suggestedDeletionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedInsertionIds: json_.containsKey('suggestedInsertionIds')
-              ? (json_['suggestedInsertionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          tableRows: json_.containsKey('tableRows')
-              ? (json_['tableRows'] as core.List)
-                  .map((value) => TableRow.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          tableRows: (json_['tableRows'] as core.List?)
+              ?.map((value) => TableRow.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           tableStyle: json_.containsKey('tableStyle')
               ? TableStyle.fromJson(
                   json_['tableStyle'] as core.Map<core.String, core.dynamic>)
@@ -7215,36 +7075,28 @@ class TableCell {
 
   TableCell.fromJson(core.Map json_)
       : this(
-          content: json_.containsKey('content')
-              ? (json_['content'] as core.List)
-                  .map((value) => StructuralElement.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          content: (json_['content'] as core.List?)
+              ?.map((value) => StructuralElement.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           endIndex: json_['endIndex'] as core.int?,
           startIndex: json_['startIndex'] as core.int?,
-          suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
-              ? (json_['suggestedDeletionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedInsertionIds: json_.containsKey('suggestedInsertionIds')
-              ? (json_['suggestedInsertionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           suggestedTableCellStyleChanges:
-              json_.containsKey('suggestedTableCellStyleChanges')
-                  ? (json_['suggestedTableCellStyleChanges']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        SuggestedTableCellStyle.fromJson(
-                            value as core.Map<core.String, core.dynamic>),
-                      ),
-                    )
-                  : null,
+              (json_['suggestedTableCellStyleChanges']
+                      as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              SuggestedTableCellStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           tableCellStyle: json_.containsKey('tableCellStyle')
               ? TableCellStyle.fromJson(json_['tableCellStyle']
                   as core.Map<core.String, core.dynamic>)
@@ -7649,22 +7501,16 @@ class TableOfContents {
 
   TableOfContents.fromJson(core.Map json_)
       : this(
-          content: json_.containsKey('content')
-              ? (json_['content'] as core.List)
-                  .map((value) => StructuralElement.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
-              ? (json_['suggestedDeletionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedInsertionIds: json_.containsKey('suggestedInsertionIds')
-              ? (json_['suggestedInsertionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          content: (json_['content'] as core.List?)
+              ?.map((value) => StructuralElement.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7762,34 +7608,25 @@ class TableRow {
       : this(
           endIndex: json_['endIndex'] as core.int?,
           startIndex: json_['startIndex'] as core.int?,
-          suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
-              ? (json_['suggestedDeletionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedInsertionIds: json_.containsKey('suggestedInsertionIds')
-              ? (json_['suggestedInsertionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedTableRowStyleChanges:
-              json_.containsKey('suggestedTableRowStyleChanges')
-                  ? (json_['suggestedTableRowStyleChanges']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        SuggestedTableRowStyle.fromJson(
-                            value as core.Map<core.String, core.dynamic>),
-                      ),
-                    )
-                  : null,
-          tableCells: json_.containsKey('tableCells')
-              ? (json_['tableCells'] as core.List)
-                  .map((value) => TableCell.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedTableRowStyleChanges: (json_['suggestedTableRowStyleChanges']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              SuggestedTableRowStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          tableCells: (json_['tableCells'] as core.List?)
+              ?.map((value) => TableCell.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           tableRowStyle: json_.containsKey('tableRowStyle')
               ? TableRowStyle.fromJson(
                   json_['tableRowStyle'] as core.Map<core.String, core.dynamic>)
@@ -7886,12 +7723,10 @@ class TableStyle {
 
   TableStyle.fromJson(core.Map json_)
       : this(
-          tableColumnProperties: json_.containsKey('tableColumnProperties')
-              ? (json_['tableColumnProperties'] as core.List)
-                  .map((value) => TableColumnProperties.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tableColumnProperties: (json_['tableColumnProperties'] as core.List?)
+              ?.map((value) => TableColumnProperties.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7937,28 +7772,21 @@ class TextRun {
   TextRun.fromJson(core.Map json_)
       : this(
           content: json_['content'] as core.String?,
-          suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
-              ? (json_['suggestedDeletionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedInsertionIds: json_.containsKey('suggestedInsertionIds')
-              ? (json_['suggestedInsertionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          suggestedTextStyleChanges:
-              json_.containsKey('suggestedTextStyleChanges')
-                  ? (json_['suggestedTextStyleChanges']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        SuggestedTextStyle.fromJson(
-                            value as core.Map<core.String, core.dynamic>),
-                      ),
-                    )
-                  : null,
+          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              SuggestedTextStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           textStyle: json_.containsKey('textStyle')
               ? TextStyle.fromJson(
                   json_['textStyle'] as core.Map<core.String, core.dynamic>)
@@ -8475,11 +8303,9 @@ class UpdateTableColumnPropertiesRequest {
 
   UpdateTableColumnPropertiesRequest.fromJson(core.Map json_)
       : this(
-          columnIndices: json_.containsKey('columnIndices')
-              ? (json_['columnIndices'] as core.List)
-                  .map((value) => value as core.int)
-                  .toList()
-              : null,
+          columnIndices: (json_['columnIndices'] as core.List?)
+              ?.map((value) => value as core.int)
+              .toList(),
           fields: json_['fields'] as core.String?,
           tableColumnProperties: json_.containsKey('tableColumnProperties')
               ? TableColumnProperties.fromJson(json_['tableColumnProperties']
@@ -8532,11 +8358,9 @@ class UpdateTableRowStyleRequest {
   UpdateTableRowStyleRequest.fromJson(core.Map json_)
       : this(
           fields: json_['fields'] as core.String?,
-          rowIndices: json_.containsKey('rowIndices')
-              ? (json_['rowIndices'] as core.List)
-                  .map((value) => value as core.int)
-                  .toList()
-              : null,
+          rowIndices: (json_['rowIndices'] as core.List?)
+              ?.map((value) => value as core.int)
+              .toList(),
           tableRowStyle: json_.containsKey('tableRowStyle')
               ? TableRowStyle.fromJson(
                   json_['tableRowStyle'] as core.Map<core.String, core.dynamic>)

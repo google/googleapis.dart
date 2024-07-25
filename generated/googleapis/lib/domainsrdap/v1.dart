@@ -578,17 +578,13 @@ class Notice {
 
   Notice.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? (json_['description'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          links: json_.containsKey('links')
-              ? (json_['links'] as core.List)
-                  .map((value) => Link.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          description: (json_['description'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          links: (json_['links'] as core.List?)
+              ?.map((value) =>
+                  Link.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           title: json_['title'] as core.String?,
           type: json_['type'] as core.String?,
         );
@@ -641,28 +637,22 @@ class RdapResponse {
 
   RdapResponse.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? (json_['description'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          description: (json_['description'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           errorCode: json_['errorCode'] as core.int?,
           jsonResponse: json_.containsKey('jsonResponse')
               ? HttpBody.fromJson(
                   json_['jsonResponse'] as core.Map<core.String, core.dynamic>)
               : null,
           lang: json_['lang'] as core.String?,
-          notices: json_.containsKey('notices')
-              ? (json_['notices'] as core.List)
-                  .map((value) => Notice.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          rdapConformance: json_.containsKey('rdapConformance')
-              ? (json_['rdapConformance'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          notices: (json_['notices'] as core.List?)
+              ?.map((value) =>
+                  Notice.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          rdapConformance: (json_['rdapConformance'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           title: json_['title'] as core.String?,
         );
 

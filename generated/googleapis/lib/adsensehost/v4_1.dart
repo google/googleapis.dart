@@ -1430,12 +1430,10 @@ class Accounts {
   Accounts.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => Account.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => Account.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
         );
 
@@ -1515,12 +1513,10 @@ class AdClients {
   AdClients.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => AdClient.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => AdClient.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1904,12 +1900,10 @@ class AdUnits {
   AdUnits.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => AdUnit.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) =>
+                  AdUnit.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1977,11 +1971,9 @@ class AssociationSession {
           accountId: json_['accountId'] as core.String?,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
-          productCodes: json_.containsKey('productCodes')
-              ? (json_['productCodes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          productCodes: (json_['productCodes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           redirectUrl: json_['redirectUrl'] as core.String?,
           status: json_['status'] as core.String?,
           userLocale: json_['userLocale'] as core.String?,
@@ -2067,12 +2059,10 @@ class CustomChannels {
   CustomChannels.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => CustomChannel.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => CustomChannel.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2168,36 +2158,26 @@ class Report {
 
   Report.fromJson(core.Map json_)
       : this(
-          averages: json_.containsKey('averages')
-              ? (json_['averages'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          headers: json_.containsKey('headers')
-              ? (json_['headers'] as core.List)
-                  .map((value) => ReportHeaders.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          averages: (json_['averages'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          headers: (json_['headers'] as core.List?)
+              ?.map((value) => ReportHeaders.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
-          rows: json_.containsKey('rows')
-              ? (json_['rows'] as core.List)
-                  .map((value) => (value as core.List)
-                      .map((value) => value as core.String)
-                      .toList())
-                  .toList()
-              : null,
+          rows: (json_['rows'] as core.List?)
+              ?.map((value) => (value as core.List)
+                  .map((value) => value as core.String)
+                  .toList())
+              .toList(),
           totalMatchedRows: json_['totalMatchedRows'] as core.String?,
-          totals: json_.containsKey('totals')
-              ? (json_['totals'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          warnings: json_.containsKey('warnings')
-              ? (json_['warnings'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          totals: (json_['totals'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          warnings: (json_['warnings'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2272,12 +2252,10 @@ class UrlChannels {
   UrlChannels.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => UrlChannel.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => UrlChannel.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
         );

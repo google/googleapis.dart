@@ -745,12 +745,10 @@ class Account {
 
   Account.fromJson(core.Map json_)
       : this(
-          approvals: json_.containsKey('approvals')
-              ? (json_['approvals'] as core.List)
-                  .map((value) => Approval.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          approvals: (json_['approvals'] as core.List?)
+              ?.map((value) => Approval.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           createTime: json_['createTime'] as core.String?,
           inputProperties: json_.containsKey('inputProperties')
               ? json_['inputProperties'] as core.Map<core.String, core.dynamic>
@@ -854,15 +852,14 @@ class ApproveAccountRequest {
   ApproveAccountRequest.fromJson(core.Map json_)
       : this(
           approvalName: json_['approvalName'] as core.String?,
-          properties: json_.containsKey('properties')
-              ? (json_['properties'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          properties:
+              (json_['properties'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           reason: json_['reason'] as core.String?,
         );
 
@@ -922,15 +919,14 @@ class ApproveEntitlementRequest {
   ApproveEntitlementRequest.fromJson(core.Map json_)
       : this(
           entitlementMigrated: json_['entitlementMigrated'] as core.String?,
-          properties: json_.containsKey('properties')
-              ? (json_['properties'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          properties:
+              (json_['properties'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1275,18 +1271,14 @@ class Entitlement {
       : this(
           account: json_['account'] as core.String?,
           cancellationReason: json_['cancellationReason'] as core.String?,
-          consumers: json_.containsKey('consumers')
-              ? (json_['consumers'] as core.List)
-                  .map((value) => Consumer.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          consumers: (json_['consumers'] as core.List?)
+              ?.map((value) => Consumer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           createTime: json_['createTime'] as core.String?,
-          entitlementBenefitIds: json_.containsKey('entitlementBenefitIds')
-              ? (json_['entitlementBenefitIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          entitlementBenefitIds: (json_['entitlementBenefitIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           inputProperties: json_.containsKey('inputProperties')
               ? json_['inputProperties'] as core.Map<core.String, core.dynamic>
               : null,
@@ -1363,12 +1355,10 @@ class ListAccountsResponse {
 
   ListAccountsResponse.fromJson(core.Map json_)
       : this(
-          accounts: json_.containsKey('accounts')
-              ? (json_['accounts'] as core.List)
-                  .map((value) => Account.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          accounts: (json_['accounts'] as core.List?)
+              ?.map((value) => Account.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1393,12 +1383,10 @@ class ListEntitlementsResponse {
 
   ListEntitlementsResponse.fromJson(core.Map json_)
       : this(
-          entitlements: json_.containsKey('entitlements')
-              ? (json_['entitlements'] as core.List)
-                  .map((value) => Entitlement.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          entitlements: (json_['entitlements'] as core.List?)
+              ?.map((value) => Entitlement.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 

@@ -494,11 +494,9 @@ class AudioConfig {
   AudioConfig.fromJson(core.Map json_)
       : this(
           audioEncoding: json_['audioEncoding'] as core.String?,
-          effectsProfileId: json_.containsKey('effectsProfileId')
-              ? (json_['effectsProfileId'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          effectsProfileId: (json_['effectsProfileId'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           pitch: (json_['pitch'] as core.num?)?.toDouble(),
           sampleRateHertz: json_['sampleRateHertz'] as core.int?,
           speakingRate: (json_['speakingRate'] as core.num?)?.toDouble(),
@@ -583,12 +581,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -608,12 +604,10 @@ class ListVoicesResponse {
 
   ListVoicesResponse.fromJson(core.Map json_)
       : this(
-          voices: json_.containsKey('voices')
-              ? (json_['voices'] as core.List)
-                  .map((value) => Voice.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          voices: (json_['voices'] as core.List?)
+              ?.map((value) =>
+                  Voice.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -911,11 +905,9 @@ class Voice {
 
   Voice.fromJson(core.Map json_)
       : this(
-          languageCodes: json_.containsKey('languageCodes')
-              ? (json_['languageCodes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          languageCodes: (json_['languageCodes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           name: json_['name'] as core.String?,
           naturalSampleRateHertz: json_['naturalSampleRateHertz'] as core.int?,
           ssmlGender: json_['ssmlGender'] as core.String?,

@@ -1128,12 +1128,10 @@ class ListAccountAdminsResponse {
 
   ListAccountAdminsResponse.fromJson(core.Map json_)
       : this(
-          accountAdmins: json_.containsKey('accountAdmins')
-              ? (json_['accountAdmins'] as core.List)
-                  .map((value) => Admin.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          accountAdmins: (json_['accountAdmins'] as core.List?)
+              ?.map((value) =>
+                  Admin.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1163,12 +1161,10 @@ class ListAccountsResponse {
 
   ListAccountsResponse.fromJson(core.Map json_)
       : this(
-          accounts: json_.containsKey('accounts')
-              ? (json_['accounts'] as core.List)
-                  .map((value) => Account.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          accounts: (json_['accounts'] as core.List?)
+              ?.map((value) => Account.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1191,12 +1187,10 @@ class ListInvitationsResponse {
 
   ListInvitationsResponse.fromJson(core.Map json_)
       : this(
-          invitations: json_.containsKey('invitations')
-              ? (json_['invitations'] as core.List)
-                  .map((value) => Invitation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          invitations: (json_['invitations'] as core.List?)
+              ?.map((value) => Invitation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1215,12 +1209,10 @@ class ListLocationAdminsResponse {
 
   ListLocationAdminsResponse.fromJson(core.Map json_)
       : this(
-          admins: json_.containsKey('admins')
-              ? (json_['admins'] as core.List)
-                  .map((value) => Admin.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          admins: (json_['admins'] as core.List?)
+              ?.map((value) =>
+                  Admin.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

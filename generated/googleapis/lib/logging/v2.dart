@@ -12465,12 +12465,10 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
       : this(
-          auditLogConfigs: json_.containsKey('auditLogConfigs')
-              ? (json_['auditLogConfigs'] as core.List)
-                  .map((value) => AuditLogConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+              ?.map((value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           service: json_['service'] as core.String?,
         );
 
@@ -12651,11 +12649,9 @@ class Binding {
               ? Expr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -12899,12 +12895,10 @@ class DefaultSinkConfig {
 
   DefaultSinkConfig.fromJson(core.Map json_)
       : this(
-          exclusions: json_.containsKey('exclusions')
-              ? (json_['exclusions'] as core.List)
-                  .map((value) => LogExclusion.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          exclusions: (json_['exclusions'] as core.List?)
+              ?.map((value) => LogExclusion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           filter: json_['filter'] as core.String?,
           mode: json_['mode'] as core.String?,
         );
@@ -13288,12 +13282,10 @@ class ListBucketsResponse {
 
   ListBucketsResponse.fromJson(core.Map json_)
       : this(
-          buckets: json_.containsKey('buckets')
-              ? (json_['buckets'] as core.List)
-                  .map((value) => LogBucket.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          buckets: (json_['buckets'] as core.List?)
+              ?.map((value) => LogBucket.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -13322,12 +13314,10 @@ class ListExclusionsResponse {
 
   ListExclusionsResponse.fromJson(core.Map json_)
       : this(
-          exclusions: json_.containsKey('exclusions')
-              ? (json_['exclusions'] as core.List)
-                  .map((value) => LogExclusion.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          exclusions: (json_['exclusions'] as core.List?)
+              ?.map((value) => LogExclusion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -13356,12 +13346,10 @@ class ListLinksResponse {
 
   ListLinksResponse.fromJson(core.Map json_)
       : this(
-          links: json_.containsKey('links')
-              ? (json_['links'] as core.List)
-                  .map((value) => Link.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          links: (json_['links'] as core.List?)
+              ?.map((value) =>
+                  Link.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -13386,12 +13374,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -13495,16 +13481,12 @@ class ListLogEntriesRequest {
           orderBy: json_['orderBy'] as core.String?,
           pageSize: json_['pageSize'] as core.int?,
           pageToken: json_['pageToken'] as core.String?,
-          projectIds: json_.containsKey('projectIds')
-              ? (json_['projectIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          resourceNames: json_.containsKey('resourceNames')
-              ? (json_['resourceNames'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          projectIds: (json_['projectIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          resourceNames: (json_['resourceNames'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13545,12 +13527,10 @@ class ListLogEntriesResponse {
 
   ListLogEntriesResponse.fromJson(core.Map json_)
       : this(
-          entries: json_.containsKey('entries')
-              ? (json_['entries'] as core.List)
-                  .map((value) => LogEntry.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          entries: (json_['entries'] as core.List?)
+              ?.map((value) => LogEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -13579,12 +13559,10 @@ class ListLogMetricsResponse {
 
   ListLogMetricsResponse.fromJson(core.Map json_)
       : this(
-          metrics: json_.containsKey('metrics')
-              ? (json_['metrics'] as core.List)
-                  .map((value) => LogMetric.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          metrics: (json_['metrics'] as core.List?)
+              ?.map((value) => LogMetric.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -13616,11 +13594,9 @@ class ListLogsResponse {
 
   ListLogsResponse.fromJson(core.Map json_)
       : this(
-          logNames: json_.containsKey('logNames')
-              ? (json_['logNames'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          logNames: (json_['logNames'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -13650,12 +13626,10 @@ class ListMonitoredResourceDescriptorsResponse {
   ListMonitoredResourceDescriptorsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          resourceDescriptors: json_.containsKey('resourceDescriptors')
-              ? (json_['resourceDescriptors'] as core.List)
-                  .map((value) => MonitoredResourceDescriptor.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          resourceDescriptors: (json_['resourceDescriptors'] as core.List?)
+              ?.map((value) => MonitoredResourceDescriptor.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13681,12 +13655,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13728,17 +13700,13 @@ class ListRecentQueriesResponse {
   ListRecentQueriesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          recentQueries: json_.containsKey('recentQueries')
-              ? (json_['recentQueries'] as core.List)
-                  .map((value) => RecentQuery.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          recentQueries: (json_['recentQueries'] as core.List?)
+              ?.map((value) => RecentQuery.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13781,17 +13749,13 @@ class ListSavedQueriesResponse {
   ListSavedQueriesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          savedQueries: json_.containsKey('savedQueries')
-              ? (json_['savedQueries'] as core.List)
-                  .map((value) => SavedQuery.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          savedQueries: (json_['savedQueries'] as core.List?)
+              ?.map((value) => SavedQuery.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13821,12 +13785,10 @@ class ListSinksResponse {
   ListSinksResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          sinks: json_.containsKey('sinks')
-              ? (json_['sinks'] as core.List)
-                  .map((value) => LogSink.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          sinks: (json_['sinks'] as core.List?)
+              ?.map((value) => LogSink.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13855,12 +13817,10 @@ class ListViewsResponse {
   ListViewsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          views: json_.containsKey('views')
-              ? (json_['views'] as core.List)
-                  .map((value) => LogView.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          views: (json_['views'] as core.List?)
+              ?.map((value) => LogView.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13988,20 +13948,16 @@ class LogBucket {
               : null,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
-          indexConfigs: json_.containsKey('indexConfigs')
-              ? (json_['indexConfigs'] as core.List)
-                  .map((value) => IndexConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          indexConfigs: (json_['indexConfigs'] as core.List?)
+              ?.map((value) => IndexConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           lifecycleState: json_['lifecycleState'] as core.String?,
           locked: json_['locked'] as core.bool?,
           name: json_['name'] as core.String?,
-          restrictedFields: json_.containsKey('restrictedFields')
-              ? (json_['restrictedFields'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          restrictedFields: (json_['restrictedFields'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           retentionDays: json_['retentionDays'] as core.int?,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -14259,12 +14215,10 @@ class LogEntry {
 
   LogEntry.fromJson(core.Map json_)
       : this(
-          errorGroups: json_.containsKey('errorGroups')
-              ? (json_['errorGroups'] as core.List)
-                  .map((value) => LogErrorGroup.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          errorGroups: (json_['errorGroups'] as core.List?)
+              ?.map((value) => LogErrorGroup.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           httpRequest: json_.containsKey('httpRequest')
               ? HttpRequest.fromJson(
                   json_['httpRequest'] as core.Map<core.String, core.dynamic>)
@@ -14273,14 +14227,13 @@ class LogEntry {
           jsonPayload: json_.containsKey('jsonPayload')
               ? json_['jsonPayload'] as core.Map<core.String, core.dynamic>
               : null,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           logName: json_['logName'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? MonitoredResourceMetadata.fromJson(
@@ -14726,16 +14679,14 @@ class LogMetric {
           description: json_['description'] as core.String?,
           disabled: json_['disabled'] as core.bool?,
           filter: json_['filter'] as core.String?,
-          labelExtractors: json_.containsKey('labelExtractors')
-              ? (json_['labelExtractors']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labelExtractors:
+              (json_['labelExtractors'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           metricDescriptor: json_.containsKey('metricDescriptor')
               ? MetricDescriptor.fromJson(json_['metricDescriptor']
                   as core.Map<core.String, core.dynamic>)
@@ -14941,12 +14892,10 @@ class LogSink {
           description: json_['description'] as core.String?,
           destination: json_['destination'] as core.String?,
           disabled: json_['disabled'] as core.bool?,
-          exclusions: json_.containsKey('exclusions')
-              ? (json_['exclusions'] as core.List)
-                  .map((value) => LogExclusion.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          exclusions: (json_['exclusions'] as core.List?)
+              ?.map((value) => LogExclusion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           filter: json_['filter'] as core.String?,
           includeChildren: json_['includeChildren'] as core.bool?,
           interceptChildren: json_['interceptChildren'] as core.bool?,
@@ -15115,12 +15064,10 @@ class LoggingQuery {
           filter: json_['filter'] as core.String?,
           summaryFieldEnd: json_['summaryFieldEnd'] as core.int?,
           summaryFieldStart: json_['summaryFieldStart'] as core.int?,
-          summaryFields: json_.containsKey('summaryFields')
-              ? (json_['summaryFields'] as core.List)
-                  .map((value) => SummaryField.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          summaryFields: (json_['summaryFields'] as core.List?)
+              ?.map((value) => SummaryField.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15314,23 +15261,20 @@ class MetricDescriptor {
       : this(
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.List)
-                  .map((value) => LabelDescriptor.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          labels: (json_['labels'] as core.List?)
+              ?.map((value) => LabelDescriptor.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           launchStage: json_['launchStage'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? MetricDescriptorMetadata.fromJson(
                   json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           metricKind: json_['metricKind'] as core.String?,
-          monitoredResourceTypes: json_.containsKey('monitoredResourceTypes')
-              ? (json_['monitoredResourceTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          monitoredResourceTypes:
+              (json_['monitoredResourceTypes'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           name: json_['name'] as core.String?,
           type: json_['type'] as core.String?,
           unit: json_['unit'] as core.String?,
@@ -15396,14 +15340,13 @@ class MonitoredResource {
 
   MonitoredResource.fromJson(core.Map json_)
       : this(
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           type: json_['type'] as core.String?,
         );
 
@@ -15517,12 +15460,10 @@ class MonitoredResourceDescriptor {
       : this(
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.List)
-                  .map((value) => LabelDescriptor.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          labels: (json_['labels'] as core.List?)
+              ?.map((value) => LabelDescriptor.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           launchStage: json_['launchStage'] as core.String?,
           name: json_['name'] as core.String?,
           type: json_['type'] as core.String?,
@@ -15740,18 +15681,14 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
       : this(
-          auditConfigs: json_.containsKey('auditConfigs')
-              ? (json_['auditConfigs'] as core.List)
-                  .map((value) => AuditConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          bindings: json_.containsKey('bindings')
-              ? (json_['bindings'] as core.List)
-                  .map((value) => Binding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditConfigs: (json_['auditConfigs'] as core.List?)
+              ?.map((value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
         );
@@ -16186,20 +16123,17 @@ class WriteLogEntriesRequest {
   WriteLogEntriesRequest.fromJson(core.Map json_)
       : this(
           dryRun: json_['dryRun'] as core.bool?,
-          entries: json_.containsKey('entries')
-              ? (json_['entries'] as core.List)
-                  .map((value) => LogEntry.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          entries: (json_['entries'] as core.List?)
+              ?.map((value) => LogEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           logName: json_['logName'] as core.String?,
           partialSuccess: json_['partialSuccess'] as core.bool?,
           resource: json_.containsKey('resource')

@@ -1917,12 +1917,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1949,12 +1947,10 @@ class ListPartitionCursorsResponse {
   ListPartitionCursorsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          partitionCursors: json_.containsKey('partitionCursors')
-              ? (json_['partitionCursors'] as core.List)
-                  .map((value) => PartitionCursor.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          partitionCursors: (json_['partitionCursors'] as core.List?)
+              ?.map((value) => PartitionCursor.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1984,11 +1980,9 @@ class ListReservationTopicsResponse {
   ListReservationTopicsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          topics: json_.containsKey('topics')
-              ? (json_['topics'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          topics: (json_['topics'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2018,12 +2012,10 @@ class ListReservationsResponse {
   ListReservationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          reservations: json_.containsKey('reservations')
-              ? (json_['reservations'] as core.List)
-                  .map((value) => Reservation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          reservations: (json_['reservations'] as core.List?)
+              ?.map((value) => Reservation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2053,12 +2045,10 @@ class ListSubscriptionsResponse {
   ListSubscriptionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          subscriptions: json_.containsKey('subscriptions')
-              ? (json_['subscriptions'] as core.List)
-                  .map((value) => Subscription.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          subscriptions: (json_['subscriptions'] as core.List?)
+              ?.map((value) => Subscription.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2088,11 +2078,9 @@ class ListTopicSubscriptionsResponse {
   ListTopicSubscriptionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          subscriptions: json_.containsKey('subscriptions')
-              ? (json_['subscriptions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          subscriptions: (json_['subscriptions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2122,12 +2110,10 @@ class ListTopicsResponse {
   ListTopicsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          topics: json_.containsKey('topics')
-              ? (json_['topics'] as core.List)
-                  .map((value) => Topic.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          topics: (json_['topics'] as core.List?)
+              ?.map((value) =>
+                  Topic.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

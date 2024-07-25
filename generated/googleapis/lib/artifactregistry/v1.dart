@@ -2609,11 +2609,9 @@ class BatchDeleteVersionsRequest {
 
   BatchDeleteVersionsRequest.fromJson(core.Map json_)
       : this(
-          names: json_.containsKey('names')
-              ? (json_['names'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          names: (json_['names'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           validateOnly: json_['validateOnly'] as core.bool?,
         );
 
@@ -2715,11 +2713,9 @@ class Binding {
               ? Expr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -2828,22 +2824,16 @@ class CleanupPolicyCondition {
       : this(
           newerThan: json_['newerThan'] as core.String?,
           olderThan: json_['olderThan'] as core.String?,
-          packageNamePrefixes: json_.containsKey('packageNamePrefixes')
-              ? (json_['packageNamePrefixes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          tagPrefixes: json_.containsKey('tagPrefixes')
-              ? (json_['tagPrefixes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          packageNamePrefixes: (json_['packageNamePrefixes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          tagPrefixes: (json_['tagPrefixes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           tagState: json_['tagState'] as core.String?,
-          versionNamePrefixes: json_.containsKey('versionNamePrefixes')
-              ? (json_['versionNamePrefixes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          versionNamePrefixes: (json_['versionNamePrefixes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2875,11 +2865,9 @@ class CleanupPolicyMostRecentVersions {
   CleanupPolicyMostRecentVersions.fromJson(core.Map json_)
       : this(
           keepCount: json_['keepCount'] as core.int?,
-          packageNamePrefixes: json_.containsKey('packageNamePrefixes')
-              ? (json_['packageNamePrefixes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          packageNamePrefixes: (json_['packageNamePrefixes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2965,11 +2953,9 @@ class DockerImage {
           imageSizeBytes: json_['imageSizeBytes'] as core.String?,
           mediaType: json_['mediaType'] as core.String?,
           name: json_['name'] as core.String?,
-          tags: json_.containsKey('tags')
-              ? (json_['tags'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          tags: (json_['tags'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           updateTime: json_['updateTime'] as core.String?,
           uploadTime: json_['uploadTime'] as core.String?,
           uri: json_['uri'] as core.String?,
@@ -3126,12 +3112,10 @@ class GoogleDevtoolsArtifactregistryV1File {
       : this(
           createTime: json_['createTime'] as core.String?,
           fetchTime: json_['fetchTime'] as core.String?,
-          hashes: json_.containsKey('hashes')
-              ? (json_['hashes'] as core.List)
-                  .map((value) => Hash.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          hashes: (json_['hashes'] as core.List?)
+              ?.map((value) =>
+                  Hash.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           name: json_['name'] as core.String?,
           owner: json_['owner'] as core.String?,
           sizeBytes: json_['sizeBytes'] as core.String?,
@@ -3417,11 +3401,9 @@ class ImportGoogetArtifactsGcsSource {
 
   ImportGoogetArtifactsGcsSource.fromJson(core.Map json_)
       : this(
-          uris: json_.containsKey('uris')
-              ? (json_['uris'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          uris: (json_['uris'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           useWildcards: json_['useWildcards'] as core.bool?,
         );
 
@@ -3494,12 +3476,10 @@ class ListDockerImagesResponse {
 
   ListDockerImagesResponse.fromJson(core.Map json_)
       : this(
-          dockerImages: json_.containsKey('dockerImages')
-              ? (json_['dockerImages'] as core.List)
-                  .map((value) => DockerImage.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          dockerImages: (json_['dockerImages'] as core.List?)
+              ?.map((value) => DockerImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -3525,12 +3505,10 @@ class ListFilesResponse {
 
   ListFilesResponse.fromJson(core.Map json_)
       : this(
-          files: json_.containsKey('files')
-              ? (json_['files'] as core.List)
-                  .map((value) => GoogleDevtoolsArtifactregistryV1File.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          files: (json_['files'] as core.List?)
+              ?.map((value) => GoogleDevtoolsArtifactregistryV1File.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -3555,12 +3533,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -3586,12 +3562,10 @@ class ListMavenArtifactsResponse {
 
   ListMavenArtifactsResponse.fromJson(core.Map json_)
       : this(
-          mavenArtifacts: json_.containsKey('mavenArtifacts')
-              ? (json_['mavenArtifacts'] as core.List)
-                  .map((value) => MavenArtifact.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          mavenArtifacts: (json_['mavenArtifacts'] as core.List?)
+              ?.map((value) => MavenArtifact.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -3618,12 +3592,10 @@ class ListNpmPackagesResponse {
   ListNpmPackagesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          npmPackages: json_.containsKey('npmPackages')
-              ? (json_['npmPackages'] as core.List)
-                  .map((value) => NpmPackage.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          npmPackages: (json_['npmPackages'] as core.List?)
+              ?.map((value) => NpmPackage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3649,12 +3621,10 @@ class ListPackagesResponse {
   ListPackagesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          packages: json_.containsKey('packages')
-              ? (json_['packages'] as core.List)
-                  .map((value) => Package.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          packages: (json_['packages'] as core.List?)
+              ?.map((value) => Package.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3680,12 +3650,10 @@ class ListPythonPackagesResponse {
   ListPythonPackagesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          pythonPackages: json_.containsKey('pythonPackages')
-              ? (json_['pythonPackages'] as core.List)
-                  .map((value) => PythonPackage.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          pythonPackages: (json_['pythonPackages'] as core.List?)
+              ?.map((value) => PythonPackage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3711,12 +3679,10 @@ class ListRepositoriesResponse {
   ListRepositoriesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          repositories: json_.containsKey('repositories')
-              ? (json_['repositories'] as core.List)
-                  .map((value) => Repository.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          repositories: (json_['repositories'] as core.List?)
+              ?.map((value) => Repository.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3742,12 +3708,10 @@ class ListTagsResponse {
   ListTagsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          tags: json_.containsKey('tags')
-              ? (json_['tags'] as core.List)
-                  .map((value) => Tag.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tags: (json_['tags'] as core.List?)
+              ?.map((value) =>
+                  Tag.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3773,12 +3737,10 @@ class ListVersionsResponse {
   ListVersionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          versions: json_.containsKey('versions')
-              ? (json_['versions'] as core.List)
-                  .map((value) => Version.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          versions: (json_['versions'] as core.List?)
+              ?.map((value) => Version.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3980,11 +3942,9 @@ class NpmPackage {
           createTime: json_['createTime'] as core.String?,
           name: json_['name'] as core.String?,
           packageName: json_['packageName'] as core.String?,
-          tags: json_.containsKey('tags')
-              ? (json_['tags'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          tags: (json_['tags'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           updateTime: json_['updateTime'] as core.String?,
           version: json_['version'] as core.String?,
         );
@@ -4143,15 +4103,14 @@ class Package {
 
   Package.fromJson(core.Map json_)
       : this(
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           createTime: json_['createTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           name: json_['name'] as core.String?,
@@ -4258,12 +4217,10 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
       : this(
-          bindings: json_.containsKey('bindings')
-              ? (json_['bindings'] as core.List)
-                  .map((value) => Binding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
         );
@@ -4658,17 +4615,15 @@ class Repository {
 
   Repository.fromJson(core.Map json_)
       : this(
-          cleanupPolicies: json_.containsKey('cleanupPolicies')
-              ? (json_['cleanupPolicies']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    CleanupPolicy.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          cleanupPolicies:
+              (json_['cleanupPolicies'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              CleanupPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           cleanupPolicyDryRun: json_['cleanupPolicyDryRun'] as core.bool?,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
@@ -4680,14 +4635,13 @@ class Repository {
               : null,
           format: json_['format'] as core.String?,
           kmsKeyName: json_['kmsKeyName'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           mavenConfig: json_.containsKey('mavenConfig')
               ? MavenRepositoryConfig.fromJson(
                   json_['mavenConfig'] as core.Map<core.String, core.dynamic>)
@@ -4994,11 +4948,9 @@ class UploadKfpArtifactRequest {
   UploadKfpArtifactRequest.fromJson(core.Map json_)
       : this(
           description: json_['description'] as core.String?,
-          tags: json_.containsKey('tags')
-              ? (json_['tags'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          tags: (json_['tags'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5215,12 +5167,10 @@ class Version {
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: json_['name'] as core.String?,
-          relatedTags: json_.containsKey('relatedTags')
-              ? (json_['relatedTags'] as core.List)
-                  .map((value) => Tag.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          relatedTags: (json_['relatedTags'] as core.List?)
+              ?.map((value) =>
+                  Tag.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           updateTime: json_['updateTime'] as core.String?,
         );
 
@@ -5248,12 +5198,10 @@ class VirtualRepositoryConfig {
 
   VirtualRepositoryConfig.fromJson(core.Map json_)
       : this(
-          upstreamPolicies: json_.containsKey('upstreamPolicies')
-              ? (json_['upstreamPolicies'] as core.List)
-                  .map((value) => UpstreamPolicy.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          upstreamPolicies: (json_['upstreamPolicies'] as core.List?)
+              ?.map((value) => UpstreamPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

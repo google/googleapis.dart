@@ -1605,12 +1605,10 @@ class GoogleCloudOrgpolicyV2ListConstraintsResponse {
 
   GoogleCloudOrgpolicyV2ListConstraintsResponse.fromJson(core.Map json_)
       : this(
-          constraints: json_.containsKey('constraints')
-              ? (json_['constraints'] as core.List)
-                  .map((value) => GoogleCloudOrgpolicyV2Constraint.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          constraints: (json_['constraints'] as core.List?)
+              ?.map((value) => GoogleCloudOrgpolicyV2Constraint.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1643,13 +1641,10 @@ class GoogleCloudOrgpolicyV2ListCustomConstraintsResponse {
 
   GoogleCloudOrgpolicyV2ListCustomConstraintsResponse.fromJson(core.Map json_)
       : this(
-          customConstraints: json_.containsKey('customConstraints')
-              ? (json_['customConstraints'] as core.List)
-                  .map((value) =>
-                      GoogleCloudOrgpolicyV2CustomConstraint.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          customConstraints: (json_['customConstraints'] as core.List?)
+              ?.map((value) => GoogleCloudOrgpolicyV2CustomConstraint.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1682,12 +1677,10 @@ class GoogleCloudOrgpolicyV2ListPoliciesResponse {
   GoogleCloudOrgpolicyV2ListPoliciesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          policies: json_.containsKey('policies')
-              ? (json_['policies'] as core.List)
-                  .map((value) => GoogleCloudOrgpolicyV2Policy.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          policies: (json_['policies'] as core.List?)
+              ?.map((value) => GoogleCloudOrgpolicyV2Policy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1834,13 +1827,11 @@ class GoogleCloudOrgpolicyV2PolicySpec {
           etag: json_['etag'] as core.String?,
           inheritFromParent: json_['inheritFromParent'] as core.bool?,
           reset: json_['reset'] as core.bool?,
-          rules: json_.containsKey('rules')
-              ? (json_['rules'] as core.List)
-                  .map((value) =>
-                      GoogleCloudOrgpolicyV2PolicySpecPolicyRule.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          rules: (json_['rules'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudOrgpolicyV2PolicySpecPolicyRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           updateTime: json_['updateTime'] as core.String?,
         );
 

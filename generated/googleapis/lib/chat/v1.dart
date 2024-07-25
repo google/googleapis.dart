@@ -2607,23 +2607,19 @@ class Card {
 
   Card.fromJson(core.Map json_)
       : this(
-          cardActions: json_.containsKey('cardActions')
-              ? (json_['cardActions'] as core.List)
-                  .map((value) => CardAction.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          cardActions: (json_['cardActions'] as core.List?)
+              ?.map((value) => CardAction.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           header: json_.containsKey('header')
               ? CardHeader.fromJson(
                   json_['header'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
-          sections: json_.containsKey('sections')
-              ? (json_['sections'] as core.List)
-                  .map((value) => Section.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          sections: (json_['sections'] as core.List?)
+              ?.map((value) => Section.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3109,12 +3105,10 @@ class FormAction {
   FormAction.fromJson(core.Map json_)
       : this(
           actionMethodName: json_['actionMethodName'] as core.String?,
-          parameters: json_.containsKey('parameters')
-              ? (json_['parameters'] as core.List)
-                  .map((value) => ActionParameter.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          parameters: (json_['parameters'] as core.List?)
+              ?.map((value) => ActionParameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3205,12 +3199,10 @@ class GoogleAppsCardV1Action {
           function: json_['function'] as core.String?,
           interaction: json_['interaction'] as core.String?,
           loadIndicator: json_['loadIndicator'] as core.String?,
-          parameters: json_.containsKey('parameters')
-              ? (json_['parameters'] as core.List)
-                  .map((value) => GoogleAppsCardV1ActionParameter.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          parameters: (json_['parameters'] as core.List?)
+              ?.map((value) => GoogleAppsCardV1ActionParameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           persistValues: json_['persistValues'] as core.bool?,
         );
 
@@ -3382,12 +3374,10 @@ class GoogleAppsCardV1ButtonList {
 
   GoogleAppsCardV1ButtonList.fromJson(core.Map json_)
       : this(
-          buttons: json_.containsKey('buttons')
-              ? (json_['buttons'] as core.List)
-                  .map((value) => GoogleAppsCardV1Button.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          buttons: (json_['buttons'] as core.List?)
+              ?.map((value) => GoogleAppsCardV1Button.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3510,12 +3500,10 @@ class GoogleAppsCardV1Card {
 
   GoogleAppsCardV1Card.fromJson(core.Map json_)
       : this(
-          cardActions: json_.containsKey('cardActions')
-              ? (json_['cardActions'] as core.List)
-                  .map((value) => GoogleAppsCardV1CardAction.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          cardActions: (json_['cardActions'] as core.List?)
+              ?.map((value) => GoogleAppsCardV1CardAction.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           displayStyle: json_['displayStyle'] as core.String?,
           fixedFooter: json_.containsKey('fixedFooter')
               ? GoogleAppsCardV1CardFixedFooter.fromJson(
@@ -3531,12 +3519,10 @@ class GoogleAppsCardV1Card {
                   as core.Map<core.String, core.dynamic>)
               : null,
           sectionDividerStyle: json_['sectionDividerStyle'] as core.String?,
-          sections: json_.containsKey('sections')
-              ? (json_['sections'] as core.List)
-                  .map((value) => GoogleAppsCardV1Section.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          sections: (json_['sections'] as core.List?)
+              ?.map((value) => GoogleAppsCardV1Section.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3746,12 +3732,10 @@ class GoogleAppsCardV1Column {
           horizontalAlignment: json_['horizontalAlignment'] as core.String?,
           horizontalSizeStyle: json_['horizontalSizeStyle'] as core.String?,
           verticalAlignment: json_['verticalAlignment'] as core.String?,
-          widgets: json_.containsKey('widgets')
-              ? (json_['widgets'] as core.List)
-                  .map((value) => GoogleAppsCardV1Widgets.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          widgets: (json_['widgets'] as core.List?)
+              ?.map((value) => GoogleAppsCardV1Widgets.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3795,12 +3779,10 @@ class GoogleAppsCardV1Columns {
 
   GoogleAppsCardV1Columns.fromJson(core.Map json_)
       : this(
-          columnItems: json_.containsKey('columnItems')
-              ? (json_['columnItems'] as core.List)
-                  .map((value) => GoogleAppsCardV1Column.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          columnItems: (json_['columnItems'] as core.List?)
+              ?.map((value) => GoogleAppsCardV1Column.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4079,12 +4061,10 @@ class GoogleAppsCardV1Grid {
                   json_['borderStyle'] as core.Map<core.String, core.dynamic>)
               : null,
           columnCount: json_['columnCount'] as core.int?,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => GoogleAppsCardV1GridItem.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => GoogleAppsCardV1GridItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           onClick: json_.containsKey('onClick')
               ? GoogleAppsCardV1OnClick.fromJson(
                   json_['onClick'] as core.Map<core.String, core.dynamic>)
@@ -4647,12 +4627,10 @@ class GoogleAppsCardV1Section {
           header: json_['header'] as core.String?,
           uncollapsibleWidgetsCount:
               json_['uncollapsibleWidgetsCount'] as core.int?,
-          widgets: json_.containsKey('widgets')
-              ? (json_['widgets'] as core.List)
-                  .map((value) => GoogleAppsCardV1Widget.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          widgets: (json_['widgets'] as core.List?)
+              ?.map((value) => GoogleAppsCardV1Widget.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4771,12 +4749,10 @@ class GoogleAppsCardV1SelectionInput {
               ? GoogleAppsCardV1Action.fromJson(json_['externalDataSource']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => GoogleAppsCardV1SelectionItem.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => GoogleAppsCardV1SelectionItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           label: json_['label'] as core.String?,
           multiSelectMaxSelectedItems:
               json_['multiSelectMaxSelectedItems'] as core.int?,
@@ -4919,12 +4895,10 @@ class GoogleAppsCardV1Suggestions {
 
   GoogleAppsCardV1Suggestions.fromJson(core.Map json_)
       : this(
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => GoogleAppsCardV1SuggestionItem.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => GoogleAppsCardV1SuggestionItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5741,12 +5715,10 @@ class ListMembershipsResponse {
 
   ListMembershipsResponse.fromJson(core.Map json_)
       : this(
-          memberships: json_.containsKey('memberships')
-              ? (json_['memberships'] as core.List)
-                  .map((value) => Membership.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          memberships: (json_['memberships'] as core.List?)
+              ?.map((value) => Membership.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -5773,12 +5745,10 @@ class ListMessagesResponse {
 
   ListMessagesResponse.fromJson(core.Map json_)
       : this(
-          messages: json_.containsKey('messages')
-              ? (json_['messages'] as core.List)
-                  .map((value) => Message.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          messages: (json_['messages'] as core.List?)
+              ?.map((value) => Message.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -5806,12 +5776,10 @@ class ListReactionsResponse {
   ListReactionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          reactions: json_.containsKey('reactions')
-              ? (json_['reactions'] as core.List)
-                  .map((value) => Reaction.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          reactions: (json_['reactions'] as core.List?)
+              ?.map((value) => Reaction.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5838,12 +5806,10 @@ class ListSpaceEventsResponse {
   ListSpaceEventsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          spaceEvents: json_.containsKey('spaceEvents')
-              ? (json_['spaceEvents'] as core.List)
-                  .map((value) => SpaceEvent.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          spaceEvents: (json_['spaceEvents'] as core.List?)
+              ?.map((value) => SpaceEvent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5870,12 +5836,10 @@ class ListSpacesResponse {
   ListSpacesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          spaces: json_.containsKey('spaces')
-              ? (json_['spaces'] as core.List)
-                  .map((value) => Space.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          spaces: (json_['spaces'] as core.List?)
+              ?.map((value) =>
+                  Space.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6033,12 +5997,10 @@ class MembershipBatchCreatedEventData {
 
   MembershipBatchCreatedEventData.fromJson(core.Map json_)
       : this(
-          memberships: json_.containsKey('memberships')
-              ? (json_['memberships'] as core.List)
-                  .map((value) => MembershipCreatedEventData.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          memberships: (json_['memberships'] as core.List?)
+              ?.map((value) => MembershipCreatedEventData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6059,12 +6021,10 @@ class MembershipBatchDeletedEventData {
 
   MembershipBatchDeletedEventData.fromJson(core.Map json_)
       : this(
-          memberships: json_.containsKey('memberships')
-              ? (json_['memberships'] as core.List)
-                  .map((value) => MembershipDeletedEventData.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          memberships: (json_['memberships'] as core.List?)
+              ?.map((value) => MembershipDeletedEventData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6085,12 +6045,10 @@ class MembershipBatchUpdatedEventData {
 
   MembershipBatchUpdatedEventData.fromJson(core.Map json_)
       : this(
-          memberships: json_.containsKey('memberships')
-              ? (json_['memberships'] as core.List)
-                  .map((value) => MembershipUpdatedEventData.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          memberships: (json_['memberships'] as core.List?)
+              ?.map((value) => MembershipUpdatedEventData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6423,47 +6381,35 @@ class Message {
 
   Message.fromJson(core.Map json_)
       : this(
-          accessoryWidgets: json_.containsKey('accessoryWidgets')
-              ? (json_['accessoryWidgets'] as core.List)
-                  .map((value) => AccessoryWidget.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          accessoryWidgets: (json_['accessoryWidgets'] as core.List?)
+              ?.map((value) => AccessoryWidget.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           actionResponse: json_.containsKey('actionResponse')
               ? ActionResponse.fromJson(json_['actionResponse']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.List)
-                  .map((value) => Annotation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          annotations: (json_['annotations'] as core.List?)
+              ?.map((value) => Annotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           argumentText: json_['argumentText'] as core.String?,
-          attachedGifs: json_.containsKey('attachedGifs')
-              ? (json_['attachedGifs'] as core.List)
-                  .map((value) => AttachedGif.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          attachment: json_.containsKey('attachment')
-              ? (json_['attachment'] as core.List)
-                  .map((value) => Attachment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          cards: json_.containsKey('cards')
-              ? (json_['cards'] as core.List)
-                  .map((value) => Card.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          cardsV2: json_.containsKey('cardsV2')
-              ? (json_['cardsV2'] as core.List)
-                  .map((value) => CardWithId.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          attachedGifs: (json_['attachedGifs'] as core.List?)
+              ?.map((value) => AttachedGif.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          attachment: (json_['attachment'] as core.List?)
+              ?.map((value) => Attachment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          cards: (json_['cards'] as core.List?)
+              ?.map((value) =>
+                  Card.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          cardsV2: (json_['cardsV2'] as core.List?)
+              ?.map((value) => CardWithId.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           clientAssignedMessageId:
               json_['clientAssignedMessageId'] as core.String?,
           createTime: json_['createTime'] as core.String?,
@@ -6472,12 +6418,11 @@ class Message {
               ? DeletionMetadata.fromJson(json_['deletionMetadata']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          emojiReactionSummaries: json_.containsKey('emojiReactionSummaries')
-              ? (json_['emojiReactionSummaries'] as core.List)
-                  .map((value) => EmojiReactionSummary.fromJson(
+          emojiReactionSummaries:
+              (json_['emojiReactionSummaries'] as core.List?)
+                  ?.map((value) => EmojiReactionSummary.fromJson(
                       value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                  .toList(),
           fallbackText: json_['fallbackText'] as core.String?,
           formattedText: json_['formattedText'] as core.String?,
           lastUpdateTime: json_['lastUpdateTime'] as core.String?,
@@ -6561,12 +6506,10 @@ class MessageBatchCreatedEventData {
 
   MessageBatchCreatedEventData.fromJson(core.Map json_)
       : this(
-          messages: json_.containsKey('messages')
-              ? (json_['messages'] as core.List)
-                  .map((value) => MessageCreatedEventData.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          messages: (json_['messages'] as core.List?)
+              ?.map((value) => MessageCreatedEventData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6587,12 +6530,10 @@ class MessageBatchDeletedEventData {
 
   MessageBatchDeletedEventData.fromJson(core.Map json_)
       : this(
-          messages: json_.containsKey('messages')
-              ? (json_['messages'] as core.List)
-                  .map((value) => MessageDeletedEventData.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          messages: (json_['messages'] as core.List?)
+              ?.map((value) => MessageDeletedEventData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6613,12 +6554,10 @@ class MessageBatchUpdatedEventData {
 
   MessageBatchUpdatedEventData.fromJson(core.Map json_)
       : this(
-          messages: json_.containsKey('messages')
-              ? (json_['messages'] as core.List)
-                  .map((value) => MessageUpdatedEventData.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          messages: (json_['messages'] as core.List?)
+              ?.map((value) => MessageUpdatedEventData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6837,12 +6776,10 @@ class ReactionBatchCreatedEventData {
 
   ReactionBatchCreatedEventData.fromJson(core.Map json_)
       : this(
-          reactions: json_.containsKey('reactions')
-              ? (json_['reactions'] as core.List)
-                  .map((value) => ReactionCreatedEventData.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          reactions: (json_['reactions'] as core.List?)
+              ?.map((value) => ReactionCreatedEventData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6863,12 +6800,10 @@ class ReactionBatchDeletedEventData {
 
   ReactionBatchDeletedEventData.fromJson(core.Map json_)
       : this(
-          reactions: json_.containsKey('reactions')
-              ? (json_['reactions'] as core.List)
-                  .map((value) => ReactionDeletedEventData.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          reactions: (json_['reactions'] as core.List?)
+              ?.map((value) => ReactionDeletedEventData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6987,12 +6922,10 @@ class Section {
   Section.fromJson(core.Map json_)
       : this(
           header: json_['header'] as core.String?,
-          widgets: json_.containsKey('widgets')
-              ? (json_['widgets'] as core.List)
-                  .map((value) => WidgetMarkup.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          widgets: (json_['widgets'] as core.List?)
+              ?.map((value) => WidgetMarkup.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7012,12 +6945,10 @@ class SelectionItems {
 
   SelectionItems.fromJson(core.Map json_)
       : this(
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => GoogleAppsCardV1SelectionItem.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => GoogleAppsCardV1SelectionItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7086,12 +7017,10 @@ class SetUpSpaceRequest {
 
   SetUpSpaceRequest.fromJson(core.Map json_)
       : this(
-          memberships: json_.containsKey('memberships')
-              ? (json_['memberships'] as core.List)
-                  .map((value) => Membership.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          memberships: (json_['memberships'] as core.List?)
+              ?.map((value) => Membership.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           requestId: json_['requestId'] as core.String?,
           space: json_.containsKey('space')
               ? Space.fromJson(
@@ -7386,12 +7315,10 @@ class SpaceBatchUpdatedEventData {
 
   SpaceBatchUpdatedEventData.fromJson(core.Map json_)
       : this(
-          spaces: json_.containsKey('spaces')
-              ? (json_['spaces'] as core.List)
-                  .map((value) => SpaceUpdatedEventData.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          spaces: (json_['spaces'] as core.List?)
+              ?.map((value) => SpaceUpdatedEventData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8160,12 +8087,10 @@ class WidgetMarkup {
 
   WidgetMarkup.fromJson(core.Map json_)
       : this(
-          buttons: json_.containsKey('buttons')
-              ? (json_['buttons'] as core.List)
-                  .map((value) => Button.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          buttons: (json_['buttons'] as core.List?)
+              ?.map((value) =>
+                  Button.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           image: json_.containsKey('image')
               ? Image.fromJson(
                   json_['image'] as core.Map<core.String, core.dynamic>)

@@ -394,12 +394,10 @@ class ListPlaceActionLinksResponse {
   ListPlaceActionLinksResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          placeActionLinks: json_.containsKey('placeActionLinks')
-              ? (json_['placeActionLinks'] as core.List)
-                  .map((value) => PlaceActionLink.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          placeActionLinks: (json_['placeActionLinks'] as core.List?)
+              ?.map((value) => PlaceActionLink.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -429,12 +427,11 @@ class ListPlaceActionTypeMetadataResponse {
   ListPlaceActionTypeMetadataResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          placeActionTypeMetadata: json_.containsKey('placeActionTypeMetadata')
-              ? (json_['placeActionTypeMetadata'] as core.List)
-                  .map((value) => PlaceActionTypeMetadata.fromJson(
+          placeActionTypeMetadata:
+              (json_['placeActionTypeMetadata'] as core.List?)
+                  ?.map((value) => PlaceActionTypeMetadata.fromJson(
                       value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

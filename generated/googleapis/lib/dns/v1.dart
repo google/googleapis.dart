@@ -2279,18 +2279,14 @@ class Change {
 
   Change.fromJson(core.Map json_)
       : this(
-          additions: json_.containsKey('additions')
-              ? (json_['additions'] as core.List)
-                  .map((value) => ResourceRecordSet.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          deletions: json_.containsKey('deletions')
-              ? (json_['deletions'] as core.List)
-                  .map((value) => ResourceRecordSet.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          additions: (json_['additions'] as core.List?)
+              ?.map((value) => ResourceRecordSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          deletions: (json_['deletions'] as core.List?)
+              ?.map((value) => ResourceRecordSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           id: json_['id'] as core.String?,
           isServing: json_['isServing'] as core.bool?,
           kind: json_['kind'] as core.String?,
@@ -2338,12 +2334,10 @@ class ChangesListResponse {
 
   ChangesListResponse.fromJson(core.Map json_)
       : this(
-          changes: json_.containsKey('changes')
-              ? (json_['changes'] as core.List)
-                  .map((value) => Change.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          changes: (json_['changes'] as core.List?)
+              ?.map((value) =>
+                  Change.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2447,12 +2441,10 @@ class DnsKey {
           algorithm: json_['algorithm'] as core.String?,
           creationTime: json_['creationTime'] as core.String?,
           description: json_['description'] as core.String?,
-          digests: json_.containsKey('digests')
-              ? (json_['digests'] as core.List)
-                  .map((value) => DnsKeyDigest.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          digests: (json_['digests'] as core.List?)
+              ?.map((value) => DnsKeyDigest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           id: json_['id'] as core.String?,
           isActive: json_['isActive'] as core.bool?,
           keyLength: json_['keyLength'] as core.int?,
@@ -2588,12 +2580,10 @@ class DnsKeysListResponse {
 
   DnsKeysListResponse.fromJson(core.Map json_)
       : this(
-          dnsKeys: json_.containsKey('dnsKeys')
-              ? (json_['dnsKeys'] as core.List)
-                  .map((value) => DnsKey.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          dnsKeys: (json_['dnsKeys'] as core.List?)
+              ?.map((value) =>
+                  DnsKey.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2659,12 +2649,10 @@ class GoogleIamV1AuditConfig {
 
   GoogleIamV1AuditConfig.fromJson(core.Map json_)
       : this(
-          auditLogConfigs: json_.containsKey('auditLogConfigs')
-              ? (json_['auditLogConfigs'] as core.List)
-                  .map((value) => GoogleIamV1AuditLogConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+              ?.map((value) => GoogleIamV1AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           service: json_['service'] as core.String?,
         );
 
@@ -2774,11 +2762,9 @@ class GoogleIamV1Binding {
               ? Expr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -2910,18 +2896,14 @@ class GoogleIamV1Policy {
 
   GoogleIamV1Policy.fromJson(core.Map json_)
       : this(
-          auditConfigs: json_.containsKey('auditConfigs')
-              ? (json_['auditConfigs'] as core.List)
-                  .map((value) => GoogleIamV1AuditConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          bindings: json_.containsKey('bindings')
-              ? (json_['bindings'] as core.List)
-                  .map((value) => GoogleIamV1Binding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditConfigs: (json_['auditConfigs'] as core.List?)
+              ?.map((value) => GoogleIamV1AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => GoogleIamV1Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
         );
@@ -3103,21 +3085,18 @@ class ManagedZone {
               : null,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           nameServerSet: json_['nameServerSet'] as core.String?,
-          nameServers: json_.containsKey('nameServers')
-              ? (json_['nameServers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          nameServers: (json_['nameServers'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           peeringConfig: json_.containsKey('peeringConfig')
               ? ManagedZonePeeringConfig.fromJson(
                   json_['peeringConfig'] as core.Map<core.String, core.dynamic>)
@@ -3225,12 +3204,10 @@ class ManagedZoneDnsSecConfig {
 
   ManagedZoneDnsSecConfig.fromJson(core.Map json_)
       : this(
-          defaultKeySpecs: json_.containsKey('defaultKeySpecs')
-              ? (json_['defaultKeySpecs'] as core.List)
-                  .map((value) => DnsKeySpec.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          defaultKeySpecs: (json_['defaultKeySpecs'] as core.List?)
+              ?.map((value) => DnsKeySpec.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
           nonExistence: json_['nonExistence'] as core.String?,
           state: json_['state'] as core.String?,
@@ -3261,13 +3238,11 @@ class ManagedZoneForwardingConfig {
   ManagedZoneForwardingConfig.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
-          targetNameServers: json_.containsKey('targetNameServers')
-              ? (json_['targetNameServers'] as core.List)
-                  .map((value) =>
-                      ManagedZoneForwardingConfigNameServerTarget.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          targetNameServers: (json_['targetNameServers'] as core.List?)
+              ?.map((value) =>
+                  ManagedZoneForwardingConfigNameServerTarget.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3352,12 +3327,10 @@ class ManagedZoneOperationsListResponse {
       : this(
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3445,21 +3418,17 @@ class ManagedZonePrivateVisibilityConfig {
 
   ManagedZonePrivateVisibilityConfig.fromJson(core.Map json_)
       : this(
-          gkeClusters: json_.containsKey('gkeClusters')
-              ? (json_['gkeClusters'] as core.List)
-                  .map((value) =>
-                      ManagedZonePrivateVisibilityConfigGKECluster.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          gkeClusters: (json_['gkeClusters'] as core.List?)
+              ?.map((value) =>
+                  ManagedZonePrivateVisibilityConfigGKECluster.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
-          networks: json_.containsKey('networks')
-              ? (json_['networks'] as core.List)
-                  .map((value) =>
-                      ManagedZonePrivateVisibilityConfigNetwork.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          networks: (json_['networks'] as core.List?)
+              ?.map((value) =>
+                  ManagedZonePrivateVisibilityConfigNetwork.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3628,12 +3597,10 @@ class ManagedZonesListResponse {
   ManagedZonesListResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
-          managedZones: json_.containsKey('managedZones')
-              ? (json_['managedZones'] as core.List)
-                  .map((value) => ManagedZone.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          managedZones: (json_['managedZones'] as core.List?)
+              ?.map((value) => ManagedZone.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -3822,12 +3789,10 @@ class PoliciesListResponse {
       : this(
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
-          policies: json_.containsKey('policies')
-              ? (json_['policies'] as core.List)
-                  .map((value) => Policy.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          policies: (json_['policies'] as core.List?)
+              ?.map((value) =>
+                  Policy.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3941,12 +3906,10 @@ class Policy {
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           name: json_['name'] as core.String?,
-          networks: json_.containsKey('networks')
-              ? (json_['networks'] as core.List)
-                  .map((value) => PolicyNetwork.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          networks: (json_['networks'] as core.List?)
+              ?.map((value) => PolicyNetwork.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3982,14 +3945,11 @@ class PolicyAlternativeNameServerConfig {
   PolicyAlternativeNameServerConfig.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
-          targetNameServers: json_.containsKey('targetNameServers')
-              ? (json_['targetNameServers'] as core.List)
-                  .map((value) =>
-                      PolicyAlternativeNameServerConfigTargetNameServer
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          targetNameServers: (json_['targetNameServers'] as core.List?)
+              ?.map((value) =>
+                  PolicyAlternativeNameServerConfigTargetNameServer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4263,12 +4223,10 @@ class Quota {
               json_['targetNameServersPerPolicy'] as core.int?,
           totalRrdataSizePerChange:
               json_['totalRrdataSizePerChange'] as core.int?,
-          whitelistedKeySpecs: json_.containsKey('whitelistedKeySpecs')
-              ? (json_['whitelistedKeySpecs'] as core.List)
-                  .map((value) => DnsKeySpec.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          whitelistedKeySpecs: (json_['whitelistedKeySpecs'] as core.List?)
+              ?.map((value) => DnsKeySpec.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4391,13 +4349,11 @@ class RRSetRoutingPolicyGeoPolicy {
   RRSetRoutingPolicyGeoPolicy.fromJson(core.Map json_)
       : this(
           enableFencing: json_['enableFencing'] as core.bool?,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) =>
-                      RRSetRoutingPolicyGeoPolicyGeoPolicyItem.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) =>
+                  RRSetRoutingPolicyGeoPolicyGeoPolicyItem.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
         );
 
@@ -4447,16 +4403,12 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
               : null,
           kind: json_['kind'] as core.String?,
           location: json_['location'] as core.String?,
-          rrdatas: json_.containsKey('rrdatas')
-              ? (json_['rrdatas'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          signatureRrdatas: json_.containsKey('signatureRrdatas')
-              ? (json_['signatureRrdatas'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          rrdatas: (json_['rrdatas'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          signatureRrdatas: (json_['signatureRrdatas'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4483,12 +4435,10 @@ class RRSetRoutingPolicyHealthCheckTargets {
 
   RRSetRoutingPolicyHealthCheckTargets.fromJson(core.Map json_)
       : this(
-          internalLoadBalancers: json_.containsKey('internalLoadBalancers')
-              ? (json_['internalLoadBalancers'] as core.List)
-                  .map((value) => RRSetRoutingPolicyLoadBalancerTarget.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          internalLoadBalancers: (json_['internalLoadBalancers'] as core.List?)
+              ?.map((value) => RRSetRoutingPolicyLoadBalancerTarget.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4646,13 +4596,11 @@ class RRSetRoutingPolicyWrrPolicy {
 
   RRSetRoutingPolicyWrrPolicy.fromJson(core.Map json_)
       : this(
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) =>
-                      RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) =>
+                  RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
         );
 
@@ -4704,16 +4652,12 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
                       as core.Map<core.String, core.dynamic>)
               : null,
           kind: json_['kind'] as core.String?,
-          rrdatas: json_.containsKey('rrdatas')
-              ? (json_['rrdatas'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          signatureRrdatas: json_.containsKey('signatureRrdatas')
-              ? (json_['signatureRrdatas'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          rrdatas: (json_['rrdatas'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          signatureRrdatas: (json_['signatureRrdatas'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           weight: (json_['weight'] as core.num?)?.toDouble(),
         );
 
@@ -4775,16 +4719,12 @@ class ResourceRecordSet {
               ? RRSetRoutingPolicy.fromJson(
                   json_['routingPolicy'] as core.Map<core.String, core.dynamic>)
               : null,
-          rrdatas: json_.containsKey('rrdatas')
-              ? (json_['rrdatas'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          signatureRrdatas: json_.containsKey('signatureRrdatas')
-              ? (json_['signatureRrdatas'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          rrdatas: (json_['rrdatas'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          signatureRrdatas: (json_['signatureRrdatas'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           ttl: json_['ttl'] as core.int?,
           type: json_['type'] as core.String?,
         );
@@ -4831,12 +4771,10 @@ class ResourceRecordSetsListResponse {
       : this(
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
-          rrsets: json_.containsKey('rrsets')
-              ? (json_['rrsets'] as core.List)
-                  .map((value) => ResourceRecordSet.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          rrsets: (json_['rrsets'] as core.List?)
+              ?.map((value) => ResourceRecordSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4870,12 +4808,10 @@ class ResponsePoliciesListResponse {
   ResponsePoliciesListResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          responsePolicies: json_.containsKey('responsePolicies')
-              ? (json_['responsePolicies'] as core.List)
-                  .map((value) => ResponsePolicy.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          responsePolicies: (json_['responsePolicies'] as core.List?)
+              ?.map((value) => ResponsePolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4960,28 +4896,23 @@ class ResponsePolicy {
   ResponsePolicy.fromJson(core.Map json_)
       : this(
           description: json_['description'] as core.String?,
-          gkeClusters: json_.containsKey('gkeClusters')
-              ? (json_['gkeClusters'] as core.List)
-                  .map((value) => ResponsePolicyGKECluster.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          gkeClusters: (json_['gkeClusters'] as core.List?)
+              ?.map((value) => ResponsePolicyGKECluster.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
-          networks: json_.containsKey('networks')
-              ? (json_['networks'] as core.List)
-                  .map((value) => ResponsePolicyNetwork.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          networks: (json_['networks'] as core.List?)
+              ?.map((value) => ResponsePolicyNetwork.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           responsePolicyName: json_['responsePolicyName'] as core.String?,
         );
 
@@ -5134,12 +5065,10 @@ class ResponsePolicyRuleLocalData {
 
   ResponsePolicyRuleLocalData.fromJson(core.Map json_)
       : this(
-          localDatas: json_.containsKey('localDatas')
-              ? (json_['localDatas'] as core.List)
-                  .map((value) => ResourceRecordSet.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          localDatas: (json_['localDatas'] as core.List?)
+              ?.map((value) => ResourceRecordSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5171,12 +5100,10 @@ class ResponsePolicyRulesListResponse {
   ResponsePolicyRulesListResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          responsePolicyRules: json_.containsKey('responsePolicyRules')
-              ? (json_['responsePolicyRules'] as core.List)
-                  .map((value) => ResponsePolicyRule.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          responsePolicyRules: (json_['responsePolicyRules'] as core.List?)
+              ?.map((value) => ResponsePolicyRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

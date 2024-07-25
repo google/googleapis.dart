@@ -770,12 +770,10 @@ class Promotion {
 
   Promotion.fromJson(core.Map json_)
       : this(
-          bodyLines: json_.containsKey('bodyLines')
-              ? (json_['bodyLines'] as core.List)
-                  .map((value) => PromotionBodyLines.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          bodyLines: (json_['bodyLines'] as core.List?)
+              ?.map((value) => PromotionBodyLines.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           displayLink: json_['displayLink'] as core.String?,
           htmlTitle: json_['htmlTitle'] as core.String?,
           image: json_.containsKey('image')
@@ -973,12 +971,10 @@ class Result {
                   json_['image'] as core.Map<core.String, core.dynamic>)
               : null,
           kind: json_['kind'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.List)
-                  .map((value) => ResultLabels.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          labels: (json_['labels'] as core.List?)
+              ?.map((value) => ResultLabels.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           link: json_['link'] as core.String?,
           mime: json_['mime'] as core.String?,
           pagemap: json_.containsKey('pagemap')
@@ -2043,24 +2039,18 @@ class SearchQueries {
 
   SearchQueries.fromJson(core.Map json_)
       : this(
-          nextPage: json_.containsKey('nextPage')
-              ? (json_['nextPage'] as core.List)
-                  .map((value) => SearchQueriesNextPage.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          previousPage: json_.containsKey('previousPage')
-              ? (json_['previousPage'] as core.List)
-                  .map((value) => SearchQueriesPreviousPage.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          request: json_.containsKey('request')
-              ? (json_['request'] as core.List)
-                  .map((value) => SearchQueriesRequest.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          nextPage: (json_['nextPage'] as core.List?)
+              ?.map((value) => SearchQueriesNextPage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          previousPage: (json_['previousPage'] as core.List?)
+              ?.map((value) => SearchQueriesPreviousPage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          request: (json_['request'] as core.List?)
+              ?.map((value) => SearchQueriesRequest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2220,19 +2210,15 @@ class Search {
           context: json_.containsKey('context')
               ? json_['context'] as core.Map<core.String, core.dynamic>
               : null,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => Result.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) =>
+                  Result.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
-          promotions: json_.containsKey('promotions')
-              ? (json_['promotions'] as core.List)
-                  .map((value) => Promotion.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          promotions: (json_['promotions'] as core.List?)
+              ?.map((value) => Promotion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           queries: json_.containsKey('queries')
               ? SearchQueries.fromJson(
                   json_['queries'] as core.Map<core.String, core.dynamic>)

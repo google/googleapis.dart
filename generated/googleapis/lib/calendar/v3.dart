@@ -2499,12 +2499,10 @@ class Acl {
   Acl.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => AclRule.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => AclRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           nextSyncToken: json_['nextSyncToken'] as core.String?,
@@ -2722,12 +2720,10 @@ class CalendarList {
   CalendarList.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => CalendarListEntry.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => CalendarListEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           nextSyncToken: json_['nextSyncToken'] as core.String?,
@@ -2754,12 +2750,10 @@ class CalendarListEntryNotificationSettings {
 
   CalendarListEntryNotificationSettings.fromJson(core.Map json_)
       : this(
-          notifications: json_.containsKey('notifications')
-              ? (json_['notifications'] as core.List)
-                  .map((value) => CalendarNotification.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          notifications: (json_['notifications'] as core.List?)
+              ?.map((value) => CalendarNotification.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2901,12 +2895,10 @@ class CalendarListEntry {
               ? ConferenceProperties.fromJson(json_['conferenceProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          defaultReminders: json_.containsKey('defaultReminders')
-              ? (json_['defaultReminders'] as core.List)
-                  .map((value) => EventReminder.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          defaultReminders: (json_['defaultReminders'] as core.List?)
+              ?.map((value) => EventReminder.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           deleted: json_['deleted'] as core.bool?,
           description: json_['description'] as core.String?,
           etag: json_['etag'] as core.String?,
@@ -3057,14 +3049,13 @@ class Channel {
           expiration: json_['expiration'] as core.String?,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
-          params: json_.containsKey('params')
-              ? (json_['params'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          params:
+              (json_['params'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           payload: json_['payload'] as core.bool?,
           resourceId: json_['resourceId'] as core.String?,
           resourceUri: json_['resourceUri'] as core.String?,
@@ -3143,24 +3134,21 @@ class Colors {
 
   Colors.fromJson(core.Map json_)
       : this(
-          calendar: json_.containsKey('calendar')
-              ? (json_['calendar'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    ColorDefinition.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          event: json_.containsKey('event')
-              ? (json_['event'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    ColorDefinition.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          calendar:
+              (json_['calendar'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              ColorDefinition.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          event: (json_['event'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              ColorDefinition.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           kind: json_['kind'] as core.String?,
           updated: json_.containsKey('updated')
               ? core.DateTime.parse(json_['updated'] as core.String)
@@ -3250,12 +3238,10 @@ class ConferenceData {
               ? CreateConferenceRequest.fromJson(
                   json_['createRequest'] as core.Map<core.String, core.dynamic>)
               : null,
-          entryPoints: json_.containsKey('entryPoints')
-              ? (json_['entryPoints'] as core.List)
-                  .map((value) => EntryPoint.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          entryPoints: (json_['entryPoints'] as core.List?)
+              ?.map((value) => EntryPoint.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           notes: json_['notes'] as core.String?,
           parameters: json_.containsKey('parameters')
               ? ConferenceParameters.fromJson(
@@ -3307,15 +3293,14 @@ class ConferenceParametersAddOnParameters {
 
   ConferenceParametersAddOnParameters.fromJson(core.Map json_)
       : this(
-          parameters: json_.containsKey('parameters')
-              ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          parameters:
+              (json_['parameters'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3338,11 +3323,9 @@ class ConferenceProperties {
   ConferenceProperties.fromJson(core.Map json_)
       : this(
           allowedConferenceSolutionTypes:
-              json_.containsKey('allowedConferenceSolutionTypes')
-                  ? (json_['allowedConferenceSolutionTypes'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
+              (json_['allowedConferenceSolutionTypes'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3600,11 +3583,9 @@ class EntryPoint {
   EntryPoint.fromJson(core.Map json_)
       : this(
           accessCode: json_['accessCode'] as core.String?,
-          entryPointFeatures: json_.containsKey('entryPointFeatures')
-              ? (json_['entryPointFeatures'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          entryPointFeatures: (json_['entryPointFeatures'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           entryPointType: json_['entryPointType'] as core.String?,
           label: json_['label'] as core.String?,
           meetingCode: json_['meetingCode'] as core.String?,
@@ -3723,22 +3704,20 @@ class EventExtendedProperties {
 
   EventExtendedProperties.fromJson(core.Map json_)
       : this(
-          private: json_.containsKey('private')
-              ? (json_['private'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
-          shared: json_.containsKey('shared')
-              ? (json_['shared'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          private:
+              (json_['private'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          shared:
+              (json_['shared'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3810,15 +3789,14 @@ class EventGadget {
           height: json_['height'] as core.int?,
           iconLink: json_['iconLink'] as core.String?,
           link: json_['link'] as core.String?,
-          preferences: json_.containsKey('preferences')
-              ? (json_['preferences'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          preferences:
+              (json_['preferences'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           title: json_['title'] as core.String?,
           type: json_['type'] as core.String?,
           width: json_['width'] as core.int?,
@@ -3902,12 +3880,10 @@ class EventReminders {
 
   EventReminders.fromJson(core.Map json_)
       : this(
-          overrides: json_.containsKey('overrides')
-              ? (json_['overrides'] as core.List)
-                  .map((value) => EventReminder.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          overrides: (json_['overrides'] as core.List?)
+              ?.map((value) => EventReminder.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           useDefault: json_['useDefault'] as core.bool?,
         );
 
@@ -4286,18 +4262,14 @@ class Event {
   Event.fromJson(core.Map json_)
       : this(
           anyoneCanAddSelf: json_['anyoneCanAddSelf'] as core.bool?,
-          attachments: json_.containsKey('attachments')
-              ? (json_['attachments'] as core.List)
-                  .map((value) => EventAttachment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          attendees: json_.containsKey('attendees')
-              ? (json_['attendees'] as core.List)
-                  .map((value) => EventAttendee.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          attachments: (json_['attachments'] as core.List?)
+              ?.map((value) => EventAttachment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          attendees: (json_['attendees'] as core.List?)
+              ?.map((value) => EventAttendee.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           attendeesOmitted: json_['attendeesOmitted'] as core.bool?,
           colorId: json_['colorId'] as core.String?,
           conferenceData: json_.containsKey('conferenceData')
@@ -4356,11 +4328,9 @@ class Event {
                       as core.Map<core.String, core.dynamic>)
               : null,
           privateCopy: json_['privateCopy'] as core.bool?,
-          recurrence: json_.containsKey('recurrence')
-              ? (json_['recurrence'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          recurrence: (json_['recurrence'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           recurringEventId: json_['recurringEventId'] as core.String?,
           reminders: json_.containsKey('reminders')
               ? EventReminders.fromJson(
@@ -4952,20 +4922,16 @@ class Events {
   Events.fromJson(core.Map json_)
       : this(
           accessRole: json_['accessRole'] as core.String?,
-          defaultReminders: json_.containsKey('defaultReminders')
-              ? (json_['defaultReminders'] as core.List)
-                  .map((value) => EventReminder.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          defaultReminders: (json_['defaultReminders'] as core.List?)
+              ?.map((value) => EventReminder.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           description: json_['description'] as core.String?,
           etag: json_['etag'] as core.String?,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => Event.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) =>
+                  Event.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           nextSyncToken: json_['nextSyncToken'] as core.String?,
@@ -5005,18 +4971,14 @@ class FreeBusyCalendar {
 
   FreeBusyCalendar.fromJson(core.Map json_)
       : this(
-          busy: json_.containsKey('busy')
-              ? (json_['busy'] as core.List)
-                  .map((value) => TimePeriod.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          errors: json_.containsKey('errors')
-              ? (json_['errors'] as core.List)
-                  .map((value) => Error.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          busy: (json_['busy'] as core.List?)
+              ?.map((value) => TimePeriod.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          errors: (json_['errors'] as core.List?)
+              ?.map((value) =>
+                  Error.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5039,17 +5001,13 @@ class FreeBusyGroup {
 
   FreeBusyGroup.fromJson(core.Map json_)
       : this(
-          calendars: json_.containsKey('calendars')
-              ? (json_['calendars'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          errors: json_.containsKey('errors')
-              ? (json_['errors'] as core.List)
-                  .map((value) => Error.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          calendars: (json_['calendars'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          errors: (json_['errors'] as core.List?)
+              ?.map((value) =>
+                  Error.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5098,12 +5056,10 @@ class FreeBusyRequest {
       : this(
           calendarExpansionMax: json_['calendarExpansionMax'] as core.int?,
           groupExpansionMax: json_['groupExpansionMax'] as core.int?,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => FreeBusyRequestItem.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => FreeBusyRequestItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           timeMax: json_.containsKey('timeMax')
               ? core.DateTime.parse(json_['timeMax'] as core.String)
               : null,
@@ -5168,24 +5124,22 @@ class FreeBusyResponse {
 
   FreeBusyResponse.fromJson(core.Map json_)
       : this(
-          calendars: json_.containsKey('calendars')
-              ? (json_['calendars'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    FreeBusyCalendar.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          groups: json_.containsKey('groups')
-              ? (json_['groups'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    FreeBusyGroup.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          calendars:
+              (json_['calendars'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              FreeBusyCalendar.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          groups:
+              (json_['groups'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              FreeBusyGroup.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           kind: json_['kind'] as core.String?,
           timeMax: json_.containsKey('timeMax')
               ? core.DateTime.parse(json_['timeMax'] as core.String)
@@ -5277,12 +5231,10 @@ class Settings {
   Settings.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => Setting.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => Setting.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           nextSyncToken: json_['nextSyncToken'] as core.String?,

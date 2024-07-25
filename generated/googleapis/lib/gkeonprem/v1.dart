@@ -4393,12 +4393,10 @@ class Authorization {
 
   Authorization.fromJson(core.Map json_)
       : this(
-          adminUsers: json_.containsKey('adminUsers')
-              ? (json_['adminUsers'] as core.List)
-                  .map((value) => ClusterUser.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          adminUsers: (json_['adminUsers'] as core.List?)
+              ?.map((value) => ClusterUser.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4627,15 +4625,14 @@ class BareMetalAdminCluster {
 
   BareMetalAdminCluster.fromJson(core.Map json_)
       : this(
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           bareMetalVersion: json_['bareMetalVersion'] as core.String?,
           binaryAuthorization: json_.containsKey('binaryAuthorization')
               ? BinaryAuthorization.fromJson(json_['binaryAuthorization']
@@ -4783,12 +4780,10 @@ class BareMetalAdminControlPlaneConfig {
 
   BareMetalAdminControlPlaneConfig.fromJson(core.Map json_)
       : this(
-          apiServerArgs: json_.containsKey('apiServerArgs')
-              ? (json_['apiServerArgs'] as core.List)
-                  .map((value) => BareMetalAdminApiServerArgument.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          apiServerArgs: (json_['apiServerArgs'] as core.List?)
+              ?.map((value) => BareMetalAdminApiServerArgument.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           controlPlaneNodePoolConfig:
               json_.containsKey('controlPlaneNodePoolConfig')
                   ? BareMetalAdminControlPlaneNodePoolConfig.fromJson(
@@ -4865,17 +4860,13 @@ class BareMetalAdminIslandModeCidrConfig {
 
   BareMetalAdminIslandModeCidrConfig.fromJson(core.Map json_)
       : this(
-          podAddressCidrBlocks: json_.containsKey('podAddressCidrBlocks')
-              ? (json_['podAddressCidrBlocks'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          podAddressCidrBlocks: (json_['podAddressCidrBlocks'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           serviceAddressCidrBlocks:
-              json_.containsKey('serviceAddressCidrBlocks')
-                  ? (json_['serviceAddressCidrBlocks'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
+              (json_['serviceAddressCidrBlocks'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4942,18 +4933,14 @@ class BareMetalAdminMachineDrainStatus {
 
   BareMetalAdminMachineDrainStatus.fromJson(core.Map json_)
       : this(
-          drainedMachines: json_.containsKey('drainedMachines')
-              ? (json_['drainedMachines'] as core.List)
-                  .map((value) => BareMetalAdminDrainedMachine.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          drainingMachines: json_.containsKey('drainingMachines')
-              ? (json_['drainingMachines'] as core.List)
-                  .map((value) => BareMetalAdminDrainingMachine.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          drainedMachines: (json_['drainedMachines'] as core.List?)
+              ?.map((value) => BareMetalAdminDrainedMachine.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          drainingMachines: (json_['drainingMachines'] as core.List?)
+              ?.map((value) => BareMetalAdminDrainingMachine.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5090,11 +5077,9 @@ class BareMetalAdminProxyConfig {
 
   BareMetalAdminProxyConfig.fromJson(core.Map json_)
       : this(
-          noProxy: json_.containsKey('noProxy')
-              ? (json_['noProxy'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          noProxy: (json_['noProxy'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           uri: json_['uri'] as core.String?,
         );
 
@@ -5291,19 +5276,15 @@ class BareMetalBgpLbConfig {
 
   BareMetalBgpLbConfig.fromJson(core.Map json_)
       : this(
-          addressPools: json_.containsKey('addressPools')
-              ? (json_['addressPools'] as core.List)
-                  .map((value) => BareMetalLoadBalancerAddressPool.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          addressPools: (json_['addressPools'] as core.List?)
+              ?.map((value) => BareMetalLoadBalancerAddressPool.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           asn: json_['asn'] as core.String?,
-          bgpPeerConfigs: json_.containsKey('bgpPeerConfigs')
-              ? (json_['bgpPeerConfigs'] as core.List)
-                  .map((value) => BareMetalBgpPeerConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          bgpPeerConfigs: (json_['bgpPeerConfigs'] as core.List?)
+              ?.map((value) => BareMetalBgpPeerConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           loadBalancerNodePoolConfig:
               json_.containsKey('loadBalancerNodePoolConfig')
                   ? BareMetalLoadBalancerNodePoolConfig.fromJson(
@@ -5352,11 +5333,9 @@ class BareMetalBgpPeerConfig {
   BareMetalBgpPeerConfig.fromJson(core.Map json_)
       : this(
           asn: json_['asn'] as core.String?,
-          controlPlaneNodes: json_.containsKey('controlPlaneNodes')
-              ? (json_['controlPlaneNodes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          controlPlaneNodes: (json_['controlPlaneNodes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           ipAddress: json_['ipAddress'] as core.String?,
         );
 
@@ -5589,15 +5568,14 @@ class BareMetalCluster {
           adminClusterMembership:
               json_['adminClusterMembership'] as core.String?,
           adminClusterName: json_['adminClusterName'] as core.String?,
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           bareMetalVersion: json_['bareMetalVersion'] as core.String?,
           binaryAuthorization: json_.containsKey('binaryAuthorization')
               ? BinaryAuthorization.fromJson(json_['binaryAuthorization']
@@ -5768,12 +5746,10 @@ class BareMetalControlPlaneConfig {
 
   BareMetalControlPlaneConfig.fromJson(core.Map json_)
       : this(
-          apiServerArgs: json_.containsKey('apiServerArgs')
-              ? (json_['apiServerArgs'] as core.List)
-                  .map((value) => BareMetalApiServerArgument.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          apiServerArgs: (json_['apiServerArgs'] as core.List?)
+              ?.map((value) => BareMetalApiServerArgument.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           controlPlaneNodePoolConfig:
               json_.containsKey('controlPlaneNodePoolConfig')
                   ? BareMetalControlPlaneNodePoolConfig.fromJson(
@@ -5844,17 +5820,13 @@ class BareMetalIslandModeCidrConfig {
 
   BareMetalIslandModeCidrConfig.fromJson(core.Map json_)
       : this(
-          podAddressCidrBlocks: json_.containsKey('podAddressCidrBlocks')
-              ? (json_['podAddressCidrBlocks'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          podAddressCidrBlocks: (json_['podAddressCidrBlocks'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           serviceAddressCidrBlocks:
-              json_.containsKey('serviceAddressCidrBlocks')
-                  ? (json_['serviceAddressCidrBlocks'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
+              (json_['serviceAddressCidrBlocks'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6076,18 +6048,14 @@ class BareMetalMachineDrainStatus {
 
   BareMetalMachineDrainStatus.fromJson(core.Map json_)
       : this(
-          drainedMachines: json_.containsKey('drainedMachines')
-              ? (json_['drainedMachines'] as core.List)
-                  .map((value) => BareMetalDrainedMachine.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          drainingMachines: json_.containsKey('drainingMachines')
-              ? (json_['drainingMachines'] as core.List)
-                  .map((value) => BareMetalDrainingMachine.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          drainedMachines: (json_['drainedMachines'] as core.List?)
+              ?.map((value) => BareMetalDrainedMachine.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          drainingMachines: (json_['drainingMachines'] as core.List?)
+              ?.map((value) => BareMetalDrainingMachine.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6149,12 +6117,10 @@ class BareMetalMetalLbConfig {
 
   BareMetalMetalLbConfig.fromJson(core.Map json_)
       : this(
-          addressPools: json_.containsKey('addressPools')
-              ? (json_['addressPools'] as core.List)
-                  .map((value) => BareMetalLoadBalancerAddressPool.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          addressPools: (json_['addressPools'] as core.List?)
+              ?.map((value) => BareMetalLoadBalancerAddressPool.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           loadBalancerNodePoolConfig:
               json_.containsKey('loadBalancerNodePoolConfig')
                   ? BareMetalLoadBalancerNodePoolConfig.fromJson(
@@ -6295,14 +6261,13 @@ class BareMetalNodeConfig {
 
   BareMetalNodeConfig.fromJson(core.Map json_)
       : this(
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           nodeIp: json_['nodeIp'] as core.String?,
         );
 
@@ -6418,15 +6383,14 @@ class BareMetalNodePool {
 
   BareMetalNodePool.fromJson(core.Map json_)
       : this(
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           createTime: json_['createTime'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
@@ -6507,27 +6471,22 @@ class BareMetalNodePoolConfig {
               ? BareMetalKubeletConfig.fromJson(
                   json_['kubeletConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
-          nodeConfigs: json_.containsKey('nodeConfigs')
-              ? (json_['nodeConfigs'] as core.List)
-                  .map((value) => BareMetalNodeConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          nodeConfigs: (json_['nodeConfigs'] as core.List?)
+              ?.map((value) => BareMetalNodeConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           operatingSystem: json_['operatingSystem'] as core.String?,
-          taints: json_.containsKey('taints')
-              ? (json_['taints'] as core.List)
-                  .map((value) => NodeTaint.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          taints: (json_['taints'] as core.List?)
+              ?.map((value) => NodeTaint.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6640,11 +6599,9 @@ class BareMetalProxyConfig {
 
   BareMetalProxyConfig.fromJson(core.Map json_)
       : this(
-          noProxy: json_.containsKey('noProxy')
-              ? (json_['noProxy'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          noProxy: (json_['noProxy'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           uri: json_['uri'] as core.String?,
         );
 
@@ -6759,12 +6716,10 @@ class BareMetalVersionInfo {
 
   BareMetalVersionInfo.fromJson(core.Map json_)
       : this(
-          dependencies: json_.containsKey('dependencies')
-              ? (json_['dependencies'] as core.List)
-                  .map((value) => UpgradeDependency.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          dependencies: (json_['dependencies'] as core.List?)
+              ?.map((value) => UpgradeDependency.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           hasDependencies: json_['hasDependencies'] as core.bool?,
           version: json_['version'] as core.String?,
         );
@@ -6952,11 +6907,9 @@ class Binding {
               ? Expr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -7304,18 +7257,15 @@ class ListBareMetalAdminClustersResponse {
 
   ListBareMetalAdminClustersResponse.fromJson(core.Map json_)
       : this(
-          bareMetalAdminClusters: json_.containsKey('bareMetalAdminClusters')
-              ? (json_['bareMetalAdminClusters'] as core.List)
-                  .map((value) => BareMetalAdminCluster.fromJson(
+          bareMetalAdminClusters:
+              (json_['bareMetalAdminClusters'] as core.List?)
+                  ?.map((value) => BareMetalAdminCluster.fromJson(
                       value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                  .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7348,18 +7298,14 @@ class ListBareMetalClustersResponse {
 
   ListBareMetalClustersResponse.fromJson(core.Map json_)
       : this(
-          bareMetalClusters: json_.containsKey('bareMetalClusters')
-              ? (json_['bareMetalClusters'] as core.List)
-                  .map((value) => BareMetalCluster.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          bareMetalClusters: (json_['bareMetalClusters'] as core.List?)
+              ?.map((value) => BareMetalCluster.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7390,18 +7336,14 @@ class ListBareMetalNodePoolsResponse {
 
   ListBareMetalNodePoolsResponse.fromJson(core.Map json_)
       : this(
-          bareMetalNodePools: json_.containsKey('bareMetalNodePools')
-              ? (json_['bareMetalNodePools'] as core.List)
-                  .map((value) => BareMetalNodePool.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          bareMetalNodePools: (json_['bareMetalNodePools'] as core.List?)
+              ?.map((value) => BareMetalNodePool.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7427,12 +7369,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -7458,12 +7398,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7495,17 +7433,13 @@ class ListVmwareAdminClustersResponse {
   ListVmwareAdminClustersResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          vmwareAdminClusters: json_.containsKey('vmwareAdminClusters')
-              ? (json_['vmwareAdminClusters'] as core.List)
-                  .map((value) => VmwareAdminCluster.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          vmwareAdminClusters: (json_['vmwareAdminClusters'] as core.List?)
+              ?.map((value) => VmwareAdminCluster.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7539,17 +7473,13 @@ class ListVmwareClustersResponse {
   ListVmwareClustersResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          vmwareClusters: json_.containsKey('vmwareClusters')
-              ? (json_['vmwareClusters'] as core.List)
-                  .map((value) => VmwareCluster.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          vmwareClusters: (json_['vmwareClusters'] as core.List?)
+              ?.map((value) => VmwareCluster.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7581,17 +7511,13 @@ class ListVmwareNodePoolsResponse {
   ListVmwareNodePoolsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          vmwareNodePools: json_.containsKey('vmwareNodePools')
-              ? (json_['vmwareNodePools'] as core.List)
-                  .map((value) => VmwareNodePool.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          vmwareNodePools: (json_['vmwareNodePools'] as core.List?)
+              ?.map((value) => VmwareNodePool.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7816,12 +7742,10 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
       : this(
-          bindings: json_.containsKey('bindings')
-              ? (json_['bindings'] as core.List)
-                  .map((value) => Binding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
         );
@@ -7844,12 +7768,10 @@ class QueryBareMetalAdminVersionConfigResponse {
 
   QueryBareMetalAdminVersionConfigResponse.fromJson(core.Map json_)
       : this(
-          versions: json_.containsKey('versions')
-              ? (json_['versions'] as core.List)
-                  .map((value) => BareMetalVersionInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          versions: (json_['versions'] as core.List?)
+              ?.map((value) => BareMetalVersionInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7868,12 +7790,10 @@ class QueryBareMetalVersionConfigResponse {
 
   QueryBareMetalVersionConfigResponse.fromJson(core.Map json_)
       : this(
-          versions: json_.containsKey('versions')
-              ? (json_['versions'] as core.List)
-                  .map((value) => BareMetalVersionInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          versions: (json_['versions'] as core.List?)
+              ?.map((value) => BareMetalVersionInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7892,12 +7812,10 @@ class QueryVmwareVersionConfigResponse {
 
   QueryVmwareVersionConfigResponse.fromJson(core.Map json_)
       : this(
-          versions: json_.containsKey('versions')
-              ? (json_['versions'] as core.List)
-                  .map((value) => VmwareVersionInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          versions: (json_['versions'] as core.List?)
+              ?.map((value) => VmwareVersionInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7981,12 +7899,10 @@ class ResourceStatus {
 
   ResourceStatus.fromJson(core.Map json_)
       : this(
-          conditions: json_.containsKey('conditions')
-              ? (json_['conditions'] as core.List)
-                  .map((value) => ResourceCondition.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          conditions: (json_['conditions'] as core.List?)
+              ?.map((value) => ResourceCondition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           errorMessage: json_['errorMessage'] as core.String?,
         );
 
@@ -8185,12 +8101,10 @@ class ValidationCheckStatus {
 
   ValidationCheckStatus.fromJson(core.Map json_)
       : this(
-          result: json_.containsKey('result')
-              ? (json_['result'] as core.List)
-                  .map((value) => ValidationCheckResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          result: (json_['result'] as core.List?)
+              ?.map((value) => ValidationCheckResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8259,12 +8173,10 @@ class VmwareAdminAuthorizationConfig {
 
   VmwareAdminAuthorizationConfig.fromJson(core.Map json_)
       : this(
-          viewerUsers: json_.containsKey('viewerUsers')
-              ? (json_['viewerUsers'] as core.List)
-                  .map((value) => ClusterUser.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          viewerUsers: (json_['viewerUsers'] as core.List?)
+              ?.map((value) => ClusterUser.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8446,15 +8358,14 @@ class VmwareAdminCluster {
               ? VmwareAdminAddonNodeConfig.fromJson(
                   json_['addonNode'] as core.Map<core.String, core.dynamic>)
               : null,
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           antiAffinityGroups: json_.containsKey('antiAffinityGroups')
               ? VmwareAAGConfig.fromJson(json_['antiAffinityGroups']
                   as core.Map<core.String, core.dynamic>)
@@ -8798,17 +8709,13 @@ class VmwareAdminNetworkConfig {
               ? VmwareHostConfig.fromJson(
                   json_['hostConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          podAddressCidrBlocks: json_.containsKey('podAddressCidrBlocks')
-              ? (json_['podAddressCidrBlocks'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          podAddressCidrBlocks: (json_['podAddressCidrBlocks'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           serviceAddressCidrBlocks:
-              json_.containsKey('serviceAddressCidrBlocks')
-                  ? (json_['serviceAddressCidrBlocks'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
+              (json_['serviceAddressCidrBlocks'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           staticIpConfig: json_.containsKey('staticIpConfig')
               ? VmwareStaticIpConfig.fromJson(json_['staticIpConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -8903,19 +8810,15 @@ class VmwareAdminSeesawConfig {
       : this(
           enableHa: json_['enableHa'] as core.bool?,
           group: json_['group'] as core.String?,
-          ipBlocks: json_.containsKey('ipBlocks')
-              ? (json_['ipBlocks'] as core.List)
-                  .map((value) => VmwareIpBlock.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          ipBlocks: (json_['ipBlocks'] as core.List?)
+              ?.map((value) => VmwareIpBlock.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           masterIp: json_['masterIp'] as core.String?,
           stackdriverName: json_['stackdriverName'] as core.String?,
-          vms: json_.containsKey('vms')
-              ? (json_['vms'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          vms: (json_['vms'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9306,15 +9209,14 @@ class VmwareCluster {
           adminClusterMembership:
               json_['adminClusterMembership'] as core.String?,
           adminClusterName: json_['adminClusterName'] as core.String?,
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           antiAffinityGroups: json_.containsKey('antiAffinityGroups')
               ? VmwareAAGConfig.fromJson(json_['antiAffinityGroups']
                   as core.Map<core.String, core.dynamic>)
@@ -9641,21 +9543,15 @@ class VmwareHostConfig {
 
   VmwareHostConfig.fromJson(core.Map json_)
       : this(
-          dnsSearchDomains: json_.containsKey('dnsSearchDomains')
-              ? (json_['dnsSearchDomains'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          dnsServers: json_.containsKey('dnsServers')
-              ? (json_['dnsServers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          ntpServers: json_.containsKey('ntpServers')
-              ? (json_['ntpServers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          dnsSearchDomains: (json_['dnsSearchDomains'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          dnsServers: (json_['dnsServers'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          ntpServers: (json_['ntpServers'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9712,12 +9608,10 @@ class VmwareIpBlock {
   VmwareIpBlock.fromJson(core.Map json_)
       : this(
           gateway: json_['gateway'] as core.String?,
-          ips: json_.containsKey('ips')
-              ? (json_['ips'] as core.List)
-                  .map((value) => VmwareHostIp.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          ips: (json_['ips'] as core.List?)
+              ?.map((value) => VmwareHostIp.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           netmask: json_['netmask'] as core.String?,
         );
 
@@ -9865,12 +9759,10 @@ class VmwareMetalLbConfig {
 
   VmwareMetalLbConfig.fromJson(core.Map json_)
       : this(
-          addressPools: json_.containsKey('addressPools')
-              ? (json_['addressPools'] as core.List)
-                  .map((value) => VmwareAddressPool.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          addressPools: (json_['addressPools'] as core.List?)
+              ?.map((value) => VmwareAddressPool.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9940,17 +9832,13 @@ class VmwareNetworkConfig {
               ? VmwareHostConfig.fromJson(
                   json_['hostConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          podAddressCidrBlocks: json_.containsKey('podAddressCidrBlocks')
-              ? (json_['podAddressCidrBlocks'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          podAddressCidrBlocks: (json_['podAddressCidrBlocks'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           serviceAddressCidrBlocks:
-              json_.containsKey('serviceAddressCidrBlocks')
-                  ? (json_['serviceAddressCidrBlocks'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
+              (json_['serviceAddressCidrBlocks'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           staticIpConfig: json_.containsKey('staticIpConfig')
               ? VmwareStaticIpConfig.fromJson(json_['staticIpConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -10039,22 +9927,19 @@ class VmwareNodeConfig {
           enableLoadBalancer: json_['enableLoadBalancer'] as core.bool?,
           image: json_['image'] as core.String?,
           imageType: json_['imageType'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           memoryMb: json_['memoryMb'] as core.String?,
           replicas: json_['replicas'] as core.String?,
-          taints: json_.containsKey('taints')
-              ? (json_['taints'] as core.List)
-                  .map((value) => NodeTaint.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          taints: (json_['taints'] as core.List?)
+              ?.map((value) => NodeTaint.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           vsphereConfig: json_.containsKey('vsphereConfig')
               ? VmwareVsphereConfig.fromJson(
                   json_['vsphereConfig'] as core.Map<core.String, core.dynamic>)
@@ -10189,15 +10074,14 @@ class VmwareNodePool {
 
   VmwareNodePool.fromJson(core.Map json_)
       : this(
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           config: json_.containsKey('config')
               ? VmwareNodeConfig.fromJson(
                   json_['config'] as core.Map<core.String, core.dynamic>)
@@ -10302,12 +10186,10 @@ class VmwarePlatformConfig {
 
   VmwarePlatformConfig.fromJson(core.Map json_)
       : this(
-          bundles: json_.containsKey('bundles')
-              ? (json_['bundles'] as core.List)
-                  .map((value) => VmwareBundleConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          bundles: (json_['bundles'] as core.List?)
+              ?.map((value) => VmwareBundleConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           platformVersion: json_['platformVersion'] as core.String?,
           requiredPlatformVersion:
               json_['requiredPlatformVersion'] as core.String?,
@@ -10385,19 +10267,15 @@ class VmwareSeesawConfig {
       : this(
           enableHa: json_['enableHa'] as core.bool?,
           group: json_['group'] as core.String?,
-          ipBlocks: json_.containsKey('ipBlocks')
-              ? (json_['ipBlocks'] as core.List)
-                  .map((value) => VmwareIpBlock.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          ipBlocks: (json_['ipBlocks'] as core.List?)
+              ?.map((value) => VmwareIpBlock.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           masterIp: json_['masterIp'] as core.String?,
           stackdriverName: json_['stackdriverName'] as core.String?,
-          vms: json_.containsKey('vms')
-              ? (json_['vms'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          vms: (json_['vms'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10422,12 +10300,10 @@ class VmwareStaticIpConfig {
 
   VmwareStaticIpConfig.fromJson(core.Map json_)
       : this(
-          ipBlocks: json_.containsKey('ipBlocks')
-              ? (json_['ipBlocks'] as core.List)
-                  .map((value) => VmwareIpBlock.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          ipBlocks: (json_['ipBlocks'] as core.List?)
+              ?.map((value) => VmwareIpBlock.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10550,12 +10426,10 @@ class VmwareVersionInfo {
 
   VmwareVersionInfo.fromJson(core.Map json_)
       : this(
-          dependencies: json_.containsKey('dependencies')
-              ? (json_['dependencies'] as core.List)
-                  .map((value) => UpgradeDependency.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          dependencies: (json_['dependencies'] as core.List?)
+              ?.map((value) => UpgradeDependency.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           hasDependencies: json_['hasDependencies'] as core.bool?,
           isInstalled: json_['isInstalled'] as core.bool?,
           version: json_['version'] as core.String?,
@@ -10619,17 +10493,13 @@ class VmwareVsphereConfig {
   VmwareVsphereConfig.fromJson(core.Map json_)
       : this(
           datastore: json_['datastore'] as core.String?,
-          hostGroups: json_.containsKey('hostGroups')
-              ? (json_['hostGroups'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          tags: json_.containsKey('tags')
-              ? (json_['tags'] as core.List)
-                  .map((value) => VmwareVsphereTag.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          hostGroups: (json_['hostGroups'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          tags: (json_['tags'] as core.List?)
+              ?.map((value) => VmwareVsphereTag.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

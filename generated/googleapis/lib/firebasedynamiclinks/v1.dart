@@ -452,12 +452,10 @@ class CreateManagedShortLinkResponse {
                   as core.Map<core.String, core.dynamic>)
               : null,
           previewLink: json_['previewLink'] as core.String?,
-          warning: json_.containsKey('warning')
-              ? (json_['warning'] as core.List)
-                  .map((value) => DynamicLinkWarning.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          warning: (json_['warning'] as core.List?)
+              ?.map((value) => DynamicLinkWarning.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -545,12 +543,10 @@ class CreateShortDynamicLinkResponse {
       : this(
           previewLink: json_['previewLink'] as core.String?,
           shortLink: json_['shortLink'] as core.String?,
-          warning: json_.containsKey('warning')
-              ? (json_['warning'] as core.List)
-                  .map((value) => DynamicLinkWarning.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          warning: (json_['warning'] as core.List?)
+              ?.map((value) => DynamicLinkWarning.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -827,12 +823,10 @@ class DynamicLinkStats {
 
   DynamicLinkStats.fromJson(core.Map json_)
       : this(
-          linkEventStats: json_.containsKey('linkEventStats')
-              ? (json_['linkEventStats'] as core.List)
-                  .map((value) => DynamicLinkEventStat.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          linkEventStats: (json_['linkEventStats'] as core.List?)
+              ?.map((value) => DynamicLinkEventStat.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1481,11 +1475,9 @@ class ManagedShortLink {
   ManagedShortLink.fromJson(core.Map json_)
       : this(
           creationTime: json_['creationTime'] as core.String?,
-          flaggedAttribute: json_.containsKey('flaggedAttribute')
-              ? (json_['flaggedAttribute'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          flaggedAttribute: (json_['flaggedAttribute'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           info: json_.containsKey('info')
               ? DynamicLinkInfo.fromJson(
                   json_['info'] as core.Map<core.String, core.dynamic>)

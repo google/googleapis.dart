@@ -117,12 +117,10 @@ class ComputeFlightEmissionsRequest {
 
   ComputeFlightEmissionsRequest.fromJson(core.Map json_)
       : this(
-          flights: json_.containsKey('flights')
-              ? (json_['flights'] as core.List)
-                  .map((value) => Flight.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          flights: (json_['flights'] as core.List?)
+              ?.map((value) =>
+                  Flight.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -146,12 +144,10 @@ class ComputeFlightEmissionsResponse {
 
   ComputeFlightEmissionsResponse.fromJson(core.Map json_)
       : this(
-          flightEmissions: json_.containsKey('flightEmissions')
-              ? (json_['flightEmissions'] as core.List)
-                  .map((value) => FlightWithEmissions.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          flightEmissions: (json_['flightEmissions'] as core.List?)
+              ?.map((value) => FlightWithEmissions.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           modelVersion: json_.containsKey('modelVersion')
               ? ModelVersion.fromJson(
                   json_['modelVersion'] as core.Map<core.String, core.dynamic>)

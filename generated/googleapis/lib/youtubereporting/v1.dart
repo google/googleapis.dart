@@ -1146,12 +1146,10 @@ class GdataMedia {
               ? GdataBlobstore2Info.fromJson(json_['blobstore2Info']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          compositeMedia: json_.containsKey('compositeMedia')
-              ? (json_['compositeMedia'] as core.List)
-                  .map((value) => GdataCompositeMedia.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          compositeMedia: (json_['compositeMedia'] as core.List?)
+              ?.map((value) => GdataCompositeMedia.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           contentType: json_['contentType'] as core.String?,
           contentTypeInfo: json_.containsKey('contentTypeInfo')
               ? GdataContentTypeInfo.fromJson(json_['contentTypeInfo']
@@ -1351,12 +1349,10 @@ class ListJobsResponse {
 
   ListJobsResponse.fromJson(core.Map json_)
       : this(
-          jobs: json_.containsKey('jobs')
-              ? (json_['jobs'] as core.List)
-                  .map((value) => Job.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          jobs: (json_['jobs'] as core.List?)
+              ?.map((value) =>
+                  Job.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1386,12 +1382,10 @@ class ListReportTypesResponse {
   ListReportTypesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          reportTypes: json_.containsKey('reportTypes')
-              ? (json_['reportTypes'] as core.List)
-                  .map((value) => ReportType.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          reportTypes: (json_['reportTypes'] as core.List?)
+              ?.map((value) => ReportType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1420,12 +1414,10 @@ class ListReportsResponse {
   ListReportsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          reports: json_.containsKey('reports')
-              ? (json_['reports'] as core.List)
-                  .map((value) => Report.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          reports: (json_['reports'] as core.List?)
+              ?.map((value) =>
+                  Report.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

@@ -637,12 +637,10 @@ class AchievementConfigurationListResponse {
 
   AchievementConfigurationListResponse.fromJson(core.Map json_)
       : this(
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => AchievementConfiguration.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => AchievementConfiguration.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -935,12 +933,10 @@ class LeaderboardConfigurationListResponse {
 
   LeaderboardConfigurationListResponse.fromJson(core.Map json_)
       : this(
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => LeaderboardConfiguration.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => LeaderboardConfiguration.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1004,12 +1000,10 @@ class LocalizedStringBundle {
   LocalizedStringBundle.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
-          translations: json_.containsKey('translations')
-              ? (json_['translations'] as core.List)
-                  .map((value) => LocalizedString.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          translations: (json_['translations'] as core.List?)
+              ?.map((value) => LocalizedString.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

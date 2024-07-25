@@ -607,12 +607,10 @@ class FetchMultiDailyMetricsTimeSeriesResponse {
   FetchMultiDailyMetricsTimeSeriesResponse.fromJson(core.Map json_)
       : this(
           multiDailyMetricTimeSeries:
-              json_.containsKey('multiDailyMetricTimeSeries')
-                  ? (json_['multiDailyMetricTimeSeries'] as core.List)
-                      .map((value) => MultiDailyMetricTimeSeries.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
+              (json_['multiDailyMetricTimeSeries'] as core.List?)
+                  ?.map((value) => MultiDailyMetricTimeSeries.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -695,12 +693,10 @@ class ListSearchKeywordImpressionsMonthlyResponse {
   ListSearchKeywordImpressionsMonthlyResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          searchKeywordsCounts: json_.containsKey('searchKeywordsCounts')
-              ? (json_['searchKeywordsCounts'] as core.List)
-                  .map((value) => SearchKeywordCount.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          searchKeywordsCounts: (json_['searchKeywordsCounts'] as core.List?)
+              ?.map((value) => SearchKeywordCount.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -721,12 +717,10 @@ class MultiDailyMetricTimeSeries {
 
   MultiDailyMetricTimeSeries.fromJson(core.Map json_)
       : this(
-          dailyMetricTimeSeries: json_.containsKey('dailyMetricTimeSeries')
-              ? (json_['dailyMetricTimeSeries'] as core.List)
-                  .map((value) => DailyMetricTimeSeries.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          dailyMetricTimeSeries: (json_['dailyMetricTimeSeries'] as core.List?)
+              ?.map((value) => DailyMetricTimeSeries.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -786,12 +780,10 @@ class TimeSeries {
 
   TimeSeries.fromJson(core.Map json_)
       : this(
-          datedValues: json_.containsKey('datedValues')
-              ? (json_['datedValues'] as core.List)
-                  .map((value) => DatedValue.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          datedValues: (json_['datedValues'] as core.List?)
+              ?.map((value) => DatedValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

@@ -717,14 +717,11 @@ class GoogleCloudWebriskV1SearchHashesResponse {
   GoogleCloudWebriskV1SearchHashesResponse.fromJson(core.Map json_)
       : this(
           negativeExpireTime: json_['negativeExpireTime'] as core.String?,
-          threats: json_.containsKey('threats')
-              ? (json_['threats'] as core.List)
-                  .map((value) =>
-                      GoogleCloudWebriskV1SearchHashesResponseThreatHash
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          threats: (json_['threats'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudWebriskV1SearchHashesResponseThreatHash.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -769,11 +766,9 @@ class GoogleCloudWebriskV1SearchHashesResponseThreatHash {
       : this(
           expireTime: json_['expireTime'] as core.String?,
           hash: json_['hash'] as core.String?,
-          threatTypes: json_.containsKey('threatTypes')
-              ? (json_['threatTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          threatTypes: (json_['threatTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -825,11 +820,9 @@ class GoogleCloudWebriskV1SearchUrisResponseThreatUri {
   GoogleCloudWebriskV1SearchUrisResponseThreatUri.fromJson(core.Map json_)
       : this(
           expireTime: json_['expireTime'] as core.String?,
-          threatTypes: json_.containsKey('threatTypes')
-              ? (json_['threatTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          threatTypes: (json_['threatTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -882,12 +875,10 @@ class GoogleCloudWebriskV1ThreatEntryAdditions {
 
   GoogleCloudWebriskV1ThreatEntryAdditions.fromJson(core.Map json_)
       : this(
-          rawHashes: json_.containsKey('rawHashes')
-              ? (json_['rawHashes'] as core.List)
-                  .map((value) => GoogleCloudWebriskV1RawHashes.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          rawHashes: (json_['rawHashes'] as core.List?)
+              ?.map((value) => GoogleCloudWebriskV1RawHashes.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           riceHashes: json_.containsKey('riceHashes')
               ? GoogleCloudWebriskV1RiceDeltaEncoding.fromJson(
                   json_['riceHashes'] as core.Map<core.String, core.dynamic>)
@@ -955,12 +946,10 @@ class GoogleLongrunningListOperationsResponse {
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => GoogleLongrunningOperation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => GoogleLongrunningOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

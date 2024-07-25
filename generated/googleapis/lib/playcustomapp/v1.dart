@@ -173,12 +173,10 @@ class CustomApp {
   CustomApp.fromJson(core.Map json_)
       : this(
           languageCode: json_['languageCode'] as core.String?,
-          organizations: json_.containsKey('organizations')
-              ? (json_['organizations'] as core.List)
-                  .map((value) => Organization.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          organizations: (json_['organizations'] as core.List?)
+              ?.map((value) => Organization.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           packageName: json_['packageName'] as core.String?,
           title: json_['title'] as core.String?,
         );

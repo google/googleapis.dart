@@ -493,12 +493,10 @@ class BulkCheckRequest {
                   json_['defaultTarget'] as core.Map<core.String, core.dynamic>)
               : null,
           skipCacheLookup: json_['skipCacheLookup'] as core.bool?,
-          statements: json_.containsKey('statements')
-              ? (json_['statements'] as core.List)
-                  .map((value) => StatementTemplate.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          statements: (json_['statements'] as core.List?)
+              ?.map((value) => StatementTemplate.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -553,12 +551,10 @@ class BulkCheckResponse {
   BulkCheckResponse.fromJson(core.Map json_)
       : this(
           bulkErrorCode: json_['bulkErrorCode'] as core.String?,
-          checkResults: json_.containsKey('checkResults')
-              ? (json_['checkResults'] as core.List)
-                  .map((value) => CheckResponse.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          checkResults: (json_['checkResults'] as core.List?)
+              ?.map((value) => CheckResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -635,11 +631,9 @@ class CheckResponse {
   CheckResponse.fromJson(core.Map json_)
       : this(
           debugString: json_['debugString'] as core.String?,
-          errorCode: json_.containsKey('errorCode')
-              ? (json_['errorCode'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          errorCode: (json_['errorCode'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           linked: json_['linked'] as core.bool?,
           maxAge: json_['maxAge'] as core.String?,
         );
@@ -686,18 +680,14 @@ class ListResponse {
   ListResponse.fromJson(core.Map json_)
       : this(
           debugString: json_['debugString'] as core.String?,
-          errorCode: json_.containsKey('errorCode')
-              ? (json_['errorCode'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          errorCode: (json_['errorCode'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           maxAge: json_['maxAge'] as core.String?,
-          statements: json_.containsKey('statements')
-              ? (json_['statements'] as core.List)
-                  .map((value) => Statement.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          statements: (json_['statements'] as core.List?)
+              ?.map((value) => Statement.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

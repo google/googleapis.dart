@@ -47,9 +47,9 @@ class ClientObjectType extends ObjectType {
 
     final toJsonString = StringBuffer();
     toJsonString.writeln(
-      'static $_coreMapJsonType toJson($className message) {',
+      'static ${imports.coreJsonMap} toJson($className message) {',
     );
-    toJsonString.writeln('    final json_ = $_coreMapJsonTypeArguments{};');
+    toJsonString.writeln('    final json_ = ${imports.coreJsonTypeArgs}{};');
 
     for (var property in properties) {
       toJsonString.writeln('    if (message.${property.name} != null) {');
@@ -75,13 +75,7 @@ $toJsonString
 
   @override
   String jsonDecode(String json, {String? importName}) =>
-      '${className}Factory.fromJson($json as $_coreMapJsonType)';
-
-  String get _coreMapJsonTypeArguments =>
-      '<${imports.core.ref()}String, ${imports.core.ref()}dynamic>';
-
-  String get _coreMapJsonType =>
-      '${imports.core.ref()}Map$_coreMapJsonTypeArguments';
+      '${className}Factory.fromJson($json as ${imports.coreJsonMap})';
 }
 
 /// Parses all schemas in [description] and returns a [DartSchemaTypeDB].

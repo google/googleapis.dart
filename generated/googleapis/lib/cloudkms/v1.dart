@@ -3319,12 +3319,10 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
       : this(
-          auditLogConfigs: json_.containsKey('auditLogConfigs')
-              ? (json_['auditLogConfigs'] as core.List)
-                  .map((value) => AuditLogConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+              ?.map((value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           service: json_['service'] as core.String?,
         );
 
@@ -3474,11 +3472,9 @@ class Binding {
               ? Expr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -3580,11 +3576,9 @@ class Certificate {
           sha256Fingerprint: json_['sha256Fingerprint'] as core.String?,
           subject: json_['subject'] as core.String?,
           subjectAlternativeDnsNames:
-              json_.containsKey('subjectAlternativeDnsNames')
-                  ? (json_['subjectAlternativeDnsNames'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
+              (json_['subjectAlternativeDnsNames'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3728,14 +3722,13 @@ class CryptoKey {
           destroyScheduledDuration:
               json_['destroyScheduledDuration'] as core.String?,
           importOnly: json_['importOnly'] as core.bool?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           nextRotationTime: json_['nextRotationTime'] as core.String?,
           primary: json_.containsKey('primary')
@@ -4372,12 +4365,10 @@ class EkmConnection {
           etag: json_['etag'] as core.String?,
           keyManagementMode: json_['keyManagementMode'] as core.String?,
           name: json_['name'] as core.String?,
-          serviceResolvers: json_.containsKey('serviceResolvers')
-              ? (json_['serviceResolvers'] as core.List)
-                  .map((value) => ServiceResolver.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          serviceResolvers: (json_['serviceResolvers'] as core.List?)
+              ?.map((value) => ServiceResolver.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5197,12 +5188,10 @@ class ListCryptoKeyVersionsResponse {
 
   ListCryptoKeyVersionsResponse.fromJson(core.Map json_)
       : this(
-          cryptoKeyVersions: json_.containsKey('cryptoKeyVersions')
-              ? (json_['cryptoKeyVersions'] as core.List)
-                  .map((value) => CryptoKeyVersion.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          cryptoKeyVersions: (json_['cryptoKeyVersions'] as core.List?)
+              ?.map((value) => CryptoKeyVersion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -5236,12 +5225,10 @@ class ListCryptoKeysResponse {
 
   ListCryptoKeysResponse.fromJson(core.Map json_)
       : this(
-          cryptoKeys: json_.containsKey('cryptoKeys')
-              ? (json_['cryptoKeys'] as core.List)
-                  .map((value) => CryptoKey.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          cryptoKeys: (json_['cryptoKeys'] as core.List?)
+              ?.map((value) => CryptoKey.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -5275,12 +5262,10 @@ class ListEkmConnectionsResponse {
 
   ListEkmConnectionsResponse.fromJson(core.Map json_)
       : this(
-          ekmConnections: json_.containsKey('ekmConnections')
-              ? (json_['ekmConnections'] as core.List)
-                  .map((value) => EkmConnection.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          ekmConnections: (json_['ekmConnections'] as core.List?)
+              ?.map((value) => EkmConnection.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -5314,12 +5299,10 @@ class ListImportJobsResponse {
 
   ListImportJobsResponse.fromJson(core.Map json_)
       : this(
-          importJobs: json_.containsKey('importJobs')
-              ? (json_['importJobs'] as core.List)
-                  .map((value) => ImportJob.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          importJobs: (json_['importJobs'] as core.List?)
+              ?.map((value) => ImportJob.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -5342,12 +5325,10 @@ class ListKeyHandlesResponse {
 
   ListKeyHandlesResponse.fromJson(core.Map json_)
       : this(
-          keyHandles: json_.containsKey('keyHandles')
-              ? (json_['keyHandles'] as core.List)
-                  .map((value) => KeyHandle.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          keyHandles: (json_['keyHandles'] as core.List?)
+              ?.map((value) => KeyHandle.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5377,12 +5358,10 @@ class ListKeyRingsResponse {
 
   ListKeyRingsResponse.fromJson(core.Map json_)
       : this(
-          keyRings: json_.containsKey('keyRings')
-              ? (json_['keyRings'] as core.List)
-                  .map((value) => KeyRing.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          keyRings: (json_['keyRings'] as core.List?)
+              ?.map((value) => KeyRing.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -5409,12 +5388,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -5890,18 +5867,14 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
       : this(
-          auditConfigs: json_.containsKey('auditConfigs')
-              ? (json_['auditConfigs'] as core.List)
-                  .map((value) => AuditConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          bindings: json_.containsKey('bindings')
-              ? (json_['bindings'] as core.List)
-                  .map((value) => Binding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditConfigs: (json_['auditConfigs'] as core.List?)
+              ?.map((value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
         );
@@ -6648,12 +6621,10 @@ class ServiceResolver {
       : this(
           endpointFilter: json_['endpointFilter'] as core.String?,
           hostname: json_['hostname'] as core.String?,
-          serverCertificates: json_.containsKey('serverCertificates')
-              ? (json_['serverCertificates'] as core.List)
-                  .map((value) => Certificate.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          serverCertificates: (json_['serverCertificates'] as core.List?)
+              ?.map((value) => Certificate.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           serviceDirectoryService:
               json_['serviceDirectoryService'] as core.String?,
         );

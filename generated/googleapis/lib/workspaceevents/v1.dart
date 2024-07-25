@@ -482,12 +482,10 @@ class ListSubscriptionsResponse {
   ListSubscriptionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          subscriptions: json_.containsKey('subscriptions')
-              ? (json_['subscriptions'] as core.List)
-                  .map((value) => Subscription.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          subscriptions: (json_['subscriptions'] as core.List?)
+              ?.map((value) => Subscription.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -825,11 +823,9 @@ class Subscription {
           authority: json_['authority'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           etag: json_['etag'] as core.String?,
-          eventTypes: json_.containsKey('eventTypes')
-              ? (json_['eventTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          eventTypes: (json_['eventTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           expireTime: json_['expireTime'] as core.String?,
           name: json_['name'] as core.String?,
           notificationEndpoint: json_.containsKey('notificationEndpoint')

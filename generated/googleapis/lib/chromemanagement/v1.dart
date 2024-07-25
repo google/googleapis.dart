@@ -1619,13 +1619,11 @@ class GoogleChromeManagementV1AndroidAppInfo {
 
   GoogleChromeManagementV1AndroidAppInfo.fromJson(core.Map json_)
       : this(
-          permissions: json_.containsKey('permissions')
-              ? (json_['permissions'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1AndroidAppPermission.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          permissions: (json_['permissions'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1AndroidAppPermission.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1868,12 +1866,10 @@ class GoogleChromeManagementV1AppReport {
   GoogleChromeManagementV1AppReport.fromJson(core.Map json_)
       : this(
           reportTime: json_['reportTime'] as core.String?,
-          usageData: json_.containsKey('usageData')
-              ? (json_['usageData'] as core.List)
-                  .map((value) => GoogleChromeManagementV1AppUsageData.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          usageData: (json_['usageData'] as core.List?)
+              ?.map((value) => GoogleChromeManagementV1AppUsageData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2248,13 +2244,11 @@ class GoogleChromeManagementV1BatteryStatusReport {
           cycleCount: json_['cycleCount'] as core.int?,
           fullChargeCapacity: json_['fullChargeCapacity'] as core.String?,
           reportTime: json_['reportTime'] as core.String?,
-          sample: json_.containsKey('sample')
-              ? (json_['sample'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1BatterySampleReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          sample: (json_['sample'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1BatterySampleReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           serialNumber: json_['serialNumber'] as core.String?,
         );
 
@@ -2500,20 +2494,16 @@ class GoogleChromeManagementV1ChromeAppInfo {
           isTheme: json_['isTheme'] as core.bool?,
           kioskEnabled: json_['kioskEnabled'] as core.bool?,
           minUserCount: json_['minUserCount'] as core.int?,
-          permissions: json_.containsKey('permissions')
-              ? (json_['permissions'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1ChromeAppPermission.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          siteAccess: json_.containsKey('siteAccess')
-              ? (json_['siteAccess'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1ChromeAppSiteAccess.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          permissions: (json_['permissions'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1ChromeAppPermission.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          siteAccess: (json_['siteAccess'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1ChromeAppSiteAccess.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           supportEnabled: json_['supportEnabled'] as core.bool?,
           type: json_['type'] as core.String?,
         );
@@ -2688,13 +2678,11 @@ class GoogleChromeManagementV1CountChromeAppRequestsResponse {
       core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          requestedApps: json_.containsKey('requestedApps')
-              ? (json_['requestedApps'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1ChromeAppRequest.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          requestedApps: (json_['requestedApps'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1ChromeAppRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           totalSize: json_['totalSize'] as core.int?,
         );
 
@@ -2756,14 +2744,11 @@ class GoogleChromeManagementV1CountChromeCrashEventsResponse {
   GoogleChromeManagementV1CountChromeCrashEventsResponse.fromJson(
       core.Map json_)
       : this(
-          crashEventCounts: json_.containsKey('crashEventCounts')
-              ? (json_['crashEventCounts'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          crashEventCounts: (json_['crashEventCounts'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2823,13 +2808,11 @@ class GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateRespon
   GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse.fromJson(
       core.Map json_)
       : this(
-          deviceAueCountReports: json_.containsKey('deviceAueCountReports')
-              ? (json_['deviceAueCountReports'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1DeviceAueCountReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          deviceAueCountReports: (json_['deviceAueCountReports'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1DeviceAueCountReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2921,38 +2904,26 @@ class GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse {
   GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse.fromJson(
       core.Map json_)
       : this(
-          cpuReports: json_.containsKey('cpuReports')
-              ? (json_['cpuReports'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1DeviceHardwareCountReport
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          memoryReports: json_.containsKey('memoryReports')
-              ? (json_['memoryReports'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1DeviceHardwareCountReport
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          modelReports: json_.containsKey('modelReports')
-              ? (json_['modelReports'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1DeviceHardwareCountReport
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          storageReports: json_.containsKey('storageReports')
-              ? (json_['storageReports'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1DeviceHardwareCountReport
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          cpuReports: (json_['cpuReports'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1DeviceHardwareCountReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          memoryReports: (json_['memoryReports'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1DeviceHardwareCountReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          modelReports: (json_['modelReports'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1DeviceHardwareCountReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          storageReports: (json_['storageReports'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1DeviceHardwareCountReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2982,13 +2953,10 @@ class GoogleChromeManagementV1CountChromeVersionsResponse {
 
   GoogleChromeManagementV1CountChromeVersionsResponse.fromJson(core.Map json_)
       : this(
-          browserVersions: json_.containsKey('browserVersions')
-              ? (json_['browserVersions'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1BrowserVersion.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          browserVersions: (json_['browserVersions'] as core.List?)
+              ?.map((value) => GoogleChromeManagementV1BrowserVersion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -3019,12 +2987,10 @@ class GoogleChromeManagementV1CountInstalledAppsResponse {
 
   GoogleChromeManagementV1CountInstalledAppsResponse.fromJson(core.Map json_)
       : this(
-          installedApps: json_.containsKey('installedApps')
-              ? (json_['installedApps'] as core.List)
-                  .map((value) => GoogleChromeManagementV1InstalledApp.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          installedApps: (json_['installedApps'] as core.List?)
+              ?.map((value) => GoogleChromeManagementV1InstalledApp.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -3058,13 +3024,10 @@ class GoogleChromeManagementV1CountPrintJobsByPrinterResponse {
       core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          printerReports: json_.containsKey('printerReports')
-              ? (json_['printerReports'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1PrinterReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          printerReports: (json_['printerReports'] as core.List?)
+              ?.map((value) => GoogleChromeManagementV1PrinterReport.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           totalSize: json_['totalSize'] as core.String?,
         );
 
@@ -3098,13 +3061,10 @@ class GoogleChromeManagementV1CountPrintJobsByUserResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.String?,
-          userPrintReports: json_.containsKey('userPrintReports')
-              ? (json_['userPrintReports'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1UserPrintReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          userPrintReports: (json_['userPrintReports'] as core.List?)
+              ?.map((value) => GoogleChromeManagementV1UserPrintReport.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3234,13 +3194,11 @@ class GoogleChromeManagementV1CpuStatusReport {
 
   GoogleChromeManagementV1CpuStatusReport.fromJson(core.Map json_)
       : this(
-          cpuTemperatureInfo: json_.containsKey('cpuTemperatureInfo')
-              ? (json_['cpuTemperatureInfo'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1CpuTemperatureInfo.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          cpuTemperatureInfo: (json_['cpuTemperatureInfo'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1CpuTemperatureInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           cpuUtilizationPct: json_['cpuUtilizationPct'] as core.int?,
           reportTime: json_['reportTime'] as core.String?,
           sampleFrequency: json_['sampleFrequency'] as core.String?,
@@ -3582,11 +3540,9 @@ class GoogleChromeManagementV1DiskInfo {
           serialNumber: json_['serialNumber'] as core.String?,
           sizeBytes: json_['sizeBytes'] as core.String?,
           type: json_['type'] as core.String?,
-          volumeIds: json_.containsKey('volumeIds')
-              ? (json_['volumeIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          volumeIds: (json_['volumeIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           writeTimeThisSession: json_['writeTimeThisSession'] as core.String?,
         );
 
@@ -3765,12 +3721,10 @@ class GoogleChromeManagementV1EnumeratePrintJobsResponse {
   GoogleChromeManagementV1EnumeratePrintJobsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          printJobs: json_.containsKey('printJobs')
-              ? (json_['printJobs'] as core.List)
-                  .map((value) => GoogleChromeManagementV1PrintJob.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          printJobs: (json_['printJobs'] as core.List?)
+              ?.map((value) => GoogleChromeManagementV1PrintJob.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           totalSize: json_['totalSize'] as core.String?,
         );
 
@@ -3809,14 +3763,11 @@ class GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse {
   GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse.fromJson(
       core.Map json_)
       : this(
-          deviceDetails: json_.containsKey('deviceDetails')
-              ? (json_['deviceDetails'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1DeviceRequestingExtensionDetails
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          deviceDetails: (json_['deviceDetails'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1DeviceRequestingExtensionDetails
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -3852,14 +3803,11 @@ class GoogleChromeManagementV1FetchUsersRequestingExtensionResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
-          userDetails: json_.containsKey('userDetails')
-              ? (json_['userDetails'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1UserRequestingExtensionDetails
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          userDetails: (json_['userDetails'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1UserRequestingExtensionDetails
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3891,12 +3839,10 @@ class GoogleChromeManagementV1FindInstalledAppDevicesResponse {
   GoogleChromeManagementV1FindInstalledAppDevicesResponse.fromJson(
       core.Map json_)
       : this(
-          devices: json_.containsKey('devices')
-              ? (json_['devices'] as core.List)
-                  .map((value) => GoogleChromeManagementV1Device.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          devices: (json_['devices'] as core.List?)
+              ?.map((value) => GoogleChromeManagementV1Device.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -3991,13 +3937,10 @@ class GoogleChromeManagementV1GraphicsInfo {
               ? GoogleChromeManagementV1GraphicsAdapterInfo.fromJson(
                   json_['adapterInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          displayDevices: json_.containsKey('displayDevices')
-              ? (json_['displayDevices'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1DisplayDevice.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          displayDevices: (json_['displayDevices'] as core.List?)
+              ?.map((value) => GoogleChromeManagementV1DisplayDevice.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           eprivacySupported: json_['eprivacySupported'] as core.bool?,
           touchScreenInfo: json_.containsKey('touchScreenInfo')
               ? GoogleChromeManagementV1TouchScreenInfo.fromJson(
@@ -4042,12 +3985,10 @@ class GoogleChromeManagementV1GraphicsStatusReport {
 
   GoogleChromeManagementV1GraphicsStatusReport.fromJson(core.Map json_)
       : this(
-          displays: json_.containsKey('displays')
-              ? (json_['displays'] as core.List)
-                  .map((value) => GoogleChromeManagementV1DisplayInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          displays: (json_['displays'] as core.List?)
+              ?.map((value) => GoogleChromeManagementV1DisplayInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           reportTime: json_['reportTime'] as core.String?,
         );
 
@@ -4246,11 +4187,9 @@ class GoogleChromeManagementV1InstalledApp {
           displayName: json_['displayName'] as core.String?,
           homepageUri: json_['homepageUri'] as core.String?,
           osUserCount: json_['osUserCount'] as core.String?,
-          permissions: json_.containsKey('permissions')
-              ? (json_['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          permissions: (json_['permissions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4324,13 +4263,10 @@ class GoogleChromeManagementV1ListTelemetryDevicesResponse {
 
   GoogleChromeManagementV1ListTelemetryDevicesResponse.fromJson(core.Map json_)
       : this(
-          devices: json_.containsKey('devices')
-              ? (json_['devices'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1TelemetryDevice.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          devices: (json_['devices'] as core.List?)
+              ?.map((value) => GoogleChromeManagementV1TelemetryDevice.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -4356,13 +4292,10 @@ class GoogleChromeManagementV1ListTelemetryEventsResponse {
   GoogleChromeManagementV1ListTelemetryEventsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          telemetryEvents: json_.containsKey('telemetryEvents')
-              ? (json_['telemetryEvents'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1TelemetryEvent.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          telemetryEvents: (json_['telemetryEvents'] as core.List?)
+              ?.map((value) => GoogleChromeManagementV1TelemetryEvent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4391,15 +4324,12 @@ class GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse {
       core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          telemetryNotificationConfigs:
-              json_.containsKey('telemetryNotificationConfigs')
-                  ? (json_['telemetryNotificationConfigs'] as core.List)
-                      .map((value) =>
-                          GoogleChromeManagementV1TelemetryNotificationConfig
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
+          telemetryNotificationConfigs: (json_['telemetryNotificationConfigs']
+                  as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1TelemetryNotificationConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4425,13 +4355,10 @@ class GoogleChromeManagementV1ListTelemetryUsersResponse {
   GoogleChromeManagementV1ListTelemetryUsersResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          telemetryUsers: json_.containsKey('telemetryUsers')
-              ? (json_['telemetryUsers'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1TelemetryUser.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          telemetryUsers: (json_['telemetryUsers'] as core.List?)
+              ?.map((value) => GoogleChromeManagementV1TelemetryUser.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4716,13 +4643,10 @@ class GoogleChromeManagementV1NetworkInfo {
 
   GoogleChromeManagementV1NetworkInfo.fromJson(core.Map json_)
       : this(
-          networkDevices: json_.containsKey('networkDevices')
-              ? (json_['networkDevices'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1NetworkDevice.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          networkDevices: (json_['networkDevices'] as core.List?)
+              ?.map((value) => GoogleChromeManagementV1NetworkDevice.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4995,13 +4919,11 @@ class GoogleChromeManagementV1PeripheralsReport {
   GoogleChromeManagementV1PeripheralsReport.fromJson(core.Map json_)
       : this(
           reportTime: json_['reportTime'] as core.String?,
-          usbPeripheralReport: json_.containsKey('usbPeripheralReport')
-              ? (json_['usbPeripheralReport'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1UsbPeripheralReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          usbPeripheralReport: (json_['usbPeripheralReport'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1UsbPeripheralReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5258,13 +5180,11 @@ class GoogleChromeManagementV1StorageInfo {
       : this(
           availableDiskBytes: json_['availableDiskBytes'] as core.String?,
           totalDiskBytes: json_['totalDiskBytes'] as core.String?,
-          volume: json_.containsKey('volume')
-              ? (json_['volume'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1StorageInfoDiskVolume.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          volume: (json_['volume'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1StorageInfoDiskVolume.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5334,12 +5254,10 @@ class GoogleChromeManagementV1StorageStatusReport {
 
   GoogleChromeManagementV1StorageStatusReport.fromJson(core.Map json_)
       : this(
-          disk: json_.containsKey('disk')
-              ? (json_['disk'] as core.List)
-                  .map((value) => GoogleChromeManagementV1DiskInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          disk: (json_['disk'] as core.List?)
+              ?.map((value) => GoogleChromeManagementV1DiskInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           reportTime: json_['reportTime'] as core.String?,
         );
 
@@ -5855,158 +5773,118 @@ class GoogleChromeManagementV1TelemetryDevice {
 
   GoogleChromeManagementV1TelemetryDevice.fromJson(core.Map json_)
       : this(
-          appReport: json_.containsKey('appReport')
-              ? (json_['appReport'] as core.List)
-                  .map((value) => GoogleChromeManagementV1AppReport.fromJson(
+          appReport: (json_['appReport'] as core.List?)
+              ?.map((value) => GoogleChromeManagementV1AppReport.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          audioStatusReport: (json_['audioStatusReport'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1AudioStatusReport.fromJson(
                       value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          audioStatusReport: json_.containsKey('audioStatusReport')
-              ? (json_['audioStatusReport'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1AudioStatusReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          batteryInfo: json_.containsKey('batteryInfo')
-              ? (json_['batteryInfo'] as core.List)
-                  .map((value) => GoogleChromeManagementV1BatteryInfo.fromJson(
+              .toList(),
+          batteryInfo: (json_['batteryInfo'] as core.List?)
+              ?.map((value) => GoogleChromeManagementV1BatteryInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          batteryStatusReport: (json_['batteryStatusReport'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1BatteryStatusReport.fromJson(
                       value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          batteryStatusReport: json_.containsKey('batteryStatusReport')
-              ? (json_['batteryStatusReport'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1BatteryStatusReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          bootPerformanceReport: json_.containsKey('bootPerformanceReport')
-              ? (json_['bootPerformanceReport'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1BootPerformanceReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          cpuInfo: json_.containsKey('cpuInfo')
-              ? (json_['cpuInfo'] as core.List)
-                  .map((value) => GoogleChromeManagementV1CpuInfo.fromJson(
+              .toList(),
+          bootPerformanceReport: (json_['bootPerformanceReport'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1BootPerformanceReport.fromJson(
                       value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          cpuStatusReport: json_.containsKey('cpuStatusReport')
-              ? (json_['cpuStatusReport'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1CpuStatusReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+              .toList(),
+          cpuInfo: (json_['cpuInfo'] as core.List?)
+              ?.map((value) => GoogleChromeManagementV1CpuInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          cpuStatusReport: (json_['cpuStatusReport'] as core.List?)
+              ?.map((value) => GoogleChromeManagementV1CpuStatusReport.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           customer: json_['customer'] as core.String?,
           deviceId: json_['deviceId'] as core.String?,
           graphicsInfo: json_.containsKey('graphicsInfo')
               ? GoogleChromeManagementV1GraphicsInfo.fromJson(
                   json_['graphicsInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          graphicsStatusReport: json_.containsKey('graphicsStatusReport')
-              ? (json_['graphicsStatusReport'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1GraphicsStatusReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          heartbeatStatusReport: json_.containsKey('heartbeatStatusReport')
-              ? (json_['heartbeatStatusReport'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1HeartbeatStatusReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          kioskAppStatusReport: json_.containsKey('kioskAppStatusReport')
-              ? (json_['kioskAppStatusReport'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1KioskAppStatusReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          graphicsStatusReport: (json_['graphicsStatusReport'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1GraphicsStatusReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          heartbeatStatusReport: (json_['heartbeatStatusReport'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1HeartbeatStatusReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          kioskAppStatusReport: (json_['kioskAppStatusReport'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1KioskAppStatusReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           memoryInfo: json_.containsKey('memoryInfo')
               ? GoogleChromeManagementV1MemoryInfo.fromJson(
                   json_['memoryInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          memoryStatusReport: json_.containsKey('memoryStatusReport')
-              ? (json_['memoryStatusReport'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1MemoryStatusReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          memoryStatusReport: (json_['memoryStatusReport'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1MemoryStatusReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           name: json_['name'] as core.String?,
-          networkBandwidthReport: json_.containsKey('networkBandwidthReport')
-              ? (json_['networkBandwidthReport'] as core.List)
-                  .map((value) =>
+          networkBandwidthReport:
+              (json_['networkBandwidthReport'] as core.List?)
+                  ?.map((value) =>
                       GoogleChromeManagementV1NetworkBandwidthReport.fromJson(
                           value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          networkDiagnosticsReport: json_
-                  .containsKey('networkDiagnosticsReport')
-              ? (json_['networkDiagnosticsReport'] as core.List)
-                  .map((value) =>
+                  .toList(),
+          networkDiagnosticsReport:
+              (json_['networkDiagnosticsReport'] as core.List?)
+                  ?.map((value) =>
                       GoogleChromeManagementV1NetworkDiagnosticsReport.fromJson(
                           value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                  .toList(),
           networkInfo: json_.containsKey('networkInfo')
               ? GoogleChromeManagementV1NetworkInfo.fromJson(
                   json_['networkInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          networkStatusReport: json_.containsKey('networkStatusReport')
-              ? (json_['networkStatusReport'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1NetworkStatusReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          networkStatusReport: (json_['networkStatusReport'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1NetworkStatusReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           orgUnitId: json_['orgUnitId'] as core.String?,
-          osUpdateStatus: json_.containsKey('osUpdateStatus')
-              ? (json_['osUpdateStatus'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1OsUpdateStatus.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          peripheralsReport: json_.containsKey('peripheralsReport')
-              ? (json_['peripheralsReport'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1PeripheralsReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          runtimeCountersReport: json_.containsKey('runtimeCountersReport')
-              ? (json_['runtimeCountersReport'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1RuntimeCountersReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          osUpdateStatus: (json_['osUpdateStatus'] as core.List?)
+              ?.map((value) => GoogleChromeManagementV1OsUpdateStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          peripheralsReport: (json_['peripheralsReport'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1PeripheralsReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          runtimeCountersReport: (json_['runtimeCountersReport'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1RuntimeCountersReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           serialNumber: json_['serialNumber'] as core.String?,
           storageInfo: json_.containsKey('storageInfo')
               ? GoogleChromeManagementV1StorageInfo.fromJson(
                   json_['storageInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          storageStatusReport: json_.containsKey('storageStatusReport')
-              ? (json_['storageStatusReport'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1StorageStatusReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          thunderboltInfo: json_.containsKey('thunderboltInfo')
-              ? (json_['thunderboltInfo'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1ThunderboltInfo.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          storageStatusReport: (json_['storageStatusReport'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1StorageStatusReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          thunderboltInfo: (json_['thunderboltInfo'] as core.List?)
+              ?.map((value) => GoogleChromeManagementV1ThunderboltInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6314,11 +6192,9 @@ class GoogleChromeManagementV1TelemetryEventNotificationFilter {
   GoogleChromeManagementV1TelemetryEventNotificationFilter.fromJson(
       core.Map json_)
       : this(
-          eventTypes: json_.containsKey('eventTypes')
-              ? (json_['eventTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          eventTypes: (json_['eventTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6548,13 +6424,11 @@ class GoogleChromeManagementV1TelemetryUsbPeripheralsEvent {
 
   GoogleChromeManagementV1TelemetryUsbPeripheralsEvent.fromJson(core.Map json_)
       : this(
-          usbPeripheralReport: json_.containsKey('usbPeripheralReport')
-              ? (json_['usbPeripheralReport'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1UsbPeripheralReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          usbPeripheralReport: (json_['usbPeripheralReport'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1UsbPeripheralReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6599,13 +6473,11 @@ class GoogleChromeManagementV1TelemetryUser {
           customer: json_['customer'] as core.String?,
           name: json_['name'] as core.String?,
           orgUnitId: json_['orgUnitId'] as core.String?,
-          userDevice: json_.containsKey('userDevice')
-              ? (json_['userDevice'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1TelemetryUserDevice.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          userDevice: (json_['userDevice'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1TelemetryUserDevice.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           userEmail: json_['userEmail'] as core.String?,
           userId: json_['userId'] as core.String?,
         );
@@ -6672,41 +6544,32 @@ class GoogleChromeManagementV1TelemetryUserDevice {
 
   GoogleChromeManagementV1TelemetryUserDevice.fromJson(core.Map json_)
       : this(
-          appReport: json_.containsKey('appReport')
-              ? (json_['appReport'] as core.List)
-                  .map((value) => GoogleChromeManagementV1AppReport.fromJson(
+          appReport: (json_['appReport'] as core.List?)
+              ?.map((value) => GoogleChromeManagementV1AppReport.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          audioStatusReport: (json_['audioStatusReport'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1AudioStatusReport.fromJson(
                       value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          audioStatusReport: json_.containsKey('audioStatusReport')
-              ? (json_['audioStatusReport'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1AudioStatusReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          deviceActivityReport: json_.containsKey('deviceActivityReport')
-              ? (json_['deviceActivityReport'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1DeviceActivityReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+              .toList(),
+          deviceActivityReport: (json_['deviceActivityReport'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1DeviceActivityReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           deviceId: json_['deviceId'] as core.String?,
-          networkBandwidthReport: json_.containsKey('networkBandwidthReport')
-              ? (json_['networkBandwidthReport'] as core.List)
-                  .map((value) =>
+          networkBandwidthReport:
+              (json_['networkBandwidthReport'] as core.List?)
+                  ?.map((value) =>
                       GoogleChromeManagementV1NetworkBandwidthReport.fromJson(
                           value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          peripheralsReport: json_.containsKey('peripheralsReport')
-              ? (json_['peripheralsReport'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1PeripheralsReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                  .toList(),
+          peripheralsReport: (json_['peripheralsReport'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1PeripheralsReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6921,13 +6784,11 @@ class GoogleChromeManagementV1TouchScreenInfo {
 
   GoogleChromeManagementV1TouchScreenInfo.fromJson(core.Map json_)
       : this(
-          devices: json_.containsKey('devices')
-              ? (json_['devices'] as core.List)
-                  .map((value) =>
-                      GoogleChromeManagementV1TouchScreenDevice.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          devices: (json_['devices'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1TouchScreenDevice.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           touchpadLibrary: json_['touchpadLibrary'] as core.String?,
         );
 
@@ -6992,11 +6853,9 @@ class GoogleChromeManagementV1UsbPeripheralReport {
 
   GoogleChromeManagementV1UsbPeripheralReport.fromJson(core.Map json_)
       : this(
-          categories: json_.containsKey('categories')
-              ? (json_['categories'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          categories: (json_['categories'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           classId: json_['classId'] as core.int?,
           firmwareVersion: json_['firmwareVersion'] as core.String?,
           name: json_['name'] as core.String?,

@@ -244,11 +244,9 @@ class AllocateInfo {
 
   AllocateInfo.fromJson(core.Map json_)
       : this(
-          unusedArguments: json_.containsKey('unusedArguments')
-              ? (json_['unusedArguments'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          unusedArguments: (json_['unusedArguments'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -324,23 +322,19 @@ class AllocateQuotaResponse {
 
   AllocateQuotaResponse.fromJson(core.Map json_)
       : this(
-          allocateErrors: json_.containsKey('allocateErrors')
-              ? (json_['allocateErrors'] as core.List)
-                  .map((value) => QuotaError.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          allocateErrors: (json_['allocateErrors'] as core.List?)
+              ?.map((value) => QuotaError.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           allocateInfo: json_.containsKey('allocateInfo')
               ? AllocateInfo.fromJson(
                   json_['allocateInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           operationId: json_['operationId'] as core.String?,
-          quotaMetrics: json_.containsKey('quotaMetrics')
-              ? (json_['quotaMetrics'] as core.List)
-                  .map((value) => MetricValueSet.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          quotaMetrics: (json_['quotaMetrics'] as core.List?)
+              ?.map((value) => MetricValueSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           serviceConfigId: json_['serviceConfigId'] as core.String?,
         );
 
@@ -412,16 +406,15 @@ class Attributes {
 
   Attributes.fromJson(core.Map json_)
       : this(
-          attributeMap: json_.containsKey('attributeMap')
-              ? (json_['attributeMap'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    AttributeValue.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          attributeMap:
+              (json_['attributeMap'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              AttributeValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           droppedAttributesCount: json_['droppedAttributesCount'] as core.int?,
         );
 
@@ -583,11 +576,9 @@ class CheckInfo {
               ? ConsumerInfo.fromJson(
                   json_['consumerInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          unusedArguments: json_.containsKey('unusedArguments')
-              ? (json_['unusedArguments'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          unusedArguments: (json_['unusedArguments'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -684,12 +675,10 @@ class CheckResponse {
 
   CheckResponse.fromJson(core.Map json_)
       : this(
-          checkErrors: json_.containsKey('checkErrors')
-              ? (json_['checkErrors'] as core.List)
-                  .map((value) => CheckError.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          checkErrors: (json_['checkErrors'] as core.List?)
+              ?.map((value) => CheckError.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           checkInfo: json_.containsKey('checkInfo')
               ? CheckInfo.fromJson(
                   json_['checkInfo'] as core.Map<core.String, core.dynamic>)
@@ -837,18 +826,14 @@ class Distribution {
 
   Distribution.fromJson(core.Map json_)
       : this(
-          bucketCounts: json_.containsKey('bucketCounts')
-              ? (json_['bucketCounts'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          bucketCounts: (json_['bucketCounts'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           count: json_['count'] as core.String?,
-          exemplars: json_.containsKey('exemplars')
-              ? (json_['exemplars'] as core.List)
-                  .map((value) => Exemplar.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          exemplars: (json_['exemplars'] as core.List?)
+              ?.map((value) => Exemplar.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           explicitBuckets: json_.containsKey('explicitBuckets')
               ? ExplicitBuckets.fromJson(json_['explicitBuckets']
                   as core.Map<core.String, core.dynamic>)
@@ -921,11 +906,9 @@ class Exemplar {
 
   Exemplar.fromJson(core.Map json_)
       : this(
-          attachments: json_.containsKey('attachments')
-              ? (json_['attachments'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
+          attachments: (json_['attachments'] as core.List?)
+              ?.map((value) => value as core.Map<core.String, core.dynamic>)
+              .toList(),
           timestamp: json_['timestamp'] as core.String?,
           value: (json_['value'] as core.num?)?.toDouble(),
         );
@@ -958,11 +941,9 @@ class ExplicitBuckets {
 
   ExplicitBuckets.fromJson(core.Map json_)
       : this(
-          bounds: json_.containsKey('bounds')
-              ? (json_['bounds'] as core.List)
-                  .map((value) => (value as core.num).toDouble())
-                  .toList()
-              : null,
+          bounds: (json_['bounds'] as core.List?)
+              ?.map((value) => (value as core.num).toDouble())
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1293,14 +1274,13 @@ class LogEntry {
                   json_['httpRequest'] as core.Map<core.String, core.dynamic>)
               : null,
           insertId: json_['insertId'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           operation: json_.containsKey('operation')
               ? LogEntryOperation.fromJson(
@@ -1505,14 +1485,13 @@ class MetricValue {
           doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
           endTime: json_['endTime'] as core.String?,
           int64Value: json_['int64Value'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           moneyValue: json_.containsKey('moneyValue')
               ? Money.fromJson(
                   json_['moneyValue'] as core.Map<core.String, core.dynamic>)
@@ -1553,12 +1532,10 @@ class MetricValueSet {
   MetricValueSet.fromJson(core.Map json_)
       : this(
           metricName: json_['metricName'] as core.String?,
-          metricValues: json_.containsKey('metricValues')
-              ? (json_['metricValues'] as core.List)
-                  .map((value) => MetricValue.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          metricValues: (json_['metricValues'] as core.List?)
+              ?.map((value) => MetricValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1700,54 +1677,44 @@ class Operation {
           consumerId: json_['consumerId'] as core.String?,
           endTime: json_['endTime'] as core.String?,
           importance: json_['importance'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
-          logEntries: json_.containsKey('logEntries')
-              ? (json_['logEntries'] as core.List)
-                  .map((value) => LogEntry.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          metricValueSets: json_.containsKey('metricValueSets')
-              ? (json_['metricValueSets'] as core.List)
-                  .map((value) => MetricValueSet.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          logEntries: (json_['logEntries'] as core.List?)
+              ?.map((value) => LogEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          metricValueSets: (json_['metricValueSets'] as core.List?)
+              ?.map((value) => MetricValueSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           operationId: json_['operationId'] as core.String?,
           operationName: json_['operationName'] as core.String?,
           quotaProperties: json_.containsKey('quotaProperties')
               ? QuotaProperties.fromJson(json_['quotaProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          resources: json_.containsKey('resources')
-              ? (json_['resources'] as core.List)
-                  .map((value) => ResourceInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          resources: (json_['resources'] as core.List?)
+              ?.map((value) => ResourceInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           startTime: json_['startTime'] as core.String?,
-          traceSpans: json_.containsKey('traceSpans')
-              ? (json_['traceSpans'] as core.List)
-                  .map((value) => TraceSpan.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          userLabels: json_.containsKey('userLabels')
-              ? (json_['userLabels'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          traceSpans: (json_['traceSpans'] as core.List?)
+              ?.map((value) => TraceSpan.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          userLabels:
+              (json_['userLabels'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1884,26 +1851,21 @@ class QuotaInfo {
 
   QuotaInfo.fromJson(core.Map json_)
       : this(
-          limitExceeded: json_.containsKey('limitExceeded')
-              ? (json_['limitExceeded'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          quotaConsumed: json_.containsKey('quotaConsumed')
-              ? (json_['quotaConsumed'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.int,
-                  ),
-                )
-              : null,
-          quotaMetrics: json_.containsKey('quotaMetrics')
-              ? (json_['quotaMetrics'] as core.List)
-                  .map((value) => MetricValueSet.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          limitExceeded: (json_['limitExceeded'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          quotaConsumed:
+              (json_['quotaConsumed'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.int,
+            ),
+          ),
+          quotaMetrics: (json_['quotaMetrics'] as core.List?)
+              ?.map((value) => MetricValueSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1996,22 +1958,19 @@ class QuotaOperation {
   QuotaOperation.fromJson(core.Map json_)
       : this(
           consumerId: json_['consumerId'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           methodName: json_['methodName'] as core.String?,
           operationId: json_['operationId'] as core.String?,
-          quotaMetrics: json_.containsKey('quotaMetrics')
-              ? (json_['quotaMetrics'] as core.List)
-                  .map((value) => MetricValueSet.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          quotaMetrics: (json_['quotaMetrics'] as core.List?)
+              ?.map((value) => MetricValueSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           quotaMode: json_['quotaMode'] as core.String?,
         );
 
@@ -2107,12 +2066,10 @@ class ReportRequest {
 
   ReportRequest.fromJson(core.Map json_)
       : this(
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           serviceConfigId: json_['serviceConfigId'] as core.String?,
         );
 
@@ -2153,12 +2110,10 @@ class ReportResponse {
 
   ReportResponse.fromJson(core.Map json_)
       : this(
-          reportErrors: json_.containsKey('reportErrors')
-              ? (json_['reportErrors'] as core.List)
-                  .map((value) => ReportError.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          reportErrors: (json_['reportErrors'] as core.List?)
+              ?.map((value) => ReportError.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           serviceConfigId: json_['serviceConfigId'] as core.String?,
           serviceRolloutId: json_['serviceRolloutId'] as core.String?,
         );

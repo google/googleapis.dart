@@ -1448,12 +1448,10 @@ class ClaimDevicesRequest {
 
   ClaimDevicesRequest.fromJson(core.Map json_)
       : this(
-          claims: json_.containsKey('claims')
-              ? (json_['claims'] as core.List)
-                  .map((value) => PartnerClaim.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          claims: (json_['claims'] as core.List?)
+              ?.map((value) => PartnerClaim.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1568,11 +1566,9 @@ class Company {
 
   Company.fromJson(core.Map json_)
       : this(
-          adminEmails: json_.containsKey('adminEmails')
-              ? (json_['adminEmails'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          adminEmails: (json_['adminEmails'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           companyId: json_['companyId'] as core.String?,
           companyName: json_['companyName'] as core.String?,
           googleWorkspaceAccount: json_.containsKey('googleWorkspaceAccount')
@@ -1581,11 +1577,9 @@ class Company {
               : null,
           languageCode: json_['languageCode'] as core.String?,
           name: json_['name'] as core.String?,
-          ownerEmails: json_.containsKey('ownerEmails')
-              ? (json_['ownerEmails'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          ownerEmails: (json_['ownerEmails'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           skipWelcomeEmail: json_['skipWelcomeEmail'] as core.bool?,
           termsStatus: json_['termsStatus'] as core.String?,
         );
@@ -1816,12 +1810,10 @@ class CustomerListConfigurationsResponse {
 
   CustomerListConfigurationsResponse.fromJson(core.Map json_)
       : this(
-          configurations: json_.containsKey('configurations')
-              ? (json_['configurations'] as core.List)
-                  .map((value) => Configuration.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          configurations: (json_['configurations'] as core.List?)
+              ?.map((value) => Configuration.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1846,12 +1838,10 @@ class CustomerListCustomersResponse {
 
   CustomerListCustomersResponse.fromJson(core.Map json_)
       : this(
-          customers: json_.containsKey('customers')
-              ? (json_['customers'] as core.List)
-                  .map((value) => Company.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          customers: (json_['customers'] as core.List?)
+              ?.map((value) => Company.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1878,12 +1868,10 @@ class CustomerListDevicesResponse {
 
   CustomerListDevicesResponse.fromJson(core.Map json_)
       : this(
-          devices: json_.containsKey('devices')
-              ? (json_['devices'] as core.List)
-                  .map((value) => Device.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          devices: (json_['devices'] as core.List?)
+              ?.map((value) =>
+                  Device.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1905,12 +1893,10 @@ class CustomerListDpcsResponse {
 
   CustomerListDpcsResponse.fromJson(core.Map json_)
       : this(
-          dpcs: json_.containsKey('dpcs')
-              ? (json_['dpcs'] as core.List)
-                  .map((value) => Dpc.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          dpcs: (json_['dpcs'] as core.List?)
+              ?.map((value) =>
+                  Dpc.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2023,12 +2009,10 @@ class Device {
 
   Device.fromJson(core.Map json_)
       : this(
-          claims: json_.containsKey('claims')
-              ? (json_['claims'] as core.List)
-                  .map((value) => DeviceClaim.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          claims: (json_['claims'] as core.List?)
+              ?.map((value) => DeviceClaim.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           configuration: json_['configuration'] as core.String?,
           deviceId: json_['deviceId'] as core.String?,
           deviceIdentifier: json_.containsKey('deviceIdentifier')
@@ -2224,14 +2208,13 @@ class DeviceMetadata {
 
   DeviceMetadata.fromJson(core.Map json_)
       : this(
-          entries: json_.containsKey('entries')
-              ? (json_['entries'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          entries:
+              (json_['entries'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2396,12 +2379,10 @@ class FindDevicesByDeviceIdentifierResponse {
 
   FindDevicesByDeviceIdentifierResponse.fromJson(core.Map json_)
       : this(
-          devices: json_.containsKey('devices')
-              ? (json_['devices'] as core.List)
-                  .map((value) => Device.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          devices: (json_['devices'] as core.List?)
+              ?.map((value) =>
+                  Device.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -2450,17 +2431,13 @@ class FindDevicesByOwnerRequest {
 
   FindDevicesByOwnerRequest.fromJson(core.Map json_)
       : this(
-          customerId: json_.containsKey('customerId')
-              ? (json_['customerId'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          customerId: (json_['customerId'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           googleWorkspaceCustomerId:
-              json_.containsKey('googleWorkspaceCustomerId')
-                  ? (json_['googleWorkspaceCustomerId'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
+              (json_['googleWorkspaceCustomerId'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           limit: json_['limit'] as core.String?,
           pageToken: json_['pageToken'] as core.String?,
           sectionType: json_['sectionType'] as core.String?,
@@ -2497,12 +2474,10 @@ class FindDevicesByOwnerResponse {
 
   FindDevicesByOwnerResponse.fromJson(core.Map json_)
       : this(
-          devices: json_.containsKey('devices')
-              ? (json_['devices'] as core.List)
-                  .map((value) => Device.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          devices: (json_['devices'] as core.List?)
+              ?.map((value) =>
+                  Device.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -2583,11 +2558,9 @@ class GoogleWorkspaceAccount {
   GoogleWorkspaceAccount.fromJson(core.Map json_)
       : this(
           customerId: json_['customerId'] as core.String?,
-          preProvisioningTokens: json_.containsKey('preProvisioningTokens')
-              ? (json_['preProvisioningTokens'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          preProvisioningTokens: (json_['preProvisioningTokens'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2618,12 +2591,10 @@ class ListCustomersResponse {
 
   ListCustomersResponse.fromJson(core.Map json_)
       : this(
-          customers: json_.containsKey('customers')
-              ? (json_['customers'] as core.List)
-                  .map((value) => Company.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          customers: (json_['customers'] as core.List?)
+              ?.map((value) => Company.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -2656,12 +2627,10 @@ class ListVendorCustomersResponse {
 
   ListVendorCustomersResponse.fromJson(core.Map json_)
       : this(
-          customers: json_.containsKey('customers')
-              ? (json_['customers'] as core.List)
-                  .map((value) => Company.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          customers: (json_['customers'] as core.List?)
+              ?.map((value) => Company.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
         );
@@ -2699,12 +2668,10 @@ class ListVendorsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
-          vendors: json_.containsKey('vendors')
-              ? (json_['vendors'] as core.List)
-                  .map((value) => Company.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          vendors: (json_['vendors'] as core.List?)
+              ?.map((value) => Company.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3023,12 +2990,10 @@ class UnclaimDevicesRequest {
 
   UnclaimDevicesRequest.fromJson(core.Map json_)
       : this(
-          unclaims: json_.containsKey('unclaims')
-              ? (json_['unclaims'] as core.List)
-                  .map((value) => PartnerUnclaim.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          unclaims: (json_['unclaims'] as core.List?)
+              ?.map((value) => PartnerUnclaim.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3049,12 +3014,10 @@ class UpdateDeviceMetadataInBatchRequest {
 
   UpdateDeviceMetadataInBatchRequest.fromJson(core.Map json_)
       : this(
-          updates: json_.containsKey('updates')
-              ? (json_['updates'] as core.List)
-                  .map((value) => UpdateMetadataArguments.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          updates: (json_['updates'] as core.List?)
+              ?.map((value) => UpdateMetadataArguments.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
