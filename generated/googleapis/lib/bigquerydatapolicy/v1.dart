@@ -526,12 +526,10 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
       : this(
-          auditLogConfigs: json_.containsKey('auditLogConfigs')
-              ? (json_['auditLogConfigs'] as core.List)
-                  .map((value) => AuditLogConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+              ?.map((value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           service: json_['service'] as core.String?,
         );
 
@@ -641,11 +639,9 @@ class Binding {
               ? Expr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -843,12 +839,10 @@ class ListDataPoliciesResponse {
 
   ListDataPoliciesResponse.fromJson(core.Map json_)
       : this(
-          dataPolicies: json_.containsKey('dataPolicies')
-              ? (json_['dataPolicies'] as core.List)
-                  .map((value) => DataPolicy.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          dataPolicies: (json_['dataPolicies'] as core.List?)
+              ?.map((value) => DataPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -953,18 +947,14 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
       : this(
-          auditConfigs: json_.containsKey('auditConfigs')
-              ? (json_['auditConfigs'] as core.List)
-                  .map((value) => AuditConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          bindings: json_.containsKey('bindings')
-              ? (json_['bindings'] as core.List)
-                  .map((value) => Binding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditConfigs: (json_['auditConfigs'] as core.List?)
+              ?.map((value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
         );

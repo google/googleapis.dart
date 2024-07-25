@@ -665,11 +665,9 @@ class ErrorProto {
 
   ErrorProto.fromJson(core.Map json_)
       : this(
-          argument: json_.containsKey('argument')
-              ? (json_['argument'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          argument: (json_['argument'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           code: json_['code'] as core.String?,
           debugInfo: json_['debugInfo'] as core.String?,
           domain: json_['domain'] as core.String?,
@@ -728,12 +726,10 @@ class Errors {
   Errors.fromJson(core.Map json_)
       : this(
           code: json_['code'] as core.String?,
-          error: json_.containsKey('error')
-              ? (json_['error'] as core.List)
-                  .map((value) => ErrorProto.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          error: (json_['error'] as core.List?)
+              ?.map((value) => ErrorProto.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           requestId: json_['requestId'] as core.String?,
         );
 
@@ -989,12 +985,10 @@ class ListGroupItemsResponse {
                   json_['errors'] as core.Map<core.String, core.dynamic>)
               : null,
           etag: json_['etag'] as core.String?,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => GroupItem.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => GroupItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
         );
 
@@ -1043,12 +1037,10 @@ class ListGroupsResponse {
                   json_['errors'] as core.Map<core.String, core.dynamic>)
               : null,
           etag: json_['etag'] as core.String?,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => Group.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) =>
+                  Group.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1109,22 +1101,18 @@ class QueryResponse {
 
   QueryResponse.fromJson(core.Map json_)
       : this(
-          columnHeaders: json_.containsKey('columnHeaders')
-              ? (json_['columnHeaders'] as core.List)
-                  .map((value) => ResultTableColumnHeader.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          columnHeaders: (json_['columnHeaders'] as core.List?)
+              ?.map((value) => ResultTableColumnHeader.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           errors: json_.containsKey('errors')
               ? Errors.fromJson(
                   json_['errors'] as core.Map<core.String, core.dynamic>)
               : null,
           kind: json_['kind'] as core.String?,
-          rows: json_.containsKey('rows')
-              ? (json_['rows'] as core.List)
-                  .map((value) => value as core.List)
-                  .toList()
-              : null,
+          rows: (json_['rows'] as core.List?)
+              ?.map((value) => value as core.List)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

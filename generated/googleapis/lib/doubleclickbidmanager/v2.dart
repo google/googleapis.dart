@@ -483,12 +483,10 @@ class ListQueriesResponse {
   ListQueriesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          queries: json_.containsKey('queries')
-              ? (json_['queries'] as core.List)
-                  .map((value) => Query.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          queries: (json_['queries'] as core.List?)
+              ?.map((value) =>
+                  Query.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -515,12 +513,10 @@ class ListReportsResponse {
   ListReportsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          reports: json_.containsKey('reports')
-              ? (json_['reports'] as core.List)
-                  .map((value) => Report.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          reports: (json_['reports'] as core.List?)
+              ?.map((value) =>
+                  Report.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -595,22 +591,16 @@ class Parameters {
 
   Parameters.fromJson(core.Map json_)
       : this(
-          filters: json_.containsKey('filters')
-              ? (json_['filters'] as core.List)
-                  .map((value) => FilterPair.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          groupBys: json_.containsKey('groupBys')
-              ? (json_['groupBys'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          metrics: json_.containsKey('metrics')
-              ? (json_['metrics'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          filters: (json_['filters'] as core.List?)
+              ?.map((value) => FilterPair.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          groupBys: (json_['groupBys'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          metrics: (json_['metrics'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           options: json_.containsKey('options')
               ? Options.fromJson(
                   json_['options'] as core.Map<core.String, core.dynamic>)
@@ -725,11 +715,9 @@ class QueryMetadata {
               : null,
           format: json_['format'] as core.String?,
           sendNotification: json_['sendNotification'] as core.bool?,
-          shareEmailAddress: json_.containsKey('shareEmailAddress')
-              ? (json_['shareEmailAddress'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          shareEmailAddress: (json_['shareEmailAddress'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           title: json_['title'] as core.String?,
         );
 

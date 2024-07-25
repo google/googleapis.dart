@@ -561,12 +561,10 @@ class ErrorContext {
               ? SourceLocation.fromJson(json_['reportLocation']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          sourceReferences: json_.containsKey('sourceReferences')
-              ? (json_['sourceReferences'] as core.List)
-                  .map((value) => SourceReference.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          sourceReferences: (json_['sourceReferences'] as core.List?)
+              ?.map((value) => SourceReference.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           user: json_['user'] as core.String?,
         );
 
@@ -678,12 +676,10 @@ class ErrorGroup {
           groupId: json_['groupId'] as core.String?,
           name: json_['name'] as core.String?,
           resolutionStatus: json_['resolutionStatus'] as core.String?,
-          trackingIssues: json_.containsKey('trackingIssues')
-              ? (json_['trackingIssues'] as core.List)
-                  .map((value) => TrackingIssue.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          trackingIssues: (json_['trackingIssues'] as core.List?)
+              ?.map((value) => TrackingIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -767,12 +763,10 @@ class ErrorGroupStats {
 
   ErrorGroupStats.fromJson(core.Map json_)
       : this(
-          affectedServices: json_.containsKey('affectedServices')
-              ? (json_['affectedServices'] as core.List)
-                  .map((value) => ServiceContext.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          affectedServices: (json_['affectedServices'] as core.List?)
+              ?.map((value) => ServiceContext.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           affectedUsersCount: json_['affectedUsersCount'] as core.String?,
           count: json_['count'] as core.String?,
           firstSeenTime: json_['firstSeenTime'] as core.String?,
@@ -786,12 +780,10 @@ class ErrorGroupStats {
               ? ErrorEvent.fromJson(json_['representative']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          timedCounts: json_.containsKey('timedCounts')
-              ? (json_['timedCounts'] as core.List)
-                  .map((value) => TimedCount.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          timedCounts: (json_['timedCounts'] as core.List?)
+              ?.map((value) => TimedCount.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -889,12 +881,10 @@ class ListEventsResponse {
 
   ListEventsResponse.fromJson(core.Map json_)
       : this(
-          errorEvents: json_.containsKey('errorEvents')
-              ? (json_['errorEvents'] as core.List)
-                  .map((value) => ErrorEvent.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          errorEvents: (json_['errorEvents'] as core.List?)
+              ?.map((value) => ErrorEvent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           timeRangeBegin: json_['timeRangeBegin'] as core.String?,
         );
@@ -933,12 +923,10 @@ class ListGroupStatsResponse {
 
   ListGroupStatsResponse.fromJson(core.Map json_)
       : this(
-          errorGroupStats: json_.containsKey('errorGroupStats')
-              ? (json_['errorGroupStats'] as core.List)
-                  .map((value) => ErrorGroupStats.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          errorGroupStats: (json_['errorGroupStats'] as core.List?)
+              ?.map((value) => ErrorGroupStats.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           timeRangeBegin: json_['timeRangeBegin'] as core.String?,
         );

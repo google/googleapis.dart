@@ -5678,12 +5678,10 @@ class EnterpriseCrmEventbusProtoAddress {
       : this(
           email: json_['email'] as core.String?,
           name: json_['name'] as core.String?,
-          tokens: json_.containsKey('tokens')
-              ? (json_['tokens'] as core.List)
-                  .map((value) => EnterpriseCrmEventbusProtoToken.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tokens: (json_['tokens'] as core.List?)
+              ?.map((value) => EnterpriseCrmEventbusProtoToken.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5777,11 +5775,9 @@ class EnterpriseCrmEventbusProtoAttributes {
           masked: json_['masked'] as core.bool?,
           readOnly: json_['readOnly'] as core.bool?,
           searchable: json_['searchable'] as core.String?,
-          taskVisibility: json_.containsKey('taskVisibility')
-              ? (json_['taskVisibility'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          taskVisibility: (json_['taskVisibility'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5815,11 +5811,9 @@ class EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList {
   EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList.fromJson(
       core.Map json_)
       : this(
-          enumStrings: json_.containsKey('enumStrings')
-              ? (json_['enumStrings'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          enumStrings: (json_['enumStrings'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           filterType: json_['filterType'] as core.String?,
         );
 
@@ -5970,12 +5964,10 @@ class EnterpriseCrmEventbusProtoCombinedCondition {
 
   EnterpriseCrmEventbusProtoCombinedCondition.fromJson(core.Map json_)
       : this(
-          conditions: json_.containsKey('conditions')
-              ? (json_['conditions'] as core.List)
-                  .map((value) => EnterpriseCrmEventbusProtoCondition.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          conditions: (json_['conditions'] as core.List?)
+              ?.map((value) => EnterpriseCrmEventbusProtoCondition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6088,13 +6080,10 @@ class EnterpriseCrmEventbusProtoConditionalFailurePolicies {
                   json_['defaultFailurePolicy']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          failurePolicies: json_.containsKey('failurePolicies')
-              ? (json_['failurePolicies'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmEventbusProtoFailurePolicy.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          failurePolicies: (json_['failurePolicies'] as core.List?)
+              ?.map((value) => EnterpriseCrmEventbusProtoFailurePolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6224,13 +6213,10 @@ class EnterpriseCrmEventbusProtoEventBusProperties {
 
   EnterpriseCrmEventbusProtoEventBusProperties.fromJson(core.Map json_)
       : this(
-          properties: json_.containsKey('properties')
-              ? (json_['properties'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmEventbusProtoPropertyEntry.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          properties: (json_['properties'] as core.List?)
+              ?.map((value) => EnterpriseCrmEventbusProtoPropertyEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6306,21 +6292,17 @@ class EnterpriseCrmEventbusProtoEventExecutionDetails {
 
   EnterpriseCrmEventbusProtoEventExecutionDetails.fromJson(core.Map json_)
       : this(
-          eventAttemptStats: json_.containsKey('eventAttemptStats')
-              ? (json_['eventAttemptStats'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          eventExecutionSnapshot: json_.containsKey('eventExecutionSnapshot')
-              ? (json_['eventExecutionSnapshot'] as core.List)
-                  .map((value) =>
+          eventAttemptStats: (json_['eventAttemptStats'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          eventExecutionSnapshot:
+              (json_['eventExecutionSnapshot'] as core.List?)
+                  ?.map((value) =>
                       EnterpriseCrmEventbusProtoEventExecutionSnapshot.fromJson(
                           value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                  .toList(),
           eventExecutionSnapshotsSize:
               json_['eventExecutionSnapshotsSize'] as core.String?,
           eventExecutionState: json_['eventExecutionState'] as core.String?,
@@ -6448,13 +6430,11 @@ class EnterpriseCrmEventbusProtoEventExecutionSnapshot {
       : this(
           checkpointTaskNumber: json_['checkpointTaskNumber'] as core.String?,
           clientId: json_['clientId'] as core.String?,
-          conditionResults: json_.containsKey('conditionResults')
-              ? (json_['conditionResults'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmEventbusProtoConditionResult.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          conditionResults: (json_['conditionResults'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmEventbusProtoConditionResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           diffParams: json_.containsKey('diffParams')
               ? EnterpriseCrmEventbusProtoEventParameters.fromJson(
                   json_['diffParams'] as core.Map<core.String, core.dynamic>)
@@ -6474,13 +6454,11 @@ class EnterpriseCrmEventbusProtoEventExecutionSnapshot {
               : null,
           exceedMaxSize: json_['exceedMaxSize'] as core.bool?,
           snapshotTime: json_['snapshotTime'] as core.String?,
-          taskExecutionDetails: json_.containsKey('taskExecutionDetails')
-              ? (json_['taskExecutionDetails'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmEventbusProtoTaskExecutionDetails.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          taskExecutionDetails: (json_['taskExecutionDetails'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmEventbusProtoTaskExecutionDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           taskName: json_['taskName'] as core.String?,
           workflowName: json_['workflowName'] as core.String?,
         );
@@ -6557,16 +6535,12 @@ class EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMeta
       core.Map json_)
       : this(
           ancestorIterationNumbers:
-              json_.containsKey('ancestorIterationNumbers')
-                  ? (json_['ancestorIterationNumbers'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
-          ancestorTaskNumbers: json_.containsKey('ancestorTaskNumbers')
-              ? (json_['ancestorTaskNumbers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+              (json_['ancestorIterationNumbers'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+          ancestorTaskNumbers: (json_['ancestorTaskNumbers'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           eventAttemptNum: json_['eventAttemptNum'] as core.int?,
           integrationName: json_['integrationName'] as core.String?,
           taskAttemptNum: json_['taskAttemptNum'] as core.int?,
@@ -6604,13 +6578,11 @@ class EnterpriseCrmEventbusProtoEventParameters {
 
   EnterpriseCrmEventbusProtoEventParameters.fromJson(core.Map json_)
       : this(
-          parameters: json_.containsKey('parameters')
-              ? (json_['parameters'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmEventbusProtoParameterEntry.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          parameters: (json_['parameters'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmEventbusProtoParameterEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6840,13 +6812,11 @@ class EnterpriseCrmEventbusProtoNextTask {
 
   EnterpriseCrmEventbusProtoNextTask.fromJson(core.Map json_)
       : this(
-          combinedConditions: json_.containsKey('combinedConditions')
-              ? (json_['combinedConditions'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmEventbusProtoCombinedCondition.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          combinedConditions: (json_['combinedConditions'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmEventbusProtoCombinedCondition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           condition: json_['condition'] as core.String?,
           description: json_['description'] as core.String?,
           label: json_['label'] as core.String?,
@@ -7383,11 +7353,9 @@ class EnterpriseCrmEventbusProtoStringArray {
 
   EnterpriseCrmEventbusProtoStringArray.fromJson(core.Map json_)
       : this(
-          values: json_.containsKey('values')
-              ? (json_['values'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          values: (json_['values'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7512,26 +7480,20 @@ class EnterpriseCrmEventbusProtoSuspensionConfig {
   EnterpriseCrmEventbusProtoSuspensionConfig.fromJson(core.Map json_)
       : this(
           customMessage: json_['customMessage'] as core.String?,
-          notifications: json_.containsKey('notifications')
-              ? (json_['notifications'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmEventbusProtoNotification.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          notifications: (json_['notifications'] as core.List?)
+              ?.map((value) => EnterpriseCrmEventbusProtoNotification.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           suspensionExpiration: json_.containsKey('suspensionExpiration')
               ? EnterpriseCrmEventbusProtoSuspensionExpiration.fromJson(
                   json_['suspensionExpiration']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          whoMayResolve: json_.containsKey('whoMayResolve')
-              ? (json_['whoMayResolve'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmEventbusProtoSuspensionAuthPermissions
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          whoMayResolve: (json_['whoMayResolve'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmEventbusProtoSuspensionAuthPermissions.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7767,14 +7729,11 @@ class EnterpriseCrmEventbusProtoTaskExecutionDetails {
 
   EnterpriseCrmEventbusProtoTaskExecutionDetails.fromJson(core.Map json_)
       : this(
-          taskAttemptStats: json_.containsKey('taskAttemptStats')
-              ? (json_['taskAttemptStats'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          taskAttemptStats: (json_['taskAttemptStats'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           taskExecutionState: json_['taskExecutionState'] as core.String?,
           taskNumber: json_['taskNumber'] as core.String?,
         );
@@ -7996,13 +7955,11 @@ class EnterpriseCrmEventbusProtoTaskMetadata {
   EnterpriseCrmEventbusProtoTaskMetadata.fromJson(core.Map json_)
       : this(
           activeTaskName: json_['activeTaskName'] as core.String?,
-          admins: json_.containsKey('admins')
-              ? (json_['admins'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmEventbusProtoTaskMetadataAdmin.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          admins: (json_['admins'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmEventbusProtoTaskMetadataAdmin.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           category: json_['category'] as core.String?,
           codeSearchLink: json_['codeSearchLink'] as core.String?,
           defaultJsonValidationOption:
@@ -8025,11 +7982,9 @@ class EnterpriseCrmEventbusProtoTaskMetadata {
               json_['standaloneExternalDocHtml'] as core.String?,
           status: json_['status'] as core.String?,
           system: json_['system'] as core.String?,
-          tags: json_.containsKey('tags')
-              ? (json_['tags'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          tags: (json_['tags'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8102,13 +8057,11 @@ class EnterpriseCrmEventbusProtoTaskUiConfig {
 
   EnterpriseCrmEventbusProtoTaskUiConfig.fromJson(core.Map json_)
       : this(
-          taskUiModuleConfigs: json_.containsKey('taskUiModuleConfigs')
-              ? (json_['taskUiModuleConfigs'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmEventbusProtoTaskUiModuleConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          taskUiModuleConfigs: (json_['taskUiModuleConfigs'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmEventbusProtoTaskUiModuleConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8176,13 +8129,11 @@ class EnterpriseCrmEventbusProtoTeardown {
 
   EnterpriseCrmEventbusProtoTeardown.fromJson(core.Map json_)
       : this(
-          teardownTaskConfigs: json_.containsKey('teardownTaskConfigs')
-              ? (json_['teardownTaskConfigs'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmEventbusProtoTeardownTaskConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          teardownTaskConfigs: (json_['teardownTaskConfigs'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmEventbusProtoTeardownTaskConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8715,22 +8666,17 @@ class EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails {
   EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails.fromJson(
       core.Map json_)
       : this(
-          eventAttemptStats: json_.containsKey('eventAttemptStats')
-              ? (json_['eventAttemptStats'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          eventExecutionSnapshot: json_.containsKey('eventExecutionSnapshot')
-              ? (json_['eventExecutionSnapshot'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          eventAttemptStats: (json_['eventAttemptStats'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          eventExecutionSnapshot: (json_['eventExecutionSnapshot']
+                  as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           eventExecutionSnapshotsSize:
               json_['eventExecutionSnapshotsSize'] as core.String?,
           eventExecutionState: json_['eventExecutionState'] as core.String?,
@@ -8893,13 +8839,10 @@ class EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo {
               ? CrmlogErrorCode.fromJson(
                   json_['errorCode'] as core.Map<core.String, core.dynamic>)
               : null,
-          errors: json_.containsKey('errors')
-              ? (json_['errors'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmEventbusProtoErrorDetail.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          errors: (json_['errors'] as core.List?)
+              ?.map((value) => EnterpriseCrmEventbusProtoErrorDetail.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           eventExecutionDetails: json_.containsKey('eventExecutionDetails')
               ? EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails
                   .fromJson(json_['eventExecutionDetails']
@@ -9030,13 +8973,11 @@ class EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot {
       core.Map json_)
       : this(
           checkpointTaskNumber: json_['checkpointTaskNumber'] as core.String?,
-          conditionResults: json_.containsKey('conditionResults')
-              ? (json_['conditionResults'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmEventbusProtoConditionResult.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          conditionResults: (json_['conditionResults'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmEventbusProtoConditionResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           diffParams: json_.containsKey('diffParams')
               ? EnterpriseCrmFrontendsEventbusProtoEventParameters.fromJson(
                   json_['diffParams'] as core.Map<core.String, core.dynamic>)
@@ -9055,13 +8996,11 @@ class EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot {
                   json_['eventParams'] as core.Map<core.String, core.dynamic>)
               : null,
           snapshotTime: json_['snapshotTime'] as core.String?,
-          taskExecutionDetails: json_.containsKey('taskExecutionDetails')
-              ? (json_['taskExecutionDetails'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmEventbusProtoTaskExecutionDetails.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          taskExecutionDetails: (json_['taskExecutionDetails'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmEventbusProtoTaskExecutionDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           taskName: json_['taskName'] as core.String?,
         );
 
@@ -9099,14 +9038,11 @@ class EnterpriseCrmFrontendsEventbusProtoEventParameters {
 
   EnterpriseCrmFrontendsEventbusProtoEventParameters.fromJson(core.Map json_)
       : this(
-          parameters: json_.containsKey('parameters')
-              ? (json_['parameters'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmFrontendsEventbusProtoParameterEntry
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          parameters: (json_['parameters'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmFrontendsEventbusProtoParameterEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9261,14 +9197,11 @@ class EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage {
 
   EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage.fromJson(core.Map json_)
       : this(
-          parameters: json_.containsKey('parameters')
-              ? (json_['parameters'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmFrontendsEventbusProtoParamSpecEntry
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          parameters: (json_['parameters'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmFrontendsEventbusProtoParamSpecEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9473,11 +9406,9 @@ class EnterpriseCrmFrontendsEventbusProtoRollbackStrategy {
               : null,
           rollbackTaskImplementationClassName:
               json_['rollbackTaskImplementationClassName'] as core.String?,
-          taskNumbersToRollback: json_.containsKey('taskNumbersToRollback')
-              ? (json_['taskNumbersToRollback'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          taskNumbersToRollback: (json_['taskNumbersToRollback'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9713,13 +9644,11 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfig {
 
   EnterpriseCrmFrontendsEventbusProtoTaskConfig.fromJson(core.Map json_)
       : this(
-          alertConfigs: json_.containsKey('alertConfigs')
-              ? (json_['alertConfigs'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmEventbusProtoTaskAlertConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          alertConfigs: (json_['alertConfigs'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmEventbusProtoTaskAlertConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           conditionalFailurePolicies: json_
                   .containsKey('conditionalFailurePolicies')
               ? EnterpriseCrmEventbusProtoConditionalFailurePolicies.fromJson(
@@ -9741,24 +9670,21 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfig {
           jsonValidationOption: json_['jsonValidationOption'] as core.String?,
           label: json_['label'] as core.String?,
           lastModifiedTime: json_['lastModifiedTime'] as core.String?,
-          nextTasks: json_.containsKey('nextTasks')
-              ? (json_['nextTasks'] as core.List)
-                  .map((value) => EnterpriseCrmEventbusProtoNextTask.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          nextTasks: (json_['nextTasks'] as core.List?)
+              ?.map((value) => EnterpriseCrmEventbusProtoNextTask.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextTasksExecutionPolicy:
               json_['nextTasksExecutionPolicy'] as core.String?,
-          parameters: json_.containsKey('parameters')
-              ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    EnterpriseCrmFrontendsEventbusProtoParameterEntry.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          parameters:
+              (json_['parameters'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              EnterpriseCrmFrontendsEventbusProtoParameterEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           position: json_.containsKey('position')
               ? EnterpriseCrmEventbusProtoCoordinate.fromJson(
                   json_['position'] as core.Map<core.String, core.dynamic>)
@@ -10043,24 +9969,20 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
 
   EnterpriseCrmFrontendsEventbusProtoTriggerConfig.fromJson(core.Map json_)
       : this(
-          alertConfig: json_.containsKey('alertConfig')
-              ? (json_['alertConfig'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmEventbusProtoWorkflowAlertConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          alertConfig: (json_['alertConfig'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmEventbusProtoWorkflowAlertConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           cloudSchedulerConfig: json_.containsKey('cloudSchedulerConfig')
               ? EnterpriseCrmEventbusProtoCloudSchedulerConfig.fromJson(
                   json_['cloudSchedulerConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
           description: json_['description'] as core.String?,
-          enabledClients: json_.containsKey('enabledClients')
-              ? (json_['enabledClients'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          enabledClients: (json_['enabledClients'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           errorCatcherId: json_['errorCatcherId'] as core.String?,
           label: json_['label'] as core.String?,
           nextTasksExecutionPolicy:
@@ -10071,21 +9993,18 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
               ? EnterpriseCrmEventbusProtoCoordinate.fromJson(
                   json_['position'] as core.Map<core.String, core.dynamic>)
               : null,
-          properties: json_.containsKey('properties')
-              ? (json_['properties'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
-          startTasks: json_.containsKey('startTasks')
-              ? (json_['startTasks'] as core.List)
-                  .map((value) => EnterpriseCrmEventbusProtoNextTask.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          properties:
+              (json_['properties'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          startTasks: (json_['startTasks'] as core.List?)
+              ?.map((value) => EnterpriseCrmEventbusProtoNextTask.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           triggerCriteria: json_.containsKey('triggerCriteria')
               ? EnterpriseCrmEventbusProtoTriggerCriteria.fromJson(
                   json_['triggerCriteria']
@@ -10240,14 +10159,11 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry {
               ? EnterpriseCrmEventbusProtoAttributes.fromJson(
                   json_['attributes'] as core.Map<core.String, core.dynamic>)
               : null,
-          children: json_.containsKey('children')
-              ? (json_['children'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          children: (json_['children'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           containsLargeData: json_['containsLargeData'] as core.bool?,
           dataType: json_['dataType'] as core.String?,
           defaultValue: json_.containsKey('defaultValue')
@@ -10311,14 +10227,11 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameters {
 
   EnterpriseCrmFrontendsEventbusProtoWorkflowParameters.fromJson(core.Map json_)
       : this(
-          parameters: json_.containsKey('parameters')
-              ? (json_['parameters'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          parameters: (json_['parameters'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10377,11 +10290,9 @@ class EnterpriseCrmLoggingGwsFieldLimits {
   EnterpriseCrmLoggingGwsFieldLimits.fromJson(core.Map json_)
       : this(
           logAction: json_['logAction'] as core.String?,
-          logType: json_.containsKey('logType')
-              ? (json_['logType'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          logType: (json_['logType'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           maxArraySize: json_['maxArraySize'] as core.int?,
           maxStringLength: json_['maxStringLength'] as core.int?,
           shortenerType: json_['shortenerType'] as core.String?,
@@ -10448,11 +10359,9 @@ class EnterpriseCrmLoggingGwsSanitizeOptions {
   EnterpriseCrmLoggingGwsSanitizeOptions.fromJson(core.Map json_)
       : this(
           isAlreadySanitized: json_['isAlreadySanitized'] as core.bool?,
-          logType: json_.containsKey('logType')
-              ? (json_['logType'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          logType: (json_['logType'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           privacy: json_['privacy'] as core.String?,
           sanitizeType: json_['sanitizeType'] as core.String?,
         );
@@ -10516,13 +10425,10 @@ class GoogleCloudConnectorsV1AuthConfig {
 
   GoogleCloudConnectorsV1AuthConfig.fromJson(core.Map json_)
       : this(
-          additionalVariables: json_.containsKey('additionalVariables')
-              ? (json_['additionalVariables'] as core.List)
-                  .map((value) =>
-                      GoogleCloudConnectorsV1ConfigVariable.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          additionalVariables: (json_['additionalVariables'] as core.List?)
+              ?.map((value) => GoogleCloudConnectorsV1ConfigVariable.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           authKey: json_['authKey'] as core.String?,
           authType: json_['authType'] as core.String?,
           oauth2AuthCodeFlow: json_.containsKey('oauth2AuthCodeFlow')
@@ -10617,11 +10523,9 @@ class GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow {
           enablePkce: json_['enablePkce'] as core.bool?,
           pkceVerifier: json_['pkceVerifier'] as core.String?,
           redirectUri: json_['redirectUri'] as core.String?,
-          scopes: json_.containsKey('scopes')
-              ? (json_['scopes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          scopes: (json_['scopes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11069,13 +10973,10 @@ class GoogleCloudConnectorsV1Connection {
               ? GoogleCloudConnectorsV1BillingConfig.fromJson(
                   json_['billingConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          configVariables: json_.containsKey('configVariables')
-              ? (json_['configVariables'] as core.List)
-                  .map((value) =>
-                      GoogleCloudConnectorsV1ConfigVariable.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          configVariables: (json_['configVariables'] as core.List?)
+              ?.map((value) => GoogleCloudConnectorsV1ConfigVariable.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           connectionRevision: json_['connectionRevision'] as core.String?,
           connectorVersion: json_['connectorVersion'] as core.String?,
           connectorVersionInfraConfig:
@@ -11088,13 +10989,11 @@ class GoogleCloudConnectorsV1Connection {
               json_['connectorVersionLaunchStage'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
-          destinationConfigs: json_.containsKey('destinationConfigs')
-              ? (json_['destinationConfigs'] as core.List)
-                  .map((value) =>
-                      GoogleCloudConnectorsV1DestinationConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          destinationConfigs: (json_['destinationConfigs'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudConnectorsV1DestinationConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           envoyImageLocation: json_['envoyImageLocation'] as core.String?,
           eventingConfig: json_.containsKey('eventingConfig')
               ? GoogleCloudConnectorsV1EventingConfig.fromJson(
@@ -11110,14 +11009,13 @@ class GoogleCloudConnectorsV1Connection {
               : null,
           imageLocation: json_['imageLocation'] as core.String?,
           isTrustedTester: json_['isTrustedTester'] as core.bool?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           lockConfig: json_.containsKey('lockConfig')
               ? GoogleCloudConnectorsV1LockConfig.fromJson(
                   json_['lockConfig'] as core.Map<core.String, core.dynamic>)
@@ -11303,12 +11201,10 @@ class GoogleCloudConnectorsV1DestinationConfig {
 
   GoogleCloudConnectorsV1DestinationConfig.fromJson(core.Map json_)
       : this(
-          destinations: json_.containsKey('destinations')
-              ? (json_['destinations'] as core.List)
-                  .map((value) => GoogleCloudConnectorsV1Destination.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          destinations: (json_['destinations'] as core.List?)
+              ?.map((value) => GoogleCloudConnectorsV1Destination.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           key: json_['key'] as core.String?,
         );
 
@@ -11376,13 +11272,10 @@ class GoogleCloudConnectorsV1EventingConfig {
 
   GoogleCloudConnectorsV1EventingConfig.fromJson(core.Map json_)
       : this(
-          additionalVariables: json_.containsKey('additionalVariables')
-              ? (json_['additionalVariables'] as core.List)
-                  .map((value) =>
-                      GoogleCloudConnectorsV1ConfigVariable.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          additionalVariables: (json_['additionalVariables'] as core.List?)
+              ?.map((value) => GoogleCloudConnectorsV1ConfigVariable.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           authConfig: json_.containsKey('authConfig')
               ? GoogleCloudConnectorsV1AuthConfig.fromJson(
                   json_['authConfig'] as core.Map<core.String, core.dynamic>)
@@ -11543,13 +11436,10 @@ class GoogleCloudConnectorsV1EventingRuntimeDataWebhookData {
 
   GoogleCloudConnectorsV1EventingRuntimeDataWebhookData.fromJson(core.Map json_)
       : this(
-          additionalVariables: json_.containsKey('additionalVariables')
-              ? (json_['additionalVariables'] as core.List)
-                  .map((value) =>
-                      GoogleCloudConnectorsV1ConfigVariable.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          additionalVariables: (json_['additionalVariables'] as core.List?)
+              ?.map((value) => GoogleCloudConnectorsV1ConfigVariable.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           createTime: json_['createTime'] as core.String?,
           id: json_['id'] as core.String?,
           name: json_['name'] as core.String?,
@@ -11661,13 +11551,10 @@ class GoogleCloudConnectorsV1SslConfig {
 
   GoogleCloudConnectorsV1SslConfig.fromJson(core.Map json_)
       : this(
-          additionalVariables: json_.containsKey('additionalVariables')
-              ? (json_['additionalVariables'] as core.List)
-                  .map((value) =>
-                      GoogleCloudConnectorsV1ConfigVariable.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          additionalVariables: (json_['additionalVariables'] as core.List?)
+              ?.map((value) => GoogleCloudConnectorsV1ConfigVariable.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           clientCertType: json_['clientCertType'] as core.String?,
           clientCertificate: json_.containsKey('clientCertificate')
               ? GoogleCloudConnectorsV1Secret.fromJson(
@@ -11939,11 +11826,9 @@ class GoogleCloudIntegrationsV1alphaAuthConfig {
           displayName: json_['displayName'] as core.String?,
           encryptedCredential: json_['encryptedCredential'] as core.String?,
           expiryNotificationDuration:
-              json_.containsKey('expiryNotificationDuration')
-                  ? (json_['expiryNotificationDuration'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
+              (json_['expiryNotificationDuration'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           lastModifierEmail: json_['lastModifierEmail'] as core.String?,
           name: json_['name'] as core.String?,
           overrideValidTime: json_['overrideValidTime'] as core.String?,
@@ -12015,11 +11900,9 @@ class GoogleCloudIntegrationsV1alphaBooleanParameterArray {
 
   GoogleCloudIntegrationsV1alphaBooleanParameterArray.fromJson(core.Map json_)
       : this(
-          booleanValues: json_.containsKey('booleanValues')
-              ? (json_['booleanValues'] as core.List)
-                  .map((value) => value as core.bool)
-                  .toList()
-              : null,
+          booleanValues: (json_['booleanValues'] as core.List?)
+              ?.map((value) => value as core.bool)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12453,13 +12336,11 @@ class GoogleCloudIntegrationsV1alphaConditionalFailurePolicies {
                   json_['defaultFailurePolicy']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          failurePolicies: json_.containsKey('failurePolicies')
-              ? (json_['failurePolicies'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaFailurePolicy.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          failurePolicies: (json_['failurePolicies'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaFailurePolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12485,16 +12366,12 @@ class GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata {
   GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata.fromJson(
       core.Map json_)
       : this(
-          actions: json_.containsKey('actions')
-              ? (json_['actions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          entities: json_.containsKey('entities')
-              ? (json_['entities'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          actions: (json_['actions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          entities: (json_['entities'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12770,11 +12647,9 @@ class GoogleCloudIntegrationsV1alphaDoubleParameterArray {
 
   GoogleCloudIntegrationsV1alphaDoubleParameterArray.fromJson(core.Map json_)
       : this(
-          doubleValues: json_.containsKey('doubleValues')
-              ? (json_['doubleValues'] as core.List)
-                  .map((value) => (value as core.num).toDouble())
-                  .toList()
-              : null,
+          doubleValues: (json_['doubleValues'] as core.List?)
+              ?.map((value) => (value as core.num).toDouble())
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12819,13 +12694,11 @@ class GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse {
       core.Map json_)
       : this(
           content: json_['content'] as core.String?,
-          files: json_.containsKey('files')
-              ? (json_['files'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaSerializedFile.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          files: (json_['files'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaSerializedFile.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12846,12 +12719,10 @@ class GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse {
   GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse.fromJson(
       core.Map json_)
       : this(
-          files: json_.containsKey('files')
-              ? (json_['files'] as core.List)
-                  .map((value) => GoogleCloudIntegrationsV1alphaFile.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          files: (json_['files'] as core.List?)
+              ?.map((value) => GoogleCloudIntegrationsV1alphaFile.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12871,11 +12742,9 @@ class GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse {
   GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse.fromJson(
       core.Map json_)
       : this(
-          regions: json_.containsKey('regions')
-              ? (json_['regions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          regions: (json_['regions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12942,13 +12811,10 @@ class GoogleCloudIntegrationsV1alphaErrorCatcherConfig {
               ? GoogleCloudIntegrationsV1alphaCoordinate.fromJson(
                   json_['position'] as core.Map<core.String, core.dynamic>)
               : null,
-          startErrorTasks: json_.containsKey('startErrorTasks')
-              ? (json_['startErrorTasks'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaNextTask.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          startErrorTasks: (json_['startErrorTasks'] as core.List?)
+              ?.map((value) => GoogleCloudIntegrationsV1alphaNextTask.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13095,25 +12961,20 @@ class GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest {
       : this(
           doNotPropagateError: json_['doNotPropagateError'] as core.bool?,
           executionId: json_['executionId'] as core.String?,
-          inputParameters: json_.containsKey('inputParameters')
-              ? (json_['inputParameters']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    GoogleCloudIntegrationsV1alphaValueType.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          parameterEntries: json_.containsKey('parameterEntries')
-              ? (json_['parameterEntries'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmFrontendsEventbusProtoParameterEntry
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          inputParameters:
+              (json_['inputParameters'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudIntegrationsV1alphaValueType.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          parameterEntries: (json_['parameterEntries'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmFrontendsEventbusProtoParameterEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           parameters: json_.containsKey('parameters')
               ? EnterpriseCrmFrontendsEventbusProtoEventParameters.fromJson(
                   json_['parameters'] as core.Map<core.String, core.dynamic>)
@@ -13192,14 +13053,11 @@ class GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse {
           outputParameters: json_.containsKey('outputParameters')
               ? json_['outputParameters'] as core.Map<core.String, core.dynamic>
               : null,
-          parameterEntries: json_.containsKey('parameterEntries')
-              ? (json_['parameterEntries'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmFrontendsEventbusProtoParameterEntry
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          parameterEntries: (json_['parameterEntries'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmFrontendsEventbusProtoParameterEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13325,13 +13183,10 @@ class GoogleCloudIntegrationsV1alphaExecution {
                       as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_['createTime'] as core.String?,
-          directSubExecutions: json_.containsKey('directSubExecutions')
-              ? (json_['directSubExecutions'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaExecution.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          directSubExecutions: (json_['directSubExecutions'] as core.List?)
+              ?.map((value) => GoogleCloudIntegrationsV1alphaExecution.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           eventExecutionDetails: json_.containsKey('eventExecutionDetails')
               ? EnterpriseCrmEventbusProtoEventExecutionDetails.fromJson(
                   json_['eventExecutionDetails']
@@ -13350,44 +13205,34 @@ class GoogleCloudIntegrationsV1alphaExecution {
               ? GoogleCloudIntegrationsV1alphaExecutionReplayInfo.fromJson(
                   json_['replayInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          requestParameters: json_.containsKey('requestParameters')
-              ? (json_['requestParameters']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    GoogleCloudIntegrationsV1alphaValueType.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          requestParams: json_.containsKey('requestParams')
-              ? (json_['requestParams'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmFrontendsEventbusProtoParameterEntry
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          responseParameters: json_.containsKey('responseParameters')
-              ? (json_['responseParameters']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    GoogleCloudIntegrationsV1alphaValueType.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          responseParams: json_.containsKey('responseParams')
-              ? (json_['responseParams'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmFrontendsEventbusProtoParameterEntry
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          requestParameters: (json_['requestParameters']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudIntegrationsV1alphaValueType.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          requestParams: (json_['requestParams'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmFrontendsEventbusProtoParameterEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          responseParameters: (json_['responseParameters']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudIntegrationsV1alphaValueType.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          responseParams: (json_['responseParams'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmFrontendsEventbusProtoParameterEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           snapshotNumber: json_['snapshotNumber'] as core.String?,
           triggerId: json_['triggerId'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -13454,22 +13299,18 @@ class GoogleCloudIntegrationsV1alphaExecutionDetails {
 
   GoogleCloudIntegrationsV1alphaExecutionDetails.fromJson(core.Map json_)
       : this(
-          attemptStats: json_.containsKey('attemptStats')
-              ? (json_['attemptStats'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaAttemptStats.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          attemptStats: (json_['attemptStats'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaAttemptStats.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           eventExecutionSnapshotsSize:
               json_['eventExecutionSnapshotsSize'] as core.String?,
-          executionSnapshots: json_.containsKey('executionSnapshots')
-              ? (json_['executionSnapshots'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaExecutionSnapshot.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          executionSnapshots: (json_['executionSnapshots'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaExecutionSnapshot.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           state: json_['state'] as core.String?,
         );
 
@@ -13520,23 +13361,19 @@ class GoogleCloudIntegrationsV1alphaExecutionSnapshot {
                   .fromJson(json_['executionSnapshotMetadata']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          params: json_.containsKey('params')
-              ? (json_['params'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    GoogleCloudIntegrationsV1alphaValueType.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          taskExecutionDetails: json_.containsKey('taskExecutionDetails')
-              ? (json_['taskExecutionDetails'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaTaskExecutionDetails
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          params:
+              (json_['params'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudIntegrationsV1alphaValueType.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          taskExecutionDetails: (json_['taskExecutionDetails'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaTaskExecutionDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13595,16 +13432,12 @@ class GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata {
       core.Map json_)
       : this(
           ancestorIterationNumbers:
-              json_.containsKey('ancestorIterationNumbers')
-                  ? (json_['ancestorIterationNumbers'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
-          ancestorTaskNumbers: json_.containsKey('ancestorTaskNumbers')
-              ? (json_['ancestorTaskNumbers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+              (json_['ancestorIterationNumbers'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+          ancestorTaskNumbers: (json_['ancestorTaskNumbers'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           executionAttempt: json_['executionAttempt'] as core.int?,
           integrationName: json_['integrationName'] as core.String?,
           task: json_['task'] as core.String?,
@@ -13835,11 +13668,9 @@ class GoogleCloudIntegrationsV1alphaIntParameterArray {
 
   GoogleCloudIntegrationsV1alphaIntParameterArray.fromJson(core.Map json_)
       : this(
-          intValues: json_.containsKey('intValues')
-              ? (json_['intValues'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          intValues: (json_['intValues'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14516,30 +14347,22 @@ class GoogleCloudIntegrationsV1alphaIntegrationVersion {
               json_['databasePersistencePolicy'] as core.String?,
           description: json_['description'] as core.String?,
           enableVariableMasking: json_['enableVariableMasking'] as core.bool?,
-          errorCatcherConfigs: json_.containsKey('errorCatcherConfigs')
-              ? (json_['errorCatcherConfigs'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaErrorCatcherConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          integrationConfigParameters: json_
-                  .containsKey('integrationConfigParameters')
-              ? (json_['integrationConfigParameters'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaIntegrationConfigParameter
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          integrationParameters: json_.containsKey('integrationParameters')
-              ? (json_['integrationParameters'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaIntegrationParameter
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          errorCatcherConfigs: (json_['errorCatcherConfigs'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaErrorCatcherConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          integrationConfigParameters: (json_['integrationConfigParameters']
+                  as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaIntegrationConfigParameter
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          integrationParameters: (json_['integrationParameters'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaIntegrationParameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           integrationParametersInternal: json_
                   .containsKey('integrationParametersInternal')
               ? EnterpriseCrmFrontendsEventbusProtoWorkflowParameters.fromJson(
@@ -14555,38 +14378,31 @@ class GoogleCloudIntegrationsV1alphaIntegrationVersion {
           snapshotNumber: json_['snapshotNumber'] as core.String?,
           state: json_['state'] as core.String?,
           status: json_['status'] as core.String?,
-          taskConfigs: json_.containsKey('taskConfigs')
-              ? (json_['taskConfigs'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaTaskConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          taskConfigsInternal: json_.containsKey('taskConfigsInternal')
-              ? (json_['taskConfigsInternal'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmFrontendsEventbusProtoTaskConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          taskConfigs: (json_['taskConfigs'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaTaskConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          taskConfigsInternal: (json_['taskConfigsInternal'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmFrontendsEventbusProtoTaskConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           teardown: json_.containsKey('teardown')
               ? EnterpriseCrmEventbusProtoTeardown.fromJson(
                   json_['teardown'] as core.Map<core.String, core.dynamic>)
               : null,
-          triggerConfigs: json_.containsKey('triggerConfigs')
-              ? (json_['triggerConfigs'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaTriggerConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          triggerConfigsInternal: json_.containsKey('triggerConfigsInternal')
-              ? (json_['triggerConfigsInternal'] as core.List)
-                  .map((value) =>
+          triggerConfigs: (json_['triggerConfigs'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaTriggerConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          triggerConfigsInternal:
+              (json_['triggerConfigsInternal'] as core.List?)
+                  ?.map((value) =>
                       EnterpriseCrmFrontendsEventbusProtoTriggerConfig.fromJson(
                           value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                  .toList(),
           updateTime: json_['updateTime'] as core.String?,
           userLabel: json_['userLabel'] as core.String?,
         );
@@ -14776,13 +14592,11 @@ class GoogleCloudIntegrationsV1alphaListAuthConfigsResponse {
 
   GoogleCloudIntegrationsV1alphaListAuthConfigsResponse.fromJson(core.Map json_)
       : this(
-          authConfigs: json_.containsKey('authConfigs')
-              ? (json_['authConfigs'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaAuthConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          authConfigs: (json_['authConfigs'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaAuthConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -14808,13 +14622,11 @@ class GoogleCloudIntegrationsV1alphaListCertificatesResponse {
   GoogleCloudIntegrationsV1alphaListCertificatesResponse.fromJson(
       core.Map json_)
       : this(
-          certificates: json_.containsKey('certificates')
-              ? (json_['certificates'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaCertificate.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          certificates: (json_['certificates'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaCertificate.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -14839,12 +14651,10 @@ class GoogleCloudIntegrationsV1alphaListConnectionsResponse {
 
   GoogleCloudIntegrationsV1alphaListConnectionsResponse.fromJson(core.Map json_)
       : this(
-          connections: json_.containsKey('connections')
-              ? (json_['connections'] as core.List)
-                  .map((value) => GoogleCloudConnectorsV1Connection.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          connections: (json_['connections'] as core.List?)
+              ?.map((value) => GoogleCloudConnectorsV1Connection.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -14879,21 +14689,15 @@ class GoogleCloudIntegrationsV1alphaListExecutionsResponse {
 
   GoogleCloudIntegrationsV1alphaListExecutionsResponse.fromJson(core.Map json_)
       : this(
-          executionInfos: json_.containsKey('executionInfos')
-              ? (json_['executionInfos'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          executions: json_.containsKey('executions')
-              ? (json_['executions'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaExecution.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          executionInfos: (json_['executionInfos'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          executions: (json_['executions'] as core.List?)
+              ?.map((value) => GoogleCloudIntegrationsV1alphaExecution.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -14927,13 +14731,11 @@ class GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse {
   GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse.fromJson(
       core.Map json_)
       : this(
-          integrationVersions: json_.containsKey('integrationVersions')
-              ? (json_['integrationVersions'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaIntegrationVersion.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          integrationVersions: (json_['integrationVersions'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaIntegrationVersion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
           noPermission: json_['noPermission'] as core.bool?,
         );
@@ -14962,13 +14764,11 @@ class GoogleCloudIntegrationsV1alphaListIntegrationsResponse {
   GoogleCloudIntegrationsV1alphaListIntegrationsResponse.fromJson(
       core.Map json_)
       : this(
-          integrations: json_.containsKey('integrations')
-              ? (json_['integrations'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaIntegration.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          integrations: (json_['integrations'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaIntegration.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -14996,14 +14796,11 @@ class GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse {
       core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          runtimeActionSchemas: json_.containsKey('runtimeActionSchemas')
-              ? (json_['runtimeActionSchemas'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaRuntimeActionSchema
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          runtimeActionSchemas: (json_['runtimeActionSchemas'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaRuntimeActionSchema.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15031,14 +14828,11 @@ class GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse {
       core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          runtimeEntitySchemas: json_.containsKey('runtimeEntitySchemas')
-              ? (json_['runtimeEntitySchemas'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaRuntimeEntitySchema
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          runtimeEntitySchemas: (json_['runtimeEntitySchemas'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaRuntimeEntitySchema.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15065,13 +14859,11 @@ class GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse {
       core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          sfdcChannels: json_.containsKey('sfdcChannels')
-              ? (json_['sfdcChannels'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaSfdcChannel.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          sfdcChannels: (json_['sfdcChannels'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaSfdcChannel.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15097,13 +14889,11 @@ class GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse {
       core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          sfdcInstances: json_.containsKey('sfdcInstances')
-              ? (json_['sfdcInstances'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaSfdcInstance.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          sfdcInstances: (json_['sfdcInstances'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaSfdcInstance.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15129,13 +14919,11 @@ class GoogleCloudIntegrationsV1alphaListSuspensionsResponse {
   GoogleCloudIntegrationsV1alphaListSuspensionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          suspensions: json_.containsKey('suspensions')
-              ? (json_['suspensions'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaSuspension.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          suspensions: (json_['suspensions'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaSuspension.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15544,13 +15332,11 @@ class GoogleCloudIntegrationsV1alphaParameterMap {
 
   GoogleCloudIntegrationsV1alphaParameterMap.fromJson(core.Map json_)
       : this(
-          entries: json_.containsKey('entries')
-              ? (json_['entries'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaParameterMapEntry.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          entries: (json_['entries'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaParameterMapEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           keyType: json_['keyType'] as core.String?,
           valueType: json_['valueType'] as core.String?,
         );
@@ -15664,11 +15450,9 @@ class GoogleCloudIntegrationsV1alphaProjectProperties {
       : this(
           billingType: json_['billingType'] as core.String?,
           ipEnablementState: json_['ipEnablementState'] as core.String?,
-          provisionedRegions: json_.containsKey('provisionedRegions')
-              ? (json_['provisionedRegions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          provisionedRegions: (json_['provisionedRegions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16015,25 +15799,20 @@ class GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest {
   GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest.fromJson(
       core.Map json_)
       : this(
-          inputParameters: json_.containsKey('inputParameters')
-              ? (json_['inputParameters']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    GoogleCloudIntegrationsV1alphaValueType.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          parameterEntries: json_.containsKey('parameterEntries')
-              ? (json_['parameterEntries'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmFrontendsEventbusProtoParameterEntry
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          inputParameters:
+              (json_['inputParameters'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudIntegrationsV1alphaValueType.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          parameterEntries: (json_['parameterEntries'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmFrontendsEventbusProtoParameterEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           parameters: json_.containsKey('parameters')
               ? EnterpriseCrmEventbusProtoEventParameters.fromJson(
                   json_['parameters'] as core.Map<core.String, core.dynamic>)
@@ -16069,11 +15848,9 @@ class GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse {
   GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse.fromJson(
       core.Map json_)
       : this(
-          executionInfoIds: json_.containsKey('executionInfoIds')
-              ? (json_['executionInfoIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          executionInfoIds: (json_['executionInfoIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16272,11 +16049,9 @@ class GoogleCloudIntegrationsV1alphaSfdcInstance {
 
   GoogleCloudIntegrationsV1alphaSfdcInstance.fromJson(core.Map json_)
       : this(
-          authConfigId: json_.containsKey('authConfigId')
-              ? (json_['authConfigId'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          authConfigId: (json_['authConfigId'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           createTime: json_['createTime'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
           description: json_['description'] as core.String?,
@@ -16311,11 +16086,9 @@ class GoogleCloudIntegrationsV1alphaStringParameterArray {
 
   GoogleCloudIntegrationsV1alphaStringParameterArray.fromJson(core.Map json_)
       : this(
-          stringValues: json_.containsKey('stringValues')
-              ? (json_['stringValues'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          stringValues: (json_['stringValues'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16479,11 +16252,9 @@ class GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig {
       core.Map json_)
       : this(
           customMessage: json_['customMessage'] as core.String?,
-          emailAddresses: json_.containsKey('emailAddresses')
-              ? (json_['emailAddresses'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          emailAddresses: (json_['emailAddresses'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           expiration: json_.containsKey('expiration')
               ? GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration
                   .fromJson(json_['expiration']
@@ -16821,25 +16592,21 @@ class GoogleCloudIntegrationsV1alphaTaskConfig {
                   json_['failurePolicy'] as core.Map<core.String, core.dynamic>)
               : null,
           jsonValidationOption: json_['jsonValidationOption'] as core.String?,
-          nextTasks: json_.containsKey('nextTasks')
-              ? (json_['nextTasks'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaNextTask.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          nextTasks: (json_['nextTasks'] as core.List?)
+              ?.map((value) => GoogleCloudIntegrationsV1alphaNextTask.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextTasksExecutionPolicy:
               json_['nextTasksExecutionPolicy'] as core.String?,
-          parameters: json_.containsKey('parameters')
-              ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    GoogleCloudIntegrationsV1alphaEventParameter.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          parameters:
+              (json_['parameters'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudIntegrationsV1alphaEventParameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           position: json_.containsKey('position')
               ? GoogleCloudIntegrationsV1alphaCoordinate.fromJson(
                   json_['position'] as core.Map<core.String, core.dynamic>)
@@ -16930,13 +16697,11 @@ class GoogleCloudIntegrationsV1alphaTaskExecutionDetails {
 
   GoogleCloudIntegrationsV1alphaTaskExecutionDetails.fromJson(core.Map json_)
       : this(
-          taskAttemptStats: json_.containsKey('taskAttemptStats')
-              ? (json_['taskAttemptStats'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaAttemptStats.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          taskAttemptStats: (json_['taskAttemptStats'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaAttemptStats.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           taskExecutionState: json_['taskExecutionState'] as core.String?,
           taskNumber: json_['taskNumber'] as core.String?,
         );
@@ -17025,17 +16790,15 @@ class GoogleCloudIntegrationsV1alphaTestIntegrationsRequest {
               ? json_['configParameters'] as core.Map<core.String, core.dynamic>
               : null,
           deadlineSecondsTime: json_['deadlineSecondsTime'] as core.String?,
-          inputParameters: json_.containsKey('inputParameters')
-              ? (json_['inputParameters']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    GoogleCloudIntegrationsV1alphaValueType.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          inputParameters:
+              (json_['inputParameters'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudIntegrationsV1alphaValueType.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           integrationVersion: json_.containsKey('integrationVersion')
               ? GoogleCloudIntegrationsV1alphaIntegrationVersion.fromJson(
                   json_['integrationVersion']
@@ -17111,24 +16874,20 @@ class GoogleCloudIntegrationsV1alphaTestIntegrationsResponse {
               : null,
           executionFailed: json_['executionFailed'] as core.bool?,
           executionId: json_['executionId'] as core.String?,
-          parameterEntries: json_.containsKey('parameterEntries')
-              ? (json_['parameterEntries'] as core.List)
-                  .map((value) =>
-                      EnterpriseCrmFrontendsEventbusProtoParameterEntry
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          parameters: json_.containsKey('parameters')
-              ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    GoogleCloudIntegrationsV1alphaValueType.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          parameterEntries: (json_['parameterEntries'] as core.List?)
+              ?.map((value) =>
+                  EnterpriseCrmFrontendsEventbusProtoParameterEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          parameters:
+              (json_['parameters'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudIntegrationsV1alphaValueType.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17264,14 +17023,11 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
 
   GoogleCloudIntegrationsV1alphaTriggerConfig.fromJson(core.Map json_)
       : this(
-          alertConfig: json_.containsKey('alertConfig')
-              ? (json_['alertConfig'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaIntegrationAlertConfig
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          alertConfig: (json_['alertConfig'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaIntegrationAlertConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           cloudSchedulerConfig: json_.containsKey('cloudSchedulerConfig')
               ? GoogleCloudIntegrationsV1alphaCloudSchedulerConfig.fromJson(
                   json_['cloudSchedulerConfig']
@@ -17286,22 +17042,18 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
               ? GoogleCloudIntegrationsV1alphaCoordinate.fromJson(
                   json_['position'] as core.Map<core.String, core.dynamic>)
               : null,
-          properties: json_.containsKey('properties')
-              ? (json_['properties'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
-          startTasks: json_.containsKey('startTasks')
-              ? (json_['startTasks'] as core.List)
-                  .map((value) =>
-                      GoogleCloudIntegrationsV1alphaNextTask.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          properties:
+              (json_['properties'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          startTasks: (json_['startTasks'] as core.List?)
+              ?.map((value) => GoogleCloudIntegrationsV1alphaNextTask.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           trigger: json_['trigger'] as core.String?,
           triggerId: json_['triggerId'] as core.String?,
           triggerNumber: json_['triggerNumber'] as core.String?,

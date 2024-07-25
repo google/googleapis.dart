@@ -382,12 +382,10 @@ class AppliedLabelChange {
 
   AppliedLabelChange.fromJson(core.Map json_)
       : this(
-          changes: json_.containsKey('changes')
-              ? (json_['changes'] as core.List)
-                  .map((value) => AppliedLabelChangeDetail.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          changes: (json_['changes'] as core.List?)
+              ?.map((value) => AppliedLabelChangeDetail.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -423,19 +421,15 @@ class AppliedLabelChangeDetail {
 
   AppliedLabelChangeDetail.fromJson(core.Map json_)
       : this(
-          fieldChanges: json_.containsKey('fieldChanges')
-              ? (json_['fieldChanges'] as core.List)
-                  .map((value) => FieldValueChange.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          fieldChanges: (json_['fieldChanges'] as core.List?)
+              ?.map((value) => FieldValueChange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           label: json_['label'] as core.String?,
           title: json_['title'] as core.String?,
-          types: json_.containsKey('types')
-              ? (json_['types'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          types: (json_['types'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -510,12 +504,10 @@ class Comment {
               ? Assignment.fromJson(
                   json_['assignment'] as core.Map<core.String, core.dynamic>)
               : null,
-          mentionedUsers: json_.containsKey('mentionedUsers')
-              ? (json_['mentionedUsers'] as core.List)
-                  .map((value) => User.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          mentionedUsers: (json_['mentionedUsers'] as core.List?)
+              ?.map((value) =>
+                  User.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           post: json_.containsKey('post')
               ? Post.fromJson(
                   json_['post'] as core.Map<core.String, core.dynamic>)
@@ -812,28 +804,22 @@ class DriveActivity {
 
   DriveActivity.fromJson(core.Map json_)
       : this(
-          actions: json_.containsKey('actions')
-              ? (json_['actions'] as core.List)
-                  .map((value) => Action.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          actors: json_.containsKey('actors')
-              ? (json_['actors'] as core.List)
-                  .map((value) => Actor.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          actions: (json_['actions'] as core.List?)
+              ?.map((value) =>
+                  Action.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          actors: (json_['actors'] as core.List?)
+              ?.map((value) =>
+                  Actor.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           primaryActionDetail: json_.containsKey('primaryActionDetail')
               ? ActionDetail.fromJson(json_['primaryActionDetail']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          targets: json_.containsKey('targets')
-              ? (json_['targets'] as core.List)
-                  .map((value) => Target.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          targets: (json_['targets'] as core.List?)
+              ?.map((value) =>
+                  Target.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           timeRange: json_.containsKey('timeRange')
               ? TimeRange.fromJson(
                   json_['timeRange'] as core.Map<core.String, core.dynamic>)
@@ -1407,18 +1393,14 @@ class Move {
 
   Move.fromJson(core.Map json_)
       : this(
-          addedParents: json_.containsKey('addedParents')
-              ? (json_['addedParents'] as core.List)
-                  .map((value) => TargetReference.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          removedParents: json_.containsKey('removedParents')
-              ? (json_['removedParents'] as core.List)
-                  .map((value) => TargetReference.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          addedParents: (json_['addedParents'] as core.List?)
+              ?.map((value) => TargetReference.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          removedParents: (json_['removedParents'] as core.List?)
+              ?.map((value) => TargetReference.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1581,18 +1563,14 @@ class PermissionChange {
 
   PermissionChange.fromJson(core.Map json_)
       : this(
-          addedPermissions: json_.containsKey('addedPermissions')
-              ? (json_['addedPermissions'] as core.List)
-                  .map((value) => Permission.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          removedPermissions: json_.containsKey('removedPermissions')
-              ? (json_['removedPermissions'] as core.List)
-                  .map((value) => Permission.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          addedPermissions: (json_['addedPermissions'] as core.List?)
+              ?.map((value) => Permission.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          removedPermissions: (json_['removedPermissions'] as core.List?)
+              ?.map((value) => Permission.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1726,12 +1704,10 @@ class QueryDriveActivityResponse {
 
   QueryDriveActivityResponse.fromJson(core.Map json_)
       : this(
-          activities: json_.containsKey('activities')
-              ? (json_['activities'] as core.List)
-                  .map((value) => DriveActivity.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          activities: (json_['activities'] as core.List?)
+              ?.map((value) => DriveActivity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1867,12 +1843,10 @@ class SelectionList {
 
   SelectionList.fromJson(core.Map json_)
       : this(
-          values: json_.containsKey('values')
-              ? (json_['values'] as core.List)
-                  .map((value) => Selection.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          values: (json_['values'] as core.List?)
+              ?.map((value) => Selection.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1891,12 +1865,10 @@ class SettingsChange {
 
   SettingsChange.fromJson(core.Map json_)
       : this(
-          restrictionChanges: json_.containsKey('restrictionChanges')
-              ? (json_['restrictionChanges'] as core.List)
-                  .map((value) => RestrictionChange.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          restrictionChanges: (json_['restrictionChanges'] as core.List?)
+              ?.map((value) => RestrictionChange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2165,12 +2137,10 @@ class TextList {
 
   TextList.fromJson(core.Map json_)
       : this(
-          values: json_.containsKey('values')
-              ? (json_['values'] as core.List)
-                  .map((value) => Text.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          values: (json_['values'] as core.List?)
+              ?.map((value) =>
+                  Text.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2260,12 +2230,10 @@ class UserList {
 
   UserList.fromJson(core.Map json_)
       : this(
-          values: json_.containsKey('values')
-              ? (json_['values'] as core.List)
-                  .map((value) => SingleUser.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          values: (json_['values'] as core.List?)
+              ?.map((value) => SingleUser.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

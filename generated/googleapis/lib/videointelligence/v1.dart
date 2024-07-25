@@ -552,11 +552,9 @@ class GoogleCloudVideointelligenceV1AnnotateVideoRequest {
 
   GoogleCloudVideointelligenceV1AnnotateVideoRequest.fromJson(core.Map json_)
       : this(
-          features: json_.containsKey('features')
-              ? (json_['features'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          features: (json_['features'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           inputContent: json_['inputContent'] as core.String?,
           inputUri: json_['inputUri'] as core.String?,
           locationId: json_['locationId'] as core.String?,
@@ -819,11 +817,9 @@ class GoogleCloudVideointelligenceV1SpeechContext {
 
   GoogleCloudVideointelligenceV1SpeechContext.fromJson(core.Map json_)
       : this(
-          phrases: json_.containsKey('phrases')
-              ? (json_['phrases'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          phrases: (json_['phrases'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -930,11 +926,9 @@ class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig {
   GoogleCloudVideointelligenceV1SpeechTranscriptionConfig.fromJson(
       core.Map json_)
       : this(
-          audioTracks: json_.containsKey('audioTracks')
-              ? (json_['audioTracks'] as core.List)
-                  .map((value) => value as core.int)
-                  .toList()
-              : null,
+          audioTracks: (json_['audioTracks'] as core.List?)
+              ?.map((value) => value as core.int)
+              .toList(),
           diarizationSpeakerCount:
               json_['diarizationSpeakerCount'] as core.int?,
           enableAutomaticPunctuation:
@@ -945,13 +939,11 @@ class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig {
           filterProfanity: json_['filterProfanity'] as core.bool?,
           languageCode: json_['languageCode'] as core.String?,
           maxAlternatives: json_['maxAlternatives'] as core.int?,
-          speechContexts: json_.containsKey('speechContexts')
-              ? (json_['speechContexts'] as core.List)
-                  .map((value) =>
-                      GoogleCloudVideointelligenceV1SpeechContext.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          speechContexts: (json_['speechContexts'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudVideointelligenceV1SpeechContext.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -994,11 +986,9 @@ class GoogleCloudVideointelligenceV1TextDetectionConfig {
 
   GoogleCloudVideointelligenceV1TextDetectionConfig.fromJson(core.Map json_)
       : this(
-          languageHints: json_.containsKey('languageHints')
-              ? (json_['languageHints'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          languageHints: (json_['languageHints'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           model: json_['model'] as core.String?,
         );
 
@@ -1083,13 +1073,11 @@ class GoogleCloudVideointelligenceV1VideoContext {
                   json_['personDetectionConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          segments: json_.containsKey('segments')
-              ? (json_['segments'] as core.List)
-                  .map((value) =>
-                      GoogleCloudVideointelligenceV1VideoSegment.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          segments: (json_['segments'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudVideointelligenceV1VideoSegment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           shotChangeDetectionConfig:
               json_.containsKey('shotChangeDetectionConfig')
                   ? GoogleCloudVideointelligenceV1ShotChangeDetectionConfig
@@ -1176,12 +1164,10 @@ class GoogleLongrunningListOperationsResponse {
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => GoogleLongrunningOperation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => GoogleLongrunningOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

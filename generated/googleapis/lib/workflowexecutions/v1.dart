@@ -627,11 +627,9 @@ class Callback {
 
   Callback.fromJson(core.Map json_)
       : this(
-          availablePayloads: json_.containsKey('availablePayloads')
-              ? (json_['availablePayloads'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          availablePayloads: (json_['availablePayloads'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           method: json_['method'] as core.String?,
           name: json_['name'] as core.String?,
           waiters: json_['waiters'] as core.String?,
@@ -847,14 +845,13 @@ class Execution {
               ? Error.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           result: json_['result'] as core.String?,
           startTime: json_['startTime'] as core.String?,
@@ -929,12 +926,10 @@ class ListCallbacksResponse {
 
   ListCallbacksResponse.fromJson(core.Map json_)
       : this(
-          callbacks: json_.containsKey('callbacks')
-              ? (json_['callbacks'] as core.List)
-                  .map((value) => Callback.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          callbacks: (json_['callbacks'] as core.List?)
+              ?.map((value) => Callback.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -961,12 +956,10 @@ class ListExecutionsResponse {
 
   ListExecutionsResponse.fromJson(core.Map json_)
       : this(
-          executions: json_.containsKey('executions')
-              ? (json_['executions'] as core.List)
-                  .map((value) => Execution.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          executions: (json_['executions'] as core.List?)
+              ?.map((value) => Execution.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1003,12 +996,10 @@ class ListStepEntriesResponse {
   ListStepEntriesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          stepEntries: json_.containsKey('stepEntries')
-              ? (json_['stepEntries'] as core.List)
-                  .map((value) => StepEntry.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          stepEntries: (json_['stepEntries'] as core.List?)
+              ?.map((value) => StepEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           totalSize: json_['totalSize'] as core.int?,
         );
 
@@ -1045,11 +1036,9 @@ class NavigationInfo {
 
   NavigationInfo.fromJson(core.Map json_)
       : this(
-          children: json_.containsKey('children')
-              ? (json_['children'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          children: (json_['children'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           next: json_['next'] as core.String?,
           parent: json_['parent'] as core.String?,
           previous: json_['previous'] as core.String?,
@@ -1118,12 +1107,10 @@ class StackTrace {
 
   StackTrace.fromJson(core.Map json_)
       : this(
-          elements: json_.containsKey('elements')
-              ? (json_['elements'] as core.List)
-                  .map((value) => StackTraceElement.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          elements: (json_['elements'] as core.List?)
+              ?.map((value) => StackTraceElement.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1186,12 +1173,10 @@ class Status {
 
   Status.fromJson(core.Map json_)
       : this(
-          currentSteps: json_.containsKey('currentSteps')
-              ? (json_['currentSteps'] as core.List)
-                  .map((value) => Step.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          currentSteps: (json_['currentSteps'] as core.List?)
+              ?.map((value) =>
+                  Step.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

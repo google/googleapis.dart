@@ -1389,11 +1389,9 @@ class ResellernotifyGetwatchdetailsResponse {
   ResellernotifyGetwatchdetailsResponse.fromJson(core.Map json_)
       : this(
           serviceAccountEmailAddresses:
-              json_.containsKey('serviceAccountEmailAddresses')
-                  ? (json_['serviceAccountEmailAddresses'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
+              (json_['serviceAccountEmailAddresses'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           topicName: json_['topicName'] as core.String?,
         );
 
@@ -1829,11 +1827,9 @@ class Subscription {
           skuName: json_['skuName'] as core.String?,
           status: json_['status'] as core.String?,
           subscriptionId: json_['subscriptionId'] as core.String?,
-          suspensionReasons: json_.containsKey('suspensionReasons')
-              ? (json_['suspensionReasons'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          suspensionReasons: (json_['suspensionReasons'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           transferInfo: json_.containsKey('transferInfo')
               ? SubscriptionTransferInfo.fromJson(
                   json_['transferInfo'] as core.Map<core.String, core.dynamic>)
@@ -1897,12 +1893,10 @@ class Subscriptions {
       : this(
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
-          subscriptions: json_.containsKey('subscriptions')
-              ? (json_['subscriptions'] as core.List)
-                  .map((value) => Subscription.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          subscriptions: (json_['subscriptions'] as core.List?)
+              ?.map((value) => Subscription.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

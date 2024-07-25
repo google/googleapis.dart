@@ -246,11 +246,9 @@ class AppAccessRiskVerdict {
 
   AppAccessRiskVerdict.fromJson(core.Map json_)
       : this(
-          appsDetected: json_.containsKey('appsDetected')
-              ? (json_['appsDetected'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          appsDetected: (json_['appsDetected'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           otherApps: json_['otherApps'] as core.String?,
           playOrSystemApps: json_['playOrSystemApps'] as core.String?,
         );
@@ -305,11 +303,10 @@ class AppIntegrity {
   AppIntegrity.fromJson(core.Map json_)
       : this(
           appRecognitionVerdict: json_['appRecognitionVerdict'] as core.String?,
-          certificateSha256Digest: json_.containsKey('certificateSha256Digest')
-              ? (json_['certificateSha256Digest'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          certificateSha256Digest:
+              (json_['certificateSha256Digest'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           packageName: json_['packageName'] as core.String?,
           versionCode: json_['versionCode'] as core.String?,
         );
@@ -384,11 +381,9 @@ class DeviceIntegrity {
   DeviceIntegrity.fromJson(core.Map json_)
       : this(
           deviceRecognitionVerdict:
-              json_.containsKey('deviceRecognitionVerdict')
-                  ? (json_['deviceRecognitionVerdict'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
+              (json_['deviceRecognitionVerdict'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           recentDeviceActivity: json_.containsKey('recentDeviceActivity')
               ? RecentDeviceActivity.fromJson(json_['recentDeviceActivity']
                   as core.Map<core.String, core.dynamic>)

@@ -880,13 +880,11 @@ class GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse {
   GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse.fromJson(
       core.Map json_)
       : this(
-          assetMoveAnalyses: json_.containsKey('assetMoveAnalyses')
-              ? (json_['assetMoveAnalyses'] as core.List)
-                  .map((value) =>
-                      GoogleCloudAssuredworkloadsV1AssetMoveAnalysis.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          assetMoveAnalyses: (json_['assetMoveAnalyses'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudAssuredworkloadsV1AssetMoveAnalysis.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -921,13 +919,11 @@ class GoogleCloudAssuredworkloadsV1AssetMoveAnalysis {
 
   GoogleCloudAssuredworkloadsV1AssetMoveAnalysis.fromJson(core.Map json_)
       : this(
-          analysisGroups: json_.containsKey('analysisGroups')
-              ? (json_['analysisGroups'] as core.List)
-                  .map((value) =>
-                      GoogleCloudAssuredworkloadsV1MoveAnalysisGroup.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          analysisGroups: (json_['analysisGroups'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudAssuredworkloadsV1MoveAnalysisGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           asset: json_['asset'] as core.String?,
           assetType: json_['assetType'] as core.String?,
         );
@@ -960,13 +956,10 @@ class GoogleCloudAssuredworkloadsV1ListViolationsResponse {
   GoogleCloudAssuredworkloadsV1ListViolationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          violations: json_.containsKey('violations')
-              ? (json_['violations'] as core.List)
-                  .map((value) =>
-                      GoogleCloudAssuredworkloadsV1Violation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          violations: (json_['violations'] as core.List?)
+              ?.map((value) => GoogleCloudAssuredworkloadsV1Violation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -993,13 +986,10 @@ class GoogleCloudAssuredworkloadsV1ListWorkloadsResponse {
   GoogleCloudAssuredworkloadsV1ListWorkloadsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          workloads: json_.containsKey('workloads')
-              ? (json_['workloads'] as core.List)
-                  .map((value) =>
-                      GoogleCloudAssuredworkloadsV1Workload.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          workloads: (json_['workloads'] as core.List?)
+              ?.map((value) => GoogleCloudAssuredworkloadsV1Workload.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1068,20 +1058,14 @@ class GoogleCloudAssuredworkloadsV1MoveAnalysisResult {
 
   GoogleCloudAssuredworkloadsV1MoveAnalysisResult.fromJson(core.Map json_)
       : this(
-          blockers: json_.containsKey('blockers')
-              ? (json_['blockers'] as core.List)
-                  .map((value) =>
-                      GoogleCloudAssuredworkloadsV1MoveImpact.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          warnings: json_.containsKey('warnings')
-              ? (json_['warnings'] as core.List)
-                  .map((value) =>
-                      GoogleCloudAssuredworkloadsV1MoveImpact.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          blockers: (json_['blockers'] as core.List?)
+              ?.map((value) => GoogleCloudAssuredworkloadsV1MoveImpact.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          warnings: (json_['warnings'] as core.List?)
+              ?.map((value) => GoogleCloudAssuredworkloadsV1MoveImpact.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1376,14 +1360,11 @@ class GoogleCloudAssuredworkloadsV1Violation {
           category: json_['category'] as core.String?,
           description: json_['description'] as core.String?,
           exceptionAuditLogLink: json_['exceptionAuditLogLink'] as core.String?,
-          exceptionContexts: json_.containsKey('exceptionContexts')
-              ? (json_['exceptionContexts'] as core.List)
-                  .map((value) =>
-                      GoogleCloudAssuredworkloadsV1ViolationExceptionContext
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          exceptionContexts: (json_['exceptionContexts'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudAssuredworkloadsV1ViolationExceptionContext
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           name: json_['name'] as core.String?,
           nonCompliantOrgPolicy: json_['nonCompliantOrgPolicy'] as core.String?,
           orgPolicyConstraint: json_['orgPolicyConstraint'] as core.String?,
@@ -1503,11 +1484,9 @@ class GoogleCloudAssuredworkloadsV1ViolationRemediation {
 
   GoogleCloudAssuredworkloadsV1ViolationRemediation.fromJson(core.Map json_)
       : this(
-          compliantValues: json_.containsKey('compliantValues')
-              ? (json_['compliantValues'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          compliantValues: (json_['compliantValues'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           instructions: json_.containsKey('instructions')
               ? GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions
                   .fromJson(json_['instructions']
@@ -1814,11 +1793,9 @@ class GoogleCloudAssuredworkloadsV1Workload {
                       as core.Map<core.String, core.dynamic>)
               : null,
           compliantButDisallowedServices:
-              json_.containsKey('compliantButDisallowedServices')
-                  ? (json_['compliantButDisallowedServices'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
+              (json_['compliantButDisallowedServices'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           createTime: json_['createTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           ekmProvisioningResponse: json_.containsKey('ekmProvisioningResponse')
@@ -1834,14 +1811,13 @@ class GoogleCloudAssuredworkloadsV1Workload {
               ? GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromJson(
                   json_['kmsSettings'] as core.Map<core.String, core.dynamic>)
               : null,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           partner: json_['partner'] as core.String?,
           partnerPermissions: json_.containsKey('partnerPermissions')
@@ -1853,22 +1829,16 @@ class GoogleCloudAssuredworkloadsV1Workload {
               json_['provisionedResourcesParent'] as core.String?,
           resourceMonitoringEnabled:
               json_['resourceMonitoringEnabled'] as core.bool?,
-          resourceSettings: json_.containsKey('resourceSettings')
-              ? (json_['resourceSettings'] as core.List)
-                  .map((value) =>
-                      GoogleCloudAssuredworkloadsV1WorkloadResourceSettings
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          resources: json_.containsKey('resources')
-              ? (json_['resources'] as core.List)
-                  .map((value) =>
-                      GoogleCloudAssuredworkloadsV1WorkloadResourceInfo
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          resourceSettings: (json_['resourceSettings'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudAssuredworkloadsV1WorkloadResourceSettings
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          resources: (json_['resources'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudAssuredworkloadsV1WorkloadResourceInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           saaEnrollmentResponse: json_.containsKey('saaEnrollmentResponse')
               ? GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse
                   .fromJson(json_['saaEnrollmentResponse']
@@ -2197,11 +2167,9 @@ class GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse {
   GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse.fromJson(
       core.Map json_)
       : this(
-          setupErrors: json_.containsKey('setupErrors')
-              ? (json_['setupErrors'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          setupErrors: (json_['setupErrors'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           setupStatus: json_['setupStatus'] as core.String?,
         );
 
@@ -2227,12 +2195,10 @@ class GoogleLongrunningListOperationsResponse {
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => GoogleLongrunningOperation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => GoogleLongrunningOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

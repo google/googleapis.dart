@@ -404,13 +404,10 @@ class GoogleHomeEnterpriseSdmV1Device {
   GoogleHomeEnterpriseSdmV1Device.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
-          parentRelations: json_.containsKey('parentRelations')
-              ? (json_['parentRelations'] as core.List)
-                  .map((value) =>
-                      GoogleHomeEnterpriseSdmV1ParentRelation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          parentRelations: (json_['parentRelations'] as core.List?)
+              ?.map((value) => GoogleHomeEnterpriseSdmV1ParentRelation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           traits: json_.containsKey('traits')
               ? json_['traits'] as core.Map<core.String, core.dynamic>
               : null,
@@ -491,12 +488,10 @@ class GoogleHomeEnterpriseSdmV1ListDevicesResponse {
 
   GoogleHomeEnterpriseSdmV1ListDevicesResponse.fromJson(core.Map json_)
       : this(
-          devices: json_.containsKey('devices')
-              ? (json_['devices'] as core.List)
-                  .map((value) => GoogleHomeEnterpriseSdmV1Device.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          devices: (json_['devices'] as core.List?)
+              ?.map((value) => GoogleHomeEnterpriseSdmV1Device.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -515,12 +510,10 @@ class GoogleHomeEnterpriseSdmV1ListRoomsResponse {
 
   GoogleHomeEnterpriseSdmV1ListRoomsResponse.fromJson(core.Map json_)
       : this(
-          rooms: json_.containsKey('rooms')
-              ? (json_['rooms'] as core.List)
-                  .map((value) => GoogleHomeEnterpriseSdmV1Room.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          rooms: (json_['rooms'] as core.List?)
+              ?.map((value) => GoogleHomeEnterpriseSdmV1Room.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -539,12 +532,10 @@ class GoogleHomeEnterpriseSdmV1ListStructuresResponse {
 
   GoogleHomeEnterpriseSdmV1ListStructuresResponse.fromJson(core.Map json_)
       : this(
-          structures: json_.containsKey('structures')
-              ? (json_['structures'] as core.List)
-                  .map((value) => GoogleHomeEnterpriseSdmV1Structure.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          structures: (json_['structures'] as core.List?)
+              ?.map((value) => GoogleHomeEnterpriseSdmV1Structure.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

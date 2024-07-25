@@ -1716,12 +1716,10 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
       : this(
-          auditLogConfigs: json_.containsKey('auditLogConfigs')
-              ? (json_['auditLogConfigs'] as core.List)
-                  .map((value) => AuditLogConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+              ?.map((value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           service: json_['service'] as core.String?,
         );
 
@@ -1895,11 +1893,9 @@ class Binding {
               ? Expr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -2014,12 +2010,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -2055,12 +2049,10 @@ class ListSecretVersionsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           totalSize: json_['totalSize'] as core.int?,
-          versions: json_.containsKey('versions')
-              ? (json_['versions'] as core.List)
-                  .map((value) => SecretVersion.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          versions: (json_['versions'] as core.List?)
+              ?.map((value) => SecretVersion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2094,12 +2086,10 @@ class ListSecretsResponse {
   ListSecretsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          secrets: json_.containsKey('secrets')
-              ? (json_['secrets'] as core.List)
-                  .map((value) => Secret.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          secrets: (json_['secrets'] as core.List?)
+              ?.map((value) =>
+                  Secret.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           totalSize: json_['totalSize'] as core.int?,
         );
 
@@ -2208,18 +2198,14 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
       : this(
-          auditConfigs: json_.containsKey('auditConfigs')
-              ? (json_['auditConfigs'] as core.List)
-                  .map((value) => AuditConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          bindings: json_.containsKey('bindings')
-              ? (json_['bindings'] as core.List)
-                  .map((value) => Binding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditConfigs: (json_['auditConfigs'] as core.List?)
+              ?.map((value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
         );
@@ -2549,15 +2535,14 @@ class Secret {
 
   Secret.fromJson(core.Map json_)
       : this(
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           createTime: json_['createTime'] as core.String?,
           customerManagedEncryption:
               json_.containsKey('customerManagedEncryption')
@@ -2567,14 +2552,13 @@ class Secret {
                   : null,
           etag: json_['etag'] as core.String?,
           expireTime: json_['expireTime'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           replication: json_.containsKey('replication')
               ? Replication.fromJson(
@@ -2584,22 +2568,19 @@ class Secret {
               ? Rotation.fromJson(
                   json_['rotation'] as core.Map<core.String, core.dynamic>)
               : null,
-          topics: json_.containsKey('topics')
-              ? (json_['topics'] as core.List)
-                  .map((value) => Topic.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          topics: (json_['topics'] as core.List?)
+              ?.map((value) =>
+                  Topic.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           ttl: json_['ttl'] as core.String?,
-          versionAliases: json_.containsKey('versionAliases')
-              ? (json_['versionAliases'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          versionAliases:
+              (json_['versionAliases'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           versionDestroyTtl: json_['versionDestroyTtl'] as core.String?,
         );
 
@@ -2869,12 +2850,10 @@ class UserManaged {
 
   UserManaged.fromJson(core.Map json_)
       : this(
-          replicas: json_.containsKey('replicas')
-              ? (json_['replicas'] as core.List)
-                  .map((value) => Replica.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          replicas: (json_['replicas'] as core.List?)
+              ?.map((value) => Replica.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2897,12 +2876,10 @@ class UserManagedStatus {
 
   UserManagedStatus.fromJson(core.Map json_)
       : this(
-          replicas: json_.containsKey('replicas')
-              ? (json_['replicas'] as core.List)
-                  .map((value) => ReplicaStatus.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          replicas: (json_['replicas'] as core.List?)
+              ?.map((value) => ReplicaStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

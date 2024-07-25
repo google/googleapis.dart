@@ -527,12 +527,10 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
       : this(
-          auditLogConfigs: json_.containsKey('auditLogConfigs')
-              ? (json_['auditLogConfigs'] as core.List)
-                  .map((value) => AuditLogConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+              ?.map((value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           service: json_['service'] as core.String?,
         );
 
@@ -570,11 +568,9 @@ class AuditLogConfig {
 
   AuditLogConfig.fromJson(core.Map json_)
       : this(
-          exemptedMembers: json_.containsKey('exemptedMembers')
-              ? (json_['exemptedMembers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          exemptedMembers: (json_['exemptedMembers'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           logType: json_['logType'] as core.String?,
         );
 
@@ -676,11 +672,9 @@ class Binding {
               ? Expr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -1007,12 +1001,10 @@ class ListConnectionsResponse {
 
   ListConnectionsResponse.fromJson(core.Map json_)
       : this(
-          connections: json_.containsKey('connections')
-              ? (json_['connections'] as core.List)
-                  .map((value) => Connection.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          connections: (json_['connections'] as core.List?)
+              ?.map((value) => Connection.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1117,18 +1109,14 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
       : this(
-          auditConfigs: json_.containsKey('auditConfigs')
-              ? (json_['auditConfigs'] as core.List)
-                  .map((value) => AuditConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          bindings: json_.containsKey('bindings')
-              ? (json_['bindings'] as core.List)
-                  .map((value) => Binding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditConfigs: (json_['auditConfigs'] as core.List?)
+              ?.map((value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
         );
@@ -1191,11 +1179,9 @@ class TestIamPermissionsRequest {
 
   TestIamPermissionsRequest.fromJson(core.Map json_)
       : this(
-          permissions: json_.containsKey('permissions')
-              ? (json_['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          permissions: (json_['permissions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1215,11 +1201,9 @@ class TestIamPermissionsResponse {
 
   TestIamPermissionsResponse.fromJson(core.Map json_)
       : this(
-          permissions: json_.containsKey('permissions')
-              ? (json_['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          permissions: (json_['permissions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

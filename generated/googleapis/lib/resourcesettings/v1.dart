@@ -666,12 +666,10 @@ class GoogleCloudResourcesettingsV1ListSettingsResponse {
   GoogleCloudResourcesettingsV1ListSettingsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          settings: json_.containsKey('settings')
-              ? (json_['settings'] as core.List)
-                  .map((value) => GoogleCloudResourcesettingsV1Setting.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          settings: (json_['settings'] as core.List?)
+              ?.map((value) => GoogleCloudResourcesettingsV1Setting.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -915,14 +913,13 @@ class GoogleCloudResourcesettingsV1ValueStringMap {
 
   GoogleCloudResourcesettingsV1ValueStringMap.fromJson(core.Map json_)
       : this(
-          mappings: json_.containsKey('mappings')
-              ? (json_['mappings'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          mappings:
+              (json_['mappings'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -944,11 +941,9 @@ class GoogleCloudResourcesettingsV1ValueStringSet {
 
   GoogleCloudResourcesettingsV1ValueStringSet.fromJson(core.Map json_)
       : this(
-          values: json_.containsKey('values')
-              ? (json_['values'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          values: (json_['values'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

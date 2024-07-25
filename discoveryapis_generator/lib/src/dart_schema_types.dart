@@ -183,7 +183,7 @@ $toJsonString
 
   @override
   String jsonDecode(String json, {String? importName}) =>
-      '$className.fromJson($json as $coreMapJsonType)';
+      '$className.fromJson($json as ${imports.coreJsonMap})';
 
   bool isVariantDiscriminator(DartClassProperty prop) =>
       superVariantType != null &&
@@ -595,6 +595,19 @@ class UnnamedArrayType extends ComplexDartSchemaType implements HasInnertype {
     return '($json as ${imports.core.ref()}List)'
         '.cast<${innerType.declaration}>()';
   }
+
+  @override
+  String decodeFromMap(String jsonName) {
+    final innerType = this.innerType!;
+
+    if (innerType.needsJsonDecoding) {
+      return '''(json_['${escapeString(jsonName)}'] as ${imports.core.ref()}List?)
+  ?.map((value) => ${_importPrefixedDecode(innerType, null)}).toList()
+''';
+    }
+
+    return super.decodeFromMap(jsonName);
+  }
 }
 
 /// Represents a named List<T> type with a given `T`.
@@ -702,7 +715,7 @@ class UnnamedMapType extends ComplexDartSchemaType {
   @override
   String jsonDecode(String json, {String? importName}) {
     final valueType = this.valueType!;
-    final castValue = '$json as $coreMapJsonType';
+    final castValue = '$json as ${imports.coreJsonMap}';
 
     if (valueType is AnyType) {
       return castValue;
@@ -722,6 +735,23 @@ ${_importPrefixedDecode(valueType, importName)},
     // user (i.e. we don't need to make a copy of it).
     return '($castValue)'
         '.cast<${keyType.declaration}, ${valueType.declaration}>()';
+  }
+
+  @override
+  String decodeFromMap(String jsonName) {
+    final valueType = this.valueType!;
+
+    if (valueType.needsJsonDecoding) {
+      return '''(json_['${escapeString(jsonName)}'] as ${imports.coreJsonMap}?)
+  ?.map((key, value) => ${imports.core.ref()}MapEntry(
+key,
+${_importPrefixedDecode(valueType, null)},
+  ),
+)
+''';
+    }
+
+    return super.decodeFromMap(jsonName);
   }
 }
 
@@ -779,7 +809,7 @@ ${comment.asDartDoc(0)}typedef $className = ${core}Map<$fromT, $toT>;
   @override
   String jsonDecode(String json, {String? importName}) {
     final valueType = toType!;
-    final castValue = '$json as $coreMapJsonType';
+    final castValue = '$json as ${imports.coreJsonMap}';
 
     if (valueType is AnyType) {
       return castValue;

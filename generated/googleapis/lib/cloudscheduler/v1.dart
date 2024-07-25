@@ -624,14 +624,13 @@ class AppEngineHttpTarget {
                   as core.Map<core.String, core.dynamic>)
               : null,
           body: json_['body'] as core.String?,
-          headers: json_.containsKey('headers')
-              ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          headers:
+              (json_['headers'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           httpMethod: json_['httpMethod'] as core.String?,
           relativeUri: json_['relativeUri'] as core.String?,
         );
@@ -835,14 +834,13 @@ class HttpTarget {
   HttpTarget.fromJson(core.Map json_)
       : this(
           body: json_['body'] as core.String?,
-          headers: json_.containsKey('headers')
-              ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          headers:
+              (json_['headers'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           httpMethod: json_['httpMethod'] as core.String?,
           oauthToken: json_.containsKey('oauthToken')
               ? OAuthToken.fromJson(
@@ -1076,12 +1074,10 @@ class ListJobsResponse {
 
   ListJobsResponse.fromJson(core.Map json_)
       : this(
-          jobs: json_.containsKey('jobs')
-              ? (json_['jobs'] as core.List)
-                  .map((value) => Job.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          jobs: (json_['jobs'] as core.List?)
+              ?.map((value) =>
+                  Job.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1106,12 +1102,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1242,15 +1236,14 @@ class PubsubTarget {
 
   PubsubTarget.fromJson(core.Map json_)
       : this(
-          attributes: json_.containsKey('attributes')
-              ? (json_['attributes'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          attributes:
+              (json_['attributes'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           data: json_['data'] as core.String?,
           topicName: json_['topicName'] as core.String?,
         );

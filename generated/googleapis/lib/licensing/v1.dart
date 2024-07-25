@@ -580,12 +580,10 @@ class LicenseAssignmentList {
   LicenseAssignmentList.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => LicenseAssignment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => LicenseAssignment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
         );

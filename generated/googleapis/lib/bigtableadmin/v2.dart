@@ -3012,12 +3012,10 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
       : this(
-          auditLogConfigs: json_.containsKey('auditLogConfigs')
-              ? (json_['auditLogConfigs'] as core.List)
-                  .map((value) => AuditLogConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+              ?.map((value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           service: json_['service'] as core.String?,
         );
 
@@ -3453,11 +3451,9 @@ class Binding {
               ? Expr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -3765,12 +3761,10 @@ class ClusterState {
 
   ClusterState.fromJson(core.Map json_)
       : this(
-          encryptionInfo: json_.containsKey('encryptionInfo')
-              ? (json_['encryptionInfo'] as core.List)
-                  .map((value) => EncryptionInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          encryptionInfo: (json_['encryptionInfo'] as core.List?)
+              ?.map((value) => EncryptionInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           replicationState: json_['replicationState'] as core.String?,
         );
 
@@ -3989,15 +3983,13 @@ class CreateInstanceRequest {
 
   CreateInstanceRequest.fromJson(core.Map json_)
       : this(
-          clusters: json_.containsKey('clusters')
-              ? (json_['clusters'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    Cluster.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          clusters:
+              (json_['clusters'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              Cluster.fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           instance: json_.containsKey('instance')
               ? Instance.fromJson(
                   json_['instance'] as core.Map<core.String, core.dynamic>)
@@ -4050,12 +4042,10 @@ class CreateTableRequest {
 
   CreateTableRequest.fromJson(core.Map json_)
       : this(
-          initialSplits: json_.containsKey('initialSplits')
-              ? (json_['initialSplits'] as core.List)
-                  .map((value) => Split.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          initialSplits: (json_['initialSplits'] as core.List?)
+              ?.map((value) =>
+                  Split.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           table: json_.containsKey('table')
               ? Table.fromJson(
                   json_['table'] as core.Map<core.String, core.dynamic>)
@@ -4370,16 +4360,12 @@ class GoogleBigtableAdminV2AuthorizedViewFamilySubsets {
 
   GoogleBigtableAdminV2AuthorizedViewFamilySubsets.fromJson(core.Map json_)
       : this(
-          qualifierPrefixes: json_.containsKey('qualifierPrefixes')
-              ? (json_['qualifierPrefixes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          qualifiers: json_.containsKey('qualifiers')
-              ? (json_['qualifiers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          qualifierPrefixes: (json_['qualifierPrefixes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          qualifiers: (json_['qualifiers'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4407,21 +4393,18 @@ class GoogleBigtableAdminV2AuthorizedViewSubsetView {
 
   GoogleBigtableAdminV2AuthorizedViewSubsetView.fromJson(core.Map json_)
       : this(
-          familySubsets: json_.containsKey('familySubsets')
-              ? (json_['familySubsets'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    GoogleBigtableAdminV2AuthorizedViewFamilySubsets.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          rowPrefixes: json_.containsKey('rowPrefixes')
-              ? (json_['rowPrefixes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          familySubsets:
+              (json_['familySubsets'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleBigtableAdminV2AuthorizedViewFamilySubsets.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          rowPrefixes: (json_['rowPrefixes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4771,14 +4754,13 @@ class Instance {
       : this(
           createTime: json_['createTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
           satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
@@ -4809,12 +4791,10 @@ class Intersection {
 
   Intersection.fromJson(core.Map json_)
       : this(
-          rules: json_.containsKey('rules')
-              ? (json_['rules'] as core.List)
-                  .map((value) => GcRule.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          rules: (json_['rules'] as core.List?)
+              ?.map((value) =>
+                  GcRule.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4848,17 +4828,13 @@ class ListAppProfilesResponse {
 
   ListAppProfilesResponse.fromJson(core.Map json_)
       : this(
-          appProfiles: json_.containsKey('appProfiles')
-              ? (json_['appProfiles'] as core.List)
-                  .map((value) => AppProfile.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          failedLocations: json_.containsKey('failedLocations')
-              ? (json_['failedLocations'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          appProfiles: (json_['appProfiles'] as core.List?)
+              ?.map((value) => AppProfile.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          failedLocations: (json_['failedLocations'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -4888,12 +4864,10 @@ class ListAuthorizedViewsResponse {
 
   ListAuthorizedViewsResponse.fromJson(core.Map json_)
       : this(
-          authorizedViews: json_.containsKey('authorizedViews')
-              ? (json_['authorizedViews'] as core.List)
-                  .map((value) => AuthorizedView.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          authorizedViews: (json_['authorizedViews'] as core.List?)
+              ?.map((value) => AuthorizedView.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -4919,12 +4893,10 @@ class ListBackupsResponse {
 
   ListBackupsResponse.fromJson(core.Map json_)
       : this(
-          backups: json_.containsKey('backups')
-              ? (json_['backups'] as core.List)
-                  .map((value) => Backup.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          backups: (json_['backups'] as core.List?)
+              ?.map((value) =>
+                  Backup.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -4958,17 +4930,13 @@ class ListClustersResponse {
 
   ListClustersResponse.fromJson(core.Map json_)
       : this(
-          clusters: json_.containsKey('clusters')
-              ? (json_['clusters'] as core.List)
-                  .map((value) => Cluster.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          failedLocations: json_.containsKey('failedLocations')
-              ? (json_['failedLocations'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          clusters: (json_['clusters'] as core.List?)
+              ?.map((value) => Cluster.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          failedLocations: (json_['failedLocations'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -5003,12 +4971,10 @@ class ListHotTabletsResponse {
 
   ListHotTabletsResponse.fromJson(core.Map json_)
       : this(
-          hotTablets: json_.containsKey('hotTablets')
-              ? (json_['hotTablets'] as core.List)
-                  .map((value) => HotTablet.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          hotTablets: (json_['hotTablets'] as core.List?)
+              ?.map((value) => HotTablet.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -5043,17 +5009,13 @@ class ListInstancesResponse {
 
   ListInstancesResponse.fromJson(core.Map json_)
       : this(
-          failedLocations: json_.containsKey('failedLocations')
-              ? (json_['failedLocations'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          instances: json_.containsKey('instances')
-              ? (json_['instances'] as core.List)
-                  .map((value) => Instance.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          failedLocations: (json_['failedLocations'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          instances: (json_['instances'] as core.List?)
+              ?.map((value) => Instance.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -5079,12 +5041,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -5110,12 +5070,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5143,12 +5101,10 @@ class ListTablesResponse {
   ListTablesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          tables: json_.containsKey('tables')
-              ? (json_['tables'] as core.List)
-                  .map((value) => Table.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tables: (json_['tables'] as core.List?)
+              ?.map((value) =>
+                  Table.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5243,12 +5199,10 @@ class ModifyColumnFamiliesRequest {
   ModifyColumnFamiliesRequest.fromJson(core.Map json_)
       : this(
           ignoreWarnings: json_['ignoreWarnings'] as core.bool?,
-          modifications: json_.containsKey('modifications')
-              ? (json_['modifications'] as core.List)
-                  .map((value) => Modification.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          modifications: (json_['modifications'] as core.List?)
+              ?.map((value) => Modification.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5276,11 +5230,9 @@ class MultiClusterRoutingUseAny {
 
   MultiClusterRoutingUseAny.fromJson(core.Map json_)
       : this(
-          clusterIds: json_.containsKey('clusterIds')
-              ? (json_['clusterIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          clusterIds: (json_['clusterIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5459,18 +5411,14 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
       : this(
-          auditConfigs: json_.containsKey('auditConfigs')
-              ? (json_['auditConfigs'] as core.List)
-                  .map((value) => AuditConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          bindings: json_.containsKey('bindings')
-              ? (json_['bindings'] as core.List)
-                  .map((value) => Binding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditConfigs: (json_['auditConfigs'] as core.List?)
+              ?.map((value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
         );
@@ -5778,26 +5726,24 @@ class Table {
               ? ChangeStreamConfig.fromJson(json_['changeStreamConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          clusterStates: json_.containsKey('clusterStates')
-              ? (json_['clusterStates'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    ClusterState.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          columnFamilies: json_.containsKey('columnFamilies')
-              ? (json_['columnFamilies'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    ColumnFamily.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          clusterStates:
+              (json_['clusterStates'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              ClusterState.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          columnFamilies:
+              (json_['columnFamilies'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              ColumnFamily.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           deletionProtection: json_['deletionProtection'] as core.bool?,
           granularity: json_['granularity'] as core.String?,
           name: json_['name'] as core.String?,
@@ -5973,12 +5919,10 @@ class Union {
 
   Union.fromJson(core.Map json_)
       : this(
-          rules: json_.containsKey('rules')
-              ? (json_['rules'] as core.List)
-                  .map((value) => GcRule.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          rules: (json_['rules'] as core.List?)
+              ?.map((value) =>
+                  GcRule.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

@@ -933,12 +933,10 @@ class AggregateBucket {
   AggregateBucket.fromJson(core.Map json_)
       : this(
           activity: json_['activity'] as core.int?,
-          dataset: json_.containsKey('dataset')
-              ? (json_['dataset'] as core.List)
-                  .map((value) => Dataset.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          dataset: (json_['dataset'] as core.List?)
+              ?.map((value) => Dataset.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           endTimeMillis: json_['endTimeMillis'] as core.String?,
           session: json_.containsKey('session')
               ? Session.fromJson(
@@ -1069,12 +1067,10 @@ class AggregateRequest {
 
   AggregateRequest.fromJson(core.Map json_)
       : this(
-          aggregateBy: json_.containsKey('aggregateBy')
-              ? (json_['aggregateBy'] as core.List)
-                  .map((value) => AggregateBy.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          aggregateBy: (json_['aggregateBy'] as core.List?)
+              ?.map((value) => AggregateBy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           bucketByActivitySegment: json_.containsKey('bucketByActivitySegment')
               ? BucketByActivity.fromJson(json_['bucketByActivitySegment']
                   as core.Map<core.String, core.dynamic>)
@@ -1093,11 +1089,9 @@ class AggregateRequest {
               : null,
           endTimeMillis: json_['endTimeMillis'] as core.String?,
           filteredDataQualityStandard:
-              json_.containsKey('filteredDataQualityStandard')
-                  ? (json_['filteredDataQualityStandard'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
+              (json_['filteredDataQualityStandard'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           startTimeMillis: json_['startTimeMillis'] as core.String?,
         );
 
@@ -1126,12 +1120,10 @@ class AggregateResponse {
 
   AggregateResponse.fromJson(core.Map json_)
       : this(
-          bucket: json_.containsKey('bucket')
-              ? (json_['bucket'] as core.List)
-                  .map((value) => AggregateBucket.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          bucket: (json_['bucket'] as core.List?)
+              ?.map((value) => AggregateBucket.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1372,12 +1364,10 @@ class DataPoint {
           originDataSourceId: json_['originDataSourceId'] as core.String?,
           rawTimestampNanos: json_['rawTimestampNanos'] as core.String?,
           startTimeNanos: json_['startTimeNanos'] as core.String?,
-          value: json_.containsKey('value')
-              ? (json_['value'] as core.List)
-                  .map((value) => Value.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          value: (json_['value'] as core.List?)
+              ?.map((value) =>
+                  Value.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1498,11 +1488,9 @@ class DataSource {
               ? Application.fromJson(
                   json_['application'] as core.Map<core.String, core.dynamic>)
               : null,
-          dataQualityStandard: json_.containsKey('dataQualityStandard')
-              ? (json_['dataQualityStandard'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          dataQualityStandard: (json_['dataQualityStandard'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           dataStreamId: json_['dataStreamId'] as core.String?,
           dataStreamName: json_['dataStreamName'] as core.String?,
           dataType: json_.containsKey('dataType')
@@ -1547,12 +1535,10 @@ class DataType {
 
   DataType.fromJson(core.Map json_)
       : this(
-          field: json_.containsKey('field')
-              ? (json_['field'] as core.List)
-                  .map((value) => DataTypeField.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          field: (json_['field'] as core.List?)
+              ?.map((value) => DataTypeField.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           name: json_['name'] as core.String?,
         );
 
@@ -1660,12 +1646,10 @@ class Dataset {
           maxEndTimeNs: json_['maxEndTimeNs'] as core.String?,
           minStartTimeNs: json_['minStartTimeNs'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
-          point: json_.containsKey('point')
-              ? (json_['point'] as core.List)
-                  .map((value) => DataPoint.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          point: (json_['point'] as core.List?)
+              ?.map((value) => DataPoint.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1772,18 +1756,14 @@ class ListDataPointChangesResponse {
   ListDataPointChangesResponse.fromJson(core.Map json_)
       : this(
           dataSourceId: json_['dataSourceId'] as core.String?,
-          deletedDataPoint: json_.containsKey('deletedDataPoint')
-              ? (json_['deletedDataPoint'] as core.List)
-                  .map((value) => DataPoint.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          insertedDataPoint: json_.containsKey('insertedDataPoint')
-              ? (json_['insertedDataPoint'] as core.List)
-                  .map((value) => DataPoint.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          deletedDataPoint: (json_['deletedDataPoint'] as core.List?)
+              ?.map((value) => DataPoint.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          insertedDataPoint: (json_['insertedDataPoint'] as core.List?)
+              ?.map((value) => DataPoint.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1805,12 +1785,10 @@ class ListDataSourcesResponse {
 
   ListDataSourcesResponse.fromJson(core.Map json_)
       : this(
-          dataSource: json_.containsKey('dataSource')
-              ? (json_['dataSource'] as core.List)
-                  .map((value) => DataSource.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          dataSource: (json_['dataSource'] as core.List?)
+              ?.map((value) => DataSource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1851,20 +1829,16 @@ class ListSessionsResponse {
 
   ListSessionsResponse.fromJson(core.Map json_)
       : this(
-          deletedSession: json_.containsKey('deletedSession')
-              ? (json_['deletedSession'] as core.List)
-                  .map((value) => Session.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          deletedSession: (json_['deletedSession'] as core.List?)
+              ?.map((value) => Session.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           hasMoreData: json_['hasMoreData'] as core.bool?,
           nextPageToken: json_['nextPageToken'] as core.String?,
-          session: json_.containsKey('session')
-              ? (json_['session'] as core.List)
-                  .map((value) => Session.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          session: (json_['session'] as core.List?)
+              ?.map((value) => Session.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2016,12 +1990,10 @@ class Value {
       : this(
           fpVal: (json_['fpVal'] as core.num?)?.toDouble(),
           intVal: json_['intVal'] as core.int?,
-          mapVal: json_.containsKey('mapVal')
-              ? (json_['mapVal'] as core.List)
-                  .map((value) => ValueMapValEntry.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          mapVal: (json_['mapVal'] as core.List?)
+              ?.map((value) => ValueMapValEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           stringVal: json_['stringVal'] as core.String?,
         );
 

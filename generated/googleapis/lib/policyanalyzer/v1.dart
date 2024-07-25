@@ -466,12 +466,10 @@ class GoogleCloudPolicyanalyzerV1QueryActivityResponse {
 
   GoogleCloudPolicyanalyzerV1QueryActivityResponse.fromJson(core.Map json_)
       : this(
-          activities: json_.containsKey('activities')
-              ? (json_['activities'] as core.List)
-                  .map((value) => GoogleCloudPolicyanalyzerV1Activity.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          activities: (json_['activities'] as core.List?)
+              ?.map((value) => GoogleCloudPolicyanalyzerV1Activity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 

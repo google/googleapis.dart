@@ -74,12 +74,6 @@ abstract class DartSchemaType {
   /// Whether this value needs a JSON decoding or not.
   bool get needsJsonDecoding => jsonDecode('foo') != 'foo';
 
-  String get coreMapJsonTypeArguments =>
-      '<${imports.core.ref()}String, ${imports.core.ref()}dynamic>';
-
-  String get coreMapJsonType =>
-      '${imports.core.ref()}Map$coreMapJsonTypeArguments';
-
   String decodeFromMap(String jsonName) {
     final decodeString = jsonDecode("json_['${escapeString(jsonName)}']");
 

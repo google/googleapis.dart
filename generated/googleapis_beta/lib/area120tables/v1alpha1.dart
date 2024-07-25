@@ -663,12 +663,10 @@ class BatchCreateRowsRequest {
 
   BatchCreateRowsRequest.fromJson(core.Map json_)
       : this(
-          requests: json_.containsKey('requests')
-              ? (json_['requests'] as core.List)
-                  .map((value) => CreateRowRequest.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          requests: (json_['requests'] as core.List?)
+              ?.map((value) => CreateRowRequest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -687,12 +685,10 @@ class BatchCreateRowsResponse {
 
   BatchCreateRowsResponse.fromJson(core.Map json_)
       : this(
-          rows: json_.containsKey('rows')
-              ? (json_['rows'] as core.List)
-                  .map((value) => Row.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          rows: (json_['rows'] as core.List?)
+              ?.map((value) =>
+                  Row.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -717,11 +713,9 @@ class BatchDeleteRowsRequest {
 
   BatchDeleteRowsRequest.fromJson(core.Map json_)
       : this(
-          names: json_.containsKey('names')
-              ? (json_['names'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          names: (json_['names'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -744,12 +738,10 @@ class BatchUpdateRowsRequest {
 
   BatchUpdateRowsRequest.fromJson(core.Map json_)
       : this(
-          requests: json_.containsKey('requests')
-              ? (json_['requests'] as core.List)
-                  .map((value) => UpdateRowRequest.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          requests: (json_['requests'] as core.List?)
+              ?.map((value) => UpdateRowRequest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -768,12 +760,10 @@ class BatchUpdateRowsResponse {
 
   BatchUpdateRowsResponse.fromJson(core.Map json_)
       : this(
-          rows: json_.containsKey('rows')
-              ? (json_['rows'] as core.List)
-                  .map((value) => Row.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          rows: (json_['rows'] as core.List?)
+              ?.map((value) =>
+                  Row.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -859,12 +849,10 @@ class ColumnDescription {
                   json_['dateDetails'] as core.Map<core.String, core.dynamic>)
               : null,
           id: json_['id'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.List)
-                  .map((value) => LabeledItem.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          labels: (json_['labels'] as core.List?)
+              ?.map((value) => LabeledItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           lookupDetails: json_.containsKey('lookupDetails')
               ? LookupDetails.fromJson(
                   json_['lookupDetails'] as core.Map<core.String, core.dynamic>)
@@ -1012,12 +1000,10 @@ class ListRowsResponse {
   ListRowsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          rows: json_.containsKey('rows')
-              ? (json_['rows'] as core.List)
-                  .map((value) => Row.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          rows: (json_['rows'] as core.List?)
+              ?.map((value) =>
+                  Row.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1044,12 +1030,10 @@ class ListTablesResponse {
   ListTablesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          tables: json_.containsKey('tables')
-              ? (json_['tables'] as core.List)
-                  .map((value) => Table.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tables: (json_['tables'] as core.List?)
+              ?.map((value) =>
+                  Table.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1076,12 +1060,10 @@ class ListWorkspacesResponse {
   ListWorkspacesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          workspaces: json_.containsKey('workspaces')
-              ? (json_['workspaces'] as core.List)
-                  .map((value) => Workspace.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          workspaces: (json_['workspaces'] as core.List?)
+              ?.map((value) => Workspace.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1255,21 +1237,17 @@ class Table {
 
   Table.fromJson(core.Map json_)
       : this(
-          columns: json_.containsKey('columns')
-              ? (json_['columns'] as core.List)
-                  .map((value) => ColumnDescription.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          columns: (json_['columns'] as core.List?)
+              ?.map((value) => ColumnDescription.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           createTime: json_['createTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           name: json_['name'] as core.String?,
-          savedViews: json_.containsKey('savedViews')
-              ? (json_['savedViews'] as core.List)
-                  .map((value) => SavedView.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          savedViews: (json_['savedViews'] as core.List?)
+              ?.map((value) => SavedView.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           timeZone: json_['timeZone'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -1361,12 +1339,10 @@ class Workspace {
           createTime: json_['createTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           name: json_['name'] as core.String?,
-          tables: json_.containsKey('tables')
-              ? (json_['tables'] as core.List)
-                  .map((value) => Table.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tables: (json_['tables'] as core.List?)
+              ?.map((value) =>
+                  Table.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           updateTime: json_['updateTime'] as core.String?,
         );
 

@@ -716,14 +716,13 @@ class BlockchainNode {
               ? EthereumDetails.fromJson(json_['ethereumDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           privateServiceConnectEnabled:
               json_['privateServiceConnectEnabled'] as core.bool?,
@@ -1060,18 +1059,14 @@ class ListBlockchainNodesResponse {
 
   ListBlockchainNodesResponse.fromJson(core.Map json_)
       : this(
-          blockchainNodes: json_.containsKey('blockchainNodes')
-              ? (json_['blockchainNodes'] as core.List)
-                  .map((value) => BlockchainNode.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          blockchainNodes: (json_['blockchainNodes'] as core.List?)
+              ?.map((value) => BlockchainNode.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1096,12 +1091,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1127,12 +1120,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1264,11 +1255,9 @@ class ValidatorConfig {
       : this(
           beaconFeeRecipient: json_['beaconFeeRecipient'] as core.String?,
           managedValidatorClient: json_['managedValidatorClient'] as core.bool?,
-          mevRelayUrls: json_.containsKey('mevRelayUrls')
-              ? (json_['mevRelayUrls'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          mevRelayUrls: (json_['mevRelayUrls'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

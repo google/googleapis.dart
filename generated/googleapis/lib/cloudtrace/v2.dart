@@ -276,16 +276,15 @@ class Attributes {
 
   Attributes.fromJson(core.Map json_)
       : this(
-          attributeMap: json_.containsKey('attributeMap')
-              ? (json_['attributeMap'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    AttributeValue.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          attributeMap:
+              (json_['attributeMap'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              AttributeValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           droppedAttributesCount: json_['droppedAttributesCount'] as core.int?,
         );
 
@@ -312,12 +311,10 @@ class BatchWriteSpansRequest {
 
   BatchWriteSpansRequest.fromJson(core.Map json_)
       : this(
-          spans: json_.containsKey('spans')
-              ? (json_['spans'] as core.List)
-                  .map((value) => Span.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          spans: (json_['spans'] as core.List?)
+              ?.map((value) =>
+                  Span.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -403,12 +400,10 @@ class Links {
   Links.fromJson(core.Map json_)
       : this(
           droppedLinksCount: json_['droppedLinksCount'] as core.int?,
-          link: json_.containsKey('link')
-              ? (json_['link'] as core.List)
-                  .map((value) => Link.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          link: (json_['link'] as core.List?)
+              ?.map((value) =>
+                  Link.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -792,12 +787,10 @@ class StackFrames {
   StackFrames.fromJson(core.Map json_)
       : this(
           droppedFramesCount: json_['droppedFramesCount'] as core.int?,
-          frame: json_.containsKey('frame')
-              ? (json_['frame'] as core.List)
-                  .map((value) => StackFrame.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          frame: (json_['frame'] as core.List?)
+              ?.map((value) => StackFrame.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -920,12 +913,10 @@ class TimeEvents {
               json_['droppedAnnotationsCount'] as core.int?,
           droppedMessageEventsCount:
               json_['droppedMessageEventsCount'] as core.int?,
-          timeEvent: json_.containsKey('timeEvent')
-              ? (json_['timeEvent'] as core.List)
-                  .map((value) => TimeEvent.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          timeEvent: (json_['timeEvent'] as core.List?)
+              ?.map((value) => TimeEvent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

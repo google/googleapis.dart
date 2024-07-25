@@ -641,12 +641,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -672,12 +670,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -704,12 +700,10 @@ class ListWorkflowRevisionsResponse {
   ListWorkflowRevisionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          workflows: json_.containsKey('workflows')
-              ? (json_['workflows'] as core.List)
-                  .map((value) => Workflow.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          workflows: (json_['workflows'] as core.List?)
+              ?.map((value) => Workflow.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -740,17 +734,13 @@ class ListWorkflowsResponse {
   ListWorkflowsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          workflows: json_.containsKey('workflows')
-              ? (json_['workflows'] as core.List)
-                  .map((value) => Workflow.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          workflows: (json_['workflows'] as core.List?)
+              ?.map((value) => Workflow.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1018,29 +1008,24 @@ class Workflow {
 
   Workflow.fromJson(core.Map json_)
       : this(
-          allKmsKeys: json_.containsKey('allKmsKeys')
-              ? (json_['allKmsKeys'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          allKmsKeysVersions: json_.containsKey('allKmsKeysVersions')
-              ? (json_['allKmsKeysVersions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          allKmsKeys: (json_['allKmsKeys'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          allKmsKeysVersions: (json_['allKmsKeysVersions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           callLogLevel: json_['callLogLevel'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           cryptoKeyName: json_['cryptoKeyName'] as core.String?,
           cryptoKeyVersion: json_['cryptoKeyVersion'] as core.String?,
           description: json_['description'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           revisionCreateTime: json_['revisionCreateTime'] as core.String?,
           revisionId: json_['revisionId'] as core.String?,
@@ -1052,15 +1037,14 @@ class Workflow {
                   json_['stateError'] as core.Map<core.String, core.dynamic>)
               : null,
           updateTime: json_['updateTime'] as core.String?,
-          userEnvVars: json_.containsKey('userEnvVars')
-              ? (json_['userEnvVars'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          userEnvVars:
+              (json_['userEnvVars'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

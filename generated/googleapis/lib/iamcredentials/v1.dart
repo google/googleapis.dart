@@ -295,17 +295,13 @@ class GenerateAccessTokenRequest {
 
   GenerateAccessTokenRequest.fromJson(core.Map json_)
       : this(
-          delegates: json_.containsKey('delegates')
-              ? (json_['delegates'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          delegates: (json_['delegates'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           lifetime: json_['lifetime'] as core.String?,
-          scope: json_.containsKey('scope')
-              ? (json_['scope'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          scope: (json_['scope'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -375,11 +371,9 @@ class GenerateIdTokenRequest {
   GenerateIdTokenRequest.fromJson(core.Map json_)
       : this(
           audience: json_['audience'] as core.String?,
-          delegates: json_.containsKey('delegates')
-              ? (json_['delegates'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          delegates: (json_['delegates'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           includeEmail: json_['includeEmail'] as core.bool?,
         );
 
@@ -439,11 +433,9 @@ class SignBlobRequest {
 
   SignBlobRequest.fromJson(core.Map json_)
       : this(
-          delegates: json_.containsKey('delegates')
-              ? (json_['delegates'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          delegates: (json_['delegates'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           payload: json_['payload'] as core.String?,
         );
 
@@ -529,11 +521,9 @@ class SignJwtRequest {
 
   SignJwtRequest.fromJson(core.Map json_)
       : this(
-          delegates: json_.containsKey('delegates')
-              ? (json_['delegates'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          delegates: (json_['delegates'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           payload: json_['payload'] as core.String?,
         );
 

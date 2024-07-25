@@ -1298,14 +1298,13 @@ class AppEngineHttpRequest {
                   as core.Map<core.String, core.dynamic>)
               : null,
           body: json_['body'] as core.String?,
-          headers: json_.containsKey('headers')
-              ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          headers:
+              (json_['headers'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           httpMethod: json_['httpMethod'] as core.String?,
           relativeUri: json_['relativeUri'] as core.String?,
         );
@@ -1550,11 +1549,9 @@ class Binding {
               ? Expr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -1952,14 +1949,13 @@ class HttpRequest {
   HttpRequest.fromJson(core.Map json_)
       : this(
           body: json_['body'] as core.String?,
-          headers: json_.containsKey('headers')
-              ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          headers:
+              (json_['headers'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           httpMethod: json_['httpMethod'] as core.String?,
           oauthToken: json_.containsKey('oauthToken')
               ? OAuthToken.fromJson(
@@ -2062,12 +2058,10 @@ class HttpTarget {
 
   HttpTarget.fromJson(core.Map json_)
       : this(
-          headerOverrides: json_.containsKey('headerOverrides')
-              ? (json_['headerOverrides'] as core.List)
-                  .map((value) => HeaderOverride.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          headerOverrides: (json_['headerOverrides'] as core.List?)
+              ?.map((value) => HeaderOverride.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           httpMethod: json_['httpMethod'] as core.String?,
           oauthToken: json_.containsKey('oauthToken')
               ? OAuthToken.fromJson(
@@ -2107,12 +2101,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -2142,12 +2134,10 @@ class ListQueuesResponse {
   ListQueuesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          queues: json_.containsKey('queues')
-              ? (json_['queues'] as core.List)
-                  .map((value) => Queue.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          queues: (json_['queues'] as core.List?)
+              ?.map((value) =>
+                  Queue.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2175,12 +2165,10 @@ class ListTasksResponse {
   ListTasksResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          tasks: json_.containsKey('tasks')
-              ? (json_['tasks'] as core.List)
-                  .map((value) => Task.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tasks: (json_['tasks'] as core.List?)
+              ?.map((value) =>
+                  Task.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2384,12 +2372,10 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
       : this(
-          bindings: json_.containsKey('bindings')
-              ? (json_['bindings'] as core.List)
-                  .map((value) => Binding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
         );

@@ -7661,11 +7661,9 @@ class AnalyzeEntitiesRequest {
           alternativeOutputFormat:
               json_['alternativeOutputFormat'] as core.String?,
           documentContent: json_['documentContent'] as core.String?,
-          licensedVocabularies: json_.containsKey('licensedVocabularies')
-              ? (json_['licensedVocabularies'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          licensedVocabularies: (json_['licensedVocabularies'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7707,25 +7705,19 @@ class AnalyzeEntitiesResponse {
 
   AnalyzeEntitiesResponse.fromJson(core.Map json_)
       : this(
-          entities: json_.containsKey('entities')
-              ? (json_['entities'] as core.List)
-                  .map((value) => Entity.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          entityMentions: json_.containsKey('entityMentions')
-              ? (json_['entityMentions'] as core.List)
-                  .map((value) => EntityMention.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          entities: (json_['entities'] as core.List?)
+              ?.map((value) =>
+                  Entity.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          entityMentions: (json_['entityMentions'] as core.List?)
+              ?.map((value) => EntityMention.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           fhirBundle: json_['fhirBundle'] as core.String?,
-          relationships: json_.containsKey('relationships')
-              ? (json_['relationships'] as core.List)
-                  .map((value) => EntityMentionRelationship.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          relationships: (json_['relationships'] as core.List?)
+              ?.map((value) => EntityMentionRelationship.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7768,11 +7760,9 @@ class Attribute {
   Attribute.fromJson(core.Map json_)
       : this(
           attributeDefinitionId: json_['attributeDefinitionId'] as core.String?,
-          values: json_.containsKey('values')
-              ? (json_['values'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          values: (json_['values'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7844,17 +7834,13 @@ class AttributeDefinition {
 
   AttributeDefinition.fromJson(core.Map json_)
       : this(
-          allowedValues: json_.containsKey('allowedValues')
-              ? (json_['allowedValues'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          allowedValues: (json_['allowedValues'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           category: json_['category'] as core.String?,
-          consentDefaultValues: json_.containsKey('consentDefaultValues')
-              ? (json_['consentDefaultValues'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          consentDefaultValues: (json_['consentDefaultValues'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           dataMappingDefaultValue:
               json_['dataMappingDefaultValue'] as core.String?,
           description: json_['description'] as core.String?,
@@ -7907,12 +7893,10 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
       : this(
-          auditLogConfigs: json_.containsKey('auditLogConfigs')
-              ? (json_['auditLogConfigs'] as core.List)
-                  .map((value) => AuditLogConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+              ?.map((value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           service: json_['service'] as core.String?,
         );
 
@@ -8022,11 +8006,9 @@ class Binding {
               ? Expr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -8117,16 +8099,14 @@ class CheckDataAccessRequest {
                   json_['consentList'] as core.Map<core.String, core.dynamic>)
               : null,
           dataId: json_['dataId'] as core.String?,
-          requestAttributes: json_.containsKey('requestAttributes')
-              ? (json_['requestAttributes']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          requestAttributes: (json_['requestAttributes']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           responseView: json_['responseView'] as core.String?,
         );
 
@@ -8154,16 +8134,15 @@ class CheckDataAccessResponse {
 
   CheckDataAccessResponse.fromJson(core.Map json_)
       : this(
-          consentDetails: json_.containsKey('consentDetails')
-              ? (json_['consentDetails'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    ConsentEvaluation.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          consentDetails:
+              (json_['consentDetails'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              ConsentEvaluation.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           consented: json_['consented'] as core.bool?,
         );
 
@@ -8271,21 +8250,18 @@ class Consent {
       : this(
           consentArtifact: json_['consentArtifact'] as core.String?,
           expireTime: json_['expireTime'] as core.String?,
-          metadata: json_.containsKey('metadata')
-              ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          metadata:
+              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
-          policies: json_.containsKey('policies')
-              ? (json_['policies'] as core.List)
-                  .map((value) => GoogleCloudHealthcareV1ConsentPolicy.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          policies: (json_['policies'] as core.List?)
+              ?.map((value) => GoogleCloudHealthcareV1ConsentPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           revisionCreateTime: json_['revisionCreateTime'] as core.String?,
           revisionId: json_['revisionId'] as core.String?,
           state: json_['state'] as core.String?,
@@ -8369,26 +8345,23 @@ class ConsentArtifact {
 
   ConsentArtifact.fromJson(core.Map json_)
       : this(
-          consentContentScreenshots:
-              json_.containsKey('consentContentScreenshots')
-                  ? (json_['consentContentScreenshots'] as core.List)
-                      .map((value) => Image.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
+          consentContentScreenshots: (json_['consentContentScreenshots']
+                  as core.List?)
+              ?.map((value) =>
+                  Image.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           consentContentVersion: json_['consentContentVersion'] as core.String?,
           guardianSignature: json_.containsKey('guardianSignature')
               ? Signature.fromJson(json_['guardianSignature']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: json_.containsKey('metadata')
-              ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          metadata:
+              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           userId: json_['userId'] as core.String?,
           userSignature: json_.containsKey('userSignature')
@@ -8461,11 +8434,9 @@ class ConsentList {
 
   ConsentList.fromJson(core.Map json_)
       : this(
-          consents: json_.containsKey('consents')
-              ? (json_['consents'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          consents: (json_['consents'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8523,14 +8494,13 @@ class ConsentStore {
           defaultConsentTtl: json_['defaultConsentTtl'] as core.String?,
           enableConsentCreateOnUpdate:
               json_['enableConsentCreateOnUpdate'] as core.bool?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
         );
 
@@ -9118,26 +9088,23 @@ class DicomStore {
 
   DicomStore.fromJson(core.Map json_)
       : this(
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           notificationConfig: json_.containsKey('notificationConfig')
               ? NotificationConfig.fromJson(json_['notificationConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          streamConfigs: json_.containsKey('streamConfigs')
-              ? (json_['streamConfigs'] as core.List)
-                  .map((value) =>
-                      GoogleCloudHealthcareV1DicomStreamConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          streamConfigs: (json_['streamConfigs'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudHealthcareV1DicomStreamConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9243,11 +9210,9 @@ class Entity {
       : this(
           entityId: json_['entityId'] as core.String?,
           preferredTerm: json_['preferredTerm'] as core.String?,
-          vocabularyCodes: json_.containsKey('vocabularyCodes')
-              ? (json_['vocabularyCodes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          vocabularyCodes: (json_['vocabularyCodes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9322,12 +9287,10 @@ class EntityMention {
                   as core.Map<core.String, core.dynamic>)
               : null,
           confidence: (json_['confidence'] as core.num?)?.toDouble(),
-          linkedEntities: json_.containsKey('linkedEntities')
-              ? (json_['linkedEntities'] as core.List)
-                  .map((value) => LinkedEntity.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          linkedEntities: (json_['linkedEntities'] as core.List?)
+              ?.map((value) => LinkedEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           mentionId: json_['mentionId'] as core.String?,
           subject: json_.containsKey('subject')
               ? Feature.fromJson(
@@ -9473,26 +9436,22 @@ class EvaluateUserConsentsRequest {
               : null,
           pageSize: json_['pageSize'] as core.int?,
           pageToken: json_['pageToken'] as core.String?,
-          requestAttributes: json_.containsKey('requestAttributes')
-              ? (json_['requestAttributes']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
-          resourceAttributes: json_.containsKey('resourceAttributes')
-              ? (json_['resourceAttributes']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          requestAttributes: (json_['requestAttributes']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          resourceAttributes: (json_['resourceAttributes']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           responseView: json_['responseView'] as core.String?,
           userId: json_['userId'] as core.String?,
         );
@@ -9527,12 +9486,10 @@ class EvaluateUserConsentsResponse {
   EvaluateUserConsentsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          results: json_.containsKey('results')
-              ? (json_['results'] as core.List)
-                  .map((value) => Result.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          results: (json_['results'] as core.List?)
+              ?.map((value) =>
+                  Result.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9830,12 +9787,10 @@ class FhirConfig {
   FhirConfig.fromJson(core.Map json_)
       : this(
           defaultKeepExtensions: json_['defaultKeepExtensions'] as core.bool?,
-          fieldMetadataList: json_.containsKey('fieldMetadataList')
-              ? (json_['fieldMetadataList'] as core.List)
-                  .map((value) => FieldMetadata.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          fieldMetadataList: (json_['fieldMetadataList'] as core.List?)
+              ?.map((value) => FieldMetadata.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10093,31 +10048,26 @@ class FhirStore {
           disableResourceVersioning:
               json_['disableResourceVersioning'] as core.bool?,
           enableUpdateCreate: json_['enableUpdateCreate'] as core.bool?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           notificationConfig: json_.containsKey('notificationConfig')
               ? NotificationConfig.fromJson(json_['notificationConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          notificationConfigs: json_.containsKey('notificationConfigs')
-              ? (json_['notificationConfigs'] as core.List)
-                  .map((value) => FhirNotificationConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          streamConfigs: json_.containsKey('streamConfigs')
-              ? (json_['streamConfigs'] as core.List)
-                  .map((value) => StreamConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          notificationConfigs: (json_['notificationConfigs'] as core.List?)
+              ?.map((value) => FhirNotificationConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          streamConfigs: (json_['streamConfigs'] as core.List?)
+              ?.map((value) => StreamConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           validationConfig: json_.containsKey('validationConfig')
               ? ValidationConfig.fromJson(json_['validationConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -10198,12 +10148,10 @@ class FhirStoreMetrics {
 
   FhirStoreMetrics.fromJson(core.Map json_)
       : this(
-          metrics: json_.containsKey('metrics')
-              ? (json_['metrics'] as core.List)
-                  .map((value) => FhirStoreMetric.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          metrics: (json_['metrics'] as core.List?)
+              ?.map((value) => FhirStoreMetric.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           name: json_['name'] as core.String?,
         );
 
@@ -10296,11 +10244,9 @@ class FieldMetadata {
   FieldMetadata.fromJson(core.Map json_)
       : this(
           action: json_['action'] as core.String?,
-          paths: json_.containsKey('paths')
-              ? (json_['paths'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          paths: (json_['paths'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10420,12 +10366,10 @@ class GoogleCloudHealthcareV1ConsentPolicy {
               ? Expr.fromJson(json_['authorizationRule']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          resourceAttributes: json_.containsKey('resourceAttributes')
-              ? (json_['resourceAttributes'] as core.List)
-                  .map((value) => Attribute.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          resourceAttributes: (json_['resourceAttributes'] as core.List?)
+              ?.map((value) => Attribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10746,23 +10690,19 @@ class Hl7SchemaConfig {
 
   Hl7SchemaConfig.fromJson(core.Map json_)
       : this(
-          messageSchemaConfigs: json_.containsKey('messageSchemaConfigs')
-              ? (json_['messageSchemaConfigs']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    SchemaGroup.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          version: json_.containsKey('version')
-              ? (json_['version'] as core.List)
-                  .map((value) => VersionSource.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          messageSchemaConfigs: (json_['messageSchemaConfigs']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              SchemaGroup.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          version: (json_['version'] as core.List?)
+              ?.map((value) => VersionSource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10789,18 +10729,14 @@ class Hl7TypesConfig {
 
   Hl7TypesConfig.fromJson(core.Map json_)
       : this(
-          type: json_.containsKey('type')
-              ? (json_['type'] as core.List)
-                  .map((value) => Type.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          version: json_.containsKey('version')
-              ? (json_['version'] as core.List)
-                  .map((value) => VersionSource.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          type: (json_['type'] as core.List?)
+              ?.map((value) =>
+                  Type.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          version: (json_['version'] as core.List?)
+              ?.map((value) => VersionSource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10945,21 +10881,18 @@ class Hl7V2Store {
 
   Hl7V2Store.fromJson(core.Map json_)
       : this(
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
-          notificationConfigs: json_.containsKey('notificationConfigs')
-              ? (json_['notificationConfigs'] as core.List)
-                  .map((value) => Hl7V2NotificationConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          notificationConfigs: (json_['notificationConfigs'] as core.List?)
+              ?.map((value) => Hl7V2NotificationConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           parserConfig: json_.containsKey('parserConfig')
               ? ParserConfig.fromJson(
                   json_['parserConfig'] as core.Map<core.String, core.dynamic>)
@@ -11028,12 +10961,10 @@ class Hl7V2StoreMetrics {
 
   Hl7V2StoreMetrics.fromJson(core.Map json_)
       : this(
-          metrics: json_.containsKey('metrics')
-              ? (json_['metrics'] as core.List)
-                  .map((value) => Hl7V2StoreMetric.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          metrics: (json_['metrics'] as core.List?)
+              ?.map((value) => Hl7V2StoreMetric.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           name: json_['name'] as core.String?,
         );
 
@@ -11280,11 +11211,9 @@ class InfoTypeTransformation {
               ? DateShiftConfig.fromJson(json_['dateShiftConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          infoTypes: json_.containsKey('infoTypes')
-              ? (json_['infoTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          infoTypes: (json_['infoTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           redactConfig: json_.containsKey('redactConfig')
               ? RedactConfig.fromJson(
                   json_['redactConfig'] as core.Map<core.String, core.dynamic>)
@@ -11456,12 +11385,10 @@ class ListAttributeDefinitionsResponse {
 
   ListAttributeDefinitionsResponse.fromJson(core.Map json_)
       : this(
-          attributeDefinitions: json_.containsKey('attributeDefinitions')
-              ? (json_['attributeDefinitions'] as core.List)
-                  .map((value) => AttributeDefinition.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          attributeDefinitions: (json_['attributeDefinitions'] as core.List?)
+              ?.map((value) => AttributeDefinition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -11490,12 +11417,10 @@ class ListConsentArtifactsResponse {
 
   ListConsentArtifactsResponse.fromJson(core.Map json_)
       : this(
-          consentArtifacts: json_.containsKey('consentArtifacts')
-              ? (json_['consentArtifacts'] as core.List)
-                  .map((value) => ConsentArtifact.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          consentArtifacts: (json_['consentArtifacts'] as core.List?)
+              ?.map((value) => ConsentArtifact.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -11523,12 +11448,10 @@ class ListConsentRevisionsResponse {
 
   ListConsentRevisionsResponse.fromJson(core.Map json_)
       : this(
-          consents: json_.containsKey('consents')
-              ? (json_['consents'] as core.List)
-                  .map((value) => Consent.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          consents: (json_['consents'] as core.List?)
+              ?.map((value) => Consent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -11556,12 +11479,10 @@ class ListConsentStoresResponse {
 
   ListConsentStoresResponse.fromJson(core.Map json_)
       : this(
-          consentStores: json_.containsKey('consentStores')
-              ? (json_['consentStores'] as core.List)
-                  .map((value) => ConsentStore.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          consentStores: (json_['consentStores'] as core.List?)
+              ?.map((value) => ConsentStore.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -11589,12 +11510,10 @@ class ListConsentsResponse {
 
   ListConsentsResponse.fromJson(core.Map json_)
       : this(
-          consents: json_.containsKey('consents')
-              ? (json_['consents'] as core.List)
-                  .map((value) => Consent.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          consents: (json_['consents'] as core.List?)
+              ?.map((value) => Consent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -11620,12 +11539,10 @@ class ListDatasetsResponse {
 
   ListDatasetsResponse.fromJson(core.Map json_)
       : this(
-          datasets: json_.containsKey('datasets')
-              ? (json_['datasets'] as core.List)
-                  .map((value) => Dataset.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          datasets: (json_['datasets'] as core.List?)
+              ?.map((value) => Dataset.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -11653,12 +11570,10 @@ class ListDicomStoresResponse {
 
   ListDicomStoresResponse.fromJson(core.Map json_)
       : this(
-          dicomStores: json_.containsKey('dicomStores')
-              ? (json_['dicomStores'] as core.List)
-                  .map((value) => DicomStore.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          dicomStores: (json_['dicomStores'] as core.List?)
+              ?.map((value) => DicomStore.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -11686,12 +11601,10 @@ class ListFhirStoresResponse {
 
   ListFhirStoresResponse.fromJson(core.Map json_)
       : this(
-          fhirStores: json_.containsKey('fhirStores')
-              ? (json_['fhirStores'] as core.List)
-                  .map((value) => FhirStore.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          fhirStores: (json_['fhirStores'] as core.List?)
+              ?.map((value) => FhirStore.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -11719,12 +11632,10 @@ class ListHl7V2StoresResponse {
 
   ListHl7V2StoresResponse.fromJson(core.Map json_)
       : this(
-          hl7V2Stores: json_.containsKey('hl7V2Stores')
-              ? (json_['hl7V2Stores'] as core.List)
-                  .map((value) => Hl7V2Store.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          hl7V2Stores: (json_['hl7V2Stores'] as core.List?)
+              ?.map((value) => Hl7V2Store.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -11749,12 +11660,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -11783,12 +11692,10 @@ class ListMessagesResponse {
 
   ListMessagesResponse.fromJson(core.Map json_)
       : this(
-          hl7V2Messages: json_.containsKey('hl7V2Messages')
-              ? (json_['hl7V2Messages'] as core.List)
-                  .map((value) => Message.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          hl7V2Messages: (json_['hl7V2Messages'] as core.List?)
+              ?.map((value) => Message.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -11814,12 +11721,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11847,12 +11752,10 @@ class ListUserDataMappingsResponse {
   ListUserDataMappingsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          userDataMappings: json_.containsKey('userDataMappings')
-              ? (json_['userDataMappings'] as core.List)
-                  .map((value) => UserDataMapping.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          userDataMappings: (json_['userDataMappings'] as core.List?)
+              ?.map((value) => UserDataMapping.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11952,26 +11855,23 @@ class Message {
       : this(
           createTime: json_['createTime'] as core.String?,
           data: json_['data'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           messageType: json_['messageType'] as core.String?,
           name: json_['name'] as core.String?,
           parsedData: json_.containsKey('parsedData')
               ? ParsedData.fromJson(
                   json_['parsedData'] as core.Map<core.String, core.dynamic>)
               : null,
-          patientIds: json_.containsKey('patientIds')
-              ? (json_['patientIds'] as core.List)
-                  .map((value) => PatientId.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          patientIds: (json_['patientIds'] as core.List?)
+              ?.map((value) => PatientId.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           schematizedData: json_.containsKey('schematizedData')
               ? SchematizedData.fromJson(json_['schematizedData']
                   as core.Map<core.String, core.dynamic>)
@@ -12125,12 +12025,10 @@ class ParsedData {
 
   ParsedData.fromJson(core.Map json_)
       : this(
-          segments: json_.containsKey('segments')
-              ? (json_['segments'] as core.List)
-                  .map((value) => Segment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          segments: (json_['segments'] as core.List?)
+              ?.map((value) => Segment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12333,18 +12231,14 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
       : this(
-          auditConfigs: json_.containsKey('auditConfigs')
-              ? (json_['auditConfigs'] as core.List)
-                  .map((value) => AuditConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          bindings: json_.containsKey('bindings')
-              ? (json_['bindings'] as core.List)
-                  .map((value) => Binding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditConfigs: (json_['auditConfigs'] as core.List?)
+              ?.map((value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
         );
@@ -12431,26 +12325,22 @@ class QueryAccessibleDataRequest {
                   json_['gcsDestination']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          requestAttributes: json_.containsKey('requestAttributes')
-              ? (json_['requestAttributes']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
-          resourceAttributes: json_.containsKey('resourceAttributes')
-              ? (json_['resourceAttributes']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          requestAttributes: (json_['requestAttributes']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          resourceAttributes: (json_['resourceAttributes']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12517,11 +12407,9 @@ class Resources {
 
   Resources.fromJson(core.Map json_)
       : this(
-          resources: json_.containsKey('resources')
-              ? (json_['resources'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          resources: (json_['resources'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12548,16 +12436,15 @@ class Result {
 
   Result.fromJson(core.Map json_)
       : this(
-          consentDetails: json_.containsKey('consentDetails')
-              ? (json_['consentDetails'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    ConsentEvaluation.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          consentDetails:
+              (json_['consentDetails'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              ConsentEvaluation.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           consented: json_['consented'] as core.bool?,
           dataId: json_['dataId'] as core.String?,
         );
@@ -12621,11 +12508,9 @@ class RollbackFhirResourceFilteringFields {
   RollbackFhirResourceFilteringFields.fromJson(core.Map json_)
       : this(
           metadataFilter: json_['metadataFilter'] as core.String?,
-          operationIds: json_.containsKey('operationIds')
-              ? (json_['operationIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          operationIds: (json_['operationIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12706,11 +12591,9 @@ class RollbackFhirResourcesRequest {
           inputGcsObject: json_['inputGcsObject'] as core.String?,
           resultGcsBucket: json_['resultGcsBucket'] as core.String?,
           rollbackTime: json_['rollbackTime'] as core.String?,
-          type: json_.containsKey('type')
-              ? (json_['type'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          type: (json_['type'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12828,12 +12711,10 @@ class SchemaGroup {
       : this(
           choice: json_['choice'] as core.bool?,
           maxOccurs: json_['maxOccurs'] as core.int?,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => GroupOrSegment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => GroupOrSegment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           minOccurs: json_['minOccurs'] as core.int?,
           name: json_['name'] as core.String?,
         );
@@ -12905,20 +12786,16 @@ class SchemaPackage {
   SchemaPackage.fromJson(core.Map json_)
       : this(
           ignoreMinOccurs: json_['ignoreMinOccurs'] as core.bool?,
-          schemas: json_.containsKey('schemas')
-              ? (json_['schemas'] as core.List)
-                  .map((value) => Hl7SchemaConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          schemas: (json_['schemas'] as core.List?)
+              ?.map((value) => Hl7SchemaConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           schematizedParsingType:
               json_['schematizedParsingType'] as core.String?,
-          types: json_.containsKey('types')
-              ? (json_['types'] as core.List)
-                  .map((value) => Hl7TypesConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          types: (json_['types'] as core.List?)
+              ?.map((value) => Hl7TypesConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           unexpectedSegmentHandling:
               json_['unexpectedSegmentHandling'] as core.String?,
         );
@@ -13054,14 +12931,13 @@ class Segment {
 
   Segment.fromJson(core.Map json_)
       : this(
-          fields: json_.containsKey('fields')
-              ? (json_['fields'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          fields:
+              (json_['fields'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           segmentId: json_['segmentId'] as core.String?,
           setId: json_['setId'] as core.String?,
         );
@@ -13188,14 +13064,13 @@ class Signature {
               ? Image.fromJson(
                   json_['image'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: json_.containsKey('metadata')
-              ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          metadata:
+              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           signatureTime: json_['signatureTime'] as core.String?,
           userId: json_['userId'] as core.String?,
         );
@@ -13297,11 +13172,9 @@ class StreamConfig {
                       json_['deidentifiedStoreDestination']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          resourceTypes: json_.containsKey('resourceTypes')
-              ? (json_['resourceTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          resourceTypes: (json_['resourceTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13379,11 +13252,9 @@ class TagFilterList {
 
   TagFilterList.fromJson(core.Map json_)
       : this(
-          tags: json_.containsKey('tags')
-              ? (json_['tags'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          tags: (json_['tags'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13419,23 +13290,17 @@ class TextConfig {
   TextConfig.fromJson(core.Map json_)
       : this(
           additionalTransformations:
-              json_.containsKey('additionalTransformations')
-                  ? (json_['additionalTransformations'] as core.List)
-                      .map((value) => InfoTypeTransformation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
-          excludeInfoTypes: json_.containsKey('excludeInfoTypes')
-              ? (json_['excludeInfoTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          transformations: json_.containsKey('transformations')
-              ? (json_['transformations'] as core.List)
-                  .map((value) => InfoTypeTransformation.fromJson(
+              (json_['additionalTransformations'] as core.List?)
+                  ?.map((value) => InfoTypeTransformation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                  .toList(),
+          excludeInfoTypes: (json_['excludeInfoTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          transformations: (json_['transformations'] as core.List?)
+              ?.map((value) => InfoTypeTransformation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13534,12 +13399,10 @@ class Type {
 
   Type.fromJson(core.Map json_)
       : this(
-          fields: json_.containsKey('fields')
-              ? (json_['fields'] as core.List)
-                  .map((value) => Field.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          fields: (json_['fields'] as core.List?)
+              ?.map((value) =>
+                  Field.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           name: json_['name'] as core.String?,
           primitive: json_['primitive'] as core.String?,
         );
@@ -13600,12 +13463,10 @@ class UserDataMapping {
           archived: json_['archived'] as core.bool?,
           dataId: json_['dataId'] as core.String?,
           name: json_['name'] as core.String?,
-          resourceAttributes: json_.containsKey('resourceAttributes')
-              ? (json_['resourceAttributes'] as core.List)
-                  .map((value) => Attribute.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          resourceAttributes: (json_['resourceAttributes'] as core.List?)
+              ?.map((value) => Attribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           userId: json_['userId'] as core.String?,
         );
 
@@ -13692,11 +13553,9 @@ class ValidationConfig {
           disableRequiredFieldValidation:
               json_['disableRequiredFieldValidation'] as core.bool?,
           enabledImplementationGuides:
-              json_.containsKey('enabledImplementationGuides')
-                  ? (json_['enabledImplementationGuides'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
+              (json_['enabledImplementationGuides'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

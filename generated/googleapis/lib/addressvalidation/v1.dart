@@ -269,34 +269,26 @@ class GoogleMapsAddressvalidationV1Address {
 
   GoogleMapsAddressvalidationV1Address.fromJson(core.Map json_)
       : this(
-          addressComponents: json_.containsKey('addressComponents')
-              ? (json_['addressComponents'] as core.List)
-                  .map((value) =>
-                      GoogleMapsAddressvalidationV1AddressComponent.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          addressComponents: (json_['addressComponents'] as core.List?)
+              ?.map((value) =>
+                  GoogleMapsAddressvalidationV1AddressComponent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           formattedAddress: json_['formattedAddress'] as core.String?,
-          missingComponentTypes: json_.containsKey('missingComponentTypes')
-              ? (json_['missingComponentTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          missingComponentTypes: (json_['missingComponentTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           postalAddress: json_.containsKey('postalAddress')
               ? GoogleTypePostalAddress.fromJson(
                   json_['postalAddress'] as core.Map<core.String, core.dynamic>)
               : null,
           unconfirmedComponentTypes:
-              json_.containsKey('unconfirmedComponentTypes')
-                  ? (json_['unconfirmedComponentTypes'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
-          unresolvedTokens: json_.containsKey('unresolvedTokens')
-              ? (json_['unresolvedTokens'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+              (json_['unconfirmedComponentTypes'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+          unresolvedTokens: (json_['unresolvedTokens'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -530,11 +522,9 @@ class GoogleMapsAddressvalidationV1Geocode {
                   json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
           placeId: json_['placeId'] as core.String?,
-          placeTypes: json_.containsKey('placeTypes')
-              ? (json_['placeTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          placeTypes: (json_['placeTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           plusCode: json_.containsKey('plusCode')
               ? GoogleMapsAddressvalidationV1PlusCode.fromJson(
                   json_['plusCode'] as core.Map<core.String, core.dynamic>)

@@ -159,12 +159,10 @@ class AcmeChallengeSet {
 
   AcmeChallengeSet.fromJson(core.Map json_)
       : this(
-          record: json_.containsKey('record')
-              ? (json_['record'] as core.List)
-                  .map((value) => AcmeTxtRecord.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          record: (json_['record'] as core.List?)
+              ?.map((value) => AcmeTxtRecord.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -260,18 +258,14 @@ class RotateChallengesRequest {
       : this(
           accessToken: json_['accessToken'] as core.String?,
           keepExpiredRecords: json_['keepExpiredRecords'] as core.bool?,
-          recordsToAdd: json_.containsKey('recordsToAdd')
-              ? (json_['recordsToAdd'] as core.List)
-                  .map((value) => AcmeTxtRecord.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          recordsToRemove: json_.containsKey('recordsToRemove')
-              ? (json_['recordsToRemove'] as core.List)
-                  .map((value) => AcmeTxtRecord.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          recordsToAdd: (json_['recordsToAdd'] as core.List?)
+              ?.map((value) => AcmeTxtRecord.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          recordsToRemove: (json_['recordsToRemove'] as core.List?)
+              ?.map((value) => AcmeTxtRecord.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

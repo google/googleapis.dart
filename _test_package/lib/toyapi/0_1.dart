@@ -1022,30 +1022,26 @@ class ToyMapResponse {
 
   ToyMapResponse.fromJson(core.Map json_)
       : this(
-          mapResult: json_.containsKey('mapResult')
-              ? (json_['mapResult'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    NestedResponse.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          msgValue: json_.containsKey('msgValue')
-              ? (json_['msgValue'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
+          mapResult:
+              (json_['mapResult'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              NestedResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          msgValue: (json_['msgValue'] as core.List?)
+              ?.map((value) => value as core.Map<core.String, core.dynamic>)
+              .toList(),
           nullValue: json_.containsKey('nullValue') ? 'NULL_VALUE' : null,
-          properties: json_.containsKey('properties')
-              ? (json_['properties'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String?,
-                  ),
-                )
-              : null,
+          properties:
+              (json_['properties'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String?,
+            ),
+          ),
           result: json_['result'] as core.String?,
           v: json_['v'],
         );

@@ -2218,54 +2218,46 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata {
   GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata.fromJson(
       core.Map json_)
       : this(
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.List)
-                  .map((value) =>
-                      GoogleCloudContactcenterinsightsV1CallAnnotation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          entities: json_.containsKey('entities')
-              ? (json_['entities'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    GoogleCloudContactcenterinsightsV1Entity.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          intents: json_.containsKey('intents')
-              ? (json_['intents'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    GoogleCloudContactcenterinsightsV1Intent.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          annotations: (json_['annotations'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1CallAnnotation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          entities:
+              (json_['entities'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudContactcenterinsightsV1Entity.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          intents:
+              (json_['intents'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudContactcenterinsightsV1Intent.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           issueModelResult: json_.containsKey('issueModelResult')
               ? GoogleCloudContactcenterinsightsV1IssueModelResult.fromJson(
                   json_['issueModelResult']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          phraseMatchers: json_.containsKey('phraseMatchers')
-              ? (json_['phraseMatchers'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    GoogleCloudContactcenterinsightsV1PhraseMatchData.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          sentiments: json_.containsKey('sentiments')
-              ? (json_['sentiments'] as core.List)
-                  .map((value) =>
-                      GoogleCloudContactcenterinsightsV1ConversationLevelSentiment
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          phraseMatchers:
+              (json_['phraseMatchers'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudContactcenterinsightsV1PhraseMatchData.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          sentiments: (json_['sentiments'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1ConversationLevelSentiment
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           silence: json_.containsKey('silence')
               ? GoogleCloudContactcenterinsightsV1ConversationLevelSilence
                   .fromJson(
@@ -2380,16 +2372,12 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
 
   GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromJson(core.Map json_)
       : this(
-          issueModels: json_.containsKey('issueModels')
-              ? (json_['issueModels'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          phraseMatchers: json_.containsKey('phraseMatchers')
-              ? (json_['phraseMatchers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          issueModels: (json_['issueModels'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          phraseMatchers: (json_['phraseMatchers'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           runEntityAnnotator: json_['runEntityAnnotator'] as core.bool?,
           runIntentAnnotator: json_['runIntentAnnotator'] as core.bool?,
           runInterruptionAnnotator:
@@ -2547,14 +2535,13 @@ class GoogleCloudContactcenterinsightsV1ArticleSuggestionData {
       core.Map json_)
       : this(
           confidenceScore: (json_['confidenceScore'] as core.num?)?.toDouble(),
-          metadata: json_.containsKey('metadata')
-              ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          metadata:
+              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           queryRecord: json_['queryRecord'] as core.String?,
           source: json_['source'] as core.String?,
           title: json_['title'] as core.String?,
@@ -2761,47 +2748,39 @@ class GoogleCloudContactcenterinsightsV1CalculateStatsResponse {
                   .fromJson(json_['conversationCountTimeSeries']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          customHighlighterMatches:
-              json_.containsKey('customHighlighterMatches')
-                  ? (json_['customHighlighterMatches']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        value as core.int,
-                      ),
-                    )
-                  : null,
-          issueMatches: json_.containsKey('issueMatches')
-              ? (json_['issueMatches'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.int,
-                  ),
-                )
-              : null,
-          issueMatchesStats: json_.containsKey('issueMatchesStats')
-              ? (json_['issueMatchesStats']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats
-                        .fromJson(value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          smartHighlighterMatches: json_.containsKey('smartHighlighterMatches')
-              ? (json_['smartHighlighterMatches']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.int,
-                  ),
-                )
-              : null,
+          customHighlighterMatches: (json_['customHighlighterMatches']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.int,
+            ),
+          ),
+          issueMatches:
+              (json_['issueMatches'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.int,
+            ),
+          ),
+          issueMatchesStats: (json_['issueMatchesStats']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats
+                  .fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          smartHighlighterMatches: (json_['smartHighlighterMatches']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.int,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2840,14 +2819,11 @@ class GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries {
       core.Map json_)
       : this(
           intervalDuration: json_['intervalDuration'] as core.String?,
-          points: json_.containsKey('points')
-              ? (json_['points'] as core.List)
-                  .map((value) =>
-                      GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          points: (json_['points'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3154,27 +3130,24 @@ class GoogleCloudContactcenterinsightsV1Conversation {
                   .fromJson(json_['dataSource']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          dialogflowIntents: json_.containsKey('dialogflowIntents')
-              ? (json_['dialogflowIntents']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    GoogleCloudContactcenterinsightsV1DialogflowIntent.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          dialogflowIntents: (json_['dialogflowIntents']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudContactcenterinsightsV1DialogflowIntent.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           duration: json_['duration'] as core.String?,
           expireTime: json_['expireTime'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           languageCode: json_['languageCode'] as core.String?,
           latestAnalysis: json_.containsKey('latestAnalysis')
               ? GoogleCloudContactcenterinsightsV1Analysis.fromJson(
@@ -3194,14 +3167,11 @@ class GoogleCloudContactcenterinsightsV1Conversation {
                   .fromJson(json_['qualityMetadata']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          runtimeAnnotations: json_.containsKey('runtimeAnnotations')
-              ? (json_['runtimeAnnotations'] as core.List)
-                  .map((value) =>
-                      GoogleCloudContactcenterinsightsV1RuntimeAnnotation
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          runtimeAnnotations: (json_['runtimeAnnotations'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1RuntimeAnnotation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           startTime: json_['startTime'] as core.String?,
           transcript: json_.containsKey('transcript')
               ? GoogleCloudContactcenterinsightsV1ConversationTranscript
@@ -3447,14 +3417,11 @@ class GoogleCloudContactcenterinsightsV1ConversationQualityMetadata {
   GoogleCloudContactcenterinsightsV1ConversationQualityMetadata.fromJson(
       core.Map json_)
       : this(
-          agentInfo: json_.containsKey('agentInfo')
-              ? (json_['agentInfo'] as core.List)
-                  .map((value) =>
-                      GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          agentInfo: (json_['agentInfo'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           customerSatisfactionRating:
               json_['customerSatisfactionRating'] as core.int?,
           menuPath: json_['menuPath'] as core.String?,
@@ -3554,24 +3521,22 @@ class GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData 
           answerRecord: json_['answerRecord'] as core.String?,
           confidence: (json_['confidence'] as core.num?)?.toDouble(),
           conversationModel: json_['conversationModel'] as core.String?,
-          metadata: json_.containsKey('metadata')
-              ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          metadata:
+              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           text: json_['text'] as core.String?,
-          textSections: json_.containsKey('textSections')
-              ? (json_['textSections'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          textSections:
+              (json_['textSections'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3598,14 +3563,11 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscript {
   GoogleCloudContactcenterinsightsV1ConversationTranscript.fromJson(
       core.Map json_)
       : this(
-          transcriptSegments: json_.containsKey('transcriptSegments')
-              ? (json_['transcriptSegments'] as core.List)
-                  .map((value) =>
-                      GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          transcriptSegments: (json_['transcriptSegments'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3690,14 +3652,11 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment 
                   json_['sentiment'] as core.Map<core.String, core.dynamic>)
               : null,
           text: json_['text'] as core.String?,
-          words: json_.containsKey('words')
-              ? (json_['words'] as core.List)
-                  .map((value) =>
-                      GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          words: (json_['words'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3957,14 +3916,13 @@ class GoogleCloudContactcenterinsightsV1Entity {
   GoogleCloudContactcenterinsightsV1Entity.fromJson(core.Map json_)
       : this(
           displayName: json_['displayName'] as core.String?,
-          metadata: json_.containsKey('metadata')
-              ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          metadata:
+              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           salience: (json_['salience'] as core.num?)?.toDouble(),
           sentiment: json_.containsKey('sentiment')
               ? GoogleCloudContactcenterinsightsV1SentimentData.fromJson(
@@ -4231,14 +4189,13 @@ class GoogleCloudContactcenterinsightsV1FaqAnswerData {
       : this(
           answer: json_['answer'] as core.String?,
           confidenceScore: (json_['confidenceScore'] as core.num?)?.toDouble(),
-          metadata: json_.containsKey('metadata')
-              ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          metadata:
+              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           queryRecord: json_['queryRecord'] as core.String?,
           question: json_['question'] as core.String?,
           source: json_['source'] as core.String?,
@@ -4531,11 +4488,9 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource {
       : this(
           bucketObjectType: json_['bucketObjectType'] as core.String?,
           bucketUri: json_['bucketUri'] as core.String?,
-          customMetadataKeys: json_.containsKey('customMetadataKeys')
-              ? (json_['customMetadataKeys'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          customMetadataKeys: (json_['customMetadataKeys'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           metadataBucketUri: json_['metadataBucketUri'] as core.String?,
         );
 
@@ -4673,11 +4628,9 @@ class GoogleCloudContactcenterinsightsV1Issue {
           createTime: json_['createTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           name: json_['name'] as core.String?,
-          sampleUtterances: json_.containsKey('sampleUtterances')
-              ? (json_['sampleUtterances'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          sampleUtterances: (json_['sampleUtterances'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           updateTime: json_['updateTime'] as core.String?,
         );
 
@@ -4935,16 +4888,15 @@ class GoogleCloudContactcenterinsightsV1IssueModelLabelStats {
       : this(
           analyzedConversationsCount:
               json_['analyzedConversationsCount'] as core.String?,
-          issueStats: json_.containsKey('issueStats')
-              ? (json_['issueStats'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats
-                        .fromJson(value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          issueStats:
+              (json_['issueStats'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats
+                  .fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           unclassifiedConversationsCount:
               json_['unclassifiedConversationsCount'] as core.String?,
         );
@@ -5013,14 +4965,11 @@ class GoogleCloudContactcenterinsightsV1IssueModelResult {
   GoogleCloudContactcenterinsightsV1IssueModelResult.fromJson(core.Map json_)
       : this(
           issueModel: json_['issueModel'] as core.String?,
-          issues: json_.containsKey('issues')
-              ? (json_['issues'] as core.List)
-                  .map((value) =>
-                      GoogleCloudContactcenterinsightsV1IssueAssignment
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          issues: (json_['issues'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1IssueAssignment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5047,13 +4996,11 @@ class GoogleCloudContactcenterinsightsV1ListAnalysesResponse {
   GoogleCloudContactcenterinsightsV1ListAnalysesResponse.fromJson(
       core.Map json_)
       : this(
-          analyses: json_.containsKey('analyses')
-              ? (json_['analyses'] as core.List)
-                  .map((value) =>
-                      GoogleCloudContactcenterinsightsV1Analysis.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          analyses: (json_['analyses'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1Analysis.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -5082,13 +5029,11 @@ class GoogleCloudContactcenterinsightsV1ListConversationsResponse {
   GoogleCloudContactcenterinsightsV1ListConversationsResponse.fromJson(
       core.Map json_)
       : this(
-          conversations: json_.containsKey('conversations')
-              ? (json_['conversations'] as core.List)
-                  .map((value) =>
-                      GoogleCloudContactcenterinsightsV1Conversation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          conversations: (json_['conversations'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1Conversation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -5110,13 +5055,11 @@ class GoogleCloudContactcenterinsightsV1ListIssueModelsResponse {
   GoogleCloudContactcenterinsightsV1ListIssueModelsResponse.fromJson(
       core.Map json_)
       : this(
-          issueModels: json_.containsKey('issueModels')
-              ? (json_['issueModels'] as core.List)
-                  .map((value) =>
-                      GoogleCloudContactcenterinsightsV1IssueModel.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          issueModels: (json_['issueModels'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1IssueModel.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5135,13 +5078,10 @@ class GoogleCloudContactcenterinsightsV1ListIssuesResponse {
 
   GoogleCloudContactcenterinsightsV1ListIssuesResponse.fromJson(core.Map json_)
       : this(
-          issues: json_.containsKey('issues')
-              ? (json_['issues'] as core.List)
-                  .map((value) =>
-                      GoogleCloudContactcenterinsightsV1Issue.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          issues: (json_['issues'] as core.List?)
+              ?.map((value) => GoogleCloudContactcenterinsightsV1Issue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5168,13 +5108,11 @@ class GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse {
       core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          phraseMatchers: json_.containsKey('phraseMatchers')
-              ? (json_['phraseMatchers'] as core.List)
-                  .map((value) =>
-                      GoogleCloudContactcenterinsightsV1PhraseMatcher.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          phraseMatchers: (json_['phraseMatchers'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1PhraseMatcher.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5201,13 +5139,10 @@ class GoogleCloudContactcenterinsightsV1ListViewsResponse {
   GoogleCloudContactcenterinsightsV1ListViewsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          views: json_.containsKey('views')
-              ? (json_['views'] as core.List)
-                  .map((value) =>
-                      GoogleCloudContactcenterinsightsV1View.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          views: (json_['views'] as core.List?)
+              ?.map((value) => GoogleCloudContactcenterinsightsV1View.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5329,14 +5264,11 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup {
   GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup.fromJson(
       core.Map json_)
       : this(
-          phraseMatchRules: json_.containsKey('phraseMatchRules')
-              ? (json_['phraseMatchRules'] as core.List)
-                  .map((value) =>
-                      GoogleCloudContactcenterinsightsV1PhraseMatchRule
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          phraseMatchRules: (json_['phraseMatchRules'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1PhraseMatchRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           type: json_['type'] as core.String?,
         );
 
@@ -5438,14 +5370,11 @@ class GoogleCloudContactcenterinsightsV1PhraseMatcher {
           active: json_['active'] as core.bool?,
           displayName: json_['displayName'] as core.String?,
           name: json_['name'] as core.String?,
-          phraseMatchRuleGroups: json_.containsKey('phraseMatchRuleGroups')
-              ? (json_['phraseMatchRuleGroups'] as core.List)
-                  .map((value) =>
-                      GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          phraseMatchRuleGroups: (json_['phraseMatchRuleGroups'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           revisionCreateTime: json_['revisionCreateTime'] as core.String?,
           revisionId: json_['revisionId'] as core.String?,
           roleMatch: json_['roleMatch'] as core.String?,
@@ -5799,17 +5728,14 @@ class GoogleCloudContactcenterinsightsV1Settings {
           createTime: json_['createTime'] as core.String?,
           languageCode: json_['languageCode'] as core.String?,
           name: json_['name'] as core.String?,
-          pubsubNotificationSettings:
-              json_.containsKey('pubsubNotificationSettings')
-                  ? (json_['pubsubNotificationSettings']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        value as core.String,
-                      ),
-                    )
-                  : null,
+          pubsubNotificationSettings: (json_['pubsubNotificationSettings']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           redactionConfig: json_.containsKey('redactionConfig')
               ? GoogleCloudContactcenterinsightsV1RedactionConfig.fromJson(
                   json_['redactionConfig']
@@ -5918,14 +5844,13 @@ class GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData {
       core.Map json_)
       : this(
           confidenceScore: (json_['confidenceScore'] as core.num?)?.toDouble(),
-          metadata: json_.containsKey('metadata')
-              ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          metadata:
+              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           queryRecord: json_['queryRecord'] as core.String?,
           suggestion: json_['suggestion'] as core.String?,
         );
@@ -5968,14 +5893,13 @@ class GoogleCloudContactcenterinsightsV1SmartReplyData {
   GoogleCloudContactcenterinsightsV1SmartReplyData.fromJson(core.Map json_)
       : this(
           confidenceScore: (json_['confidenceScore'] as core.num?)?.toDouble(),
-          metadata: json_.containsKey('metadata')
-              ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          metadata:
+              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           queryRecord: json_['queryRecord'] as core.String?,
           reply: json_['reply'] as core.String?,
         );
@@ -6177,12 +6101,10 @@ class GoogleLongrunningListOperationsResponse {
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => GoogleLongrunningOperation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => GoogleLongrunningOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

@@ -165,11 +165,9 @@ class AuditRefs {
           acronym: json_['acronym'] as core.String?,
           group: json_['group'] as core.String?,
           id: json_['id'] as core.String?,
-          relevantAudits: json_.containsKey('relevantAudits')
-              ? (json_['relevantAudits'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          relevantAudits: (json_['relevantAudits'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           weight: (json_['weight'] as core.num?)?.toDouble(),
         );
 
@@ -385,14 +383,13 @@ class Environment {
   Environment.fromJson(core.Map json_)
       : this(
           benchmarkIndex: (json_['benchmarkIndex'] as core.num?)?.toDouble(),
-          credits: json_.containsKey('credits')
-              ? (json_['credits'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          credits:
+              (json_['credits'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           hostUserAgent: json_['hostUserAgent'] as core.String?,
           networkUserAgent: json_['networkUserAgent'] as core.String?,
         );
@@ -479,11 +476,9 @@ class LhrEntity {
           isFirstParty: json_['isFirstParty'] as core.bool?,
           isUnrecognized: json_['isUnrecognized'] as core.bool?,
           name: json_['name'] as core.String?,
-          origins: json_.containsKey('origins')
-              ? (json_['origins'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          origins: (json_['origins'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -633,12 +628,10 @@ class LighthouseCategoryV5 {
 
   LighthouseCategoryV5.fromJson(core.Map json_)
       : this(
-          auditRefs: json_.containsKey('auditRefs')
-              ? (json_['auditRefs'] as core.List)
-                  .map((value) => AuditRefs.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditRefs: (json_['auditRefs'] as core.List?)
+              ?.map((value) => AuditRefs.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           description: json_['description'] as core.String?,
           id: json_['id'] as core.String?,
           manualDescription: json_['manualDescription'] as core.String?,
@@ -749,39 +742,35 @@ class LighthouseResultV5 {
 
   LighthouseResultV5.fromJson(core.Map json_)
       : this(
-          audits: json_.containsKey('audits')
-              ? (json_['audits'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    LighthouseAuditResultV5.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          audits:
+              (json_['audits'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              LighthouseAuditResultV5.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           categories: json_.containsKey('categories')
               ? Categories.fromJson(
                   json_['categories'] as core.Map<core.String, core.dynamic>)
               : null,
-          categoryGroups: json_.containsKey('categoryGroups')
-              ? (json_['categoryGroups'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    CategoryGroupV5.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          categoryGroups:
+              (json_['categoryGroups'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              CategoryGroupV5.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           configSettings: json_.containsKey('configSettings')
               ? ConfigSettings.fromJson(json_['configSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          entities: json_.containsKey('entities')
-              ? (json_['entities'] as core.List)
-                  .map((value) => LhrEntity.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          entities: (json_['entities'] as core.List?)
+              ?.map((value) => LhrEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           environment: json_.containsKey('environment')
               ? Environment.fromJson(
                   json_['environment'] as core.Map<core.String, core.dynamic>)
@@ -804,12 +793,10 @@ class LighthouseResultV5 {
               ? RuntimeError.fromJson(
                   json_['runtimeError'] as core.Map<core.String, core.dynamic>)
               : null,
-          stackPacks: json_.containsKey('stackPacks')
-              ? (json_['stackPacks'] as core.List)
-                  .map((value) => StackPack.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          stackPacks: (json_['stackPacks'] as core.List?)
+              ?.map((value) => StackPack.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           timing: json_.containsKey('timing')
               ? Timing.fromJson(
                   json_['timing'] as core.Map<core.String, core.dynamic>)
@@ -870,15 +857,14 @@ class PagespeedApiLoadingExperienceV5 {
       : this(
           id: json_['id'] as core.String?,
           initialUrl: json_['initial_url'] as core.String?,
-          metrics: json_.containsKey('metrics')
-              ? (json_['metrics'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    UserPageLoadMetricV5.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          metrics:
+              (json_['metrics'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              UserPageLoadMetricV5.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           originFallback: json_['origin_fallback'] as core.bool?,
           overallCategory: json_['overall_category'] as core.String?,
         );
@@ -1438,15 +1424,14 @@ class StackPack {
 
   StackPack.fromJson(core.Map json_)
       : this(
-          descriptions: json_.containsKey('descriptions')
-              ? (json_['descriptions'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          descriptions:
+              (json_['descriptions'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           iconDataURL: json_['iconDataURL'] as core.String?,
           id: json_['id'] as core.String?,
           title: json_['title'] as core.String?,
@@ -1515,12 +1500,10 @@ class UserPageLoadMetricV5 {
   UserPageLoadMetricV5.fromJson(core.Map json_)
       : this(
           category: json_['category'] as core.String?,
-          distributions: json_.containsKey('distributions')
-              ? (json_['distributions'] as core.List)
-                  .map((value) => Bucket.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          distributions: (json_['distributions'] as core.List?)
+              ?.map((value) =>
+                  Bucket.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           formFactor: json_['formFactor'] as core.String?,
           median: json_['median'] as core.int?,
           metricId: json_['metricId'] as core.String?,

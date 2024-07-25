@@ -1913,12 +1913,10 @@ class BlogPosts {
 
   BlogPosts.fromJson(core.Map json_)
       : this(
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => Post.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) =>
+                  Post.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           selfLink: json_['selfLink'] as core.String?,
           totalItems: json_['totalItems'] as core.int?,
         );
@@ -2058,18 +2056,14 @@ class BlogList {
 
   BlogList.fromJson(core.Map json_)
       : this(
-          blogUserInfos: json_.containsKey('blogUserInfos')
-              ? (json_['blogUserInfos'] as core.List)
-                  .map((value) => BlogUserInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => Blog.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          blogUserInfos: (json_['blogUserInfos'] as core.List?)
+              ?.map((value) => BlogUserInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          items: (json_['items'] as core.List?)
+              ?.map((value) =>
+                  Blog.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
         );
 
@@ -2418,12 +2412,10 @@ class CommentList {
   CommentList.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => Comment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => Comment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           prevPageToken: json_['prevPageToken'] as core.String?,
@@ -2645,12 +2637,10 @@ class PageList {
   PageList.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => Page.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) =>
+                  Page.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -2712,12 +2702,10 @@ class Pageviews {
   Pageviews.fromJson(core.Map json_)
       : this(
           blogId: json_['blogId'] as core.String?,
-          counts: json_.containsKey('counts')
-              ? (json_['counts'] as core.List)
-                  .map((value) => PageviewsCounts.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          counts: (json_['counts'] as core.List?)
+              ?.map((value) => PageviewsCounts.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
         );
 
@@ -2881,12 +2869,10 @@ class PostReplies {
 
   PostReplies.fromJson(core.Map json_)
       : this(
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => Comment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => Comment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           selfLink: json_['selfLink'] as core.String?,
           totalItems: json_['totalItems'] as core.String?,
         );
@@ -3011,18 +2997,14 @@ class Post {
           customMetaData: json_['customMetaData'] as core.String?,
           etag: json_['etag'] as core.String?,
           id: json_['id'] as core.String?,
-          images: json_.containsKey('images')
-              ? (json_['images'] as core.List)
-                  .map((value) => PostImages.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          images: (json_['images'] as core.List?)
+              ?.map((value) => PostImages.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          labels: (json_['labels'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           location: json_.containsKey('location')
               ? PostLocation.fromJson(
                   json_['location'] as core.Map<core.String, core.dynamic>)
@@ -3095,12 +3077,10 @@ class PostList {
   PostList.fromJson(core.Map json_)
       : this(
           etag: json_['etag'] as core.String?,
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => Post.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) =>
+                  Post.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           prevPageToken: json_['prevPageToken'] as core.String?,
@@ -3217,12 +3197,10 @@ class PostUserInfosList {
 
   PostUserInfosList.fromJson(core.Map json_)
       : this(
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => PostUserInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => PostUserInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
         );

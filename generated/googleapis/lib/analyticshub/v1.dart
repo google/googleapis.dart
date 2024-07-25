@@ -1440,12 +1440,10 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
       : this(
-          auditLogConfigs: json_.containsKey('auditLogConfigs')
-              ? (json_['auditLogConfigs'] as core.List)
-                  .map((value) => AuditLogConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+              ?.map((value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           service: json_['service'] as core.String?,
         );
 
@@ -1503,12 +1501,10 @@ class BigQueryDatasetSource {
               ? RestrictedExportPolicy.fromJson(json_['restrictedExportPolicy']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          selectedResources: json_.containsKey('selectedResources')
-              ? (json_['selectedResources'] as core.List)
-                  .map((value) => SelectedResource.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          selectedResources: (json_['selectedResources'] as core.List?)
+              ?.map((value) => SelectedResource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1611,11 +1607,9 @@ class Binding {
               ? Expr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -1868,14 +1862,13 @@ class DestinationDataset {
               : null,
           description: json_['description'] as core.String?,
           friendlyName: json_['friendlyName'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           location: json_['location'] as core.String?,
         );
 
@@ -2011,12 +2004,10 @@ class ListDataExchangesResponse {
 
   ListDataExchangesResponse.fromJson(core.Map json_)
       : this(
-          dataExchanges: json_.containsKey('dataExchanges')
-              ? (json_['dataExchanges'] as core.List)
-                  .map((value) => DataExchange.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          dataExchanges: (json_['dataExchanges'] as core.List?)
+              ?.map((value) => DataExchange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -2041,12 +2032,10 @@ class ListListingsResponse {
 
   ListListingsResponse.fromJson(core.Map json_)
       : this(
-          listings: json_.containsKey('listings')
-              ? (json_['listings'] as core.List)
-                  .map((value) => Listing.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          listings: (json_['listings'] as core.List?)
+              ?.map((value) => Listing.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -2072,12 +2061,10 @@ class ListOrgDataExchangesResponse {
 
   ListOrgDataExchangesResponse.fromJson(core.Map json_)
       : this(
-          dataExchanges: json_.containsKey('dataExchanges')
-              ? (json_['dataExchanges'] as core.List)
-                  .map((value) => DataExchange.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          dataExchanges: (json_['dataExchanges'] as core.List?)
+              ?.map((value) => DataExchange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -2104,12 +2091,10 @@ class ListSharedResourceSubscriptionsResponse {
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
           sharedResourceSubscriptions:
-              json_.containsKey('sharedResourceSubscriptions')
-                  ? (json_['sharedResourceSubscriptions'] as core.List)
-                      .map((value) => Subscription.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
+              (json_['sharedResourceSubscriptions'] as core.List?)
+                  ?.map((value) => Subscription.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2135,12 +2120,10 @@ class ListSubscriptionsResponse {
   ListSubscriptionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          subscriptions: json_.containsKey('subscriptions')
-              ? (json_['subscriptions'] as core.List)
-                  .map((value) => Subscription.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          subscriptions: (json_['subscriptions'] as core.List?)
+              ?.map((value) => Subscription.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2277,11 +2260,9 @@ class Listing {
               ? BigQueryDatasetSource.fromJson(json_['bigqueryDataset']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          categories: json_.containsKey('categories')
-              ? (json_['categories'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          categories: (json_['categories'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           dataProvider: json_.containsKey('dataProvider')
               ? DataProvider.fromJson(
                   json_['dataProvider'] as core.Map<core.String, core.dynamic>)
@@ -2493,18 +2474,14 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
       : this(
-          auditConfigs: json_.containsKey('auditConfigs')
-              ? (json_['auditConfigs'] as core.List)
-                  .map((value) => AuditConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          bindings: json_.containsKey('bindings')
-              ? (json_['bindings'] as core.List)
-                  .map((value) => Binding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditConfigs: (json_['auditConfigs'] as core.List?)
+              ?.map((value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
         );
@@ -2924,17 +2901,15 @@ class Subscription {
           creationTime: json_['creationTime'] as core.String?,
           dataExchange: json_['dataExchange'] as core.String?,
           lastModifyTime: json_['lastModifyTime'] as core.String?,
-          linkedDatasetMap: json_.containsKey('linkedDatasetMap')
-              ? (json_['linkedDatasetMap']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    LinkedResource.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          linkedDatasetMap: (json_['linkedDatasetMap']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              LinkedResource.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           listing: json_['listing'] as core.String?,
           name: json_['name'] as core.String?,
           organizationDisplayName:

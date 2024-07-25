@@ -423,12 +423,10 @@ class SiteVerificationWebResourceListResponse {
 
   SiteVerificationWebResourceListResponse.fromJson(core.Map json_)
       : this(
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => SiteVerificationWebResourceResource.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => SiteVerificationWebResourceResource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -488,11 +486,9 @@ class SiteVerificationWebResourceResource {
   SiteVerificationWebResourceResource.fromJson(core.Map json_)
       : this(
           id: json_['id'] as core.String?,
-          owners: json_.containsKey('owners')
-              ? (json_['owners'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          owners: (json_['owners'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           site: json_.containsKey('site')
               ? SiteVerificationWebResourceResourceSite.fromJson(
                   json_['site'] as core.Map<core.String, core.dynamic>)

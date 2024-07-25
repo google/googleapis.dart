@@ -2240,11 +2240,9 @@ class GuestUnitType {
 
   GuestUnitType.fromJson(core.Map json_)
       : this(
-          codes: json_.containsKey('codes')
-              ? (json_['codes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          codes: (json_['codes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           features: json_.containsKey('features')
               ? GuestUnitFeatures.fromJson(
                   json_['features'] as core.Map<core.String, core.dynamic>)
@@ -4455,12 +4453,10 @@ class Lodging {
               ? FoodAndDrink.fromJson(
                   json_['foodAndDrink'] as core.Map<core.String, core.dynamic>)
               : null,
-          guestUnits: json_.containsKey('guestUnits')
-              ? (json_['guestUnits'] as core.List)
-                  .map((value) => GuestUnitType.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          guestUnits: (json_['guestUnits'] as core.List?)
+              ?.map((value) => GuestUnitType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           healthAndSafety: json_.containsKey('healthAndSafety')
               ? HealthAndSafety.fromJson(json_['healthAndSafety']
                   as core.Map<core.String, core.dynamic>)
@@ -6414,12 +6410,10 @@ class Services {
               json_['fullServiceLaundryException'] as core.String?,
           giftShop: json_['giftShop'] as core.bool?,
           giftShopException: json_['giftShopException'] as core.String?,
-          languagesSpoken: json_.containsKey('languagesSpoken')
-              ? (json_['languagesSpoken'] as core.List)
-                  .map((value) => LanguageSpoken.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          languagesSpoken: (json_['languagesSpoken'] as core.List?)
+              ?.map((value) => LanguageSpoken.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           selfServiceLaundry: json_['selfServiceLaundry'] as core.bool?,
           selfServiceLaundryException:
               json_['selfServiceLaundryException'] as core.String?,
@@ -6609,12 +6603,10 @@ class SustainabilityCertifications {
           breeamCertification: json_['breeamCertification'] as core.String?,
           breeamCertificationException:
               json_['breeamCertificationException'] as core.String?,
-          ecoCertifications: json_.containsKey('ecoCertifications')
-              ? (json_['ecoCertifications'] as core.List)
-                  .map((value) => EcoCertification.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          ecoCertifications: (json_['ecoCertifications'] as core.List?)
+              ?.map((value) => EcoCertification.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           leedCertification: json_['leedCertification'] as core.String?,
           leedCertificationException:
               json_['leedCertificationException'] as core.String?,

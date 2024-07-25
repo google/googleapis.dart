@@ -2253,12 +2253,10 @@ class AnalyticsDetails {
               ? AnalyticsProperty.fromJson(json_['analyticsProperty']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          streamMappings: json_.containsKey('streamMappings')
-              ? (json_['streamMappings'] as core.List)
-                  .map((value) => StreamMapping.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          streamMappings: (json_['streamMappings'] as core.List?)
+              ?.map((value) => StreamMapping.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2430,16 +2428,12 @@ class AndroidApp {
           name: json_['name'] as core.String?,
           packageName: json_['packageName'] as core.String?,
           projectId: json_['projectId'] as core.String?,
-          sha1Hashes: json_.containsKey('sha1Hashes')
-              ? (json_['sha1Hashes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          sha256Hashes: json_.containsKey('sha256Hashes')
-              ? (json_['sha256Hashes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          sha1Hashes: (json_['sha1Hashes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          sha256Hashes: (json_['sha256Hashes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           state: json_['state'] as core.String?,
         );
 
@@ -2844,15 +2838,14 @@ class FirebaseProject {
 
   FirebaseProject.fromJson(core.Map json_)
       : this(
-          annotations: json_.containsKey('annotations')
-              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           displayName: json_['displayName'] as core.String?,
           etag: json_['etag'] as core.String?,
           name: json_['name'] as core.String?,
@@ -3073,12 +3066,10 @@ class ListAndroidAppsResponse {
 
   ListAndroidAppsResponse.fromJson(core.Map json_)
       : this(
-          apps: json_.containsKey('apps')
-              ? (json_['apps'] as core.List)
-                  .map((value) => AndroidApp.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          apps: (json_['apps'] as core.List?)
+              ?.map((value) => AndroidApp.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -3108,12 +3099,10 @@ class ListAvailableLocationsResponse {
 
   ListAvailableLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -3145,12 +3134,10 @@ class ListAvailableProjectsResponse {
   ListAvailableProjectsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          projectInfo: json_.containsKey('projectInfo')
-              ? (json_['projectInfo'] as core.List)
-                  .map((value) => ProjectInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          projectInfo: (json_['projectInfo'] as core.List?)
+              ?.map((value) => ProjectInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3180,12 +3167,10 @@ class ListFirebaseProjectsResponse {
   ListFirebaseProjectsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          results: json_.containsKey('results')
-              ? (json_['results'] as core.List)
-                  .map((value) => FirebaseProject.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          results: (json_['results'] as core.List?)
+              ?.map((value) => FirebaseProject.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3214,12 +3199,10 @@ class ListIosAppsResponse {
 
   ListIosAppsResponse.fromJson(core.Map json_)
       : this(
-          apps: json_.containsKey('apps')
-              ? (json_['apps'] as core.List)
-                  .map((value) => IosApp.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          apps: (json_['apps'] as core.List?)
+              ?.map((value) =>
+                  IosApp.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -3239,12 +3222,10 @@ class ListShaCertificatesResponse {
 
   ListShaCertificatesResponse.fromJson(core.Map json_)
       : this(
-          certificates: json_.containsKey('certificates')
-              ? (json_['certificates'] as core.List)
-                  .map((value) => ShaCertificate.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          certificates: (json_['certificates'] as core.List?)
+              ?.map((value) => ShaCertificate.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3272,12 +3253,10 @@ class ListWebAppsResponse {
 
   ListWebAppsResponse.fromJson(core.Map json_)
       : this(
-          apps: json_.containsKey('apps')
-              ? (json_['apps'] as core.List)
-                  .map((value) => WebApp.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          apps: (json_['apps'] as core.List?)
+              ?.map((value) =>
+                  WebApp.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -3325,11 +3304,9 @@ class Location {
 
   Location.fromJson(core.Map json_)
       : this(
-          features: json_.containsKey('features')
-              ? (json_['features'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          features: (json_['features'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           locationId: json_['locationId'] as core.String?,
           type: json_['type'] as core.String?,
         );
@@ -3647,12 +3624,10 @@ class SearchFirebaseAppsResponse {
 
   SearchFirebaseAppsResponse.fromJson(core.Map json_)
       : this(
-          apps: json_.containsKey('apps')
-              ? (json_['apps'] as core.List)
-                  .map((value) => FirebaseAppInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          apps: (json_['apps'] as core.List?)
+              ?.map((value) => FirebaseAppInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -3969,11 +3944,9 @@ class WebApp {
       : this(
           apiKeyId: json_['apiKeyId'] as core.String?,
           appId: json_['appId'] as core.String?,
-          appUrls: json_.containsKey('appUrls')
-              ? (json_['appUrls'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          appUrls: (json_['appUrls'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           displayName: json_['displayName'] as core.String?,
           etag: json_['etag'] as core.String?,
           expireTime: json_['expireTime'] as core.String?,

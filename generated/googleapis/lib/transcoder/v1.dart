@@ -805,20 +805,16 @@ class AudioStream {
       : this(
           bitrateBps: json_['bitrateBps'] as core.int?,
           channelCount: json_['channelCount'] as core.int?,
-          channelLayout: json_.containsKey('channelLayout')
-              ? (json_['channelLayout'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          channelLayout: (json_['channelLayout'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           codec: json_['codec'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           languageCode: json_['languageCode'] as core.String?,
-          mapping: json_.containsKey('mapping')
-              ? (json_['mapping'] as core.List)
-                  .map((value) => AudioMapping.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          mapping: (json_['mapping'] as core.List?)
+              ?.map((value) => AudioMapping.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           sampleRateHertz: json_['sampleRateHertz'] as core.int?,
         );
 
@@ -1180,11 +1176,9 @@ class EditAtom {
   EditAtom.fromJson(core.Map json_)
       : this(
           endTimeOffset: json_['endTimeOffset'] as core.String?,
-          inputs: json_.containsKey('inputs')
-              ? (json_['inputs'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          inputs: (json_['inputs'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           key: json_['key'] as core.String?,
           startTimeOffset: json_['startTimeOffset'] as core.String?,
         );
@@ -2129,14 +2123,13 @@ class Job {
                   json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
           inputUri: json_['inputUri'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           mode: json_['mode'] as core.String?,
           name: json_['name'] as core.String?,
           optimization: json_['optimization'] as core.String?,
@@ -2228,68 +2221,50 @@ class JobConfig {
 
   JobConfig.fromJson(core.Map json_)
       : this(
-          adBreaks: json_.containsKey('adBreaks')
-              ? (json_['adBreaks'] as core.List)
-                  .map((value) => AdBreak.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          editList: json_.containsKey('editList')
-              ? (json_['editList'] as core.List)
-                  .map((value) => EditAtom.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          elementaryStreams: json_.containsKey('elementaryStreams')
-              ? (json_['elementaryStreams'] as core.List)
-                  .map((value) => ElementaryStream.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          encryptions: json_.containsKey('encryptions')
-              ? (json_['encryptions'] as core.List)
-                  .map((value) => Encryption.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          inputs: json_.containsKey('inputs')
-              ? (json_['inputs'] as core.List)
-                  .map((value) => Input.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          manifests: json_.containsKey('manifests')
-              ? (json_['manifests'] as core.List)
-                  .map((value) => Manifest.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          muxStreams: json_.containsKey('muxStreams')
-              ? (json_['muxStreams'] as core.List)
-                  .map((value) => MuxStream.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          adBreaks: (json_['adBreaks'] as core.List?)
+              ?.map((value) => AdBreak.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          editList: (json_['editList'] as core.List?)
+              ?.map((value) => EditAtom.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          elementaryStreams: (json_['elementaryStreams'] as core.List?)
+              ?.map((value) => ElementaryStream.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          encryptions: (json_['encryptions'] as core.List?)
+              ?.map((value) => Encryption.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          inputs: (json_['inputs'] as core.List?)
+              ?.map((value) =>
+                  Input.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          manifests: (json_['manifests'] as core.List?)
+              ?.map((value) => Manifest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          muxStreams: (json_['muxStreams'] as core.List?)
+              ?.map((value) => MuxStream.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           output: json_.containsKey('output')
               ? Output.fromJson(
                   json_['output'] as core.Map<core.String, core.dynamic>)
               : null,
-          overlays: json_.containsKey('overlays')
-              ? (json_['overlays'] as core.List)
-                  .map((value) => Overlay.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          overlays: (json_['overlays'] as core.List?)
+              ?.map((value) => Overlay.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           pubsubDestination: json_.containsKey('pubsubDestination')
               ? PubsubDestination.fromJson(json_['pubsubDestination']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          spriteSheets: json_.containsKey('spriteSheets')
-              ? (json_['spriteSheets'] as core.List)
-                  .map((value) => SpriteSheet.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          spriteSheets: (json_['spriteSheets'] as core.List?)
+              ?.map((value) => SpriteSheet.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2335,14 +2310,13 @@ class JobTemplate {
               ? JobConfig.fromJson(
                   json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
         );
 
@@ -2372,18 +2346,14 @@ class ListJobTemplatesResponse {
 
   ListJobTemplatesResponse.fromJson(core.Map json_)
       : this(
-          jobTemplates: json_.containsKey('jobTemplates')
-              ? (json_['jobTemplates'] as core.List)
-                  .map((value) => JobTemplate.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          jobTemplates: (json_['jobTemplates'] as core.List?)
+              ?.map((value) => JobTemplate.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2412,18 +2382,14 @@ class ListJobsResponse {
 
   ListJobsResponse.fromJson(core.Map json_)
       : this(
-          jobs: json_.containsKey('jobs')
-              ? (json_['jobs'] as core.List)
-                  .map((value) => Job.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          jobs: (json_['jobs'] as core.List?)
+              ?.map((value) =>
+                  Job.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2478,11 +2444,9 @@ class Manifest {
                   json_['dash'] as core.Map<core.String, core.dynamic>)
               : null,
           fileName: json_['fileName'] as core.String?,
-          muxStreams: json_.containsKey('muxStreams')
-              ? (json_['muxStreams'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          muxStreams: (json_['muxStreams'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           type: json_['type'] as core.String?,
         );
 
@@ -2566,11 +2530,9 @@ class MuxStream {
   MuxStream.fromJson(core.Map json_)
       : this(
           container: json_['container'] as core.String?,
-          elementaryStreams: json_.containsKey('elementaryStreams')
-              ? (json_['elementaryStreams'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          elementaryStreams: (json_['elementaryStreams'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           encryptionId: json_['encryptionId'] as core.String?,
           fileName: json_['fileName'] as core.String?,
           fmp4: json_.containsKey('fmp4')
@@ -2662,12 +2624,10 @@ class Overlay {
 
   Overlay.fromJson(core.Map json_)
       : this(
-          animations: json_.containsKey('animations')
-              ? (json_['animations'] as core.List)
-                  .map((value) => Animation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          animations: (json_['animations'] as core.List?)
+              ?.map((value) => Animation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           image: json_.containsKey('image')
               ? Image.fromJson(
                   json_['image'] as core.Map<core.String, core.dynamic>)
@@ -3104,12 +3064,10 @@ class TextStream {
           codec: json_['codec'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           languageCode: json_['languageCode'] as core.String?,
-          mapping: json_.containsKey('mapping')
-              ? (json_['mapping'] as core.List)
-                  .map((value) => TextMapping.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          mapping: (json_['mapping'] as core.List?)
+              ?.map((value) => TextMapping.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

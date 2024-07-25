@@ -200,11 +200,9 @@ class BatchGetAmpUrlsRequest {
   BatchGetAmpUrlsRequest.fromJson(core.Map json_)
       : this(
           lookupStrategy: json_['lookupStrategy'] as core.String?,
-          urls: json_.containsKey('urls')
-              ? (json_['urls'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          urls: (json_['urls'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -232,18 +230,14 @@ class BatchGetAmpUrlsResponse {
 
   BatchGetAmpUrlsResponse.fromJson(core.Map json_)
       : this(
-          ampUrls: json_.containsKey('ampUrls')
-              ? (json_['ampUrls'] as core.List)
-                  .map((value) => AmpUrl.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          urlErrors: json_.containsKey('urlErrors')
-              ? (json_['urlErrors'] as core.List)
-                  .map((value) => AmpUrlError.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          ampUrls: (json_['ampUrls'] as core.List?)
+              ?.map((value) =>
+                  AmpUrl.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          urlErrors: (json_['urlErrors'] as core.List?)
+              ?.map((value) => AmpUrlError.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

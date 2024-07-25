@@ -797,12 +797,10 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
       : this(
-          auditLogConfigs: json_.containsKey('auditLogConfigs')
-              ? (json_['auditLogConfigs'] as core.List)
-                  .map((value) => AuditLogConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+              ?.map((value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           service: json_['service'] as core.String?,
         );
 
@@ -916,11 +914,9 @@ class Binding {
               ? Expr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -1287,17 +1283,14 @@ class CloudFunction {
                   as core.Map<core.String, core.dynamic>)
               : null,
           availableMemoryMb: json_['availableMemoryMb'] as core.int?,
-          buildEnvironmentVariables:
-              json_.containsKey('buildEnvironmentVariables')
-                  ? (json_['buildEnvironmentVariables']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        value as core.String,
-                      ),
-                    )
-                  : null,
+          buildEnvironmentVariables: (json_['buildEnvironmentVariables']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           buildId: json_['buildId'] as core.String?,
           buildName: json_['buildName'] as core.String?,
           buildServiceAccount: json_['buildServiceAccount'] as core.String?,
@@ -1306,16 +1299,14 @@ class CloudFunction {
           dockerRegistry: json_['dockerRegistry'] as core.String?,
           dockerRepository: json_['dockerRepository'] as core.String?,
           entryPoint: json_['entryPoint'] as core.String?,
-          environmentVariables: json_.containsKey('environmentVariables')
-              ? (json_['environmentVariables']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          environmentVariables: (json_['environmentVariables']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           eventTrigger: json_.containsKey('eventTrigger')
               ? EventTrigger.fromJson(
                   json_['eventTrigger'] as core.Map<core.String, core.dynamic>)
@@ -1326,14 +1317,13 @@ class CloudFunction {
               : null,
           ingressSettings: json_['ingressSettings'] as core.String?,
           kmsKeyName: json_['kmsKeyName'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           maxInstances: json_['maxInstances'] as core.int?,
           minInstances: json_['minInstances'] as core.int?,
           name: json_['name'] as core.String?,
@@ -1344,18 +1334,14 @@ class CloudFunction {
               : null,
           runtime: json_['runtime'] as core.String?,
           secretEnvironmentVariables:
-              json_.containsKey('secretEnvironmentVariables')
-                  ? (json_['secretEnvironmentVariables'] as core.List)
-                      .map((value) => SecretEnvVar.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
-          secretVolumes: json_.containsKey('secretVolumes')
-              ? (json_['secretVolumes'] as core.List)
-                  .map((value) => SecretVolume.fromJson(
+              (json_['secretEnvironmentVariables'] as core.List?)
+                  ?.map((value) => SecretEnvVar.fromJson(
                       value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                  .toList(),
+          secretVolumes: (json_['secretVolumes'] as core.List?)
+              ?.map((value) => SecretVolume.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
           sourceArchiveUrl: json_['sourceArchiveUrl'] as core.String?,
           sourceRepository: json_.containsKey('sourceRepository')
@@ -1672,18 +1658,14 @@ class ListFunctionsResponse {
 
   ListFunctionsResponse.fromJson(core.Map json_)
       : this(
-          functions: json_.containsKey('functions')
-              ? (json_['functions'] as core.List)
-                  .map((value) => CloudFunction.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          functions: (json_['functions'] as core.List?)
+              ?.map((value) => CloudFunction.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1708,12 +1690,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1739,12 +1719,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1949,18 +1927,14 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
       : this(
-          auditConfigs: json_.containsKey('auditConfigs')
-              ? (json_['auditConfigs'] as core.List)
-                  .map((value) => AuditConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          bindings: json_.containsKey('bindings')
-              ? (json_['bindings'] as core.List)
-                  .map((value) => Binding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditConfigs: (json_['auditConfigs'] as core.List?)
+              ?.map((value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
         );
@@ -2106,12 +2080,10 @@ class SecretVolume {
           mountPath: json_['mountPath'] as core.String?,
           projectId: json_['projectId'] as core.String?,
           secret: json_['secret'] as core.String?,
-          versions: json_.containsKey('versions')
-              ? (json_['versions'] as core.List)
-                  .map((value) => SecretVersion.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          versions: (json_['versions'] as core.List?)
+              ?.map((value) => SecretVersion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

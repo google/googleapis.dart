@@ -3023,23 +3023,20 @@ class AppGateway {
 
   AppGateway.fromJson(core.Map json_)
       : this(
-          allocatedConnections: json_.containsKey('allocatedConnections')
-              ? (json_['allocatedConnections'] as core.List)
-                  .map((value) => AllocatedConnection.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          allocatedConnections: (json_['allocatedConnections'] as core.List?)
+              ?.map((value) => AllocatedConnection.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           createTime: json_['createTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           hostType: json_['hostType'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
           satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
@@ -3190,11 +3187,9 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
                   .fromJson(json_['applicationEndpoint']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          connectors: json_.containsKey('connectors')
-              ? (json_['connectors'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          connectors: (json_['connectors'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           createTime: json_['createTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           gateway: json_.containsKey('gateway')
@@ -3202,14 +3197,13 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
                   .fromJson(
                       json_['gateway'] as core.Map<core.String, core.dynamic>)
               : null,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
           satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
@@ -3349,20 +3343,15 @@ class GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse {
   GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse.fromJson(
       core.Map json_)
       : this(
-          appConnections: json_.containsKey('appConnections')
-              ? (json_['appConnections'] as core.List)
-                  .map((value) =>
-                      GoogleCloudBeyondcorpAppconnectionsV1AppConnection
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          appConnections: (json_['appConnections'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudBeyondcorpAppconnectionsV1AppConnection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3395,20 +3384,15 @@ class GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse {
   GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse.fromJson(
       core.Map json_)
       : this(
-          appConnectionDetails: json_.containsKey('appConnectionDetails')
-              ? (json_['appConnectionDetails'] as core.List)
-                  .map((value) =>
-                      GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          appConnectionDetails: (json_['appConnectionDetails'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3440,11 +3424,9 @@ class GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConne
               ? GoogleCloudBeyondcorpAppconnectionsV1AppConnection.fromJson(
                   json_['appConnection'] as core.Map<core.String, core.dynamic>)
               : null,
-          recentMigVms: json_.containsKey('recentMigVms')
-              ? (json_['recentMigVms'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          recentMigVms: (json_['recentMigVms'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3534,14 +3516,13 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnector {
       : this(
           createTime: json_['createTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           principalInfo: json_.containsKey('principalInfo')
               ? GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo
@@ -3726,19 +3707,15 @@ class GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse {
   GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse.fromJson(
       core.Map json_)
       : this(
-          appConnectors: json_.containsKey('appConnectors')
-              ? (json_['appConnectors'] as core.List)
-                  .map((value) =>
-                      GoogleCloudBeyondcorpAppconnectorsV1AppConnector.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          appConnectors: (json_['appConnectors'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudBeyondcorpAppconnectorsV1AppConnector.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3926,13 +3903,11 @@ class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo {
               ? json_['resource'] as core.Map<core.String, core.dynamic>
               : null,
           status: json_['status'] as core.String?,
-          sub: json_.containsKey('sub')
-              ? (json_['sub'] as core.List)
-                  .map((value) =>
-                      GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          sub: (json_['sub'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           time: json_['time'] as core.String?,
         );
 
@@ -3960,12 +3935,10 @@ class GoogleCloudLocationListLocationsResponse {
 
   GoogleCloudLocationListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => GoogleCloudLocationLocation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => GoogleCloudLocationLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -4012,12 +3985,10 @@ class GoogleIamV1AuditConfig {
 
   GoogleIamV1AuditConfig.fromJson(core.Map json_)
       : this(
-          auditLogConfigs: json_.containsKey('auditLogConfigs')
-              ? (json_['auditLogConfigs'] as core.List)
-                  .map((value) => GoogleIamV1AuditLogConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+              ?.map((value) => GoogleIamV1AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           service: json_['service'] as core.String?,
         );
 
@@ -4127,11 +4098,9 @@ class GoogleIamV1Binding {
               ? GoogleTypeExpr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -4237,18 +4206,14 @@ class GoogleIamV1Policy {
 
   GoogleIamV1Policy.fromJson(core.Map json_)
       : this(
-          auditConfigs: json_.containsKey('auditConfigs')
-              ? (json_['auditConfigs'] as core.List)
-                  .map((value) => GoogleIamV1AuditConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          bindings: json_.containsKey('bindings')
-              ? (json_['bindings'] as core.List)
-                  .map((value) => GoogleIamV1Binding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditConfigs: (json_['auditConfigs'] as core.List?)
+              ?.map((value) => GoogleIamV1AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => GoogleIamV1Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
         );
@@ -4321,12 +4286,10 @@ class GoogleLongrunningListOperationsResponse {
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => GoogleLongrunningOperation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => GoogleLongrunningOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4460,18 +4423,14 @@ class ListAppGatewaysResponse {
 
   ListAppGatewaysResponse.fromJson(core.Map json_)
       : this(
-          appGateways: json_.containsKey('appGateways')
-              ? (json_['appGateways'] as core.List)
-                  .map((value) => AppGateway.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          appGateways: (json_['appGateways'] as core.List?)
+              ?.map((value) => AppGateway.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

@@ -328,12 +328,10 @@ class Application {
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           name: json_['name'] as core.String?,
-          transferParams: json_.containsKey('transferParams')
-              ? (json_['transferParams'] as core.List)
-                  .map((value) => ApplicationTransferParam.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          transferParams: (json_['transferParams'] as core.List?)
+              ?.map((value) => ApplicationTransferParam.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -373,12 +371,10 @@ class ApplicationDataTransfer {
       : this(
           applicationId: json_['applicationId'] as core.String?,
           applicationTransferParams:
-              json_.containsKey('applicationTransferParams')
-                  ? (json_['applicationTransferParams'] as core.List)
-                      .map((value) => ApplicationTransferParam.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
+              (json_['applicationTransferParams'] as core.List?)
+                  ?.map((value) => ApplicationTransferParam.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
           applicationTransferStatus:
               json_['applicationTransferStatus'] as core.String?,
         );
@@ -408,11 +404,9 @@ class ApplicationTransferParam {
   ApplicationTransferParam.fromJson(core.Map json_)
       : this(
           key: json_['key'] as core.String?,
-          value: json_.containsKey('value')
-              ? (json_['value'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          value: (json_['value'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -445,12 +439,10 @@ class ApplicationsListResponse {
 
   ApplicationsListResponse.fromJson(core.Map json_)
       : this(
-          applications: json_.containsKey('applications')
-              ? (json_['applications'] as core.List)
-                  .map((value) => Application.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          applications: (json_['applications'] as core.List?)
+              ?.map((value) => Application.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
@@ -515,12 +507,10 @@ class DataTransfer {
   DataTransfer.fromJson(core.Map json_)
       : this(
           applicationDataTransfers:
-              json_.containsKey('applicationDataTransfers')
-                  ? (json_['applicationDataTransfers'] as core.List)
-                      .map((value) => ApplicationDataTransfer.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
+              (json_['applicationDataTransfers'] as core.List?)
+                  ?.map((value) => ApplicationDataTransfer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
           etag: json_['etag'] as core.String?,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
@@ -571,12 +561,10 @@ class DataTransfersListResponse {
 
   DataTransfersListResponse.fromJson(core.Map json_)
       : this(
-          dataTransfers: json_.containsKey('dataTransfers')
-              ? (json_['dataTransfers'] as core.List)
-                  .map((value) => DataTransfer.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          dataTransfers: (json_['dataTransfers'] as core.List?)
+              ?.map((value) => DataTransfer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,

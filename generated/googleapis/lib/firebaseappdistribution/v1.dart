@@ -1956,12 +1956,10 @@ class GdataMedia {
               ? GdataBlobstore2Info.fromJson(json_['blobstore2Info']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          compositeMedia: json_.containsKey('compositeMedia')
-              ? (json_['compositeMedia'] as core.List)
-                  .map((value) => GdataCompositeMedia.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          compositeMedia: (json_['compositeMedia'] as core.List?)
+              ?.map((value) => GdataCompositeMedia.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           contentType: json_['contentType'] as core.String?,
           contentTypeInfo: json_.containsKey('contentTypeInfo')
               ? GdataContentTypeInfo.fromJson(json_['contentTypeInfo']
@@ -2126,11 +2124,9 @@ class GoogleFirebaseAppdistroV1BatchAddTestersRequest {
 
   GoogleFirebaseAppdistroV1BatchAddTestersRequest.fromJson(core.Map json_)
       : this(
-          emails: json_.containsKey('emails')
-              ? (json_['emails'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          emails: (json_['emails'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2149,12 +2145,10 @@ class GoogleFirebaseAppdistroV1BatchAddTestersResponse {
 
   GoogleFirebaseAppdistroV1BatchAddTestersResponse.fromJson(core.Map json_)
       : this(
-          testers: json_.containsKey('testers')
-              ? (json_['testers'] as core.List)
-                  .map((value) => GoogleFirebaseAppdistroV1Tester.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          testers: (json_['testers'] as core.List?)
+              ?.map((value) => GoogleFirebaseAppdistroV1Tester.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2178,11 +2172,9 @@ class GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest {
 
   GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest.fromJson(core.Map json_)
       : this(
-          names: json_.containsKey('names')
-              ? (json_['names'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          names: (json_['names'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2211,11 +2203,9 @@ class GoogleFirebaseAppdistroV1BatchJoinGroupRequest {
   GoogleFirebaseAppdistroV1BatchJoinGroupRequest.fromJson(core.Map json_)
       : this(
           createMissingTesters: json_['createMissingTesters'] as core.bool?,
-          emails: json_.containsKey('emails')
-              ? (json_['emails'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          emails: (json_['emails'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2240,11 +2230,9 @@ class GoogleFirebaseAppdistroV1BatchLeaveGroupRequest {
 
   GoogleFirebaseAppdistroV1BatchLeaveGroupRequest.fromJson(core.Map json_)
       : this(
-          emails: json_.containsKey('emails')
-              ? (json_['emails'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          emails: (json_['emails'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2267,11 +2255,9 @@ class GoogleFirebaseAppdistroV1BatchRemoveTestersRequest {
 
   GoogleFirebaseAppdistroV1BatchRemoveTestersRequest.fromJson(core.Map json_)
       : this(
-          emails: json_.containsKey('emails')
-              ? (json_['emails'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          emails: (json_['emails'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2290,11 +2276,9 @@ class GoogleFirebaseAppdistroV1BatchRemoveTestersResponse {
 
   GoogleFirebaseAppdistroV1BatchRemoveTestersResponse.fromJson(core.Map json_)
       : this(
-          emails: json_.containsKey('emails')
-              ? (json_['emails'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          emails: (json_['emails'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2323,16 +2307,12 @@ class GoogleFirebaseAppdistroV1DistributeReleaseRequest {
 
   GoogleFirebaseAppdistroV1DistributeReleaseRequest.fromJson(core.Map json_)
       : this(
-          groupAliases: json_.containsKey('groupAliases')
-              ? (json_['groupAliases'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          testerEmails: json_.containsKey('testerEmails')
-              ? (json_['testerEmails'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          groupAliases: (json_['groupAliases'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          testerEmails: (json_['testerEmails'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2481,13 +2461,10 @@ class GoogleFirebaseAppdistroV1ListFeedbackReportsResponse {
 
   GoogleFirebaseAppdistroV1ListFeedbackReportsResponse.fromJson(core.Map json_)
       : this(
-          feedbackReports: json_.containsKey('feedbackReports')
-              ? (json_['feedbackReports'] as core.List)
-                  .map((value) =>
-                      GoogleFirebaseAppdistroV1FeedbackReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          feedbackReports: (json_['feedbackReports'] as core.List?)
+              ?.map((value) => GoogleFirebaseAppdistroV1FeedbackReport.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -2515,12 +2492,10 @@ class GoogleFirebaseAppdistroV1ListGroupsResponse {
 
   GoogleFirebaseAppdistroV1ListGroupsResponse.fromJson(core.Map json_)
       : this(
-          groups: json_.containsKey('groups')
-              ? (json_['groups'] as core.List)
-                  .map((value) => GoogleFirebaseAppdistroV1Group.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          groups: (json_['groups'] as core.List?)
+              ?.map((value) => GoogleFirebaseAppdistroV1Group.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -2549,12 +2524,10 @@ class GoogleFirebaseAppdistroV1ListReleasesResponse {
   GoogleFirebaseAppdistroV1ListReleasesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          releases: json_.containsKey('releases')
-              ? (json_['releases'] as core.List)
-                  .map((value) => GoogleFirebaseAppdistroV1Release.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          releases: (json_['releases'] as core.List?)
+              ?.map((value) => GoogleFirebaseAppdistroV1Release.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2582,12 +2555,10 @@ class GoogleFirebaseAppdistroV1ListTestersResponse {
   GoogleFirebaseAppdistroV1ListTestersResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          testers: json_.containsKey('testers')
-              ? (json_['testers'] as core.List)
-                  .map((value) => GoogleFirebaseAppdistroV1Tester.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          testers: (json_['testers'] as core.List?)
+              ?.map((value) => GoogleFirebaseAppdistroV1Tester.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2767,11 +2738,9 @@ class GoogleFirebaseAppdistroV1Tester {
   GoogleFirebaseAppdistroV1Tester.fromJson(core.Map json_)
       : this(
           displayName: json_['displayName'] as core.String?,
-          groups: json_.containsKey('groups')
-              ? (json_['groups'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          groups: (json_['groups'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           lastActivityTime: json_['lastActivityTime'] as core.String?,
           name: json_['name'] as core.String?,
         );
@@ -2825,12 +2794,10 @@ class GoogleLongrunningListOperationsResponse {
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => GoogleLongrunningOperation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => GoogleLongrunningOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

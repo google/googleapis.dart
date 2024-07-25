@@ -889,17 +889,13 @@ class ApplicationInfo {
 
   ApplicationInfo.fromJson(core.Map json_)
       : this(
-          emails: json_.containsKey('emails')
-              ? (json_['emails'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          emails: (json_['emails'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           instruction: json_['instruction'] as core.String?,
-          uris: json_.containsKey('uris')
-              ? (json_['uris'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          uris: (json_['uris'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1055,14 +1051,13 @@ class ClientEvent {
       : this(
           createTime: json_['createTime'] as core.String?,
           eventId: json_['eventId'] as core.String?,
-          extraInfo: json_.containsKey('extraInfo')
-              ? (json_['extraInfo'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          extraInfo:
+              (json_['extraInfo'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           jobEvent: json_.containsKey('jobEvent')
               ? JobEvent.fromJson(
                   json_['jobEvent'] as core.Map<core.String, core.dynamic>)
@@ -1353,11 +1348,9 @@ class Company {
           hiringAgency: json_['hiringAgency'] as core.bool?,
           imageUri: json_['imageUri'] as core.String?,
           keywordSearchableJobCustomAttributes:
-              json_.containsKey('keywordSearchableJobCustomAttributes')
-                  ? (json_['keywordSearchableJobCustomAttributes'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
+              (json_['keywordSearchableJobCustomAttributes'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           name: json_['name'] as core.String?,
           size: json_['size'] as core.String?,
           suspended: json_['suspended'] as core.bool?,
@@ -1579,11 +1572,9 @@ class CompensationFilter {
                   json_['range'] as core.Map<core.String, core.dynamic>)
               : null,
           type: json_['type'] as core.String?,
-          units: json_.containsKey('units')
-              ? (json_['units'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          units: (json_['units'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1730,12 +1721,10 @@ class CompensationInfo {
                       json_['annualizedTotalCompensationRange']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          entries: json_.containsKey('entries')
-              ? (json_['entries'] as core.List)
-                  .map((value) => CompensationEntry.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          entries: (json_['entries'] as core.List?)
+              ?.map((value) => CompensationEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1806,12 +1795,10 @@ class CompleteQueryResponse {
 
   CompleteQueryResponse.fromJson(core.Map json_)
       : this(
-          completionResults: json_.containsKey('completionResults')
-              ? (json_['completionResults'] as core.List)
-                  .map((value) => CompletionResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          completionResults: (json_['completionResults'] as core.List?)
+              ?.map((value) => CompletionResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           metadata: json_.containsKey('metadata')
               ? ResponseMetadata.fromJson(
                   json_['metadata'] as core.Map<core.String, core.dynamic>)
@@ -1978,16 +1965,12 @@ class CustomAttribute {
   CustomAttribute.fromJson(core.Map json_)
       : this(
           filterable: json_['filterable'] as core.bool?,
-          longValues: json_.containsKey('longValues')
-              ? (json_['longValues'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          stringValues: json_.containsKey('stringValues')
-              ? (json_['stringValues'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          longValues: (json_['longValues'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          stringValues: (json_['stringValues'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2081,17 +2064,14 @@ class CustomAttributeHistogramResult {
                       json_['longValueHistogramResult']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          stringValueHistogramResult:
-              json_.containsKey('stringValueHistogramResult')
-                  ? (json_['stringValueHistogramResult']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        value as core.int,
-                      ),
-                    )
-                  : null,
+          stringValueHistogramResult: (json_['stringValueHistogramResult']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.int,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2191,24 +2171,18 @@ class HistogramFacets {
   HistogramFacets.fromJson(core.Map json_)
       : this(
           compensationHistogramFacets:
-              json_.containsKey('compensationHistogramFacets')
-                  ? (json_['compensationHistogramFacets'] as core.List)
-                      .map((value) => CompensationHistogramRequest.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
+              (json_['compensationHistogramFacets'] as core.List?)
+                  ?.map((value) => CompensationHistogramRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
           customAttributeHistogramFacets:
-              json_.containsKey('customAttributeHistogramFacets')
-                  ? (json_['customAttributeHistogramFacets'] as core.List)
-                      .map((value) => CustomAttributeHistogramRequest.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
-          simpleHistogramFacets: json_.containsKey('simpleHistogramFacets')
-              ? (json_['simpleHistogramFacets'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+              (json_['customAttributeHistogramFacets'] as core.List?)
+                  ?.map((value) => CustomAttributeHistogramRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+          simpleHistogramFacets: (json_['simpleHistogramFacets'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2284,14 +2258,13 @@ class HistogramResult {
   HistogramResult.fromJson(core.Map json_)
       : this(
           searchType: json_['searchType'] as core.String?,
-          values: json_.containsKey('values')
-              ? (json_['values'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.int,
-                  ),
-                )
-              : null,
+          values:
+              (json_['values'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.int,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2325,25 +2298,20 @@ class HistogramResults {
   HistogramResults.fromJson(core.Map json_)
       : this(
           compensationHistogramResults:
-              json_.containsKey('compensationHistogramResults')
-                  ? (json_['compensationHistogramResults'] as core.List)
-                      .map((value) => CompensationHistogramResult.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
-          customAttributeHistogramResults:
-              json_.containsKey('customAttributeHistogramResults')
-                  ? (json_['customAttributeHistogramResults'] as core.List)
-                      .map((value) => CustomAttributeHistogramResult.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
-          simpleHistogramResults: json_.containsKey('simpleHistogramResults')
-              ? (json_['simpleHistogramResults'] as core.List)
-                  .map((value) => HistogramResult.fromJson(
+              (json_['compensationHistogramResults'] as core.List?)
+                  ?.map((value) => CompensationHistogramResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                  .toList(),
+          customAttributeHistogramResults:
+              (json_['customAttributeHistogramResults'] as core.List?)
+                  ?.map((value) => CustomAttributeHistogramResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+          simpleHistogramResults:
+              (json_['simpleHistogramResults'] as core.List?)
+                  ?.map((value) => HistogramResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2705,11 +2673,9 @@ class Job {
 
   Job.fromJson(core.Map json_)
       : this(
-          addresses: json_.containsKey('addresses')
-              ? (json_['addresses'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          addresses: (json_['addresses'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           applicationInfo: json_.containsKey('applicationInfo')
               ? ApplicationInfo.fromJson(json_['applicationInfo']
                   as core.Map<core.String, core.dynamic>)
@@ -2720,39 +2686,31 @@ class Job {
               ? CompensationInfo.fromJson(json_['compensationInfo']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          customAttributes: json_.containsKey('customAttributes')
-              ? (json_['customAttributes']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    CustomAttribute.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          degreeTypes: json_.containsKey('degreeTypes')
-              ? (json_['degreeTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          customAttributes: (json_['customAttributes']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              CustomAttribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          degreeTypes: (json_['degreeTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           department: json_['department'] as core.String?,
           derivedInfo: json_.containsKey('derivedInfo')
               ? JobDerivedInfo.fromJson(
                   json_['derivedInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           description: json_['description'] as core.String?,
-          employmentTypes: json_.containsKey('employmentTypes')
-              ? (json_['employmentTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          employmentTypes: (json_['employmentTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           incentives: json_['incentives'] as core.String?,
-          jobBenefits: json_.containsKey('jobBenefits')
-              ? (json_['jobBenefits'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          jobBenefits: (json_['jobBenefits'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           jobEndTime: json_['jobEndTime'] as core.String?,
           jobLevel: json_['jobLevel'] as core.String?,
           jobStartTime: json_['jobStartTime'] as core.String?,
@@ -2830,17 +2788,13 @@ class JobDerivedInfo {
 
   JobDerivedInfo.fromJson(core.Map json_)
       : this(
-          jobCategories: json_.containsKey('jobCategories')
-              ? (json_['jobCategories'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          jobCategories: (json_['jobCategories'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2938,11 +2892,9 @@ class JobEvent {
 
   JobEvent.fromJson(core.Map json_)
       : this(
-          jobs: json_.containsKey('jobs')
-              ? (json_['jobs'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          jobs: (json_['jobs'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           type: json_['type'] as core.String?,
         );
 
@@ -3124,43 +3076,31 @@ class JobQuery {
               ? CommuteFilter.fromJson(
                   json_['commuteFilter'] as core.Map<core.String, core.dynamic>)
               : null,
-          companyDisplayNames: json_.containsKey('companyDisplayNames')
-              ? (json_['companyDisplayNames'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          companyNames: json_.containsKey('companyNames')
-              ? (json_['companyNames'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          companyDisplayNames: (json_['companyDisplayNames'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          companyNames: (json_['companyNames'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           compensationFilter: json_.containsKey('compensationFilter')
               ? CompensationFilter.fromJson(json_['compensationFilter']
                   as core.Map<core.String, core.dynamic>)
               : null,
           customAttributeFilter: json_['customAttributeFilter'] as core.String?,
           disableSpellCheck: json_['disableSpellCheck'] as core.bool?,
-          employmentTypes: json_.containsKey('employmentTypes')
-              ? (json_['employmentTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          jobCategories: json_.containsKey('jobCategories')
-              ? (json_['jobCategories'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          languageCodes: json_.containsKey('languageCodes')
-              ? (json_['languageCodes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          locationFilters: json_.containsKey('locationFilters')
-              ? (json_['locationFilters'] as core.List)
-                  .map((value) => LocationFilter.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          employmentTypes: (json_['employmentTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          jobCategories: (json_['jobCategories'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          languageCodes: (json_['languageCodes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          locationFilters: (json_['locationFilters'] as core.List?)
+              ?.map((value) => LocationFilter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           publishTimeRange: json_.containsKey('publishTimeRange')
               ? TimestampRange.fromJson(json_['publishTimeRange']
                   as core.Map<core.String, core.dynamic>)
@@ -3218,12 +3158,10 @@ class ListCompaniesResponse {
 
   ListCompaniesResponse.fromJson(core.Map json_)
       : this(
-          companies: json_.containsKey('companies')
-              ? (json_['companies'] as core.List)
-                  .map((value) => Company.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          companies: (json_['companies'] as core.List?)
+              ?.map((value) => Company.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           metadata: json_.containsKey('metadata')
               ? ResponseMetadata.fromJson(
                   json_['metadata'] as core.Map<core.String, core.dynamic>)
@@ -3263,12 +3201,10 @@ class ListJobsResponse {
 
   ListJobsResponse.fromJson(core.Map json_)
       : this(
-          jobs: json_.containsKey('jobs')
-              ? (json_['jobs'] as core.List)
-                  .map((value) => Job.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          jobs: (json_['jobs'] as core.List?)
+              ?.map((value) =>
+                  Job.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           metadata: json_.containsKey('metadata')
               ? ResponseMetadata.fromJson(
                   json_['metadata'] as core.Map<core.String, core.dynamic>)
@@ -3547,11 +3483,9 @@ class NumericBucketingOption {
 
   NumericBucketingOption.fromJson(core.Map json_)
       : this(
-          bucketBounds: json_.containsKey('bucketBounds')
-              ? (json_['bucketBounds'] as core.List)
-                  .map((value) => (value as core.num).toDouble())
-                  .toList()
-              : null,
+          bucketBounds: (json_['bucketBounds'] as core.List?)
+              ?.map((value) => (value as core.num).toDouble())
+              .toList(),
           requiresMinMax: json_['requiresMinMax'] as core.bool?,
         );
 
@@ -3590,12 +3524,10 @@ class NumericBucketingResult {
 
   NumericBucketingResult.fromJson(core.Map json_)
       : this(
-          counts: json_.containsKey('counts')
-              ? (json_['counts'] as core.List)
-                  .map((value) => BucketizedCount.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          counts: (json_['counts'] as core.List?)
+              ?.map((value) => BucketizedCount.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
           minValue: (json_['minValue'] as core.num?)?.toDouble(),
         );
@@ -4053,18 +3985,14 @@ class SearchJobsResponse {
               ? HistogramResults.fromJson(json_['histogramResults']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          locationFilters: json_.containsKey('locationFilters')
-              ? (json_['locationFilters'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          matchingJobs: json_.containsKey('matchingJobs')
-              ? (json_['matchingJobs'] as core.List)
-                  .map((value) => MatchingJob.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locationFilters: (json_['locationFilters'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          matchingJobs: (json_['matchingJobs'] as core.List?)
+              ?.map((value) => MatchingJob.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           metadata: json_.containsKey('metadata')
               ? ResponseMetadata.fromJson(
                   json_['metadata'] as core.Map<core.String, core.dynamic>)

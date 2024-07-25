@@ -4224,12 +4224,10 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
       : this(
-          auditLogConfigs: json_.containsKey('auditLogConfigs')
-              ? (json_['auditLogConfigs'] as core.List)
-                  .map((value) => AuditLogConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+              ?.map((value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           service: json_['service'] as core.String?,
         );
 
@@ -4339,11 +4337,9 @@ class Binding {
               ? Expr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -4432,14 +4428,11 @@ class EndpointMatcherMetadataLabelMatcher {
       : this(
           metadataLabelMatchCriteria:
               json_['metadataLabelMatchCriteria'] as core.String?,
-          metadataLabels: json_.containsKey('metadataLabels')
-              ? (json_['metadataLabels'] as core.List)
-                  .map((value) =>
-                      EndpointMatcherMetadataLabelMatcherMetadataLabels
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          metadataLabels: (json_['metadataLabels'] as core.List?)
+              ?.map((value) =>
+                  EndpointMatcherMetadataLabelMatcherMetadataLabels.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4594,14 +4587,13 @@ class EndpointPolicy {
               ? EndpointMatcher.fromJson(json_['endpointMatcher']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           serverTlsPolicy: json_['serverTlsPolicy'] as core.String?,
           trafficPortSelector: json_.containsKey('trafficPortSelector')
@@ -4684,12 +4676,10 @@ class ExtensionChain {
 
   ExtensionChain.fromJson(core.Map json_)
       : this(
-          extensions: json_.containsKey('extensions')
-              ? (json_['extensions'] as core.List)
-                  .map((value) => ExtensionChainExtension.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          extensions: (json_['extensions'] as core.List?)
+              ?.map((value) => ExtensionChainExtension.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           matchCondition: json_.containsKey('matchCondition')
               ? ExtensionChainMatchCondition.fromJson(json_['matchCondition']
                   as core.Map<core.String, core.dynamic>)
@@ -4792,18 +4782,14 @@ class ExtensionChainExtension {
       : this(
           authority: json_['authority'] as core.String?,
           failOpen: json_['failOpen'] as core.bool?,
-          forwardHeaders: json_.containsKey('forwardHeaders')
-              ? (json_['forwardHeaders'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          forwardHeaders: (json_['forwardHeaders'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           name: json_['name'] as core.String?,
           service: json_['service'] as core.String?,
-          supportedEvents: json_.containsKey('supportedEvents')
-              ? (json_['supportedEvents'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          supportedEvents: (json_['supportedEvents'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           timeout: json_['timeout'] as core.String?,
         );
 
@@ -5024,36 +5010,29 @@ class Gateway {
 
   Gateway.fromJson(core.Map json_)
       : this(
-          addresses: json_.containsKey('addresses')
-              ? (json_['addresses'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          certificateUrls: json_.containsKey('certificateUrls')
-              ? (json_['certificateUrls'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          addresses: (json_['addresses'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          certificateUrls: (json_['certificateUrls'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           envoyHeaders: json_['envoyHeaders'] as core.String?,
           gatewaySecurityPolicy: json_['gatewaySecurityPolicy'] as core.String?,
           ipVersion: json_['ipVersion'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           network: json_['network'] as core.String?,
-          ports: json_.containsKey('ports')
-              ? (json_['ports'] as core.List)
-                  .map((value) => value as core.int)
-                  .toList()
-              : null,
+          ports: (json_['ports'] as core.List?)
+              ?.map((value) => value as core.int)
+              .toList(),
           scope: json_['scope'] as core.String?,
           selfLink: json_['selfLink'] as core.String?,
           serverTlsPolicy: json_['serverTlsPolicy'] as core.String?,
@@ -5191,36 +5170,27 @@ class GrpcRoute {
       : this(
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
-          gateways: json_.containsKey('gateways')
-              ? (json_['gateways'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          hostnames: json_.containsKey('hostnames')
-              ? (json_['hostnames'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
-          meshes: json_.containsKey('meshes')
-              ? (json_['meshes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          gateways: (json_['gateways'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          hostnames: (json_['hostnames'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          meshes: (json_['meshes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           name: json_['name'] as core.String?,
-          rules: json_.containsKey('rules')
-              ? (json_['rules'] as core.List)
-                  .map((value) => GrpcRouteRouteRule.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          rules: (json_['rules'] as core.List?)
+              ?.map((value) => GrpcRouteRouteRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           selfLink: json_['selfLink'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -5457,11 +5427,9 @@ class GrpcRouteRetryPolicy {
   GrpcRouteRetryPolicy.fromJson(core.Map json_)
       : this(
           numRetries: json_['numRetries'] as core.int?,
-          retryConditions: json_.containsKey('retryConditions')
-              ? (json_['retryConditions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          retryConditions: (json_['retryConditions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5532,12 +5500,10 @@ class GrpcRouteRouteAction {
 
   GrpcRouteRouteAction.fromJson(core.Map json_)
       : this(
-          destinations: json_.containsKey('destinations')
-              ? (json_['destinations'] as core.List)
-                  .map((value) => GrpcRouteDestination.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          destinations: (json_['destinations'] as core.List?)
+              ?.map((value) => GrpcRouteDestination.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           faultInjectionPolicy: json_.containsKey('faultInjectionPolicy')
               ? GrpcRouteFaultInjectionPolicy.fromJson(
                   json_['faultInjectionPolicy']
@@ -5591,12 +5557,10 @@ class GrpcRouteRouteMatch {
 
   GrpcRouteRouteMatch.fromJson(core.Map json_)
       : this(
-          headers: json_.containsKey('headers')
-              ? (json_['headers'] as core.List)
-                  .map((value) => GrpcRouteHeaderMatch.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          headers: (json_['headers'] as core.List?)
+              ?.map((value) => GrpcRouteHeaderMatch.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           method: json_.containsKey('method')
               ? GrpcRouteMethodMatch.fromJson(
                   json_['method'] as core.Map<core.String, core.dynamic>)
@@ -5639,12 +5603,10 @@ class GrpcRouteRouteRule {
               ? GrpcRouteRouteAction.fromJson(
                   json_['action'] as core.Map<core.String, core.dynamic>)
               : null,
-          matches: json_.containsKey('matches')
-              ? (json_['matches'] as core.List)
-                  .map((value) => GrpcRouteRouteMatch.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          matches: (json_['matches'] as core.List?)
+              ?.map((value) => GrpcRouteRouteMatch.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5769,36 +5731,27 @@ class HttpRoute {
       : this(
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
-          gateways: json_.containsKey('gateways')
-              ? (json_['gateways'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          hostnames: json_.containsKey('hostnames')
-              ? (json_['hostnames'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
-          meshes: json_.containsKey('meshes')
-              ? (json_['meshes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          gateways: (json_['gateways'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          hostnames: (json_['hostnames'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          meshes: (json_['meshes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           name: json_['name'] as core.String?,
-          rules: json_.containsKey('rules')
-              ? (json_['rules'] as core.List)
-                  .map((value) => HttpRouteRouteRule.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          rules: (json_['rules'] as core.List?)
+              ?.map((value) => HttpRouteRouteRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           selfLink: json_['selfLink'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -5872,32 +5825,22 @@ class HttpRouteCorsPolicy {
   HttpRouteCorsPolicy.fromJson(core.Map json_)
       : this(
           allowCredentials: json_['allowCredentials'] as core.bool?,
-          allowHeaders: json_.containsKey('allowHeaders')
-              ? (json_['allowHeaders'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          allowMethods: json_.containsKey('allowMethods')
-              ? (json_['allowMethods'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          allowOriginRegexes: json_.containsKey('allowOriginRegexes')
-              ? (json_['allowOriginRegexes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          allowOrigins: json_.containsKey('allowOrigins')
-              ? (json_['allowOrigins'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          allowHeaders: (json_['allowHeaders'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          allowMethods: (json_['allowMethods'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          allowOriginRegexes: (json_['allowOriginRegexes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          allowOrigins: (json_['allowOrigins'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           disabled: json_['disabled'] as core.bool?,
-          exposeHeaders: json_.containsKey('exposeHeaders')
-              ? (json_['exposeHeaders'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          exposeHeaders: (json_['exposeHeaders'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           maxAge: json_['maxAge'] as core.String?,
         );
 
@@ -6148,27 +6091,21 @@ class HttpRouteHeaderModifier {
 
   HttpRouteHeaderModifier.fromJson(core.Map json_)
       : this(
-          add: json_.containsKey('add')
-              ? (json_['add'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
-          remove: json_.containsKey('remove')
-              ? (json_['remove'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          set: json_.containsKey('set')
-              ? (json_['set'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          add: (json_['add'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          remove: (json_['remove'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          set: (json_['set'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6429,11 +6366,9 @@ class HttpRouteRetryPolicy {
       : this(
           numRetries: json_['numRetries'] as core.int?,
           perTryTimeout: json_['perTryTimeout'] as core.String?,
-          retryConditions: json_.containsKey('retryConditions')
-              ? (json_['retryConditions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          retryConditions: (json_['retryConditions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6545,12 +6480,10 @@ class HttpRouteRouteAction {
               ? HttpRouteCorsPolicy.fromJson(
                   json_['corsPolicy'] as core.Map<core.String, core.dynamic>)
               : null,
-          destinations: json_.containsKey('destinations')
-              ? (json_['destinations'] as core.List)
-                  .map((value) => HttpRouteDestination.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          destinations: (json_['destinations'] as core.List?)
+              ?.map((value) => HttpRouteDestination.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           directResponse: json_.containsKey('directResponse')
               ? HttpRouteHttpDirectResponse.fromJson(json_['directResponse']
                   as core.Map<core.String, core.dynamic>)
@@ -6668,20 +6601,16 @@ class HttpRouteRouteMatch {
   HttpRouteRouteMatch.fromJson(core.Map json_)
       : this(
           fullPathMatch: json_['fullPathMatch'] as core.String?,
-          headers: json_.containsKey('headers')
-              ? (json_['headers'] as core.List)
-                  .map((value) => HttpRouteHeaderMatch.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          headers: (json_['headers'] as core.List?)
+              ?.map((value) => HttpRouteHeaderMatch.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           ignoreCase: json_['ignoreCase'] as core.bool?,
           prefixMatch: json_['prefixMatch'] as core.String?,
-          queryParameters: json_.containsKey('queryParameters')
-              ? (json_['queryParameters'] as core.List)
-                  .map((value) => HttpRouteQueryParameterMatch.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          queryParameters: (json_['queryParameters'] as core.List?)
+              ?.map((value) => HttpRouteQueryParameterMatch.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           regexMatch: json_['regexMatch'] as core.String?,
         );
 
@@ -6722,12 +6651,10 @@ class HttpRouteRouteRule {
               ? HttpRouteRouteAction.fromJson(
                   json_['action'] as core.Map<core.String, core.dynamic>)
               : null,
-          matches: json_.containsKey('matches')
-              ? (json_['matches'] as core.List)
-                  .map((value) => HttpRouteRouteMatch.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          matches: (json_['matches'] as core.List?)
+              ?.map((value) => HttpRouteRouteMatch.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6878,25 +6805,20 @@ class LbRouteExtension {
       : this(
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
-          extensionChains: json_.containsKey('extensionChains')
-              ? (json_['extensionChains'] as core.List)
-                  .map((value) => ExtensionChain.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          forwardingRules: json_.containsKey('forwardingRules')
-              ? (json_['forwardingRules'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          extensionChains: (json_['extensionChains'] as core.List?)
+              ?.map((value) => ExtensionChain.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          forwardingRules: (json_['forwardingRules'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           loadBalancingScheme: json_['loadBalancingScheme'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -7022,25 +6944,20 @@ class LbTrafficExtension {
       : this(
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
-          extensionChains: json_.containsKey('extensionChains')
-              ? (json_['extensionChains'] as core.List)
-                  .map((value) => ExtensionChain.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          forwardingRules: json_.containsKey('forwardingRules')
-              ? (json_['forwardingRules'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          extensionChains: (json_['extensionChains'] as core.List?)
+              ?.map((value) => ExtensionChain.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          forwardingRules: (json_['forwardingRules'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           loadBalancingScheme: json_['loadBalancingScheme'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -7082,12 +6999,10 @@ class ListEndpointPoliciesResponse {
 
   ListEndpointPoliciesResponse.fromJson(core.Map json_)
       : this(
-          endpointPolicies: json_.containsKey('endpointPolicies')
-              ? (json_['endpointPolicies'] as core.List)
-                  .map((value) => EndpointPolicy.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          endpointPolicies: (json_['endpointPolicies'] as core.List?)
+              ?.map((value) => EndpointPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -7120,18 +7035,14 @@ class ListGatewaysResponse {
 
   ListGatewaysResponse.fromJson(core.Map json_)
       : this(
-          gateways: json_.containsKey('gateways')
-              ? (json_['gateways'] as core.List)
-                  .map((value) => Gateway.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          gateways: (json_['gateways'] as core.List?)
+              ?.map((value) => Gateway.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7160,12 +7071,10 @@ class ListGrpcRoutesResponse {
 
   ListGrpcRoutesResponse.fromJson(core.Map json_)
       : this(
-          grpcRoutes: json_.containsKey('grpcRoutes')
-              ? (json_['grpcRoutes'] as core.List)
-                  .map((value) => GrpcRoute.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          grpcRoutes: (json_['grpcRoutes'] as core.List?)
+              ?.map((value) => GrpcRoute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -7194,12 +7103,10 @@ class ListHttpRoutesResponse {
 
   ListHttpRoutesResponse.fromJson(core.Map json_)
       : this(
-          httpRoutes: json_.containsKey('httpRoutes')
-              ? (json_['httpRoutes'] as core.List)
-                  .map((value) => HttpRoute.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          httpRoutes: (json_['httpRoutes'] as core.List?)
+              ?.map((value) => HttpRoute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -7228,18 +7135,14 @@ class ListLbRouteExtensionsResponse {
 
   ListLbRouteExtensionsResponse.fromJson(core.Map json_)
       : this(
-          lbRouteExtensions: json_.containsKey('lbRouteExtensions')
-              ? (json_['lbRouteExtensions'] as core.List)
-                  .map((value) => LbRouteExtension.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          lbRouteExtensions: (json_['lbRouteExtensions'] as core.List?)
+              ?.map((value) => LbRouteExtension.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7268,18 +7171,14 @@ class ListLbTrafficExtensionsResponse {
 
   ListLbTrafficExtensionsResponse.fromJson(core.Map json_)
       : this(
-          lbTrafficExtensions: json_.containsKey('lbTrafficExtensions')
-              ? (json_['lbTrafficExtensions'] as core.List)
-                  .map((value) => LbTrafficExtension.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          lbTrafficExtensions: (json_['lbTrafficExtensions'] as core.List?)
+              ?.map((value) => LbTrafficExtension.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7305,12 +7204,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -7339,12 +7236,10 @@ class ListMeshesResponse {
 
   ListMeshesResponse.fromJson(core.Map json_)
       : this(
-          meshes: json_.containsKey('meshes')
-              ? (json_['meshes'] as core.List)
-                  .map((value) => Mesh.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          meshes: (json_['meshes'] as core.List?)
+              ?.map((value) =>
+                  Mesh.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -7370,12 +7265,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7404,12 +7297,10 @@ class ListServiceBindingsResponse {
   ListServiceBindingsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          serviceBindings: json_.containsKey('serviceBindings')
-              ? (json_['serviceBindings'] as core.List)
-                  .map((value) => ServiceBinding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          serviceBindings: (json_['serviceBindings'] as core.List?)
+              ?.map((value) => ServiceBinding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7438,12 +7329,10 @@ class ListServiceLbPoliciesResponse {
   ListServiceLbPoliciesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          serviceLbPolicies: json_.containsKey('serviceLbPolicies')
-              ? (json_['serviceLbPolicies'] as core.List)
-                  .map((value) => ServiceLbPolicy.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          serviceLbPolicies: (json_['serviceLbPolicies'] as core.List?)
+              ?.map((value) => ServiceLbPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7472,12 +7361,10 @@ class ListTcpRoutesResponse {
   ListTcpRoutesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          tcpRoutes: json_.containsKey('tcpRoutes')
-              ? (json_['tcpRoutes'] as core.List)
-                  .map((value) => TcpRoute.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tcpRoutes: (json_['tcpRoutes'] as core.List?)
+              ?.map((value) => TcpRoute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7506,12 +7393,10 @@ class ListTlsRoutesResponse {
   ListTlsRoutesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          tlsRoutes: json_.containsKey('tlsRoutes')
-              ? (json_['tlsRoutes'] as core.List)
-                  .map((value) => TlsRoute.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tlsRoutes: (json_['tlsRoutes'] as core.List?)
+              ?.map((value) => TlsRoute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7607,14 +7492,13 @@ class Mesh {
           description: json_['description'] as core.String?,
           envoyHeaders: json_['envoyHeaders'] as core.String?,
           interceptionPort: json_['interceptionPort'] as core.int?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           selfLink: json_['selfLink'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -7803,18 +7687,14 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
       : this(
-          auditConfigs: json_.containsKey('auditConfigs')
-              ? (json_['auditConfigs'] as core.List)
-                  .map((value) => AuditConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          bindings: json_.containsKey('bindings')
-              ? (json_['bindings'] as core.List)
-                  .map((value) => Binding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditConfigs: (json_['auditConfigs'] as core.List?)
+              ?.map((value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
         );
@@ -7889,14 +7769,13 @@ class ServiceBinding {
       : this(
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           service: json_['service'] as core.String?,
           serviceId: json_['serviceId'] as core.String?,
@@ -8003,14 +7882,13 @@ class ServiceLbPolicy {
               ? ServiceLbPolicyFailoverConfig.fromJson(json_['failoverConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           loadBalancingAlgorithm:
               json_['loadBalancingAlgorithm'] as core.String?,
           name: json_['name'] as core.String?,
@@ -8213,31 +8091,24 @@ class TcpRoute {
       : this(
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
-          gateways: json_.containsKey('gateways')
-              ? (json_['gateways'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
-          meshes: json_.containsKey('meshes')
-              ? (json_['meshes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          gateways: (json_['gateways'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          meshes: (json_['meshes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           name: json_['name'] as core.String?,
-          rules: json_.containsKey('rules')
-              ? (json_['rules'] as core.List)
-                  .map((value) => TcpRouteRouteRule.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          rules: (json_['rules'] as core.List?)
+              ?.map((value) => TcpRouteRouteRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           selfLink: json_['selfLink'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -8292,12 +8163,10 @@ class TcpRouteRouteAction {
 
   TcpRouteRouteAction.fromJson(core.Map json_)
       : this(
-          destinations: json_.containsKey('destinations')
-              ? (json_['destinations'] as core.List)
-                  .map((value) => TcpRouteRouteDestination.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          destinations: (json_['destinations'] as core.List?)
+              ?.map((value) => TcpRouteRouteDestination.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           idleTimeout: json_['idleTimeout'] as core.String?,
           originalDestination: json_['originalDestination'] as core.bool?,
         );
@@ -8415,12 +8284,10 @@ class TcpRouteRouteRule {
               ? TcpRouteRouteAction.fromJson(
                   json_['action'] as core.Map<core.String, core.dynamic>)
               : null,
-          matches: json_.containsKey('matches')
-              ? (json_['matches'] as core.List)
-                  .map((value) => TcpRouteRouteMatch.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          matches: (json_['matches'] as core.List?)
+              ?.map((value) => TcpRouteRouteMatch.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8515,31 +8382,24 @@ class TlsRoute {
       : this(
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
-          gateways: json_.containsKey('gateways')
-              ? (json_['gateways'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
-          meshes: json_.containsKey('meshes')
-              ? (json_['meshes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          gateways: (json_['gateways'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          meshes: (json_['meshes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           name: json_['name'] as core.String?,
-          rules: json_.containsKey('rules')
-              ? (json_['rules'] as core.List)
-                  .map((value) => TlsRouteRouteRule.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          rules: (json_['rules'] as core.List?)
+              ?.map((value) => TlsRouteRouteRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           selfLink: json_['selfLink'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -8583,12 +8443,10 @@ class TlsRouteRouteAction {
 
   TlsRouteRouteAction.fromJson(core.Map json_)
       : this(
-          destinations: json_.containsKey('destinations')
-              ? (json_['destinations'] as core.List)
-                  .map((value) => TlsRouteRouteDestination.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          destinations: (json_['destinations'] as core.List?)
+              ?.map((value) => TlsRouteRouteDestination.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           idleTimeout: json_['idleTimeout'] as core.String?,
         );
 
@@ -8662,16 +8520,12 @@ class TlsRouteRouteMatch {
 
   TlsRouteRouteMatch.fromJson(core.Map json_)
       : this(
-          alpn: json_.containsKey('alpn')
-              ? (json_['alpn'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          sniHost: json_.containsKey('sniHost')
-              ? (json_['sniHost'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          alpn: (json_['alpn'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          sniHost: (json_['sniHost'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8706,12 +8560,10 @@ class TlsRouteRouteRule {
               ? TlsRouteRouteAction.fromJson(
                   json_['action'] as core.Map<core.String, core.dynamic>)
               : null,
-          matches: json_.containsKey('matches')
-              ? (json_['matches'] as core.List)
-                  .map((value) => TlsRouteRouteMatch.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          matches: (json_['matches'] as core.List?)
+              ?.map((value) => TlsRouteRouteMatch.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8737,11 +8589,9 @@ class TrafficPortSelector {
 
   TrafficPortSelector.fromJson(core.Map json_)
       : this(
-          ports: json_.containsKey('ports')
-              ? (json_['ports'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          ports: (json_['ports'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

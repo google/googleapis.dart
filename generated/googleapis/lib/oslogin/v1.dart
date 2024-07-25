@@ -451,22 +451,19 @@ class LoginProfile {
   LoginProfile.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
-          posixAccounts: json_.containsKey('posixAccounts')
-              ? (json_['posixAccounts'] as core.List)
-                  .map((value) => PosixAccount.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          sshPublicKeys: json_.containsKey('sshPublicKeys')
-              ? (json_['sshPublicKeys'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    SshPublicKey.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          posixAccounts: (json_['posixAccounts'] as core.List?)
+              ?.map((value) => PosixAccount.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          sshPublicKeys:
+              (json_['sshPublicKeys'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              SshPublicKey.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

@@ -3491,11 +3491,9 @@ class Binding {
               ? Expr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -3666,11 +3664,9 @@ class GoogleCloudDatacatalogV1BigQueryRoutineSpec {
 
   GoogleCloudDatacatalogV1BigQueryRoutineSpec.fromJson(core.Map json_)
       : this(
-          importedLibraries: json_.containsKey('importedLibraries')
-              ? (json_['importedLibraries'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          importedLibraries: (json_['importedLibraries'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3773,15 +3769,12 @@ class GoogleCloudDatacatalogV1CloudBigtableInstanceSpec {
 
   GoogleCloudDatacatalogV1CloudBigtableInstanceSpec.fromJson(core.Map json_)
       : this(
-          cloudBigtableClusterSpecs: json_
-                  .containsKey('cloudBigtableClusterSpecs')
-              ? (json_['cloudBigtableClusterSpecs'] as core.List)
-                  .map((value) =>
-                      GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          cloudBigtableClusterSpecs: (json_['cloudBigtableClusterSpecs']
+                  as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4003,12 +3996,10 @@ class GoogleCloudDatacatalogV1ColumnSchema {
                   json_['rangeElementType']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          subcolumns: json_.containsKey('subcolumns')
-              ? (json_['subcolumns'] as core.List)
-                  .map((value) => GoogleCloudDatacatalogV1ColumnSchema.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          subcolumns: (json_['subcolumns'] as core.List?)
+              ?.map((value) => GoogleCloudDatacatalogV1ColumnSchema.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           type: json_['type'] as core.String?,
         );
 
@@ -4109,13 +4100,10 @@ class GoogleCloudDatacatalogV1Contacts {
 
   GoogleCloudDatacatalogV1Contacts.fromJson(core.Map json_)
       : this(
-          people: json_.containsKey('people')
-              ? (json_['people'] as core.List)
-                  .map((value) =>
-                      GoogleCloudDatacatalogV1ContactsPerson.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          people: (json_['people'] as core.List?)
+              ?.map((value) => GoogleCloudDatacatalogV1ContactsPerson.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4483,13 +4471,11 @@ class GoogleCloudDatacatalogV1DataplexTableSpec {
               ? GoogleCloudDatacatalogV1DataplexSpec.fromJson(
                   json_['dataplexSpec'] as core.Map<core.String, core.dynamic>)
               : null,
-          externalTables: json_.containsKey('externalTables')
-              ? (json_['externalTables'] as core.List)
-                  .map((value) =>
-                      GoogleCloudDatacatalogV1DataplexExternalTable.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          externalTables: (json_['externalTables'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDatacatalogV1DataplexExternalTable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           userManaged: json_['userManaged'] as core.bool?,
         );
 
@@ -4852,14 +4838,13 @@ class GoogleCloudDatacatalogV1Entry {
                       as core.Map<core.String, core.dynamic>)
               : null,
           integratedSystem: json_['integratedSystem'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           linkedResource: json_['linkedResource'] as core.String?,
           lookerSystemSpec: json_.containsKey('lookerSystemSpec')
               ? GoogleCloudDatacatalogV1LookerSystemSpec.fromJson(
@@ -5043,13 +5028,11 @@ class GoogleCloudDatacatalogV1ExportTaxonomiesResponse {
 
   GoogleCloudDatacatalogV1ExportTaxonomiesResponse.fromJson(core.Map json_)
       : this(
-          taxonomies: json_.containsKey('taxonomies')
-              ? (json_['taxonomies'] as core.List)
-                  .map((value) =>
-                      GoogleCloudDatacatalogV1SerializedTaxonomy.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          taxonomies: (json_['taxonomies'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDatacatalogV1SerializedTaxonomy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5134,14 +5117,11 @@ class GoogleCloudDatacatalogV1FieldTypeEnumType {
 
   GoogleCloudDatacatalogV1FieldTypeEnumType.fromJson(core.Map json_)
       : this(
-          allowedValues: json_.containsKey('allowedValues')
-              ? (json_['allowedValues'] as core.List)
-                  .map((value) =>
-                      GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          allowedValues: (json_['allowedValues'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5279,17 +5259,13 @@ class GoogleCloudDatacatalogV1GcsFilesetSpec {
 
   GoogleCloudDatacatalogV1GcsFilesetSpec.fromJson(core.Map json_)
       : this(
-          filePatterns: json_.containsKey('filePatterns')
-              ? (json_['filePatterns'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          sampleGcsFileSpecs: json_.containsKey('sampleGcsFileSpecs')
-              ? (json_['sampleGcsFileSpecs'] as core.List)
-                  .map((value) => GoogleCloudDatacatalogV1GcsFileSpec.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          filePatterns: (json_['filePatterns'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          sampleGcsFileSpecs: (json_['sampleGcsFileSpecs'] as core.List?)
+              ?.map((value) => GoogleCloudDatacatalogV1GcsFileSpec.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5371,12 +5347,10 @@ class GoogleCloudDatacatalogV1ImportTaxonomiesResponse {
 
   GoogleCloudDatacatalogV1ImportTaxonomiesResponse.fromJson(core.Map json_)
       : this(
-          taxonomies: json_.containsKey('taxonomies')
-              ? (json_['taxonomies'] as core.List)
-                  .map((value) => GoogleCloudDatacatalogV1Taxonomy.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          taxonomies: (json_['taxonomies'] as core.List?)
+              ?.map((value) => GoogleCloudDatacatalogV1Taxonomy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5397,13 +5371,11 @@ class GoogleCloudDatacatalogV1InlineSource {
 
   GoogleCloudDatacatalogV1InlineSource.fromJson(core.Map json_)
       : this(
-          taxonomies: json_.containsKey('taxonomies')
-              ? (json_['taxonomies'] as core.List)
-                  .map((value) =>
-                      GoogleCloudDatacatalogV1SerializedTaxonomy.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          taxonomies: (json_['taxonomies'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDatacatalogV1SerializedTaxonomy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5428,12 +5400,10 @@ class GoogleCloudDatacatalogV1ListEntriesResponse {
 
   GoogleCloudDatacatalogV1ListEntriesResponse.fromJson(core.Map json_)
       : this(
-          entries: json_.containsKey('entries')
-              ? (json_['entries'] as core.List)
-                  .map((value) => GoogleCloudDatacatalogV1Entry.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          entries: (json_['entries'] as core.List?)
+              ?.map((value) => GoogleCloudDatacatalogV1Entry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -5461,12 +5431,10 @@ class GoogleCloudDatacatalogV1ListEntryGroupsResponse {
 
   GoogleCloudDatacatalogV1ListEntryGroupsResponse.fromJson(core.Map json_)
       : this(
-          entryGroups: json_.containsKey('entryGroups')
-              ? (json_['entryGroups'] as core.List)
-                  .map((value) => GoogleCloudDatacatalogV1EntryGroup.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          entryGroups: (json_['entryGroups'] as core.List?)
+              ?.map((value) => GoogleCloudDatacatalogV1EntryGroup.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -5494,12 +5462,10 @@ class GoogleCloudDatacatalogV1ListPolicyTagsResponse {
   GoogleCloudDatacatalogV1ListPolicyTagsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          policyTags: json_.containsKey('policyTags')
-              ? (json_['policyTags'] as core.List)
-                  .map((value) => GoogleCloudDatacatalogV1PolicyTag.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          policyTags: (json_['policyTags'] as core.List?)
+              ?.map((value) => GoogleCloudDatacatalogV1PolicyTag.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5526,12 +5492,10 @@ class GoogleCloudDatacatalogV1ListTagsResponse {
   GoogleCloudDatacatalogV1ListTagsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          tags: json_.containsKey('tags')
-              ? (json_['tags'] as core.List)
-                  .map((value) => GoogleCloudDatacatalogV1Tag.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tags: (json_['tags'] as core.List?)
+              ?.map((value) => GoogleCloudDatacatalogV1Tag.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5558,12 +5522,10 @@ class GoogleCloudDatacatalogV1ListTaxonomiesResponse {
   GoogleCloudDatacatalogV1ListTaxonomiesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          taxonomies: json_.containsKey('taxonomies')
-              ? (json_['taxonomies'] as core.List)
-                  .map((value) => GoogleCloudDatacatalogV1Taxonomy.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          taxonomies: (json_['taxonomies'] as core.List?)
+              ?.map((value) => GoogleCloudDatacatalogV1Taxonomy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5923,11 +5885,9 @@ class GoogleCloudDatacatalogV1PolicyTag {
 
   GoogleCloudDatacatalogV1PolicyTag.fromJson(core.Map json_)
       : this(
-          childPolicyTags: json_.containsKey('childPolicyTags')
-              ? (json_['childPolicyTags'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          childPolicyTags: (json_['childPolicyTags'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           name: json_['name'] as core.String?,
@@ -5973,12 +5933,10 @@ class GoogleCloudDatacatalogV1ReconcileTagsRequest {
       : this(
           forceDeleteMissing: json_['forceDeleteMissing'] as core.bool?,
           tagTemplate: json_['tagTemplate'] as core.String?,
-          tags: json_.containsKey('tags')
-              ? (json_['tags'] as core.List)
-                  .map((value) => GoogleCloudDatacatalogV1Tag.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tags: (json_['tags'] as core.List?)
+              ?.map((value) => GoogleCloudDatacatalogV1Tag.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6115,13 +6073,11 @@ class GoogleCloudDatacatalogV1RoutineSpec {
           definitionBody: json_['definitionBody'] as core.String?,
           language: json_['language'] as core.String?,
           returnType: json_['returnType'] as core.String?,
-          routineArguments: json_.containsKey('routineArguments')
-              ? (json_['routineArguments'] as core.List)
-                  .map((value) =>
-                      GoogleCloudDatacatalogV1RoutineSpecArgument.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          routineArguments: (json_['routineArguments'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDatacatalogV1RoutineSpecArgument.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           routineType: json_['routineType'] as core.String?,
         );
 
@@ -6190,12 +6146,10 @@ class GoogleCloudDatacatalogV1Schema {
 
   GoogleCloudDatacatalogV1Schema.fromJson(core.Map json_)
       : this(
-          columns: json_.containsKey('columns')
-              ? (json_['columns'] as core.List)
-                  .map((value) => GoogleCloudDatacatalogV1ColumnSchema.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          columns: (json_['columns'] as core.List?)
+              ?.map((value) => GoogleCloudDatacatalogV1ColumnSchema.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6360,23 +6314,17 @@ class GoogleCloudDatacatalogV1SearchCatalogRequestScope {
       : this(
           includeGcpPublicDatasets:
               json_['includeGcpPublicDatasets'] as core.bool?,
-          includeOrgIds: json_.containsKey('includeOrgIds')
-              ? (json_['includeOrgIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          includeProjectIds: json_.containsKey('includeProjectIds')
-              ? (json_['includeProjectIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          includeOrgIds: (json_['includeOrgIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          includeProjectIds: (json_['includeProjectIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           includePublicTagTemplates:
               json_['includePublicTagTemplates'] as core.bool?,
-          restrictedLocations: json_.containsKey('restrictedLocations')
-              ? (json_['restrictedLocations'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          restrictedLocations: (json_['restrictedLocations'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           starredOnly: json_['starredOnly'] as core.bool?,
         );
 
@@ -6423,19 +6371,15 @@ class GoogleCloudDatacatalogV1SearchCatalogResponse {
   GoogleCloudDatacatalogV1SearchCatalogResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          results: json_.containsKey('results')
-              ? (json_['results'] as core.List)
-                  .map((value) =>
-                      GoogleCloudDatacatalogV1SearchCatalogResult.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          results: (json_['results'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDatacatalogV1SearchCatalogResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           totalSize: json_['totalSize'] as core.int?,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6600,13 +6544,11 @@ class GoogleCloudDatacatalogV1SerializedPolicyTag {
 
   GoogleCloudDatacatalogV1SerializedPolicyTag.fromJson(core.Map json_)
       : this(
-          childPolicyTags: json_.containsKey('childPolicyTags')
-              ? (json_['childPolicyTags'] as core.List)
-                  .map((value) =>
-                      GoogleCloudDatacatalogV1SerializedPolicyTag.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          childPolicyTags: (json_['childPolicyTags'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDatacatalogV1SerializedPolicyTag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           policyTag: json_['policyTag'] as core.String?,
@@ -6653,20 +6595,16 @@ class GoogleCloudDatacatalogV1SerializedTaxonomy {
 
   GoogleCloudDatacatalogV1SerializedTaxonomy.fromJson(core.Map json_)
       : this(
-          activatedPolicyTypes: json_.containsKey('activatedPolicyTypes')
-              ? (json_['activatedPolicyTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          activatedPolicyTypes: (json_['activatedPolicyTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
-          policyTags: json_.containsKey('policyTags')
-              ? (json_['policyTags'] as core.List)
-                  .map((value) =>
-                      GoogleCloudDatacatalogV1SerializedPolicyTag.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          policyTags: (json_['policyTags'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDatacatalogV1SerializedPolicyTag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6779,11 +6717,9 @@ class GoogleCloudDatacatalogV1StorageProperties {
 
   GoogleCloudDatacatalogV1StorageProperties.fromJson(core.Map json_)
       : this(
-          filePattern: json_.containsKey('filePattern')
-              ? (json_['filePattern'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          filePattern: (json_['filePattern'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           fileType: json_['fileType'] as core.String?,
         );
 
@@ -6914,15 +6850,14 @@ class GoogleCloudDatacatalogV1Tag {
   GoogleCloudDatacatalogV1Tag.fromJson(core.Map json_)
       : this(
           column: json_['column'] as core.String?,
-          fields: json_.containsKey('fields')
-              ? (json_['fields'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    GoogleCloudDatacatalogV1TagField.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          fields:
+              (json_['fields'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudDatacatalogV1TagField.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           name: json_['name'] as core.String?,
           template: json_['template'] as core.String?,
           templateDisplayName: json_['templateDisplayName'] as core.String?,
@@ -7104,15 +7039,14 @@ class GoogleCloudDatacatalogV1TagTemplate {
           dataplexTransferStatus:
               json_['dataplexTransferStatus'] as core.String?,
           displayName: json_['displayName'] as core.String?,
-          fields: json_.containsKey('fields')
-              ? (json_['fields'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    GoogleCloudDatacatalogV1TagTemplateField.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          fields:
+              (json_['fields'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudDatacatalogV1TagTemplateField.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           isPubliclyReadable: json_['isPubliclyReadable'] as core.bool?,
           name: json_['name'] as core.String?,
         );
@@ -7271,11 +7205,9 @@ class GoogleCloudDatacatalogV1Taxonomy {
 
   GoogleCloudDatacatalogV1Taxonomy.fromJson(core.Map json_)
       : this(
-          activatedPolicyTypes: json_.containsKey('activatedPolicyTypes')
-              ? (json_['activatedPolicyTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          activatedPolicyTypes: (json_['activatedPolicyTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           name: json_['name'] as core.String?,
@@ -7375,31 +7307,26 @@ class GoogleCloudDatacatalogV1UsageSignal {
 
   GoogleCloudDatacatalogV1UsageSignal.fromJson(core.Map json_)
       : this(
-          commonUsageWithinTimeRange:
-              json_.containsKey('commonUsageWithinTimeRange')
-                  ? (json_['commonUsageWithinTimeRange']
-                          as core.Map<core.String, core.dynamic>)
-                      .map(
-                      (key, value) => core.MapEntry(
-                        key,
-                        GoogleCloudDatacatalogV1CommonUsageStats.fromJson(
-                            value as core.Map<core.String, core.dynamic>),
-                      ),
-                    )
-                  : null,
+          commonUsageWithinTimeRange: (json_['commonUsageWithinTimeRange']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudDatacatalogV1CommonUsageStats.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           favoriteCount: json_['favoriteCount'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
-          usageWithinTimeRange: json_.containsKey('usageWithinTimeRange')
-              ? (json_['usageWithinTimeRange']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    GoogleCloudDatacatalogV1UsageStats.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          usageWithinTimeRange: (json_['usageWithinTimeRange']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudDatacatalogV1UsageStats.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7545,11 +7472,9 @@ class GoogleCloudDatacatalogV1VertexModelSpec {
   GoogleCloudDatacatalogV1VertexModelSpec.fromJson(core.Map json_)
       : this(
           containerImageUri: json_['containerImageUri'] as core.String?,
-          versionAliases: json_.containsKey('versionAliases')
-              ? (json_['versionAliases'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          versionAliases: (json_['versionAliases'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           versionDescription: json_['versionDescription'] as core.String?,
           versionId: json_['versionId'] as core.String?,
           vertexModelSourceInfo: json_.containsKey('vertexModelSourceInfo')
@@ -7607,12 +7532,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7788,12 +7711,10 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
       : this(
-          bindings: json_.containsKey('bindings')
-              ? (json_['bindings'] as core.List)
-                  .map((value) => Binding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
         );

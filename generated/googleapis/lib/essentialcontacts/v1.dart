@@ -1116,13 +1116,10 @@ class GoogleCloudEssentialcontactsV1ComputeContactsResponse {
 
   GoogleCloudEssentialcontactsV1ComputeContactsResponse.fromJson(core.Map json_)
       : this(
-          contacts: json_.containsKey('contacts')
-              ? (json_['contacts'] as core.List)
-                  .map((value) =>
-                      GoogleCloudEssentialcontactsV1Contact.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          contacts: (json_['contacts'] as core.List?)
+              ?.map((value) => GoogleCloudEssentialcontactsV1Contact.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1198,11 +1195,9 @@ class GoogleCloudEssentialcontactsV1Contact {
           languageTag: json_['languageTag'] as core.String?,
           name: json_['name'] as core.String?,
           notificationCategorySubscriptions:
-              json_.containsKey('notificationCategorySubscriptions')
-                  ? (json_['notificationCategorySubscriptions'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
+              (json_['notificationCategorySubscriptions'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           validateTime: json_['validateTime'] as core.String?,
           validationState: json_['validationState'] as core.String?,
         );
@@ -1239,13 +1234,10 @@ class GoogleCloudEssentialcontactsV1ListContactsResponse {
 
   GoogleCloudEssentialcontactsV1ListContactsResponse.fromJson(core.Map json_)
       : this(
-          contacts: json_.containsKey('contacts')
-              ? (json_['contacts'] as core.List)
-                  .map((value) =>
-                      GoogleCloudEssentialcontactsV1Contact.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          contacts: (json_['contacts'] as core.List?)
+              ?.map((value) => GoogleCloudEssentialcontactsV1Contact.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1299,11 +1291,9 @@ class GoogleCloudEssentialcontactsV1SendTestMessageRequest {
 
   GoogleCloudEssentialcontactsV1SendTestMessageRequest.fromJson(core.Map json_)
       : this(
-          contacts: json_.containsKey('contacts')
-              ? (json_['contacts'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          contacts: (json_['contacts'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           notificationCategory: json_['notificationCategory'] as core.String?,
         );
 

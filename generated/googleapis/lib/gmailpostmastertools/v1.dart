@@ -461,11 +461,9 @@ class IpReputation {
       : this(
           ipCount: json_['ipCount'] as core.String?,
           reputation: json_['reputation'] as core.String?,
-          sampleIps: json_.containsKey('sampleIps')
-              ? (json_['sampleIps'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          sampleIps: (json_['sampleIps'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -491,12 +489,10 @@ class ListDomainsResponse {
 
   ListDomainsResponse.fromJson(core.Map json_)
       : this(
-          domains: json_.containsKey('domains')
-              ? (json_['domains'] as core.List)
-                  .map((value) => Domain.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          domains: (json_['domains'] as core.List?)
+              ?.map((value) =>
+                  Domain.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -523,12 +519,10 @@ class ListTrafficStatsResponse {
   ListTrafficStatsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          trafficStats: json_.containsKey('trafficStats')
-              ? (json_['trafficStats'] as core.List)
-                  .map((value) => TrafficStats.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          trafficStats: (json_['trafficStats'] as core.List?)
+              ?.map((value) => TrafficStats.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -664,12 +658,10 @@ class TrafficStats {
 
   TrafficStats.fromJson(core.Map json_)
       : this(
-          deliveryErrors: json_.containsKey('deliveryErrors')
-              ? (json_['deliveryErrors'] as core.List)
-                  .map((value) => DeliveryError.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          deliveryErrors: (json_['deliveryErrors'] as core.List?)
+              ?.map((value) => DeliveryError.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           dkimSuccessRatio:
               (json_['dkimSuccessRatio'] as core.num?)?.toDouble(),
           dmarcSuccessRatio:
@@ -677,21 +669,17 @@ class TrafficStats {
           domainReputation: json_['domainReputation'] as core.String?,
           inboundEncryptionRatio:
               (json_['inboundEncryptionRatio'] as core.num?)?.toDouble(),
-          ipReputations: json_.containsKey('ipReputations')
-              ? (json_['ipReputations'] as core.List)
-                  .map((value) => IpReputation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          ipReputations: (json_['ipReputations'] as core.List?)
+              ?.map((value) => IpReputation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           name: json_['name'] as core.String?,
           outboundEncryptionRatio:
               (json_['outboundEncryptionRatio'] as core.num?)?.toDouble(),
-          spammyFeedbackLoops: json_.containsKey('spammyFeedbackLoops')
-              ? (json_['spammyFeedbackLoops'] as core.List)
-                  .map((value) => FeedbackLoop.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          spammyFeedbackLoops: (json_['spammyFeedbackLoops'] as core.List?)
+              ?.map((value) => FeedbackLoop.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           spfSuccessRatio: (json_['spfSuccessRatio'] as core.num?)?.toDouble(),
           userReportedSpamRatio:
               (json_['userReportedSpamRatio'] as core.num?)?.toDouble(),

@@ -202,16 +202,15 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
               ? GoogleTypeExpr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          memberships: json_.containsKey('memberships')
-              ? (json_['memberships'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership
-                        .fromJson(value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          memberships:
+              (json_['memberships'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership
+                  .fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           relevance: json_['relevance'] as core.String?,
           role: json_['role'] as core.String?,
           rolePermission: json_['rolePermission'] as core.String?,
@@ -343,14 +342,11 @@ class GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
   GoogleCloudPolicytroubleshooterV1ExplainedPolicy.fromJson(core.Map json_)
       : this(
           access: json_['access'] as core.String?,
-          bindingExplanations: json_.containsKey('bindingExplanations')
-              ? (json_['bindingExplanations'] as core.List)
-                  .map((value) =>
-                      GoogleCloudPolicytroubleshooterV1BindingExplanation
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          bindingExplanations: (json_['bindingExplanations'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudPolicytroubleshooterV1BindingExplanation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           fullResourceName: json_['fullResourceName'] as core.String?,
           policy: json_.containsKey('policy')
               ? GoogleIamV1Policy.fromJson(
@@ -433,19 +429,15 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
       core.Map json_)
       : this(
           access: json_['access'] as core.String?,
-          errors: json_.containsKey('errors')
-              ? (json_['errors'] as core.List)
-                  .map((value) => GoogleRpcStatus.fromJson(
+          errors: (json_['errors'] as core.List?)
+              ?.map((value) => GoogleRpcStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          explainedPolicies: (json_['explainedPolicies'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudPolicytroubleshooterV1ExplainedPolicy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          explainedPolicies: json_.containsKey('explainedPolicies')
-              ? (json_['explainedPolicies'] as core.List)
-                  .map((value) =>
-                      GoogleCloudPolicytroubleshooterV1ExplainedPolicy.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -489,12 +481,10 @@ class GoogleIamV1AuditConfig {
 
   GoogleIamV1AuditConfig.fromJson(core.Map json_)
       : this(
-          auditLogConfigs: json_.containsKey('auditLogConfigs')
-              ? (json_['auditLogConfigs'] as core.List)
-                  .map((value) => GoogleIamV1AuditLogConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+              ?.map((value) => GoogleIamV1AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           service: json_['service'] as core.String?,
         );
 
@@ -604,11 +594,9 @@ class GoogleIamV1Binding {
               ? GoogleTypeExpr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -714,18 +702,14 @@ class GoogleIamV1Policy {
 
   GoogleIamV1Policy.fromJson(core.Map json_)
       : this(
-          auditConfigs: json_.containsKey('auditConfigs')
-              ? (json_['auditConfigs'] as core.List)
-                  .map((value) => GoogleIamV1AuditConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          bindings: json_.containsKey('bindings')
-              ? (json_['bindings'] as core.List)
-                  .map((value) => GoogleIamV1Binding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditConfigs: (json_['auditConfigs'] as core.List?)
+              ?.map((value) => GoogleIamV1AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => GoogleIamV1Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
         );

@@ -642,11 +642,9 @@ class Environment {
           dockerImage: json_['dockerImage'] as core.String?,
           id: json_['id'] as core.String?,
           name: json_['name'] as core.String?,
-          publicKeys: json_.containsKey('publicKeys')
-              ? (json_['publicKeys'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          publicKeys: (json_['publicKeys'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           sshHost: json_['sshHost'] as core.String?,
           sshPort: json_['sshPort'] as core.int?,
           sshUsername: json_['sshUsername'] as core.String?,
@@ -683,12 +681,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -813,11 +809,9 @@ class StartEnvironmentRequest {
   StartEnvironmentRequest.fromJson(core.Map json_)
       : this(
           accessToken: json_['accessToken'] as core.String?,
-          publicKeys: json_.containsKey('publicKeys')
-              ? (json_['publicKeys'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          publicKeys: (json_['publicKeys'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

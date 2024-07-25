@@ -244,11 +244,9 @@ class FractionTimeseries {
 
   FractionTimeseries.fromJson(core.Map json_)
       : this(
-          fractions: json_.containsKey('fractions')
-              ? (json_['fractions'] as core.List)
-                  .map((value) => (value as core.num).toDouble())
-                  .toList()
-              : null,
+          fractions: (json_['fractions'] as core.List?)
+              ?.map((value) => (value as core.num).toDouble())
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -339,25 +337,22 @@ class HistoryRecord {
 
   HistoryRecord.fromJson(core.Map json_)
       : this(
-          collectionPeriods: json_.containsKey('collectionPeriods')
-              ? (json_['collectionPeriods'] as core.List)
-                  .map((value) => CollectionPeriod.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          collectionPeriods: (json_['collectionPeriods'] as core.List?)
+              ?.map((value) => CollectionPeriod.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           key: json_.containsKey('key')
               ? HistoryKey.fromJson(
                   json_['key'] as core.Map<core.String, core.dynamic>)
               : null,
-          metrics: json_.containsKey('metrics')
-              ? (json_['metrics'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    MetricTimeseries.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          metrics:
+              (json_['metrics'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              MetricTimeseries.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -457,20 +452,17 @@ class Metric {
 
   Metric.fromJson(core.Map json_)
       : this(
-          fractions: json_.containsKey('fractions')
-              ? (json_['fractions'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    (value as core.num).toDouble(),
-                  ),
-                )
-              : null,
-          histogram: json_.containsKey('histogram')
-              ? (json_['histogram'] as core.List)
-                  .map((value) => Bin.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          fractions:
+              (json_['fractions'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              (value as core.num).toDouble(),
+            ),
+          ),
+          histogram: (json_['histogram'] as core.List?)
+              ?.map((value) =>
+                  Bin.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           percentiles: json_.containsKey('percentiles')
               ? Percentiles.fromJson(
                   json_['percentiles'] as core.Map<core.String, core.dynamic>)
@@ -513,23 +505,19 @@ class MetricTimeseries {
 
   MetricTimeseries.fromJson(core.Map json_)
       : this(
-          fractionTimeseries: json_.containsKey('fractionTimeseries')
-              ? (json_['fractionTimeseries']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    FractionTimeseries.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          histogramTimeseries: json_.containsKey('histogramTimeseries')
-              ? (json_['histogramTimeseries'] as core.List)
-                  .map((value) => TimeseriesBin.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          fractionTimeseries: (json_['fractionTimeseries']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              FractionTimeseries.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          histogramTimeseries: (json_['histogramTimeseries'] as core.List?)
+              ?.map((value) => TimeseriesBin.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           percentilesTimeseries: json_.containsKey('percentilesTimeseries')
               ? TimeseriesPercentiles.fromJson(json_['percentilesTimeseries']
                   as core.Map<core.String, core.dynamic>)
@@ -621,11 +609,9 @@ class QueryHistoryRequest {
   QueryHistoryRequest.fromJson(core.Map json_)
       : this(
           formFactor: json_['formFactor'] as core.String?,
-          metrics: json_.containsKey('metrics')
-              ? (json_['metrics'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          metrics: (json_['metrics'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           origin: json_['origin'] as core.String?,
           url: json_['url'] as core.String?,
         );
@@ -737,11 +723,9 @@ class QueryRequest {
           effectiveConnectionType:
               json_['effectiveConnectionType'] as core.String?,
           formFactor: json_['formFactor'] as core.String?,
-          metrics: json_.containsKey('metrics')
-              ? (json_['metrics'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          metrics: (json_['metrics'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           origin: json_['origin'] as core.String?,
           url: json_['url'] as core.String?,
         );
@@ -833,15 +817,13 @@ class Record {
               ? Key.fromJson(
                   json_['key'] as core.Map<core.String, core.dynamic>)
               : null,
-          metrics: json_.containsKey('metrics')
-              ? (json_['metrics'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    Metric.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          metrics:
+              (json_['metrics'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              Metric.fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -894,11 +876,9 @@ class TimeseriesBin {
 
   TimeseriesBin.fromJson(core.Map json_)
       : this(
-          densities: json_.containsKey('densities')
-              ? (json_['densities'] as core.List)
-                  .map((value) => (value as core.num).toDouble())
-                  .toList()
-              : null,
+          densities: (json_['densities'] as core.List?)
+              ?.map((value) => (value as core.num).toDouble())
+              .toList(),
           end: json_['end'],
           start: json_['start'],
         );

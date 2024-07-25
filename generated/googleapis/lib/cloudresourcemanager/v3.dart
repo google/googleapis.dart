@@ -2970,12 +2970,10 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
       : this(
-          auditLogConfigs: json_.containsKey('auditLogConfigs')
-              ? (json_['auditLogConfigs'] as core.List)
-                  .map((value) => AuditLogConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+              ?.map((value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           service: json_['service'] as core.String?,
         );
 
@@ -3085,11 +3083,9 @@ class Binding {
               ? Expr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -3297,14 +3293,12 @@ class Folder {
           name: json_['name'] as core.String?,
           parent: json_['parent'] as core.String?,
           state: json_['state'] as core.String?,
-          tags: json_.containsKey('tags')
-              ? (json_['tags'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           updateTime: json_['updateTime'] as core.String?,
         );
 
@@ -3373,12 +3367,10 @@ class ListEffectiveTagsResponse {
 
   ListEffectiveTagsResponse.fromJson(core.Map json_)
       : this(
-          effectiveTags: json_.containsKey('effectiveTags')
-              ? (json_['effectiveTags'] as core.List)
-                  .map((value) => EffectiveTag.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          effectiveTags: (json_['effectiveTags'] as core.List?)
+              ?.map((value) => EffectiveTag.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -3405,12 +3397,10 @@ class ListFoldersResponse {
 
   ListFoldersResponse.fromJson(core.Map json_)
       : this(
-          folders: json_.containsKey('folders')
-              ? (json_['folders'] as core.List)
-                  .map((value) => Folder.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          folders: (json_['folders'] as core.List?)
+              ?.map((value) =>
+                  Folder.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -3436,12 +3426,10 @@ class ListLiensResponse {
 
   ListLiensResponse.fromJson(core.Map json_)
       : this(
-          liens: json_.containsKey('liens')
-              ? (json_['liens'] as core.List)
-                  .map((value) => Lien.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          liens: (json_['liens'] as core.List?)
+              ?.map((value) =>
+                  Lien.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -3481,12 +3469,10 @@ class ListProjectsResponse {
   ListProjectsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          projects: json_.containsKey('projects')
-              ? (json_['projects'] as core.List)
-                  .map((value) => Project.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          projects: (json_['projects'] as core.List?)
+              ?.map((value) => Project.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3518,12 +3504,10 @@ class ListTagBindingsResponse {
   ListTagBindingsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          tagBindings: json_.containsKey('tagBindings')
-              ? (json_['tagBindings'] as core.List)
-                  .map((value) => TagBinding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tagBindings: (json_['tagBindings'] as core.List?)
+              ?.map((value) => TagBinding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3555,12 +3539,10 @@ class ListTagHoldsResponse {
   ListTagHoldsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          tagHolds: json_.containsKey('tagHolds')
-              ? (json_['tagHolds'] as core.List)
-                  .map((value) => TagHold.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tagHolds: (json_['tagHolds'] as core.List?)
+              ?.map((value) => TagHold.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3586,12 +3568,10 @@ class ListTagKeysResponse {
   ListTagKeysResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          tagKeys: json_.containsKey('tagKeys')
-              ? (json_['tagKeys'] as core.List)
-                  .map((value) => TagKey.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tagKeys: (json_['tagKeys'] as core.List?)
+              ?.map((value) =>
+                  TagKey.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3621,12 +3601,10 @@ class ListTagValuesResponse {
   ListTagValuesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          tagValues: json_.containsKey('tagValues')
-              ? (json_['tagValues'] as core.List)
-                  .map((value) => TagValue.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tagValues: (json_['tagValues'] as core.List?)
+              ?.map((value) => TagValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3948,18 +3926,14 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
       : this(
-          auditConfigs: json_.containsKey('auditConfigs')
-              ? (json_['auditConfigs'] as core.List)
-                  .map((value) => AuditConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          bindings: json_.containsKey('bindings')
-              ? (json_['bindings'] as core.List)
-                  .map((value) => Binding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditConfigs: (json_['auditConfigs'] as core.List?)
+              ?.map((value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
         );
@@ -4090,26 +4064,23 @@ class Project {
           deleteTime: json_['deleteTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           etag: json_['etag'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           parent: json_['parent'] as core.String?,
           projectId: json_['projectId'] as core.String?,
           state: json_['state'] as core.String?,
-          tags: json_.containsKey('tags')
-              ? (json_['tags'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           updateTime: json_['updateTime'] as core.String?,
         );
 
@@ -4146,12 +4117,10 @@ class SearchFoldersResponse {
 
   SearchFoldersResponse.fromJson(core.Map json_)
       : this(
-          folders: json_.containsKey('folders')
-              ? (json_['folders'] as core.List)
-                  .map((value) => Folder.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          folders: (json_['folders'] as core.List?)
+              ?.map((value) =>
+                  Folder.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -4183,12 +4152,10 @@ class SearchOrganizationsResponse {
   SearchOrganizationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          organizations: json_.containsKey('organizations')
-              ? (json_['organizations'] as core.List)
-                  .map((value) => Organization.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          organizations: (json_['organizations'] as core.List?)
+              ?.map((value) => Organization.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4226,12 +4193,10 @@ class SearchProjectsResponse {
   SearchProjectsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          projects: json_.containsKey('projects')
-              ? (json_['projects'] as core.List)
-                  .map((value) => Project.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          projects: (json_['projects'] as core.List?)
+              ?.map((value) => Project.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4527,15 +4492,14 @@ class TagKey {
           namespacedName: json_['namespacedName'] as core.String?,
           parent: json_['parent'] as core.String?,
           purpose: json_['purpose'] as core.String?,
-          purposeData: json_.containsKey('purposeData')
-              ? (json_['purposeData'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          purposeData:
+              (json_['purposeData'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           shortName: json_['shortName'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );

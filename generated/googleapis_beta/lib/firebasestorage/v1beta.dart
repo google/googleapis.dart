@@ -293,12 +293,10 @@ class ListBucketsResponse {
 
   ListBucketsResponse.fromJson(core.Map json_)
       : this(
-          buckets: json_.containsKey('buckets')
-              ? (json_['buckets'] as core.List)
-                  .map((value) => Bucket.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          buckets: (json_['buckets'] as core.List?)
+              ?.map((value) =>
+                  Bucket.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 

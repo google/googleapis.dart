@@ -2038,17 +2038,13 @@ class DataSource {
           minimumScheduleInterval:
               json_['minimumScheduleInterval'] as core.String?,
           name: json_['name'] as core.String?,
-          parameters: json_.containsKey('parameters')
-              ? (json_['parameters'] as core.List)
-                  .map((value) => DataSourceParameter.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          scopes: json_.containsKey('scopes')
-              ? (json_['scopes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          parameters: (json_['parameters'] as core.List?)
+              ?.map((value) => DataSourceParameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          scopes: (json_['scopes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           supportsCustomSchedule: json_['supportsCustomSchedule'] as core.bool?,
           supportsMultipleTransfers:
               json_['supportsMultipleTransfers'] as core.bool?,
@@ -2173,20 +2169,16 @@ class DataSourceParameter {
 
   DataSourceParameter.fromJson(core.Map json_)
       : this(
-          allowedValues: json_.containsKey('allowedValues')
-              ? (json_['allowedValues'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          allowedValues: (json_['allowedValues'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           deprecated: json_['deprecated'] as core.bool?,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
-          fields: json_.containsKey('fields')
-              ? (json_['fields'] as core.List)
-                  .map((value) => DataSourceParameter.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          fields: (json_['fields'] as core.List?)
+              ?.map((value) => DataSourceParameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           immutable: json_['immutable'] as core.bool?,
           maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
           minValue: (json_['minValue'] as core.num?)?.toDouble(),
@@ -2283,11 +2275,9 @@ class EnrollDataSourcesRequest {
 
   EnrollDataSourcesRequest.fromJson(core.Map json_)
       : this(
-          dataSourceIds: json_.containsKey('dataSourceIds')
-              ? (json_['dataSourceIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          dataSourceIds: (json_['dataSourceIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2316,12 +2306,10 @@ class ListDataSourcesResponse {
 
   ListDataSourcesResponse.fromJson(core.Map json_)
       : this(
-          dataSources: json_.containsKey('dataSources')
-              ? (json_['dataSources'] as core.List)
-                  .map((value) => DataSource.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          dataSources: (json_['dataSources'] as core.List?)
+              ?.map((value) => DataSource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -2346,12 +2334,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -2385,12 +2371,10 @@ class ListTransferConfigsResponse {
   ListTransferConfigsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          transferConfigs: json_.containsKey('transferConfigs')
-              ? (json_['transferConfigs'] as core.List)
-                  .map((value) => TransferConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          transferConfigs: (json_['transferConfigs'] as core.List?)
+              ?.map((value) => TransferConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2423,12 +2407,10 @@ class ListTransferLogsResponse {
   ListTransferLogsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          transferMessages: json_.containsKey('transferMessages')
-              ? (json_['transferMessages'] as core.List)
-                  .map((value) => TransferMessage.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          transferMessages: (json_['transferMessages'] as core.List?)
+              ?.map((value) => TransferMessage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2461,12 +2443,10 @@ class ListTransferRunsResponse {
   ListTransferRunsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          transferRuns: json_.containsKey('transferRuns')
-              ? (json_['transferRuns'] as core.List)
-                  .map((value) => TransferRun.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          transferRuns: (json_['transferRuns'] as core.List?)
+              ?.map((value) => TransferRun.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2568,12 +2548,10 @@ class ScheduleTransferRunsResponse {
 
   ScheduleTransferRunsResponse.fromJson(core.Map json_)
       : this(
-          runs: json_.containsKey('runs')
-              ? (json_['runs'] as core.List)
-                  .map((value) => TransferRun.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          runs: (json_['runs'] as core.List?)
+              ?.map((value) => TransferRun.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2629,12 +2607,10 @@ class StartManualTransferRunsResponse {
 
   StartManualTransferRunsResponse.fromJson(core.Map json_)
       : this(
-          runs: json_.containsKey('runs')
-              ? (json_['runs'] as core.List)
-                  .map((value) => TransferRun.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          runs: (json_['runs'] as core.List?)
+              ?.map((value) => TransferRun.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3125,11 +3101,9 @@ class UnenrollDataSourcesRequest {
 
   UnenrollDataSourcesRequest.fromJson(core.Map json_)
       : this(
-          dataSourceIds: json_.containsKey('dataSourceIds')
-              ? (json_['dataSourceIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          dataSourceIds: (json_['dataSourceIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

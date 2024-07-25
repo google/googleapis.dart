@@ -2665,11 +2665,9 @@ class AdaptiveMtTranslateRequest {
 
   AdaptiveMtTranslateRequest.fromJson(core.Map json_)
       : this(
-          content: json_.containsKey('content')
-              ? (json_['content'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          content: (json_['content'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           dataset: json_['dataset'] as core.String?,
         );
 
@@ -2699,12 +2697,10 @@ class AdaptiveMtTranslateResponse {
   AdaptiveMtTranslateResponse.fromJson(core.Map json_)
       : this(
           languageCode: json_['languageCode'] as core.String?,
-          translations: json_.containsKey('translations')
-              ? (json_['translations'] as core.List)
-                  .map((value) => AdaptiveMtTranslation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          translations: (json_['translations'] as core.List?)
+              ?.map((value) => AdaptiveMtTranslation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2938,50 +2934,42 @@ class BatchTranslateDocumentRequest {
               json_['enableRotationCorrection'] as core.bool?,
           enableShadowRemovalNativePdf:
               json_['enableShadowRemovalNativePdf'] as core.bool?,
-          formatConversions: json_.containsKey('formatConversions')
-              ? (json_['formatConversions']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
-          glossaries: json_.containsKey('glossaries')
-              ? (json_['glossaries'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    TranslateTextGlossaryConfig.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          inputConfigs: json_.containsKey('inputConfigs')
-              ? (json_['inputConfigs'] as core.List)
-                  .map((value) => BatchDocumentInputConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          models: json_.containsKey('models')
-              ? (json_['models'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          formatConversions: (json_['formatConversions']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          glossaries:
+              (json_['glossaries'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              TranslateTextGlossaryConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          inputConfigs: (json_['inputConfigs'] as core.List?)
+              ?.map((value) => BatchDocumentInputConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          models:
+              (json_['models'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           outputConfig: json_.containsKey('outputConfig')
               ? BatchDocumentOutputConfig.fromJson(
                   json_['outputConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
-          targetLanguageCodes: json_.containsKey('targetLanguageCodes')
-              ? (json_['targetLanguageCodes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          targetLanguageCodes: (json_['targetLanguageCodes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3077,48 +3065,41 @@ class BatchTranslateTextRequest {
 
   BatchTranslateTextRequest.fromJson(core.Map json_)
       : this(
-          glossaries: json_.containsKey('glossaries')
-              ? (json_['glossaries'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    TranslateTextGlossaryConfig.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-          inputConfigs: json_.containsKey('inputConfigs')
-              ? (json_['inputConfigs'] as core.List)
-                  .map((value) => InputConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
-          models: json_.containsKey('models')
-              ? (json_['models'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          glossaries:
+              (json_['glossaries'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              TranslateTextGlossaryConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          inputConfigs: (json_['inputConfigs'] as core.List?)
+              ?.map((value) => InputConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          models:
+              (json_['models'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           outputConfig: json_.containsKey('outputConfig')
               ? OutputConfig.fromJson(
                   json_['outputConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
-          targetLanguageCodes: json_.containsKey('targetLanguageCodes')
-              ? (json_['targetLanguageCodes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          targetLanguageCodes: (json_['targetLanguageCodes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3241,12 +3222,10 @@ class DatasetInputConfig {
 
   DatasetInputConfig.fromJson(core.Map json_)
       : this(
-          inputFiles: json_.containsKey('inputFiles')
-              ? (json_['inputFiles'] as core.List)
-                  .map((value) => InputFile.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          inputFiles: (json_['inputFiles'] as core.List?)
+              ?.map((value) => InputFile.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3321,14 +3300,13 @@ class DetectLanguageRequest {
   DetectLanguageRequest.fromJson(core.Map json_)
       : this(
           content: json_['content'] as core.String?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           mimeType: json_['mimeType'] as core.String?,
           model: json_['model'] as core.String?,
         );
@@ -3354,12 +3332,10 @@ class DetectLanguageResponse {
 
   DetectLanguageResponse.fromJson(core.Map json_)
       : this(
-          languages: json_.containsKey('languages')
-              ? (json_['languages'] as core.List)
-                  .map((value) => DetectedLanguage.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          languages: (json_['languages'] as core.List?)
+              ?.map((value) => DetectedLanguage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3540,11 +3516,9 @@ class DocumentTranslation {
 
   DocumentTranslation.fromJson(core.Map json_)
       : this(
-          byteStreamOutputs: json_.containsKey('byteStreamOutputs')
-              ? (json_['byteStreamOutputs'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          byteStreamOutputs: (json_['byteStreamOutputs'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           detectedLanguageCode: json_['detectedLanguageCode'] as core.String?,
           mimeType: json_['mimeType'] as core.String?,
         );
@@ -3976,12 +3950,10 @@ class GlossaryTermsSet {
 
   GlossaryTermsSet.fromJson(core.Map json_)
       : this(
-          terms: json_.containsKey('terms')
-              ? (json_['terms'] as core.List)
-                  .map((value) => GlossaryTerm.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          terms: (json_['terms'] as core.List?)
+              ?.map((value) => GlossaryTerm.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4199,11 +4171,9 @@ class LanguageCodesSet {
 
   LanguageCodesSet.fromJson(core.Map json_)
       : this(
-          languageCodes: json_.containsKey('languageCodes')
-              ? (json_['languageCodes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          languageCodes: (json_['languageCodes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4234,12 +4204,10 @@ class ListAdaptiveMtDatasetsResponse {
 
   ListAdaptiveMtDatasetsResponse.fromJson(core.Map json_)
       : this(
-          adaptiveMtDatasets: json_.containsKey('adaptiveMtDatasets')
-              ? (json_['adaptiveMtDatasets'] as core.List)
-                  .map((value) => AdaptiveMtDataset.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          adaptiveMtDatasets: (json_['adaptiveMtDatasets'] as core.List?)
+              ?.map((value) => AdaptiveMtDataset.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -4273,12 +4241,10 @@ class ListAdaptiveMtFilesResponse {
 
   ListAdaptiveMtFilesResponse.fromJson(core.Map json_)
       : this(
-          adaptiveMtFiles: json_.containsKey('adaptiveMtFiles')
-              ? (json_['adaptiveMtFiles'] as core.List)
-                  .map((value) => AdaptiveMtFile.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          adaptiveMtFiles: (json_['adaptiveMtFiles'] as core.List?)
+              ?.map((value) => AdaptiveMtFile.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -4307,12 +4273,10 @@ class ListAdaptiveMtSentencesResponse {
 
   ListAdaptiveMtSentencesResponse.fromJson(core.Map json_)
       : this(
-          adaptiveMtSentences: json_.containsKey('adaptiveMtSentences')
-              ? (json_['adaptiveMtSentences'] as core.List)
-                  .map((value) => AdaptiveMtSentence.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          adaptiveMtSentences: (json_['adaptiveMtSentences'] as core.List?)
+              ?.map((value) => AdaptiveMtSentence.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -4341,12 +4305,10 @@ class ListDatasetsResponse {
 
   ListDatasetsResponse.fromJson(core.Map json_)
       : this(
-          datasets: json_.containsKey('datasets')
-              ? (json_['datasets'] as core.List)
-                  .map((value) => Dataset.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          datasets: (json_['datasets'] as core.List?)
+              ?.map((value) => Dataset.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -4374,12 +4336,10 @@ class ListExamplesResponse {
 
   ListExamplesResponse.fromJson(core.Map json_)
       : this(
-          examples: json_.containsKey('examples')
-              ? (json_['examples'] as core.List)
-                  .map((value) => Example.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          examples: (json_['examples'] as core.List?)
+              ?.map((value) => Example.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -4408,12 +4368,10 @@ class ListGlossariesResponse {
 
   ListGlossariesResponse.fromJson(core.Map json_)
       : this(
-          glossaries: json_.containsKey('glossaries')
-              ? (json_['glossaries'] as core.List)
-                  .map((value) => Glossary.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          glossaries: (json_['glossaries'] as core.List?)
+              ?.map((value) => Glossary.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -4445,12 +4403,10 @@ class ListGlossaryEntriesResponse {
 
   ListGlossaryEntriesResponse.fromJson(core.Map json_)
       : this(
-          glossaryEntries: json_.containsKey('glossaryEntries')
-              ? (json_['glossaryEntries'] as core.List)
-                  .map((value) => GlossaryEntry.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          glossaryEntries: (json_['glossaryEntries'] as core.List?)
+              ?.map((value) => GlossaryEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -4475,12 +4431,10 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: json_.containsKey('locations')
-              ? (json_['locations'] as core.List)
-                  .map((value) => Location.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => Location.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -4508,12 +4462,10 @@ class ListModelsResponse {
 
   ListModelsResponse.fromJson(core.Map json_)
       : this(
-          models: json_.containsKey('models')
-              ? (json_['models'] as core.List)
-                  .map((value) => Model.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          models: (json_['models'] as core.List?)
+              ?.map((value) =>
+                  Model.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -4539,12 +4491,10 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4856,11 +4806,9 @@ class RomanizeTextRequest {
 
   RomanizeTextRequest.fromJson(core.Map json_)
       : this(
-          contents: json_.containsKey('contents')
-              ? (json_['contents'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          contents: (json_['contents'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
         );
 
@@ -4884,12 +4832,10 @@ class RomanizeTextResponse {
 
   RomanizeTextResponse.fromJson(core.Map json_)
       : this(
-          romanizations: json_.containsKey('romanizations')
-              ? (json_['romanizations'] as core.List)
-                  .map((value) => Romanization.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          romanizations: (json_['romanizations'] as core.List?)
+              ?.map((value) => Romanization.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4963,12 +4909,10 @@ class SupportedLanguages {
 
   SupportedLanguages.fromJson(core.Map json_)
       : this(
-          languages: json_.containsKey('languages')
-              ? (json_['languages'] as core.List)
-                  .map((value) => SupportedLanguage.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          languages: (json_['languages'] as core.List?)
+              ?.map((value) => SupportedLanguage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5109,14 +5053,13 @@ class TranslateDocumentRequest {
               : null,
           isTranslateNativePdfOnly:
               json_['isTranslateNativePdfOnly'] as core.bool?,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           model: json_['model'] as core.String?,
           sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
           targetLanguageCode: json_['targetLanguageCode'] as core.String?,
@@ -5325,23 +5268,20 @@ class TranslateTextRequest {
 
   TranslateTextRequest.fromJson(core.Map json_)
       : this(
-          contents: json_.containsKey('contents')
-              ? (json_['contents'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          contents: (json_['contents'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           glossaryConfig: json_.containsKey('glossaryConfig')
               ? TranslateTextGlossaryConfig.fromJson(json_['glossaryConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           mimeType: json_['mimeType'] as core.String?,
           model: json_['model'] as core.String?,
           sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
@@ -5386,18 +5326,14 @@ class TranslateTextResponse {
 
   TranslateTextResponse.fromJson(core.Map json_)
       : this(
-          glossaryTranslations: json_.containsKey('glossaryTranslations')
-              ? (json_['glossaryTranslations'] as core.List)
-                  .map((value) => Translation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          translations: json_.containsKey('translations')
-              ? (json_['translations'] as core.List)
-                  .map((value) => Translation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          glossaryTranslations: (json_['glossaryTranslations'] as core.List?)
+              ?.map((value) => Translation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          translations: (json_['translations'] as core.List?)
+              ?.map((value) => Translation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

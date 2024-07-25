@@ -783,12 +783,10 @@ class AchievementResetAllResponse {
   AchievementResetAllResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
-          results: json_.containsKey('results')
-              ? (json_['results'] as core.List)
-                  .map((value) => AchievementResetResponse.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          results: (json_['results'] as core.List?)
+              ?.map((value) => AchievementResetResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -814,11 +812,9 @@ class AchievementResetMultipleForAllRequest {
 
   AchievementResetMultipleForAllRequest.fromJson(core.Map json_)
       : this(
-          achievementIds: json_.containsKey('achievement_ids')
-              ? (json_['achievement_ids'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          achievementIds: (json_['achievement_ids'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           kind: json_['kind'] as core.String?,
         );
 
@@ -890,11 +886,9 @@ class EventsResetMultipleForAllRequest {
 
   EventsResetMultipleForAllRequest.fromJson(core.Map json_)
       : this(
-          eventIds: json_.containsKey('event_ids')
-              ? (json_['event_ids'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          eventIds: (json_['event_ids'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           kind: json_['kind'] as core.String?,
         );
 
@@ -1051,12 +1045,10 @@ class HiddenPlayerList {
 
   HiddenPlayerList.fromJson(core.Map json_)
       : this(
-          items: json_.containsKey('items')
-              ? (json_['items'] as core.List)
-                  .map((value) => HiddenPlayer.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          items: (json_['items'] as core.List?)
+              ?.map((value) => HiddenPlayer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
@@ -1220,12 +1212,10 @@ class PlayerScoreResetAllResponse {
   PlayerScoreResetAllResponse.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
-          results: json_.containsKey('results')
-              ? (json_['results'] as core.List)
-                  .map((value) => PlayerScoreResetResponse.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          results: (json_['results'] as core.List?)
+              ?.map((value) => PlayerScoreResetResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1262,11 +1252,9 @@ class PlayerScoreResetResponse {
       : this(
           definitionId: json_['definitionId'] as core.String?,
           kind: json_['kind'] as core.String?,
-          resetScoreTimeSpans: json_.containsKey('resetScoreTimeSpans')
-              ? (json_['resetScoreTimeSpans'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          resetScoreTimeSpans: (json_['resetScoreTimeSpans'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1320,11 +1308,9 @@ class ScoresResetMultipleForAllRequest {
   ScoresResetMultipleForAllRequest.fromJson(core.Map json_)
       : this(
           kind: json_['kind'] as core.String?,
-          leaderboardIds: json_.containsKey('leaderboard_ids')
-              ? (json_['leaderboard_ids'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          leaderboardIds: (json_['leaderboard_ids'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

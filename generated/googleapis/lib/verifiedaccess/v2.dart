@@ -456,11 +456,9 @@ class DeviceSignals {
               ? CrowdStrikeAgent.fromJson(json_['crowdStrikeAgent']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          deviceAffiliationIds: json_.containsKey('deviceAffiliationIds')
-              ? (json_['deviceAffiliationIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          deviceAffiliationIds: (json_['deviceAffiliationIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           deviceEnrollmentDomain:
               json_['deviceEnrollmentDomain'] as core.String?,
           deviceManufacturer: json_['deviceManufacturer'] as core.String?,
@@ -468,31 +466,23 @@ class DeviceSignals {
           diskEncryption: json_['diskEncryption'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           hostname: json_['hostname'] as core.String?,
-          imei: json_.containsKey('imei')
-              ? (json_['imei'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          macAddresses: json_.containsKey('macAddresses')
-              ? (json_['macAddresses'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          meid: json_.containsKey('meid')
-              ? (json_['meid'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          imei: (json_['imei'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          macAddresses: (json_['macAddresses'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          meid: (json_['meid'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           operatingSystem: json_['operatingSystem'] as core.String?,
           osFirewall: json_['osFirewall'] as core.String?,
           osVersion: json_['osVersion'] as core.String?,
           passwordProtectionWarningTrigger:
               json_['passwordProtectionWarningTrigger'] as core.String?,
-          profileAffiliationIds: json_.containsKey('profileAffiliationIds')
-              ? (json_['profileAffiliationIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          profileAffiliationIds: (json_['profileAffiliationIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           profileEnrollmentDomain:
               json_['profileEnrollmentDomain'] as core.String?,
           realtimeUrlCheckMode: json_['realtimeUrlCheckMode'] as core.String?,
@@ -502,11 +492,9 @@ class DeviceSignals {
           secureBootMode: json_['secureBootMode'] as core.String?,
           serialNumber: json_['serialNumber'] as core.String?,
           siteIsolationEnabled: json_['siteIsolationEnabled'] as core.bool?,
-          systemDnsServers: json_.containsKey('systemDnsServers')
-              ? (json_['systemDnsServers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          systemDnsServers: (json_['systemDnsServers'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           thirdPartyBlockingEnabled:
               json_['thirdPartyBlockingEnabled'] as core.bool?,
           trigger: json_['trigger'] as core.String?,

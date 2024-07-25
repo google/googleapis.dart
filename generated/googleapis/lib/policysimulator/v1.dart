@@ -1613,13 +1613,11 @@ class GoogleCloudOrgpolicyV2PolicySpec {
           etag: json_['etag'] as core.String?,
           inheritFromParent: json_['inheritFromParent'] as core.bool?,
           reset: json_['reset'] as core.bool?,
-          rules: json_.containsKey('rules')
-              ? (json_['rules'] as core.List)
-                  .map((value) =>
-                      GoogleCloudOrgpolicyV2PolicySpecPolicyRule.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          rules: (json_['rules'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudOrgpolicyV2PolicySpecPolicyRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           updateTime: json_['updateTime'] as core.String?,
         );
 
@@ -1891,16 +1889,15 @@ class GoogleCloudPolicysimulatorV1BindingExplanation {
               ? GoogleTypeExpr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          memberships: json_.containsKey('memberships')
-              ? (json_['memberships'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership
-                        .fromJson(value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          memberships:
+              (json_['memberships'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership
+                  .fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           relevance: json_['relevance'] as core.String?,
           role: json_['role'] as core.String?,
           rolePermission: json_['rolePermission'] as core.String?,
@@ -2001,19 +1998,15 @@ class GoogleCloudPolicysimulatorV1ExplainedAccess {
   GoogleCloudPolicysimulatorV1ExplainedAccess.fromJson(core.Map json_)
       : this(
           accessState: json_['accessState'] as core.String?,
-          errors: json_.containsKey('errors')
-              ? (json_['errors'] as core.List)
-                  .map((value) => GoogleRpcStatus.fromJson(
+          errors: (json_['errors'] as core.List?)
+              ?.map((value) => GoogleRpcStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          policies: (json_['policies'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudPolicysimulatorV1ExplainedPolicy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          policies: json_.containsKey('policies')
-              ? (json_['policies'] as core.List)
-                  .map((value) =>
-                      GoogleCloudPolicysimulatorV1ExplainedPolicy.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2090,13 +2083,11 @@ class GoogleCloudPolicysimulatorV1ExplainedPolicy {
   GoogleCloudPolicysimulatorV1ExplainedPolicy.fromJson(core.Map json_)
       : this(
           access: json_['access'] as core.String?,
-          bindingExplanations: json_.containsKey('bindingExplanations')
-              ? (json_['bindingExplanations'] as core.List)
-                  .map((value) =>
-                      GoogleCloudPolicysimulatorV1BindingExplanation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          bindingExplanations: (json_['bindingExplanations'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudPolicysimulatorV1BindingExplanation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           fullResourceName: json_['fullResourceName'] as core.String?,
           policy: json_.containsKey('policy')
               ? GoogleIamV1Policy.fromJson(
@@ -2136,15 +2127,12 @@ class GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse {
       core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          orgPolicyViolationsPreviews:
-              json_.containsKey('orgPolicyViolationsPreviews')
-                  ? (json_['orgPolicyViolationsPreviews'] as core.List)
-                      .map((value) =>
-                          GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
+          orgPolicyViolationsPreviews: (json_['orgPolicyViolationsPreviews']
+                  as core.List?)
+              ?.map((value) =>
+                  GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2175,13 +2163,11 @@ class GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse {
       core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          orgPolicyViolations: json_.containsKey('orgPolicyViolations')
-              ? (json_['orgPolicyViolations'] as core.List)
-                  .map((value) =>
-                      GoogleCloudPolicysimulatorV1OrgPolicyViolation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          orgPolicyViolations: (json_['orgPolicyViolations'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudPolicysimulatorV1OrgPolicyViolation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2210,13 +2196,11 @@ class GoogleCloudPolicysimulatorV1ListReplayResultsResponse {
   GoogleCloudPolicysimulatorV1ListReplayResultsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          replayResults: json_.containsKey('replayResults')
-              ? (json_['replayResults'] as core.List)
-                  .map((value) =>
-                      GoogleCloudPolicysimulatorV1ReplayResult.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          replayResults: (json_['replayResults'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudPolicysimulatorV1ReplayResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2258,22 +2242,16 @@ class GoogleCloudPolicysimulatorV1OrgPolicyOverlay {
 
   GoogleCloudPolicysimulatorV1OrgPolicyOverlay.fromJson(core.Map json_)
       : this(
-          customConstraints: json_.containsKey('customConstraints')
-              ? (json_['customConstraints'] as core.List)
-                  .map((value) =>
-                      GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          policies: json_.containsKey('policies')
-              ? (json_['policies'] as core.List)
-                  .map((value) =>
-                      GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          customConstraints: (json_['customConstraints'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          policies: (json_['policies'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2493,11 +2471,9 @@ class GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview {
       core.Map json_)
       : this(
           createTime: json_['createTime'] as core.String?,
-          customConstraints: json_.containsKey('customConstraints')
-              ? (json_['customConstraints'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          customConstraints: (json_['customConstraints'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           name: json_['name'] as core.String?,
           overlay: json_.containsKey('overlay')
               ? GoogleCloudPolicysimulatorV1OrgPolicyOverlay.fromJson(
@@ -2677,16 +2653,15 @@ class GoogleCloudPolicysimulatorV1ReplayConfig {
   GoogleCloudPolicysimulatorV1ReplayConfig.fromJson(core.Map json_)
       : this(
           logSource: json_['logSource'] as core.String?,
-          policyOverlay: json_.containsKey('policyOverlay')
-              ? (json_['policyOverlay'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    GoogleIamV1Policy.fromJson(
-                        value as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
+          policyOverlay:
+              (json_['policyOverlay'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleIamV1Policy.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2901,11 +2876,9 @@ class GoogleCloudPolicysimulatorV1ResourceContext {
 
   GoogleCloudPolicysimulatorV1ResourceContext.fromJson(core.Map json_)
       : this(
-          ancestors: json_.containsKey('ancestors')
-              ? (json_['ancestors'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          ancestors: (json_['ancestors'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           assetType: json_['assetType'] as core.String?,
           resource: json_['resource'] as core.String?,
         );
@@ -2951,12 +2924,10 @@ class GoogleIamV1AuditConfig {
 
   GoogleIamV1AuditConfig.fromJson(core.Map json_)
       : this(
-          auditLogConfigs: json_.containsKey('auditLogConfigs')
-              ? (json_['auditLogConfigs'] as core.List)
-                  .map((value) => GoogleIamV1AuditLogConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+              ?.map((value) => GoogleIamV1AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           service: json_['service'] as core.String?,
         );
 
@@ -3066,11 +3037,9 @@ class GoogleIamV1Binding {
               ? GoogleTypeExpr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: json_.containsKey('members')
-              ? (json_['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           role: json_['role'] as core.String?,
         );
 
@@ -3176,18 +3145,14 @@ class GoogleIamV1Policy {
 
   GoogleIamV1Policy.fromJson(core.Map json_)
       : this(
-          auditConfigs: json_.containsKey('auditConfigs')
-              ? (json_['auditConfigs'] as core.List)
-                  .map((value) => GoogleIamV1AuditConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          bindings: json_.containsKey('bindings')
-              ? (json_['bindings'] as core.List)
-                  .map((value) => GoogleIamV1Binding.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          auditConfigs: (json_['auditConfigs'] as core.List?)
+              ?.map((value) => GoogleIamV1AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => GoogleIamV1Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           etag: json_['etag'] as core.String?,
           version: json_['version'] as core.int?,
         );
@@ -3216,12 +3181,10 @@ class GoogleLongrunningListOperationsResponse {
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: json_.containsKey('operations')
-              ? (json_['operations'] as core.List)
-                  .map((value) => GoogleLongrunningOperation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => GoogleLongrunningOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

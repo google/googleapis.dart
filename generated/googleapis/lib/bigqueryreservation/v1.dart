@@ -1342,12 +1342,10 @@ class BiReservation {
   BiReservation.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
-          preferredTables: json_.containsKey('preferredTables')
-              ? (json_['preferredTables'] as core.List)
-                  .map((value) => TableReference.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          preferredTables: (json_['preferredTables'] as core.List?)
+              ?.map((value) => TableReference.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           size: json_['size'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -1585,12 +1583,10 @@ class ListAssignmentsResponse {
 
   ListAssignmentsResponse.fromJson(core.Map json_)
       : this(
-          assignments: json_.containsKey('assignments')
-              ? (json_['assignments'] as core.List)
-                  .map((value) => Assignment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          assignments: (json_['assignments'] as core.List?)
+              ?.map((value) => Assignment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1616,12 +1612,10 @@ class ListCapacityCommitmentsResponse {
 
   ListCapacityCommitmentsResponse.fromJson(core.Map json_)
       : this(
-          capacityCommitments: json_.containsKey('capacityCommitments')
-              ? (json_['capacityCommitments'] as core.List)
-                  .map((value) => CapacityCommitment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          capacityCommitments: (json_['capacityCommitments'] as core.List?)
+              ?.map((value) => CapacityCommitment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1649,12 +1643,10 @@ class ListReservationsResponse {
   ListReservationsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          reservations: json_.containsKey('reservations')
-              ? (json_['reservations'] as core.List)
-                  .map((value) => Reservation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          reservations: (json_['reservations'] as core.List?)
+              ?.map((value) => Reservation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1679,11 +1671,9 @@ class MergeCapacityCommitmentsRequest {
 
   MergeCapacityCommitmentsRequest.fromJson(core.Map json_)
       : this(
-          capacityCommitmentIds: json_.containsKey('capacityCommitmentIds')
-              ? (json_['capacityCommitmentIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          capacityCommitmentIds: (json_['capacityCommitmentIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1908,12 +1898,10 @@ class SearchAllAssignmentsResponse {
 
   SearchAllAssignmentsResponse.fromJson(core.Map json_)
       : this(
-          assignments: json_.containsKey('assignments')
-              ? (json_['assignments'] as core.List)
-                  .map((value) => Assignment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          assignments: (json_['assignments'] as core.List?)
+              ?.map((value) => Assignment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1939,12 +1927,10 @@ class SearchAssignmentsResponse {
 
   SearchAssignmentsResponse.fromJson(core.Map json_)
       : this(
-          assignments: json_.containsKey('assignments')
-              ? (json_['assignments'] as core.List)
-                  .map((value) => Assignment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          assignments: (json_['assignments'] as core.List?)
+              ?.map((value) => Assignment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 

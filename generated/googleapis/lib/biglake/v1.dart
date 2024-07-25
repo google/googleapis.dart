@@ -936,15 +936,14 @@ class HiveDatabaseOptions {
   HiveDatabaseOptions.fromJson(core.Map json_)
       : this(
           locationUri: json_['locationUri'] as core.String?,
-          parameters: json_.containsKey('parameters')
-              ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          parameters:
+              (json_['parameters'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -974,15 +973,14 @@ class HiveTableOptions {
 
   HiveTableOptions.fromJson(core.Map json_)
       : this(
-          parameters: json_.containsKey('parameters')
-              ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
+          parameters:
+              (json_['parameters'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           storageDescriptor: json_.containsKey('storageDescriptor')
               ? StorageDescriptor.fromJson(json_['storageDescriptor']
                   as core.Map<core.String, core.dynamic>)
@@ -1014,12 +1012,10 @@ class ListCatalogsResponse {
 
   ListCatalogsResponse.fromJson(core.Map json_)
       : this(
-          catalogs: json_.containsKey('catalogs')
-              ? (json_['catalogs'] as core.List)
-                  .map((value) => Catalog.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          catalogs: (json_['catalogs'] as core.List?)
+              ?.map((value) => Catalog.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1046,12 +1042,10 @@ class ListDatabasesResponse {
 
   ListDatabasesResponse.fromJson(core.Map json_)
       : this(
-          databases: json_.containsKey('databases')
-              ? (json_['databases'] as core.List)
-                  .map((value) => Database.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          databases: (json_['databases'] as core.List?)
+              ?.map((value) => Database.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
@@ -1079,12 +1073,10 @@ class ListTablesResponse {
   ListTablesResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
-          tables: json_.containsKey('tables')
-              ? (json_['tables'] as core.List)
-                  .map((value) => Table.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          tables: (json_['tables'] as core.List?)
+              ?.map((value) =>
+                  Table.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
