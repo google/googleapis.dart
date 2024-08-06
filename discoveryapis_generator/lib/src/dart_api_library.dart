@@ -22,6 +22,8 @@ const ignoreForFileSet = {
   'lines_longer_than_80_chars',
   'non_constant_identifier_names',
   'prefer_interpolation_to_compose_strings',
+  // Lots of violations in generated doc comments
+  'unintended_html_in_doc_comment',
   'unnecessary_brace_in_string_interps',
   'unnecessary_lambdas',
   'unnecessary_string_interpolations',
