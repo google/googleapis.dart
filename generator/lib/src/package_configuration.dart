@@ -326,6 +326,7 @@ package.
     final version = values['version'] as String?;
     final author = values['author'] as String?;
     final repository = values['repository'] as String?;
+    final resolution = values['resolution'] as String?;
 
     Map<String, String>? extraDevDependencies;
     if (values.containsKey('extraDevDependencies')) {
@@ -397,6 +398,7 @@ package.
       author: author,
       repository: repository,
       extraDevDependencies: extraDevDependencies,
+      resolution: resolution,
     );
     return Package(
       name,

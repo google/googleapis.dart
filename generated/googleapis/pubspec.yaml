@@ -1,9 +1,10 @@
 name: googleapis
-version: 13.2.0
+version: 13.2.1-wip
 description: Auto-generated client libraries for accessing Google APIs described through the API discovery service.
 repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
+resolution: workspace
 environment:
-  sdk: '^3.4.0'
+  sdk: '^3.5.0'
 dependencies:
   # This is a private package dependency used by the generated client stubs.
   _discoveryapis_commons: ^1.0.0

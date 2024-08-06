@@ -1,7 +1,8 @@
 name: test_integration
 publish_to: none
+resolution: workspace
 environment:
-  sdk: ^3.4.0
+  sdk: ^3.5.0
 
 dependencies:
   _discoveryapis_commons: any
@@ -20,11 +21,3 @@ dev_dependencies:
   build_web_compilers: ^4.0.0
   dart_flutter_team_lints: ^3.0.0
   test: ^1.16.0
-
-dependency_overrides:
-  _discoveryapis_commons:
-    path: ../discoveryapis_commons
-  googleapis:
-    path: ../generated/googleapis
-  googleapis_auth:
-    path: ../googleapis_auth

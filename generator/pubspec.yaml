@@ -1,8 +1,9 @@
 name: googleapis_generator_dependency
 publish_to: none
 
+resolution: workspace
 environment:
-  sdk: ^3.4.0
+  sdk: ^3.5.0
 
 dependencies:
   args: ^2.3.1
@@ -14,9 +15,3 @@ dependencies:
 
 dev_dependencies:
   dart_flutter_team_lints: ^3.0.0
-
-dependency_overrides:
-  _discoveryapis_commons:
-    path: ../discoveryapis_commons
-  discoveryapis_generator:
-    path: ../discoveryapis_generator

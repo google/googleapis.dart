@@ -2,13 +2,14 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 13.2.0
+    version: 13.2.1-wip
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
     changelog: resources/googleapis/CHANGELOG.md
     example: resources/googleapis/examples/main.dart
     mono_pkg: resources/googleapis/_mono_pkg.yaml
+    resolution: workspace
     extraDevDependencies:
         dart_flutter_team_lints: ^3.0.0
         googleapis_auth: ^1.0.0
@@ -303,6 +304,7 @@ packages:
     license: resources/LICENSE
     changelog: resources/googleapis_beta/CHANGELOG.md
     mono_pkg: resources/googleapis_beta/_mono_pkg.yaml
+    resolution: workspace
     extraDevDependencies:
         dart_flutter_team_lints: ^3.0.0
     apis:

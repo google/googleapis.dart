@@ -1,3 +1,7 @@
+## 13.2.1-wip
+
+- Require Dart 3.5 or later.
+
 ## 13.2.0
 
 - Require Dart 3.4 or later.

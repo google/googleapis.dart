@@ -1,6 +1,5 @@
 ## 1.1.0-wip
 
-- Require Dart 3.4 or later.
 - Allow latest `package:http`.
 - Generate `@Deprecated` annotations for associated members.
 - Add positional parameters to all schema types.
@@ -8,6 +7,7 @@
 - Added `Function` to the set of reserved names.
 - Remove extra parenthesis from date encoding.
 - Generate much smaller code for trivial types: `String`, `bool`, `int`, `double`.
+- Require Dart 3.5 or later.
 
 ## 1.0.0
 

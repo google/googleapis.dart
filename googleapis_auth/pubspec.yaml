@@ -3,8 +3,9 @@ version: 1.6.1-wip
 description: Obtain Access credentials for Google services using OAuth 2.0
 repository: https://github.com/google/googleapis.dart/tree/master/googleapis_auth
 
+resolution: workspace
 environment:
-  sdk: ^3.4.0
+  sdk: ^3.5.0
 
 dependencies:
   args: ^2.3.1
