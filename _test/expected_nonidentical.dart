@@ -11,7 +11,7 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Toy API - 0.1
+/// Toy API - 1.0
 ///
 /// Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
 /// tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -48,8 +48,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Request headers used by all libraries in this package
 final requestHeaders = {
-  'user-agent': 'google-api-dart-client/0.1',
-  'x-goog-api-client': 'gl-dart/${commons.dartVersion} gdcl/0.1',
+  'user-agent': 'google-api-dart-client/1.0',
+  'x-goog-api-client': 'gl-dart/${commons.dartVersion} gdcl/1.0',
 };
 
 /// Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod

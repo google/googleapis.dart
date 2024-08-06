@@ -4,7 +4,7 @@
  "discoveryVersion": "v1",
  "id": "toyApi:0.1",
  "name": "toyApi",
- "version": "0.1",
+ "version": "1.0",
  "revision": "0",
  "protocol": "rest",
  "title": "Toy API",

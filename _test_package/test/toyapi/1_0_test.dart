@@ -21,7 +21,7 @@ import 'dart:core' as core;
 
 import 'package:http/http.dart' as http;
 import 'package:test/test.dart' as unittest;
-import 'package:test_package/toyapi/0_1.dart' as api;
+import 'package:test_package/toyapi/1_0.dart' as api;
 
 import '../test_shared.dart';
 
