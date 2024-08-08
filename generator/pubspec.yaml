@@ -12,6 +12,3 @@ dependencies:
   io: ^1.0.0
   pool: ^1.4.0
   yaml: '>=2.1.0 <4.0.0'
-
-dev_dependencies:
-  dart_flutter_team_lints: ^3.0.0

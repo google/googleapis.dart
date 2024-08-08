@@ -11,7 +11,6 @@ packages:
     mono_pkg: resources/googleapis/_mono_pkg.yaml
     resolution: workspace
     extraDevDependencies:
-        dart_flutter_team_lints: ^3.0.0
         googleapis_auth: ^1.0.0
     apis:
     - abusiveexperiencereport:v1 # https://developers.google.com/abusive-experience-report/
@@ -305,8 +304,6 @@ packages:
     changelog: resources/googleapis_beta/CHANGELOG.md
     mono_pkg: resources/googleapis_beta/_mono_pkg.yaml
     resolution: workspace
-    extraDevDependencies:
-        dart_flutter_team_lints: ^3.0.0
     apis:
     - adexchangebuyer2:v2beta1 # https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
     - alertcenter:v1beta1 # https://developers.google.com/admin-sdk/alertcenter/
