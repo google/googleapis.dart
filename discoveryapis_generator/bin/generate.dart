@@ -29,7 +29,9 @@ ArgParser packageCommandArgParser() => ArgParser()
       defaultsTo: 'Auto-generated client libraries.')
   ..addOption('package-author', help: 'Author of the generated API package.')
   ..addOption('package-repository',
-      help: 'Homepage of the generated API package.');
+      help: 'Homepage of the generated API package.')
+  ..addOption('package-resolution',
+      help: 'How the package should be resolved.');
 
 ArgParser filesCommandArgParser() => ArgParser()
   ..addOption('input-dir',
@@ -98,11 +100,12 @@ void main(List<String> arguments) {
   switch (commandOptions.name) {
     case 'package':
       final pubspec = Pubspec(
-        commandOptions['package-name'] as String,
-        commandOptions['package-version'] as String?,
-        commandOptions['package-description'] as String,
-        author: commandOptions['package-author'] as String?,
-        repository: commandOptions['package-repository'] as String?,
+        commandOptions.option('package-name')!,
+        commandOptions.option('package-version'),
+        commandOptions.option('package-description')!,
+        author: commandOptions.option('package-author'),
+        resolution: commandOptions.option('package-resolution'),
+        repository: commandOptions.option('package-repository'),
       );
       printResults(generateAllLibraries(
         commandOptions['input-dir'] as String,
@@ -118,7 +121,7 @@ void main(List<String> arguments) {
         commandOptions['input-dir'] as String,
         commandOptions['output-dir'] as String,
         updatePubspec: updatePubspec == 'true',
-        useCorePrefixes: commandOptions['core-prefixes'] as bool?,
+        useCorePrefixes: commandOptions.flag('core-prefixes'),
       ));
   }
 }

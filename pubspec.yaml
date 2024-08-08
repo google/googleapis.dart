@@ -1,0 +1,17 @@
+name: goog_api_workspace     # Can be anything
+environment:
+  sdk: ^3.5.0   # Must be ^3.5.0 or later for workspace to be allowed
+publish_to: none
+dev_dependencies:
+  dart_flutter_team_lints: ^3.2.0
+workspace:
+- _test
+- _test_package
+- discoveryapis_commons
+- discoveryapis_generator
+- resources/googleapis
+- generated/googleapis
+- generated/googleapis_beta
+- generator
+- googleapis_auth
+- test_integration

@@ -9,6 +9,7 @@ class Pubspec {
   final String description;
   final String? author;
   final String? repository;
+  final String? resolution;
 
   final Map<String, String> devDependencies;
 
@@ -19,12 +20,13 @@ class Pubspec {
     this.author,
     this.repository,
     Map<String, String>? extraDevDependencies,
+    this.resolution,
   }) : devDependencies = {
           ..._defaultDevDependencies,
           if (extraDevDependencies != null) ...extraDevDependencies,
         };
 
-  String get sdkConstraint => '^3.4.0';
+  String get sdkConstraint => '^3.5.0';
 
   static const dependencies = {
     'http': '^1.0.0',

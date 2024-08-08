@@ -14,7 +14,7 @@ import 'utils.dart';
 
 /// Class representing non-primitive types.
 ///
-/// Subclasses may be named dart classes or composed classes (e.g. List<X>).
+/// Subclasses may be named dart classes or composed classes (e.g. `List<X>`).
 abstract class ComplexDartSchemaType extends DartSchemaType {
   ComplexDartSchemaType(super.imports, super.name, {super.comment});
 
@@ -540,7 +540,7 @@ class AnyType extends PrimitiveDartSchemaType {
   String decodeFromMap(String jsonName) => "json_['${escapeString(jsonName)}']";
 }
 
-/// Represents an unnamed List<T> type with a given `T`.
+/// Represents an unnamed `List<T>` type with a given `T`.
 class UnnamedArrayType extends ComplexDartSchemaType implements HasInnertype {
   @override
   DartSchemaType? innerType;
@@ -610,7 +610,7 @@ class UnnamedArrayType extends ComplexDartSchemaType implements HasInnertype {
   }
 }
 
-/// Represents a named List<T> type with a given `T`.
+/// Represents a named `List<T>` type with a given `T`.
 class NamedArrayType extends ComplexDartSchemaType implements HasInnertype {
   @override
   DartSchemaType? innerType;
@@ -669,7 +669,7 @@ String _importPrefixedDecode(DartSchemaType valueType, String? importName) =>
     '${valueType.importPrefix(importName)}'
     '${valueType.jsonDecode('value', importName: importName)}';
 
-/// Represents an unnamed Map<F, T> type with given types `F` and `T`.
+/// Represents an unnamed `Map<F, T>` type with given types `F` and `T`.
 class UnnamedMapType extends ComplexDartSchemaType {
   late final DartSchemaType keyType;
   DartSchemaType? valueType;
@@ -755,7 +755,7 @@ ${_importPrefixedDecode(valueType, null)},
   }
 }
 
-/// Represents a named Map<F, T> type with given types `F` and `T`.
+/// Represents a named `Map<F, T>` type with given types `F` and `T`.
 class NamedMapType extends ComplexDartSchemaType {
   DartSchemaType? fromType;
   DartSchemaType? toType;

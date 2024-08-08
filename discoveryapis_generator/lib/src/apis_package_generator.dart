@@ -211,6 +211,9 @@ ${duplicateItems.map((e) => e.definition).join('\n\n')}
     if (pubspec.repository != null) {
       sink.writeln('repository: ${pubspec.repository}');
     }
+    if (pubspec.resolution != null) {
+      sink.writeln('resolution: ${pubspec.resolution}');
+    }
     sink.writeln('environment:');
     sink.writeln("  sdk: '${pubspec.sdkConstraint}'");
     sink.writeln('dependencies:');

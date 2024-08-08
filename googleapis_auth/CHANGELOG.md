@@ -1,6 +1,6 @@
 ## 1.6.1-wip
 
-- Require `sdk: ^3.4.0`
+- Require `sdk: ^3.5.0`
 
 ## 1.6.0
 

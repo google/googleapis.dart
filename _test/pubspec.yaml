@@ -1,16 +1,10 @@
 name: file_test_package
 description: Pubspec used for unittesting of the discoveryapis_generator package.
 publish_to: none
+resolution: workspace
 environment:
-  sdk: ^3.4.0
+  sdk: ^3.5.0
 
 dependencies:
   _discoveryapis_commons: ^1.0.0
   http: any
-
-dev_dependencies:
-  dart_flutter_team_lints: ^3.0.0
-
-dependency_overrides:
-  _discoveryapis_commons:
-    path: ../discoveryapis_commons

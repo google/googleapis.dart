@@ -8,6 +8,7 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: unintended_html_in_doc_comment
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -21,7 +22,7 @@ import 'dart:core' as core;
 
 import 'package:http/http.dart' as http;
 import 'package:test/test.dart' as unittest;
-import 'package:test_package/toyapi/0_1.dart' as api;
+import 'package:test_package/toyapi/1_0.dart' as api;
 
 import '../test_shared.dart';
 

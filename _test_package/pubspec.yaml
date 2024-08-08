@@ -1,8 +1,9 @@
 name: test_package
 publish_to: none
 description: Auto-generated client libraries.
+resolution: workspace
 environment:
-  sdk: '^3.4.0'
+  sdk: '^3.5.0'
 dependencies:
   # This is a private package dependency used by the generated client stubs.
   _discoveryapis_commons: ^1.0.0
