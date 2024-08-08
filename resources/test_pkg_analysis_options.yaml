@@ -1,0 +1,6 @@
+include: ../analysis_options.yaml
+
+analyzer:
+  errors:
+    # Because this (test-only) package generates files like `1_0...`
+    file_names: ignore
