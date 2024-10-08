@@ -840,7 +840,9 @@ extension DartSchemaTypeExtension on DartSchemaType {
         this is NamedArrayType ||
         this is UnnamedArrayType ||
         this is PrimitiveDartSchemaType ||
-        this is UnnamedMapType) return '';
+        this is UnnamedMapType) {
+      return '';
+    }
     return '$importName.';
   }
 }
