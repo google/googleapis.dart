@@ -138,7 +138,7 @@ class ApisFilesGenerator {
       }
     }
 
-    const pubspecKeys = <String>[
+    const pubspecKeys = <String>{
       'name',
       'version',
       'description',
@@ -152,7 +152,7 @@ class ApisFilesGenerator {
       'dependency_overrides',
       'executables',
       'transformers'
-    ];
+    };
 
     // Process pubspec and either print the dependencies that has to be added
     // or if the updatePubspec flag is set add the required dependencies to the
