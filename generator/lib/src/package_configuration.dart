@@ -12,6 +12,7 @@ import 'package:discoveryapis_generator/src/namer.dart';
 import 'package:yaml/yaml.dart';
 
 import '../googleapis_generator.dart';
+import 'fetch_core.dart';
 
 class Package {
   final String name;
@@ -117,7 +118,7 @@ class DiscoveryPackagesConfiguration {
     }
 
     // Get all rest discovery documents & initialize this object.
-    final allApis = await fetchDiscoveryDocuments(
+    final allApis = await const FetchCore.service().fetchDiscoveryDocuments(
       existingRevisions: existingApiRevisions,
       additionalEntries: additionalEntries,
     );
