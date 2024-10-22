@@ -1523,10 +1523,13 @@ class OrganizationsRolesResource {
   /// You cannot bind a principal to the custom role in an IAM Policy. *
   /// Existing bindings to the custom role are not changed, but they have no
   /// effect. * By default, the response from ListRoles does not include the
-  /// custom role. You have 7 days to undelete the custom role. After 7 days,
-  /// the following changes occur: * The custom role is permanently deleted and
-  /// cannot be recovered. * If an IAM policy contains a binding to the custom
-  /// role, the binding is permanently removed.
+  /// custom role. A deleted custom role still counts toward the
+  /// [custom role limit](https://cloud.google.com/iam/help/limits) until it is
+  /// permanently deleted. You have 7 days to undelete the custom role. After 7
+  /// days, the following changes occur: * The custom role is permanently
+  /// deleted and cannot be recovered. * If an IAM policy contains a binding to
+  /// the custom role, the binding is permanently removed. * The custom role no
+  /// longer counts toward your custom role limit.
   ///
   /// Request parameters:
   ///
@@ -3650,10 +3653,13 @@ class ProjectsRolesResource {
   /// You cannot bind a principal to the custom role in an IAM Policy. *
   /// Existing bindings to the custom role are not changed, but they have no
   /// effect. * By default, the response from ListRoles does not include the
-  /// custom role. You have 7 days to undelete the custom role. After 7 days,
-  /// the following changes occur: * The custom role is permanently deleted and
-  /// cannot be recovered. * If an IAM policy contains a binding to the custom
-  /// role, the binding is permanently removed.
+  /// custom role. A deleted custom role still counts toward the
+  /// [custom role limit](https://cloud.google.com/iam/help/limits) until it is
+  /// permanently deleted. You have 7 days to undelete the custom role. After 7
+  /// days, the following changes occur: * The custom role is permanently
+  /// deleted and cannot be recovered. * If an IAM policy contains a binding to
+  /// the custom role, the binding is permanently removed. * The custom role no
+  /// longer counts toward your custom role limit.
   ///
   /// Request parameters:
   ///
@@ -5090,49 +5096,6 @@ class ProjectsServiceAccountsKeysResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Patches a ServiceAccountKey.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The resource name of the service account key in the following
-  /// format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/serviceAccounts/\[^/\]+/keys/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ServiceAccountKey].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ServiceAccountKey> patch(
-    PatchServiceAccountKeyRequest request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':patch';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return ServiceAccountKey.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Uploads the public key portion of a key pair that you manage, and
   /// associates the public key with a ServiceAccount.
   ///
@@ -5897,7 +5860,7 @@ class GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client {
   /// Possible string values are:
   /// - "ATTRIBUTES_TYPE_UNSPECIFIED" : No AttributesType specified.
   /// - "AZURE_AD_GROUPS_MAIL" : Used to get the user's group claims from the
-  /// Azure AD identity provider using configuration provided in
+  /// Microsoft Entra ID identity provider using configuration provided in
   /// ExtraAttributesOAuth2Client and `mail` property of the
   /// `microsoft.graph.group` object is used for claim mapping. See
   /// https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
@@ -6197,7 +6160,7 @@ class GoogleIamAdminV1WorkforcePoolProviderSaml {
   /// constraints: 1) Must contain an Identity Provider Entity ID. 2) Must
   /// contain at least one non-expired signing key certificate. 3) For each
   /// signing key: a) Valid from should be no more than 7 days from now. b)
-  /// Valid to should be no more than 15 years in the future. 4) Up to 3 IdP
+  /// Valid to should be no more than 20 years in the future. 4) Up to 3 IdP
   /// signing keys are allowed in the metadata xml. When updating the provider's
   /// metadata xml, at least one non-expired signing key must overlap with the
   /// existing metadata. This requirement is skipped if there are no non-expired
@@ -7095,41 +7058,6 @@ class Operation {
       };
 }
 
-/// The service account key patch request.
-class PatchServiceAccountKeyRequest {
-  /// The service account key to update.
-  ///
-  /// Required.
-  ServiceAccountKey? serviceAccountKey;
-
-  /// The update mask to apply to the service account key.
-  ///
-  /// Only the following fields are eligible for patching: - contact -
-  /// description
-  ///
-  /// Required.
-  core.String? updateMask;
-
-  PatchServiceAccountKeyRequest({
-    this.serviceAccountKey,
-    this.updateMask,
-  });
-
-  PatchServiceAccountKeyRequest.fromJson(core.Map json_)
-      : this(
-          serviceAccountKey: json_.containsKey('serviceAccountKey')
-              ? ServiceAccountKey.fromJson(json_['serviceAccountKey']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (serviceAccountKey != null) 'serviceAccountKey': serviceAccountKey!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
-}
-
 /// The service account patch request.
 ///
 /// You can patch only the `display_name` and `description` fields. You must use
@@ -7416,7 +7344,7 @@ class QueryGrantableRolesRequest {
 
   /// Optional limit on the number of roles to include in the response.
   ///
-  /// The default is 300, and the maximum is 1,000.
+  /// The default is 300, and the maximum is 2,000.
   core.int? pageSize;
 
   /// Optional pagination token returned in an earlier
@@ -7654,7 +7582,7 @@ class Saml {
   /// SAML metadata XML document must satisfy the following constraints: * Must
   /// contain an IdP Entity ID. * Must contain at least one non-expired signing
   /// certificate. * For each signing certificate, the expiration must be: *
-  /// From no more than 7 days in the future. * To no more than 15 years in the
+  /// From no more than 7 days in the future. * To no more than 20 years in the
   /// future. * Up to three IdP signing keys are allowed. When updating the
   /// provider's metadata XML, at least one non-expired signing key must overlap
   /// with the existing metadata. This requirement is skipped if there are no
@@ -7817,27 +7745,6 @@ class ServiceAccount {
 /// used for signing. Public keys for all service accounts are also published at
 /// the OAuth2 Service Account API.
 class ServiceAccountKey {
-  /// A user provided email address as the point of contact for this service
-  /// account key.
-  ///
-  /// Must be an email address. Limit 64 characters.
-  ///
-  /// Optional.
-  core.String? contact;
-
-  /// The cloud identity that created this service account key.
-  ///
-  /// Populated automatically when the key is created and not editable by the
-  /// user.
-  ///
-  /// Output only.
-  core.String? creator;
-
-  /// A user provided description of this service account key.
-  ///
-  /// Optional.
-  core.String? description;
-
   /// If the key is disabled, it may have a DisableReason describing why it was
   /// disabled.
   ///
@@ -7947,9 +7854,6 @@ class ServiceAccountKey {
   core.String? validBeforeTime;
 
   ServiceAccountKey({
-    this.contact,
-    this.creator,
-    this.description,
     this.disableReason,
     this.disabled,
     this.extendedStatus,
@@ -7966,9 +7870,6 @@ class ServiceAccountKey {
 
   ServiceAccountKey.fromJson(core.Map json_)
       : this(
-          contact: json_['contact'] as core.String?,
-          creator: json_['creator'] as core.String?,
-          description: json_['description'] as core.String?,
           disableReason: json_['disableReason'] as core.String?,
           disabled: json_['disabled'] as core.bool?,
           extendedStatus: (json_['extendedStatus'] as core.List?)
@@ -7987,9 +7888,6 @@ class ServiceAccountKey {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contact != null) 'contact': contact!,
-        if (creator != null) 'creator': creator!,
-        if (description != null) 'description': description!,
         if (disableReason != null) 'disableReason': disableReason!,
         if (disabled != null) 'disabled': disabled!,
         if (extendedStatus != null) 'extendedStatus': extendedStatus!,
@@ -8235,7 +8133,7 @@ class SignJwtResponse {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;

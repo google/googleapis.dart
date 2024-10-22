@@ -231,6 +231,50 @@ class ProjectsLocationsWorkflowsExecutionsResource {
     return Execution.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deletes all step entries for an execution.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the execution for which step entries should be
+  /// deleted. Format:
+  /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workflows/\[^/\]+/executions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> deleteExecutionHistory(
+    DeleteExecutionHistoryRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':deleteExecutionHistory';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns all metadata stored about an execution, excluding most data that
   /// is already accessible using other API methods.
   ///
@@ -336,10 +380,11 @@ class ProjectsLocationsWorkflowsExecutionsResource {
   /// [filter] - Optional. Filters applied to the `[Executions.ListExecutions]`
   /// results. The following fields are supported for filtering: `executionId`,
   /// `state`, `createTime`, `startTime`, `endTime`, `duration`,
-  /// `workflowRevisionId`, `stepName`, and `label`. For details, see AIP-160.
-  /// For more information, see Filter executions. For example, if you are using
-  /// the Google APIs Explorer: `state="SUCCEEDED"` or `startTime>"2023-08-01"
-  /// AND state="FAILED"`
+  /// `workflowRevisionId`, `stepName`, `label`, and
+  /// `disableConcurrencyQuotaOverflowBuffering`. For details, see AIP-160. For
+  /// more information, see Filter executions. For example, if you are using the
+  /// Google APIs Explorer: `state="SUCCEEDED"` or `startTime>"2023-08-01" AND
+  /// state="FAILED"`
   ///
   /// [orderBy] - Optional. Comma-separated list of fields that specify the
   /// ordering applied to the `[Executions.ListExecutions]` results. By default
@@ -486,6 +531,13 @@ class ProjectsLocationsWorkflowsExecutionsStepEntriesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workflows/\[^/\]+/executions/\[^/\]+/stepEntries/\[^/\]+$`.
   ///
+  /// [view] - Deprecated field.
+  /// Possible string values are:
+  /// - "EXECUTION_ENTRY_VIEW_UNSPECIFIED" : The default/unset value.
+  /// - "EXECUTION_ENTRY_VIEW_BASIC" : Include basic information in the step
+  /// entries. All fields in StepEntry are returned except for variable_data.
+  /// - "EXECUTION_ENTRY_VIEW_DETAILED" : Include all data.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -498,9 +550,11 @@ class ProjectsLocationsWorkflowsExecutionsStepEntriesResource {
   /// this method will complete with the same error.
   async.Future<StepEntry> get(
     core.String name, {
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -522,15 +576,15 @@ class ProjectsLocationsWorkflowsExecutionsStepEntriesResource {
   ///
   /// [parent] - Required. Name of the workflow execution to list entries for.
   /// Format:
-  /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}/stepEntries/
+  /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workflows/\[^/\]+/executions/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filters applied to the
   /// `[StepEntries.ListStepEntries]` results. The following fields are
   /// supported for filtering: `entryId`, `createTime`, `updateTime`, `routine`,
-  /// `step`, `stepType`, `state`. For details, see AIP-160. For example, if you
-  /// are using the Google APIs Explorer: `state="SUCCEEDED"` or
+  /// `step`, `stepType`, `parent`, `state`. For details, see AIP-160. For
+  /// example, if you are using the Google APIs Explorer: `state="SUCCEEDED"` or
   /// `createTime>"2023-08-01" AND state="FAILED"`
   ///
   /// [orderBy] - Optional. Comma-separated list of fields that specify the
@@ -551,6 +605,13 @@ class ProjectsLocationsWorkflowsExecutionsStepEntriesResource {
   /// or without a pageToken. If used with a pageToken, then it indicates the
   /// number of step entries to skip starting from the requested page.
   ///
+  /// [view] - Deprecated field.
+  /// Possible string values are:
+  /// - "EXECUTION_ENTRY_VIEW_UNSPECIFIED" : The default/unset value.
+  /// - "EXECUTION_ENTRY_VIEW_BASIC" : Include basic information in the step
+  /// entries. All fields in StepEntry are returned except for variable_data.
+  /// - "EXECUTION_ENTRY_VIEW_DETAILED" : Include all data.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -568,6 +629,7 @@ class ProjectsLocationsWorkflowsExecutionsStepEntriesResource {
     core.int? pageSize,
     core.String? pageToken,
     core.int? skip,
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -576,6 +638,7 @@ class ProjectsLocationsWorkflowsExecutionsStepEntriesResource {
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (skip != null) 'skip': ['${skip}'],
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -646,6 +709,17 @@ class Callback {
 
 /// Request for the CancelExecution method.
 typedef CancelExecutionRequest = $Empty;
+
+/// Request for the DeleteExecutionHistory method.
+typedef DeleteExecutionHistoryRequest = $Empty;
+
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); }
+typedef Empty = $Empty;
 
 /// Error describes why the execution was abnormally terminated.
 class Error {
@@ -752,6 +826,23 @@ class Execution {
   /// Output only.
   Error? error;
 
+  /// Describes the level of the execution history feature to apply to this
+  /// execution.
+  ///
+  /// If not specified, the level of the execution history feature will be
+  /// determined by its workflow's execution history level. If the value is
+  /// different from its workflow's value, it will override the workflow's
+  /// execution history level for this exeuction.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EXECUTION_HISTORY_LEVEL_UNSPECIFIED" : The default/unset value.
+  /// - "EXECUTION_HISTORY_BASIC" : Enable execution history basic feature for
+  /// this execution.
+  /// - "EXECUTION_HISTORY_DETAILED" : Enable execution history detailed feature
+  /// for this execution.
+  core.String? executionHistoryLevel;
+
   /// Labels associated with this execution.
   ///
   /// Labels can contain at most 64 entries. Keys and values can be no longer
@@ -778,6 +869,9 @@ class Execution {
   core.String? result;
 
   /// Marks the beginning of execution.
+  ///
+  /// Note that this will be the same as `createTime` for executions that start
+  /// immediately.
   ///
   /// Output only.
   core.String? startTime;
@@ -823,6 +917,7 @@ class Execution {
     this.duration,
     this.endTime,
     this.error,
+    this.executionHistoryLevel,
     this.labels,
     this.name,
     this.result,
@@ -846,6 +941,7 @@ class Execution {
               ? Error.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
+          executionHistoryLevel: json_['executionHistoryLevel'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -878,6 +974,8 @@ class Execution {
         if (duration != null) 'duration': duration!,
         if (endTime != null) 'endTime': endTime!,
         if (error != null) 'error': error!,
+        if (executionHistoryLevel != null)
+          'executionHistoryLevel': executionHistoryLevel!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (result != null) 'result': result!,
@@ -1258,6 +1356,7 @@ class StepEntry {
   /// - "STATE_IN_PROGRESS" : The step entry is in progress.
   /// - "STATE_SUCCEEDED" : The step entry finished successfully.
   /// - "STATE_FAILED" : The step entry failed with an error.
+  /// - "STATE_CANCELLED" : The step entry is cancelled.
   core.String? state;
 
   /// The name of the step this step entry belongs to.
@@ -1308,6 +1407,11 @@ class StepEntry {
   /// Output only.
   core.String? updateTime;
 
+  /// The VariableData associated to this step.
+  ///
+  /// Output only.
+  VariableData? variableData;
+
   StepEntry({
     this.createTime,
     this.entryId,
@@ -1320,6 +1424,7 @@ class StepEntry {
     this.stepEntryMetadata,
     this.stepType,
     this.updateTime,
+    this.variableData,
   });
 
   StepEntry.fromJson(core.Map json_)
@@ -1344,6 +1449,10 @@ class StepEntry {
               : null,
           stepType: json_['stepType'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
+          variableData: json_.containsKey('variableData')
+              ? VariableData.fromJson(
+                  json_['variableData'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1358,6 +1467,7 @@ class StepEntry {
         if (stepEntryMetadata != null) 'stepEntryMetadata': stepEntryMetadata!,
         if (stepType != null) 'stepType': stepType!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (variableData != null) 'variableData': variableData!,
       };
 }
 
@@ -1370,7 +1480,8 @@ class StepEntryMetadata {
   /// Progress number represents the current state of the current progress.
   ///
   /// eg: A step entry represents the 4th iteration in a progress of
-  /// PROGRESS_TYPE_FOR.
+  /// PROGRESS_TYPE_FOR. Note: This field is only populated when an iteration
+  /// exists and the starting value is 1.
   core.String? progressNumber;
 
   /// Progress type of this step entry.
@@ -1465,5 +1576,29 @@ class TriggerPubsubExecutionRequest {
         if (deliveryAttempt != null) 'deliveryAttempt': deliveryAttempt!,
         if (message != null) 'message': message!,
         if (subscription != null) 'subscription': subscription!,
+      };
+}
+
+/// VariableData contains the variable data for this step.
+class VariableData {
+  /// Variables that are associated with this step.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? variables;
+
+  VariableData({
+    this.variables,
+  });
+
+  VariableData.fromJson(core.Map json_)
+      : this(
+          variables: json_.containsKey('variables')
+              ? json_['variables'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (variables != null) 'variables': variables!,
       };
 }

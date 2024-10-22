@@ -23,9 +23,16 @@
 /// - [CoursesResource]
 ///   - [CoursesAliasesResource]
 ///   - [CoursesAnnouncementsResource]
+///     - [CoursesAnnouncementsAddOnAttachmentsResource]
 ///   - [CoursesCourseWorkResource]
+///     - [CoursesCourseWorkAddOnAttachmentsResource]
+///       - [CoursesCourseWorkAddOnAttachmentsStudentSubmissionsResource]
 ///     - [CoursesCourseWorkStudentSubmissionsResource]
 ///   - [CoursesCourseWorkMaterialsResource]
+///     - [CoursesCourseWorkMaterialsAddOnAttachmentsResource]
+///   - [CoursesPostsResource]
+///     - [CoursesPostsAddOnAttachmentsResource]
+///       - [CoursesPostsAddOnAttachmentsStudentSubmissionsResource]
 ///   - [CoursesStudentsResource]
 ///   - [CoursesTeachersResource]
 ///   - [CoursesTopicsResource]
@@ -167,6 +174,7 @@ class CoursesResource {
       CoursesCourseWorkResource(_requester);
   CoursesCourseWorkMaterialsResource get courseWorkMaterials =>
       CoursesCourseWorkMaterialsResource(_requester);
+  CoursesPostsResource get posts => CoursesPostsResource(_requester);
   CoursesStudentsResource get students => CoursesStudentsResource(_requester);
   CoursesTeachersResource get teachers => CoursesTeachersResource(_requester);
   CoursesTopicsResource get topics => CoursesTopicsResource(_requester);
@@ -637,6 +645,9 @@ class CoursesAliasesResource {
 class CoursesAnnouncementsResource {
   final commons.ApiRequester _requester;
 
+  CoursesAnnouncementsAddOnAttachmentsResource get addOnAttachments =>
+      CoursesAnnouncementsAddOnAttachmentsResource(_requester);
+
   CoursesAnnouncementsResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -786,6 +797,77 @@ class CoursesAnnouncementsResource {
       queryParams: queryParams_,
     );
     return Announcement.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets metadata for Classroom add-ons in the context of a specific post.
+  ///
+  /// To maintain the integrity of its own data and permissions model, an add-on
+  /// should call this to validate query parameters and the requesting user's
+  /// role whenever the add-on is opened in an
+  /// [iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/iframes-overview).
+  /// This method returns the following error codes: * `PERMISSION_DENIED` for
+  /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if one of the identified resources does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` under which the attachment is attached. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [addOnToken] - Optional. Token that authorizes the request. The token is
+  /// passed as a query parameter when the user is redirected from Classroom to
+  /// the add-on's URL. The authorization token is required when neither of the
+  /// following is true: * The add-on has attachments on the post. * The
+  /// developer project issuing the request is the same project that created the
+  /// post.
+  ///
+  /// [attachmentId] - Optional. The identifier of the attachment. This field is
+  /// required for all requests except when the user is in the
+  /// [Attachment Discovery iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
+  ///
+  /// [postId] - Optional. Deprecated, use `item_id` instead.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddOnContext].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddOnContext> getAddOnContext(
+    core.String courseId,
+    core.String itemId, {
+    core.String? addOnToken,
+    core.String? attachmentId,
+    core.String? postId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (addOnToken != null) 'addOnToken': [addOnToken],
+      if (attachmentId != null) 'attachmentId': [attachmentId],
+      if (postId != null) 'postId': [postId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/announcements/' +
+        commons.escapeVariable('$itemId') +
+        '/addOnContext';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AddOnContext.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -981,9 +1063,342 @@ class CoursesAnnouncementsResource {
   }
 }
 
+class CoursesAnnouncementsAddOnAttachmentsResource {
+  final commons.ApiRequester _requester;
+
+  CoursesAnnouncementsAddOnAttachmentsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an add-on attachment under a post.
+  ///
+  /// Requires the add-on to have permission to create new attachments on the
+  /// post. This method returns the following error codes: * `PERMISSION_DENIED`
+  /// for access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if one of the identified resources does not exist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` under which to create the attachment. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [addOnToken] - Optional. Token that authorizes the request. The token is
+  /// passed as a query parameter when the user is redirected from Classroom to
+  /// the add-on's URL. This authorization token is required for in-Classroom
+  /// attachment creation but optional for partner-first attachment creation.
+  /// Returns an error if not provided for partner-first attachment creation and
+  /// the developer projects that created the attachment and its parent stream
+  /// item do not match.
+  ///
+  /// [postId] - Optional. Deprecated, use `item_id` instead.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddOnAttachment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddOnAttachment> create(
+    AddOnAttachment request,
+    core.String courseId,
+    core.String itemId, {
+    core.String? addOnToken,
+    core.String? postId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (addOnToken != null) 'addOnToken': [addOnToken],
+      if (postId != null) 'postId': [postId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/announcements/' +
+        commons.escapeVariable('$itemId') +
+        '/addOnAttachments';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AddOnAttachment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an add-on attachment.
+  ///
+  /// Requires the add-on to have been the original creator of the attachment.
+  /// This method returns the following error codes: * `PERMISSION_DENIED` for
+  /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if one of the identified resources does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` under which the attachment is attached. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [attachmentId] - Required. Identifier of the attachment.
+  ///
+  /// [postId] - Optional. Deprecated, use `item_id` instead.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String courseId,
+    core.String itemId,
+    core.String attachmentId, {
+    core.String? postId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (postId != null) 'postId': [postId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/announcements/' +
+        commons.escapeVariable('$itemId') +
+        '/addOnAttachments/' +
+        commons.escapeVariable('$attachmentId');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns an add-on attachment.
+  ///
+  /// Requires the add-on requesting the attachment to be the original creator
+  /// of the attachment. This method returns the following error codes: *
+  /// `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request
+  /// is malformed. * `NOT_FOUND` if one of the identified resources does not
+  /// exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` under which the attachment is attached. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [attachmentId] - Required. Identifier of the attachment.
+  ///
+  /// [postId] - Optional. Deprecated, use `item_id` instead.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddOnAttachment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddOnAttachment> get(
+    core.String courseId,
+    core.String itemId,
+    core.String attachmentId, {
+    core.String? postId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (postId != null) 'postId': [postId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/announcements/' +
+        commons.escapeVariable('$itemId') +
+        '/addOnAttachments/' +
+        commons.escapeVariable('$attachmentId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AddOnAttachment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns all attachments created by an add-on under the post.
+  ///
+  /// Requires the add-on to have active attachments on the post or have
+  /// permission to create new attachments on the post. This method returns the
+  /// following error codes: * `PERMISSION_DENIED` for access errors. *
+  /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of
+  /// the identified resources does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` whose attachments should be enumerated. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [pageSize] - The maximum number of attachments to return. The service may
+  /// return fewer than this value. If unspecified, at most 20 attachments will
+  /// be returned. The maximum value is 20; values above 20 will be coerced to
+  /// 20.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListAddOnAttachments` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListAddOnAttachments`
+  /// must match the call that provided the page token.
+  ///
+  /// [postId] - Optional. Identifier of the post under the course whose
+  /// attachments to enumerate. Deprecated, use `item_id` instead.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAddOnAttachmentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAddOnAttachmentsResponse> list(
+    core.String courseId,
+    core.String itemId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? postId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (postId != null) 'postId': [postId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/announcements/' +
+        commons.escapeVariable('$itemId') +
+        '/addOnAttachments';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAddOnAttachmentsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an add-on attachment.
+  ///
+  /// Requires the add-on to have been the original creator of the attachment.
+  /// This method returns the following error codes: * `PERMISSION_DENIED` for
+  /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if one of the identified resources does not exist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [itemId] - Identifier of the post under which the attachment is attached.
+  ///
+  /// [attachmentId] - Required. Identifier of the attachment.
+  ///
+  /// [postId] - Required. Identifier of the post under which the attachment is
+  /// attached.
+  ///
+  /// [updateMask] - Required. Mask that identifies which fields on the
+  /// attachment to update. The update fails if invalid fields are specified. If
+  /// a field supports empty values, it can be cleared by specifying it in the
+  /// update mask and not in the `AddOnAttachment` object. If a field that does
+  /// not support empty values is included in the update mask and not set in the
+  /// `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The
+  /// following fields may be specified by teachers: * `title` *
+  /// `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` *
+  /// `due_date` * `due_time` * `max_points`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddOnAttachment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddOnAttachment> patch(
+    AddOnAttachment request,
+    core.String courseId,
+    core.String itemId,
+    core.String attachmentId, {
+    core.String? postId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (postId != null) 'postId': [postId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/announcements/' +
+        commons.escapeVariable('$itemId') +
+        '/addOnAttachments/' +
+        commons.escapeVariable('$attachmentId');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AddOnAttachment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class CoursesCourseWorkResource {
   final commons.ApiRequester _requester;
 
+  CoursesCourseWorkAddOnAttachmentsResource get addOnAttachments =>
+      CoursesCourseWorkAddOnAttachmentsResource(_requester);
   CoursesCourseWorkStudentSubmissionsResource get studentSubmissions =>
       CoursesCourseWorkStudentSubmissionsResource(_requester);
 
@@ -1143,6 +1558,77 @@ class CoursesCourseWorkResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets metadata for Classroom add-ons in the context of a specific post.
+  ///
+  /// To maintain the integrity of its own data and permissions model, an add-on
+  /// should call this to validate query parameters and the requesting user's
+  /// role whenever the add-on is opened in an
+  /// [iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/iframes-overview).
+  /// This method returns the following error codes: * `PERMISSION_DENIED` for
+  /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if one of the identified resources does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` under which the attachment is attached. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [addOnToken] - Optional. Token that authorizes the request. The token is
+  /// passed as a query parameter when the user is redirected from Classroom to
+  /// the add-on's URL. The authorization token is required when neither of the
+  /// following is true: * The add-on has attachments on the post. * The
+  /// developer project issuing the request is the same project that created the
+  /// post.
+  ///
+  /// [attachmentId] - Optional. The identifier of the attachment. This field is
+  /// required for all requests except when the user is in the
+  /// [Attachment Discovery iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
+  ///
+  /// [postId] - Optional. Deprecated, use `item_id` instead.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddOnContext].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddOnContext> getAddOnContext(
+    core.String courseId,
+    core.String itemId, {
+    core.String? addOnToken,
+    core.String? attachmentId,
+    core.String? postId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (addOnToken != null) 'addOnToken': [addOnToken],
+      if (attachmentId != null) 'attachmentId': [attachmentId],
+      if (postId != null) 'postId': [postId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/courseWork/' +
+        commons.escapeVariable('$itemId') +
+        '/addOnContext';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AddOnContext.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns a list of course work that the requester is permitted to view.
   ///
   /// Course students may only view `PUBLISHED` course work. Course teachers and
@@ -1281,8 +1767,8 @@ class CoursesCourseWorkResource {
   /// permitted to make the requested modification to the student submission, or
   /// for access errors. * `INVALID_ARGUMENT` if the request is malformed. *
   /// `FAILED_PRECONDITION` if the requested course work has already been
-  /// deleted. * `NOT_FOUND` if the requested course, course work, or student
-  /// submission does not exist.
+  /// deleted. * `NOT_FOUND` if the requested course or course work does not
+  /// exist.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1301,7 +1787,10 @@ class CoursesCourseWorkResource {
   /// update mask and not set in the `CourseWork` object, an `INVALID_ARGUMENT`
   /// error is returned. The following fields may be specified by teachers: *
   /// `title` * `description` * `state` * `due_date` * `due_time` * `max_points`
-  /// * `scheduled_time` * `submission_modification_mode` * `topic_id`
+  /// * `scheduled_time` * `submission_modification_mode` * `topic_id` *
+  /// `grading_period_id` Available in
+  /// [V1_20240401_PREVIEW](https://developers.google.com/classroom/reference/preview)
+  /// and later.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1338,6 +1827,487 @@ class CoursesCourseWorkResource {
       queryParams: queryParams_,
     );
     return CourseWork.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class CoursesCourseWorkAddOnAttachmentsResource {
+  final commons.ApiRequester _requester;
+
+  CoursesCourseWorkAddOnAttachmentsStudentSubmissionsResource
+      get studentSubmissions =>
+          CoursesCourseWorkAddOnAttachmentsStudentSubmissionsResource(
+              _requester);
+
+  CoursesCourseWorkAddOnAttachmentsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an add-on attachment under a post.
+  ///
+  /// Requires the add-on to have permission to create new attachments on the
+  /// post. This method returns the following error codes: * `PERMISSION_DENIED`
+  /// for access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if one of the identified resources does not exist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` under which to create the attachment. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [addOnToken] - Optional. Token that authorizes the request. The token is
+  /// passed as a query parameter when the user is redirected from Classroom to
+  /// the add-on's URL. This authorization token is required for in-Classroom
+  /// attachment creation but optional for partner-first attachment creation.
+  /// Returns an error if not provided for partner-first attachment creation and
+  /// the developer projects that created the attachment and its parent stream
+  /// item do not match.
+  ///
+  /// [postId] - Optional. Deprecated, use `item_id` instead.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddOnAttachment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddOnAttachment> create(
+    AddOnAttachment request,
+    core.String courseId,
+    core.String itemId, {
+    core.String? addOnToken,
+    core.String? postId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (addOnToken != null) 'addOnToken': [addOnToken],
+      if (postId != null) 'postId': [postId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/courseWork/' +
+        commons.escapeVariable('$itemId') +
+        '/addOnAttachments';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AddOnAttachment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an add-on attachment.
+  ///
+  /// Requires the add-on to have been the original creator of the attachment.
+  /// This method returns the following error codes: * `PERMISSION_DENIED` for
+  /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if one of the identified resources does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` under which the attachment is attached. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [attachmentId] - Required. Identifier of the attachment.
+  ///
+  /// [postId] - Optional. Deprecated, use `item_id` instead.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String courseId,
+    core.String itemId,
+    core.String attachmentId, {
+    core.String? postId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (postId != null) 'postId': [postId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/courseWork/' +
+        commons.escapeVariable('$itemId') +
+        '/addOnAttachments/' +
+        commons.escapeVariable('$attachmentId');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns an add-on attachment.
+  ///
+  /// Requires the add-on requesting the attachment to be the original creator
+  /// of the attachment. This method returns the following error codes: *
+  /// `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request
+  /// is malformed. * `NOT_FOUND` if one of the identified resources does not
+  /// exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` under which the attachment is attached. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [attachmentId] - Required. Identifier of the attachment.
+  ///
+  /// [postId] - Optional. Deprecated, use `item_id` instead.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddOnAttachment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddOnAttachment> get(
+    core.String courseId,
+    core.String itemId,
+    core.String attachmentId, {
+    core.String? postId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (postId != null) 'postId': [postId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/courseWork/' +
+        commons.escapeVariable('$itemId') +
+        '/addOnAttachments/' +
+        commons.escapeVariable('$attachmentId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AddOnAttachment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns all attachments created by an add-on under the post.
+  ///
+  /// Requires the add-on to have active attachments on the post or have
+  /// permission to create new attachments on the post. This method returns the
+  /// following error codes: * `PERMISSION_DENIED` for access errors. *
+  /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of
+  /// the identified resources does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` whose attachments should be enumerated. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [pageSize] - The maximum number of attachments to return. The service may
+  /// return fewer than this value. If unspecified, at most 20 attachments will
+  /// be returned. The maximum value is 20; values above 20 will be coerced to
+  /// 20.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListAddOnAttachments` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListAddOnAttachments`
+  /// must match the call that provided the page token.
+  ///
+  /// [postId] - Optional. Identifier of the post under the course whose
+  /// attachments to enumerate. Deprecated, use `item_id` instead.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAddOnAttachmentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAddOnAttachmentsResponse> list(
+    core.String courseId,
+    core.String itemId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? postId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (postId != null) 'postId': [postId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/courseWork/' +
+        commons.escapeVariable('$itemId') +
+        '/addOnAttachments';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAddOnAttachmentsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an add-on attachment.
+  ///
+  /// Requires the add-on to have been the original creator of the attachment.
+  /// This method returns the following error codes: * `PERMISSION_DENIED` for
+  /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if one of the identified resources does not exist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [itemId] - Identifier of the post under which the attachment is attached.
+  ///
+  /// [attachmentId] - Required. Identifier of the attachment.
+  ///
+  /// [postId] - Required. Identifier of the post under which the attachment is
+  /// attached.
+  ///
+  /// [updateMask] - Required. Mask that identifies which fields on the
+  /// attachment to update. The update fails if invalid fields are specified. If
+  /// a field supports empty values, it can be cleared by specifying it in the
+  /// update mask and not in the `AddOnAttachment` object. If a field that does
+  /// not support empty values is included in the update mask and not set in the
+  /// `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The
+  /// following fields may be specified by teachers: * `title` *
+  /// `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` *
+  /// `due_date` * `due_time` * `max_points`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddOnAttachment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddOnAttachment> patch(
+    AddOnAttachment request,
+    core.String courseId,
+    core.String itemId,
+    core.String attachmentId, {
+    core.String? postId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (postId != null) 'postId': [postId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/courseWork/' +
+        commons.escapeVariable('$itemId') +
+        '/addOnAttachments/' +
+        commons.escapeVariable('$attachmentId');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AddOnAttachment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class CoursesCourseWorkAddOnAttachmentsStudentSubmissionsResource {
+  final commons.ApiRequester _requester;
+
+  CoursesCourseWorkAddOnAttachmentsStudentSubmissionsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Returns a student submission for an add-on attachment.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` for
+  /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if one of the identified resources does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` under which the attachment is attached. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [attachmentId] - Required. Identifier of the attachment.
+  ///
+  /// [submissionId] - Required. Identifier of the student’s submission.
+  ///
+  /// [postId] - Optional. Deprecated, use `item_id` instead.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddOnAttachmentStudentSubmission].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddOnAttachmentStudentSubmission> get(
+    core.String courseId,
+    core.String itemId,
+    core.String attachmentId,
+    core.String submissionId, {
+    core.String? postId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (postId != null) 'postId': [postId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/courseWork/' +
+        commons.escapeVariable('$itemId') +
+        '/addOnAttachments/' +
+        commons.escapeVariable('$attachmentId') +
+        '/studentSubmissions/' +
+        commons.escapeVariable('$submissionId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AddOnAttachmentStudentSubmission.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates data associated with an add-on attachment submission.
+  ///
+  /// Requires the add-on to have been the original creator of the attachment
+  /// and the attachment to have a positive `max_points` value set. This method
+  /// returns the following error codes: * `PERMISSION_DENIED` for access
+  /// errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if
+  /// one of the identified resources does not exist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` under which the attachment is attached. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [attachmentId] - Required. Identifier of the attachment.
+  ///
+  /// [submissionId] - Required. Identifier of the student's submission.
+  ///
+  /// [postId] - Optional. Deprecated, use `item_id` instead.
+  ///
+  /// [updateMask] - Required. Mask that identifies which fields on the
+  /// attachment to update. The update fails if invalid fields are specified. If
+  /// a field supports empty values, it can be cleared by specifying it in the
+  /// update mask and not in the `AddOnAttachmentStudentSubmission` object. The
+  /// following fields may be specified by teachers: * `points_earned`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddOnAttachmentStudentSubmission].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddOnAttachmentStudentSubmission> patch(
+    AddOnAttachmentStudentSubmission request,
+    core.String courseId,
+    core.String itemId,
+    core.String attachmentId,
+    core.String submissionId, {
+    core.String? postId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (postId != null) 'postId': [postId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/courseWork/' +
+        commons.escapeVariable('$itemId') +
+        '/addOnAttachments/' +
+        commons.escapeVariable('$attachmentId') +
+        '/studentSubmissions/' +
+        commons.escapeVariable('$submissionId');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AddOnAttachmentStudentSubmission.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1828,6 +2798,9 @@ class CoursesCourseWorkStudentSubmissionsResource {
 class CoursesCourseWorkMaterialsResource {
   final commons.ApiRequester _requester;
 
+  CoursesCourseWorkMaterialsAddOnAttachmentsResource get addOnAttachments =>
+      CoursesCourseWorkMaterialsAddOnAttachmentsResource(_requester);
+
   CoursesCourseWorkMaterialsResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -1982,6 +2955,77 @@ class CoursesCourseWorkMaterialsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets metadata for Classroom add-ons in the context of a specific post.
+  ///
+  /// To maintain the integrity of its own data and permissions model, an add-on
+  /// should call this to validate query parameters and the requesting user's
+  /// role whenever the add-on is opened in an
+  /// [iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/iframes-overview).
+  /// This method returns the following error codes: * `PERMISSION_DENIED` for
+  /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if one of the identified resources does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` under which the attachment is attached. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [addOnToken] - Optional. Token that authorizes the request. The token is
+  /// passed as a query parameter when the user is redirected from Classroom to
+  /// the add-on's URL. The authorization token is required when neither of the
+  /// following is true: * The add-on has attachments on the post. * The
+  /// developer project issuing the request is the same project that created the
+  /// post.
+  ///
+  /// [attachmentId] - Optional. The identifier of the attachment. This field is
+  /// required for all requests except when the user is in the
+  /// [Attachment Discovery iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
+  ///
+  /// [postId] - Optional. Deprecated, use `item_id` instead.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddOnContext].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddOnContext> getAddOnContext(
+    core.String courseId,
+    core.String itemId, {
+    core.String? addOnToken,
+    core.String? attachmentId,
+    core.String? postId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (addOnToken != null) 'addOnToken': [addOnToken],
+      if (attachmentId != null) 'attachmentId': [attachmentId],
+      if (postId != null) 'postId': [postId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/courseWorkMaterials/' +
+        commons.escapeVariable('$itemId') +
+        '/addOnContext';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AddOnContext.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns a list of course work material that the requester is permitted to
   /// view.
   ///
@@ -2130,6 +3174,898 @@ class CoursesCourseWorkMaterialsResource {
       queryParams: queryParams_,
     );
     return CourseWorkMaterial.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class CoursesCourseWorkMaterialsAddOnAttachmentsResource {
+  final commons.ApiRequester _requester;
+
+  CoursesCourseWorkMaterialsAddOnAttachmentsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an add-on attachment under a post.
+  ///
+  /// Requires the add-on to have permission to create new attachments on the
+  /// post. This method returns the following error codes: * `PERMISSION_DENIED`
+  /// for access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if one of the identified resources does not exist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` under which to create the attachment. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [addOnToken] - Optional. Token that authorizes the request. The token is
+  /// passed as a query parameter when the user is redirected from Classroom to
+  /// the add-on's URL. This authorization token is required for in-Classroom
+  /// attachment creation but optional for partner-first attachment creation.
+  /// Returns an error if not provided for partner-first attachment creation and
+  /// the developer projects that created the attachment and its parent stream
+  /// item do not match.
+  ///
+  /// [postId] - Optional. Deprecated, use `item_id` instead.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddOnAttachment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddOnAttachment> create(
+    AddOnAttachment request,
+    core.String courseId,
+    core.String itemId, {
+    core.String? addOnToken,
+    core.String? postId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (addOnToken != null) 'addOnToken': [addOnToken],
+      if (postId != null) 'postId': [postId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/courseWorkMaterials/' +
+        commons.escapeVariable('$itemId') +
+        '/addOnAttachments';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AddOnAttachment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an add-on attachment.
+  ///
+  /// Requires the add-on to have been the original creator of the attachment.
+  /// This method returns the following error codes: * `PERMISSION_DENIED` for
+  /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if one of the identified resources does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` under which the attachment is attached. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [attachmentId] - Required. Identifier of the attachment.
+  ///
+  /// [postId] - Optional. Deprecated, use `item_id` instead.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String courseId,
+    core.String itemId,
+    core.String attachmentId, {
+    core.String? postId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (postId != null) 'postId': [postId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/courseWorkMaterials/' +
+        commons.escapeVariable('$itemId') +
+        '/addOnAttachments/' +
+        commons.escapeVariable('$attachmentId');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns an add-on attachment.
+  ///
+  /// Requires the add-on requesting the attachment to be the original creator
+  /// of the attachment. This method returns the following error codes: *
+  /// `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request
+  /// is malformed. * `NOT_FOUND` if one of the identified resources does not
+  /// exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` under which the attachment is attached. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [attachmentId] - Required. Identifier of the attachment.
+  ///
+  /// [postId] - Optional. Deprecated, use `item_id` instead.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddOnAttachment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddOnAttachment> get(
+    core.String courseId,
+    core.String itemId,
+    core.String attachmentId, {
+    core.String? postId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (postId != null) 'postId': [postId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/courseWorkMaterials/' +
+        commons.escapeVariable('$itemId') +
+        '/addOnAttachments/' +
+        commons.escapeVariable('$attachmentId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AddOnAttachment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns all attachments created by an add-on under the post.
+  ///
+  /// Requires the add-on to have active attachments on the post or have
+  /// permission to create new attachments on the post. This method returns the
+  /// following error codes: * `PERMISSION_DENIED` for access errors. *
+  /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of
+  /// the identified resources does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` whose attachments should be enumerated. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [pageSize] - The maximum number of attachments to return. The service may
+  /// return fewer than this value. If unspecified, at most 20 attachments will
+  /// be returned. The maximum value is 20; values above 20 will be coerced to
+  /// 20.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListAddOnAttachments` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListAddOnAttachments`
+  /// must match the call that provided the page token.
+  ///
+  /// [postId] - Optional. Identifier of the post under the course whose
+  /// attachments to enumerate. Deprecated, use `item_id` instead.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAddOnAttachmentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAddOnAttachmentsResponse> list(
+    core.String courseId,
+    core.String itemId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? postId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (postId != null) 'postId': [postId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/courseWorkMaterials/' +
+        commons.escapeVariable('$itemId') +
+        '/addOnAttachments';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAddOnAttachmentsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an add-on attachment.
+  ///
+  /// Requires the add-on to have been the original creator of the attachment.
+  /// This method returns the following error codes: * `PERMISSION_DENIED` for
+  /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if one of the identified resources does not exist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [itemId] - Identifier of the post under which the attachment is attached.
+  ///
+  /// [attachmentId] - Required. Identifier of the attachment.
+  ///
+  /// [postId] - Required. Identifier of the post under which the attachment is
+  /// attached.
+  ///
+  /// [updateMask] - Required. Mask that identifies which fields on the
+  /// attachment to update. The update fails if invalid fields are specified. If
+  /// a field supports empty values, it can be cleared by specifying it in the
+  /// update mask and not in the `AddOnAttachment` object. If a field that does
+  /// not support empty values is included in the update mask and not set in the
+  /// `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The
+  /// following fields may be specified by teachers: * `title` *
+  /// `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` *
+  /// `due_date` * `due_time` * `max_points`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddOnAttachment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddOnAttachment> patch(
+    AddOnAttachment request,
+    core.String courseId,
+    core.String itemId,
+    core.String attachmentId, {
+    core.String? postId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (postId != null) 'postId': [postId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/courseWorkMaterials/' +
+        commons.escapeVariable('$itemId') +
+        '/addOnAttachments/' +
+        commons.escapeVariable('$attachmentId');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AddOnAttachment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class CoursesPostsResource {
+  final commons.ApiRequester _requester;
+
+  CoursesPostsAddOnAttachmentsResource get addOnAttachments =>
+      CoursesPostsAddOnAttachmentsResource(_requester);
+
+  CoursesPostsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets metadata for Classroom add-ons in the context of a specific post.
+  ///
+  /// To maintain the integrity of its own data and permissions model, an add-on
+  /// should call this to validate query parameters and the requesting user's
+  /// role whenever the add-on is opened in an
+  /// [iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/iframes-overview).
+  /// This method returns the following error codes: * `PERMISSION_DENIED` for
+  /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if one of the identified resources does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [postId] - Optional. Deprecated, use `item_id` instead.
+  ///
+  /// [addOnToken] - Optional. Token that authorizes the request. The token is
+  /// passed as a query parameter when the user is redirected from Classroom to
+  /// the add-on's URL. The authorization token is required when neither of the
+  /// following is true: * The add-on has attachments on the post. * The
+  /// developer project issuing the request is the same project that created the
+  /// post.
+  ///
+  /// [attachmentId] - Optional. The identifier of the attachment. This field is
+  /// required for all requests except when the user is in the
+  /// [Attachment Discovery iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` under which the attachment is attached. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddOnContext].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddOnContext> getAddOnContext(
+    core.String courseId,
+    core.String postId, {
+    core.String? addOnToken,
+    core.String? attachmentId,
+    core.String? itemId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (addOnToken != null) 'addOnToken': [addOnToken],
+      if (attachmentId != null) 'attachmentId': [attachmentId],
+      if (itemId != null) 'itemId': [itemId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/posts/' +
+        commons.escapeVariable('$postId') +
+        '/addOnContext';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AddOnContext.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class CoursesPostsAddOnAttachmentsResource {
+  final commons.ApiRequester _requester;
+
+  CoursesPostsAddOnAttachmentsStudentSubmissionsResource
+      get studentSubmissions =>
+          CoursesPostsAddOnAttachmentsStudentSubmissionsResource(_requester);
+
+  CoursesPostsAddOnAttachmentsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an add-on attachment under a post.
+  ///
+  /// Requires the add-on to have permission to create new attachments on the
+  /// post. This method returns the following error codes: * `PERMISSION_DENIED`
+  /// for access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if one of the identified resources does not exist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [postId] - Optional. Deprecated, use `item_id` instead.
+  ///
+  /// [addOnToken] - Optional. Token that authorizes the request. The token is
+  /// passed as a query parameter when the user is redirected from Classroom to
+  /// the add-on's URL. This authorization token is required for in-Classroom
+  /// attachment creation but optional for partner-first attachment creation.
+  /// Returns an error if not provided for partner-first attachment creation and
+  /// the developer projects that created the attachment and its parent stream
+  /// item do not match.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` under which to create the attachment. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddOnAttachment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddOnAttachment> create(
+    AddOnAttachment request,
+    core.String courseId,
+    core.String postId, {
+    core.String? addOnToken,
+    core.String? itemId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (addOnToken != null) 'addOnToken': [addOnToken],
+      if (itemId != null) 'itemId': [itemId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/posts/' +
+        commons.escapeVariable('$postId') +
+        '/addOnAttachments';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AddOnAttachment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an add-on attachment.
+  ///
+  /// Requires the add-on to have been the original creator of the attachment.
+  /// This method returns the following error codes: * `PERMISSION_DENIED` for
+  /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if one of the identified resources does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [postId] - Optional. Deprecated, use `item_id` instead.
+  ///
+  /// [attachmentId] - Required. Identifier of the attachment.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` under which the attachment is attached. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String courseId,
+    core.String postId,
+    core.String attachmentId, {
+    core.String? itemId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (itemId != null) 'itemId': [itemId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/posts/' +
+        commons.escapeVariable('$postId') +
+        '/addOnAttachments/' +
+        commons.escapeVariable('$attachmentId');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns an add-on attachment.
+  ///
+  /// Requires the add-on requesting the attachment to be the original creator
+  /// of the attachment. This method returns the following error codes: *
+  /// `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request
+  /// is malformed. * `NOT_FOUND` if one of the identified resources does not
+  /// exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [postId] - Optional. Deprecated, use `item_id` instead.
+  ///
+  /// [attachmentId] - Required. Identifier of the attachment.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` under which the attachment is attached. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddOnAttachment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddOnAttachment> get(
+    core.String courseId,
+    core.String postId,
+    core.String attachmentId, {
+    core.String? itemId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (itemId != null) 'itemId': [itemId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/posts/' +
+        commons.escapeVariable('$postId') +
+        '/addOnAttachments/' +
+        commons.escapeVariable('$attachmentId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AddOnAttachment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns all attachments created by an add-on under the post.
+  ///
+  /// Requires the add-on to have active attachments on the post or have
+  /// permission to create new attachments on the post. This method returns the
+  /// following error codes: * `PERMISSION_DENIED` for access errors. *
+  /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of
+  /// the identified resources does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [postId] - Optional. Identifier of the post under the course whose
+  /// attachments to enumerate. Deprecated, use `item_id` instead.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` whose attachments should be enumerated. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [pageSize] - The maximum number of attachments to return. The service may
+  /// return fewer than this value. If unspecified, at most 20 attachments will
+  /// be returned. The maximum value is 20; values above 20 will be coerced to
+  /// 20.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListAddOnAttachments` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListAddOnAttachments`
+  /// must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAddOnAttachmentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAddOnAttachmentsResponse> list(
+    core.String courseId,
+    core.String postId, {
+    core.String? itemId,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (itemId != null) 'itemId': [itemId],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/posts/' +
+        commons.escapeVariable('$postId') +
+        '/addOnAttachments';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAddOnAttachmentsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an add-on attachment.
+  ///
+  /// Requires the add-on to have been the original creator of the attachment.
+  /// This method returns the following error codes: * `PERMISSION_DENIED` for
+  /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if one of the identified resources does not exist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [postId] - Required. Identifier of the post under which the attachment is
+  /// attached.
+  ///
+  /// [attachmentId] - Required. Identifier of the attachment.
+  ///
+  /// [itemId] - Identifier of the post under which the attachment is attached.
+  ///
+  /// [updateMask] - Required. Mask that identifies which fields on the
+  /// attachment to update. The update fails if invalid fields are specified. If
+  /// a field supports empty values, it can be cleared by specifying it in the
+  /// update mask and not in the `AddOnAttachment` object. If a field that does
+  /// not support empty values is included in the update mask and not set in the
+  /// `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The
+  /// following fields may be specified by teachers: * `title` *
+  /// `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` *
+  /// `due_date` * `due_time` * `max_points`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddOnAttachment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddOnAttachment> patch(
+    AddOnAttachment request,
+    core.String courseId,
+    core.String postId,
+    core.String attachmentId, {
+    core.String? itemId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (itemId != null) 'itemId': [itemId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/posts/' +
+        commons.escapeVariable('$postId') +
+        '/addOnAttachments/' +
+        commons.escapeVariable('$attachmentId');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AddOnAttachment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class CoursesPostsAddOnAttachmentsStudentSubmissionsResource {
+  final commons.ApiRequester _requester;
+
+  CoursesPostsAddOnAttachmentsStudentSubmissionsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Returns a student submission for an add-on attachment.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` for
+  /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if one of the identified resources does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [postId] - Optional. Deprecated, use `item_id` instead.
+  ///
+  /// [attachmentId] - Required. Identifier of the attachment.
+  ///
+  /// [submissionId] - Required. Identifier of the student’s submission.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` under which the attachment is attached. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddOnAttachmentStudentSubmission].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddOnAttachmentStudentSubmission> get(
+    core.String courseId,
+    core.String postId,
+    core.String attachmentId,
+    core.String submissionId, {
+    core.String? itemId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (itemId != null) 'itemId': [itemId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/posts/' +
+        commons.escapeVariable('$postId') +
+        '/addOnAttachments/' +
+        commons.escapeVariable('$attachmentId') +
+        '/studentSubmissions/' +
+        commons.escapeVariable('$submissionId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AddOnAttachmentStudentSubmission.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates data associated with an add-on attachment submission.
+  ///
+  /// Requires the add-on to have been the original creator of the attachment
+  /// and the attachment to have a positive `max_points` value set. This method
+  /// returns the following error codes: * `PERMISSION_DENIED` for access
+  /// errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if
+  /// one of the identified resources does not exist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [postId] - Optional. Deprecated, use `item_id` instead.
+  ///
+  /// [attachmentId] - Required. Identifier of the attachment.
+  ///
+  /// [submissionId] - Required. Identifier of the student's submission.
+  ///
+  /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
+  /// `CourseWorkMaterial` under which the attachment is attached. This field is
+  /// required, but is not marked as such while we are migrating from post_id.
+  ///
+  /// [updateMask] - Required. Mask that identifies which fields on the
+  /// attachment to update. The update fails if invalid fields are specified. If
+  /// a field supports empty values, it can be cleared by specifying it in the
+  /// update mask and not in the `AddOnAttachmentStudentSubmission` object. The
+  /// following fields may be specified by teachers: * `points_earned`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddOnAttachmentStudentSubmission].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddOnAttachmentStudentSubmission> patch(
+    AddOnAttachmentStudentSubmission request,
+    core.String courseId,
+    core.String postId,
+    core.String attachmentId,
+    core.String submissionId, {
+    core.String? itemId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (itemId != null) 'itemId': [itemId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/posts/' +
+        commons.escapeVariable('$postId') +
+        '/addOnAttachments/' +
+        commons.escapeVariable('$attachmentId') +
+        '/studentSubmissions/' +
+        commons.escapeVariable('$submissionId');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AddOnAttachmentStudentSubmission.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3691,6 +5627,271 @@ class UserProfilesGuardiansResource {
   }
 }
 
+/// An add-on attachment on a post.
+class AddOnAttachment {
+  /// Identifiers of attachments that were previous copies of this attachment.
+  ///
+  /// If the attachment was previously copied by virtue of its parent post being
+  /// copied, this enumerates the identifiers of attachments that were its
+  /// previous copies in ascending chronological order of copy.
+  ///
+  /// Output only.
+  core.List<CopyHistory>? copyHistory;
+
+  /// Identifier of the course.
+  ///
+  /// Immutable.
+  core.String? courseId;
+
+  /// Date, in UTC, that work on this attachment is due.
+  ///
+  /// This must be specified if `due_time` is specified.
+  Date? dueDate;
+
+  /// Time of day, in UTC, that work on this attachment is due.
+  ///
+  /// This must be specified if `due_date` is specified.
+  TimeOfDay? dueTime;
+
+  /// Classroom-assigned identifier for this attachment, unique per post.
+  ///
+  /// Immutable.
+  core.String? id;
+
+  /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial`
+  /// under which the attachment is attached.
+  ///
+  /// Unique per course.
+  ///
+  /// Immutable.
+  core.String? itemId;
+
+  /// Maximum grade for this attachment.
+  ///
+  /// Can only be set if `studentWorkReviewUri` is set. Set to a non-zero value
+  /// to indicate that the attachment supports grade passback. If set, this must
+  /// be a non-negative integer value. When set to zero, the attachment will not
+  /// support grade passback.
+  core.double? maxPoints;
+
+  /// Deprecated, use `item_id` instead.
+  ///
+  /// Immutable.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? postId;
+
+  /// URI to show the student view of the attachment.
+  ///
+  /// The URI will be opened in an iframe with the `courseId`, `itemId`,
+  /// `itemType`, and `attachmentId` query parameters set.
+  ///
+  /// Required.
+  EmbedUri? studentViewUri;
+
+  /// URI for the teacher to see student work on the attachment, if applicable.
+  ///
+  /// The URI will be opened in an iframe with the `courseId`, `itemId`,
+  /// `itemType`, `attachmentId`, and `submissionId` query parameters set. This
+  /// is the same `submissionId` returned in the
+  /// \[`AddOnContext.studentContext`\](//devsite.google.com/classroom/reference/rest/v1/AddOnContext#StudentContext)
+  /// field when a student views the attachment. If the URI is omitted or
+  /// removed, `max_points` will also be discarded.
+  EmbedUri? studentWorkReviewUri;
+
+  /// URI to show the teacher view of the attachment.
+  ///
+  /// The URI will be opened in an iframe with the `courseId`, `itemId`,
+  /// `itemType`, and `attachmentId` query parameters set.
+  ///
+  /// Required.
+  EmbedUri? teacherViewUri;
+
+  /// Title of this attachment.
+  ///
+  /// The title must be between 1 and 1000 characters.
+  ///
+  /// Required.
+  core.String? title;
+
+  AddOnAttachment({
+    this.copyHistory,
+    this.courseId,
+    this.dueDate,
+    this.dueTime,
+    this.id,
+    this.itemId,
+    this.maxPoints,
+    this.postId,
+    this.studentViewUri,
+    this.studentWorkReviewUri,
+    this.teacherViewUri,
+    this.title,
+  });
+
+  AddOnAttachment.fromJson(core.Map json_)
+      : this(
+          copyHistory: (json_['copyHistory'] as core.List?)
+              ?.map((value) => CopyHistory.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          courseId: json_['courseId'] as core.String?,
+          dueDate: json_.containsKey('dueDate')
+              ? Date.fromJson(
+                  json_['dueDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dueTime: json_.containsKey('dueTime')
+              ? TimeOfDay.fromJson(
+                  json_['dueTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: json_['id'] as core.String?,
+          itemId: json_['itemId'] as core.String?,
+          maxPoints: (json_['maxPoints'] as core.num?)?.toDouble(),
+          postId: json_['postId'] as core.String?,
+          studentViewUri: json_.containsKey('studentViewUri')
+              ? EmbedUri.fromJson(json_['studentViewUri']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          studentWorkReviewUri: json_.containsKey('studentWorkReviewUri')
+              ? EmbedUri.fromJson(json_['studentWorkReviewUri']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          teacherViewUri: json_.containsKey('teacherViewUri')
+              ? EmbedUri.fromJson(json_['teacherViewUri']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          title: json_['title'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (copyHistory != null) 'copyHistory': copyHistory!,
+        if (courseId != null) 'courseId': courseId!,
+        if (dueDate != null) 'dueDate': dueDate!,
+        if (dueTime != null) 'dueTime': dueTime!,
+        if (id != null) 'id': id!,
+        if (itemId != null) 'itemId': itemId!,
+        if (maxPoints != null) 'maxPoints': maxPoints!,
+        if (postId != null) 'postId': postId!,
+        if (studentViewUri != null) 'studentViewUri': studentViewUri!,
+        if (studentWorkReviewUri != null)
+          'studentWorkReviewUri': studentWorkReviewUri!,
+        if (teacherViewUri != null) 'teacherViewUri': teacherViewUri!,
+        if (title != null) 'title': title!,
+      };
+}
+
+/// Payload for grade update requests.
+class AddOnAttachmentStudentSubmission {
+  /// Student grade on this attachment.
+  ///
+  /// If unset, no grade was set.
+  core.double? pointsEarned;
+
+  /// Submission state of add-on attachment's parent post (i.e. assignment).
+  /// Possible string values are:
+  /// - "SUBMISSION_STATE_UNSPECIFIED" : No state specified. This should never
+  /// be returned.
+  /// - "NEW" : The student has never accessed this submission. Attachments are
+  /// not returned and timestamps is not set.
+  /// - "CREATED" : Has been created.
+  /// - "TURNED_IN" : Has been turned in to the teacher.
+  /// - "RETURNED" : Has been returned to the student.
+  /// - "RECLAIMED_BY_STUDENT" : Student chose to "unsubmit" the assignment.
+  core.String? postSubmissionState;
+
+  AddOnAttachmentStudentSubmission({
+    this.pointsEarned,
+    this.postSubmissionState,
+  });
+
+  AddOnAttachmentStudentSubmission.fromJson(core.Map json_)
+      : this(
+          pointsEarned: (json_['pointsEarned'] as core.num?)?.toDouble(),
+          postSubmissionState: json_['postSubmissionState'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pointsEarned != null) 'pointsEarned': pointsEarned!,
+        if (postSubmissionState != null)
+          'postSubmissionState': postSubmissionState!,
+      };
+}
+
+/// Attachment-relevant metadata for Classroom add-ons in the context of a
+/// specific post.
+class AddOnContext {
+  /// Identifier of the course.
+  ///
+  /// Immutable.
+  core.String? courseId;
+
+  /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial`
+  /// under which the attachment is attached.
+  ///
+  /// Immutable.
+  core.String? itemId;
+
+  /// Deprecated, use `item_id` instead.
+  ///
+  /// Immutable.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? postId;
+
+  /// Add-on context corresponding to the requesting user's role as a student.
+  ///
+  /// Its presence implies that the requesting user is a student in the course.
+  StudentContext? studentContext;
+
+  /// Whether the post allows the teacher to see student work and passback
+  /// grades.
+  ///
+  /// Optional.
+  core.bool? supportsStudentWork;
+
+  /// Add-on context corresponding to the requesting user's role as a teacher.
+  ///
+  /// Its presence implies that the requesting user is a teacher in the course.
+  TeacherContext? teacherContext;
+
+  AddOnContext({
+    this.courseId,
+    this.itemId,
+    this.postId,
+    this.studentContext,
+    this.supportsStudentWork,
+    this.teacherContext,
+  });
+
+  AddOnContext.fromJson(core.Map json_)
+      : this(
+          courseId: json_['courseId'] as core.String?,
+          itemId: json_['itemId'] as core.String?,
+          postId: json_['postId'] as core.String?,
+          studentContext: json_.containsKey('studentContext')
+              ? StudentContext.fromJson(json_['studentContext']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          supportsStudentWork: json_['supportsStudentWork'] as core.bool?,
+          teacherContext: json_.containsKey('teacherContext')
+              ? TeacherContext.fromJson(json_['teacherContext']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (courseId != null) 'courseId': courseId!,
+        if (itemId != null) 'itemId': itemId!,
+        if (postId != null) 'postId': postId!,
+        if (studentContext != null) 'studentContext': studentContext!,
+        if (supportsStudentWork != null)
+          'supportsStudentWork': supportsStudentWork!,
+        if (teacherContext != null) 'teacherContext': teacherContext!,
+      };
+}
+
 /// Announcement created by a teacher for students of the course
 class Announcement {
   /// Absolute link to this announcement in the Classroom web UI.
@@ -3951,6 +6152,55 @@ class CloudPubsubTopic {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (topicName != null) 'topicName': topicName!,
+      };
+}
+
+/// Identifier of a previous copy of a given attachment.
+class CopyHistory {
+  /// Identifier of the attachment.
+  ///
+  /// Immutable.
+  core.String? attachmentId;
+
+  /// Identifier of the course.
+  ///
+  /// Immutable.
+  core.String? courseId;
+
+  /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial`
+  /// under which the attachment is attached.
+  ///
+  /// Immutable.
+  core.String? itemId;
+
+  /// Deprecated, use `item_id` instead.
+  ///
+  /// Immutable.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? postId;
+
+  CopyHistory({
+    this.attachmentId,
+    this.courseId,
+    this.itemId,
+    this.postId,
+  });
+
+  CopyHistory.fromJson(core.Map json_)
+      : this(
+          attachmentId: json_['attachmentId'] as core.String?,
+          courseId: json_['courseId'] as core.String?,
+          itemId: json_['itemId'] as core.String?,
+          postId: json_['postId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attachmentId != null) 'attachmentId': attachmentId!,
+        if (courseId != null) 'courseId': courseId!,
+        if (itemId != null) 'itemId': itemId!,
+        if (postId != null) 'postId': postId!,
       };
 }
 
@@ -4841,6 +7091,30 @@ class DriveFolder {
       };
 }
 
+/// URI to be iframed after being populated with query parameters.
+class EmbedUri {
+  /// URI to be iframed after being populated with query parameters.
+  ///
+  /// This must be a valid UTF-8 string containing between 1 and 1800
+  /// characters.
+  ///
+  /// Required.
+  core.String? uri;
+
+  EmbedUri({
+    this.uri,
+  });
+
+  EmbedUri.fromJson(core.Map json_)
+      : this(
+          uri: json_['uri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -5348,6 +7622,36 @@ class Link {
         if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
         if (title != null) 'title': title!,
         if (url != null) 'url': url!,
+      };
+}
+
+/// Response when listing add-on attachments.
+class ListAddOnAttachmentsResponse {
+  /// Attachments under the given post.
+  core.List<AddOnAttachment>? addOnAttachments;
+
+  /// A token, which can be sent as `pageToken` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListAddOnAttachmentsResponse({
+    this.addOnAttachments,
+    this.nextPageToken,
+  });
+
+  ListAddOnAttachmentsResponse.fromJson(core.Map json_)
+      : this(
+          addOnAttachments: (json_['addOnAttachments'] as core.List?)
+              ?.map((value) => AddOnAttachment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (addOnAttachments != null) 'addOnAttachments': addOnAttachments!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -6187,6 +8491,28 @@ class Student {
       };
 }
 
+/// Role-specific context if the requesting user is a student.
+class StudentContext {
+  /// Requesting user's submission id to be used for grade passback and to
+  /// identify the student when showing student work to the teacher.
+  ///
+  /// This is set exactly when `supportsStudentWork` is `true`.
+  core.String? submissionId;
+
+  StudentContext({
+    this.submissionId,
+  });
+
+  StudentContext.fromJson(core.Map json_)
+      : this(
+          submissionId: json_['submissionId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (submissionId != null) 'submissionId': submissionId!,
+      };
+}
+
 /// Student submission for course work.
 ///
 /// `StudentSubmission` items are generated when a `CourseWork` item is created.
@@ -6450,12 +8776,15 @@ class Teacher {
       };
 }
 
+/// Role-specific context if the requesting user is a teacher.
+typedef TeacherContext = $Empty;
+
 /// Represents a time of day.
 ///
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-typedef TimeOfDay = $TimeOfDay;
+typedef TimeOfDay = $TimeOfDay00;
 
 /// Topic created by a teacher for the course
 class Topic {

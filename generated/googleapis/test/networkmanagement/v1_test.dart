@@ -671,6 +671,8 @@ api.Endpoint buildEndpoint() {
     o.networkType = 'foo';
     o.port = 42;
     o.projectId = 'foo';
+    o.redisCluster = 'foo';
+    o.redisInstance = 'foo';
   }
   buildCounterEndpoint--;
   return o;
@@ -728,6 +730,14 @@ void checkEndpoint(api.Endpoint o) {
     );
     unittest.expect(
       o.projectId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.redisCluster!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.redisInstance!,
       unittest.equals('foo'),
     );
   }
@@ -873,6 +883,7 @@ api.FirewallInfo buildFirewallInfo() {
     o.firewallRuleType = 'foo';
     o.networkUri = 'foo';
     o.policy = 'foo';
+    o.policyUri = 'foo';
     o.priority = 42;
     o.targetServiceAccounts = buildUnnamed6();
     o.targetTags = buildUnnamed7();
@@ -907,6 +918,10 @@ void checkFirewallInfo(api.FirewallInfo o) {
     );
     unittest.expect(
       o.policy!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.policyUri!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1119,6 +1134,7 @@ api.InstanceInfo buildInstanceInfo() {
     o.internalIp = 'foo';
     o.networkTags = buildUnnamed8();
     o.networkUri = 'foo';
+    o.pscNetworkAttachmentUri = 'foo';
     o.serviceAccount = 'foo';
     o.uri = 'foo';
   }
@@ -1148,6 +1164,10 @@ void checkInstanceInfo(api.InstanceInfo o) {
     checkUnnamed8(o.networkTags!);
     unittest.expect(
       o.networkUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pscNetworkAttachmentUri!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1717,6 +1737,8 @@ api.NetworkInfo buildNetworkInfo() {
   if (buildCounterNetworkInfo < 3) {
     o.displayName = 'foo';
     o.matchedIpRange = 'foo';
+    o.matchedSubnetUri = 'foo';
+    o.region = 'foo';
     o.uri = 'foo';
   }
   buildCounterNetworkInfo--;
@@ -1732,6 +1754,14 @@ void checkNetworkInfo(api.NetworkInfo o) {
     );
     unittest.expect(
       o.matchedIpRange!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.matchedSubnetUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.region!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2079,6 +2109,100 @@ void checkReachabilityDetails(api.ReachabilityDetails o) {
   buildCounterReachabilityDetails--;
 }
 
+core.int buildCounterRedisClusterInfo = 0;
+api.RedisClusterInfo buildRedisClusterInfo() {
+  final o = api.RedisClusterInfo();
+  buildCounterRedisClusterInfo++;
+  if (buildCounterRedisClusterInfo < 3) {
+    o.discoveryEndpointIpAddress = 'foo';
+    o.displayName = 'foo';
+    o.location = 'foo';
+    o.networkUri = 'foo';
+    o.secondaryEndpointIpAddress = 'foo';
+    o.uri = 'foo';
+  }
+  buildCounterRedisClusterInfo--;
+  return o;
+}
+
+void checkRedisClusterInfo(api.RedisClusterInfo o) {
+  buildCounterRedisClusterInfo++;
+  if (buildCounterRedisClusterInfo < 3) {
+    unittest.expect(
+      o.discoveryEndpointIpAddress!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.networkUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.secondaryEndpointIpAddress!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRedisClusterInfo--;
+}
+
+core.int buildCounterRedisInstanceInfo = 0;
+api.RedisInstanceInfo buildRedisInstanceInfo() {
+  final o = api.RedisInstanceInfo();
+  buildCounterRedisInstanceInfo++;
+  if (buildCounterRedisInstanceInfo < 3) {
+    o.displayName = 'foo';
+    o.networkUri = 'foo';
+    o.primaryEndpointIp = 'foo';
+    o.readEndpointIp = 'foo';
+    o.region = 'foo';
+    o.uri = 'foo';
+  }
+  buildCounterRedisInstanceInfo--;
+  return o;
+}
+
+void checkRedisInstanceInfo(api.RedisInstanceInfo o) {
+  buildCounterRedisInstanceInfo++;
+  if (buildCounterRedisInstanceInfo < 3) {
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.networkUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.primaryEndpointIp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.readEndpointIp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.region!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRedisInstanceInfo--;
+}
+
 core.int buildCounterRerunConnectivityTestRequest = 0;
 api.RerunConnectivityTestRequest buildRerunConnectivityTestRequest() {
   final o = api.RerunConnectivityTestRequest();
@@ -2167,6 +2291,8 @@ api.RouteInfo buildRouteInfo() {
   final o = api.RouteInfo();
   buildCounterRouteInfo++;
   if (buildCounterRouteInfo < 3) {
+    o.advertisedRouteNextHopUri = 'foo';
+    o.advertisedRouteSourceRouterUri = 'foo';
     o.destIpRange = 'foo';
     o.destPortRanges = buildUnnamed24();
     o.displayName = 'foo';
@@ -2178,6 +2304,7 @@ api.RouteInfo buildRouteInfo() {
     o.nextHopType = 'foo';
     o.priority = 42;
     o.protocols = buildUnnamed26();
+    o.region = 'foo';
     o.routeScope = 'foo';
     o.routeType = 'foo';
     o.srcIpRange = 'foo';
@@ -2191,6 +2318,14 @@ api.RouteInfo buildRouteInfo() {
 void checkRouteInfo(api.RouteInfo o) {
   buildCounterRouteInfo++;
   if (buildCounterRouteInfo < 3) {
+    unittest.expect(
+      o.advertisedRouteNextHopUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.advertisedRouteSourceRouterUri!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.destIpRange!,
       unittest.equals('foo'),
@@ -2226,6 +2361,10 @@ void checkRouteInfo(api.RouteInfo o) {
       unittest.equals(42),
     );
     checkUnnamed26(o.protocols!);
+    unittest.expect(
+      o.region!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.routeScope!,
       unittest.equals('foo'),
@@ -2405,6 +2544,8 @@ api.Step buildStep() {
     o.network = buildNetworkInfo();
     o.projectId = 'foo';
     o.proxyConnection = buildProxyConnectionInfo();
+    o.redisCluster = buildRedisClusterInfo();
+    o.redisInstance = buildRedisInstanceInfo();
     o.route = buildRouteInfo();
     o.serverlessNeg = buildServerlessNegInfo();
     o.state = 'foo';
@@ -2448,6 +2589,8 @@ void checkStep(api.Step o) {
       unittest.equals('foo'),
     );
     checkProxyConnectionInfo(o.proxyConnection!);
+    checkRedisClusterInfo(o.redisCluster!);
+    checkRedisInstanceInfo(o.redisInstance!);
     checkRouteInfo(o.route!);
     checkServerlessNegInfo(o.serverlessNeg!);
     unittest.expect(
@@ -3152,6 +3295,26 @@ void main() {
       final od = api.ReachabilityDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkReachabilityDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-RedisClusterInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRedisClusterInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RedisClusterInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRedisClusterInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-RedisInstanceInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRedisInstanceInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RedisInstanceInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRedisInstanceInfo(od);
     });
   });
 

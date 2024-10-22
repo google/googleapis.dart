@@ -1178,7 +1178,7 @@ class ProjectsInstancesClustersBackupsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the destination cluster that will contain
-  /// the backup copy. The cluster must already exists. Values are of the form:
+  /// the backup copy. The cluster must already exist. Values are of the form:
   /// `projects/{project}/instances/{instance}/clusters/{cluster}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/instances/\[^/\]+/clusters/\[^/\]+$`.
@@ -3088,9 +3088,8 @@ class AuthorizedView {
 class AutomatedBackupPolicy {
   /// How frequently automated backups should occur.
   ///
-  /// The only supported value at this time is 24 hours.
-  ///
-  /// Required.
+  /// The only supported value at this time is 24 hours. An undefined frequency
+  /// is treated as 24 hours.
   core.String? frequency;
 
   /// How long the automated backups should be retained.
@@ -3188,6 +3187,18 @@ class AutoscalingTargets {
 
 /// A backup of a Cloud Bigtable table.
 class Backup {
+  /// Indicates the backup type of the backup.
+  /// Possible string values are:
+  /// - "BACKUP_TYPE_UNSPECIFIED" : Not specified.
+  /// - "STANDARD" : The default type for Cloud Bigtable managed backups.
+  /// Supported for backups created in both HDD and SSD instances. Requires
+  /// optimization when restored to a table in an SSD instance.
+  /// - "HOT" : A backup type with faster restore to SSD performance. Only
+  /// supported for backups created in SSD instances. A new SSD table restored
+  /// from a hot backup reaches production performance more quickly than a
+  /// standard backup.
+  core.String? backupType;
+
   /// The encryption information for the backup.
   ///
   /// Output only.
@@ -3200,15 +3211,24 @@ class Backup {
   /// Output only.
   core.String? endTime;
 
-  /// The expiration time of the backup, with microseconds granularity that must
-  /// be at least 6 hours and at most 90 days from the time the request is
-  /// received.
+  /// The expiration time of the backup.
   ///
-  /// Once the `expire_time` has passed, Cloud Bigtable will delete the backup
-  /// and free the resources used by the backup.
+  /// When creating a backup or updating its `expire_time`, the value must be
+  /// greater than the backup creation time by: - At least 6 hours - At most 90
+  /// days Once the `expire_time` has passed, Cloud Bigtable will delete the
+  /// backup.
   ///
   /// Required.
   core.String? expireTime;
+
+  /// The time at which the hot backup will be converted to a standard backup.
+  ///
+  /// Once the `hot_to_standard_time` has passed, Cloud Bigtable will convert
+  /// the hot backup to a standard backup. This value must be greater than the
+  /// backup creation time by: - At least 24 hours This field only applies for
+  /// hot backups. When creating or updating a standard backup, attempting to
+  /// set this field will fail the request.
+  core.String? hotToStandardTime;
 
   /// A globally unique identifier for the backup which cannot be changed.
   ///
@@ -3260,9 +3280,11 @@ class Backup {
   core.String? state;
 
   Backup({
+    this.backupType,
     this.encryptionInfo,
     this.endTime,
     this.expireTime,
+    this.hotToStandardTime,
     this.name,
     this.sizeBytes,
     this.sourceBackup,
@@ -3273,12 +3295,14 @@ class Backup {
 
   Backup.fromJson(core.Map json_)
       : this(
+          backupType: json_['backupType'] as core.String?,
           encryptionInfo: json_.containsKey('encryptionInfo')
               ? EncryptionInfo.fromJson(json_['encryptionInfo']
                   as core.Map<core.String, core.dynamic>)
               : null,
           endTime: json_['endTime'] as core.String?,
           expireTime: json_['expireTime'] as core.String?,
+          hotToStandardTime: json_['hotToStandardTime'] as core.String?,
           name: json_['name'] as core.String?,
           sizeBytes: json_['sizeBytes'] as core.String?,
           sourceBackup: json_['sourceBackup'] as core.String?,
@@ -3288,9 +3312,11 @@ class Backup {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (backupType != null) 'backupType': backupType!,
         if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
         if (endTime != null) 'endTime': endTime!,
         if (expireTime != null) 'expireTime': expireTime!,
+        if (hotToStandardTime != null) 'hotToStandardTime': hotToStandardTime!,
         if (name != null) 'name': name!,
         if (sizeBytes != null) 'sizeBytes': sizeBytes!,
         if (sourceBackup != null) 'sourceBackup': sourceBackup!,
@@ -3597,6 +3623,19 @@ class Cluster {
   /// `projects/{project}/instances/{instance}/clusters/a-z*`.
   core.String? name;
 
+  /// The node scaling factor of this cluster.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "NODE_SCALING_FACTOR_UNSPECIFIED" : No node scaling specified. Defaults
+  /// to NODE_SCALING_FACTOR_1X.
+  /// - "NODE_SCALING_FACTOR_1X" : The cluster is running with a scaling factor
+  /// of 1.
+  /// - "NODE_SCALING_FACTOR_2X" : The cluster is running with a scaling factor
+  /// of 2. All node count values must be in increments of 2 with this scaling
+  /// factor enabled, otherwise an INVALID_ARGUMENT error will be returned.
+  core.String? nodeScalingFactor;
+
   /// The number of nodes in the cluster.
   ///
   /// If no value is set, Cloud Bigtable automatically allocates nodes based on
@@ -3628,6 +3667,7 @@ class Cluster {
     this.encryptionConfig,
     this.location,
     this.name,
+    this.nodeScalingFactor,
     this.serveNodes,
     this.state,
   });
@@ -3645,6 +3685,7 @@ class Cluster {
               : null,
           location: json_['location'] as core.String?,
           name: json_['name'] as core.String?,
+          nodeScalingFactor: json_['nodeScalingFactor'] as core.String?,
           serveNodes: json_['serveNodes'] as core.int?,
           state: json_['state'] as core.String?,
         );
@@ -3656,6 +3697,7 @@ class Cluster {
         if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
         if (location != null) 'location': location!,
         if (name != null) 'name': name!,
+        if (nodeScalingFactor != null) 'nodeScalingFactor': nodeScalingFactor!,
         if (serveNodes != null) 'serveNodes': serveNodes!,
         if (state != null) 'state': state!,
       };
@@ -4416,20 +4458,28 @@ class GoogleBigtableAdminV2AuthorizedViewSubsetView {
 
 /// A value that combines incremental updates into a summarized value.
 ///
-/// Data is never directly written or read using type `Aggregate`. Writes will
-/// provide either the `input_type` or `state_type`, and reads will always
-/// return the `state_type` .
+/// Data is never directly written or read using type `Aggregate`. Writes
+/// provide either the `input_type` or `state_type`, and reads always return the
+/// `state_type` .
 class GoogleBigtableAdminV2TypeAggregate {
-  /// Type of the inputs that are accumulated by this `Aggregate`, which must
-  /// specify a full encoding.
+  /// HyperLogLogPlusPlusUniqueCount aggregator.
+  GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount?
+      hllppUniqueCount;
+
+  /// Type of the inputs that are accumulated by this `Aggregate`.
   ///
   /// Use `AddInput` mutations to accumulate new inputs.
   Type? inputType;
 
+  /// Max aggregator.
+  GoogleBigtableAdminV2TypeAggregateMax? max;
+
+  /// Min aggregator.
+  GoogleBigtableAdminV2TypeAggregateMin? min;
+
   /// Type that holds the internal accumulator state for the `Aggregate`.
   ///
-  /// This is a function of the `input_type` and `aggregator` chosen, and will
-  /// always specify a full encoding.
+  /// This is a function of the `input_type` and `aggregator` chosen.
   ///
   /// Output only.
   Type? stateType;
@@ -4438,16 +4488,32 @@ class GoogleBigtableAdminV2TypeAggregate {
   GoogleBigtableAdminV2TypeAggregateSum? sum;
 
   GoogleBigtableAdminV2TypeAggregate({
+    this.hllppUniqueCount,
     this.inputType,
+    this.max,
+    this.min,
     this.stateType,
     this.sum,
   });
 
   GoogleBigtableAdminV2TypeAggregate.fromJson(core.Map json_)
       : this(
+          hllppUniqueCount: json_.containsKey('hllppUniqueCount')
+              ? GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount
+                  .fromJson(json_['hllppUniqueCount']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           inputType: json_.containsKey('inputType')
               ? Type.fromJson(
                   json_['inputType'] as core.Map<core.String, core.dynamic>)
+              : null,
+          max: json_.containsKey('max')
+              ? GoogleBigtableAdminV2TypeAggregateMax.fromJson(
+                  json_['max'] as core.Map<core.String, core.dynamic>)
+              : null,
+          min: json_.containsKey('min')
+              ? GoogleBigtableAdminV2TypeAggregateMin.fromJson(
+                  json_['min'] as core.Map<core.String, core.dynamic>)
               : null,
           stateType: json_.containsKey('stateType')
               ? Type.fromJson(
@@ -4460,20 +4526,71 @@ class GoogleBigtableAdminV2TypeAggregate {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (hllppUniqueCount != null) 'hllppUniqueCount': hllppUniqueCount!,
         if (inputType != null) 'inputType': inputType!,
+        if (max != null) 'max': max!,
+        if (min != null) 'min': min!,
         if (stateType != null) 'stateType': stateType!,
         if (sum != null) 'sum': sum!,
       };
 }
+
+/// Computes an approximate unique count over the input values.
+///
+/// When using raw data as input, be careful to use a consistent encoding.
+/// Otherwise the same value encoded differently could count more than once, or
+/// two distinct values could count as identical. Input: Any, or omit for Raw
+/// State: TBD Special state conversions: `Int64` (the unique count estimate)
+typedef GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount
+    = $Empty;
+
+/// Computes the max of the input values.
+///
+/// Allowed input: `Int64` State: same as input
+typedef GoogleBigtableAdminV2TypeAggregateMax = $Empty;
+
+/// Computes the min of the input values.
+///
+/// Allowed input: `Int64` State: same as input
+typedef GoogleBigtableAdminV2TypeAggregateMin = $Empty;
 
 /// Computes the sum of the input values.
 ///
 /// Allowed input: `Int64` State: same as input
 typedef GoogleBigtableAdminV2TypeAggregateSum = $Empty;
 
+/// An ordered list of elements of a given type.
+///
+/// Values of type `Array` are stored in `Value.array_value`.
+class GoogleBigtableAdminV2TypeArray {
+  /// The type of the elements in the array.
+  ///
+  /// This must not be `Array`.
+  Type? elementType;
+
+  GoogleBigtableAdminV2TypeArray({
+    this.elementType,
+  });
+
+  GoogleBigtableAdminV2TypeArray.fromJson(core.Map json_)
+      : this(
+          elementType: json_.containsKey('elementType')
+              ? Type.fromJson(
+                  json_['elementType'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (elementType != null) 'elementType': elementType!,
+      };
+}
+
+/// bool Values of type `Bool` are stored in `Value.bool_value`.
+typedef GoogleBigtableAdminV2TypeBool = $Empty;
+
 /// Bytes Values of type `Bytes` are stored in `Value.bytes_value`.
 class GoogleBigtableAdminV2TypeBytes {
-  /// The encoding to use when converting to/from lower level types.
+  /// The encoding to use when converting to or from lower level types.
   GoogleBigtableAdminV2TypeBytesEncoding? encoding;
 
   GoogleBigtableAdminV2TypeBytes({
@@ -4493,7 +4610,7 @@ class GoogleBigtableAdminV2TypeBytes {
       };
 }
 
-/// Rules used to convert to/from lower level types.
+/// Rules used to convert to or from lower level types.
 class GoogleBigtableAdminV2TypeBytesEncoding {
   /// Use `Raw` encoding.
   GoogleBigtableAdminV2TypeBytesEncodingRaw? raw;
@@ -4515,13 +4632,24 @@ class GoogleBigtableAdminV2TypeBytesEncoding {
       };
 }
 
-/// Leaves the value "as-is" * Natural sort? Yes * Self-delimiting? No *
-/// Compatibility? N/A
+/// Leaves the value as-is.
+///
+/// Sorted mode: all values are supported. Distinct mode: all values are
+/// supported.
 typedef GoogleBigtableAdminV2TypeBytesEncodingRaw = $Empty;
+
+/// Date Values of type `Date` are stored in `Value.date_value`.
+typedef GoogleBigtableAdminV2TypeDate = $Empty;
+
+/// Float32 Values of type `Float32` are stored in `Value.float_value`.
+typedef GoogleBigtableAdminV2TypeFloat32 = $Empty;
+
+/// Float64 Values of type `Float64` are stored in `Value.float_value`.
+typedef GoogleBigtableAdminV2TypeFloat64 = $Empty;
 
 /// Int64 Values of type `Int64` are stored in `Value.int_value`.
 class GoogleBigtableAdminV2TypeInt64 {
-  /// The encoding to use when converting to/from lower level types.
+  /// The encoding to use when converting to or from lower level types.
   GoogleBigtableAdminV2TypeInt64Encoding? encoding;
 
   GoogleBigtableAdminV2TypeInt64({
@@ -4541,7 +4669,7 @@ class GoogleBigtableAdminV2TypeInt64 {
       };
 }
 
-/// Rules used to convert to/from lower level types.
+/// Rules used to convert to or from lower level types.
 class GoogleBigtableAdminV2TypeInt64Encoding {
   /// Use `BigEndianBytes` encoding.
   GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes? bigEndianBytes;
@@ -4564,13 +4692,16 @@ class GoogleBigtableAdminV2TypeInt64Encoding {
       };
 }
 
-/// Encodes the value as an 8-byte big endian twos complement `Bytes` value.
+/// Encodes the value as an 8-byte big-endian two's complement value.
 ///
-/// * Natural sort? No (positive values only) * Self-delimiting? Yes *
-/// Compatibility? - BigQuery Federation `BINARY` encoding - HBase
+/// Sorted mode: non-negative values are supported. Distinct mode: all values
+/// are supported. Compatible with: - BigQuery `BINARY` encoding - HBase
 /// `Bytes.toBytes` - Java `ByteBuffer.putLong()` with `ByteOrder.BIG_ENDIAN`
 class GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes {
-  /// The underlying `Bytes` type, which may be able to encode further.
+  /// Deprecated: ignored if set.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleBigtableAdminV2TypeBytes? bytesType;
 
   GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes({
@@ -4589,6 +4720,172 @@ class GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes {
         if (bytesType != null) 'bytesType': bytesType!,
       };
 }
+
+/// A mapping of keys to values of a given type.
+///
+/// Values of type `Map` are stored in a `Value.array_value` where each entry is
+/// another `Value.array_value` with two elements (the key and the value, in
+/// that order). Normally encoded Map values won't have repeated keys, however,
+/// clients are expected to handle the case in which they do. If the same key
+/// appears multiple times, the _last_ value takes precedence.
+class GoogleBigtableAdminV2TypeMap {
+  /// The type of a map key.
+  ///
+  /// Only `Bytes`, `String`, and `Int64` are allowed as key types.
+  Type? keyType;
+
+  /// The type of the values in a map.
+  Type? valueType;
+
+  GoogleBigtableAdminV2TypeMap({
+    this.keyType,
+    this.valueType,
+  });
+
+  GoogleBigtableAdminV2TypeMap.fromJson(core.Map json_)
+      : this(
+          keyType: json_.containsKey('keyType')
+              ? Type.fromJson(
+                  json_['keyType'] as core.Map<core.String, core.dynamic>)
+              : null,
+          valueType: json_.containsKey('valueType')
+              ? Type.fromJson(
+                  json_['valueType'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keyType != null) 'keyType': keyType!,
+        if (valueType != null) 'valueType': valueType!,
+      };
+}
+
+/// String Values of type `String` are stored in `Value.string_value`.
+class GoogleBigtableAdminV2TypeString {
+  /// The encoding to use when converting to or from lower level types.
+  GoogleBigtableAdminV2TypeStringEncoding? encoding;
+
+  GoogleBigtableAdminV2TypeString({
+    this.encoding,
+  });
+
+  GoogleBigtableAdminV2TypeString.fromJson(core.Map json_)
+      : this(
+          encoding: json_.containsKey('encoding')
+              ? GoogleBigtableAdminV2TypeStringEncoding.fromJson(
+                  json_['encoding'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (encoding != null) 'encoding': encoding!,
+      };
+}
+
+/// Rules used to convert to or from lower level types.
+class GoogleBigtableAdminV2TypeStringEncoding {
+  /// Use `Utf8Bytes` encoding.
+  GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes? utf8Bytes;
+
+  /// Deprecated: if set, converts to an empty `utf8_bytes`.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  GoogleBigtableAdminV2TypeStringEncodingUtf8Raw? utf8Raw;
+
+  GoogleBigtableAdminV2TypeStringEncoding({
+    this.utf8Bytes,
+    this.utf8Raw,
+  });
+
+  GoogleBigtableAdminV2TypeStringEncoding.fromJson(core.Map json_)
+      : this(
+          utf8Bytes: json_.containsKey('utf8Bytes')
+              ? GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes.fromJson(
+                  json_['utf8Bytes'] as core.Map<core.String, core.dynamic>)
+              : null,
+          utf8Raw: json_.containsKey('utf8Raw')
+              ? GoogleBigtableAdminV2TypeStringEncodingUtf8Raw.fromJson(
+                  json_['utf8Raw'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (utf8Bytes != null) 'utf8Bytes': utf8Bytes!,
+        if (utf8Raw != null) 'utf8Raw': utf8Raw!,
+      };
+}
+
+/// UTF-8 encoding.
+///
+/// Sorted mode: - All values are supported. - Code point order is preserved.
+/// Distinct mode: all values are supported. Compatible with: - BigQuery `TEXT`
+/// encoding - HBase `Bytes.toBytes` - Java
+/// `String#getBytes(StandardCharsets.UTF_8)`
+typedef GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes = $Empty;
+
+/// Deprecated: prefer the equivalent `Utf8Bytes`.
+typedef GoogleBigtableAdminV2TypeStringEncodingUtf8Raw = $Shared01;
+
+/// A structured data value, consisting of fields which map to dynamically typed
+/// values.
+///
+/// Values of type `Struct` are stored in `Value.array_value` where entries are
+/// in the same order and number as `field_types`.
+class GoogleBigtableAdminV2TypeStruct {
+  /// The names and types of the fields in this struct.
+  core.List<GoogleBigtableAdminV2TypeStructField>? fields;
+
+  GoogleBigtableAdminV2TypeStruct({
+    this.fields,
+  });
+
+  GoogleBigtableAdminV2TypeStruct.fromJson(core.Map json_)
+      : this(
+          fields: (json_['fields'] as core.List?)
+              ?.map((value) => GoogleBigtableAdminV2TypeStructField.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fields != null) 'fields': fields!,
+      };
+}
+
+/// A struct field and its type.
+class GoogleBigtableAdminV2TypeStructField {
+  /// The field name (optional).
+  ///
+  /// Fields without a `field_name` are considered anonymous and cannot be
+  /// referenced by name.
+  core.String? fieldName;
+
+  /// The type of values in this field.
+  Type? type;
+
+  GoogleBigtableAdminV2TypeStructField({
+    this.fieldName,
+    this.type,
+  });
+
+  GoogleBigtableAdminV2TypeStructField.fromJson(core.Map json_)
+      : this(
+          fieldName: json_['fieldName'] as core.String?,
+          type: json_.containsKey('type')
+              ? Type.fromJson(
+                  json_['type'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fieldName != null) 'fieldName': fieldName!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Timestamp Values of type `Timestamp` are stored in `Value.timestamp_value`.
+typedef GoogleBigtableAdminV2TypeTimestamp = $Empty;
 
 /// A tablet is a defined by a start and end key and is explained in
 /// https://cloud.google.com/bigtable/docs/overview#architecture and
@@ -5225,8 +5522,14 @@ class MultiClusterRoutingUseAny {
   /// empty, all clusters are eligible.
   core.List<core.String>? clusterIds;
 
+  /// Row affinity sticky routing based on the row key of the request.
+  ///
+  /// Requests that span multiple rows are routed non-deterministically.
+  RowAffinity? rowAffinity;
+
   MultiClusterRoutingUseAny({
     this.clusterIds,
+    this.rowAffinity,
   });
 
   MultiClusterRoutingUseAny.fromJson(core.Map json_)
@@ -5234,10 +5537,15 @@ class MultiClusterRoutingUseAny {
           clusterIds: (json_['clusterIds'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          rowAffinity: json_.containsKey('rowAffinity')
+              ? RowAffinity.fromJson(
+                  json_['rowAffinity'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterIds != null) 'clusterIds': clusterIds!,
+        if (rowAffinity != null) 'rowAffinity': rowAffinity!,
       };
 }
 
@@ -5497,6 +5805,18 @@ class RestoreTableRequest {
       };
 }
 
+/// If enabled, Bigtable will route the request based on the row key of the
+/// request, rather than randomly.
+///
+/// Instead, each row key will be assigned to a cluster, and will stick to that
+/// cluster. If clusters are added or removed, then this may affect which row
+/// keys stick to which clusters. To avoid this, users can use a cluster group
+/// to specify which clusters are to be used. In this case, new clusters that
+/// are not a part of the cluster group will not be routed to, and routing will
+/// be unaffected by the new cluster. Moreover, clusters specified in the
+/// cluster group cannot be deleted unless removed from the cluster group.
+typedef RowAffinity = $Empty;
+
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
@@ -5628,7 +5948,7 @@ typedef StandardReadRemoteWrites = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// A collection of user data indexed by row, column, and timestamp.
 ///
@@ -5846,40 +6166,68 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 /// It is heavily based on the GoogleSQL standard to help maintain familiarity
 /// and consistency across products and features. For compatibility with
 /// Bigtable's existing untyped APIs, each `Type` includes an `Encoding` which
-/// describes how to convert to/from the underlying data. This might involve
-/// composing a series of steps into an "encoding chain," for example to convert
-/// from INT64 -\> STRING -\> raw bytes. In most cases, a "link" in the encoding
-/// chain will be based an on existing GoogleSQL conversion function like
-/// `CAST`. Each link in the encoding chain also defines the following
-/// properties: * Natural sort: Does the encoded value sort consistently with
-/// the original typed value? Note that Bigtable will always sort data based on
-/// the raw encoded value, *not* the decoded type. - Example: BYTES values sort
-/// in the same order as their raw encodings. - Counterexample: Encoding INT64
-/// to a fixed-width STRING does *not* preserve sort order when dealing with
-/// negative numbers. INT64(1) \> INT64(-1), but STRING("-00001") \>
-/// STRING("00001). - The overall encoding chain has this property if *every*
-/// link does. * Self-delimiting: If we concatenate two encoded values, can we
-/// always tell where the first one ends and the second one begins? - Example:
-/// If we encode INT64s to fixed-width STRINGs, the first value will always
-/// contain exactly N digits, possibly preceded by a sign. - Counterexample: If
-/// we concatenate two UTF-8 encoded STRINGs, we have no way to tell where the
-/// first one ends. - The overall encoding chain has this property if *any* link
-/// does. * Compatibility: Which other systems have matching encoding schemes?
-/// For example, does this encoding have a GoogleSQL equivalent? HBase? Java?
+/// describes how to convert to or from the underlying data. Each encoding can
+/// operate in one of two modes: - Sorted: In this mode, Bigtable guarantees
+/// that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful
+/// anywhere sort order is important, for example when encoding keys. -
+/// Distinct: In this mode, Bigtable guarantees that if `X != Y` then `Encode(X)
+/// != Encode(Y)`. However, the converse is not guaranteed. For example, both
+/// "{'foo': '1', 'bar': '2'}" and "{'bar': '2', 'foo': '1'}" are valid
+/// encodings of the same JSON value. The API clearly documents which mode is
+/// used wherever an encoding can be configured. Each encoding also documents
+/// which values are supported in which modes. For example, when encoding INT64
+/// as a numeric STRING, negative numbers cannot be encoded in sorted mode. This
+/// is because `INT64(1) > INT64(-1)`, but `STRING("-00001") > STRING("00001")`.
 class Type {
   /// Aggregate
   GoogleBigtableAdminV2TypeAggregate? aggregateType;
 
+  /// Array
+  GoogleBigtableAdminV2TypeArray? arrayType;
+
+  /// Bool
+  GoogleBigtableAdminV2TypeBool? boolType;
+
   /// Bytes
   GoogleBigtableAdminV2TypeBytes? bytesType;
+
+  /// Date
+  GoogleBigtableAdminV2TypeDate? dateType;
+
+  /// Float32
+  GoogleBigtableAdminV2TypeFloat32? float32Type;
+
+  /// Float64
+  GoogleBigtableAdminV2TypeFloat64? float64Type;
 
   /// Int64
   GoogleBigtableAdminV2TypeInt64? int64Type;
 
+  /// Map
+  GoogleBigtableAdminV2TypeMap? mapType;
+
+  /// String
+  GoogleBigtableAdminV2TypeString? stringType;
+
+  /// Struct
+  GoogleBigtableAdminV2TypeStruct? structType;
+
+  /// Timestamp
+  GoogleBigtableAdminV2TypeTimestamp? timestampType;
+
   Type({
     this.aggregateType,
+    this.arrayType,
+    this.boolType,
     this.bytesType,
+    this.dateType,
+    this.float32Type,
+    this.float64Type,
     this.int64Type,
+    this.mapType,
+    this.stringType,
+    this.structType,
+    this.timestampType,
   });
 
   Type.fromJson(core.Map json_)
@@ -5888,20 +6236,65 @@ class Type {
               ? GoogleBigtableAdminV2TypeAggregate.fromJson(
                   json_['aggregateType'] as core.Map<core.String, core.dynamic>)
               : null,
+          arrayType: json_.containsKey('arrayType')
+              ? GoogleBigtableAdminV2TypeArray.fromJson(
+                  json_['arrayType'] as core.Map<core.String, core.dynamic>)
+              : null,
+          boolType: json_.containsKey('boolType')
+              ? GoogleBigtableAdminV2TypeBool.fromJson(
+                  json_['boolType'] as core.Map<core.String, core.dynamic>)
+              : null,
           bytesType: json_.containsKey('bytesType')
               ? GoogleBigtableAdminV2TypeBytes.fromJson(
                   json_['bytesType'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dateType: json_.containsKey('dateType')
+              ? GoogleBigtableAdminV2TypeDate.fromJson(
+                  json_['dateType'] as core.Map<core.String, core.dynamic>)
+              : null,
+          float32Type: json_.containsKey('float32Type')
+              ? GoogleBigtableAdminV2TypeFloat32.fromJson(
+                  json_['float32Type'] as core.Map<core.String, core.dynamic>)
+              : null,
+          float64Type: json_.containsKey('float64Type')
+              ? GoogleBigtableAdminV2TypeFloat64.fromJson(
+                  json_['float64Type'] as core.Map<core.String, core.dynamic>)
               : null,
           int64Type: json_.containsKey('int64Type')
               ? GoogleBigtableAdminV2TypeInt64.fromJson(
                   json_['int64Type'] as core.Map<core.String, core.dynamic>)
               : null,
+          mapType: json_.containsKey('mapType')
+              ? GoogleBigtableAdminV2TypeMap.fromJson(
+                  json_['mapType'] as core.Map<core.String, core.dynamic>)
+              : null,
+          stringType: json_.containsKey('stringType')
+              ? GoogleBigtableAdminV2TypeString.fromJson(
+                  json_['stringType'] as core.Map<core.String, core.dynamic>)
+              : null,
+          structType: json_.containsKey('structType')
+              ? GoogleBigtableAdminV2TypeStruct.fromJson(
+                  json_['structType'] as core.Map<core.String, core.dynamic>)
+              : null,
+          timestampType: json_.containsKey('timestampType')
+              ? GoogleBigtableAdminV2TypeTimestamp.fromJson(
+                  json_['timestampType'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aggregateType != null) 'aggregateType': aggregateType!,
+        if (arrayType != null) 'arrayType': arrayType!,
+        if (boolType != null) 'boolType': boolType!,
         if (bytesType != null) 'bytesType': bytesType!,
+        if (dateType != null) 'dateType': dateType!,
+        if (float32Type != null) 'float32Type': float32Type!,
+        if (float64Type != null) 'float64Type': float64Type!,
         if (int64Type != null) 'int64Type': int64Type!,
+        if (mapType != null) 'mapType': mapType!,
+        if (stringType != null) 'stringType': stringType!,
+        if (structType != null) 'structType': structType!,
+        if (timestampType != null) 'timestampType': timestampType!,
       };
 }
 

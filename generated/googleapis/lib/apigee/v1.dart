@@ -106,6 +106,7 @@
 ///   - [OrganizationsSecurityAssessmentResultsResource]
 ///   - [OrganizationsSecurityProfilesResource]
 ///     - [OrganizationsSecurityProfilesEnvironmentsResource]
+///   - [OrganizationsSecurityProfilesV2Resource]
 ///   - [OrganizationsSharedflowsResource]
 ///     - [OrganizationsSharedflowsDeploymentsResource]
 ///     - [OrganizationsSharedflowsRevisionsResource]
@@ -252,6 +253,8 @@ class OrganizationsResource {
           OrganizationsSecurityAssessmentResultsResource(_requester);
   OrganizationsSecurityProfilesResource get securityProfiles =>
       OrganizationsSecurityProfilesResource(_requester);
+  OrganizationsSecurityProfilesV2Resource get securityProfilesV2 =>
+      OrganizationsSecurityProfilesV2Resource(_requester);
   OrganizationsSharedflowsResource get sharedflows =>
       OrganizationsSharedflowsResource(_requester);
   OrganizationsSitesResource get sites =>
@@ -330,7 +333,7 @@ class OrganizationsResource {
   /// to its last known state. After this period, the Organization will no
   /// longer be able to be restored. **Note: During the data retention period
   /// specified using this field, the Apigee organization cannot be recreated in
-  /// the same GCP project.**
+  /// the same Google Cloud project.**
   /// Possible string values are:
   /// - "DELETION_RETENTION_UNSPECIFIED" : Default data retention setting of
   /// seven days will be applied.
@@ -405,6 +408,47 @@ class OrganizationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApigeeV1Organization.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the service accounts allowed to access Apigee control plane directly
+  /// for limited functionality.
+  ///
+  /// **Note**: Available to Apigee hybrid only.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the Control Plane Access. Use the
+  /// following structure in your request:
+  /// `organizations/{org}/controlPlaneAccess`
+  /// Value must have pattern `^organizations/\[^/\]+/controlPlaneAccess$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ControlPlaneAccess].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ControlPlaneAccess> getControlPlaneAccess(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ControlPlaneAccess.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -800,6 +844,58 @@ class OrganizationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApigeeV1Organization.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the permissions required to allow Apigee runtime-plane components
+  /// access to the control plane.
+  ///
+  /// Currently, the permissions required are to: 1. Allow runtime components to
+  /// publish analytics data to the control plane. **Note**: Available to Apigee
+  /// hybrid only.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the ControlPlaneAccess. Format:
+  /// "organizations/{org}/controlPlaneAccess"
+  /// Value must have pattern `^organizations/\[^/\]+/controlPlaneAccess$`.
+  ///
+  /// [updateMask] - List of fields to be updated. Fields that can be updated:
+  /// synchronizer_identities, publisher_identities.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> updateControlPlaneAccess(
+    GoogleCloudApigeeV1ControlPlaneAccess request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -8788,6 +8884,106 @@ class OrganizationsEnvironmentsDeploymentsResource {
   OrganizationsEnvironmentsDeploymentsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Gets a particular deployment of Api proxy or a shared flow in an
+  /// environment
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the api proxy or the shared flow deployment.
+  /// Use the following structure in your request:
+  /// `organizations/{org}/environments/{env}/deployments/{deployment}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/deployments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1Deployment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1Deployment> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1Deployment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the IAM policy on a deployment.
+  ///
+  /// For more information, see
+  /// [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles).
+  /// You must have the `apigee.deployments.getIamPolicy` permission to call
+  /// this API.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/deployments/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists all deployments of API proxies or shared flows in an environment.
   ///
   /// Request parameters:
@@ -8830,6 +9026,107 @@ class OrganizationsEnvironmentsDeploymentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the IAM policy on a deployment, if the policy already exists it will
+  /// be replaced.
+  ///
+  /// For more information, see
+  /// [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles).
+  /// You must have the `apigee.deployments.setIamPolicy` permission to call
+  /// this API.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/deployments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Tests the permissions of a user on a deployment, and returns a subset of
+  /// permissions that the user has on the deployment.
+  ///
+  /// If the deployment does not exist, an empty permission set is returned (a
+  /// NOT_FOUND error is not returned).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/deployments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -14864,6 +15161,231 @@ class OrganizationsSecurityProfilesEnvironmentsResource {
   }
 }
 
+class OrganizationsSecurityProfilesV2Resource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsSecurityProfilesV2Resource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Create a security profile v2.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name. Format:
+  /// `organizations/{org}`
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [securityProfileV2Id] - Required. The security profile id.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1SecurityProfileV2].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1SecurityProfileV2> create(
+    GoogleCloudApigeeV1SecurityProfileV2 request,
+    core.String parent, {
+    core.String? securityProfileV2Id,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (securityProfileV2Id != null)
+        'securityProfileV2Id': [securityProfileV2Id],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/securityProfilesV2';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1SecurityProfileV2.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a security profile v2.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the security profile v2 to delete. Format:
+  /// `organizations/{org}/securityProfilesV2/{profile}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/securityProfilesV2/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a security profile v2.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the security profile v2 to get. Format:
+  /// `organizations/{org}/securityProfilesV2/{profile}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/securityProfilesV2/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1SecurityProfileV2].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1SecurityProfileV2> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1SecurityProfileV2.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List security profiles v2.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. For a specific organization, list of all the security
+  /// profiles. Format: `organizations/{org}`
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of profiles to return
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListSecurityProfilesV2` call. Provide this to retrieve the subsequent
+  /// page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ListSecurityProfilesV2Response].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ListSecurityProfilesV2Response> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/securityProfilesV2';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ListSecurityProfilesV2Response.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update a security profile V2.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Name of the security profile v2 resource. Format:
+  /// organizations/{org}/securityProfilesV2/{profile}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/securityProfilesV2/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update. Valid fields to
+  /// update are `description` and `profileAssessmentConfigs`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1SecurityProfileV2].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1SecurityProfileV2> patch(
+    GoogleCloudApigeeV1SecurityProfileV2 request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1SecurityProfileV2.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class OrganizationsSharedflowsResource {
   final commons.ApiRequester _requester;
 
@@ -15967,7 +16489,7 @@ class GoogleCloudApigeeV1Access {
 /// Get action.
 ///
 /// For example, "Get" : { "name" : "target.name", "value" : "default" }
-typedef GoogleCloudApigeeV1AccessGet = $Shared04;
+typedef GoogleCloudApigeeV1AccessGet = $Shared05;
 
 /// Access logging configuration enables customers to ship the access logs from
 /// the tenant projects to their own project's cloud logging.
@@ -18910,6 +19432,68 @@ class GoogleCloudApigeeV1ConnectorsPlatformConfig {
       };
 }
 
+/// ControlPlaneAccess is the request body and response body of
+/// UpdateControlPlaneAccess.
+///
+/// and the response body of GetControlPlaneAccess. The input identities
+/// contains an array of service accounts to grant access to the respective
+/// control plane resource, with each service account specified using the
+/// following format: `serviceAccount:`***service-account-name***. The
+/// ***service-account-name*** is formatted like an email address. For example:
+/// `my-control-plane-service_account@my_project_id.iam.gserviceaccount.com` You
+/// might specify multiple service accounts, for example, if you have multiple
+/// environments and wish to assign a unique service account to each one.
+class GoogleCloudApigeeV1ControlPlaneAccess {
+  /// Array of service accounts authorized to publish analytics data to the
+  /// control plane (for the Message Processor component).
+  ///
+  /// Optional.
+  core.List<core.String>? analyticsPublisherIdentities;
+
+  /// Identifier.
+  ///
+  /// The resource name of the ControlPlaneAccess. Format:
+  /// "organizations/{org}/controlPlaneAccess"
+  core.String? name;
+
+  /// Array of service accounts to grant access to control plane resources (for
+  /// the Synchronizer component).
+  ///
+  /// The service accounts must have **Apigee Synchronizer Manager** role. See
+  /// also
+  /// [Create service accounts](https://cloud.google.com/apigee/docs/hybrid/latest/sa-about#create-the-service-accounts).
+  ///
+  /// Optional.
+  core.List<core.String>? synchronizerIdentities;
+
+  GoogleCloudApigeeV1ControlPlaneAccess({
+    this.analyticsPublisherIdentities,
+    this.name,
+    this.synchronizerIdentities,
+  });
+
+  GoogleCloudApigeeV1ControlPlaneAccess.fromJson(core.Map json_)
+      : this(
+          analyticsPublisherIdentities:
+              (json_['analyticsPublisherIdentities'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+          name: json_['name'] as core.String?,
+          synchronizerIdentities:
+              (json_['synchronizerIdentities'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (analyticsPublisherIdentities != null)
+          'analyticsPublisherIdentities': analyticsPublisherIdentities!,
+        if (name != null) 'name': name!,
+        if (synchronizerIdentities != null)
+          'synchronizerIdentities': synchronizerIdentities!,
+      };
+}
+
 class GoogleCloudApigeeV1Credential {
   /// List of API products this credential can be used for.
   core.List<GoogleCloudApigeeV1ApiProductRef>? apiProducts;
@@ -19421,7 +20005,7 @@ class GoogleCloudApigeeV1DatastoreConfig {
   /// Path of Cloud Storage bucket Required for `gcs` target_type.
   core.String? path;
 
-  /// GCP project in which the datastore exists
+  /// Google Cloud project in which the datastore exists
   ///
   /// Required.
   core.String? projectId;
@@ -22851,8 +23435,6 @@ class GoogleCloudApigeeV1ListApiProductsResponse {
       };
 }
 
-/// To change this message, in the same CL add a change log in
-/// go/changing-api-proto-breaks-ui
 class GoogleCloudApigeeV1ListApiProxiesResponse {
   core.List<GoogleCloudApigeeV1ApiProxy>? proxies;
 
@@ -23697,6 +24279,37 @@ class GoogleCloudApigeeV1ListSecurityProfilesResponse {
       };
 }
 
+/// Response for ListSecurityProfilesV2.
+class GoogleCloudApigeeV1ListSecurityProfilesV2Response {
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// List of security profiles in the organization.
+  core.List<GoogleCloudApigeeV1SecurityProfileV2>? securityProfilesV2;
+
+  GoogleCloudApigeeV1ListSecurityProfilesV2Response({
+    this.nextPageToken,
+    this.securityProfilesV2,
+  });
+
+  GoogleCloudApigeeV1ListSecurityProfilesV2Response.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          securityProfilesV2: (json_['securityProfilesV2'] as core.List?)
+              ?.map((value) => GoogleCloudApigeeV1SecurityProfileV2.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (securityProfilesV2 != null)
+          'securityProfilesV2': securityProfilesV2!,
+      };
+}
+
 /// The response for SecurityReports.
 class GoogleCloudApigeeV1ListSecurityReportsResponse {
   /// If the number of security reports exceeded the page size requested, the
@@ -23729,8 +24342,6 @@ class GoogleCloudApigeeV1ListSecurityReportsResponse {
       };
 }
 
-/// To change this message, in the same CL add a change log in
-/// go/changing-api-proto-breaks-ui
 class GoogleCloudApigeeV1ListSharedFlowsResponse {
   core.List<GoogleCloudApigeeV1SharedFlow>? sharedFlows;
 
@@ -26977,6 +27588,17 @@ class GoogleCloudApigeeV1SecurityAction {
   /// Allow a request through if it matches this SecurityAction.
   GoogleCloudApigeeV1SecurityActionAllow? allow;
 
+  /// If unset, this would apply to all proxies in the environment.
+  ///
+  /// If set, this action is enforced only if at least one proxy in the repeated
+  /// list is deployed at the time of enforcement. If set, several restrictions
+  /// are enforced on SecurityActions. There can be at most 100 enabled actions
+  /// with proxies set in an env. Several other restrictions apply on conditions
+  /// and are detailed later.
+  ///
+  /// Optional.
+  core.List<core.String>? apiProxies;
+
   /// A valid SecurityAction must contain at least one condition.
   ///
   /// Required.
@@ -27037,6 +27659,7 @@ class GoogleCloudApigeeV1SecurityAction {
 
   GoogleCloudApigeeV1SecurityAction({
     this.allow,
+    this.apiProxies,
     this.conditionConfig,
     this.createTime,
     this.deny,
@@ -27055,6 +27678,9 @@ class GoogleCloudApigeeV1SecurityAction {
               ? GoogleCloudApigeeV1SecurityActionAllow.fromJson(
                   json_['allow'] as core.Map<core.String, core.dynamic>)
               : null,
+          apiProxies: (json_['apiProxies'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           conditionConfig: json_.containsKey('conditionConfig')
               ? GoogleCloudApigeeV1SecurityActionConditionConfig.fromJson(
                   json_['conditionConfig']
@@ -27079,6 +27705,7 @@ class GoogleCloudApigeeV1SecurityAction {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allow != null) 'allow': allow!,
+        if (apiProxies != null) 'apiProxies': apiProxies!,
         if (conditionConfig != null) 'conditionConfig': conditionConfig!,
         if (createTime != null) 'createTime': createTime!,
         if (deny != null) 'deny': deny!,
@@ -27992,6 +28619,106 @@ class GoogleCloudApigeeV1SecurityProfileScoringConfig {
         if (description != null) 'description': description!,
         if (scorePath != null) 'scorePath': scorePath!,
         if (title != null) 'title': title!,
+      };
+}
+
+/// Security profile for risk assessment version 2.
+class GoogleCloudApigeeV1SecurityProfileV2 {
+  /// The time of the security profile creation.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The description of the security profile.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Whether the security profile is google defined.
+  ///
+  /// Output only.
+  core.bool? googleDefined;
+
+  /// Identifier.
+  ///
+  /// Name of the security profile v2 resource. Format:
+  /// organizations/{org}/securityProfilesV2/{profile}
+  core.String? name;
+
+  /// The configuration for each assessment in this profile.
+  ///
+  /// Key is the name/id of the assessment.
+  ///
+  /// Required.
+  core.Map<core.String,
+          GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig>?
+      profileAssessmentConfigs;
+
+  /// The time of the security profile update.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudApigeeV1SecurityProfileV2({
+    this.createTime,
+    this.description,
+    this.googleDefined,
+    this.name,
+    this.profileAssessmentConfigs,
+    this.updateTime,
+  });
+
+  GoogleCloudApigeeV1SecurityProfileV2.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          googleDefined: json_['googleDefined'] as core.bool?,
+          name: json_['name'] as core.String?,
+          profileAssessmentConfigs: (json_['profileAssessmentConfigs']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig
+                  .fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (googleDefined != null) 'googleDefined': googleDefined!,
+        if (name != null) 'name': name!,
+        if (profileAssessmentConfigs != null)
+          'profileAssessmentConfigs': profileAssessmentConfigs!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// The configuration definition for a specific assessment.
+class GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig {
+  /// The weight of the assessment.
+  /// Possible string values are:
+  /// - "WEIGHT_UNSPECIFIED" : The weight is unspecified.
+  /// - "MINOR" : The weight is minor.
+  /// - "MODERATE" : The weight is moderate.
+  /// - "MAJOR" : The weight is major.
+  core.String? weight;
+
+  GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig({
+    this.weight,
+  });
+
+  GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig.fromJson(
+      core.Map json_)
+      : this(
+          weight: json_['weight'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (weight != null) 'weight': weight!,
       };
 }
 
@@ -30155,7 +30882,7 @@ class GoogleRpcPreconditionFailureViolation {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef GoogleRpcStatus = $Status;
+typedef GoogleRpcStatus = $Status00;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.

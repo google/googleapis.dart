@@ -18,7 +18,7 @@
 /// users only) and to public information on an URL basis (anyone)
 ///
 /// For more information, see
-/// <https://developers.google.com/webmaster-tools/search-console-api/>
+/// <https://developers.google.com/webmaster-tools/about>
 ///
 /// Create an instance of [SearchConsoleApi] to access these resources:
 ///

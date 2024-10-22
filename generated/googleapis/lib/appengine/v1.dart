@@ -36,6 +36,8 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsApplicationsResource]
 ///       - [ProjectsLocationsApplicationsAuthorizedDomainsResource]
+///       - [ProjectsLocationsApplicationsServicesResource]
+///         - [ProjectsLocationsApplicationsServicesVersionsResource]
 library;
 
 import 'dart:async' as async;
@@ -2164,6 +2166,8 @@ class ProjectsLocationsApplicationsResource {
   ProjectsLocationsApplicationsAuthorizedDomainsResource
       get authorizedDomains =>
           ProjectsLocationsApplicationsAuthorizedDomainsResource(_requester);
+  ProjectsLocationsApplicationsServicesResource get services =>
+      ProjectsLocationsApplicationsServicesResource(_requester);
 
   ProjectsLocationsApplicationsResource(commons.ApiRequester client)
       : _requester = client;
@@ -2230,6 +2234,80 @@ class ProjectsLocationsApplicationsAuthorizedDomainsResource {
     );
     return ListAuthorizedDomainsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsApplicationsServicesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsApplicationsServicesVersionsResource get versions =>
+      ProjectsLocationsApplicationsServicesVersionsResource(_requester);
+
+  ProjectsLocationsApplicationsServicesResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsApplicationsServicesVersionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsApplicationsServicesVersionsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes an existing Version resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `name`. Name of the resource requested. Example:
+  /// apps/myapp/services/default/versions/v1.
+  ///
+  /// [locationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [servicesId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [versionsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId,
+    core.String servicesId,
+    core.String versionsId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId') +
+        '/services/' +
+        commons.escapeVariable('$servicesId') +
+        '/versions/' +
+        commons.escapeVariable('$versionsId');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4740,6 +4818,8 @@ class Service {
   /// Relative name of the service within the application.
   ///
   /// Example: default.@OutputOnly
+  ///
+  /// Output only.
   core.String? id;
 
   /// A set of labels to apply to this service.
@@ -4759,6 +4839,8 @@ class Service {
   /// Full path to the Service resource in the API.
   ///
   /// Example: apps/myapp/services/default.@OutputOnly
+  ///
+  /// Output only.
   core.String? name;
 
   /// Ingress settings for this service.
@@ -5009,7 +5091,7 @@ class StaticFilesHandler {
 /// three pieces of data: error code, error message, and error details.You can
 /// find out more about this error model and how to work with it in the API
 /// Design Guide (https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Traffic routing configuration for versions within a single service.
 ///
@@ -5275,6 +5357,8 @@ class Version {
   core.String? createTime;
 
   /// Email address of the user who created this version.@OutputOnly
+  ///
+  /// Output only.
   core.String? createdBy;
 
   /// Duration that static files should be cached by web proxies and browsers.
@@ -5291,6 +5375,8 @@ class Version {
 
   /// Total size in bytes of all the files that are included in this version and
   /// currently hosted on the App Engine disk.@OutputOnly
+  ///
+  /// Output only.
   core.String? diskUsageBytes;
 
   /// Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud
@@ -5374,6 +5460,8 @@ class Version {
   /// Full path to the Version resource in the API.
   ///
   /// Example: apps/myapp/services/default/versions/v1.@OutputOnly
+  ///
+  /// Output only.
   core.String? name;
 
   /// Extra network settings.
@@ -5442,6 +5530,8 @@ class Version {
   ///
   /// Example:
   /// "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
+  ///
+  /// Output only.
   core.String? versionUrl;
 
   /// Whether to deploy this version in a container on a virtual machine.

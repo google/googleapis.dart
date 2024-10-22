@@ -2025,8 +2025,8 @@ class ProjectsLocationsGlossariesGlossaryEntriesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the entry. Format: "projects / *
-  /// /locations / * /glossaries / * /glossaryEntries / * "
+  /// [name] - Identifier. The resource name of the entry. Format: `projects / *
+  /// /locations / * /glossaries / * /glossaryEntries / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/glossaries/\[^/\]+/glossaryEntries/\[^/\]+$`.
   ///
@@ -2647,8 +2647,6 @@ class AdaptiveMtSentence {
 class AdaptiveMtTranslateRequest {
   /// The content of the input in string format.
   ///
-  /// For now only one sentence per request is supported.
-  ///
   /// Required.
   core.List<core.String>? content;
 
@@ -2659,9 +2657,22 @@ class AdaptiveMtTranslateRequest {
   /// Required.
   core.String? dataset;
 
+  /// Glossary to be applied.
+  ///
+  /// The glossary must be within the same region (have the same location-id) as
+  /// the model, otherwise an INVALID_ARGUMENT (400) error is returned.
+  ///
+  /// Optional.
+  GlossaryConfig? glossaryConfig;
+
+  /// Configuration for caller provided reference sentences.
+  ReferenceSentenceConfig? referenceSentenceConfig;
+
   AdaptiveMtTranslateRequest({
     this.content,
     this.dataset,
+    this.glossaryConfig,
+    this.referenceSentenceConfig,
   });
 
   AdaptiveMtTranslateRequest.fromJson(core.Map json_)
@@ -2670,16 +2681,33 @@ class AdaptiveMtTranslateRequest {
               ?.map((value) => value as core.String)
               .toList(),
           dataset: json_['dataset'] as core.String?,
+          glossaryConfig: json_.containsKey('glossaryConfig')
+              ? GlossaryConfig.fromJson(json_['glossaryConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          referenceSentenceConfig: json_.containsKey('referenceSentenceConfig')
+              ? ReferenceSentenceConfig.fromJson(
+                  json_['referenceSentenceConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (dataset != null) 'dataset': dataset!,
+        if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!,
+        if (referenceSentenceConfig != null)
+          'referenceSentenceConfig': referenceSentenceConfig!,
       };
 }
 
 /// An AdaptiveMtTranslate response.
 class AdaptiveMtTranslateResponse {
+  /// Text translation response if a glossary is provided in the request.
+  ///
+  /// This could be the same as 'translation' above if no terms apply.
+  core.List<AdaptiveMtTranslation>? glossaryTranslations;
+
   /// The translation's language code.
   ///
   /// Output only.
@@ -2691,12 +2719,17 @@ class AdaptiveMtTranslateResponse {
   core.List<AdaptiveMtTranslation>? translations;
 
   AdaptiveMtTranslateResponse({
+    this.glossaryTranslations,
     this.languageCode,
     this.translations,
   });
 
   AdaptiveMtTranslateResponse.fromJson(core.Map json_)
       : this(
+          glossaryTranslations: (json_['glossaryTranslations'] as core.List?)
+              ?.map((value) => AdaptiveMtTranslation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           languageCode: json_['languageCode'] as core.String?,
           translations: (json_['translations'] as core.List?)
               ?.map((value) => AdaptiveMtTranslation.fromJson(
@@ -2705,6 +2738,8 @@ class AdaptiveMtTranslateResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (glossaryTranslations != null)
+          'glossaryTranslations': glossaryTranslations!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (translations != null) 'translations': translations!,
       };
@@ -3543,7 +3578,7 @@ typedef Empty = $Empty;
 /// A sentence pair.
 class Example {
   /// The resource name of the example, in form of
-  /// \`projects/{project-number-or-id}/locations/{location_id}/datasets/{dataset_id}/examples/{example_id}'
+  /// `projects/{project-number-or-id}/locations/{location_id}/datasets/{dataset_id}/examples/{example_id}`
   ///
   /// Output only.
   core.String? name;
@@ -3795,17 +3830,19 @@ class Glossary {
       };
 }
 
+/// Configures which glossary is used for a specific target language and defines
+/// options for applying that glossary.
+typedef GlossaryConfig = $GlossaryConfig;
+
 /// Represents a single entry in a glossary.
 class GlossaryEntry {
   /// Describes the glossary entry.
   core.String? description;
 
-  /// The resource name of the entry.
+  /// Identifier.
   ///
-  /// Format: "projects / * /locations / * /glossaries / * /glossaryEntries / *
-  /// "
-  ///
-  /// Required.
+  /// The resource name of the entry. Format: `projects / * /locations / *
+  /// /glossaries / * /glossaryEntries / * `
   core.String? name;
 
   /// Used for an unidirectional glossary.
@@ -4749,6 +4786,97 @@ class OutputConfig {
       };
 }
 
+/// Message of caller-provided reference configuration.
+class ReferenceSentenceConfig {
+  /// Reference sentences pair lists.
+  ///
+  /// Each list will be used as the references to translate the sentence under
+  /// "content" field at the corresponding index. Length of the list is required
+  /// to be equal to the length of "content" field.
+  core.List<ReferenceSentencePairList>? referenceSentencePairLists;
+
+  /// Source language code.
+  core.String? sourceLanguageCode;
+
+  /// Target language code.
+  core.String? targetLanguageCode;
+
+  ReferenceSentenceConfig({
+    this.referenceSentencePairLists,
+    this.sourceLanguageCode,
+    this.targetLanguageCode,
+  });
+
+  ReferenceSentenceConfig.fromJson(core.Map json_)
+      : this(
+          referenceSentencePairLists:
+              (json_['referenceSentencePairLists'] as core.List?)
+                  ?.map((value) => ReferenceSentencePairList.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+          sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
+          targetLanguageCode: json_['targetLanguageCode'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (referenceSentencePairLists != null)
+          'referenceSentencePairLists': referenceSentencePairLists!,
+        if (sourceLanguageCode != null)
+          'sourceLanguageCode': sourceLanguageCode!,
+        if (targetLanguageCode != null)
+          'targetLanguageCode': targetLanguageCode!,
+      };
+}
+
+/// A pair of sentences used as reference in source and target languages.
+class ReferenceSentencePair {
+  /// Source sentence in the sentence pair.
+  core.String? sourceSentence;
+
+  /// Target sentence in the sentence pair.
+  core.String? targetSentence;
+
+  ReferenceSentencePair({
+    this.sourceSentence,
+    this.targetSentence,
+  });
+
+  ReferenceSentencePair.fromJson(core.Map json_)
+      : this(
+          sourceSentence: json_['sourceSentence'] as core.String?,
+          targetSentence: json_['targetSentence'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sourceSentence != null) 'sourceSentence': sourceSentence!,
+        if (targetSentence != null) 'targetSentence': targetSentence!,
+      };
+}
+
+/// A list of reference sentence pairs.
+class ReferenceSentencePairList {
+  /// Reference sentence pairs.
+  core.List<ReferenceSentencePair>? referenceSentencePairs;
+
+  ReferenceSentencePairList({
+    this.referenceSentencePairs,
+  });
+
+  ReferenceSentencePairList.fromJson(core.Map json_)
+      : this(
+          referenceSentencePairs:
+              (json_['referenceSentencePairs'] as core.List?)
+                  ?.map((value) => ReferenceSentencePair.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (referenceSentencePairs != null)
+          'referenceSentencePairs': referenceSentencePairs!,
+      };
+}
+
 /// A single romanization response.
 class Romanization {
   /// The ISO-639 language code of source text in the initial request, detected
@@ -4851,7 +4979,7 @@ class RomanizeTextResponse {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// A single supported language response corresponds to information related to
 /// one supported language.
@@ -5151,38 +5279,7 @@ class TranslateDocumentResponse {
 
 /// Configures which glossary is used for a specific target language and defines
 /// options for applying that glossary.
-class TranslateTextGlossaryConfig {
-  /// The `glossary` to be applied for this translation.
-  ///
-  /// The format depends on the glossary: - User-provided custom glossary:
-  /// `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`
-  ///
-  /// Required.
-  core.String? glossary;
-
-  /// Indicates match is case insensitive.
-  ///
-  /// The default value is `false` if missing.
-  ///
-  /// Optional.
-  core.bool? ignoreCase;
-
-  TranslateTextGlossaryConfig({
-    this.glossary,
-    this.ignoreCase,
-  });
-
-  TranslateTextGlossaryConfig.fromJson(core.Map json_)
-      : this(
-          glossary: json_['glossary'] as core.String?,
-          ignoreCase: json_['ignoreCase'] as core.bool?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (glossary != null) 'glossary': glossary!,
-        if (ignoreCase != null) 'ignoreCase': ignoreCase!,
-      };
-}
+typedef TranslateTextGlossaryConfig = $GlossaryConfig;
 
 /// The request message for synchronous translation.
 class TranslateTextRequest {
@@ -5227,6 +5324,8 @@ class TranslateTextRequest {
   /// `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`
   /// - General (built-in) models:
   /// `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
+  /// - Translation LLM models:
+  /// `projects/{project-number-or-id}/locations/{location-id}/models/general/translation-llm`,
   /// For global (non-regionalized) requests, use `location-id` `global`. For
   /// example,
   /// `projects/{project-number-or-id}/locations/global/models/general/nmt`. If

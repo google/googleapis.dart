@@ -26,6 +26,7 @@
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsRepositoriesResource]
 ///       - [ProjectsLocationsRepositoriesAptArtifactsResource]
+///       - [ProjectsLocationsRepositoriesAttachmentsResource]
 ///       - [ProjectsLocationsRepositoriesDockerImagesResource]
 ///       - [ProjectsLocationsRepositoriesFilesResource]
 ///       - [ProjectsLocationsRepositoriesGenericArtifactsResource]
@@ -38,6 +39,7 @@
 ///         - [ProjectsLocationsRepositoriesPackagesTagsResource]
 ///         - [ProjectsLocationsRepositoriesPackagesVersionsResource]
 ///       - [ProjectsLocationsRepositoriesPythonPackagesResource]
+///       - [ProjectsLocationsRepositoriesRulesResource]
 ///       - [ProjectsLocationsRepositoriesYumArtifactsResource]
 library;
 
@@ -412,6 +414,8 @@ class ProjectsLocationsRepositoriesResource {
 
   ProjectsLocationsRepositoriesAptArtifactsResource get aptArtifacts =>
       ProjectsLocationsRepositoriesAptArtifactsResource(_requester);
+  ProjectsLocationsRepositoriesAttachmentsResource get attachments =>
+      ProjectsLocationsRepositoriesAttachmentsResource(_requester);
   ProjectsLocationsRepositoriesDockerImagesResource get dockerImages =>
       ProjectsLocationsRepositoriesDockerImagesResource(_requester);
   ProjectsLocationsRepositoriesFilesResource get files =>
@@ -432,6 +436,8 @@ class ProjectsLocationsRepositoriesResource {
       ProjectsLocationsRepositoriesPackagesResource(_requester);
   ProjectsLocationsRepositoriesPythonPackagesResource get pythonPackages =>
       ProjectsLocationsRepositoriesPythonPackagesResource(_requester);
+  ProjectsLocationsRepositoriesRulesResource get rules =>
+      ProjectsLocationsRepositoriesRulesResource(_requester);
   ProjectsLocationsRepositoriesYumArtifactsResource get yumArtifacts =>
       ProjectsLocationsRepositoriesYumArtifactsResource(_requester);
 
@@ -625,6 +631,21 @@ class ProjectsLocationsRepositoriesResource {
   /// will be listed.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request. Filter rules are case insensitive. The fields eligible for
+  /// filtering are: * `name` Examples of using a filter: To filter the results
+  /// of your request to repositories with the name `my-repo` in project
+  /// `my-project` in the `us-central` region, append the following filter
+  /// expression to your request: *
+  /// `name="projects/my-project/locations/us-central1/repositories/my-repo"`
+  /// You can also use wildcards to match any number of characters before or
+  /// after the value: *
+  /// `name="projects/my-project/locations/us-central1/repositories/my-*"` *
+  /// `name="projects/my-project/locations/us-central1/repositories / * repo"` *
+  /// `name="projects/my-project/locations/us-central1/repositories / * repo*"`
+  ///
+  /// [orderBy] - Optional. The field to order the results by.
+  ///
   /// [pageSize] - The maximum number of repositories to return. Maximum page
   /// size is 1,000.
   ///
@@ -643,11 +664,15 @@ class ProjectsLocationsRepositoriesResource {
   /// this method will complete with the same error.
   async.Future<ListRepositoriesResponse> list(
     core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -920,6 +945,193 @@ class ProjectsLocationsRepositoriesAptArtifactsResource {
   }
 }
 
+class ProjectsLocationsRepositoriesAttachmentsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRepositoriesAttachmentsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an attachment.
+  ///
+  /// The returned Operation will finish once the attachment has been created.
+  /// Its response will be the created attachment.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource where the attachment
+  /// will be created.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [attachmentId] - Required. The attachment id to use for this attachment.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Attachment request,
+    core.String parent, {
+    core.String? attachmentId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (attachmentId != null) 'attachmentId': [attachmentId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/attachments';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an attachment.
+  ///
+  /// The returned Operation will finish once the attachments has been deleted.
+  /// It will not have any Operation metadata and will return a
+  /// `google.protobuf.Empty` response.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the attachment to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/attachments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an attachment.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the attachment to retrieve.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/attachments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Attachment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Attachment> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Attachment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists attachments.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource whose attachments
+  /// will be listed.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request. Filter rules are case insensitive. The fields eligible for
+  /// filtering are: * `target` * `type` * `attachment_namespace`
+  ///
+  /// [pageSize] - The maximum number of attachments to return. Maximum page
+  /// size is 1,000.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAttachmentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAttachmentsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/attachments';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAttachmentsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsRepositoriesDockerImagesResource {
   final commons.ApiRequester _requester;
 
@@ -1160,11 +1372,37 @@ class ProjectsLocationsRepositoriesFilesResource {
   ///
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are case insensitive. The fields eligible for filtering are: *
-  /// `name` * `owner` An example of using a filter: *
-  /// `name="projects/p1/locations/us-central1/repositories/repo1/files/a/b / *
-  /// "` --\> Files with an ID starting with "a/b/". *
-  /// `owner="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/1.0"`
-  /// --\> Files owned by the version `1.0` in package `pkg1`.
+  /// `name` * `owner` * `annotations` Examples of using a filter: To filter the
+  /// results of your request to files with the name `my_file.txt` in project
+  /// `my-project` in the `us-central` region, in repository `my-repo`, append
+  /// the following filter expression to your request: *
+  /// `name="projects/my-project/locations/us-central1/repositories/my-repo/files/my-file.txt"`
+  /// You can also use wildcards to match any number of characters before or
+  /// after the value: *
+  /// `name="projects/my-project/locations/us-central1/repositories/my-repo/files/my-*"`
+  /// *
+  /// `name="projects/my-project/locations/us-central1/repositories/my-repo/files
+  /// / * file.txt"` *
+  /// `name="projects/my-project/locations/us-central1/repositories/my-repo/files
+  /// / * file*"` To filter the results of your request to files owned by the
+  /// version `1.0` in package `pkg1`, append the following filter expression to
+  /// your request: *
+  /// `owner="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/1.0"`
+  /// To filter the results of your request to files with the annotation
+  /// key-value pair \[`external_link`: `external_link_value`\], append the
+  /// following filter expression to your request: *
+  /// `"annotations.external_link:external_link_value"` To filter just for a
+  /// specific annotation key `external_link`, append the following filter
+  /// expression to your request: * `"annotations.external_link"` If the
+  /// annotation key or value contains special characters, you can escape them
+  /// by surrounding the value with backticks. For example, to filter the
+  /// results of your request to files with the annotation key-value pair
+  /// \[`external.link`:`https://example.com/my-file`\], append the following
+  /// filter expression to your request: * ``
+  /// "annotations.`external.link`:`https://example.com/my-file`" `` You can
+  /// also filter with annotations with a wildcard to match any number of
+  /// characters before or after the value: * ``
+  /// "annotations.*_link:`*example.com*`" ``
   ///
   /// [orderBy] - The field to order the results by.
   ///
@@ -1208,6 +1446,120 @@ class ProjectsLocationsRepositoriesFilesResource {
       queryParams: queryParams_,
     );
     return ListFilesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a file.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the file, for example:
+  /// `projects/p1/locations/us-central1/repositories/repo1/files/a%2Fb%2Fc.txt`.
+  /// If the file ID part contains slashes, they are escaped.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/files/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The update mask applies to the resource. For the
+  /// `FieldMask` definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleDevtoolsArtifactregistryV1File].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleDevtoolsArtifactregistryV1File> patch(
+    GoogleDevtoolsArtifactregistryV1File request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleDevtoolsArtifactregistryV1File.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Directly uploads a file to a repository.
+  ///
+  /// The returned Operation will complete once the resources are uploaded.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the repository where the file
+  /// will be uploaded.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// [uploadOptions] - Options for the media upload. Streaming Media without
+  /// the length being known ahead of time is only supported via resumable
+  /// uploads.
+  ///
+  /// Completes with a [UploadFileMediaResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UploadFileMediaResponse> upload(
+    UploadFileRequest request,
+    core.String parent, {
+    core.String? $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
+    commons.Media? uploadMedia,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    core.String url_;
+    if (uploadMedia == null) {
+      url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/files:upload';
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
+      url_ = '/resumable/upload/v1/' +
+          core.Uri.encodeFull('$parent') +
+          '/files:upload';
+    } else {
+      url_ = '/upload/v1/' + core.Uri.encodeFull('$parent') + '/files:upload';
+    }
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
+    );
+    return UploadFileMediaResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1817,6 +2169,38 @@ class ProjectsLocationsRepositoriesPackagesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
   ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request. Filter rules are case insensitive. The fields eligible for
+  /// filtering are: * `name` * `annotations` Examples of using a filter: To
+  /// filter the results of your request to packages with the name `my-package`
+  /// in project `my-project` in the `us-central` region, in repository
+  /// `my-repo`, append the following filter expression to your request: *
+  /// `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package"`
+  /// You can also use wildcards to match any number of characters before or
+  /// after the value: *
+  /// `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-*"`
+  /// *
+  /// `name="projects/my-project/locations/us-central1/repositories/my-repo/packages
+  /// / * package"` *
+  /// `name="projects/my-project/locations/us-central1/repositories/my-repo/packages
+  /// / * pack*"` To filter the results of your request to packages with the
+  /// annotation key-value pair \[`external_link`: `external_link_value`\],
+  /// append the following filter expression to your request": *
+  /// `"annotations.external_link:external_link_value"` To filter the results
+  /// just for a specific annotation key `external_link`, append the following
+  /// filter expression to your request: * `"annotations.external_link"` If the
+  /// annotation key or value contains special characters, you can escape them
+  /// by surrounding the value with backticks. For example, to filter the
+  /// results of your request to packages with the annotation key-value pair
+  /// \[`external.link`:`https://example.com/my-package`\], append the following
+  /// filter expression to your request: * ``
+  /// "annotations.`external.link`:`https://example.com/my-package`" `` You can
+  /// also filter with annotations with a wildcard to match any number of
+  /// characters before or after the value: * ``
+  /// "annotations.*_link:`*example.com*`" ``
+  ///
+  /// [orderBy] - Optional. The field to order the results by.
+  ///
   /// [pageSize] - The maximum number of packages to return. Maximum page size
   /// is 1,000.
   ///
@@ -1835,11 +2219,15 @@ class ProjectsLocationsRepositoriesPackagesResource {
   /// this method will complete with the same error.
   async.Future<ListPackagesResponse> list(
     core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -2041,15 +2429,22 @@ class ProjectsLocationsRepositoriesPackagesTagsResource {
   ///
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are case insensitive. The fields eligible for filtering are: *
-  /// `version` An example of using a filter: *
-  /// `version="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/1.0"`
-  /// --\> Tags that are applied to the version `1.0` in package `pkg1`. *
-  /// `name="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/a%2Fb%2F*"`
-  /// --\> tags with an ID starting with "a/b/". *
-  /// `name="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags
-  /// / * %2Fb%2Fc"` --\> tags with an ID ending with "/b/c". *
-  /// `name="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags
-  /// / * %2Fb%2F*"` --\> tags with an ID containing "/b/".
+  /// `name` * `version` Examples of using a filter: To filter the results of
+  /// your request to tags with the name `my-tag` in package `my-package` in
+  /// repository `my-repo` in project "`y-project` in the us-central region,
+  /// append the following filter expression to your request: *
+  /// `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/my-tag"`
+  /// You can also use wildcards to match any number of characters before or
+  /// after the value: *
+  /// `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/my*"`
+  /// *
+  /// `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags
+  /// / * tag"` *
+  /// `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags
+  /// / * tag*"` To filter the results of your request to tags applied to the
+  /// version `1.0` in package `my-package`, append the following filter
+  /// expression to your request: *
+  /// `version="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/1.0"`
   ///
   /// [pageSize] - The maximum number of tags to return. Maximum page size is
   /// 1,000.
@@ -2292,6 +2687,36 @@ class ProjectsLocationsRepositoriesPackagesVersionsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/packages/\[^/\]+$`.
   ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request. Filter rules are case insensitive. The fields eligible for
+  /// filtering are: * `name` * `annotations` Examples of using a filter: To
+  /// filter the results of your request to versions with the name `my-version`
+  /// in project `my-project` in the `us-central` region, in repository
+  /// `my-repo`, append the following filter expression to your request: *
+  /// `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/my-version"`
+  /// You can also use wildcards to match any number of characters before or
+  /// after the value: *
+  /// `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions
+  /// / * version"` *
+  /// `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/my*"`
+  /// *
+  /// `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions
+  /// / * version*"` To filter the results of your request to versions with the
+  /// annotation key-value pair \[`external_link`: `external_link_value`\],
+  /// append the following filter expression to your request: *
+  /// `"annotations.external_link:external_link_value"` To filter just for a
+  /// specific annotation key `external_link`, append the following filter
+  /// expression to your request: * `"annotations.external_link"` If the
+  /// annotation key or value contains special characters, you can escape them
+  /// by surrounding the value with backticks. For example, to filter the
+  /// results of your request to versions with the annotation key-value pair
+  /// \[`external.link`:`https://example.com/my-version`\], append the following
+  /// filter expression to your request: * ``
+  /// "annotations.`external.link`:`https://example.com/my-version`" `` You can
+  /// also filter with annotations with a wildcard to match any number of
+  /// characters before or after the value: * ``
+  /// "annotations.*_link:`*example.com*`" ``
+  ///
   /// [orderBy] - Optional. The field to order the results by.
   ///
   /// [pageSize] - The maximum number of versions to return. Maximum page size
@@ -2320,6 +2745,7 @@ class ProjectsLocationsRepositoriesPackagesVersionsResource {
   /// this method will complete with the same error.
   async.Future<ListVersionsResponse> list(
     core.String parent, {
+    core.String? filter,
     core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
@@ -2327,6 +2753,7 @@ class ProjectsLocationsRepositoriesPackagesVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2343,6 +2770,56 @@ class ProjectsLocationsRepositoriesPackagesVersionsResource {
     );
     return ListVersionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a version.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the version, for example:
+  /// `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1`.
+  /// If the package or version ID parts contain slashes, the slashes are
+  /// escaped.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/packages/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [updateMask] - The update mask applies to the resource. For the
+  /// `FieldMask` definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Version].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Version> patch(
+    Version request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Version.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2435,6 +2912,231 @@ class ProjectsLocationsRepositoriesPythonPackagesResource {
       queryParams: queryParams_,
     );
     return ListPythonPackagesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsRepositoriesRulesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRepositoriesRulesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a rule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource where the rule will
+  /// be created.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [ruleId] - The rule id to use for this repository.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleDevtoolsArtifactregistryV1Rule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleDevtoolsArtifactregistryV1Rule> create(
+    GoogleDevtoolsArtifactregistryV1Rule request,
+    core.String parent, {
+    core.String? ruleId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (ruleId != null) 'ruleId': [ruleId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/rules';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleDevtoolsArtifactregistryV1Rule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a rule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the rule to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/rules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a rule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the rule to retrieve.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/rules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleDevtoolsArtifactregistryV1Rule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleDevtoolsArtifactregistryV1Rule> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleDevtoolsArtifactregistryV1Rule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists rules.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent repository whose rules will be
+  /// listed. For example:
+  /// `projects/p1/locations/us-central1/repositories/repo1`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of rules to return. Maximum page size is
+  /// 1,000.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRulesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/rules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a rule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the rule, for example:
+  /// `projects/p1/locations/us-central1/repositories/repo1/rules/rule1`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/rules/\[^/\]+$`.
+  ///
+  /// [updateMask] - The update mask applies to the resource. For the
+  /// `FieldMask` definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleDevtoolsArtifactregistryV1Rule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleDevtoolsArtifactregistryV1Rule> patch(
+    GoogleDevtoolsArtifactregistryV1Rule request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleDevtoolsArtifactregistryV1Rule.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2587,6 +3289,118 @@ class AptRepository {
   core.Map<core.String, core.dynamic> toJson() => {
         if (customRepository != null) 'customRepository': customRepository!,
         if (publicRepository != null) 'publicRepository': publicRepository!,
+      };
+}
+
+/// An Attachment refers to additional metadata that can be attached to
+/// artifacts in Artifact Registry.
+///
+/// An attachment consists of one or more files.
+class Attachment {
+  /// User annotations.
+  ///
+  /// These attributes can only be set and used by the user, and not by Artifact
+  /// Registry. See https://google.aip.dev/128#annotations for more details such
+  /// as format and size limitations.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? annotations;
+
+  /// The namespace this attachment belongs to.
+  ///
+  /// E.g. If an attachment is created by artifact analysis, namespace is set to
+  /// `artifactanalysis.googleapis.com`.
+  core.String? attachmentNamespace;
+
+  /// The time when the attachment was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The files that belong to this attachment.
+  ///
+  /// If the file ID part contains slashes, they are escaped. E.g.
+  /// `projects/p1/locations/us-central1/repositories/repo1/files/sha:`.
+  ///
+  /// Required.
+  core.List<core.String>? files;
+
+  /// The name of the attachment.
+  ///
+  /// E.g. `projects/p1/locations/us/repositories/repo/attachments/sbom`.
+  core.String? name;
+
+  /// The name of the OCI version that this attachment created.
+  ///
+  /// Only populated for Docker attachments. E.g.
+  /// `projects/p1/locations/us-central1/repositories/repo1/packages/p1/versions/v1`.
+  ///
+  /// Output only.
+  core.String? ociVersionName;
+
+  /// The target the attachment is for, can be a Version, Package or Repository.
+  ///
+  /// E.g.
+  /// `projects/p1/locations/us-central1/repositories/repo1/packages/p1/versions/v1`.
+  ///
+  /// Required.
+  core.String? target;
+
+  /// Type of attachment.
+  ///
+  /// E.g. `application/vnd.spdx+json`
+  core.String? type;
+
+  /// The time when the attachment was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Attachment({
+    this.annotations,
+    this.attachmentNamespace,
+    this.createTime,
+    this.files,
+    this.name,
+    this.ociVersionName,
+    this.target,
+    this.type,
+    this.updateTime,
+  });
+
+  Attachment.fromJson(core.Map json_)
+      : this(
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          attachmentNamespace: json_['attachmentNamespace'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          files: (json_['files'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          name: json_['name'] as core.String?,
+          ociVersionName: json_['ociVersionName'] as core.String?,
+          target: json_['target'] as core.String?,
+          type: json_['type'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (attachmentNamespace != null)
+          'attachmentNamespace': attachmentNamespace!,
+        if (createTime != null) 'createTime': createTime!,
+        if (files != null) 'files': files!,
+        if (name != null) 'name': name!,
+        if (ociVersionName != null) 'ociVersionName': ociVersionName!,
+        if (target != null) 'target': target!,
+        if (type != null) 'type': type!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -2878,6 +3692,27 @@ class CleanupPolicyMostRecentVersions {
       };
 }
 
+/// Common remote repository settings type.
+class CommonRemoteRepository {
+  /// A common public repository base for remote repository.
+  ///
+  /// Required.
+  core.String? uri;
+
+  CommonRemoteRepository({
+    this.uri,
+  });
+
+  CommonRemoteRepository.fromJson(core.Map json_)
+      : this(
+          uri: json_['uri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
 /// DockerImage represents a docker artifact.
 ///
 /// The following fields are returned as untyped metadata in the Version
@@ -3067,6 +3902,11 @@ typedef Expr = $Expr;
 /// Files store content that is potentially associated with Packages or
 /// Versions.
 class GoogleDevtoolsArtifactregistryV1File {
+  /// Client specified annotations.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? annotations;
+
   /// The time when the File was created.
   ///
   /// Output only.
@@ -3100,6 +3940,7 @@ class GoogleDevtoolsArtifactregistryV1File {
   core.String? updateTime;
 
   GoogleDevtoolsArtifactregistryV1File({
+    this.annotations,
     this.createTime,
     this.fetchTime,
     this.hashes,
@@ -3111,6 +3952,14 @@ class GoogleDevtoolsArtifactregistryV1File {
 
   GoogleDevtoolsArtifactregistryV1File.fromJson(core.Map json_)
       : this(
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           createTime: json_['createTime'] as core.String?,
           fetchTime: json_['fetchTime'] as core.String?,
           hashes: (json_['hashes'] as core.List?)
@@ -3124,6 +3973,7 @@ class GoogleDevtoolsArtifactregistryV1File {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
         if (createTime != null) 'createTime': createTime!,
         if (fetchTime != null) 'fetchTime': fetchTime!,
         if (hashes != null) 'hashes': hashes!,
@@ -3327,6 +4177,71 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicR
       };
 }
 
+/// A rule defines the deny or allow action of the operation it applies to and
+/// the conditions required for the rule to apply.
+///
+/// You can set one rule for an entire repository and one rule for each package
+/// within.
+class GoogleDevtoolsArtifactregistryV1Rule {
+  /// The action this rule takes.
+  /// Possible string values are:
+  /// - "ACTION_UNSPECIFIED" : Action not specified.
+  /// - "ALLOW" : Allow the operation.
+  /// - "DENY" : Deny the operation.
+  core.String? action;
+
+  /// A CEL expression for conditions that must be met in order for the rule to
+  /// apply.
+  ///
+  /// If not provided, the rule matches all objects.
+  ///
+  /// Optional.
+  Expr? condition;
+
+  /// The name of the rule, for example:
+  /// `projects/p1/locations/us-central1/repositories/repo1/rules/rule1`.
+  core.String? name;
+
+  ///
+  /// Possible string values are:
+  /// - "OPERATION_UNSPECIFIED" : Operation not specified.
+  /// - "DOWNLOAD" : Download operation.
+  core.String? operation;
+
+  /// The package ID the rule applies to.
+  ///
+  /// If empty, this rule applies to all packages inside the repository.
+  core.String? packageId;
+
+  GoogleDevtoolsArtifactregistryV1Rule({
+    this.action,
+    this.condition,
+    this.name,
+    this.operation,
+    this.packageId,
+  });
+
+  GoogleDevtoolsArtifactregistryV1Rule.fromJson(core.Map json_)
+      : this(
+          action: json_['action'] as core.String?,
+          condition: json_.containsKey('condition')
+              ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_['name'] as core.String?,
+          operation: json_['operation'] as core.String?,
+          packageId: json_['packageId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (condition != null) 'condition': condition!,
+        if (name != null) 'name': name!,
+        if (operation != null) 'operation': operation!,
+        if (packageId != null) 'packageId': packageId!,
+      };
+}
+
 /// A hash of file content.
 class Hash {
   /// The algorithm used to compute the hash value.
@@ -3458,6 +4373,35 @@ class ImportYumArtifactsRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcsSource != null) 'gcsSource': gcsSource!,
+      };
+}
+
+/// The response from listing attachments.
+class ListAttachmentsResponse {
+  /// The attachments returned.
+  core.List<Attachment>? attachments;
+
+  /// The token to retrieve the next page of attachments, or empty if there are
+  /// no more attachments to return.
+  core.String? nextPageToken;
+
+  ListAttachmentsResponse({
+    this.attachments,
+    this.nextPageToken,
+  });
+
+  ListAttachmentsResponse.fromJson(core.Map json_)
+      : this(
+          attachments: (json_['attachments'] as core.List?)
+              ?.map((value) => Attachment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attachments != null) 'attachments': attachments!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -3689,6 +4633,35 @@ class ListRepositoriesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (repositories != null) 'repositories': repositories!,
+      };
+}
+
+/// The response from listing rules.
+class ListRulesResponse {
+  /// The token to retrieve the next page of rules, or empty if there are no
+  /// more rules to return.
+  core.String? nextPageToken;
+
+  /// The rules returned.
+  core.List<GoogleDevtoolsArtifactregistryV1Rule>? rules;
+
+  ListRulesResponse({
+    this.nextPageToken,
+    this.rules,
+  });
+
+  ListRulesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          rules: (json_['rules'] as core.List?)
+              ?.map((value) => GoogleDevtoolsArtifactregistryV1Rule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (rules != null) 'rules': rules!,
       };
 }
 
@@ -4254,9 +5227,14 @@ class ProjectSettings {
   /// request: never set In response: always set
   core.String? name;
 
+  /// The percentage of pull traffic to redirect from GCR to AR when using
+  /// partial redirection.
+  core.int? pullPercent;
+
   ProjectSettings({
     this.legacyRedirectionState,
     this.name,
+    this.pullPercent,
   });
 
   ProjectSettings.fromJson(core.Map json_)
@@ -4264,12 +5242,14 @@ class ProjectSettings {
           legacyRedirectionState:
               json_['legacyRedirectionState'] as core.String?,
           name: json_['name'] as core.String?,
+          pullPercent: json_['pullPercent'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (legacyRedirectionState != null)
           'legacyRedirectionState': legacyRedirectionState!,
         if (name != null) 'name': name!,
+        if (pullPercent != null) 'pullPercent': pullPercent!,
       };
 }
 
@@ -4379,6 +5359,11 @@ class RemoteRepositoryConfig {
   /// Specific settings for an Apt remote repository.
   AptRepository? aptRepository;
 
+  /// Common remote repository settings.
+  ///
+  /// Used as the remote repository upstream URL.
+  CommonRemoteRepository? commonRepository;
+
   /// The description of the remote source.
   core.String? description;
 
@@ -4410,6 +5395,7 @@ class RemoteRepositoryConfig {
 
   RemoteRepositoryConfig({
     this.aptRepository,
+    this.commonRepository,
     this.description,
     this.disableUpstreamValidation,
     this.dockerRepository,
@@ -4425,6 +5411,10 @@ class RemoteRepositoryConfig {
           aptRepository: json_.containsKey('aptRepository')
               ? AptRepository.fromJson(
                   json_['aptRepository'] as core.Map<core.String, core.dynamic>)
+              : null,
+          commonRepository: json_.containsKey('commonRepository')
+              ? CommonRemoteRepository.fromJson(json_['commonRepository']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           description: json_['description'] as core.String?,
           disableUpstreamValidation:
@@ -4457,6 +5447,7 @@ class RemoteRepositoryConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aptRepository != null) 'aptRepository': aptRepository!,
+        if (commonRepository != null) 'commonRepository': commonRepository!,
         if (description != null) 'description': description!,
         if (disableUpstreamValidation != null)
           'disableUpstreamValidation': disableUpstreamValidation!,
@@ -4593,6 +5584,12 @@ class Repository {
   /// Configuration specific for a Virtual Repository.
   VirtualRepositoryConfig? virtualRepositoryConfig;
 
+  /// Config and state for vulnerability scanning of resources within this
+  /// Repository.
+  ///
+  /// Optional.
+  VulnerabilityScanningConfig? vulnerabilityScanningConfig;
+
   Repository({
     this.cleanupPolicies,
     this.cleanupPolicyDryRun,
@@ -4612,6 +5609,7 @@ class Repository {
     this.sizeBytes,
     this.updateTime,
     this.virtualRepositoryConfig,
+    this.vulnerabilityScanningConfig,
   });
 
   Repository.fromJson(core.Map json_)
@@ -4662,6 +5660,12 @@ class Repository {
                   json_['virtualRepositoryConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          vulnerabilityScanningConfig:
+              json_.containsKey('vulnerabilityScanningConfig')
+                  ? VulnerabilityScanningConfig.fromJson(
+                      json_['vulnerabilityScanningConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4687,6 +5691,8 @@ class Repository {
         if (updateTime != null) 'updateTime': updateTime!,
         if (virtualRepositoryConfig != null)
           'virtualRepositoryConfig': virtualRepositoryConfig!,
+        if (vulnerabilityScanningConfig != null)
+          'vulnerabilityScanningConfig': vulnerabilityScanningConfig!,
       };
 }
 
@@ -4723,7 +5729,7 @@ class SetIamPolicyRequest {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Tags point to a version and represent an alternative name that can be used
 /// to access the version.
@@ -4737,7 +5743,7 @@ class Tag {
   core.String? name;
 
   /// The name of the version the tag refers to, for example:
-  /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
+  /// `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811`
   /// If the package or version ID parts contain slashes, the slashes are
   /// escaped.
   core.String? version;
@@ -4791,6 +5797,51 @@ class UploadAptArtifactMediaResponse {
 typedef UploadAptArtifactRequest = $Empty;
 
 /// The response to upload a generic artifact.
+class UploadFileMediaResponse {
+  /// Operation that will be returned to the user.
+  Operation? operation;
+
+  UploadFileMediaResponse({
+    this.operation,
+  });
+
+  UploadFileMediaResponse.fromJson(core.Map json_)
+      : this(
+          operation: json_.containsKey('operation')
+              ? Operation.fromJson(
+                  json_['operation'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (operation != null) 'operation': operation!,
+      };
+}
+
+/// The request to upload a file.
+class UploadFileRequest {
+  /// The ID of the file.
+  ///
+  /// If left empty will default to sha256 digest of the content uploaded.
+  ///
+  /// Optional.
+  core.String? fileId;
+
+  UploadFileRequest({
+    this.fileId,
+  });
+
+  UploadFileRequest.fromJson(core.Map json_)
+      : this(
+          fileId: json_['fileId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fileId != null) 'fileId': fileId!,
+      };
+}
+
+/// The response to upload a generic artifact.
 class UploadGenericArtifactMediaResponse {
   /// Operation that will be returned to the user.
   Operation? operation;
@@ -4827,9 +5878,9 @@ class UploadGenericArtifactRequest {
   /// The ID of the package of the generic artifact.
   ///
   /// If the package does not exist, a new package will be created. The
-  /// `package_id` must start with a letter, end with a letter or number, only
-  /// contain letters, numbers, hyphens and periods i.e. \[a-z0-9-.\], and
-  /// cannot exceed 256 characters.
+  /// `package_id` should start and end with a letter or number, only contain
+  /// letters, numbers, hyphens, underscores, and periods, and not exceed 256
+  /// characters.
   core.String? packageId;
 
   /// The ID of the version of the generic artifact.
@@ -5115,6 +6166,11 @@ class VPCSCConfig {
 /// other data. This may correspond to a version in many package management
 /// schemes.
 class Version {
+  /// Client specified annotations.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? annotations;
+
   /// The time when the version was created.
   core.String? createTime;
 
@@ -5135,7 +6191,7 @@ class Version {
   core.Map<core.String, core.Object?>? metadata;
 
   /// The name of the version, for example:
-  /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1".
+  /// `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1`.
   ///
   /// If the package or version ID parts contain slashes, the slashes are
   /// escaped.
@@ -5152,6 +6208,7 @@ class Version {
   core.String? updateTime;
 
   Version({
+    this.annotations,
     this.createTime,
     this.description,
     this.metadata,
@@ -5162,6 +6219,14 @@ class Version {
 
   Version.fromJson(core.Map json_)
       : this(
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           metadata: json_.containsKey('metadata')
@@ -5176,6 +6241,7 @@ class Version {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (metadata != null) 'metadata': metadata!,
@@ -5207,6 +6273,68 @@ class VirtualRepositoryConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (upstreamPolicies != null) 'upstreamPolicies': upstreamPolicies!,
+      };
+}
+
+/// Config on whether to perform vulnerability scanning for resources in this
+/// repository, as well as output fields describing current state.
+class VulnerabilityScanningConfig {
+  /// Config for whether this repository has vulnerability scanning disabled.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ENABLEMENT_CONFIG_UNSPECIFIED" : Not set. This will be treated as
+  /// INHERITED.
+  /// - "INHERITED" : Scanning is Enabled, but dependent on API enablement.
+  /// - "DISABLED" : No automatic vulnerability scanning will be performed for
+  /// this repository.
+  core.String? enablementConfig;
+
+  /// State of feature enablement, combining repository enablement config and
+  /// API enablement state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ENABLEMENT_STATE_UNSPECIFIED" : Enablement state is unclear.
+  /// - "SCANNING_UNSUPPORTED" : Repository does not support vulnerability
+  /// scanning.
+  /// - "SCANNING_DISABLED" : Vulnerability scanning is disabled for this
+  /// repository.
+  /// - "SCANNING_ACTIVE" : Vulnerability scanning is active for this
+  /// repository.
+  core.String? enablementState;
+
+  /// Reason for the repository state.
+  ///
+  /// Output only.
+  core.String? enablementStateReason;
+
+  /// The last time this repository config was enabled.
+  ///
+  /// Output only.
+  core.String? lastEnableTime;
+
+  VulnerabilityScanningConfig({
+    this.enablementConfig,
+    this.enablementState,
+    this.enablementStateReason,
+    this.lastEnableTime,
+  });
+
+  VulnerabilityScanningConfig.fromJson(core.Map json_)
+      : this(
+          enablementConfig: json_['enablementConfig'] as core.String?,
+          enablementState: json_['enablementState'] as core.String?,
+          enablementStateReason: json_['enablementStateReason'] as core.String?,
+          lastEnableTime: json_['lastEnableTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enablementConfig != null) 'enablementConfig': enablementConfig!,
+        if (enablementState != null) 'enablementState': enablementState!,
+        if (enablementStateReason != null)
+          'enablementStateReason': enablementStateReason!,
+        if (lastEnableTime != null) 'lastEnableTime': lastEnableTime!,
       };
 }
 

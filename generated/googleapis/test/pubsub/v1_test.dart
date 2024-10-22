@@ -62,6 +62,33 @@ void checkAcknowledgeRequest(api.AcknowledgeRequest o) {
   buildCounterAcknowledgeRequest--;
 }
 
+core.int buildCounterAnalyticsHubSubscriptionInfo = 0;
+api.AnalyticsHubSubscriptionInfo buildAnalyticsHubSubscriptionInfo() {
+  final o = api.AnalyticsHubSubscriptionInfo();
+  buildCounterAnalyticsHubSubscriptionInfo++;
+  if (buildCounterAnalyticsHubSubscriptionInfo < 3) {
+    o.listing = 'foo';
+    o.subscription = 'foo';
+  }
+  buildCounterAnalyticsHubSubscriptionInfo--;
+  return o;
+}
+
+void checkAnalyticsHubSubscriptionInfo(api.AnalyticsHubSubscriptionInfo o) {
+  buildCounterAnalyticsHubSubscriptionInfo++;
+  if (buildCounterAnalyticsHubSubscriptionInfo < 3) {
+    unittest.expect(
+      o.listing!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.subscription!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAnalyticsHubSubscriptionInfo--;
+}
+
 core.int buildCounterAvroConfig = 0;
 api.AvroConfig buildAvroConfig() {
   final o = api.AvroConfig();
@@ -81,6 +108,21 @@ void checkAvroConfig(api.AvroConfig o) {
     unittest.expect(o.writeMetadata!, unittest.isTrue);
   }
   buildCounterAvroConfig--;
+}
+
+core.int buildCounterAvroFormat = 0;
+api.AvroFormat buildAvroFormat() {
+  final o = api.AvroFormat();
+  buildCounterAvroFormat++;
+  if (buildCounterAvroFormat < 3) {}
+  buildCounterAvroFormat--;
+  return o;
+}
+
+void checkAvroFormat(api.AvroFormat o) {
+  buildCounterAvroFormat++;
+  if (buildCounterAvroFormat < 3) {}
+  buildCounterAvroFormat--;
 }
 
 core.int buildCounterAwsKinesis = 0;
@@ -208,6 +250,49 @@ void checkBinding(api.Binding o) {
   buildCounterBinding--;
 }
 
+core.int buildCounterCloudStorage = 0;
+api.CloudStorage buildCloudStorage() {
+  final o = api.CloudStorage();
+  buildCounterCloudStorage++;
+  if (buildCounterCloudStorage < 3) {
+    o.avroFormat = buildAvroFormat();
+    o.bucket = 'foo';
+    o.matchGlob = 'foo';
+    o.minimumObjectCreateTime = 'foo';
+    o.pubsubAvroFormat = buildPubSubAvroFormat();
+    o.state = 'foo';
+    o.textFormat = buildTextFormat();
+  }
+  buildCounterCloudStorage--;
+  return o;
+}
+
+void checkCloudStorage(api.CloudStorage o) {
+  buildCounterCloudStorage++;
+  if (buildCounterCloudStorage < 3) {
+    checkAvroFormat(o.avroFormat!);
+    unittest.expect(
+      o.bucket!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.matchGlob!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.minimumObjectCreateTime!,
+      unittest.equals('foo'),
+    );
+    checkPubSubAvroFormat(o.pubsubAvroFormat!);
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    checkTextFormat(o.textFormat!);
+  }
+  buildCounterCloudStorage--;
+}
+
 core.int buildCounterCloudStorageConfig = 0;
 api.CloudStorageConfig buildCloudStorageConfig() {
   final o = api.CloudStorageConfig();
@@ -220,6 +305,7 @@ api.CloudStorageConfig buildCloudStorageConfig() {
     o.filenameSuffix = 'foo';
     o.maxBytes = 'foo';
     o.maxDuration = 'foo';
+    o.maxMessages = 'foo';
     o.serviceAccountEmail = 'foo';
     o.state = 'foo';
     o.textConfig = buildTextConfig();
@@ -254,6 +340,10 @@ void checkCloudStorageConfig(api.CloudStorageConfig o) {
     );
     unittest.expect(
       o.maxDuration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxMessages!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -451,6 +541,8 @@ api.IngestionDataSourceSettings buildIngestionDataSourceSettings() {
   buildCounterIngestionDataSourceSettings++;
   if (buildCounterIngestionDataSourceSettings < 3) {
     o.awsKinesis = buildAwsKinesis();
+    o.cloudStorage = buildCloudStorage();
+    o.platformLogsSettings = buildPlatformLogsSettings();
   }
   buildCounterIngestionDataSourceSettings--;
   return o;
@@ -460,6 +552,8 @@ void checkIngestionDataSourceSettings(api.IngestionDataSourceSettings o) {
   buildCounterIngestionDataSourceSettings++;
   if (buildCounterIngestionDataSourceSettings < 3) {
     checkAwsKinesis(o.awsKinesis!);
+    checkCloudStorage(o.cloudStorage!);
+    checkPlatformLogsSettings(o.platformLogsSettings!);
   }
   buildCounterIngestionDataSourceSettings--;
 }
@@ -865,6 +959,28 @@ void checkOidcToken(api.OidcToken o) {
   buildCounterOidcToken--;
 }
 
+core.int buildCounterPlatformLogsSettings = 0;
+api.PlatformLogsSettings buildPlatformLogsSettings() {
+  final o = api.PlatformLogsSettings();
+  buildCounterPlatformLogsSettings++;
+  if (buildCounterPlatformLogsSettings < 3) {
+    o.severity = 'foo';
+  }
+  buildCounterPlatformLogsSettings--;
+  return o;
+}
+
+void checkPlatformLogsSettings(api.PlatformLogsSettings o) {
+  buildCounterPlatformLogsSettings++;
+  if (buildCounterPlatformLogsSettings < 3) {
+    unittest.expect(
+      o.severity!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPlatformLogsSettings--;
+}
+
 core.List<api.Binding> buildUnnamed12() => [
       buildBinding(),
       buildBinding(),
@@ -903,6 +1019,21 @@ void checkPolicy(api.Policy o) {
     );
   }
   buildCounterPolicy--;
+}
+
+core.int buildCounterPubSubAvroFormat = 0;
+api.PubSubAvroFormat buildPubSubAvroFormat() {
+  final o = api.PubSubAvroFormat();
+  buildCounterPubSubAvroFormat++;
+  if (buildCounterPubSubAvroFormat < 3) {}
+  buildCounterPubSubAvroFormat--;
+  return o;
+}
+
+void checkPubSubAvroFormat(api.PubSubAvroFormat o) {
+  buildCounterPubSubAvroFormat++;
+  if (buildCounterPubSubAvroFormat < 3) {}
+  buildCounterPubSubAvroFormat--;
 }
 
 core.List<api.PubsubMessage> buildUnnamed13() => [
@@ -1435,6 +1566,7 @@ api.Subscription buildSubscription() {
   buildCounterSubscription++;
   if (buildCounterSubscription < 3) {
     o.ackDeadlineSeconds = 42;
+    o.analyticsHubSubscriptionInfo = buildAnalyticsHubSubscriptionInfo();
     o.bigqueryConfig = buildBigQueryConfig();
     o.cloudStorageConfig = buildCloudStorageConfig();
     o.deadLetterPolicy = buildDeadLetterPolicy();
@@ -1464,6 +1596,7 @@ void checkSubscription(api.Subscription o) {
       o.ackDeadlineSeconds!,
       unittest.equals(42),
     );
+    checkAnalyticsHubSubscriptionInfo(o.analyticsHubSubscriptionInfo!);
     checkBigQueryConfig(o.bigqueryConfig!);
     checkCloudStorageConfig(o.cloudStorageConfig!);
     checkDeadLetterPolicy(o.deadLetterPolicy!);
@@ -1588,6 +1721,28 @@ void checkTextConfig(api.TextConfig o) {
   buildCounterTextConfig++;
   if (buildCounterTextConfig < 3) {}
   buildCounterTextConfig--;
+}
+
+core.int buildCounterTextFormat = 0;
+api.TextFormat buildTextFormat() {
+  final o = api.TextFormat();
+  buildCounterTextFormat++;
+  if (buildCounterTextFormat < 3) {
+    o.delimiter = 'foo';
+  }
+  buildCounterTextFormat--;
+  return o;
+}
+
+void checkTextFormat(api.TextFormat o) {
+  buildCounterTextFormat++;
+  if (buildCounterTextFormat < 3) {
+    unittest.expect(
+      o.delimiter!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTextFormat--;
 }
 
 core.Map<core.String, core.String> buildUnnamed22() => {
@@ -1820,6 +1975,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-AnalyticsHubSubscriptionInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAnalyticsHubSubscriptionInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AnalyticsHubSubscriptionInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAnalyticsHubSubscriptionInfo(od);
+    });
+  });
+
   unittest.group('obj-schema-AvroConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAvroConfig();
@@ -1827,6 +1992,16 @@ void main() {
       final od =
           api.AvroConfig.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkAvroConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-AvroFormat', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAvroFormat();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.AvroFormat.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkAvroFormat(od);
     });
   });
 
@@ -1857,6 +2032,16 @@ void main() {
       final od =
           api.Binding.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBinding(od);
+    });
+  });
+
+  unittest.group('obj-schema-CloudStorage', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCloudStorage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CloudStorage.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCloudStorage(od);
     });
   });
 
@@ -2070,6 +2255,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-PlatformLogsSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPlatformLogsSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PlatformLogsSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPlatformLogsSettings(od);
+    });
+  });
+
   unittest.group('obj-schema-Policy', () {
     unittest.test('to-json--from-json', () async {
       final o = buildPolicy();
@@ -2077,6 +2272,16 @@ void main() {
       final od =
           api.Policy.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-PubSubAvroFormat', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPubSubAvroFormat();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PubSubAvroFormat.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPubSubAvroFormat(od);
     });
   });
 
@@ -2277,6 +2482,16 @@ void main() {
       final od =
           api.TextConfig.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkTextConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-TextFormat', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTextFormat();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.TextFormat.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkTextFormat(od);
     });
   });
 

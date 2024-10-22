@@ -612,8 +612,10 @@ api.DeviceIdentifier buildDeviceIdentifier() {
     o.chromeOsAttestedDeviceId = 'foo';
     o.deviceType = 'foo';
     o.imei = 'foo';
+    o.imei2 = 'foo';
     o.manufacturer = 'foo';
     o.meid = 'foo';
+    o.meid2 = 'foo';
     o.model = 'foo';
     o.serialNumber = 'foo';
   }
@@ -637,11 +639,19 @@ void checkDeviceIdentifier(api.DeviceIdentifier o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.imei2!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.manufacturer!,
       unittest.equals('foo'),
     );
     unittest.expect(
       o.meid!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.meid2!,
       unittest.equals('foo'),
     );
     unittest.expect(

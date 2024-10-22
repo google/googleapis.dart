@@ -1369,14 +1369,19 @@ class BiReservation {
 class CapacityCommitment {
   /// The end of the current commitment period.
   ///
-  /// It is applicable only for ACTIVE capacity commitments.
+  /// It is applicable only for ACTIVE capacity commitments. Note after renewal,
+  /// commitment_end_time is the time the renewed commitment expires. So itwould
+  /// be at a time after commitment_start_time + committed period, because we
+  /// don't change commitment_start_time ,
   ///
   /// Output only.
   core.String? commitmentEndTime;
 
   /// The start of the current commitment period.
   ///
-  /// It is applicable only for ACTIVE capacity commitments.
+  /// It is applicable only for ACTIVE capacity commitments. Note after the
+  /// commitment is renewed, commitment_start_time won't be changed. It refers
+  /// to the start time of the original commitment.
   ///
   /// Output only.
   core.String? commitmentStartTime;
@@ -1998,7 +2003,7 @@ class SplitCapacityCommitmentResponse {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Fully qualified reference to BigQuery table.
 ///

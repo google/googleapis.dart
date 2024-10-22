@@ -605,7 +605,7 @@ class ProjectsLocationsFunctionsResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
   ///
   /// [updateMask] - The list of fields to be updated. If no field mask is
-  /// provided, all provided fields in the request will be updated.
+  /// provided, all fields will be updated.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1254,7 +1254,10 @@ class BuildConfig {
   /// reference\](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
   core.String? runtime;
 
-  /// \[Preview\] Service account to be used for building the container
+  /// Service account to be used for building the container.
+  ///
+  /// The format of this field is
+  /// `projects/{projectId}/serviceAccounts/{serviceAccountEmail}`.
   core.String? serviceAccount;
 
   /// The location of the function source code.
@@ -1582,8 +1585,8 @@ class Function_ {
   /// response to a condition in another service.
   EventTrigger? eventTrigger;
 
-  /// \[Preview\] Resource name of a KMS crypto key (managed by the user) used
-  /// to encrypt/decrypt function resources.
+  /// Resource name of a KMS crypto key (managed by the user) used to
+  /// encrypt/decrypt function resources.
   ///
   /// It must match the pattern
   /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
@@ -1738,9 +1741,9 @@ class GenerateUploadUrlRequest {
   /// - "GEN_2" : Gen 2
   core.String? environment;
 
-  /// \[Preview\] Resource name of a KMS crypto key (managed by the user) used
-  /// to encrypt/decrypt function source code objects in intermediate Cloud
-  /// Storage buckets.
+  /// Resource name of a KMS crypto key (managed by the user) used to
+  /// encrypt/decrypt function source code objects in intermediate Cloud Storage
+  /// buckets.
   ///
   /// When you generate an upload url and upload your source code, it gets
   /// copied to an intermediate Cloud Storage bucket. The source code is then
@@ -2826,7 +2829,7 @@ class SourceProvenance {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Location of the source in an archive file in Google Cloud Storage.
 class StorageSource {

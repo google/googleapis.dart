@@ -22,6 +22,86 @@ import 'dart:core' as core;
 
 /// Used by:
 ///
+/// - accesscontextmanager:v1 : AccessPolicy
+/// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1AccessPolicy
+class $AccessPolicy {
+  /// An opaque identifier for the current version of the `AccessPolicy`.
+  ///
+  /// This will always be a strongly validated etag, meaning that two Access
+  /// Policies will be identical if and only if their etags are identical.
+  /// Clients should not expect this to be in any specific format.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Identifier.
+  ///
+  /// Resource name of the `AccessPolicy`. Format:
+  /// `accessPolicies/{access_policy}`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy.
+  ///
+  /// Currently immutable once created. Format:
+  /// `organizations/{organization_id}`
+  ///
+  /// Required.
+  core.String? parent;
+
+  /// The scopes of the AccessPolicy.
+  ///
+  /// Scopes define which resources a policy can restrict and where its
+  /// resources can be referenced. For example, policy A with
+  /// `scopes=["folders/123"]` has the following behavior: - ServicePerimeter
+  /// can only restrict projects within `folders/123`. - ServicePerimeter within
+  /// policy A can only reference access levels defined within policy A. - Only
+  /// one policy can include a given scope; thus, attempting to create a second
+  /// policy which includes `folders/123` will result in an error. If no scopes
+  /// are provided, then any resource within the organization can be restricted.
+  /// Scopes cannot be modified after a policy is created. Policies can only
+  /// have a single scope. Format: list of `folders/{folder_number}` or
+  /// `projects/{project_number}`
+  core.List<core.String>? scopes;
+
+  /// Human readable title.
+  ///
+  /// Does not affect behavior.
+  ///
+  /// Required.
+  core.String? title;
+
+  $AccessPolicy({
+    this.etag,
+    this.name,
+    this.parent,
+    this.scopes,
+    this.title,
+  });
+
+  $AccessPolicy.fromJson(core.Map json_)
+      : this(
+          etag: json_['etag'] as core.String?,
+          name: json_['name'] as core.String?,
+          parent: json_['parent'] as core.String?,
+          scopes: (json_['scopes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          title: json_['title'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (parent != null) 'parent': parent!,
+        if (scopes != null) 'scopes': scopes!,
+        if (title != null) 'title': title!,
+      };
+}
+
+/// Used by:
+///
 /// - chat:v1 : ActionParameter
 /// - chat:v1 : GoogleAppsCardV1ActionParameter
 class $ActionParameter {
@@ -244,32 +324,6 @@ class $AddressPool {
         if (avoidBuggyIps != null) 'avoidBuggyIps': avoidBuggyIps!,
         if (manualAssign != null) 'manualAssign': manualAssign!,
         if (pool != null) 'pool': pool!,
-      };
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : Adloox
-/// - displayvideo:v3 : Adloox
-class $Adloox {
-  /// Adloox's brand safety settings.
-  core.List<core.String>? excludedAdlooxCategories;
-
-  $Adloox({
-    this.excludedAdlooxCategories,
-  });
-
-  $Adloox.fromJson(core.Map json_)
-      : this(
-          excludedAdlooxCategories:
-              (json_['excludedAdlooxCategories'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (excludedAdlooxCategories != null)
-          'excludedAdlooxCategories': excludedAdlooxCategories!,
       };
 }
 
@@ -628,6 +682,44 @@ class $AnalysisCompleted {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (analysisType != null) 'analysisType': analysisType!,
+      };
+}
+
+/// Used by:
+///
+/// - analyticshub:v1 : AnalyticsHubSubscriptionInfo
+/// - pubsub:v1 : AnalyticsHubSubscriptionInfo
+class $AnalyticsHubSubscriptionInfo {
+  /// The name of the associated Analytics Hub listing resource.
+  ///
+  /// Pattern:
+  /// "projects/{project}/locations/{location}/dataExchanges/{data_exchange}/listings/{listing}"
+  ///
+  /// Optional.
+  core.String? listing;
+
+  /// The name of the associated Analytics Hub subscription resource.
+  ///
+  /// Pattern:
+  /// "projects/{project}/locations/{location}/subscriptions/{subscription}"
+  ///
+  /// Optional.
+  core.String? subscription;
+
+  $AnalyticsHubSubscriptionInfo({
+    this.listing,
+    this.subscription,
+  });
+
+  $AnalyticsHubSubscriptionInfo.fromJson(core.Map json_)
+      : this(
+          listing: json_['listing'] as core.String?,
+          subscription: json_['subscription'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (listing != null) 'listing': listing!,
+        if (subscription != null) 'subscription': subscription!,
       };
 }
 
@@ -1296,6 +1388,7 @@ class $AuditAdvertiserResponse {
 /// - cloudresourcemanager:v3 : AuditLogConfig
 /// - config:v1 : AuditLogConfig
 /// - connectors:v1 : AuditLogConfig
+/// - contactcenterinsights:v1 : GoogleIamV1AuditLogConfig
 /// - contentwarehouse:v1 : GoogleIamV1AuditLogConfig
 /// - datafusion:v1 : AuditLogConfig
 /// - datamigration:v1 : AuditLogConfig
@@ -1326,7 +1419,6 @@ class $AuditAdvertiserResponse {
 /// - secretmanager:v1 : AuditLogConfig
 /// - securitycenter:v1 : AuditLogConfig
 /// - servicemanagement:v1 : AuditLogConfig
-/// - sourcerepo:v1 : AuditLogConfig
 /// - vmwareengine:v1 : AuditLogConfig
 /// - workstations:v1 : AuditLogConfig
 class $AuditLogConfig {
@@ -1514,6 +1606,160 @@ class $AutoRetrievalInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appSignatureHash != null) 'appSignatureHash': appSignatureHash!,
+      };
+}
+
+/// Used by:
+///
+/// - analyticshub:v1 : AvroConfig
+/// - pubsub:v1 : AvroConfig
+class $AvroConfig {
+  /// When true, the output Cloud Storage file will be serialized using the
+  /// topic schema, if it exists.
+  ///
+  /// Optional.
+  core.bool? useTopicSchema;
+
+  /// When true, write the subscription name, message_id, publish_time,
+  /// attributes, and ordering_key as additional fields in the output.
+  ///
+  /// The subscription name, message_id, and publish_time fields are put in
+  /// their own fields while all other message properties other than data (for
+  /// example, an ordering_key, if present) are added as entries in the
+  /// attributes map.
+  ///
+  /// Optional.
+  core.bool? writeMetadata;
+
+  $AvroConfig({
+    this.useTopicSchema,
+    this.writeMetadata,
+  });
+
+  $AvroConfig.fromJson(core.Map json_)
+      : this(
+          useTopicSchema: json_['useTopicSchema'] as core.bool?,
+          writeMetadata: json_['writeMetadata'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (useTopicSchema != null) 'useTopicSchema': useTopicSchema!,
+        if (writeMetadata != null) 'writeMetadata': writeMetadata!,
+      };
+}
+
+/// Used by:
+///
+/// - analyticshub:v1 : BigQueryConfig
+/// - pubsub:v1 : BigQueryConfig
+class $BigQueryConfig {
+  /// When true and use_topic_schema is true, any fields that are a part of the
+  /// topic schema that are not part of the BigQuery table schema are dropped
+  /// when writing to BigQuery.
+  ///
+  /// Otherwise, the schemas must be kept in sync and any messages with extra
+  /// fields are not written and remain in the subscription's backlog.
+  ///
+  /// Optional.
+  core.bool? dropUnknownFields;
+
+  /// The service account to use to write to BigQuery.
+  ///
+  /// The subscription creator or updater that specifies this field must have
+  /// `iam.serviceAccounts.actAs` permission on the service account. If not
+  /// specified, the Pub/Sub
+  /// [service agent](https://cloud.google.com/iam/docs/service-agents),
+  /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+  ///
+  /// Optional.
+  core.String? serviceAccountEmail;
+
+  /// An output-only field that indicates whether or not the subscription can
+  /// receive messages.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ACTIVE" : The subscription can actively send messages to BigQuery
+  /// - "PERMISSION_DENIED" : Cannot write to the BigQuery table because of
+  /// permission denied errors. This can happen if - Pub/Sub SA has not been
+  /// granted the
+  /// [appropriate BigQuery IAM permissions](https://cloud.google.com/pubsub/docs/create-subscription#assign_bigquery_service_account)
+  /// - bigquery.googleapis.com API is not enabled for the project
+  /// ([instructions](https://cloud.google.com/service-usage/docs/enable-disable))
+  /// - "NOT_FOUND" : Cannot write to the BigQuery table because it does not
+  /// exist.
+  /// - "SCHEMA_MISMATCH" : Cannot write to the BigQuery table due to a schema
+  /// mismatch.
+  /// - "IN_TRANSIT_LOCATION_RESTRICTION" : Cannot write to the destination
+  /// because enforce_in_transit is set to true and the destination locations
+  /// are not in the allowed regions.
+  core.String? state;
+
+  /// The name of the table to which to write data, of the form
+  /// {projectId}.{datasetId}.{tableId}
+  ///
+  /// Optional.
+  core.String? table;
+
+  /// When true, use the BigQuery table's schema as the columns to write to in
+  /// BigQuery.
+  ///
+  /// `use_table_schema` and `use_topic_schema` cannot be enabled at the same
+  /// time.
+  ///
+  /// Optional.
+  core.bool? useTableSchema;
+
+  /// When true, use the topic's schema as the columns to write to in BigQuery,
+  /// if it exists.
+  ///
+  /// `use_topic_schema` and `use_table_schema` cannot be enabled at the same
+  /// time.
+  ///
+  /// Optional.
+  core.bool? useTopicSchema;
+
+  /// When true, write the subscription name, message_id, publish_time,
+  /// attributes, and ordering_key to additional columns in the table.
+  ///
+  /// The subscription name, message_id, and publish_time fields are put in
+  /// their own columns while all other message properties (other than data) are
+  /// written to a JSON object in the attributes column.
+  ///
+  /// Optional.
+  core.bool? writeMetadata;
+
+  $BigQueryConfig({
+    this.dropUnknownFields,
+    this.serviceAccountEmail,
+    this.state,
+    this.table,
+    this.useTableSchema,
+    this.useTopicSchema,
+    this.writeMetadata,
+  });
+
+  $BigQueryConfig.fromJson(core.Map json_)
+      : this(
+          dropUnknownFields: json_['dropUnknownFields'] as core.bool?,
+          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
+          state: json_['state'] as core.String?,
+          table: json_['table'] as core.String?,
+          useTableSchema: json_['useTableSchema'] as core.bool?,
+          useTopicSchema: json_['useTopicSchema'] as core.bool?,
+          writeMetadata: json_['writeMetadata'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dropUnknownFields != null) 'dropUnknownFields': dropUnknownFields!,
+        if (serviceAccountEmail != null)
+          'serviceAccountEmail': serviceAccountEmail!,
+        if (state != null) 'state': state!,
+        if (table != null) 'table': table!,
+        if (useTableSchema != null) 'useTableSchema': useTableSchema!,
+        if (useTopicSchema != null) 'useTopicSchema': useTopicSchema!,
+        if (writeMetadata != null) 'writeMetadata': writeMetadata!,
       };
 }
 
@@ -2617,59 +2863,6 @@ class $Checksum {
 
 /// Used by:
 ///
-/// - speech:v1 : ClassItem
-/// - speech:v2 : ClassItem
-class $ClassItem {
-  /// The class item's value.
-  core.String? value;
-
-  $ClassItem({
-    this.value,
-  });
-
-  $ClassItem.fromJson(core.Map json_)
-      : this(
-          value: json_['value'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
-      };
-}
-
-/// Used by:
-///
-/// - language:v1 : ClassificationCategory
-/// - language:v2 : ClassificationCategory
-class $ClassificationCategory {
-  /// The classifier's confidence of the category.
-  ///
-  /// Number represents how certain the classifier is that this category
-  /// represents the given text.
-  core.double? confidence;
-
-  /// The name of the category representing the document.
-  core.String? name;
-
-  $ClassificationCategory({
-    this.confidence,
-    this.name,
-  });
-
-  $ClassificationCategory.fromJson(core.Map json_)
-      : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
-          name: json_['name'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (name != null) 'name': name!,
-      };
-}
-
-/// Used by:
-///
 /// - integrations:v1 : EnterpriseCrmEventbusProtoCloudSchedulerConfig
 /// - integrations:v1 : GoogleCloudIntegrationsV1alphaCloudSchedulerConfig
 class $CloudSchedulerConfig {
@@ -2740,6 +2933,83 @@ class $ClusterOperationsConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (enableApplicationLogs != null)
           'enableApplicationLogs': enableApplicationLogs!,
+      };
+}
+
+/// Used by:
+///
+/// - gkehub:v1 : ClusterUpgradeIgnoredMembership
+/// - gkehub:v2 : ClusterUpgradeIgnoredMembership
+class $ClusterUpgradeIgnoredMembership {
+  /// Time when the membership was first set to ignored.
+  core.String? ignoredTime;
+
+  /// Reason why the membership is ignored.
+  core.String? reason;
+
+  $ClusterUpgradeIgnoredMembership({
+    this.ignoredTime,
+    this.reason,
+  });
+
+  $ClusterUpgradeIgnoredMembership.fromJson(core.Map json_)
+      : this(
+          ignoredTime: json_['ignoredTime'] as core.String?,
+          reason: json_['reason'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ignoredTime != null) 'ignoredTime': ignoredTime!,
+        if (reason != null) 'reason': reason!,
+      };
+}
+
+/// Used by:
+///
+/// - gkehub:v1 : ClusterUpgradeUpgradeStatus
+/// - gkehub:v2 : ClusterUpgradeUpgradeStatus
+class $ClusterUpgradeUpgradeStatus {
+  /// Status code of the upgrade.
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : Required by https://linter.aip.dev/126/unspecified.
+  /// - "INELIGIBLE" : The upgrade is ineligible. At the scope level, this means
+  /// the upgrade is ineligible for all the clusters in the scope.
+  /// - "PENDING" : The upgrade is pending. At the scope level, this means the
+  /// upgrade is pending for all the clusters in the scope.
+  /// - "IN_PROGRESS" : The upgrade is in progress. At the scope level, this
+  /// means the upgrade is in progress for at least one cluster in the scope.
+  /// - "SOAKING" : The upgrade has finished and is soaking until the soaking
+  /// time is up. At the scope level, this means at least one cluster is in
+  /// soaking while the rest are either soaking or complete.
+  /// - "FORCED_SOAKING" : A cluster will be forced to enter soaking if an
+  /// upgrade doesn't finish within a certain limit, despite it's actual status.
+  /// - "COMPLETE" : The upgrade has passed all post conditions (soaking). At
+  /// the scope level, this means all eligible clusters are in COMPLETE status.
+  core.String? code;
+
+  /// Reason for this status.
+  core.String? reason;
+
+  /// Last timestamp the status was updated.
+  core.String? updateTime;
+
+  $ClusterUpgradeUpgradeStatus({
+    this.code,
+    this.reason,
+    this.updateTime,
+  });
+
+  $ClusterUpgradeUpgradeStatus.fromJson(core.Map json_)
+      : this(
+          code: json_['code'] as core.String?,
+          reason: json_['reason'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (reason != null) 'reason': reason!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -3098,6 +3368,28 @@ class $Completeness {
 
 /// Used by:
 ///
+/// - container:v1 : ComplianceStandard
+/// - gkehub:v1 : ComplianceStandard
+class $ComplianceStandard {
+  /// Name of the compliance standard.
+  core.String? standard;
+
+  $ComplianceStandard({
+    this.standard,
+  });
+
+  $ComplianceStandard.fromJson(core.Map json_)
+      : this(
+          standard: json_['standard'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (standard != null) 'standard': standard!,
+      };
+}
+
+/// Used by:
+///
 /// - containeranalysis:v1 : ComplianceVersion
 /// - ondemandscanning:v1 : ComplianceVersion
 class $ComplianceVersion {
@@ -3156,6 +3448,294 @@ class $ConditionExpectation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sqlExpression != null) 'sqlExpression': sqlExpression!,
+      };
+}
+
+/// Used by:
+///
+/// - backupdr:v1 : ConfidentialInstanceConfig
+/// - dataproc:v1 : ConfidentialInstanceConfig
+class $ConfidentialInstanceConfig {
+  /// Defines whether the instance should have confidential compute enabled.
+  ///
+  /// Optional.
+  core.bool? enableConfidentialCompute;
+
+  $ConfidentialInstanceConfig({
+    this.enableConfidentialCompute,
+  });
+
+  $ConfidentialInstanceConfig.fromJson(core.Map json_)
+      : this(
+          enableConfidentialCompute:
+              json_['enableConfidentialCompute'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableConfidentialCompute != null)
+          'enableConfidentialCompute': enableConfidentialCompute!,
+      };
+}
+
+/// Used by:
+///
+/// - gkehub:v1 : ConfigManagementGitConfig
+/// - gkehub:v2 : ConfigManagementGitConfig
+class $ConfigManagementGitConfig {
+  /// The Google Cloud Service Account Email used for auth when secret_type is
+  /// gcpServiceAccount.
+  core.String? gcpServiceAccountEmail;
+
+  /// URL for the HTTPS proxy to be used when communicating with the Git repo.
+  core.String? httpsProxy;
+
+  /// The path within the Git repository that represents the top level of the
+  /// repo to sync.
+  ///
+  /// Default: the root directory of the repository.
+  core.String? policyDir;
+
+  /// Type of secret configured for access to the Git repo.
+  ///
+  /// Must be one of ssh, cookiefile, gcenode, token, gcpserviceaccount or none.
+  /// The validation of this is case-sensitive. Required.
+  core.String? secretType;
+
+  /// The branch of the repository to sync from.
+  ///
+  /// Default: master.
+  core.String? syncBranch;
+
+  /// The URL of the Git repository to use as the source of truth.
+  core.String? syncRepo;
+
+  /// Git revision (tag or hash) to check out.
+  ///
+  /// Default HEAD.
+  core.String? syncRev;
+
+  /// Period in seconds between consecutive syncs.
+  ///
+  /// Default: 15.
+  core.String? syncWaitSecs;
+
+  $ConfigManagementGitConfig({
+    this.gcpServiceAccountEmail,
+    this.httpsProxy,
+    this.policyDir,
+    this.secretType,
+    this.syncBranch,
+    this.syncRepo,
+    this.syncRev,
+    this.syncWaitSecs,
+  });
+
+  $ConfigManagementGitConfig.fromJson(core.Map json_)
+      : this(
+          gcpServiceAccountEmail:
+              json_['gcpServiceAccountEmail'] as core.String?,
+          httpsProxy: json_['httpsProxy'] as core.String?,
+          policyDir: json_['policyDir'] as core.String?,
+          secretType: json_['secretType'] as core.String?,
+          syncBranch: json_['syncBranch'] as core.String?,
+          syncRepo: json_['syncRepo'] as core.String?,
+          syncRev: json_['syncRev'] as core.String?,
+          syncWaitSecs: json_['syncWaitSecs'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcpServiceAccountEmail != null)
+          'gcpServiceAccountEmail': gcpServiceAccountEmail!,
+        if (httpsProxy != null) 'httpsProxy': httpsProxy!,
+        if (policyDir != null) 'policyDir': policyDir!,
+        if (secretType != null) 'secretType': secretType!,
+        if (syncBranch != null) 'syncBranch': syncBranch!,
+        if (syncRepo != null) 'syncRepo': syncRepo!,
+        if (syncRev != null) 'syncRev': syncRev!,
+        if (syncWaitSecs != null) 'syncWaitSecs': syncWaitSecs!,
+      };
+}
+
+/// Used by:
+///
+/// - gkehub:v1 : ConfigManagementGroupVersionKind
+/// - gkehub:v2 : ConfigManagementGroupVersionKind
+class $ConfigManagementGroupVersionKind {
+  /// Kubernetes Group
+  core.String? group;
+
+  /// Kubernetes Kind
+  core.String? kind;
+
+  /// Kubernetes Version
+  core.String? version;
+
+  $ConfigManagementGroupVersionKind({
+    this.group,
+    this.kind,
+    this.version,
+  });
+
+  $ConfigManagementGroupVersionKind.fromJson(core.Map json_)
+      : this(
+          group: json_['group'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          version: json_['version'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (group != null) 'group': group!,
+        if (kind != null) 'kind': kind!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// Used by:
+///
+/// - gkehub:v1 : ConfigManagementHierarchyControllerConfig
+/// - gkehub:v2 : ConfigManagementHierarchyControllerConfig
+class $ConfigManagementHierarchyControllerConfig {
+  /// Whether hierarchical resource quota is enabled in this cluster.
+  core.bool? enableHierarchicalResourceQuota;
+
+  /// Whether pod tree labels are enabled in this cluster.
+  core.bool? enablePodTreeLabels;
+
+  /// Whether Hierarchy Controller is enabled in this cluster.
+  core.bool? enabled;
+
+  $ConfigManagementHierarchyControllerConfig({
+    this.enableHierarchicalResourceQuota,
+    this.enablePodTreeLabels,
+    this.enabled,
+  });
+
+  $ConfigManagementHierarchyControllerConfig.fromJson(core.Map json_)
+      : this(
+          enableHierarchicalResourceQuota:
+              json_['enableHierarchicalResourceQuota'] as core.bool?,
+          enablePodTreeLabels: json_['enablePodTreeLabels'] as core.bool?,
+          enabled: json_['enabled'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableHierarchicalResourceQuota != null)
+          'enableHierarchicalResourceQuota': enableHierarchicalResourceQuota!,
+        if (enablePodTreeLabels != null)
+          'enablePodTreeLabels': enablePodTreeLabels!,
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
+/// Used by:
+///
+/// - gkehub:v1 : ConfigManagementOciConfig
+/// - gkehub:v2 : ConfigManagementOciConfig
+class $ConfigManagementOciConfig {
+  /// The Google Cloud Service Account Email used for auth when secret_type is
+  /// gcpServiceAccount.
+  core.String? gcpServiceAccountEmail;
+
+  /// The absolute path of the directory that contains the local resources.
+  ///
+  /// Default: the root directory of the image.
+  core.String? policyDir;
+
+  /// Type of secret configured for access to the Git repo.
+  core.String? secretType;
+
+  /// The OCI image repository URL for the package to sync from.
+  ///
+  /// e.g. `LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME`.
+  core.String? syncRepo;
+
+  /// Period in seconds between consecutive syncs.
+  ///
+  /// Default: 15.
+  core.String? syncWaitSecs;
+
+  $ConfigManagementOciConfig({
+    this.gcpServiceAccountEmail,
+    this.policyDir,
+    this.secretType,
+    this.syncRepo,
+    this.syncWaitSecs,
+  });
+
+  $ConfigManagementOciConfig.fromJson(core.Map json_)
+      : this(
+          gcpServiceAccountEmail:
+              json_['gcpServiceAccountEmail'] as core.String?,
+          policyDir: json_['policyDir'] as core.String?,
+          secretType: json_['secretType'] as core.String?,
+          syncRepo: json_['syncRepo'] as core.String?,
+          syncWaitSecs: json_['syncWaitSecs'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcpServiceAccountEmail != null)
+          'gcpServiceAccountEmail': gcpServiceAccountEmail!,
+        if (policyDir != null) 'policyDir': policyDir!,
+        if (secretType != null) 'secretType': secretType!,
+        if (syncRepo != null) 'syncRepo': syncRepo!,
+        if (syncWaitSecs != null) 'syncWaitSecs': syncWaitSecs!,
+      };
+}
+
+/// Used by:
+///
+/// - gkehub:v1 : ConfigManagementPolicyControllerMigration
+/// - gkehub:v2 : ConfigManagementPolicyControllerMigration
+class $ConfigManagementPolicyControllerMigration {
+  /// Last time this membership spec was copied to PoCo feature.
+  core.String? copyTime;
+
+  /// Stage of the migration.
+  /// Possible string values are:
+  /// - "STAGE_UNSPECIFIED" : Unknown state of migration.
+  /// - "ACM_MANAGED" : ACM Hub/Operator manages policycontroller. No migration
+  /// yet completed.
+  /// - "POCO_MANAGED" : All migrations steps complete; Poco Hub now manages
+  /// policycontroller.
+  core.String? stage;
+
+  $ConfigManagementPolicyControllerMigration({
+    this.copyTime,
+    this.stage,
+  });
+
+  $ConfigManagementPolicyControllerMigration.fromJson(core.Map json_)
+      : this(
+          copyTime: json_['copyTime'] as core.String?,
+          stage: json_['stage'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (copyTime != null) 'copyTime': copyTime!,
+        if (stage != null) 'stage': stage!,
+      };
+}
+
+/// Used by:
+///
+/// - gkehub:v1 : ConfigManagementPolicyControllerVersion
+/// - gkehub:v2 : ConfigManagementPolicyControllerVersion
+class $ConfigManagementPolicyControllerVersion {
+  /// The gatekeeper image tag that is composed of ACM version, git tag, build
+  /// number.
+  core.String? version;
+
+  $ConfigManagementPolicyControllerVersion({
+    this.version,
+  });
+
+  $ConfigManagementPolicyControllerVersion.fromJson(core.Map json_)
+      : this(
+          version: json_['version'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (version != null) 'version': version!,
       };
 }
 
@@ -4417,6 +4997,54 @@ class $DeadLetterConfig {
 
 /// Used by:
 ///
+/// - analyticshub:v1 : DeadLetterPolicy
+/// - pubsub:v1 : DeadLetterPolicy
+class $DeadLetterPolicy {
+  /// The name of the topic to which dead letter messages should be published.
+  ///
+  /// Format is `projects/{project}/topics/{topic}`.The Pub/Sub service account
+  /// associated with the enclosing subscription's parent project (i.e.,
+  /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+  /// permission to Publish() to this topic. The operation will fail if the
+  /// topic does not exist. Users should ensure that there is a subscription
+  /// attached to this topic since messages published to a topic with no
+  /// subscriptions are lost.
+  ///
+  /// Optional.
+  core.String? deadLetterTopic;
+
+  /// The maximum number of delivery attempts for any message.
+  ///
+  /// The value must be between 5 and 100. The number of delivery attempts is
+  /// defined as 1 + (the sum of number of NACKs and number of times the
+  /// acknowledgement deadline has been exceeded for the message). A NACK is any
+  /// call to ModifyAckDeadline with a 0 deadline. Note that client libraries
+  /// may automatically extend ack_deadlines. This field will be honored on a
+  /// best effort basis. If this parameter is 0, a default value of 5 is used.
+  ///
+  /// Optional.
+  core.int? maxDeliveryAttempts;
+
+  $DeadLetterPolicy({
+    this.deadLetterTopic,
+    this.maxDeliveryAttempts,
+  });
+
+  $DeadLetterPolicy.fromJson(core.Map json_)
+      : this(
+          deadLetterTopic: json_['deadLetterTopic'] as core.String?,
+          maxDeliveryAttempts: json_['maxDeliveryAttempts'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deadLetterTopic != null) 'deadLetterTopic': deadLetterTopic!,
+        if (maxDeliveryAttempts != null)
+          'maxDeliveryAttempts': maxDeliveryAttempts!,
+      };
+}
+
+/// Used by:
+///
 /// - cloudsearch:v1 : ResponseDebugInfo
 /// - cloudsearch:v1 : ResultDebugInfo
 class $DebugInfo {
@@ -4771,6 +5399,7 @@ class $DeviceTypeAssignedTargetingOptionDetails {
   /// - "DEVICE_TYPE_CONNECTED_TV" : Connected TV.
   /// - "DEVICE_TYPE_SMART_PHONE" : Smart phone.
   /// - "DEVICE_TYPE_TABLET" : Tablet.
+  /// - "DEVICE_TYPE_CONNECTED_DEVICE" : Connected device.
   core.String? deviceType;
 
   /// Bid multiplier allows you to show your ads more or less frequently based
@@ -4821,6 +5450,7 @@ class $DeviceTypeTargetingOptionDetails {
   /// - "DEVICE_TYPE_CONNECTED_TV" : Connected TV.
   /// - "DEVICE_TYPE_SMART_PHONE" : Smart phone.
   /// - "DEVICE_TYPE_TABLET" : Tablet.
+  /// - "DEVICE_TYPE_CONNECTED_DEVICE" : Connected device.
   core.String? deviceType;
 
   $DeviceTypeTargetingOptionDetails({
@@ -5916,6 +6546,10 @@ class $EgressSource {
 /// - admin:directory_v1 : ChangeChromeOsDeviceStatusSucceeded
 /// - admin:directory_v1 : Empty
 /// - adsense:v2 : Empty
+/// - adsenseplatform:v1 : CloseAccountRequest
+/// - adsenseplatform:v1 : CloseAccountResponse
+/// - adsenseplatform:v1 : Empty
+/// - adsenseplatform:v1 : RequestSiteReviewResponse
 /// - aiplatform:v1 : GoogleCloudAiplatformV1AddContextArtifactsAndExecutionsResponse
 /// - aiplatform:v1 : GoogleCloudAiplatformV1AddContextChildrenResponse
 /// - aiplatform:v1 : GoogleCloudAiplatformV1AddExecutionEventsResponse
@@ -5928,12 +6562,13 @@ class $EgressSource {
 /// - aiplatform:v1 : GoogleCloudAiplatformV1CancelTrainingPipelineRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1CancelTuningJobRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1CheckTrialEarlyStoppingStateRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1ExactMatchSpec
 /// - aiplatform:v1 : GoogleCloudAiplatformV1FeatureOnlineStoreOptimized
 /// - aiplatform:v1 : GoogleCloudAiplatformV1FeatureViewIndexConfigBruteForceConfig
-/// - aiplatform:v1 : GoogleCloudAiplatformV1GoogleSearchRetrieval
 /// - aiplatform:v1 : GoogleCloudAiplatformV1ListOptimalTrialsRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1PauseModelDeploymentMonitoringJobRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1PauseScheduleRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1PscInterfaceConfig
 /// - aiplatform:v1 : GoogleCloudAiplatformV1RebootPersistentResourceRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1RemoveContextChildrenResponse
 /// - aiplatform:v1 : GoogleCloudAiplatformV1RemoveDatapointsResponse
@@ -5941,6 +6576,9 @@ class $EgressSource {
 /// - aiplatform:v1 : GoogleCloudAiplatformV1StartNotebookRuntimeRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1StopTrialRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1SyncFeatureViewRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1ToolCallValidSpec
+/// - aiplatform:v1 : GoogleCloudAiplatformV1ToolNameMatchSpec
+/// - aiplatform:v1 : GoogleCloudAiplatformV1ToolParameterKeyMatchSpec
 /// - aiplatform:v1 : GoogleCloudAiplatformV1UpgradeNotebookRuntimeRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1UpsertDatapointsResponse
 /// - aiplatform:v1 : GoogleCloudAiplatformV1WriteFeatureValuesResponse
@@ -5951,9 +6589,11 @@ class $EgressSource {
 /// - alloydb:v1 : Empty
 /// - analyticshub:v1 : DefaultExchangeConfig
 /// - analyticshub:v1 : Empty
+/// - analyticshub:v1 : PubsubWrapper
 /// - analyticshub:v1 : RefreshSubscriptionRequest
 /// - analyticshub:v1 : RevokeSubscriptionRequest
 /// - analyticshub:v1 : RevokeSubscriptionResponse
+/// - analyticshub:v1 : TextConfig
 /// - androiddeviceprovisioning:v1 : Empty
 /// - androidmanagement:v1 : Empty
 /// - androidmanagement:v1 : StopLostModeParams
@@ -5971,6 +6611,7 @@ class $EgressSource {
 /// - androidpublisher:v3 : PendingCancellation
 /// - androidpublisher:v3 : RegionalSubscriptionOfferPhaseFreePriceOverride
 /// - androidpublisher:v3 : ReplacementCancellation
+/// - androidpublisher:v3 : RevocationContextFullRefund
 /// - androidpublisher:v3 : RevocationContextProratedRefund
 /// - androidpublisher:v3 : RevokeSubscriptionPurchaseResponse
 /// - androidpublisher:v3 : SafetyLabelsUpdateResponse
@@ -6047,13 +6688,24 @@ class $EgressSource {
 /// - bigquerydatapolicy:v1 : Empty
 /// - bigquerydatatransfer:v1 : CheckValidCredsRequest
 /// - bigquerydatatransfer:v1 : Empty
+/// - bigquerydatatransfer:v1 : ManualSchedule
 /// - bigqueryreservation:v1 : Empty
 /// - bigqueryreservation:v1 : FailoverReservationRequest
 /// - bigtableadmin:v2 : DataBoostReadLocalWrites
 /// - bigtableadmin:v2 : Empty
 /// - bigtableadmin:v2 : GenerateConsistencyTokenRequest
+/// - bigtableadmin:v2 : GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount
+/// - bigtableadmin:v2 : GoogleBigtableAdminV2TypeAggregateMax
+/// - bigtableadmin:v2 : GoogleBigtableAdminV2TypeAggregateMin
 /// - bigtableadmin:v2 : GoogleBigtableAdminV2TypeAggregateSum
+/// - bigtableadmin:v2 : GoogleBigtableAdminV2TypeBool
 /// - bigtableadmin:v2 : GoogleBigtableAdminV2TypeBytesEncodingRaw
+/// - bigtableadmin:v2 : GoogleBigtableAdminV2TypeDate
+/// - bigtableadmin:v2 : GoogleBigtableAdminV2TypeFloat32
+/// - bigtableadmin:v2 : GoogleBigtableAdminV2TypeFloat64
+/// - bigtableadmin:v2 : GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes
+/// - bigtableadmin:v2 : GoogleBigtableAdminV2TypeTimestamp
+/// - bigtableadmin:v2 : RowAffinity
 /// - bigtableadmin:v2 : StandardReadRemoteWrites
 /// - bigtableadmin:v2 : UndeleteTableRequest
 /// - billingbudgets:v1 : GoogleCloudBillingBudgetsV1LastPeriodAmount
@@ -6075,6 +6727,7 @@ class $EgressSource {
 /// - classroom:v1 : Empty
 /// - classroom:v1 : ReclaimStudentSubmissionRequest
 /// - classroom:v1 : ReturnStudentSubmissionRequest
+/// - classroom:v1 : TeacherContext
 /// - classroom:v1 : TurnInStudentSubmissionRequest
 /// - cloudasset:v1 : Empty
 /// - cloudasset:v1 : GoogleCloudAssetV1BooleanConstraint
@@ -6088,8 +6741,6 @@ class $EgressSource {
 /// - cloudbuild:v2 : FetchReadWriteTokenRequest
 /// - cloudchannel:v1 : GoogleLongrunningCancelOperationRequest
 /// - cloudchannel:v1 : GoogleProtobufEmpty
-/// - cloudcommerceprocurement:v1 : Empty
-/// - cloudcommerceprocurement:v1 : ResetAccountRequest
 /// - clouddeploy:v1 : AbandonReleaseRequest
 /// - clouddeploy:v1 : AbandonReleaseResponse
 /// - clouddeploy:v1 : AdvanceChildRolloutJob
@@ -6098,14 +6749,12 @@ class $EgressSource {
 /// - clouddeploy:v1 : CancelAutomationRunRequest
 /// - clouddeploy:v1 : CancelAutomationRunResponse
 /// - clouddeploy:v1 : CancelOperationRequest
-/// - clouddeploy:v1 : CancelRolloutRequest
 /// - clouddeploy:v1 : CancelRolloutResponse
 /// - clouddeploy:v1 : CreateChildRolloutJob
 /// - clouddeploy:v1 : DeployJob
 /// - clouddeploy:v1 : Empty
 /// - clouddeploy:v1 : IgnoreJobResponse
 /// - clouddeploy:v1 : RetryJobResponse
-/// - clouddeploy:v1 : TerminateJobRunRequest
 /// - clouddeploy:v1 : TerminateJobRunResponse
 /// - clouddeploy:v1 : VerifyJob
 /// - cloudfunctions:v1 : AutomaticUpdatePolicy
@@ -6131,6 +6780,7 @@ class $EgressSource {
 /// - cloudresourcemanager:v3 : Empty
 /// - cloudresourcemanager:v3 : UndeleteFolderRequest
 /// - cloudresourcemanager:v3 : UndeleteProjectRequest
+/// - cloudscheduler:v1 : CancelOperationRequest
 /// - cloudscheduler:v1 : Empty
 /// - cloudscheduler:v1 : PauseJobRequest
 /// - cloudscheduler:v1 : ResumeJobRequest
@@ -6162,22 +6812,18 @@ class $EgressSource {
 /// - connectors:v1 : RepairEventingRequest
 /// - connectors:v1 : RetryEventSubscriptionRequest
 /// - connectors:v2 : Empty
-/// - connectors:v2 : ExchangeAuthCodeRequest
-/// - connectors:v2 : RefreshAccessTokenRequest
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1HoldData
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1InterruptionData
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1SilenceData
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest
 /// - contactcenterinsights:v1 : GoogleProtobufEmpty
 /// - container:v1 : CompleteNodePoolUpgradeRequest
 /// - container:v1 : Empty
 /// - container:v1 : SecondaryBootDiskUpdateStrategy
 /// - containeranalysis:v1 : CloudStorageLocation
 /// - containeranalysis:v1 : Empty
-/// - content:v2.1 : ActivateBuyOnGoogleProgramRequest
-/// - content:v2.1 : CaptureOrderRequest
 /// - content:v2.1 : InputFieldCheckboxInput
-/// - content:v2.1 : PauseBuyOnGoogleProgramRequest
-/// - content:v2.1 : RequestReviewBuyOnGoogleProgramRequest
 /// - content:v2.1 : UndeleteConversionSourceRequest
 /// - contentwarehouse:v1 : GoogleCloudContentwarehouseV1DateTimeTypeOptions
 /// - contentwarehouse:v1 : GoogleCloudContentwarehouseV1FloatTypeOptions
@@ -6186,6 +6832,7 @@ class $EgressSource {
 /// - contentwarehouse:v1 : GoogleCloudContentwarehouseV1TextTypeOptions
 /// - contentwarehouse:v1 : GoogleCloudContentwarehouseV1TimestampTypeOptions
 /// - contentwarehouse:v1 : GoogleProtobufEmpty
+/// - css:v1 : Empty
 /// - datacatalog:v1 : Empty
 /// - datacatalog:v1 : GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema
 /// - datacatalog:v1 : GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema
@@ -6202,6 +6849,8 @@ class $EgressSource {
 /// - datamigration:v1 : CancelOperationRequest
 /// - datamigration:v1 : DemoteDestinationRequest
 /// - datamigration:v1 : Empty
+/// - datamigration:v1 : LogMiner
+/// - datamigration:v1 : OracleAsmLogFileAccess
 /// - datamigration:v1 : PromoteMigrationJobRequest
 /// - datamigration:v1 : RollbackConversionWorkspaceRequest
 /// - datamigration:v1 : StaticIpConnectivity
@@ -6216,6 +6865,7 @@ class $EgressSource {
 /// - dataplex:v1 : GoogleCloudDataplexV1ActionMissingResource
 /// - dataplex:v1 : GoogleCloudDataplexV1ActionUnauthorizedResource
 /// - dataplex:v1 : GoogleCloudDataplexV1CancelJobRequest
+/// - dataplex:v1 : GoogleCloudDataplexV1CancelMetadataJobRequest
 /// - dataplex:v1 : GoogleCloudDataplexV1DataQualityRuleNonNullExpectation
 /// - dataplex:v1 : GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation
 /// - dataplex:v1 : GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger
@@ -6229,6 +6879,9 @@ class $EgressSource {
 /// - dataportability:v1 : RetryPortabilityArchiveRequest
 /// - dataproc:v1 : CancelJobRequest
 /// - dataproc:v1 : Empty
+/// - dataproc:v1 : SparkConnectConfig
+/// - dataproc:v1 : WriteSessionSparkApplicationContextResponse
+/// - dataproc:v1 : WriteSparkApplicationContextResponse
 /// - datastore:v1 : Empty
 /// - datastore:v1 : ReserveIdsResponse
 /// - datastore:v1 : RollbackResponse
@@ -6272,6 +6925,7 @@ class $EgressSource {
 /// - dlp:v2 : GooglePrivacyDlpV2AllInfoTypes
 /// - dlp:v2 : GooglePrivacyDlpV2AllOtherBigQueryTables
 /// - dlp:v2 : GooglePrivacyDlpV2AllOtherDatabaseResources
+/// - dlp:v2 : GooglePrivacyDlpV2AllOtherResources
 /// - dlp:v2 : GooglePrivacyDlpV2AllText
 /// - dlp:v2 : GooglePrivacyDlpV2CancelDlpJobRequest
 /// - dlp:v2 : GooglePrivacyDlpV2CloudSqlIamCredential
@@ -6283,6 +6937,8 @@ class $EgressSource {
 /// - dlp:v2 : GooglePrivacyDlpV2Manual
 /// - dlp:v2 : GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog
 /// - dlp:v2 : GooglePrivacyDlpV2PublishSummaryToCscc
+/// - dlp:v2 : GooglePrivacyDlpV2PublishToChronicle
+/// - dlp:v2 : GooglePrivacyDlpV2PublishToSecurityCommandCenter
 /// - dlp:v2 : GooglePrivacyDlpV2PublishToStackdriver
 /// - dlp:v2 : GooglePrivacyDlpV2RedactConfig
 /// - dlp:v2 : GooglePrivacyDlpV2ReplaceWithInfoTypeConfig
@@ -6325,6 +6981,7 @@ class $EgressSource {
 /// - eventarc:v1 : GoogleLongrunningCancelOperationRequest
 /// - file:v1 : CancelOperationRequest
 /// - file:v1 : Empty
+/// - file:v1 : PromoteReplicaRequest
 /// - firebaseappcheck:v1 : GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest
 /// - firebaseappcheck:v1 : GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeRequest
 /// - firebaseappcheck:v1 : GoogleProtobufEmpty
@@ -6337,7 +6994,10 @@ class $EgressSource {
 /// - firebaseml:v1 : Empty
 /// - firebaserules:v1 : Empty
 /// - firestore:v1 : Empty
+/// - firestore:v1 : GoogleFirestoreAdminV1DailyRecurrence
 /// - firestore:v1 : GoogleFirestoreAdminV1FlatIndex
+/// - firestore:v1 : GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions
+/// - firestore:v1 : GoogleFirestoreAdminV1SourceEncryptionOptions
 /// - firestore:v1 : GoogleLongrunningCancelOperationRequest
 /// - forms:v1 : Empty
 /// - forms:v1 : PageBreakItem
@@ -6351,6 +7011,8 @@ class $EgressSource {
 /// - gkehub:v1 : FleetObservabilityMembershipSpec
 /// - gkehub:v1 : FleetObservabilityMembershipState
 /// - gkehub:v1 : ScopeFeatureSpec
+/// - gkehub:v2 : CancelOperationRequest
+/// - gkehub:v2 : Empty
 /// - gkeonprem:v1 : CancelOperationRequest
 /// - gkeonprem:v1 : Empty
 /// - gkeonprem:v1 : VmwareAdminMetalLbConfig
@@ -6390,11 +7052,11 @@ class $EgressSource {
 /// - identitytoolkit:v2 : GoogleProtobufEmpty
 /// - ids:v1 : CancelOperationRequest
 /// - ids:v1 : Empty
-/// - integrations:v1 : GoogleCloudIntegrationsV1alphaCancelExecutionRequest
 /// - integrations:v1 : GoogleCloudIntegrationsV1alphaDeprovisionClientRequest
 /// - integrations:v1 : GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse
 /// - integrations:v1 : GoogleCloudIntegrationsV1alphaResolveSuspensionResponse
 /// - integrations:v1 : GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest
+/// - integrations:v1 : GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest
 /// - integrations:v1 : GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest
 /// - integrations:v1 : GoogleProtobufEmpty
 /// - jobs:v3 : Empty
@@ -6416,9 +7078,13 @@ class $EgressSource {
 /// - managedidentities:v1 : Empty
 /// - managedidentities:v1 : ResetAdminPasswordRequest
 /// - manufacturers:v1 : Empty
+/// - meet:v2 : Empty
+/// - meet:v2 : EndActiveConferenceRequest
 /// - memcache:v1 : CancelOperationRequest
 /// - memcache:v1 : Empty
+/// - metastore:v1 : CancelMigrationRequest
 /// - metastore:v1 : CancelOperationRequest
+/// - metastore:v1 : CompleteMigrationRequest
 /// - metastore:v1 : Empty
 /// - migrationcenter:v1 : AggregationCount
 /// - migrationcenter:v1 : AggregationFrequency
@@ -6444,6 +7110,13 @@ class $EgressSource {
 /// - mybusinessqanda:v1 : Empty
 /// - mybusinessverifications:v1 : ResolveOwnershipConflict
 /// - mybusinessverifications:v1 : WaitForVoiceOfMerchant
+/// - netapp:v1 : CancelOperationRequest
+/// - netapp:v1 : EncryptVolumesRequest
+/// - netapp:v1 : GoogleProtobufEmpty
+/// - netapp:v1 : ResumeReplicationRequest
+/// - netapp:v1 : ReverseReplicationDirectionRequest
+/// - netapp:v1 : SwitchActiveReplicaZoneRequest
+/// - netapp:v1 : VerifyKmsConfigRequest
 /// - networkconnectivity:v1 : Empty
 /// - networkconnectivity:v1 : GoogleLongrunningCancelOperationRequest
 /// - networkmanagement:v1 : CancelOperationRequest
@@ -6467,6 +7140,8 @@ class $EgressSource {
 /// - notebooks:v2 : StopInstanceRequest
 /// - notebooks:v2 : UpgradeInstanceRequest
 /// - ondemandscanning:v1 : Empty
+/// - oracledatabase:v1 : CancelOperationRequest
+/// - oracledatabase:v1 : Empty
 /// - orgpolicy:v2 : GoogleCloudOrgpolicyV2ConstraintBooleanConstraint
 /// - orgpolicy:v2 : GoogleProtobufEmpty
 /// - osconfig:v1 : CancelOperationRequest
@@ -6478,15 +7153,13 @@ class $EgressSource {
 /// - oslogin:v1 : Empty
 /// - paymentsresellersubscription:v1 : GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionRequest
 /// - people:v1 : Empty
-/// - photoslibrary:v1 : BatchAddMediaItemsToAlbumResponse
-/// - photoslibrary:v1 : BatchRemoveMediaItemsFromAlbumResponse
-/// - photoslibrary:v1 : LeaveSharedAlbumResponse
-/// - photoslibrary:v1 : UnshareAlbumRequest
-/// - photoslibrary:v1 : UnshareAlbumResponse
+/// - playintegrity:v1 : WriteDeviceRecallResponse
 /// - privateca:v1 : CancelOperationRequest
 /// - privateca:v1 : Empty
+/// - pubsub:v1 : AvroFormat
 /// - pubsub:v1 : DetachSubscriptionResponse
 /// - pubsub:v1 : Empty
+/// - pubsub:v1 : PubSubAvroFormat
 /// - pubsub:v1 : PubsubWrapper
 /// - pubsub:v1 : SeekResponse
 /// - pubsub:v1 : TextConfig
@@ -6504,11 +7177,14 @@ class $EgressSource {
 /// - realtimebidding:v1 : OpenUserListRequest
 /// - realtimebidding:v1 : SuspendPretargetingConfigRequest
 /// - realtimebidding:v1 : WatchCreativesRequest
+/// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse
 /// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse
+/// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1ExpressKeySettings
 /// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction
 /// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction
 /// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction
 /// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction
+/// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse
 /// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse
 /// - recaptchaenterprise:v1 : GoogleProtobufEmpty
 /// - redis:v1 : Empty
@@ -6518,6 +7194,7 @@ class $EgressSource {
 /// - retail:v2 : GoogleProtobufEmpty
 /// - run:v1 : CancelExecutionRequest
 /// - run:v1 : Empty
+/// - run:v2 : GoogleCloudRunV2DockerBuild
 /// - run:v2 : GoogleProtobufEmpty
 /// - run:v2 : Proto2BridgeMessageSet
 /// - runtimeconfig:v1 : CancelOperationRequest
@@ -6537,17 +7214,12 @@ class $EgressSource {
 /// - serviceusage:v1 : Empty
 /// - serviceusage:v1 : EnableServiceRequest
 /// - sheets:v4 : ClearValuesRequest
-/// - sourcerepo:v1 : Empty
-/// - sourcerepo:v1 : SyncRepoRequest
 /// - spanner:v1 : DualRegionQuorum
 /// - spanner:v1 : Empty
+/// - spanner:v1 : FullBackupSpec
+/// - spanner:v1 : IncrementalBackupSpec
 /// - spanner:v1 : PartitionedDml
 /// - speech:v1 : Empty
-/// - speech:v2 : AutoDetectDecodingConfig
-/// - speech:v2 : InlineOutputConfig
-/// - speech:v2 : NativeOutputFileFormatConfig
-/// - speech:v2 : SrtOutputFileFormatConfig
-/// - speech:v2 : VttOutputFileFormatConfig
 /// - storagetransfer:v1 : CancelOperationRequest
 /// - storagetransfer:v1 : Empty
 /// - storagetransfer:v1 : PauseTransferOperationRequest
@@ -6597,6 +7269,7 @@ class $EgressSource {
 /// - vault:v1 : CancelOperationRequest
 /// - vault:v1 : CloseMatterRequest
 /// - vault:v1 : Empty
+/// - vault:v1 : HeldCalendarQuery
 /// - vault:v1 : ReopenMatterRequest
 /// - vault:v1 : UndeleteMatterRequest
 /// - verifiedaccess:v1 : Empty
@@ -6625,6 +7298,7 @@ class $EgressSource {
 /// - vmmigration:v1 : PreparingVMDisksStep
 /// - vmmigration:v1 : ResumeMigrationRequest
 /// - vmmigration:v1 : ShuttingDownSourceVMStep
+/// - vmmigration:v1 : SkipOsAdaptation
 /// - vmmigration:v1 : StartMigrationRequest
 /// - vmwareengine:v1 : Empty
 /// - walletobjects:v1 : TransitObjectUploadRotatingBarcodeValuesResponse
@@ -6634,6 +7308,8 @@ class $EgressSource {
 /// - websecurityscanner:v1 : StartScanRunRequest
 /// - websecurityscanner:v1 : StopScanRunRequest
 /// - workflowexecutions:v1 : CancelExecutionRequest
+/// - workflowexecutions:v1 : DeleteExecutionHistoryRequest
+/// - workflowexecutions:v1 : Empty
 /// - workflows:v1 : Empty
 /// - workloadmanager:v1 : CancelOperationRequest
 /// - workloadmanager:v1 : Empty
@@ -6799,44 +7475,6 @@ class $Entity {
 
 /// Used by:
 ///
-/// - speech:v1 : Entry
-/// - speech:v2 : Entry
-class $Entry {
-  /// Whether the search is case sensitive.
-  core.bool? caseSensitive;
-
-  /// What to replace with.
-  ///
-  /// Max length is 100 characters.
-  core.String? replace;
-
-  /// What to replace.
-  ///
-  /// Max length is 100 characters.
-  core.String? search;
-
-  $Entry({
-    this.caseSensitive,
-    this.replace,
-    this.search,
-  });
-
-  $Entry.fromJson(core.Map json_)
-      : this(
-          caseSensitive: json_['caseSensitive'] as core.bool?,
-          replace: json_['replace'] as core.String?,
-          search: json_['search'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
-        if (replace != null) 'replace': replace!,
-        if (search != null) 'search': search!,
-      };
-}
-
-/// Used by:
-///
 /// - containeranalysis:v1 : EnvelopeSignature
 /// - ondemandscanning:v1 : EnvelopeSignature
 class $EnvelopeSignature {
@@ -6948,6 +7586,7 @@ class $EnvironmentTargetingOptionDetails {
 ///
 /// - gkehub:v1 : ConfigManagementConfigSyncError
 /// - gkehub:v1 : ConfigManagementInstallError
+/// - gkehub:v2 : ConfigManagementConfigSyncError
 class $Error {
   /// A string representing the user facing error message
   core.String? errorMessage;
@@ -7243,6 +7882,7 @@ class $ExchangeAssignedTargetingOptionDetails {
   /// - "EXCHANGE_CHARTBOOST_GBID" : Chartboost Mediation.
   /// - "EXCHANGE_ADMOST_GBID" : AdMost.
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
+  /// - "EXCHANGE_NETFLIX" : Netflix.
   core.String? exchange;
 
   $ExchangeAssignedTargetingOptionDetails({
@@ -7350,6 +7990,7 @@ class $ExchangeConfigEnabledExchange {
   /// - "EXCHANGE_CHARTBOOST_GBID" : Chartboost Mediation.
   /// - "EXCHANGE_ADMOST_GBID" : AdMost.
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
+  /// - "EXCHANGE_NETFLIX" : Netflix.
   core.String? exchange;
 
   /// Agency ID of Google Ad Manager.
@@ -7489,6 +8130,7 @@ class $ExchangeReviewStatus {
   /// - "EXCHANGE_CHARTBOOST_GBID" : Chartboost Mediation.
   /// - "EXCHANGE_ADMOST_GBID" : AdMost.
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
+  /// - "EXCHANGE_NETFLIX" : Netflix.
   core.String? exchange;
 
   /// Status of the exchange review.
@@ -7610,6 +8252,7 @@ class $ExchangeTargetingOptionDetails {
   /// - "EXCHANGE_CHARTBOOST_GBID" : Chartboost Mediation.
   /// - "EXCHANGE_ADMOST_GBID" : AdMost.
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
+  /// - "EXCHANGE_NETFLIX" : Netflix.
   core.String? exchange;
 
   $ExchangeTargetingOptionDetails({
@@ -7762,6 +8405,36 @@ class $ExitEvent {
         if (reportingName != null) 'reportingName': reportingName!,
         if (type != null) 'type': type!,
         if (url != null) 'url': url!,
+      };
+}
+
+/// Used by:
+///
+/// - analyticshub:v1 : ExpirationPolicy
+/// - pubsub:v1 : ExpirationPolicy
+class $ExpirationPolicy {
+  /// Specifies the "time-to-live" duration for an associated resource.
+  ///
+  /// The resource expires if it is not active for a period of `ttl`. The
+  /// definition of "activity" depends on the type of the associated resource.
+  /// The minimum and maximum allowed values for `ttl` depend on the type of the
+  /// associated resource, as well. If `ttl` is not set, the associated resource
+  /// never expires.
+  ///
+  /// Optional.
+  core.String? ttl;
+
+  $ExpirationPolicy({
+    this.ttl,
+  });
+
+  $ExpirationPolicy.fromJson(core.Map json_)
+      : this(
+          ttl: json_['ttl'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ttl != null) 'ttl': ttl!,
       };
 }
 
@@ -7941,6 +8614,7 @@ class $ExportOptions01 {
 /// - compute:v1 : Expr
 /// - config:v1 : Expr
 /// - connectors:v1 : Expr
+/// - contactcenterinsights:v1 : GoogleTypeExpr
 /// - containeranalysis:v1 : Expr
 /// - contentwarehouse:v1 : GoogleTypeExpr
 /// - datacatalog:v1 : Expr
@@ -7983,7 +8657,6 @@ class $ExportOptions01 {
 /// - securitycenter:v1 : Expr
 /// - servicedirectory:v1 : Expr
 /// - servicemanagement:v1 : Expr
-/// - sourcerepo:v1 : Expr
 /// - spanner:v1 : Expr
 /// - vmwareengine:v1 : Expr
 /// - workstations:v1 : Expr
@@ -9017,6 +9690,43 @@ class $GitSourceContext {
 
 /// Used by:
 ///
+/// - translate:v3 : GlossaryConfig
+/// - translate:v3 : TranslateTextGlossaryConfig
+class $GlossaryConfig {
+  /// The `glossary` to be applied for this translation.
+  ///
+  /// The format depends on the glossary: - User-provided custom glossary:
+  /// `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`
+  ///
+  /// Required.
+  core.String? glossary;
+
+  /// Indicates match is case insensitive.
+  ///
+  /// The default value is `false` if missing.
+  ///
+  /// Optional.
+  core.bool? ignoreCase;
+
+  $GlossaryConfig({
+    this.glossary,
+    this.ignoreCase,
+  });
+
+  $GlossaryConfig.fromJson(core.Map json_)
+      : this(
+          glossary: json_['glossary'] as core.String?,
+          ignoreCase: json_['ignoreCase'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (glossary != null) 'glossary': glossary!,
+        if (ignoreCase != null) 'ignoreCase': ignoreCase!,
+      };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : GoogleAudience
 /// - displayvideo:v3 : GoogleAudience
 class $GoogleAudience {
@@ -9155,6 +9865,64 @@ class $GoogleCloudDocumentaiV1Barcode {
         if (format != null) 'format': format!,
         if (rawValue != null) 'rawValue': rawValue!,
         if (valueFormat != null) 'valueFormat': valueFormat!,
+      };
+}
+
+/// Used by:
+///
+/// - contentwarehouse:v1 : GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan
+/// - documentai:v1 : GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan
+class $GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan {
+  /// Page where chunk ends in the document.
+  core.int? pageEnd;
+
+  /// Page where chunk starts in the document.
+  core.int? pageStart;
+
+  $GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan({
+    this.pageEnd,
+    this.pageStart,
+  });
+
+  $GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan.fromJson(
+      core.Map json_)
+      : this(
+          pageEnd: json_['pageEnd'] as core.int?,
+          pageStart: json_['pageStart'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pageEnd != null) 'pageEnd': pageEnd!,
+        if (pageStart != null) 'pageStart': pageStart!,
+      };
+}
+
+/// Used by:
+///
+/// - contentwarehouse:v1 : GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan
+/// - documentai:v1 : GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan
+class $GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan {
+  /// Page where block ends in the document.
+  core.int? pageEnd;
+
+  /// Page where block starts in the document.
+  core.int? pageStart;
+
+  $GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan({
+    this.pageEnd,
+    this.pageStart,
+  });
+
+  $GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan.fromJson(
+      core.Map json_)
+      : this(
+          pageEnd: json_['pageEnd'] as core.int?,
+          pageStart: json_['pageStart'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pageEnd != null) 'pageEnd': pageEnd!,
+        if (pageStart != null) 'pageStart': pageStart!,
       };
 }
 
@@ -9645,105 +10413,6 @@ class $GoogleCloudDocumentaiV1Vertex {
 
 /// Used by:
 ///
-/// - orgpolicy:v2 : GoogleCloudOrgpolicyV2CustomConstraint
-/// - policysimulator:v1 : GoogleCloudOrgpolicyV2CustomConstraint
-class $GoogleCloudOrgpolicyV2CustomConstraint {
-  /// Allow or deny type.
-  /// Possible string values are:
-  /// - "ACTION_TYPE_UNSPECIFIED" : Unspecified. Results in an error.
-  /// - "ALLOW" : Allowed action type.
-  /// - "DENY" : Deny action type.
-  core.String? actionType;
-
-  /// Org policy condition/expression.
-  ///
-  /// For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")`
-  /// or, `resource.management.auto_upgrade == true` The max length of the
-  /// condition is 1000 characters.
-  core.String? condition;
-
-  /// Detailed information about this custom policy constraint.
-  ///
-  /// The max length of the description is 2000 characters.
-  core.String? description;
-
-  /// One line display name for the UI.
-  ///
-  /// The max length of the display_name is 200 characters.
-  core.String? displayName;
-
-  /// All the operations being applied for this constraint.
-  core.List<core.String>? methodTypes;
-
-  /// Name of the constraint.
-  ///
-  /// This is unique within the organization. Format of the name should be *
-  /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
-  /// Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms`
-  /// The max length is 70 characters and the minimum length is 1. Note that the
-  /// prefix `organizations/{organization_id}/customConstraints/` is not
-  /// counted.
-  ///
-  /// Immutable.
-  core.String? name;
-
-  /// The resource instance type on which this policy applies.
-  ///
-  /// Format will be of the form : `/` Example: *
-  /// `compute.googleapis.com/Instance`.
-  ///
-  /// Immutable.
-  core.List<core.String>? resourceTypes;
-
-  /// The last time this custom constraint was updated.
-  ///
-  /// This represents the last time that the `CreateCustomConstraint` or
-  /// `UpdateCustomConstraint` RPC was called
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  $GoogleCloudOrgpolicyV2CustomConstraint({
-    this.actionType,
-    this.condition,
-    this.description,
-    this.displayName,
-    this.methodTypes,
-    this.name,
-    this.resourceTypes,
-    this.updateTime,
-  });
-
-  $GoogleCloudOrgpolicyV2CustomConstraint.fromJson(core.Map json_)
-      : this(
-          actionType: json_['actionType'] as core.String?,
-          condition: json_['condition'] as core.String?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          methodTypes: (json_['methodTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          name: json_['name'] as core.String?,
-          resourceTypes: (json_['resourceTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          updateTime: json_['updateTime'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (actionType != null) 'actionType': actionType!,
-        if (condition != null) 'condition': condition!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (methodTypes != null) 'methodTypes': methodTypes!,
-        if (name != null) 'name': name!,
-        if (resourceTypes != null) 'resourceTypes': resourceTypes!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
-
-/// Used by:
-///
 /// - paymentsresellersubscription:v1 : GoogleTypeLocalizedText
 /// - places:v1 : GoogleTypeLocalizedText
 class $GoogleTypeLocalizedText {
@@ -10155,7 +10824,7 @@ class $HouseholdIncomeTargetingOptionDetails {
 /// - cloudbuild:v1 : HttpBody
 /// - cloudbuild:v2 : HttpBody
 /// - cloudtasks:v2 : HttpBody
-/// - domainsrdap:v1 : HttpBody
+/// - developerconnect:v1 : HttpBody
 /// - healthcare:v1 : HttpBody
 /// - ml:v1 : GoogleApi__HttpBody
 /// - pollen:v1 : HttpBody
@@ -10207,88 +10876,6 @@ class $HttpBody {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : IdFilter
-/// - displayvideo:v3 : IdFilter
-class $IdFilter {
-  /// YouTube Ads to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? adGroupAdIds;
-
-  /// YouTube Ad Groups to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? adGroupIds;
-
-  /// Campaigns to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? campaignIds;
-
-  /// Insertion Orders to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? insertionOrderIds;
-
-  /// Line Items to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? lineItemIds;
-
-  /// Media Products to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? mediaProductIds;
-
-  $IdFilter({
-    this.adGroupAdIds,
-    this.adGroupIds,
-    this.campaignIds,
-    this.insertionOrderIds,
-    this.lineItemIds,
-    this.mediaProductIds,
-  });
-
-  $IdFilter.fromJson(core.Map json_)
-      : this(
-          adGroupAdIds: (json_['adGroupAdIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          adGroupIds: (json_['adGroupIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          campaignIds: (json_['campaignIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          insertionOrderIds: (json_['insertionOrderIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          lineItemIds: (json_['lineItemIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          mediaProductIds: (json_['mediaProductIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (adGroupAdIds != null) 'adGroupAdIds': adGroupAdIds!,
-        if (adGroupIds != null) 'adGroupIds': adGroupIds!,
-        if (campaignIds != null) 'campaignIds': campaignIds!,
-        if (insertionOrderIds != null) 'insertionOrderIds': insertionOrderIds!,
-        if (lineItemIds != null) 'lineItemIds': lineItemIds!,
-        if (mediaProductIds != null) 'mediaProductIds': mediaProductIds!,
-      };
-}
-
-/// Used by:
-///
 /// - containeranalysis:v1 : Identity
 /// - ondemandscanning:v1 : Identity
 class $Identity {
@@ -10312,6 +10899,589 @@ class $Identity {
   core.Map<core.String, core.dynamic> toJson() => {
         if (revision != null) 'revision': revision!,
         if (updateId != null) 'updateId': updateId!,
+      };
+}
+
+/// Used by:
+///
+/// - gkehub:v1 : IdentityServiceAzureADConfig
+/// - gkehub:v2 : IdentityServiceAzureADConfig
+class $IdentityServiceAzureADConfig {
+  /// ID for the registered client application that makes authentication
+  /// requests to the Azure AD identity provider.
+  core.String? clientId;
+
+  /// Input only.
+  ///
+  /// Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.
+  core.String? clientSecret;
+
+  /// Encrypted AzureAD client secret.
+  ///
+  /// Output only.
+  core.String? encryptedClientSecret;
+  core.List<core.int> get encryptedClientSecretAsBytes =>
+      convert.base64.decode(encryptedClientSecret!);
+
+  set encryptedClientSecretAsBytes(core.List<core.int> bytes_) {
+    encryptedClientSecret =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Format of the AzureAD groups that the client wants for auth.
+  ///
+  /// Optional.
+  core.String? groupFormat;
+
+  /// The redirect URL that kubectl uses for authorization.
+  core.String? kubectlRedirectUri;
+
+  /// Kind of Azure AD account to be authenticated.
+  ///
+  /// Supported values are or for accounts belonging to a specific tenant.
+  core.String? tenant;
+
+  /// Claim in the AzureAD ID Token that holds the user details.
+  ///
+  /// Optional.
+  core.String? userClaim;
+
+  $IdentityServiceAzureADConfig({
+    this.clientId,
+    this.clientSecret,
+    this.encryptedClientSecret,
+    this.groupFormat,
+    this.kubectlRedirectUri,
+    this.tenant,
+    this.userClaim,
+  });
+
+  $IdentityServiceAzureADConfig.fromJson(core.Map json_)
+      : this(
+          clientId: json_['clientId'] as core.String?,
+          clientSecret: json_['clientSecret'] as core.String?,
+          encryptedClientSecret: json_['encryptedClientSecret'] as core.String?,
+          groupFormat: json_['groupFormat'] as core.String?,
+          kubectlRedirectUri: json_['kubectlRedirectUri'] as core.String?,
+          tenant: json_['tenant'] as core.String?,
+          userClaim: json_['userClaim'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clientId != null) 'clientId': clientId!,
+        if (clientSecret != null) 'clientSecret': clientSecret!,
+        if (encryptedClientSecret != null)
+          'encryptedClientSecret': encryptedClientSecret!,
+        if (groupFormat != null) 'groupFormat': groupFormat!,
+        if (kubectlRedirectUri != null)
+          'kubectlRedirectUri': kubectlRedirectUri!,
+        if (tenant != null) 'tenant': tenant!,
+        if (userClaim != null) 'userClaim': userClaim!,
+      };
+}
+
+/// Used by:
+///
+/// - gkehub:v1 : IdentityServiceDiagnosticInterface
+/// - gkehub:v2 : IdentityServiceDiagnosticInterface
+class $IdentityServiceDiagnosticInterface {
+  /// Determines whether to enable the diagnostic interface.
+  core.bool? enabled;
+
+  /// Determines the expiration time of the diagnostic interface enablement.
+  ///
+  /// When reached, requests to the interface would be automatically rejected.
+  core.String? expirationTime;
+
+  $IdentityServiceDiagnosticInterface({
+    this.enabled,
+    this.expirationTime,
+  });
+
+  $IdentityServiceDiagnosticInterface.fromJson(core.Map json_)
+      : this(
+          enabled: json_['enabled'] as core.bool?,
+          expirationTime: json_['expirationTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (expirationTime != null) 'expirationTime': expirationTime!,
+      };
+}
+
+/// Used by:
+///
+/// - gkehub:v1 : IdentityServiceGoogleConfig
+/// - gkehub:v2 : IdentityServiceGoogleConfig
+class $IdentityServiceGoogleConfig {
+  /// Disable automatic configuration of Google Plugin on supported platforms.
+  core.bool? disable;
+
+  $IdentityServiceGoogleConfig({
+    this.disable,
+  });
+
+  $IdentityServiceGoogleConfig.fromJson(core.Map json_)
+      : this(
+          disable: json_['disable'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disable != null) 'disable': disable!,
+      };
+}
+
+/// Used by:
+///
+/// - gkehub:v1 : IdentityServiceGroupConfig
+/// - gkehub:v2 : IdentityServiceGroupConfig
+class $IdentityServiceGroupConfig {
+  /// The location of the subtree in the LDAP directory to search for group
+  /// entries.
+  ///
+  /// Required.
+  core.String? baseDn;
+
+  /// Optional filter to be used when searching for groups a user belongs to.
+  ///
+  /// This can be used to explicitly match only certain groups in order to
+  /// reduce the amount of groups returned for each user. This defaults to
+  /// "(objectClass=Group)".
+  ///
+  /// Optional.
+  core.String? filter;
+
+  /// The identifying name of each group a user belongs to.
+  ///
+  /// For example, if this is set to "distinguishedName" then RBACs and other
+  /// group expectations should be written as full DNs. This defaults to
+  /// "distinguishedName".
+  ///
+  /// Optional.
+  core.String? idAttribute;
+
+  $IdentityServiceGroupConfig({
+    this.baseDn,
+    this.filter,
+    this.idAttribute,
+  });
+
+  $IdentityServiceGroupConfig.fromJson(core.Map json_)
+      : this(
+          baseDn: json_['baseDn'] as core.String?,
+          filter: json_['filter'] as core.String?,
+          idAttribute: json_['idAttribute'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (baseDn != null) 'baseDn': baseDn!,
+        if (filter != null) 'filter': filter!,
+        if (idAttribute != null) 'idAttribute': idAttribute!,
+      };
+}
+
+/// Used by:
+///
+/// - gkehub:v1 : IdentityServiceOidcConfig
+/// - gkehub:v2 : IdentityServiceOidcConfig
+class $IdentityServiceOidcConfig {
+  /// PEM-encoded CA for OIDC provider.
+  core.String? certificateAuthorityData;
+
+  /// ID for OIDC client application.
+  core.String? clientId;
+
+  /// Input only.
+  ///
+  /// Unencrypted OIDC client secret will be passed to the GKE Hub CLH.
+  core.String? clientSecret;
+
+  /// Flag to denote if reverse proxy is used to connect to auth provider.
+  ///
+  /// This flag should be set to true when provider is not reachable by Google
+  /// Cloud Console.
+  core.bool? deployCloudConsoleProxy;
+
+  /// Enable access token.
+  core.bool? enableAccessToken;
+
+  /// Encrypted OIDC Client secret
+  ///
+  /// Output only.
+  core.String? encryptedClientSecret;
+  core.List<core.int> get encryptedClientSecretAsBytes =>
+      convert.base64.decode(encryptedClientSecret!);
+
+  set encryptedClientSecretAsBytes(core.List<core.int> bytes_) {
+    encryptedClientSecret =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Comma-separated list of key-value pairs.
+  core.String? extraParams;
+
+  /// Prefix to prepend to group name.
+  core.String? groupPrefix;
+
+  /// Claim in OIDC ID token that holds group information.
+  core.String? groupsClaim;
+
+  /// URI for the OIDC provider.
+  ///
+  /// This should point to the level below .well-known/openid-configuration.
+  core.String? issuerUri;
+
+  /// Registered redirect uri to redirect users going through OAuth flow using
+  /// kubectl plugin.
+  core.String? kubectlRedirectUri;
+
+  /// Comma-separated list of identifiers.
+  core.String? scopes;
+
+  /// Claim in OIDC ID token that holds username.
+  core.String? userClaim;
+
+  /// Prefix to prepend to user name.
+  core.String? userPrefix;
+
+  $IdentityServiceOidcConfig({
+    this.certificateAuthorityData,
+    this.clientId,
+    this.clientSecret,
+    this.deployCloudConsoleProxy,
+    this.enableAccessToken,
+    this.encryptedClientSecret,
+    this.extraParams,
+    this.groupPrefix,
+    this.groupsClaim,
+    this.issuerUri,
+    this.kubectlRedirectUri,
+    this.scopes,
+    this.userClaim,
+    this.userPrefix,
+  });
+
+  $IdentityServiceOidcConfig.fromJson(core.Map json_)
+      : this(
+          certificateAuthorityData:
+              json_['certificateAuthorityData'] as core.String?,
+          clientId: json_['clientId'] as core.String?,
+          clientSecret: json_['clientSecret'] as core.String?,
+          deployCloudConsoleProxy:
+              json_['deployCloudConsoleProxy'] as core.bool?,
+          enableAccessToken: json_['enableAccessToken'] as core.bool?,
+          encryptedClientSecret: json_['encryptedClientSecret'] as core.String?,
+          extraParams: json_['extraParams'] as core.String?,
+          groupPrefix: json_['groupPrefix'] as core.String?,
+          groupsClaim: json_['groupsClaim'] as core.String?,
+          issuerUri: json_['issuerUri'] as core.String?,
+          kubectlRedirectUri: json_['kubectlRedirectUri'] as core.String?,
+          scopes: json_['scopes'] as core.String?,
+          userClaim: json_['userClaim'] as core.String?,
+          userPrefix: json_['userPrefix'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certificateAuthorityData != null)
+          'certificateAuthorityData': certificateAuthorityData!,
+        if (clientId != null) 'clientId': clientId!,
+        if (clientSecret != null) 'clientSecret': clientSecret!,
+        if (deployCloudConsoleProxy != null)
+          'deployCloudConsoleProxy': deployCloudConsoleProxy!,
+        if (enableAccessToken != null) 'enableAccessToken': enableAccessToken!,
+        if (encryptedClientSecret != null)
+          'encryptedClientSecret': encryptedClientSecret!,
+        if (extraParams != null) 'extraParams': extraParams!,
+        if (groupPrefix != null) 'groupPrefix': groupPrefix!,
+        if (groupsClaim != null) 'groupsClaim': groupsClaim!,
+        if (issuerUri != null) 'issuerUri': issuerUri!,
+        if (kubectlRedirectUri != null)
+          'kubectlRedirectUri': kubectlRedirectUri!,
+        if (scopes != null) 'scopes': scopes!,
+        if (userClaim != null) 'userClaim': userClaim!,
+        if (userPrefix != null) 'userPrefix': userPrefix!,
+      };
+}
+
+/// Used by:
+///
+/// - gkehub:v1 : IdentityServiceSamlConfig
+/// - gkehub:v2 : IdentityServiceSamlConfig
+class $IdentityServiceSamlConfig {
+  /// The mapping of additional user attributes like nickname, birthday and
+  /// address etc..
+  ///
+  /// `key` is the name of this additional attribute. `value` is a string
+  /// presenting as CEL(common expression language, go/cel) used for getting the
+  /// value from the resources. Take nickname as an example, in this case, `key`
+  /// is "attribute.nickname" and `value` is "assertion.nickname".
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? attributeMapping;
+
+  /// Prefix to prepend to group name.
+  ///
+  /// Optional.
+  core.String? groupPrefix;
+
+  /// The SAML attribute to read groups from.
+  ///
+  /// This value is expected to be a string and will be passed along as-is (with
+  /// the option of being prefixed by the `group_prefix`).
+  ///
+  /// Optional.
+  core.String? groupsAttribute;
+
+  /// The list of IdP certificates to validate the SAML response against.
+  ///
+  /// Required.
+  core.List<core.String>? identityProviderCertificates;
+
+  /// The entity ID of the SAML IdP.
+  ///
+  /// Required.
+  core.String? identityProviderId;
+
+  /// The URI where the SAML IdP exposes the SSO service.
+  ///
+  /// Required.
+  core.String? identityProviderSsoUri;
+
+  /// The SAML attribute to read username from.
+  ///
+  /// If unspecified, the username will be read from the NameID element of the
+  /// assertion in SAML response. This value is expected to be a string and will
+  /// be passed along as-is (with the option of being prefixed by the
+  /// `user_prefix`).
+  ///
+  /// Optional.
+  core.String? userAttribute;
+
+  /// Prefix to prepend to user name.
+  ///
+  /// Optional.
+  core.String? userPrefix;
+
+  $IdentityServiceSamlConfig({
+    this.attributeMapping,
+    this.groupPrefix,
+    this.groupsAttribute,
+    this.identityProviderCertificates,
+    this.identityProviderId,
+    this.identityProviderSsoUri,
+    this.userAttribute,
+    this.userPrefix,
+  });
+
+  $IdentityServiceSamlConfig.fromJson(core.Map json_)
+      : this(
+          attributeMapping: (json_['attributeMapping']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          groupPrefix: json_['groupPrefix'] as core.String?,
+          groupsAttribute: json_['groupsAttribute'] as core.String?,
+          identityProviderCertificates:
+              (json_['identityProviderCertificates'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+          identityProviderId: json_['identityProviderId'] as core.String?,
+          identityProviderSsoUri:
+              json_['identityProviderSsoUri'] as core.String?,
+          userAttribute: json_['userAttribute'] as core.String?,
+          userPrefix: json_['userPrefix'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributeMapping != null) 'attributeMapping': attributeMapping!,
+        if (groupPrefix != null) 'groupPrefix': groupPrefix!,
+        if (groupsAttribute != null) 'groupsAttribute': groupsAttribute!,
+        if (identityProviderCertificates != null)
+          'identityProviderCertificates': identityProviderCertificates!,
+        if (identityProviderId != null)
+          'identityProviderId': identityProviderId!,
+        if (identityProviderSsoUri != null)
+          'identityProviderSsoUri': identityProviderSsoUri!,
+        if (userAttribute != null) 'userAttribute': userAttribute!,
+        if (userPrefix != null) 'userPrefix': userPrefix!,
+      };
+}
+
+/// Used by:
+///
+/// - gkehub:v1 : IdentityServiceServerConfig
+/// - gkehub:v2 : IdentityServiceServerConfig
+class $IdentityServiceServerConfig {
+  /// Contains a Base64 encoded, PEM formatted certificate authority certificate
+  /// for the LDAP server.
+  ///
+  /// This must be provided for the "ldaps" and "startTLS" connections.
+  ///
+  /// Optional.
+  core.String? certificateAuthorityData;
+  core.List<core.int> get certificateAuthorityDataAsBytes =>
+      convert.base64.decode(certificateAuthorityData!);
+
+  set certificateAuthorityDataAsBytes(core.List<core.int> bytes_) {
+    certificateAuthorityData =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Defines the connection type to communicate with the LDAP server.
+  ///
+  /// If `starttls` or `ldaps` is specified, the certificate_authority_data
+  /// should not be empty.
+  ///
+  /// Optional.
+  core.String? connectionType;
+
+  /// Defines the hostname or IP of the LDAP server.
+  ///
+  /// Port is optional and will default to 389, if unspecified. For example,
+  /// "ldap.server.example" or "10.10.10.10:389".
+  ///
+  /// Required.
+  core.String? host;
+
+  $IdentityServiceServerConfig({
+    this.certificateAuthorityData,
+    this.connectionType,
+    this.host,
+  });
+
+  $IdentityServiceServerConfig.fromJson(core.Map json_)
+      : this(
+          certificateAuthorityData:
+              json_['certificateAuthorityData'] as core.String?,
+          connectionType: json_['connectionType'] as core.String?,
+          host: json_['host'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certificateAuthorityData != null)
+          'certificateAuthorityData': certificateAuthorityData!,
+        if (connectionType != null) 'connectionType': connectionType!,
+        if (host != null) 'host': host!,
+      };
+}
+
+/// Used by:
+///
+/// - gkehub:v1 : IdentityServiceSimpleBindCredentials
+/// - gkehub:v2 : IdentityServiceSimpleBindCredentials
+class $IdentityServiceSimpleBindCredentials {
+  /// The distinguished name(DN) of the service account object/user.
+  ///
+  /// Required.
+  core.String? dn;
+
+  /// The encrypted password of the service account object/user.
+  ///
+  /// Output only.
+  core.String? encryptedPassword;
+  core.List<core.int> get encryptedPasswordAsBytes =>
+      convert.base64.decode(encryptedPassword!);
+
+  set encryptedPasswordAsBytes(core.List<core.int> bytes_) {
+    encryptedPassword =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Input only.
+  ///
+  /// The password of the service account object/user.
+  ///
+  /// Required.
+  core.String? password;
+
+  $IdentityServiceSimpleBindCredentials({
+    this.dn,
+    this.encryptedPassword,
+    this.password,
+  });
+
+  $IdentityServiceSimpleBindCredentials.fromJson(core.Map json_)
+      : this(
+          dn: json_['dn'] as core.String?,
+          encryptedPassword: json_['encryptedPassword'] as core.String?,
+          password: json_['password'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dn != null) 'dn': dn!,
+        if (encryptedPassword != null) 'encryptedPassword': encryptedPassword!,
+        if (password != null) 'password': password!,
+      };
+}
+
+/// Used by:
+///
+/// - gkehub:v1 : IdentityServiceUserConfig
+/// - gkehub:v2 : IdentityServiceUserConfig
+class $IdentityServiceUserConfig {
+  /// The location of the subtree in the LDAP directory to search for user
+  /// entries.
+  ///
+  /// Required.
+  core.String? baseDn;
+
+  /// Filter to apply when searching for the user.
+  ///
+  /// This can be used to further restrict the user accounts which are allowed
+  /// to login. This defaults to "(objectClass=User)".
+  ///
+  /// Optional.
+  core.String? filter;
+
+  /// Determines which attribute to use as the user's identity after they are
+  /// authenticated.
+  ///
+  /// This is distinct from the loginAttribute field to allow users to login
+  /// with a username, but then have their actual identifier be an email address
+  /// or full Distinguished Name (DN). For example, setting loginAttribute to
+  /// "sAMAccountName" and identifierAttribute to "userPrincipalName" would
+  /// allow a user to login as "bsmith", but actual RBAC policies for the user
+  /// would be written as "bsmith@example.com". Using "userPrincipalName" is
+  /// recommended since this will be unique for each user. This defaults to
+  /// "userPrincipalName".
+  ///
+  /// Optional.
+  core.String? idAttribute;
+
+  /// The name of the attribute which matches against the input username.
+  ///
+  /// This is used to find the user in the LDAP database e.g. "(=)" and is
+  /// combined with the optional filter field. This defaults to
+  /// "userPrincipalName".
+  ///
+  /// Optional.
+  core.String? loginAttribute;
+
+  $IdentityServiceUserConfig({
+    this.baseDn,
+    this.filter,
+    this.idAttribute,
+    this.loginAttribute,
+  });
+
+  $IdentityServiceUserConfig.fromJson(core.Map json_)
+      : this(
+          baseDn: json_['baseDn'] as core.String?,
+          filter: json_['filter'] as core.String?,
+          idAttribute: json_['idAttribute'] as core.String?,
+          loginAttribute: json_['loginAttribute'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (baseDn != null) 'baseDn': baseDn!,
+        if (filter != null) 'filter': filter!,
+        if (idAttribute != null) 'idAttribute': idAttribute!,
+        if (loginAttribute != null) 'loginAttribute': loginAttribute!,
       };
 }
 
@@ -10401,6 +11571,31 @@ class $InlineScopedRouteConfigs {
 
 /// Used by:
 ///
+/// - dataproc:v1 : InputMetrics
+/// - dataproc:v1 : StageInputMetrics
+class $InputMetrics {
+  core.String? bytesRead;
+  core.String? recordsRead;
+
+  $InputMetrics({
+    this.bytesRead,
+    this.recordsRead,
+  });
+
+  $InputMetrics.fromJson(core.Map json_)
+      : this(
+          bytesRead: json_['bytesRead'] as core.String?,
+          recordsRead: json_['recordsRead'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bytesRead != null) 'bytesRead': bytesRead!,
+        if (recordsRead != null) 'recordsRead': recordsRead!,
+      };
+}
+
+/// Used by:
+///
 /// - cloudbuild:v2 : InstallationState
 /// - developerconnect:v1 : InstallationState
 class $InstallationState {
@@ -10450,6 +11645,165 @@ class $InstallationState {
         if (actionUri != null) 'actionUri': actionUri!,
         if (message != null) 'message': message!,
         if (stage != null) 'stage': stage!,
+      };
+}
+
+/// Used by:
+///
+/// - aiplatform:v1 : GoogleCloudAiplatformV1BleuInstance
+/// - aiplatform:v1 : GoogleCloudAiplatformV1ExactMatchInstance
+/// - aiplatform:v1 : GoogleCloudAiplatformV1RougeInstance
+/// - aiplatform:v1 : GoogleCloudAiplatformV1ToolCallValidInstance
+/// - aiplatform:v1 : GoogleCloudAiplatformV1ToolNameMatchInstance
+/// - aiplatform:v1 : GoogleCloudAiplatformV1ToolParameterKVMatchInstance
+/// - aiplatform:v1 : GoogleCloudAiplatformV1ToolParameterKeyMatchInstance
+class $Instance00 {
+  /// Output of the evaluated model.
+  ///
+  /// Required.
+  core.String? prediction;
+
+  /// Ground truth used to compare against the prediction.
+  ///
+  /// Required.
+  core.String? reference;
+
+  $Instance00({
+    this.prediction,
+    this.reference,
+  });
+
+  $Instance00.fromJson(core.Map json_)
+      : this(
+          prediction: json_['prediction'] as core.String?,
+          reference: json_['reference'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (prediction != null) 'prediction': prediction!,
+        if (reference != null) 'reference': reference!,
+      };
+}
+
+/// Used by:
+///
+/// - aiplatform:v1 : GoogleCloudAiplatformV1CoherenceInstance
+/// - aiplatform:v1 : GoogleCloudAiplatformV1FluencyInstance
+/// - aiplatform:v1 : GoogleCloudAiplatformV1SafetyInstance
+class $Instance01 {
+  /// Output of the evaluated model.
+  ///
+  /// Required.
+  core.String? prediction;
+
+  $Instance01({
+    this.prediction,
+  });
+
+  $Instance01.fromJson(core.Map json_)
+      : this(
+          prediction: json_['prediction'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (prediction != null) 'prediction': prediction!,
+      };
+}
+
+/// Used by:
+///
+/// - aiplatform:v1 : GoogleCloudAiplatformV1QuestionAnsweringCorrectnessInstance
+/// - aiplatform:v1 : GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessInstance
+/// - aiplatform:v1 : GoogleCloudAiplatformV1QuestionAnsweringRelevanceInstance
+class $Instance02 {
+  /// Text provided as context to answer the question.
+  ///
+  /// Optional.
+  core.String? context;
+
+  /// The question asked and other instruction in the inference prompt.
+  ///
+  /// Required.
+  core.String? instruction;
+
+  /// Output of the evaluated model.
+  ///
+  /// Required.
+  core.String? prediction;
+
+  /// Ground truth used to compare against the prediction.
+  ///
+  /// Optional.
+  core.String? reference;
+
+  $Instance02({
+    this.context,
+    this.instruction,
+    this.prediction,
+    this.reference,
+  });
+
+  $Instance02.fromJson(core.Map json_)
+      : this(
+          context: json_['context'] as core.String?,
+          instruction: json_['instruction'] as core.String?,
+          prediction: json_['prediction'] as core.String?,
+          reference: json_['reference'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (context != null) 'context': context!,
+        if (instruction != null) 'instruction': instruction!,
+        if (prediction != null) 'prediction': prediction!,
+        if (reference != null) 'reference': reference!,
+      };
+}
+
+/// Used by:
+///
+/// - aiplatform:v1 : GoogleCloudAiplatformV1SummarizationHelpfulnessInstance
+/// - aiplatform:v1 : GoogleCloudAiplatformV1SummarizationVerbosityInstance
+class $Instance03 {
+  /// Text to be summarized.
+  ///
+  /// Required.
+  core.String? context;
+
+  /// Summarization prompt for LLM.
+  ///
+  /// Optional.
+  core.String? instruction;
+
+  /// Output of the evaluated model.
+  ///
+  /// Required.
+  core.String? prediction;
+
+  /// Ground truth used to compare against the prediction.
+  ///
+  /// Optional.
+  core.String? reference;
+
+  $Instance03({
+    this.context,
+    this.instruction,
+    this.prediction,
+    this.reference,
+  });
+
+  $Instance03.fromJson(core.Map json_)
+      : this(
+          context: json_['context'] as core.String?,
+          instruction: json_['instruction'] as core.String?,
+          prediction: json_['prediction'] as core.String?,
+          reference: json_['reference'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (context != null) 'context': context!,
+        if (instruction != null) 'instruction': instruction!,
+        if (prediction != null) 'prediction': prediction!,
+        if (reference != null) 'reference': reference!,
       };
 }
 
@@ -11361,6 +12715,34 @@ class $KMSEnvMap {
 
 /// Used by:
 ///
+/// - cloudkms:v1 : KeyAccessJustificationsPolicy
+/// - kmsinventory:v1 : GoogleCloudKmsV1KeyAccessJustificationsPolicy
+class $KeyAccessJustificationsPolicy {
+  /// The list of allowed reasons for access to a CryptoKey.
+  ///
+  /// Zero allowed access reasons means all encrypt, decrypt, and sign
+  /// operations for the CryptoKey associated with this policy will fail.
+  core.List<core.String>? allowedAccessReasons;
+
+  $KeyAccessJustificationsPolicy({
+    this.allowedAccessReasons,
+  });
+
+  $KeyAccessJustificationsPolicy.fromJson(core.Map json_)
+      : this(
+          allowedAccessReasons: (json_['allowedAccessReasons'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowedAccessReasons != null)
+          'allowedAccessReasons': allowedAccessReasons!,
+      };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : KeywordAssignedTargetingOptionDetails
 /// - displayvideo:v3 : KeywordAssignedTargetingOptionDetails
 class $KeywordAssignedTargetingOptionDetails {
@@ -11587,7 +12969,6 @@ class $LanguageTargetingOptionDetails {
 /// - jobs:v3 : LatLng
 /// - jobs:v4 : LatLng
 /// - mybusinessbusinessinformation:v1 : LatLng
-/// - photoslibrary:v1 : LatLng
 /// - places:v1 : GoogleTypeLatLng
 /// - solar:v1 : LatLng
 /// - streetviewpublish:v1 : LatLng
@@ -12121,6 +13502,7 @@ class $LocalizedMessage {
 /// - firestore:v1 : Location
 /// - gkebackup:v1 : Location
 /// - gkehub:v1 : Location
+/// - gkehub:v2 : Location
 /// - gkeonprem:v1 : Location
 /// - healthcare:v1 : Location
 /// - ids:v1 : Location
@@ -12128,18 +13510,19 @@ class $LocalizedMessage {
 /// - managedidentities:v1 : Location
 /// - memcache:v1 : Location
 /// - migrationcenter:v1 : Location
+/// - netapp:v1 : Location
 /// - networkconnectivity:v1 : Location
 /// - networkmanagement:v1 : Location
 /// - networksecurity:v1 : Location
 /// - networkservices:v1 : Location
 /// - notebooks:v1 : Location
 /// - notebooks:v2 : Location
+/// - oracledatabase:v1 : Location
 /// - privateca:v1 : Location
 /// - rapidmigrationassessment:v1 : Location
 /// - run:v1 : Location
 /// - secretmanager:v1 : Location
 /// - servicedirectory:v1 : Location
-/// - speech:v2 : Location
 /// - tpu:v1 : Location
 /// - tpu:v2 : Location
 /// - translate:v3 : Location
@@ -12278,34 +13661,6 @@ class $Location01 {
         if (locationId != null) 'locationId': locationId!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
-      };
-}
-
-/// Used by:
-///
-/// - dlp:v2 : GooglePrivacyDlpV2DataProfileLocation
-/// - dlp:v2 : GooglePrivacyDlpV2DiscoveryStartingLocation
-class $Location02 {
-  /// The ID of the Folder within an organization to scan.
-  core.String? folderId;
-
-  /// The ID of an organization to scan.
-  core.String? organizationId;
-
-  $Location02({
-    this.folderId,
-    this.organizationId,
-  });
-
-  $Location02.fromJson(core.Map json_)
-      : this(
-          folderId: json_['folderId'] as core.String?,
-          organizationId: json_['organizationId'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (folderId != null) 'folderId': folderId!,
-        if (organizationId != null) 'organizationId': organizationId!,
       };
 }
 
@@ -12731,127 +14086,6 @@ class $Media {
 
 /// Used by:
 ///
-/// - dfareporting:v3.5 : MediaRequestInfo
-/// - walletobjects:v1 : MediaRequestInfo
-class $MediaRequestInfo {
-  /// The number of current bytes uploaded or downloaded.
-  core.String? currentBytes;
-
-  /// Data to be copied to backend requests.
-  ///
-  /// Custom data is returned to Scotty in the agent_state field, which Scotty
-  /// will then provide in subsequent upload notifications.
-  core.String? customData;
-
-  /// Set if the http request info is diff encoded.
-  ///
-  /// The value of this field is the version number of the base revision. This
-  /// is corresponding to Apiary's mediaDiffObjectVersion
-  /// (//depot/google3/java/com/google/api/server/media/variable/DiffObjectVersionVariable.java).
-  /// See go/esf-scotty-diff-upload for more information.
-  core.String? diffObjectVersion;
-
-  /// The existence of the final_status field indicates that this is the last
-  /// call to the agent for this request_id.
-  ///
-  /// http://google3/uploader/agent/scotty_agent.proto?l=737&rcl=347601929
-  core.int? finalStatus;
-
-  /// The type of notification received from Scotty.
-  /// Possible string values are:
-  /// - "START" : Such requests signals the start of a request containing media
-  /// upload. Only the media field(s) in the inserted/updated resource are set.
-  /// The response should either return an error or succeed. On success,
-  /// responses don't need to contain anything.
-  /// - "PROGRESS" : Such requests signals that the upload has progressed and
-  /// that the backend might want to access the media file specified in relevant
-  /// fields in the resource. Only the media field(s) in the inserted/updated
-  /// resource are set. The response should either return an error or succeed.
-  /// On success, responses don't need to contain anything.
-  /// - "END" : Such requests signals the end of a request containing media
-  /// upload. END should be handled just like normal Insert/Upload requests,
-  /// that is, they should process the request and return a complete resource in
-  /// the response. Pointers to media data (a GFS path usually) appear in the
-  /// relevant fields in the inserted/updated resource. See gdata.Media in
-  /// data.proto.
-  /// - "RESPONSE_SENT" : Such requests occur after an END and signal that the
-  /// response has been sent back to the client. RESPONSE_SENT is only sent to
-  /// the backend if it is configured to receive them. The response does not
-  /// need to contain anything.
-  /// - "ERROR" : Such requests indicate that an error occurred while processing
-  /// the request. ERROR is only sent to the backend if it is configured to
-  /// receive them. It is not guaranteed that all errors will result in this
-  /// notification to the backend, even if the backend requests them. Since
-  /// these requests are just for informational purposes, the response does not
-  /// need to contain anything.
-  core.String? notificationType;
-
-  /// The Scotty request ID.
-  core.String? requestId;
-
-  /// The partition of the Scotty server handling this request.
-  ///
-  /// type is uploader_service.RequestReceivedParamsServingInfo
-  /// LINT.IfChange(request_received_params_serving_info_annotations)
-  /// LINT.ThenChange()
-  core.String? requestReceivedParamsServingInfo;
-  core.List<core.int> get requestReceivedParamsServingInfoAsBytes =>
-      convert.base64.decode(requestReceivedParamsServingInfo!);
-
-  set requestReceivedParamsServingInfoAsBytes(core.List<core.int> bytes_) {
-    requestReceivedParamsServingInfo =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// The total size of the file.
-  core.String? totalBytes;
-
-  /// Whether the total bytes field contains an estimated data.
-  core.bool? totalBytesIsEstimated;
-
-  $MediaRequestInfo({
-    this.currentBytes,
-    this.customData,
-    this.diffObjectVersion,
-    this.finalStatus,
-    this.notificationType,
-    this.requestId,
-    this.requestReceivedParamsServingInfo,
-    this.totalBytes,
-    this.totalBytesIsEstimated,
-  });
-
-  $MediaRequestInfo.fromJson(core.Map json_)
-      : this(
-          currentBytes: json_['currentBytes'] as core.String?,
-          customData: json_['customData'] as core.String?,
-          diffObjectVersion: json_['diffObjectVersion'] as core.String?,
-          finalStatus: json_['finalStatus'] as core.int?,
-          notificationType: json_['notificationType'] as core.String?,
-          requestId: json_['requestId'] as core.String?,
-          requestReceivedParamsServingInfo:
-              json_['requestReceivedParamsServingInfo'] as core.String?,
-          totalBytes: json_['totalBytes'] as core.String?,
-          totalBytesIsEstimated: json_['totalBytesIsEstimated'] as core.bool?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (currentBytes != null) 'currentBytes': currentBytes!,
-        if (customData != null) 'customData': customData!,
-        if (diffObjectVersion != null) 'diffObjectVersion': diffObjectVersion!,
-        if (finalStatus != null) 'finalStatus': finalStatus!,
-        if (notificationType != null) 'notificationType': notificationType!,
-        if (requestId != null) 'requestId': requestId!,
-        if (requestReceivedParamsServingInfo != null)
-          'requestReceivedParamsServingInfo': requestReceivedParamsServingInfo!,
-        if (totalBytes != null) 'totalBytes': totalBytes!,
-        if (totalBytesIsEstimated != null)
-          'totalBytesIsEstimated': totalBytesIsEstimated!,
-      };
-}
-
-/// Used by:
-///
 /// - accesscontextmanager:v1 : MethodSelector
 /// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1MethodSelector
 class $MethodSelector {
@@ -12940,10 +14174,14 @@ class $MetricDescriptorMetadata {
   /// with a higher granularity have a smaller sampling period.
   core.String? samplePeriod;
 
+  /// The scope of the timeseries data of the metric.
+  core.List<core.String>? timeSeriesResourceHierarchyLevel;
+
   $MetricDescriptorMetadata({
     this.ingestDelay,
     this.launchStage,
     this.samplePeriod,
+    this.timeSeriesResourceHierarchyLevel,
   });
 
   $MetricDescriptorMetadata.fromJson(core.Map json_)
@@ -12951,12 +14189,18 @@ class $MetricDescriptorMetadata {
           ingestDelay: json_['ingestDelay'] as core.String?,
           launchStage: json_['launchStage'] as core.String?,
           samplePeriod: json_['samplePeriod'] as core.String?,
+          timeSeriesResourceHierarchyLevel:
+              (json_['timeSeriesResourceHierarchyLevel'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ingestDelay != null) 'ingestDelay': ingestDelay!,
         if (launchStage != null) 'launchStage': launchStage!,
         if (samplePeriod != null) 'samplePeriod': samplePeriod!,
+        if (timeSeriesResourceHierarchyLevel != null)
+          'timeSeriesResourceHierarchyLevel': timeSeriesResourceHierarchyLevel!,
       };
 }
 
@@ -13091,6 +14335,12 @@ class $MobileApp {
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals
 class $ModelCallSignals {
+  /// Name of the generative model.
+  ///
+  /// For example, "gemini-ultra", "gemini-pro", "gemini-1.5-flash" etc.
+  /// Defaults to "Other" if the model is unknown.
+  core.String? model;
+
   /// Output of the generative model.
   core.String? modelOutput;
 
@@ -13098,17 +14348,20 @@ class $ModelCallSignals {
   core.String? renderedPrompt;
 
   $ModelCallSignals({
+    this.model,
     this.modelOutput,
     this.renderedPrompt,
   });
 
   $ModelCallSignals.fromJson(core.Map json_)
       : this(
+          model: json_['model'] as core.String?,
           modelOutput: json_['modelOutput'] as core.String?,
           renderedPrompt: json_['renderedPrompt'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (model != null) 'model': model!,
         if (modelOutput != null) 'modelOutput': modelOutput!,
         if (renderedPrompt != null) 'renderedPrompt': renderedPrompt!,
       };
@@ -13511,6 +14764,33 @@ class $NegativeKeywordListAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
+/// - analyticshub:v1 : NoWrapper
+/// - pubsub:v1 : NoWrapper
+class $NoWrapper {
+  /// When true, writes the Pub/Sub message metadata to `x-goog-pubsub-:`
+  /// headers of the HTTP request.
+  ///
+  /// Writes the Pub/Sub message attributes to `:` headers of the HTTP request.
+  ///
+  /// Optional.
+  core.bool? writeMetadata;
+
+  $NoWrapper({
+    this.writeMetadata,
+  });
+
+  $NoWrapper.fromJson(core.Map json_)
+      : this(
+          writeMetadata: json_['writeMetadata'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (writeMetadata != null) 'writeMetadata': writeMetadata!,
+      };
+}
+
+/// Used by:
+///
 /// - connectors:v1 : NodeConfig
 /// - integrations:v1 : GoogleCloudConnectorsV1NodeConfig
 class $NodeConfig {
@@ -13594,6 +14874,49 @@ class $OAuthRequirements {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (canonicalScopes != null) 'canonicalScopes': canonicalScopes!,
+      };
+}
+
+/// Used by:
+///
+/// - connectors:v1 : Oauth2AuthCodeFlowGoogleManaged
+/// - integrations:v1 : GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged
+class $Oauth2AuthCodeFlowGoogleManaged {
+  /// Authorization code to be exchanged for access and refresh tokens.
+  ///
+  /// Optional.
+  core.String? authCode;
+
+  /// Redirect URI to be provided during the auth code exchange.
+  ///
+  /// Optional.
+  core.String? redirectUri;
+
+  /// Scopes the connection will request when the user performs the auth code
+  /// flow.
+  ///
+  /// Required.
+  core.List<core.String>? scopes;
+
+  $Oauth2AuthCodeFlowGoogleManaged({
+    this.authCode,
+    this.redirectUri,
+    this.scopes,
+  });
+
+  $Oauth2AuthCodeFlowGoogleManaged.fromJson(core.Map json_)
+      : this(
+          authCode: json_['authCode'] as core.String?,
+          redirectUri: json_['redirectUri'] as core.String?,
+          scopes: (json_['scopes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authCode != null) 'authCode': authCode!,
+        if (redirectUri != null) 'redirectUri': redirectUri!,
+        if (scopes != null) 'scopes': scopes!,
       };
 }
 
@@ -13694,6 +15017,50 @@ class $OffsetPosition {
   core.Map<core.String, core.dynamic> toJson() => {
         if (left != null) 'left': left!,
         if (top != null) 'top': top!,
+      };
+}
+
+/// Used by:
+///
+/// - analyticshub:v1 : OidcToken
+/// - pubsub:v1 : OidcToken
+class $OidcToken {
+  /// Audience to be used when generating OIDC token.
+  ///
+  /// The audience claim identifies the recipients that the JWT is intended for.
+  /// The audience value is a single case-sensitive string. Having multiple
+  /// values (array) for the audience field is not supported. More info about
+  /// the OIDC JWT token audience here:
+  /// https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified,
+  /// the Push endpoint URL will be used.
+  ///
+  /// Optional.
+  core.String? audience;
+
+  /// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
+  /// used for generating the OIDC token.
+  ///
+  /// For more information on setting up authentication, see
+  /// [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
+  ///
+  /// Optional.
+  core.String? serviceAccountEmail;
+
+  $OidcToken({
+    this.audience,
+    this.serviceAccountEmail,
+  });
+
+  $OidcToken.fromJson(core.Map json_)
+      : this(
+          audience: json_['audience'] as core.String?,
+          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (audience != null) 'audience': audience!,
+        if (serviceAccountEmail != null)
+          'serviceAccountEmail': serviceAccountEmail!,
       };
 }
 
@@ -13956,84 +15323,6 @@ class $Option {
 
 /// Used by:
 ///
-/// - content:v2.1 : OrderAddress
-/// - content:v2.1 : TestOrderAddress
-class $OrderAddress {
-  /// CLDR country code (for example, "US").
-  core.String? country;
-
-  /// Strings representing the lines of the printed label for mailing the order,
-  /// for example: John Smith 1600 Amphitheatre Parkway Mountain View, CA, 94043
-  /// United States
-  core.List<core.String>? fullAddress;
-
-  /// Whether the address is a post office box.
-  core.bool? isPostOfficeBox;
-
-  /// City, town or commune.
-  ///
-  /// May also include dependent localities or sublocalities (for example,
-  /// neighborhoods or suburbs).
-  core.String? locality;
-
-  /// Postal Code or ZIP (for example, "94043").
-  core.String? postalCode;
-
-  /// Name of the recipient.
-  core.String? recipientName;
-
-  /// Top-level administrative subdivision of the country.
-  ///
-  /// For example, a state like California ("CA") or a province like Quebec
-  /// ("QC").
-  core.String? region;
-
-  /// Street-level part of the address.
-  ///
-  /// Use `\n` to add a second line.
-  core.List<core.String>? streetAddress;
-
-  $OrderAddress({
-    this.country,
-    this.fullAddress,
-    this.isPostOfficeBox,
-    this.locality,
-    this.postalCode,
-    this.recipientName,
-    this.region,
-    this.streetAddress,
-  });
-
-  $OrderAddress.fromJson(core.Map json_)
-      : this(
-          country: json_['country'] as core.String?,
-          fullAddress: (json_['fullAddress'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          isPostOfficeBox: json_['isPostOfficeBox'] as core.bool?,
-          locality: json_['locality'] as core.String?,
-          postalCode: json_['postalCode'] as core.String?,
-          recipientName: json_['recipientName'] as core.String?,
-          region: json_['region'] as core.String?,
-          streetAddress: (json_['streetAddress'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (country != null) 'country': country!,
-        if (fullAddress != null) 'fullAddress': fullAddress!,
-        if (isPostOfficeBox != null) 'isPostOfficeBox': isPostOfficeBox!,
-        if (locality != null) 'locality': locality!,
-        if (postalCode != null) 'postalCode': postalCode!,
-        if (recipientName != null) 'recipientName': recipientName!,
-        if (region != null) 'region': region!,
-        if (streetAddress != null) 'streetAddress': streetAddress!,
-      };
-}
-
-/// Used by:
-///
 /// - accesscontextmanager:v1 : OsConstraint
 /// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1OsConstraint
 class $OsConstraint {
@@ -14158,6 +15447,31 @@ class $OsInfo {
 
 /// Used by:
 ///
+/// - dataproc:v1 : OutputMetrics
+/// - dataproc:v1 : StageOutputMetrics
+class $OutputMetrics {
+  core.String? bytesWritten;
+  core.String? recordsWritten;
+
+  $OutputMetrics({
+    this.bytesWritten,
+    this.recordsWritten,
+  });
+
+  $OutputMetrics.fromJson(core.Map json_)
+      : this(
+          bytesWritten: json_['bytesWritten'] as core.String?,
+          recordsWritten: json_['recordsWritten'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bytesWritten != null) 'bytesWritten': bytesWritten!,
+        if (recordsWritten != null) 'recordsWritten': recordsWritten!,
+      };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : Pacing
 /// - displayvideo:v3 : Pacing
 class $Pacing {
@@ -14198,6 +15512,11 @@ class $Pacing {
 
   /// The type of pacing that defines how the budget amount will be spent across
   /// the pacing_period.
+  ///
+  /// *Warning*: Starting on **November 5, 2024**, `PACING_TYPE_ASAP` will no
+  /// longer be compatible with pacing_period `PACING_PERIOD_FLIGHT` for
+  /// insertion orders. \[Read more about this announced
+  /// change\](/display-video/api/deprecations#features.io_asap).
   ///
   /// Required.
   /// Possible string values are:
@@ -14270,76 +15589,6 @@ class $PageInfo {
         if (resultPerPage != null) 'resultPerPage': resultPerPage!,
         if (startIndex != null) 'startIndex': startIndex!,
         if (totalResults != null) 'totalResults': totalResults!,
-      };
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ParentEntityFilter
-/// - displayvideo:v3 : ParentEntityFilter
-class $ParentEntityFilter {
-  /// File types that will be returned.
-  ///
-  /// Required.
-  core.List<core.String>? fileType;
-
-  /// The IDs of the specified filter type.
-  ///
-  /// This is used to filter entities to fetch. If filter type is not
-  /// `FILTER_TYPE_NONE`, at least one ID must be specified.
-  core.List<core.String>? filterIds;
-
-  /// Filter type used to filter fetched entities.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "FILTER_TYPE_UNSPECIFIED" : Default value when type is unspecified or is
-  /// unknown in this version.
-  /// - "FILTER_TYPE_NONE" : If selected, no filter will be applied to the
-  /// download. Can only be used if an Advertiser is specified in
-  /// CreateSdfDownloadTaskRequest.
-  /// - "FILTER_TYPE_ADVERTISER_ID" : Advertiser ID. If selected, all filter IDs
-  /// must be Advertiser IDs that belong to the Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  /// - "FILTER_TYPE_CAMPAIGN_ID" : Campaign ID. If selected, all filter IDs
-  /// must be Campaign IDs that belong to the Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  /// - "FILTER_TYPE_MEDIA_PRODUCT_ID" : Media Product ID. If selected, all
-  /// filter IDs must be Media Product IDs that belong to the Advertiser or
-  /// Partner specified in CreateSdfDownloadTaskRequest. Can only be used for
-  /// downloading `FILE_TYPE_MEDIA_PRODUCT`.
-  /// - "FILTER_TYPE_INSERTION_ORDER_ID" : Insertion Order ID. If selected, all
-  /// filter IDs must be Insertion Order IDs that belong to the Advertiser or
-  /// Partner specified in CreateSdfDownloadTaskRequest. Can only be used for
-  /// downloading `FILE_TYPE_INSERTION_ORDER`, `FILE_TYPE_LINE_ITEM`,
-  /// `FILE_TYPE_AD_GROUP`, and `FILE_TYPE_AD`.
-  /// - "FILTER_TYPE_LINE_ITEM_ID" : Line Item ID. If selected, all filter IDs
-  /// must be Line Item IDs that belong to the Advertiser or Partner specified
-  /// in CreateSdfDownloadTaskRequest. Can only be used for downloading
-  /// `FILE_TYPE_LINE_ITEM`, `FILE_TYPE_AD_GROUP`, and `FILE_TYPE_AD`.
-  core.String? filterType;
-
-  $ParentEntityFilter({
-    this.fileType,
-    this.filterIds,
-    this.filterType,
-  });
-
-  $ParentEntityFilter.fromJson(core.Map json_)
-      : this(
-          fileType: (json_['fileType'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          filterIds: (json_['filterIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          filterType: json_['filterType'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (fileType != null) 'fileType': fileType!,
-        if (filterIds != null) 'filterIds': filterIds!,
-        if (filterType != null) 'filterType': filterType!,
       };
 }
 
@@ -14715,6 +15964,8 @@ class $PerformanceGoal {
   /// (cost per impression audible and visible at completion).
   /// - "PERFORMANCE_GOAL_TYPE_CPE" : The performance goal is set in CPE (cost
   /// per engagement).
+  /// - "PERFORMANCE_GOAL_TYPE_CPV" : The performance goal is set in CPV (cost
+  /// per view).
   /// - "PERFORMANCE_GOAL_TYPE_CLICK_CVR" : The performance goal is set in click
   /// conversion rate (conversions per click) percentage.
   /// - "PERFORMANCE_GOAL_TYPE_IMPRESSION_CVR" : The performance goal is set in
@@ -14924,6 +16175,7 @@ class $Permissions {
 /// - compute:v1 : TestPermissionsResponse
 /// - config:v1 : TestIamPermissionsResponse
 /// - connectors:v1 : TestIamPermissionsResponse
+/// - contactcenterinsights:v1 : GoogleIamV1TestIamPermissionsResponse
 /// - containeranalysis:v1 : TestIamPermissionsResponse
 /// - datacatalog:v1 : TestIamPermissionsResponse
 /// - datafusion:v1 : TestIamPermissionsResponse
@@ -14957,7 +16209,6 @@ class $Permissions {
 /// - securitycenter:v1 : TestIamPermissionsResponse
 /// - servicedirectory:v1 : TestIamPermissionsResponse
 /// - servicemanagement:v1 : TestIamPermissionsResponse
-/// - sourcerepo:v1 : TestIamPermissionsResponse
 /// - spanner:v1 : TestIamPermissionsResponse
 /// - vmwareengine:v1 : TestIamPermissionsResponse
 /// - workstations:v1 : TestIamPermissionsResponse
@@ -15235,6 +16486,102 @@ class $PoiTargetingOptionDetails {
 
 /// Used by:
 ///
+/// - gkehub:v1 : PolicyControllerResourceList
+/// - gkehub:v2 : PolicyControllerResourceList
+class $PolicyControllerResourceList {
+  /// CPU requirement expressed in Kubernetes resource units.
+  core.String? cpu;
+
+  /// Memory requirement expressed in Kubernetes resource units.
+  core.String? memory;
+
+  $PolicyControllerResourceList({
+    this.cpu,
+    this.memory,
+  });
+
+  $PolicyControllerResourceList.fromJson(core.Map json_)
+      : this(
+          cpu: json_['cpu'] as core.String?,
+          memory: json_['memory'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cpu != null) 'cpu': cpu!,
+        if (memory != null) 'memory': memory!,
+      };
+}
+
+/// Used by:
+///
+/// - gkehub:v1 : PolicyControllerTemplateLibraryConfig
+/// - gkehub:v2 : PolicyControllerTemplateLibraryConfig
+class $PolicyControllerTemplateLibraryConfig {
+  /// Configures the manner in which the template library is installed on the
+  /// cluster.
+  /// Possible string values are:
+  /// - "INSTALLATION_UNSPECIFIED" : No installation strategy has been
+  /// specified.
+  /// - "NOT_INSTALLED" : Do not install the template library.
+  /// - "ALL" : Install the entire template library.
+  core.String? installation;
+
+  $PolicyControllerTemplateLibraryConfig({
+    this.installation,
+  });
+
+  $PolicyControllerTemplateLibraryConfig.fromJson(core.Map json_)
+      : this(
+          installation: json_['installation'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (installation != null) 'installation': installation!,
+      };
+}
+
+/// Used by:
+///
+/// - gkehub:v1 : PolicyControllerToleration
+/// - gkehub:v2 : PolicyControllerToleration
+class $PolicyControllerToleration {
+  /// Matches a taint effect.
+  core.String? effect;
+
+  /// Matches a taint key (not necessarily unique).
+  core.String? key;
+
+  /// Matches a taint operator.
+  core.String? operator;
+
+  /// Matches a taint value.
+  core.String? value;
+
+  $PolicyControllerToleration({
+    this.effect,
+    this.key,
+    this.operator,
+    this.value,
+  });
+
+  $PolicyControllerToleration.fromJson(core.Map json_)
+      : this(
+          effect: json_['effect'] as core.String?,
+          key: json_['key'] as core.String?,
+          operator: json_['operator'] as core.String?,
+          value: json_['value'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (effect != null) 'effect': effect!,
+        if (key != null) 'key': key!,
+        if (operator != null) 'operator': operator!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Used by:
+///
 /// - gkeonprem:v1 : BareMetalAdminPortConfig
 /// - gkeonprem:v1 : BareMetalPortConfig
 class $PortConfig {
@@ -15460,6 +16807,40 @@ class $PrismaCpeCode {
         if (prismaEstimateCode != null)
           'prismaEstimateCode': prismaEstimateCode!,
         if (prismaProductCode != null) 'prismaProductCode': prismaProductCode!,
+      };
+}
+
+/// Used by:
+///
+/// - content:v2.1 : ProductProductDetail
+/// - css:v1 : ProductDetail
+class $ProductDetail {
+  /// The name of the product detail.
+  core.String? attributeName;
+
+  /// The value of the product detail.
+  core.String? attributeValue;
+
+  /// The section header used to group a set of product details.
+  core.String? sectionName;
+
+  $ProductDetail({
+    this.attributeName,
+    this.attributeValue,
+    this.sectionName,
+  });
+
+  $ProductDetail.fromJson(core.Map json_)
+      : this(
+          attributeName: json_['attributeName'] as core.String?,
+          attributeValue: json_['attributeValue'] as core.String?,
+          sectionName: json_['sectionName'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributeName != null) 'attributeName': attributeName!,
+        if (attributeValue != null) 'attributeValue': attributeValue!,
+        if (sectionName != null) 'sectionName': sectionName!,
       };
 }
 
@@ -15775,6 +17156,38 @@ class $Query {
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,
         if (terms != null) 'terms': terms!,
+      };
+}
+
+/// Used by:
+///
+/// - aiplatform:v1 : GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualitySpec
+/// - aiplatform:v1 : GoogleCloudAiplatformV1QuestionAnsweringQualitySpec
+class $QuestionAnsweringQualitySpec {
+  /// Whether to use instance.reference to compute question answering quality.
+  ///
+  /// Optional.
+  core.bool? useReference;
+
+  /// Which version to use for evaluation.
+  ///
+  /// Optional.
+  core.int? version;
+
+  $QuestionAnsweringQualitySpec({
+    this.useReference,
+    this.version,
+  });
+
+  $QuestionAnsweringQualitySpec.fromJson(core.Map json_)
+      : this(
+          useReference: json_['useReference'] as core.bool?,
+          version: json_['version'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (useReference != null) 'useReference': useReference!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -16204,45 +17617,13 @@ class $Req {
 
 /// Used by:
 ///
-/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest
-/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest
-/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest
-/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
-/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest
-class $Request00 {
-  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the customer.
-  ///
-  /// If you're using this API for your own organization, use
-  /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer}`, where customer is the customer
-  /// to whom the device belongs.
-  ///
-  /// Optional.
-  core.String? customer;
-
-  $Request00({
-    this.customer,
-  });
-
-  $Request00.fromJson(core.Map json_)
-      : this(
-          customer: json_['customer'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customer != null) 'customer': customer!,
-      };
-}
-
-/// Used by:
-///
+/// - backupdr:v1 : RemoveDataSourceRequest
 /// - migrationcenter:v1 : RunImportJobRequest
 /// - migrationcenter:v1 : ValidateImportJobRequest
 /// - rapidmigrationassessment:v1 : PauseCollectorRequest
 /// - rapidmigrationassessment:v1 : RegisterCollectorRequest
 /// - rapidmigrationassessment:v1 : ResumeCollectorRequest
-class $Request01 {
+class $Request00 {
   /// An optional request ID to identify requests.
   ///
   /// Specify a unique request ID so that if you must retry your request, the
@@ -16259,17 +17640,50 @@ class $Request01 {
   /// Optional.
   core.String? requestId;
 
-  $Request01({
+  $Request00({
     this.requestId,
   });
 
-  $Request01.fromJson(core.Map json_)
+  $Request00.fromJson(core.Map json_)
       : this(
           requestId: json_['requestId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
+      };
+}
+
+/// Used by:
+///
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest
+class $Request01 {
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the customer.
+  ///
+  /// If you're using this API for your own organization, use
+  /// `customers/my_customer` If you're using this API to manage another
+  /// organization, use `customers/{customer}`, where customer is the customer
+  /// to whom the device belongs.
+  ///
+  /// Optional.
+  core.String? customer;
+
+  $Request01({
+    this.customer,
+  });
+
+  $Request01.fromJson(core.Map json_)
+      : this(
+          customer: json_['customer'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customer != null) 'customer': customer!,
       };
 }
 
@@ -16389,9 +17803,84 @@ class $Request04 {
 
 /// Used by:
 ///
+/// - alloydb:v1 : FailoverInstanceRequest
+/// - alloydb:v1 : SwitchoverClusterRequest
+class $Request05 {
+  /// An optional request ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server ignores the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if the original operation with the same request ID
+  /// was received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  /// If set, performs request validation, for example, permission checks and
+  /// any other type of validation, but does not actually execute the create
+  /// request.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  $Request05({
+    this.requestId,
+    this.validateOnly,
+  });
+
+  $Request05.fromJson(core.Map json_)
+      : this(
+          requestId: json_['requestId'] as core.String?,
+          validateOnly: json_['validateOnly'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
+      };
+}
+
+/// Used by:
+///
+/// - clouddeploy:v1 : CancelRolloutRequest
+/// - clouddeploy:v1 : TerminateJobRunRequest
+class $Request06 {
+  /// Deploy policies to override.
+  ///
+  /// Format is
+  /// `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`.
+  ///
+  /// Optional.
+  core.List<core.String>? overrideDeployPolicy;
+
+  $Request06({
+    this.overrideDeployPolicy,
+  });
+
+  $Request06.fromJson(core.Map json_)
+      : this(
+          overrideDeployPolicy: (json_['overrideDeployPolicy'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (overrideDeployPolicy != null)
+          'overrideDeployPolicy': overrideDeployPolicy!,
+      };
+}
+
+/// Used by:
+///
 /// - cloudresourcemanager:v1 : ListAvailableOrgPolicyConstraintsRequest
 /// - cloudresourcemanager:v1 : ListOrgPoliciesRequest
-class $Request05 {
+class $Request07 {
   /// Size of the pages to be returned.
   ///
   /// This is currently unsupported and will be ignored. The server may at any
@@ -16404,12 +17893,12 @@ class $Request05 {
   /// point start using this field.
   core.String? pageToken;
 
-  $Request05({
+  $Request07({
     this.pageSize,
     this.pageToken,
   });
 
-  $Request05.fromJson(core.Map json_)
+  $Request07.fromJson(core.Map json_)
       : this(
           pageSize: json_['pageSize'] as core.int?,
           pageToken: json_['pageToken'] as core.String?,
@@ -16425,18 +17914,18 @@ class $Request05 {
 ///
 /// - compute:v1 : InstanceGroupManagersRecreateInstancesRequest
 /// - compute:v1 : RegionInstanceGroupManagersRecreateRequest
-class $Request06 {
+class $Request08 {
   /// The URLs of one or more instances to recreate.
   ///
   /// This can be a full URL or a partial URL, such as
   /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String>? instances;
 
-  $Request06({
+  $Request08({
     this.instances,
   });
 
-  $Request06.fromJson(core.Map json_)
+  $Request08.fromJson(core.Map json_)
       : this(
           instances: (json_['instances'] as core.List?)
               ?.map((value) => value as core.String)
@@ -16452,17 +17941,17 @@ class $Request06 {
 ///
 /// - content:v2.1 : RequestReviewFreeListingsRequest
 /// - content:v2.1 : RequestReviewShoppingAdsRequest
-class $Request07 {
+class $Request09 {
   /// The code \[ISO 3166-1
   /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the country
   /// for which review is to be requested.
   core.String? regionCode;
 
-  $Request07({
+  $Request09({
     this.regionCode,
   });
 
-  $Request07.fromJson(core.Map json_)
+  $Request09.fromJson(core.Map json_)
       : this(
           regionCode: json_['regionCode'] as core.String?,
         );
@@ -16476,15 +17965,15 @@ class $Request07 {
 ///
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3ValidateAgentRequest
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3ValidateFlowRequest
-class $Request08 {
+class $Request10 {
   /// If not specified, the agent's default language is used.
   core.String? languageCode;
 
-  $Request08({
+  $Request10({
     this.languageCode,
   });
 
-  $Request08.fromJson(core.Map json_)
+  $Request10.fromJson(core.Map json_)
       : this(
           languageCode: json_['languageCode'] as core.String?,
         );
@@ -16498,7 +17987,7 @@ class $Request08 {
 ///
 /// - notebooks:v1 : RefreshRuntimeTokenInternalRequest
 /// - notebooks:v2 : UpgradeInstanceSystemRequest
-class $Request09 {
+class $Request11 {
   /// The VM hardware token for authenticating the VM.
   ///
   /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity
@@ -16506,11 +17995,11 @@ class $Request09 {
   /// Required.
   core.String? vmId;
 
-  $Request09({
+  $Request11({
     this.vmId,
   });
 
-  $Request09.fromJson(core.Map json_)
+  $Request11.fromJson(core.Map json_)
       : this(
           vmId: json_['vmId'] as core.String?,
         );
@@ -16753,6 +18242,42 @@ class $ResultPostScanActionsResultBigQueryExportResult {
   core.Map<core.String, core.dynamic> toJson() => {
         if (message != null) 'message': message!,
         if (state != null) 'state': state!,
+      };
+}
+
+/// Used by:
+///
+/// - analyticshub:v1 : RetryPolicy
+/// - pubsub:v1 : RetryPolicy
+class $RetryPolicy {
+  /// The maximum delay between consecutive deliveries of a given message.
+  ///
+  /// Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+  ///
+  /// Optional.
+  core.String? maximumBackoff;
+
+  /// The minimum delay between consecutive deliveries of a given message.
+  ///
+  /// Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+  ///
+  /// Optional.
+  core.String? minimumBackoff;
+
+  $RetryPolicy({
+    this.maximumBackoff,
+    this.minimumBackoff,
+  });
+
+  $RetryPolicy.fromJson(core.Map json_)
+      : this(
+          maximumBackoff: json_['maximumBackoff'] as core.String?,
+          minimumBackoff: json_['minimumBackoff'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maximumBackoff != null) 'maximumBackoff': maximumBackoff!,
+        if (minimumBackoff != null) 'minimumBackoff': minimumBackoff!,
       };
 }
 
@@ -17011,47 +18536,6 @@ class $SbomReferenceIntotoPredicate {
 
 /// Used by:
 ///
-/// - batch:v1 : AgentScript
-/// - batch:v1 : Script
-class $Script {
-  /// Script file path on the host VM.
-  ///
-  /// To specify an interpreter, please add a `#!`(also known as
-  /// [shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix))) as the first
-  /// line of the file.(For example, to execute the script using bash,
-  /// `#!/bin/bash` should be the first line of the file. To execute the script
-  /// using`Python3`, `#!/usr/bin/env python3` should be the first line of the
-  /// file.) Otherwise, the file will by default be executed by `/bin/sh`.
-  core.String? path;
-
-  /// Shell script text.
-  ///
-  /// To specify an interpreter, please add a `#!\n` at the beginning of the
-  /// text.(For example, to execute the script using bash, `#!/bin/bash\n`
-  /// should be added. To execute the script using`Python3`, `#!/usr/bin/env
-  /// python3\n` should be added.) Otherwise, the script will by default be
-  /// executed by `/bin/sh`.
-  core.String? text;
-
-  $Script({
-    this.path,
-    this.text,
-  });
-
-  $Script.fromJson(core.Map json_)
-      : this(
-          path: json_['path'] as core.String?,
-          text: json_['text'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (path != null) 'path': path!,
-        if (text != null) 'text': text!,
-      };
-}
-
-/// Used by:
-///
 /// - displayvideo:v2 : ScriptError
 /// - displayvideo:v3 : ScriptError
 class $ScriptError {
@@ -17129,6 +18613,8 @@ class $SdfConfig {
   /// - "SDF_VERSION_7_1" : SDF version 7.1. Read the \[v7 migration
   /// guide\](/display-video/api/structured-data-file/v7-migration-guide) before
   /// migrating to this version.
+  /// - "SDF_VERSION_8" : SDF version 8. **This SDF version is in beta. It is
+  /// only available to a subset of users.**
   core.String? version;
 
   $SdfConfig({
@@ -17331,11 +18817,9 @@ class $SensitiveCategoryAssignedTargetingOptionDetails {
   /// - "SENSITIVE_CATEGORY_SHOCKING" : Content which may be considered shocking
   /// or disturbing, such as violent news stories, stunts, or toilet humor.
   /// - "SENSITIVE_CATEGORY_EMBEDDED_VIDEO" : YouTube videos embedded on
-  /// websites outside of YouTube.com. Only applicable to YouTube and Partners
-  /// line items.
+  /// websites outside of YouTube.com.
   /// - "SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO" : Video of live events
-  /// streamed over the internet. Only applicable to YouTube and Partners line
-  /// items.
+  /// streamed over the internet.
   core.String? excludedSensitiveCategory;
 
   $SensitiveCategoryAssignedTargetingOptionDetails({
@@ -17414,11 +18898,9 @@ class $SensitiveCategoryTargetingOptionDetails {
   /// - "SENSITIVE_CATEGORY_SHOCKING" : Content which may be considered shocking
   /// or disturbing, such as violent news stories, stunts, or toilet humor.
   /// - "SENSITIVE_CATEGORY_EMBEDDED_VIDEO" : YouTube videos embedded on
-  /// websites outside of YouTube.com. Only applicable to YouTube and Partners
-  /// line items.
+  /// websites outside of YouTube.com.
   /// - "SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO" : Video of live events
-  /// streamed over the internet. Only applicable to YouTube and Partners line
-  /// items.
+  /// streamed over the internet.
   core.String? sensitiveCategory;
 
   $SensitiveCategoryTargetingOptionDetails({
@@ -17463,6 +18945,162 @@ class $Sentiment {
   core.Map<core.String, core.dynamic> toJson() => {
         if (magnitude != null) 'magnitude': magnitude!,
         if (score != null) 'score': score!,
+      };
+}
+
+/// Used by:
+///
+/// - cloudbuild:v2 : GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig
+/// - developerconnect:v1 : ServiceDirectoryConfig
+class $ServiceDirectoryConfig {
+  /// The Service Directory service name.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+  ///
+  /// Required.
+  core.String? service;
+
+  $ServiceDirectoryConfig({
+    this.service,
+  });
+
+  $ServiceDirectoryConfig.fromJson(core.Map json_)
+      : this(
+          service: json_['service'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (service != null) 'service': service!,
+      };
+}
+
+/// Used by:
+///
+/// - gkehub:v1 : ServiceMeshCondition
+/// - gkehub:v2 : ServiceMeshCondition
+class $ServiceMeshCondition {
+  /// Unique identifier of the condition which describes the condition
+  /// recognizable to the user.
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : Default Unspecified code
+  /// - "MESH_IAM_PERMISSION_DENIED" : Mesh IAM permission denied error code
+  /// - "MESH_IAM_CROSS_PROJECT_PERMISSION_DENIED" : Permission denied error
+  /// code for cross-project
+  /// - "CNI_CONFIG_UNSUPPORTED" : CNI config unsupported error code
+  /// - "GKE_SANDBOX_UNSUPPORTED" : GKE sandbox unsupported error code
+  /// - "NODEPOOL_WORKLOAD_IDENTITY_FEDERATION_REQUIRED" : Nodepool workload
+  /// identity federation required error code
+  /// - "CNI_INSTALLATION_FAILED" : CNI installation failed error code
+  /// - "CNI_POD_UNSCHEDULABLE" : CNI pod unschedulable error code
+  /// - "CLUSTER_HAS_ZERO_NODES" : Cluster has zero node code
+  /// - "UNSUPPORTED_MULTIPLE_CONTROL_PLANES" : Multiple control planes
+  /// unsupported error code
+  /// - "VPCSC_GA_SUPPORTED" : VPC-SC GA is supported for this control plane.
+  /// - "DEPRECATED_SPEC_CONTROL_PLANE_MANAGEMENT" : User is using deprecated
+  /// ControlPlaneManagement and they have not yet set Management.
+  /// - "DEPRECATED_SPEC_CONTROL_PLANE_MANAGEMENT_SAFE" : User is using
+  /// deprecated ControlPlaneManagement and they have already set Management.
+  /// - "CONFIG_APPLY_INTERNAL_ERROR" : Configuration (Istio/k8s resources)
+  /// failed to apply due to internal error.
+  /// - "CONFIG_VALIDATION_ERROR" : Configuration failed to be applied due to
+  /// being invalid.
+  /// - "CONFIG_VALIDATION_WARNING" : Encountered configuration(s) with possible
+  /// unintended behavior or invalid configuration. These configs may not have
+  /// been applied.
+  /// - "QUOTA_EXCEEDED_BACKEND_SERVICES" : BackendService quota exceeded error
+  /// code.
+  /// - "QUOTA_EXCEEDED_HEALTH_CHECKS" : HealthCheck quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_HTTP_ROUTES" : HTTPRoute quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_TCP_ROUTES" : TCPRoute quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_TLS_ROUTES" : TLS routes quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_TRAFFIC_POLICIES" : TrafficPolicy quota exceeded error
+  /// code.
+  /// - "QUOTA_EXCEEDED_ENDPOINT_POLICIES" : EndpointPolicy quota exceeded error
+  /// code.
+  /// - "QUOTA_EXCEEDED_GATEWAYS" : Gateway quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_MESHES" : Mesh quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_SERVER_TLS_POLICIES" : ServerTLSPolicy quota exceeded
+  /// error code.
+  /// - "QUOTA_EXCEEDED_CLIENT_TLS_POLICIES" : ClientTLSPolicy quota exceeded
+  /// error code.
+  /// - "QUOTA_EXCEEDED_SERVICE_LB_POLICIES" : ServiceLBPolicy quota exceeded
+  /// error code.
+  /// - "QUOTA_EXCEEDED_HTTP_FILTERS" : HTTPFilter quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_TCP_FILTERS" : TCPFilter quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_NETWORK_ENDPOINT_GROUPS" : NetworkEndpointGroup quota
+  /// exceeded error code.
+  /// - "MODERNIZATION_SCHEDULED" : Modernization is scheduled for a cluster.
+  /// - "MODERNIZATION_IN_PROGRESS" : Modernization is in progress for a
+  /// cluster.
+  /// - "MODERNIZATION_COMPLETED" : Modernization is completed for a cluster.
+  /// - "MODERNIZATION_ABORTED" : Modernization is aborted for a cluster.
+  core.String? code;
+
+  /// A short summary about the issue.
+  core.String? details;
+
+  /// Links contains actionable information.
+  core.String? documentationLink;
+
+  /// Severity level of the condition.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Unspecified severity
+  /// - "ERROR" : Indicates an issue that prevents the mesh from operating
+  /// correctly
+  /// - "WARNING" : Indicates a setting is likely wrong, but the mesh is still
+  /// able to operate
+  /// - "INFO" : An informational message, not requiring any action
+  core.String? severity;
+
+  $ServiceMeshCondition({
+    this.code,
+    this.details,
+    this.documentationLink,
+    this.severity,
+  });
+
+  $ServiceMeshCondition.fromJson(core.Map json_)
+      : this(
+          code: json_['code'] as core.String?,
+          details: json_['details'] as core.String?,
+          documentationLink: json_['documentationLink'] as core.String?,
+          severity: json_['severity'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (documentationLink != null) 'documentationLink': documentationLink!,
+        if (severity != null) 'severity': severity!,
+      };
+}
+
+/// Used by:
+///
+/// - gkehub:v1 : ServiceMeshStatusDetails
+/// - gkehub:v2 : ServiceMeshStatusDetails
+class $ServiceMeshStatusDetails {
+  /// A machine-readable code that further describes a broad status.
+  core.String? code;
+
+  /// Human-readable explanation of code.
+  core.String? details;
+
+  $ServiceMeshStatusDetails({
+    this.code,
+    this.details,
+  });
+
+  $ServiceMeshStatusDetails.fromJson(core.Map json_)
+      : this(
+          code: json_['code'] as core.String?,
+          details: json_['details'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
       };
 }
 
@@ -17601,6 +19239,7 @@ class $Shared00 {
 /// Used by:
 ///
 /// - androidpublisher:v3 : ArchiveSubscriptionRequest
+/// - bigtableadmin:v2 : GoogleBigtableAdminV2TypeStringEncodingUtf8Raw
 /// - cloudchannel:v1 : GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity
 /// - domains:v1 : ExportRegistrationRequest
 /// - driveactivity:v2 : File
@@ -17616,21 +19255,49 @@ class $Shared01 {
 
 /// Used by:
 ///
+/// - gkehub:v1 : ConfigManagementPolicyControllerMonitoring
+/// - gkehub:v1 : PolicyControllerMonitoringConfig
+/// - gkehub:v2 : ConfigManagementPolicyControllerMonitoring
+/// - gkehub:v2 : PolicyControllerMonitoringConfig
+class $Shared02 {
+  /// Specifies the list of backends Policy Controller will export to.
+  ///
+  /// An empty list would effectively disable metrics export.
+  core.List<core.String>? backends;
+
+  $Shared02({
+    this.backends,
+  });
+
+  $Shared02.fromJson(core.Map json_)
+      : this(
+          backends: (json_['backends'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backends != null) 'backends': backends!,
+      };
+}
+
+/// Used by:
+///
 /// - osconfig:v1 : OSPolicyResourcePackageResourceAPT
 /// - osconfig:v1 : OSPolicyResourcePackageResourceGooGet
 /// - osconfig:v1 : OSPolicyResourcePackageResourceYUM
 /// - osconfig:v1 : OSPolicyResourcePackageResourceZypper
-class $Shared02 {
+class $Shared03 {
   /// Package name.
   ///
   /// Required.
   core.String? name;
 
-  $Shared02({
+  $Shared03({
     this.name,
   });
 
-  $Shared02.fromJson(core.Map json_)
+  $Shared03.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
         );
@@ -17644,7 +19311,7 @@ class $Shared02 {
 ///
 /// - aiplatform:v1 : GoogleCloudAiplatformV1DiskSpec
 /// - ml:v1 : GoogleCloudMlV1__DiskConfig
-class $Shared03 {
+class $Shared04 {
   /// Size in GB of the boot disk (default is 100GB).
   core.int? bootDiskSizeGb;
 
@@ -17654,12 +19321,12 @@ class $Shared03 {
   /// "pd-standard" (Persistent Disk Hard Disk Drive).
   core.String? bootDiskType;
 
-  $Shared03({
+  $Shared04({
     this.bootDiskSizeGb,
     this.bootDiskType,
   });
 
-  $Shared03.fromJson(core.Map json_)
+  $Shared04.fromJson(core.Map json_)
       : this(
           bootDiskSizeGb: json_['bootDiskSizeGb'] as core.int?,
           bootDiskType: json_['bootDiskType'] as core.String?,
@@ -17675,16 +19342,16 @@ class $Shared03 {
 ///
 /// - apigee:v1 : GoogleCloudApigeeV1AccessGet
 /// - integrations:v1 : EnterpriseCrmEventbusProtoToken
-class $Shared04 {
+class $Shared05 {
   core.String? name;
   core.String? value;
 
-  $Shared04({
+  $Shared05({
     this.name,
     this.value,
   });
 
-  $Shared04.fromJson(core.Map json_)
+  $Shared05.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
           value: json_['value'] as core.String?,
@@ -17700,14 +19367,14 @@ class $Shared04 {
 ///
 /// - cloudsearch:v1 : DoubleValues
 /// - integrations:v1 : EnterpriseCrmEventbusProtoDoubleArray
-class $Shared05 {
+class $Shared06 {
   core.List<core.double>? values;
 
-  $Shared05({
+  $Shared06({
     this.values,
   });
 
-  $Shared05.fromJson(core.Map json_)
+  $Shared06.fromJson(core.Map json_)
       : this(
           values: (json_['values'] as core.List?)
               ?.map((value) => (value as core.num).toDouble())
@@ -17723,14 +19390,14 @@ class $Shared05 {
 ///
 /// - cloudsearch:v1 : IntegerValues
 /// - integrations:v1 : EnterpriseCrmEventbusProtoIntArray
-class $Shared06 {
+class $Shared07 {
   core.List<core.String>? values;
 
-  $Shared06({
+  $Shared07({
     this.values,
   });
 
-  $Shared06.fromJson(core.Map json_)
+  $Shared07.fromJson(core.Map json_)
       : this(
           values: (json_['values'] as core.List?)
               ?.map((value) => value as core.String)
@@ -17746,19 +19413,19 @@ class $Shared06 {
 ///
 /// - compute:v1 : InstancesSetServiceAccountRequest
 /// - compute:v1 : ServiceAccount
-class $Shared07 {
+class $Shared08 {
   /// Email address of the service account.
   core.String? email;
 
   /// The list of scopes to be made available for this service account.
   core.List<core.String>? scopes;
 
-  $Shared07({
+  $Shared08({
     this.email,
     this.scopes,
   });
 
-  $Shared07.fromJson(core.Map json_)
+  $Shared08.fromJson(core.Map json_)
       : this(
           email: json_['email'] as core.String?,
           scopes: (json_['scopes'] as core.List?)
@@ -17776,17 +19443,17 @@ class $Shared07 {
 ///
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource
-class $Shared08 {
+class $Shared09 {
   /// Format: `gs:///`
   ///
   /// Required.
   core.String? objectUri;
 
-  $Shared08({
+  $Shared09({
     this.objectUri,
   });
 
-  $Shared08.fromJson(core.Map json_)
+  $Shared09.fromJson(core.Map json_)
       : this(
           objectUri: json_['objectUri'] as core.String?,
         );
@@ -17800,19 +19467,19 @@ class $Shared08 {
 ///
 /// - content:v2.1 : Price
 /// - content:v2.1 : PriceAmount
-class $Shared09 {
+class $Shared10 {
   /// The currency of the price.
   core.String? currency;
 
   /// The price represented as a number.
   core.String? value;
 
-  $Shared09({
+  $Shared10({
     this.currency,
     this.value,
   });
 
-  $Shared09.fromJson(core.Map json_)
+  $Shared10.fromJson(core.Map json_)
       : this(
           currency: json_['currency'] as core.String?,
           value: json_['value'] as core.String?,
@@ -17828,7 +19495,7 @@ class $Shared09 {
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2Sentiment
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3SentimentAnalysisResult
-class $Shared10 {
+class $Shared11 {
   /// A non-negative number in the \[0, +inf) range, which represents the
   /// absolute magnitude of sentiment, regardless of score (positive or
   /// negative).
@@ -17838,12 +19505,12 @@ class $Shared10 {
   /// sentiment).
   core.double? score;
 
-  $Shared10({
+  $Shared11({
     this.magnitude,
     this.score,
   });
 
-  $Shared10.fromJson(core.Map json_)
+  $Shared11.fromJson(core.Map json_)
       : this(
           magnitude: (json_['magnitude'] as core.num?)?.toDouble(),
           score: (json_['score'] as core.num?)?.toDouble(),
@@ -17852,32 +19519,6 @@ class $Shared10 {
   core.Map<core.String, core.dynamic> toJson() => {
         if (magnitude != null) 'magnitude': magnitude!,
         if (score != null) 'score': score!,
-      };
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : ConfigManagementPolicyControllerMonitoring
-/// - gkehub:v1 : PolicyControllerMonitoringConfig
-class $Shared11 {
-  /// Specifies the list of backends Policy Controller will export to.
-  ///
-  /// An empty list would effectively disable metrics export.
-  core.List<core.String>? backends;
-
-  $Shared11({
-    this.backends,
-  });
-
-  $Shared11.fromJson(core.Map json_)
-      : this(
-          backends: (json_['backends'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (backends != null) 'backends': backends!,
       };
 }
 
@@ -18028,6 +19669,104 @@ class $ShieldedInstanceConfig {
           'enableIntegrityMonitoring': enableIntegrityMonitoring!,
         if (enableSecureBoot != null) 'enableSecureBoot': enableSecureBoot!,
         if (enableVtpm != null) 'enableVtpm': enableVtpm!,
+      };
+}
+
+/// Used by:
+///
+/// - dataproc:v1 : ShufflePushReadMetrics
+/// - dataproc:v1 : StageShufflePushReadMetrics
+class $ShufflePushReadMetrics {
+  core.String? corruptMergedBlockChunks;
+  core.String? localMergedBlocksFetched;
+  core.String? localMergedBytesRead;
+  core.String? localMergedChunksFetched;
+  core.String? mergedFetchFallbackCount;
+  core.String? remoteMergedBlocksFetched;
+  core.String? remoteMergedBytesRead;
+  core.String? remoteMergedChunksFetched;
+  core.String? remoteMergedReqsDuration;
+
+  $ShufflePushReadMetrics({
+    this.corruptMergedBlockChunks,
+    this.localMergedBlocksFetched,
+    this.localMergedBytesRead,
+    this.localMergedChunksFetched,
+    this.mergedFetchFallbackCount,
+    this.remoteMergedBlocksFetched,
+    this.remoteMergedBytesRead,
+    this.remoteMergedChunksFetched,
+    this.remoteMergedReqsDuration,
+  });
+
+  $ShufflePushReadMetrics.fromJson(core.Map json_)
+      : this(
+          corruptMergedBlockChunks:
+              json_['corruptMergedBlockChunks'] as core.String?,
+          localMergedBlocksFetched:
+              json_['localMergedBlocksFetched'] as core.String?,
+          localMergedBytesRead: json_['localMergedBytesRead'] as core.String?,
+          localMergedChunksFetched:
+              json_['localMergedChunksFetched'] as core.String?,
+          mergedFetchFallbackCount:
+              json_['mergedFetchFallbackCount'] as core.String?,
+          remoteMergedBlocksFetched:
+              json_['remoteMergedBlocksFetched'] as core.String?,
+          remoteMergedBytesRead: json_['remoteMergedBytesRead'] as core.String?,
+          remoteMergedChunksFetched:
+              json_['remoteMergedChunksFetched'] as core.String?,
+          remoteMergedReqsDuration:
+              json_['remoteMergedReqsDuration'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (corruptMergedBlockChunks != null)
+          'corruptMergedBlockChunks': corruptMergedBlockChunks!,
+        if (localMergedBlocksFetched != null)
+          'localMergedBlocksFetched': localMergedBlocksFetched!,
+        if (localMergedBytesRead != null)
+          'localMergedBytesRead': localMergedBytesRead!,
+        if (localMergedChunksFetched != null)
+          'localMergedChunksFetched': localMergedChunksFetched!,
+        if (mergedFetchFallbackCount != null)
+          'mergedFetchFallbackCount': mergedFetchFallbackCount!,
+        if (remoteMergedBlocksFetched != null)
+          'remoteMergedBlocksFetched': remoteMergedBlocksFetched!,
+        if (remoteMergedBytesRead != null)
+          'remoteMergedBytesRead': remoteMergedBytesRead!,
+        if (remoteMergedChunksFetched != null)
+          'remoteMergedChunksFetched': remoteMergedChunksFetched!,
+        if (remoteMergedReqsDuration != null)
+          'remoteMergedReqsDuration': remoteMergedReqsDuration!,
+      };
+}
+
+/// Used by:
+///
+/// - dataproc:v1 : ShuffleWriteMetrics
+/// - dataproc:v1 : StageShuffleWriteMetrics
+class $ShuffleWriteMetrics {
+  core.String? bytesWritten;
+  core.String? recordsWritten;
+  core.String? writeTimeNanos;
+
+  $ShuffleWriteMetrics({
+    this.bytesWritten,
+    this.recordsWritten,
+    this.writeTimeNanos,
+  });
+
+  $ShuffleWriteMetrics.fromJson(core.Map json_)
+      : this(
+          bytesWritten: json_['bytesWritten'] as core.String?,
+          recordsWritten: json_['recordsWritten'] as core.String?,
+          writeTimeNanos: json_['writeTimeNanos'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bytesWritten != null) 'bytesWritten': bytesWritten!,
+        if (recordsWritten != null) 'recordsWritten': recordsWritten!,
+        if (writeTimeNanos != null) 'writeTimeNanos': writeTimeNanos!,
       };
 }
 
@@ -18306,6 +20045,33 @@ class $SourceContext {
 
 /// Used by:
 ///
+/// - aiplatform:v1 : GoogleCloudAiplatformV1CoherenceSpec
+/// - aiplatform:v1 : GoogleCloudAiplatformV1FluencySpec
+/// - aiplatform:v1 : GoogleCloudAiplatformV1FulfillmentSpec
+/// - aiplatform:v1 : GoogleCloudAiplatformV1GroundednessSpec
+/// - aiplatform:v1 : GoogleCloudAiplatformV1SafetySpec
+class $Spec {
+  /// Which version to use for evaluation.
+  ///
+  /// Optional.
+  core.int? version;
+
+  $Spec({
+    this.version,
+  });
+
+  $Spec.fromJson(core.Map json_)
+      : this(
+          version: json_['version'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (version != null) 'version': version!,
+      };
+}
+
+/// Used by:
+///
 /// - workflowexecutions:v1 : StateError
 /// - workflows:v1 : StateError
 class $StateError {
@@ -18482,7 +20248,6 @@ class $StaticRouteConfig {
 /// - compute:v1 : Status
 /// - config:v1 : Status
 /// - connectors:v1 : Status
-/// - connectors:v2 : Status
 /// - contactcenterinsights:v1 : GoogleRpcStatus
 /// - container:v1 : Status
 /// - containeranalysis:v1 : Status
@@ -18505,6 +20270,7 @@ class $StaticRouteConfig {
 /// - dlp:v2 : GoogleRpcStatus
 /// - documentai:v1 : GoogleRpcStatus
 /// - domains:v1 : Status
+/// - drive:v3 : Status
 /// - eventarc:v1 : GoogleRpcStatus
 /// - file:v1 : Status
 /// - firebaseappdistribution:v1 : GoogleRpcStatus
@@ -18513,6 +20279,7 @@ class $StaticRouteConfig {
 /// - firestore:v1 : Status
 /// - gkebackup:v1 : GoogleRpcStatus
 /// - gkehub:v1 : GoogleRpcStatus
+/// - gkehub:v2 : GoogleRpcStatus
 /// - gkeonprem:v1 : Status
 /// - healthcare:v1 : Status
 /// - iam:v1 : Status
@@ -18527,6 +20294,7 @@ class $StaticRouteConfig {
 /// - migrationcenter:v1 : Status
 /// - ml:v1 : GoogleRpc__Status
 /// - monitoring:v3 : Status
+/// - netapp:v1 : Status
 /// - networkconnectivity:v1 : GoogleRpcStatus
 /// - networkmanagement:v1 : Status
 /// - networksecurity:v1 : Status
@@ -18534,9 +20302,9 @@ class $StaticRouteConfig {
 /// - notebooks:v1 : Status
 /// - notebooks:v2 : Status
 /// - ondemandscanning:v1 : Status
+/// - oracledatabase:v1 : Status
 /// - osconfig:v1 : Status
 /// - people:v1 : Status
-/// - photoslibrary:v1 : Status
 /// - policysimulator:v1 : GoogleRpcStatus
 /// - policytroubleshooter:v1 : GoogleRpcStatus
 /// - privateca:v1 : Status
@@ -18555,10 +20323,8 @@ class $StaticRouteConfig {
 /// - servicemanagement:v1 : Status
 /// - servicenetworking:v1 : Status
 /// - serviceusage:v1 : Status
-/// - sourcerepo:v1 : Status
 /// - spanner:v1 : Status
 /// - speech:v1 : Status
-/// - speech:v2 : Status
 /// - storagetransfer:v1 : Status
 /// - streetviewpublish:v1 : Status
 /// - texttospeech:v1 : Status
@@ -18577,7 +20343,7 @@ class $StaticRouteConfig {
 /// - workloadmanager:v1 : Status
 /// - workspaceevents:v1 : Status
 /// - workstations:v1 : Status
-class $Status {
+class $Status00 {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int? code;
 
@@ -18595,13 +20361,13 @@ class $Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  $Status({
+  $Status00({
     this.code,
     this.details,
     this.message,
   });
 
-  $Status.fromJson(core.Map json_)
+  $Status00.fromJson(core.Map json_)
       : this(
           code: json_['code'] as core.int?,
           details: (json_['details'] as core.List?)
@@ -18619,9 +20385,45 @@ class $Status {
 
 /// Used by:
 ///
+/// - gkehub:v1 : Status
+/// - gkehub:v2 : AppDevExperienceStatus
+class $Status01 {
+  /// Code specifies AppDevExperienceFeature's subcomponent ready state.
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : Not set.
+  /// - "OK" : AppDevExperienceFeature's specified subcomponent is ready.
+  /// - "FAILED" : AppDevExperienceFeature's specified subcomponent ready state
+  /// is false. This means AppDevExperienceFeature has encountered an issue that
+  /// blocks all, or a portion, of its normal operation. See the `description`
+  /// for more details.
+  /// - "UNKNOWN" : AppDevExperienceFeature's specified subcomponent has a
+  /// pending or unknown state.
+  core.String? code;
+
+  /// Description is populated if Code is Failed, explaining why it has failed.
+  core.String? description;
+
+  $Status01({
+    this.code,
+    this.description,
+  });
+
+  $Status01.fromJson(core.Map json_)
+      : this(
+          code: json_['code'] as core.String?,
+          description: json_['description'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (description != null) 'description': description!,
+      };
+}
+
+/// Used by:
+///
 /// - cloudasset:v1 : GoogleCloudAssetV1StringValues
 /// - orgpolicy:v2 : GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues
-/// - policysimulator:v1 : GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues
 class $StringValues {
   /// List of values allowed at this resource.
   core.List<core.String>? allowedValues;
@@ -18922,6 +20724,7 @@ class $TenantProjectRequest {
 /// - cloudtasks:v2 : TestIamPermissionsRequest
 /// - config:v1 : TestIamPermissionsRequest
 /// - connectors:v1 : TestIamPermissionsRequest
+/// - contactcenterinsights:v1 : GoogleIamV1TestIamPermissionsRequest
 /// - containeranalysis:v1 : TestIamPermissionsRequest
 /// - datacatalog:v1 : TestIamPermissionsRequest
 /// - datafusion:v1 : TestIamPermissionsRequest
@@ -18954,7 +20757,6 @@ class $TenantProjectRequest {
 /// - securitycenter:v1 : TestIamPermissionsRequest
 /// - servicedirectory:v1 : TestIamPermissionsRequest
 /// - servicemanagement:v1 : TestIamPermissionsRequest
-/// - sourcerepo:v1 : TestIamPermissionsRequest
 /// - vmwareengine:v1 : TestIamPermissionsRequest
 /// - workstations:v1 : TestIamPermissionsRequest
 class $TestIamPermissionsRequest00 {
@@ -19231,20 +21033,71 @@ class $ThirdPartyVendorConfig {
 /// - authorizedbuyersmarketplace:v1 : TimeOfDay
 /// - businessprofileperformance:v1 : TimeOfDay
 /// - classroom:v1 : TimeOfDay
+/// - clouddeploy:v1 : TimeOfDay
 /// - dlp:v2 : GoogleTypeTimeOfDay
-/// - firestore:v1 : TimeOfDay
 /// - gkebackup:v1 : TimeOfDay
-/// - jobs:v3 : TimeOfDay
-/// - jobs:v4 : TimeOfDay
-/// - looker:v1 : TimeOfDay
 /// - memcache:v1 : TimeOfDay
+/// - monitoring:v3 : TimeOfDay
 /// - mybusinessbusinessinformation:v1 : TimeOfDay
 /// - mybusinesslodging:v1 : TimeOfDay
+/// - oracledatabase:v1 : TimeOfDay
 /// - osconfig:v1 : TimeOfDay
 /// - redis:v1 : TimeOfDay
 /// - sheets:v4 : TimeOfDay
 /// - storagetransfer:v1 : TimeOfDay
-class $TimeOfDay {
+class $TimeOfDay00 {
+  /// Hours of a day in 24 hour format.
+  ///
+  /// Must be greater than or equal to 0 and typically must be less than or
+  /// equal to 23. An API may choose to allow the value "24:00:00" for scenarios
+  /// like business closing time.
+  core.int? hours;
+
+  /// Minutes of an hour.
+  ///
+  /// Must be greater than or equal to 0 and less than or equal to 59.
+  core.int? minutes;
+
+  /// Fractions of seconds, in nanoseconds.
+  ///
+  /// Must be greater than or equal to 0 and less than or equal to 999,999,999.
+  core.int? nanos;
+
+  /// Seconds of a minute.
+  ///
+  /// Must be greater than or equal to 0 and typically must be less than or
+  /// equal to 59. An API may allow the value 60 if it allows leap-seconds.
+  core.int? seconds;
+
+  $TimeOfDay00({
+    this.hours,
+    this.minutes,
+    this.nanos,
+    this.seconds,
+  });
+
+  $TimeOfDay00.fromJson(core.Map json_)
+      : this(
+          hours: json_['hours'] as core.int?,
+          minutes: json_['minutes'] as core.int?,
+          nanos: json_['nanos'] as core.int?,
+          seconds: json_['seconds'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hours != null) 'hours': hours!,
+        if (minutes != null) 'minutes': minutes!,
+        if (nanos != null) 'nanos': nanos!,
+        if (seconds != null) 'seconds': seconds!,
+      };
+}
+
+/// Used by:
+///
+/// - jobs:v3 : TimeOfDay
+/// - jobs:v4 : TimeOfDay
+/// - looker:v1 : TimeOfDay
+class $TimeOfDay01 {
   /// Hours of day in 24 hour format.
   ///
   /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
@@ -19267,14 +21120,14 @@ class $TimeOfDay {
   /// leap-seconds.
   core.int? seconds;
 
-  $TimeOfDay({
+  $TimeOfDay01({
     this.hours,
     this.minutes,
     this.nanos,
     this.seconds,
   });
 
-  $TimeOfDay.fromJson(core.Map json_)
+  $TimeOfDay01.fromJson(core.Map json_)
       : this(
           hours: json_['hours'] as core.int?,
           minutes: json_['minutes'] as core.int?,
@@ -19325,12 +21178,14 @@ class $TimeRange {
 /// Used by:
 ///
 /// - adsense:v2 : TimeZone
+/// - adsenseplatform:v1 : TimeZone
 /// - authorizedbuyersmarketplace:v1 : TimeZone
 /// - cloudchannel:v1 : GoogleTypeTimeZone
 /// - content:v2.1 : TimeZone
 /// - contentwarehouse:v1 : GoogleTypeTimeZone
 /// - documentai:v1 : GoogleTypeTimeZone
 /// - localservices:v1 : GoogleTypeTimeZone
+/// - oracledatabase:v1 : TimeZone
 /// - osconfig:v1 : TimeZone
 class $TimeZone {
   /// IANA Time Zone Database time zone, e.g. "America/New_York".

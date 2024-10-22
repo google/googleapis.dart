@@ -2430,7 +2430,7 @@ class Secret {
   /// Output only.
   core.String? createTime;
 
-  /// The customer-managed encryption configuration of the Regionalised Secrets.
+  /// The customer-managed encryption configuration of the regionalized secrets.
   ///
   /// If no configuration is provided, Google-managed default encryption is
   /// used. Updates to the Secret encryption configuration only apply to
@@ -2666,7 +2666,7 @@ class SecretVersion {
   /// The customer-managed encryption status of the SecretVersion.
   ///
   /// Only populated if customer-managed encryption is used and Secret is a
-  /// Regionalised Secret.
+  /// regionalized secret.
   ///
   /// Output only.
   CustomerManagedEncryptionStatus? customerManagedEncryption;
@@ -2811,14 +2811,13 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 /// A Pub/Sub topic which Secret Manager will publish to when control plane
 /// events occur on this secret.
 class Topic {
+  /// Identifier.
+  ///
   /// The resource name of the Pub/Sub topic that will be published to, in the
-  /// following format: `projects / * /topics / * `.
-  ///
-  /// For publication to succeed, the Secret Manager service agent must have the
-  /// `pubsub.topic.publish` permission on the topic. The Pub/Sub Publisher role
+  /// following format: `projects / * /topics / * `. For publication to succeed,
+  /// the Secret Manager service agent must have the `pubsub.topic.publish`
+  /// permission on the topic. The Pub/Sub Publisher role
   /// (`roles/pubsub.publisher`) includes this permission.
-  ///
-  /// Required.
   core.String? name;
 
   Topic({

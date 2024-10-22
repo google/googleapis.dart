@@ -1301,7 +1301,7 @@ class AddConditionalFormatRuleRequest {
 /// After the data source is added successfully, an associated DATA_SOURCE sheet
 /// is created and an execution is triggered to refresh the sheet to read data
 /// from the data source. The request requires an additional `bigquery.readonly`
-/// OAuth scope.
+/// OAuth scope if you are adding a BigQuery data source.
 class AddDataSourceRequest {
   /// The data source to add.
   DataSource? dataSource;
@@ -3888,6 +3888,9 @@ class BubbleChartSpec {
 
 /// Cancels one or multiple refreshes of data source objects in the spreadsheet
 /// by the specified references.
+///
+/// The request requires an additional `bigquery.readonly` OAuth scope if you
+/// are cancelling a refresh on a BigQuery data source.
 class CancelDataSourceRefreshRequest {
   /// Reference to a DataSource.
   ///
@@ -6201,11 +6204,15 @@ class DataSourceSpec {
   /// A BigQueryDataSourceSpec.
   BigQueryDataSourceSpec? bigQuery;
 
+  /// A LookerDatasourceSpec.
+  LookerDataSourceSpec? looker;
+
   /// The parameters of the data source, used when querying the data source.
   core.List<DataSourceParameter>? parameters;
 
   DataSourceSpec({
     this.bigQuery,
+    this.looker,
     this.parameters,
   });
 
@@ -6215,6 +6222,10 @@ class DataSourceSpec {
               ? BigQueryDataSourceSpec.fromJson(
                   json_['bigQuery'] as core.Map<core.String, core.dynamic>)
               : null,
+          looker: json_.containsKey('looker')
+              ? LookerDataSourceSpec.fromJson(
+                  json_['looker'] as core.Map<core.String, core.dynamic>)
+              : null,
           parameters: (json_['parameters'] as core.List?)
               ?.map((value) => DataSourceParameter.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -6223,6 +6234,7 @@ class DataSourceSpec {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bigQuery != null) 'bigQuery': bigQuery!,
+        if (looker != null) 'looker': looker!,
         if (parameters != null) 'parameters': parameters!,
       };
 }
@@ -7016,7 +7028,7 @@ class DeveloperMetadataLookup {
   /// Limits the selected developer metadata to that which has a matching
   /// DeveloperMetadata.visibility.
   ///
-  /// If left unspecified, all developer metadata visibile to the requesting
+  /// If left unspecified, all developer metadata visible to the requesting
   /// project is considered.
   /// Possible string values are:
   /// - "DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED" : Default value.
@@ -8665,6 +8677,37 @@ class Link {
       };
 }
 
+/// The specification of a Looker data source.
+class LookerDataSourceSpec {
+  /// Name of a Looker model explore.
+  core.String? explore;
+
+  /// A Looker instance URL.
+  core.String? instanceUri;
+
+  /// Name of a Looker model.
+  core.String? model;
+
+  LookerDataSourceSpec({
+    this.explore,
+    this.instanceUri,
+    this.model,
+  });
+
+  LookerDataSourceSpec.fromJson(core.Map json_)
+      : this(
+          explore: json_['explore'] as core.String?,
+          instanceUri: json_['instanceUri'] as core.String?,
+          model: json_['model'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (explore != null) 'explore': explore!,
+        if (instanceUri != null) 'instanceUri': instanceUri!,
+        if (model != null) 'model': model!,
+      };
+}
+
 /// Allows you to manually organize the values in a source data column into
 /// buckets with names of your choosing.
 ///
@@ -10083,10 +10126,11 @@ class RefreshDataSourceObjectExecutionStatus {
 /// Refreshes one or multiple data source objects in the spreadsheet by the
 /// specified references.
 ///
-/// The request requires an additional `bigquery.readonly` OAuth scope. If there
-/// are multiple refresh requests referencing the same data source objects in
-/// one batch, only the last refresh request is processed, and all those
-/// requests will have the same response accordingly.
+/// The request requires an additional `bigquery.readonly` OAuth scope if you
+/// are refreshing a BigQuery data source. If there are multiple refresh
+/// requests referencing the same data source objects in one batch, only the
+/// last refresh request is processed, and all those requests will have the same
+/// response accordingly.
 class RefreshDataSourceRequest {
   /// Reference to a DataSource.
   ///
@@ -12050,7 +12094,9 @@ class SpreadsheetProperties {
 
   /// Whether to allow external URL access for image and import functions.
   ///
-  /// Read only when true. When false, you can set to true.
+  /// Read only when true. When false, you can set to true. This value will be
+  /// bypassed and always return true if the admin has enabled the
+  /// [allowlisting feature](https://support.google.com/a?p=url_allowlist).
   core.bool? importFunctionsExternalUrlAccessAllowed;
 
   /// Determines whether and how circular references are resolved with iterative
@@ -12438,7 +12484,7 @@ class ThemeColorPair {
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-typedef TimeOfDay = $TimeOfDay;
+typedef TimeOfDay = $TimeOfDay00;
 
 /// A color scale for a treemap chart.
 class TreemapChartColorScale {
@@ -13102,7 +13148,8 @@ class UpdateConditionalFormatRuleResponse {
 ///
 /// After the data source is updated successfully, an execution is triggered to
 /// refresh the associated DATA_SOURCE sheet to read data from the updated data
-/// source. The request requires an additional `bigquery.readonly` OAuth scope.
+/// source. The request requires an additional `bigquery.readonly` OAuth scope
+/// if you are updating a BigQuery data source.
 class UpdateDataSourceRequest {
   /// The data source to update.
   DataSource? dataSource;

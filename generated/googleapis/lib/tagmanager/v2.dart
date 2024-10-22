@@ -458,13 +458,18 @@ class AccountsContainersResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Looks up a Container by destination ID.
+  /// Looks up a Container by destination ID or tag ID.
   ///
   /// Request parameters:
   ///
   /// [destinationId] - Destination ID linked to a GTM Container, e.g.
   /// AW-123456789. Example:
-  /// accounts/containers:lookup?destination_id={destination_id}.
+  /// accounts/containers:lookup?destination_id={destination_id}. Only one of
+  /// destination_id or tag_id should be set.
+  ///
+  /// [tagId] - Tag ID for a GTM Container, e.g. GTM-123456789. Example:
+  /// accounts/containers:lookup?tag_id={tag_id}. Only one of destination_id or
+  /// tag_id should be set.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -478,10 +483,12 @@ class AccountsContainersResource {
   /// this method will complete with the same error.
   async.Future<Container> lookup({
     core.String? destinationId,
+    core.String? tagId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (destinationId != null) 'destinationId': [destinationId],
+      if (tagId != null) 'tagId': [tagId],
       if ($fields != null) 'fields': [$fields],
     };
 

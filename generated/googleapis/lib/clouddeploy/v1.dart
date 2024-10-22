@@ -27,6 +27,7 @@
 ///       - [ProjectsLocationsDeliveryPipelinesReleasesResource]
 ///         - [ProjectsLocationsDeliveryPipelinesReleasesRolloutsResource]
 /// - [ProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsResource]
+///     - [ProjectsLocationsDeployPoliciesResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsTargetsResource]
 library;
@@ -77,6 +78,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsCustomTargetTypesResource(_requester);
   ProjectsLocationsDeliveryPipelinesResource get deliveryPipelines =>
       ProjectsLocationsDeliveryPipelinesResource(_requester);
+  ProjectsLocationsDeployPoliciesResource get deployPolicies =>
+      ProjectsLocationsDeployPoliciesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsTargetsResource get targets =>
@@ -220,7 +223,7 @@ class ProjectsLocationsCustomTargetTypesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent collection in which the `CustomTargetType`
-  /// should be created. Format should be
+  /// must be created. The format is
   /// `projects/{project_id}/locations/{location_name}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
@@ -534,7 +537,7 @@ class ProjectsLocationsCustomTargetTypesResource {
   /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [updateMask] - Required. Field mask is used to specify the fields to be
-  /// overwritten in the `CustomTargetType` resource by the update. The fields
+  /// overwritten by the update in the `CustomTargetType` resource. The fields
   /// specified in the update_mask are relative to the resource, not the full
   /// request. A field will be overwritten if it's in the mask. If the user
   /// doesn't provide a mask then all fields are overwritten.
@@ -650,7 +653,7 @@ class ProjectsLocationsDeliveryPipelinesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent collection in which the `DeliveryPipeline`
-  /// should be created. Format should be
+  /// must be created. The format is
   /// `projects/{project_id}/locations/{location_name}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
@@ -714,8 +717,8 @@ class ProjectsLocationsDeliveryPipelinesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the `DeliveryPipeline` to delete. Format
-  /// should be
+  /// [name] - Required. The name of the `DeliveryPipeline` to delete. The
+  /// format is
   /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+$`.
@@ -970,7 +973,7 @@ class ProjectsLocationsDeliveryPipelinesResource {
   /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [updateMask] - Required. Field mask is used to specify the fields to be
-  /// overwritten in the `DeliveryPipeline` resource by the update. The fields
+  /// overwritten by the update in the `DeliveryPipeline` resource. The fields
   /// specified in the update_mask are relative to the resource, not the full
   /// request. A field will be overwritten if it's in the mask. If the user
   /// doesn't provide a mask then all fields are overwritten.
@@ -1025,7 +1028,7 @@ class ProjectsLocationsDeliveryPipelinesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The `DeliveryPipeline` for which the rollback `Rollout`
-  /// should be created. Format should be
+  /// must be created. The format is
   /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+$`.
@@ -1329,8 +1332,8 @@ class ProjectsLocationsDeliveryPipelinesAutomationsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent collection in which the `Automation`
-  /// should be created. Format should be
+  /// [parent] - Required. The parent collection in which the `Automation` must
+  /// be created. The format is
   /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+$`.
@@ -1394,8 +1397,7 @@ class ProjectsLocationsDeliveryPipelinesAutomationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the `Automation` to delete. Format should
-  /// be
+  /// [name] - Required. The name of the `Automation` to delete. The format is
   /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/automations/{automation_name}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/automations/\[^/\]+$`.
@@ -1585,7 +1587,7 @@ class ProjectsLocationsDeliveryPipelinesAutomationsResource {
   /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [updateMask] - Required. Field mask is used to specify the fields to be
-  /// overwritten in the `Automation` resource by the update. The fields
+  /// overwritten by the update in the `Automation` resource. The fields
   /// specified in the update_mask are relative to the resource, not the full
   /// request. A field will be overwritten if it's in the mask. If the user
   /// doesn't provide a mask then all fields are overwritten.
@@ -1693,11 +1695,14 @@ class ProjectsLocationsDeliveryPipelinesReleasesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent collection in which the `Release` should
-  /// be created. Format should be
+  /// [parent] - Required. The parent collection in which the `Release` is
+  /// created. The format is
   /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+$`.
+  ///
+  /// [overrideDeployPolicy] - Optional. Deploy policies to override. Format is
+  /// `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`.
   ///
   /// [releaseId] - Required. ID of the `Release`.
   ///
@@ -1730,6 +1735,7 @@ class ProjectsLocationsDeliveryPipelinesReleasesResource {
   async.Future<Operation> create(
     Release request,
     core.String parent, {
+    core.List<core.String>? overrideDeployPolicy,
     core.String? releaseId,
     core.String? requestId,
     core.bool? validateOnly,
@@ -1737,6 +1743,8 @@ class ProjectsLocationsDeliveryPipelinesReleasesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (overrideDeployPolicy != null)
+        'overrideDeployPolicy': overrideDeployPolicy,
       if (releaseId != null) 'releaseId': [releaseId],
       if (requestId != null) 'requestId': [requestId],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
@@ -2001,11 +2009,14 @@ class ProjectsLocationsDeliveryPipelinesReleasesRolloutsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent collection in which the `Rollout` should
-  /// be created. Format should be
+  /// [parent] - Required. The parent collection in which the `Rollout` must be
+  /// created. The format is
   /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/releases/\[^/\]+$`.
+  ///
+  /// [overrideDeployPolicy] - Optional. Deploy policies to override. Format is
+  /// `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server knows
@@ -2041,6 +2052,7 @@ class ProjectsLocationsDeliveryPipelinesReleasesRolloutsResource {
   async.Future<Operation> create(
     Rollout request,
     core.String parent, {
+    core.List<core.String>? overrideDeployPolicy,
     core.String? requestId,
     core.String? rolloutId,
     core.String? startingPhaseId,
@@ -2049,6 +2061,8 @@ class ProjectsLocationsDeliveryPipelinesReleasesRolloutsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (overrideDeployPolicy != null)
+        'overrideDeployPolicy': overrideDeployPolicy,
       if (requestId != null) 'requestId': [requestId],
       if (rolloutId != null) 'rolloutId': [rolloutId],
       if (startingPhaseId != null) 'startingPhaseId': [startingPhaseId],
@@ -2403,6 +2417,322 @@ class ProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsResource {
   }
 }
 
+class ProjectsLocationsDeployPoliciesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDeployPoliciesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new DeployPolicy in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent collection in which the `DeployPolicy`
+  /// must be created. The format is
+  /// `projects/{project_id}/locations/{location_name}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [deployPolicyId] - Required. ID of the `DeployPolicy`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [validateOnly] - Optional. If set to true, the request is validated and
+  /// the user is provided with an expected result, but no actual change is
+  /// made.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    DeployPolicy request,
+    core.String parent, {
+    core.String? deployPolicyId,
+    core.String? requestId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (deployPolicyId != null) 'deployPolicyId': [deployPolicyId],
+      if (requestId != null) 'requestId': [requestId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/deployPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single DeployPolicy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the `DeployPolicy` to delete. The format is
+  /// `projects/{project_id}/locations/{location_name}/deployPolicies/{deploy_policy_name}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deployPolicies/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, then deleting an already
+  /// deleted or non-existing `DeployPolicy` will succeed.
+  ///
+  /// [etag] - Optional. This checksum is computed by the server based on the
+  /// value of other fields, and may be sent on update and delete requests to
+  /// ensure the client has an up-to-date value before proceeding.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and preview the
+  /// review, but do not actually post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? etag,
+    core.String? requestId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (etag != null) 'etag': [etag],
+      if (requestId != null) 'requestId': [requestId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single DeployPolicy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the `DeployPolicy`. Format must be
+  /// `projects/{project_id}/locations/{location_name}/deployPolicies/{deploy_policy_name}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deployPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DeployPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DeployPolicy> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DeployPolicy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists DeployPolicies in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of deploy
+  /// policies. Format must be
+  /// `projects/{project_id}/locations/{location_name}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Filter deploy policies to be returned. See
+  /// https://google.aip.dev/160 for more details. All fields can be used in the
+  /// filter.
+  ///
+  /// [orderBy] - Field to sort by. See https://google.aip.dev/132#ordering for
+  /// more details.
+  ///
+  /// [pageSize] - The maximum number of deploy policies to return. The service
+  /// may return fewer than this value. If unspecified, at most 50 deploy
+  /// policies will be returned. The maximum value is 1000; values above 1000
+  /// will be set to 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListDeployPolicies`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other provided parameters match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDeployPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDeployPoliciesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/deployPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDeployPoliciesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single DeployPolicy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Name of the `DeployPolicy`. Format is
+  /// `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`.
+  /// The `deployPolicy` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deployPolicies/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, updating a `DeployPolicy` that
+  /// does not exist will result in the creation of a new `DeployPolicy`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// overwritten by the update in the `DeployPolicy` resource. The fields
+  /// specified in the update_mask are relative to the resource, not the full
+  /// request. A field will be overwritten if it's in the mask. If the user
+  /// doesn't provide a mask then all fields are overwritten.
+  ///
+  /// [validateOnly] - Optional. If set to true, the request is validated and
+  /// the user is provided with an expected result, but no actual change is
+  /// made.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    DeployPolicy request,
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? requestId,
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -2601,9 +2931,8 @@ class ProjectsLocationsTargetsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent collection in which the `Target` should be
-  /// created. Format should be
-  /// `projects/{project_id}/locations/{location_name}`.
+  /// [parent] - Required. The parent collection in which the `Target` must be
+  /// created. The format is `projects/{project_id}/locations/{location_name}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
@@ -2665,7 +2994,7 @@ class ProjectsLocationsTargetsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the `Target` to delete. Format should be
+  /// [name] - Required. The name of the `Target` to delete. The format is
   /// `projects/{project_id}/locations/{location_name}/targets/{target_name}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/targets/\[^/\]+$`.
@@ -2911,8 +3240,8 @@ class ProjectsLocationsTargetsResource {
   /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [updateMask] - Required. Field mask is used to specify the fields to be
-  /// overwritten in the Target resource by the update. The fields specified in
-  /// the update_mask are relative to the resource, not the full request. A
+  /// overwritten by the update in the `Target` resource. The fields specified
+  /// in the update_mask are relative to the resource, not the full request. A
   /// field will be overwritten if it's in the mask. If the user doesn't provide
   /// a mask then all fields are overwritten.
   ///
@@ -3147,21 +3476,35 @@ class AdvanceRolloutOperation {
 
 /// The request object used by `AdvanceRollout`.
 class AdvanceRolloutRequest {
+  /// Deploy policies to override.
+  ///
+  /// Format is
+  /// `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`.
+  ///
+  /// Optional.
+  core.List<core.String>? overrideDeployPolicy;
+
   /// The phase ID to advance the `Rollout` to.
   ///
   /// Required.
   core.String? phaseId;
 
   AdvanceRolloutRequest({
+    this.overrideDeployPolicy,
     this.phaseId,
   });
 
   AdvanceRolloutRequest.fromJson(core.Map json_)
       : this(
+          overrideDeployPolicy: (json_['overrideDeployPolicy'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           phaseId: json_['phaseId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (overrideDeployPolicy != null)
+          'overrideDeployPolicy': overrideDeployPolicy!,
         if (phaseId != null) 'phaseId': phaseId!,
       };
 }
@@ -3260,22 +3603,71 @@ class ApproveRolloutRequest {
   /// Required.
   core.bool? approved;
 
+  /// Deploy policies to override.
+  ///
+  /// Format is
+  /// `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`.
+  ///
+  /// Optional.
+  core.List<core.String>? overrideDeployPolicy;
+
   ApproveRolloutRequest({
     this.approved,
+    this.overrideDeployPolicy,
   });
 
   ApproveRolloutRequest.fromJson(core.Map json_)
       : this(
           approved: json_['approved'] as core.bool?,
+          overrideDeployPolicy: (json_['overrideDeployPolicy'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (approved != null) 'approved': approved!,
+        if (overrideDeployPolicy != null)
+          'overrideDeployPolicy': overrideDeployPolicy!,
       };
 }
 
 /// The response object from `ApproveRollout`.
 typedef ApproveRolloutResponse = $Empty;
+
+/// Information about entities associated with a `Target`.
+class AssociatedEntities {
+  /// Information specifying Anthos clusters as associated entities.
+  ///
+  /// Optional.
+  core.List<AnthosCluster>? anthosClusters;
+
+  /// Information specifying GKE clusters as associated entities.
+  ///
+  /// Optional.
+  core.List<GkeCluster>? gkeClusters;
+
+  AssociatedEntities({
+    this.anthosClusters,
+    this.gkeClusters,
+  });
+
+  AssociatedEntities.fromJson(core.Map json_)
+      : this(
+          anthosClusters: (json_['anthosClusters'] as core.List?)
+              ?.map((value) => AnthosCluster.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          gkeClusters: (json_['gkeClusters'] as core.List?)
+              ?.map((value) => GkeCluster.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (anthosClusters != null) 'anthosClusters': anthosClusters!,
+        if (gkeClusters != null) 'gkeClusters': gkeClusters!,
+      };
+}
 
 /// Specifies the audit configuration for a service.
 ///
@@ -3693,6 +4085,12 @@ class AutomationRun {
   /// Output only.
   core.String? name;
 
+  /// Contains information about what policies prevented the `AutomationRun`
+  /// from proceeding.
+  ///
+  /// Output only.
+  PolicyViolation? policyViolation;
+
   /// Promotes a release to a specified 'Target'.
   ///
   /// Output only.
@@ -3762,6 +4160,7 @@ class AutomationRun {
     this.etag,
     this.expireTime,
     this.name,
+    this.policyViolation,
     this.promoteReleaseOperation,
     this.repairRolloutOperation,
     this.ruleId,
@@ -3789,6 +4188,10 @@ class AutomationRun {
           etag: json_['etag'] as core.String?,
           expireTime: json_['expireTime'] as core.String?,
           name: json_['name'] as core.String?,
+          policyViolation: json_.containsKey('policyViolation')
+              ? PolicyViolation.fromJson(json_['policyViolation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           promoteReleaseOperation: json_.containsKey('promoteReleaseOperation')
               ? PromoteReleaseOperation.fromJson(
                   json_['promoteReleaseOperation']
@@ -3817,6 +4220,7 @@ class AutomationRun {
         if (etag != null) 'etag': etag!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (name != null) 'name': name!,
+        if (policyViolation != null) 'policyViolation': policyViolation!,
         if (promoteReleaseOperation != null)
           'promoteReleaseOperation': promoteReleaseOperation!,
         if (repairRolloutOperation != null)
@@ -4018,6 +4422,8 @@ class CanaryDeployment {
   /// The percentage based deployments that will occur as a part of a `Rollout`.
   ///
   /// List is expected in ascending order and each integer n is 0 \<= n \< 100.
+  /// If the GatewayServiceMesh is configured for Kubernetes, then the range for
+  /// n is 0 \<= n \<= 100.
   ///
   /// Required.
   core.List<core.int>? percentages;
@@ -4080,7 +4486,7 @@ typedef CancelAutomationRunResponse = $Empty;
 typedef CancelOperationRequest = $Empty;
 
 /// The request object used by `CancelRollout`.
-typedef CancelRolloutRequest = $Empty;
+typedef CancelRolloutRequest = $Request06;
 
 /// The response object from `CancelRollout`.
 typedef CancelRolloutResponse = $Empty;
@@ -4813,6 +5219,40 @@ class DeliveryPipeline {
       };
 }
 
+/// Contains criteria for selecting DeliveryPipelines.
+class DeliveryPipelineAttribute {
+  /// ID of the `DeliveryPipeline`.
+  ///
+  /// The value of this field could be one of the following: * The last segment
+  /// of a pipeline name * "*", all delivery pipelines in a location
+  core.String? id;
+
+  /// DeliveryPipeline labels.
+  core.Map<core.String, core.String>? labels;
+
+  DeliveryPipelineAttribute({
+    this.id,
+    this.labels,
+  });
+
+  DeliveryPipelineAttribute.fromJson(core.Map json_)
+      : this(
+          id: json_['id'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (labels != null) 'labels': labels!,
+      };
+}
+
 /// The artifacts produced by a deploy operation.
 class DeployArtifact {
   /// URI of a directory containing the artifacts.
@@ -5025,6 +5465,197 @@ class DeployParameters {
       };
 }
 
+/// A `DeployPolicy` resource in the Cloud Deploy API.
+///
+/// A `DeployPolicy` inhibits manual or automation-driven actions within a
+/// Delivery Pipeline or Target.
+class DeployPolicy {
+  /// User annotations.
+  ///
+  /// These attributes can only be set and used by the user, and not by Cloud
+  /// Deploy. Annotations must meet the following constraints: * Annotations are
+  /// key/value pairs. * Valid annotation keys have two segments: an optional
+  /// prefix and name, separated by a slash (`/`). * The name segment is
+  /// required and must be 63 characters or less, beginning and ending with an
+  /// alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores
+  /// (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If
+  /// specified, the prefix must be a DNS subdomain: a series of DNS labels
+  /// separated by dots(`.`), not longer than 253 characters in total, followed
+  /// by a slash (`/`). See
+  /// https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set
+  /// for more details.
+  core.Map<core.String, core.String>? annotations;
+
+  /// Time at which the deploy policy was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Description of the `DeployPolicy`.
+  ///
+  /// Max length is 255 characters.
+  core.String? description;
+
+  /// The weak etag of the `Automation` resource.
+  ///
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  core.String? etag;
+
+  /// Labels are attributes that can be set and used by both the user and by
+  /// Cloud Deploy.
+  ///
+  /// Labels must meet the following constraints: * Keys and values can contain
+  /// only lowercase letters, numeric characters, underscores, and dashes. * All
+  /// characters must use UTF-8 encoding, and international characters are
+  /// allowed. * Keys must start with a lowercase letter or international
+  /// character. * Each resource is limited to a maximum of 64 labels. Both keys
+  /// and values are additionally constrained to be \<= 128 bytes.
+  core.Map<core.String, core.String>? labels;
+
+  /// Name of the `DeployPolicy`.
+  ///
+  /// Format is
+  /// `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`.
+  /// The `deployPolicy` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Rules to apply.
+  ///
+  /// At least one rule must be present.
+  ///
+  /// Required.
+  core.List<PolicyRule>? rules;
+
+  /// Selected resources to which the policy will be applied.
+  ///
+  /// At least one selector is required. If one selector matches the resource
+  /// the policy applies. For example, if there are two selectors and the action
+  /// being attempted matches one of them, the policy will apply to that action.
+  ///
+  /// Required.
+  core.List<DeployPolicyResourceSelector>? selectors;
+
+  /// When suspended, the policy will not prevent actions from occurring, even
+  /// if the action violates the policy.
+  core.bool? suspended;
+
+  /// Unique identifier of the `DeployPolicy`.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// Most recent time at which the deploy policy was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  DeployPolicy({
+    this.annotations,
+    this.createTime,
+    this.description,
+    this.etag,
+    this.labels,
+    this.name,
+    this.rules,
+    this.selectors,
+    this.suspended,
+    this.uid,
+    this.updateTime,
+  });
+
+  DeployPolicy.fromJson(core.Map json_)
+      : this(
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          name: json_['name'] as core.String?,
+          rules: (json_['rules'] as core.List?)
+              ?.map((value) => PolicyRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          selectors: (json_['selectors'] as core.List?)
+              ?.map((value) => DeployPolicyResourceSelector.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          suspended: json_['suspended'] as core.bool?,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (rules != null) 'rules': rules!,
+        if (selectors != null) 'selectors': selectors!,
+        if (suspended != null) 'suspended': suspended!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Contains information on the resources to select for a deploy policy.
+///
+/// Attributes provided must all match the resource in order for policy
+/// restrictions to apply. For example, if delivery pipelines attributes given
+/// are an id "prod" and labels "foo: bar", a delivery pipeline resource must
+/// match both that id and have that label in order to be subject to the policy.
+class DeployPolicyResourceSelector {
+  /// Contains attributes about a delivery pipeline.
+  ///
+  /// Optional.
+  DeliveryPipelineAttribute? deliveryPipeline;
+
+  /// Contains attributes about a target.
+  ///
+  /// Optional.
+  TargetAttribute? target;
+
+  DeployPolicyResourceSelector({
+    this.deliveryPipeline,
+    this.target,
+  });
+
+  DeployPolicyResourceSelector.fromJson(core.Map json_)
+      : this(
+          deliveryPipeline: json_.containsKey('deliveryPipeline')
+              ? DeliveryPipelineAttribute.fromJson(json_['deliveryPipeline']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          target: json_.containsKey('target')
+              ? TargetAttribute.fromJson(
+                  json_['target'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deliveryPipeline != null) 'deliveryPipeline': deliveryPipeline!,
+        if (target != null) 'target': target!,
+      };
+}
+
 /// Deployment job composition.
 class DeploymentJobs {
   /// The deploy Job.
@@ -5227,6 +5858,24 @@ class GatewayServiceMesh {
   /// Required.
   core.String? httpRoute;
 
+  /// The label to use when selecting Pods for the Deployment and Service
+  /// resources.
+  ///
+  /// This label must already be present in both resources.
+  ///
+  /// Optional.
+  core.String? podSelectorLabel;
+
+  /// Route destinations allow configuring the Gateway API HTTPRoute to be
+  /// deployed to additional clusters.
+  ///
+  /// This option is available for multi-cluster service mesh set ups that
+  /// require the route to exist in the clusters that call the service. If
+  /// unspecified, the HTTPRoute will only be deployed to the Target cluster.
+  ///
+  /// Optional.
+  RouteDestinations? routeDestinations;
+
   /// The time to wait for route updates to propagate.
   ///
   /// The maximum configurable time is 3 hours, in seconds format. If
@@ -5252,6 +5901,8 @@ class GatewayServiceMesh {
   GatewayServiceMesh({
     this.deployment,
     this.httpRoute,
+    this.podSelectorLabel,
+    this.routeDestinations,
     this.routeUpdateWaitTime,
     this.service,
     this.stableCutbackDuration,
@@ -5261,6 +5912,11 @@ class GatewayServiceMesh {
       : this(
           deployment: json_['deployment'] as core.String?,
           httpRoute: json_['httpRoute'] as core.String?,
+          podSelectorLabel: json_['podSelectorLabel'] as core.String?,
+          routeDestinations: json_.containsKey('routeDestinations')
+              ? RouteDestinations.fromJson(json_['routeDestinations']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           routeUpdateWaitTime: json_['routeUpdateWaitTime'] as core.String?,
           service: json_['service'] as core.String?,
           stableCutbackDuration: json_['stableCutbackDuration'] as core.String?,
@@ -5269,6 +5925,8 @@ class GatewayServiceMesh {
   core.Map<core.String, core.dynamic> toJson() => {
         if (deployment != null) 'deployment': deployment!,
         if (httpRoute != null) 'httpRoute': httpRoute!,
+        if (podSelectorLabel != null) 'podSelectorLabel': podSelectorLabel!,
+        if (routeDestinations != null) 'routeDestinations': routeDestinations!,
         if (routeUpdateWaitTime != null)
           'routeUpdateWaitTime': routeUpdateWaitTime!,
         if (service != null) 'service': service!,
@@ -5333,6 +5991,14 @@ class IgnoreJobRequest {
   /// Required.
   core.String? jobId;
 
+  /// Deploy policies to override.
+  ///
+  /// Format is
+  /// `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`.
+  ///
+  /// Optional.
+  core.List<core.String>? overrideDeployPolicy;
+
   /// The phase ID the Job to ignore belongs to.
   ///
   /// Required.
@@ -5340,17 +6006,23 @@ class IgnoreJobRequest {
 
   IgnoreJobRequest({
     this.jobId,
+    this.overrideDeployPolicy,
     this.phaseId,
   });
 
   IgnoreJobRequest.fromJson(core.Map json_)
       : this(
           jobId: json_['jobId'] as core.String?,
+          overrideDeployPolicy: (json_['overrideDeployPolicy'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           phaseId: json_['phaseId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (jobId != null) 'jobId': jobId!,
+        if (overrideDeployPolicy != null)
+          'overrideDeployPolicy': overrideDeployPolicy!,
         if (phaseId != null) 'phaseId': phaseId!,
       };
 }
@@ -5838,6 +6510,44 @@ class ListDeliveryPipelinesResponse {
       };
 }
 
+/// The response object from `ListDeployPolicies`.
+class ListDeployPoliciesResponse {
+  /// The `DeployPolicy` objects.
+  core.List<DeployPolicy>? deployPolicies;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListDeployPoliciesResponse({
+    this.deployPolicies,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListDeployPoliciesResponse.fromJson(core.Map json_)
+      : this(
+          deployPolicies: (json_['deployPolicies'] as core.List?)
+              ?.map((value) => DeployPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deployPolicies != null) 'deployPolicies': deployPolicies!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// ListJobRunsResponse is the response object returned by `ListJobRuns`.
 class ListJobRunsResponse {
   /// The `JobRun` objects.
@@ -6116,6 +6826,70 @@ class MultiTarget {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (targetIds != null) 'targetIds': targetIds!,
+      };
+}
+
+/// One-time window within which actions are restricted.
+///
+/// For example, blocking actions over New Year's Eve from December 31st at 5pm
+/// to January 1st at 9am.
+class OneTimeWindow {
+  /// End date.
+  ///
+  /// Required.
+  Date? endDate;
+
+  /// End time (exclusive).
+  ///
+  /// You may use 24:00 for the end of the day.
+  ///
+  /// Required.
+  TimeOfDay? endTime;
+
+  /// Start date.
+  ///
+  /// Required.
+  Date? startDate;
+
+  /// Start time (inclusive).
+  ///
+  /// Use 00:00 for the beginning of the day.
+  ///
+  /// Required.
+  TimeOfDay? startTime;
+
+  OneTimeWindow({
+    this.endDate,
+    this.endTime,
+    this.startDate,
+    this.startTime,
+  });
+
+  OneTimeWindow.fromJson(core.Map json_)
+      : this(
+          endDate: json_.containsKey('endDate')
+              ? Date.fromJson(
+                  json_['endDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          endTime: json_.containsKey('endTime')
+              ? TimeOfDay.fromJson(
+                  json_['endTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startDate: json_.containsKey('startDate')
+              ? Date.fromJson(
+                  json_['startDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? TimeOfDay.fromJson(
+                  json_['startTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endDate != null) 'endDate': endDate!,
+        if (endTime != null) 'endTime': endTime!,
+        if (startDate != null) 'startDate': startDate!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -6571,6 +7345,92 @@ class Policy {
       };
 }
 
+/// Deploy Policy rule.
+class PolicyRule {
+  /// Rollout restrictions.
+  RolloutRestriction? rolloutRestriction;
+
+  PolicyRule({
+    this.rolloutRestriction,
+  });
+
+  PolicyRule.fromJson(core.Map json_)
+      : this(
+          rolloutRestriction: json_.containsKey('rolloutRestriction')
+              ? RolloutRestriction.fromJson(json_['rolloutRestriction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rolloutRestriction != null)
+          'rolloutRestriction': rolloutRestriction!,
+      };
+}
+
+/// Returned from an action if one or more policies were violated, and therefore
+/// the action was prevented.
+///
+/// Contains information about what policies were violated and why.
+class PolicyViolation {
+  /// Policy violation details.
+  core.List<PolicyViolationDetails>? policyViolationDetails;
+
+  PolicyViolation({
+    this.policyViolationDetails,
+  });
+
+  PolicyViolation.fromJson(core.Map json_)
+      : this(
+          policyViolationDetails:
+              (json_['policyViolationDetails'] as core.List?)
+                  ?.map((value) => PolicyViolationDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (policyViolationDetails != null)
+          'policyViolationDetails': policyViolationDetails!,
+      };
+}
+
+/// Policy violation details.
+class PolicyViolationDetails {
+  /// User readable message about why the request violated a policy.
+  ///
+  /// This is not intended for machine parsing.
+  core.String? failureMessage;
+
+  /// Name of the policy that was violated.
+  ///
+  /// Policy resource will be in the format of
+  /// `projects/{project}/locations/{location}/policies/{policy}`.
+  core.String? policy;
+
+  /// Id of the rule that triggered the policy violation.
+  core.String? ruleId;
+
+  PolicyViolationDetails({
+    this.failureMessage,
+    this.policy,
+    this.ruleId,
+  });
+
+  PolicyViolationDetails.fromJson(core.Map json_)
+      : this(
+          failureMessage: json_['failureMessage'] as core.String?,
+          policy: json_['policy'] as core.String?,
+          ruleId: json_['ruleId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (failureMessage != null) 'failureMessage': failureMessage!,
+        if (policy != null) 'policy': policy!,
+        if (ruleId != null) 'ruleId': ruleId!,
+      };
+}
+
 /// Postdeploy contains the postdeploy job configuration information.
 class Postdeploy {
   /// A sequence of Skaffold custom actions to invoke during execution of the
@@ -6870,8 +7730,8 @@ class PromoteReleaseOperation {
       };
 }
 
-/// `PromoteRelease` rule will automatically promote a release from the current
-/// target to a specified target.
+/// The `PromoteRelease` rule will automatically promote a release from the
+/// current target to a specified target.
 class PromoteReleaseRule {
   /// Information around the state of the Automation rule.
   ///
@@ -6889,9 +7749,7 @@ class PromoteReleaseRule {
   ///
   /// If unspecified, default it to the next stage in the promotion flow. The
   /// value of this field could be one of the following: * The last segment of a
-  /// target name. It only needs the ID to determine if the target is one of the
-  /// stages in the promotion sequence defined in the pipeline. * "@next", the
-  /// next target in the promotion sequence.
+  /// target name * "@next", the next target in the promotion sequence
   ///
   /// Optional.
   core.String? destinationTargetId;
@@ -7336,8 +8194,48 @@ class RepairPhase {
       };
 }
 
+/// Configuration of the repair phase.
+class RepairPhaseConfig {
+  /// Retries a failed job.
+  ///
+  /// Optional.
+  Retry? retry;
+
+  /// Rolls back a `Rollout`.
+  ///
+  /// Optional.
+  Rollback? rollback;
+
+  RepairPhaseConfig({
+    this.retry,
+    this.rollback,
+  });
+
+  RepairPhaseConfig.fromJson(core.Map json_)
+      : this(
+          retry: json_.containsKey('retry')
+              ? Retry.fromJson(
+                  json_['retry'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rollback: json_.containsKey('rollback')
+              ? Rollback.fromJson(
+                  json_['rollback'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (retry != null) 'retry': retry!,
+        if (rollback != null) 'rollback': rollback!,
+      };
+}
+
 /// Contains the information for an automated `repair rollout` operation.
 class RepairRolloutOperation {
+  /// The index of the current repair action in the repair sequence.
+  ///
+  /// Output only.
+  core.String? currentRepairPhaseIndex;
+
   /// The job ID for the Job to repair.
   ///
   /// Output only.
@@ -7362,6 +8260,7 @@ class RepairRolloutOperation {
   core.String? rollout;
 
   RepairRolloutOperation({
+    this.currentRepairPhaseIndex,
     this.jobId,
     this.phaseId,
     this.repairPhases,
@@ -7370,6 +8269,8 @@ class RepairRolloutOperation {
 
   RepairRolloutOperation.fromJson(core.Map json_)
       : this(
+          currentRepairPhaseIndex:
+              json_['currentRepairPhaseIndex'] as core.String?,
           jobId: json_['jobId'] as core.String?,
           phaseId: json_['phaseId'] as core.String?,
           repairPhases: (json_['repairPhases'] as core.List?)
@@ -7380,6 +8281,8 @@ class RepairRolloutOperation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (currentRepairPhaseIndex != null)
+          'currentRepairPhaseIndex': currentRepairPhaseIndex!,
         if (jobId != null) 'jobId': jobId!,
         if (phaseId != null) 'phaseId': phaseId!,
         if (repairPhases != null) 'repairPhases': repairPhases!,
@@ -7416,10 +8319,29 @@ class RepairRolloutRule {
   /// Optional.
   core.List<core.String>? jobs;
 
+  /// Phases within which jobs are subject to automatic repair actions on
+  /// failure.
+  ///
+  /// Proceeds only after phase name matched any one in the list, or for all
+  /// phases if unspecified. This value must consist of lower-case letters,
+  /// numbers, and hyphens, start with a letter and end with a letter or a
+  /// number, and have a max length of 63 characters. In other words, it must
+  /// match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+  ///
+  /// Optional.
+  core.List<core.String>? phases;
+
+  /// Defines the types of automatic repair phases for failed jobs.
+  ///
+  /// Required.
+  core.List<RepairPhaseConfig>? repairPhases;
+
   RepairRolloutRule({
     this.condition,
     this.id,
     this.jobs,
+    this.phases,
+    this.repairPhases,
   });
 
   RepairRolloutRule.fromJson(core.Map json_)
@@ -7432,12 +8354,69 @@ class RepairRolloutRule {
           jobs: (json_['jobs'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          phases: (json_['phases'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          repairPhases: (json_['repairPhases'] as core.List?)
+              ?.map((value) => RepairPhaseConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!,
         if (id != null) 'id': id!,
         if (jobs != null) 'jobs': jobs!,
+        if (phases != null) 'phases': phases!,
+        if (repairPhases != null) 'repairPhases': repairPhases!,
+      };
+}
+
+/// Retries the failed job.
+class Retry {
+  /// Total number of retries.
+  ///
+  /// Retry is skipped if set to 0; The minimum value is 1, and the maximum
+  /// value is 10.
+  ///
+  /// Required.
+  core.String? attempts;
+
+  /// The pattern of how wait time will be increased.
+  ///
+  /// Default is linear. Backoff mode will be ignored if `wait` is 0.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "BACKOFF_MODE_UNSPECIFIED" : No WaitMode is specified.
+  /// - "BACKOFF_MODE_LINEAR" : Increases the wait time linearly.
+  /// - "BACKOFF_MODE_EXPONENTIAL" : Increases the wait time exponentially.
+  core.String? backoffMode;
+
+  /// How long to wait for the first retry.
+  ///
+  /// Default is 0, and the maximum value is 14d.
+  ///
+  /// Optional.
+  core.String? wait;
+
+  Retry({
+    this.attempts,
+    this.backoffMode,
+    this.wait,
+  });
+
+  Retry.fromJson(core.Map json_)
+      : this(
+          attempts: json_['attempts'] as core.String?,
+          backoffMode: json_['backoffMode'] as core.String?,
+          wait: json_['wait'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attempts != null) 'attempts': attempts!,
+        if (backoffMode != null) 'backoffMode': backoffMode!,
+        if (wait != null) 'wait': wait!,
       };
 }
 
@@ -7501,6 +8480,14 @@ class RetryJobRequest {
   /// Required.
   core.String? jobId;
 
+  /// Deploy policies to override.
+  ///
+  /// Format is
+  /// `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`.
+  ///
+  /// Optional.
+  core.List<core.String>? overrideDeployPolicy;
+
   /// The phase ID the Job to retry belongs to.
   ///
   /// Required.
@@ -7508,17 +8495,23 @@ class RetryJobRequest {
 
   RetryJobRequest({
     this.jobId,
+    this.overrideDeployPolicy,
     this.phaseId,
   });
 
   RetryJobRequest.fromJson(core.Map json_)
       : this(
           jobId: json_['jobId'] as core.String?,
+          overrideDeployPolicy: (json_['overrideDeployPolicy'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           phaseId: json_['phaseId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (jobId != null) 'jobId': jobId!,
+        if (overrideDeployPolicy != null)
+          'overrideDeployPolicy': overrideDeployPolicy!,
         if (phaseId != null) 'phaseId': phaseId!,
       };
 }
@@ -7571,6 +8564,40 @@ class RetryPhase {
       };
 }
 
+/// Rolls back a `Rollout`.
+class Rollback {
+  /// The starting phase ID for the `Rollout`.
+  ///
+  /// If unspecified, the `Rollout` will start in the stable phase.
+  ///
+  /// Optional.
+  core.String? destinationPhase;
+
+  /// If pending rollout exists on the target, the rollback operation will be
+  /// aborted.
+  ///
+  /// Optional.
+  core.bool? disableRollbackIfRolloutPending;
+
+  Rollback({
+    this.destinationPhase,
+    this.disableRollbackIfRolloutPending,
+  });
+
+  Rollback.fromJson(core.Map json_)
+      : this(
+          destinationPhase: json_['destinationPhase'] as core.String?,
+          disableRollbackIfRolloutPending:
+              json_['disableRollbackIfRolloutPending'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destinationPhase != null) 'destinationPhase': destinationPhase!,
+        if (disableRollbackIfRolloutPending != null)
+          'disableRollbackIfRolloutPending': disableRollbackIfRolloutPending!,
+      };
+}
+
 /// RollbackAttempt represents an action of rolling back a Cloud Deploy
 /// 'Target'.
 class RollbackAttempt {
@@ -7578,6 +8605,11 @@ class RollbackAttempt {
   ///
   /// Output only.
   core.String? destinationPhase;
+
+  /// If active rollout exists on the target, abort this rollback.
+  ///
+  /// Output only.
+  core.bool? disableRollbackIfRolloutPending;
 
   /// ID of the rollback `Rollout` to create.
   ///
@@ -7604,6 +8636,7 @@ class RollbackAttempt {
 
   RollbackAttempt({
     this.destinationPhase,
+    this.disableRollbackIfRolloutPending,
     this.rolloutId,
     this.state,
     this.stateDesc,
@@ -7612,6 +8645,8 @@ class RollbackAttempt {
   RollbackAttempt.fromJson(core.Map json_)
       : this(
           destinationPhase: json_['destinationPhase'] as core.String?,
+          disableRollbackIfRolloutPending:
+              json_['disableRollbackIfRolloutPending'] as core.bool?,
           rolloutId: json_['rolloutId'] as core.String?,
           state: json_['state'] as core.String?,
           stateDesc: json_['stateDesc'] as core.String?,
@@ -7619,6 +8654,8 @@ class RollbackAttempt {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destinationPhase != null) 'destinationPhase': destinationPhase!,
+        if (disableRollbackIfRolloutPending != null)
+          'disableRollbackIfRolloutPending': disableRollbackIfRolloutPending!,
         if (rolloutId != null) 'rolloutId': rolloutId!,
         if (state != null) 'state': state!,
         if (stateDesc != null) 'stateDesc': stateDesc!,
@@ -7661,6 +8698,14 @@ class RollbackTargetConfig {
 
 /// The request object for `RollbackTarget`.
 class RollbackTargetRequest {
+  /// Deploy policies to override.
+  ///
+  /// Format is
+  /// `projects/{project}/locations/{location}/deployPolicies/{deploy_policy}`.
+  ///
+  /// Optional.
+  core.List<core.String>? overrideDeployPolicy;
+
   /// ID of the `Release` to roll back to.
   ///
   /// If this isn't specified, the previous successful `Rollout` to the
@@ -7696,6 +8741,7 @@ class RollbackTargetRequest {
   core.bool? validateOnly;
 
   RollbackTargetRequest({
+    this.overrideDeployPolicy,
     this.releaseId,
     this.rollbackConfig,
     this.rolloutId,
@@ -7706,6 +8752,9 @@ class RollbackTargetRequest {
 
   RollbackTargetRequest.fromJson(core.Map json_)
       : this(
+          overrideDeployPolicy: (json_['overrideDeployPolicy'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           releaseId: json_['releaseId'] as core.String?,
           rollbackConfig: json_.containsKey('rollbackConfig')
               ? RollbackTargetConfig.fromJson(json_['rollbackConfig']
@@ -7718,6 +8767,8 @@ class RollbackTargetRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (overrideDeployPolicy != null)
+          'overrideDeployPolicy': overrideDeployPolicy!,
         if (releaseId != null) 'releaseId': releaseId!,
         if (rollbackConfig != null) 'rollbackConfig': rollbackConfig!,
         if (rolloutId != null) 'rolloutId': rolloutId!,
@@ -7753,6 +8804,11 @@ class RollbackTargetResponse {
 ///
 /// A `Rollout` contains information around a specific deployment to a `Target`.
 class Rollout {
+  /// The AutomationRun actively repairing the rollout.
+  ///
+  /// Output only.
+  core.String? activeRepairAutomationRun;
+
   /// User annotations.
   ///
   /// These attributes can only be set and used by the user, and not by Cloud
@@ -7925,6 +8981,7 @@ class Rollout {
   core.String? uid;
 
   Rollout({
+    this.activeRepairAutomationRun,
     this.annotations,
     this.approvalState,
     this.approveTime,
@@ -7951,6 +9008,8 @@ class Rollout {
 
   Rollout.fromJson(core.Map json_)
       : this(
+          activeRepairAutomationRun:
+              json_['activeRepairAutomationRun'] as core.String?,
           annotations:
               (json_['annotations'] as core.Map<core.String, core.dynamic>?)
                   ?.map(
@@ -7997,6 +9056,8 @@ class Rollout {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (activeRepairAutomationRun != null)
+          'activeRepairAutomationRun': activeRepairAutomationRun!,
         if (annotations != null) 'annotations': annotations!,
         if (approvalState != null) 'approvalState': approvalState!,
         if (approveTime != null) 'approveTime': approveTime!,
@@ -8021,6 +9082,105 @@ class Rollout {
         if (state != null) 'state': state!,
         if (targetId != null) 'targetId': targetId!,
         if (uid != null) 'uid': uid!,
+      };
+}
+
+/// Rollout restrictions.
+class RolloutRestriction {
+  /// Rollout actions to be restricted as part of the policy.
+  ///
+  /// If left empty, all actions will be restricted.
+  ///
+  /// Optional.
+  core.List<core.String>? actions;
+
+  /// Restriction rule ID.
+  ///
+  /// Required and must be unique within a DeployPolicy. The format is
+  /// `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// What invoked the action.
+  ///
+  /// If left empty, all invoker types will be restricted.
+  ///
+  /// Optional.
+  core.List<core.String>? invokers;
+
+  /// Time window within which actions are restricted.
+  ///
+  /// Required.
+  TimeWindows? timeWindows;
+
+  RolloutRestriction({
+    this.actions,
+    this.id,
+    this.invokers,
+    this.timeWindows,
+  });
+
+  RolloutRestriction.fromJson(core.Map json_)
+      : this(
+          actions: (json_['actions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          id: json_['id'] as core.String?,
+          invokers: (json_['invokers'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          timeWindows: json_.containsKey('timeWindows')
+              ? TimeWindows.fromJson(
+                  json_['timeWindows'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actions != null) 'actions': actions!,
+        if (id != null) 'id': id!,
+        if (invokers != null) 'invokers': invokers!,
+        if (timeWindows != null) 'timeWindows': timeWindows!,
+      };
+}
+
+/// Information about route destinations for the Gateway API service mesh.
+class RouteDestinations {
+  /// The clusters where the Gateway API HTTPRoute resource will be deployed to.
+  ///
+  /// Valid entries include the associated entities IDs configured in the Target
+  /// resource and "@self" to include the Target cluster.
+  ///
+  /// Required.
+  core.List<core.String>? destinationIds;
+
+  /// Whether to propagate the Kubernetes Service to the route destination
+  /// clusters.
+  ///
+  /// The Service will always be deployed to the Target cluster even if the
+  /// HTTPRoute is not. This option may be used to facilitiate successful DNS
+  /// lookup in the route destination clusters. Can only be set to true if
+  /// destinations are specified.
+  ///
+  /// Optional.
+  core.bool? propagateService;
+
+  RouteDestinations({
+    this.destinationIds,
+    this.propagateService,
+  });
+
+  RouteDestinations.fromJson(core.Map json_)
+      : this(
+          destinationIds: (json_['destinationIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          propagateService: json_['propagateService'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destinationIds != null) 'destinationIds': destinationIds!,
+        if (propagateService != null) 'propagateService': propagateService!,
       };
 }
 
@@ -8097,6 +9257,13 @@ class ServiceNetworking {
   /// Optional.
   core.bool? disablePodOverprovisioning;
 
+  /// The label to use when selecting Pods for the Deployment resource.
+  ///
+  /// This label must already be present in the Deployment.
+  ///
+  /// Optional.
+  core.String? podSelectorLabel;
+
   /// Name of the Kubernetes Service.
   ///
   /// Required.
@@ -8105,6 +9272,7 @@ class ServiceNetworking {
   ServiceNetworking({
     this.deployment,
     this.disablePodOverprovisioning,
+    this.podSelectorLabel,
     this.service,
   });
 
@@ -8113,6 +9281,7 @@ class ServiceNetworking {
           deployment: json_['deployment'] as core.String?,
           disablePodOverprovisioning:
               json_['disablePodOverprovisioning'] as core.bool?,
+          podSelectorLabel: json_['podSelectorLabel'] as core.String?,
           service: json_['service'] as core.String?,
         );
 
@@ -8120,6 +9289,7 @@ class ServiceNetworking {
         if (deployment != null) 'deployment': deployment!,
         if (disablePodOverprovisioning != null)
           'disablePodOverprovisioning': disablePodOverprovisioning!,
+        if (podSelectorLabel != null) 'podSelectorLabel': podSelectorLabel!,
         if (service != null) 'service': service!,
       };
 }
@@ -8525,7 +9695,7 @@ class Standard {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Strategy contains deployment strategy information.
 class Strategy {
@@ -8578,6 +9748,20 @@ class Target {
   ///
   /// Optional.
   AnthosCluster? anthosCluster;
+
+  /// Map of entity IDs to their associated entities.
+  ///
+  /// Associated entities allows specifying places other than the deployment
+  /// target for specific features. For example, the Gateway API canary can be
+  /// configured to deploy the HTTPRoute to a different cluster(s) than the
+  /// deployment cluster using associated entities. An entity ID must consist of
+  /// lower-case letters, numbers, and hyphens, start with a letter and end with
+  /// a letter or a number, and have a max length of 63 characters. In other
+  /// words, it must match the following regex:
+  /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+  ///
+  /// Optional.
+  core.Map<core.String, AssociatedEntities>? associatedEntities;
 
   /// Time at which the `Target` was created.
   ///
@@ -8676,6 +9860,7 @@ class Target {
   Target({
     this.annotations,
     this.anthosCluster,
+    this.associatedEntities,
     this.createTime,
     this.customTarget,
     this.deployParameters,
@@ -8707,6 +9892,15 @@ class Target {
               ? AnthosCluster.fromJson(
                   json_['anthosCluster'] as core.Map<core.String, core.dynamic>)
               : null,
+          associatedEntities: (json_['associatedEntities']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              AssociatedEntities.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           createTime: json_['createTime'] as core.String?,
           customTarget: json_.containsKey('customTarget')
               ? CustomTarget.fromJson(
@@ -8755,6 +9949,8 @@ class Target {
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotations != null) 'annotations': annotations!,
         if (anthosCluster != null) 'anthosCluster': anthosCluster!,
+        if (associatedEntities != null)
+          'associatedEntities': associatedEntities!,
         if (createTime != null) 'createTime': createTime!,
         if (customTarget != null) 'customTarget': customTarget!,
         if (deployParameters != null) 'deployParameters': deployParameters!,
@@ -8831,12 +10027,14 @@ class TargetArtifact {
 }
 
 /// Contains criteria for selecting Targets.
+///
+/// This could be used to select targets for a Deploy Policy or for an
+/// Automation.
 class TargetAttribute {
   /// ID of the `Target`.
   ///
   /// The value of this field could be one of the following: * The last segment
-  /// of a target name. It only needs the ID to determine which target is being
-  /// referred to * "*", all targets in a location.
+  /// of a target name * "*", all targets in a location
   core.String? id;
 
   /// Target labels.
@@ -9021,7 +10219,7 @@ class TargetsTypeCondition {
 }
 
 /// The request object used by `TerminateJobRun`.
-typedef TerminateJobRunRequest = $Empty;
+typedef TerminateJobRunRequest = $Request06;
 
 /// The response object from `TerminateJobRun`.
 typedef TerminateJobRunResponse = $Empty;
@@ -9031,6 +10229,62 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// Represents a time of day.
+///
+/// The date and time zone are either not significant or are specified
+/// elsewhere. An API may choose to allow leap seconds. Related types are
+/// google.type.Date and `google.protobuf.Timestamp`.
+typedef TimeOfDay = $TimeOfDay00;
+
+/// Time windows within which actions are restricted.
+///
+/// See the
+/// [documentation](https://cloud.google.com/deploy/docs/deploy-policy#dates_times)
+/// for more information on how to configure dates/times.
+class TimeWindows {
+  /// One-time windows within which actions are restricted.
+  ///
+  /// Optional.
+  core.List<OneTimeWindow>? oneTimeWindows;
+
+  /// The time zone in IANA format
+  /// [IANA Time Zone Database](https://www.iana.org/time-zones) (e.g.
+  /// America/New_York).
+  ///
+  /// Required.
+  core.String? timeZone;
+
+  /// Recurring weekly windows within which actions are restricted.
+  ///
+  /// Optional.
+  core.List<WeeklyWindow>? weeklyWindows;
+
+  TimeWindows({
+    this.oneTimeWindows,
+    this.timeZone,
+    this.weeklyWindows,
+  });
+
+  TimeWindows.fromJson(core.Map json_)
+      : this(
+          oneTimeWindows: (json_['oneTimeWindows'] as core.List?)
+              ?.map((value) => OneTimeWindow.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          timeZone: json_['timeZone'] as core.String?,
+          weeklyWindows: (json_['weeklyWindows'] as core.List?)
+              ?.map((value) => WeeklyWindow.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (oneTimeWindows != null) 'oneTimeWindows': oneTimeWindows!,
+        if (timeZone != null) 'timeZone': timeZone!,
+        if (weeklyWindows != null) 'weeklyWindows': weeklyWindows!,
+      };
+}
 
 /// A verify Job.
 typedef VerifyJob = $Empty;
@@ -9107,5 +10361,63 @@ class VerifyJobRun {
         if (eventLogPath != null) 'eventLogPath': eventLogPath!,
         if (failureCause != null) 'failureCause': failureCause!,
         if (failureMessage != null) 'failureMessage': failureMessage!,
+      };
+}
+
+/// Weekly windows.
+///
+/// For example, blocking actions every Saturday and Sunday. Another example
+/// would be blocking actions every weekday from 5pm to midnight.
+class WeeklyWindow {
+  /// Days of week.
+  ///
+  /// If left empty, all days of the week will be included.
+  ///
+  /// Optional.
+  core.List<core.String>? daysOfWeek;
+
+  /// End time (exclusive).
+  ///
+  /// Use 24:00 to indicate midnight. If you specify end_time you must also
+  /// specify start_time. If left empty, this will block for the entire day for
+  /// the days specified in days_of_week.
+  ///
+  /// Optional.
+  TimeOfDay? endTime;
+
+  /// Start time (inclusive).
+  ///
+  /// Use 00:00 for the beginning of the day. If you specify start_time you must
+  /// also specify end_time. If left empty, this will block for the entire day
+  /// for the days specified in days_of_week.
+  ///
+  /// Optional.
+  TimeOfDay? startTime;
+
+  WeeklyWindow({
+    this.daysOfWeek,
+    this.endTime,
+    this.startTime,
+  });
+
+  WeeklyWindow.fromJson(core.Map json_)
+      : this(
+          daysOfWeek: (json_['daysOfWeek'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          endTime: json_.containsKey('endTime')
+              ? TimeOfDay.fromJson(
+                  json_['endTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? TimeOfDay.fromJson(
+                  json_['startTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (daysOfWeek != null) 'daysOfWeek': daysOfWeek!,
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }

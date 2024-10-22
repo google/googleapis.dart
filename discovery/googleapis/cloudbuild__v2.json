@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240609",
+    "revision": "20240731",
     "rootUrl": "https://cloudbuild.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Build API",
@@ -1808,12 +1808,14 @@
                     "enum": [
                         "TYPE_UNSPECIFIED",
                         "STRING",
-                        "ARRAY"
+                        "ARRAY",
+                        "OBJECT"
                     ],
                     "enumDescriptions": [
                         "Default enum type; should not be used.",
                         "Default",
-                        "Arrary type."
+                        "Array type.",
+                        "Object type."
                     ],
                     "type": "string"
                 }
@@ -1831,6 +1833,13 @@
                     },
                     "type": "array"
                 },
+                "objectVal": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Value of the parameter if type is object.",
+                    "type": "object"
+                },
                 "stringVal": {
                     "description": "Value of the parameter if type is string.",
                     "type": "string"
@@ -1840,12 +1849,14 @@
                     "enum": [
                         "TYPE_UNSPECIFIED",
                         "STRING",
-                        "ARRAY"
+                        "ARRAY",
+                        "OBJECT"
                     ],
                     "enumDescriptions": [
                         "Default enum type; should not be used.",
                         "Default",
-                        "Array type"
+                        "Array type",
+                        "Object type"
                     ],
                     "type": "string"
                 }
@@ -1857,8 +1868,7 @@
             "id": "PipelineRef",
             "properties": {
                 "name": {
-                    "deprecated": true,
-                    "description": "Name of the Pipeline.",
+                    "description": "Optional. Name of the Pipeline.",
                     "type": "string"
                 },
                 "params": {
@@ -1875,14 +1885,16 @@
                         "BUNDLES",
                         "GCB_REPO",
                         "GIT",
-                        "DEVELOPER_CONNECT"
+                        "DEVELOPER_CONNECT",
+                        "DEFAULT"
                     ],
                     "enumDescriptions": [
                         "Default enum type; should not be used.",
                         "Bundles resolver. https://tekton.dev/docs/pipelines/bundle-resolver/",
                         "GCB repo resolver.",
                         "Simple Git resolver. https://tekton.dev/docs/pipelines/git-resolver/",
-                        "Developer Connect resolver."
+                        "Developer Connect resolver.",
+                        "Default resolver."
                     ],
                     "type": "string"
                 }
@@ -2502,8 +2514,7 @@
                     "type": "string"
                 },
                 "secretVersion": {
-                    "description": "Output only. Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*",
-                    "readOnly": true,
+                    "description": "Optional. Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*",
                     "type": "string"
                 }
             },
@@ -2514,6 +2525,7 @@
             "id": "Security",
             "properties": {
                 "privilegeMode": {
+                    "deprecated": true,
                     "description": "Optional. Privilege mode.",
                     "enum": [
                         "PRIVILEGE_MODE_UNSPECIFIED",
@@ -2799,14 +2811,16 @@
                         "BUNDLES",
                         "GCB_REPO",
                         "GIT",
-                        "DEVELOPER_CONNECT"
+                        "DEVELOPER_CONNECT",
+                        "DEFAULT"
                     ],
                     "enumDescriptions": [
                         "Default enum type; should not be used.",
                         "Bundles resolver. https://tekton.dev/docs/pipelines/bundle-resolver/",
                         "GCB repo resolver.",
                         "Simple Git resolver. https://tekton.dev/docs/pipelines/git-resolver/",
-                        "Developer Connect resolver."
+                        "Developer Connect resolver.",
+                        "Default resolver."
                     ],
                     "type": "string"
                 }
@@ -2839,8 +2853,7 @@
             "id": "TaskRef",
             "properties": {
                 "name": {
-                    "deprecated": true,
-                    "description": "Name of the task.",
+                    "description": "Optional. Name of the task.",
                     "type": "string"
                 },
                 "params": {
@@ -2857,14 +2870,16 @@
                         "BUNDLES",
                         "GCB_REPO",
                         "GIT",
-                        "DEVELOPER_CONNECT"
+                        "DEVELOPER_CONNECT",
+                        "DEFAULT"
                     ],
                     "enumDescriptions": [
                         "Default enum type; should not be used.",
                         "Bundles resolver. https://tekton.dev/docs/pipelines/bundle-resolver/",
                         "GCB repo resolver.",
                         "Simple Git resolver. https://tekton.dev/docs/pipelines/git-resolver/",
-                        "Developer Connect resolver."
+                        "Developer Connect resolver.",
+                        "Default resolver."
                     ],
                     "type": "string"
                 }

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240529",
+    "revision": "20241002",
     "rootUrl": "https://privateca.googleapis.com/",
     "servicePath": "",
     "title": "Certificate Authority API",
@@ -396,7 +396,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Output only. The resource name for this CaPool in the format `projects/*/locations/*/caPools/*`.",
+                                            "description": "Output only. Identifier. The resource name for this CaPool in the format `projects/*/locations/*/caPools/*`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/caPools/[^/]+$",
                                             "required": true,
@@ -758,7 +758,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Output only. The resource name for this CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.",
+                                                    "description": "Output only. Identifier. The resource name for this CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/caPools/[^/]+/certificateAuthorities/[^/]+$",
                                                     "required": true,
@@ -1764,7 +1764,7 @@
                     "type": "object"
                 },
                 "name": {
-                    "description": "Output only. The resource name for this CaPool in the format `projects/*/locations/*/caPools/*`.",
+                    "description": "Output only. Identifier. The resource name for this CaPool in the format `projects/*/locations/*/caPools/*`.",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -1958,7 +1958,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Output only. The resource name for this CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.",
+                    "description": "Output only. Identifier. The resource name for this CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -2114,6 +2114,10 @@
                 "subjectKeyId": {
                     "$ref": "KeyId",
                     "description": "Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2."
+                },
+                "tbsCertificateDigest": {
+                    "description": "The hash of the pre-signed certificate, which will be signed by the CA. Corresponds to the TBS Certificate in https://tools.ietf.org/html/rfc5280#section-4.1.2. The field will always be populated.",
+                    "type": "string"
                 },
                 "x509Description": {
                     "$ref": "X509Parameters",

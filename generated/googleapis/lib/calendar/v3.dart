@@ -1742,8 +1742,8 @@ class EventsResource {
 
   /// Moves an event to another calendar, i.e. changes an event's organizer.
   ///
-  /// Note that only default events can be moved; outOfOffice, focusTime,
-  /// workingLocation and fromGmail events cannot be moved.
+  /// Note that only default events can be moved; birthday, focusTime,
+  /// fromGmail, outOfOffice and workingLocation events cannot be moved.
   ///
   /// Request parameters:
   ///
@@ -3863,6 +3863,9 @@ class EventOrganizer {
 }
 
 /// Information about the event's reminders for the authenticated user.
+///
+/// Note that changing reminders does not also change the updated property of
+/// the enclosing event.
 class EventReminders {
   /// If the event doesn't use the default reminders, this lists the reminders
   /// specific to the event, or, if not set, indicates that no reminders are set
@@ -3998,11 +4001,12 @@ class Event {
   /// Specific type of the event.
   ///
   /// This cannot be modified after the event is created. Possible values are:
+  /// - "birthday" - A special all-day event with an annual recurrence.
   /// - "default" - A regular event or not further specified.
-  /// - "outOfOffice" - An out-of-office event.
   /// - "focusTime" - A focus-time event.
-  /// - "workingLocation" - A working location event.
   /// - "fromGmail" - An event from Gmail. This type of event cannot be created.
+  /// - "outOfOffice" - An out-of-office event.
+  /// - "workingLocation" - A working location event.
   core.String? eventType;
 
   /// Extended properties of the event.
@@ -4134,6 +4138,9 @@ class Event {
   core.String? recurringEventId;
 
   /// Information about the event's reminders for the authenticated user.
+  ///
+  /// Note that changing reminders does not also change the updated property of
+  /// the enclosing event.
   EventReminders? reminders;
 
   /// Sequence number as per iCalendar.
@@ -4194,9 +4201,9 @@ class Event {
   /// equivalent to setting Show me as to Available in the Calendar UI.
   core.String? transparency;
 
-  /// Last modification time of the event (as a RFC3339 timestamp).
+  /// Last modification time of the main event data (as a RFC3339 timestamp).
   ///
-  /// Read-only.
+  /// Updating event reminders will not cause this to change. Read-only.
   core.DateTime? updated;
 
   /// Visibility of the event.
@@ -4518,8 +4525,11 @@ class EventAttendee {
   /// - "accepted" - The attendee has accepted the invitation. Warning: If you
   /// add an event using the values declined, tentative, or accepted, attendees
   /// with the "Add invitations to my calendar" setting set to "When I respond
-  /// to invitation in email" won't see an event on their calendar unless they
-  /// choose to change their invitation response in the event invitation email.
+  /// to invitation in email" or "Only if the sender is known" might have their
+  /// response reset to needsAction and won't see an event in their calendar
+  /// unless they change their response in the event invitation email.
+  /// Furthermore, if more than 200 guests are invited to the event, response
+  /// status is not propagated to the guests.
   core.String? responseStatus;
 
   /// Whether this entry represents the calendar on which this copy of the event

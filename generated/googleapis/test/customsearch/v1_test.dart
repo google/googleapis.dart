@@ -1360,6 +1360,7 @@ void main() {
       final arg_cr = 'foo';
       final arg_cx = 'foo';
       final arg_dateRestrict = 'foo';
+      final arg_enableAlternateSearchHandler = true;
       final arg_exactTerms = 'foo';
       final arg_excludeTerms = 'foo';
       final arg_fileType = 'foo';
@@ -1437,6 +1438,10 @@ void main() {
           unittest.equals(arg_dateRestrict),
         );
         unittest.expect(
+          queryMap['enableAlternateSearchHandler']!.first,
+          unittest.equals('$arg_enableAlternateSearchHandler'),
+        );
+        unittest.expect(
           queryMap['exactTerms']!.first,
           unittest.equals(arg_exactTerms),
         );
@@ -1564,6 +1569,7 @@ void main() {
           cr: arg_cr,
           cx: arg_cx,
           dateRestrict: arg_dateRestrict,
+          enableAlternateSearchHandler: arg_enableAlternateSearchHandler,
           exactTerms: arg_exactTerms,
           excludeTerms: arg_excludeTerms,
           fileType: arg_fileType,
@@ -1605,6 +1611,7 @@ void main() {
       final arg_cr = 'foo';
       final arg_cx = 'foo';
       final arg_dateRestrict = 'foo';
+      final arg_enableAlternateSearchHandler = true;
       final arg_exactTerms = 'foo';
       final arg_excludeTerms = 'foo';
       final arg_fileType = 'foo';
@@ -1682,6 +1689,10 @@ void main() {
           unittest.equals(arg_dateRestrict),
         );
         unittest.expect(
+          queryMap['enableAlternateSearchHandler']!.first,
+          unittest.equals('$arg_enableAlternateSearchHandler'),
+        );
+        unittest.expect(
           queryMap['exactTerms']!.first,
           unittest.equals(arg_exactTerms),
         );
@@ -1809,6 +1820,7 @@ void main() {
           cr: arg_cr,
           cx: arg_cx,
           dateRestrict: arg_dateRestrict,
+          enableAlternateSearchHandler: arg_enableAlternateSearchHandler,
           exactTerms: arg_exactTerms,
           excludeTerms: arg_excludeTerms,
           fileType: arg_fileType,

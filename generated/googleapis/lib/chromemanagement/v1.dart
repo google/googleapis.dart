@@ -62,8 +62,8 @@ class ChromeManagementApi {
   static const chromeManagementReportsReadonlyScope =
       'https://www.googleapis.com/auth/chrome.management.reports.readonly';
 
-  /// See basic device and telemetry information collected from Chrome OS
-  /// devices or users managed within your organization
+  /// See basic device and telemetry information collected from ChromeOS devices
+  /// or users managed within your organization
   static const chromeManagementTelemetryReadonlyScope =
       'https://www.googleapis.com/auth/chrome.management.telemetry.readonly';
 
@@ -780,11 +780,11 @@ class CustomersReportsResource {
   /// syntax. Note: OR operations are not supported in this filter. Supported
   /// filter fields: * app_name * app_type * install_type *
   /// number_of_permissions * total_install_count * latest_profile_active_date *
-  /// permission_name * app_id
+  /// permission_name * app_id * manifest_versions
   ///
   /// [orderBy] - Field used to order results. Supported order by fields: *
   /// app_name * app_type * install_type * number_of_permissions *
-  /// total_install_count * app_id
+  /// total_install_count * app_id * manifest_versions
   ///
   /// [orgUnitId] - The ID of the organizational unit.
   ///
@@ -1313,7 +1313,7 @@ class CustomersTelemetryEventsResource {
   /// usb_peripherals_event - https_latency_change_event -
   /// network_state_change_event - wifi_signal_strength_event -
   /// vpn_connection_state_change_event - app_install_event -
-  /// app_uninstall_event - app_launch_event
+  /// app_uninstall_event - app_launch_event - os_crash_event
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1514,7 +1514,7 @@ class CustomersTelemetryUsersResource {
   /// read_mask paths are: - name - org_unit_id - user_id - user_email -
   /// user_device.device_id - user_device.audio_status_report -
   /// user_device.device_activity_report - user_device.network_bandwidth_report
-  /// - user_device.peripherals_report
+  /// - user_device.peripherals_report - user_device.app_report
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1567,7 +1567,7 @@ class CustomersTelemetryUsersResource {
   /// read_mask paths are: - name - org_unit_id - user_id - user_email -
   /// user_device.device_id - user_device.audio_status_report -
   /// user_device.device_activity_report - user_device.network_bandwidth_report
-  /// - user_device.peripherals_report
+  /// - user_device.peripherals_report - user_device.app_report
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5460,6 +5460,10 @@ class GoogleChromeManagementV1TelemetryAppLaunchEvent {
   /// welcome tour.
   /// - "APPLICATION_LAUNCH_SOURCE_FOCUS_MODE" : Applicationed launched from
   /// focus panel.
+  /// - "APPLICATION_LAUNCH_SOURCE_SPARKY" : Application launched from
+  /// experimental feature Sparky.
+  /// - "APPLICATION_LAUNCH_SOURCE_NAVIGATION_CAPTURING" : Application launched
+  /// from navigation capturing.
   core.String? appLaunchSource;
 
   /// Type of app.
@@ -6020,6 +6024,7 @@ class GoogleChromeManagementV1TelemetryEvent {
   /// - "APP_INSTALLED" : Triggered when an app is installed.
   /// - "APP_UNINSTALLED" : Triggered when an app is uninstalled.
   /// - "APP_LAUNCHED" : Triggered when an app is launched.
+  /// - "OS_CRASH" : Triggered when a crash occurs.
   core.String? eventType;
 
   /// Payload for HTTPS latency change event.
@@ -6967,7 +6972,7 @@ typedef GoogleProtobufEmpty = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef GoogleRpcStatus = $Status;
+typedef GoogleRpcStatus = $Status00;
 
 /// Represents a whole or partial calendar date, such as a birthday.
 ///

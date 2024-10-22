@@ -767,7 +767,7 @@ class AudioStream {
   /// The codec for this audio stream.
   ///
   /// The default is `aac`. Supported audio codecs: - `aac` - `aac-he` -
-  /// `aac-he-v2` - `mp3` - `ac3` - `eac3`
+  /// `aac-he-v2` - `mp3` - `ac3` - `eac3` - `vorbis`
   core.String? codec;
 
   /// The name for this particular audio stream that will be added to the
@@ -2487,7 +2487,7 @@ class MuxStream {
   /// The container format.
   ///
   /// The default is `mp4` Supported container formats: - `ts` - `fmp4`- the
-  /// corresponding file extension is `.m4s` - `mp4` - `vtt` See also:
+  /// corresponding file extension is `.m4s` - `mp4` - `vtt` - `ogg` See also:
   /// [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)
   core.String? container;
 
@@ -2589,8 +2589,9 @@ class NormalizedCoordinate {
 class Output {
   /// URI for the output file(s).
   ///
-  /// For example, `gs://my-bucket/outputs/`. If empty, the value is populated
-  /// from Job.output_uri. See
+  /// For example, `gs://my-bucket/outputs/`. Must be a directory and not a
+  /// top-level bucket. If empty, the value is populated from Job.output_uri.
+  /// See
   /// [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
   core.String? uri;
 
@@ -2987,7 +2988,7 @@ class SpriteSheet {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
 class TextMapping {

@@ -56,12 +56,12 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// administrators to control the policies applied to their managed Chrome OS
 /// devices and Chrome browsers.
 class ChromePolicyApi {
-  /// See, edit, create or delete policies applied to Chrome OS and Chrome
+  /// See, edit, create or delete policies applied to ChromeOS and Chrome
   /// Browsers managed within your organization
   static const chromeManagementPolicyScope =
       'https://www.googleapis.com/auth/chrome.management.policy';
 
-  /// See policies applied to Chrome OS and Chrome Browsers managed within your
+  /// See policies applied to ChromeOS and Chrome Browsers managed within your
   /// organization
   static const chromeManagementPolicyReadonlyScope =
       'https://www.googleapis.com/auth/chrome.management.policy.readonly';
@@ -1548,9 +1548,6 @@ class GoogleChromePolicyVersionsV1PolicyApiLifecycle {
   /// Corresponding to deprecated_in_favor_of, the fully qualified namespace(s)
   /// of the old policies that will be deprecated because of introduction of
   /// this policy.
-  ///
-  /// This field should not be manually set but will be set and exposed through
-  /// PolicyAPI automatically.
   core.List<core.String>? scheduledToDeprecatePolicies;
 
   GoogleChromePolicyVersionsV1PolicyApiLifecycle({

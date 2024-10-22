@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240207",
+    "revision": "20231001",
     "rootUrl": "https://datalabeling.googleapis.com/",
     "servicePath": "",
     "title": "Data Labeling API",

@@ -4088,6 +4088,7 @@ class Quota {
 
   /// Maximum allowed number of GKE clusters per response policy.
   core.int? gkeClustersPerResponsePolicy;
+  core.int? internetHealthChecksPerManagedZone;
 
   /// Maximum allowed number of items per routing policy.
   core.int? itemsPerRoutingPolicy;
@@ -4162,6 +4163,7 @@ class Quota {
     this.gkeClustersPerManagedZone,
     this.gkeClustersPerPolicy,
     this.gkeClustersPerResponsePolicy,
+    this.internetHealthChecksPerManagedZone,
     this.itemsPerRoutingPolicy,
     this.kind,
     this.managedZones,
@@ -4193,6 +4195,8 @@ class Quota {
           gkeClustersPerPolicy: json_['gkeClustersPerPolicy'] as core.int?,
           gkeClustersPerResponsePolicy:
               json_['gkeClustersPerResponsePolicy'] as core.int?,
+          internetHealthChecksPerManagedZone:
+              json_['internetHealthChecksPerManagedZone'] as core.int?,
           itemsPerRoutingPolicy: json_['itemsPerRoutingPolicy'] as core.int?,
           kind: json_['kind'] as core.String?,
           managedZones: json_['managedZones'] as core.int?,
@@ -4239,6 +4243,9 @@ class Quota {
           'gkeClustersPerPolicy': gkeClustersPerPolicy!,
         if (gkeClustersPerResponsePolicy != null)
           'gkeClustersPerResponsePolicy': gkeClustersPerResponsePolicy!,
+        if (internetHealthChecksPerManagedZone != null)
+          'internetHealthChecksPerManagedZone':
+              internetHealthChecksPerManagedZone!,
         if (itemsPerRoutingPolicy != null)
           'itemsPerRoutingPolicy': itemsPerRoutingPolicy!,
         if (kind != null) 'kind': kind!,
@@ -4285,12 +4292,19 @@ class Quota {
 /// geolocation or by weighted random selection.
 class RRSetRoutingPolicy {
   RRSetRoutingPolicyGeoPolicy? geo;
+
+  /// The selfLink attribute of the HealthCheck resource to use for this
+  /// RRSetRoutingPolicy.
+  ///
+  /// https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks
+  core.String? healthCheck;
   core.String? kind;
   RRSetRoutingPolicyPrimaryBackupPolicy? primaryBackup;
   RRSetRoutingPolicyWrrPolicy? wrr;
 
   RRSetRoutingPolicy({
     this.geo,
+    this.healthCheck,
     this.kind,
     this.primaryBackup,
     this.wrr,
@@ -4302,6 +4316,7 @@ class RRSetRoutingPolicy {
               ? RRSetRoutingPolicyGeoPolicy.fromJson(
                   json_['geo'] as core.Map<core.String, core.dynamic>)
               : null,
+          healthCheck: json_['healthCheck'] as core.String?,
           kind: json_['kind'] as core.String?,
           primaryBackup: json_.containsKey('primaryBackup')
               ? RRSetRoutingPolicyPrimaryBackupPolicy.fromJson(
@@ -4315,6 +4330,7 @@ class RRSetRoutingPolicy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (geo != null) 'geo': geo!,
+        if (healthCheck != null) 'healthCheck': healthCheck!,
         if (kind != null) 'kind': kind!,
         if (primaryBackup != null) 'primaryBackup': primaryBackup!,
         if (wrr != null) 'wrr': wrr!,
@@ -4427,15 +4443,25 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
 ///
 /// Only the healthy endpoints will be included in the response.
 class RRSetRoutingPolicyHealthCheckTargets {
+  /// The Internet IP addresses to be health checked.
+  ///
+  /// The format matches the format of ResourceRecordSet.rrdata as defined in
+  /// RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
+  core.List<core.String>? externalEndpoints;
+
   /// Configuration for internal load balancers to be health checked.
   core.List<RRSetRoutingPolicyLoadBalancerTarget>? internalLoadBalancers;
 
   RRSetRoutingPolicyHealthCheckTargets({
+    this.externalEndpoints,
     this.internalLoadBalancers,
   });
 
   RRSetRoutingPolicyHealthCheckTargets.fromJson(core.Map json_)
       : this(
+          externalEndpoints: (json_['externalEndpoints'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           internalLoadBalancers: (json_['internalLoadBalancers'] as core.List?)
               ?.map((value) => RRSetRoutingPolicyLoadBalancerTarget.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -4443,6 +4469,7 @@ class RRSetRoutingPolicyHealthCheckTargets {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (externalEndpoints != null) 'externalEndpoints': externalEndpoints!,
         if (internalLoadBalancers != null)
           'internalLoadBalancers': internalLoadBalancers!,
       };

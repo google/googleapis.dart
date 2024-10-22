@@ -4622,6 +4622,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.TagManagerApi(mock).accounts.containers;
       final arg_destinationId = 'foo';
+      final arg_tagId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -4659,6 +4660,10 @@ void main() {
           unittest.equals(arg_destinationId),
         );
         unittest.expect(
+          queryMap['tagId']!.first,
+          unittest.equals(arg_tagId),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -4670,7 +4675,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.lookup(
-          destinationId: arg_destinationId, $fields: arg_$fields);
+          destinationId: arg_destinationId,
+          tagId: arg_tagId,
+          $fields: arg_$fields);
       checkContainer(response as api.Container);
     });
 

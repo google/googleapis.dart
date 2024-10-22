@@ -33,6 +33,8 @@
 ///         - [ProjectsLocationsDatasetsDicomStoresDicomWebResource]
 ///           - [ProjectsLocationsDatasetsDicomStoresDicomWebStudiesResource]
 /// - [ProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesResource]
+/// -
+/// [ProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstancesResource]
 ///         - [ProjectsLocationsDatasetsDicomStoresStudiesResource]
 ///           - [ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource]
 /// - [ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource]
@@ -3326,6 +3328,57 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// SetBlobStorageSettings sets the blob storage settings of the specified
+  /// resources.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - Required. The path of the resource to update the blob storage
+  /// settings in the format of
+  /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}`,
+  /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/`,
+  /// or
+  /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`.
+  /// If `filter_config` is specified, set the value of `resource` to the
+  /// resource name of a DICOM store in the format
+  /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setBlobStorageSettings(
+    SetBlobStorageSettingsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':setBlobStorageSettings';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Sets the access control policy on the specified resource.
   ///
   /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
@@ -3546,10 +3599,66 @@ class ProjectsLocationsDatasetsDicomStoresDicomWebStudiesResource {
     return StudyMetrics.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// SetBlobStorageSettings sets the blob storage settings of the specified
+  /// resources.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - Required. The path of the resource to update the blob storage
+  /// settings in the format of
+  /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}`,
+  /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/`,
+  /// or
+  /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`.
+  /// If `filter_config` is specified, set the value of `resource` to the
+  /// resource name of a DICOM store in the format
+  /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+/dicomWeb/studies/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setBlobStorageSettings(
+    SetBlobStorageSettingsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':setBlobStorageSettings';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesResource {
   final commons.ApiRequester _requester;
+
+  ProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstancesResource
+      get instances =>
+          ProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstancesResource(
+              _requester);
 
   ProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesResource(
       commons.ApiRequester client)
@@ -3590,6 +3699,53 @@ class ProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesResource {
       queryParams: queryParams_,
     );
     return SeriesMetrics.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstancesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstancesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// GetStorageInfo returns the storage info of the specified resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - Required. The path of the instance to return storage info
+  /// for, in the form:
+  /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+/dicomWeb/studies/\[^/\]+/series/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [StorageInfo].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StorageInfo> getStorageInfo(
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getStorageInfo';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return StorageInfo.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -5228,6 +5384,247 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
 
   ProjectsLocationsDatasetsFhirStoresFhirResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Creates a FHIR Binary resource.
+  ///
+  /// This method can be used to create a Binary resource either by using one of
+  /// the accepted FHIR JSON content types, or as a raw data stream. If a
+  /// resource is created with this method using the FHIR content type this
+  /// method's behavior is the same as
+  /// \[`fhir.create`\](https://cloud.google.com/healthcare-api/docs/reference/rest/v1/projects.locations.datasets.fhirStores.fhir/create).
+  /// If a resource type other than Binary is used in the request it's treated
+  /// in the same way as non-FHIR data (e.g., images, zip archives, pdf files,
+  /// documents). When a non-FHIR content type is used in the request, a Binary
+  /// resource will be generated, and the uploaded data will be stored in the
+  /// `content` field (`DSTU2` and `STU3`), or the `data` field (`R4`). The
+  /// Binary resource's `contentType` will be filled in using the value of the
+  /// `Content-Type` header, and the `securityContext` field (not present in
+  /// `DSTU2`) will be populated from the `X-Security-Context` header if it
+  /// exists. At this time `securityContext` has no special behavior in the
+  /// Cloud Healthcare API. Note: the limit on data ingested through this method
+  /// is 2 GB. For best performance, use a non-FHIR data type instead of
+  /// wrapping the data in a Binary resource. Some of the Healthcare API
+  /// features, such as
+  /// [exporting to BigQuery](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery)
+  /// or
+  /// [Pub/Sub notifications](https://cloud.google.com/healthcare-api/docs/fhir-pubsub#behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high)
+  /// with full resource content, do not support Binary resources that are
+  /// larger than 10 MB. In these cases the resource's `data` field will be
+  /// omitted. Instead, the
+  /// "http://hl7.org/fhir/StructureDefinition/data-absent-reason" extension
+  /// will be present to indicate that including the data is `unsupported`. On
+  /// success, an empty `201 Created` response is returned. The newly created
+  /// resource's ID and version are returned in the Location header. Using
+  /// `Prefer: representation=resource` is not allowed for this method. The
+  /// definition of the Binary REST API can be found at
+  /// https://hl7.org/fhir/binary.html#rest.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the FHIR store this resource belongs to.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> BinaryCreate(
+    HttpBody request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/fhir/Binary';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the contents of a FHIR Binary resource.
+  ///
+  /// This method can be used to retrieve a Binary resource either by using the
+  /// FHIR JSON mimetype as the value for the Accept header, or as a raw data
+  /// stream. If the FHIR Accept type is used this method will return a Binary
+  /// resource with the data base64-encoded, regardless of how the resource was
+  /// created. The resource data can be retrieved in base64-decoded form if the
+  /// Accept type of the request matches the value of the resource's
+  /// `contentType` field. The definition of the Binary REST API can be found at
+  /// https://hl7.org/fhir/binary.html#rest.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Binary resource to retrieve.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/Binary/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> BinaryRead(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the entire contents of a Binary resource.
+  ///
+  /// If the specified resource does not exist and the FHIR store has
+  /// enable_update_create set, creates the resource with the client-specified
+  /// ID. It is strongly advised not to include or encode any sensitive data
+  /// such as patient identifiers in client-specified resource IDs. Those IDs
+  /// are part of the FHIR resource path recorded in Cloud Audit Logs and
+  /// Pub/Sub notifications. Those IDs can also be contained in reference fields
+  /// within other resources. This method can be used to update a Binary
+  /// resource either by using one of the accepted FHIR JSON content types, or
+  /// as a raw data stream. If a resource is updated with this method using the
+  /// FHIR content type this method's behavior is the same as `update`. If a
+  /// resource type other than Binary is used in the request it will be treated
+  /// in the same way as non-FHIR data. When a non-FHIR content type is used in
+  /// the request, a Binary resource will be generated using the ID from the
+  /// resource path, and the uploaded data will be stored in the `content` field
+  /// (`DSTU2` and `STU3`), or the `data` field (`R4`). The Binary resource's
+  /// `contentType` will be filled in using the value of the `Content-Type`
+  /// header, and the `securityContext` field (not present in `DSTU2`) will be
+  /// populated from the `X-Security-Context` header if it exists. At this time
+  /// `securityContext` has no special behavior in the Cloud Healthcare API.
+  /// Note: the limit on data ingested through this method is 2 GB. For best
+  /// performance, use a non-FHIR data type instead of wrapping the data in a
+  /// Binary resource. Some of the Healthcare API features, such as
+  /// [exporting to BigQuery](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery)
+  /// or
+  /// [Pub/Sub notifications](https://cloud.google.com/healthcare-api/docs/fhir-pubsub#behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high)
+  /// with full resource content, do not support Binary resources that are
+  /// larger than 10 MB. In these cases the resource's `data` field will be
+  /// omitted. Instead, the
+  /// "http://hl7.org/fhir/StructureDefinition/data-absent-reason" extension
+  /// will be present to indicate that including the data is `unsupported`. On
+  /// success, an empty 200 OK response will be returned, or a 201 Created if
+  /// the resource did not exit. The resource's ID and version are returned in
+  /// the Location header. Using `Prefer: representation=resource` is not
+  /// allowed for this method. The definition of the Binary REST API can be
+  /// found at https://hl7.org/fhir/binary.html#rest.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the resource to update.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/Binary/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> BinaryUpdate(
+    HttpBody request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the contents of a version (current or historical) of a FHIR Binary
+  /// resource by version ID.
+  ///
+  /// This method can be used to retrieve a Binary resource version either by
+  /// using the FHIR JSON mimetype as the value for the Accept header, or as a
+  /// raw data stream. If the FHIR Accept type is used this method will return a
+  /// Binary resource with the data base64-encoded, regardless of how the
+  /// resource version was created. The resource data can be retrieved in
+  /// base64-decoded form if the Accept type of the request matches the value of
+  /// the resource version's `contentType` field. The definition of the Binary
+  /// REST API can be found at https://hl7.org/fhir/binary.html#rest.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Binary resource version to retrieve.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/Binary/\[^/\]+/_history/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> BinaryVread(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Retrieves a Patient resource and resources related to that patient.
   ///
@@ -6912,6 +7309,57 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Rolls back messages from the HL7v2 store to the specified time.
+  ///
+  /// This method returns an Operation that can be used to track the status of
+  /// the rollback by calling GetOperation. Immediate fatal errors appear in the
+  /// error field, errors are also logged to Cloud Logging (see
+  /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+  /// Otherwise, when the operation finishes, a detailed response of type
+  /// RollbackHl7V2MessagesResponse is returned in the response field. The
+  /// metadata field type for this operation is OperationMetadata.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the HL7v2 store to rollback, in the format
+  /// of "projects/{project_id}/locations/{location_id}/datasets/{dataset_id}
+  /// /hl7V2Stores/{hl7v2_store_id}".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> rollback(
+    RollbackHl7V2MessagesRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':rollback';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Sets the access control policy on the specified resource.
   ///
   /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
@@ -7335,7 +7783,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   ///
   /// [name] - Output only. Resource name of the Message, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`.
-  /// Assigned by the server.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+/messages/\[^/\]+$`.
   ///
@@ -8020,6 +8467,88 @@ class Binding {
       };
 }
 
+/// BlobStorageInfo contains details about the data stored in Blob Storage for
+/// the referenced resource.
+///
+/// Note: Storage class is only valid for DICOM and hence will only be populated
+/// for DICOM resources.
+class BlobStorageInfo {
+  /// Size in bytes of data stored in Blob Storage.
+  core.String? sizeBytes;
+
+  /// The storage class in which the Blob data is stored.
+  /// Possible string values are:
+  /// - "BLOB_STORAGE_CLASS_UNSPECIFIED" : If unspecified in CreateDataset, the
+  /// StorageClass defaults to STANDARD. If unspecified in UpdateDataset and the
+  /// StorageClass is set in the field mask, an InvalidRequest error is thrown.
+  /// - "STANDARD" : This stores the Object in Blob Standard Storage:
+  /// https://cloud.google.com/storage/docs/storage-classes#standard
+  /// - "NEARLINE" : This stores the Object in Blob Nearline Storage:
+  /// https://cloud.google.com/storage/docs/storage-classes#nearline
+  /// - "COLDLINE" : This stores the Object in Blob Coldline Storage:
+  /// https://cloud.google.com/storage/docs/storage-classes#coldline
+  /// - "ARCHIVE" : This stores the Object in Blob Archive Storage:
+  /// https://cloud.google.com/storage/docs/storage-classes#archive
+  core.String? storageClass;
+
+  /// The time at which the storage class was updated.
+  ///
+  /// This is used to compute early deletion fees of the resource.
+  core.String? storageClassUpdateTime;
+
+  BlobStorageInfo({
+    this.sizeBytes,
+    this.storageClass,
+    this.storageClassUpdateTime,
+  });
+
+  BlobStorageInfo.fromJson(core.Map json_)
+      : this(
+          sizeBytes: json_['sizeBytes'] as core.String?,
+          storageClass: json_['storageClass'] as core.String?,
+          storageClassUpdateTime:
+              json_['storageClassUpdateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sizeBytes != null) 'sizeBytes': sizeBytes!,
+        if (storageClass != null) 'storageClass': storageClass!,
+        if (storageClassUpdateTime != null)
+          'storageClassUpdateTime': storageClassUpdateTime!,
+      };
+}
+
+/// Settings for data stored in Blob storage.
+class BlobStorageSettings {
+  /// The Storage class in which the Blob data is stored.
+  /// Possible string values are:
+  /// - "BLOB_STORAGE_CLASS_UNSPECIFIED" : If unspecified in CreateDataset, the
+  /// StorageClass defaults to STANDARD. If unspecified in UpdateDataset and the
+  /// StorageClass is set in the field mask, an InvalidRequest error is thrown.
+  /// - "STANDARD" : This stores the Object in Blob Standard Storage:
+  /// https://cloud.google.com/storage/docs/storage-classes#standard
+  /// - "NEARLINE" : This stores the Object in Blob Nearline Storage:
+  /// https://cloud.google.com/storage/docs/storage-classes#nearline
+  /// - "COLDLINE" : This stores the Object in Blob Coldline Storage:
+  /// https://cloud.google.com/storage/docs/storage-classes#coldline
+  /// - "ARCHIVE" : This stores the Object in Blob Archive Storage:
+  /// https://cloud.google.com/storage/docs/storage-classes#archive
+  core.String? blobStorageClass;
+
+  BlobStorageSettings({
+    this.blobStorageClass,
+  });
+
+  BlobStorageSettings.fromJson(core.Map json_)
+      : this(
+          blobStorageClass: json_['blobStorageClass'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (blobStorageClass != null) 'blobStorageClass': blobStorageClass!,
+      };
+}
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
@@ -8588,6 +9117,15 @@ class CryptoHashConfig {
 /// one or more patients. This may include multiple modalities of healthcare
 /// data, such as electronic medical records or medical imaging data.
 class Dataset {
+  /// Customer-managed encryption key spec for a Dataset.
+  ///
+  /// If set, this Dataset and all of its sub-resources will be secured by this
+  /// key. If empty, the Dataset is secured by the default Google encryption
+  /// key.
+  ///
+  /// Optional.
+  EncryptionSpec? encryptionSpec;
+
   /// Identifier.
   ///
   /// Resource name of the dataset, of the form
@@ -8599,20 +9137,28 @@ class Dataset {
   /// Must be a either a valid IANA time zone name such as "America/New_York" or
   /// empty, which defaults to UTC. This is used for parsing times in resources,
   /// such as HL7 messages, where no explicit timezone is specified.
+  ///
+  /// Optional.
   core.String? timeZone;
 
   Dataset({
+    this.encryptionSpec,
     this.name,
     this.timeZone,
   });
 
   Dataset.fromJson(core.Map json_)
       : this(
+          encryptionSpec: json_.containsKey('encryptionSpec')
+              ? EncryptionSpec.fromJson(json_['encryptionSpec']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_['name'] as core.String?,
           timeZone: json_['timeZone'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (encryptionSpec != null) 'encryptionSpec': encryptionSpec!,
         if (name != null) 'name': name!,
         if (timeZone != null) 'timeZone': timeZone!,
       };
@@ -8672,6 +9218,8 @@ class DeidentifiedStoreDestination {
 
   /// The full resource name of a Cloud Healthcare FHIR store, for example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+  ///
+  /// Optional.
   core.String? store;
 
   DeidentifiedStoreDestination({
@@ -8717,10 +9265,11 @@ class DeidentifyConfig {
   /// Ensures in-flight data remains in the region of origin during
   /// de-identification.
   ///
-  /// Using this option results in a significant reduction of throughput, and is
-  /// not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes.
-  /// `LOCATION` must be excluded within TextConfig, and must also be excluded
-  /// within ImageConfig if image redaction is required.
+  /// The default value is false. Using this option results in a significant
+  /// reduction of throughput, and is not compatible with `LOCATION` or
+  /// `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within
+  /// TextConfig, and must also be excluded within ImageConfig if image
+  /// redaction is required.
   core.bool? useRegionalDataProcessing;
 
   DeidentifyConfig({
@@ -9067,6 +9616,8 @@ class DicomStore {
   /// Notification destination for new DICOM instances.
   ///
   /// Supplied by the client.
+  ///
+  /// Optional.
   NotificationConfig? notificationConfig;
 
   /// A list of streaming configs used to configure the destination of streaming
@@ -9177,6 +9728,33 @@ class DicomStoreMetrics {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// Represents a customer-managed encryption key spec that can be applied to a
+/// resource.
+class EncryptionSpec {
+  /// The resource name of customer-managed encryption key that is used to
+  /// secure a resource and its sub-resources.
+  ///
+  /// Only the key in the same location as this Dataset is allowed to be used
+  /// for encryption. Format is:
+  /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}`
+  ///
+  /// Required.
+  core.String? kmsKeyName;
+
+  EncryptionSpec({
+    this.kmsKeyName,
+  });
+
+  EncryptionSpec.fromJson(core.Map json_)
+      : this(
+          kmsKeyName: json_['kmsKeyName'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+      };
+}
 
 /// The candidate entities that an entity mention could link to.
 class Entity {
@@ -9846,20 +10424,28 @@ class FhirNotificationConfig {
   /// If a notification can't be published to Pub/Sub, errors are logged to
   /// Cloud Logging. For more information, see
   /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare-api/docs/how-tos/logging).
+  ///
+  /// Optional.
   core.String? pubsubTopic;
 
   /// Whether to send full FHIR resource to this Pub/Sub topic.
+  ///
+  /// The default value is false.
+  ///
+  /// Optional.
   core.bool? sendFullResource;
 
   /// Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR
   /// resource.
   ///
-  /// Note that setting this to true does not guarantee that all previous
-  /// resources will be sent in the format of full FHIR resource. When a
-  /// resource change is too large or during heavy traffic, only the resource
-  /// name will be sent. Clients should always check the "payloadType" label
-  /// from a Pub/Sub message to determine whether it needs to fetch the full
-  /// previous resource as a separate operation.
+  /// The default value is false. Note that setting this to true does not
+  /// guarantee that all previous resources will be sent in the format of full
+  /// FHIR resource. When a resource change is too large or during heavy
+  /// traffic, only the resource name will be sent. Clients should always check
+  /// the "payloadType" label from a Pub/Sub message to determine whether it
+  /// needs to fetch the full previous resource as a separate operation.
+  ///
+  /// Optional.
   core.bool? sendPreviousResourceOnDelete;
 
   FhirNotificationConfig({
@@ -9896,6 +10482,8 @@ class FhirStore {
   /// this value set to ENABLED after a notification period. Warning: turning on
   /// this flag causes processing existing resources to fail if they contain
   /// references to non-existent resources.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED" : No parsing behavior
   /// specified. This is the same as DISABLED for backwards compatibility.
@@ -9910,7 +10498,10 @@ class FhirStore {
   /// If false, uses the FHIR specification default `handling=lenient` which
   /// ignores unrecognized search parameters. The handling can always be changed
   /// from the default on an individual API call by setting the HTTP header
-  /// `Prefer: handling=strict` or `Prefer: handling=lenient`.
+  /// `Prefer: handling=strict` or `Prefer: handling=lenient`. Defaults to
+  /// false.
+  ///
+  /// Optional.
   core.bool? defaultSearchHandlingStrict;
 
   /// Whether to disable referential integrity in this FHIR store.
@@ -9929,11 +10520,11 @@ class FhirStore {
   /// Whether to disable resource versioning for this FHIR store.
   ///
   /// This field can not be changed after the creation of FHIR store. If set to
-  /// false, which is the default behavior, all write operations cause
-  /// historical versions to be recorded automatically. The historical versions
-  /// can be fetched through the history APIs, but cannot be updated. If set to
-  /// true, no historical versions are kept. The server sends errors for
-  /// attempts to read the historical versions.
+  /// false, all write operations cause historical versions to be recorded
+  /// automatically. The historical versions can be fetched through the history
+  /// APIs, but cannot be updated. If set to true, no historical versions are
+  /// kept. The server sends errors for attempts to read the historical
+  /// versions. Defaults to false.
   ///
   /// Immutable.
   core.bool? disableResourceVersioning;
@@ -9948,7 +10539,9 @@ class FhirStore {
   /// any sensitive data such as patient identifiers in client-specified
   /// resource IDs. Those IDs are part of the FHIR resource path recorded in
   /// Cloud audit logs and Pub/Sub notifications. Those IDs can also be
-  /// contained in reference fields within other resources.
+  /// contained in reference fields within other resources. Defaults to false.
+  ///
+  /// Optional.
   core.bool? enableUpdateCreate;
 
   /// User-supplied key-value pairs used to organize FHIR stores.
@@ -9985,6 +10578,8 @@ class FhirStore {
 
   /// Specifies where and whether to send notifications upon changes to a FHIR
   /// store.
+  ///
+  /// Optional.
   core.List<FhirNotificationConfig>? notificationConfigs;
 
   /// A list of streaming configs that configure the destinations of streaming
@@ -10000,10 +10595,14 @@ class FhirStore {
   /// [service account](https://cloud.google.com/iam/docs/service-accounts).
   /// Some lag (typically on the order of dozens of seconds) is expected before
   /// the results show up in the streaming destination.
+  ///
+  /// Optional.
   core.List<StreamConfig>? streamConfigs;
 
   /// Configuration for how to validate incoming FHIR resources against
   /// configured profiles.
+  ///
+  /// Optional.
   ValidationConfig? validationConfig;
 
   /// The FHIR specification version that this FHIR store supports natively.
@@ -10387,16 +10986,22 @@ class GoogleCloudHealthcareV1DicomBigQueryDestination {
   /// If `write_disposition` is specified, this parameter is ignored.
   /// force=false is equivalent to write_disposition=WRITE_EMPTY and force=true
   /// is equivalent to write_disposition=WRITE_TRUNCATE.
+  ///
+  /// Optional.
   core.bool? force;
 
   /// BigQuery URI to a table, up to 2000 characters long, in the format
   /// `bq://projectId.bqDatasetId.tableId`
+  ///
+  /// Optional.
   core.String? tableUri;
 
   /// Determines whether the existing table in the destination is to be
   /// overwritten or appended to.
   ///
   /// If a write_disposition is specified, the `force` parameter is ignored.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "WRITE_DISPOSITION_UNSPECIFIED" : Default behavior is the same as
   /// WRITE_EMPTY.
@@ -10562,25 +11167,33 @@ class GoogleCloudHealthcareV1DicomStreamConfig {
 class GoogleCloudHealthcareV1FhirBigQueryDestination {
   /// BigQuery URI to an existing dataset, up to 2000 characters long, in the
   /// format `bq://projectId.bqDatasetId`.
+  ///
+  /// Optional.
   core.String? datasetUri;
 
-  /// If this flag is `TRUE`, all tables are deleted from the dataset before the
-  /// new exported tables are written.
+  /// The default value is false.
   ///
-  /// If the flag is not set and the destination dataset contains tables, the
-  /// export call returns an error. If `write_disposition` is specified, this
-  /// parameter is ignored. force=false is equivalent to
-  /// write_disposition=WRITE_EMPTY and force=true is equivalent to
-  /// write_disposition=WRITE_TRUNCATE.
+  /// If this flag is `TRUE`, all tables are deleted from the dataset before the
+  /// new exported tables are written. If the flag is not set and the
+  /// destination dataset contains tables, the export call returns an error. If
+  /// `write_disposition` is specified, this parameter is ignored. force=false
+  /// is equivalent to write_disposition=WRITE_EMPTY and force=true is
+  /// equivalent to write_disposition=WRITE_TRUNCATE.
+  ///
+  /// Optional.
   core.bool? force;
 
   /// The configuration for the exported BigQuery schema.
+  ///
+  /// Optional.
   SchemaConfig? schemaConfig;
 
   /// Determines if existing data in the destination dataset is overwritten,
   /// appended to, or not written if the tables contain data.
   ///
   /// If a write_disposition is specified, the `force` parameter is ignored.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "WRITE_DISPOSITION_UNSPECIFIED" : Default behavior is the same as
   /// WRITE_EMPTY.
@@ -10790,6 +11403,8 @@ class Hl7V2NotificationConfig {
   /// with key `x` as set using the Message.labels map. For example,
   /// `labels."priority"="high"`. The operator `:*` can be used to assert the
   /// existence of a label. For example, `labels."priority":*`.
+  ///
+  /// Optional.
   core.String? filter;
 
   /// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that
@@ -10853,11 +11468,15 @@ class Hl7V2Store {
   /// (both Ingest & Create) on the corresponding notification destination. Only
   /// the message name is sent as part of the notification. Supplied by the
   /// client.
+  ///
+  /// Optional.
   core.List<Hl7V2NotificationConfig>? notificationConfigs;
 
   /// The configuration for the parser.
   ///
   /// It determines how the server parses the messages.
+  ///
+  /// Optional.
   ParserConfig? parserConfig;
 
   /// Determines whether to reject duplicate messages.
@@ -10870,6 +11489,8 @@ class Hl7V2Store {
   /// When this field is set to true, CreateMessage/IngestMessage requests with
   /// a duplicate message will be rejected by the store, and
   /// IngestMessageErrorDetail returns a NACK message upon rejection.
+  ///
+  /// Optional.
   core.bool? rejectDuplicateMessage;
 
   Hl7V2Store({
@@ -11069,6 +11690,11 @@ class ImageConfig {
 /// accepts duplicate DICOM instances by ignoring the newly-pushed instance. It
 /// does not overwrite.
 class ImportDicomDataRequest {
+  /// The blob storage settings for the data imported by this operation.
+  ///
+  /// Optional.
+  BlobStorageSettings? blobStorageSettings;
+
   /// Cloud Storage source data location and import configuration.
   ///
   /// The Cloud Healthcare Service Agent requires the
@@ -11077,11 +11703,16 @@ class ImportDicomDataRequest {
   GoogleCloudHealthcareV1DicomGcsSource? gcsSource;
 
   ImportDicomDataRequest({
+    this.blobStorageSettings,
     this.gcsSource,
   });
 
   ImportDicomDataRequest.fromJson(core.Map json_)
       : this(
+          blobStorageSettings: json_.containsKey('blobStorageSettings')
+              ? BlobStorageSettings.fromJson(json_['blobStorageSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           gcsSource: json_.containsKey('gcsSource')
               ? GoogleCloudHealthcareV1DicomGcsSource.fromJson(
                   json_['gcsSource'] as core.Map<core.String, core.dynamic>)
@@ -11089,6 +11720,8 @@ class ImportDicomDataRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (blobStorageSettings != null)
+          'blobStorageSettings': blobStorageSettings!,
         if (gcsSource != null) 'gcsSource': gcsSource!,
       };
 }
@@ -11806,12 +12439,12 @@ class Message {
   /// The message type for this message.
   ///
   /// MSH-9.1.
+  ///
+  /// Output only.
   core.String? messageType;
 
   /// Resource name of the Message, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`.
-  ///
-  /// Assigned by the server.
   ///
   /// Output only.
   core.String? name;
@@ -11823,20 +12456,28 @@ class Message {
 
   /// All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this
   /// message.
+  ///
+  /// Output only.
   core.List<PatientId>? patientIds;
 
   /// The parsed version of the raw message data schematized according to this
   /// store's schemas and type definitions.
+  ///
+  /// Output only.
   SchematizedData? schematizedData;
 
   /// The hospital that this message came from.
   ///
   /// MSH-4.
+  ///
+  /// Output only.
   core.String? sendFacility;
 
   /// The datetime the sending application sent this message.
   ///
   /// MSH-7.
+  ///
+  /// Output only.
   core.String? sendTime;
 
   Message({
@@ -12042,10 +12683,14 @@ class ParsedData {
 /// It determines how the server parses the messages.
 class ParserConfig {
   /// Determines whether messages with no header are allowed.
+  ///
+  /// Optional.
   core.bool? allowNullHeader;
 
   /// Schemas used to parse messages in this store, if schematized parsing is
   /// desired.
+  ///
+  /// Optional.
   SchemaPackage? schema;
 
   /// Byte(s) to use as the segment terminator.
@@ -12609,6 +13254,111 @@ class RollbackFhirResourcesRequest {
       };
 }
 
+/// Filtering fields for an HL7v2 rollback.
+///
+/// Currently only supports a list of operation ids to roll back.
+class RollbackHL7MessagesFilteringFields {
+  /// A list of operation IDs to roll back.
+  ///
+  /// Optional.
+  core.List<core.String>? operationIds;
+
+  RollbackHL7MessagesFilteringFields({
+    this.operationIds,
+  });
+
+  RollbackHL7MessagesFilteringFields.fromJson(core.Map json_)
+      : this(
+          operationIds: (json_['operationIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (operationIds != null) 'operationIds': operationIds!,
+      };
+}
+
+/// Point in time recovery rollback request.
+class RollbackHl7V2MessagesRequest {
+  /// CREATE/UPDATE/DELETE/ALL for reverting all txns of a certain type.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CHANGE_TYPE_UNSPECIFIED" : When unspecified, revert all transactions
+  /// - "ALL" : All transactions
+  /// - "CREATE" : Revert only CREATE transactions
+  /// - "UPDATE" : Revert only Update transactions
+  /// - "DELETE" : Revert only Delete transactions
+  core.String? changeType;
+
+  /// Specifies whether to exclude earlier rollbacks.
+  ///
+  /// Optional.
+  core.bool? excludeRollbacks;
+
+  /// Parameters for filtering.
+  ///
+  /// Optional.
+  RollbackHL7MessagesFilteringFields? filteringFields;
+
+  /// When enabled, changes will be reverted without explicit confirmation.
+  ///
+  /// Optional.
+  core.bool? force;
+
+  /// Cloud storage object containing list of {resourceId} lines, identifying
+  /// resources to be reverted
+  ///
+  /// Optional.
+  core.String? inputGcsObject;
+
+  /// Bucket to deposit result
+  ///
+  /// Required.
+  core.String? resultGcsBucket;
+
+  /// Times point to rollback to.
+  ///
+  /// Required.
+  core.String? rollbackTime;
+
+  RollbackHl7V2MessagesRequest({
+    this.changeType,
+    this.excludeRollbacks,
+    this.filteringFields,
+    this.force,
+    this.inputGcsObject,
+    this.resultGcsBucket,
+    this.rollbackTime,
+  });
+
+  RollbackHl7V2MessagesRequest.fromJson(core.Map json_)
+      : this(
+          changeType: json_['changeType'] as core.String?,
+          excludeRollbacks: json_['excludeRollbacks'] as core.bool?,
+          filteringFields: json_.containsKey('filteringFields')
+              ? RollbackHL7MessagesFilteringFields.fromJson(
+                  json_['filteringFields']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          force: json_['force'] as core.bool?,
+          inputGcsObject: json_['inputGcsObject'] as core.String?,
+          resultGcsBucket: json_['resultGcsBucket'] as core.String?,
+          rollbackTime: json_['rollbackTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (changeType != null) 'changeType': changeType!,
+        if (excludeRollbacks != null) 'excludeRollbacks': excludeRollbacks!,
+        if (filteringFields != null) 'filteringFields': filteringFields!,
+        if (force != null) 'force': force!,
+        if (inputGcsObject != null) 'inputGcsObject': inputGcsObject!,
+        if (resultGcsBucket != null) 'resultGcsBucket': resultGcsBucket!,
+        if (rollbackTime != null) 'rollbackTime': rollbackTime!,
+      };
+}
+
 /// Configuration for the FHIR BigQuery schema.
 ///
 /// Determines how the server generates the schema.
@@ -12735,6 +13485,8 @@ class SchemaPackage {
   ///
   /// This means that incoming messages can omit any group, segment, field,
   /// component, or subcomponent.
+  ///
+  /// Optional.
   core.bool? ignoreMinOccurs;
 
   /// Schema configs that are layered based on their VersionSources that match
@@ -12743,9 +13495,13 @@ class SchemaPackage {
   /// Schema configs present in higher indices override those in lower indices
   /// with the same message type and trigger event if their VersionSources all
   /// match an incoming message.
+  ///
+  /// Optional.
   core.List<Hl7SchemaConfig>? schemas;
 
   /// Determines how messages that fail to parse are handled.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "SCHEMATIZED_PARSING_TYPE_UNSPECIFIED" : Unspecified schematized parsing
   /// type, equivalent to `SOFT_FAIL`.
@@ -12761,10 +13517,14 @@ class SchemaPackage {
   /// Type definitions present in higher indices override those in lower indices
   /// with the same type name if their VersionSources all match an incoming
   /// message.
+  ///
+  /// Optional.
   core.List<Hl7TypesConfig>? types;
 
   /// Determines how unexpected segments (segments not matched to the schema)
   /// are handled.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "UNEXPECTED_SEGMENT_HANDLING_MODE_UNSPECIFIED" : Unspecified handling
   /// mode, equivalent to FAIL.
@@ -12993,6 +13753,46 @@ class SeriesMetrics {
       };
 }
 
+/// Request message for `SetBlobStorageSettings` method.
+class SetBlobStorageSettingsRequest {
+  /// The blob storage settings to update for the specified resources.
+  ///
+  /// Only fields listed in `update_mask` are applied.
+  BlobStorageSettings? blobStorageSettings;
+
+  /// A filter configuration.
+  ///
+  /// If `filter_config` is specified, set the value of `resource` to the
+  /// resource name of a DICOM store in the format
+  /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
+  ///
+  /// Optional.
+  DicomFilterConfig? filterConfig;
+
+  SetBlobStorageSettingsRequest({
+    this.blobStorageSettings,
+    this.filterConfig,
+  });
+
+  SetBlobStorageSettingsRequest.fromJson(core.Map json_)
+      : this(
+          blobStorageSettings: json_.containsKey('blobStorageSettings')
+              ? BlobStorageSettings.fromJson(json_['blobStorageSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          filterConfig: json_.containsKey('filterConfig')
+              ? DicomFilterConfig.fromJson(
+                  json_['filterConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (blobStorageSettings != null)
+          'blobStorageSettings': blobStorageSettings!,
+        if (filterConfig != null) 'filterConfig': filterConfig!,
+      };
+}
+
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
@@ -13091,7 +13891,49 @@ class Signature {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
+
+/// StorageInfo encapsulates all the storage info of a resource.
+class StorageInfo {
+  /// Info about the data stored in blob storage for the resource.
+  BlobStorageInfo? blobStorageInfo;
+
+  /// The resource whose storage info is returned.
+  ///
+  /// For example:
+  /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`
+  core.String? referencedResource;
+
+  /// Info about the data stored in structured storage for the resource.
+  StructuredStorageInfo? structuredStorageInfo;
+
+  StorageInfo({
+    this.blobStorageInfo,
+    this.referencedResource,
+    this.structuredStorageInfo,
+  });
+
+  StorageInfo.fromJson(core.Map json_)
+      : this(
+          blobStorageInfo: json_.containsKey('blobStorageInfo')
+              ? BlobStorageInfo.fromJson(json_['blobStorageInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          referencedResource: json_['referencedResource'] as core.String?,
+          structuredStorageInfo: json_.containsKey('structuredStorageInfo')
+              ? StructuredStorageInfo.fromJson(json_['structuredStorageInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (blobStorageInfo != null) 'blobStorageInfo': blobStorageInfo!,
+        if (referencedResource != null)
+          'referencedResource': referencedResource!,
+        if (structuredStorageInfo != null)
+          'structuredStorageInfo': structuredStorageInfo!,
+      };
+}
 
 /// Contains configuration for streaming FHIR export.
 class StreamConfig {
@@ -13126,19 +13968,23 @@ class StreamConfig {
   /// streamed to BigQuery, errors are logged to Cloud Logging. For more
   /// information, see
   /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+  ///
+  /// Optional.
   GoogleCloudHealthcareV1FhirBigQueryDestination? bigqueryDestination;
 
   /// The destination FHIR store for de-identified resources.
   ///
   /// After this field is added, all subsequent creates/updates/patches to the
   /// source store will be de-identified using the provided configuration and
-  /// applied to the destination store. Importing resources to the source store
-  /// will not trigger the streaming. If the source store already contains
-  /// resources when this option is enabled, those resources will not be copied
-  /// to the destination store unless they are subsequently updated. This may
-  /// result in invalid references in the destination store. Before adding this
-  /// config, you must grant the healthcare.fhirResources.update permission on
-  /// the destination store to your project's **Cloud Healthcare Service Agent**
+  /// applied to the destination store. Resources deleted from the source store
+  /// will be deleted from the destination store. Importing resources to the
+  /// source store will not trigger the streaming. If the source store already
+  /// contains resources when this option is enabled, those resources will not
+  /// be copied to the destination store unless they are subsequently updated.
+  /// This may result in invalid references in the destination store. Before
+  /// adding this config, you must grant the healthcare.fhirResources.update
+  /// permission on the destination store to your project's **Cloud Healthcare
+  /// Service Agent**
   /// [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent).
   /// The destination store must set enable_update_create to true. The
   /// destination store must have disable_referential_integrity set to true. If
@@ -13152,6 +13998,8 @@ class StreamConfig {
   /// See https://www.hl7.org/fhir/valueset-resource-types.html for a list of
   /// all FHIR resource types. The server treats an empty list as an intent to
   /// stream all the supported resource types in this FHIR store.
+  ///
+  /// Optional.
   core.List<core.String>? resourceTypes;
 
   StreamConfig({
@@ -13184,6 +14032,26 @@ class StreamConfig {
         if (deidentifiedStoreDestination != null)
           'deidentifiedStoreDestination': deidentifiedStoreDestination!,
         if (resourceTypes != null) 'resourceTypes': resourceTypes!,
+      };
+}
+
+/// StructuredStorageInfo contains details about the data stored in Structured
+/// Storage for the referenced resource.
+class StructuredStorageInfo {
+  /// Size in bytes of data stored in structured storage.
+  core.String? sizeBytes;
+
+  StructuredStorageInfo({
+    this.sizeBytes,
+  });
+
+  StructuredStorageInfo.fromJson(core.Map json_)
+      : this(
+          sizeBytes: json_['sizeBytes'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sizeBytes != null) 'sizeBytes': sizeBytes!,
       };
 }
 
@@ -13486,35 +14354,44 @@ class UserDataMapping {
 class ValidationConfig {
   /// Whether to disable FHIRPath validation for incoming resources.
   ///
-  /// Set this to true to disable checking incoming resources for conformance
-  /// against FHIRPath requirement defined in the FHIR specification. This
-  /// property only affects resource types that do not have profiles configured
-  /// for them, any rules in enabled implementation guides will still be
-  /// enforced.
+  /// The default value is false. Set this to true to disable checking incoming
+  /// resources for conformance against FHIRPath requirement defined in the FHIR
+  /// specification. This property only affects resource types that do not have
+  /// profiles configured for them, any rules in enabled implementation guides
+  /// will still be enforced.
+  ///
+  /// Optional.
   core.bool? disableFhirpathValidation;
 
   /// Whether to disable profile validation for this FHIR store.
   ///
-  /// Set this to true to disable checking incoming resources for conformance
-  /// against structure definitions in this FHIR store.
+  /// The default value is false. Set this to true to disable checking incoming
+  /// resources for conformance against structure definitions in this FHIR
+  /// store.
+  ///
+  /// Optional.
   core.bool? disableProfileValidation;
 
   /// Whether to disable reference type validation for incoming resources.
   ///
-  /// Set this to true to disable checking incoming resources for conformance
-  /// against reference type requirement defined in the FHIR specification. This
-  /// property only affects resource types that do not have profiles configured
-  /// for them, any rules in enabled implementation guides will still be
-  /// enforced.
+  /// The default value is false. Set this to true to disable checking incoming
+  /// resources for conformance against reference type requirement defined in
+  /// the FHIR specification. This property only affects resource types that do
+  /// not have profiles configured for them, any rules in enabled implementation
+  /// guides will still be enforced.
+  ///
+  /// Optional.
   core.bool? disableReferenceTypeValidation;
 
   /// Whether to disable required fields validation for incoming resources.
   ///
-  /// Set this to true to disable checking incoming resources for conformance
-  /// against required fields requirement defined in the FHIR specification.
-  /// This property only affects resource types that do not have profiles
-  /// configured for them, any rules in enabled implementation guides will still
-  /// be enforced.
+  /// The default value is false. Set this to true to disable checking incoming
+  /// resources for conformance against required fields requirement defined in
+  /// the FHIR specification. This property only affects resource types that do
+  /// not have profiles configured for them, any rules in enabled implementation
+  /// guides will still be enforced.
+  ///
+  /// Optional.
   core.bool? disableRequiredFieldValidation;
 
   /// A list of implementation guide URLs in this FHIR store that are used to
@@ -13533,6 +14410,8 @@ class ValidationConfig {
   /// types - slicing, when using "value" as the discriminator type When a URL
   /// cannot be resolved (for example, in a type assertion), the server does not
   /// return an error.
+  ///
+  /// Optional.
   core.List<core.String>? enabledImplementationGuides;
 
   ValidationConfig({

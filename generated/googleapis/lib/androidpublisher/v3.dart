@@ -367,50 +367,6 @@ class ApprecoveryResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// List all app recovery action resources associated with a particular
-  /// package name and app version.
-  ///
-  /// Request parameters:
-  ///
-  /// [packageName] - Required. Package name of the app for which list of
-  /// recovery actions is requested.
-  ///
-  /// [versionCode] - Required. Version code targeted by the list of recovery
-  /// actions.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListAppRecoveriesResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListAppRecoveriesResponse> appRecoveries(
-    core.String packageName, {
-    core.String? versionCode,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (versionCode != null) 'versionCode': [versionCode],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'androidpublisher/v3/applications/' +
-        commons.escapeVariable('$packageName') +
-        '/appRecoveries';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      queryParams: queryParams_,
-    );
-    return ListAppRecoveriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Cancel an already executing app recovery action.
   ///
   /// Note that this action changes status of the recovery action to CANCELED.
@@ -555,6 +511,50 @@ class ApprecoveryResource {
       queryParams: queryParams_,
     );
     return DeployAppRecoveryResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List all app recovery action resources associated with a particular
+  /// package name and app version.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. Package name of the app for which list of
+  /// recovery actions is requested.
+  ///
+  /// [versionCode] - Required. Version code targeted by the list of recovery
+  /// actions.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAppRecoveriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAppRecoveriesResponse> list(
+    core.String packageName, {
+    core.String? versionCode,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (versionCode != null) 'versionCode': [versionCode],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/appRecoveries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAppRecoveriesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1014,9 +1014,8 @@ class EditsBundlesResource {
   ///
   /// [editId] - Identifier of the edit.
   ///
-  /// [ackBundleInstallationWarning] - Must be set to true if the app bundle
-  /// installation may trigger a warning on user devices (for example, if
-  /// installation size may be over a threshold, typically 100 MB).
+  /// [ackBundleInstallationWarning] - Deprecated. The installation warning has
+  /// been removed, it's not necessary to set this field anymore.
   ///
   /// [deviceTierConfigId] - Device tier config (DTC) to be used for generating
   /// deliverables (APKs). Contains id of the DTC or "LATEST" for last uploaded
@@ -4448,13 +4447,11 @@ class MonetizationSubscriptionsBasePlansResource {
     );
   }
 
-  /// Migrates subscribers who are receiving an historical subscription price to
-  /// the currently-offered price for the specified region.
+  /// Migrates subscribers from one or more legacy price cohorts to the current
+  /// price.
   ///
-  /// Requests will cause price change notifications to be sent to users who are
-  /// currently receiving an historical price older than the supplied timestamp.
-  /// Subscribers who do not agree to the new price will have their subscription
-  /// ended at the next renewal.
+  /// Requests result in Google Play notifying affected subscribers. Only up to
+  /// 250 simultaneous legacy price cohorts are supported.
   ///
   /// [request] - The metadata request object.
   ///
@@ -7322,9 +7319,10 @@ class AutoRenewingBasePlanType {
 
   /// Subscription period, specified in ISO 8601 format.
   ///
-  /// For a list of acceptable billing periods, refer to the help center.
+  /// For a list of acceptable billing periods, refer to the help center. The
+  /// duration is immutable after the base plan is created.
   ///
-  /// Required.
+  /// Required. Immutable.
   core.String? billingPeriodDuration;
 
   /// Grace period of the subscription, specified in ISO 8601 format.
@@ -8744,12 +8742,20 @@ class DeviceSelector {
   /// selector.
   core.List<SystemFeature>? requiredSystemFeatures;
 
+  /// The SoCs included by this selector.
+  ///
+  /// Only works for Android S+ devices.
+  ///
+  /// Optional.
+  core.List<SystemOnChip>? systemOnChips;
+
   DeviceSelector({
     this.deviceRam,
     this.excludedDeviceIds,
     this.forbiddenSystemFeatures,
     this.includedDeviceIds,
     this.requiredSystemFeatures,
+    this.systemOnChips,
   });
 
   DeviceSelector.fromJson(core.Map json_)
@@ -8776,6 +8782,10 @@ class DeviceSelector {
                   ?.map((value) => SystemFeature.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList(),
+          systemOnChips: (json_['systemOnChips'] as core.List?)
+              ?.map((value) => SystemOnChip.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8786,6 +8796,7 @@ class DeviceSelector {
         if (includedDeviceIds != null) 'includedDeviceIds': includedDeviceIds!,
         if (requiredSystemFeatures != null)
           'requiredSystemFeatures': requiredSystemFeatures!,
+        if (systemOnChips != null) 'systemOnChips': systemOnChips!,
       };
 }
 
@@ -9147,6 +9158,19 @@ class ExternalTransaction {
   /// Output only.
   ExternalTransactionTestPurchase? testPurchase;
 
+  /// The transaction program code, used to help determine service fee for
+  /// eligible apps participating in partner programs.
+  ///
+  /// Developers participating in the Play Media Experience Program
+  /// (https://play.google.com/console/about/programs/mediaprogram/) must
+  /// provide the program code when reporting alternative billing transactions.
+  /// If you are an eligible developer, please contact your BDM for more
+  /// information on how to set this field. Note: this field can not be used for
+  /// external offers transactions.
+  ///
+  /// Optional.
+  core.int? transactionProgramCode;
+
   /// The current state of the transaction.
   ///
   /// Output only.
@@ -9179,6 +9203,7 @@ class ExternalTransaction {
     this.packageName,
     this.recurringTransaction,
     this.testPurchase,
+    this.transactionProgramCode,
     this.transactionState,
     this.transactionTime,
     this.userTaxAddress,
@@ -9218,6 +9243,7 @@ class ExternalTransaction {
               ? ExternalTransactionTestPurchase.fromJson(
                   json_['testPurchase'] as core.Map<core.String, core.dynamic>)
               : null,
+          transactionProgramCode: json_['transactionProgramCode'] as core.int?,
           transactionState: json_['transactionState'] as core.String?,
           transactionTime: json_['transactionTime'] as core.String?,
           userTaxAddress: json_.containsKey('userTaxAddress')
@@ -9242,6 +9268,8 @@ class ExternalTransaction {
         if (recurringTransaction != null)
           'recurringTransaction': recurringTransaction!,
         if (testPurchase != null) 'testPurchase': testPurchase!,
+        if (transactionProgramCode != null)
+          'transactionProgramCode': transactionProgramCode!,
         if (transactionState != null) 'transactionState': transactionState!,
         if (transactionTime != null) 'transactionTime': transactionTime!,
         if (userTaxAddress != null) 'userTaxAddress': userTaxAddress!,
@@ -10433,14 +10461,17 @@ class InstallmentsBasePlanType {
 
   /// Subscription period, specified in ISO 8601 format.
   ///
-  /// For a list of acceptable billing periods, refer to the help center.
+  /// For a list of acceptable billing periods, refer to the help center. The
+  /// duration is immutable after the base plan is created.
   ///
-  /// Required.
+  /// Required. Immutable.
   core.String? billingPeriodDuration;
 
   /// The number of payments the user is committed to.
   ///
-  /// Required.
+  /// It is immutable after the base plan is created.
+  ///
+  /// Required. Immutable.
   core.int? committedPaymentsCount;
 
   /// Grace period of the subscription, specified in ISO 8601 format.
@@ -10467,9 +10498,10 @@ class InstallmentsBasePlanType {
 
   /// Installments base plan renewal type.
   ///
-  /// Determines the behavior at the end of the initial commitment.
+  /// Determines the behavior at the end of the initial commitment. The renewal
+  /// type is immutable after the base plan is created.
   ///
-  /// Required.
+  /// Required. Immutable.
   /// Possible string values are:
   /// - "RENEWAL_TYPE_UNSPECIFIED" : Unspecified state.
   /// - "RENEWAL_TYPE_RENEWS_WITHOUT_COMMITMENT" : Renews periodically for the
@@ -11152,7 +11184,7 @@ class ModuleTargeting {
 /// Represents an amount of money with its currency type.
 typedef Money = $Money;
 
-/// Represents a list of apis.
+/// Represents a list of ABIs.
 class MultiAbi {
   /// A list of targeted ABIs, as represented by the Android Platform
   core.List<Abi>? abi;
@@ -11552,9 +11584,10 @@ typedef PendingCancellation = $Empty;
 class PrepaidBasePlanType {
   /// Subscription period, specified in ISO 8601 format.
   ///
-  /// For a list of acceptable billing periods, refer to the help center.
+  /// For a list of acceptable billing periods, refer to the help center. The
+  /// duration is immutable after the base plan is created.
   ///
-  /// Required.
+  /// Required. Immutable.
   core.String? billingPeriodDuration;
 
   /// Whether users should be able to extend this prepaid base plan in Google
@@ -11949,34 +11982,33 @@ class RegionalBasePlanConfig {
       };
 }
 
-/// Configuration for a price migration.
+/// Configuration for migration of a legacy price cohort.
 class RegionalPriceMigrationConfig {
-  /// The cutoff time for historical prices that subscribers can remain paying.
+  /// Subscribers in all legacy price cohorts before this time will be migrated
+  /// to the current price.
   ///
-  /// Subscribers on prices which were available at this cutoff time or later
-  /// will stay on their existing price. Subscribers on older prices will be
-  /// migrated to the currently-offered price. The migrated subscribers will
-  /// receive a notification that they will be paying a different price.
-  /// Subscribers who do not agree to the new price will have their subscription
-  /// ended at the next renewal.
+  /// Subscribers in any newer price cohorts are unaffected. Affected
+  /// subscribers will receive one or more notifications from Google Play about
+  /// the price change. Price decreases occur at the subscriber's next billing
+  /// date. Price increases occur at the subscriber's next billing date
+  /// following a notification period that varies by region and price increase
+  /// type.
   ///
   /// Required.
   core.String? oldestAllowedPriceVersionTime;
 
-  /// The behavior the caller wants users to see when there is a price increase
-  /// during migration.
-  ///
-  /// If left unset, the behavior defaults to PRICE_INCREASE_TYPE_OPT_IN. Note
-  /// that the first opt-out price increase migration for each app must be
-  /// initiated in Play Console.
+  /// The requested type of price increase
   ///
   /// Optional.
   /// Possible string values are:
   /// - "PRICE_INCREASE_TYPE_UNSPECIFIED" : Unspecified state.
-  /// - "PRICE_INCREASE_TYPE_OPT_IN" : Price increase will be presented to users
-  /// on an opt-in basis.
-  /// - "PRICE_INCREASE_TYPE_OPT_OUT" : Price increase will be presented to
-  /// users on an opt-out basis.
+  /// - "PRICE_INCREASE_TYPE_OPT_IN" : Subscribers must accept the price
+  /// increase or their subscription is canceled.
+  /// - "PRICE_INCREASE_TYPE_OPT_OUT" : Subscribers are notified but do not have
+  /// to accept the price increase. Opt-out price increases not meeting
+  /// regional, frequency, and amount limits will proceed as opt-in price
+  /// increase. The first opt-out price increase for each app must be initiated
+  /// in the Google Play Console.
   core.String? priceIncreaseType;
 
   /// Region code this configuration applies to, as defined by ISO 3166-2, e.g.
@@ -12502,6 +12534,12 @@ class ReviewsReplyResponse {
 
 /// Revocation context of the purchases.subscriptionsv2.revoke API.
 class RevocationContext {
+  /// Used when users should be refunded the full amount of the latest order of
+  /// the subscription.
+  ///
+  /// Optional.
+  RevocationContextFullRefund? fullRefund;
+
   /// Used when users should be refunded a prorated amount they paid for their
   /// subscription based on the amount of time remaining in a subscription.
   ///
@@ -12509,11 +12547,16 @@ class RevocationContext {
   RevocationContextProratedRefund? proratedRefund;
 
   RevocationContext({
+    this.fullRefund,
     this.proratedRefund,
   });
 
   RevocationContext.fromJson(core.Map json_)
       : this(
+          fullRefund: json_.containsKey('fullRefund')
+              ? RevocationContextFullRefund.fromJson(
+                  json_['fullRefund'] as core.Map<core.String, core.dynamic>)
+              : null,
           proratedRefund: json_.containsKey('proratedRefund')
               ? RevocationContextProratedRefund.fromJson(json_['proratedRefund']
                   as core.Map<core.String, core.dynamic>)
@@ -12521,9 +12564,14 @@ class RevocationContext {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (fullRefund != null) 'fullRefund': fullRefund!,
         if (proratedRefund != null) 'proratedRefund': proratedRefund!,
       };
 }
+
+/// Used to determine if the refund type in the RevocationContext is a full
+/// refund.
+typedef RevocationContextFullRefund = $Empty;
 
 /// Used to determine if the refund type in the RevocationContext is a prorated
 /// refund.
@@ -13147,9 +13195,8 @@ class SubscriptionOffer {
 
   /// The phases of this subscription offer.
   ///
-  /// Must contain at least one entry, and may contain at most five. Users will
-  /// always receive all these phases in the specified order. Phases may not be
-  /// added, removed, or reordered after initial creation.
+  /// Must contain at least one and at most two entries. Users will always
+  /// receive all these phases in the specified order.
   ///
   /// Required.
   core.List<SubscriptionOfferPhase>? phases;
@@ -14099,6 +14146,45 @@ class SystemFeature {
 
 /// Information specific to cancellations initiated by Google system.
 typedef SystemInitiatedCancellation = $Empty;
+
+/// Representation of a System-on-Chip (SoC) of an Android device.
+///
+/// Can be used to target S+ devices.
+class SystemOnChip {
+  /// The designer of the SoC, eg.
+  ///
+  /// "Google" Value of build property "ro.soc.manufacturer"
+  /// https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER
+  /// Required.
+  ///
+  /// Required.
+  core.String? manufacturer;
+
+  /// The model of the SoC, eg.
+  ///
+  /// "Tensor" Value of build property "ro.soc.model"
+  /// https://developer.android.com/reference/android/os/Build#SOC_MODEL
+  /// Required.
+  ///
+  /// Required.
+  core.String? model;
+
+  SystemOnChip({
+    this.manufacturer,
+    this.model,
+  });
+
+  SystemOnChip.fromJson(core.Map json_)
+      : this(
+          manufacturer: json_['manufacturer'] as core.String?,
+          model: json_['model'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (manufacturer != null) 'manufacturer': manufacturer!,
+        if (model != null) 'model': model!,
+      };
+}
 
 /// Targeting details for a recovery action such as regions, android sdk levels,
 /// app versions etc.

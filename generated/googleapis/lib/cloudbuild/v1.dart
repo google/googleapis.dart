@@ -616,7 +616,7 @@ class ProjectsGithubEnterpriseConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the parent project. For example:
+  /// [parent] - Name of the parent project. For example:
   /// projects/{$project_number} or projects/{$project_id}
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
@@ -2048,7 +2048,7 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the parent project. For example:
+  /// [parent] - Name of the parent project. For example:
   /// projects/{$project_number} or projects/{$project_id}
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
@@ -4490,6 +4490,8 @@ class BuildOptions {
   /// - "REGIONAL_USER_OWNED_BUCKET" : Bucket is located in user-owned project
   /// in the same region as the build. The builder service account must have
   /// access to create and write to Cloud Storage buckets in the build project.
+  /// - "LEGACY_BUCKET" : Bucket is located in a Google-owned project and is not
+  /// regionalized.
   core.String? defaultLogsBucketBehavior;
 
   /// Requested disk size for the VM that runs the build.
@@ -5033,9 +5035,10 @@ class BuildTrigger {
   /// The service account used for all user-controlled operations including
   /// UpdateBuildTrigger, RunBuildTrigger, CreateBuild, and CancelBuild.
   ///
-  /// If no service account is set, then the standard Cloud Build service
-  /// account (\[PROJECT_NUM\]@system.gserviceaccount.com) will be used instead.
-  /// Format: `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}`
+  /// If no service account is set and the legacy Cloud Build service account
+  /// (\[PROJECT_NUM\]@cloudbuild.gserviceaccount.com) is the default for the
+  /// project then it will be used instead. Format:
+  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}`
   core.String? serviceAccount;
 
   /// The repo and ref of the repository from which to build.
@@ -5540,43 +5543,6 @@ class FileHashes {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fileHash != null) 'fileHash': fileHash!,
-      };
-}
-
-/// Represents a storage location in Cloud Storage
-class GCSLocation {
-  /// Cloud Storage bucket.
-  ///
-  /// See https://cloud.google.com/storage/docs/naming#requirements
-  core.String? bucket;
-
-  /// Cloud Storage generation for the object.
-  ///
-  /// If the generation is omitted, the latest generation will be used.
-  core.String? generation;
-
-  /// Cloud Storage object.
-  ///
-  /// See https://cloud.google.com/storage/docs/naming#objectnames
-  core.String? object;
-
-  GCSLocation({
-    this.bucket,
-    this.generation,
-    this.object,
-  });
-
-  GCSLocation.fromJson(core.Map json_)
-      : this(
-          bucket: json_['bucket'] as core.String?,
-          generation: json_['generation'] as core.String?,
-          object: json_['object'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (bucket != null) 'bucket': bucket!,
-        if (generation != null) 'generation': generation!,
-        if (object != null) 'object': object!,
       };
 }
 
@@ -6477,33 +6443,25 @@ typedef HttpBody = $HttpBody;
 class HttpConfig {
   /// SecretVersion resource of the HTTP proxy URL.
   ///
-  /// The proxy URL should be in format protocol://@\]proxyhost\[:port\].
+  /// The Service Account used in the build (either the default Service Account
+  /// or user-specified Service Account) should have
+  /// `secretmanager.versions.access` permissions on this secret. The proxy URL
+  /// should be in format `protocol://@]proxyhost[:port]`.
   core.String? proxySecretVersionName;
-
-  /// Cloud Storage object storing the certificate to use with the HTTP proxy.
-  ///
-  /// Optional.
-  GCSLocation? proxySslCaInfo;
 
   HttpConfig({
     this.proxySecretVersionName,
-    this.proxySslCaInfo,
   });
 
   HttpConfig.fromJson(core.Map json_)
       : this(
           proxySecretVersionName:
               json_['proxySecretVersionName'] as core.String?,
-          proxySslCaInfo: json_.containsKey('proxySslCaInfo')
-              ? GCSLocation.fromJson(json_['proxySslCaInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (proxySecretVersionName != null)
           'proxySecretVersionName': proxySecretVersionName!,
-        if (proxySslCaInfo != null) 'proxySslCaInfo': proxySslCaInfo!,
       };
 }
 
@@ -7934,7 +7892,7 @@ class SourceProvenance {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Location of the source in an archive file in Cloud Storage.
 class StorageSource {

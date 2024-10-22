@@ -423,8 +423,8 @@ class ProjectsLocationsClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Unique name of the resource in this scope including
-  /// project and location using the form:
+  /// [name] - Required. Identifier. Unique name of the resource in this scope
+  /// including project and location using the form:
   /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
@@ -464,6 +464,50 @@ class ProjectsLocationsClustersResource {
     final response_ = await _requester.request(
       url_,
       'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Reschedules upcoming maintenance event.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Redis Cluster instance resource name using the form:
+  /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
+  /// where `location_id` refers to a GCP region.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> rescheduleClusterMaintenance(
+    RescheduleClusterMaintenanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':rescheduleClusterMaintenance';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
       body: body_,
       queryParams: queryParams_,
     );
@@ -1193,8 +1237,8 @@ class AOFConfig {
   /// this configuration, but it's up to the kernel's exact tuning.
   /// - "EVERYSEC" : fsync every second. Fast enough, and you may lose 1 second
   /// of data if there is a disaster
-  /// - "ALWAYS" : fsync every time new commands are appended to the AOF. It has
-  /// the best data loss protection at the cost of performance
+  /// - "ALWAYS" : fsync every time new write commands are appended to the AOF.
+  /// It has the best data loss protection at the cost of performance
   core.String? appendFsync;
 
   AOFConfig({
@@ -1262,6 +1306,11 @@ class Cluster {
   /// Output only.
   core.String? createTime;
 
+  /// Cross cluster replication config.
+  ///
+  /// Optional.
+  CrossClusterReplicationConfig? crossClusterReplicationConfig;
+
   /// The delete operation will fail when the value is set to true.
   ///
   /// Optional.
@@ -1275,6 +1324,18 @@ class Cluster {
   /// Output only.
   core.List<DiscoveryEndpoint>? discoveryEndpoints;
 
+  /// ClusterMaintenancePolicy determines when to allow or deny updates.
+  ///
+  /// Optional.
+  ClusterMaintenancePolicy? maintenancePolicy;
+
+  /// ClusterMaintenanceSchedule Output only Published maintenance schedule.
+  ///
+  /// Output only.
+  ClusterMaintenanceSchedule? maintenanceSchedule;
+
+  /// Identifier.
+  ///
   /// Unique name of the resource in this scope including project and location
   /// using the form:
   /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
@@ -1288,7 +1349,7 @@ class Cluster {
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "NODE_TYPE_UNSPECIFIED"
+  /// - "NODE_TYPE_UNSPECIFIED" : Node type unspecified
   /// - "REDIS_SHARED_CORE_NANO" : Redis shared core nano node_type.
   /// - "REDIS_HIGHMEM_MEDIUM" : Redis highmem medium node_type.
   /// - "REDIS_HIGHMEM_XLARGE" : Redis highmem xlarge node_type.
@@ -1314,8 +1375,8 @@ class Cluster {
   /// Required.
   core.List<PscConfig>? pscConfigs;
 
-  /// PSC connections for discovery of the cluster topology and accessing the
-  /// cluster.
+  /// The list of PSC connections that are auto-created through service
+  /// connectivity automation.
   ///
   /// Output only.
   core.List<PscConnection>? pscConnections;
@@ -1332,7 +1393,7 @@ class Cluster {
 
   /// Number of shards for the Redis cluster.
   ///
-  /// Required.
+  /// Optional.
   core.int? shardCount;
 
   /// Redis memory size in GB for the entire cluster rounded up to the next
@@ -1385,8 +1446,11 @@ class Cluster {
   Cluster({
     this.authorizationMode,
     this.createTime,
+    this.crossClusterReplicationConfig,
     this.deletionProtectionEnabled,
     this.discoveryEndpoints,
+    this.maintenancePolicy,
+    this.maintenanceSchedule,
     this.name,
     this.nodeType,
     this.persistenceConfig,
@@ -1408,12 +1472,26 @@ class Cluster {
       : this(
           authorizationMode: json_['authorizationMode'] as core.String?,
           createTime: json_['createTime'] as core.String?,
+          crossClusterReplicationConfig:
+              json_.containsKey('crossClusterReplicationConfig')
+                  ? CrossClusterReplicationConfig.fromJson(
+                      json_['crossClusterReplicationConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           deletionProtectionEnabled:
               json_['deletionProtectionEnabled'] as core.bool?,
           discoveryEndpoints: (json_['discoveryEndpoints'] as core.List?)
               ?.map((value) => DiscoveryEndpoint.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          maintenancePolicy: json_.containsKey('maintenancePolicy')
+              ? ClusterMaintenancePolicy.fromJson(json_['maintenancePolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          maintenanceSchedule: json_.containsKey('maintenanceSchedule')
+              ? ClusterMaintenanceSchedule.fromJson(json_['maintenanceSchedule']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_['name'] as core.String?,
           nodeType: json_['nodeType'] as core.String?,
           persistenceConfig: json_.containsKey('persistenceConfig')
@@ -1456,10 +1534,15 @@ class Cluster {
   core.Map<core.String, core.dynamic> toJson() => {
         if (authorizationMode != null) 'authorizationMode': authorizationMode!,
         if (createTime != null) 'createTime': createTime!,
+        if (crossClusterReplicationConfig != null)
+          'crossClusterReplicationConfig': crossClusterReplicationConfig!,
         if (deletionProtectionEnabled != null)
           'deletionProtectionEnabled': deletionProtectionEnabled!,
         if (discoveryEndpoints != null)
           'discoveryEndpoints': discoveryEndpoints!,
+        if (maintenancePolicy != null) 'maintenancePolicy': maintenancePolicy!,
+        if (maintenanceSchedule != null)
+          'maintenanceSchedule': maintenanceSchedule!,
         if (name != null) 'name': name!,
         if (nodeType != null) 'nodeType': nodeType!,
         if (persistenceConfig != null) 'persistenceConfig': persistenceConfig!,
@@ -1477,6 +1560,82 @@ class Cluster {
         if (uid != null) 'uid': uid!,
         if (zoneDistributionConfig != null)
           'zoneDistributionConfig': zoneDistributionConfig!,
+      };
+}
+
+/// Maintenance policy per cluster.
+class ClusterMaintenancePolicy {
+  /// The time when the policy was created i.e. Maintenance Window or Deny
+  /// Period was assigned.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The time when the policy was updated i.e. Maintenance Window or Deny
+  /// Period was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// Maintenance window that is applied to resources covered by this policy.
+  ///
+  /// Minimum 1. For the current version, the maximum number of
+  /// weekly_maintenance_window is expected to be one.
+  ///
+  /// Optional.
+  core.List<ClusterWeeklyMaintenanceWindow>? weeklyMaintenanceWindow;
+
+  ClusterMaintenancePolicy({
+    this.createTime,
+    this.updateTime,
+    this.weeklyMaintenanceWindow,
+  });
+
+  ClusterMaintenancePolicy.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          weeklyMaintenanceWindow:
+              (json_['weeklyMaintenanceWindow'] as core.List?)
+                  ?.map((value) => ClusterWeeklyMaintenanceWindow.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (weeklyMaintenanceWindow != null)
+          'weeklyMaintenanceWindow': weeklyMaintenanceWindow!,
+      };
+}
+
+/// Upcoming maitenance schedule.
+class ClusterMaintenanceSchedule {
+  /// The end time of any upcoming scheduled maintenance for this instance.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// The start time of any upcoming scheduled maintenance for this instance.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  ClusterMaintenanceSchedule({
+    this.endTime,
+    this.startTime,
+  });
+
+  ClusterMaintenanceSchedule.fromJson(core.Map json_)
+      : this(
+          endTime: json_['endTime'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -1529,6 +1688,125 @@ class ClusterPersistenceConfig {
         if (aofConfig != null) 'aofConfig': aofConfig!,
         if (mode != null) 'mode': mode!,
         if (rdbConfig != null) 'rdbConfig': rdbConfig!,
+      };
+}
+
+/// Time window specified for weekly operations.
+class ClusterWeeklyMaintenanceWindow {
+  /// Allows to define schedule that runs specified day of the week.
+  /// Possible string values are:
+  /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
+  /// - "MONDAY" : Monday
+  /// - "TUESDAY" : Tuesday
+  /// - "WEDNESDAY" : Wednesday
+  /// - "THURSDAY" : Thursday
+  /// - "FRIDAY" : Friday
+  /// - "SATURDAY" : Saturday
+  /// - "SUNDAY" : Sunday
+  core.String? day;
+
+  /// Start time of the window in UTC.
+  TimeOfDay? startTime;
+
+  ClusterWeeklyMaintenanceWindow({
+    this.day,
+    this.startTime,
+  });
+
+  ClusterWeeklyMaintenanceWindow.fromJson(core.Map json_)
+      : this(
+          day: json_['day'] as core.String?,
+          startTime: json_.containsKey('startTime')
+              ? TimeOfDay.fromJson(
+                  json_['startTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (day != null) 'day': day!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// Cross cluster replication config.
+class CrossClusterReplicationConfig {
+  /// The role of the cluster in cross cluster replication.
+  /// Possible string values are:
+  /// - "CLUSTER_ROLE_UNSPECIFIED" : Cluster role is not set. The behavior is
+  /// equivalent to NONE.
+  /// - "NONE" : This cluster does not participate in cross cluster replication.
+  /// It is an independent cluster and does not replicate to or from any other
+  /// clusters.
+  /// - "PRIMARY" : A cluster that allows both reads and writes. Any data
+  /// written to this cluster is also replicated to the attached secondary
+  /// clusters.
+  /// - "SECONDARY" : A cluster that allows only reads and replicates data from
+  /// a primary cluster.
+  core.String? clusterRole;
+
+  /// An output only view of all the member clusters participating in the cross
+  /// cluster replication.
+  ///
+  /// This view will be provided by every member cluster irrespective of its
+  /// cluster role(primary or secondary). A primary cluster can provide
+  /// information about all the secondary clusters replicating from it. However,
+  /// a secondary cluster only knows about the primary cluster from which it is
+  /// replicating. However, for scenarios, where the primary cluster is
+  /// unavailable(e.g. regional outage), a GetCluster request can be sent to any
+  /// other member cluster and this field will list all the member clusters
+  /// participating in cross cluster replication.
+  ///
+  /// Output only.
+  Membership? membership;
+
+  /// Details of the primary cluster that is used as the replication source for
+  /// this secondary cluster.
+  ///
+  /// This field is only set for a secondary cluster.
+  RemoteCluster? primaryCluster;
+
+  /// List of secondary clusters that are replicating from this primary cluster.
+  ///
+  /// This field is only set for a primary cluster.
+  core.List<RemoteCluster>? secondaryClusters;
+
+  /// The last time cross cluster replication config was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  CrossClusterReplicationConfig({
+    this.clusterRole,
+    this.membership,
+    this.primaryCluster,
+    this.secondaryClusters,
+    this.updateTime,
+  });
+
+  CrossClusterReplicationConfig.fromJson(core.Map json_)
+      : this(
+          clusterRole: json_['clusterRole'] as core.String?,
+          membership: json_.containsKey('membership')
+              ? Membership.fromJson(
+                  json_['membership'] as core.Map<core.String, core.dynamic>)
+              : null,
+          primaryCluster: json_.containsKey('primaryCluster')
+              ? RemoteCluster.fromJson(json_['primaryCluster']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          secondaryClusters: (json_['secondaryClusters'] as core.List?)
+              ?.map((value) => RemoteCluster.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterRole != null) 'clusterRole': clusterRole!,
+        if (membership != null) 'membership': membership!,
+        if (primaryCluster != null) 'primaryCluster': primaryCluster!,
+        if (secondaryClusters != null) 'secondaryClusters': secondaryClusters!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -2565,6 +2843,43 @@ class ManagedCertificateAuthority {
       };
 }
 
+/// An output only view of all the member clusters participating in the cross
+/// cluster replication.
+class Membership {
+  /// The primary cluster that acts as the source of replication for the
+  /// secondary clusters.
+  ///
+  /// Output only.
+  RemoteCluster? primaryCluster;
+
+  /// The list of secondary clusters replicating from the primary cluster.
+  ///
+  /// Output only.
+  core.List<RemoteCluster>? secondaryClusters;
+
+  Membership({
+    this.primaryCluster,
+    this.secondaryClusters,
+  });
+
+  Membership.fromJson(core.Map json_)
+      : this(
+          primaryCluster: json_.containsKey('primaryCluster')
+              ? RemoteCluster.fromJson(json_['primaryCluster']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          secondaryClusters: (json_['secondaryClusters'] as core.List?)
+              ?.map((value) => RemoteCluster.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (primaryCluster != null) 'primaryCluster': primaryCluster!,
+        if (secondaryClusters != null) 'secondaryClusters': secondaryClusters!,
+      };
+}
+
 /// Node specific properties.
 class NodeInfo {
   /// Node identifying string.
@@ -2794,7 +3109,7 @@ class PscConfig {
 class PscConnection {
   /// The IP allocated on the consumer network for the PSC forwarding rule.
   ///
-  /// Output only.
+  /// Required.
   core.String? address;
 
   /// The URI of the consumer side forwarding rule.
@@ -2802,23 +3117,33 @@ class PscConnection {
   /// Example:
   /// projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
   ///
-  /// Output only.
+  /// Required.
   core.String? forwardingRule;
 
   /// The consumer network where the IP address resides, in the form of
   /// projects/{project_id}/global/networks/{network_id}.
+  ///
+  /// Required.
   core.String? network;
 
-  /// The consumer project_id where the forwarding rule is created from.
+  /// Project ID of the consumer project where the forwarding rule is created
+  /// in.
   ///
-  /// Output only.
+  /// Optional.
   core.String? projectId;
 
   /// The PSC connection id of the forwarding rule connected to the service
   /// attachment.
   ///
-  /// Output only.
+  /// Required.
   core.String? pscConnectionId;
+
+  /// The service attachment which is the target of the PSC connection, in the
+  /// form of
+  /// projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+  ///
+  /// Required.
+  core.String? serviceAttachment;
 
   PscConnection({
     this.address,
@@ -2826,6 +3151,7 @@ class PscConnection {
     this.network,
     this.projectId,
     this.pscConnectionId,
+    this.serviceAttachment,
   });
 
   PscConnection.fromJson(core.Map json_)
@@ -2835,6 +3161,7 @@ class PscConnection {
           network: json_['network'] as core.String?,
           projectId: json_['projectId'] as core.String?,
           pscConnectionId: json_['pscConnectionId'] as core.String?,
+          serviceAttachment: json_['serviceAttachment'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2843,6 +3170,7 @@ class PscConnection {
         if (network != null) 'network': network!,
         if (projectId != null) 'projectId': projectId!,
         if (pscConnectionId != null) 'pscConnectionId': pscConnectionId!,
+        if (serviceAttachment != null) 'serviceAttachment': serviceAttachment!,
       };
 }
 
@@ -2882,6 +3210,72 @@ class RDBConfig {
         if (rdbSnapshotPeriod != null) 'rdbSnapshotPeriod': rdbSnapshotPeriod!,
         if (rdbSnapshotStartTime != null)
           'rdbSnapshotStartTime': rdbSnapshotStartTime!,
+      };
+}
+
+/// Details of the remote cluster associated with this cluster in a cross
+/// cluster replication setup.
+class RemoteCluster {
+  /// The full resource path of the remote cluster in the format:
+  /// projects//locations//clusters/
+  core.String? cluster;
+
+  /// The unique identifier of the remote cluster.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  RemoteCluster({
+    this.cluster,
+    this.uid,
+  });
+
+  RemoteCluster.fromJson(core.Map json_)
+      : this(
+          cluster: json_['cluster'] as core.String?,
+          uid: json_['uid'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cluster != null) 'cluster': cluster!,
+        if (uid != null) 'uid': uid!,
+      };
+}
+
+/// Request for rescheduling a cluster maintenance.
+class RescheduleClusterMaintenanceRequest {
+  /// If reschedule type is SPECIFIC_TIME, must set up schedule_time as well.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "RESCHEDULE_TYPE_UNSPECIFIED" : Not set.
+  /// - "IMMEDIATE" : If the user wants to schedule the maintenance to happen
+  /// now.
+  /// - "SPECIFIC_TIME" : If the user wants to reschedule the maintenance to a
+  /// specific time.
+  core.String? rescheduleType;
+
+  /// Timestamp when the maintenance shall be rescheduled to if
+  /// reschedule_type=SPECIFIC_TIME, in RFC 3339 format, for example
+  /// `2012-11-15T16:19:00.094Z`.
+  ///
+  /// Optional.
+  core.String? scheduleTime;
+
+  RescheduleClusterMaintenanceRequest({
+    this.rescheduleType,
+    this.scheduleTime,
+  });
+
+  RescheduleClusterMaintenanceRequest.fromJson(core.Map json_)
+      : this(
+          rescheduleType: json_['rescheduleType'] as core.String?,
+          scheduleTime: json_['scheduleTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rescheduleType != null) 'rescheduleType': rescheduleType!,
+        if (scheduleTime != null) 'scheduleTime': scheduleTime!,
       };
 }
 
@@ -2953,14 +3347,14 @@ class StateInfo {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Represents a time of day.
 ///
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-typedef TimeOfDay = $TimeOfDay;
+typedef TimeOfDay = $TimeOfDay00;
 
 /// TlsCertificate Resource
 class TlsCertificate {

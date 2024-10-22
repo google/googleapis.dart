@@ -26,6 +26,86 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAssignmentInfo = 0;
+api.AssignmentInfo buildAssignmentInfo() {
+  final o = api.AssignmentInfo();
+  buildCounterAssignmentInfo++;
+  if (buildCounterAssignmentInfo < 3) {
+    o.driveResourceInfo = buildDriveResourceInfo();
+    o.linkToTask = 'foo';
+    o.spaceInfo = buildSpaceInfo();
+    o.surfaceType = 'foo';
+  }
+  buildCounterAssignmentInfo--;
+  return o;
+}
+
+void checkAssignmentInfo(api.AssignmentInfo o) {
+  buildCounterAssignmentInfo++;
+  if (buildCounterAssignmentInfo < 3) {
+    checkDriveResourceInfo(o.driveResourceInfo!);
+    unittest.expect(
+      o.linkToTask!,
+      unittest.equals('foo'),
+    );
+    checkSpaceInfo(o.spaceInfo!);
+    unittest.expect(
+      o.surfaceType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAssignmentInfo--;
+}
+
+core.int buildCounterDriveResourceInfo = 0;
+api.DriveResourceInfo buildDriveResourceInfo() {
+  final o = api.DriveResourceInfo();
+  buildCounterDriveResourceInfo++;
+  if (buildCounterDriveResourceInfo < 3) {
+    o.driveFileId = 'foo';
+    o.resourceKey = 'foo';
+  }
+  buildCounterDriveResourceInfo--;
+  return o;
+}
+
+void checkDriveResourceInfo(api.DriveResourceInfo o) {
+  buildCounterDriveResourceInfo++;
+  if (buildCounterDriveResourceInfo < 3) {
+    unittest.expect(
+      o.driveFileId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resourceKey!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDriveResourceInfo--;
+}
+
+core.int buildCounterSpaceInfo = 0;
+api.SpaceInfo buildSpaceInfo() {
+  final o = api.SpaceInfo();
+  buildCounterSpaceInfo++;
+  if (buildCounterSpaceInfo < 3) {
+    o.space = 'foo';
+  }
+  buildCounterSpaceInfo--;
+  return o;
+}
+
+void checkSpaceInfo(api.SpaceInfo o) {
+  buildCounterSpaceInfo++;
+  if (buildCounterSpaceInfo < 3) {
+    unittest.expect(
+      o.space!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSpaceInfo--;
+}
+
 core.int buildCounterTaskLinks = 0;
 api.TaskLinks buildTaskLinks() {
   final o = api.TaskLinks();
@@ -74,6 +154,7 @@ api.Task buildTask() {
   final o = api.Task();
   buildCounterTask++;
   if (buildCounterTask < 3) {
+    o.assignmentInfo = buildAssignmentInfo();
     o.completed = 'foo';
     o.deleted = true;
     o.due = 'foo';
@@ -98,6 +179,7 @@ api.Task buildTask() {
 void checkTask(api.Task o) {
   buildCounterTask++;
   if (buildCounterTask < 3) {
+    checkAssignmentInfo(o.assignmentInfo!);
     unittest.expect(
       o.completed!,
       unittest.equals('foo'),
@@ -295,6 +377,36 @@ void checkTasks(api.Tasks o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AssignmentInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAssignmentInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AssignmentInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAssignmentInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-DriveResourceInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDriveResourceInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DriveResourceInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDriveResourceInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-SpaceInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSpaceInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.SpaceInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkSpaceInfo(od);
+    });
+  });
+
   unittest.group('obj-schema-TaskLinks', () {
     unittest.test('to-json--from-json', () async {
       final o = buildTaskLinks();
@@ -1004,6 +1116,7 @@ void main() {
       final arg_dueMin = 'foo';
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
+      final arg_showAssigned = true;
       final arg_showCompleted = true;
       final arg_showDeleted = true;
       final arg_showHidden = true;
@@ -1079,6 +1192,10 @@ void main() {
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
+          queryMap['showAssigned']!.first,
+          unittest.equals('$arg_showAssigned'),
+        );
+        unittest.expect(
           queryMap['showCompleted']!.first,
           unittest.equals('$arg_showCompleted'),
         );
@@ -1112,6 +1229,7 @@ void main() {
           dueMin: arg_dueMin,
           maxResults: arg_maxResults,
           pageToken: arg_pageToken,
+          showAssigned: arg_showAssigned,
           showCompleted: arg_showCompleted,
           showDeleted: arg_showDeleted,
           showHidden: arg_showHidden,
@@ -1125,6 +1243,7 @@ void main() {
       final res = api.TasksApi(mock).tasks;
       final arg_tasklist = 'foo';
       final arg_task = 'foo';
+      final arg_destinationTasklist = 'foo';
       final arg_parent = 'foo';
       final arg_previous = 'foo';
       final arg_$fields = 'foo';
@@ -1188,6 +1307,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['destinationTasklist']!.first,
+          unittest.equals(arg_destinationTasklist),
+        );
+        unittest.expect(
           queryMap['parent']!.first,
           unittest.equals(arg_parent),
         );
@@ -1207,7 +1330,10 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.move(arg_tasklist, arg_task,
-          parent: arg_parent, previous: arg_previous, $fields: arg_$fields);
+          destinationTasklist: arg_destinationTasklist,
+          parent: arg_parent,
+          previous: arg_previous,
+          $fields: arg_$fields);
       checkTask(response as api.Task);
     });
 

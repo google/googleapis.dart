@@ -1996,28 +1996,8 @@ class GoogleDevtoolsCloudbuildV2GitLabConfig {
 
 /// ServiceDirectoryConfig represents Service Directory configuration for a
 /// connection.
-class GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig {
-  /// The Service Directory service name.
-  ///
-  /// Format:
-  /// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
-  ///
-  /// Required.
-  core.String? service;
-
-  GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig({
-    this.service,
-  });
-
-  GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig.fromJson(core.Map json_)
-      : this(
-          service: json_['service'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (service != null) 'service': service!,
-      };
-}
+typedef GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig
+    = $ServiceDirectoryConfig;
 
 /// Message that represents an arbitrary HTTP body.
 ///
@@ -2477,7 +2457,7 @@ class SetIamPolicyRequest {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;

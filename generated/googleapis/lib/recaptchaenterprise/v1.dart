@@ -136,8 +136,8 @@ class ProjectsAssessmentsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the project in which the assessment will
-  /// be created, in the format `projects/{project}`.
+  /// [parent] - Required. The name of the project in which the assessment is
+  /// created, in the format `projects/{project}`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -188,7 +188,7 @@ class ProjectsFirewallpoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the project this policy will apply to, in
+  /// [parent] - Required. The name of the project this policy applies to, in
   /// the format `projects/{project}`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
@@ -358,7 +358,7 @@ class ProjectsFirewallpoliciesResource {
   /// Value must have pattern `^projects/\[^/\]+/firewallpolicies/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. The mask to control which fields of the policy
-  /// get updated. If the mask is not present, all fields will be updated.
+  /// get updated. If the mask is not present, all fields are updated.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -445,14 +445,61 @@ class ProjectsKeysResource {
 
   ProjectsKeysResource(commons.ApiRequester client) : _requester = client;
 
+  /// Adds an IP override to a key.
+  ///
+  /// The following restrictions hold: * The maximum number of IP overrides per
+  /// key is 100. * For any conflict (such as IP already exists or IP part of an
+  /// existing IP range), an error is returned.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the key to which the IP override is added,
+  /// in the format `projects/{project}/keys/{key}`.
+  /// Value must have pattern `^projects/\[^/\]+/keys/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse>
+      addIpOverride(
+    GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':addIpOverride';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a new reCAPTCHA Enterprise key.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the project in which the key will be
-  /// created, in the format `projects/{project}`.
+  /// [parent] - Required. The name of the project in which the key is created,
+  /// in the format `projects/{project}`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -605,7 +652,7 @@ class ProjectsKeysResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the project that contains the keys that
-  /// will be listed, in the format `projects/{project}`.
+  /// is listed, in the format `projects/{project}`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of keys to return. Default is
@@ -644,6 +691,57 @@ class ProjectsKeysResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1ListKeysResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all IP overrides for a key.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent key for which the IP overrides are listed,
+  /// in the format `projects/{project}/keys/{key}`.
+  /// Value must have pattern `^projects/\[^/\]+/keys/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of overrides to return. Default
+  /// is 10. Max limit is 100. If the number of overrides is less than the
+  /// page_size, all overrides are returned. If the page size is more than 100,
+  /// it is coerced to 100.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// ListIpOverridesRequest, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse>
+      listIpOverrides(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':listIpOverrides';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -705,7 +803,7 @@ class ProjectsKeysResource {
   /// Value must have pattern `^projects/\[^/\]+/keys/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. The mask to control which fields of the key get
-  /// updated. If the mask is not present, all fields will be updated.
+  /// updated. If the mask is not present, all fields are updated.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -738,6 +836,55 @@ class ProjectsKeysResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1Key.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Removes an IP override from a key.
+  ///
+  /// The following restrictions hold: * If the IP isn't found in an existing IP
+  /// override, a `NOT_FOUND` error is returned. * If the IP is found in an
+  /// existing IP override, but the override type does not match, a `NOT_FOUND`
+  /// error is returned.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the key from which the IP override is
+  /// removed, in the format `projects/{project}/keys/{key}`.
+  /// Value must have pattern `^projects/\[^/\]+/keys/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse>
+      removeIpOverride(
+    GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':removeIpOverride';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -1073,6 +1220,34 @@ class GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo {
       };
 }
 
+/// The AddIpOverride request message.
+class GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest {
+  /// IP override added to the key.
+  ///
+  /// Required.
+  GoogleCloudRecaptchaenterpriseV1IpOverrideData? ipOverrideData;
+
+  GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest({
+    this.ipOverrideData,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest.fromJson(core.Map json_)
+      : this(
+          ipOverrideData: json_.containsKey('ipOverrideData')
+              ? GoogleCloudRecaptchaenterpriseV1IpOverrideData.fromJson(
+                  json_['ipOverrideData']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ipOverrideData != null) 'ipOverrideData': ipOverrideData!,
+      };
+}
+
+/// Response for AddIpOverride.
+typedef GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse = $Empty;
+
 /// Settings specific to keys that can be used by Android apps.
 class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
   /// If set to true, allowed_package_names are not enforced.
@@ -1131,7 +1306,7 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
   /// Optional.
   core.String? accountId;
 
-  /// The annotation that will be assigned to the Event.
+  /// The annotation that is assigned to the Event.
   ///
   /// This field can be left empty to provide reasons that apply to an event
   /// without concluding whether the event is legitimate or fraudulent.
@@ -1275,6 +1450,14 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
   /// Optional.
   GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo? accountVerification;
 
+  /// The environment creating the assessment.
+  ///
+  /// This describes your environment (the system invoking CreateAssessment),
+  /// NOT the environment of your user.
+  ///
+  /// Optional.
+  GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment? assessmentEnvironment;
+
   /// The event being assessed.
   ///
   /// Optional.
@@ -1334,6 +1517,7 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
   GoogleCloudRecaptchaenterpriseV1Assessment({
     this.accountDefenderAssessment,
     this.accountVerification,
+    this.assessmentEnvironment,
     this.event,
     this.firewallPolicyAssessment,
     this.fraudPreventionAssessment,
@@ -1356,6 +1540,11 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
           accountVerification: json_.containsKey('accountVerification')
               ? GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo
                   .fromJson(json_['accountVerification']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          assessmentEnvironment: json_.containsKey('assessmentEnvironment')
+              ? GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment.fromJson(
+                  json_['assessmentEnvironment']
                       as core.Map<core.String, core.dynamic>)
               : null,
           event: json_.containsKey('event')
@@ -1406,6 +1595,8 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
           'accountDefenderAssessment': accountDefenderAssessment!,
         if (accountVerification != null)
           'accountVerification': accountVerification!,
+        if (assessmentEnvironment != null)
+          'assessmentEnvironment': assessmentEnvironment!,
         if (event != null) 'event': event!,
         if (firewallPolicyAssessment != null)
           'firewallPolicyAssessment': firewallPolicyAssessment!,
@@ -1419,6 +1610,46 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
           'privatePasswordLeakVerification': privatePasswordLeakVerification!,
         if (riskAnalysis != null) 'riskAnalysis': riskAnalysis!,
         if (tokenProperties != null) 'tokenProperties': tokenProperties!,
+      };
+}
+
+/// The environment creating the assessment.
+///
+/// This describes your environment (the system invoking CreateAssessment), NOT
+/// the environment of your user.
+class GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment {
+  /// Identifies the client module initiating the CreateAssessment request.
+  ///
+  /// This can be the link to the client module's project. Examples include: -
+  /// "github.com/GoogleCloudPlatform/recaptcha-enterprise-google-tag-manager" -
+  /// "cloud.google.com/recaptcha/docs/implement-waf-akamai" -
+  /// "cloud.google.com/recaptcha/docs/implement-waf-cloudflare" -
+  /// "wordpress.org/plugins/recaptcha-something"
+  ///
+  /// Optional.
+  core.String? client;
+
+  /// The version of the client module.
+  ///
+  /// For example, "1.0.0".
+  ///
+  /// Optional.
+  core.String? version;
+
+  GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment({
+    this.client,
+    this.version,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment.fromJson(core.Map json_)
+      : this(
+          client: json_['client'] as core.String?,
+          version: json_['version'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (client != null) 'client': client!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -1524,16 +1755,15 @@ class GoogleCloudRecaptchaenterpriseV1Event {
 
   /// Flag for a reCAPTCHA express request for an assessment without a token.
   ///
-  /// If enabled, `site_key` must reference a SCORE key with WAF feature set to
-  /// EXPRESS.
+  /// If enabled, `site_key` must reference an Express site key.
   ///
   /// Optional.
   core.bool? express;
 
   /// Flag for enabling firewall policy config assessment.
   ///
-  /// If this flag is enabled, the firewall policy will be evaluated and a
-  /// suggested firewall action will be returned in the response.
+  /// If this flag is enabled, the firewall policy is evaluated and a suggested
+  /// firewall action is returned in the response.
   ///
   /// Optional.
   core.bool? firewallPolicyEvaluation;
@@ -1704,6 +1934,9 @@ class GoogleCloudRecaptchaenterpriseV1Event {
       };
 }
 
+/// Settings specific to keys that can be used for reCAPTCHA Express.
+typedef GoogleCloudRecaptchaenterpriseV1ExpressKeySettings = $Empty;
+
 /// An individual action.
 ///
 /// Each action represents what to do if a policy matches.
@@ -1712,26 +1945,25 @@ class GoogleCloudRecaptchaenterpriseV1FirewallAction {
   /// the requested resource.
   GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction? allow;
 
-  /// This action will deny access to a given page.
+  /// This action denies access to a given page.
   ///
-  /// The user will get an HTTP error code.
+  /// The user gets an HTTP error code.
   GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction? block;
 
-  /// This action will inject reCAPTCHA JavaScript code into the HTML page
-  /// returned by the site backend.
+  /// This action injects reCAPTCHA JavaScript code into the HTML page returned
+  /// by the site backend.
   GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction?
       includeRecaptchaScript;
 
-  /// This action will redirect the request to a ReCaptcha interstitial to
-  /// attach a token.
+  /// This action redirects the request to a reCAPTCHA interstitial to attach a
+  /// token.
   GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction? redirect;
 
-  /// This action will set a custom header but allow the request to continue to
-  /// the customer backend.
+  /// This action sets a custom header but allow the request to continue to the
+  /// customer backend.
   GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction? setHeader;
 
-  /// This action will transparently serve a different page to an offending
-  /// user.
+  /// This action transparently serves a different page to an offending user.
   GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction? substitute;
 
   GoogleCloudRecaptchaenterpriseV1FirewallAction({
@@ -1805,7 +2037,7 @@ typedef GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActi
     = $Empty;
 
 /// A redirect action returns a 307 (temporary redirect) response, pointing the
-/// user to a ReCaptcha interstitial page to attach a token.
+/// user to a reCAPTCHA interstitial page to attach a token.
 typedef GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction = $Empty;
 
 /// A set header action sets a header and forwards the request to the backend.
@@ -1948,8 +2180,8 @@ class GoogleCloudRecaptchaenterpriseV1FirewallPolicy {
 
 /// Policy config assessment.
 class GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment {
-  /// If the processing of a policy config fails, an error will be populated and
-  /// the firewall_policy will be left empty.
+  /// If the processing of a policy config fails, an error is populated and the
+  /// firewall_policy is left empty.
   ///
   /// Output only.
   GoogleRpcStatus? error;
@@ -1957,7 +2189,7 @@ class GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment {
   /// The policy that matched the request.
   ///
   /// If more than one policy may match, this is the first match. If no policy
-  /// matches the incoming request, the policy field will be left empty.
+  /// matches the incoming request, the policy field is left empty.
   ///
   /// Output only.
   GoogleCloudRecaptchaenterpriseV1FirewallPolicy? firewallPolicy;
@@ -2243,10 +2475,9 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
   /// Apple Developer account details for the app that is protected by the
   /// reCAPTCHA Key.
   ///
-  /// reCAPTCHA Enterprise leverages platform-specific checks like Apple App
-  /// Attest and Apple DeviceCheck to protect your app from abuse. Providing
-  /// these fields allows reCAPTCHA Enterprise to get a better assessment of the
-  /// integrity of your app.
+  /// reCAPTCHA leverages platform-specific checks like Apple App Attest and
+  /// Apple DeviceCheck to protect your app from abuse. Providing these fields
+  /// allows reCAPTCHA to get a better assessment of the integrity of your app.
   ///
   /// Optional.
   GoogleCloudRecaptchaenterpriseV1AppleDeveloperId? appleDeveloperId;
@@ -2277,6 +2508,45 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
       };
 }
 
+/// Information about the IP or IP range override.
+class GoogleCloudRecaptchaenterpriseV1IpOverrideData {
+  /// The IP address to override (can be IPv4, IPv6 or CIDR).
+  ///
+  /// The IP override must be a valid IPv4 or IPv6 address, or a CIDR range. The
+  /// IP override must be a public IP address. Example of IPv4: 168.192.5.6
+  /// Example of IPv6: 2001:0000:130F:0000:0000:09C0:876A:130B Example of IPv4
+  /// with CIDR: 168.192.5.0/24 Example of IPv6 with CIDR: 2001:0DB8:1234::/48
+  ///
+  /// Required.
+  core.String? ip;
+
+  /// Describes the type of IP override.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "OVERRIDE_TYPE_UNSPECIFIED" : Default override type that indicates this
+  /// enum hasn't been specified.
+  /// - "ALLOW" : Allowlist the IP address; i.e. give a `risk_analysis.score` of
+  /// 0.9 for all valid assessments.
+  core.String? overrideType;
+
+  GoogleCloudRecaptchaenterpriseV1IpOverrideData({
+    this.ip,
+    this.overrideType,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1IpOverrideData.fromJson(core.Map json_)
+      : this(
+          ip: json_['ip'] as core.String?,
+          overrideType: json_['overrideType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ip != null) 'ip': ip!,
+        if (overrideType != null) 'overrideType': overrideType!,
+      };
+}
+
 /// A key used to identify and configure applications (web and/or mobile) that
 /// use reCAPTCHA Enterprise.
 class GoogleCloudRecaptchaenterpriseV1Key {
@@ -2295,11 +2565,14 @@ class GoogleCloudRecaptchaenterpriseV1Key {
   /// Required.
   core.String? displayName;
 
+  /// Settings for keys that can be used by reCAPTCHA Express.
+  GoogleCloudRecaptchaenterpriseV1ExpressKeySettings? expressSettings;
+
   /// Settings for keys that can be used by iOS apps.
   GoogleCloudRecaptchaenterpriseV1IOSKeySettings? iosSettings;
 
   /// See
-  /// [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+  /// [Creating and managing labels](https://cloud.google.com/recaptcha/docs/labels).
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
@@ -2327,6 +2600,7 @@ class GoogleCloudRecaptchaenterpriseV1Key {
     this.androidSettings,
     this.createTime,
     this.displayName,
+    this.expressSettings,
     this.iosSettings,
     this.labels,
     this.name,
@@ -2344,6 +2618,11 @@ class GoogleCloudRecaptchaenterpriseV1Key {
               : null,
           createTime: json_['createTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
+          expressSettings: json_.containsKey('expressSettings')
+              ? GoogleCloudRecaptchaenterpriseV1ExpressKeySettings.fromJson(
+                  json_['expressSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           iosSettings: json_.containsKey('iosSettings')
               ? GoogleCloudRecaptchaenterpriseV1IOSKeySettings.fromJson(
                   json_['iosSettings'] as core.Map<core.String, core.dynamic>)
@@ -2375,6 +2654,7 @@ class GoogleCloudRecaptchaenterpriseV1Key {
         if (androidSettings != null) 'androidSettings': androidSettings!,
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
+        if (expressSettings != null) 'expressSettings': expressSettings!,
         if (iosSettings != null) 'iosSettings': iosSettings!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
@@ -2412,6 +2692,38 @@ class GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (firewallPolicies != null) 'firewallPolicies': firewallPolicies!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response for ListIpOverrides.
+class GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse {
+  /// IP Overrides details.
+  core.List<GoogleCloudRecaptchaenterpriseV1IpOverrideData>? ipOverrides;
+
+  /// Token to retrieve the next page of results.
+  ///
+  /// If this field is empty, no keys remain in the results.
+  core.String? nextPageToken;
+
+  GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse({
+    this.ipOverrides,
+    this.nextPageToken,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse.fromJson(
+      core.Map json_)
+      : this(
+          ipOverrides: (json_['ipOverrides'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudRecaptchaenterpriseV1IpOverrideData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ipOverrides != null) 'ipOverrides': ipOverrides!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2517,11 +2829,10 @@ class GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse {
 
 /// Metrics for a single Key.
 class GoogleCloudRecaptchaenterpriseV1Metrics {
-  /// Metrics will be continuous and in order by dates, and in the granularity
-  /// of day.
+  /// Metrics are continuous and in order by dates, and in the granularity of
+  /// day.
   ///
-  /// Only challenge-based keys (CHECKBOX, INVISIBLE), will have challenge-based
-  /// data.
+  /// Only challenge-based keys (CHECKBOX, INVISIBLE) have challenge-based data.
   core.List<GoogleCloudRecaptchaenterpriseV1ChallengeMetrics>? challengeMetrics;
 
   /// Identifier.
@@ -2532,8 +2843,8 @@ class GoogleCloudRecaptchaenterpriseV1Metrics {
   /// Output only.
   core.String? name;
 
-  /// Metrics will be continuous and in order by dates, and in the granularity
-  /// of day.
+  /// Metrics are continuous and in order by dates, and in the granularity of
+  /// day.
   ///
   /// All Key types should have score-based data.
   core.List<GoogleCloudRecaptchaenterpriseV1ScoreMetrics>? scoreMetrics;
@@ -2578,11 +2889,11 @@ class GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest {
   ///
   /// A reCAPTCHA Enterprise key or migrated key behaves differently than a
   /// reCAPTCHA (non-Enterprise version) key when you reach a quota limit (see
-  /// https://cloud.google.com/recaptcha-enterprise/quotas#quota_limit). To
-  /// avoid any disruption of your usage, we check that a billing account is
-  /// present. If your usage of reCAPTCHA is under the free quota, you can
-  /// safely skip the billing check and proceed with the migration. See
-  /// https://cloud.google.com/recaptcha-enterprise/docs/billing-information.
+  /// https://cloud.google.com/recaptcha/quotas#quota_limit). To avoid any
+  /// disruption of your usage, we check that a billing account is present. If
+  /// your usage of reCAPTCHA is under the free quota, you can safely skip the
+  /// billing check and proceed with the migration. See
+  /// https://cloud.google.com/recaptcha/docs/billing-information.
   ///
   /// Optional.
   core.bool? skipBillingCheck;
@@ -2793,6 +3104,35 @@ class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership {
       };
 }
 
+/// The removeIpOverride request message.
+class GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest {
+  /// IP override to be removed from the key.
+  ///
+  /// Required.
+  GoogleCloudRecaptchaenterpriseV1IpOverrideData? ipOverrideData;
+
+  GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest({
+    this.ipOverrideData,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest.fromJson(
+      core.Map json_)
+      : this(
+          ipOverrideData: json_.containsKey('ipOverrideData')
+              ? GoogleCloudRecaptchaenterpriseV1IpOverrideData.fromJson(
+                  json_['ipOverrideData']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ipOverrideData != null) 'ipOverrideData': ipOverrideData!,
+      };
+}
+
+/// Response for RemoveIpOverride.
+typedef GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse = $Empty;
+
 /// The reorder firewall policies request message.
 class GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest {
   /// A list containing all policy names, in the new order.
@@ -2852,6 +3192,17 @@ class GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse {
 
 /// Risk analysis result for an event.
 class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
+  /// Challenge information for SCORE_AND_CHALLENGE keys
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CHALLENGE_UNSPECIFIED" : Default unspecified type.
+  /// - "NOCAPTCHA" : No challenge was presented for solving.
+  /// - "PASSED" : A solution was submitted that was correct.
+  /// - "FAILED" : A solution was submitted that was incorrect or otherwise
+  /// deemed suspicious.
+  core.String? challenge;
+
   /// Extended verdict reasons to be used for experimentation only.
   ///
   /// The set of possible reasons is subject to change.
@@ -2873,6 +3224,7 @@ class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
   core.double? score;
 
   GoogleCloudRecaptchaenterpriseV1RiskAnalysis({
+    this.challenge,
     this.extendedVerdictReasons,
     this.reasons,
     this.score,
@@ -2880,6 +3232,7 @@ class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
 
   GoogleCloudRecaptchaenterpriseV1RiskAnalysis.fromJson(core.Map json_)
       : this(
+          challenge: json_['challenge'] as core.String?,
           extendedVerdictReasons:
               (json_['extendedVerdictReasons'] as core.List?)
                   ?.map((value) => value as core.String)
@@ -2891,6 +3244,7 @@ class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (challenge != null) 'challenge': challenge!,
         if (extendedVerdictReasons != null)
           'extendedVerdictReasons': extendedVerdictReasons!,
         if (reasons != null) 'reasons': reasons!,
@@ -3113,8 +3467,8 @@ class GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict {
 /// Options for user acceptance testing.
 class GoogleCloudRecaptchaenterpriseV1TestingOptions {
   /// For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge
-  /// requests for this site will return nocaptcha if NOCAPTCHA, or an
-  /// unsolvable challenge if CHALLENGE.
+  /// requests for this site return nocaptcha if NOCAPTCHA, or an unsolvable
+  /// challenge if CHALLENGE.
   ///
   /// Optional.
   /// Possible string values are:
@@ -3127,7 +3481,7 @@ class GoogleCloudRecaptchaenterpriseV1TestingOptions {
   /// an unsolvable challenge.
   core.String? testingChallenge;
 
-  /// All assessments for this Key will return this score.
+  /// All assessments for this Key return this score.
   ///
   /// Must be between 0 (likely not legitimate) and 1 (likely legitimate)
   /// inclusive.
@@ -3851,6 +4205,7 @@ class GoogleCloudRecaptchaenterpriseV1WafSettings {
   /// - "CA" : Cloud Armor
   /// - "FASTLY" : Fastly
   /// - "CLOUDFLARE" : Cloudflare
+  /// - "AKAMAI" : Akamai
   core.String? wafService;
 
   GoogleCloudRecaptchaenterpriseV1WafSettings({
@@ -3872,7 +4227,7 @@ class GoogleCloudRecaptchaenterpriseV1WafSettings {
 
 /// Settings specific to keys that can be used by websites.
 class GoogleCloudRecaptchaenterpriseV1WebKeySettings {
-  /// If set to true, it means allowed_domains will not be enforced.
+  /// If set to true, it means allowed_domains are not enforced.
   ///
   /// Optional.
   core.bool? allowAllDomains;
@@ -3897,7 +4252,8 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettings {
   /// Settings for the frequency and difficulty at which this key triggers
   /// captcha challenges.
   ///
-  /// This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
+  /// This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE
+  /// and SCORE_AND_CHALLENGE.
   ///
   /// Optional.
   /// Possible string values are:
@@ -3969,4 +4325,4 @@ typedef GoogleProtobufEmpty = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef GoogleRpcStatus = $Status;
+typedef GoogleRpcStatus = $Status00;

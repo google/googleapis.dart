@@ -899,6 +899,10 @@ class AbortInfo {
   /// PSC endpoints satisfy test input).
   /// - "SOURCE_PSC_CLOUD_SQL_UNSUPPORTED" : Aborted because tests with a
   /// PSC-based Cloud SQL instance as a source are not supported.
+  /// - "SOURCE_REDIS_CLUSTER_UNSUPPORTED" : Aborted because tests with a Redis
+  /// Cluster as a source are not supported.
+  /// - "SOURCE_REDIS_INSTANCE_UNSUPPORTED" : Aborted because tests with a Redis
+  /// Instance as a source are not supported.
   /// - "SOURCE_FORWARDING_RULE_UNSUPPORTED" : Aborted because tests with a
   /// forwarding rule as a source are not supported.
   /// - "NON_ROUTABLE_IP_ADDRESS" : Aborted because one of the endpoints is a
@@ -1554,6 +1558,8 @@ class DeliverInfo {
   /// return traces.
   /// - "GOOGLE_MANAGED_SERVICE" : Target is a Google-managed service. Used only
   /// for return traces.
+  /// - "REDIS_INSTANCE" : Target is a Redis Instance.
+  /// - "REDIS_CLUSTER" : Target is a Redis Cluster.
   core.String? target;
 
   DeliverInfo({
@@ -1653,6 +1659,10 @@ class DropInfo {
   /// not in running state.
   /// - "CLOUD_SQL_INSTANCE_NOT_RUNNING" : Packet sent from or to a Cloud SQL
   /// instance that is not in running state.
+  /// - "REDIS_INSTANCE_NOT_RUNNING" : Packet sent from or to a Redis Instance
+  /// that is not in running state.
+  /// - "REDIS_CLUSTER_NOT_RUNNING" : Packet sent from or to a Redis Cluster
+  /// that is not in running state.
   /// - "TRAFFIC_TYPE_BLOCKED" : The type of traffic is blocked and the user
   /// cannot configure a firewall rule to enable it. See
   /// [Always blocked traffic](https://cloud.google.com/vpc/docs/firewalls#blockedtraffic)
@@ -1695,6 +1705,9 @@ class DropInfo {
   /// Cloud SQL instance with only a public IP address to a private IP address.
   /// - "CLOUD_SQL_INSTANCE_NO_ROUTE" : Packet was dropped because there is no
   /// route from a Cloud SQL instance to a destination network.
+  /// - "CLOUD_SQL_CONNECTOR_REQUIRED" : Packet was dropped because the Cloud
+  /// SQL instance requires all connections to use Cloud SQL connectors and to
+  /// target the Cloud SQL proxy port (3307).
   /// - "CLOUD_FUNCTION_NOT_ACTIVE" : Packet could be dropped because the Cloud
   /// Function is not in an active status.
   /// - "VPC_CONNECTOR_NOT_SET" : Packet could be dropped because no VPC
@@ -1725,6 +1738,8 @@ class DropInfo {
   /// service attachment, but this configuration is not supported.
   /// - "NO_NAT_SUBNETS_FOR_PSC_SERVICE_ATTACHMENT" : No NAT subnets are defined
   /// for the PSC service attachment.
+  /// - "PSC_TRANSITIVITY_NOT_PROPAGATED" : PSC endpoint is accessed via NCC,
+  /// but PSC transitivity configuration is not yet propagated.
   /// - "HYBRID_NEG_NON_DYNAMIC_ROUTE_MATCHED" : The packet sent from the hybrid
   /// NEG proxy matches a non-dynamic route, but such a configuration is not
   /// supported.
@@ -1740,9 +1755,52 @@ class DropInfo {
   /// - "CLOUD_NAT_NO_ADDRESSES" : Packet sent to Cloud Nat without active NAT
   /// IPs.
   /// - "ROUTING_LOOP" : Packet is stuck in a routing loop.
-  /// - "DROPPED_INSIDE_GOOGLE_MANAGED_SERVICE" : Packet is dropped due to an
-  /// unspecified reason inside a Google-managed service. Used only for return
-  /// traces.
+  /// - "DROPPED_INSIDE_GOOGLE_MANAGED_SERVICE" : Packet is dropped inside a
+  /// Google-managed service due to being delivered in return trace to an
+  /// endpoint that doesn't match the endpoint the packet was sent from in
+  /// forward trace. Used only for return traces.
+  /// - "LOAD_BALANCER_BACKEND_INVALID_NETWORK" : Packet is dropped due to a
+  /// load balancer backend instance not having a network interface in the
+  /// network expected by the load balancer.
+  /// - "BACKEND_SERVICE_NAMED_PORT_NOT_DEFINED" : Packet is dropped due to a
+  /// backend service named port not being defined on the instance group level.
+  /// - "DESTINATION_IS_PRIVATE_NAT_IP_RANGE" : Packet is dropped due to a
+  /// destination IP range being part of a Private NAT IP range.
+  /// - "DROPPED_INSIDE_REDIS_INSTANCE_SERVICE" : Generic drop cause for a
+  /// packet being dropped inside a Redis Instance service project.
+  /// - "REDIS_INSTANCE_UNSUPPORTED_PORT" : Packet is dropped due to an
+  /// unsupported port being used to connect to a Redis Instance. Port 6379
+  /// should be used to connect to a Redis Instance.
+  /// - "REDIS_INSTANCE_CONNECTING_FROM_PUPI_ADDRESS" : Packet is dropped due to
+  /// connecting from PUPI address to a PSA based Redis Instance.
+  /// - "REDIS_INSTANCE_NO_ROUTE_TO_DESTINATION_NETWORK" : Packet is dropped due
+  /// to no route to the destination network.
+  /// - "REDIS_INSTANCE_NO_EXTERNAL_IP" : Redis Instance does not have an
+  /// external IP address.
+  /// - "REDIS_INSTANCE_UNSUPPORTED_PROTOCOL" : Packet is dropped due to an
+  /// unsupported protocol being used to connect to a Redis Instance. Only TCP
+  /// connections are accepted by a Redis Instance.
+  /// - "DROPPED_INSIDE_REDIS_CLUSTER_SERVICE" : Generic drop cause for a packet
+  /// being dropped inside a Redis Cluster service project.
+  /// - "REDIS_CLUSTER_UNSUPPORTED_PORT" : Packet is dropped due to an
+  /// unsupported port being used to connect to a Redis Cluster. Ports 6379 and
+  /// 11000 to 13047 should be used to connect to a Redis Cluster.
+  /// - "REDIS_CLUSTER_NO_EXTERNAL_IP" : Redis Cluster does not have an external
+  /// IP address.
+  /// - "REDIS_CLUSTER_UNSUPPORTED_PROTOCOL" : Packet is dropped due to an
+  /// unsupported protocol being used to connect to a Redis Cluster. Only TCP
+  /// connections are accepted by a Redis Cluster.
+  /// - "NO_ADVERTISED_ROUTE_TO_GCP_DESTINATION" : Packet from the non-GCP
+  /// (on-prem) or unknown GCP network is dropped due to the destination IP
+  /// address not belonging to any IP prefix advertised via BGP by the Cloud
+  /// Router.
+  /// - "NO_TRAFFIC_SELECTOR_TO_GCP_DESTINATION" : Packet from the non-GCP
+  /// (on-prem) or unknown GCP network is dropped due to the destination IP
+  /// address not belonging to any IP prefix included to the local traffic
+  /// selector of the VPN tunnel.
+  /// - "NO_KNOWN_ROUTE_FROM_PEERED_NETWORK_TO_DESTINATION" : Packet from the
+  /// unknown peered network is dropped due to no known route from the source
+  /// network to the destination IP address.
   core.String? cause;
 
   /// Destination IP address of the dropped packet (if relevant).
@@ -1917,6 +1975,12 @@ class Endpoint {
   /// network that the IP address resides in is defined in the host project.
   core.String? projectId;
 
+  /// A [Redis Cluster](https://cloud.google.com/memorystore/docs/cluster) URI.
+  core.String? redisCluster;
+
+  /// A [Redis Instance](https://cloud.google.com/memorystore/docs/redis) URI.
+  core.String? redisInstance;
+
   Endpoint({
     this.appEngineVersion,
     this.cloudFunction,
@@ -1933,6 +1997,8 @@ class Endpoint {
     this.networkType,
     this.port,
     this.projectId,
+    this.redisCluster,
+    this.redisInstance,
   });
 
   Endpoint.fromJson(core.Map json_)
@@ -1961,6 +2027,8 @@ class Endpoint {
           networkType: json_['networkType'] as core.String?,
           port: json_['port'] as core.int?,
           projectId: json_['projectId'] as core.String?,
+          redisCluster: json_['redisCluster'] as core.String?,
+          redisInstance: json_['redisInstance'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1980,6 +2048,8 @@ class Endpoint {
         if (networkType != null) 'networkType': networkType!,
         if (port != null) 'port': port!,
         if (projectId != null) 'projectId': projectId!,
+        if (redisCluster != null) 'redisCluster': redisCluster!,
+        if (redisInstance != null) 'redisInstance': redisInstance!,
       };
 }
 
@@ -2076,7 +2146,7 @@ typedef Expr = $Expr;
 /// For display only.
 ///
 /// Metadata associated with a VPC firewall rule, an implied VPC firewall rule,
-/// or a hierarchical firewall policy rule.
+/// or a firewall policy rule.
 class FirewallInfo {
   /// Possible values: ALLOW, DENY, APPLY_SECURITY_PROFILE_GROUP
   core.String? action;
@@ -2084,9 +2154,9 @@ class FirewallInfo {
   /// Possible values: INGRESS, EGRESS
   core.String? direction;
 
-  /// The display name of the VPC firewall rule.
+  /// The display name of the firewall rule.
   ///
-  /// This field is not applicable to hierarchical firewall policy rules.
+  /// This field might be empty for firewall policy rules.
   core.String? displayName;
 
   /// The firewall rule's type.
@@ -2124,10 +2194,17 @@ class FirewallInfo {
   /// This field is not applicable to hierarchical firewall policy rules.
   core.String? networkUri;
 
-  /// The hierarchical firewall policy that this rule is associated with.
+  /// The name of the firewall policy that this rule is associated with.
   ///
-  /// This field is not applicable to VPC firewall rules.
+  /// This field is not applicable to VPC firewall rules and implied VPC
+  /// firewall rules.
   core.String? policy;
+
+  /// The URI of the firewall policy that this rule is associated with.
+  ///
+  /// This field is not applicable to VPC firewall rules and implied VPC
+  /// firewall rules.
+  core.String? policyUri;
 
   /// The priority of the firewall rule.
   core.int? priority;
@@ -2137,13 +2214,12 @@ class FirewallInfo {
 
   /// The target tags defined by the VPC firewall rule.
   ///
-  /// This field is not applicable to hierarchical firewall policy rules.
+  /// This field is not applicable to firewall policy rules.
   core.List<core.String>? targetTags;
 
-  /// The URI of the VPC firewall rule.
+  /// The URI of the firewall rule.
   ///
-  /// This field is not applicable to implied firewall rules or hierarchical
-  /// firewall policy rules.
+  /// This field is not applicable to implied VPC firewall rules.
   core.String? uri;
 
   FirewallInfo({
@@ -2153,6 +2229,7 @@ class FirewallInfo {
     this.firewallRuleType,
     this.networkUri,
     this.policy,
+    this.policyUri,
     this.priority,
     this.targetServiceAccounts,
     this.targetTags,
@@ -2167,6 +2244,7 @@ class FirewallInfo {
           firewallRuleType: json_['firewallRuleType'] as core.String?,
           networkUri: json_['networkUri'] as core.String?,
           policy: json_['policy'] as core.String?,
+          policyUri: json_['policyUri'] as core.String?,
           priority: json_['priority'] as core.int?,
           targetServiceAccounts: (json_['targetServiceAccounts'] as core.List?)
               ?.map((value) => value as core.String)
@@ -2184,6 +2262,7 @@ class FirewallInfo {
         if (firewallRuleType != null) 'firewallRuleType': firewallRuleType!,
         if (networkUri != null) 'networkUri': networkUri!,
         if (policy != null) 'policy': policy!,
+        if (policyUri != null) 'policyUri': policyUri!,
         if (priority != null) 'priority': priority!,
         if (targetServiceAccounts != null)
           'targetServiceAccounts': targetServiceAccounts!,
@@ -2434,6 +2513,9 @@ class InstanceInfo {
   /// URI of a Compute Engine network.
   core.String? networkUri;
 
+  /// URI of the PSC network attachment the NIC is attached to (if relevant).
+  core.String? pscNetworkAttachmentUri;
+
   /// Service account authorized for the instance.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
@@ -2450,6 +2532,7 @@ class InstanceInfo {
     this.internalIp,
     this.networkTags,
     this.networkUri,
+    this.pscNetworkAttachmentUri,
     this.serviceAccount,
     this.uri,
   });
@@ -2464,6 +2547,8 @@ class InstanceInfo {
               ?.map((value) => value as core.String)
               .toList(),
           networkUri: json_['networkUri'] as core.String?,
+          pscNetworkAttachmentUri:
+              json_['pscNetworkAttachmentUri'] as core.String?,
           serviceAccount: json_['serviceAccount'] as core.String?,
           uri: json_['uri'] as core.String?,
         );
@@ -2475,6 +2560,8 @@ class InstanceInfo {
         if (internalIp != null) 'internalIp': internalIp!,
         if (networkTags != null) 'networkTags': networkTags!,
         if (networkUri != null) 'networkUri': networkUri!,
+        if (pscNetworkAttachmentUri != null)
+          'pscNetworkAttachmentUri': pscNetworkAttachmentUri!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (uri != null) 'uri': uri!,
       };
@@ -2987,13 +3074,19 @@ class NatInfo {
 
 /// For display only.
 ///
-/// Metadata associated with a Compute Engine network.
+/// Metadata associated with a Compute Engine network. Next ID: 7
 class NetworkInfo {
   /// Name of a Compute Engine network.
   core.String? displayName;
 
-  /// The IP range that matches the test.
+  /// The IP range of the subnet matching the source IP address of the test.
   core.String? matchedIpRange;
+
+  /// URI of the subnet matching the source IP address of the test.
+  core.String? matchedSubnetUri;
+
+  /// The region of the subnet matching the source IP address of the test.
+  core.String? region;
 
   /// URI of a Compute Engine network.
   core.String? uri;
@@ -3001,6 +3094,8 @@ class NetworkInfo {
   NetworkInfo({
     this.displayName,
     this.matchedIpRange,
+    this.matchedSubnetUri,
+    this.region,
     this.uri,
   });
 
@@ -3008,12 +3103,16 @@ class NetworkInfo {
       : this(
           displayName: json_['displayName'] as core.String?,
           matchedIpRange: json_['matchedIpRange'] as core.String?,
+          matchedSubnetUri: json_['matchedSubnetUri'] as core.String?,
+          region: json_['region'] as core.String?,
           uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (matchedIpRange != null) 'matchedIpRange': matchedIpRange!,
+        if (matchedSubnetUri != null) 'matchedSubnetUri': matchedSubnetUri!,
+        if (region != null) 'region': region!,
         if (uri != null) 'uri': uri!,
       };
 }
@@ -3472,6 +3571,116 @@ class ReachabilityDetails {
       };
 }
 
+/// For display only.
+///
+/// Metadata associated with a Redis Cluster.
+class RedisClusterInfo {
+  /// Discovery endpoint IP address of a Redis Cluster.
+  core.String? discoveryEndpointIpAddress;
+
+  /// Name of a Redis Cluster.
+  core.String? displayName;
+
+  /// Name of the region in which the Redis Cluster is defined.
+  ///
+  /// For example, "us-central1".
+  core.String? location;
+
+  /// URI of a Redis Cluster network in format
+  /// "projects/{project_id}/global/networks/{network_id}".
+  core.String? networkUri;
+
+  /// Secondary endpoint IP address of a Redis Cluster.
+  core.String? secondaryEndpointIpAddress;
+
+  /// URI of a Redis Cluster in format
+  /// "projects/{project_id}/locations/{location}/clusters/{cluster_id}"
+  core.String? uri;
+
+  RedisClusterInfo({
+    this.discoveryEndpointIpAddress,
+    this.displayName,
+    this.location,
+    this.networkUri,
+    this.secondaryEndpointIpAddress,
+    this.uri,
+  });
+
+  RedisClusterInfo.fromJson(core.Map json_)
+      : this(
+          discoveryEndpointIpAddress:
+              json_['discoveryEndpointIpAddress'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          location: json_['location'] as core.String?,
+          networkUri: json_['networkUri'] as core.String?,
+          secondaryEndpointIpAddress:
+              json_['secondaryEndpointIpAddress'] as core.String?,
+          uri: json_['uri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (discoveryEndpointIpAddress != null)
+          'discoveryEndpointIpAddress': discoveryEndpointIpAddress!,
+        if (displayName != null) 'displayName': displayName!,
+        if (location != null) 'location': location!,
+        if (networkUri != null) 'networkUri': networkUri!,
+        if (secondaryEndpointIpAddress != null)
+          'secondaryEndpointIpAddress': secondaryEndpointIpAddress!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// For display only.
+///
+/// Metadata associated with a Cloud Redis Instance.
+class RedisInstanceInfo {
+  /// Name of a Cloud Redis Instance.
+  core.String? displayName;
+
+  /// URI of a Cloud Redis Instance network.
+  core.String? networkUri;
+
+  /// Primary endpoint IP address of a Cloud Redis Instance.
+  core.String? primaryEndpointIp;
+
+  /// Read endpoint IP address of a Cloud Redis Instance (if applicable).
+  core.String? readEndpointIp;
+
+  /// Region in which the Cloud Redis Instance is defined.
+  core.String? region;
+
+  /// URI of a Cloud Redis Instance.
+  core.String? uri;
+
+  RedisInstanceInfo({
+    this.displayName,
+    this.networkUri,
+    this.primaryEndpointIp,
+    this.readEndpointIp,
+    this.region,
+    this.uri,
+  });
+
+  RedisInstanceInfo.fromJson(core.Map json_)
+      : this(
+          displayName: json_['displayName'] as core.String?,
+          networkUri: json_['networkUri'] as core.String?,
+          primaryEndpointIp: json_['primaryEndpointIp'] as core.String?,
+          readEndpointIp: json_['readEndpointIp'] as core.String?,
+          region: json_['region'] as core.String?,
+          uri: json_['uri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (networkUri != null) 'networkUri': networkUri!,
+        if (primaryEndpointIp != null) 'primaryEndpointIp': primaryEndpointIp!,
+        if (readEndpointIp != null) 'readEndpointIp': readEndpointIp!,
+        if (region != null) 'region': region!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
 /// Request for the `RerunConnectivityTest` method.
 typedef RerunConnectivityTestRequest = $Empty;
 
@@ -3479,6 +3688,16 @@ typedef RerunConnectivityTestRequest = $Empty;
 ///
 /// Metadata associated with a Compute Engine route.
 class RouteInfo {
+  /// For advertised routes, the URI of their next hop, i.e. the URI of the
+  /// hybrid endpoint (VPN tunnel, Interconnect attachment, NCC router
+  /// appliance) the advertised prefix is advertised through, or URI of the
+  /// source peered network.
+  core.String? advertisedRouteNextHopUri;
+
+  /// For advertised dynamic routes, the URI of the Cloud Router that advertised
+  /// the corresponding IP prefix.
+  core.String? advertisedRouteSourceRouterUri;
+
   /// Destination IP range of the route.
   core.String? destIpRange;
 
@@ -3543,6 +3762,9 @@ class RouteInfo {
   /// Policy based routes only.
   core.List<core.String>? protocols;
 
+  /// Region of the route (if applicable).
+  core.String? region;
+
   /// Indicates where route is applicable.
   /// Possible string values are:
   /// - "ROUTE_SCOPE_UNSPECIFIED" : Unspecified scope. Default value.
@@ -3562,6 +3784,8 @@ class RouteInfo {
   /// - "PEERING_STATIC" : A static route received from peering network.
   /// - "PEERING_DYNAMIC" : A dynamic route received from peering network.
   /// - "POLICY_BASED" : Policy based route.
+  /// - "ADVERTISED" : Advertised route. Synthetic route which is used to
+  /// transition from the StartFromPrivateNetwork state in Connectivity tests.
   core.String? routeType;
 
   /// Source IP address range of the route.
@@ -3574,14 +3798,12 @@ class RouteInfo {
   /// Policy based routes only.
   core.List<core.String>? srcPortRanges;
 
-  /// URI of a route.
-  ///
-  /// Dynamic, peering static and peering dynamic routes do not have an URI.
-  /// Advertised route from Google Cloud VPC to on-premises network also does
-  /// not have an URI.
+  /// URI of a route (if applicable).
   core.String? uri;
 
   RouteInfo({
+    this.advertisedRouteNextHopUri,
+    this.advertisedRouteSourceRouterUri,
     this.destIpRange,
     this.destPortRanges,
     this.displayName,
@@ -3593,6 +3815,7 @@ class RouteInfo {
     this.nextHopType,
     this.priority,
     this.protocols,
+    this.region,
     this.routeScope,
     this.routeType,
     this.srcIpRange,
@@ -3602,6 +3825,10 @@ class RouteInfo {
 
   RouteInfo.fromJson(core.Map json_)
       : this(
+          advertisedRouteNextHopUri:
+              json_['advertisedRouteNextHopUri'] as core.String?,
+          advertisedRouteSourceRouterUri:
+              json_['advertisedRouteSourceRouterUri'] as core.String?,
           destIpRange: json_['destIpRange'] as core.String?,
           destPortRanges: (json_['destPortRanges'] as core.List?)
               ?.map((value) => value as core.String)
@@ -3619,6 +3846,7 @@ class RouteInfo {
           protocols: (json_['protocols'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          region: json_['region'] as core.String?,
           routeScope: json_['routeScope'] as core.String?,
           routeType: json_['routeType'] as core.String?,
           srcIpRange: json_['srcIpRange'] as core.String?,
@@ -3629,6 +3857,10 @@ class RouteInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (advertisedRouteNextHopUri != null)
+          'advertisedRouteNextHopUri': advertisedRouteNextHopUri!,
+        if (advertisedRouteSourceRouterUri != null)
+          'advertisedRouteSourceRouterUri': advertisedRouteSourceRouterUri!,
         if (destIpRange != null) 'destIpRange': destIpRange!,
         if (destPortRanges != null) 'destPortRanges': destPortRanges!,
         if (displayName != null) 'displayName': displayName!,
@@ -3640,6 +3872,7 @@ class RouteInfo {
         if (nextHopType != null) 'nextHopType': nextHopType!,
         if (priority != null) 'priority': priority!,
         if (protocols != null) 'protocols': protocols!,
+        if (region != null) 'region': region!,
         if (routeScope != null) 'routeScope': routeScope!,
         if (routeType != null) 'routeType': routeType!,
         if (srcIpRange != null) 'srcIpRange': srcIpRange!,
@@ -3711,7 +3944,7 @@ class SetIamPolicyRequest {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// A simulated forwarding path is composed of multiple steps.
 ///
@@ -3795,6 +4028,12 @@ class Step {
   /// Display information of a ProxyConnection.
   ProxyConnectionInfo? proxyConnection;
 
+  /// Display information of a Redis Cluster.
+  RedisClusterInfo? redisCluster;
+
+  /// Display information of a Redis Instance.
+  RedisInstanceInfo? redisInstance;
+
   /// Display information of a Compute Engine route.
   RouteInfo? route;
 
@@ -3823,6 +4062,12 @@ class Step {
   /// - "START_FROM_CLOUD_SQL_INSTANCE" : Initial state: packet originating from
   /// a Cloud SQL instance. A CloudSQLInstanceInfo is populated with starting
   /// instance information.
+  /// - "START_FROM_REDIS_INSTANCE" : Initial state: packet originating from a
+  /// Redis instance. A RedisInstanceInfo is populated with starting instance
+  /// information.
+  /// - "START_FROM_REDIS_CLUSTER" : Initial state: packet originating from a
+  /// Redis Cluster. A RedisClusterInfo is populated with starting Cluster
+  /// information.
   /// - "START_FROM_CLOUD_FUNCTION" : Initial state: packet originating from a
   /// Cloud Function. A CloudFunctionInfo is populated with starting function
   /// information.
@@ -3912,6 +4157,8 @@ class Step {
     this.network,
     this.projectId,
     this.proxyConnection,
+    this.redisCluster,
+    this.redisInstance,
     this.route,
     this.serverlessNeg,
     this.state,
@@ -4003,6 +4250,14 @@ class Step {
               ? ProxyConnectionInfo.fromJson(json_['proxyConnection']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          redisCluster: json_.containsKey('redisCluster')
+              ? RedisClusterInfo.fromJson(
+                  json_['redisCluster'] as core.Map<core.String, core.dynamic>)
+              : null,
+          redisInstance: json_.containsKey('redisInstance')
+              ? RedisInstanceInfo.fromJson(
+                  json_['redisInstance'] as core.Map<core.String, core.dynamic>)
+              : null,
           route: json_.containsKey('route')
               ? RouteInfo.fromJson(
                   json_['route'] as core.Map<core.String, core.dynamic>)
@@ -4054,6 +4309,8 @@ class Step {
         if (network != null) 'network': network!,
         if (projectId != null) 'projectId': projectId!,
         if (proxyConnection != null) 'proxyConnection': proxyConnection!,
+        if (redisCluster != null) 'redisCluster': redisCluster!,
+        if (redisInstance != null) 'redisInstance': redisInstance!,
         if (route != null) 'route': route!,
         if (serverlessNeg != null) 'serverlessNeg': serverlessNeg!,
         if (state != null) 'state': state!,

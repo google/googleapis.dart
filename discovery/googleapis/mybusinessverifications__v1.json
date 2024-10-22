@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240612",
+    "revision": "20230914",
     "rootUrl": "https://mybusinessverifications.googleapis.com/",
     "servicePath": "",
     "title": "My Business Verifications API",

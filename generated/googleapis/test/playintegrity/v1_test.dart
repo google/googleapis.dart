@@ -232,6 +232,7 @@ api.DeviceIntegrity buildDeviceIntegrity() {
   final o = api.DeviceIntegrity();
   buildCounterDeviceIntegrity++;
   if (buildCounterDeviceIntegrity < 3) {
+    o.deviceRecall = buildDeviceRecall();
     o.deviceRecognitionVerdict = buildUnnamed2();
     o.recentDeviceActivity = buildRecentDeviceActivity();
   }
@@ -242,10 +243,32 @@ api.DeviceIntegrity buildDeviceIntegrity() {
 void checkDeviceIntegrity(api.DeviceIntegrity o) {
   buildCounterDeviceIntegrity++;
   if (buildCounterDeviceIntegrity < 3) {
+    checkDeviceRecall(o.deviceRecall!);
     checkUnnamed2(o.deviceRecognitionVerdict!);
     checkRecentDeviceActivity(o.recentDeviceActivity!);
   }
   buildCounterDeviceIntegrity--;
+}
+
+core.int buildCounterDeviceRecall = 0;
+api.DeviceRecall buildDeviceRecall() {
+  final o = api.DeviceRecall();
+  buildCounterDeviceRecall++;
+  if (buildCounterDeviceRecall < 3) {
+    o.values = buildValues();
+    o.writeDates = buildWriteDates();
+  }
+  buildCounterDeviceRecall--;
+  return o;
+}
+
+void checkDeviceRecall(api.DeviceRecall o) {
+  buildCounterDeviceRecall++;
+  if (buildCounterDeviceRecall < 3) {
+    checkValues(o.values!);
+    checkWriteDates(o.writeDates!);
+  }
+  buildCounterDeviceRecall--;
 }
 
 core.int buildCounterEnvironmentDetails = 0;
@@ -379,6 +402,100 @@ void checkTokenPayloadExternal(api.TokenPayloadExternal o) {
   buildCounterTokenPayloadExternal--;
 }
 
+core.int buildCounterValues = 0;
+api.Values buildValues() {
+  final o = api.Values();
+  buildCounterValues++;
+  if (buildCounterValues < 3) {
+    o.bitFirst = true;
+    o.bitSecond = true;
+    o.bitThird = true;
+  }
+  buildCounterValues--;
+  return o;
+}
+
+void checkValues(api.Values o) {
+  buildCounterValues++;
+  if (buildCounterValues < 3) {
+    unittest.expect(o.bitFirst!, unittest.isTrue);
+    unittest.expect(o.bitSecond!, unittest.isTrue);
+    unittest.expect(o.bitThird!, unittest.isTrue);
+  }
+  buildCounterValues--;
+}
+
+core.int buildCounterWriteDates = 0;
+api.WriteDates buildWriteDates() {
+  final o = api.WriteDates();
+  buildCounterWriteDates++;
+  if (buildCounterWriteDates < 3) {
+    o.yyyymmFirst = 42;
+    o.yyyymmSecond = 42;
+    o.yyyymmThird = 42;
+  }
+  buildCounterWriteDates--;
+  return o;
+}
+
+void checkWriteDates(api.WriteDates o) {
+  buildCounterWriteDates++;
+  if (buildCounterWriteDates < 3) {
+    unittest.expect(
+      o.yyyymmFirst!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.yyyymmSecond!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.yyyymmThird!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterWriteDates--;
+}
+
+core.int buildCounterWriteDeviceRecallRequest = 0;
+api.WriteDeviceRecallRequest buildWriteDeviceRecallRequest() {
+  final o = api.WriteDeviceRecallRequest();
+  buildCounterWriteDeviceRecallRequest++;
+  if (buildCounterWriteDeviceRecallRequest < 3) {
+    o.integrityToken = 'foo';
+    o.newValues = buildValues();
+  }
+  buildCounterWriteDeviceRecallRequest--;
+  return o;
+}
+
+void checkWriteDeviceRecallRequest(api.WriteDeviceRecallRequest o) {
+  buildCounterWriteDeviceRecallRequest++;
+  if (buildCounterWriteDeviceRecallRequest < 3) {
+    unittest.expect(
+      o.integrityToken!,
+      unittest.equals('foo'),
+    );
+    checkValues(o.newValues!);
+  }
+  buildCounterWriteDeviceRecallRequest--;
+}
+
+core.int buildCounterWriteDeviceRecallResponse = 0;
+api.WriteDeviceRecallResponse buildWriteDeviceRecallResponse() {
+  final o = api.WriteDeviceRecallResponse();
+  buildCounterWriteDeviceRecallResponse++;
+  if (buildCounterWriteDeviceRecallResponse < 3) {}
+  buildCounterWriteDeviceRecallResponse--;
+  return o;
+}
+
+void checkWriteDeviceRecallResponse(api.WriteDeviceRecallResponse o) {
+  buildCounterWriteDeviceRecallResponse++;
+  if (buildCounterWriteDeviceRecallResponse < 3) {}
+  buildCounterWriteDeviceRecallResponse--;
+}
+
 void main() {
   unittest.group('obj-schema-AccountActivity', () {
     unittest.test('to-json--from-json', () async {
@@ -450,6 +567,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DeviceRecall', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDeviceRecall();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeviceRecall.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDeviceRecall(od);
+    });
+  });
+
   unittest.group('obj-schema-EnvironmentDetails', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEnvironmentDetails();
@@ -497,6 +624,106 @@ void main() {
       final od = api.TokenPayloadExternal.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTokenPayloadExternal(od);
+    });
+  });
+
+  unittest.group('obj-schema-Values', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildValues();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Values.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkValues(od);
+    });
+  });
+
+  unittest.group('obj-schema-WriteDates', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWriteDates();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.WriteDates.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkWriteDates(od);
+    });
+  });
+
+  unittest.group('obj-schema-WriteDeviceRecallRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWriteDeviceRecallRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WriteDeviceRecallRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkWriteDeviceRecallRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-WriteDeviceRecallResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWriteDeviceRecallResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WriteDeviceRecallResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkWriteDeviceRecallResponse(od);
+    });
+  });
+
+  unittest.group('resource-DeviceRecallResource', () {
+    unittest.test('method--write', () async {
+      final mock = HttpServerMock();
+      final res = api.PlayIntegrityApi(mock).deviceRecall;
+      final arg_request = buildWriteDeviceRecallRequest();
+      final arg_packageName = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.WriteDeviceRecallRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkWriteDeviceRecallRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildWriteDeviceRecallResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.write(arg_request, arg_packageName, $fields: arg_$fields);
+      checkWriteDeviceRecallResponse(response as api.WriteDeviceRecallResponse);
     });
   });
 

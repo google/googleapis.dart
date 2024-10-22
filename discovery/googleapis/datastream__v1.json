@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240529",
+    "revision": "20240930",
     "rootUrl": "https://datastream.googleapis.com/",
     "servicePath": "",
     "title": "Datastream API",
@@ -1069,7 +1069,7 @@
                                     ]
                                 },
                                 "run": {
-                                    "description": "Use this method to start, resume or recover a stream with a non default CDC strategy. NOTE: This feature is currently experimental.",
+                                    "description": "Use this method to start, resume or recover a stream with a non default CDC strategy.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/streams/{streamsId}:run",
                                     "httpMethod": "POST",
                                     "id": "datastream.projects.locations.streams.run",
@@ -2069,7 +2069,7 @@
             "type": "object"
         },
         "MysqlProfile": {
-            "description": "MySQL database profile.",
+            "description": "MySQL database profile. Next ID: 7.",
             "id": "MysqlProfile",
             "properties": {
                 "hostname": {
@@ -2077,7 +2077,7 @@
                     "type": "string"
                 },
                 "password": {
-                    "description": "Required. Input only. Password for the MySQL connection.",
+                    "description": "Optional. Input only. Password for the MySQL connection. Mutually exclusive with the `secret_manager_stored_password` field.",
                     "type": "string"
                 },
                 "port": {
@@ -2340,7 +2340,7 @@
             "type": "object"
         },
         "OracleProfile": {
-            "description": "Oracle database profile.",
+            "description": "Oracle database profile. Next ID: 10.",
             "id": "OracleProfile",
             "properties": {
                 "connectionAttributes": {
@@ -2363,7 +2363,7 @@
                     "description": "Optional. SSL configuration for the Oracle connection."
                 },
                 "password": {
-                    "description": "Required. Password for the Oracle connection.",
+                    "description": "Optional. Password for the Oracle connection. Mutually exclusive with the `secret_manager_stored_password` field.",
                     "type": "string"
                 },
                 "port": {
@@ -2548,7 +2548,7 @@
             "type": "object"
         },
         "PostgresqlProfile": {
-            "description": "PostgreSQL database profile.",
+            "description": "PostgreSQL database profile. Next ID: 7.",
             "id": "PostgresqlProfile",
             "properties": {
                 "database": {
@@ -2560,7 +2560,7 @@
                     "type": "string"
                 },
                 "password": {
-                    "description": "Required. Password for the PostgreSQL connection.",
+                    "description": "Optional. Password for the PostgreSQL connection. Mutually exclusive with the `secret_manager_stored_password` field.",
                     "type": "string"
                 },
                 "port": {
@@ -2780,6 +2780,10 @@
                 "cdcStrategy": {
                     "$ref": "CdcStrategy",
                     "description": "Optional. The CDC strategy of the stream. If not set, the system's default value will be used."
+                },
+                "force": {
+                    "description": "Optional. Update the stream without validating it.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -2936,7 +2940,7 @@
             "type": "object"
         },
         "SqlServerProfile": {
-            "description": "SQLServer database profile",
+            "description": "SQLServer database profile. Next ID: 8.",
             "id": "SqlServerProfile",
             "properties": {
                 "database": {
@@ -2948,7 +2952,7 @@
                     "type": "string"
                 },
                 "password": {
-                    "description": "Required. Password for the SQLServer connection.",
+                    "description": "Optional. Password for the SQLServer connection. Mutually exclusive with the `secret_manager_stored_password` field.",
                     "type": "string"
                 },
                 "port": {

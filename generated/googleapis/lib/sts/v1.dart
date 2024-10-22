@@ -130,7 +130,7 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
   /// An identifier for the type of requested security token.
   ///
   /// Can be `urn:ietf:params:oauth:token-type:access_token` or
-  /// `urn:ietf:params:oauth:token-type:access_boundary_intermediate_token`.
+  /// `urn:ietf:params:oauth:token-type:access_boundary_intermediary_token`.
   ///
   /// Required.
   core.String? requestedTokenType;
@@ -276,6 +276,21 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
 
 /// Response message for ExchangeToken.
 class GoogleIdentityStsV1ExchangeTokenResponse {
+  /// The access boundary session key.
+  ///
+  /// This key is used along with the access boundary intermediary token to
+  /// generate Credential Access Boundary tokens at client side. This field is
+  /// absent when the `requested_token_type` from the request is not
+  /// `urn:ietf:params:oauth:token-type:access_boundary_intermediary_token`.
+  core.String? accessBoundarySessionKey;
+  core.List<core.int> get accessBoundarySessionKeyAsBytes =>
+      convert.base64.decode(accessBoundarySessionKey!);
+
+  set accessBoundarySessionKeyAsBytes(core.List<core.int> bytes_) {
+    accessBoundarySessionKey =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
   /// An OAuth 2.0 security token, issued by Google, in response to the token
   /// exchange request.
   ///
@@ -303,6 +318,7 @@ class GoogleIdentityStsV1ExchangeTokenResponse {
   core.String? tokenType;
 
   GoogleIdentityStsV1ExchangeTokenResponse({
+    this.accessBoundarySessionKey,
     this.accessToken,
     this.expiresIn,
     this.issuedTokenType,
@@ -311,6 +327,8 @@ class GoogleIdentityStsV1ExchangeTokenResponse {
 
   GoogleIdentityStsV1ExchangeTokenResponse.fromJson(core.Map json_)
       : this(
+          accessBoundarySessionKey:
+              json_['access_boundary_session_key'] as core.String?,
           accessToken: json_['access_token'] as core.String?,
           expiresIn: json_['expires_in'] as core.int?,
           issuedTokenType: json_['issued_token_type'] as core.String?,
@@ -318,6 +336,8 @@ class GoogleIdentityStsV1ExchangeTokenResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (accessBoundarySessionKey != null)
+          'access_boundary_session_key': accessBoundarySessionKey!,
         if (accessToken != null) 'access_token': accessToken!,
         if (expiresIn != null) 'expires_in': expiresIn!,
         if (issuedTokenType != null) 'issued_token_type': issuedTokenType!,

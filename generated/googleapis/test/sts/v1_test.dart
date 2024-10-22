@@ -86,6 +86,7 @@ api.GoogleIdentityStsV1ExchangeTokenResponse
   final o = api.GoogleIdentityStsV1ExchangeTokenResponse();
   buildCounterGoogleIdentityStsV1ExchangeTokenResponse++;
   if (buildCounterGoogleIdentityStsV1ExchangeTokenResponse < 3) {
+    o.accessBoundarySessionKey = 'foo';
     o.accessToken = 'foo';
     o.expiresIn = 42;
     o.issuedTokenType = 'foo';
@@ -99,6 +100,10 @@ void checkGoogleIdentityStsV1ExchangeTokenResponse(
     api.GoogleIdentityStsV1ExchangeTokenResponse o) {
   buildCounterGoogleIdentityStsV1ExchangeTokenResponse++;
   if (buildCounterGoogleIdentityStsV1ExchangeTokenResponse < 3) {
+    unittest.expect(
+      o.accessBoundarySessionKey!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.accessToken!,
       unittest.equals('foo'),

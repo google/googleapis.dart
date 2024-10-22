@@ -1033,6 +1033,59 @@ class ProjectsLocationsRegistrationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Lists the DNS records from the Google Domains DNS zone for domains that
+  /// use the deprecated `google_domains_dns` in the `Registration`'s
+  /// `dns_settings`.
+  ///
+  /// Request parameters:
+  ///
+  /// [registration] - Required. The name of the `Registration` whose Google
+  /// Domains DNS records details you are retrieving, in the format `projects /
+  /// * /locations / * /registrations / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registrations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of results to return.
+  ///
+  /// [pageToken] - Optional. When set to the `next_page_token` from a prior
+  /// response, provides the next page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RetrieveGoogleDomainsDnsRecordsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RetrieveGoogleDomainsDnsRecordsResponse>
+      retrieveGoogleDomainsDnsRecords(
+    core.String registration, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$registration') +
+        ':retrieveGoogleDomainsDnsRecords';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RetrieveGoogleDomainsDnsRecordsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists the deprecated domain and email forwarding configurations you set up
   /// in the deprecated Google Domains UI.
   ///
@@ -1951,10 +2004,26 @@ class DnsSettings {
   )
   GoogleDomainsDns? googleDomainsDns;
 
+  /// Indicates if this `Registration` has configured one of the following
+  /// deprecated Google Domains DNS features: * Domain forwarding (HTTP `301`
+  /// and `302` response status codes), * Email forwarding.
+  ///
+  /// See
+  /// https://cloud.google.com/domains/docs/deprecations/feature-deprecations
+  /// for more details. If any of these features is enabled call the
+  /// `RetrieveGoogleDomainsForwardingConfig` method to get details about the
+  /// feature's configuration. A forwarding configuration might not work
+  /// correctly if required DNS records are not present in the domain's
+  /// authoritative DNS Zone.
+  ///
+  /// Output only.
+  core.bool? googleDomainsRedirectsDataAvailable;
+
   DnsSettings({
     this.customDns,
     this.glueRecords,
     this.googleDomainsDns,
+    this.googleDomainsRedirectsDataAvailable,
   });
 
   DnsSettings.fromJson(core.Map json_)
@@ -1971,12 +2040,17 @@ class DnsSettings {
               ? GoogleDomainsDns.fromJson(json_['googleDomainsDns']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          googleDomainsRedirectsDataAvailable:
+              json_['googleDomainsRedirectsDataAvailable'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customDns != null) 'customDns': customDns!,
         if (glueRecords != null) 'glueRecords': glueRecords!,
         if (googleDomainsDns != null) 'googleDomainsDns': googleDomainsDns!,
+        if (googleDomainsRedirectsDataAvailable != null)
+          'googleDomainsRedirectsDataAvailable':
+              googleDomainsRedirectsDataAvailable!,
       };
 }
 
@@ -2222,6 +2296,97 @@ typedef ExportRegistrationRequest = $Shared01;
 /// information.
 typedef Expr = $Expr;
 
+/// Configures a `RRSetRoutingPolicy` that routes based on the geo location of
+/// the querying user.
+class GeoPolicy {
+  /// Without fencing, if health check fails for all configured items in the
+  /// current geo bucket, we failover to the next nearest geo bucket.
+  ///
+  /// With fencing, if health checking is enabled, as long as some targets in
+  /// the current geo bucket are healthy, we return only the healthy targets.
+  /// However, if all targets are unhealthy, we don't failover to the next
+  /// nearest bucket; instead, we return all the items in the current bucket
+  /// even when all targets are unhealthy.
+  core.bool? enableFencing;
+
+  /// The primary geo routing configuration.
+  ///
+  /// If there are multiple items with the same location, an error is returned
+  /// instead.
+  core.List<GeoPolicyItem>? item;
+
+  GeoPolicy({
+    this.enableFencing,
+    this.item,
+  });
+
+  GeoPolicy.fromJson(core.Map json_)
+      : this(
+          enableFencing: json_['enableFencing'] as core.bool?,
+          item: (json_['item'] as core.List?)
+              ?.map((value) => GeoPolicyItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableFencing != null) 'enableFencing': enableFencing!,
+        if (item != null) 'item': item!,
+      };
+}
+
+/// ResourceRecordSet data for one geo location.
+class GeoPolicyItem {
+  /// For A and AAAA types only.
+  ///
+  /// Endpoints to return in the query result only if they are healthy. These
+  /// can be specified along with `rrdata` within this item.
+  HealthCheckTargets? healthCheckedTargets;
+
+  /// The geo-location granularity is a GCP region.
+  ///
+  /// This location string should correspond to a GCP region. e.g. "us-east1",
+  /// "southamerica-east1", "asia-east1", etc.
+  core.String? location;
+  core.List<core.String>? rrdata;
+
+  /// DNSSEC generated signatures for all the `rrdata` within this item.
+  ///
+  /// If health checked targets are provided for DNSSEC enabled zones, there's a
+  /// restriction of 1 IP address per item.
+  core.List<core.String>? signatureRrdata;
+
+  GeoPolicyItem({
+    this.healthCheckedTargets,
+    this.location,
+    this.rrdata,
+    this.signatureRrdata,
+  });
+
+  GeoPolicyItem.fromJson(core.Map json_)
+      : this(
+          healthCheckedTargets: json_.containsKey('healthCheckedTargets')
+              ? HealthCheckTargets.fromJson(json_['healthCheckedTargets']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          location: json_['location'] as core.String?,
+          rrdata: (json_['rrdata'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          signatureRrdata: (json_['signatureRrdata'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (healthCheckedTargets != null)
+          'healthCheckedTargets': healthCheckedTargets!,
+        if (location != null) 'location': location!,
+        if (rrdata != null) 'rrdata': rrdata!,
+        if (signatureRrdata != null) 'signatureRrdata': signatureRrdata!,
+      };
+}
+
 /// Defines a host on your domain that is a DNS name server for your domain
 /// and/or other domains.
 ///
@@ -2334,6 +2499,43 @@ class GoogleDomainsDns {
         if (dsRecords != null) 'dsRecords': dsRecords!,
         if (dsState != null) 'dsState': dsState!,
         if (nameServers != null) 'nameServers': nameServers!,
+      };
+}
+
+/// HealthCheckTargets describes endpoints to health-check when responding to
+/// Routing Policy queries.
+///
+/// Only the healthy endpoints will be included in the response.
+class HealthCheckTargets {
+  /// The Internet IP addresses to be health checked.
+  ///
+  /// The format matches the format of ResourceRecordSet.rrdata as defined in
+  /// RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
+  core.List<core.String>? externalEndpoints;
+
+  /// Configuration for internal load balancers to be health checked.
+  core.List<LoadBalancerTarget>? internalLoadBalancer;
+
+  HealthCheckTargets({
+    this.externalEndpoints,
+    this.internalLoadBalancer,
+  });
+
+  HealthCheckTargets.fromJson(core.Map json_)
+      : this(
+          externalEndpoints: (json_['externalEndpoints'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          internalLoadBalancer: (json_['internalLoadBalancer'] as core.List?)
+              ?.map((value) => LoadBalancerTarget.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (externalEndpoints != null) 'externalEndpoints': externalEndpoints!,
+        if (internalLoadBalancer != null)
+          'internalLoadBalancer': internalLoadBalancer!,
       };
 }
 
@@ -2482,6 +2684,84 @@ class ListRegistrationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (registrations != null) 'registrations': registrations!,
+      };
+}
+
+/// The configuration for an individual load balancer to health check.
+class LoadBalancerTarget {
+  /// The frontend IP address of the load balancer to health check.
+  core.String? ipAddress;
+
+  /// The protocol of the load balancer to health check.
+  /// Possible string values are:
+  /// - "UNDEFINED"
+  /// - "TCP" : Indicates the load balancer is accessible via TCP.
+  /// - "UDP" : Indicates the load balancer is accessible via UDP.
+  core.String? ipProtocol;
+
+  /// The type of load balancer specified by this target.
+  ///
+  /// This value must match the configuration of the load balancer located at
+  /// the LoadBalancerTarget's IP address, port, and region. Use the following:
+  /// - *regionalL4ilb*: for a regional internal passthrough Network Load
+  /// Balancer. - *regionalL7ilb*: for a regional internal Application Load
+  /// Balancer. - *globalL7ilb*: for a global internal Application Load
+  /// Balancer.
+  /// Possible string values are:
+  /// - "NONE"
+  /// - "GLOBAL_L7ILB" : Indicates the load balancer is a Cross-Region
+  /// Application Load Balancer.
+  /// - "REGIONAL_L4ILB" : Indicates the load balancer is a Regional Network
+  /// Passthrough Load Balancer.
+  /// - "REGIONAL_L7ILB" : Indicates the load balancer is a Regional Application
+  /// Load Balancer.
+  core.String? loadBalancerType;
+
+  /// The fully qualified URL of the network that the load balancer is attached
+  /// to.
+  ///
+  /// This should be formatted like
+  /// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+  core.String? networkUrl;
+
+  /// The configured port of the load balancer.
+  core.String? port;
+
+  /// The project ID in which the load balancer is located.
+  core.String? project;
+
+  /// The region in which the load balancer is located.
+  core.String? region;
+
+  LoadBalancerTarget({
+    this.ipAddress,
+    this.ipProtocol,
+    this.loadBalancerType,
+    this.networkUrl,
+    this.port,
+    this.project,
+    this.region,
+  });
+
+  LoadBalancerTarget.fromJson(core.Map json_)
+      : this(
+          ipAddress: json_['ipAddress'] as core.String?,
+          ipProtocol: json_['ipProtocol'] as core.String?,
+          loadBalancerType: json_['loadBalancerType'] as core.String?,
+          networkUrl: json_['networkUrl'] as core.String?,
+          port: json_['port'] as core.String?,
+          project: json_['project'] as core.String?,
+          region: json_['region'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (ipProtocol != null) 'ipProtocol': ipProtocol!,
+        if (loadBalancerType != null) 'loadBalancerType': loadBalancerType!,
+        if (networkUrl != null) 'networkUrl': networkUrl!,
+        if (port != null) 'port': port!,
+        if (project != null) 'project': project!,
+        if (region != null) 'region': region!,
       };
 }
 
@@ -2797,6 +3077,121 @@ class Policy {
 /// field is used. For more guidance on how to use this schema, please see:
 /// https://support.google.com/business/answer/6397478
 typedef PostalAddress = $PostalAddress;
+
+/// Configures a RRSetRoutingPolicy such that all queries are responded with the
+/// primary_targets if they are healthy.
+///
+/// And if all of them are unhealthy, then we fallback to a geo localized
+/// policy.
+class PrimaryBackupPolicy {
+  /// Backup targets provide a regional failover policy for the otherwise global
+  /// primary targets.
+  ///
+  /// If serving state is set to `BACKUP`, this policy essentially becomes a geo
+  /// routing policy.
+  GeoPolicy? backupGeoTargets;
+
+  /// Endpoints that are health checked before making the routing decision.
+  ///
+  /// Unhealthy endpoints are omitted from the results. If all endpoints are
+  /// unhealthy, we serve a response based on the `backup_geo_targets`.
+  HealthCheckTargets? primaryTargets;
+
+  /// When serving state is `PRIMARY`, this field provides the option of sending
+  /// a small percentage of the traffic to the backup targets.
+  core.double? trickleTraffic;
+
+  PrimaryBackupPolicy({
+    this.backupGeoTargets,
+    this.primaryTargets,
+    this.trickleTraffic,
+  });
+
+  PrimaryBackupPolicy.fromJson(core.Map json_)
+      : this(
+          backupGeoTargets: json_.containsKey('backupGeoTargets')
+              ? GeoPolicy.fromJson(json_['backupGeoTargets']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          primaryTargets: json_.containsKey('primaryTargets')
+              ? HealthCheckTargets.fromJson(json_['primaryTargets']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          trickleTraffic: (json_['trickleTraffic'] as core.num?)?.toDouble(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupGeoTargets != null) 'backupGeoTargets': backupGeoTargets!,
+        if (primaryTargets != null) 'primaryTargets': primaryTargets!,
+        if (trickleTraffic != null) 'trickleTraffic': trickleTraffic!,
+      };
+}
+
+/// A RRSetRoutingPolicy represents ResourceRecordSet data that is returned
+/// dynamically with the response varying based on configured properties such as
+/// geolocation or by weighted random selection.
+class RRSetRoutingPolicy {
+  GeoPolicy? geo;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  GeoPolicy? geoPolicy;
+
+  /// The selfLink attribute of the HealthCheck resource to use for this
+  /// RRSetRoutingPolicy.
+  ///
+  /// https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks
+  core.String? healthCheck;
+  PrimaryBackupPolicy? primaryBackup;
+  WrrPolicy? wrr;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  WrrPolicy? wrrPolicy;
+
+  RRSetRoutingPolicy({
+    this.geo,
+    this.geoPolicy,
+    this.healthCheck,
+    this.primaryBackup,
+    this.wrr,
+    this.wrrPolicy,
+  });
+
+  RRSetRoutingPolicy.fromJson(core.Map json_)
+      : this(
+          geo: json_.containsKey('geo')
+              ? GeoPolicy.fromJson(
+                  json_['geo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          geoPolicy: json_.containsKey('geoPolicy')
+              ? GeoPolicy.fromJson(
+                  json_['geoPolicy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          healthCheck: json_['healthCheck'] as core.String?,
+          primaryBackup: json_.containsKey('primaryBackup')
+              ? PrimaryBackupPolicy.fromJson(
+                  json_['primaryBackup'] as core.Map<core.String, core.dynamic>)
+              : null,
+          wrr: json_.containsKey('wrr')
+              ? WrrPolicy.fromJson(
+                  json_['wrr'] as core.Map<core.String, core.dynamic>)
+              : null,
+          wrrPolicy: json_.containsKey('wrrPolicy')
+              ? WrrPolicy.fromJson(
+                  json_['wrrPolicy'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (geo != null) 'geo': geo!,
+        if (geoPolicy != null) 'geoPolicy': geoPolicy!,
+        if (healthCheck != null) 'healthCheck': healthCheck!,
+        if (primaryBackup != null) 'primaryBackup': primaryBackup!,
+        if (wrr != null) 'wrr': wrr!,
+        if (wrrPolicy != null) 'wrrPolicy': wrrPolicy!,
+      };
+}
 
 /// Request for the `RegisterDomain` method.
 class RegisterDomainRequest {
@@ -3235,6 +3630,101 @@ class RenewDomainRequest {
 /// Request for the `ResetAuthorizationCode` method.
 typedef ResetAuthorizationCodeRequest = $Empty;
 
+/// A unit of data that is returned by the DNS servers.
+class ResourceRecordSet {
+  /// For example, www.example.com.
+  core.String? name;
+
+  /// Configures dynamic query responses based on either the geo location of the
+  /// querying user or a weighted round robin based routing policy.
+  ///
+  /// A valid `ResourceRecordSet` contains only `rrdata` (for static resolution)
+  /// or a `routing_policy` (for dynamic resolution).
+  RRSetRoutingPolicy? routingPolicy;
+
+  /// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see
+  /// examples.
+  core.List<core.String>? rrdata;
+
+  /// As defined in RFC 4034 (section 3.2).
+  core.List<core.String>? signatureRrdata;
+
+  /// Number of seconds that this `ResourceRecordSet` can be cached by
+  /// resolvers.
+  core.int? ttl;
+
+  /// The identifier of a supported record type.
+  ///
+  /// See the list of Supported DNS record types.
+  core.String? type;
+
+  ResourceRecordSet({
+    this.name,
+    this.routingPolicy,
+    this.rrdata,
+    this.signatureRrdata,
+    this.ttl,
+    this.type,
+  });
+
+  ResourceRecordSet.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+          routingPolicy: json_.containsKey('routingPolicy')
+              ? RRSetRoutingPolicy.fromJson(
+                  json_['routingPolicy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rrdata: (json_['rrdata'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          signatureRrdata: (json_['signatureRrdata'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          ttl: json_['ttl'] as core.int?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (routingPolicy != null) 'routingPolicy': routingPolicy!,
+        if (rrdata != null) 'rrdata': rrdata!,
+        if (signatureRrdata != null) 'signatureRrdata': signatureRrdata!,
+        if (ttl != null) 'ttl': ttl!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Response for the `RetrieveGoogleDomainsDnsRecords` method.
+class RetrieveGoogleDomainsDnsRecordsResponse {
+  /// When present, there are more results to retrieve.
+  ///
+  /// Set `page_token` to this value on a subsequent call to get the next page
+  /// of results.
+  core.String? nextPageToken;
+
+  /// The resource record set resources (DNS Zone records).
+  core.List<ResourceRecordSet>? rrset;
+
+  RetrieveGoogleDomainsDnsRecordsResponse({
+    this.nextPageToken,
+    this.rrset,
+  });
+
+  RetrieveGoogleDomainsDnsRecordsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          rrset: (json_['rrset'] as core.List?)
+              ?.map((value) => ResourceRecordSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (rrset != null) 'rrset': rrset!,
+      };
+}
+
 /// Response for the `RetrieveGoogleDomainsForwardingConfig` method.
 class RetrieveGoogleDomainsForwardingConfigResponse {
   /// The list of domain forwarding configurations.
@@ -3420,7 +3910,7 @@ class SetIamPolicyRequest {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
@@ -3577,5 +4067,83 @@ class TransferParameters {
         if (supportedPrivacy != null) 'supportedPrivacy': supportedPrivacy!,
         if (transferLockState != null) 'transferLockState': transferLockState!,
         if (yearlyPrice != null) 'yearlyPrice': yearlyPrice!,
+      };
+}
+
+/// Configures a RRSetRoutingPolicy that routes in a weighted round robin
+/// fashion.
+class WrrPolicy {
+  core.List<WrrPolicyItem>? item;
+
+  WrrPolicy({
+    this.item,
+  });
+
+  WrrPolicy.fromJson(core.Map json_)
+      : this(
+          item: (json_['item'] as core.List?)
+              ?.map((value) => WrrPolicyItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (item != null) 'item': item!,
+      };
+}
+
+/// A routing block which contains the routing information for one WRR item.
+class WrrPolicyItem {
+  /// Endpoints that are health checked before making the routing decision.
+  ///
+  /// The unhealthy endpoints are omitted from the result. If all endpoints
+  /// within a bucket are unhealthy, we choose a different bucket (sampled with
+  /// respect to its weight) for responding. If DNSSEC is enabled for this zone,
+  /// only one of `rrdata` or `health_checked_targets` can be set.
+  HealthCheckTargets? healthCheckedTargets;
+  core.List<core.String>? rrdata;
+
+  /// DNSSEC generated signatures for all the `rrdata` within this item.
+  ///
+  /// Note that if health checked targets are provided for DNSSEC enabled zones,
+  /// there's a restriction of 1 IP address per item.
+  core.List<core.String>? signatureRrdata;
+
+  /// The weight corresponding to this `WrrPolicyItem` object.
+  ///
+  /// When multiple `WrrPolicyItem` objects are configured, the probability of
+  /// returning an `WrrPolicyItem` object's data is proportional to its weight
+  /// relative to the sum of weights configured for all items. This weight must
+  /// be non-negative.
+  core.double? weight;
+
+  WrrPolicyItem({
+    this.healthCheckedTargets,
+    this.rrdata,
+    this.signatureRrdata,
+    this.weight,
+  });
+
+  WrrPolicyItem.fromJson(core.Map json_)
+      : this(
+          healthCheckedTargets: json_.containsKey('healthCheckedTargets')
+              ? HealthCheckTargets.fromJson(json_['healthCheckedTargets']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          rrdata: (json_['rrdata'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          signatureRrdata: (json_['signatureRrdata'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          weight: (json_['weight'] as core.num?)?.toDouble(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (healthCheckedTargets != null)
+          'healthCheckedTargets': healthCheckedTargets!,
+        if (rrdata != null) 'rrdata': rrdata!,
+        if (signatureRrdata != null) 'signatureRrdata': signatureRrdata!,
+        if (weight != null) 'weight': weight!,
       };
 }

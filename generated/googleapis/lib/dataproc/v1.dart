@@ -24,9 +24,11 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsAutoscalingPoliciesResource]
 ///     - [ProjectsLocationsBatchesResource]
+///       - [ProjectsLocationsBatchesSparkApplicationsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsSessionTemplatesResource]
 ///     - [ProjectsLocationsSessionsResource]
+///       - [ProjectsLocationsSessionsSparkApplicationsResource]
 ///     - [ProjectsLocationsWorkflowTemplatesResource]
 ///   - [ProjectsRegionsResource]
 ///     - [ProjectsRegionsAutoscalingPoliciesResource]
@@ -493,6 +495,9 @@ class ProjectsLocationsAutoscalingPoliciesResource {
 class ProjectsLocationsBatchesResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsBatchesSparkApplicationsResource get sparkApplications =>
+      ProjectsLocationsBatchesSparkApplicationsResource(_requester);
+
   ProjectsLocationsBatchesResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -740,6 +745,1151 @@ class ProjectsLocationsBatchesResource {
       queryParams: queryParams_,
     );
     return ListBatchesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsBatchesSparkApplicationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBatchesSparkApplicationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Obtain high level information corresponding to a single Spark Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [parent] - Required. Parent (Batch) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccessSparkApplicationResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessSparkApplicationResponse> access(
+    core.String name, {
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (parent != null) 'parent': [parent],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':access';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AccessSparkApplicationResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain environment details for a Spark Application
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [parent] - Required. Parent (Batch) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccessSparkApplicationEnvironmentInfoResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessSparkApplicationEnvironmentInfoResponse>
+      accessEnvironmentInfo(
+    core.String name, {
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (parent != null) 'parent': [parent],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':accessEnvironmentInfo';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AccessSparkApplicationEnvironmentInfoResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain data corresponding to a spark job for a Spark Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [jobId] - Required. Job ID to fetch data for.
+  ///
+  /// [parent] - Required. Parent (Batch) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccessSparkApplicationJobResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessSparkApplicationJobResponse> accessJob(
+    core.String name, {
+    core.String? jobId,
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (jobId != null) 'jobId': [jobId],
+      if (parent != null) 'parent': [parent],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':accessJob';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AccessSparkApplicationJobResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain Spark Plan Graph for a Spark Application SQL execution.
+  ///
+  /// Limits the number of clusters returned as part of the graph to 10000.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [executionId] - Required. Execution ID
+  ///
+  /// [parent] - Required. Parent (Batch) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccessSparkApplicationSqlSparkPlanGraphResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessSparkApplicationSqlSparkPlanGraphResponse> accessSqlPlan(
+    core.String name, {
+    core.String? executionId,
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (executionId != null) 'executionId': [executionId],
+      if (parent != null) 'parent': [parent],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':accessSqlPlan';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AccessSparkApplicationSqlSparkPlanGraphResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain data corresponding to a particular SQL Query for a Spark
+  /// Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [details] - Optional. Lists/ hides details of Spark plan nodes. True is
+  /// set to list and false to hide.
+  ///
+  /// [executionId] - Required. Execution ID
+  ///
+  /// [parent] - Required. Parent (Batch) resource reference.
+  ///
+  /// [planDescription] - Optional. Enables/ disables physical plan description
+  /// on demand
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccessSparkApplicationSqlQueryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessSparkApplicationSqlQueryResponse> accessSqlQuery(
+    core.String name, {
+    core.bool? details,
+    core.String? executionId,
+    core.String? parent,
+    core.bool? planDescription,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (details != null) 'details': ['${details}'],
+      if (executionId != null) 'executionId': [executionId],
+      if (parent != null) 'parent': [parent],
+      if (planDescription != null) 'planDescription': ['${planDescription}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':accessSqlQuery';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AccessSparkApplicationSqlQueryResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain data corresponding to a spark stage attempt for a Spark
+  /// Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [parent] - Required. Parent (Batch) resource reference.
+  ///
+  /// [stageAttemptId] - Required. Stage Attempt ID
+  ///
+  /// [stageId] - Required. Stage ID
+  ///
+  /// [summaryMetricsMask] - Optional. The list of summary metrics fields to
+  /// include. Empty list will default to skip all summary metrics fields.
+  /// Example, if the response should include TaskQuantileMetrics, the request
+  /// should have task_quantile_metrics in summary_metrics_mask field
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccessSparkApplicationStageAttemptResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessSparkApplicationStageAttemptResponse> accessStageAttempt(
+    core.String name, {
+    core.String? parent,
+    core.int? stageAttemptId,
+    core.String? stageId,
+    core.String? summaryMetricsMask,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (parent != null) 'parent': [parent],
+      if (stageAttemptId != null) 'stageAttemptId': ['${stageAttemptId}'],
+      if (stageId != null) 'stageId': [stageId],
+      if (summaryMetricsMask != null)
+        'summaryMetricsMask': [summaryMetricsMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':accessStageAttempt';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AccessSparkApplicationStageAttemptResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain RDD operation graph for a Spark Application Stage.
+  ///
+  /// Limits the number of clusters returned as part of the graph to 10000.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [parent] - Required. Parent (Batch) resource reference.
+  ///
+  /// [stageId] - Required. Stage ID
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccessSparkApplicationStageRddOperationGraphResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessSparkApplicationStageRddOperationGraphResponse>
+      accessStageRddGraph(
+    core.String name, {
+    core.String? parent,
+    core.String? stageId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (parent != null) 'parent': [parent],
+      if (stageId != null) 'stageId': [stageId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':accessStageRddGraph';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AccessSparkApplicationStageRddOperationGraphResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain high level information and list of Spark Applications corresponding
+  /// to a batch
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+$`.
+  ///
+  /// [applicationStatus] - Optional. Search only applications in the chosen
+  /// state.
+  /// Possible string values are:
+  /// - "APPLICATION_STATUS_UNSPECIFIED"
+  /// - "APPLICATION_STATUS_RUNNING"
+  /// - "APPLICATION_STATUS_COMPLETED"
+  ///
+  /// [maxEndTime] - Optional. Latest end timestamp to list.
+  ///
+  /// [maxTime] - Optional. Latest start timestamp to list.
+  ///
+  /// [minEndTime] - Optional. Earliest end timestamp to list.
+  ///
+  /// [minTime] - Optional. Earliest start timestamp to list.
+  ///
+  /// [pageSize] - Optional. Maximum number of applications to return in each
+  /// response. The service may return fewer than this. The default page size is
+  /// 10; the maximum page size is 100.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous
+  /// SearchSparkApplications call. Provide this token to retrieve the
+  /// subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchSparkApplicationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchSparkApplicationsResponse> search(
+    core.String parent, {
+    core.String? applicationStatus,
+    core.String? maxEndTime,
+    core.String? maxTime,
+    core.String? minEndTime,
+    core.String? minTime,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (applicationStatus != null) 'applicationStatus': [applicationStatus],
+      if (maxEndTime != null) 'maxEndTime': [maxEndTime],
+      if (maxTime != null) 'maxTime': [maxTime],
+      if (minEndTime != null) 'minEndTime': [minEndTime],
+      if (minTime != null) 'minTime': [minTime],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/sparkApplications:search';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchSparkApplicationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain executor summary with respect to a spark stage attempt.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of executors to return in each
+  /// response. The service may return fewer than this. The default page size is
+  /// 10; the maximum page size is 100.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous
+  /// AccessSparkApplicationExecutorsList call. Provide this token to retrieve
+  /// the subsequent page.
+  ///
+  /// [parent] - Required. Parent (Batch) resource reference.
+  ///
+  /// [stageAttemptId] - Required. Stage Attempt ID
+  ///
+  /// [stageId] - Required. Stage ID
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchSparkApplicationExecutorStageSummaryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchSparkApplicationExecutorStageSummaryResponse>
+      searchExecutorStageSummary(
+    core.String name, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.int? stageAttemptId,
+    core.String? stageId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parent != null) 'parent': [parent],
+      if (stageAttemptId != null) 'stageAttemptId': ['${stageAttemptId}'],
+      if (stageId != null) 'stageId': [stageId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':searchExecutorStageSummary';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchSparkApplicationExecutorStageSummaryResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain data corresponding to executors for a Spark Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [executorStatus] - Optional. Filter to select whether active/ dead or all
+  /// executors should be selected.
+  /// Possible string values are:
+  /// - "EXECUTOR_STATUS_UNSPECIFIED"
+  /// - "EXECUTOR_STATUS_ACTIVE"
+  /// - "EXECUTOR_STATUS_DEAD"
+  ///
+  /// [pageSize] - Optional. Maximum number of executors to return in each
+  /// response. The service may return fewer than this. The default page size is
+  /// 10; the maximum page size is 100.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous
+  /// AccessSparkApplicationExecutorsList call. Provide this token to retrieve
+  /// the subsequent page.
+  ///
+  /// [parent] - Required. Parent (Batch) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchSparkApplicationExecutorsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchSparkApplicationExecutorsResponse> searchExecutors(
+    core.String name, {
+    core.String? executorStatus,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (executorStatus != null) 'executorStatus': [executorStatus],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parent != null) 'parent': [parent],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':searchExecutors';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchSparkApplicationExecutorsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain list of spark jobs corresponding to a Spark Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [jobStatus] - Optional. List only jobs in the specific state.
+  /// Possible string values are:
+  /// - "JOB_EXECUTION_STATUS_UNSPECIFIED"
+  /// - "JOB_EXECUTION_STATUS_RUNNING"
+  /// - "JOB_EXECUTION_STATUS_SUCCEEDED"
+  /// - "JOB_EXECUTION_STATUS_FAILED"
+  /// - "JOB_EXECUTION_STATUS_UNKNOWN"
+  ///
+  /// [pageSize] - Optional. Maximum number of jobs to return in each response.
+  /// The service may return fewer than this. The default page size is 10; the
+  /// maximum page size is 100.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous
+  /// SearchSparkApplicationJobs call. Provide this token to retrieve the
+  /// subsequent page.
+  ///
+  /// [parent] - Required. Parent (Batch) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchSparkApplicationJobsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchSparkApplicationJobsResponse> searchJobs(
+    core.String name, {
+    core.String? jobStatus,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (jobStatus != null) 'jobStatus': [jobStatus],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parent != null) 'parent': [parent],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':searchJobs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchSparkApplicationJobsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain data corresponding to SQL Queries for a Spark Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [details] - Optional. Lists/ hides details of Spark plan nodes. True is
+  /// set to list and false to hide.
+  ///
+  /// [pageSize] - Optional. Maximum number of queries to return in each
+  /// response. The service may return fewer than this. The default page size is
+  /// 10; the maximum page size is 100.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous
+  /// SearchSparkApplicationSqlQueries call. Provide this token to retrieve the
+  /// subsequent page.
+  ///
+  /// [parent] - Required. Parent (Batch) resource reference.
+  ///
+  /// [planDescription] - Optional. Enables/ disables physical plan description
+  /// on demand
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchSparkApplicationSqlQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchSparkApplicationSqlQueriesResponse> searchSqlQueries(
+    core.String name, {
+    core.bool? details,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.bool? planDescription,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (details != null) 'details': ['${details}'],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parent != null) 'parent': [parent],
+      if (planDescription != null) 'planDescription': ['${planDescription}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':searchSqlQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchSparkApplicationSqlQueriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain data corresponding to tasks for a spark stage attempt for a Spark
+  /// Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of tasks to return in each response.
+  /// The service may return fewer than this. The default page size is 10; the
+  /// maximum page size is 100.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous
+  /// ListSparkApplicationStageAttemptTasks call. Provide this token to retrieve
+  /// the subsequent page.
+  ///
+  /// [parent] - Required. Parent (Batch) resource reference.
+  ///
+  /// [sortRuntime] - Optional. Sort the tasks by runtime.
+  ///
+  /// [stageAttemptId] - Optional. Stage Attempt ID
+  ///
+  /// [stageId] - Optional. Stage ID
+  ///
+  /// [taskStatus] - Optional. List only tasks in the state.
+  /// Possible string values are:
+  /// - "TASK_STATUS_UNSPECIFIED"
+  /// - "TASK_STATUS_RUNNING"
+  /// - "TASK_STATUS_SUCCESS"
+  /// - "TASK_STATUS_FAILED"
+  /// - "TASK_STATUS_KILLED"
+  /// - "TASK_STATUS_PENDING"
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchSparkApplicationStageAttemptTasksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchSparkApplicationStageAttemptTasksResponse>
+      searchStageAttemptTasks(
+    core.String name, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.bool? sortRuntime,
+    core.int? stageAttemptId,
+    core.String? stageId,
+    core.String? taskStatus,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parent != null) 'parent': [parent],
+      if (sortRuntime != null) 'sortRuntime': ['${sortRuntime}'],
+      if (stageAttemptId != null) 'stageAttemptId': ['${stageAttemptId}'],
+      if (stageId != null) 'stageId': [stageId],
+      if (taskStatus != null) 'taskStatus': [taskStatus],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':searchStageAttemptTasks';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchSparkApplicationStageAttemptTasksResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain data corresponding to a spark stage attempts for a Spark
+  /// Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of stage attempts (paging based on
+  /// stage_attempt_id) to return in each response. The service may return fewer
+  /// than this. The default page size is 10; the maximum page size is 100.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous
+  /// SearchSparkApplicationStageAttempts call. Provide this token to retrieve
+  /// the subsequent page.
+  ///
+  /// [parent] - Required. Parent (Batch) resource reference.
+  ///
+  /// [stageId] - Required. Stage ID for which attempts are to be fetched
+  ///
+  /// [summaryMetricsMask] - Optional. The list of summary metrics fields to
+  /// include. Empty list will default to skip all summary metrics fields.
+  /// Example, if the response should include TaskQuantileMetrics, the request
+  /// should have task_quantile_metrics in summary_metrics_mask field
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchSparkApplicationStageAttemptsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchSparkApplicationStageAttemptsResponse> searchStageAttempts(
+    core.String name, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.String? stageId,
+    core.String? summaryMetricsMask,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parent != null) 'parent': [parent],
+      if (stageId != null) 'stageId': [stageId],
+      if (summaryMetricsMask != null)
+        'summaryMetricsMask': [summaryMetricsMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':searchStageAttempts';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchSparkApplicationStageAttemptsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain data corresponding to stages for a Spark Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of stages (paging based on stage_id)
+  /// to return in each response. The service may return fewer than this. The
+  /// default page size is 10; the maximum page size is 100.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous
+  /// FetchSparkApplicationStagesList call. Provide this token to retrieve the
+  /// subsequent page.
+  ///
+  /// [parent] - Required. Parent (Batch) resource reference.
+  ///
+  /// [stageStatus] - Optional. List only stages in the given state.
+  /// Possible string values are:
+  /// - "STAGE_STATUS_UNSPECIFIED"
+  /// - "STAGE_STATUS_ACTIVE"
+  /// - "STAGE_STATUS_COMPLETE"
+  /// - "STAGE_STATUS_FAILED"
+  /// - "STAGE_STATUS_PENDING"
+  /// - "STAGE_STATUS_SKIPPED"
+  ///
+  /// [summaryMetricsMask] - Optional. The list of summary metrics fields to
+  /// include. Empty list will default to skip all summary metrics fields.
+  /// Example, if the response should include TaskQuantileMetrics, the request
+  /// should have task_quantile_metrics in summary_metrics_mask field
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchSparkApplicationStagesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchSparkApplicationStagesResponse> searchStages(
+    core.String name, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.String? stageStatus,
+    core.String? summaryMetricsMask,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parent != null) 'parent': [parent],
+      if (stageStatus != null) 'stageStatus': [stageStatus],
+      if (summaryMetricsMask != null)
+        'summaryMetricsMask': [summaryMetricsMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':searchStages';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchSparkApplicationStagesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain summary of Executor Summary for a Spark Application
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [parent] - Required. Parent (Batch) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SummarizeSparkApplicationExecutorsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SummarizeSparkApplicationExecutorsResponse> summarizeExecutors(
+    core.String name, {
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (parent != null) 'parent': [parent],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':summarizeExecutors';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SummarizeSparkApplicationExecutorsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain summary of Jobs for a Spark Application
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [parent] - Required. Parent (Batch) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SummarizeSparkApplicationJobsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SummarizeSparkApplicationJobsResponse> summarizeJobs(
+    core.String name, {
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (parent != null) 'parent': [parent],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':summarizeJobs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SummarizeSparkApplicationJobsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain summary of Tasks for a Spark Application Stage Attempt
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [parent] - Required. Parent (Batch) resource reference.
+  ///
+  /// [stageAttemptId] - Required. Stage Attempt ID
+  ///
+  /// [stageId] - Required. Stage ID
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SummarizeSparkApplicationStageAttemptTasksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SummarizeSparkApplicationStageAttemptTasksResponse>
+      summarizeStageAttemptTasks(
+    core.String name, {
+    core.String? parent,
+    core.int? stageAttemptId,
+    core.String? stageId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (parent != null) 'parent': [parent],
+      if (stageAttemptId != null) 'stageAttemptId': ['${stageAttemptId}'],
+      if (stageId != null) 'stageId': [stageId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':summarizeStageAttemptTasks';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SummarizeSparkApplicationStageAttemptTasksResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain summary of Stages for a Spark Application
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [parent] - Required. Parent (Batch) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SummarizeSparkApplicationStagesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SummarizeSparkApplicationStagesResponse> summarizeStages(
+    core.String name, {
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (parent != null) 'parent': [parent],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':summarizeStages';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SummarizeSparkApplicationStagesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Write wrapper objects from dataplane to spanner
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the spark application to
+  /// write data about in the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WriteSparkApplicationContextResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WriteSparkApplicationContextResponse> write(
+    WriteSparkApplicationContextRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':write';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return WriteSparkApplicationContextResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1145,6 +2295,9 @@ class ProjectsLocationsSessionTemplatesResource {
 class ProjectsLocationsSessionsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsSessionsSparkApplicationsResource get sparkApplications =>
+      ProjectsLocationsSessionsSparkApplicationsResource(_requester);
+
   ProjectsLocationsSessionsResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -1392,6 +2545,1160 @@ class ProjectsLocationsSessionsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsSessionsSparkApplicationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSessionsSparkApplicationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Obtain high level information corresponding to a single Spark Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the session to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [parent] - Required. Parent (Session) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccessSessionSparkApplicationResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessSessionSparkApplicationResponse> access(
+    core.String name, {
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (parent != null) 'parent': [parent],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':access';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AccessSessionSparkApplicationResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain environment details for a Spark Application
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the session to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [parent] - Required. Parent (Session) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccessSessionSparkApplicationEnvironmentInfoResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessSessionSparkApplicationEnvironmentInfoResponse>
+      accessEnvironmentInfo(
+    core.String name, {
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (parent != null) 'parent': [parent],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':accessEnvironmentInfo';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AccessSessionSparkApplicationEnvironmentInfoResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain data corresponding to a spark job for a Spark Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the session to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [jobId] - Required. Job ID to fetch data for.
+  ///
+  /// [parent] - Required. Parent (Session) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccessSessionSparkApplicationJobResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessSessionSparkApplicationJobResponse> accessJob(
+    core.String name, {
+    core.String? jobId,
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (jobId != null) 'jobId': [jobId],
+      if (parent != null) 'parent': [parent],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':accessJob';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AccessSessionSparkApplicationJobResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain Spark Plan Graph for a Spark Application SQL execution.
+  ///
+  /// Limits the number of clusters returned as part of the graph to 10000.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the session to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [executionId] - Required. Execution ID
+  ///
+  /// [parent] - Required. Parent (Session) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccessSessionSparkApplicationSqlSparkPlanGraphResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessSessionSparkApplicationSqlSparkPlanGraphResponse>
+      accessSqlPlan(
+    core.String name, {
+    core.String? executionId,
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (executionId != null) 'executionId': [executionId],
+      if (parent != null) 'parent': [parent],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':accessSqlPlan';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AccessSessionSparkApplicationSqlSparkPlanGraphResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain data corresponding to a particular SQL Query for a Spark
+  /// Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the session to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [details] - Optional. Lists/ hides details of Spark plan nodes. True is
+  /// set to list and false to hide.
+  ///
+  /// [executionId] - Required. Execution ID
+  ///
+  /// [parent] - Required. Parent (Session) resource reference.
+  ///
+  /// [planDescription] - Optional. Enables/ disables physical plan description
+  /// on demand
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccessSessionSparkApplicationSqlQueryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessSessionSparkApplicationSqlQueryResponse> accessSqlQuery(
+    core.String name, {
+    core.bool? details,
+    core.String? executionId,
+    core.String? parent,
+    core.bool? planDescription,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (details != null) 'details': ['${details}'],
+      if (executionId != null) 'executionId': [executionId],
+      if (parent != null) 'parent': [parent],
+      if (planDescription != null) 'planDescription': ['${planDescription}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':accessSqlQuery';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AccessSessionSparkApplicationSqlQueryResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain data corresponding to a spark stage attempt for a Spark
+  /// Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the session to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [parent] - Required. Parent (Session) resource reference.
+  ///
+  /// [stageAttemptId] - Required. Stage Attempt ID
+  ///
+  /// [stageId] - Required. Stage ID
+  ///
+  /// [summaryMetricsMask] - Optional. The list of summary metrics fields to
+  /// include. Empty list will default to skip all summary metrics fields.
+  /// Example, if the response should include TaskQuantileMetrics, the request
+  /// should have task_quantile_metrics in summary_metrics_mask field
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccessSessionSparkApplicationStageAttemptResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessSessionSparkApplicationStageAttemptResponse>
+      accessStageAttempt(
+    core.String name, {
+    core.String? parent,
+    core.int? stageAttemptId,
+    core.String? stageId,
+    core.String? summaryMetricsMask,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (parent != null) 'parent': [parent],
+      if (stageAttemptId != null) 'stageAttemptId': ['${stageAttemptId}'],
+      if (stageId != null) 'stageId': [stageId],
+      if (summaryMetricsMask != null)
+        'summaryMetricsMask': [summaryMetricsMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':accessStageAttempt';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AccessSessionSparkApplicationStageAttemptResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain RDD operation graph for a Spark Application Stage.
+  ///
+  /// Limits the number of clusters returned as part of the graph to 10000.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the session to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [parent] - Required. Parent (Session) resource reference.
+  ///
+  /// [stageId] - Required. Stage ID
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [AccessSessionSparkApplicationStageRddOperationGraphResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessSessionSparkApplicationStageRddOperationGraphResponse>
+      accessStageRddGraph(
+    core.String name, {
+    core.String? parent,
+    core.String? stageId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (parent != null) 'parent': [parent],
+      if (stageId != null) 'stageId': [stageId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':accessStageRddGraph';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AccessSessionSparkApplicationStageRddOperationGraphResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain high level information and list of Spark Applications corresponding
+  /// to a batch
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The fully qualified name of the session to retrieve
+  /// in the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+$`.
+  ///
+  /// [applicationStatus] - Optional. Search only applications in the chosen
+  /// state.
+  /// Possible string values are:
+  /// - "APPLICATION_STATUS_UNSPECIFIED"
+  /// - "APPLICATION_STATUS_RUNNING"
+  /// - "APPLICATION_STATUS_COMPLETED"
+  ///
+  /// [maxEndTime] - Optional. Latest end timestamp to list.
+  ///
+  /// [maxTime] - Optional. Latest start timestamp to list.
+  ///
+  /// [minEndTime] - Optional. Earliest end timestamp to list.
+  ///
+  /// [minTime] - Optional. Earliest start timestamp to list.
+  ///
+  /// [pageSize] - Optional. Maximum number of applications to return in each
+  /// response. The service may return fewer than this. The default page size is
+  /// 10; the maximum page size is 100.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous
+  /// SearchSessionSparkApplications call. Provide this token to retrieve the
+  /// subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchSessionSparkApplicationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchSessionSparkApplicationsResponse> search(
+    core.String parent, {
+    core.String? applicationStatus,
+    core.String? maxEndTime,
+    core.String? maxTime,
+    core.String? minEndTime,
+    core.String? minTime,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (applicationStatus != null) 'applicationStatus': [applicationStatus],
+      if (maxEndTime != null) 'maxEndTime': [maxEndTime],
+      if (maxTime != null) 'maxTime': [maxTime],
+      if (minEndTime != null) 'minEndTime': [minEndTime],
+      if (minTime != null) 'minTime': [minTime],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/sparkApplications:search';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchSessionSparkApplicationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain executor summary with respect to a spark stage attempt.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the session to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of executors to return in each
+  /// response. The service may return fewer than this. The default page size is
+  /// 10; the maximum page size is 100.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous
+  /// SearchSessionSparkApplicationExecutorStageSummary call. Provide this token
+  /// to retrieve the subsequent page.
+  ///
+  /// [parent] - Required. Parent (Session) resource reference.
+  ///
+  /// [stageAttemptId] - Required. Stage Attempt ID
+  ///
+  /// [stageId] - Required. Stage ID
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [SearchSessionSparkApplicationExecutorStageSummaryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchSessionSparkApplicationExecutorStageSummaryResponse>
+      searchExecutorStageSummary(
+    core.String name, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.int? stageAttemptId,
+    core.String? stageId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parent != null) 'parent': [parent],
+      if (stageAttemptId != null) 'stageAttemptId': ['${stageAttemptId}'],
+      if (stageId != null) 'stageId': [stageId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':searchExecutorStageSummary';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchSessionSparkApplicationExecutorStageSummaryResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain data corresponding to executors for a Spark Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the session to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [executorStatus] - Optional. Filter to select whether active/ dead or all
+  /// executors should be selected.
+  /// Possible string values are:
+  /// - "EXECUTOR_STATUS_UNSPECIFIED"
+  /// - "EXECUTOR_STATUS_ACTIVE"
+  /// - "EXECUTOR_STATUS_DEAD"
+  ///
+  /// [pageSize] - Optional. Maximum number of executors to return in each
+  /// response. The service may return fewer than this. The default page size is
+  /// 10; the maximum page size is 100.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous
+  /// SearchSessionSparkApplicationExecutors call. Provide this token to
+  /// retrieve the subsequent page.
+  ///
+  /// [parent] - Required. Parent (Session) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchSessionSparkApplicationExecutorsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchSessionSparkApplicationExecutorsResponse> searchExecutors(
+    core.String name, {
+    core.String? executorStatus,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (executorStatus != null) 'executorStatus': [executorStatus],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parent != null) 'parent': [parent],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':searchExecutors';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchSessionSparkApplicationExecutorsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain list of spark jobs corresponding to a Spark Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the session to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [jobStatus] - Optional. List only jobs in the specific state.
+  /// Possible string values are:
+  /// - "JOB_EXECUTION_STATUS_UNSPECIFIED"
+  /// - "JOB_EXECUTION_STATUS_RUNNING"
+  /// - "JOB_EXECUTION_STATUS_SUCCEEDED"
+  /// - "JOB_EXECUTION_STATUS_FAILED"
+  /// - "JOB_EXECUTION_STATUS_UNKNOWN"
+  ///
+  /// [pageSize] - Optional. Maximum number of jobs to return in each response.
+  /// The service may return fewer than this. The default page size is 10; the
+  /// maximum page size is 100.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous
+  /// SearchSessionSparkApplicationJobs call. Provide this token to retrieve the
+  /// subsequent page.
+  ///
+  /// [parent] - Required. Parent (Session) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchSessionSparkApplicationJobsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchSessionSparkApplicationJobsResponse> searchJobs(
+    core.String name, {
+    core.String? jobStatus,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (jobStatus != null) 'jobStatus': [jobStatus],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parent != null) 'parent': [parent],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':searchJobs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchSessionSparkApplicationJobsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain data corresponding to SQL Queries for a Spark Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the session to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [details] - Optional. Lists/ hides details of Spark plan nodes. True is
+  /// set to list and false to hide.
+  ///
+  /// [pageSize] - Optional. Maximum number of queries to return in each
+  /// response. The service may return fewer than this. The default page size is
+  /// 10; the maximum page size is 100.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous
+  /// SearchSessionSparkApplicationSqlQueries call. Provide this token to
+  /// retrieve the subsequent page.
+  ///
+  /// [parent] - Required. Parent (Session) resource reference.
+  ///
+  /// [planDescription] - Optional. Enables/ disables physical plan description
+  /// on demand
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchSessionSparkApplicationSqlQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchSessionSparkApplicationSqlQueriesResponse>
+      searchSqlQueries(
+    core.String name, {
+    core.bool? details,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.bool? planDescription,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (details != null) 'details': ['${details}'],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parent != null) 'parent': [parent],
+      if (planDescription != null) 'planDescription': ['${planDescription}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':searchSqlQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchSessionSparkApplicationSqlQueriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain data corresponding to tasks for a spark stage attempt for a Spark
+  /// Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the session to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of tasks to return in each response.
+  /// The service may return fewer than this. The default page size is 10; the
+  /// maximum page size is 100.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous
+  /// SearchSessionSparkApplicationStageAttemptTasks call. Provide this token to
+  /// retrieve the subsequent page.
+  ///
+  /// [parent] - Required. Parent (Session) resource reference.
+  ///
+  /// [sortRuntime] - Optional. Sort the tasks by runtime.
+  ///
+  /// [stageAttemptId] - Optional. Stage Attempt ID
+  ///
+  /// [stageId] - Optional. Stage ID
+  ///
+  /// [taskStatus] - Optional. List only tasks in the state.
+  /// Possible string values are:
+  /// - "TASK_STATUS_UNSPECIFIED"
+  /// - "TASK_STATUS_RUNNING"
+  /// - "TASK_STATUS_SUCCESS"
+  /// - "TASK_STATUS_FAILED"
+  /// - "TASK_STATUS_KILLED"
+  /// - "TASK_STATUS_PENDING"
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchSessionSparkApplicationStageAttemptTasksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchSessionSparkApplicationStageAttemptTasksResponse>
+      searchStageAttemptTasks(
+    core.String name, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.bool? sortRuntime,
+    core.int? stageAttemptId,
+    core.String? stageId,
+    core.String? taskStatus,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parent != null) 'parent': [parent],
+      if (sortRuntime != null) 'sortRuntime': ['${sortRuntime}'],
+      if (stageAttemptId != null) 'stageAttemptId': ['${stageAttemptId}'],
+      if (stageId != null) 'stageId': [stageId],
+      if (taskStatus != null) 'taskStatus': [taskStatus],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':searchStageAttemptTasks';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchSessionSparkApplicationStageAttemptTasksResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain data corresponding to a spark stage attempts for a Spark
+  /// Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the session to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of stage attempts (paging based on
+  /// stage_attempt_id) to return in each response. The service may return fewer
+  /// than this. The default page size is 10; the maximum page size is 100.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous
+  /// SearchSessionSparkApplicationStageAttempts call. Provide this token to
+  /// retrieve the subsequent page.
+  ///
+  /// [parent] - Required. Parent (Session) resource reference.
+  ///
+  /// [stageId] - Required. Stage ID for which attempts are to be fetched
+  ///
+  /// [summaryMetricsMask] - Optional. The list of summary metrics fields to
+  /// include. Empty list will default to skip all summary metrics fields.
+  /// Example, if the response should include TaskQuantileMetrics, the request
+  /// should have task_quantile_metrics in summary_metrics_mask field
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchSessionSparkApplicationStageAttemptsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchSessionSparkApplicationStageAttemptsResponse>
+      searchStageAttempts(
+    core.String name, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.String? stageId,
+    core.String? summaryMetricsMask,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parent != null) 'parent': [parent],
+      if (stageId != null) 'stageId': [stageId],
+      if (summaryMetricsMask != null)
+        'summaryMetricsMask': [summaryMetricsMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':searchStageAttempts';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchSessionSparkApplicationStageAttemptsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain data corresponding to stages for a Spark Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the session to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of stages (paging based on stage_id)
+  /// to return in each response. The service may return fewer than this. The
+  /// default page size is 10; the maximum page size is 100.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous
+  /// SearchSessionSparkApplicationStages call. Provide this token to retrieve
+  /// the subsequent page.
+  ///
+  /// [parent] - Required. Parent (Session) resource reference.
+  ///
+  /// [stageStatus] - Optional. List only stages in the given state.
+  /// Possible string values are:
+  /// - "STAGE_STATUS_UNSPECIFIED"
+  /// - "STAGE_STATUS_ACTIVE"
+  /// - "STAGE_STATUS_COMPLETE"
+  /// - "STAGE_STATUS_FAILED"
+  /// - "STAGE_STATUS_PENDING"
+  /// - "STAGE_STATUS_SKIPPED"
+  ///
+  /// [summaryMetricsMask] - Optional. The list of summary metrics fields to
+  /// include. Empty list will default to skip all summary metrics fields.
+  /// Example, if the response should include TaskQuantileMetrics, the request
+  /// should have task_quantile_metrics in summary_metrics_mask field
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchSessionSparkApplicationStagesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchSessionSparkApplicationStagesResponse> searchStages(
+    core.String name, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.String? stageStatus,
+    core.String? summaryMetricsMask,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parent != null) 'parent': [parent],
+      if (stageStatus != null) 'stageStatus': [stageStatus],
+      if (summaryMetricsMask != null)
+        'summaryMetricsMask': [summaryMetricsMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':searchStages';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchSessionSparkApplicationStagesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain summary of Executor Summary for a Spark Application
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the session to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [parent] - Required. Parent (Session) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SummarizeSessionSparkApplicationExecutorsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SummarizeSessionSparkApplicationExecutorsResponse>
+      summarizeExecutors(
+    core.String name, {
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (parent != null) 'parent': [parent],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':summarizeExecutors';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SummarizeSessionSparkApplicationExecutorsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain summary of Jobs for a Spark Application
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the session to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [parent] - Required. Parent (Session) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SummarizeSessionSparkApplicationJobsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SummarizeSessionSparkApplicationJobsResponse> summarizeJobs(
+    core.String name, {
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (parent != null) 'parent': [parent],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':summarizeJobs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SummarizeSessionSparkApplicationJobsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain summary of Tasks for a Spark Application Stage Attempt
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the session to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [parent] - Required. Parent (Session) resource reference.
+  ///
+  /// [stageAttemptId] - Required. Stage Attempt ID
+  ///
+  /// [stageId] - Required. Stage ID
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [SummarizeSessionSparkApplicationStageAttemptTasksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SummarizeSessionSparkApplicationStageAttemptTasksResponse>
+      summarizeStageAttemptTasks(
+    core.String name, {
+    core.String? parent,
+    core.int? stageAttemptId,
+    core.String? stageId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (parent != null) 'parent': [parent],
+      if (stageAttemptId != null) 'stageAttemptId': ['${stageAttemptId}'],
+      if (stageId != null) 'stageId': [stageId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':summarizeStageAttemptTasks';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SummarizeSessionSparkApplicationStageAttemptTasksResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Obtain summary of Stages for a Spark Application
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the session to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [parent] - Required. Parent (Session) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SummarizeSessionSparkApplicationStagesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SummarizeSessionSparkApplicationStagesResponse> summarizeStages(
+    core.String name, {
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (parent != null) 'parent': [parent],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':summarizeStages';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SummarizeSessionSparkApplicationStagesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Write wrapper objects from dataplane to spanner
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the spark application to
+  /// write data about in the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WriteSessionSparkApplicationContextResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WriteSessionSparkApplicationContextResponse> write(
+    WriteSessionSparkApplicationContextRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':write';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return WriteSessionSparkApplicationContextResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4763,6 +7070,368 @@ class AcceleratorConfig {
       };
 }
 
+/// Environment details of a Saprk Application.
+class AccessSessionSparkApplicationEnvironmentInfoResponse {
+  /// Details about the Environment that the application is running in.
+  ApplicationEnvironmentInfo? applicationEnvironmentInfo;
+
+  AccessSessionSparkApplicationEnvironmentInfoResponse({
+    this.applicationEnvironmentInfo,
+  });
+
+  AccessSessionSparkApplicationEnvironmentInfoResponse.fromJson(core.Map json_)
+      : this(
+          applicationEnvironmentInfo:
+              json_.containsKey('applicationEnvironmentInfo')
+                  ? ApplicationEnvironmentInfo.fromJson(
+                      json_['applicationEnvironmentInfo']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (applicationEnvironmentInfo != null)
+          'applicationEnvironmentInfo': applicationEnvironmentInfo!,
+      };
+}
+
+/// Details of a particular job associated with Spark Application
+class AccessSessionSparkApplicationJobResponse {
+  /// Data corresponding to a spark job.
+  ///
+  /// Output only.
+  JobData? jobData;
+
+  AccessSessionSparkApplicationJobResponse({
+    this.jobData,
+  });
+
+  AccessSessionSparkApplicationJobResponse.fromJson(core.Map json_)
+      : this(
+          jobData: json_.containsKey('jobData')
+              ? JobData.fromJson(
+                  json_['jobData'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (jobData != null) 'jobData': jobData!,
+      };
+}
+
+/// A summary of Spark Application
+class AccessSessionSparkApplicationResponse {
+  /// High level information corresponding to an application.
+  ///
+  /// Output only.
+  ApplicationInfo? application;
+
+  AccessSessionSparkApplicationResponse({
+    this.application,
+  });
+
+  AccessSessionSparkApplicationResponse.fromJson(core.Map json_)
+      : this(
+          application: json_.containsKey('application')
+              ? ApplicationInfo.fromJson(
+                  json_['application'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (application != null) 'application': application!,
+      };
+}
+
+/// Details of a query for a Spark Application
+class AccessSessionSparkApplicationSqlQueryResponse {
+  /// SQL Execution Data
+  SqlExecutionUiData? executionData;
+
+  AccessSessionSparkApplicationSqlQueryResponse({
+    this.executionData,
+  });
+
+  AccessSessionSparkApplicationSqlQueryResponse.fromJson(core.Map json_)
+      : this(
+          executionData: json_.containsKey('executionData')
+              ? SqlExecutionUiData.fromJson(
+                  json_['executionData'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (executionData != null) 'executionData': executionData!,
+      };
+}
+
+/// SparkPlanGraph for a Spark Application execution limited to maximum 10000
+/// clusters.
+class AccessSessionSparkApplicationSqlSparkPlanGraphResponse {
+  /// SparkPlanGraph for a Spark Application execution.
+  SparkPlanGraph? sparkPlanGraph;
+
+  AccessSessionSparkApplicationSqlSparkPlanGraphResponse({
+    this.sparkPlanGraph,
+  });
+
+  AccessSessionSparkApplicationSqlSparkPlanGraphResponse.fromJson(
+      core.Map json_)
+      : this(
+          sparkPlanGraph: json_.containsKey('sparkPlanGraph')
+              ? SparkPlanGraph.fromJson(json_['sparkPlanGraph']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sparkPlanGraph != null) 'sparkPlanGraph': sparkPlanGraph!,
+      };
+}
+
+/// Stage Attempt for a Stage of a Spark Application
+class AccessSessionSparkApplicationStageAttemptResponse {
+  /// Data corresponding to a stage.
+  ///
+  /// Output only.
+  StageData? stageData;
+
+  AccessSessionSparkApplicationStageAttemptResponse({
+    this.stageData,
+  });
+
+  AccessSessionSparkApplicationStageAttemptResponse.fromJson(core.Map json_)
+      : this(
+          stageData: json_.containsKey('stageData')
+              ? StageData.fromJson(
+                  json_['stageData'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (stageData != null) 'stageData': stageData!,
+      };
+}
+
+/// RDD operation graph for a Spark Application Stage limited to maximum 10000
+/// clusters.
+class AccessSessionSparkApplicationStageRddOperationGraphResponse {
+  /// RDD operation graph for a Spark Application Stage.
+  RddOperationGraph? rddOperationGraph;
+
+  AccessSessionSparkApplicationStageRddOperationGraphResponse({
+    this.rddOperationGraph,
+  });
+
+  AccessSessionSparkApplicationStageRddOperationGraphResponse.fromJson(
+      core.Map json_)
+      : this(
+          rddOperationGraph: json_.containsKey('rddOperationGraph')
+              ? RddOperationGraph.fromJson(json_['rddOperationGraph']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rddOperationGraph != null) 'rddOperationGraph': rddOperationGraph!,
+      };
+}
+
+/// Environment details of a Saprk Application.
+class AccessSparkApplicationEnvironmentInfoResponse {
+  /// Details about the Environment that the application is running in.
+  ApplicationEnvironmentInfo? applicationEnvironmentInfo;
+
+  AccessSparkApplicationEnvironmentInfoResponse({
+    this.applicationEnvironmentInfo,
+  });
+
+  AccessSparkApplicationEnvironmentInfoResponse.fromJson(core.Map json_)
+      : this(
+          applicationEnvironmentInfo:
+              json_.containsKey('applicationEnvironmentInfo')
+                  ? ApplicationEnvironmentInfo.fromJson(
+                      json_['applicationEnvironmentInfo']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (applicationEnvironmentInfo != null)
+          'applicationEnvironmentInfo': applicationEnvironmentInfo!,
+      };
+}
+
+/// Details of a particular job associated with Spark Application
+class AccessSparkApplicationJobResponse {
+  /// Data corresponding to a spark job.
+  ///
+  /// Output only.
+  JobData? jobData;
+
+  AccessSparkApplicationJobResponse({
+    this.jobData,
+  });
+
+  AccessSparkApplicationJobResponse.fromJson(core.Map json_)
+      : this(
+          jobData: json_.containsKey('jobData')
+              ? JobData.fromJson(
+                  json_['jobData'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (jobData != null) 'jobData': jobData!,
+      };
+}
+
+/// A summary of Spark Application
+class AccessSparkApplicationResponse {
+  /// High level information corresponding to an application.
+  ///
+  /// Output only.
+  ApplicationInfo? application;
+
+  AccessSparkApplicationResponse({
+    this.application,
+  });
+
+  AccessSparkApplicationResponse.fromJson(core.Map json_)
+      : this(
+          application: json_.containsKey('application')
+              ? ApplicationInfo.fromJson(
+                  json_['application'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (application != null) 'application': application!,
+      };
+}
+
+/// Details of a query for a Spark Application
+class AccessSparkApplicationSqlQueryResponse {
+  /// SQL Execution Data
+  SqlExecutionUiData? executionData;
+
+  AccessSparkApplicationSqlQueryResponse({
+    this.executionData,
+  });
+
+  AccessSparkApplicationSqlQueryResponse.fromJson(core.Map json_)
+      : this(
+          executionData: json_.containsKey('executionData')
+              ? SqlExecutionUiData.fromJson(
+                  json_['executionData'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (executionData != null) 'executionData': executionData!,
+      };
+}
+
+/// SparkPlanGraph for a Spark Application execution limited to maximum 10000
+/// clusters.
+class AccessSparkApplicationSqlSparkPlanGraphResponse {
+  /// SparkPlanGraph for a Spark Application execution.
+  SparkPlanGraph? sparkPlanGraph;
+
+  AccessSparkApplicationSqlSparkPlanGraphResponse({
+    this.sparkPlanGraph,
+  });
+
+  AccessSparkApplicationSqlSparkPlanGraphResponse.fromJson(core.Map json_)
+      : this(
+          sparkPlanGraph: json_.containsKey('sparkPlanGraph')
+              ? SparkPlanGraph.fromJson(json_['sparkPlanGraph']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sparkPlanGraph != null) 'sparkPlanGraph': sparkPlanGraph!,
+      };
+}
+
+/// Stage Attempt for a Stage of a Spark Application
+class AccessSparkApplicationStageAttemptResponse {
+  /// Data corresponding to a stage.
+  ///
+  /// Output only.
+  StageData? stageData;
+
+  AccessSparkApplicationStageAttemptResponse({
+    this.stageData,
+  });
+
+  AccessSparkApplicationStageAttemptResponse.fromJson(core.Map json_)
+      : this(
+          stageData: json_.containsKey('stageData')
+              ? StageData.fromJson(
+                  json_['stageData'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (stageData != null) 'stageData': stageData!,
+      };
+}
+
+/// RDD operation graph for a Spark Application Stage limited to maximum 10000
+/// clusters.
+class AccessSparkApplicationStageRddOperationGraphResponse {
+  /// RDD operation graph for a Spark Application Stage.
+  RddOperationGraph? rddOperationGraph;
+
+  AccessSparkApplicationStageRddOperationGraphResponse({
+    this.rddOperationGraph,
+  });
+
+  AccessSparkApplicationStageRddOperationGraphResponse.fromJson(core.Map json_)
+      : this(
+          rddOperationGraph: json_.containsKey('rddOperationGraph')
+              ? RddOperationGraph.fromJson(json_['rddOperationGraph']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rddOperationGraph != null) 'rddOperationGraph': rddOperationGraph!,
+      };
+}
+
+class AccumulableInfo {
+  core.String? accumullableInfoId;
+  core.String? name;
+  core.String? update;
+  core.String? value;
+
+  AccumulableInfo({
+    this.accumullableInfoId,
+    this.name,
+    this.update,
+    this.value,
+  });
+
+  AccumulableInfo.fromJson(core.Map json_)
+      : this(
+          accumullableInfoId: json_['accumullableInfoId'] as core.String?,
+          name: json_['name'] as core.String?,
+          update: json_['update'] as core.String?,
+          value: json_['value'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accumullableInfoId != null)
+          'accumullableInfoId': accumullableInfoId!,
+        if (name != null) 'name': name!,
+        if (update != null) 'update': update!,
+        if (value != null) 'value': value!,
+      };
+}
+
 /// A request to analyze a batch workload.
 class AnalyzeBatchRequest {
   /// A unique ID used to identify the request.
@@ -4790,6 +7459,225 @@ class AnalyzeBatchRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
+      };
+}
+
+class AppSummary {
+  core.int? numCompletedJobs;
+  core.int? numCompletedStages;
+
+  AppSummary({
+    this.numCompletedJobs,
+    this.numCompletedStages,
+  });
+
+  AppSummary.fromJson(core.Map json_)
+      : this(
+          numCompletedJobs: json_['numCompletedJobs'] as core.int?,
+          numCompletedStages: json_['numCompletedStages'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (numCompletedJobs != null) 'numCompletedJobs': numCompletedJobs!,
+        if (numCompletedStages != null)
+          'numCompletedStages': numCompletedStages!,
+      };
+}
+
+/// Specific attempt of an application.
+class ApplicationAttemptInfo {
+  core.String? appSparkVersion;
+  core.String? attemptId;
+  core.bool? completed;
+  core.String? durationMillis;
+  core.String? endTime;
+  core.String? lastUpdated;
+  core.String? sparkUser;
+  core.String? startTime;
+
+  ApplicationAttemptInfo({
+    this.appSparkVersion,
+    this.attemptId,
+    this.completed,
+    this.durationMillis,
+    this.endTime,
+    this.lastUpdated,
+    this.sparkUser,
+    this.startTime,
+  });
+
+  ApplicationAttemptInfo.fromJson(core.Map json_)
+      : this(
+          appSparkVersion: json_['appSparkVersion'] as core.String?,
+          attemptId: json_['attemptId'] as core.String?,
+          completed: json_['completed'] as core.bool?,
+          durationMillis: json_['durationMillis'] as core.String?,
+          endTime: json_['endTime'] as core.String?,
+          lastUpdated: json_['lastUpdated'] as core.String?,
+          sparkUser: json_['sparkUser'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appSparkVersion != null) 'appSparkVersion': appSparkVersion!,
+        if (attemptId != null) 'attemptId': attemptId!,
+        if (completed != null) 'completed': completed!,
+        if (durationMillis != null) 'durationMillis': durationMillis!,
+        if (endTime != null) 'endTime': endTime!,
+        if (lastUpdated != null) 'lastUpdated': lastUpdated!,
+        if (sparkUser != null) 'sparkUser': sparkUser!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// Details about the Environment that the application is running in.
+class ApplicationEnvironmentInfo {
+  core.Map<core.String, core.String>? classpathEntries;
+  core.Map<core.String, core.String>? hadoopProperties;
+  core.Map<core.String, core.String>? metricsProperties;
+  core.List<ResourceProfileInfo>? resourceProfiles;
+  SparkRuntimeInfo? runtime;
+  core.Map<core.String, core.String>? sparkProperties;
+  core.Map<core.String, core.String>? systemProperties;
+
+  ApplicationEnvironmentInfo({
+    this.classpathEntries,
+    this.hadoopProperties,
+    this.metricsProperties,
+    this.resourceProfiles,
+    this.runtime,
+    this.sparkProperties,
+    this.systemProperties,
+  });
+
+  ApplicationEnvironmentInfo.fromJson(core.Map json_)
+      : this(
+          classpathEntries: (json_['classpathEntries']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          hadoopProperties: (json_['hadoopProperties']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          metricsProperties: (json_['metricsProperties']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          resourceProfiles: (json_['resourceProfiles'] as core.List?)
+              ?.map((value) => ResourceProfileInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          runtime: json_.containsKey('runtime')
+              ? SparkRuntimeInfo.fromJson(
+                  json_['runtime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sparkProperties:
+              (json_['sparkProperties'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          systemProperties: (json_['systemProperties']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (classpathEntries != null) 'classpathEntries': classpathEntries!,
+        if (hadoopProperties != null) 'hadoopProperties': hadoopProperties!,
+        if (metricsProperties != null) 'metricsProperties': metricsProperties!,
+        if (resourceProfiles != null) 'resourceProfiles': resourceProfiles!,
+        if (runtime != null) 'runtime': runtime!,
+        if (sparkProperties != null) 'sparkProperties': sparkProperties!,
+        if (systemProperties != null) 'systemProperties': systemProperties!,
+      };
+}
+
+/// High level information corresponding to an application.
+class ApplicationInfo {
+  ///
+  /// Possible string values are:
+  /// - "APPLICATION_CONTEXT_INGESTION_STATUS_UNSPECIFIED"
+  /// - "APPLICATION_CONTEXT_INGESTION_STATUS_COMPLETED"
+  core.String? applicationContextIngestionStatus;
+  core.String? applicationId;
+  core.List<ApplicationAttemptInfo>? attempts;
+  core.int? coresGranted;
+  core.int? coresPerExecutor;
+  core.int? maxCores;
+  core.int? memoryPerExecutorMb;
+  core.String? name;
+
+  ///
+  /// Possible string values are:
+  /// - "QUANTILE_DATA_STATUS_UNSPECIFIED"
+  /// - "QUANTILE_DATA_STATUS_COMPLETED"
+  /// - "QUANTILE_DATA_STATUS_FAILED"
+  core.String? quantileDataStatus;
+
+  ApplicationInfo({
+    this.applicationContextIngestionStatus,
+    this.applicationId,
+    this.attempts,
+    this.coresGranted,
+    this.coresPerExecutor,
+    this.maxCores,
+    this.memoryPerExecutorMb,
+    this.name,
+    this.quantileDataStatus,
+  });
+
+  ApplicationInfo.fromJson(core.Map json_)
+      : this(
+          applicationContextIngestionStatus:
+              json_['applicationContextIngestionStatus'] as core.String?,
+          applicationId: json_['applicationId'] as core.String?,
+          attempts: (json_['attempts'] as core.List?)
+              ?.map((value) => ApplicationAttemptInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          coresGranted: json_['coresGranted'] as core.int?,
+          coresPerExecutor: json_['coresPerExecutor'] as core.int?,
+          maxCores: json_['maxCores'] as core.int?,
+          memoryPerExecutorMb: json_['memoryPerExecutorMb'] as core.int?,
+          name: json_['name'] as core.String?,
+          quantileDataStatus: json_['quantileDataStatus'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (applicationContextIngestionStatus != null)
+          'applicationContextIngestionStatus':
+              applicationContextIngestionStatus!,
+        if (applicationId != null) 'applicationId': applicationId!,
+        if (attempts != null) 'attempts': attempts!,
+        if (coresGranted != null) 'coresGranted': coresGranted!,
+        if (coresPerExecutor != null) 'coresPerExecutor': coresPerExecutor!,
+        if (maxCores != null) 'maxCores': maxCores!,
+        if (memoryPerExecutorMb != null)
+          'memoryPerExecutorMb': memoryPerExecutorMb!,
+        if (name != null) 'name': name!,
+        if (quantileDataStatus != null)
+          'quantileDataStatus': quantileDataStatus!,
       };
 }
 
@@ -5979,27 +8867,120 @@ class ClusterStatus {
       };
 }
 
-/// Confidential Instance Config for clusters using Confidential VMs
-/// (https://cloud.google.com/compute/confidential-vm/docs)
-class ConfidentialInstanceConfig {
-  /// Defines whether the instance should have confidential compute enabled.
+/// Cluster to be repaired
+class ClusterToRepair {
+  /// Repair action to take on the cluster resource.
   ///
-  /// Optional.
-  core.bool? enableConfidentialCompute;
+  /// Required.
+  /// Possible string values are:
+  /// - "CLUSTER_REPAIR_ACTION_UNSPECIFIED" : No action will be taken by
+  /// default.
+  /// - "REPAIR_ERROR_DUE_TO_UPDATE_CLUSTER" : Repair cluster in
+  /// ERROR_DUE_TO_UPDATE states.
+  core.String? clusterRepairAction;
 
-  ConfidentialInstanceConfig({
-    this.enableConfidentialCompute,
+  ClusterToRepair({
+    this.clusterRepairAction,
   });
 
-  ConfidentialInstanceConfig.fromJson(core.Map json_)
+  ClusterToRepair.fromJson(core.Map json_)
       : this(
-          enableConfidentialCompute:
-              json_['enableConfidentialCompute'] as core.bool?,
+          clusterRepairAction: json_['clusterRepairAction'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enableConfidentialCompute != null)
-          'enableConfidentialCompute': enableConfidentialCompute!,
+        if (clusterRepairAction != null)
+          'clusterRepairAction': clusterRepairAction!,
+      };
+}
+
+/// Confidential Instance Config for clusters using Confidential VMs
+/// (https://cloud.google.com/compute/confidential-vm/docs)
+typedef ConfidentialInstanceConfig = $ConfidentialInstanceConfig;
+
+/// Consolidated summary about executors used by the application.
+class ConsolidatedExecutorSummary {
+  core.int? activeTasks;
+  core.int? completedTasks;
+  core.int? count;
+  core.String? diskUsed;
+  core.int? failedTasks;
+  core.int? isExcluded;
+  core.String? maxMemory;
+  MemoryMetrics? memoryMetrics;
+  core.String? memoryUsed;
+  core.int? rddBlocks;
+  core.int? totalCores;
+  core.String? totalDurationMillis;
+  core.String? totalGcTimeMillis;
+  core.String? totalInputBytes;
+  core.String? totalShuffleRead;
+  core.String? totalShuffleWrite;
+  core.int? totalTasks;
+
+  ConsolidatedExecutorSummary({
+    this.activeTasks,
+    this.completedTasks,
+    this.count,
+    this.diskUsed,
+    this.failedTasks,
+    this.isExcluded,
+    this.maxMemory,
+    this.memoryMetrics,
+    this.memoryUsed,
+    this.rddBlocks,
+    this.totalCores,
+    this.totalDurationMillis,
+    this.totalGcTimeMillis,
+    this.totalInputBytes,
+    this.totalShuffleRead,
+    this.totalShuffleWrite,
+    this.totalTasks,
+  });
+
+  ConsolidatedExecutorSummary.fromJson(core.Map json_)
+      : this(
+          activeTasks: json_['activeTasks'] as core.int?,
+          completedTasks: json_['completedTasks'] as core.int?,
+          count: json_['count'] as core.int?,
+          diskUsed: json_['diskUsed'] as core.String?,
+          failedTasks: json_['failedTasks'] as core.int?,
+          isExcluded: json_['isExcluded'] as core.int?,
+          maxMemory: json_['maxMemory'] as core.String?,
+          memoryMetrics: json_.containsKey('memoryMetrics')
+              ? MemoryMetrics.fromJson(
+                  json_['memoryMetrics'] as core.Map<core.String, core.dynamic>)
+              : null,
+          memoryUsed: json_['memoryUsed'] as core.String?,
+          rddBlocks: json_['rddBlocks'] as core.int?,
+          totalCores: json_['totalCores'] as core.int?,
+          totalDurationMillis: json_['totalDurationMillis'] as core.String?,
+          totalGcTimeMillis: json_['totalGcTimeMillis'] as core.String?,
+          totalInputBytes: json_['totalInputBytes'] as core.String?,
+          totalShuffleRead: json_['totalShuffleRead'] as core.String?,
+          totalShuffleWrite: json_['totalShuffleWrite'] as core.String?,
+          totalTasks: json_['totalTasks'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activeTasks != null) 'activeTasks': activeTasks!,
+        if (completedTasks != null) 'completedTasks': completedTasks!,
+        if (count != null) 'count': count!,
+        if (diskUsed != null) 'diskUsed': diskUsed!,
+        if (failedTasks != null) 'failedTasks': failedTasks!,
+        if (isExcluded != null) 'isExcluded': isExcluded!,
+        if (maxMemory != null) 'maxMemory': maxMemory!,
+        if (memoryMetrics != null) 'memoryMetrics': memoryMetrics!,
+        if (memoryUsed != null) 'memoryUsed': memoryUsed!,
+        if (rddBlocks != null) 'rddBlocks': rddBlocks!,
+        if (totalCores != null) 'totalCores': totalCores!,
+        if (totalDurationMillis != null)
+          'totalDurationMillis': totalDurationMillis!,
+        if (totalGcTimeMillis != null) 'totalGcTimeMillis': totalGcTimeMillis!,
+        if (totalInputBytes != null) 'totalInputBytes': totalInputBytes!,
+        if (totalShuffleRead != null) 'totalShuffleRead': totalShuffleRead!,
+        if (totalShuffleWrite != null) 'totalShuffleWrite': totalShuffleWrite!,
+        if (totalTasks != null) 'totalTasks': totalTasks!,
       };
 }
 
@@ -6130,6 +9111,24 @@ class DiagnoseClusterRequest {
 
 /// Specifies the config of disk options for a group of VM instances.
 class DiskConfig {
+  /// Indicates how many IOPS to provision for the disk.
+  ///
+  /// This sets the number of I/O operations per second that the disk can
+  /// handle. Note: This field is only supported if boot_disk_type is
+  /// hyperdisk-balanced.
+  ///
+  /// Optional.
+  core.String? bootDiskProvisionedIops;
+
+  /// Indicates how much throughput to provision for the disk.
+  ///
+  /// This sets the number of throughput mb per second that the disk can handle.
+  /// Values must be greater than or equal to 1. Note: This field is only
+  /// supported if boot_disk_type is hyperdisk-balanced.
+  ///
+  /// Optional.
+  core.String? bootDiskProvisionedThroughput;
+
   /// Size in GB of the boot disk (default is 500GB).
   ///
   /// Optional.
@@ -6167,6 +9166,8 @@ class DiskConfig {
   core.int? numLocalSsds;
 
   DiskConfig({
+    this.bootDiskProvisionedIops,
+    this.bootDiskProvisionedThroughput,
     this.bootDiskSizeGb,
     this.bootDiskType,
     this.localSsdInterface,
@@ -6175,6 +9176,10 @@ class DiskConfig {
 
   DiskConfig.fromJson(core.Map json_)
       : this(
+          bootDiskProvisionedIops:
+              json_['bootDiskProvisionedIops'] as core.String?,
+          bootDiskProvisionedThroughput:
+              json_['bootDiskProvisionedThroughput'] as core.String?,
           bootDiskSizeGb: json_['bootDiskSizeGb'] as core.int?,
           bootDiskType: json_['bootDiskType'] as core.String?,
           localSsdInterface: json_['localSsdInterface'] as core.String?,
@@ -6182,6 +9187,10 @@ class DiskConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bootDiskProvisionedIops != null)
+          'bootDiskProvisionedIops': bootDiskProvisionedIops!,
+        if (bootDiskProvisionedThroughput != null)
+          'bootDiskProvisionedThroughput': bootDiskProvisionedThroughput!,
         if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
         if (bootDiskType != null) 'bootDiskType': bootDiskType!,
         if (localSsdInterface != null) 'localSsdInterface': localSsdInterface!,
@@ -6472,6 +9481,456 @@ class ExecutionConfig {
       };
 }
 
+class ExecutorMetrics {
+  core.Map<core.String, core.String>? metrics;
+
+  ExecutorMetrics({
+    this.metrics,
+  });
+
+  ExecutorMetrics.fromJson(core.Map json_)
+      : this(
+          metrics:
+              (json_['metrics'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metrics != null) 'metrics': metrics!,
+      };
+}
+
+class ExecutorMetricsDistributions {
+  core.List<core.double>? diskBytesSpilled;
+  core.List<core.double>? failedTasks;
+  core.List<core.double>? inputBytes;
+  core.List<core.double>? inputRecords;
+  core.List<core.double>? killedTasks;
+  core.List<core.double>? memoryBytesSpilled;
+  core.List<core.double>? outputBytes;
+  core.List<core.double>? outputRecords;
+  ExecutorPeakMetricsDistributions? peakMemoryMetrics;
+  core.List<core.double>? quantiles;
+  core.List<core.double>? shuffleRead;
+  core.List<core.double>? shuffleReadRecords;
+  core.List<core.double>? shuffleWrite;
+  core.List<core.double>? shuffleWriteRecords;
+  core.List<core.double>? succeededTasks;
+  core.List<core.double>? taskTimeMillis;
+
+  ExecutorMetricsDistributions({
+    this.diskBytesSpilled,
+    this.failedTasks,
+    this.inputBytes,
+    this.inputRecords,
+    this.killedTasks,
+    this.memoryBytesSpilled,
+    this.outputBytes,
+    this.outputRecords,
+    this.peakMemoryMetrics,
+    this.quantiles,
+    this.shuffleRead,
+    this.shuffleReadRecords,
+    this.shuffleWrite,
+    this.shuffleWriteRecords,
+    this.succeededTasks,
+    this.taskTimeMillis,
+  });
+
+  ExecutorMetricsDistributions.fromJson(core.Map json_)
+      : this(
+          diskBytesSpilled: (json_['diskBytesSpilled'] as core.List?)
+              ?.map((value) => (value as core.num).toDouble())
+              .toList(),
+          failedTasks: (json_['failedTasks'] as core.List?)
+              ?.map((value) => (value as core.num).toDouble())
+              .toList(),
+          inputBytes: (json_['inputBytes'] as core.List?)
+              ?.map((value) => (value as core.num).toDouble())
+              .toList(),
+          inputRecords: (json_['inputRecords'] as core.List?)
+              ?.map((value) => (value as core.num).toDouble())
+              .toList(),
+          killedTasks: (json_['killedTasks'] as core.List?)
+              ?.map((value) => (value as core.num).toDouble())
+              .toList(),
+          memoryBytesSpilled: (json_['memoryBytesSpilled'] as core.List?)
+              ?.map((value) => (value as core.num).toDouble())
+              .toList(),
+          outputBytes: (json_['outputBytes'] as core.List?)
+              ?.map((value) => (value as core.num).toDouble())
+              .toList(),
+          outputRecords: (json_['outputRecords'] as core.List?)
+              ?.map((value) => (value as core.num).toDouble())
+              .toList(),
+          peakMemoryMetrics: json_.containsKey('peakMemoryMetrics')
+              ? ExecutorPeakMetricsDistributions.fromJson(
+                  json_['peakMemoryMetrics']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          quantiles: (json_['quantiles'] as core.List?)
+              ?.map((value) => (value as core.num).toDouble())
+              .toList(),
+          shuffleRead: (json_['shuffleRead'] as core.List?)
+              ?.map((value) => (value as core.num).toDouble())
+              .toList(),
+          shuffleReadRecords: (json_['shuffleReadRecords'] as core.List?)
+              ?.map((value) => (value as core.num).toDouble())
+              .toList(),
+          shuffleWrite: (json_['shuffleWrite'] as core.List?)
+              ?.map((value) => (value as core.num).toDouble())
+              .toList(),
+          shuffleWriteRecords: (json_['shuffleWriteRecords'] as core.List?)
+              ?.map((value) => (value as core.num).toDouble())
+              .toList(),
+          succeededTasks: (json_['succeededTasks'] as core.List?)
+              ?.map((value) => (value as core.num).toDouble())
+              .toList(),
+          taskTimeMillis: (json_['taskTimeMillis'] as core.List?)
+              ?.map((value) => (value as core.num).toDouble())
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (diskBytesSpilled != null) 'diskBytesSpilled': diskBytesSpilled!,
+        if (failedTasks != null) 'failedTasks': failedTasks!,
+        if (inputBytes != null) 'inputBytes': inputBytes!,
+        if (inputRecords != null) 'inputRecords': inputRecords!,
+        if (killedTasks != null) 'killedTasks': killedTasks!,
+        if (memoryBytesSpilled != null)
+          'memoryBytesSpilled': memoryBytesSpilled!,
+        if (outputBytes != null) 'outputBytes': outputBytes!,
+        if (outputRecords != null) 'outputRecords': outputRecords!,
+        if (peakMemoryMetrics != null) 'peakMemoryMetrics': peakMemoryMetrics!,
+        if (quantiles != null) 'quantiles': quantiles!,
+        if (shuffleRead != null) 'shuffleRead': shuffleRead!,
+        if (shuffleReadRecords != null)
+          'shuffleReadRecords': shuffleReadRecords!,
+        if (shuffleWrite != null) 'shuffleWrite': shuffleWrite!,
+        if (shuffleWriteRecords != null)
+          'shuffleWriteRecords': shuffleWriteRecords!,
+        if (succeededTasks != null) 'succeededTasks': succeededTasks!,
+        if (taskTimeMillis != null) 'taskTimeMillis': taskTimeMillis!,
+      };
+}
+
+class ExecutorPeakMetricsDistributions {
+  core.List<ExecutorMetrics>? executorMetrics;
+  core.List<core.double>? quantiles;
+
+  ExecutorPeakMetricsDistributions({
+    this.executorMetrics,
+    this.quantiles,
+  });
+
+  ExecutorPeakMetricsDistributions.fromJson(core.Map json_)
+      : this(
+          executorMetrics: (json_['executorMetrics'] as core.List?)
+              ?.map((value) => ExecutorMetrics.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          quantiles: (json_['quantiles'] as core.List?)
+              ?.map((value) => (value as core.num).toDouble())
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (executorMetrics != null) 'executorMetrics': executorMetrics!,
+        if (quantiles != null) 'quantiles': quantiles!,
+      };
+}
+
+/// Resources used per executor used by the application.
+class ExecutorResourceRequest {
+  core.String? amount;
+  core.String? discoveryScript;
+  core.String? resourceName;
+  core.String? vendor;
+
+  ExecutorResourceRequest({
+    this.amount,
+    this.discoveryScript,
+    this.resourceName,
+    this.vendor,
+  });
+
+  ExecutorResourceRequest.fromJson(core.Map json_)
+      : this(
+          amount: json_['amount'] as core.String?,
+          discoveryScript: json_['discoveryScript'] as core.String?,
+          resourceName: json_['resourceName'] as core.String?,
+          vendor: json_['vendor'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (amount != null) 'amount': amount!,
+        if (discoveryScript != null) 'discoveryScript': discoveryScript!,
+        if (resourceName != null) 'resourceName': resourceName!,
+        if (vendor != null) 'vendor': vendor!,
+      };
+}
+
+/// Executor resources consumed by a stage.
+class ExecutorStageSummary {
+  core.String? diskBytesSpilled;
+  core.String? executorId;
+  core.int? failedTasks;
+  core.String? inputBytes;
+  core.String? inputRecords;
+  core.bool? isExcludedForStage;
+  core.int? killedTasks;
+  core.String? memoryBytesSpilled;
+  core.String? outputBytes;
+  core.String? outputRecords;
+  ExecutorMetrics? peakMemoryMetrics;
+  core.String? shuffleRead;
+  core.String? shuffleReadRecords;
+  core.String? shuffleWrite;
+  core.String? shuffleWriteRecords;
+  core.int? stageAttemptId;
+  core.String? stageId;
+  core.int? succeededTasks;
+  core.String? taskTimeMillis;
+
+  ExecutorStageSummary({
+    this.diskBytesSpilled,
+    this.executorId,
+    this.failedTasks,
+    this.inputBytes,
+    this.inputRecords,
+    this.isExcludedForStage,
+    this.killedTasks,
+    this.memoryBytesSpilled,
+    this.outputBytes,
+    this.outputRecords,
+    this.peakMemoryMetrics,
+    this.shuffleRead,
+    this.shuffleReadRecords,
+    this.shuffleWrite,
+    this.shuffleWriteRecords,
+    this.stageAttemptId,
+    this.stageId,
+    this.succeededTasks,
+    this.taskTimeMillis,
+  });
+
+  ExecutorStageSummary.fromJson(core.Map json_)
+      : this(
+          diskBytesSpilled: json_['diskBytesSpilled'] as core.String?,
+          executorId: json_['executorId'] as core.String?,
+          failedTasks: json_['failedTasks'] as core.int?,
+          inputBytes: json_['inputBytes'] as core.String?,
+          inputRecords: json_['inputRecords'] as core.String?,
+          isExcludedForStage: json_['isExcludedForStage'] as core.bool?,
+          killedTasks: json_['killedTasks'] as core.int?,
+          memoryBytesSpilled: json_['memoryBytesSpilled'] as core.String?,
+          outputBytes: json_['outputBytes'] as core.String?,
+          outputRecords: json_['outputRecords'] as core.String?,
+          peakMemoryMetrics: json_.containsKey('peakMemoryMetrics')
+              ? ExecutorMetrics.fromJson(json_['peakMemoryMetrics']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          shuffleRead: json_['shuffleRead'] as core.String?,
+          shuffleReadRecords: json_['shuffleReadRecords'] as core.String?,
+          shuffleWrite: json_['shuffleWrite'] as core.String?,
+          shuffleWriteRecords: json_['shuffleWriteRecords'] as core.String?,
+          stageAttemptId: json_['stageAttemptId'] as core.int?,
+          stageId: json_['stageId'] as core.String?,
+          succeededTasks: json_['succeededTasks'] as core.int?,
+          taskTimeMillis: json_['taskTimeMillis'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (diskBytesSpilled != null) 'diskBytesSpilled': diskBytesSpilled!,
+        if (executorId != null) 'executorId': executorId!,
+        if (failedTasks != null) 'failedTasks': failedTasks!,
+        if (inputBytes != null) 'inputBytes': inputBytes!,
+        if (inputRecords != null) 'inputRecords': inputRecords!,
+        if (isExcludedForStage != null)
+          'isExcludedForStage': isExcludedForStage!,
+        if (killedTasks != null) 'killedTasks': killedTasks!,
+        if (memoryBytesSpilled != null)
+          'memoryBytesSpilled': memoryBytesSpilled!,
+        if (outputBytes != null) 'outputBytes': outputBytes!,
+        if (outputRecords != null) 'outputRecords': outputRecords!,
+        if (peakMemoryMetrics != null) 'peakMemoryMetrics': peakMemoryMetrics!,
+        if (shuffleRead != null) 'shuffleRead': shuffleRead!,
+        if (shuffleReadRecords != null)
+          'shuffleReadRecords': shuffleReadRecords!,
+        if (shuffleWrite != null) 'shuffleWrite': shuffleWrite!,
+        if (shuffleWriteRecords != null)
+          'shuffleWriteRecords': shuffleWriteRecords!,
+        if (stageAttemptId != null) 'stageAttemptId': stageAttemptId!,
+        if (stageId != null) 'stageId': stageId!,
+        if (succeededTasks != null) 'succeededTasks': succeededTasks!,
+        if (taskTimeMillis != null) 'taskTimeMillis': taskTimeMillis!,
+      };
+}
+
+/// Details about executors used by the application.
+class ExecutorSummary {
+  core.int? activeTasks;
+  core.String? addTime;
+  core.Map<core.String, core.String>? attributes;
+  core.int? completedTasks;
+  core.String? diskUsed;
+  core.List<core.String>? excludedInStages;
+  core.String? executorId;
+  core.Map<core.String, core.String>? executorLogs;
+  core.int? failedTasks;
+  core.String? hostPort;
+  core.bool? isActive;
+  core.bool? isExcluded;
+  core.String? maxMemory;
+  core.int? maxTasks;
+  MemoryMetrics? memoryMetrics;
+  core.String? memoryUsed;
+  ExecutorMetrics? peakMemoryMetrics;
+  core.int? rddBlocks;
+  core.String? removeReason;
+  core.String? removeTime;
+  core.int? resourceProfileId;
+  core.Map<core.String, ResourceInformation>? resources;
+  core.int? totalCores;
+  core.String? totalDurationMillis;
+  core.String? totalGcTimeMillis;
+  core.String? totalInputBytes;
+  core.String? totalShuffleRead;
+  core.String? totalShuffleWrite;
+  core.int? totalTasks;
+
+  ExecutorSummary({
+    this.activeTasks,
+    this.addTime,
+    this.attributes,
+    this.completedTasks,
+    this.diskUsed,
+    this.excludedInStages,
+    this.executorId,
+    this.executorLogs,
+    this.failedTasks,
+    this.hostPort,
+    this.isActive,
+    this.isExcluded,
+    this.maxMemory,
+    this.maxTasks,
+    this.memoryMetrics,
+    this.memoryUsed,
+    this.peakMemoryMetrics,
+    this.rddBlocks,
+    this.removeReason,
+    this.removeTime,
+    this.resourceProfileId,
+    this.resources,
+    this.totalCores,
+    this.totalDurationMillis,
+    this.totalGcTimeMillis,
+    this.totalInputBytes,
+    this.totalShuffleRead,
+    this.totalShuffleWrite,
+    this.totalTasks,
+  });
+
+  ExecutorSummary.fromJson(core.Map json_)
+      : this(
+          activeTasks: json_['activeTasks'] as core.int?,
+          addTime: json_['addTime'] as core.String?,
+          attributes:
+              (json_['attributes'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          completedTasks: json_['completedTasks'] as core.int?,
+          diskUsed: json_['diskUsed'] as core.String?,
+          excludedInStages: (json_['excludedInStages'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          executorId: json_['executorId'] as core.String?,
+          executorLogs:
+              (json_['executorLogs'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          failedTasks: json_['failedTasks'] as core.int?,
+          hostPort: json_['hostPort'] as core.String?,
+          isActive: json_['isActive'] as core.bool?,
+          isExcluded: json_['isExcluded'] as core.bool?,
+          maxMemory: json_['maxMemory'] as core.String?,
+          maxTasks: json_['maxTasks'] as core.int?,
+          memoryMetrics: json_.containsKey('memoryMetrics')
+              ? MemoryMetrics.fromJson(
+                  json_['memoryMetrics'] as core.Map<core.String, core.dynamic>)
+              : null,
+          memoryUsed: json_['memoryUsed'] as core.String?,
+          peakMemoryMetrics: json_.containsKey('peakMemoryMetrics')
+              ? ExecutorMetrics.fromJson(json_['peakMemoryMetrics']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          rddBlocks: json_['rddBlocks'] as core.int?,
+          removeReason: json_['removeReason'] as core.String?,
+          removeTime: json_['removeTime'] as core.String?,
+          resourceProfileId: json_['resourceProfileId'] as core.int?,
+          resources:
+              (json_['resources'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              ResourceInformation.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          totalCores: json_['totalCores'] as core.int?,
+          totalDurationMillis: json_['totalDurationMillis'] as core.String?,
+          totalGcTimeMillis: json_['totalGcTimeMillis'] as core.String?,
+          totalInputBytes: json_['totalInputBytes'] as core.String?,
+          totalShuffleRead: json_['totalShuffleRead'] as core.String?,
+          totalShuffleWrite: json_['totalShuffleWrite'] as core.String?,
+          totalTasks: json_['totalTasks'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activeTasks != null) 'activeTasks': activeTasks!,
+        if (addTime != null) 'addTime': addTime!,
+        if (attributes != null) 'attributes': attributes!,
+        if (completedTasks != null) 'completedTasks': completedTasks!,
+        if (diskUsed != null) 'diskUsed': diskUsed!,
+        if (excludedInStages != null) 'excludedInStages': excludedInStages!,
+        if (executorId != null) 'executorId': executorId!,
+        if (executorLogs != null) 'executorLogs': executorLogs!,
+        if (failedTasks != null) 'failedTasks': failedTasks!,
+        if (hostPort != null) 'hostPort': hostPort!,
+        if (isActive != null) 'isActive': isActive!,
+        if (isExcluded != null) 'isExcluded': isExcluded!,
+        if (maxMemory != null) 'maxMemory': maxMemory!,
+        if (maxTasks != null) 'maxTasks': maxTasks!,
+        if (memoryMetrics != null) 'memoryMetrics': memoryMetrics!,
+        if (memoryUsed != null) 'memoryUsed': memoryUsed!,
+        if (peakMemoryMetrics != null) 'peakMemoryMetrics': peakMemoryMetrics!,
+        if (rddBlocks != null) 'rddBlocks': rddBlocks!,
+        if (removeReason != null) 'removeReason': removeReason!,
+        if (removeTime != null) 'removeTime': removeTime!,
+        if (resourceProfileId != null) 'resourceProfileId': resourceProfileId!,
+        if (resources != null) 'resources': resources!,
+        if (totalCores != null) 'totalCores': totalCores!,
+        if (totalDurationMillis != null)
+          'totalDurationMillis': totalDurationMillis!,
+        if (totalGcTimeMillis != null) 'totalGcTimeMillis': totalGcTimeMillis!,
+        if (totalInputBytes != null) 'totalInputBytes': totalInputBytes!,
+        if (totalShuffleRead != null) 'totalShuffleRead': totalShuffleRead!,
+        if (totalShuffleWrite != null) 'totalShuffleWrite': totalShuffleWrite!,
+        if (totalTasks != null) 'totalTasks': totalTasks!,
+      };
+}
+
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
 ///
@@ -6525,9 +9984,9 @@ class FlinkJob {
 
   /// A mapping of property names to values, used to configure Flink.
   ///
-  /// Properties that conflict with values set by the Dataproc API might
-  /// beoverwritten. Can include properties set
-  /// in/etc/flink/conf/flink-defaults.conf and classes in user code.
+  /// Properties that conflict with values set by the Dataproc API might be
+  /// overwritten. Can include properties set in
+  /// /etc/flink/conf/flink-defaults.conf and classes in user code.
   ///
   /// Optional.
   core.Map<core.String, core.String>? properties;
@@ -6697,8 +10156,8 @@ class GceClusterConfig {
   /// Optional.
   core.String? subnetworkUri;
 
-  /// The Compute Engine tags to add to all instances (see Tagging instances
-  /// (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+  /// The Compute Engine network tags to add to all instances (see Tagging
+  /// instances (https://cloud.google.com/vpc/docs/add-remove-network-tags)).
   core.List<core.String>? tags;
 
   /// The Compute Engine zone where the Dataproc cluster will be located.
@@ -7461,6 +10920,36 @@ class InjectCredentialsRequest {
       };
 }
 
+/// Metrics about the input data read by the task.
+typedef InputMetrics = $InputMetrics;
+
+class InputQuantileMetrics {
+  Quantiles? bytesRead;
+  Quantiles? recordsRead;
+
+  InputQuantileMetrics({
+    this.bytesRead,
+    this.recordsRead,
+  });
+
+  InputQuantileMetrics.fromJson(core.Map json_)
+      : this(
+          bytesRead: json_.containsKey('bytesRead')
+              ? Quantiles.fromJson(
+                  json_['bytesRead'] as core.Map<core.String, core.dynamic>)
+              : null,
+          recordsRead: json_.containsKey('recordsRead')
+              ? Quantiles.fromJson(
+                  json_['recordsRead'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bytesRead != null) 'bytesRead': bytesRead!,
+        if (recordsRead != null) 'recordsRead': recordsRead!,
+      };
+}
+
 /// Instance flexibility Policy allowing a mixture of VM shapes and provisioning
 /// models.
 class InstanceFlexibilityPolicy {
@@ -7475,9 +10964,16 @@ class InstanceFlexibilityPolicy {
   /// Output only.
   core.List<InstanceSelectionResult>? instanceSelectionResults;
 
+  /// Defines how the Group selects the provisioning model to ensure required
+  /// reliability.
+  ///
+  /// Optional.
+  ProvisioningModelMix? provisioningModelMix;
+
   InstanceFlexibilityPolicy({
     this.instanceSelectionList,
     this.instanceSelectionResults,
+    this.provisioningModelMix,
   });
 
   InstanceFlexibilityPolicy.fromJson(core.Map json_)
@@ -7491,6 +10987,10 @@ class InstanceFlexibilityPolicy {
                   ?.map((value) => InstanceSelectionResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList(),
+          provisioningModelMix: json_.containsKey('provisioningModelMix')
+              ? ProvisioningModelMix.fromJson(json_['provisioningModelMix']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7498,6 +10998,8 @@ class InstanceFlexibilityPolicy {
           'instanceSelectionList': instanceSelectionList!,
         if (instanceSelectionResults != null)
           'instanceSelectionResults': instanceSelectionResults!,
+        if (provisioningModelMix != null)
+          'provisioningModelMix': provisioningModelMix!,
       };
 }
 
@@ -8250,6 +11752,129 @@ class Job {
       };
 }
 
+/// Data corresponding to a spark job.
+class JobData {
+  core.String? completionTime;
+  core.String? description;
+  core.String? jobGroup;
+  core.String? jobId;
+  core.Map<core.String, core.int>? killTasksSummary;
+  core.String? name;
+  core.int? numActiveStages;
+  core.int? numActiveTasks;
+  core.int? numCompletedIndices;
+  core.int? numCompletedStages;
+  core.int? numCompletedTasks;
+  core.int? numFailedStages;
+  core.int? numFailedTasks;
+  core.int? numKilledTasks;
+  core.int? numSkippedStages;
+  core.int? numSkippedTasks;
+  core.int? numTasks;
+  core.List<core.int>? skippedStages;
+  core.String? sqlExecutionId;
+  core.List<core.String>? stageIds;
+
+  ///
+  /// Possible string values are:
+  /// - "JOB_EXECUTION_STATUS_UNSPECIFIED"
+  /// - "JOB_EXECUTION_STATUS_RUNNING"
+  /// - "JOB_EXECUTION_STATUS_SUCCEEDED"
+  /// - "JOB_EXECUTION_STATUS_FAILED"
+  /// - "JOB_EXECUTION_STATUS_UNKNOWN"
+  core.String? status;
+  core.String? submissionTime;
+
+  JobData({
+    this.completionTime,
+    this.description,
+    this.jobGroup,
+    this.jobId,
+    this.killTasksSummary,
+    this.name,
+    this.numActiveStages,
+    this.numActiveTasks,
+    this.numCompletedIndices,
+    this.numCompletedStages,
+    this.numCompletedTasks,
+    this.numFailedStages,
+    this.numFailedTasks,
+    this.numKilledTasks,
+    this.numSkippedStages,
+    this.numSkippedTasks,
+    this.numTasks,
+    this.skippedStages,
+    this.sqlExecutionId,
+    this.stageIds,
+    this.status,
+    this.submissionTime,
+  });
+
+  JobData.fromJson(core.Map json_)
+      : this(
+          completionTime: json_['completionTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          jobGroup: json_['jobGroup'] as core.String?,
+          jobId: json_['jobId'] as core.String?,
+          killTasksSummary: (json_['killTasksSummary']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.int,
+            ),
+          ),
+          name: json_['name'] as core.String?,
+          numActiveStages: json_['numActiveStages'] as core.int?,
+          numActiveTasks: json_['numActiveTasks'] as core.int?,
+          numCompletedIndices: json_['numCompletedIndices'] as core.int?,
+          numCompletedStages: json_['numCompletedStages'] as core.int?,
+          numCompletedTasks: json_['numCompletedTasks'] as core.int?,
+          numFailedStages: json_['numFailedStages'] as core.int?,
+          numFailedTasks: json_['numFailedTasks'] as core.int?,
+          numKilledTasks: json_['numKilledTasks'] as core.int?,
+          numSkippedStages: json_['numSkippedStages'] as core.int?,
+          numSkippedTasks: json_['numSkippedTasks'] as core.int?,
+          numTasks: json_['numTasks'] as core.int?,
+          skippedStages: (json_['skippedStages'] as core.List?)
+              ?.map((value) => value as core.int)
+              .toList(),
+          sqlExecutionId: json_['sqlExecutionId'] as core.String?,
+          stageIds: (json_['stageIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          status: json_['status'] as core.String?,
+          submissionTime: json_['submissionTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (completionTime != null) 'completionTime': completionTime!,
+        if (description != null) 'description': description!,
+        if (jobGroup != null) 'jobGroup': jobGroup!,
+        if (jobId != null) 'jobId': jobId!,
+        if (killTasksSummary != null) 'killTasksSummary': killTasksSummary!,
+        if (name != null) 'name': name!,
+        if (numActiveStages != null) 'numActiveStages': numActiveStages!,
+        if (numActiveTasks != null) 'numActiveTasks': numActiveTasks!,
+        if (numCompletedIndices != null)
+          'numCompletedIndices': numCompletedIndices!,
+        if (numCompletedStages != null)
+          'numCompletedStages': numCompletedStages!,
+        if (numCompletedTasks != null) 'numCompletedTasks': numCompletedTasks!,
+        if (numFailedStages != null) 'numFailedStages': numFailedStages!,
+        if (numFailedTasks != null) 'numFailedTasks': numFailedTasks!,
+        if (numKilledTasks != null) 'numKilledTasks': numKilledTasks!,
+        if (numSkippedStages != null) 'numSkippedStages': numSkippedStages!,
+        if (numSkippedTasks != null) 'numSkippedTasks': numSkippedTasks!,
+        if (numTasks != null) 'numTasks': numTasks!,
+        if (skippedStages != null) 'skippedStages': skippedStages!,
+        if (sqlExecutionId != null) 'sqlExecutionId': sqlExecutionId!,
+        if (stageIds != null) 'stageIds': stageIds!,
+        if (status != null) 'status': status!,
+        if (submissionTime != null) 'submissionTime': submissionTime!,
+      };
+}
+
 /// Dataproc job config.
 class JobPlacement {
   /// Cluster labels to identify a cluster where the job will be submitted.
@@ -8440,6 +12065,58 @@ class JobStatus {
         if (state != null) 'state': state!,
         if (stateStartTime != null) 'stateStartTime': stateStartTime!,
         if (substate != null) 'substate': substate!,
+      };
+}
+
+/// Data related to Jobs page summary
+class JobsSummary {
+  /// Number of active jobs
+  core.int? activeJobs;
+
+  /// Spark Application Id
+  core.String? applicationId;
+
+  /// Attempts info
+  core.List<ApplicationAttemptInfo>? attempts;
+
+  /// Number of completed jobs
+  core.int? completedJobs;
+
+  /// Number of failed jobs
+  core.int? failedJobs;
+
+  /// Spark Scheduling mode
+  core.String? schedulingMode;
+
+  JobsSummary({
+    this.activeJobs,
+    this.applicationId,
+    this.attempts,
+    this.completedJobs,
+    this.failedJobs,
+    this.schedulingMode,
+  });
+
+  JobsSummary.fromJson(core.Map json_)
+      : this(
+          activeJobs: json_['activeJobs'] as core.int?,
+          applicationId: json_['applicationId'] as core.String?,
+          attempts: (json_['attempts'] as core.List?)
+              ?.map((value) => ApplicationAttemptInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          completedJobs: json_['completedJobs'] as core.int?,
+          failedJobs: json_['failedJobs'] as core.int?,
+          schedulingMode: json_['schedulingMode'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activeJobs != null) 'activeJobs': activeJobs!,
+        if (applicationId != null) 'applicationId': applicationId!,
+        if (attempts != null) 'attempts': attempts!,
+        if (completedJobs != null) 'completedJobs': completedJobs!,
+        if (failedJobs != null) 'failedJobs': failedJobs!,
+        if (schedulingMode != null) 'schedulingMode': schedulingMode!,
       };
 }
 
@@ -9237,6 +12914,43 @@ class ManagedGroupConfig {
       };
 }
 
+class MemoryMetrics {
+  core.String? totalOffHeapStorageMemory;
+  core.String? totalOnHeapStorageMemory;
+  core.String? usedOffHeapStorageMemory;
+  core.String? usedOnHeapStorageMemory;
+
+  MemoryMetrics({
+    this.totalOffHeapStorageMemory,
+    this.totalOnHeapStorageMemory,
+    this.usedOffHeapStorageMemory,
+    this.usedOnHeapStorageMemory,
+  });
+
+  MemoryMetrics.fromJson(core.Map json_)
+      : this(
+          totalOffHeapStorageMemory:
+              json_['totalOffHeapStorageMemory'] as core.String?,
+          totalOnHeapStorageMemory:
+              json_['totalOnHeapStorageMemory'] as core.String?,
+          usedOffHeapStorageMemory:
+              json_['usedOffHeapStorageMemory'] as core.String?,
+          usedOnHeapStorageMemory:
+              json_['usedOnHeapStorageMemory'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (totalOffHeapStorageMemory != null)
+          'totalOffHeapStorageMemory': totalOffHeapStorageMemory!,
+        if (totalOnHeapStorageMemory != null)
+          'totalOnHeapStorageMemory': totalOnHeapStorageMemory!,
+        if (usedOffHeapStorageMemory != null)
+          'usedOffHeapStorageMemory': usedOffHeapStorageMemory!,
+        if (usedOnHeapStorageMemory != null)
+          'usedOnHeapStorageMemory': usedOnHeapStorageMemory!,
+      };
+}
+
 /// Specifies a Metastore configuration.
 class MetastoreConfig {
   /// Resource name of an existing Dataproc Metastore service.Example:
@@ -9370,7 +13084,7 @@ class NodeGroup {
   /// (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty. If
   /// specified, they must consist of from 1 to 63 characters and conform to RFC
   /// 1035 (https://www.ietf.org/rfc/rfc1035.txt). The node group must have no
-  /// more than 32 labelsn.
+  /// more than 32 labels.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
@@ -9793,6 +13507,36 @@ class OrderedJob {
       };
 }
 
+/// Metrics about the data written by the task.
+typedef OutputMetrics = $OutputMetrics;
+
+class OutputQuantileMetrics {
+  Quantiles? bytesWritten;
+  Quantiles? recordsWritten;
+
+  OutputQuantileMetrics({
+    this.bytesWritten,
+    this.recordsWritten,
+  });
+
+  OutputQuantileMetrics.fromJson(core.Map json_)
+      : this(
+          bytesWritten: json_.containsKey('bytesWritten')
+              ? Quantiles.fromJson(
+                  json_['bytesWritten'] as core.Map<core.String, core.dynamic>)
+              : null,
+          recordsWritten: json_.containsKey('recordsWritten')
+              ? Quantiles.fromJson(json_['recordsWritten']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bytesWritten != null) 'bytesWritten': bytesWritten!,
+        if (recordsWritten != null) 'recordsWritten': recordsWritten!,
+      };
+}
+
 /// Configuration for parameter validation.
 class ParameterValidation {
   /// Validation based on regular expressions.
@@ -10063,6 +13807,30 @@ class Policy {
       };
 }
 
+/// Pool Data
+class PoolData {
+  core.String? name;
+  core.List<core.String>? stageIds;
+
+  PoolData({
+    this.name,
+    this.stageIds,
+  });
+
+  PoolData.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+          stageIds: (json_['stageIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (stageIds != null) 'stageIds': stageIds!,
+      };
+}
+
 /// A Dataproc job for running Presto (https://prestosql.io/) queries.
 ///
 /// IMPORTANT: The Dataproc Presto Optional Component
@@ -10153,6 +13921,103 @@ class PrestoJob {
         if (properties != null) 'properties': properties!,
         if (queryFileUri != null) 'queryFileUri': queryFileUri!,
         if (queryList != null) 'queryList': queryList!,
+      };
+}
+
+/// Process Summary
+class ProcessSummary {
+  core.String? addTime;
+  core.String? hostPort;
+  core.bool? isActive;
+  core.String? processId;
+  core.Map<core.String, core.String>? processLogs;
+  core.String? removeTime;
+  core.int? totalCores;
+
+  ProcessSummary({
+    this.addTime,
+    this.hostPort,
+    this.isActive,
+    this.processId,
+    this.processLogs,
+    this.removeTime,
+    this.totalCores,
+  });
+
+  ProcessSummary.fromJson(core.Map json_)
+      : this(
+          addTime: json_['addTime'] as core.String?,
+          hostPort: json_['hostPort'] as core.String?,
+          isActive: json_['isActive'] as core.bool?,
+          processId: json_['processId'] as core.String?,
+          processLogs:
+              (json_['processLogs'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          removeTime: json_['removeTime'] as core.String?,
+          totalCores: json_['totalCores'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (addTime != null) 'addTime': addTime!,
+        if (hostPort != null) 'hostPort': hostPort!,
+        if (isActive != null) 'isActive': isActive!,
+        if (processId != null) 'processId': processId!,
+        if (processLogs != null) 'processLogs': processLogs!,
+        if (removeTime != null) 'removeTime': removeTime!,
+        if (totalCores != null) 'totalCores': totalCores!,
+      };
+}
+
+/// Defines how Dataproc should create VMs with a mixture of provisioning
+/// models.
+class ProvisioningModelMix {
+  /// The base capacity that will always use Standard VMs to avoid risk of more
+  /// preemption than the minimum capacity you need.
+  ///
+  /// Dataproc will create only standard VMs until it reaches
+  /// standard_capacity_base, then it will start using
+  /// standard_capacity_percent_above_base to mix Spot with Standard VMs. eg. If
+  /// 15 instances are requested and standard_capacity_base is 5, Dataproc will
+  /// create 5 standard VMs and then start mixing spot and standard VMs for
+  /// remaining 10 instances.
+  ///
+  /// Optional.
+  core.int? standardCapacityBase;
+
+  /// The percentage of target capacity that should use Standard VM.
+  ///
+  /// The remaining percentage will use Spot VMs. The percentage applies only to
+  /// the capacity above standard_capacity_base. eg. If 15 instances are
+  /// requested and standard_capacity_base is 5 and
+  /// standard_capacity_percent_above_base is 30, Dataproc will create 5
+  /// standard VMs and then start mixing spot and standard VMs for remaining 10
+  /// instances. The mix will be 30% standard and 70% spot.
+  ///
+  /// Optional.
+  core.int? standardCapacityPercentAboveBase;
+
+  ProvisioningModelMix({
+    this.standardCapacityBase,
+    this.standardCapacityPercentAboveBase,
+  });
+
+  ProvisioningModelMix.fromJson(core.Map json_)
+      : this(
+          standardCapacityBase: json_['standardCapacityBase'] as core.int?,
+          standardCapacityPercentAboveBase:
+              json_['standardCapacityPercentAboveBase'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (standardCapacityBase != null)
+          'standardCapacityBase': standardCapacityBase!,
+        if (standardCapacityPercentAboveBase != null)
+          'standardCapacityPercentAboveBase': standardCapacityPercentAboveBase!,
       };
 }
 
@@ -10379,6 +14244,51 @@ class PySparkJob {
       };
 }
 
+/// Quantile metrics data related to Tasks.
+///
+/// Units can be seconds, bytes, milliseconds, etc depending on the message
+/// type.
+class Quantiles {
+  core.String? count;
+  core.String? maximum;
+  core.String? minimum;
+  core.String? percentile25;
+  core.String? percentile50;
+  core.String? percentile75;
+  core.String? sum;
+
+  Quantiles({
+    this.count,
+    this.maximum,
+    this.minimum,
+    this.percentile25,
+    this.percentile50,
+    this.percentile75,
+    this.sum,
+  });
+
+  Quantiles.fromJson(core.Map json_)
+      : this(
+          count: json_['count'] as core.String?,
+          maximum: json_['maximum'] as core.String?,
+          minimum: json_['minimum'] as core.String?,
+          percentile25: json_['percentile25'] as core.String?,
+          percentile50: json_['percentile50'] as core.String?,
+          percentile75: json_['percentile75'] as core.String?,
+          sum: json_['sum'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (count != null) 'count': count!,
+        if (maximum != null) 'maximum': maximum!,
+        if (minimum != null) 'minimum': minimum!,
+        if (percentile25 != null) 'percentile25': percentile25!,
+        if (percentile50 != null) 'percentile50': percentile50!,
+        if (percentile75 != null) 'percentile75': percentile75!,
+        if (sum != null) 'sum': sum!,
+      };
+}
+
 /// A list of queries to run on a cluster.
 class QueryList {
   /// The queries to execute.
@@ -10405,6 +14315,303 @@ class QueryList {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (queries != null) 'queries': queries!,
+      };
+}
+
+/// Details about RDD usage.
+class RddDataDistribution {
+  core.String? address;
+  core.String? diskUsed;
+  core.String? memoryRemaining;
+  core.String? memoryUsed;
+  core.String? offHeapMemoryRemaining;
+  core.String? offHeapMemoryUsed;
+  core.String? onHeapMemoryRemaining;
+  core.String? onHeapMemoryUsed;
+
+  RddDataDistribution({
+    this.address,
+    this.diskUsed,
+    this.memoryRemaining,
+    this.memoryUsed,
+    this.offHeapMemoryRemaining,
+    this.offHeapMemoryUsed,
+    this.onHeapMemoryRemaining,
+    this.onHeapMemoryUsed,
+  });
+
+  RddDataDistribution.fromJson(core.Map json_)
+      : this(
+          address: json_['address'] as core.String?,
+          diskUsed: json_['diskUsed'] as core.String?,
+          memoryRemaining: json_['memoryRemaining'] as core.String?,
+          memoryUsed: json_['memoryUsed'] as core.String?,
+          offHeapMemoryRemaining:
+              json_['offHeapMemoryRemaining'] as core.String?,
+          offHeapMemoryUsed: json_['offHeapMemoryUsed'] as core.String?,
+          onHeapMemoryRemaining: json_['onHeapMemoryRemaining'] as core.String?,
+          onHeapMemoryUsed: json_['onHeapMemoryUsed'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (address != null) 'address': address!,
+        if (diskUsed != null) 'diskUsed': diskUsed!,
+        if (memoryRemaining != null) 'memoryRemaining': memoryRemaining!,
+        if (memoryUsed != null) 'memoryUsed': memoryUsed!,
+        if (offHeapMemoryRemaining != null)
+          'offHeapMemoryRemaining': offHeapMemoryRemaining!,
+        if (offHeapMemoryUsed != null) 'offHeapMemoryUsed': offHeapMemoryUsed!,
+        if (onHeapMemoryRemaining != null)
+          'onHeapMemoryRemaining': onHeapMemoryRemaining!,
+        if (onHeapMemoryUsed != null) 'onHeapMemoryUsed': onHeapMemoryUsed!,
+      };
+}
+
+/// A grouping of nodes representing higher level constructs (stage, job etc.).
+class RddOperationCluster {
+  core.List<RddOperationCluster>? childClusters;
+  core.List<RddOperationNode>? childNodes;
+  core.String? name;
+  core.String? rddClusterId;
+
+  RddOperationCluster({
+    this.childClusters,
+    this.childNodes,
+    this.name,
+    this.rddClusterId,
+  });
+
+  RddOperationCluster.fromJson(core.Map json_)
+      : this(
+          childClusters: (json_['childClusters'] as core.List?)
+              ?.map((value) => RddOperationCluster.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          childNodes: (json_['childNodes'] as core.List?)
+              ?.map((value) => RddOperationNode.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          name: json_['name'] as core.String?,
+          rddClusterId: json_['rddClusterId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (childClusters != null) 'childClusters': childClusters!,
+        if (childNodes != null) 'childNodes': childNodes!,
+        if (name != null) 'name': name!,
+        if (rddClusterId != null) 'rddClusterId': rddClusterId!,
+      };
+}
+
+/// A directed edge representing dependency between two RDDs.
+class RddOperationEdge {
+  core.int? fromId;
+  core.int? toId;
+
+  RddOperationEdge({
+    this.fromId,
+    this.toId,
+  });
+
+  RddOperationEdge.fromJson(core.Map json_)
+      : this(
+          fromId: json_['fromId'] as core.int?,
+          toId: json_['toId'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fromId != null) 'fromId': fromId!,
+        if (toId != null) 'toId': toId!,
+      };
+}
+
+/// Graph representing RDD dependencies.
+///
+/// Consists of edges and a root cluster.
+class RddOperationGraph {
+  core.List<RddOperationEdge>? edges;
+  core.List<RddOperationEdge>? incomingEdges;
+  core.List<RddOperationEdge>? outgoingEdges;
+  RddOperationCluster? rootCluster;
+  core.String? stageId;
+
+  RddOperationGraph({
+    this.edges,
+    this.incomingEdges,
+    this.outgoingEdges,
+    this.rootCluster,
+    this.stageId,
+  });
+
+  RddOperationGraph.fromJson(core.Map json_)
+      : this(
+          edges: (json_['edges'] as core.List?)
+              ?.map((value) => RddOperationEdge.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          incomingEdges: (json_['incomingEdges'] as core.List?)
+              ?.map((value) => RddOperationEdge.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          outgoingEdges: (json_['outgoingEdges'] as core.List?)
+              ?.map((value) => RddOperationEdge.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          rootCluster: json_.containsKey('rootCluster')
+              ? RddOperationCluster.fromJson(
+                  json_['rootCluster'] as core.Map<core.String, core.dynamic>)
+              : null,
+          stageId: json_['stageId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (edges != null) 'edges': edges!,
+        if (incomingEdges != null) 'incomingEdges': incomingEdges!,
+        if (outgoingEdges != null) 'outgoingEdges': outgoingEdges!,
+        if (rootCluster != null) 'rootCluster': rootCluster!,
+        if (stageId != null) 'stageId': stageId!,
+      };
+}
+
+/// A node in the RDD operation graph.
+///
+/// Corresponds to a single RDD.
+class RddOperationNode {
+  core.bool? barrier;
+  core.bool? cached;
+  core.String? callsite;
+  core.String? name;
+  core.int? nodeId;
+
+  ///
+  /// Possible string values are:
+  /// - "DETERMINISTIC_LEVEL_UNSPECIFIED"
+  /// - "DETERMINISTIC_LEVEL_DETERMINATE"
+  /// - "DETERMINISTIC_LEVEL_UNORDERED"
+  /// - "DETERMINISTIC_LEVEL_INDETERMINATE"
+  core.String? outputDeterministicLevel;
+
+  RddOperationNode({
+    this.barrier,
+    this.cached,
+    this.callsite,
+    this.name,
+    this.nodeId,
+    this.outputDeterministicLevel,
+  });
+
+  RddOperationNode.fromJson(core.Map json_)
+      : this(
+          barrier: json_['barrier'] as core.bool?,
+          cached: json_['cached'] as core.bool?,
+          callsite: json_['callsite'] as core.String?,
+          name: json_['name'] as core.String?,
+          nodeId: json_['nodeId'] as core.int?,
+          outputDeterministicLevel:
+              json_['outputDeterministicLevel'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (barrier != null) 'barrier': barrier!,
+        if (cached != null) 'cached': cached!,
+        if (callsite != null) 'callsite': callsite!,
+        if (name != null) 'name': name!,
+        if (nodeId != null) 'nodeId': nodeId!,
+        if (outputDeterministicLevel != null)
+          'outputDeterministicLevel': outputDeterministicLevel!,
+      };
+}
+
+/// Information about RDD partitions.
+class RddPartitionInfo {
+  core.String? blockName;
+  core.String? diskUsed;
+  core.List<core.String>? executors;
+  core.String? memoryUsed;
+  core.String? storageLevel;
+
+  RddPartitionInfo({
+    this.blockName,
+    this.diskUsed,
+    this.executors,
+    this.memoryUsed,
+    this.storageLevel,
+  });
+
+  RddPartitionInfo.fromJson(core.Map json_)
+      : this(
+          blockName: json_['blockName'] as core.String?,
+          diskUsed: json_['diskUsed'] as core.String?,
+          executors: (json_['executors'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          memoryUsed: json_['memoryUsed'] as core.String?,
+          storageLevel: json_['storageLevel'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (blockName != null) 'blockName': blockName!,
+        if (diskUsed != null) 'diskUsed': diskUsed!,
+        if (executors != null) 'executors': executors!,
+        if (memoryUsed != null) 'memoryUsed': memoryUsed!,
+        if (storageLevel != null) 'storageLevel': storageLevel!,
+      };
+}
+
+/// Overall data about RDD storage.
+class RddStorageInfo {
+  core.List<RddDataDistribution>? dataDistribution;
+  core.String? diskUsed;
+  core.String? memoryUsed;
+  core.String? name;
+  core.int? numCachedPartitions;
+  core.int? numPartitions;
+  core.List<RddPartitionInfo>? partitions;
+  core.int? rddStorageId;
+  core.String? storageLevel;
+
+  RddStorageInfo({
+    this.dataDistribution,
+    this.diskUsed,
+    this.memoryUsed,
+    this.name,
+    this.numCachedPartitions,
+    this.numPartitions,
+    this.partitions,
+    this.rddStorageId,
+    this.storageLevel,
+  });
+
+  RddStorageInfo.fromJson(core.Map json_)
+      : this(
+          dataDistribution: (json_['dataDistribution'] as core.List?)
+              ?.map((value) => RddDataDistribution.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          diskUsed: json_['diskUsed'] as core.String?,
+          memoryUsed: json_['memoryUsed'] as core.String?,
+          name: json_['name'] as core.String?,
+          numCachedPartitions: json_['numCachedPartitions'] as core.int?,
+          numPartitions: json_['numPartitions'] as core.int?,
+          partitions: (json_['partitions'] as core.List?)
+              ?.map((value) => RddPartitionInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          rddStorageId: json_['rddStorageId'] as core.int?,
+          storageLevel: json_['storageLevel'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataDistribution != null) 'dataDistribution': dataDistribution!,
+        if (diskUsed != null) 'diskUsed': diskUsed!,
+        if (memoryUsed != null) 'memoryUsed': memoryUsed!,
+        if (name != null) 'name': name!,
+        if (numCachedPartitions != null)
+          'numCachedPartitions': numCachedPartitions!,
+        if (numPartitions != null) 'numPartitions': numPartitions!,
+        if (partitions != null) 'partitions': partitions!,
+        if (rddStorageId != null) 'rddStorageId': rddStorageId!,
+        if (storageLevel != null) 'storageLevel': storageLevel!,
       };
 }
 
@@ -10436,6 +14643,11 @@ class RegexValidation {
 
 /// A request to repair a cluster.
 class RepairClusterRequest {
+  /// Cluster to be repaired
+  ///
+  /// Optional.
+  ClusterToRepair? cluster;
+
   /// Specifying the cluster_uuid means the RPC will fail (with error NOT_FOUND)
   /// if a cluster with the specified UUID does not exist.
   ///
@@ -10482,6 +14694,7 @@ class RepairClusterRequest {
   core.String? requestId;
 
   RepairClusterRequest({
+    this.cluster,
     this.clusterUuid,
     this.gracefulDecommissionTimeout,
     this.nodePools,
@@ -10491,6 +14704,10 @@ class RepairClusterRequest {
 
   RepairClusterRequest.fromJson(core.Map json_)
       : this(
+          cluster: json_.containsKey('cluster')
+              ? ClusterToRepair.fromJson(
+                  json_['cluster'] as core.Map<core.String, core.dynamic>)
+              : null,
           clusterUuid: json_['clusterUuid'] as core.String?,
           gracefulDecommissionTimeout:
               json_['gracefulDecommissionTimeout'] as core.String?,
@@ -10503,6 +14720,7 @@ class RepairClusterRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cluster != null) 'cluster': cluster!,
         if (clusterUuid != null) 'clusterUuid': clusterUuid!,
         if (gracefulDecommissionTimeout != null)
           'gracefulDecommissionTimeout': gracefulDecommissionTimeout!,
@@ -10705,6 +14923,72 @@ class ResizeNodeGroupRequest {
       };
 }
 
+class ResourceInformation {
+  core.List<core.String>? addresses;
+  core.String? name;
+
+  ResourceInformation({
+    this.addresses,
+    this.name,
+  });
+
+  ResourceInformation.fromJson(core.Map json_)
+      : this(
+          addresses: (json_['addresses'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (addresses != null) 'addresses': addresses!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Resource profile that contains information about all the resources required
+/// by executors and tasks.
+class ResourceProfileInfo {
+  core.Map<core.String, ExecutorResourceRequest>? executorResources;
+  core.int? resourceProfileId;
+  core.Map<core.String, TaskResourceRequest>? taskResources;
+
+  ResourceProfileInfo({
+    this.executorResources,
+    this.resourceProfileId,
+    this.taskResources,
+  });
+
+  ResourceProfileInfo.fromJson(core.Map json_)
+      : this(
+          executorResources: (json_['executorResources']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              ExecutorResourceRequest.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          resourceProfileId: json_['resourceProfileId'] as core.int?,
+          taskResources:
+              (json_['taskResources'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              TaskResourceRequest.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (executorResources != null) 'executorResources': executorResources!,
+        if (resourceProfileId != null) 'resourceProfileId': resourceProfileId!,
+        if (taskResources != null) 'taskResources': taskResources!,
+      };
+}
+
 /// Runtime configuration for a workload.
 class RuntimeConfig {
   /// Autotuning configuration of the workload.
@@ -10859,6 +15143,556 @@ class RuntimeInfo {
       };
 }
 
+/// List of Executors associated with a Spark Application Stage.
+class SearchSessionSparkApplicationExecutorStageSummaryResponse {
+  /// This token is included in the response if there are more results to fetch.
+  ///
+  /// To fetch additional results, provide this value as the page_token in a
+  /// subsequent SearchSessionSparkApplicationExecutorStageSummaryRequest.
+  core.String? nextPageToken;
+
+  /// Details about executors used by the application stage.
+  core.List<ExecutorStageSummary>? sparkApplicationStageExecutors;
+
+  SearchSessionSparkApplicationExecutorStageSummaryResponse({
+    this.nextPageToken,
+    this.sparkApplicationStageExecutors,
+  });
+
+  SearchSessionSparkApplicationExecutorStageSummaryResponse.fromJson(
+      core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          sparkApplicationStageExecutors:
+              (json_['sparkApplicationStageExecutors'] as core.List?)
+                  ?.map((value) => ExecutorStageSummary.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sparkApplicationStageExecutors != null)
+          'sparkApplicationStageExecutors': sparkApplicationStageExecutors!,
+      };
+}
+
+/// List of Executors associated with a Spark Application.
+class SearchSessionSparkApplicationExecutorsResponse {
+  /// This token is included in the response if there are more results to fetch.
+  ///
+  /// To fetch additional results, provide this value as the page_token in a
+  /// subsequent SearchSessionSparkApplicationExecutorsRequest.
+  core.String? nextPageToken;
+
+  /// Details about executors used by the application.
+  core.List<ExecutorSummary>? sparkApplicationExecutors;
+
+  SearchSessionSparkApplicationExecutorsResponse({
+    this.nextPageToken,
+    this.sparkApplicationExecutors,
+  });
+
+  SearchSessionSparkApplicationExecutorsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          sparkApplicationExecutors:
+              (json_['sparkApplicationExecutors'] as core.List?)
+                  ?.map((value) => ExecutorSummary.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sparkApplicationExecutors != null)
+          'sparkApplicationExecutors': sparkApplicationExecutors!,
+      };
+}
+
+/// A list of Jobs associated with a Spark Application.
+class SearchSessionSparkApplicationJobsResponse {
+  /// This token is included in the response if there are more results to fetch.
+  ///
+  /// To fetch additional results, provide this value as the page_token in a
+  /// subsequent SearchSessionSparkApplicationJobsRequest.
+  core.String? nextPageToken;
+
+  /// Data corresponding to a spark job.
+  ///
+  /// Output only.
+  core.List<JobData>? sparkApplicationJobs;
+
+  SearchSessionSparkApplicationJobsResponse({
+    this.nextPageToken,
+    this.sparkApplicationJobs,
+  });
+
+  SearchSessionSparkApplicationJobsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          sparkApplicationJobs: (json_['sparkApplicationJobs'] as core.List?)
+              ?.map((value) => JobData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sparkApplicationJobs != null)
+          'sparkApplicationJobs': sparkApplicationJobs!,
+      };
+}
+
+/// List of all queries for a Spark Application.
+class SearchSessionSparkApplicationSqlQueriesResponse {
+  /// This token is included in the response if there are more results to fetch.
+  ///
+  /// To fetch additional results, provide this value as the page_token in a
+  /// subsequent SearchSessionSparkApplicationSqlQueriesRequest.
+  core.String? nextPageToken;
+
+  /// SQL Execution Data
+  ///
+  /// Output only.
+  core.List<SqlExecutionUiData>? sparkApplicationSqlQueries;
+
+  SearchSessionSparkApplicationSqlQueriesResponse({
+    this.nextPageToken,
+    this.sparkApplicationSqlQueries,
+  });
+
+  SearchSessionSparkApplicationSqlQueriesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          sparkApplicationSqlQueries:
+              (json_['sparkApplicationSqlQueries'] as core.List?)
+                  ?.map((value) => SqlExecutionUiData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sparkApplicationSqlQueries != null)
+          'sparkApplicationSqlQueries': sparkApplicationSqlQueries!,
+      };
+}
+
+/// List of tasks for a stage of a Spark Application
+class SearchSessionSparkApplicationStageAttemptTasksResponse {
+  /// This token is included in the response if there are more results to fetch.
+  ///
+  /// To fetch additional results, provide this value as the page_token in a
+  /// subsequent SearchSessionSparkApplicationStageAttemptTasksRequest.
+  core.String? nextPageToken;
+
+  /// Data corresponding to tasks created by spark.
+  ///
+  /// Output only.
+  core.List<TaskData>? sparkApplicationStageAttemptTasks;
+
+  SearchSessionSparkApplicationStageAttemptTasksResponse({
+    this.nextPageToken,
+    this.sparkApplicationStageAttemptTasks,
+  });
+
+  SearchSessionSparkApplicationStageAttemptTasksResponse.fromJson(
+      core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          sparkApplicationStageAttemptTasks:
+              (json_['sparkApplicationStageAttemptTasks'] as core.List?)
+                  ?.map((value) => TaskData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sparkApplicationStageAttemptTasks != null)
+          'sparkApplicationStageAttemptTasks':
+              sparkApplicationStageAttemptTasks!,
+      };
+}
+
+/// A list of Stage Attempts for a Stage of a Spark Application.
+class SearchSessionSparkApplicationStageAttemptsResponse {
+  /// This token is included in the response if there are more results to fetch.
+  ///
+  /// To fetch additional results, provide this value as the page_token in a
+  /// subsequent SearchSessionSparkApplicationStageAttemptsRequest.
+  core.String? nextPageToken;
+
+  /// Data corresponding to a stage attempts
+  ///
+  /// Output only.
+  core.List<StageData>? sparkApplicationStageAttempts;
+
+  SearchSessionSparkApplicationStageAttemptsResponse({
+    this.nextPageToken,
+    this.sparkApplicationStageAttempts,
+  });
+
+  SearchSessionSparkApplicationStageAttemptsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          sparkApplicationStageAttempts:
+              (json_['sparkApplicationStageAttempts'] as core.List?)
+                  ?.map((value) => StageData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sparkApplicationStageAttempts != null)
+          'sparkApplicationStageAttempts': sparkApplicationStageAttempts!,
+      };
+}
+
+/// A list of stages associated with a Spark Application.
+class SearchSessionSparkApplicationStagesResponse {
+  /// This token is included in the response if there are more results to fetch.
+  ///
+  /// To fetch additional results, provide this value as the page_token in a
+  /// subsequent SearchSessionSparkApplicationStages.
+  core.String? nextPageToken;
+
+  /// Data corresponding to a stage.
+  ///
+  /// Output only.
+  core.List<StageData>? sparkApplicationStages;
+
+  SearchSessionSparkApplicationStagesResponse({
+    this.nextPageToken,
+    this.sparkApplicationStages,
+  });
+
+  SearchSessionSparkApplicationStagesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          sparkApplicationStages:
+              (json_['sparkApplicationStages'] as core.List?)
+                  ?.map((value) => StageData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sparkApplicationStages != null)
+          'sparkApplicationStages': sparkApplicationStages!,
+      };
+}
+
+/// A list of summary of Spark Applications
+class SearchSessionSparkApplicationsResponse {
+  /// This token is included in the response if there are more results to fetch.
+  ///
+  /// To fetch additional results, provide this value as the page_token in a
+  /// subsequent SearchSessionSparkApplicationsRequest.
+  core.String? nextPageToken;
+
+  /// High level information corresponding to an application.
+  ///
+  /// Output only.
+  core.List<SparkApplication>? sparkApplications;
+
+  SearchSessionSparkApplicationsResponse({
+    this.nextPageToken,
+    this.sparkApplications,
+  });
+
+  SearchSessionSparkApplicationsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          sparkApplications: (json_['sparkApplications'] as core.List?)
+              ?.map((value) => SparkApplication.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sparkApplications != null) 'sparkApplications': sparkApplications!,
+      };
+}
+
+/// List of Executors associated with a Spark Application Stage.
+class SearchSparkApplicationExecutorStageSummaryResponse {
+  /// This token is included in the response if there are more results to fetch.
+  ///
+  /// To fetch additional results, provide this value as the page_token in a
+  /// subsequent SearchSparkApplicationExecutorsListRequest.
+  core.String? nextPageToken;
+
+  /// Details about executors used by the application stage.
+  core.List<ExecutorStageSummary>? sparkApplicationStageExecutors;
+
+  SearchSparkApplicationExecutorStageSummaryResponse({
+    this.nextPageToken,
+    this.sparkApplicationStageExecutors,
+  });
+
+  SearchSparkApplicationExecutorStageSummaryResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          sparkApplicationStageExecutors:
+              (json_['sparkApplicationStageExecutors'] as core.List?)
+                  ?.map((value) => ExecutorStageSummary.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sparkApplicationStageExecutors != null)
+          'sparkApplicationStageExecutors': sparkApplicationStageExecutors!,
+      };
+}
+
+/// List of Executors associated with a Spark Application.
+class SearchSparkApplicationExecutorsResponse {
+  /// This token is included in the response if there are more results to fetch.
+  ///
+  /// To fetch additional results, provide this value as the page_token in a
+  /// subsequent SearchSparkApplicationExecutorsListRequest.
+  core.String? nextPageToken;
+
+  /// Details about executors used by the application.
+  core.List<ExecutorSummary>? sparkApplicationExecutors;
+
+  SearchSparkApplicationExecutorsResponse({
+    this.nextPageToken,
+    this.sparkApplicationExecutors,
+  });
+
+  SearchSparkApplicationExecutorsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          sparkApplicationExecutors:
+              (json_['sparkApplicationExecutors'] as core.List?)
+                  ?.map((value) => ExecutorSummary.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sparkApplicationExecutors != null)
+          'sparkApplicationExecutors': sparkApplicationExecutors!,
+      };
+}
+
+/// A list of Jobs associated with a Spark Application.
+class SearchSparkApplicationJobsResponse {
+  /// This token is included in the response if there are more results to fetch.
+  ///
+  /// To fetch additional results, provide this value as the page_token in a
+  /// subsequent SearchSparkApplicationJobsRequest.
+  core.String? nextPageToken;
+
+  /// Data corresponding to a spark job.
+  ///
+  /// Output only.
+  core.List<JobData>? sparkApplicationJobs;
+
+  SearchSparkApplicationJobsResponse({
+    this.nextPageToken,
+    this.sparkApplicationJobs,
+  });
+
+  SearchSparkApplicationJobsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          sparkApplicationJobs: (json_['sparkApplicationJobs'] as core.List?)
+              ?.map((value) => JobData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sparkApplicationJobs != null)
+          'sparkApplicationJobs': sparkApplicationJobs!,
+      };
+}
+
+/// List of all queries for a Spark Application.
+class SearchSparkApplicationSqlQueriesResponse {
+  /// This token is included in the response if there are more results to fetch.
+  ///
+  /// To fetch additional results, provide this value as the page_token in a
+  /// subsequent SearchSparkApplicationSqlQueriesRequest.
+  core.String? nextPageToken;
+
+  /// SQL Execution Data
+  ///
+  /// Output only.
+  core.List<SqlExecutionUiData>? sparkApplicationSqlQueries;
+
+  SearchSparkApplicationSqlQueriesResponse({
+    this.nextPageToken,
+    this.sparkApplicationSqlQueries,
+  });
+
+  SearchSparkApplicationSqlQueriesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          sparkApplicationSqlQueries:
+              (json_['sparkApplicationSqlQueries'] as core.List?)
+                  ?.map((value) => SqlExecutionUiData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sparkApplicationSqlQueries != null)
+          'sparkApplicationSqlQueries': sparkApplicationSqlQueries!,
+      };
+}
+
+/// List of tasks for a stage of a Spark Application
+class SearchSparkApplicationStageAttemptTasksResponse {
+  /// This token is included in the response if there are more results to fetch.
+  ///
+  /// To fetch additional results, provide this value as the page_token in a
+  /// subsequent ListSparkApplicationStageAttemptTasksRequest.
+  core.String? nextPageToken;
+
+  /// Data corresponding to tasks created by spark.
+  ///
+  /// Output only.
+  core.List<TaskData>? sparkApplicationStageAttemptTasks;
+
+  SearchSparkApplicationStageAttemptTasksResponse({
+    this.nextPageToken,
+    this.sparkApplicationStageAttemptTasks,
+  });
+
+  SearchSparkApplicationStageAttemptTasksResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          sparkApplicationStageAttemptTasks:
+              (json_['sparkApplicationStageAttemptTasks'] as core.List?)
+                  ?.map((value) => TaskData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sparkApplicationStageAttemptTasks != null)
+          'sparkApplicationStageAttemptTasks':
+              sparkApplicationStageAttemptTasks!,
+      };
+}
+
+/// A list of Stage Attempts for a Stage of a Spark Application.
+class SearchSparkApplicationStageAttemptsResponse {
+  /// This token is included in the response if there are more results to fetch.
+  ///
+  /// To fetch additional results, provide this value as the page_token in a
+  /// subsequent ListSparkApplicationStageAttemptsRequest.
+  core.String? nextPageToken;
+
+  /// Data corresponding to a stage attempts
+  ///
+  /// Output only.
+  core.List<StageData>? sparkApplicationStageAttempts;
+
+  SearchSparkApplicationStageAttemptsResponse({
+    this.nextPageToken,
+    this.sparkApplicationStageAttempts,
+  });
+
+  SearchSparkApplicationStageAttemptsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          sparkApplicationStageAttempts:
+              (json_['sparkApplicationStageAttempts'] as core.List?)
+                  ?.map((value) => StageData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sparkApplicationStageAttempts != null)
+          'sparkApplicationStageAttempts': sparkApplicationStageAttempts!,
+      };
+}
+
+/// A list of stages associated with a Spark Application.
+class SearchSparkApplicationStagesResponse {
+  /// This token is included in the response if there are more results to fetch.
+  ///
+  /// To fetch additional results, provide this value as the page_token in a
+  /// subsequent SearchSparkApplicationStages.
+  core.String? nextPageToken;
+
+  /// Data corresponding to a stage.
+  ///
+  /// Output only.
+  core.List<StageData>? sparkApplicationStages;
+
+  SearchSparkApplicationStagesResponse({
+    this.nextPageToken,
+    this.sparkApplicationStages,
+  });
+
+  SearchSparkApplicationStagesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          sparkApplicationStages:
+              (json_['sparkApplicationStages'] as core.List?)
+                  ?.map((value) => StageData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sparkApplicationStages != null)
+          'sparkApplicationStages': sparkApplicationStages!,
+      };
+}
+
+/// A list of summary of Spark Applications
+class SearchSparkApplicationsResponse {
+  /// This token is included in the response if there are more results to fetch.
+  ///
+  /// To fetch additional results, provide this value as the page_token in a
+  /// subsequent SearchSparkApplicationsRequest.
+  core.String? nextPageToken;
+
+  /// High level information corresponding to an application.
+  ///
+  /// Output only.
+  core.List<SparkApplication>? sparkApplications;
+
+  SearchSparkApplicationsResponse({
+    this.nextPageToken,
+    this.sparkApplications,
+  });
+
+  SearchSparkApplicationsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          sparkApplications: (json_['sparkApplications'] as core.List?)
+              ?.map((value) => SparkApplication.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sparkApplications != null) 'sparkApplications': sparkApplications!,
+      };
+}
+
 /// Security related configuration, including encryption, Kerberos, etc.
 class SecurityConfig {
   /// Identity related configuration, including service account based secure
@@ -10953,6 +15787,11 @@ class Session {
   /// Optional.
   core.String? sessionTemplate;
 
+  /// Spark connect session config.
+  ///
+  /// Optional.
+  SparkConnectConfig? sparkConnectSession;
+
   /// A state of the session.
   ///
   /// Output only.
@@ -11003,6 +15842,7 @@ class Session {
     this.runtimeConfig,
     this.runtimeInfo,
     this.sessionTemplate,
+    this.sparkConnectSession,
     this.state,
     this.stateHistory,
     this.stateMessage,
@@ -11040,6 +15880,10 @@ class Session {
                   json_['runtimeInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           sessionTemplate: json_['sessionTemplate'] as core.String?,
+          sparkConnectSession: json_.containsKey('sparkConnectSession')
+              ? SparkConnectConfig.fromJson(json_['sparkConnectSession']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           state: json_['state'] as core.String?,
           stateHistory: (json_['stateHistory'] as core.List?)
               ?.map((value) => SessionStateHistory.fromJson(
@@ -11061,6 +15905,8 @@ class Session {
         if (runtimeConfig != null) 'runtimeConfig': runtimeConfig!,
         if (runtimeInfo != null) 'runtimeInfo': runtimeInfo!,
         if (sessionTemplate != null) 'sessionTemplate': sessionTemplate!,
+        if (sparkConnectSession != null)
+          'sparkConnectSession': sparkConnectSession!,
         if (state != null) 'state': state!,
         if (stateHistory != null) 'stateHistory': stateHistory!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
@@ -11162,6 +16008,11 @@ class SessionTemplate {
   /// Optional.
   RuntimeConfig? runtimeConfig;
 
+  /// Spark connect session config.
+  ///
+  /// Optional.
+  SparkConnectConfig? sparkConnectSession;
+
   /// The time the template was last updated.
   ///
   /// Output only.
@@ -11183,6 +16034,7 @@ class SessionTemplate {
     this.labels,
     this.name,
     this.runtimeConfig,
+    this.sparkConnectSession,
     this.updateTime,
     this.uuid,
   });
@@ -11212,6 +16064,10 @@ class SessionTemplate {
               ? RuntimeConfig.fromJson(
                   json_['runtimeConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          sparkConnectSession: json_.containsKey('sparkConnectSession')
+              ? SparkConnectConfig.fromJson(json_['sparkConnectSession']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           updateTime: json_['updateTime'] as core.String?,
           uuid: json_['uuid'] as core.String?,
         );
@@ -11225,6 +16081,8 @@ class SessionTemplate {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (runtimeConfig != null) 'runtimeConfig': runtimeConfig!,
+        if (sparkConnectSession != null)
+          'sparkConnectSession': sparkConnectSession!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (uuid != null) 'uuid': uuid!,
       };
@@ -11296,12 +16154,324 @@ class ShieldedInstanceConfig {
       };
 }
 
+typedef ShufflePushReadMetrics = $ShufflePushReadMetrics;
+
+class ShufflePushReadQuantileMetrics {
+  Quantiles? corruptMergedBlockChunks;
+  Quantiles? localMergedBlocksFetched;
+  Quantiles? localMergedBytesRead;
+  Quantiles? localMergedChunksFetched;
+  Quantiles? mergedFetchFallbackCount;
+  Quantiles? remoteMergedBlocksFetched;
+  Quantiles? remoteMergedBytesRead;
+  Quantiles? remoteMergedChunksFetched;
+  Quantiles? remoteMergedReqsDuration;
+
+  ShufflePushReadQuantileMetrics({
+    this.corruptMergedBlockChunks,
+    this.localMergedBlocksFetched,
+    this.localMergedBytesRead,
+    this.localMergedChunksFetched,
+    this.mergedFetchFallbackCount,
+    this.remoteMergedBlocksFetched,
+    this.remoteMergedBytesRead,
+    this.remoteMergedChunksFetched,
+    this.remoteMergedReqsDuration,
+  });
+
+  ShufflePushReadQuantileMetrics.fromJson(core.Map json_)
+      : this(
+          corruptMergedBlockChunks:
+              json_.containsKey('corruptMergedBlockChunks')
+                  ? Quantiles.fromJson(json_['corruptMergedBlockChunks']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          localMergedBlocksFetched:
+              json_.containsKey('localMergedBlocksFetched')
+                  ? Quantiles.fromJson(json_['localMergedBlocksFetched']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          localMergedBytesRead: json_.containsKey('localMergedBytesRead')
+              ? Quantiles.fromJson(json_['localMergedBytesRead']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          localMergedChunksFetched:
+              json_.containsKey('localMergedChunksFetched')
+                  ? Quantiles.fromJson(json_['localMergedChunksFetched']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          mergedFetchFallbackCount:
+              json_.containsKey('mergedFetchFallbackCount')
+                  ? Quantiles.fromJson(json_['mergedFetchFallbackCount']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          remoteMergedBlocksFetched:
+              json_.containsKey('remoteMergedBlocksFetched')
+                  ? Quantiles.fromJson(json_['remoteMergedBlocksFetched']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          remoteMergedBytesRead: json_.containsKey('remoteMergedBytesRead')
+              ? Quantiles.fromJson(json_['remoteMergedBytesRead']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          remoteMergedChunksFetched:
+              json_.containsKey('remoteMergedChunksFetched')
+                  ? Quantiles.fromJson(json_['remoteMergedChunksFetched']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          remoteMergedReqsDuration:
+              json_.containsKey('remoteMergedReqsDuration')
+                  ? Quantiles.fromJson(json_['remoteMergedReqsDuration']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (corruptMergedBlockChunks != null)
+          'corruptMergedBlockChunks': corruptMergedBlockChunks!,
+        if (localMergedBlocksFetched != null)
+          'localMergedBlocksFetched': localMergedBlocksFetched!,
+        if (localMergedBytesRead != null)
+          'localMergedBytesRead': localMergedBytesRead!,
+        if (localMergedChunksFetched != null)
+          'localMergedChunksFetched': localMergedChunksFetched!,
+        if (mergedFetchFallbackCount != null)
+          'mergedFetchFallbackCount': mergedFetchFallbackCount!,
+        if (remoteMergedBlocksFetched != null)
+          'remoteMergedBlocksFetched': remoteMergedBlocksFetched!,
+        if (remoteMergedBytesRead != null)
+          'remoteMergedBytesRead': remoteMergedBytesRead!,
+        if (remoteMergedChunksFetched != null)
+          'remoteMergedChunksFetched': remoteMergedChunksFetched!,
+        if (remoteMergedReqsDuration != null)
+          'remoteMergedReqsDuration': remoteMergedReqsDuration!,
+      };
+}
+
+/// Shuffle data read by the task.
+class ShuffleReadMetrics {
+  core.String? fetchWaitTimeMillis;
+  core.String? localBlocksFetched;
+  core.String? localBytesRead;
+  core.String? recordsRead;
+  core.String? remoteBlocksFetched;
+  core.String? remoteBytesRead;
+  core.String? remoteBytesReadToDisk;
+  core.String? remoteReqsDuration;
+  ShufflePushReadMetrics? shufflePushReadMetrics;
+
+  ShuffleReadMetrics({
+    this.fetchWaitTimeMillis,
+    this.localBlocksFetched,
+    this.localBytesRead,
+    this.recordsRead,
+    this.remoteBlocksFetched,
+    this.remoteBytesRead,
+    this.remoteBytesReadToDisk,
+    this.remoteReqsDuration,
+    this.shufflePushReadMetrics,
+  });
+
+  ShuffleReadMetrics.fromJson(core.Map json_)
+      : this(
+          fetchWaitTimeMillis: json_['fetchWaitTimeMillis'] as core.String?,
+          localBlocksFetched: json_['localBlocksFetched'] as core.String?,
+          localBytesRead: json_['localBytesRead'] as core.String?,
+          recordsRead: json_['recordsRead'] as core.String?,
+          remoteBlocksFetched: json_['remoteBlocksFetched'] as core.String?,
+          remoteBytesRead: json_['remoteBytesRead'] as core.String?,
+          remoteBytesReadToDisk: json_['remoteBytesReadToDisk'] as core.String?,
+          remoteReqsDuration: json_['remoteReqsDuration'] as core.String?,
+          shufflePushReadMetrics: json_.containsKey('shufflePushReadMetrics')
+              ? ShufflePushReadMetrics.fromJson(json_['shufflePushReadMetrics']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fetchWaitTimeMillis != null)
+          'fetchWaitTimeMillis': fetchWaitTimeMillis!,
+        if (localBlocksFetched != null)
+          'localBlocksFetched': localBlocksFetched!,
+        if (localBytesRead != null) 'localBytesRead': localBytesRead!,
+        if (recordsRead != null) 'recordsRead': recordsRead!,
+        if (remoteBlocksFetched != null)
+          'remoteBlocksFetched': remoteBlocksFetched!,
+        if (remoteBytesRead != null) 'remoteBytesRead': remoteBytesRead!,
+        if (remoteBytesReadToDisk != null)
+          'remoteBytesReadToDisk': remoteBytesReadToDisk!,
+        if (remoteReqsDuration != null)
+          'remoteReqsDuration': remoteReqsDuration!,
+        if (shufflePushReadMetrics != null)
+          'shufflePushReadMetrics': shufflePushReadMetrics!,
+      };
+}
+
+class ShuffleReadQuantileMetrics {
+  Quantiles? fetchWaitTimeMillis;
+  Quantiles? localBlocksFetched;
+  Quantiles? readBytes;
+  Quantiles? readRecords;
+  Quantiles? remoteBlocksFetched;
+  Quantiles? remoteBytesRead;
+  Quantiles? remoteBytesReadToDisk;
+  Quantiles? remoteReqsDuration;
+  ShufflePushReadQuantileMetrics? shufflePushReadMetrics;
+  Quantiles? totalBlocksFetched;
+
+  ShuffleReadQuantileMetrics({
+    this.fetchWaitTimeMillis,
+    this.localBlocksFetched,
+    this.readBytes,
+    this.readRecords,
+    this.remoteBlocksFetched,
+    this.remoteBytesRead,
+    this.remoteBytesReadToDisk,
+    this.remoteReqsDuration,
+    this.shufflePushReadMetrics,
+    this.totalBlocksFetched,
+  });
+
+  ShuffleReadQuantileMetrics.fromJson(core.Map json_)
+      : this(
+          fetchWaitTimeMillis: json_.containsKey('fetchWaitTimeMillis')
+              ? Quantiles.fromJson(json_['fetchWaitTimeMillis']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          localBlocksFetched: json_.containsKey('localBlocksFetched')
+              ? Quantiles.fromJson(json_['localBlocksFetched']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          readBytes: json_.containsKey('readBytes')
+              ? Quantiles.fromJson(
+                  json_['readBytes'] as core.Map<core.String, core.dynamic>)
+              : null,
+          readRecords: json_.containsKey('readRecords')
+              ? Quantiles.fromJson(
+                  json_['readRecords'] as core.Map<core.String, core.dynamic>)
+              : null,
+          remoteBlocksFetched: json_.containsKey('remoteBlocksFetched')
+              ? Quantiles.fromJson(json_['remoteBlocksFetched']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          remoteBytesRead: json_.containsKey('remoteBytesRead')
+              ? Quantiles.fromJson(json_['remoteBytesRead']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          remoteBytesReadToDisk: json_.containsKey('remoteBytesReadToDisk')
+              ? Quantiles.fromJson(json_['remoteBytesReadToDisk']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          remoteReqsDuration: json_.containsKey('remoteReqsDuration')
+              ? Quantiles.fromJson(json_['remoteReqsDuration']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          shufflePushReadMetrics: json_.containsKey('shufflePushReadMetrics')
+              ? ShufflePushReadQuantileMetrics.fromJson(
+                  json_['shufflePushReadMetrics']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          totalBlocksFetched: json_.containsKey('totalBlocksFetched')
+              ? Quantiles.fromJson(json_['totalBlocksFetched']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fetchWaitTimeMillis != null)
+          'fetchWaitTimeMillis': fetchWaitTimeMillis!,
+        if (localBlocksFetched != null)
+          'localBlocksFetched': localBlocksFetched!,
+        if (readBytes != null) 'readBytes': readBytes!,
+        if (readRecords != null) 'readRecords': readRecords!,
+        if (remoteBlocksFetched != null)
+          'remoteBlocksFetched': remoteBlocksFetched!,
+        if (remoteBytesRead != null) 'remoteBytesRead': remoteBytesRead!,
+        if (remoteBytesReadToDisk != null)
+          'remoteBytesReadToDisk': remoteBytesReadToDisk!,
+        if (remoteReqsDuration != null)
+          'remoteReqsDuration': remoteReqsDuration!,
+        if (shufflePushReadMetrics != null)
+          'shufflePushReadMetrics': shufflePushReadMetrics!,
+        if (totalBlocksFetched != null)
+          'totalBlocksFetched': totalBlocksFetched!,
+      };
+}
+
+/// Shuffle data written by task.
+typedef ShuffleWriteMetrics = $ShuffleWriteMetrics;
+
+class ShuffleWriteQuantileMetrics {
+  Quantiles? writeBytes;
+  Quantiles? writeRecords;
+  Quantiles? writeTimeNanos;
+
+  ShuffleWriteQuantileMetrics({
+    this.writeBytes,
+    this.writeRecords,
+    this.writeTimeNanos,
+  });
+
+  ShuffleWriteQuantileMetrics.fromJson(core.Map json_)
+      : this(
+          writeBytes: json_.containsKey('writeBytes')
+              ? Quantiles.fromJson(
+                  json_['writeBytes'] as core.Map<core.String, core.dynamic>)
+              : null,
+          writeRecords: json_.containsKey('writeRecords')
+              ? Quantiles.fromJson(
+                  json_['writeRecords'] as core.Map<core.String, core.dynamic>)
+              : null,
+          writeTimeNanos: json_.containsKey('writeTimeNanos')
+              ? Quantiles.fromJson(json_['writeTimeNanos']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (writeBytes != null) 'writeBytes': writeBytes!,
+        if (writeRecords != null) 'writeRecords': writeRecords!,
+        if (writeTimeNanos != null) 'writeTimeNanos': writeTimeNanos!,
+      };
+}
+
+class SinkProgress {
+  core.String? description;
+  core.Map<core.String, core.String>? metrics;
+  core.String? numOutputRows;
+
+  SinkProgress({
+    this.description,
+    this.metrics,
+    this.numOutputRows,
+  });
+
+  SinkProgress.fromJson(core.Map json_)
+      : this(
+          description: json_['description'] as core.String?,
+          metrics:
+              (json_['metrics'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          numOutputRows: json_['numOutputRows'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (metrics != null) 'metrics': metrics!,
+        if (numOutputRows != null) 'numOutputRows': numOutputRows!,
+      };
+}
+
 /// Specifies the selection and config of software inside the cluster.
 class SoftwareConfig {
   /// The version of software inside the cluster.
   ///
   /// It must be one of the supported Dataproc Versions
-  /// (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions),
+  /// (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported-dataproc-image-versions),
   /// such as "1.2" (including a subminor version, such as "1.2.29"), or the
   /// "preview" version
   /// (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions).
@@ -11355,6 +16525,93 @@ class SoftwareConfig {
         if (optionalComponents != null)
           'optionalComponents': optionalComponents!,
         if (properties != null) 'properties': properties!,
+      };
+}
+
+class SourceProgress {
+  core.String? description;
+  core.String? endOffset;
+  core.double? inputRowsPerSecond;
+  core.String? latestOffset;
+  core.Map<core.String, core.String>? metrics;
+  core.String? numInputRows;
+  core.double? processedRowsPerSecond;
+  core.String? startOffset;
+
+  SourceProgress({
+    this.description,
+    this.endOffset,
+    this.inputRowsPerSecond,
+    this.latestOffset,
+    this.metrics,
+    this.numInputRows,
+    this.processedRowsPerSecond,
+    this.startOffset,
+  });
+
+  SourceProgress.fromJson(core.Map json_)
+      : this(
+          description: json_['description'] as core.String?,
+          endOffset: json_['endOffset'] as core.String?,
+          inputRowsPerSecond:
+              (json_['inputRowsPerSecond'] as core.num?)?.toDouble(),
+          latestOffset: json_['latestOffset'] as core.String?,
+          metrics:
+              (json_['metrics'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          numInputRows: json_['numInputRows'] as core.String?,
+          processedRowsPerSecond:
+              (json_['processedRowsPerSecond'] as core.num?)?.toDouble(),
+          startOffset: json_['startOffset'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (endOffset != null) 'endOffset': endOffset!,
+        if (inputRowsPerSecond != null)
+          'inputRowsPerSecond': inputRowsPerSecond!,
+        if (latestOffset != null) 'latestOffset': latestOffset!,
+        if (metrics != null) 'metrics': metrics!,
+        if (numInputRows != null) 'numInputRows': numInputRows!,
+        if (processedRowsPerSecond != null)
+          'processedRowsPerSecond': processedRowsPerSecond!,
+        if (startOffset != null) 'startOffset': startOffset!,
+      };
+}
+
+/// A summary of Spark Application
+class SparkApplication {
+  /// High level information corresponding to an application.
+  ///
+  /// Output only.
+  ApplicationInfo? application;
+
+  /// Identifier.
+  ///
+  /// Name of the spark application
+  core.String? name;
+
+  SparkApplication({
+    this.application,
+    this.name,
+  });
+
+  SparkApplication.fromJson(core.Map json_)
+      : this(
+          application: json_.containsKey('application')
+              ? ApplicationInfo.fromJson(
+                  json_['application'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (application != null) 'application': application!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -11438,6 +16695,9 @@ class SparkBatch {
         if (mainJarFileUri != null) 'mainJarFileUri': mainJarFileUri!,
       };
 }
+
+/// Spark connect configuration for an interactive session.
+typedef SparkConnectConfig = $Empty;
 
 /// Spark History Server configuration for the workload.
 class SparkHistoryServerConfig {
@@ -11568,6 +16828,164 @@ class SparkJob {
         if (mainClass != null) 'mainClass': mainClass!,
         if (mainJarFileUri != null) 'mainJarFileUri': mainJarFileUri!,
         if (properties != null) 'properties': properties!,
+      };
+}
+
+/// A graph used for storing information of an executionPlan of DataFrame.
+class SparkPlanGraph {
+  core.List<SparkPlanGraphEdge>? edges;
+  core.String? executionId;
+  core.List<SparkPlanGraphNodeWrapper>? nodes;
+
+  SparkPlanGraph({
+    this.edges,
+    this.executionId,
+    this.nodes,
+  });
+
+  SparkPlanGraph.fromJson(core.Map json_)
+      : this(
+          edges: (json_['edges'] as core.List?)
+              ?.map((value) => SparkPlanGraphEdge.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          executionId: json_['executionId'] as core.String?,
+          nodes: (json_['nodes'] as core.List?)
+              ?.map((value) => SparkPlanGraphNodeWrapper.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (edges != null) 'edges': edges!,
+        if (executionId != null) 'executionId': executionId!,
+        if (nodes != null) 'nodes': nodes!,
+      };
+}
+
+/// Represents a tree of spark plan.
+class SparkPlanGraphCluster {
+  core.String? desc;
+  core.List<SqlPlanMetric>? metrics;
+  core.String? name;
+  core.List<SparkPlanGraphNodeWrapper>? nodes;
+  core.String? sparkPlanGraphClusterId;
+
+  SparkPlanGraphCluster({
+    this.desc,
+    this.metrics,
+    this.name,
+    this.nodes,
+    this.sparkPlanGraphClusterId,
+  });
+
+  SparkPlanGraphCluster.fromJson(core.Map json_)
+      : this(
+          desc: json_['desc'] as core.String?,
+          metrics: (json_['metrics'] as core.List?)
+              ?.map((value) => SqlPlanMetric.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          name: json_['name'] as core.String?,
+          nodes: (json_['nodes'] as core.List?)
+              ?.map((value) => SparkPlanGraphNodeWrapper.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          sparkPlanGraphClusterId:
+              json_['sparkPlanGraphClusterId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (desc != null) 'desc': desc!,
+        if (metrics != null) 'metrics': metrics!,
+        if (name != null) 'name': name!,
+        if (nodes != null) 'nodes': nodes!,
+        if (sparkPlanGraphClusterId != null)
+          'sparkPlanGraphClusterId': sparkPlanGraphClusterId!,
+      };
+}
+
+/// Represents a directed edge in the spark plan tree from child to parent.
+class SparkPlanGraphEdge {
+  core.String? fromId;
+  core.String? toId;
+
+  SparkPlanGraphEdge({
+    this.fromId,
+    this.toId,
+  });
+
+  SparkPlanGraphEdge.fromJson(core.Map json_)
+      : this(
+          fromId: json_['fromId'] as core.String?,
+          toId: json_['toId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fromId != null) 'fromId': fromId!,
+        if (toId != null) 'toId': toId!,
+      };
+}
+
+/// Represents a node in the spark plan tree.
+class SparkPlanGraphNode {
+  core.String? desc;
+  core.List<SqlPlanMetric>? metrics;
+  core.String? name;
+  core.String? sparkPlanGraphNodeId;
+
+  SparkPlanGraphNode({
+    this.desc,
+    this.metrics,
+    this.name,
+    this.sparkPlanGraphNodeId,
+  });
+
+  SparkPlanGraphNode.fromJson(core.Map json_)
+      : this(
+          desc: json_['desc'] as core.String?,
+          metrics: (json_['metrics'] as core.List?)
+              ?.map((value) => SqlPlanMetric.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          name: json_['name'] as core.String?,
+          sparkPlanGraphNodeId: json_['sparkPlanGraphNodeId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (desc != null) 'desc': desc!,
+        if (metrics != null) 'metrics': metrics!,
+        if (name != null) 'name': name!,
+        if (sparkPlanGraphNodeId != null)
+          'sparkPlanGraphNodeId': sparkPlanGraphNodeId!,
+      };
+}
+
+/// Wrapper user to represent either a node or a cluster.
+class SparkPlanGraphNodeWrapper {
+  SparkPlanGraphCluster? cluster;
+  SparkPlanGraphNode? node;
+
+  SparkPlanGraphNodeWrapper({
+    this.cluster,
+    this.node,
+  });
+
+  SparkPlanGraphNodeWrapper.fromJson(core.Map json_)
+      : this(
+          cluster: json_.containsKey('cluster')
+              ? SparkPlanGraphCluster.fromJson(
+                  json_['cluster'] as core.Map<core.String, core.dynamic>)
+              : null,
+          node: json_.containsKey('node')
+              ? SparkPlanGraphNode.fromJson(
+                  json_['node'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cluster != null) 'cluster': cluster!,
+        if (node != null) 'node': node!,
       };
 }
 
@@ -11722,6 +17140,31 @@ class SparkRJob {
         if (loggingConfig != null) 'loggingConfig': loggingConfig!,
         if (mainRFileUri != null) 'mainRFileUri': mainRFileUri!,
         if (properties != null) 'properties': properties!,
+      };
+}
+
+class SparkRuntimeInfo {
+  core.String? javaHome;
+  core.String? javaVersion;
+  core.String? scalaVersion;
+
+  SparkRuntimeInfo({
+    this.javaHome,
+    this.javaVersion,
+    this.scalaVersion,
+  });
+
+  SparkRuntimeInfo.fromJson(core.Map json_)
+      : this(
+          javaHome: json_['javaHome'] as core.String?,
+          javaVersion: json_['javaVersion'] as core.String?,
+          scalaVersion: json_['scalaVersion'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (javaHome != null) 'javaHome': javaHome!,
+        if (javaVersion != null) 'javaVersion': javaVersion!,
+        if (scalaVersion != null) 'scalaVersion': scalaVersion!,
       };
 }
 
@@ -11952,6 +17395,826 @@ class SparkStandaloneAutoscalingConfig {
       };
 }
 
+/// Outer message that contains the data obtained from spark listener, packaged
+/// with information that is required to process it.
+class SparkWrapperObject {
+  AppSummary? appSummary;
+  ApplicationEnvironmentInfo? applicationEnvironmentInfo;
+
+  /// Application Id created by Spark.
+  core.String? applicationId;
+  ApplicationInfo? applicationInfo;
+
+  /// VM Timestamp associated with the data object.
+  core.String? eventTimestamp;
+  ExecutorStageSummary? executorStageSummary;
+  ExecutorSummary? executorSummary;
+  JobData? jobData;
+  PoolData? poolData;
+  ProcessSummary? processSummary;
+  RddOperationGraph? rddOperationGraph;
+  RddStorageInfo? rddStorageInfo;
+  ResourceProfileInfo? resourceProfileInfo;
+  SparkPlanGraph? sparkPlanGraph;
+  SpeculationStageSummary? speculationStageSummary;
+  SqlExecutionUiData? sqlExecutionUiData;
+  StageData? stageData;
+  StreamBlockData? streamBlockData;
+  StreamingQueryData? streamingQueryData;
+  StreamingQueryProgress? streamingQueryProgress;
+  TaskData? taskData;
+
+  SparkWrapperObject({
+    this.appSummary,
+    this.applicationEnvironmentInfo,
+    this.applicationId,
+    this.applicationInfo,
+    this.eventTimestamp,
+    this.executorStageSummary,
+    this.executorSummary,
+    this.jobData,
+    this.poolData,
+    this.processSummary,
+    this.rddOperationGraph,
+    this.rddStorageInfo,
+    this.resourceProfileInfo,
+    this.sparkPlanGraph,
+    this.speculationStageSummary,
+    this.sqlExecutionUiData,
+    this.stageData,
+    this.streamBlockData,
+    this.streamingQueryData,
+    this.streamingQueryProgress,
+    this.taskData,
+  });
+
+  SparkWrapperObject.fromJson(core.Map json_)
+      : this(
+          appSummary: json_.containsKey('appSummary')
+              ? AppSummary.fromJson(
+                  json_['appSummary'] as core.Map<core.String, core.dynamic>)
+              : null,
+          applicationEnvironmentInfo:
+              json_.containsKey('applicationEnvironmentInfo')
+                  ? ApplicationEnvironmentInfo.fromJson(
+                      json_['applicationEnvironmentInfo']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          applicationId: json_['applicationId'] as core.String?,
+          applicationInfo: json_.containsKey('applicationInfo')
+              ? ApplicationInfo.fromJson(json_['applicationInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          eventTimestamp: json_['eventTimestamp'] as core.String?,
+          executorStageSummary: json_.containsKey('executorStageSummary')
+              ? ExecutorStageSummary.fromJson(json_['executorStageSummary']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          executorSummary: json_.containsKey('executorSummary')
+              ? ExecutorSummary.fromJson(json_['executorSummary']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          jobData: json_.containsKey('jobData')
+              ? JobData.fromJson(
+                  json_['jobData'] as core.Map<core.String, core.dynamic>)
+              : null,
+          poolData: json_.containsKey('poolData')
+              ? PoolData.fromJson(
+                  json_['poolData'] as core.Map<core.String, core.dynamic>)
+              : null,
+          processSummary: json_.containsKey('processSummary')
+              ? ProcessSummary.fromJson(json_['processSummary']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          rddOperationGraph: json_.containsKey('rddOperationGraph')
+              ? RddOperationGraph.fromJson(json_['rddOperationGraph']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          rddStorageInfo: json_.containsKey('rddStorageInfo')
+              ? RddStorageInfo.fromJson(json_['rddStorageInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          resourceProfileInfo: json_.containsKey('resourceProfileInfo')
+              ? ResourceProfileInfo.fromJson(json_['resourceProfileInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sparkPlanGraph: json_.containsKey('sparkPlanGraph')
+              ? SparkPlanGraph.fromJson(json_['sparkPlanGraph']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          speculationStageSummary: json_.containsKey('speculationStageSummary')
+              ? SpeculationStageSummary.fromJson(
+                  json_['speculationStageSummary']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          sqlExecutionUiData: json_.containsKey('sqlExecutionUiData')
+              ? SqlExecutionUiData.fromJson(json_['sqlExecutionUiData']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          stageData: json_.containsKey('stageData')
+              ? StageData.fromJson(
+                  json_['stageData'] as core.Map<core.String, core.dynamic>)
+              : null,
+          streamBlockData: json_.containsKey('streamBlockData')
+              ? StreamBlockData.fromJson(json_['streamBlockData']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          streamingQueryData: json_.containsKey('streamingQueryData')
+              ? StreamingQueryData.fromJson(json_['streamingQueryData']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          streamingQueryProgress: json_.containsKey('streamingQueryProgress')
+              ? StreamingQueryProgress.fromJson(json_['streamingQueryProgress']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          taskData: json_.containsKey('taskData')
+              ? TaskData.fromJson(
+                  json_['taskData'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appSummary != null) 'appSummary': appSummary!,
+        if (applicationEnvironmentInfo != null)
+          'applicationEnvironmentInfo': applicationEnvironmentInfo!,
+        if (applicationId != null) 'applicationId': applicationId!,
+        if (applicationInfo != null) 'applicationInfo': applicationInfo!,
+        if (eventTimestamp != null) 'eventTimestamp': eventTimestamp!,
+        if (executorStageSummary != null)
+          'executorStageSummary': executorStageSummary!,
+        if (executorSummary != null) 'executorSummary': executorSummary!,
+        if (jobData != null) 'jobData': jobData!,
+        if (poolData != null) 'poolData': poolData!,
+        if (processSummary != null) 'processSummary': processSummary!,
+        if (rddOperationGraph != null) 'rddOperationGraph': rddOperationGraph!,
+        if (rddStorageInfo != null) 'rddStorageInfo': rddStorageInfo!,
+        if (resourceProfileInfo != null)
+          'resourceProfileInfo': resourceProfileInfo!,
+        if (sparkPlanGraph != null) 'sparkPlanGraph': sparkPlanGraph!,
+        if (speculationStageSummary != null)
+          'speculationStageSummary': speculationStageSummary!,
+        if (sqlExecutionUiData != null)
+          'sqlExecutionUiData': sqlExecutionUiData!,
+        if (stageData != null) 'stageData': stageData!,
+        if (streamBlockData != null) 'streamBlockData': streamBlockData!,
+        if (streamingQueryData != null)
+          'streamingQueryData': streamingQueryData!,
+        if (streamingQueryProgress != null)
+          'streamingQueryProgress': streamingQueryProgress!,
+        if (taskData != null) 'taskData': taskData!,
+      };
+}
+
+/// Details of the speculation task when speculative execution is enabled.
+class SpeculationStageSummary {
+  core.int? numActiveTasks;
+  core.int? numCompletedTasks;
+  core.int? numFailedTasks;
+  core.int? numKilledTasks;
+  core.int? numTasks;
+  core.int? stageAttemptId;
+  core.String? stageId;
+
+  SpeculationStageSummary({
+    this.numActiveTasks,
+    this.numCompletedTasks,
+    this.numFailedTasks,
+    this.numKilledTasks,
+    this.numTasks,
+    this.stageAttemptId,
+    this.stageId,
+  });
+
+  SpeculationStageSummary.fromJson(core.Map json_)
+      : this(
+          numActiveTasks: json_['numActiveTasks'] as core.int?,
+          numCompletedTasks: json_['numCompletedTasks'] as core.int?,
+          numFailedTasks: json_['numFailedTasks'] as core.int?,
+          numKilledTasks: json_['numKilledTasks'] as core.int?,
+          numTasks: json_['numTasks'] as core.int?,
+          stageAttemptId: json_['stageAttemptId'] as core.int?,
+          stageId: json_['stageId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (numActiveTasks != null) 'numActiveTasks': numActiveTasks!,
+        if (numCompletedTasks != null) 'numCompletedTasks': numCompletedTasks!,
+        if (numFailedTasks != null) 'numFailedTasks': numFailedTasks!,
+        if (numKilledTasks != null) 'numKilledTasks': numKilledTasks!,
+        if (numTasks != null) 'numTasks': numTasks!,
+        if (stageAttemptId != null) 'stageAttemptId': stageAttemptId!,
+        if (stageId != null) 'stageId': stageId!,
+      };
+}
+
+/// SQL Execution Data
+class SqlExecutionUiData {
+  core.String? completionTime;
+  core.String? description;
+  core.String? details;
+  core.String? errorMessage;
+  core.String? executionId;
+  core.Map<core.String, core.String>? jobs;
+  core.Map<core.String, core.String>? metricValues;
+  core.bool? metricValuesIsNull;
+  core.List<SqlPlanMetric>? metrics;
+  core.Map<core.String, core.String>? modifiedConfigs;
+  core.String? physicalPlanDescription;
+  core.String? rootExecutionId;
+  core.List<core.String>? stages;
+  core.String? submissionTime;
+
+  SqlExecutionUiData({
+    this.completionTime,
+    this.description,
+    this.details,
+    this.errorMessage,
+    this.executionId,
+    this.jobs,
+    this.metricValues,
+    this.metricValuesIsNull,
+    this.metrics,
+    this.modifiedConfigs,
+    this.physicalPlanDescription,
+    this.rootExecutionId,
+    this.stages,
+    this.submissionTime,
+  });
+
+  SqlExecutionUiData.fromJson(core.Map json_)
+      : this(
+          completionTime: json_['completionTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          details: json_['details'] as core.String?,
+          errorMessage: json_['errorMessage'] as core.String?,
+          executionId: json_['executionId'] as core.String?,
+          jobs: (json_['jobs'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          metricValues:
+              (json_['metricValues'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          metricValuesIsNull: json_['metricValuesIsNull'] as core.bool?,
+          metrics: (json_['metrics'] as core.List?)
+              ?.map((value) => SqlPlanMetric.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          modifiedConfigs:
+              (json_['modifiedConfigs'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          physicalPlanDescription:
+              json_['physicalPlanDescription'] as core.String?,
+          rootExecutionId: json_['rootExecutionId'] as core.String?,
+          stages: (json_['stages'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          submissionTime: json_['submissionTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (completionTime != null) 'completionTime': completionTime!,
+        if (description != null) 'description': description!,
+        if (details != null) 'details': details!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (executionId != null) 'executionId': executionId!,
+        if (jobs != null) 'jobs': jobs!,
+        if (metricValues != null) 'metricValues': metricValues!,
+        if (metricValuesIsNull != null)
+          'metricValuesIsNull': metricValuesIsNull!,
+        if (metrics != null) 'metrics': metrics!,
+        if (modifiedConfigs != null) 'modifiedConfigs': modifiedConfigs!,
+        if (physicalPlanDescription != null)
+          'physicalPlanDescription': physicalPlanDescription!,
+        if (rootExecutionId != null) 'rootExecutionId': rootExecutionId!,
+        if (stages != null) 'stages': stages!,
+        if (submissionTime != null) 'submissionTime': submissionTime!,
+      };
+}
+
+/// Metrics related to SQL execution.
+class SqlPlanMetric {
+  core.String? accumulatorId;
+  core.String? metricType;
+  core.String? name;
+
+  SqlPlanMetric({
+    this.accumulatorId,
+    this.metricType,
+    this.name,
+  });
+
+  SqlPlanMetric.fromJson(core.Map json_)
+      : this(
+          accumulatorId: json_['accumulatorId'] as core.String?,
+          metricType: json_['metricType'] as core.String?,
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accumulatorId != null) 'accumulatorId': accumulatorId!,
+        if (metricType != null) 'metricType': metricType!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Data related to tasks summary for a Spark Stage Attempt
+class StageAttemptTasksSummary {
+  core.String? applicationId;
+  core.int? numFailedTasks;
+  core.int? numKilledTasks;
+  core.int? numPendingTasks;
+  core.int? numRunningTasks;
+  core.int? numSuccessTasks;
+  core.int? numTasks;
+  core.int? stageAttemptId;
+  core.String? stageId;
+
+  StageAttemptTasksSummary({
+    this.applicationId,
+    this.numFailedTasks,
+    this.numKilledTasks,
+    this.numPendingTasks,
+    this.numRunningTasks,
+    this.numSuccessTasks,
+    this.numTasks,
+    this.stageAttemptId,
+    this.stageId,
+  });
+
+  StageAttemptTasksSummary.fromJson(core.Map json_)
+      : this(
+          applicationId: json_['applicationId'] as core.String?,
+          numFailedTasks: json_['numFailedTasks'] as core.int?,
+          numKilledTasks: json_['numKilledTasks'] as core.int?,
+          numPendingTasks: json_['numPendingTasks'] as core.int?,
+          numRunningTasks: json_['numRunningTasks'] as core.int?,
+          numSuccessTasks: json_['numSuccessTasks'] as core.int?,
+          numTasks: json_['numTasks'] as core.int?,
+          stageAttemptId: json_['stageAttemptId'] as core.int?,
+          stageId: json_['stageId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (applicationId != null) 'applicationId': applicationId!,
+        if (numFailedTasks != null) 'numFailedTasks': numFailedTasks!,
+        if (numKilledTasks != null) 'numKilledTasks': numKilledTasks!,
+        if (numPendingTasks != null) 'numPendingTasks': numPendingTasks!,
+        if (numRunningTasks != null) 'numRunningTasks': numRunningTasks!,
+        if (numSuccessTasks != null) 'numSuccessTasks': numSuccessTasks!,
+        if (numTasks != null) 'numTasks': numTasks!,
+        if (stageAttemptId != null) 'stageAttemptId': stageAttemptId!,
+        if (stageId != null) 'stageId': stageId!,
+      };
+}
+
+/// Data corresponding to a stage.
+class StageData {
+  core.List<AccumulableInfo>? accumulatorUpdates;
+  core.String? completionTime;
+  core.String? description;
+  core.String? details;
+  ExecutorMetricsDistributions? executorMetricsDistributions;
+  core.Map<core.String, ExecutorStageSummary>? executorSummary;
+  core.String? failureReason;
+  core.String? firstTaskLaunchedTime;
+  core.bool? isShufflePushEnabled;
+  core.List<core.String>? jobIds;
+  core.Map<core.String, core.int>? killedTasksSummary;
+  core.Map<core.String, core.String>? locality;
+  core.String? name;
+  core.int? numActiveTasks;
+  core.int? numCompleteTasks;
+  core.int? numCompletedIndices;
+  core.int? numFailedTasks;
+  core.int? numKilledTasks;
+  core.int? numTasks;
+  core.List<core.String>? parentStageIds;
+  ExecutorMetrics? peakExecutorMetrics;
+  core.List<core.String>? rddIds;
+  core.int? resourceProfileId;
+  core.String? schedulingPool;
+  core.int? shuffleMergersCount;
+  SpeculationStageSummary? speculationSummary;
+  core.int? stageAttemptId;
+  core.String? stageId;
+  StageMetrics? stageMetrics;
+
+  ///
+  /// Possible string values are:
+  /// - "STAGE_STATUS_UNSPECIFIED"
+  /// - "STAGE_STATUS_ACTIVE"
+  /// - "STAGE_STATUS_COMPLETE"
+  /// - "STAGE_STATUS_FAILED"
+  /// - "STAGE_STATUS_PENDING"
+  /// - "STAGE_STATUS_SKIPPED"
+  core.String? status;
+  core.String? submissionTime;
+
+  /// Summary metrics fields.
+  ///
+  /// These are included in response only if present in summary_metrics_mask
+  /// field in request
+  TaskQuantileMetrics? taskQuantileMetrics;
+  core.Map<core.String, TaskData>? tasks;
+
+  StageData({
+    this.accumulatorUpdates,
+    this.completionTime,
+    this.description,
+    this.details,
+    this.executorMetricsDistributions,
+    this.executorSummary,
+    this.failureReason,
+    this.firstTaskLaunchedTime,
+    this.isShufflePushEnabled,
+    this.jobIds,
+    this.killedTasksSummary,
+    this.locality,
+    this.name,
+    this.numActiveTasks,
+    this.numCompleteTasks,
+    this.numCompletedIndices,
+    this.numFailedTasks,
+    this.numKilledTasks,
+    this.numTasks,
+    this.parentStageIds,
+    this.peakExecutorMetrics,
+    this.rddIds,
+    this.resourceProfileId,
+    this.schedulingPool,
+    this.shuffleMergersCount,
+    this.speculationSummary,
+    this.stageAttemptId,
+    this.stageId,
+    this.stageMetrics,
+    this.status,
+    this.submissionTime,
+    this.taskQuantileMetrics,
+    this.tasks,
+  });
+
+  StageData.fromJson(core.Map json_)
+      : this(
+          accumulatorUpdates: (json_['accumulatorUpdates'] as core.List?)
+              ?.map((value) => AccumulableInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          completionTime: json_['completionTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          details: json_['details'] as core.String?,
+          executorMetricsDistributions:
+              json_.containsKey('executorMetricsDistributions')
+                  ? ExecutorMetricsDistributions.fromJson(
+                      json_['executorMetricsDistributions']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          executorSummary:
+              (json_['executorSummary'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              ExecutorStageSummary.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          failureReason: json_['failureReason'] as core.String?,
+          firstTaskLaunchedTime: json_['firstTaskLaunchedTime'] as core.String?,
+          isShufflePushEnabled: json_['isShufflePushEnabled'] as core.bool?,
+          jobIds: (json_['jobIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          killedTasksSummary: (json_['killedTasksSummary']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.int,
+            ),
+          ),
+          locality:
+              (json_['locality'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          name: json_['name'] as core.String?,
+          numActiveTasks: json_['numActiveTasks'] as core.int?,
+          numCompleteTasks: json_['numCompleteTasks'] as core.int?,
+          numCompletedIndices: json_['numCompletedIndices'] as core.int?,
+          numFailedTasks: json_['numFailedTasks'] as core.int?,
+          numKilledTasks: json_['numKilledTasks'] as core.int?,
+          numTasks: json_['numTasks'] as core.int?,
+          parentStageIds: (json_['parentStageIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          peakExecutorMetrics: json_.containsKey('peakExecutorMetrics')
+              ? ExecutorMetrics.fromJson(json_['peakExecutorMetrics']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          rddIds: (json_['rddIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          resourceProfileId: json_['resourceProfileId'] as core.int?,
+          schedulingPool: json_['schedulingPool'] as core.String?,
+          shuffleMergersCount: json_['shuffleMergersCount'] as core.int?,
+          speculationSummary: json_.containsKey('speculationSummary')
+              ? SpeculationStageSummary.fromJson(json_['speculationSummary']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          stageAttemptId: json_['stageAttemptId'] as core.int?,
+          stageId: json_['stageId'] as core.String?,
+          stageMetrics: json_.containsKey('stageMetrics')
+              ? StageMetrics.fromJson(
+                  json_['stageMetrics'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: json_['status'] as core.String?,
+          submissionTime: json_['submissionTime'] as core.String?,
+          taskQuantileMetrics: json_.containsKey('taskQuantileMetrics')
+              ? TaskQuantileMetrics.fromJson(json_['taskQuantileMetrics']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          tasks: (json_['tasks'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              TaskData.fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accumulatorUpdates != null)
+          'accumulatorUpdates': accumulatorUpdates!,
+        if (completionTime != null) 'completionTime': completionTime!,
+        if (description != null) 'description': description!,
+        if (details != null) 'details': details!,
+        if (executorMetricsDistributions != null)
+          'executorMetricsDistributions': executorMetricsDistributions!,
+        if (executorSummary != null) 'executorSummary': executorSummary!,
+        if (failureReason != null) 'failureReason': failureReason!,
+        if (firstTaskLaunchedTime != null)
+          'firstTaskLaunchedTime': firstTaskLaunchedTime!,
+        if (isShufflePushEnabled != null)
+          'isShufflePushEnabled': isShufflePushEnabled!,
+        if (jobIds != null) 'jobIds': jobIds!,
+        if (killedTasksSummary != null)
+          'killedTasksSummary': killedTasksSummary!,
+        if (locality != null) 'locality': locality!,
+        if (name != null) 'name': name!,
+        if (numActiveTasks != null) 'numActiveTasks': numActiveTasks!,
+        if (numCompleteTasks != null) 'numCompleteTasks': numCompleteTasks!,
+        if (numCompletedIndices != null)
+          'numCompletedIndices': numCompletedIndices!,
+        if (numFailedTasks != null) 'numFailedTasks': numFailedTasks!,
+        if (numKilledTasks != null) 'numKilledTasks': numKilledTasks!,
+        if (numTasks != null) 'numTasks': numTasks!,
+        if (parentStageIds != null) 'parentStageIds': parentStageIds!,
+        if (peakExecutorMetrics != null)
+          'peakExecutorMetrics': peakExecutorMetrics!,
+        if (rddIds != null) 'rddIds': rddIds!,
+        if (resourceProfileId != null) 'resourceProfileId': resourceProfileId!,
+        if (schedulingPool != null) 'schedulingPool': schedulingPool!,
+        if (shuffleMergersCount != null)
+          'shuffleMergersCount': shuffleMergersCount!,
+        if (speculationSummary != null)
+          'speculationSummary': speculationSummary!,
+        if (stageAttemptId != null) 'stageAttemptId': stageAttemptId!,
+        if (stageId != null) 'stageId': stageId!,
+        if (stageMetrics != null) 'stageMetrics': stageMetrics!,
+        if (status != null) 'status': status!,
+        if (submissionTime != null) 'submissionTime': submissionTime!,
+        if (taskQuantileMetrics != null)
+          'taskQuantileMetrics': taskQuantileMetrics!,
+        if (tasks != null) 'tasks': tasks!,
+      };
+}
+
+/// Metrics about the input read by the stage.
+typedef StageInputMetrics = $InputMetrics;
+
+/// Stage Level Aggregated Metrics
+class StageMetrics {
+  core.String? diskBytesSpilled;
+  core.String? executorCpuTimeNanos;
+  core.String? executorDeserializeCpuTimeNanos;
+  core.String? executorDeserializeTimeMillis;
+  core.String? executorRunTimeMillis;
+  core.String? jvmGcTimeMillis;
+  core.String? memoryBytesSpilled;
+  core.String? peakExecutionMemoryBytes;
+  core.String? resultSerializationTimeMillis;
+  core.String? resultSize;
+  StageInputMetrics? stageInputMetrics;
+  StageOutputMetrics? stageOutputMetrics;
+  StageShuffleReadMetrics? stageShuffleReadMetrics;
+  StageShuffleWriteMetrics? stageShuffleWriteMetrics;
+
+  StageMetrics({
+    this.diskBytesSpilled,
+    this.executorCpuTimeNanos,
+    this.executorDeserializeCpuTimeNanos,
+    this.executorDeserializeTimeMillis,
+    this.executorRunTimeMillis,
+    this.jvmGcTimeMillis,
+    this.memoryBytesSpilled,
+    this.peakExecutionMemoryBytes,
+    this.resultSerializationTimeMillis,
+    this.resultSize,
+    this.stageInputMetrics,
+    this.stageOutputMetrics,
+    this.stageShuffleReadMetrics,
+    this.stageShuffleWriteMetrics,
+  });
+
+  StageMetrics.fromJson(core.Map json_)
+      : this(
+          diskBytesSpilled: json_['diskBytesSpilled'] as core.String?,
+          executorCpuTimeNanos: json_['executorCpuTimeNanos'] as core.String?,
+          executorDeserializeCpuTimeNanos:
+              json_['executorDeserializeCpuTimeNanos'] as core.String?,
+          executorDeserializeTimeMillis:
+              json_['executorDeserializeTimeMillis'] as core.String?,
+          executorRunTimeMillis: json_['executorRunTimeMillis'] as core.String?,
+          jvmGcTimeMillis: json_['jvmGcTimeMillis'] as core.String?,
+          memoryBytesSpilled: json_['memoryBytesSpilled'] as core.String?,
+          peakExecutionMemoryBytes:
+              json_['peakExecutionMemoryBytes'] as core.String?,
+          resultSerializationTimeMillis:
+              json_['resultSerializationTimeMillis'] as core.String?,
+          resultSize: json_['resultSize'] as core.String?,
+          stageInputMetrics: json_.containsKey('stageInputMetrics')
+              ? StageInputMetrics.fromJson(json_['stageInputMetrics']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          stageOutputMetrics: json_.containsKey('stageOutputMetrics')
+              ? StageOutputMetrics.fromJson(json_['stageOutputMetrics']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          stageShuffleReadMetrics: json_.containsKey('stageShuffleReadMetrics')
+              ? StageShuffleReadMetrics.fromJson(
+                  json_['stageShuffleReadMetrics']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          stageShuffleWriteMetrics:
+              json_.containsKey('stageShuffleWriteMetrics')
+                  ? StageShuffleWriteMetrics.fromJson(
+                      json_['stageShuffleWriteMetrics']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (diskBytesSpilled != null) 'diskBytesSpilled': diskBytesSpilled!,
+        if (executorCpuTimeNanos != null)
+          'executorCpuTimeNanos': executorCpuTimeNanos!,
+        if (executorDeserializeCpuTimeNanos != null)
+          'executorDeserializeCpuTimeNanos': executorDeserializeCpuTimeNanos!,
+        if (executorDeserializeTimeMillis != null)
+          'executorDeserializeTimeMillis': executorDeserializeTimeMillis!,
+        if (executorRunTimeMillis != null)
+          'executorRunTimeMillis': executorRunTimeMillis!,
+        if (jvmGcTimeMillis != null) 'jvmGcTimeMillis': jvmGcTimeMillis!,
+        if (memoryBytesSpilled != null)
+          'memoryBytesSpilled': memoryBytesSpilled!,
+        if (peakExecutionMemoryBytes != null)
+          'peakExecutionMemoryBytes': peakExecutionMemoryBytes!,
+        if (resultSerializationTimeMillis != null)
+          'resultSerializationTimeMillis': resultSerializationTimeMillis!,
+        if (resultSize != null) 'resultSize': resultSize!,
+        if (stageInputMetrics != null) 'stageInputMetrics': stageInputMetrics!,
+        if (stageOutputMetrics != null)
+          'stageOutputMetrics': stageOutputMetrics!,
+        if (stageShuffleReadMetrics != null)
+          'stageShuffleReadMetrics': stageShuffleReadMetrics!,
+        if (stageShuffleWriteMetrics != null)
+          'stageShuffleWriteMetrics': stageShuffleWriteMetrics!,
+      };
+}
+
+/// Metrics about the output written by the stage.
+typedef StageOutputMetrics = $OutputMetrics;
+typedef StageShufflePushReadMetrics = $ShufflePushReadMetrics;
+
+/// Shuffle data read for the stage.
+class StageShuffleReadMetrics {
+  core.String? bytesRead;
+  core.String? fetchWaitTimeMillis;
+  core.String? localBlocksFetched;
+  core.String? localBytesRead;
+  core.String? recordsRead;
+  core.String? remoteBlocksFetched;
+  core.String? remoteBytesRead;
+  core.String? remoteBytesReadToDisk;
+  core.String? remoteReqsDuration;
+  StageShufflePushReadMetrics? stageShufflePushReadMetrics;
+
+  StageShuffleReadMetrics({
+    this.bytesRead,
+    this.fetchWaitTimeMillis,
+    this.localBlocksFetched,
+    this.localBytesRead,
+    this.recordsRead,
+    this.remoteBlocksFetched,
+    this.remoteBytesRead,
+    this.remoteBytesReadToDisk,
+    this.remoteReqsDuration,
+    this.stageShufflePushReadMetrics,
+  });
+
+  StageShuffleReadMetrics.fromJson(core.Map json_)
+      : this(
+          bytesRead: json_['bytesRead'] as core.String?,
+          fetchWaitTimeMillis: json_['fetchWaitTimeMillis'] as core.String?,
+          localBlocksFetched: json_['localBlocksFetched'] as core.String?,
+          localBytesRead: json_['localBytesRead'] as core.String?,
+          recordsRead: json_['recordsRead'] as core.String?,
+          remoteBlocksFetched: json_['remoteBlocksFetched'] as core.String?,
+          remoteBytesRead: json_['remoteBytesRead'] as core.String?,
+          remoteBytesReadToDisk: json_['remoteBytesReadToDisk'] as core.String?,
+          remoteReqsDuration: json_['remoteReqsDuration'] as core.String?,
+          stageShufflePushReadMetrics:
+              json_.containsKey('stageShufflePushReadMetrics')
+                  ? StageShufflePushReadMetrics.fromJson(
+                      json_['stageShufflePushReadMetrics']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bytesRead != null) 'bytesRead': bytesRead!,
+        if (fetchWaitTimeMillis != null)
+          'fetchWaitTimeMillis': fetchWaitTimeMillis!,
+        if (localBlocksFetched != null)
+          'localBlocksFetched': localBlocksFetched!,
+        if (localBytesRead != null) 'localBytesRead': localBytesRead!,
+        if (recordsRead != null) 'recordsRead': recordsRead!,
+        if (remoteBlocksFetched != null)
+          'remoteBlocksFetched': remoteBlocksFetched!,
+        if (remoteBytesRead != null) 'remoteBytesRead': remoteBytesRead!,
+        if (remoteBytesReadToDisk != null)
+          'remoteBytesReadToDisk': remoteBytesReadToDisk!,
+        if (remoteReqsDuration != null)
+          'remoteReqsDuration': remoteReqsDuration!,
+        if (stageShufflePushReadMetrics != null)
+          'stageShufflePushReadMetrics': stageShufflePushReadMetrics!,
+      };
+}
+
+/// Shuffle data written for the stage.
+typedef StageShuffleWriteMetrics = $ShuffleWriteMetrics;
+
+/// Data related to Stages page summary
+class StagesSummary {
+  core.String? applicationId;
+  core.int? numActiveStages;
+  core.int? numCompletedStages;
+  core.int? numFailedStages;
+  core.int? numPendingStages;
+  core.int? numSkippedStages;
+
+  StagesSummary({
+    this.applicationId,
+    this.numActiveStages,
+    this.numCompletedStages,
+    this.numFailedStages,
+    this.numPendingStages,
+    this.numSkippedStages,
+  });
+
+  StagesSummary.fromJson(core.Map json_)
+      : this(
+          applicationId: json_['applicationId'] as core.String?,
+          numActiveStages: json_['numActiveStages'] as core.int?,
+          numCompletedStages: json_['numCompletedStages'] as core.int?,
+          numFailedStages: json_['numFailedStages'] as core.int?,
+          numPendingStages: json_['numPendingStages'] as core.int?,
+          numSkippedStages: json_['numSkippedStages'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (applicationId != null) 'applicationId': applicationId!,
+        if (numActiveStages != null) 'numActiveStages': numActiveStages!,
+        if (numCompletedStages != null)
+          'numCompletedStages': numCompletedStages!,
+        if (numFailedStages != null) 'numFailedStages': numFailedStages!,
+        if (numPendingStages != null) 'numPendingStages': numPendingStages!,
+        if (numSkippedStages != null) 'numSkippedStages': numSkippedStages!,
+      };
+}
+
 /// A request to start a cluster.
 class StartClusterRequest {
   /// Specifying the cluster_uuid means the RPC will fail (with error NOT_FOUND)
@@ -12066,6 +18329,79 @@ class StateHistory {
       };
 }
 
+class StateOperatorProgress {
+  core.String? allRemovalsTimeMs;
+  core.String? allUpdatesTimeMs;
+  core.String? commitTimeMs;
+  core.Map<core.String, core.String>? customMetrics;
+  core.String? memoryUsedBytes;
+  core.String? numRowsDroppedByWatermark;
+  core.String? numRowsRemoved;
+  core.String? numRowsTotal;
+  core.String? numRowsUpdated;
+  core.String? numShufflePartitions;
+  core.String? numStateStoreInstances;
+  core.String? operatorName;
+
+  StateOperatorProgress({
+    this.allRemovalsTimeMs,
+    this.allUpdatesTimeMs,
+    this.commitTimeMs,
+    this.customMetrics,
+    this.memoryUsedBytes,
+    this.numRowsDroppedByWatermark,
+    this.numRowsRemoved,
+    this.numRowsTotal,
+    this.numRowsUpdated,
+    this.numShufflePartitions,
+    this.numStateStoreInstances,
+    this.operatorName,
+  });
+
+  StateOperatorProgress.fromJson(core.Map json_)
+      : this(
+          allRemovalsTimeMs: json_['allRemovalsTimeMs'] as core.String?,
+          allUpdatesTimeMs: json_['allUpdatesTimeMs'] as core.String?,
+          commitTimeMs: json_['commitTimeMs'] as core.String?,
+          customMetrics:
+              (json_['customMetrics'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          memoryUsedBytes: json_['memoryUsedBytes'] as core.String?,
+          numRowsDroppedByWatermark:
+              json_['numRowsDroppedByWatermark'] as core.String?,
+          numRowsRemoved: json_['numRowsRemoved'] as core.String?,
+          numRowsTotal: json_['numRowsTotal'] as core.String?,
+          numRowsUpdated: json_['numRowsUpdated'] as core.String?,
+          numShufflePartitions: json_['numShufflePartitions'] as core.String?,
+          numStateStoreInstances:
+              json_['numStateStoreInstances'] as core.String?,
+          operatorName: json_['operatorName'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allRemovalsTimeMs != null) 'allRemovalsTimeMs': allRemovalsTimeMs!,
+        if (allUpdatesTimeMs != null) 'allUpdatesTimeMs': allUpdatesTimeMs!,
+        if (commitTimeMs != null) 'commitTimeMs': commitTimeMs!,
+        if (customMetrics != null) 'customMetrics': customMetrics!,
+        if (memoryUsedBytes != null) 'memoryUsedBytes': memoryUsedBytes!,
+        if (numRowsDroppedByWatermark != null)
+          'numRowsDroppedByWatermark': numRowsDroppedByWatermark!,
+        if (numRowsRemoved != null) 'numRowsRemoved': numRowsRemoved!,
+        if (numRowsTotal != null) 'numRowsTotal': numRowsTotal!,
+        if (numRowsUpdated != null) 'numRowsUpdated': numRowsUpdated!,
+        if (numShufflePartitions != null)
+          'numShufflePartitions': numShufflePartitions!,
+        if (numStateStoreInstances != null)
+          'numStateStoreInstances': numStateStoreInstances!,
+        if (operatorName != null) 'operatorName': operatorName!,
+      };
+}
+
 /// The Status type defines a logical error model that is suitable for different
 /// programming environments, including REST APIs and RPC APIs.
 ///
@@ -12073,7 +18409,7 @@ class StateHistory {
 /// three pieces of data: error code, error message, and error details.You can
 /// find out more about this error model and how to work with it in the API
 /// Design Guide (https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// A request to stop a cluster.
 class StopClusterRequest {
@@ -12111,6 +18447,190 @@ class StopClusterRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterUuid != null) 'clusterUuid': clusterUuid!,
         if (requestId != null) 'requestId': requestId!,
+      };
+}
+
+/// Stream Block Data.
+class StreamBlockData {
+  core.bool? deserialized;
+  core.String? diskSize;
+  core.String? executorId;
+  core.String? hostPort;
+  core.String? memSize;
+  core.String? name;
+  core.String? storageLevel;
+  core.bool? useDisk;
+  core.bool? useMemory;
+
+  StreamBlockData({
+    this.deserialized,
+    this.diskSize,
+    this.executorId,
+    this.hostPort,
+    this.memSize,
+    this.name,
+    this.storageLevel,
+    this.useDisk,
+    this.useMemory,
+  });
+
+  StreamBlockData.fromJson(core.Map json_)
+      : this(
+          deserialized: json_['deserialized'] as core.bool?,
+          diskSize: json_['diskSize'] as core.String?,
+          executorId: json_['executorId'] as core.String?,
+          hostPort: json_['hostPort'] as core.String?,
+          memSize: json_['memSize'] as core.String?,
+          name: json_['name'] as core.String?,
+          storageLevel: json_['storageLevel'] as core.String?,
+          useDisk: json_['useDisk'] as core.bool?,
+          useMemory: json_['useMemory'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deserialized != null) 'deserialized': deserialized!,
+        if (diskSize != null) 'diskSize': diskSize!,
+        if (executorId != null) 'executorId': executorId!,
+        if (hostPort != null) 'hostPort': hostPort!,
+        if (memSize != null) 'memSize': memSize!,
+        if (name != null) 'name': name!,
+        if (storageLevel != null) 'storageLevel': storageLevel!,
+        if (useDisk != null) 'useDisk': useDisk!,
+        if (useMemory != null) 'useMemory': useMemory!,
+      };
+}
+
+/// Streaming
+class StreamingQueryData {
+  core.String? endTimestamp;
+  core.String? exception;
+  core.bool? isActive;
+  core.String? name;
+  core.String? runId;
+  core.String? startTimestamp;
+  core.String? streamingQueryId;
+
+  StreamingQueryData({
+    this.endTimestamp,
+    this.exception,
+    this.isActive,
+    this.name,
+    this.runId,
+    this.startTimestamp,
+    this.streamingQueryId,
+  });
+
+  StreamingQueryData.fromJson(core.Map json_)
+      : this(
+          endTimestamp: json_['endTimestamp'] as core.String?,
+          exception: json_['exception'] as core.String?,
+          isActive: json_['isActive'] as core.bool?,
+          name: json_['name'] as core.String?,
+          runId: json_['runId'] as core.String?,
+          startTimestamp: json_['startTimestamp'] as core.String?,
+          streamingQueryId: json_['streamingQueryId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTimestamp != null) 'endTimestamp': endTimestamp!,
+        if (exception != null) 'exception': exception!,
+        if (isActive != null) 'isActive': isActive!,
+        if (name != null) 'name': name!,
+        if (runId != null) 'runId': runId!,
+        if (startTimestamp != null) 'startTimestamp': startTimestamp!,
+        if (streamingQueryId != null) 'streamingQueryId': streamingQueryId!,
+      };
+}
+
+class StreamingQueryProgress {
+  core.String? batchDuration;
+  core.String? batchId;
+  core.Map<core.String, core.String>? durationMillis;
+  core.Map<core.String, core.String>? eventTime;
+  core.String? name;
+  core.Map<core.String, core.String>? observedMetrics;
+  core.String? runId;
+  SinkProgress? sink;
+  core.List<SourceProgress>? sources;
+  core.List<StateOperatorProgress>? stateOperators;
+  core.String? streamingQueryProgressId;
+  core.String? timestamp;
+
+  StreamingQueryProgress({
+    this.batchDuration,
+    this.batchId,
+    this.durationMillis,
+    this.eventTime,
+    this.name,
+    this.observedMetrics,
+    this.runId,
+    this.sink,
+    this.sources,
+    this.stateOperators,
+    this.streamingQueryProgressId,
+    this.timestamp,
+  });
+
+  StreamingQueryProgress.fromJson(core.Map json_)
+      : this(
+          batchDuration: json_['batchDuration'] as core.String?,
+          batchId: json_['batchId'] as core.String?,
+          durationMillis:
+              (json_['durationMillis'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          eventTime:
+              (json_['eventTime'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          name: json_['name'] as core.String?,
+          observedMetrics:
+              (json_['observedMetrics'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          runId: json_['runId'] as core.String?,
+          sink: json_.containsKey('sink')
+              ? SinkProgress.fromJson(
+                  json_['sink'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sources: (json_['sources'] as core.List?)
+              ?.map((value) => SourceProgress.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          stateOperators: (json_['stateOperators'] as core.List?)
+              ?.map((value) => StateOperatorProgress.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          streamingQueryProgressId:
+              json_['streamingQueryProgressId'] as core.String?,
+          timestamp: json_['timestamp'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (batchDuration != null) 'batchDuration': batchDuration!,
+        if (batchId != null) 'batchId': batchId!,
+        if (durationMillis != null) 'durationMillis': durationMillis!,
+        if (eventTime != null) 'eventTime': eventTime!,
+        if (name != null) 'name': name!,
+        if (observedMetrics != null) 'observedMetrics': observedMetrics!,
+        if (runId != null) 'runId': runId!,
+        if (sink != null) 'sink': sink!,
+        if (sources != null) 'sources': sources!,
+        if (stateOperators != null) 'stateOperators': stateOperators!,
+        if (streamingQueryProgressId != null)
+          'streamingQueryProgressId': streamingQueryProgressId!,
+        if (timestamp != null) 'timestamp': timestamp!,
       };
 }
 
@@ -12152,6 +18672,629 @@ class SubmitJobRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (job != null) 'job': job!,
         if (requestId != null) 'requestId': requestId!,
+      };
+}
+
+/// Consolidated summary of executors for a Spark Application.
+class SummarizeSessionSparkApplicationExecutorsResponse {
+  /// Consolidated summary for active executors.
+  ConsolidatedExecutorSummary? activeExecutorSummary;
+
+  /// Spark Application Id
+  core.String? applicationId;
+
+  /// Consolidated summary for dead executors.
+  ConsolidatedExecutorSummary? deadExecutorSummary;
+
+  /// Overall consolidated summary for all executors.
+  ConsolidatedExecutorSummary? totalExecutorSummary;
+
+  SummarizeSessionSparkApplicationExecutorsResponse({
+    this.activeExecutorSummary,
+    this.applicationId,
+    this.deadExecutorSummary,
+    this.totalExecutorSummary,
+  });
+
+  SummarizeSessionSparkApplicationExecutorsResponse.fromJson(core.Map json_)
+      : this(
+          activeExecutorSummary: json_.containsKey('activeExecutorSummary')
+              ? ConsolidatedExecutorSummary.fromJson(
+                  json_['activeExecutorSummary']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          applicationId: json_['applicationId'] as core.String?,
+          deadExecutorSummary: json_.containsKey('deadExecutorSummary')
+              ? ConsolidatedExecutorSummary.fromJson(
+                  json_['deadExecutorSummary']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          totalExecutorSummary: json_.containsKey('totalExecutorSummary')
+              ? ConsolidatedExecutorSummary.fromJson(
+                  json_['totalExecutorSummary']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activeExecutorSummary != null)
+          'activeExecutorSummary': activeExecutorSummary!,
+        if (applicationId != null) 'applicationId': applicationId!,
+        if (deadExecutorSummary != null)
+          'deadExecutorSummary': deadExecutorSummary!,
+        if (totalExecutorSummary != null)
+          'totalExecutorSummary': totalExecutorSummary!,
+      };
+}
+
+/// Summary of a Spark Application jobs.
+class SummarizeSessionSparkApplicationJobsResponse {
+  /// Summary of a Spark Application Jobs
+  JobsSummary? jobsSummary;
+
+  SummarizeSessionSparkApplicationJobsResponse({
+    this.jobsSummary,
+  });
+
+  SummarizeSessionSparkApplicationJobsResponse.fromJson(core.Map json_)
+      : this(
+          jobsSummary: json_.containsKey('jobsSummary')
+              ? JobsSummary.fromJson(
+                  json_['jobsSummary'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (jobsSummary != null) 'jobsSummary': jobsSummary!,
+      };
+}
+
+/// Summary of tasks for a Spark Application stage attempt.
+class SummarizeSessionSparkApplicationStageAttemptTasksResponse {
+  /// Summary of tasks for a Spark Application Stage Attempt
+  StageAttemptTasksSummary? stageAttemptTasksSummary;
+
+  SummarizeSessionSparkApplicationStageAttemptTasksResponse({
+    this.stageAttemptTasksSummary,
+  });
+
+  SummarizeSessionSparkApplicationStageAttemptTasksResponse.fromJson(
+      core.Map json_)
+      : this(
+          stageAttemptTasksSummary:
+              json_.containsKey('stageAttemptTasksSummary')
+                  ? StageAttemptTasksSummary.fromJson(
+                      json_['stageAttemptTasksSummary']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (stageAttemptTasksSummary != null)
+          'stageAttemptTasksSummary': stageAttemptTasksSummary!,
+      };
+}
+
+/// Summary of a Spark Application stages.
+class SummarizeSessionSparkApplicationStagesResponse {
+  /// Summary of a Spark Application Stages
+  StagesSummary? stagesSummary;
+
+  SummarizeSessionSparkApplicationStagesResponse({
+    this.stagesSummary,
+  });
+
+  SummarizeSessionSparkApplicationStagesResponse.fromJson(core.Map json_)
+      : this(
+          stagesSummary: json_.containsKey('stagesSummary')
+              ? StagesSummary.fromJson(
+                  json_['stagesSummary'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (stagesSummary != null) 'stagesSummary': stagesSummary!,
+      };
+}
+
+/// Consolidated summary of executors for a Spark Application.
+class SummarizeSparkApplicationExecutorsResponse {
+  /// Consolidated summary for active executors.
+  ConsolidatedExecutorSummary? activeExecutorSummary;
+
+  /// Spark Application Id
+  core.String? applicationId;
+
+  /// Consolidated summary for dead executors.
+  ConsolidatedExecutorSummary? deadExecutorSummary;
+
+  /// Overall consolidated summary for all executors.
+  ConsolidatedExecutorSummary? totalExecutorSummary;
+
+  SummarizeSparkApplicationExecutorsResponse({
+    this.activeExecutorSummary,
+    this.applicationId,
+    this.deadExecutorSummary,
+    this.totalExecutorSummary,
+  });
+
+  SummarizeSparkApplicationExecutorsResponse.fromJson(core.Map json_)
+      : this(
+          activeExecutorSummary: json_.containsKey('activeExecutorSummary')
+              ? ConsolidatedExecutorSummary.fromJson(
+                  json_['activeExecutorSummary']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          applicationId: json_['applicationId'] as core.String?,
+          deadExecutorSummary: json_.containsKey('deadExecutorSummary')
+              ? ConsolidatedExecutorSummary.fromJson(
+                  json_['deadExecutorSummary']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          totalExecutorSummary: json_.containsKey('totalExecutorSummary')
+              ? ConsolidatedExecutorSummary.fromJson(
+                  json_['totalExecutorSummary']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activeExecutorSummary != null)
+          'activeExecutorSummary': activeExecutorSummary!,
+        if (applicationId != null) 'applicationId': applicationId!,
+        if (deadExecutorSummary != null)
+          'deadExecutorSummary': deadExecutorSummary!,
+        if (totalExecutorSummary != null)
+          'totalExecutorSummary': totalExecutorSummary!,
+      };
+}
+
+/// Summary of a Spark Application jobs.
+class SummarizeSparkApplicationJobsResponse {
+  /// Summary of a Spark Application Jobs
+  JobsSummary? jobsSummary;
+
+  SummarizeSparkApplicationJobsResponse({
+    this.jobsSummary,
+  });
+
+  SummarizeSparkApplicationJobsResponse.fromJson(core.Map json_)
+      : this(
+          jobsSummary: json_.containsKey('jobsSummary')
+              ? JobsSummary.fromJson(
+                  json_['jobsSummary'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (jobsSummary != null) 'jobsSummary': jobsSummary!,
+      };
+}
+
+/// Summary of tasks for a Spark Application stage attempt.
+class SummarizeSparkApplicationStageAttemptTasksResponse {
+  /// Summary of tasks for a Spark Application Stage Attempt
+  StageAttemptTasksSummary? stageAttemptTasksSummary;
+
+  SummarizeSparkApplicationStageAttemptTasksResponse({
+    this.stageAttemptTasksSummary,
+  });
+
+  SummarizeSparkApplicationStageAttemptTasksResponse.fromJson(core.Map json_)
+      : this(
+          stageAttemptTasksSummary:
+              json_.containsKey('stageAttemptTasksSummary')
+                  ? StageAttemptTasksSummary.fromJson(
+                      json_['stageAttemptTasksSummary']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (stageAttemptTasksSummary != null)
+          'stageAttemptTasksSummary': stageAttemptTasksSummary!,
+      };
+}
+
+/// Summary of a Spark Application stages.
+class SummarizeSparkApplicationStagesResponse {
+  /// Summary of a Spark Application Stages
+  StagesSummary? stagesSummary;
+
+  SummarizeSparkApplicationStagesResponse({
+    this.stagesSummary,
+  });
+
+  SummarizeSparkApplicationStagesResponse.fromJson(core.Map json_)
+      : this(
+          stagesSummary: json_.containsKey('stagesSummary')
+              ? StagesSummary.fromJson(
+                  json_['stagesSummary'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (stagesSummary != null) 'stagesSummary': stagesSummary!,
+      };
+}
+
+/// Data corresponding to tasks created by spark.
+class TaskData {
+  core.List<AccumulableInfo>? accumulatorUpdates;
+  core.int? attempt;
+  core.String? durationMillis;
+  core.String? errorMessage;
+  core.String? executorId;
+  core.Map<core.String, core.String>? executorLogs;
+  core.String? gettingResultTimeMillis;
+  core.bool? hasMetrics;
+  core.String? host;
+  core.int? index;
+  core.String? launchTime;
+  core.int? partitionId;
+  core.String? resultFetchStart;
+  core.String? schedulerDelayMillis;
+  core.bool? speculative;
+  core.int? stageAttemptId;
+  core.String? stageId;
+  core.String? status;
+  core.String? taskId;
+  core.String? taskLocality;
+  TaskMetrics? taskMetrics;
+
+  TaskData({
+    this.accumulatorUpdates,
+    this.attempt,
+    this.durationMillis,
+    this.errorMessage,
+    this.executorId,
+    this.executorLogs,
+    this.gettingResultTimeMillis,
+    this.hasMetrics,
+    this.host,
+    this.index,
+    this.launchTime,
+    this.partitionId,
+    this.resultFetchStart,
+    this.schedulerDelayMillis,
+    this.speculative,
+    this.stageAttemptId,
+    this.stageId,
+    this.status,
+    this.taskId,
+    this.taskLocality,
+    this.taskMetrics,
+  });
+
+  TaskData.fromJson(core.Map json_)
+      : this(
+          accumulatorUpdates: (json_['accumulatorUpdates'] as core.List?)
+              ?.map((value) => AccumulableInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          attempt: json_['attempt'] as core.int?,
+          durationMillis: json_['durationMillis'] as core.String?,
+          errorMessage: json_['errorMessage'] as core.String?,
+          executorId: json_['executorId'] as core.String?,
+          executorLogs:
+              (json_['executorLogs'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          gettingResultTimeMillis:
+              json_['gettingResultTimeMillis'] as core.String?,
+          hasMetrics: json_['hasMetrics'] as core.bool?,
+          host: json_['host'] as core.String?,
+          index: json_['index'] as core.int?,
+          launchTime: json_['launchTime'] as core.String?,
+          partitionId: json_['partitionId'] as core.int?,
+          resultFetchStart: json_['resultFetchStart'] as core.String?,
+          schedulerDelayMillis: json_['schedulerDelayMillis'] as core.String?,
+          speculative: json_['speculative'] as core.bool?,
+          stageAttemptId: json_['stageAttemptId'] as core.int?,
+          stageId: json_['stageId'] as core.String?,
+          status: json_['status'] as core.String?,
+          taskId: json_['taskId'] as core.String?,
+          taskLocality: json_['taskLocality'] as core.String?,
+          taskMetrics: json_.containsKey('taskMetrics')
+              ? TaskMetrics.fromJson(
+                  json_['taskMetrics'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accumulatorUpdates != null)
+          'accumulatorUpdates': accumulatorUpdates!,
+        if (attempt != null) 'attempt': attempt!,
+        if (durationMillis != null) 'durationMillis': durationMillis!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (executorId != null) 'executorId': executorId!,
+        if (executorLogs != null) 'executorLogs': executorLogs!,
+        if (gettingResultTimeMillis != null)
+          'gettingResultTimeMillis': gettingResultTimeMillis!,
+        if (hasMetrics != null) 'hasMetrics': hasMetrics!,
+        if (host != null) 'host': host!,
+        if (index != null) 'index': index!,
+        if (launchTime != null) 'launchTime': launchTime!,
+        if (partitionId != null) 'partitionId': partitionId!,
+        if (resultFetchStart != null) 'resultFetchStart': resultFetchStart!,
+        if (schedulerDelayMillis != null)
+          'schedulerDelayMillis': schedulerDelayMillis!,
+        if (speculative != null) 'speculative': speculative!,
+        if (stageAttemptId != null) 'stageAttemptId': stageAttemptId!,
+        if (stageId != null) 'stageId': stageId!,
+        if (status != null) 'status': status!,
+        if (taskId != null) 'taskId': taskId!,
+        if (taskLocality != null) 'taskLocality': taskLocality!,
+        if (taskMetrics != null) 'taskMetrics': taskMetrics!,
+      };
+}
+
+/// Executor Task Metrics
+class TaskMetrics {
+  core.String? diskBytesSpilled;
+  core.String? executorCpuTimeNanos;
+  core.String? executorDeserializeCpuTimeNanos;
+  core.String? executorDeserializeTimeMillis;
+  core.String? executorRunTimeMillis;
+  InputMetrics? inputMetrics;
+  core.String? jvmGcTimeMillis;
+  core.String? memoryBytesSpilled;
+  OutputMetrics? outputMetrics;
+  core.String? peakExecutionMemoryBytes;
+  core.String? resultSerializationTimeMillis;
+  core.String? resultSize;
+  ShuffleReadMetrics? shuffleReadMetrics;
+  ShuffleWriteMetrics? shuffleWriteMetrics;
+
+  TaskMetrics({
+    this.diskBytesSpilled,
+    this.executorCpuTimeNanos,
+    this.executorDeserializeCpuTimeNanos,
+    this.executorDeserializeTimeMillis,
+    this.executorRunTimeMillis,
+    this.inputMetrics,
+    this.jvmGcTimeMillis,
+    this.memoryBytesSpilled,
+    this.outputMetrics,
+    this.peakExecutionMemoryBytes,
+    this.resultSerializationTimeMillis,
+    this.resultSize,
+    this.shuffleReadMetrics,
+    this.shuffleWriteMetrics,
+  });
+
+  TaskMetrics.fromJson(core.Map json_)
+      : this(
+          diskBytesSpilled: json_['diskBytesSpilled'] as core.String?,
+          executorCpuTimeNanos: json_['executorCpuTimeNanos'] as core.String?,
+          executorDeserializeCpuTimeNanos:
+              json_['executorDeserializeCpuTimeNanos'] as core.String?,
+          executorDeserializeTimeMillis:
+              json_['executorDeserializeTimeMillis'] as core.String?,
+          executorRunTimeMillis: json_['executorRunTimeMillis'] as core.String?,
+          inputMetrics: json_.containsKey('inputMetrics')
+              ? InputMetrics.fromJson(
+                  json_['inputMetrics'] as core.Map<core.String, core.dynamic>)
+              : null,
+          jvmGcTimeMillis: json_['jvmGcTimeMillis'] as core.String?,
+          memoryBytesSpilled: json_['memoryBytesSpilled'] as core.String?,
+          outputMetrics: json_.containsKey('outputMetrics')
+              ? OutputMetrics.fromJson(
+                  json_['outputMetrics'] as core.Map<core.String, core.dynamic>)
+              : null,
+          peakExecutionMemoryBytes:
+              json_['peakExecutionMemoryBytes'] as core.String?,
+          resultSerializationTimeMillis:
+              json_['resultSerializationTimeMillis'] as core.String?,
+          resultSize: json_['resultSize'] as core.String?,
+          shuffleReadMetrics: json_.containsKey('shuffleReadMetrics')
+              ? ShuffleReadMetrics.fromJson(json_['shuffleReadMetrics']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          shuffleWriteMetrics: json_.containsKey('shuffleWriteMetrics')
+              ? ShuffleWriteMetrics.fromJson(json_['shuffleWriteMetrics']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (diskBytesSpilled != null) 'diskBytesSpilled': diskBytesSpilled!,
+        if (executorCpuTimeNanos != null)
+          'executorCpuTimeNanos': executorCpuTimeNanos!,
+        if (executorDeserializeCpuTimeNanos != null)
+          'executorDeserializeCpuTimeNanos': executorDeserializeCpuTimeNanos!,
+        if (executorDeserializeTimeMillis != null)
+          'executorDeserializeTimeMillis': executorDeserializeTimeMillis!,
+        if (executorRunTimeMillis != null)
+          'executorRunTimeMillis': executorRunTimeMillis!,
+        if (inputMetrics != null) 'inputMetrics': inputMetrics!,
+        if (jvmGcTimeMillis != null) 'jvmGcTimeMillis': jvmGcTimeMillis!,
+        if (memoryBytesSpilled != null)
+          'memoryBytesSpilled': memoryBytesSpilled!,
+        if (outputMetrics != null) 'outputMetrics': outputMetrics!,
+        if (peakExecutionMemoryBytes != null)
+          'peakExecutionMemoryBytes': peakExecutionMemoryBytes!,
+        if (resultSerializationTimeMillis != null)
+          'resultSerializationTimeMillis': resultSerializationTimeMillis!,
+        if (resultSize != null) 'resultSize': resultSize!,
+        if (shuffleReadMetrics != null)
+          'shuffleReadMetrics': shuffleReadMetrics!,
+        if (shuffleWriteMetrics != null)
+          'shuffleWriteMetrics': shuffleWriteMetrics!,
+      };
+}
+
+class TaskQuantileMetrics {
+  Quantiles? diskBytesSpilled;
+  Quantiles? durationMillis;
+  Quantiles? executorCpuTimeNanos;
+  Quantiles? executorDeserializeCpuTimeNanos;
+  Quantiles? executorDeserializeTimeMillis;
+  Quantiles? executorRunTimeMillis;
+  Quantiles? gettingResultTimeMillis;
+  InputQuantileMetrics? inputMetrics;
+  Quantiles? jvmGcTimeMillis;
+  Quantiles? memoryBytesSpilled;
+  OutputQuantileMetrics? outputMetrics;
+  Quantiles? peakExecutionMemoryBytes;
+  Quantiles? resultSerializationTimeMillis;
+  Quantiles? resultSize;
+  Quantiles? schedulerDelayMillis;
+  ShuffleReadQuantileMetrics? shuffleReadMetrics;
+  ShuffleWriteQuantileMetrics? shuffleWriteMetrics;
+
+  TaskQuantileMetrics({
+    this.diskBytesSpilled,
+    this.durationMillis,
+    this.executorCpuTimeNanos,
+    this.executorDeserializeCpuTimeNanos,
+    this.executorDeserializeTimeMillis,
+    this.executorRunTimeMillis,
+    this.gettingResultTimeMillis,
+    this.inputMetrics,
+    this.jvmGcTimeMillis,
+    this.memoryBytesSpilled,
+    this.outputMetrics,
+    this.peakExecutionMemoryBytes,
+    this.resultSerializationTimeMillis,
+    this.resultSize,
+    this.schedulerDelayMillis,
+    this.shuffleReadMetrics,
+    this.shuffleWriteMetrics,
+  });
+
+  TaskQuantileMetrics.fromJson(core.Map json_)
+      : this(
+          diskBytesSpilled: json_.containsKey('diskBytesSpilled')
+              ? Quantiles.fromJson(json_['diskBytesSpilled']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          durationMillis: json_.containsKey('durationMillis')
+              ? Quantiles.fromJson(json_['durationMillis']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          executorCpuTimeNanos: json_.containsKey('executorCpuTimeNanos')
+              ? Quantiles.fromJson(json_['executorCpuTimeNanos']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          executorDeserializeCpuTimeNanos:
+              json_.containsKey('executorDeserializeCpuTimeNanos')
+                  ? Quantiles.fromJson(json_['executorDeserializeCpuTimeNanos']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          executorDeserializeTimeMillis:
+              json_.containsKey('executorDeserializeTimeMillis')
+                  ? Quantiles.fromJson(json_['executorDeserializeTimeMillis']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          executorRunTimeMillis: json_.containsKey('executorRunTimeMillis')
+              ? Quantiles.fromJson(json_['executorRunTimeMillis']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          gettingResultTimeMillis: json_.containsKey('gettingResultTimeMillis')
+              ? Quantiles.fromJson(json_['gettingResultTimeMillis']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          inputMetrics: json_.containsKey('inputMetrics')
+              ? InputQuantileMetrics.fromJson(
+                  json_['inputMetrics'] as core.Map<core.String, core.dynamic>)
+              : null,
+          jvmGcTimeMillis: json_.containsKey('jvmGcTimeMillis')
+              ? Quantiles.fromJson(json_['jvmGcTimeMillis']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          memoryBytesSpilled: json_.containsKey('memoryBytesSpilled')
+              ? Quantiles.fromJson(json_['memoryBytesSpilled']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          outputMetrics: json_.containsKey('outputMetrics')
+              ? OutputQuantileMetrics.fromJson(
+                  json_['outputMetrics'] as core.Map<core.String, core.dynamic>)
+              : null,
+          peakExecutionMemoryBytes:
+              json_.containsKey('peakExecutionMemoryBytes')
+                  ? Quantiles.fromJson(json_['peakExecutionMemoryBytes']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          resultSerializationTimeMillis:
+              json_.containsKey('resultSerializationTimeMillis')
+                  ? Quantiles.fromJson(json_['resultSerializationTimeMillis']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          resultSize: json_.containsKey('resultSize')
+              ? Quantiles.fromJson(
+                  json_['resultSize'] as core.Map<core.String, core.dynamic>)
+              : null,
+          schedulerDelayMillis: json_.containsKey('schedulerDelayMillis')
+              ? Quantiles.fromJson(json_['schedulerDelayMillis']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          shuffleReadMetrics: json_.containsKey('shuffleReadMetrics')
+              ? ShuffleReadQuantileMetrics.fromJson(json_['shuffleReadMetrics']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          shuffleWriteMetrics: json_.containsKey('shuffleWriteMetrics')
+              ? ShuffleWriteQuantileMetrics.fromJson(
+                  json_['shuffleWriteMetrics']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (diskBytesSpilled != null) 'diskBytesSpilled': diskBytesSpilled!,
+        if (durationMillis != null) 'durationMillis': durationMillis!,
+        if (executorCpuTimeNanos != null)
+          'executorCpuTimeNanos': executorCpuTimeNanos!,
+        if (executorDeserializeCpuTimeNanos != null)
+          'executorDeserializeCpuTimeNanos': executorDeserializeCpuTimeNanos!,
+        if (executorDeserializeTimeMillis != null)
+          'executorDeserializeTimeMillis': executorDeserializeTimeMillis!,
+        if (executorRunTimeMillis != null)
+          'executorRunTimeMillis': executorRunTimeMillis!,
+        if (gettingResultTimeMillis != null)
+          'gettingResultTimeMillis': gettingResultTimeMillis!,
+        if (inputMetrics != null) 'inputMetrics': inputMetrics!,
+        if (jvmGcTimeMillis != null) 'jvmGcTimeMillis': jvmGcTimeMillis!,
+        if (memoryBytesSpilled != null)
+          'memoryBytesSpilled': memoryBytesSpilled!,
+        if (outputMetrics != null) 'outputMetrics': outputMetrics!,
+        if (peakExecutionMemoryBytes != null)
+          'peakExecutionMemoryBytes': peakExecutionMemoryBytes!,
+        if (resultSerializationTimeMillis != null)
+          'resultSerializationTimeMillis': resultSerializationTimeMillis!,
+        if (resultSize != null) 'resultSize': resultSize!,
+        if (schedulerDelayMillis != null)
+          'schedulerDelayMillis': schedulerDelayMillis!,
+        if (shuffleReadMetrics != null)
+          'shuffleReadMetrics': shuffleReadMetrics!,
+        if (shuffleWriteMetrics != null)
+          'shuffleWriteMetrics': shuffleWriteMetrics!,
+      };
+}
+
+/// Resources used per task created by the application.
+class TaskResourceRequest {
+  core.double? amount;
+  core.String? resourceName;
+
+  TaskResourceRequest({
+    this.amount,
+    this.resourceName,
+  });
+
+  TaskResourceRequest.fromJson(core.Map json_)
+      : this(
+          amount: (json_['amount'] as core.num?)?.toDouble(),
+          resourceName: json_['resourceName'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (amount != null) 'amount': amount!,
+        if (resourceName != null) 'resourceName': resourceName!,
       };
 }
 
@@ -12773,6 +19916,74 @@ class WorkflowTemplatePlacement {
         if (managedCluster != null) 'managedCluster': managedCluster!,
       };
 }
+
+/// Write Spark Application data to internal storage systems
+class WriteSessionSparkApplicationContextRequest {
+  /// Parent (Batch) resource reference.
+  ///
+  /// Required.
+  core.String? parent;
+
+  /// The batch of spark application context objects sent for ingestion.
+  ///
+  /// Required.
+  core.List<SparkWrapperObject>? sparkWrapperObjects;
+
+  WriteSessionSparkApplicationContextRequest({
+    this.parent,
+    this.sparkWrapperObjects,
+  });
+
+  WriteSessionSparkApplicationContextRequest.fromJson(core.Map json_)
+      : this(
+          parent: json_['parent'] as core.String?,
+          sparkWrapperObjects: (json_['sparkWrapperObjects'] as core.List?)
+              ?.map((value) => SparkWrapperObject.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (parent != null) 'parent': parent!,
+        if (sparkWrapperObjects != null)
+          'sparkWrapperObjects': sparkWrapperObjects!,
+      };
+}
+
+/// Response returned as an acknowledgement of receipt of data.
+typedef WriteSessionSparkApplicationContextResponse = $Empty;
+
+/// Write Spark Application data to internal storage systems
+class WriteSparkApplicationContextRequest {
+  /// Parent (Batch) resource reference.
+  ///
+  /// Required.
+  core.String? parent;
+  core.List<SparkWrapperObject>? sparkWrapperObjects;
+
+  WriteSparkApplicationContextRequest({
+    this.parent,
+    this.sparkWrapperObjects,
+  });
+
+  WriteSparkApplicationContextRequest.fromJson(core.Map json_)
+      : this(
+          parent: json_['parent'] as core.String?,
+          sparkWrapperObjects: (json_['sparkWrapperObjects'] as core.List?)
+              ?.map((value) => SparkWrapperObject.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (parent != null) 'parent': parent!,
+        if (sparkWrapperObjects != null)
+          'sparkWrapperObjects': sparkWrapperObjects!,
+      };
+}
+
+/// Response returned as an acknowledgement of receipt of data.
+typedef WriteSparkApplicationContextResponse = $Empty;
 
 /// A YARN application created by a job.
 ///

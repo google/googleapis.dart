@@ -376,6 +376,28 @@ void checkEnrollDataSourcesRequest(api.EnrollDataSourcesRequest o) {
   buildCounterEnrollDataSourcesRequest--;
 }
 
+core.int buildCounterEventDrivenSchedule = 0;
+api.EventDrivenSchedule buildEventDrivenSchedule() {
+  final o = api.EventDrivenSchedule();
+  buildCounterEventDrivenSchedule++;
+  if (buildCounterEventDrivenSchedule < 3) {
+    o.pubsubSubscription = 'foo';
+  }
+  buildCounterEventDrivenSchedule--;
+  return o;
+}
+
+void checkEventDrivenSchedule(api.EventDrivenSchedule o) {
+  buildCounterEventDrivenSchedule++;
+  if (buildCounterEventDrivenSchedule < 3) {
+    unittest.expect(
+      o.pubsubSubscription!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEventDrivenSchedule--;
+}
+
 core.List<api.DataSource> buildUnnamed5() => [
       buildDataSource(),
       buildDataSource(),
@@ -649,6 +671,21 @@ void checkLocation(api.Location o) {
   buildCounterLocation--;
 }
 
+core.int buildCounterManualSchedule = 0;
+api.ManualSchedule buildManualSchedule() {
+  final o = api.ManualSchedule();
+  buildCounterManualSchedule++;
+  if (buildCounterManualSchedule < 3) {}
+  buildCounterManualSchedule--;
+  return o;
+}
+
+void checkManualSchedule(api.ManualSchedule o) {
+  buildCounterManualSchedule++;
+  if (buildCounterManualSchedule < 3) {}
+  buildCounterManualSchedule--;
+}
+
 core.int buildCounterScheduleOptions = 0;
 api.ScheduleOptions buildScheduleOptions() {
   final o = api.ScheduleOptions();
@@ -676,6 +713,29 @@ void checkScheduleOptions(api.ScheduleOptions o) {
     );
   }
   buildCounterScheduleOptions--;
+}
+
+core.int buildCounterScheduleOptionsV2 = 0;
+api.ScheduleOptionsV2 buildScheduleOptionsV2() {
+  final o = api.ScheduleOptionsV2();
+  buildCounterScheduleOptionsV2++;
+  if (buildCounterScheduleOptionsV2 < 3) {
+    o.eventDrivenSchedule = buildEventDrivenSchedule();
+    o.manualSchedule = buildManualSchedule();
+    o.timeBasedSchedule = buildTimeBasedSchedule();
+  }
+  buildCounterScheduleOptionsV2--;
+  return o;
+}
+
+void checkScheduleOptionsV2(api.ScheduleOptionsV2 o) {
+  buildCounterScheduleOptionsV2++;
+  if (buildCounterScheduleOptionsV2 < 3) {
+    checkEventDrivenSchedule(o.eventDrivenSchedule!);
+    checkManualSchedule(o.manualSchedule!);
+    checkTimeBasedSchedule(o.timeBasedSchedule!);
+  }
+  buildCounterScheduleOptionsV2--;
 }
 
 core.int buildCounterScheduleTransferRunsRequest = 0;
@@ -875,6 +935,38 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
+core.int buildCounterTimeBasedSchedule = 0;
+api.TimeBasedSchedule buildTimeBasedSchedule() {
+  final o = api.TimeBasedSchedule();
+  buildCounterTimeBasedSchedule++;
+  if (buildCounterTimeBasedSchedule < 3) {
+    o.endTime = 'foo';
+    o.schedule = 'foo';
+    o.startTime = 'foo';
+  }
+  buildCounterTimeBasedSchedule--;
+  return o;
+}
+
+void checkTimeBasedSchedule(api.TimeBasedSchedule o) {
+  buildCounterTimeBasedSchedule++;
+  if (buildCounterTimeBasedSchedule < 3) {
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.schedule!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTimeBasedSchedule--;
+}
+
 core.int buildCounterTimeRange = 0;
 api.TimeRange buildTimeRange() {
   final o = api.TimeRange();
@@ -960,6 +1052,7 @@ api.TransferConfig buildTransferConfig() {
     o.displayName = 'foo';
     o.emailPreferences = buildEmailPreferences();
     o.encryptionConfiguration = buildEncryptionConfiguration();
+    o.error = buildStatus();
     o.name = 'foo';
     o.nextRunTime = 'foo';
     o.notificationPubsubTopic = 'foo';
@@ -967,6 +1060,7 @@ api.TransferConfig buildTransferConfig() {
     o.params = buildUnnamed16();
     o.schedule = 'foo';
     o.scheduleOptions = buildScheduleOptions();
+    o.scheduleOptionsV2 = buildScheduleOptionsV2();
     o.state = 'foo';
     o.updateTime = 'foo';
     o.userId = 'foo';
@@ -1001,6 +1095,7 @@ void checkTransferConfig(api.TransferConfig o) {
     );
     checkEmailPreferences(o.emailPreferences!);
     checkEncryptionConfiguration(o.encryptionConfiguration!);
+    checkStatus(o.error!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1020,6 +1115,7 @@ void checkTransferConfig(api.TransferConfig o) {
       unittest.equals('foo'),
     );
     checkScheduleOptions(o.scheduleOptions!);
+    checkScheduleOptionsV2(o.scheduleOptionsV2!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -1437,6 +1533,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-EventDrivenSchedule', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEventDrivenSchedule();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EventDrivenSchedule.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEventDrivenSchedule(od);
+    });
+  });
+
   unittest.group('obj-schema-ListDataSourcesResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListDataSourcesResponse();
@@ -1497,6 +1603,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ManualSchedule', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildManualSchedule();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ManualSchedule.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkManualSchedule(od);
+    });
+  });
+
   unittest.group('obj-schema-ScheduleOptions', () {
     unittest.test('to-json--from-json', () async {
       final o = buildScheduleOptions();
@@ -1504,6 +1620,16 @@ void main() {
       final od = api.ScheduleOptions.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkScheduleOptions(od);
+    });
+  });
+
+  unittest.group('obj-schema-ScheduleOptionsV2', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildScheduleOptionsV2();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ScheduleOptionsV2.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkScheduleOptionsV2(od);
     });
   });
 
@@ -1554,6 +1680,16 @@ void main() {
       final od =
           api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-TimeBasedSchedule', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTimeBasedSchedule();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TimeBasedSchedule.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTimeBasedSchedule(od);
     });
   });
 

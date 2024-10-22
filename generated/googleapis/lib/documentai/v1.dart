@@ -564,6 +564,10 @@ class ProjectsLocationsProcessorsResource {
   /// Creates a processor from the ProcessorType provided.
   ///
   /// The processor will be at `ENABLED` state by default after its creation.
+  /// Note that this method requires the `documentai.processors.create`
+  /// permission on the project, which is highly privileged. A user or service
+  /// account with this permission can create new processors that can interact
+  /// with any gcs bucket in your project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1973,30 +1977,8 @@ class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader {
 }
 
 /// Represents where the chunk starts and ends in the document.
-class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan {
-  /// Page where chunk ends in the document.
-  core.int? pageEnd;
-
-  /// Page where chunk starts in the document.
-  core.int? pageStart;
-
-  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan({
-    this.pageEnd,
-    this.pageStart,
-  });
-
-  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan.fromJson(
-      core.Map json_)
-      : this(
-          pageEnd: json_['pageEnd'] as core.int?,
-          pageStart: json_['pageStart'] as core.int?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (pageEnd != null) 'pageEnd': pageEnd!,
-        if (pageStart != null) 'pageStart': pageStart!,
-      };
-}
+typedef GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan
+    = $GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan;
 
 /// Represents the parsed layout of a document as a collection of blocks that
 /// the document is divided into.
@@ -2151,30 +2133,8 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutList
 }
 
 /// Represents where the block starts and ends in the document.
-class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan {
-  /// Page where block ends in the document.
-  core.int? pageEnd;
-
-  /// Page where block starts in the document.
-  core.int? pageStart;
-
-  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan({
-    this.pageEnd,
-    this.pageStart,
-  });
-
-  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan.fromJson(
-      core.Map json_)
-      : this(
-          pageEnd: json_['pageEnd'] as core.int?,
-          pageStart: json_['pageStart'] as core.int?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (pageEnd != null) 'pageEnd': pageEnd!,
-        if (pageStart != null) 'pageStart': pageStart!,
-      };
-}
+typedef GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan
+    = $GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan;
 
 /// Represents a table type block.
 class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock {
@@ -5281,6 +5241,11 @@ class GoogleCloudDocumentaiV1ProcessRequest {
   /// A raw document on Google Cloud Storage.
   GoogleCloudDocumentaiV1GcsDocument? gcsDocument;
 
+  /// Option to remove images from the document.
+  ///
+  /// Optional.
+  core.bool? imagelessMode;
+
   /// An inline document proto.
   GoogleCloudDocumentaiV1Document? inlineDocument;
 
@@ -5308,6 +5273,7 @@ class GoogleCloudDocumentaiV1ProcessRequest {
   GoogleCloudDocumentaiV1ProcessRequest({
     this.fieldMask,
     this.gcsDocument,
+    this.imagelessMode,
     this.inlineDocument,
     this.labels,
     this.processOptions,
@@ -5322,6 +5288,7 @@ class GoogleCloudDocumentaiV1ProcessRequest {
               ? GoogleCloudDocumentaiV1GcsDocument.fromJson(
                   json_['gcsDocument'] as core.Map<core.String, core.dynamic>)
               : null,
+          imagelessMode: json_['imagelessMode'] as core.bool?,
           inlineDocument: json_.containsKey('inlineDocument')
               ? GoogleCloudDocumentaiV1Document.fromJson(json_['inlineDocument']
                   as core.Map<core.String, core.dynamic>)
@@ -5348,6 +5315,7 @@ class GoogleCloudDocumentaiV1ProcessRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (fieldMask != null) 'fieldMask': fieldMask!,
         if (gcsDocument != null) 'gcsDocument': gcsDocument!,
+        if (imagelessMode != null) 'imagelessMode': imagelessMode!,
         if (inlineDocument != null) 'inlineDocument': inlineDocument!,
         if (labels != null) 'labels': labels!,
         if (processOptions != null) 'processOptions': processOptions!,
@@ -5661,6 +5629,11 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
   /// Describes the output.
   GoogleCloudDocumentaiV1DocumentSchema? documentSchema;
 
+  /// Information about Generative AI model-based processor versions.
+  ///
+  /// Output only.
+  GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo? genAiModelInfo;
+
   /// Denotes that this `ProcessorVersion` is managed by Google.
   ///
   /// Output only.
@@ -5725,6 +5698,7 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
     this.deprecationInfo,
     this.displayName,
     this.documentSchema,
+    this.genAiModelInfo,
     this.googleManaged,
     this.kmsKeyName,
     this.kmsKeyVersionName,
@@ -5750,6 +5724,11 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
                   json_['documentSchema']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          genAiModelInfo: json_.containsKey('genAiModelInfo')
+              ? GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo.fromJson(
+                  json_['genAiModelInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           googleManaged: json_['googleManaged'] as core.bool?,
           kmsKeyName: json_['kmsKeyName'] as core.String?,
           kmsKeyVersionName: json_['kmsKeyVersionName'] as core.String?,
@@ -5770,6 +5749,7 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
         if (deprecationInfo != null) 'deprecationInfo': deprecationInfo!,
         if (displayName != null) 'displayName': displayName!,
         if (documentSchema != null) 'documentSchema': documentSchema!,
+        if (genAiModelInfo != null) 'genAiModelInfo': genAiModelInfo!,
         if (googleManaged != null) 'googleManaged': googleManaged!,
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
@@ -5832,6 +5812,108 @@ class GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo {
         if (deprecationTime != null) 'deprecationTime': deprecationTime!,
         if (replacementProcessorVersion != null)
           'replacementProcessorVersion': replacementProcessorVersion!,
+      };
+}
+
+/// Information about Generative AI model-based processor versions.
+class GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo {
+  /// Information for a custom Generative AI model created by the user.
+  GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo?
+      customGenAiModelInfo;
+
+  /// Information for a pretrained Google-managed foundation model.
+  GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo?
+      foundationGenAiModelInfo;
+
+  GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo({
+    this.customGenAiModelInfo,
+    this.foundationGenAiModelInfo,
+  });
+
+  GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo.fromJson(core.Map json_)
+      : this(
+          customGenAiModelInfo: json_.containsKey('customGenAiModelInfo')
+              ? GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo
+                  .fromJson(json_['customGenAiModelInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          foundationGenAiModelInfo: json_
+                  .containsKey('foundationGenAiModelInfo')
+              ? GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo
+                  .fromJson(json_['foundationGenAiModelInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customGenAiModelInfo != null)
+          'customGenAiModelInfo': customGenAiModelInfo!,
+        if (foundationGenAiModelInfo != null)
+          'foundationGenAiModelInfo': foundationGenAiModelInfo!,
+      };
+}
+
+/// Information for a custom Generative AI model created by the user.
+///
+/// These are created with `Create New Version` in either the `Call foundation
+/// model` or `Fine tuning` tabs.
+class GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo {
+  /// The base processor version ID for the custom model.
+  core.String? baseProcessorVersionId;
+
+  /// The type of custom model created by the user.
+  /// Possible string values are:
+  /// - "CUSTOM_MODEL_TYPE_UNSPECIFIED" : The model type is unspecified.
+  /// - "VERSIONED_FOUNDATION" : The model is a versioned foundation model.
+  /// - "FINE_TUNED" : The model is a finetuned foundation model.
+  core.String? customModelType;
+
+  GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo({
+    this.baseProcessorVersionId,
+    this.customModelType,
+  });
+
+  GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo.fromJson(
+      core.Map json_)
+      : this(
+          baseProcessorVersionId:
+              json_['baseProcessorVersionId'] as core.String?,
+          customModelType: json_['customModelType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (baseProcessorVersionId != null)
+          'baseProcessorVersionId': baseProcessorVersionId!,
+        if (customModelType != null) 'customModelType': customModelType!,
+      };
+}
+
+/// Information for a pretrained Google-managed foundation model.
+class GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo {
+  /// Whether finetuning is allowed for this base processor version.
+  core.bool? finetuningAllowed;
+
+  /// The minimum number of labeled documents in the training dataset required
+  /// for finetuning.
+  core.int? minTrainLabeledDocuments;
+
+  GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo({
+    this.finetuningAllowed,
+    this.minTrainLabeledDocuments,
+  });
+
+  GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo.fromJson(
+      core.Map json_)
+      : this(
+          finetuningAllowed: json_['finetuningAllowed'] as core.bool?,
+          minTrainLabeledDocuments:
+              json_['minTrainLabeledDocuments'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (finetuningAllowed != null) 'finetuningAllowed': finetuningAllowed!,
+        if (minTrainLabeledDocuments != null)
+          'minTrainLabeledDocuments': minTrainLabeledDocuments!,
       };
 }
 
@@ -6295,7 +6377,7 @@ typedef GoogleProtobufEmpty = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef GoogleRpcStatus = $Status;
+typedef GoogleRpcStatus = $Status00;
 
 /// Represents a color in the RGBA color space.
 ///

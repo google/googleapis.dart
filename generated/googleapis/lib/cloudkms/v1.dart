@@ -1106,6 +1106,15 @@ class ProjectsLocationsKeyHandlesResource {
   /// [filter] - Optional. Filter to apply when listing KeyHandles, e.g.
   /// `resource_type_selector="{SERVICE}.googleapis.com/{TYPE}"`.
   ///
+  /// [pageSize] - Optional. Optional limit on the number of KeyHandles to
+  /// include in the response. The service may return fewer than this value.
+  /// Further KeyHandles can subsequently be obtained by including the
+  /// ListKeyHandlesResponse.next_page_token in a subsequent request. If
+  /// unspecified, at most 100 KeyHandles will be returned.
+  ///
+  /// [pageToken] - Optional. Optional pagination token, returned earlier via
+  /// ListKeyHandlesResponse.next_page_token.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1119,10 +1128,14 @@ class ProjectsLocationsKeyHandlesResource {
   async.Future<ListKeyHandlesResponse> list(
     core.String parent, {
     core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3364,20 +3377,35 @@ class AutokeyConfig {
   /// `folders/{FOLDER_NUMBER}/autokeyConfig`.
   core.String? name;
 
+  /// The state for the AutokeyConfig.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state of the AutokeyConfig is unspecified.
+  /// - "ACTIVE" : The AutokeyConfig is currently active.
+  /// - "KEY_PROJECT_DELETED" : A previously configured key project has been
+  /// deleted and the current AutokeyConfig is unusable.
+  /// - "UNINITIALIZED" : The AutokeyConfig is not yet initialized or has been
+  /// reset to its default uninitialized state.
+  core.String? state;
+
   AutokeyConfig({
     this.keyProject,
     this.name,
+    this.state,
   });
 
   AutokeyConfig.fromJson(core.Map json_)
       : this(
           keyProject: json_['keyProject'] as core.String?,
           name: json_['name'] as core.String?,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (keyProject != null) 'keyProject': keyProject!,
         if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -3628,7 +3656,7 @@ class CryptoKey {
   /// The period of time that versions of this key spend in the
   /// DESTROY_SCHEDULED state before transitioning to DESTROYED.
   ///
-  /// If not specified at creation time, the default duration is 24 hours.
+  /// If not specified at creation time, the default duration is 30 days.
   ///
   /// Immutable.
   core.String? destroyScheduledDuration;
@@ -3637,6 +3665,19 @@ class CryptoKey {
   ///
   /// Immutable.
   core.bool? importOnly;
+
+  /// The policy used for Key Access Justifications Policy Enforcement.
+  ///
+  /// If this field is present and this key is enrolled in Key Access
+  /// Justifications Policy Enforcement, the policy will be evaluated in
+  /// encrypt, decrypt, and sign operations, and the operation will fail if
+  /// rejected by the policy. The policy is defined by specifying zero or more
+  /// allowed justification codes.
+  /// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+  /// By default, this field is absent, and all justification codes are allowed.
+  ///
+  /// Optional.
+  KeyAccessJustificationsPolicy? keyAccessJustificationsPolicy;
 
   /// Labels with user-defined metadata.
   ///
@@ -3707,6 +3748,7 @@ class CryptoKey {
     this.cryptoKeyBackend,
     this.destroyScheduledDuration,
     this.importOnly,
+    this.keyAccessJustificationsPolicy,
     this.labels,
     this.name,
     this.nextRotationTime,
@@ -3723,6 +3765,12 @@ class CryptoKey {
           destroyScheduledDuration:
               json_['destroyScheduledDuration'] as core.String?,
           importOnly: json_['importOnly'] as core.bool?,
+          keyAccessJustificationsPolicy:
+              json_.containsKey('keyAccessJustificationsPolicy')
+                  ? KeyAccessJustificationsPolicy.fromJson(
+                      json_['keyAccessJustificationsPolicy']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -3750,6 +3798,8 @@ class CryptoKey {
         if (destroyScheduledDuration != null)
           'destroyScheduledDuration': destroyScheduledDuration!,
         if (importOnly != null) 'importOnly': importOnly!,
+        if (keyAccessJustificationsPolicy != null)
+          'keyAccessJustificationsPolicy': keyAccessJustificationsPolicy!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
@@ -4348,6 +4398,8 @@ class EkmConnection {
   ///
   /// There should be one ServiceResolver per EKM replica. Currently, only a
   /// single ServiceResolver is supported.
+  ///
+  /// Optional.
   core.List<ServiceResolver>? serviceResolvers;
 
   EkmConnection({
@@ -5029,6 +5081,10 @@ class ImportJob {
       };
 }
 
+/// A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason
+/// values for encrypt, decrypt, and sign operations on a CryptoKey.
+typedef KeyAccessJustificationsPolicy = $KeyAccessJustificationsPolicy;
+
 /// Resource-oriented representation of a request to Cloud KMS Autokey and the
 /// resulting provisioning of a CryptoKey.
 class KeyHandle {
@@ -5320,8 +5376,15 @@ class ListKeyHandlesResponse {
   /// Resulting KeyHandles.
   core.List<KeyHandle>? keyHandles;
 
+  /// A token to retrieve next page of results.
+  ///
+  /// Pass this value in ListKeyHandlesRequest.page_token to retrieve the next
+  /// page of results.
+  core.String? nextPageToken;
+
   ListKeyHandlesResponse({
     this.keyHandles,
+    this.nextPageToken,
   });
 
   ListKeyHandlesResponse.fromJson(core.Map json_)
@@ -5330,10 +5393,12 @@ class ListKeyHandlesResponse {
               ?.map((value) => KeyHandle.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (keyHandles != null) 'keyHandles': keyHandles!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -6702,7 +6767,7 @@ class ShowEffectiveAutokeyConfigResponse {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;

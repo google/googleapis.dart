@@ -515,6 +515,9 @@ class LighthouseAuditResultV5 {
   /// The audit's id.
   core.String? id;
 
+  /// The metric savings of the audit.
+  MetricSavings? metricSavings;
+
   /// The unit of the numeric_value field.
   ///
   /// Used to format the numeric value for display.
@@ -551,6 +554,7 @@ class LighthouseAuditResultV5 {
     this.errorMessage,
     this.explanation,
     this.id,
+    this.metricSavings,
     this.numericUnit,
     this.numericValue,
     this.score,
@@ -569,6 +573,10 @@ class LighthouseAuditResultV5 {
           errorMessage: json_['errorMessage'] as core.String?,
           explanation: json_['explanation'] as core.String?,
           id: json_['id'] as core.String?,
+          metricSavings: json_.containsKey('metricSavings')
+              ? MetricSavings.fromJson(
+                  json_['metricSavings'] as core.Map<core.String, core.dynamic>)
+              : null,
           numericUnit: json_['numericUnit'] as core.String?,
           numericValue: (json_['numericValue'] as core.num?)?.toDouble(),
           score: json_['score'],
@@ -584,6 +592,7 @@ class LighthouseAuditResultV5 {
         if (errorMessage != null) 'errorMessage': errorMessage!,
         if (explanation != null) 'explanation': explanation!,
         if (id != null) 'id': id!,
+        if (metricSavings != null) 'metricSavings': metricSavings!,
         if (numericUnit != null) 'numericUnit': numericUnit!,
         if (numericValue != null) 'numericValue': numericValue!,
         if (score != null) 'score': score!,
@@ -826,6 +835,64 @@ class LighthouseResultV5 {
         if (stackPacks != null) 'stackPacks': stackPacks!,
         if (timing != null) 'timing': timing!,
         if (userAgent != null) 'userAgent': userAgent!,
+      };
+}
+
+/// The metric savings of the audit.
+class MetricSavings {
+  /// Optional numeric value representing the audit's savings for the CLS
+  /// metric.
+  ///
+  /// Optional.
+  core.double? CLS;
+
+  /// Optional numeric value representing the audit's savings for the FCP
+  /// metric.
+  ///
+  /// Optional.
+  core.double? FCP;
+
+  /// Optional numeric value representing the audit's savings for the INP
+  /// metric.
+  ///
+  /// Optional.
+  core.double? INP;
+
+  /// Optional numeric value representing the audit's savings for the LCP
+  /// metric.
+  ///
+  /// Optional.
+  core.double? LCP;
+
+  /// Optional numeric value representing the audit's savings for the TBT
+  /// metric.
+  ///
+  /// Optional.
+  core.double? TBT;
+
+  MetricSavings({
+    this.CLS,
+    this.FCP,
+    this.INP,
+    this.LCP,
+    this.TBT,
+  });
+
+  MetricSavings.fromJson(core.Map json_)
+      : this(
+          CLS: (json_['CLS'] as core.num?)?.toDouble(),
+          FCP: (json_['FCP'] as core.num?)?.toDouble(),
+          INP: (json_['INP'] as core.num?)?.toDouble(),
+          LCP: (json_['LCP'] as core.num?)?.toDouble(),
+          TBT: (json_['TBT'] as core.num?)?.toDouble(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (CLS != null) 'CLS': CLS!,
+        if (FCP != null) 'FCP': FCP!,
+        if (INP != null) 'INP': INP!,
+        if (LCP != null) 'LCP': LCP!,
+        if (TBT != null) 'TBT': TBT!,
       };
 }
 

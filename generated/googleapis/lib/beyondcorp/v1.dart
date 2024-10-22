@@ -37,7 +37,16 @@
 ///     - [ProjectsLocationsAppGatewaysResource]
 ///     - [ProjectsLocationsClientConnectorServicesResource]
 ///     - [ProjectsLocationsClientGatewaysResource]
+///     - [ProjectsLocationsGlobalResource]
+///       - [ProjectsLocationsGlobalSecurityGatewaysResource]
+///         - [ProjectsLocationsGlobalSecurityGatewaysApplicationsResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsSecurityGatewaysResource]
+///       - [ProjectsLocationsSecurityGatewaysApplicationsResource]
+/// - [VResource]
+///   - [VProjectsResource]
+///     - [VProjectsLocationsResource]
+///       - [VProjectsLocationsSecurityGatewaysResource]
 library;
 
 import 'dart:async' as async;
@@ -68,6 +77,7 @@ class BeyondCorpApi {
 
   OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
+  VResource get v => VResource(_requester);
 
   BeyondCorpApi(http.Client client,
       {core.String rootUrl = 'https://beyondcorp.googleapis.com/',
@@ -821,8 +831,12 @@ class ProjectsLocationsResource {
           ProjectsLocationsClientConnectorServicesResource(_requester);
   ProjectsLocationsClientGatewaysResource get clientGateways =>
       ProjectsLocationsClientGatewaysResource(_requester);
+  ProjectsLocationsGlobalResource get global =>
+      ProjectsLocationsGlobalResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsSecurityGatewaysResource get securityGateways =>
+      ProjectsLocationsSecurityGatewaysResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -2318,6 +2332,53 @@ class ProjectsLocationsAppGatewaysResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Calls the Bouncer method ShouldThrottle to check if a request should be
+  /// throttled.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/appGateways/\[^/\]+$`.
+  ///
+  /// [port] - Optional. The port that is being throttled
+  ///
+  /// [requestedAmount] - Optional. The current throughput through the port
+  /// (mbps)
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ShouldThrottleResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ShouldThrottleResponse> shouldThrottle(
+    core.String name, {
+    core.int? port,
+    core.String? requestedAmount,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (port != null) 'port': ['${port}'],
+      if (requestedAmount != null) 'requestedAmount': [requestedAmount],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':shouldThrottle';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ShouldThrottleResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns permissions that a caller has on the specified resource.
   ///
   /// If the resource does not exist, this will return an empty set of
@@ -2698,6 +2759,205 @@ class ProjectsLocationsClientGatewaysResource {
   }
 }
 
+class ProjectsLocationsGlobalResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlobalSecurityGatewaysResource get securityGateways =>
+      ProjectsLocationsGlobalSecurityGatewaysResource(_requester);
+
+  ProjectsLocationsGlobalResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsGlobalSecurityGatewaysResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlobalSecurityGatewaysApplicationsResource
+      get applications =>
+          ProjectsLocationsGlobalSecurityGatewaysApplicationsResource(
+              _requester);
+
+  ProjectsLocationsGlobalSecurityGatewaysResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsGlobalSecurityGatewaysApplicationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlobalSecurityGatewaysApplicationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new Application in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the parent SecurityGateway using
+  /// the form:
+  /// `projects/{project_id}/locations/global/securityGateways/{security_gateway_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/securityGateways/\[^/\]+$`.
+  ///
+  /// [applicationId] - Optional. User-settable Application resource ID. * Must
+  /// start with a letter. * Must contain between 4-63 characters from `/a-z-/`.
+  /// * Must end with a number or letter.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore request if it has already been completed. The
+  /// server will guarantee that for at least 60 minutes since the first
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudBeyondcorpSecuritygatewaysV1Application request,
+    core.String parent, {
+    core.String? applicationId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (applicationId != null) 'applicationId': [applicationId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/applications';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single Application.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Name of the resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/securityGateways/\[^/\]+/applications/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request timed out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Mutable fields include: display_name.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GoogleCloudBeyondcorpSecuritygatewaysV1Application request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/securityGateways/\[^/\]+/applications/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -2881,6 +3141,806 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsSecurityGatewaysResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSecurityGatewaysApplicationsResource get applications =>
+      ProjectsLocationsSecurityGatewaysApplicationsResource(_requester);
+
+  ProjectsLocationsSecurityGatewaysResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new SecurityGateway in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource project name of the SecurityGateway
+  /// location using the form: `projects/{project_id}/locations/{location_id}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore request if it has already been completed. The
+  /// server will guarantee that for at least 60 minutes since the first
+  /// request.
+  ///
+  /// [securityGatewayId] - Optional. User-settable SecurityGateway resource ID.
+  /// * Must start with a letter. * Must contain between 4-63 characters from
+  /// `/a-z-/`. * Must end with a number or letter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway request,
+    core.String parent, {
+    core.String? requestId,
+    core.String? securityGatewayId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (securityGatewayId != null) 'securityGatewayId': [securityGatewayId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/securityGateways';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single SecurityGateway.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. BeyondCorp SecurityGateway name using the form:
+  /// `projects/{project_id}/locations/{location_id}/securityGateways/{security_gateway_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/securityGateways/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [validateOnly] - Optional. If set, validates request by executing a
+  /// dry-run which would not alter the resource in any way.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single SecurityGateway.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the PartnerTenant using the form:
+  /// `projects/{project_id}/locations/{location_id}/securityGateway/{security_gateway_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/securityGateways/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/securityGateways/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists SecurityGateways in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent location to which the resources belong.
+  /// `projects/{project_id}/locations/{location_id}/`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter specifying constraints of a list operation.
+  /// All fields in the SecurityGateway message are supported. For example, the
+  /// following query will return the SecurityGateway with displayName
+  /// "test-security-gateway" For more information, please refer to
+  /// https://google.aip.dev/160.
+  ///
+  /// [orderBy] - Optional. Specifies the ordering of results. See
+  /// [Sorting order](https://cloud.google.com/apis/design/design_patterns#sorting_order)
+  /// for more information.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. If not
+  /// specified, a default value of 50 will be used by the service. Regardless
+  /// of the page_size value, the response may include a partial list and a
+  /// caller should only rely on response's next_page_token to determine if
+  /// there are more instances left to be queried.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// ListSecurityGatewayRequest, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+      GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/securityGateways';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single SecurityGateway.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Name of the resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/securityGateways/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request timed out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Mutable fields include: display_name, hubs.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// This is a custom method to allow customers to create a peering connections
+  /// between Google network and customer networks.
+  ///
+  /// This is enabled only for the allowlisted customers.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [securityGateway] - Required. BeyondCorp SecurityGateway name using the
+  /// form:
+  /// `projects/{project}/locations/{location}/securityGateways/{security_gateway}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/securityGateways/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> setPeering(
+    GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest request,
+    core.String securityGateway, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$securityGateway') + ':setPeering';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/securityGateways/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsSecurityGatewaysApplicationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSecurityGatewaysApplicationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes a single Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/securityGateways/\[^/\]+/applications/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [validateOnly] - Optional. If set, validates request by executing a
+  /// dry-run which would not alter the resource in any way.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the Application using the form:
+  /// `projects/{project_id}/locations/global/securityGateway/{security_gateway_id}/applications/{application_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/securityGateways/\[^/\]+/applications/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudBeyondcorpSecuritygatewaysV1Application].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudBeyondcorpSecuritygatewaysV1Application> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudBeyondcorpSecuritygatewaysV1Application.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/securityGateways/\[^/\]+/applications/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Applications in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent location to which the resources belong.
+  /// `projects/{project_id}/locations/global/securityGateways/{security_gateway_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/securityGateways/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter specifying constraints of a list operation.
+  /// All fields in the Application message are supported. For example, the
+  /// following query will return the Application with displayName
+  /// "test-application" For more information, please refer to
+  /// https://google.aip.dev/160.
+  ///
+  /// [orderBy] - Optional. Specifies the ordering of results. See
+  /// [Sorting order](https://cloud.google.com/apis/design/design_patterns#sorting_order)
+  /// for more information.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. If not
+  /// specified, a default value of 50 will be used by the service. Regardless
+  /// of the page_size value, the response may include a partial list and a
+  /// caller should only rely on response's next_page_token to determine if
+  /// there are more instances left to be queried.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// ListApplicationsRequest, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse>
+      list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/applications';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/securityGateways/\[^/\]+/applications/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class VResource {
+  final commons.ApiRequester _requester;
+
+  VProjectsResource get projects => VProjectsResource(_requester);
+
+  VResource(commons.ApiRequester client) : _requester = client;
+}
+
+class VProjectsResource {
+  final commons.ApiRequester _requester;
+
+  VProjectsLocationsResource get locations =>
+      VProjectsLocationsResource(_requester);
+
+  VProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class VProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  VProjectsLocationsSecurityGatewaysResource get securityGateways =>
+      VProjectsLocationsSecurityGatewaysResource(_requester);
+
+  VProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class VProjectsLocationsSecurityGatewaysResource {
+  final commons.ApiRequester _requester;
+
+  VProjectsLocationsSecurityGatewaysResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/securityGateways/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3921,6 +4981,415 @@ class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo {
       };
 }
 
+/// A Beyondcorp Application resource information.
+class GoogleCloudBeyondcorpSecuritygatewaysV1Application {
+  /// Timestamp when the resource was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// An arbitrary user-provided name for the Application resource.
+  ///
+  /// Cannot exceed 64 characters.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Endpoint matchers associated with an application.
+  ///
+  /// A combination of hostname and ports as endpoint matcher is used to match
+  /// the application. Match conditions for OR logic. An array of match
+  /// conditions to allow for multiple matching criteria. The rule is considered
+  /// a match if one the conditions are met. The conditions can be one of the
+  /// following combination (Hostname), (Hostname & Ports) EXAMPLES: Hostname -
+  /// ("*.abc.com"), ("xyz.abc.com") Hostname and Ports - ("abc.com" and "22"),
+  /// ("abc.com" and "22,33") etc
+  ///
+  /// Required.
+  core.List<GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher>?
+      endpointMatchers;
+
+  /// Identifier.
+  ///
+  /// Name of the resource.
+  core.String? name;
+
+  /// Timestamp when the resource was last modified.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1Application({
+    this.createTime,
+    this.displayName,
+    this.endpointMatchers,
+    this.name,
+    this.updateTime,
+  });
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1Application.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          endpointMatchers: (json_['endpointMatchers'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          name: json_['name'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (endpointMatchers != null) 'endpointMatchers': endpointMatchers!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// EndpointMatcher contains the information of the endpoint that will match the
+/// application.
+class GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher {
+  /// Hostname of the application.
+  ///
+  /// Required.
+  core.String? hostname;
+
+  /// Ports of the application.
+  ///
+  /// Optional.
+  core.List<core.int>? ports;
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher({
+    this.hostname,
+    this.ports,
+  });
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher.fromJson(
+      core.Map json_)
+      : this(
+          hostname: json_['hostname'] as core.String?,
+          ports: (json_['ports'] as core.List?)
+              ?.map((value) => value as core.int)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hostname != null) 'hostname': hostname!,
+        if (ports != null) 'ports': ports!,
+      };
+}
+
+/// The Hub message contains information pertaining to the regional data path
+/// deployments.
+class GoogleCloudBeyondcorpSecuritygatewaysV1Hub {
+  /// Internet Gateway configuration.
+  ///
+  /// Optional.
+  GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway? internetGateway;
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1Hub({
+    this.internetGateway,
+  });
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1Hub.fromJson(core.Map json_)
+      : this(
+          internetGateway: json_.containsKey('internetGateway')
+              ? GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway.fromJson(
+                  json_['internetGateway']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (internetGateway != null) 'internetGateway': internetGateway!,
+      };
+}
+
+/// Represents the Internet Gateway configuration.
+class GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway {
+  /// List of IP addresses assigned to the Cloud NAT.
+  ///
+  /// Output only.
+  core.List<core.String>? assignedIps;
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway({
+    this.assignedIps,
+  });
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway.fromJson(
+      core.Map json_)
+      : this(
+          assignedIps: (json_['assignedIps'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assignedIps != null) 'assignedIps': assignedIps!,
+      };
+}
+
+/// Message for response to listing Applications.
+class GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse {
+  /// A list of BeyondCorp Application in the project.
+  core.List<GoogleCloudBeyondcorpSecuritygatewaysV1Application>? applications;
+
+  /// A token to retrieve the next page of results, or empty if there are no
+  /// more results in the list.
+  core.String? nextPageToken;
+
+  /// A list of locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse({
+    this.applications,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse.fromJson(
+      core.Map json_)
+      : this(
+          applications: (json_['applications'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudBeyondcorpSecuritygatewaysV1Application.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (applications != null) 'applications': applications!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Message for response to listing SecurityGateways.
+class GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse {
+  /// A token to retrieve the next page of results, or empty if there are no
+  /// more results in the list.
+  core.String? nextPageToken;
+
+  /// A list of BeyondCorp SecurityGateway in the project.
+  core.List<GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway>?
+      securityGateways;
+
+  /// A list of locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse({
+    this.nextPageToken,
+    this.securityGateways,
+    this.unreachable,
+  });
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse.fromJson(
+      core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          securityGateways: (json_['securityGateways'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (securityGateways != null) 'securityGateways': securityGateways!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// VPC Peering details.
+class GoogleCloudBeyondcorpSecuritygatewaysV1Peering {
+  /// List of DNS zones for DNS peering with the customer VPC network.
+  ///
+  /// Optional.
+  core.List<core.String>? dnsZones;
+
+  /// The name of the Target VPC network name in the format:
+  /// \`projects/{project}/global/networks/{network}
+  ///
+  /// Required.
+  core.String? targetNetwork;
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1Peering({
+    this.dnsZones,
+    this.targetNetwork,
+  });
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1Peering.fromJson(core.Map json_)
+      : this(
+          dnsZones: (json_['dnsZones'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          targetNetwork: json_['targetNetwork'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dnsZones != null) 'dnsZones': dnsZones!,
+        if (targetNetwork != null) 'targetNetwork': targetNetwork!,
+      };
+}
+
+/// Information about a BeyoncCorp SecurityGateway resource.
+class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
+  /// Timestamp when the resource was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// An arbitrary user-provided name for the SecurityGateway.
+  ///
+  /// Cannot exceed 64 characters.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// IP addresses that will be used for establishing connection to the
+  /// endpoints.
+  ///
+  /// Output only.
+  core.List<core.String>? externalIps;
+
+  /// Map of Hubs that represents regional data path deployment with GCP region
+  /// as a key.
+  ///
+  /// Optional.
+  core.Map<core.String, GoogleCloudBeyondcorpSecuritygatewaysV1Hub>? hubs;
+
+  /// Identifier.
+  ///
+  /// Name of the resource.
+  core.String? name;
+
+  /// The operational state of the SecurityGateway.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "CREATING" : SecurityGateway is being created.
+  /// - "UPDATING" : SecurityGateway is being updated.
+  /// - "DELETING" : SecurityGateway is being deleted.
+  /// - "RUNNING" : SecurityGateway is running.
+  /// - "DOWN" : SecurityGateway is down and may be restored in the future. This
+  /// happens when CCFE sends ProjectState = OFF.
+  /// - "ERROR" : SecurityGateway encountered an error and is in an
+  /// indeterministic state.
+  core.String? state;
+
+  /// Timestamp when the resource was last modified.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway({
+    this.createTime,
+    this.displayName,
+    this.externalIps,
+    this.hubs,
+    this.name,
+    this.state,
+    this.updateTime,
+  });
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway.fromJson(
+      core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          externalIps: (json_['externalIps'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          hubs: (json_['hubs'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudBeyondcorpSecuritygatewaysV1Hub.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          name: json_['name'] as core.String?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (externalIps != null) 'externalIps': externalIps!,
+        if (hubs != null) 'hubs': hubs!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Set Peering request for creating a VPC peering between Google network and
+/// customer networks.
+class GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest {
+  /// List of Peering connection information.
+  ///
+  /// Required.
+  core.List<GoogleCloudBeyondcorpSecuritygatewaysV1Peering>? peerings;
+
+  /// An optional request ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  /// If set, validates request by executing a dry-run which would not alter the
+  /// resource in any way.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest({
+    this.peerings,
+    this.requestId,
+    this.validateOnly,
+  });
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest.fromJson(
+      core.Map json_)
+      : this(
+          peerings: (json_['peerings'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudBeyondcorpSecuritygatewaysV1Peering.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          requestId: json_['requestId'] as core.String?,
+          validateOnly: json_['validateOnly'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (peerings != null) 'peerings': peerings!,
+        if (requestId != null) 'requestId': requestId!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
+      };
+}
+
 /// The response message for Locations.ListLocations.
 class GoogleCloudLocationListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
@@ -4382,7 +5851,7 @@ class GoogleLongrunningOperation {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef GoogleRpcStatus = $Status;
+typedef GoogleRpcStatus = $Status00;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -4438,5 +5907,24 @@ class ListAppGatewaysResponse {
         if (appGateways != null) 'appGateways': appGateways!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response message for calling ShouldThrottle
+class ShouldThrottleResponse {
+  /// Whether the port should be throttled
+  core.bool? shouldThrottle;
+
+  ShouldThrottleResponse({
+    this.shouldThrottle,
+  });
+
+  ShouldThrottleResponse.fromJson(core.Map json_)
+      : this(
+          shouldThrottle: json_['shouldThrottle'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (shouldThrottle != null) 'shouldThrottle': shouldThrottle!,
       };
 }

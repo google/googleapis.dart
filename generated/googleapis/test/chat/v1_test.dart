@@ -26,6 +26,33 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAccessSettings = 0;
+api.AccessSettings buildAccessSettings() {
+  final o = api.AccessSettings();
+  buildCounterAccessSettings++;
+  if (buildCounterAccessSettings < 3) {
+    o.accessState = 'foo';
+    o.audience = 'foo';
+  }
+  buildCounterAccessSettings--;
+  return o;
+}
+
+void checkAccessSettings(api.AccessSettings o) {
+  buildCounterAccessSettings++;
+  if (buildCounterAccessSettings < 3) {
+    unittest.expect(
+      o.accessState!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.audience!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAccessSettings--;
+}
+
 core.int buildCounterAccessoryWidget = 0;
 api.AccessoryWidget buildAccessoryWidget() {
   final o = api.AccessoryWidget();
@@ -441,6 +468,38 @@ void checkChatClientDataSourceMarkup(api.ChatClientDataSourceMarkup o) {
     checkSpaceDataSource(o.spaceDataSource!);
   }
   buildCounterChatClientDataSourceMarkup--;
+}
+
+core.int buildCounterChatSpaceLinkData = 0;
+api.ChatSpaceLinkData buildChatSpaceLinkData() {
+  final o = api.ChatSpaceLinkData();
+  buildCounterChatSpaceLinkData++;
+  if (buildCounterChatSpaceLinkData < 3) {
+    o.message = 'foo';
+    o.space = 'foo';
+    o.thread = 'foo';
+  }
+  buildCounterChatSpaceLinkData--;
+  return o;
+}
+
+void checkChatSpaceLinkData(api.ChatSpaceLinkData o) {
+  buildCounterChatSpaceLinkData++;
+  if (buildCounterChatSpaceLinkData < 3) {
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.space!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.thread!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterChatSpaceLinkData--;
 }
 
 core.int buildCounterColor = 0;
@@ -2457,6 +2516,33 @@ void checkMembershipBatchUpdatedEventData(
   buildCounterMembershipBatchUpdatedEventData--;
 }
 
+core.int buildCounterMembershipCount = 0;
+api.MembershipCount buildMembershipCount() {
+  final o = api.MembershipCount();
+  buildCounterMembershipCount++;
+  if (buildCounterMembershipCount < 3) {
+    o.joinedDirectHumanUserCount = 42;
+    o.joinedGroupCount = 42;
+  }
+  buildCounterMembershipCount--;
+  return o;
+}
+
+void checkMembershipCount(api.MembershipCount o) {
+  buildCounterMembershipCount++;
+  if (buildCounterMembershipCount < 3) {
+    unittest.expect(
+      o.joinedDirectHumanUserCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.joinedGroupCount!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterMembershipCount--;
+}
+
 core.int buildCounterMembershipCreatedEventData = 0;
 api.MembershipCreatedEventData buildMembershipCreatedEventData() {
   final o = api.MembershipCreatedEventData();
@@ -2877,6 +2963,60 @@ void checkOpenLink(api.OpenLink o) {
   buildCounterOpenLink--;
 }
 
+core.int buildCounterPermissionSetting = 0;
+api.PermissionSetting buildPermissionSetting() {
+  final o = api.PermissionSetting();
+  buildCounterPermissionSetting++;
+  if (buildCounterPermissionSetting < 3) {
+    o.managersAllowed = true;
+    o.membersAllowed = true;
+  }
+  buildCounterPermissionSetting--;
+  return o;
+}
+
+void checkPermissionSetting(api.PermissionSetting o) {
+  buildCounterPermissionSetting++;
+  if (buildCounterPermissionSetting < 3) {
+    unittest.expect(o.managersAllowed!, unittest.isTrue);
+    unittest.expect(o.membersAllowed!, unittest.isTrue);
+  }
+  buildCounterPermissionSetting--;
+}
+
+core.int buildCounterPermissionSettings = 0;
+api.PermissionSettings buildPermissionSettings() {
+  final o = api.PermissionSettings();
+  buildCounterPermissionSettings++;
+  if (buildCounterPermissionSettings < 3) {
+    o.manageApps = buildPermissionSetting();
+    o.manageMembersAndGroups = buildPermissionSetting();
+    o.manageWebhooks = buildPermissionSetting();
+    o.modifySpaceDetails = buildPermissionSetting();
+    o.postMessages = buildPermissionSetting();
+    o.replyMessages = buildPermissionSetting();
+    o.toggleHistory = buildPermissionSetting();
+    o.useAtMentionAll = buildPermissionSetting();
+  }
+  buildCounterPermissionSettings--;
+  return o;
+}
+
+void checkPermissionSettings(api.PermissionSettings o) {
+  buildCounterPermissionSettings++;
+  if (buildCounterPermissionSettings < 3) {
+    checkPermissionSetting(o.manageApps!);
+    checkPermissionSetting(o.manageMembersAndGroups!);
+    checkPermissionSetting(o.manageWebhooks!);
+    checkPermissionSetting(o.modifySpaceDetails!);
+    checkPermissionSetting(o.postMessages!);
+    checkPermissionSetting(o.replyMessages!);
+    checkPermissionSetting(o.toggleHistory!);
+    checkPermissionSetting(o.useAtMentionAll!);
+  }
+  buildCounterPermissionSettings--;
+}
+
 core.int buildCounterQuotedMessageMetadata = 0;
 api.QuotedMessageMetadata buildQuotedMessageMetadata() {
   final o = api.QuotedMessageMetadata();
@@ -3033,6 +3173,7 @@ api.RichLinkMetadata buildRichLinkMetadata() {
   final o = api.RichLinkMetadata();
   buildCounterRichLinkMetadata++;
   if (buildCounterRichLinkMetadata < 3) {
+    o.chatSpaceLinkData = buildChatSpaceLinkData();
     o.driveLinkData = buildDriveLinkData();
     o.richLinkType = 'foo';
     o.uri = 'foo';
@@ -3044,6 +3185,7 @@ api.RichLinkMetadata buildRichLinkMetadata() {
 void checkRichLinkMetadata(api.RichLinkMetadata o) {
   buildCounterRichLinkMetadata++;
   if (buildCounterRichLinkMetadata < 3) {
+    checkChatSpaceLinkData(o.chatSpaceLinkData!);
     checkDriveLinkData(o.driveLinkData!);
     unittest.expect(
       o.richLinkType!,
@@ -3057,12 +3199,52 @@ void checkRichLinkMetadata(api.RichLinkMetadata o) {
   buildCounterRichLinkMetadata--;
 }
 
-core.List<api.WidgetMarkup> buildUnnamed33() => [
+core.List<api.Space> buildUnnamed33() => [
+      buildSpace(),
+      buildSpace(),
+    ];
+
+void checkUnnamed33(core.List<api.Space> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSpace(o[0]);
+  checkSpace(o[1]);
+}
+
+core.int buildCounterSearchSpacesResponse = 0;
+api.SearchSpacesResponse buildSearchSpacesResponse() {
+  final o = api.SearchSpacesResponse();
+  buildCounterSearchSpacesResponse++;
+  if (buildCounterSearchSpacesResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.spaces = buildUnnamed33();
+    o.totalSize = 42;
+  }
+  buildCounterSearchSpacesResponse--;
+  return o;
+}
+
+void checkSearchSpacesResponse(api.SearchSpacesResponse o) {
+  buildCounterSearchSpacesResponse++;
+  if (buildCounterSearchSpacesResponse < 3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed33(o.spaces!);
+    unittest.expect(
+      o.totalSize!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterSearchSpacesResponse--;
+}
+
+core.List<api.WidgetMarkup> buildUnnamed34() => [
       buildWidgetMarkup(),
       buildWidgetMarkup(),
     ];
 
-void checkUnnamed33(core.List<api.WidgetMarkup> o) {
+void checkUnnamed34(core.List<api.WidgetMarkup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWidgetMarkup(o[0]);
   checkWidgetMarkup(o[1]);
@@ -3074,7 +3256,7 @@ api.Section buildSection() {
   buildCounterSection++;
   if (buildCounterSection < 3) {
     o.header = 'foo';
-    o.widgets = buildUnnamed33();
+    o.widgets = buildUnnamed34();
   }
   buildCounterSection--;
   return o;
@@ -3087,17 +3269,17 @@ void checkSection(api.Section o) {
       o.header!,
       unittest.equals('foo'),
     );
-    checkUnnamed33(o.widgets!);
+    checkUnnamed34(o.widgets!);
   }
   buildCounterSection--;
 }
 
-core.List<api.GoogleAppsCardV1SelectionItem> buildUnnamed34() => [
+core.List<api.GoogleAppsCardV1SelectionItem> buildUnnamed35() => [
       buildGoogleAppsCardV1SelectionItem(),
       buildGoogleAppsCardV1SelectionItem(),
     ];
 
-void checkUnnamed34(core.List<api.GoogleAppsCardV1SelectionItem> o) {
+void checkUnnamed35(core.List<api.GoogleAppsCardV1SelectionItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1SelectionItem(o[0]);
   checkGoogleAppsCardV1SelectionItem(o[1]);
@@ -3108,7 +3290,7 @@ api.SelectionItems buildSelectionItems() {
   final o = api.SelectionItems();
   buildCounterSelectionItems++;
   if (buildCounterSelectionItems < 3) {
-    o.items = buildUnnamed34();
+    o.items = buildUnnamed35();
   }
   buildCounterSelectionItems--;
   return o;
@@ -3117,17 +3299,17 @@ api.SelectionItems buildSelectionItems() {
 void checkSelectionItems(api.SelectionItems o) {
   buildCounterSelectionItems++;
   if (buildCounterSelectionItems < 3) {
-    checkUnnamed34(o.items!);
+    checkUnnamed35(o.items!);
   }
   buildCounterSelectionItems--;
 }
 
-core.List<api.Membership> buildUnnamed35() => [
+core.List<api.Membership> buildUnnamed36() => [
       buildMembership(),
       buildMembership(),
     ];
 
-void checkUnnamed35(core.List<api.Membership> o) {
+void checkUnnamed36(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembership(o[0]);
   checkMembership(o[1]);
@@ -3138,7 +3320,7 @@ api.SetUpSpaceRequest buildSetUpSpaceRequest() {
   final o = api.SetUpSpaceRequest();
   buildCounterSetUpSpaceRequest++;
   if (buildCounterSetUpSpaceRequest < 3) {
-    o.memberships = buildUnnamed35();
+    o.memberships = buildUnnamed36();
     o.requestId = 'foo';
     o.space = buildSpace();
   }
@@ -3149,7 +3331,7 @@ api.SetUpSpaceRequest buildSetUpSpaceRequest() {
 void checkSetUpSpaceRequest(api.SetUpSpaceRequest o) {
   buildCounterSetUpSpaceRequest++;
   if (buildCounterSetUpSpaceRequest < 3) {
-    checkUnnamed35(o.memberships!);
+    checkUnnamed36(o.memberships!);
     unittest.expect(
       o.requestId!,
       unittest.equals('foo'),
@@ -3222,17 +3404,23 @@ api.Space buildSpace() {
   final o = api.Space();
   buildCounterSpace++;
   if (buildCounterSpace < 3) {
+    o.accessSettings = buildAccessSettings();
     o.adminInstalled = true;
     o.createTime = 'foo';
     o.displayName = 'foo';
     o.externalUserAllowed = true;
     o.importMode = true;
+    o.lastActiveTime = 'foo';
+    o.membershipCount = buildMembershipCount();
     o.name = 'foo';
+    o.permissionSettings = buildPermissionSettings();
+    o.predefinedPermissionSettings = 'foo';
     o.singleUserBotDm = true;
     o.spaceDetails = buildSpaceDetails();
     o.spaceHistoryState = 'foo';
     o.spaceThreadingState = 'foo';
     o.spaceType = 'foo';
+    o.spaceUri = 'foo';
     o.threaded = true;
     o.type = 'foo';
   }
@@ -3243,6 +3431,7 @@ api.Space buildSpace() {
 void checkSpace(api.Space o) {
   buildCounterSpace++;
   if (buildCounterSpace < 3) {
+    checkAccessSettings(o.accessSettings!);
     unittest.expect(o.adminInstalled!, unittest.isTrue);
     unittest.expect(
       o.createTime!,
@@ -3255,7 +3444,17 @@ void checkSpace(api.Space o) {
     unittest.expect(o.externalUserAllowed!, unittest.isTrue);
     unittest.expect(o.importMode!, unittest.isTrue);
     unittest.expect(
+      o.lastActiveTime!,
+      unittest.equals('foo'),
+    );
+    checkMembershipCount(o.membershipCount!);
+    unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    checkPermissionSettings(o.permissionSettings!);
+    unittest.expect(
+      o.predefinedPermissionSettings!,
       unittest.equals('foo'),
     );
     unittest.expect(o.singleUserBotDm!, unittest.isTrue);
@@ -3272,6 +3471,10 @@ void checkSpace(api.Space o) {
       o.spaceType!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.spaceUri!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.threaded!, unittest.isTrue);
     unittest.expect(
       o.type!,
@@ -3281,12 +3484,12 @@ void checkSpace(api.Space o) {
   buildCounterSpace--;
 }
 
-core.List<api.SpaceUpdatedEventData> buildUnnamed36() => [
+core.List<api.SpaceUpdatedEventData> buildUnnamed37() => [
       buildSpaceUpdatedEventData(),
       buildSpaceUpdatedEventData(),
     ];
 
-void checkUnnamed36(core.List<api.SpaceUpdatedEventData> o) {
+void checkUnnamed37(core.List<api.SpaceUpdatedEventData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpaceUpdatedEventData(o[0]);
   checkSpaceUpdatedEventData(o[1]);
@@ -3297,7 +3500,7 @@ api.SpaceBatchUpdatedEventData buildSpaceBatchUpdatedEventData() {
   final o = api.SpaceBatchUpdatedEventData();
   buildCounterSpaceBatchUpdatedEventData++;
   if (buildCounterSpaceBatchUpdatedEventData < 3) {
-    o.spaces = buildUnnamed36();
+    o.spaces = buildUnnamed37();
   }
   buildCounterSpaceBatchUpdatedEventData--;
   return o;
@@ -3306,7 +3509,7 @@ api.SpaceBatchUpdatedEventData buildSpaceBatchUpdatedEventData() {
 void checkSpaceBatchUpdatedEventData(api.SpaceBatchUpdatedEventData o) {
   buildCounterSpaceBatchUpdatedEventData++;
   if (buildCounterSpaceBatchUpdatedEventData < 3) {
-    checkUnnamed36(o.spaces!);
+    checkUnnamed37(o.spaces!);
   }
   buildCounterSpaceBatchUpdatedEventData--;
 }
@@ -3699,12 +3902,12 @@ void checkUserMentionMetadata(api.UserMentionMetadata o) {
   buildCounterUserMentionMetadata--;
 }
 
-core.List<api.Button> buildUnnamed37() => [
+core.List<api.Button> buildUnnamed38() => [
       buildButton(),
       buildButton(),
     ];
 
-void checkUnnamed37(core.List<api.Button> o) {
+void checkUnnamed38(core.List<api.Button> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkButton(o[0]);
   checkButton(o[1]);
@@ -3715,7 +3918,7 @@ api.WidgetMarkup buildWidgetMarkup() {
   final o = api.WidgetMarkup();
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
-    o.buttons = buildUnnamed37();
+    o.buttons = buildUnnamed38();
     o.image = buildImage();
     o.keyValue = buildKeyValue();
     o.textParagraph = buildTextParagraph();
@@ -3727,7 +3930,7 @@ api.WidgetMarkup buildWidgetMarkup() {
 void checkWidgetMarkup(api.WidgetMarkup o) {
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
-    checkUnnamed37(o.buttons!);
+    checkUnnamed38(o.buttons!);
     checkImage(o.image!);
     checkKeyValue(o.keyValue!);
     checkTextParagraph(o.textParagraph!);
@@ -3736,6 +3939,16 @@ void checkWidgetMarkup(api.WidgetMarkup o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AccessSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAccessSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccessSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAccessSettings(od);
+    });
+  });
+
   unittest.group('obj-schema-AccessoryWidget', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAccessoryWidget();
@@ -3873,6 +4086,16 @@ void main() {
       final od = api.ChatClientDataSourceMarkup.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkChatClientDataSourceMarkup(od);
+    });
+  });
+
+  unittest.group('obj-schema-ChatSpaceLinkData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildChatSpaceLinkData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ChatSpaceLinkData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkChatSpaceLinkData(od);
     });
   });
 
@@ -4506,6 +4729,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-MembershipCount', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMembershipCount();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MembershipCount.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMembershipCount(od);
+    });
+  });
+
   unittest.group('obj-schema-MembershipCreatedEventData', () {
     unittest.test('to-json--from-json', () async {
       final o = buildMembershipCreatedEventData();
@@ -4626,6 +4859,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-PermissionSetting', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPermissionSetting();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PermissionSetting.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPermissionSetting(od);
+    });
+  });
+
+  unittest.group('obj-schema-PermissionSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPermissionSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PermissionSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPermissionSettings(od);
+    });
+  });
+
   unittest.group('obj-schema-QuotedMessageMetadata', () {
     unittest.test('to-json--from-json', () async {
       final o = buildQuotedMessageMetadata();
@@ -4693,6 +4946,16 @@ void main() {
       final od = api.RichLinkMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkRichLinkMetadata(od);
+    });
+  });
+
+  unittest.group('obj-schema-SearchSpacesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSearchSpacesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SearchSpacesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSearchSpacesResponse(od);
     });
   });
 
@@ -5160,6 +5423,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.HangoutsChatApi(mock).spaces;
       final arg_name = 'foo';
+      final arg_useAdminAccess = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -5194,6 +5458,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['useAdminAccess']!.first,
+          unittest.equals('$arg_useAdminAccess'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -5204,7 +5472,8 @@ void main() {
         final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.delete(arg_name, $fields: arg_$fields);
+      final response = await res.delete(arg_name,
+          useAdminAccess: arg_useAdminAccess, $fields: arg_$fields);
       checkEmpty(response as api.Empty);
     });
 
@@ -5268,6 +5537,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.HangoutsChatApi(mock).spaces;
       final arg_name = 'foo';
+      final arg_useAdminAccess = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -5302,6 +5572,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['useAdminAccess']!.first,
+          unittest.equals('$arg_useAdminAccess'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -5312,7 +5586,8 @@ void main() {
         final resp = convert.json.encode(buildSpace());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.get(arg_name, $fields: arg_$fields);
+      final response = await res.get(arg_name,
+          useAdminAccess: arg_useAdminAccess, $fields: arg_$fields);
       checkSpace(response as api.Space);
     });
 
@@ -5391,6 +5666,7 @@ void main() {
       final arg_request = buildSpace();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
+      final arg_useAdminAccess = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj =
@@ -5433,6 +5709,10 @@ void main() {
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
+          queryMap['useAdminAccess']!.first,
+          unittest.equals('$arg_useAdminAccess'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -5444,8 +5724,91 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
-          updateMask: arg_updateMask, $fields: arg_$fields);
+          updateMask: arg_updateMask,
+          useAdminAccess: arg_useAdminAccess,
+          $fields: arg_$fields);
       checkSpace(response as api.Space);
+    });
+
+    unittest.test('method--search', () async {
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).spaces;
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_query = 'foo';
+      final arg_useAdminAccess = true;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('v1/spaces:search'),
+        );
+        pathOffset += 16;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['query']!.first,
+          unittest.equals(arg_query),
+        );
+        unittest.expect(
+          queryMap['useAdminAccess']!.first,
+          unittest.equals('$arg_useAdminAccess'),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildSearchSpacesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.search(
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          query: arg_query,
+          useAdminAccess: arg_useAdminAccess,
+          $fields: arg_$fields);
+      checkSearchSpacesResponse(response as api.SearchSpacesResponse);
     });
 
     unittest.test('method--setup', () async {
@@ -5510,6 +5873,7 @@ void main() {
       final res = api.HangoutsChatApi(mock).spaces.members;
       final arg_request = buildMembership();
       final arg_parent = 'foo';
+      final arg_useAdminAccess = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.Membership.fromJson(
@@ -5548,6 +5912,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['useAdminAccess']!.first,
+          unittest.equals('$arg_useAdminAccess'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -5558,8 +5926,8 @@ void main() {
         final resp = convert.json.encode(buildMembership());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response =
-          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      final response = await res.create(arg_request, arg_parent,
+          useAdminAccess: arg_useAdminAccess, $fields: arg_$fields);
       checkMembership(response as api.Membership);
     });
 
@@ -5567,6 +5935,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.HangoutsChatApi(mock).spaces.members;
       final arg_name = 'foo';
+      final arg_useAdminAccess = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -5601,6 +5970,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['useAdminAccess']!.first,
+          unittest.equals('$arg_useAdminAccess'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -5611,7 +5984,8 @@ void main() {
         final resp = convert.json.encode(buildMembership());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.delete(arg_name, $fields: arg_$fields);
+      final response = await res.delete(arg_name,
+          useAdminAccess: arg_useAdminAccess, $fields: arg_$fields);
       checkMembership(response as api.Membership);
     });
 
@@ -5619,6 +5993,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.HangoutsChatApi(mock).spaces.members;
       final arg_name = 'foo';
+      final arg_useAdminAccess = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -5653,6 +6028,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['useAdminAccess']!.first,
+          unittest.equals('$arg_useAdminAccess'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -5663,7 +6042,8 @@ void main() {
         final resp = convert.json.encode(buildMembership());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.get(arg_name, $fields: arg_$fields);
+      final response = await res.get(arg_name,
+          useAdminAccess: arg_useAdminAccess, $fields: arg_$fields);
       checkMembership(response as api.Membership);
     });
 
@@ -5676,6 +6056,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_showGroups = true;
       final arg_showInvited = true;
+      final arg_useAdminAccess = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -5730,6 +6111,10 @@ void main() {
           unittest.equals('$arg_showInvited'),
         );
         unittest.expect(
+          queryMap['useAdminAccess']!.first,
+          unittest.equals('$arg_useAdminAccess'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -5746,6 +6131,7 @@ void main() {
           pageToken: arg_pageToken,
           showGroups: arg_showGroups,
           showInvited: arg_showInvited,
+          useAdminAccess: arg_useAdminAccess,
           $fields: arg_$fields);
       checkListMembershipsResponse(response as api.ListMembershipsResponse);
     });
@@ -5756,6 +6142,7 @@ void main() {
       final arg_request = buildMembership();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
+      final arg_useAdminAccess = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.Membership.fromJson(
@@ -5798,6 +6185,10 @@ void main() {
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
+          queryMap['useAdminAccess']!.first,
+          unittest.equals('$arg_useAdminAccess'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -5809,7 +6200,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
-          updateMask: arg_updateMask, $fields: arg_$fields);
+          updateMask: arg_updateMask,
+          useAdminAccess: arg_useAdminAccess,
+          $fields: arg_$fields);
       checkMembership(response as api.Membership);
     });
   });

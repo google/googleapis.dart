@@ -405,6 +405,7 @@ api.LighthouseAuditResultV5 buildLighthouseAuditResultV5() {
     o.errorMessage = 'foo';
     o.explanation = 'foo';
     o.id = 'foo';
+    o.metricSavings = buildMetricSavings();
     o.numericUnit = 'foo';
     o.numericValue = 42.0;
     o.score = {
@@ -448,6 +449,7 @@ void checkLighthouseAuditResultV5(api.LighthouseAuditResultV5 o) {
       o.id!,
       unittest.equals('foo'),
     );
+    checkMetricSavings(o.metricSavings!);
     unittest.expect(
       o.numericUnit!,
       unittest.equals('foo'),
@@ -745,6 +747,48 @@ void checkLighthouseResultV5(api.LighthouseResultV5 o) {
     );
   }
   buildCounterLighthouseResultV5--;
+}
+
+core.int buildCounterMetricSavings = 0;
+api.MetricSavings buildMetricSavings() {
+  final o = api.MetricSavings();
+  buildCounterMetricSavings++;
+  if (buildCounterMetricSavings < 3) {
+    o.CLS = 42.0;
+    o.FCP = 42.0;
+    o.INP = 42.0;
+    o.LCP = 42.0;
+    o.TBT = 42.0;
+  }
+  buildCounterMetricSavings--;
+  return o;
+}
+
+void checkMetricSavings(api.MetricSavings o) {
+  buildCounterMetricSavings++;
+  if (buildCounterMetricSavings < 3) {
+    unittest.expect(
+      o.CLS!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.FCP!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.INP!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.LCP!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.TBT!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterMetricSavings--;
 }
 
 core.Map<core.String, api.UserPageLoadMetricV5> buildUnnamed10() => {
@@ -1405,6 +1449,16 @@ void main() {
       final od = api.LighthouseResultV5.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkLighthouseResultV5(od);
+    });
+  });
+
+  unittest.group('obj-schema-MetricSavings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMetricSavings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MetricSavings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMetricSavings(od);
     });
   });
 

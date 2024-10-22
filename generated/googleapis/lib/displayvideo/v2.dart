@@ -6758,7 +6758,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
   /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
-  /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
+  /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` *
+  /// `TARGETING_TYPE_KEYWORD`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -6922,7 +6923,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// options to list. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
   /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
-  /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
+  /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` *
+  /// `TARGETING_TYPE_KEYWORD`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -12801,7 +12803,27 @@ typedef ActiveViewVideoViewabilityMetricConfig
 typedef AdUrl = $AdUrl;
 
 /// Details of Adloox settings.
-typedef Adloox = $Adloox;
+class Adloox {
+  /// Adloox's brand safety settings.
+  core.List<core.String>? excludedAdlooxCategories;
+
+  Adloox({
+    this.excludedAdlooxCategories,
+  });
+
+  Adloox.fromJson(core.Map json_)
+      : this(
+          excludedAdlooxCategories:
+              (json_['excludedAdlooxCategories'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (excludedAdlooxCategories != null)
+          'excludedAdlooxCategories': excludedAdlooxCategories!,
+      };
+}
 
 /// A single advertiser in Display & Video 360 (DV360).
 class Advertiser {
@@ -16248,6 +16270,8 @@ class CreateSdfDownloadTaskRequest {
   /// - "SDF_VERSION_7_1" : SDF version 7.1. Read the \[v7 migration
   /// guide\](/display-video/api/structured-data-file/v7-migration-guide) before
   /// migrating to this version.
+  /// - "SDF_VERSION_8" : SDF version 8. **This SDF version is in beta. It is
+  /// only available to a subset of users.**
   core.String? version;
 
   CreateSdfDownloadTaskRequest({
@@ -18599,6 +18623,7 @@ class GuaranteedOrder {
   /// - "EXCHANGE_CHARTBOOST_GBID" : Chartboost Mediation.
   /// - "EXCHANGE_ADMOST_GBID" : AdMost.
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
+  /// - "EXCHANGE_NETFLIX" : Netflix.
   core.String? exchange;
 
   /// The unique identifier of the guaranteed order.
@@ -18745,7 +18770,83 @@ typedef HouseholdIncomeTargetingOptionDetails
     = $HouseholdIncomeTargetingOptionDetails;
 
 /// A filtering option that filters entities by their entity IDs.
-typedef IdFilter = $IdFilter;
+class IdFilter {
+  /// YouTube Ads to download by ID.
+  ///
+  /// All IDs must belong to the same Advertiser or Partner specified in
+  /// CreateSdfDownloadTaskRequest.
+  core.List<core.String>? adGroupAdIds;
+
+  /// YouTube Ad Groups to download by ID.
+  ///
+  /// All IDs must belong to the same Advertiser or Partner specified in
+  /// CreateSdfDownloadTaskRequest.
+  core.List<core.String>? adGroupIds;
+
+  /// Campaigns to download by ID.
+  ///
+  /// All IDs must belong to the same Advertiser or Partner specified in
+  /// CreateSdfDownloadTaskRequest.
+  core.List<core.String>? campaignIds;
+
+  /// Insertion Orders to download by ID.
+  ///
+  /// All IDs must belong to the same Advertiser or Partner specified in
+  /// CreateSdfDownloadTaskRequest.
+  core.List<core.String>? insertionOrderIds;
+
+  /// Line Items to download by ID.
+  ///
+  /// All IDs must belong to the same Advertiser or Partner specified in
+  /// CreateSdfDownloadTaskRequest.
+  core.List<core.String>? lineItemIds;
+
+  /// Media Products to download by ID.
+  ///
+  /// All IDs must belong to the same Advertiser or Partner specified in
+  /// CreateSdfDownloadTaskRequest.
+  core.List<core.String>? mediaProductIds;
+
+  IdFilter({
+    this.adGroupAdIds,
+    this.adGroupIds,
+    this.campaignIds,
+    this.insertionOrderIds,
+    this.lineItemIds,
+    this.mediaProductIds,
+  });
+
+  IdFilter.fromJson(core.Map json_)
+      : this(
+          adGroupAdIds: (json_['adGroupAdIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          adGroupIds: (json_['adGroupIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          campaignIds: (json_['campaignIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          insertionOrderIds: (json_['insertionOrderIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          lineItemIds: (json_['lineItemIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          mediaProductIds: (json_['mediaProductIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adGroupAdIds != null) 'adGroupAdIds': adGroupAdIds!,
+        if (adGroupIds != null) 'adGroupIds': adGroupIds!,
+        if (campaignIds != null) 'campaignIds': campaignIds!,
+        if (insertionOrderIds != null) 'insertionOrderIds': insertionOrderIds!,
+        if (lineItemIds != null) 'lineItemIds': lineItemIds!,
+        if (mediaProductIds != null) 'mediaProductIds': mediaProductIds!,
+      };
+}
 
 /// Meta data of an image asset.
 class ImageAsset {
@@ -18917,6 +19018,11 @@ class InsertionOrder {
   core.String? name;
 
   /// The budget spending speed setting of the insertion order.
+  ///
+  /// *Warning*: Starting on **November 5, 2024**, pacing_type
+  /// `PACING_TYPE_ASAP` will no longer be compatible with pacing_period
+  /// `PACING_PERIOD_FLIGHT`. \[Read more about this announced
+  /// change\](/display-video/api/deprecations#features.io_asap).
   ///
   /// Required.
   Pacing? pacing;
@@ -19299,6 +19405,7 @@ class InventorySource {
   /// - "EXCHANGE_CHARTBOOST_GBID" : Chartboost Mediation.
   /// - "EXCHANGE_ADMOST_GBID" : AdMost.
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
+  /// - "EXCHANGE_NETFLIX" : Netflix.
   core.String? exchange;
 
   /// The ID of the guaranteed order that this inventory source belongs to.
@@ -21972,7 +22079,73 @@ typedef Pacing = $Pacing;
 
 /// A filtering option that filters on selected file types belonging to a chosen
 /// set of filter entities.
-typedef ParentEntityFilter = $ParentEntityFilter;
+class ParentEntityFilter {
+  /// File types that will be returned.
+  ///
+  /// Required.
+  core.List<core.String>? fileType;
+
+  /// The IDs of the specified filter type.
+  ///
+  /// This is used to filter entities to fetch. If filter type is not
+  /// `FILTER_TYPE_NONE`, at least one ID must be specified.
+  core.List<core.String>? filterIds;
+
+  /// Filter type used to filter fetched entities.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "FILTER_TYPE_UNSPECIFIED" : Default value when type is unspecified or is
+  /// unknown in this version.
+  /// - "FILTER_TYPE_NONE" : If selected, no filter will be applied to the
+  /// download. Can only be used if an Advertiser is specified in
+  /// CreateSdfDownloadTaskRequest.
+  /// - "FILTER_TYPE_ADVERTISER_ID" : Advertiser ID. If selected, all filter IDs
+  /// must be Advertiser IDs that belong to the Partner specified in
+  /// CreateSdfDownloadTaskRequest.
+  /// - "FILTER_TYPE_CAMPAIGN_ID" : Campaign ID. If selected, all filter IDs
+  /// must be Campaign IDs that belong to the Advertiser or Partner specified in
+  /// CreateSdfDownloadTaskRequest.
+  /// - "FILTER_TYPE_MEDIA_PRODUCT_ID" : Media Product ID. If selected, all
+  /// filter IDs must be Media Product IDs that belong to the Advertiser or
+  /// Partner specified in CreateSdfDownloadTaskRequest. Can only be used for
+  /// downloading `FILE_TYPE_MEDIA_PRODUCT`.
+  /// - "FILTER_TYPE_INSERTION_ORDER_ID" : Insertion Order ID. If selected, all
+  /// filter IDs must be Insertion Order IDs that belong to the Advertiser or
+  /// Partner specified in CreateSdfDownloadTaskRequest. Can only be used for
+  /// downloading `FILE_TYPE_INSERTION_ORDER`, `FILE_TYPE_LINE_ITEM`,
+  /// `FILE_TYPE_LINE_ITEM_QA`, `FILE_TYPE_AD_GROUP`, `FILE_TYPE_AD_GROUP_QA`,
+  /// and `FILE_TYPE_AD`.
+  /// - "FILTER_TYPE_LINE_ITEM_ID" : Line Item ID. If selected, all filter IDs
+  /// must be Line Item IDs that belong to the Advertiser or Partner specified
+  /// in CreateSdfDownloadTaskRequest. Can only be used for downloading
+  /// `FILE_TYPE_LINE_ITEM`, `FILE_TYPE_LINE_ITEM_QA`,`FILE_TYPE_AD_GROUP`,
+  /// `FILE_TYPE_AD_GROUP_QA`, and `FILE_TYPE_AD`.
+  core.String? filterType;
+
+  ParentEntityFilter({
+    this.fileType,
+    this.filterIds,
+    this.filterType,
+  });
+
+  ParentEntityFilter.fromJson(core.Map json_)
+      : this(
+          fileType: (json_['fileType'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          filterIds: (json_['filterIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          filterType: json_['filterType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fileType != null) 'fileType': fileType!,
+        if (filterIds != null) 'filterIds': filterIds!,
+        if (filterType != null) 'filterType': filterType!,
+      };
+}
 
 /// Details for assigned parental status targeting option.
 ///
@@ -22532,11 +22705,9 @@ class ReviewStatusInfo {
   core.List<ExchangeReviewStatus>? exchangeReviewStatuses;
 
   /// Publisher review statuses for the creative.
-  ///
-  /// **Warning:** This field will be deprecated on June 26th, 2024. After this
-  /// date, this field will be empty. Read our \[feature deprecation
-  /// announcement\](/display-video/api/deprecations#features.creative_publisher_review_statuses)
-  /// for more information.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<PublisherReviewStatus>? publisherReviewStatuses;
 
   ReviewStatusInfo({
@@ -22730,7 +22901,7 @@ typedef Site = $Site;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Details for assigned sub-exchange targeting option.
 ///

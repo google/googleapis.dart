@@ -593,7 +593,7 @@ class DevicesResource {
   /// - "COMPANY_INVENTORY" : This view contains all devices imported by the
   /// company admin. Each device in the response contains all information
   /// specified by the company admin when importing the device (i.e. asset
-  /// tags). This includes devices that may be unaassigned or assigned to users.
+  /// tags). This includes devices that may be unassigned or assigned to users.
   /// - "USER_ASSIGNED_DEVICES" : This view contains all devices with at least
   /// one user registered on the device. Each device in the response contains
   /// all device information, except for asset tags.
@@ -3384,10 +3384,10 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
 }
 
 /// Request message for approving the device to access user data.
-typedef GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest = $Request00;
+typedef GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest = $Request01;
 
 /// Request message for blocking account on device.
-typedef GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest = $Request00;
+typedef GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest = $Request01;
 
 /// Contains information about browser profiles reported by the
 /// [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
@@ -3403,8 +3403,8 @@ class GoogleAppsCloudidentityDevicesV1BrowserAttributes {
   /// It is unique for each device.
   core.String? chromeProfileId;
 
-  /// Timestamp in milliseconds since Epoch when the profile/gcm id was last
-  /// synced.
+  /// Timestamp in milliseconds since the Unix epoch when the profile/gcm id was
+  /// last synced.
   core.String? lastProfileSyncTime;
 
   GoogleAppsCloudidentityDevicesV1BrowserAttributes({
@@ -3434,8 +3434,6 @@ class GoogleAppsCloudidentityDevicesV1BrowserAttributes {
 
 /// Browser-specific fields reported by the
 /// [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
-///
-/// LINT.IfChange
 class GoogleAppsCloudidentityDevicesV1BrowserInfo {
   /// Browser's management state.
   ///
@@ -3450,6 +3448,8 @@ class GoogleAppsCloudidentityDevicesV1BrowserInfo {
   core.String? browserManagementState;
 
   /// Version of the request initiating browser.
+  ///
+  /// E.g. `91.0.4442.4`.
   core.String? browserVersion;
 
   /// Current state of \[built-in DNS
@@ -3605,11 +3605,11 @@ class GoogleAppsCloudidentityDevicesV1BrowserInfo {
 }
 
 /// Request message for cancelling an unfinished device wipe.
-typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest = $Request00;
+typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest = $Request01;
 
 /// Request message for cancelling an unfinished user account wipe.
 typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
-    = $Request00;
+    = $Request01;
 
 /// Stores information about a certificate.
 class GoogleAppsCloudidentityDevicesV1CertificateAttributes {
@@ -4368,11 +4368,12 @@ class GoogleAppsCloudidentityDevicesV1DeviceUser {
 /// attributes\](https://cloud.google.com/endpoint-verification/docs/device-information)
 /// of a device.
 class GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes {
-  /// Additional signals reported by Endpoint Verification.
+  /// [Additional signals](https://cloud.google.com/endpoint-verification/docs/device-information)
+  /// reported by Endpoint Verification.
   ///
-  /// It includes the following attributes: 1. Non-configurable attributes:
+  /// It includes the following attributes: * Non-configurable attributes:
   /// hotfixes, av_installed, av_enabled, windows_domain_name,
-  /// is_os_native_firewall_enabled, and is_secure_boot_enabled. 2.
+  /// is_os_native_firewall_enabled, and is_secure_boot_enabled. *
   /// [Configurable attributes](https://cloud.google.com/endpoint-verification/docs/collect-config-attributes):
   /// file, folder, and binary attributes; registry entries; and properties in a
   /// plist.
@@ -4598,7 +4599,7 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest {
 }
 
 /// Request message for starting an account wipe on device.
-typedef GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest = $Request00;
+typedef GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest = $Request01;
 
 /// A group within the Cloud Identity Groups API.
 ///
@@ -5408,6 +5409,7 @@ class Membership {
   /// - "SERVICE_ACCOUNT" : Represents service account type.
   /// - "GROUP" : Represents group type.
   /// - "SHARED_DRIVE" : Represents Shared drive.
+  /// - "CBCM_BROWSER" : Represents a CBCM-managed Chrome Browser type.
   /// - "OTHER" : Represents other type.
   core.String? type;
 
@@ -6129,7 +6131,7 @@ class SignInBehavior {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Message representing the role of a TransitiveMembership.
 class TransitiveMembershipRole {

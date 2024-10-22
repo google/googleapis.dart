@@ -1053,10 +1053,8 @@ class AccessSettings {
   /// Optional.
   OAuthSettings? oauthSettings;
 
-  /// Settings to configure Policy delegation for apps hosted in tenant
-  /// projects.
-  ///
-  /// INTERNAL_ONLY.
+  /// Settings to allow google-internal teams to use IAP for apps hosted in a
+  /// tenant project.
   ///
   /// Optional.
   PolicyDelegationSettings? policyDelegationSettings;
@@ -1749,6 +1747,48 @@ class ListTunnelDestGroupsResponse {
       };
 }
 
+/// Used for calculating the next state of tags on the resource being passed for
+/// the CheckCustomConstraints RPC call.
+///
+/// The detail evaluation of each field is described in
+/// go/op-create-update-time-tags and go/tags-in-orgpolicy-requests.
+class NextStateOfTags {
+  TagsFullState? tagsFullState;
+  TagsFullStateForChildResource? tagsFullStateForChildResource;
+  TagsPartialState? tagsPartialState;
+
+  NextStateOfTags({
+    this.tagsFullState,
+    this.tagsFullStateForChildResource,
+    this.tagsPartialState,
+  });
+
+  NextStateOfTags.fromJson(core.Map json_)
+      : this(
+          tagsFullState: json_.containsKey('tagsFullState')
+              ? TagsFullState.fromJson(
+                  json_['tagsFullState'] as core.Map<core.String, core.dynamic>)
+              : null,
+          tagsFullStateForChildResource:
+              json_.containsKey('tagsFullStateForChildResource')
+                  ? TagsFullStateForChildResource.fromJson(
+                      json_['tagsFullStateForChildResource']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          tagsPartialState: json_.containsKey('tagsPartialState')
+              ? TagsPartialState.fromJson(json_['tagsPartialState']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tagsFullState != null) 'tagsFullState': tagsFullState!,
+        if (tagsFullStateForChildResource != null)
+          'tagsFullStateForChildResource': tagsFullStateForChildResource!,
+        if (tagsPartialState != null) 'tagsPartialState': tagsPartialState!,
+      };
+}
+
 /// The OAuth 2.0 Settings
 class OAuth2 {
   /// The OAuth 2.0 client ID registered in the workforce identity federation
@@ -2038,6 +2078,8 @@ class ReauthSettings {
   core.String? maxAge;
 
   /// Reauth method requested.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "METHOD_UNSPECIFIED" : Reauthentication disabled.
   /// - "LOGIN" : Prompts the user to log in again.
@@ -2133,6 +2175,17 @@ class Resource {
   /// for specific details on populating this field.
   core.String? name;
 
+  /// Used for calculating the next state of tags on the resource being passed
+  /// for Custom Org Policy enforcement.
+  ///
+  /// NOTE: Only one of the tags representations (i.e. numeric or namespaced)
+  /// should be populated. The input tags will be converted to the same
+  /// representation before the calculation. This behavior intentionally may
+  /// differ from other tags related fields in CheckPolicy request, which may
+  /// require both formats to be passed in. IMPORTANT: If tags are unchanged,
+  /// this field should not be set.
+  NextStateOfTags? nextStateOfTags;
+
   /// The name of the service this resource belongs to.
   ///
   /// It is configured using the official_service_name of the Service as defined
@@ -2167,6 +2220,7 @@ class Resource {
     this.expectedNextState,
     this.labels,
     this.name,
+    this.nextStateOfTags,
     this.service,
     this.type,
   });
@@ -2185,6 +2239,10 @@ class Resource {
             ),
           ),
           name: json_['name'] as core.String?,
+          nextStateOfTags: json_.containsKey('nextStateOfTags')
+              ? NextStateOfTags.fromJson(json_['nextStateOfTags']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           service: json_['service'] as core.String?,
           type: json_['type'] as core.String?,
         );
@@ -2193,6 +2251,7 @@ class Resource {
         if (expectedNextState != null) 'expectedNextState': expectedNextState!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (nextStateOfTags != null) 'nextStateOfTags': nextStateOfTags!,
         if (service != null) 'service': service!,
         if (type != null) 'type': type!,
       };
@@ -2221,6 +2280,105 @@ class SetIamPolicyRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!,
+      };
+}
+
+class TagsFullState {
+  /// If TagsFullState is initialized, the values in this field fully represent
+  /// all the tags in the next state (the current tag values are not used).
+  ///
+  /// If tags.size() == 0, the next state of tags would be no tags for
+  /// evaluation purposes. Only one type of tags reference (numeric or
+  /// namespace) is required to be passed.
+  core.Map<core.String, core.String>? tags;
+
+  TagsFullState({
+    this.tags,
+  });
+
+  TagsFullState.fromJson(core.Map json_)
+      : this(
+          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tags != null) 'tags': tags!,
+      };
+}
+
+class TagsFullStateForChildResource {
+  /// If TagsFullStateForChildResource is initialized, the values in this field
+  /// represent all the tags in the next state for the child resource.
+  ///
+  /// Only one type of tags reference (numeric or namespace) is required to be
+  /// passed. IMPORTANT: This field should only be used when the target resource
+  /// IAM policy name is UNKNOWN and the resource's parent IAM policy name is
+  /// being passed in the request.
+  core.Map<core.String, core.String>? tags;
+
+  TagsFullStateForChildResource({
+    this.tags,
+  });
+
+  TagsFullStateForChildResource.fromJson(core.Map json_)
+      : this(
+          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tags != null) 'tags': tags!,
+      };
+}
+
+class TagsPartialState {
+  /// Keys of the tags that should be removed for evaluation purposes.
+  ///
+  /// IMPORTANT: Currently only numeric references are supported. Once support
+  /// for namespace references is added, both the tag references (numeric and
+  /// namespace) will be removed.
+  core.List<core.String>? tagKeysToRemove;
+
+  /// Tags that’ll be updated or added to the current state of tags for
+  /// evaluation purposes.
+  ///
+  /// If a key exists in both "tags_to_upsert" and "tag_keys_to_remove", the one
+  /// in "tag_keys_to_remove" is ignored. Only one type of tags reference
+  /// (numeric or namespace) is required to be passed.
+  core.Map<core.String, core.String>? tagsToUpsert;
+
+  TagsPartialState({
+    this.tagKeysToRemove,
+    this.tagsToUpsert,
+  });
+
+  TagsPartialState.fromJson(core.Map json_)
+      : this(
+          tagKeysToRemove: (json_['tagKeysToRemove'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          tagsToUpsert:
+              (json_['tagsToUpsert'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tagKeysToRemove != null) 'tagKeysToRemove': tagKeysToRemove!,
+        if (tagsToUpsert != null) 'tagsToUpsert': tagsToUpsert!,
       };
 }
 

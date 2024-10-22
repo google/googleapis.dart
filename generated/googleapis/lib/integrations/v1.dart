@@ -34,6 +34,7 @@
 ///       - [ProjectsLocationsIntegrationsExecutionsResource]
 ///         - [ProjectsLocationsIntegrationsExecutionsSuspensionsResource]
 ///       - [ProjectsLocationsIntegrationsVersionsResource]
+///         - [ProjectsLocationsIntegrationsVersionsTestCasesResource]
 ///     - [ProjectsLocationsProductsResource]
 ///       - [ProjectsLocationsProductsAuthConfigsResource]
 ///       - [ProjectsLocationsProductsCertificatesResource]
@@ -46,6 +47,7 @@
 ///         - [ProjectsLocationsProductsSfdcInstancesSfdcChannelsResource]
 ///     - [ProjectsLocationsSfdcInstancesResource]
 ///       - [ProjectsLocationsSfdcInstancesSfdcChannelsResource]
+///     - [ProjectsLocationsTemplatesResource]
 library;
 
 import 'dart:async' as async;
@@ -259,6 +261,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsProductsResource(_requester);
   ProjectsLocationsSfdcInstancesResource get sfdcInstances =>
       ProjectsLocationsSfdcInstancesResource(_requester);
+  ProjectsLocationsTemplatesResource get templates =>
+      ProjectsLocationsTemplatesResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -1782,6 +1786,52 @@ class ProjectsLocationsIntegrationsExecutionsResource {
   ProjectsLocationsIntegrationsExecutionsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Cancellation of an execution and associated sub-executions.
+  ///
+  /// This will not cancel an IN_PROCESS or completed(SUCCESSFUL, FAILED or
+  /// CANCELLED) executions.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The execution resource name. Format:
+  /// projects/{gcp_project_id}/locations/{location}/products/{product}/integrations/{integration_id}/executions/{execution_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/integrations/\[^/\]+/executions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIntegrationsV1alphaCancelExecutionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaCancelExecutionResponse> cancel(
+    GoogleCloudIntegrationsV1alphaCancelExecutionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaCancelExecutionResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Download the execution.
   ///
   /// Request parameters:
@@ -1912,7 +1962,7 @@ class ProjectsLocationsIntegrationsExecutionsResource {
   /// [filterParams_workflowName] - Workflow name.
   ///
   /// [orderBy] - Optional. The results would be returned in order you specified
-  /// here. Currently supporting "last_modified_time" and "create_time".
+  /// here. Currently supporting "create_time".
   ///
   /// [pageSize] - Optional. The size of entries in the response.
   ///
@@ -1920,7 +1970,12 @@ class ProjectsLocationsIntegrationsExecutionsResource {
   ///
   /// [readMask] - Optional. View mask for the response data. If set, only the
   /// field specified will be returned as part of the result. If not set, all
-  /// fields in event execution info will be filled and returned.
+  /// fields in Execution will be filled and returned. Supported fields:
+  /// trigger_id execution_method create_time update_time execution_details
+  /// execution_details.state execution_details.execution_snapshots
+  /// execution_details.attempt_stats
+  /// execution_details.event_execution_snapshots_size request_parameters
+  /// cloud_logging_details snapshot_number replay_info
   ///
   /// [refreshAcl] - Optional. If true, the service will use the most recent acl
   /// information to list event execution infos and renew the acl cache. Note
@@ -2019,13 +2074,13 @@ class ProjectsLocationsIntegrationsExecutionsResource {
   }
 
   /// Re-execute an existing execution, with same request parameters and
-  /// execution strategy
+  /// execution strategy.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The execution resource name. Format:
+  /// [name] - Required. Next ID: 3 The execution resource name. Format:
   /// projects/{gcp_project_id}/locations/{location}/integrations/{integration}/executions/{execution_id}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/integrations/\[^/\]+/executions/\[^/\]+$`.
@@ -2225,6 +2280,9 @@ class ProjectsLocationsIntegrationsExecutionsSuspensionsResource {
 
 class ProjectsLocationsIntegrationsVersionsResource {
   final commons.ApiRequester _requester;
+
+  ProjectsLocationsIntegrationsVersionsTestCasesResource get testCases =>
+      ProjectsLocationsIntegrationsVersionsTestCasesResource(_requester);
 
   ProjectsLocationsIntegrationsVersionsResource(commons.ApiRequester client)
       : _requester = client;
@@ -2487,9 +2545,7 @@ class ProjectsLocationsIntegrationsVersionsResource {
   /// Specifically, when parent equals: 1. projects//locations//integrations/,
   /// Meaning: "List versions (with filter) for a particular integration". 2.
   /// projects//locations//integrations/- Meaning: "List versions (with filter)
-  /// for a client within a particular region". 3.
-  /// projects//locations/-/integrations/- Meaning: "List versions (with filter)
-  /// for a client".
+  /// for a client within a particular region".
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/integrations/\[^/\]+$`.
   ///
@@ -2506,8 +2562,8 @@ class ProjectsLocationsIntegrationsVersionsResource {
   ///
   /// [orderBy] - The results would be returned in order you specified here.
   /// Currently supported sort keys are: Descending sort order for
-  /// "last_modified_time", "created_time", "snapshot_number" Ascending sort
-  /// order for "name".
+  /// "last\_modified\_time", "created\_time", and "snapshot\_number". Ascending
+  /// sort order for `name`.
   ///
   /// [pageSize] - The maximum number of versions to return. The service may
   /// return fewer than this value. If unspecified, at most 50 versions will be
@@ -2756,6 +2812,512 @@ class ProjectsLocationsIntegrationsVersionsResource {
     );
     return GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse
         .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsIntegrationsVersionsTestCasesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsIntegrationsVersionsTestCasesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new test case
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this test case will be
+  /// created. Format:
+  /// projects/{project}/locations/{location}/integrations/{integration}/versions/{integration_version}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/integrations/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [testCaseId] - Required. Required
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIntegrationsV1alphaTestCase].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaTestCase> create(
+    GoogleCloudIntegrationsV1alphaTestCase request,
+    core.String parent, {
+    core.String? testCaseId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (testCaseId != null) 'testCaseId': [testCaseId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/testCases';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaTestCase.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a test case
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. ID for the test case to be deleted
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/integrations/\[^/\]+/versions/\[^/\]+/testCases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Downloads a test case.
+  ///
+  /// Retrieves the `TestCase` for a given `test_case_id` and returns the
+  /// response as a string.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The test case to download. Format:
+  /// projects/{project}/locations/{location}/integrations/{integration}/versions/{integration_version}/testCases/{test_case_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/integrations/\[^/\]+/versions/\[^/\]+/testCases/\[^/\]+$`.
+  ///
+  /// [fileFormat] - File format for download request.
+  /// Possible string values are:
+  /// - "FILE_FORMAT_UNSPECIFIED" : Unspecified file format
+  /// - "JSON" : JSON File Format
+  /// - "YAML" : YAML File Format
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse> download(
+    core.String name, {
+    core.String? fileFormat,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (fileFormat != null) 'fileFormat': [fileFormat],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':download';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Executes functional test
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [testCaseName] - Required. Test case resource name
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/integrations/\[^/\]+/versions/\[^/\]+/testCases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse>
+      executeTest(
+    GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest request,
+    core.String testCaseName, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$testCaseName') + ':executeTest';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a test case
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The ID of the test case to retrieve
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/integrations/\[^/\]+/versions/\[^/\]+/testCases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIntegrationsV1alphaTestCase].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaTestCase> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaTestCase.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all the test cases that satisfy the filters.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this TestCase was created.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/integrations/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Standard filter field. Filtering as supported in
+  /// https://developers.google.com/authorized-buyers/apis/guides/list-filters.
+  ///
+  /// [orderBy] - Optional. The results would be returned in order specified
+  /// here. Currently supported sort keys are: Descending sort order for
+  /// "last_modified_time", "created_time". Ascending sort order for "name".
+  ///
+  /// [pageSize] - Optional. The maximum number of test cases to return. The
+  /// service may return fewer than this value. If unspecified, at most 100 test
+  /// cases will be returned.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListTestCases` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided to `ListTestCases` must match
+  /// the call that provided the page token.
+  ///
+  /// [readMask] - Optional. The mask which specifies fields that need to be
+  /// returned in the TestCases's response.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIntegrationsV1alphaListTestCasesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaListTestCasesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? readMask,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (readMask != null) 'readMask': [readMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/testCases';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaListTestCasesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the results of all functional test executions.
+  ///
+  /// The response includes the same information as the
+  /// [execution log](https://cloud.google.com/application-integration/docs/viewing-logs)
+  /// in the Integration UI.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name of the test case execution.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/integrations/\[^/\]+/versions/\[^/\]+/testCases/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Standard filter field, we support filtering on
+  /// following fields: test_case_id: the ID of the test case. CreateTimestamp:
+  /// the execution created time. event_execution_state: the state of the
+  /// executions. execution_id: the id of the execution. trigger_id: the id of
+  /// the trigger. parameter_type: the type of the parameters involved in the
+  /// execution. All fields support for EQUALS, in additional: CreateTimestamp
+  /// support for LESS_THAN, GREATER_THAN ParameterType support for HAS For
+  /// example: "parameter_type" HAS \"string\" Also supports operators like AND,
+  /// OR, NOT For example, trigger_id=\"id1\" AND test_case_id=\"testCaseId\"
+  ///
+  /// [orderBy] - Optional. The results would be returned in order you specified
+  /// here. Currently supporting "last_modified_time" and "create_time".
+  ///
+  /// [pageSize] - Optional. The size of entries in the response.
+  ///
+  /// [pageToken] - Optional. The token returned in the previous response.
+  ///
+  /// [readMask] - Optional. View mask for the response data. If set, only the
+  /// field specified will be returned as part of the result. If not set, all
+  /// fields in event execution info will be filled and returned.
+  ///
+  /// [truncateParams] - Optional. If true, the service will truncate the params
+  /// to only keep the first 1000 characters of string params and empty the
+  /// executions in order to make response smaller. Only works for UI and when
+  /// the params fields are not filtered out.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse>
+      listExecutions(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? readMask,
+    core.bool? truncateParams,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (readMask != null) 'readMask': [readMask],
+      if (truncateParams != null) 'truncateParams': ['${truncateParams}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':executions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a test case
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Auto-generated primary key.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/integrations/\[^/\]+/versions/\[^/\]+/testCases/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Field mask specifying the fields in the above
+  /// integration that have been modified and need to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIntegrationsV1alphaTestCase].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaTestCase> patch(
+    GoogleCloudIntegrationsV1alphaTestCase request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaTestCase.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Clear the lock fields and assign them to current user
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The ID of test case to takeover edit lock. Format:
+  /// projects/{project}/locations/{location}/integrations/{integration}/versions/{integration_version}/testCases/{test_case_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/integrations/\[^/\]+/versions/\[^/\]+/testCases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIntegrationsV1alphaTestCase].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaTestCase> takeoverEditLock(
+    GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':takeoverEditLock';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaTestCase.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Uploads a test case.
+  ///
+  /// The content can be a previously downloaded test case. Performs the same
+  /// function as CreateTestCase, but accepts input in a string format, which
+  /// holds the complete representation of the TestCase content.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The test case to upload. Format:
+  /// projects/{project}/locations/{location}/integrations/{integration}/versions/{integration_version}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/integrations/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIntegrationsV1alphaUploadTestCaseResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaUploadTestCaseResponse> upload(
+    GoogleCloudIntegrationsV1alphaUploadTestCaseRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/testCases:upload';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaUploadTestCaseResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3633,49 +4195,6 @@ class ProjectsLocationsProductsIntegrationsExecutionsResource {
       commons.ApiRequester client)
       : _requester = client;
 
-  /// Cancellation of an execution
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The execution resource name. Format:
-  /// projects/{gcp_project_id}/locations/{location}/products/{product}/integrations/{integration_id}/executions/{execution_id}
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/products/\[^/\]+/integrations/\[^/\]+/executions/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleCloudIntegrationsV1alphaCancelExecutionResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudIntegrationsV1alphaCancelExecutionResponse> cancel(
-    GoogleCloudIntegrationsV1alphaCancelExecutionRequest request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleCloudIntegrationsV1alphaCancelExecutionResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Download the execution.
   ///
   /// Request parameters:
@@ -3806,7 +4325,7 @@ class ProjectsLocationsProductsIntegrationsExecutionsResource {
   /// [filterParams_workflowName] - Workflow name.
   ///
   /// [orderBy] - Optional. The results would be returned in order you specified
-  /// here. Currently supporting "last_modified_time" and "create_time".
+  /// here. Currently supporting "create_time".
   ///
   /// [pageSize] - Optional. The size of entries in the response.
   ///
@@ -3814,7 +4333,12 @@ class ProjectsLocationsProductsIntegrationsExecutionsResource {
   ///
   /// [readMask] - Optional. View mask for the response data. If set, only the
   /// field specified will be returned as part of the result. If not set, all
-  /// fields in event execution info will be filled and returned.
+  /// fields in Execution will be filled and returned. Supported fields:
+  /// trigger_id execution_method create_time update_time execution_details
+  /// execution_details.state execution_details.execution_snapshots
+  /// execution_details.attempt_stats
+  /// execution_details.event_execution_snapshots_size request_parameters
+  /// cloud_logging_details snapshot_number replay_info
   ///
   /// [refreshAcl] - Optional. If true, the service will use the most recent acl
   /// information to list event execution infos and renew the acl cache. Note
@@ -4289,9 +4813,7 @@ class ProjectsLocationsProductsIntegrationsVersionsResource {
   /// Specifically, when parent equals: 1. projects//locations//integrations/,
   /// Meaning: "List versions (with filter) for a particular integration". 2.
   /// projects//locations//integrations/- Meaning: "List versions (with filter)
-  /// for a client within a particular region". 3.
-  /// projects//locations/-/integrations/- Meaning: "List versions (with filter)
-  /// for a client".
+  /// for a client within a particular region".
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/products/\[^/\]+/integrations/\[^/\]+$`.
   ///
@@ -4308,8 +4830,8 @@ class ProjectsLocationsProductsIntegrationsVersionsResource {
   ///
   /// [orderBy] - The results would be returned in order you specified here.
   /// Currently supported sort keys are: Descending sort order for
-  /// "last_modified_time", "created_time", "snapshot_number" Ascending sort
-  /// order for "name".
+  /// "last\_modified\_time", "created\_time", and "snapshot\_number". Ascending
+  /// sort order for `name`.
   ///
   /// [pageSize] - The maximum number of versions to return. The service may
   /// return fewer than this value. If unspecified, at most 50 versions will be
@@ -5572,6 +6094,582 @@ class ProjectsLocationsSfdcInstancesSfdcChannelsResource {
   }
 }
 
+class ProjectsLocationsTemplatesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsTemplatesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new template
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. "projects/{project}/locations/{location}" format.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIntegrationsV1alphaTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaTemplate> create(
+    GoogleCloudIntegrationsV1alphaTemplate request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/templates';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaTemplate.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a template
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name that is associated with the Template.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/templates/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Downloads a template.
+  ///
+  /// Retrieves the `Template` and returns the response as a string.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The template to download. Format:
+  /// projects/{project}/locations/{location}/template/{template_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/templates/\[^/\]+$`.
+  ///
+  /// [fileFormat] - Required. File format for download request.
+  /// Possible string values are:
+  /// - "FILE_FORMAT_UNSPECIFIED" : Unspecified file format
+  /// - "JSON" : JSON File Format
+  /// - "YAML" : YAML File Format
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIntegrationsV1alphaDownloadTemplateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaDownloadTemplateResponse> download(
+    core.String name, {
+    core.String? fileFormat,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (fileFormat != null) 'fileFormat': [fileFormat],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':download';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaDownloadTemplateResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a template in the specified project.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The template to retrieve. Format:
+  /// projects/{project}/locations/{location}/templates/{template}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/templates/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIntegrationsV1alphaTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaTemplate> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaTemplate.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Import the template to an existing integration.
+  ///
+  /// This api would keep track of usage_count and last_used_time.
+  /// PERMISSION_DENIED would be thrown if template is not accessible by client.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name that is associated with the Template.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/templates/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIntegrationsV1alphaImportTemplateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaImportTemplateResponse> import(
+    GoogleCloudIntegrationsV1alphaImportTemplateRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':import';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaImportTemplateResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all templates matching the filter.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The client, which owns this collection of Templates.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Standard filter field to filter templates. client_id
+  /// filter won't be supported and will restrict to templates belonging to the
+  /// current client only. Return all templates of the current client if the
+  /// filter is empty. Also supports operators like AND, OR, NOT For example,
+  /// "status=\"ACTIVE\"
+  ///
+  /// [orderBy] - Optional. The results would be returned in the order you
+  /// specified here.
+  ///
+  /// [pageSize] - Optional. The size of the response entries. If unspecified,
+  /// defaults to 100. The maximum value is 1000; values above 1000 will be
+  /// coerced to 1000.
+  ///
+  /// [pageToken] - Optional. The token returned in the previous response.
+  ///
+  /// [readMask] - Optional. The mask which specifies fields that need to be
+  /// returned in the template's response.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIntegrationsV1alphaListTemplatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaListTemplatesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? readMask,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (readMask != null) 'readMask': [readMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/templates';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaListTemplatesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the template by given id.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Resource name of the template.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/templates/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Field mask specifying the fields in the above
+  /// template that have been modified and must be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIntegrationsV1alphaTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaTemplate> patch(
+    GoogleCloudIntegrationsV1alphaTemplate request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaTemplate.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Search templates based on user query and filters.
+  ///
+  /// This api would query the templates and return a list of templates based on
+  /// the user filter.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The client, which owns this collection of Templates.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Standard filter field to filter templates. client_id
+  /// filter won't be supported and will restrict to templates belonging to the
+  /// current client only. Return all templates of the current client if the
+  /// filter is empty. Also supports operators like AND, OR, NOT For example,
+  /// "status=\"ACTIVE\"
+  ///
+  /// [orderBy] - Optional. The results would be returned in the order you
+  /// specified here.
+  ///
+  /// [pageSize] - Optional. The size of the response entries. If unspecified,
+  /// defaults to 100. The maximum value is 1000; values above 1000 will be
+  /// coerced to 1000.
+  ///
+  /// [pageToken] - Optional. The token returned in the previous response.
+  ///
+  /// [readMask] - Optional. The mask which specifies fields that need to be
+  /// returned in the template's response.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIntegrationsV1alphaSearchTemplatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaSearchTemplatesResponse> search(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? readMask,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (readMask != null) 'readMask': [readMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/templates:search';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaSearchTemplatesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Share a template with other clients.
+  ///
+  /// Only the template owner can share the templates with other projects.
+  /// PERMISSION_DENIED would be thrown if the request is not from the owner.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name that is associated with the Template.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/templates/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> share(
+    GoogleCloudIntegrationsV1alphaShareTemplateRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':share';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Unshare a template from given clients.
+  ///
+  /// Owner of the template can unshare template with clients. Shared client can
+  /// only unshare the template from itself. PERMISSION_DENIED would be thrown
+  /// if request is not from owner or for unsharing itself.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name that is associated with the Template.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/templates/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> unshare(
+    GoogleCloudIntegrationsV1alphaUnshareTemplateRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':unshare';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Uploads a template.
+  ///
+  /// The content can be a previously downloaded template. Performs the same
+  /// function as CreateTemplate, but accepts input in a string format, which
+  /// holds the complete representation of the Template content.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The template to upload. Format:
+  /// projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIntegrationsV1alphaUploadTemplateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaUploadTemplateResponse> upload(
+    GoogleCloudIntegrationsV1alphaUploadTemplateRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/templates:upload';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaUploadTemplateResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Use the template to create integration.
+  ///
+  /// This api would keep track of usage_count and last_used_time.
+  /// PERMISSION_DENIED would be thrown if template is not accessible by client.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name that is associated with the Template.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/templates/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIntegrationsV1alphaUseTemplateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaUseTemplateResponse> use(
+    GoogleCloudIntegrationsV1alphaUseTemplateRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':use';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaUseTemplateResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// Registered ids for errors, as "oneof" enums.
 ///
 /// Each task or logical grouping of tasks may share the same enum.
@@ -6150,7 +7248,7 @@ class EnterpriseCrmEventbusProtoCustomSuspensionRequest {
       };
 }
 
-typedef EnterpriseCrmEventbusProtoDoubleArray = $Shared05;
+typedef EnterpriseCrmEventbusProtoDoubleArray = $Shared06;
 typedef EnterpriseCrmEventbusProtoDoubleParameterArray
     = $EventbusProtoDoubleParameterArray;
 
@@ -6228,8 +7326,11 @@ class EnterpriseCrmEventbusProtoEventBusProperties {
 /// Contains the details of the execution info of this event: this includes the
 /// tasks execution details plus the event execution statistics.
 ///
-/// Next available id: 11
+/// Next available id: 12
 class EnterpriseCrmEventbusProtoEventExecutionDetails {
+  /// If the execution is manually canceled, this field will contain the reason
+  /// for cancellation.
+  core.String? cancelReason;
   core.List<EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats>?
       eventAttemptStats;
   core.List<EnterpriseCrmEventbusProtoEventExecutionSnapshot>?
@@ -6280,6 +7381,7 @@ class EnterpriseCrmEventbusProtoEventExecutionDetails {
   core.int? ryeLockUnheldCount;
 
   EnterpriseCrmEventbusProtoEventExecutionDetails({
+    this.cancelReason,
     this.eventAttemptStats,
     this.eventExecutionSnapshot,
     this.eventExecutionSnapshotsSize,
@@ -6293,6 +7395,7 @@ class EnterpriseCrmEventbusProtoEventExecutionDetails {
 
   EnterpriseCrmEventbusProtoEventExecutionDetails.fromJson(core.Map json_)
       : this(
+          cancelReason: json_['cancelReason'] as core.String?,
           eventAttemptStats: (json_['eventAttemptStats'] as core.List?)
               ?.map((value) =>
                   EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats
@@ -6316,6 +7419,7 @@ class EnterpriseCrmEventbusProtoEventExecutionDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cancelReason != null) 'cancelReason': cancelReason!,
         if (eventAttemptStats != null) 'eventAttemptStats': eventAttemptStats!,
         if (eventExecutionSnapshot != null)
           'eventExecutionSnapshot': eventExecutionSnapshot!,
@@ -6701,7 +7805,7 @@ class EnterpriseCrmEventbusProtoFailurePolicy {
       };
 }
 
-typedef EnterpriseCrmEventbusProtoIntArray = $Shared06;
+typedef EnterpriseCrmEventbusProtoIntArray = $Shared07;
 typedef EnterpriseCrmEventbusProtoIntParameterArray
     = $EventbusProtoIntParameterArray;
 
@@ -6715,9 +7819,6 @@ class EnterpriseCrmEventbusProtoLogSettings {
   ///
   /// If omitted, assumes the same name as the event property key.
   core.String? logFieldName;
-
-  /// Contains the scrubbing options, such as whether to scrub, obfuscate, etc.
-  EnterpriseCrmLoggingGwsSanitizeOptions? sanitizeOptions;
 
   ///
   /// Possible string values are:
@@ -6736,41 +7837,23 @@ class EnterpriseCrmEventbusProtoLogSettings {
   /// - "PARAM_NAME" : Hash computations include the param name.
   core.String? seedScope;
 
-  /// Contains the field limits for shortening, such as max string length and
-  /// max array length.
-  EnterpriseCrmLoggingGwsFieldLimits? shorteningLimits;
-
   EnterpriseCrmEventbusProtoLogSettings({
     this.logFieldName,
-    this.sanitizeOptions,
     this.seedPeriod,
     this.seedScope,
-    this.shorteningLimits,
   });
 
   EnterpriseCrmEventbusProtoLogSettings.fromJson(core.Map json_)
       : this(
           logFieldName: json_['logFieldName'] as core.String?,
-          sanitizeOptions: json_.containsKey('sanitizeOptions')
-              ? EnterpriseCrmLoggingGwsSanitizeOptions.fromJson(
-                  json_['sanitizeOptions']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
           seedPeriod: json_['seedPeriod'] as core.String?,
           seedScope: json_['seedScope'] as core.String?,
-          shorteningLimits: json_.containsKey('shorteningLimits')
-              ? EnterpriseCrmLoggingGwsFieldLimits.fromJson(
-                  json_['shorteningLimits']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (logFieldName != null) 'logFieldName': logFieldName!,
-        if (sanitizeOptions != null) 'sanitizeOptions': sanitizeOptions!,
         if (seedPeriod != null) 'seedPeriod': seedPeriod!,
         if (seedScope != null) 'seedScope': seedScope!,
-        if (shorteningLimits != null) 'shorteningLimits': shorteningLimits!,
       };
 }
 
@@ -7794,8 +8877,8 @@ class EnterpriseCrmEventbusProtoTaskMetadata {
   /// - "HIDDEN" : Internal IP tasks that should not be available in the UI.
   /// - "CLOUD_SYSTEMS" : Tasks that are relevant to cloud systems teams and
   /// typically
-  /// - "CUSTOM_TASK_TEMPLATE" : include connecting to Vector salesforce, CRM
-  /// Hub Spanner etc. Task entities that derive from a custom task template.
+  /// - "CUSTOM_TASK_TEMPLATE" : Task entities that derive from a custom task
+  /// template.
   /// - "TASK_RECOMMENDATIONS" : Category to show task recommendations
   core.String? category;
 
@@ -8206,7 +9289,7 @@ class EnterpriseCrmEventbusProtoTeardownTaskConfig {
       };
 }
 
-typedef EnterpriseCrmEventbusProtoToken = $Shared04;
+typedef EnterpriseCrmEventbusProtoToken = $Shared05;
 
 class EnterpriseCrmEventbusProtoTriggerCriteria {
   /// Standard filter expression, when true the workflow will be executed.
@@ -8598,8 +9681,11 @@ typedef EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray
 /// Contains the details of the execution info of this event: this includes the
 /// tasks execution details plus the event execution statistics.
 ///
-/// Next available id: 11
+/// Next available id: 12
 class EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails {
+  /// If the execution is manually canceled, this field will contain the reason
+  /// for cancellation.
+  core.String? cancelReason;
   core.List<EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats>?
       eventAttemptStats;
 
@@ -8653,6 +9739,7 @@ class EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails {
   core.int? ryeLockUnheldCount;
 
   EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails({
+    this.cancelReason,
     this.eventAttemptStats,
     this.eventExecutionSnapshot,
     this.eventExecutionSnapshotsSize,
@@ -8667,6 +9754,7 @@ class EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails {
   EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails.fromJson(
       core.Map json_)
       : this(
+          cancelReason: json_['cancelReason'] as core.String?,
           eventAttemptStats: (json_['eventAttemptStats'] as core.List?)
               ?.map((value) =>
                   EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats
@@ -8690,6 +9778,7 @@ class EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cancelReason != null) 'cancelReason': cancelReason!,
         if (eventAttemptStats != null) 'eventAttemptStats': eventAttemptStats!,
         if (eventExecutionSnapshot != null)
           'eventExecutionSnapshot': eventExecutionSnapshot!,
@@ -8709,7 +9798,7 @@ class EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails {
 
 /// Contains all the execution details for a workflow instance.
 ///
-/// Next available id: 26
+/// Next available id: 27
 class EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo {
   /// The event data user sends as request.
   core.String? clientId;
@@ -8738,6 +9827,9 @@ class EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo {
 
   /// Execution trace info to aggregate parent-child executions.
   EnterpriseCrmEventbusProtoExecutionTraceInfo? executionTraceInfo;
+
+  /// User-defined label that annotates the executed integration version.
+  core.String? integrationVersionUserLabel;
 
   /// Auto-generated.
   core.String? lastModifiedTime;
@@ -8812,6 +9904,7 @@ class EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo {
     this.eventExecutionDetails,
     this.eventExecutionInfoId,
     this.executionTraceInfo,
+    this.integrationVersionUserLabel,
     this.lastModifiedTime,
     this.postMethod,
     this.product,
@@ -8855,6 +9948,8 @@ class EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo {
                   json_['executionTraceInfo']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          integrationVersionUserLabel:
+              json_['integrationVersionUserLabel'] as core.String?,
           lastModifiedTime: json_['lastModifiedTime'] as core.String?,
           postMethod: json_['postMethod'] as core.String?,
           product: json_['product'] as core.String?,
@@ -8895,6 +9990,8 @@ class EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo {
           'eventExecutionInfoId': eventExecutionInfoId!,
         if (executionTraceInfo != null)
           'executionTraceInfo': executionTraceInfo!,
+        if (integrationVersionUserLabel != null)
+          'integrationVersionUserLabel': integrationVersionUserLabel!,
         if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
         if (postMethod != null) 'postMethod': postMethod!,
         if (product != null) 'product': product!,
@@ -9833,7 +10930,7 @@ class EnterpriseCrmFrontendsEventbusProtoTaskEntity {
 
 /// Configuration detail of a trigger.
 ///
-/// Next available id: 20
+/// Next available id: 22
 class EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
   /// An alert threshold configuration for the \[trigger + client + workflow\]
   /// tuple.
@@ -9863,6 +10960,11 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
   /// when execution error happens in the task
   core.String? errorCatcherId;
 
+  /// List of input variables for the api trigger.
+  ///
+  /// Optional.
+  core.List<core.String>? inputVariables;
+
   /// The user created label for a particular trigger.
   core.String? label;
 
@@ -9874,6 +10976,11 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
   /// - "RUN_FIRST_MATCH" : Execute the first task that satisfies the associated
   /// condition.
   core.String? nextTasksExecutionPolicy;
+
+  /// List of output variables for the api trigger.
+  ///
+  /// Optional.
+  core.List<core.String>? outputVariables;
 
   /// If set to true, any upcoming requests for this trigger config will be
   /// paused and the executions will be resumed later when the flag is reset.
@@ -9955,8 +11062,10 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
     this.description,
     this.enabledClients,
     this.errorCatcherId,
+    this.inputVariables,
     this.label,
     this.nextTasksExecutionPolicy,
+    this.outputVariables,
     this.pauseWorkflowExecutions,
     this.position,
     this.properties,
@@ -9985,9 +11094,15 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
               ?.map((value) => value as core.String)
               .toList(),
           errorCatcherId: json_['errorCatcherId'] as core.String?,
+          inputVariables: (json_['inputVariables'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           label: json_['label'] as core.String?,
           nextTasksExecutionPolicy:
               json_['nextTasksExecutionPolicy'] as core.String?,
+          outputVariables: (json_['outputVariables'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           pauseWorkflowExecutions:
               json_['pauseWorkflowExecutions'] as core.bool?,
           position: json_.containsKey('position')
@@ -10024,9 +11139,11 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
         if (description != null) 'description': description!,
         if (enabledClients != null) 'enabledClients': enabledClients!,
         if (errorCatcherId != null) 'errorCatcherId': errorCatcherId!,
+        if (inputVariables != null) 'inputVariables': inputVariables!,
         if (label != null) 'label': label!,
         if (nextTasksExecutionPolicy != null)
           'nextTasksExecutionPolicy': nextTasksExecutionPolicy!,
+        if (outputVariables != null) 'outputVariables': outputVariables!,
         if (pauseWorkflowExecutions != null)
           'pauseWorkflowExecutions': pauseWorkflowExecutions!,
         if (position != null) 'position': position!,
@@ -10240,142 +11357,6 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameters {
       };
 }
 
-/// Describes string and array limits when writing to logs.
-///
-/// When a limit is exceeded the *shortener_type* describes how to shorten the
-/// field. next_id: 6
-class EnterpriseCrmLoggingGwsFieldLimits {
-  ///
-  /// Possible string values are:
-  /// - "LOG_ACTION_UNSPECIFIED"
-  /// - "DONT_LOG"
-  /// - "LOG"
-  core.String? logAction;
-
-  /// To which type(s) of logs the limits apply.
-  core.List<core.String>? logType;
-
-  /// maximum array size.
-  ///
-  /// If the array exceds this size, the field (list) is truncated.
-  core.int? maxArraySize;
-
-  /// maximum string length.
-  ///
-  /// If the field exceeds this amount the field is shortened.
-  core.int? maxStringLength;
-
-  ///
-  /// Possible string values are:
-  /// - "SHORTENER_TYPE_UNSPECIFIED"
-  /// - "SHORTEN" : String is shortened to max_string_length.
-  /// - "HASH" : String is replaced by its hex-string hash.
-  /// - "SHORTEN_WITH_HASH" : String is replaced by a combination of string
-  /// shortening and a hex-string hash.
-  /// - "SHORTEN_EMAIL" : String shortening for email addresses. Shortening may
-  /// be done on the user and/or domain portion of the email address.
-  /// - "SHORTEN_EMAIL_WITH_HASH" : String is replaced by a combination of
-  /// string shortening and a hex-string hash for an email address.
-  /// - "SHORTEN_DOMAIN" : Shortens a domain name (e.g., as part of an email
-  /// address or URL).
-  core.String? shortenerType;
-
-  EnterpriseCrmLoggingGwsFieldLimits({
-    this.logAction,
-    this.logType,
-    this.maxArraySize,
-    this.maxStringLength,
-    this.shortenerType,
-  });
-
-  EnterpriseCrmLoggingGwsFieldLimits.fromJson(core.Map json_)
-      : this(
-          logAction: json_['logAction'] as core.String?,
-          logType: (json_['logType'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          maxArraySize: json_['maxArraySize'] as core.int?,
-          maxStringLength: json_['maxStringLength'] as core.int?,
-          shortenerType: json_['shortenerType'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (logAction != null) 'logAction': logAction!,
-        if (logType != null) 'logType': logType!,
-        if (maxArraySize != null) 'maxArraySize': maxArraySize!,
-        if (maxStringLength != null) 'maxStringLength': maxStringLength!,
-        if (shortenerType != null) 'shortenerType': shortenerType!,
-      };
-}
-
-/// Identifies whether a field contains, or may contain, PII or sensitive data,
-/// and how to sanitize the field if it does.
-///
-/// If a field's privacy type cannot be determined then it is sanitized (e.g.,
-/// scrubbed). The specific sanitizer implementation is determined by run-time
-/// configuration and environment options (e.g., prod vs. qa). next_id: 5
-class EnterpriseCrmLoggingGwsSanitizeOptions {
-  /// If true, the value has already been sanitized and needs no further
-  /// sanitization.
-  ///
-  /// For instance, a D3 customer id is already an obfuscated entity and *might
-  /// not* need further sanitization.
-  core.bool? isAlreadySanitized;
-
-  /// To which type(s) of logs the sanitize options apply.
-  core.List<core.String>? logType;
-
-  ///
-  /// Possible string values are:
-  /// - "PRIVACY_TYPE_UNSPECIFIED"
-  /// - "NOT_PII" : Field does *NOT* contain PII or sensitive data.
-  /// - "PII" : Field contains PII.
-  /// - "SPII" : Field contains Sensitive PII.
-  /// - "UNSURE" : Unsure if field contains PII.
-  core.String? privacy;
-
-  ///
-  /// Possible string values are:
-  /// - "SANITIZE_TYPE_UNSPECIFIED"
-  /// - "SCRUB" : Replace value with a scrubbed value (usu. a constant).
-  /// - "ANONYMIZE" : Transform a value so that it cannot be tracked across
-  /// events. However, a given value, is transformed to the same value *within*
-  /// an event. E.g., "foo.com" is transformed to "0xabcdef" for event 1001, and
-  /// to "0xfedcba" for event 1002.
-  /// - "ANONYMIZE_LIMITED_REPEATABLE" : Transform values as with ANONYMIZER,
-  /// but the same transformation is repeated for a limited time (e.g., 1 day).
-  /// - "OBFUSCATE" : The value is transformed using a well-defined obfuscator
-  /// (e.g., D3_CUSTOMER_ID).
-  /// - "ENCRYPT" : The value is encrypted.
-  /// - "DO_NOT_SANITIZE" : No sanitization is required.
-  core.String? sanitizeType;
-
-  EnterpriseCrmLoggingGwsSanitizeOptions({
-    this.isAlreadySanitized,
-    this.logType,
-    this.privacy,
-    this.sanitizeType,
-  });
-
-  EnterpriseCrmLoggingGwsSanitizeOptions.fromJson(core.Map json_)
-      : this(
-          isAlreadySanitized: json_['isAlreadySanitized'] as core.bool?,
-          logType: (json_['logType'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          privacy: json_['privacy'] as core.String?,
-          sanitizeType: json_['sanitizeType'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (isAlreadySanitized != null)
-          'isAlreadySanitized': isAlreadySanitized!,
-        if (logType != null) 'logType': logType!,
-        if (privacy != null) 'privacy': privacy!,
-        if (sanitizeType != null) 'sanitizeType': sanitizeType!,
-      };
-}
-
 /// AuthConfig defines details of a authentication type.
 class GoogleCloudConnectorsV1AuthConfig {
   /// List containing additional auth configs.
@@ -10395,10 +11376,16 @@ class GoogleCloudConnectorsV1AuthConfig {
   /// - "SSH_PUBLIC_KEY" : SSH Public Key Authentication
   /// - "OAUTH2_AUTH_CODE_FLOW" : Oauth 2.0 Authorization Code Flow
   /// - "GOOGLE_AUTHENTICATION" : Google authentication
+  /// - "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED" : Oauth 2.0 Authorization Code
+  /// Flow with Google Provided OAuth Client
   core.String? authType;
 
   /// Oauth2AuthCodeFlow.
   GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow? oauth2AuthCodeFlow;
+
+  /// Oauth2AuthCodeFlowGoogleManaged.
+  GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged?
+      oauth2AuthCodeFlowGoogleManaged;
 
   /// Oauth2ClientCredentials.
   GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials?
@@ -10418,6 +11405,7 @@ class GoogleCloudConnectorsV1AuthConfig {
     this.authKey,
     this.authType,
     this.oauth2AuthCodeFlow,
+    this.oauth2AuthCodeFlowGoogleManaged,
     this.oauth2ClientCredentials,
     this.oauth2JwtBearer,
     this.sshPublicKey,
@@ -10435,6 +11423,12 @@ class GoogleCloudConnectorsV1AuthConfig {
           oauth2AuthCodeFlow: json_.containsKey('oauth2AuthCodeFlow')
               ? GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow.fromJson(
                   json_['oauth2AuthCodeFlow']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          oauth2AuthCodeFlowGoogleManaged: json_
+                  .containsKey('oauth2AuthCodeFlowGoogleManaged')
+              ? GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged
+                  .fromJson(json_['oauth2AuthCodeFlowGoogleManaged']
                       as core.Map<core.String, core.dynamic>)
               : null,
           oauth2ClientCredentials: json_.containsKey('oauth2ClientCredentials')
@@ -10464,6 +11458,8 @@ class GoogleCloudConnectorsV1AuthConfig {
         if (authType != null) 'authType': authType!,
         if (oauth2AuthCodeFlow != null)
           'oauth2AuthCodeFlow': oauth2AuthCodeFlow!,
+        if (oauth2AuthCodeFlowGoogleManaged != null)
+          'oauth2AuthCodeFlowGoogleManaged': oauth2AuthCodeFlowGoogleManaged!,
         if (oauth2ClientCredentials != null)
           'oauth2ClientCredentials': oauth2ClientCredentials!,
         if (oauth2JwtBearer != null) 'oauth2JwtBearer': oauth2JwtBearer!,
@@ -10540,6 +11536,13 @@ class GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow {
         if (scopes != null) 'scopes': scopes!,
       };
 }
+
+/// Parameters to support Oauth 2.0 Auth Code Grant Authentication using Google
+/// Provided OAuth Client.
+///
+/// See https://tools.ietf.org/html/rfc6749#section-1.3.1 for more details.
+typedef GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged
+    = $Oauth2AuthCodeFlowGoogleManaged;
 
 /// Parameters to support Oauth 2.0 Client Credentials Grant Authentication.
 ///
@@ -10753,11 +11756,27 @@ class GoogleCloudConnectorsV1ConfigVariable {
 
 /// Connection represents an instance of connector.
 class GoogleCloudConnectorsV1Connection {
+  /// Async operations enabled for the connection.
+  ///
+  /// If Async Operations is enabled, Connection allows the customers to
+  /// initiate async long running operations using the actions API.
+  ///
+  /// Optional.
+  core.bool? asyncOperationsEnabled;
+
   /// Configuration for establishing the connection's authentication with an
   /// external system.
   ///
   /// Optional.
   GoogleCloudConnectorsV1AuthConfig? authConfig;
+
+  /// Auth override enabled for the connection.
+  ///
+  /// If Auth Override is enabled, Connection allows the backend service auth to
+  /// be overridden in the entities/actions API.
+  ///
+  /// Optional.
+  core.bool? authOverrideEnabled;
 
   /// Billing config for the connection.
   ///
@@ -10849,6 +11868,11 @@ class GoogleCloudConnectorsV1Connection {
   /// Output only.
   GoogleCloudConnectorsV1EventingRuntimeData? eventingRuntimeData;
 
+  /// The name of the Hostname of the Service Directory service with TLS.
+  ///
+  /// Output only.
+  core.String? host;
+
   /// GCR location where the runtime image is stored.
   ///
   /// formatted like: gcr.io/{bucketName}/{imageName}
@@ -10928,13 +11952,20 @@ class GoogleCloudConnectorsV1Connection {
   /// Optional.
   core.bool? suspended;
 
+  /// The name of the Service Directory service with TLS.
+  ///
+  /// Output only.
+  core.String? tlsServiceDirectory;
+
   /// Updated time.
   ///
   /// Output only.
   core.String? updateTime;
 
   GoogleCloudConnectorsV1Connection({
+    this.asyncOperationsEnabled,
     this.authConfig,
+    this.authOverrideEnabled,
     this.billingConfig,
     this.configVariables,
     this.connectionRevision,
@@ -10948,6 +11979,7 @@ class GoogleCloudConnectorsV1Connection {
     this.eventingConfig,
     this.eventingEnablementType,
     this.eventingRuntimeData,
+    this.host,
     this.imageLocation,
     this.isTrustedTester,
     this.labels,
@@ -10961,15 +11993,18 @@ class GoogleCloudConnectorsV1Connection {
     this.status,
     this.subscriptionType,
     this.suspended,
+    this.tlsServiceDirectory,
     this.updateTime,
   });
 
   GoogleCloudConnectorsV1Connection.fromJson(core.Map json_)
       : this(
+          asyncOperationsEnabled: json_['asyncOperationsEnabled'] as core.bool?,
           authConfig: json_.containsKey('authConfig')
               ? GoogleCloudConnectorsV1AuthConfig.fromJson(
                   json_['authConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          authOverrideEnabled: json_['authOverrideEnabled'] as core.bool?,
           billingConfig: json_.containsKey('billingConfig')
               ? GoogleCloudConnectorsV1BillingConfig.fromJson(
                   json_['billingConfig'] as core.Map<core.String, core.dynamic>)
@@ -11008,6 +12043,7 @@ class GoogleCloudConnectorsV1Connection {
                   json_['eventingRuntimeData']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          host: json_['host'] as core.String?,
           imageLocation: json_['imageLocation'] as core.String?,
           isTrustedTester: json_['isTrustedTester'] as core.bool?,
           labels:
@@ -11042,11 +12078,16 @@ class GoogleCloudConnectorsV1Connection {
               : null,
           subscriptionType: json_['subscriptionType'] as core.String?,
           suspended: json_['suspended'] as core.bool?,
+          tlsServiceDirectory: json_['tlsServiceDirectory'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (asyncOperationsEnabled != null)
+          'asyncOperationsEnabled': asyncOperationsEnabled!,
         if (authConfig != null) 'authConfig': authConfig!,
+        if (authOverrideEnabled != null)
+          'authOverrideEnabled': authOverrideEnabled!,
         if (billingConfig != null) 'billingConfig': billingConfig!,
         if (configVariables != null) 'configVariables': configVariables!,
         if (connectionRevision != null)
@@ -11067,6 +12108,7 @@ class GoogleCloudConnectorsV1Connection {
           'eventingEnablementType': eventingEnablementType!,
         if (eventingRuntimeData != null)
           'eventingRuntimeData': eventingRuntimeData!,
+        if (host != null) 'host': host!,
         if (imageLocation != null) 'imageLocation': imageLocation!,
         if (isTrustedTester != null) 'isTrustedTester': isTrustedTester!,
         if (labels != null) 'labels': labels!,
@@ -11080,6 +12122,8 @@ class GoogleCloudConnectorsV1Connection {
         if (status != null) 'status': status!,
         if (subscriptionType != null) 'subscriptionType': subscriptionType!,
         if (suspended != null) 'suspended': suspended!,
+        if (tlsServiceDirectory != null)
+          'tlsServiceDirectory': tlsServiceDirectory!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -11104,6 +12148,19 @@ class GoogleCloudConnectorsV1ConnectorVersionInfraConfig {
   /// - "CLOUD_RUN_MST" : Cloud run mst.
   core.String? deploymentModel;
 
+  /// Status of the deployment model migration.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DEPLOYMENT_MODEL_MIGRATION_STATE_UNSPECIFIED" : Deployment model
+  /// migration state is not specified.
+  /// - "IN_PROGRESS" : Deployment model migration is in progress.
+  /// - "COMPLETED" : Deployment model migration is completed.
+  /// - "ROLLEDBACK" : Deployment model migration rolledback.
+  /// - "ROLLBACK_IN_PROGRESS" : Deployment model migration rollback in
+  /// progress.
+  core.String? deploymentModelMigrationState;
+
   /// HPA autoscaling config.
   ///
   /// Output only.
@@ -11113,6 +12170,11 @@ class GoogleCloudConnectorsV1ConnectorVersionInfraConfig {
   ///
   /// Output only.
   core.String? internalclientRatelimitThreshold;
+
+  /// Max instance request concurrency.
+  ///
+  /// Output only.
+  core.int? maxInstanceRequestConcurrency;
 
   /// Max QPS supported by the connector version before throttling of requests.
   ///
@@ -11134,15 +12196,28 @@ class GoogleCloudConnectorsV1ConnectorVersionInfraConfig {
   /// Output only.
   core.String? sharedDeployment;
 
+  /// Status of the TLS migration.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TLS_MIGRATION_STATE_UNSPECIFIED" : TLS migration state is not
+  /// specified.
+  /// - "TLS_MIGRATION_NOT_STARTED" : TLS migration is in progress.
+  /// - "TLS_MIGRATION_COMPLETED" : TLS migration is completed.
+  core.String? tlsMigrationState;
+
   GoogleCloudConnectorsV1ConnectorVersionInfraConfig({
     this.connectionRatelimitWindowSeconds,
     this.deploymentModel,
+    this.deploymentModelMigrationState,
     this.hpaConfig,
     this.internalclientRatelimitThreshold,
+    this.maxInstanceRequestConcurrency,
     this.ratelimitThreshold,
     this.resourceLimits,
     this.resourceRequests,
     this.sharedDeployment,
+    this.tlsMigrationState,
   });
 
   GoogleCloudConnectorsV1ConnectorVersionInfraConfig.fromJson(core.Map json_)
@@ -11150,12 +12225,16 @@ class GoogleCloudConnectorsV1ConnectorVersionInfraConfig {
           connectionRatelimitWindowSeconds:
               json_['connectionRatelimitWindowSeconds'] as core.String?,
           deploymentModel: json_['deploymentModel'] as core.String?,
+          deploymentModelMigrationState:
+              json_['deploymentModelMigrationState'] as core.String?,
           hpaConfig: json_.containsKey('hpaConfig')
               ? GoogleCloudConnectorsV1HPAConfig.fromJson(
                   json_['hpaConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           internalclientRatelimitThreshold:
               json_['internalclientRatelimitThreshold'] as core.String?,
+          maxInstanceRequestConcurrency:
+              json_['maxInstanceRequestConcurrency'] as core.int?,
           ratelimitThreshold: json_['ratelimitThreshold'] as core.String?,
           resourceLimits: json_.containsKey('resourceLimits')
               ? GoogleCloudConnectorsV1ResourceLimits.fromJson(
@@ -11168,20 +12247,26 @@ class GoogleCloudConnectorsV1ConnectorVersionInfraConfig {
                       as core.Map<core.String, core.dynamic>)
               : null,
           sharedDeployment: json_['sharedDeployment'] as core.String?,
+          tlsMigrationState: json_['tlsMigrationState'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (connectionRatelimitWindowSeconds != null)
           'connectionRatelimitWindowSeconds': connectionRatelimitWindowSeconds!,
         if (deploymentModel != null) 'deploymentModel': deploymentModel!,
+        if (deploymentModelMigrationState != null)
+          'deploymentModelMigrationState': deploymentModelMigrationState!,
         if (hpaConfig != null) 'hpaConfig': hpaConfig!,
         if (internalclientRatelimitThreshold != null)
           'internalclientRatelimitThreshold': internalclientRatelimitThreshold!,
+        if (maxInstanceRequestConcurrency != null)
+          'maxInstanceRequestConcurrency': maxInstanceRequestConcurrency!,
         if (ratelimitThreshold != null)
           'ratelimitThreshold': ratelimitThreshold!,
         if (resourceLimits != null) 'resourceLimits': resourceLimits!,
         if (resourceRequests != null) 'resourceRequests': resourceRequests!,
         if (sharedDeployment != null) 'sharedDeployment': sharedDeployment!,
+        if (tlsMigrationState != null) 'tlsMigrationState': tlsMigrationState!,
       };
 }
 
@@ -11652,6 +12737,115 @@ class GoogleCloudIntegrationsV1alphaAccessToken {
       };
 }
 
+/// An assertion which will check for a condition over task execution status or
+/// an expression for task output variables Next available id: 5
+class GoogleCloudIntegrationsV1alphaAssertion {
+  /// The type of assertion to perform.
+  /// Possible string values are:
+  /// - "ASSERTION_STRATEGY_UNSPECIFIED" : Unspecified Assertion strategy
+  /// - "ASSERT_SUCCESSFUL_EXECUTION" : Test a successful execution
+  /// - "ASSERT_FAILED_EXECUTION" : Test a failed execution
+  /// - "ASSERT_NO_EXECUTION" : Test that the task was never executed
+  /// - "ASSERT_EQUALS" : Test the parameter selected is equal to the expected
+  /// value
+  /// - "ASSERT_NOT_EQUALS" : Test the parameter selected is not equal to the
+  /// expected value
+  /// - "ASSERT_CONTAINS" : Test the parameter selected contains the configured
+  /// value
+  /// - "ASSERT_CONDITION" : Test a specific condition
+  core.String? assertionStrategy;
+
+  /// Standard filter expression for ASSERT_CONDITION to succeed
+  ///
+  /// Optional.
+  core.String? condition;
+
+  /// Key-value pair for ASSERT_EQUALS, ASSERT_NOT_EQUALS, ASSERT_CONTAINS to
+  /// succeed
+  ///
+  /// Optional.
+  GoogleCloudIntegrationsV1alphaEventParameter? parameter;
+
+  /// Number of times given task should be retried in case of
+  /// ASSERT_FAILED_EXECUTION
+  core.int? retryCount;
+
+  GoogleCloudIntegrationsV1alphaAssertion({
+    this.assertionStrategy,
+    this.condition,
+    this.parameter,
+    this.retryCount,
+  });
+
+  GoogleCloudIntegrationsV1alphaAssertion.fromJson(core.Map json_)
+      : this(
+          assertionStrategy: json_['assertionStrategy'] as core.String?,
+          condition: json_['condition'] as core.String?,
+          parameter: json_.containsKey('parameter')
+              ? GoogleCloudIntegrationsV1alphaEventParameter.fromJson(
+                  json_['parameter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          retryCount: json_['retryCount'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assertionStrategy != null) 'assertionStrategy': assertionStrategy!,
+        if (condition != null) 'condition': condition!,
+        if (parameter != null) 'parameter': parameter!,
+        if (retryCount != null) 'retryCount': retryCount!,
+      };
+}
+
+/// The result of an assertion.
+class GoogleCloudIntegrationsV1alphaAssertionResult {
+  /// Assertion that was run.
+  GoogleCloudIntegrationsV1alphaAssertion? assertion;
+
+  /// Details of the assertion failure
+  core.String? failureMessage;
+
+  /// Status of assertion to signify if the assertion succeeded or failed
+  /// Possible string values are:
+  /// - "ASSERTION_STATUS_UNSPECIFIED" : Unspecified assertion status
+  /// - "SUCCEEDED" : Assertion succeeded
+  /// - "FAILED" : Assertion failed
+  core.String? status;
+
+  /// Task name of task where the assertion was run.
+  core.String? taskName;
+
+  /// Task number of task where the assertion was run.
+  core.String? taskNumber;
+
+  GoogleCloudIntegrationsV1alphaAssertionResult({
+    this.assertion,
+    this.failureMessage,
+    this.status,
+    this.taskName,
+    this.taskNumber,
+  });
+
+  GoogleCloudIntegrationsV1alphaAssertionResult.fromJson(core.Map json_)
+      : this(
+          assertion: json_.containsKey('assertion')
+              ? GoogleCloudIntegrationsV1alphaAssertion.fromJson(
+                  json_['assertion'] as core.Map<core.String, core.dynamic>)
+              : null,
+          failureMessage: json_['failureMessage'] as core.String?,
+          status: json_['status'] as core.String?,
+          taskName: json_['taskName'] as core.String?,
+          taskNumber: json_['taskNumber'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assertion != null) 'assertion': assertion!,
+        if (failureMessage != null) 'failureMessage': failureMessage!,
+        if (status != null) 'status': status!,
+        if (taskName != null) 'taskName': taskName!,
+        if (taskNumber != null) 'taskNumber': taskNumber!,
+      };
+}
+
 /// Status for the execution attempt.
 class GoogleCloudIntegrationsV1alphaAttemptStats {
   /// The end time of the integration execution for current attempt.
@@ -11912,11 +13106,32 @@ class GoogleCloudIntegrationsV1alphaBooleanParameterArray {
 }
 
 /// Request for cancelling an execution.
-typedef GoogleCloudIntegrationsV1alphaCancelExecutionRequest = $Empty;
+class GoogleCloudIntegrationsV1alphaCancelExecutionRequest {
+  /// Reason for cancelling the execution.
+  ///
+  /// This is provided by the client requesting the cancellation, and is not
+  /// used by the Platform.
+  ///
+  /// Required.
+  core.String? cancelReason;
+
+  GoogleCloudIntegrationsV1alphaCancelExecutionRequest({
+    this.cancelReason,
+  });
+
+  GoogleCloudIntegrationsV1alphaCancelExecutionRequest.fromJson(core.Map json_)
+      : this(
+          cancelReason: json_['cancelReason'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cancelReason != null) 'cancelReason': cancelReason!,
+      };
+}
 
 /// Response for cancelling an execution.
 class GoogleCloudIntegrationsV1alphaCancelExecutionResponse {
-  /// True if cancellation performed successfully
+  /// True if cancellation performed successfully.
   core.bool? isCanceled;
 
   GoogleCloudIntegrationsV1alphaCancelExecutionResponse({
@@ -11942,7 +13157,7 @@ class GoogleCloudIntegrationsV1alphaCertificate {
   /// - "EXPIRED" : Certificate in expired state needs to be updated
   core.String? certificateStatus;
 
-  /// Credential id that will be used to register with trawler INTERNAL_ONLY
+  /// Credential id that will be used to register with trawler
   ///
   /// Immutable.
   core.String? credentialId;
@@ -12118,6 +13333,12 @@ class GoogleCloudIntegrationsV1alphaClientConfig {
   /// Description of what the client is used for
   core.String? description;
 
+  /// Indicates the client enables internal IP feature, this is applicable for
+  /// internal clients only.
+  ///
+  /// Optional.
+  core.bool? enableInternalIp;
+
   /// True if variable masking feature should be turned on for this region
   ///
   /// Optional.
@@ -12151,6 +13372,7 @@ class GoogleCloudIntegrationsV1alphaClientConfig {
     this.cloudKmsConfig,
     this.createTime,
     this.description,
+    this.enableInternalIp,
     this.enableVariableMasking,
     this.id,
     this.isGmek,
@@ -12171,6 +13393,7 @@ class GoogleCloudIntegrationsV1alphaClientConfig {
               : null,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
+          enableInternalIp: json_['enableInternalIp'] as core.bool?,
           enableVariableMasking: json_['enableVariableMasking'] as core.bool?,
           id: json_['id'] as core.String?,
           isGmek: json_['isGmek'] as core.bool?,
@@ -12186,6 +13409,7 @@ class GoogleCloudIntegrationsV1alphaClientConfig {
         if (cloudKmsConfig != null) 'cloudKmsConfig': cloudKmsConfig!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (enableInternalIp != null) 'enableInternalIp': enableInternalIp!,
         if (enableVariableMasking != null)
           'enableVariableMasking': enableVariableMasking!,
         if (id != null) 'id': id!,
@@ -12731,6 +13955,46 @@ class GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse {
       };
 }
 
+/// Response for DownloadTemplate.
+class GoogleCloudIntegrationsV1alphaDownloadTemplateResponse {
+  /// String representation of the template.
+  core.String? content;
+
+  GoogleCloudIntegrationsV1alphaDownloadTemplateResponse({
+    this.content,
+  });
+
+  GoogleCloudIntegrationsV1alphaDownloadTemplateResponse.fromJson(
+      core.Map json_)
+      : this(
+          content: json_['content'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (content != null) 'content': content!,
+      };
+}
+
+/// Response for DownloadTestCase.
+class GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse {
+  /// String representation of the test case.
+  core.String? content;
+
+  GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse({
+    this.content,
+  });
+
+  GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse.fromJson(
+      core.Map json_)
+      : this(
+          content: json_['content'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (content != null) 'content': content!,
+      };
+}
+
 /// Response containing all provisioned regions for Connector Platform.
 class GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse {
   /// All regions where Connector Platform is provisioned.
@@ -13070,6 +14334,91 @@ class GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse {
       };
 }
 
+/// The request for executing a functional test.
+class GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest {
+  /// Input parameters used by test case execution.
+  ///
+  /// Optional.
+  core.Map<core.String, GoogleCloudIntegrationsV1alphaValueType>?
+      inputParameters;
+
+  GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest({
+    this.inputParameters,
+  });
+
+  GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest.fromJson(core.Map json_)
+      : this(
+          inputParameters:
+              (json_['inputParameters'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudIntegrationsV1alphaValueType.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (inputParameters != null) 'inputParameters': inputParameters!,
+      };
+}
+
+/// The response for executing a functional test.
+class GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse {
+  /// Results of each assertions ran during execution of test case.
+  core.List<GoogleCloudIntegrationsV1alphaAssertionResult>? assertionResults;
+
+  /// The id of the execution corresponding to this run of integration.
+  core.String? executionId;
+
+  /// OUTPUT parameters in format of Map.
+  ///
+  /// Where Key is the name of the parameter. Note: Name of the system generated
+  /// parameters are wrapped by backtick(\`) to distinguish them from the user
+  /// defined parameters.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? outputParameters;
+
+  /// State of the test case execution
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state
+  /// - "PASSED" : Test case execution passed
+  /// - "FAILED" : Test case execution failed
+  core.String? testExecutionState;
+
+  GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse({
+    this.assertionResults,
+    this.executionId,
+    this.outputParameters,
+    this.testExecutionState,
+  });
+
+  GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse.fromJson(core.Map json_)
+      : this(
+          assertionResults: (json_['assertionResults'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaAssertionResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          executionId: json_['executionId'] as core.String?,
+          outputParameters: json_.containsKey('outputParameters')
+              ? json_['outputParameters'] as core.Map<core.String, core.dynamic>
+              : null,
+          testExecutionState: json_['testExecutionState'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assertionResults != null) 'assertionResults': assertionResults!,
+        if (executionId != null) 'executionId': executionId!,
+        if (outputParameters != null) 'outputParameters': outputParameters!,
+        if (testExecutionState != null)
+          'testExecutionState': testExecutionState!,
+      };
+}
+
 /// The Execution resource contains detailed information of an individual
 /// integration execution.
 class GoogleCloudIntegrationsV1alphaExecution {
@@ -13131,10 +14480,11 @@ class GoogleCloudIntegrationsV1alphaExecution {
   core.List<EnterpriseCrmFrontendsEventbusProtoParameterEntry>? requestParams;
 
   /// Event parameters returned as part of the response.
+  ///
+  /// In the case of error, the `ErrorInfo` field is returned in the following
+  /// format: { "ErrorInfo": { "message": String, "code": Number } }
   core.Map<core.String, GoogleCloudIntegrationsV1alphaValueType>?
       responseParameters;
-
-  /// Event parameters come out as part of the response.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -13658,6 +15008,90 @@ class GoogleCloudIntegrationsV1alphaGetClientResponse {
       };
 }
 
+/// Request to Import template
+class GoogleCloudIntegrationsV1alphaImportTemplateRequest {
+  /// Name of the integration where template needs to be imported.
+  ///
+  /// Required.
+  core.String? integration;
+
+  /// The region of the Integration to be created.
+  ///
+  /// Required.
+  core.String? integrationRegion;
+
+  /// Sub Integration which would be created via templates.
+  ///
+  /// Optional.
+  core.Map<core.String,
+          GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails>?
+      subIntegrations;
+
+  GoogleCloudIntegrationsV1alphaImportTemplateRequest({
+    this.integration,
+    this.integrationRegion,
+    this.subIntegrations,
+  });
+
+  GoogleCloudIntegrationsV1alphaImportTemplateRequest.fromJson(core.Map json_)
+      : this(
+          integration: json_['integration'] as core.String?,
+          integrationRegion: json_['integrationRegion'] as core.String?,
+          subIntegrations:
+              (json_['subIntegrations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails
+                  .fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (integration != null) 'integration': integration!,
+        if (integrationRegion != null) 'integrationRegion': integrationRegion!,
+        if (subIntegrations != null) 'subIntegrations': subIntegrations!,
+      };
+}
+
+/// Response for import template
+class GoogleCloudIntegrationsV1alphaImportTemplateResponse {
+  /// IntegrationVersion after the import.
+  GoogleCloudIntegrationsV1alphaIntegrationVersion? integrationVersion;
+
+  /// Sub integration versions which are imported.
+  core.List<GoogleCloudIntegrationsV1alphaIntegrationVersion>?
+      subIntegrationVersions;
+
+  GoogleCloudIntegrationsV1alphaImportTemplateResponse({
+    this.integrationVersion,
+    this.subIntegrationVersions,
+  });
+
+  GoogleCloudIntegrationsV1alphaImportTemplateResponse.fromJson(core.Map json_)
+      : this(
+          integrationVersion: json_.containsKey('integrationVersion')
+              ? GoogleCloudIntegrationsV1alphaIntegrationVersion.fromJson(
+                  json_['integrationVersion']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          subIntegrationVersions:
+              (json_['subIntegrationVersions'] as core.List?)
+                  ?.map((value) =>
+                      GoogleCloudIntegrationsV1alphaIntegrationVersion.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (integrationVersion != null)
+          'integrationVersion': integrationVersion!,
+        if (subIntegrationVersions != null)
+          'subIntegrationVersions': subIntegrationVersions!,
+      };
+}
+
 /// This message only contains a field of integer array.
 class GoogleCloudIntegrationsV1alphaIntParameterArray {
   /// Integer array.
@@ -13982,6 +15416,15 @@ class GoogleCloudIntegrationsV1alphaIntegrationParameter {
   /// - "JSON_VALUE" : Json.
   /// - "PROTO_VALUE" : Proto Value (Internal use only).
   /// - "PROTO_ARRAY" : Proto Array (Internal use only).
+  /// - "NON_SERIALIZABLE_OBJECT" : // Non-serializable object (Internal use
+  /// only).
+  /// - "PROTO_ENUM" : Proto Enum (Internal use only).
+  /// - "SERIALIZED_OBJECT_VALUE" : Serialized object (Internal use only).
+  /// - "PROTO_ENUM_ARRAY" : Proto Enum Array (Internal use only).
+  /// - "BYTES" : BYTES data types are not allowed for top-level params. They're
+  /// only meant to support protobufs with BYTES (sub)fields.
+  /// - "BYTES_ARRAY" : BYTES_ARRAY data types are not allowed for top-level
+  /// params. They're only meant to support protobufs with BYTES (sub)fields.
   core.String? dataType;
 
   /// Default values for the defined keys.
@@ -13989,6 +15432,11 @@ class GoogleCloudIntegrationsV1alphaIntegrationParameter {
   /// Each value can either be string, int, double or any proto message or a
   /// serialized object.
   GoogleCloudIntegrationsV1alphaValueType? defaultValue;
+
+  /// Description of the parameter.
+  ///
+  /// Optional.
+  core.String? description;
 
   /// The name (without prefix) to be displayed in the UI for this parameter.
   ///
@@ -14034,6 +15482,7 @@ class GoogleCloudIntegrationsV1alphaIntegrationParameter {
     this.containsLargeData,
     this.dataType,
     this.defaultValue,
+    this.description,
     this.displayName,
     this.inputOutputType,
     this.isTransient,
@@ -14052,6 +15501,7 @@ class GoogleCloudIntegrationsV1alphaIntegrationParameter {
               ? GoogleCloudIntegrationsV1alphaValueType.fromJson(
                   json_['defaultValue'] as core.Map<core.String, core.dynamic>)
               : null,
+          description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           inputOutputType: json_['inputOutputType'] as core.String?,
           isTransient: json_['isTransient'] as core.bool?,
@@ -14066,6 +15516,7 @@ class GoogleCloudIntegrationsV1alphaIntegrationParameter {
         if (containsLargeData != null) 'containsLargeData': containsLargeData!,
         if (dataType != null) 'dataType': dataType!,
         if (defaultValue != null) 'defaultValue': defaultValue!,
+        if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (inputOutputType != null) 'inputOutputType': inputOutputType!,
         if (isTransient != null) 'isTransient': isTransient!,
@@ -14446,6 +15897,41 @@ class GoogleCloudIntegrationsV1alphaIntegrationVersion {
           'triggerConfigsInternal': triggerConfigsInternal!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (userLabel != null) 'userLabel': userLabel!,
+      };
+}
+
+/// Define the template of IntegrationVersion.
+class GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate {
+  /// Templatized version of integration.
+  ///
+  /// Required.
+  GoogleCloudIntegrationsV1alphaIntegrationVersion? integrationVersion;
+
+  /// Unique Key of the IntegrationVersion.
+  ///
+  /// Required.
+  core.String? key;
+
+  GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate({
+    this.integrationVersion,
+    this.key,
+  });
+
+  GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate.fromJson(
+      core.Map json_)
+      : this(
+          integrationVersion: json_.containsKey('integrationVersion')
+              ? GoogleCloudIntegrationsV1alphaIntegrationVersion.fromJson(
+                  json_['integrationVersion']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          key: json_['key'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (integrationVersion != null)
+          'integrationVersion': integrationVersion!,
+        if (key != null) 'key': key!,
       };
 }
 
@@ -14933,6 +16419,144 @@ class GoogleCloudIntegrationsV1alphaListSuspensionsResponse {
       };
 }
 
+/// Response for a request to list templates
+class GoogleCloudIntegrationsV1alphaListTemplatesResponse {
+  /// The token used to retrieve the next page results.
+  core.String? nextPageToken;
+
+  /// List of templates retrieved.
+  core.List<GoogleCloudIntegrationsV1alphaTemplate>? templates;
+
+  GoogleCloudIntegrationsV1alphaListTemplatesResponse({
+    this.nextPageToken,
+    this.templates,
+  });
+
+  GoogleCloudIntegrationsV1alphaListTemplatesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          templates: (json_['templates'] as core.List?)
+              ?.map((value) => GoogleCloudIntegrationsV1alphaTemplate.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (templates != null) 'templates': templates!,
+      };
+}
+
+/// The response for listing the functional test execution data.
+class GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse {
+  /// The detailed information of requested executions
+  core.List<GoogleCloudIntegrationsV1alphaExecution>? executions;
+
+  /// The token used to retrieve the next page results.
+  core.String? nextPageToken;
+
+  GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse({
+    this.executions,
+    this.nextPageToken,
+  });
+
+  GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse.fromJson(
+      core.Map json_)
+      : this(
+          executions: (json_['executions'] as core.List?)
+              ?.map((value) => GoogleCloudIntegrationsV1alphaExecution.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (executions != null) 'executions': executions!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response for ListTestCases
+class GoogleCloudIntegrationsV1alphaListTestCasesResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The test cases corresponding to the specified filter
+  core.List<GoogleCloudIntegrationsV1alphaTestCase>? testCases;
+
+  GoogleCloudIntegrationsV1alphaListTestCasesResponse({
+    this.nextPageToken,
+    this.testCases,
+  });
+
+  GoogleCloudIntegrationsV1alphaListTestCasesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          testCases: (json_['testCases'] as core.List?)
+              ?.map((value) => GoogleCloudIntegrationsV1alphaTestCase.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (testCases != null) 'testCases': testCases!,
+      };
+}
+
+/// The configuration for mocking of a task during test execution Next available
+/// id: 4
+class GoogleCloudIntegrationsV1alphaMockConfig {
+  /// Number of times the given task should fail for failure mock strategy
+  ///
+  /// Optional.
+  core.String? failedExecutions;
+
+  /// Mockstrategy defines how the particular task should be mocked during test
+  /// execution
+  /// Possible string values are:
+  /// - "MOCK_STRATEGY_UNSPECIFIED" : This should never be used to annotate a
+  /// field
+  /// - "NO_MOCK_STRATEGY" : Execute actual task
+  /// - "SPECIFIC_MOCK_STRATEGY" : Don't execute actual task, instead use the
+  /// values specified by user for output of the task
+  /// - "FAILURE_MOCK_STRATEGY" : Don't execute actual task, instead return task
+  /// failure
+  /// - "SKIP_MOCK_STRATEGY" : Don't execute actual task, instead mark it as
+  /// successful
+  core.String? mockStrategy;
+
+  /// List of key-value pairs for specific mock strategy
+  ///
+  /// Optional.
+  core.List<GoogleCloudIntegrationsV1alphaEventParameter>? parameters;
+
+  GoogleCloudIntegrationsV1alphaMockConfig({
+    this.failedExecutions,
+    this.mockStrategy,
+    this.parameters,
+  });
+
+  GoogleCloudIntegrationsV1alphaMockConfig.fromJson(core.Map json_)
+      : this(
+          failedExecutions: json_['failedExecutions'] as core.String?,
+          mockStrategy: json_['mockStrategy'] as core.String?,
+          parameters: (json_['parameters'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaEventParameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (failedExecutions != null) 'failedExecutions': failedExecutions!,
+        if (mockStrategy != null) 'mockStrategy': mockStrategy!,
+        if (parameters != null) 'parameters': parameters!,
+      };
+}
+
 /// The task that is next in line to be executed, if the condition specified
 /// evaluated to true.
 class GoogleCloudIntegrationsV1alphaNextTask {
@@ -15305,6 +16929,15 @@ class GoogleCloudIntegrationsV1alphaParameterMap {
   /// - "JSON_VALUE" : Json.
   /// - "PROTO_VALUE" : Proto Value (Internal use only).
   /// - "PROTO_ARRAY" : Proto Array (Internal use only).
+  /// - "NON_SERIALIZABLE_OBJECT" : // Non-serializable object (Internal use
+  /// only).
+  /// - "PROTO_ENUM" : Proto Enum (Internal use only).
+  /// - "SERIALIZED_OBJECT_VALUE" : Serialized object (Internal use only).
+  /// - "PROTO_ENUM_ARRAY" : Proto Enum Array (Internal use only).
+  /// - "BYTES" : BYTES data types are not allowed for top-level params. They're
+  /// only meant to support protobufs with BYTES (sub)fields.
+  /// - "BYTES_ARRAY" : BYTES_ARRAY data types are not allowed for top-level
+  /// params. They're only meant to support protobufs with BYTES (sub)fields.
   core.String? keyType;
 
   /// Option to specify value type for all entries of the map.
@@ -15323,6 +16956,15 @@ class GoogleCloudIntegrationsV1alphaParameterMap {
   /// - "JSON_VALUE" : Json.
   /// - "PROTO_VALUE" : Proto Value (Internal use only).
   /// - "PROTO_ARRAY" : Proto Array (Internal use only).
+  /// - "NON_SERIALIZABLE_OBJECT" : // Non-serializable object (Internal use
+  /// only).
+  /// - "PROTO_ENUM" : Proto Enum (Internal use only).
+  /// - "SERIALIZED_OBJECT_VALUE" : Serialized object (Internal use only).
+  /// - "PROTO_ENUM_ARRAY" : Proto Enum Array (Internal use only).
+  /// - "BYTES" : BYTES data types are not allowed for top-level params. They're
+  /// only meant to support protobufs with BYTES (sub)fields.
+  /// - "BYTES_ARRAY" : BYTES_ARRAY data types are not allowed for top-level
+  /// params. They're only meant to support protobufs with BYTES (sub)fields.
   core.String? valueType;
 
   GoogleCloudIntegrationsV1alphaParameterMap({
@@ -15584,11 +17226,11 @@ class GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest {
       };
 }
 
-/// Request for replaying an execution Next ID: 3
+/// Request for replaying an execution.
 class GoogleCloudIntegrationsV1alphaReplayExecutionRequest {
   /// The user provided reason for replaying the execution.
   ///
-  /// Optional.
+  /// Required.
   core.String? replayReason;
 
   GoogleCloudIntegrationsV1alphaReplayExecutionRequest({
@@ -15605,15 +17247,16 @@ class GoogleCloudIntegrationsV1alphaReplayExecutionRequest {
       };
 }
 
-/// Response for replaying an execution Next ID: 4
+/// Response for replaying an execution.
 class GoogleCloudIntegrationsV1alphaReplayExecutionResponse {
-  /// The id of the execution corresponding to this run of integration.
+  /// Next ID: 4 The id of the execution corresponding to this run of the
+  /// integration.
   core.String? executionId;
 
   /// OUTPUT parameters in format of Map.
   ///
   /// Where Key is the name of the parameter. The parameters would only be
-  /// present in case of synchrounous execution Note: Name of the system
+  /// present in case of synchrounous execution. Note: Name of the system
   /// generated parameters are wrapped by backtick(\`) to distinguish them from
   /// the user defined parameters.
   ///
@@ -15621,7 +17264,7 @@ class GoogleCloudIntegrationsV1alphaReplayExecutionResponse {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? outputParameters;
 
-  /// The execution id which is replayed
+  /// The execution id which is replayed.
   core.String? replayedExecutionId;
 
   GoogleCloudIntegrationsV1alphaReplayExecutionResponse({
@@ -15859,6 +17502,34 @@ class GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse {
       };
 }
 
+/// Response for a request to search templates
+class GoogleCloudIntegrationsV1alphaSearchTemplatesResponse {
+  /// The token used to retrieve the next page results.
+  core.String? nextPageToken;
+
+  /// List of templates retrieved.
+  core.List<GoogleCloudIntegrationsV1alphaTemplate>? templates;
+
+  GoogleCloudIntegrationsV1alphaSearchTemplatesResponse({
+    this.nextPageToken,
+    this.templates,
+  });
+
+  GoogleCloudIntegrationsV1alphaSearchTemplatesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          templates: (json_['templates'] as core.List?)
+              ?.map((value) => GoogleCloudIntegrationsV1alphaTemplate.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (templates != null) 'templates': templates!,
+      };
+}
+
 /// To store string representation of Integration file.
 class GoogleCloudIntegrationsV1alphaSerializedFile {
   /// String representation of the file content.
@@ -16073,6 +17744,32 @@ class GoogleCloudIntegrationsV1alphaSfdcInstance {
         if (serviceAuthority != null) 'serviceAuthority': serviceAuthority!,
         if (sfdcOrgId != null) 'sfdcOrgId': sfdcOrgId!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Request to Share template
+class GoogleCloudIntegrationsV1alphaShareTemplateRequest {
+  /// Project name resources to share the template.
+  ///
+  /// The project names is expected in resource format Ex:
+  /// projects/{project-number} or organization/{org-id}
+  ///
+  /// Optional.
+  core.List<core.String>? resourceNames;
+
+  GoogleCloudIntegrationsV1alphaShareTemplateRequest({
+    this.resourceNames,
+  });
+
+  GoogleCloudIntegrationsV1alphaShareTemplateRequest.fromJson(core.Map json_)
+      : this(
+          resourceNames: (json_['resourceNames'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resourceNames != null) 'resourceNames': resourceNames!,
       };
 }
 
@@ -16410,6 +18107,9 @@ class GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse {
       };
 }
 
+/// Request for TakeoverTestCaseEditLock.
+typedef GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest = $Empty;
+
 /// The task configuration details.
 ///
 /// This is not the implementation of Task. There might be multiple TaskConfigs
@@ -16715,6 +18415,411 @@ class GoogleCloudIntegrationsV1alphaTaskExecutionDetails {
       };
 }
 
+/// Defines the template for Application Integration
+class GoogleCloudIntegrationsV1alphaTemplate {
+  /// Creator of the template.
+  ///
+  /// Optional.
+  core.String? author;
+
+  /// Categories associated with the Template.
+  ///
+  /// The categories listed below will be utilized for the Template listing.
+  ///
+  /// Required.
+  core.List<core.String>? categories;
+
+  /// Components being used in the template.
+  ///
+  /// This could be used to categorize and filter.
+  ///
+  /// Optional.
+  core.List<GoogleCloudIntegrationsV1alphaTemplateComponent>? components;
+
+  /// Auto-generated.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Description of the template.
+  ///
+  /// The length should not be more than 255 characters
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The name of the template
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// Link to template documentation.
+  ///
+  /// Optional.
+  core.String? docLink;
+
+  /// Time the template was last used.
+  ///
+  /// Optional.
+  core.String? lastUsedTime;
+
+  /// Identifier.
+  ///
+  /// Resource name of the template.
+  core.String? name;
+
+  /// Resource names with which the template is shared for example
+  /// ProjectNumber/Ord id
+  ///
+  /// Required.
+  core.List<core.String>? sharedWith;
+
+  /// Tags which are used to identify templates.
+  ///
+  /// These tags could be for business use case, connectors etc.
+  ///
+  /// Required.
+  core.List<core.String>? tags;
+
+  /// Bundle which is part of the templates.
+  ///
+  /// The template entities in the bundle would be converted to an actual
+  /// entity.
+  ///
+  /// Required.
+  GoogleCloudIntegrationsV1alphaTemplateBundle? templateBundle;
+
+  /// Auto-generated
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// Number of template usages.
+  ///
+  /// Optional.
+  core.String? usageCount;
+
+  /// Information on how to use the template.
+  ///
+  /// This should contain detailed information about usage of the template.
+  ///
+  /// Optional.
+  core.String? usageInfo;
+
+  /// Visibility of the template.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "VISIBILITY_UNSPECIFIED" : Visibility is unspecified
+  /// - "PRIVATE" : Visibility is private
+  /// - "SHARED" : Visibility is shared
+  /// - "PUBLIC" : Visibility is public
+  core.String? visibility;
+
+  GoogleCloudIntegrationsV1alphaTemplate({
+    this.author,
+    this.categories,
+    this.components,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.docLink,
+    this.lastUsedTime,
+    this.name,
+    this.sharedWith,
+    this.tags,
+    this.templateBundle,
+    this.updateTime,
+    this.usageCount,
+    this.usageInfo,
+    this.visibility,
+  });
+
+  GoogleCloudIntegrationsV1alphaTemplate.fromJson(core.Map json_)
+      : this(
+          author: json_['author'] as core.String?,
+          categories: (json_['categories'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          components: (json_['components'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaTemplateComponent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          docLink: json_['docLink'] as core.String?,
+          lastUsedTime: json_['lastUsedTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          sharedWith: (json_['sharedWith'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          tags: (json_['tags'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          templateBundle: json_.containsKey('templateBundle')
+              ? GoogleCloudIntegrationsV1alphaTemplateBundle.fromJson(
+                  json_['templateBundle']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: json_['updateTime'] as core.String?,
+          usageCount: json_['usageCount'] as core.String?,
+          usageInfo: json_['usageInfo'] as core.String?,
+          visibility: json_['visibility'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (author != null) 'author': author!,
+        if (categories != null) 'categories': categories!,
+        if (components != null) 'components': components!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (docLink != null) 'docLink': docLink!,
+        if (lastUsedTime != null) 'lastUsedTime': lastUsedTime!,
+        if (name != null) 'name': name!,
+        if (sharedWith != null) 'sharedWith': sharedWith!,
+        if (tags != null) 'tags': tags!,
+        if (templateBundle != null) 'templateBundle': templateBundle!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (usageCount != null) 'usageCount': usageCount!,
+        if (usageInfo != null) 'usageInfo': usageInfo!,
+        if (visibility != null) 'visibility': visibility!,
+      };
+}
+
+/// Define the bundle of the template.
+class GoogleCloudIntegrationsV1alphaTemplateBundle {
+  /// Main integration templates of the template bundle.
+  ///
+  /// Required.
+  GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate?
+      integrationVersionTemplate;
+
+  /// Sub integration templates which would be added along with main
+  /// integration.
+  ///
+  /// Optional.
+  core.List<GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate>?
+      subIntegrationVersionTemplates;
+
+  GoogleCloudIntegrationsV1alphaTemplateBundle({
+    this.integrationVersionTemplate,
+    this.subIntegrationVersionTemplates,
+  });
+
+  GoogleCloudIntegrationsV1alphaTemplateBundle.fromJson(core.Map json_)
+      : this(
+          integrationVersionTemplate:
+              json_.containsKey('integrationVersionTemplate')
+                  ? GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate
+                      .fromJson(json_['integrationVersionTemplate']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          subIntegrationVersionTemplates:
+              (json_['subIntegrationVersionTemplates'] as core.List?)
+                  ?.map((value) =>
+                      GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (integrationVersionTemplate != null)
+          'integrationVersionTemplate': integrationVersionTemplate!,
+        if (subIntegrationVersionTemplates != null)
+          'subIntegrationVersionTemplates': subIntegrationVersionTemplates!,
+      };
+}
+
+/// Define the components that are present in a template.
+class GoogleCloudIntegrationsV1alphaTemplateComponent {
+  /// Name of the component.
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// Type of the component.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Component type is unspecified
+  /// - "TRIGGER" : Trigger component
+  /// - "TASK" : Task component
+  /// - "CONNECTOR" : Connector component
+  core.String? type;
+
+  GoogleCloudIntegrationsV1alphaTemplateComponent({
+    this.name,
+    this.type,
+  });
+
+  GoogleCloudIntegrationsV1alphaTemplateComponent.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Defines the functional test case for Application Integration.
+///
+/// Next available id: 15
+class GoogleCloudIntegrationsV1alphaTestCase {
+  /// Auto-generated.
+  core.String? createTime;
+
+  /// The creator's email address.
+  ///
+  /// Generated based on the End User Credentials/LOAS role of the user making
+  /// the call.
+  ///
+  /// Optional.
+  core.String? creatorEmail;
+
+  /// Various policies for how to persist the test execution info including
+  /// execution info, execution export info, execution metadata index and
+  /// execution param index..
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DATABASE_PERSISTENCE_POLICY_UNSPECIFIED" : Enables persistence for all
+  /// execution data.
+  /// - "DATABASE_PERSISTENCE_DISABLED" : Disables persistence for all execution
+  /// data.
+  /// - "DATABASE_PERSISTENCE_ASYNC" : Asynchronously persist all execution
+  /// data.
+  core.String? databasePersistencePolicy;
+
+  /// Description of the test case.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The display name of test case.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The last modifier's email address.
+  ///
+  /// Generated based on the End User Credentials/LOAS role of the user making
+  /// the call.
+  core.String? lastModifierEmail;
+
+  /// The edit lock holder's email address.
+  ///
+  /// Generated based on the End User Credentials/LOAS role of the user making
+  /// the call.
+  ///
+  /// Optional.
+  core.String? lockHolderEmail;
+
+  /// Auto-generated primary key.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Parameters that are expected to be passed to the test case when the test
+  /// case is triggered.
+  ///
+  /// This gives the user the ability to provide default values. This should
+  /// include all the output variables of the trigger as input variables.
+  ///
+  /// Optional.
+  core.List<GoogleCloudIntegrationsV1alphaIntegrationParameter>?
+      testInputParameters;
+
+  /// However, the test case doesn't mock or assert anything without
+  /// test_task_configs.
+  ///
+  /// Optional.
+  core.List<GoogleCloudIntegrationsV1alphaTestTaskConfig>? testTaskConfigs;
+
+  /// Auto-generated.
+  ///
+  /// Optional.
+  GoogleCloudIntegrationsV1alphaTriggerConfig? triggerConfig;
+
+  /// This defines the trigger ID in workflow which is considered to be executed
+  /// as starting point of the test case
+  ///
+  /// Required.
+  core.String? triggerId;
+
+  /// Auto-generated.
+  core.String? updateTime;
+
+  GoogleCloudIntegrationsV1alphaTestCase({
+    this.createTime,
+    this.creatorEmail,
+    this.databasePersistencePolicy,
+    this.description,
+    this.displayName,
+    this.lastModifierEmail,
+    this.lockHolderEmail,
+    this.name,
+    this.testInputParameters,
+    this.testTaskConfigs,
+    this.triggerConfig,
+    this.triggerId,
+    this.updateTime,
+  });
+
+  GoogleCloudIntegrationsV1alphaTestCase.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          creatorEmail: json_['creatorEmail'] as core.String?,
+          databasePersistencePolicy:
+              json_['databasePersistencePolicy'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          lastModifierEmail: json_['lastModifierEmail'] as core.String?,
+          lockHolderEmail: json_['lockHolderEmail'] as core.String?,
+          name: json_['name'] as core.String?,
+          testInputParameters: (json_['testInputParameters'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaIntegrationParameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          testTaskConfigs: (json_['testTaskConfigs'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaTestTaskConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          triggerConfig: json_.containsKey('triggerConfig')
+              ? GoogleCloudIntegrationsV1alphaTriggerConfig.fromJson(
+                  json_['triggerConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          triggerId: json_['triggerId'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (creatorEmail != null) 'creatorEmail': creatorEmail!,
+        if (databasePersistencePolicy != null)
+          'databasePersistencePolicy': databasePersistencePolicy!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (lastModifierEmail != null) 'lastModifierEmail': lastModifierEmail!,
+        if (lockHolderEmail != null) 'lockHolderEmail': lockHolderEmail!,
+        if (name != null) 'name': name!,
+        if (testInputParameters != null)
+          'testInputParameters': testInputParameters!,
+        if (testTaskConfigs != null) 'testTaskConfigs': testTaskConfigs!,
+        if (triggerConfig != null) 'triggerConfig': triggerConfig!,
+        if (triggerId != null) 'triggerId': triggerId!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// The request for testing an integration.
 class GoogleCloudIntegrationsV1alphaTestIntegrationsRequest {
   /// This is used to identify the client on whose behalf the event will be
@@ -16900,6 +19005,76 @@ class GoogleCloudIntegrationsV1alphaTestIntegrationsResponse {
       };
 }
 
+/// The task mock configuration details and assertions for functional tests.
+///
+/// Next available id: 6
+class GoogleCloudIntegrationsV1alphaTestTaskConfig {
+  /// List of conditions or expressions which should be evaluated to true unless
+  /// there is a bug/problem in the integration.
+  ///
+  /// These are evaluated one the task execution is completed as per the mock
+  /// strategy in test case
+  ///
+  /// Optional.
+  core.List<GoogleCloudIntegrationsV1alphaAssertion>? assertions;
+
+  /// Defines how to mock the given task during test execution
+  ///
+  /// Optional.
+  GoogleCloudIntegrationsV1alphaMockConfig? mockConfig;
+
+  /// This defines in the test case, the task name in integration which will be
+  /// mocked by this test task config
+  ///
+  /// Required.
+  core.String? task;
+
+  /// Auto-generated.
+  ///
+  /// Optional.
+  GoogleCloudIntegrationsV1alphaTaskConfig? taskConfig;
+
+  /// This defines in the test case, the task in integration which will be
+  /// mocked by this test task config
+  ///
+  /// Required.
+  core.String? taskNumber;
+
+  GoogleCloudIntegrationsV1alphaTestTaskConfig({
+    this.assertions,
+    this.mockConfig,
+    this.task,
+    this.taskConfig,
+    this.taskNumber,
+  });
+
+  GoogleCloudIntegrationsV1alphaTestTaskConfig.fromJson(core.Map json_)
+      : this(
+          assertions: (json_['assertions'] as core.List?)
+              ?.map((value) => GoogleCloudIntegrationsV1alphaAssertion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          mockConfig: json_.containsKey('mockConfig')
+              ? GoogleCloudIntegrationsV1alphaMockConfig.fromJson(
+                  json_['mockConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          task: json_['task'] as core.String?,
+          taskConfig: json_.containsKey('taskConfig')
+              ? GoogleCloudIntegrationsV1alphaTaskConfig.fromJson(
+                  json_['taskConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          taskNumber: json_['taskNumber'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assertions != null) 'assertions': assertions!,
+        if (mockConfig != null) 'mockConfig': mockConfig!,
+        if (task != null) 'task': task!,
+        if (taskConfig != null) 'taskConfig': taskConfig!,
+        if (taskNumber != null) 'taskNumber': taskNumber!,
+      };
+}
+
 /// Configuration detail of a trigger.
 class GoogleCloudIntegrationsV1alphaTriggerConfig {
   /// An alert threshold configuration for the \[trigger + client +
@@ -16930,6 +19105,11 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
   /// Optional.
   core.String? errorCatcherId;
 
+  /// List of input variables for the api trigger.
+  ///
+  /// Optional.
+  core.List<core.String>? inputVariables;
+
   /// The user created label for a particular trigger.
   ///
   /// Optional.
@@ -16945,6 +19125,11 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
   /// - "RUN_FIRST_MATCH" : Execute the first task that satisfies the associated
   /// condition.
   core.String? nextTasksExecutionPolicy;
+
+  /// List of output variables for the api trigger.
+  ///
+  /// Optional.
+  core.List<core.String>? outputVariables;
 
   /// Informs the front-end application where to draw this error catcher config
   /// on the UI.
@@ -16980,7 +19165,12 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
   /// Optional.
   core.String? trigger;
 
-  /// The backend trigger ID.
+  /// Auto-generated trigger ID.
+  ///
+  /// The ID is based on the properties that you define in the trigger config.
+  /// For example, for an API trigger, the trigger ID follows the format:
+  /// api_trigger/TRIGGER_NAME Where trigger config has properties with value
+  /// {"Trigger name": TRIGGER_NAME}
   ///
   /// Optional.
   core.String? triggerId;
@@ -17004,6 +19194,7 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
   /// - "CLOUD_SCHEDULER" : Trigger by Cloud Scheduler job.
   /// - "INTEGRATION_CONNECTOR_TRIGGER" : Trigger by Connector Event
   /// - "PRIVATE_TRIGGER" : Trigger for private workflow
+  /// - "CLOUD_PUBSUB" : Trigger by cloud pub/sub for internal ip
   core.String? triggerType;
 
   GoogleCloudIntegrationsV1alphaTriggerConfig({
@@ -17011,8 +19202,10 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
     this.cloudSchedulerConfig,
     this.description,
     this.errorCatcherId,
+    this.inputVariables,
     this.label,
     this.nextTasksExecutionPolicy,
+    this.outputVariables,
     this.position,
     this.properties,
     this.startTasks,
@@ -17036,9 +19229,15 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
               : null,
           description: json_['description'] as core.String?,
           errorCatcherId: json_['errorCatcherId'] as core.String?,
+          inputVariables: (json_['inputVariables'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           label: json_['label'] as core.String?,
           nextTasksExecutionPolicy:
               json_['nextTasksExecutionPolicy'] as core.String?,
+          outputVariables: (json_['outputVariables'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           position: json_.containsKey('position')
               ? GoogleCloudIntegrationsV1alphaCoordinate.fromJson(
                   json_['position'] as core.Map<core.String, core.dynamic>)
@@ -17067,9 +19266,11 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
           'cloudSchedulerConfig': cloudSchedulerConfig!,
         if (description != null) 'description': description!,
         if (errorCatcherId != null) 'errorCatcherId': errorCatcherId!,
+        if (inputVariables != null) 'inputVariables': inputVariables!,
         if (label != null) 'label': label!,
         if (nextTasksExecutionPolicy != null)
           'nextTasksExecutionPolicy': nextTasksExecutionPolicy!,
+        if (outputVariables != null) 'outputVariables': outputVariables!,
         if (position != null) 'position': position!,
         if (properties != null) 'properties': properties!,
         if (startTasks != null) 'startTasks': startTasks!,
@@ -17084,9 +19285,35 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
 typedef GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest
     = $Empty;
 
+/// Request to Unshare template
+class GoogleCloudIntegrationsV1alphaUnshareTemplateRequest {
+  /// Project name resources to unshare the template.
+  ///
+  /// The project names is expected in resource format Ex:
+  /// projects/{project-number}
+  ///
+  /// Optional.
+  core.List<core.String>? resourceNames;
+
+  GoogleCloudIntegrationsV1alphaUnshareTemplateRequest({
+    this.resourceNames,
+  });
+
+  GoogleCloudIntegrationsV1alphaUnshareTemplateRequest.fromJson(core.Map json_)
+      : this(
+          resourceNames: (json_['resourceNames'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resourceNames != null) 'resourceNames': resourceNames!,
+      };
+}
+
 /// Request for UploadIntegrationVersion.
 class GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest {
-  /// The textproto of the integration_version.
+  /// The textproto of the IntegrationVersion.
   core.String? content;
 
   /// File format for upload request.
@@ -17136,6 +19363,234 @@ class GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (integrationVersion != null)
           'integrationVersion': integrationVersion!,
+      };
+}
+
+/// Request for UploadTemplate.
+class GoogleCloudIntegrationsV1alphaUploadTemplateRequest {
+  /// The textproto of the template.
+  ///
+  /// Required.
+  core.String? content;
+
+  /// File format for upload request.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "FILE_FORMAT_UNSPECIFIED" : Unspecified file format
+  /// - "JSON" : JSON File Format
+  /// - "YAML" : YAML File Format
+  core.String? fileFormat;
+
+  GoogleCloudIntegrationsV1alphaUploadTemplateRequest({
+    this.content,
+    this.fileFormat,
+  });
+
+  GoogleCloudIntegrationsV1alphaUploadTemplateRequest.fromJson(core.Map json_)
+      : this(
+          content: json_['content'] as core.String?,
+          fileFormat: json_['fileFormat'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (content != null) 'content': content!,
+        if (fileFormat != null) 'fileFormat': fileFormat!,
+      };
+}
+
+/// Response for UploadTemplate.
+class GoogleCloudIntegrationsV1alphaUploadTemplateResponse {
+  /// The uploaded Template
+  GoogleCloudIntegrationsV1alphaTemplate? template;
+
+  GoogleCloudIntegrationsV1alphaUploadTemplateResponse({
+    this.template,
+  });
+
+  GoogleCloudIntegrationsV1alphaUploadTemplateResponse.fromJson(core.Map json_)
+      : this(
+          template: json_.containsKey('template')
+              ? GoogleCloudIntegrationsV1alphaTemplate.fromJson(
+                  json_['template'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (template != null) 'template': template!,
+      };
+}
+
+/// Request for UploadTestCase.
+class GoogleCloudIntegrationsV1alphaUploadTestCaseRequest {
+  /// The textproto of the test case.
+  core.String? content;
+
+  /// File format for upload request.
+  /// Possible string values are:
+  /// - "FILE_FORMAT_UNSPECIFIED" : Unspecified file format
+  /// - "JSON" : JSON File Format
+  /// - "YAML" : YAML File Format
+  core.String? fileFormat;
+
+  GoogleCloudIntegrationsV1alphaUploadTestCaseRequest({
+    this.content,
+    this.fileFormat,
+  });
+
+  GoogleCloudIntegrationsV1alphaUploadTestCaseRequest.fromJson(core.Map json_)
+      : this(
+          content: json_['content'] as core.String?,
+          fileFormat: json_['fileFormat'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (content != null) 'content': content!,
+        if (fileFormat != null) 'fileFormat': fileFormat!,
+      };
+}
+
+/// Response for UploadTestCase.
+class GoogleCloudIntegrationsV1alphaUploadTestCaseResponse {
+  /// The uploaded TestCase
+  GoogleCloudIntegrationsV1alphaTestCase? testCase;
+
+  GoogleCloudIntegrationsV1alphaUploadTestCaseResponse({
+    this.testCase,
+  });
+
+  GoogleCloudIntegrationsV1alphaUploadTestCaseResponse.fromJson(core.Map json_)
+      : this(
+          testCase: json_.containsKey('testCase')
+              ? GoogleCloudIntegrationsV1alphaTestCase.fromJson(
+                  json_['testCase'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (testCase != null) 'testCase': testCase!,
+      };
+}
+
+/// Request to Use template
+class GoogleCloudIntegrationsV1alphaUseTemplateRequest {
+  /// Integration details which would be created via templates.
+  ///
+  /// Required.
+  GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails?
+      integrationDetails;
+
+  /// The region of the Integration to be created.
+  ///
+  /// Required.
+  core.String? integrationRegion;
+
+  /// Sub Integration which would be created via templates.
+  ///
+  /// Optional.
+  core.Map<core.String,
+          GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails>?
+      subIntegrations;
+
+  GoogleCloudIntegrationsV1alphaUseTemplateRequest({
+    this.integrationDetails,
+    this.integrationRegion,
+    this.subIntegrations,
+  });
+
+  GoogleCloudIntegrationsV1alphaUseTemplateRequest.fromJson(core.Map json_)
+      : this(
+          integrationDetails: json_.containsKey('integrationDetails')
+              ? GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails
+                  .fromJson(json_['integrationDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          integrationRegion: json_['integrationRegion'] as core.String?,
+          subIntegrations:
+              (json_['subIntegrations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails
+                  .fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (integrationDetails != null)
+          'integrationDetails': integrationDetails!,
+        if (integrationRegion != null) 'integrationRegion': integrationRegion!,
+        if (subIntegrations != null) 'subIntegrations': subIntegrations!,
+      };
+}
+
+/// Sub Integration which would be created via templates.
+class GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails {
+  /// Name of the sub integration which would be created via templates.
+  ///
+  /// Required.
+  core.String? integration;
+
+  /// Description of the sub integration which would be created via templates.
+  ///
+  /// Optional.
+  core.String? integrationDescription;
+
+  GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails({
+    this.integration,
+    this.integrationDescription,
+  });
+
+  GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails.fromJson(
+      core.Map json_)
+      : this(
+          integration: json_['integration'] as core.String?,
+          integrationDescription:
+              json_['integrationDescription'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (integration != null) 'integration': integration!,
+        if (integrationDescription != null)
+          'integrationDescription': integrationDescription!,
+      };
+}
+
+/// Response for use template
+class GoogleCloudIntegrationsV1alphaUseTemplateResponse {
+  /// IntegrationVersion which is created.
+  GoogleCloudIntegrationsV1alphaIntegrationVersion? integrationVersion;
+
+  /// Sub integration versions which are created.
+  core.List<GoogleCloudIntegrationsV1alphaIntegrationVersion>?
+      subIntegrationVersions;
+
+  GoogleCloudIntegrationsV1alphaUseTemplateResponse({
+    this.integrationVersion,
+    this.subIntegrationVersions,
+  });
+
+  GoogleCloudIntegrationsV1alphaUseTemplateResponse.fromJson(core.Map json_)
+      : this(
+          integrationVersion: json_.containsKey('integrationVersion')
+              ? GoogleCloudIntegrationsV1alphaIntegrationVersion.fromJson(
+                  json_['integrationVersion']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          subIntegrationVersions:
+              (json_['subIntegrationVersions'] as core.List?)
+                  ?.map((value) =>
+                      GoogleCloudIntegrationsV1alphaIntegrationVersion.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (integrationVersion != null)
+          'integrationVersion': integrationVersion!,
+        if (subIntegrationVersions != null)
+          'subIntegrationVersions': subIntegrationVersions!,
       };
 }
 

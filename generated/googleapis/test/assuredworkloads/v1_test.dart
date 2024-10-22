@@ -929,6 +929,7 @@ api.GoogleCloudAssuredworkloadsV1Workload
     o.partner = 'foo';
     o.partnerPermissions =
         buildGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions();
+    o.partnerServicesBillingAccount = 'foo';
     o.provisionedResourcesParent = 'foo';
     o.resourceMonitoringEnabled = true;
     o.resourceSettings = buildUnnamed16();
@@ -936,6 +937,8 @@ api.GoogleCloudAssuredworkloadsV1Workload
     o.saaEnrollmentResponse =
         buildGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse();
     o.violationNotificationsEnabled = true;
+    o.workloadOptions =
+        buildGoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions();
   }
   buildCounterGoogleCloudAssuredworkloadsV1Workload--;
   return o;
@@ -988,6 +991,10 @@ void checkGoogleCloudAssuredworkloadsV1Workload(
     checkGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions(
         o.partnerPermissions!);
     unittest.expect(
+      o.partnerServicesBillingAccount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.provisionedResourcesParent!,
       unittest.equals('foo'),
     );
@@ -997,6 +1004,8 @@ void checkGoogleCloudAssuredworkloadsV1Workload(
     checkGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse(
         o.saaEnrollmentResponse!);
     unittest.expect(o.violationNotificationsEnabled!, unittest.isTrue);
+    checkGoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions(
+        o.workloadOptions!);
   }
   buildCounterGoogleCloudAssuredworkloadsV1Workload--;
 }
@@ -1114,6 +1123,7 @@ api.GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions
   final o = api.GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions();
   buildCounterGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions++;
   if (buildCounterGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions < 3) {
+    o.accessTransparencyLogsSupportCaseViewer = true;
     o.assuredWorkloadsMonitoring = true;
     o.dataLogsViewer = true;
     o.serviceAccessApprover = true;
@@ -1126,6 +1136,8 @@ void checkGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions(
     api.GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions o) {
   buildCounterGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions++;
   if (buildCounterGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions < 3) {
+    unittest.expect(
+        o.accessTransparencyLogsSupportCaseViewer!, unittest.isTrue);
     unittest.expect(o.assuredWorkloadsMonitoring!, unittest.isTrue);
     unittest.expect(o.dataLogsViewer!, unittest.isTrue);
     unittest.expect(o.serviceAccessApprover!, unittest.isTrue);
@@ -1240,6 +1252,30 @@ void checkGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse(
     );
   }
   buildCounterGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse--;
+}
+
+core.int buildCounterGoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions = 0;
+api.GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions
+    buildGoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions() {
+  final o = api.GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions();
+  buildCounterGoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions++;
+  if (buildCounterGoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions < 3) {
+    o.kajEnrollmentType = 'foo';
+  }
+  buildCounterGoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions--;
+  return o;
+}
+
+void checkGoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions(
+    api.GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions o) {
+  buildCounterGoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions++;
+  if (buildCounterGoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions < 3) {
+    unittest.expect(
+      o.kajEnrollmentType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions--;
 }
 
 core.List<api.GoogleLongrunningOperation> buildUnnamed19() => [
@@ -1848,6 +1884,18 @@ void main() {
       final od = api.GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse
           .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions(od);
     });
   });
 

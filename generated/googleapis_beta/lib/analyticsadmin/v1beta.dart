@@ -34,7 +34,6 @@
 ///   - [PropertiesCustomDimensionsResource]
 ///   - [PropertiesCustomMetricsResource]
 ///   - [PropertiesDataStreamsResource]
-///     - [PropertiesDataStreamsEventEditRulesResource]
 ///     - [PropertiesDataStreamsMeasurementProtocolSecretsResource]
 ///   - [PropertiesFirebaseLinksResource]
 ///   - [PropertiesGoogleAdsLinksResource]
@@ -231,7 +230,7 @@ class AccountsResource {
   ///
   /// [name] - Required. The name of the settings to lookup. Format:
   /// accounts/{account}/dataSharingSettings Example:
-  /// "accounts/1000/dataSharingSettings"
+  /// `accounts/1000/dataSharingSettings`
   /// Value must have pattern `^accounts/\[^/\]+/dataSharingSettings$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -266,7 +265,7 @@ class AccountsResource {
 
   /// Returns all accounts accessible by the caller.
   ///
-  /// Note that these accounts might not currently have GA4 properties.
+  /// Note that these accounts might not currently have GA properties.
   /// Soft-deleted (ie: "trashed") accounts are excluded by default. Returns an
   /// empty list if no relevant accounts are found.
   ///
@@ -415,13 +414,16 @@ class AccountsResource {
   /// Reports can be requested for a property. Reports may be requested for any
   /// property, but dimensions that aren't related to quota can only be
   /// requested on Google Analytics 360 properties. This method is only
-  /// available to Administrators. These data access records include GA4 UI
-  /// Reporting, GA4 UI Explorations, GA4 Data API, and other products like
+  /// available to Administrators. These data access records include GA UI
+  /// Reporting, GA UI Explorations, GA Data API, and other products like
   /// Firebase & Admob that can retrieve data from Google Analytics through a
   /// linkage. These records don't include property configuration changes like
   /// adding a stream or changing a property's time zone. For configuration
   /// change history, see
   /// [searchChangeHistoryEvents](https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/accounts/searchChangeHistoryEvents).
+  /// To give your feedback on this API, complete the
+  /// [Google Analytics Access Reports feedback](https://docs.google.com/forms/d/e/1FAIpQLSdmEBUrMzAEdiEKk5TV5dEHvDUZDRlgWYdQdAeSdtR4hVjEhw/viewform)
+  /// form.
   ///
   /// [request] - The metadata request object.
   ///
@@ -431,9 +433,9 @@ class AccountsResource {
   /// level or account level. If requested at the account level, Data Access
   /// Reports include all access for all properties under that account. To
   /// request at the property level, entity should be for example
-  /// 'properties/123' if "123" is your GA4 property ID. To request at the
-  /// account level, entity should be for example 'accounts/1234' if "1234" is
-  /// your GA4 Account ID.
+  /// 'properties/123' if "123" is your Google Analytics property ID. To request
+  /// at the account level, entity should be for example 'accounts/1234' if
+  /// "1234" is your Google Analytics Account ID.
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -478,7 +480,7 @@ class AccountsResource {
   /// Request parameters:
   ///
   /// [account] - Required. The account resource for which to return change
-  /// history resources. Format: accounts/{account} Example: "accounts/100"
+  /// history resources. Format: accounts/{account} Example: `accounts/100`
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -588,7 +590,8 @@ class PropertiesResource {
         .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Creates an "GA4" property with the specified location and attributes.
+  /// Creates a Google Analytics property with the specified location and
+  /// attributes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -632,7 +635,7 @@ class PropertiesResource {
   /// are not restored before the expiration time, the Property and all child
   /// resources (eg: GoogleAdsLinks, Streams, AccessBindings) will be
   /// permanently purged. https://support.google.com/analytics/answer/6154772
-  /// Returns an error if the target is not found, or is not a GA4 Property.
+  /// Returns an error if the target is not found.
   ///
   /// Request parameters:
   ///
@@ -669,7 +672,7 @@ class PropertiesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lookup for a single "GA4" Property.
+  /// Lookup for a single GA Property.
   ///
   /// Request parameters:
   ///
@@ -747,10 +750,9 @@ class PropertiesResource {
 
   /// Returns child Properties under the specified parent Account.
   ///
-  /// Only "GA4" properties will be returned. Properties will be excluded if the
-  /// caller does not have access. Soft-deleted (ie: "trashed") properties are
-  /// excluded by default. Returns an empty list if no relevant properties are
-  /// found.
+  /// Properties will be excluded if the caller does not have access.
+  /// Soft-deleted (ie: "trashed") properties are excluded by default. Returns
+  /// an empty list if no relevant properties are found.
   ///
   /// Request parameters:
   ///
@@ -872,13 +874,16 @@ class PropertiesResource {
   /// Reports can be requested for a property. Reports may be requested for any
   /// property, but dimensions that aren't related to quota can only be
   /// requested on Google Analytics 360 properties. This method is only
-  /// available to Administrators. These data access records include GA4 UI
-  /// Reporting, GA4 UI Explorations, GA4 Data API, and other products like
+  /// available to Administrators. These data access records include GA UI
+  /// Reporting, GA UI Explorations, GA Data API, and other products like
   /// Firebase & Admob that can retrieve data from Google Analytics through a
   /// linkage. These records don't include property configuration changes like
   /// adding a stream or changing a property's time zone. For configuration
   /// change history, see
   /// [searchChangeHistoryEvents](https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/accounts/searchChangeHistoryEvents).
+  /// To give your feedback on this API, complete the
+  /// [Google Analytics Access Reports feedback](https://docs.google.com/forms/d/e/1FAIpQLSdmEBUrMzAEdiEKk5TV5dEHvDUZDRlgWYdQdAeSdtR4hVjEhw/viewform)
+  /// form.
   ///
   /// [request] - The metadata request object.
   ///
@@ -888,9 +893,9 @@ class PropertiesResource {
   /// level or account level. If requested at the account level, Data Access
   /// Reports include all access for all properties under that account. To
   /// request at the property level, entity should be for example
-  /// 'properties/123' if "123" is your GA4 property ID. To request at the
-  /// account level, entity should be for example 'accounts/1234' if "1234" is
-  /// your GA4 Account ID.
+  /// 'properties/123' if "123" is your Google Analytics property ID. To request
+  /// at the account level, entity should be for example 'accounts/1234' if
+  /// "1234" is your Google Analytics Account ID.
   /// Value must have pattern `^properties/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -987,6 +992,8 @@ class PropertiesConversionEventsResource {
   PropertiesConversionEventsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Deprecated: Use `CreateKeyEvent` instead.
+  ///
   /// Creates a conversion event with the specified attributes.
   ///
   /// [request] - The metadata request object.
@@ -1033,6 +1040,8 @@ class PropertiesConversionEventsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deprecated: Use `DeleteKeyEvent` instead.
+  ///
   /// Deletes a conversion event in a property.
   ///
   /// Request parameters:
@@ -1074,6 +1083,8 @@ class PropertiesConversionEventsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deprecated: Use `GetKeyEvent` instead.
+  ///
   /// Retrieve a single conversion event.
   ///
   /// Request parameters:
@@ -1115,8 +1126,9 @@ class PropertiesConversionEventsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns a list of conversion events in the specified parent property.
+  /// Deprecated: Use `ListKeyEvents` instead.
   ///
+  /// Returns a list of conversion events in the specified parent property.
   /// Returns an empty list if no conversion events are found.
   ///
   /// Request parameters:
@@ -1171,6 +1183,8 @@ class PropertiesConversionEventsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deprecated: Use `UpdateKeyEvent` instead.
+  ///
   /// Updates a conversion event with the specified attributes.
   ///
   /// [request] - The metadata request object.
@@ -1677,8 +1691,6 @@ class PropertiesCustomMetricsResource {
 class PropertiesDataStreamsResource {
   final commons.ApiRequester _requester;
 
-  PropertiesDataStreamsEventEditRulesResource get eventEditRules =>
-      PropertiesDataStreamsEventEditRulesResource(_requester);
   PropertiesDataStreamsMeasurementProtocolSecretsResource
       get measurementProtocolSecrets =>
           PropertiesDataStreamsMeasurementProtocolSecretsResource(_requester);
@@ -1900,55 +1912,6 @@ class PropertiesDataStreamsResource {
   }
 }
 
-class PropertiesDataStreamsEventEditRulesResource {
-  final commons.ApiRequester _requester;
-
-  PropertiesDataStreamsEventEditRulesResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Changes the processing order of event edit rules on the specified stream.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. Example format: properties/123/dataStreams/456
-  /// Value must have pattern `^properties/\[^/\]+/dataStreams/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleProtobufEmpty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> reorder(
-    GoogleAnalyticsAdminV1betaReorderEventEditRulesRequest request,
-    core.String parent, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ =
-        'v1beta/' + core.Uri.encodeFull('$parent') + '/eventEditRules:reorder';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
 class PropertiesDataStreamsMeasurementProtocolSecretsResource {
   final commons.ApiRequester _requester;
 
@@ -2039,7 +2002,7 @@ class PropertiesDataStreamsMeasurementProtocolSecretsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lookup for a single "GA4" MeasurementProtocolSecret.
+  /// Lookup for a single MeasurementProtocolSecret.
   ///
   /// Request parameters:
   ///
@@ -2199,7 +2162,7 @@ class PropertiesFirebaseLinksResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Format: properties/{property_id} Example:
-  /// properties/1234
+  /// `properties/1234`
   /// Value must have pattern `^properties/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2240,7 +2203,7 @@ class PropertiesFirebaseLinksResource {
   ///
   /// [name] - Required. Format:
   /// properties/{property_id}/firebaseLinks/{firebase_link_id} Example:
-  /// properties/1234/firebaseLinks/5678
+  /// `properties/1234/firebaseLinks/5678`
   /// Value must have pattern `^properties/\[^/\]+/firebaseLinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2279,7 +2242,7 @@ class PropertiesFirebaseLinksResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Format: properties/{property_id} Example:
-  /// properties/1234
+  /// `properties/1234`
   /// Value must have pattern `^properties/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of resources to return. The service may
@@ -3151,7 +3114,7 @@ typedef GoogleAnalyticsAdminV1betaAccessStringFilter = $StringFilter;
 typedef GoogleAnalyticsAdminV1betaAccount = $Account;
 
 /// A virtual resource representing an overview of an account and all its child
-/// GA4 properties.
+/// Google Analytics properties.
 class GoogleAnalyticsAdminV1betaAccountSummary {
   /// Resource name of account referred to by this account summary Format:
   /// accounts/{account_id} Example: "accounts/1000"
@@ -3658,10 +3621,10 @@ typedef GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData
 typedef GoogleAnalyticsAdminV1betaDataStreamWebStreamData
     = $DataStreamWebStreamData;
 
-/// A link between a GA4 property and a Firebase project.
+/// A link between a Google Analytics property and a Firebase project.
 typedef GoogleAnalyticsAdminV1betaFirebaseLink = $FirebaseLink;
 
-/// A link between a GA4 property and a Google Ads account.
+/// A link between a Google Analytics property and a Google Ads account.
 typedef GoogleAnalyticsAdminV1betaGoogleAdsLink = $GoogleAdsLink;
 
 /// A key event in a Google Analytics property.
@@ -4108,10 +4071,10 @@ typedef GoogleAnalyticsAdminV1betaMeasurementProtocolSecret
 /// To represent a number.
 typedef GoogleAnalyticsAdminV1betaNumericValue = $NumericValue;
 
-/// A resource message representing a Google Analytics GA4 property.
+/// A resource message representing a Google Analytics property.
 typedef GoogleAnalyticsAdminV1betaProperty = $Property;
 
-/// A virtual resource representing metadata for a GA4 property.
+/// A virtual resource representing metadata for a Google Analytics property.
 typedef GoogleAnalyticsAdminV1betaPropertySummary = $PropertySummary;
 
 /// Request message for ProvisionAccountTicket RPC.
@@ -4148,10 +4111,6 @@ class GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest {
 /// Response message for ProvisionAccountTicket RPC.
 typedef GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse
     = $ProvisionAccountTicketResponse;
-
-/// Request message for ReorderEventEditRules RPC.
-typedef GoogleAnalyticsAdminV1betaReorderEventEditRulesRequest
-    = $ReorderEventEditRulesRequest;
 
 /// The request for a Data Access Record Report.
 class GoogleAnalyticsAdminV1betaRunAccessReportRequest {
@@ -4436,7 +4395,7 @@ class GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest {
   /// Resource name for a child property.
   ///
   /// If set, only return changes made to this property or its child resources.
-  /// Format: properties/{propertyId} Example: "properties/100"
+  /// Format: properties/{propertyId} Example: `properties/100`
   ///
   /// Optional.
   core.String? property;

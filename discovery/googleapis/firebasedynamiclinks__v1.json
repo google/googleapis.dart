@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240610",
+    "revision": "20240821",
     "rootUrl": "https://firebasedynamiclinks.googleapis.com/",
     "servicePath": "",
     "title": "Firebase Dynamic Links API",
@@ -523,6 +523,13 @@
                         "$ref": "DynamicLinkEventStat"
                     },
                     "type": "array"
+                },
+                "warnings": {
+                    "description": "Optional warnings associated this API request.",
+                    "items": {
+                        "$ref": "DynamicLinkWarning"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -562,7 +569,8 @@
                         "BAD_URI_SCHEME_SOCIAL_URL",
                         "LINK_LENGTH_TOO_LONG",
                         "LINK_WITH_FRAGMENTS",
-                        "NOT_MATCHING_IOS_BUNDLE_ID_AND_STORE_ID"
+                        "NOT_MATCHING_IOS_BUNDLE_ID_AND_STORE_ID",
+                        "API_DEPRECATED"
                     ],
                     "enumDescriptions": [
                         "Unknown code.",
@@ -585,15 +593,16 @@
                         "Debug param format is incorrect.",
                         "isAd param format is incorrect.",
                         "Indicates a certain param is deprecated.",
-                        "Indicates certain paramater is not recognized.",
-                        "Indicates certain paramater is too long.",
+                        "Indicates certain parameter is not recognized.",
+                        "Indicates certain parameter is too long.",
                         "Social meta tag image link is not a valid URI.",
                         "Social meta tag image link has an invalid (non http/https) URI scheme.",
                         "",
                         "",
                         "Dynamic Link URL length is too long.",
                         "Dynamic Link URL contains fragments.",
-                        "The iOS bundle ID does not match with the given iOS store ID."
+                        "The iOS bundle ID does not match with the given iOS store ID.",
+                        "The API is deprecated."
                     ],
                     "type": "string"
                 },
@@ -821,6 +830,13 @@
                 "utmTerm": {
                     "description": "Scion term value to be propagated by iSDK to Scion at app-reopen.",
                     "type": "string"
+                },
+                "warning": {
+                    "description": "Optional warnings associated this API request.",
+                    "items": {
+                        "$ref": "DynamicLinkWarning"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -933,7 +949,7 @@
                         ],
                         "enumDescriptions": [
                             "Indicates that no attributes were found for this short url.",
-                            "Indicates that short url has been flagged by AbuseIAm team as spam."
+                            "Indicates that short url has been flagged as spam."
                         ],
                         "type": "string"
                     },

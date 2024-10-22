@@ -1040,12 +1040,461 @@ void checkGoogleCloudBeyondcorpAppconnectorsV1ResourceInfo(
   buildCounterGoogleCloudBeyondcorpAppconnectorsV1ResourceInfo--;
 }
 
-core.List<api.GoogleCloudLocationLocation> buildUnnamed15() => [
+core.List<api.GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher>
+    buildUnnamed15() => [
+          buildGoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher(),
+          buildGoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher(),
+        ];
+
+void checkUnnamed15(
+    core.List<api.GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher(o[0]);
+  checkGoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher(o[1]);
+}
+
+core.int buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Application = 0;
+api.GoogleCloudBeyondcorpSecuritygatewaysV1Application
+    buildGoogleCloudBeyondcorpSecuritygatewaysV1Application() {
+  final o = api.GoogleCloudBeyondcorpSecuritygatewaysV1Application();
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Application++;
+  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Application < 3) {
+    o.createTime = 'foo';
+    o.displayName = 'foo';
+    o.endpointMatchers = buildUnnamed15();
+    o.name = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Application--;
+  return o;
+}
+
+void checkGoogleCloudBeyondcorpSecuritygatewaysV1Application(
+    api.GoogleCloudBeyondcorpSecuritygatewaysV1Application o) {
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Application++;
+  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Application < 3) {
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed15(o.endpointMatchers!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Application--;
+}
+
+core.List<core.int> buildUnnamed16() => [
+      42,
+      42,
+    ];
+
+void checkUnnamed16(core.List<core.int> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals(42),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42),
+  );
+}
+
+core.int buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher = 0;
+api.GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher
+    buildGoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher() {
+  final o = api.GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher();
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher++;
+  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher < 3) {
+    o.hostname = 'foo';
+    o.ports = buildUnnamed16();
+  }
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher--;
+  return o;
+}
+
+void checkGoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher(
+    api.GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher o) {
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher++;
+  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher < 3) {
+    unittest.expect(
+      o.hostname!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed16(o.ports!);
+  }
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher--;
+}
+
+core.int buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Hub = 0;
+api.GoogleCloudBeyondcorpSecuritygatewaysV1Hub
+    buildGoogleCloudBeyondcorpSecuritygatewaysV1Hub() {
+  final o = api.GoogleCloudBeyondcorpSecuritygatewaysV1Hub();
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Hub++;
+  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Hub < 3) {
+    o.internetGateway =
+        buildGoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway();
+  }
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Hub--;
+  return o;
+}
+
+void checkGoogleCloudBeyondcorpSecuritygatewaysV1Hub(
+    api.GoogleCloudBeyondcorpSecuritygatewaysV1Hub o) {
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Hub++;
+  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Hub < 3) {
+    checkGoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway(
+        o.internetGateway!);
+  }
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Hub--;
+}
+
+core.List<core.String> buildUnnamed17() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed17(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway = 0;
+api.GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway
+    buildGoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway() {
+  final o = api.GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway();
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway++;
+  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway < 3) {
+    o.assignedIps = buildUnnamed17();
+  }
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway--;
+  return o;
+}
+
+void checkGoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway(
+    api.GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway o) {
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway++;
+  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway < 3) {
+    checkUnnamed17(o.assignedIps!);
+  }
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway--;
+}
+
+core.List<api.GoogleCloudBeyondcorpSecuritygatewaysV1Application>
+    buildUnnamed18() => [
+          buildGoogleCloudBeyondcorpSecuritygatewaysV1Application(),
+          buildGoogleCloudBeyondcorpSecuritygatewaysV1Application(),
+        ];
+
+void checkUnnamed18(
+    core.List<api.GoogleCloudBeyondcorpSecuritygatewaysV1Application> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudBeyondcorpSecuritygatewaysV1Application(o[0]);
+  checkGoogleCloudBeyondcorpSecuritygatewaysV1Application(o[1]);
+}
+
+core.List<core.String> buildUnnamed19() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed19(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int
+    buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse =
+    0;
+api.GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse
+    buildGoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse() {
+  final o =
+      api.GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse();
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse++;
+  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse <
+      3) {
+    o.applications = buildUnnamed18();
+    o.nextPageToken = 'foo';
+    o.unreachable = buildUnnamed19();
+  }
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse--;
+  return o;
+}
+
+void checkGoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse(
+    api.GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse o) {
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse++;
+  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse <
+      3) {
+    checkUnnamed18(o.applications!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed19(o.unreachable!);
+  }
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse--;
+}
+
+core.List<api.GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway>
+    buildUnnamed20() => [
+          buildGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway(),
+          buildGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway(),
+        ];
+
+void checkUnnamed20(
+    core.List<api.GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway(o[0]);
+  checkGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway(o[1]);
+}
+
+core.List<core.String> buildUnnamed21() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed21(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int
+    buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse =
+    0;
+api.GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse
+    buildGoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse() {
+  final o =
+      api.GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse();
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse++;
+  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse <
+      3) {
+    o.nextPageToken = 'foo';
+    o.securityGateways = buildUnnamed20();
+    o.unreachable = buildUnnamed21();
+  }
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse--;
+  return o;
+}
+
+void checkGoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse(
+    api.GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse o) {
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse++;
+  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse <
+      3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed20(o.securityGateways!);
+    checkUnnamed21(o.unreachable!);
+  }
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse--;
+}
+
+core.List<core.String> buildUnnamed22() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed22(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Peering = 0;
+api.GoogleCloudBeyondcorpSecuritygatewaysV1Peering
+    buildGoogleCloudBeyondcorpSecuritygatewaysV1Peering() {
+  final o = api.GoogleCloudBeyondcorpSecuritygatewaysV1Peering();
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Peering++;
+  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Peering < 3) {
+    o.dnsZones = buildUnnamed22();
+    o.targetNetwork = 'foo';
+  }
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Peering--;
+  return o;
+}
+
+void checkGoogleCloudBeyondcorpSecuritygatewaysV1Peering(
+    api.GoogleCloudBeyondcorpSecuritygatewaysV1Peering o) {
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Peering++;
+  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Peering < 3) {
+    checkUnnamed22(o.dnsZones!);
+    unittest.expect(
+      o.targetNetwork!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Peering--;
+}
+
+core.List<core.String> buildUnnamed23() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed23(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.Map<core.String, api.GoogleCloudBeyondcorpSecuritygatewaysV1Hub>
+    buildUnnamed24() => {
+          'x': buildGoogleCloudBeyondcorpSecuritygatewaysV1Hub(),
+          'y': buildGoogleCloudBeyondcorpSecuritygatewaysV1Hub(),
+        };
+
+void checkUnnamed24(
+    core.Map<core.String, api.GoogleCloudBeyondcorpSecuritygatewaysV1Hub> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudBeyondcorpSecuritygatewaysV1Hub(o['x']!);
+  checkGoogleCloudBeyondcorpSecuritygatewaysV1Hub(o['y']!);
+}
+
+core.int buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway = 0;
+api.GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway
+    buildGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway() {
+  final o = api.GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway();
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway++;
+  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway < 3) {
+    o.createTime = 'foo';
+    o.displayName = 'foo';
+    o.externalIps = buildUnnamed23();
+    o.hubs = buildUnnamed24();
+    o.name = 'foo';
+    o.state = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway--;
+  return o;
+}
+
+void checkGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway(
+    api.GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway o) {
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway++;
+  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway < 3) {
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed23(o.externalIps!);
+    checkUnnamed24(o.hubs!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway--;
+}
+
+core.List<api.GoogleCloudBeyondcorpSecuritygatewaysV1Peering>
+    buildUnnamed25() => [
+          buildGoogleCloudBeyondcorpSecuritygatewaysV1Peering(),
+          buildGoogleCloudBeyondcorpSecuritygatewaysV1Peering(),
+        ];
+
+void checkUnnamed25(
+    core.List<api.GoogleCloudBeyondcorpSecuritygatewaysV1Peering> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudBeyondcorpSecuritygatewaysV1Peering(o[0]);
+  checkGoogleCloudBeyondcorpSecuritygatewaysV1Peering(o[1]);
+}
+
+core.int buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest =
+    0;
+api.GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest
+    buildGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest() {
+  final o = api.GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest();
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest++;
+  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest <
+      3) {
+    o.peerings = buildUnnamed25();
+    o.requestId = 'foo';
+    o.validateOnly = true;
+  }
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest--;
+  return o;
+}
+
+void checkGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest(
+    api.GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest o) {
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest++;
+  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest <
+      3) {
+    checkUnnamed25(o.peerings!);
+    unittest.expect(
+      o.requestId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.validateOnly!, unittest.isTrue);
+  }
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest--;
+}
+
+core.List<api.GoogleCloudLocationLocation> buildUnnamed26() => [
       buildGoogleCloudLocationLocation(),
       buildGoogleCloudLocationLocation(),
     ];
 
-void checkUnnamed15(core.List<api.GoogleCloudLocationLocation> o) {
+void checkUnnamed26(core.List<api.GoogleCloudLocationLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudLocationLocation(o[0]);
   checkGoogleCloudLocationLocation(o[1]);
@@ -1057,7 +1506,7 @@ api.GoogleCloudLocationListLocationsResponse
   final o = api.GoogleCloudLocationListLocationsResponse();
   buildCounterGoogleCloudLocationListLocationsResponse++;
   if (buildCounterGoogleCloudLocationListLocationsResponse < 3) {
-    o.locations = buildUnnamed15();
+    o.locations = buildUnnamed26();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudLocationListLocationsResponse--;
@@ -1068,7 +1517,7 @@ void checkGoogleCloudLocationListLocationsResponse(
     api.GoogleCloudLocationListLocationsResponse o) {
   buildCounterGoogleCloudLocationListLocationsResponse++;
   if (buildCounterGoogleCloudLocationListLocationsResponse < 3) {
-    checkUnnamed15(o.locations!);
+    checkUnnamed26(o.locations!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1077,12 +1526,12 @@ void checkGoogleCloudLocationListLocationsResponse(
   buildCounterGoogleCloudLocationListLocationsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed16() => {
+core.Map<core.String, core.String> buildUnnamed27() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed16(core.Map<core.String, core.String> o) {
+void checkUnnamed27(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1094,7 +1543,7 @@ void checkUnnamed16(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed17() => {
+core.Map<core.String, core.Object?> buildUnnamed28() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1107,7 +1556,7 @@ core.Map<core.String, core.Object?> buildUnnamed17() => {
       },
     };
 
-void checkUnnamed17(core.Map<core.String, core.Object?> o) {
+void checkUnnamed28(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1145,9 +1594,9 @@ api.GoogleCloudLocationLocation buildGoogleCloudLocationLocation() {
   buildCounterGoogleCloudLocationLocation++;
   if (buildCounterGoogleCloudLocationLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed16();
+    o.labels = buildUnnamed27();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed17();
+    o.metadata = buildUnnamed28();
     o.name = 'foo';
   }
   buildCounterGoogleCloudLocationLocation--;
@@ -1161,12 +1610,12 @@ void checkGoogleCloudLocationLocation(api.GoogleCloudLocationLocation o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed16(o.labels!);
+    checkUnnamed27(o.labels!);
     unittest.expect(
       o.locationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed17(o.metadata!);
+    checkUnnamed28(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1175,12 +1624,12 @@ void checkGoogleCloudLocationLocation(api.GoogleCloudLocationLocation o) {
   buildCounterGoogleCloudLocationLocation--;
 }
 
-core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed18() => [
+core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed29() => [
       buildGoogleIamV1AuditLogConfig(),
       buildGoogleIamV1AuditLogConfig(),
     ];
 
-void checkUnnamed18(core.List<api.GoogleIamV1AuditLogConfig> o) {
+void checkUnnamed29(core.List<api.GoogleIamV1AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditLogConfig(o[0]);
   checkGoogleIamV1AuditLogConfig(o[1]);
@@ -1191,7 +1640,7 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
   final o = api.GoogleIamV1AuditConfig();
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed18();
+    o.auditLogConfigs = buildUnnamed29();
     o.service = 'foo';
   }
   buildCounterGoogleIamV1AuditConfig--;
@@ -1201,7 +1650,7 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
 void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    checkUnnamed18(o.auditLogConfigs!);
+    checkUnnamed29(o.auditLogConfigs!);
     unittest.expect(
       o.service!,
       unittest.equals('foo'),
@@ -1210,12 +1659,12 @@ void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
   buildCounterGoogleIamV1AuditConfig--;
 }
 
-core.List<core.String> buildUnnamed19() => [
+core.List<core.String> buildUnnamed30() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed19(core.List<core.String> o) {
+void checkUnnamed30(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1232,7 +1681,7 @@ api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
   final o = api.GoogleIamV1AuditLogConfig();
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed19();
+    o.exemptedMembers = buildUnnamed30();
     o.logType = 'foo';
   }
   buildCounterGoogleIamV1AuditLogConfig--;
@@ -1242,7 +1691,7 @@ api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
 void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    checkUnnamed19(o.exemptedMembers!);
+    checkUnnamed30(o.exemptedMembers!);
     unittest.expect(
       o.logType!,
       unittest.equals('foo'),
@@ -1251,12 +1700,12 @@ void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
   buildCounterGoogleIamV1AuditLogConfig--;
 }
 
-core.List<core.String> buildUnnamed20() => [
+core.List<core.String> buildUnnamed31() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed20(core.List<core.String> o) {
+void checkUnnamed31(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1274,7 +1723,7 @@ api.GoogleIamV1Binding buildGoogleIamV1Binding() {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     o.condition = buildGoogleTypeExpr();
-    o.members = buildUnnamed20();
+    o.members = buildUnnamed31();
     o.role = 'foo';
   }
   buildCounterGoogleIamV1Binding--;
@@ -1285,7 +1734,7 @@ void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     checkGoogleTypeExpr(o.condition!);
-    checkUnnamed20(o.members!);
+    checkUnnamed31(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -1294,23 +1743,23 @@ void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding--;
 }
 
-core.List<api.GoogleIamV1AuditConfig> buildUnnamed21() => [
+core.List<api.GoogleIamV1AuditConfig> buildUnnamed32() => [
       buildGoogleIamV1AuditConfig(),
       buildGoogleIamV1AuditConfig(),
     ];
 
-void checkUnnamed21(core.List<api.GoogleIamV1AuditConfig> o) {
+void checkUnnamed32(core.List<api.GoogleIamV1AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditConfig(o[0]);
   checkGoogleIamV1AuditConfig(o[1]);
 }
 
-core.List<api.GoogleIamV1Binding> buildUnnamed22() => [
+core.List<api.GoogleIamV1Binding> buildUnnamed33() => [
       buildGoogleIamV1Binding(),
       buildGoogleIamV1Binding(),
     ];
 
-void checkUnnamed22(core.List<api.GoogleIamV1Binding> o) {
+void checkUnnamed33(core.List<api.GoogleIamV1Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1Binding(o[0]);
   checkGoogleIamV1Binding(o[1]);
@@ -1321,8 +1770,8 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
   final o = api.GoogleIamV1Policy();
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    o.auditConfigs = buildUnnamed21();
-    o.bindings = buildUnnamed22();
+    o.auditConfigs = buildUnnamed32();
+    o.bindings = buildUnnamed33();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -1333,8 +1782,8 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
 void checkGoogleIamV1Policy(api.GoogleIamV1Policy o) {
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    checkUnnamed21(o.auditConfigs!);
-    checkUnnamed22(o.bindings!);
+    checkUnnamed32(o.auditConfigs!);
+    checkUnnamed33(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -1371,12 +1820,12 @@ void checkGoogleIamV1SetIamPolicyRequest(api.GoogleIamV1SetIamPolicyRequest o) {
   buildCounterGoogleIamV1SetIamPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed23() => [
+core.List<core.String> buildUnnamed34() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed23(core.List<core.String> o) {
+void checkUnnamed34(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1394,7 +1843,7 @@ api.GoogleIamV1TestIamPermissionsRequest
   final o = api.GoogleIamV1TestIamPermissionsRequest();
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed23();
+    o.permissions = buildUnnamed34();
   }
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
   return o;
@@ -1404,17 +1853,17 @@ void checkGoogleIamV1TestIamPermissionsRequest(
     api.GoogleIamV1TestIamPermissionsRequest o) {
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    checkUnnamed23(o.permissions!);
+    checkUnnamed34(o.permissions!);
   }
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed24() => [
+core.List<core.String> buildUnnamed35() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed24(core.List<core.String> o) {
+void checkUnnamed35(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1432,7 +1881,7 @@ api.GoogleIamV1TestIamPermissionsResponse
   final o = api.GoogleIamV1TestIamPermissionsResponse();
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed24();
+    o.permissions = buildUnnamed35();
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
   return o;
@@ -1442,7 +1891,7 @@ void checkGoogleIamV1TestIamPermissionsResponse(
     api.GoogleIamV1TestIamPermissionsResponse o) {
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    checkUnnamed24(o.permissions!);
+    checkUnnamed35(o.permissions!);
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
 }
@@ -1464,12 +1913,12 @@ void checkGoogleLongrunningCancelOperationRequest(
   buildCounterGoogleLongrunningCancelOperationRequest--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed25() => [
+core.List<api.GoogleLongrunningOperation> buildUnnamed36() => [
       buildGoogleLongrunningOperation(),
       buildGoogleLongrunningOperation(),
     ];
 
-void checkUnnamed25(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed36(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -1482,7 +1931,7 @@ api.GoogleLongrunningListOperationsResponse
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed25();
+    o.operations = buildUnnamed36();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -1496,12 +1945,12 @@ void checkGoogleLongrunningListOperationsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed25(o.operations!);
+    checkUnnamed36(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed26() => {
+core.Map<core.String, core.Object?> buildUnnamed37() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1514,7 +1963,7 @@ core.Map<core.String, core.Object?> buildUnnamed26() => {
       },
     };
 
-void checkUnnamed26(core.Map<core.String, core.Object?> o) {
+void checkUnnamed37(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1546,7 +1995,7 @@ void checkUnnamed26(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed27() => {
+core.Map<core.String, core.Object?> buildUnnamed38() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1559,7 +2008,7 @@ core.Map<core.String, core.Object?> buildUnnamed27() => {
       },
     };
 
-void checkUnnamed27(core.Map<core.String, core.Object?> o) {
+void checkUnnamed38(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -1598,9 +2047,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed26();
+    o.metadata = buildUnnamed37();
     o.name = 'foo';
-    o.response = buildUnnamed27();
+    o.response = buildUnnamed38();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -1611,17 +2060,17 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed26(o.metadata!);
+    checkUnnamed37(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed27(o.response!);
+    checkUnnamed38(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed28() => {
+core.Map<core.String, core.Object?> buildUnnamed39() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1634,7 +2083,7 @@ core.Map<core.String, core.Object?> buildUnnamed28() => {
       },
     };
 
-void checkUnnamed28(core.Map<core.String, core.Object?> o) {
+void checkUnnamed39(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted11 = (o['x']!) as core.Map;
   unittest.expect(casted11, unittest.hasLength(3));
@@ -1666,15 +2115,15 @@ void checkUnnamed28(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed29() => [
-      buildUnnamed28(),
-      buildUnnamed28(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed40() => [
+      buildUnnamed39(),
+      buildUnnamed39(),
     ];
 
-void checkUnnamed29(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed40(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed28(o[0]);
-  checkUnnamed28(o[1]);
+  checkUnnamed39(o[0]);
+  checkUnnamed39(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -1683,7 +2132,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed29();
+    o.details = buildUnnamed40();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -1697,7 +2146,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed29(o.details!);
+    checkUnnamed40(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1743,23 +2192,23 @@ void checkGoogleTypeExpr(api.GoogleTypeExpr o) {
   buildCounterGoogleTypeExpr--;
 }
 
-core.List<api.AppGateway> buildUnnamed30() => [
+core.List<api.AppGateway> buildUnnamed41() => [
       buildAppGateway(),
       buildAppGateway(),
     ];
 
-void checkUnnamed30(core.List<api.AppGateway> o) {
+void checkUnnamed41(core.List<api.AppGateway> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAppGateway(o[0]);
   checkAppGateway(o[1]);
 }
 
-core.List<core.String> buildUnnamed31() => [
+core.List<core.String> buildUnnamed42() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed31(core.List<core.String> o) {
+void checkUnnamed42(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1776,9 +2225,9 @@ api.ListAppGatewaysResponse buildListAppGatewaysResponse() {
   final o = api.ListAppGatewaysResponse();
   buildCounterListAppGatewaysResponse++;
   if (buildCounterListAppGatewaysResponse < 3) {
-    o.appGateways = buildUnnamed30();
+    o.appGateways = buildUnnamed41();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed31();
+    o.unreachable = buildUnnamed42();
   }
   buildCounterListAppGatewaysResponse--;
   return o;
@@ -1787,14 +2236,33 @@ api.ListAppGatewaysResponse buildListAppGatewaysResponse() {
 void checkListAppGatewaysResponse(api.ListAppGatewaysResponse o) {
   buildCounterListAppGatewaysResponse++;
   if (buildCounterListAppGatewaysResponse < 3) {
-    checkUnnamed30(o.appGateways!);
+    checkUnnamed41(o.appGateways!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed31(o.unreachable!);
+    checkUnnamed42(o.unreachable!);
   }
   buildCounterListAppGatewaysResponse--;
+}
+
+core.int buildCounterShouldThrottleResponse = 0;
+api.ShouldThrottleResponse buildShouldThrottleResponse() {
+  final o = api.ShouldThrottleResponse();
+  buildCounterShouldThrottleResponse++;
+  if (buildCounterShouldThrottleResponse < 3) {
+    o.shouldThrottle = true;
+  }
+  buildCounterShouldThrottleResponse--;
+  return o;
+}
+
+void checkShouldThrottleResponse(api.ShouldThrottleResponse o) {
+  buildCounterShouldThrottleResponse++;
+  if (buildCounterShouldThrottleResponse < 3) {
+    unittest.expect(o.shouldThrottle!, unittest.isTrue);
+  }
+  buildCounterShouldThrottleResponse--;
 }
 
 void main() {
@@ -2056,6 +2524,117 @@ void main() {
     });
   });
 
+  unittest.group(
+      'obj-schema-GoogleCloudBeyondcorpSecuritygatewaysV1Application', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudBeyondcorpSecuritygatewaysV1Application();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudBeyondcorpSecuritygatewaysV1Application.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudBeyondcorpSecuritygatewaysV1Application(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudBeyondcorpSecuritygatewaysV1Hub', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudBeyondcorpSecuritygatewaysV1Hub();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudBeyondcorpSecuritygatewaysV1Hub.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudBeyondcorpSecuritygatewaysV1Hub(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse(
+          od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudBeyondcorpSecuritygatewaysV1Peering',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudBeyondcorpSecuritygatewaysV1Peering();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudBeyondcorpSecuritygatewaysV1Peering.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudBeyondcorpSecuritygatewaysV1Peering(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudLocationListLocationsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudLocationListLocationsResponse();
@@ -2203,6 +2782,16 @@ void main() {
       final od = api.ListAppGatewaysResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkListAppGatewaysResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ShouldThrottleResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildShouldThrottleResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ShouldThrottleResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkShouldThrottleResponse(od);
     });
   });
 
@@ -4807,6 +5396,71 @@ void main() {
       checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
     });
 
+    unittest.test('method--shouldThrottle', () async {
+      final mock = HttpServerMock();
+      final res = api.BeyondCorpApi(mock).projects.locations.appGateways;
+      final arg_name = 'foo';
+      final arg_port = 42;
+      final arg_requestedAmount = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['port']!.first),
+          unittest.equals(arg_port),
+        );
+        unittest.expect(
+          queryMap['requestedAmount']!.first,
+          unittest.equals(arg_requestedAmount),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildShouldThrottleResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.shouldThrottle(arg_name,
+          port: arg_port,
+          requestedAmount: arg_requestedAmount,
+          $fields: arg_$fields);
+      checkShouldThrottleResponse(response as api.ShouldThrottleResponse);
+    });
+
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
       final res = api.BeyondCorpApi(mock).projects.locations.appGateways;
@@ -5230,6 +5884,231 @@ void main() {
     });
   });
 
+  unittest.group(
+      'resource-ProjectsLocationsGlobalSecurityGatewaysApplicationsResource',
+      () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.BeyondCorpApi(mock)
+          .projects
+          .locations
+          .global
+          .securityGateways
+          .applications;
+      final arg_request =
+          buildGoogleCloudBeyondcorpSecuritygatewaysV1Application();
+      final arg_parent = 'foo';
+      final arg_applicationId = 'foo';
+      final arg_requestId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1Application.fromJson(
+                json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudBeyondcorpSecuritygatewaysV1Application(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['applicationId']!.first,
+          unittest.equals(arg_applicationId),
+        );
+        unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(arg_request, arg_parent,
+          applicationId: arg_applicationId,
+          requestId: arg_requestId,
+          $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.BeyondCorpApi(mock)
+          .projects
+          .locations
+          .global
+          .securityGateways
+          .applications;
+      final arg_request =
+          buildGoogleCloudBeyondcorpSecuritygatewaysV1Application();
+      final arg_name = 'foo';
+      final arg_requestId = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1Application.fromJson(
+                json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudBeyondcorpSecuritygatewaysV1Application(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_name,
+          requestId: arg_requestId,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
+    });
+
+    unittest.test('method--testIamPermissions', () async {
+      final mock = HttpServerMock();
+      final res = api.BeyondCorpApi(mock)
+          .projects
+          .locations
+          .global
+          .securityGateways
+          .applications;
+      final arg_request = buildGoogleIamV1TestIamPermissionsRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleIamV1TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleIamV1TestIamPermissionsRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGoogleIamV1TestIamPermissionsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkGoogleIamV1TestIamPermissionsResponse(
+          response as api.GoogleIamV1TestIamPermissionsResponse);
+    });
+  });
+
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
@@ -5465,6 +6344,933 @@ void main() {
           $fields: arg_$fields);
       checkGoogleLongrunningListOperationsResponse(
           response as api.GoogleLongrunningListOperationsResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsSecurityGatewaysResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.BeyondCorpApi(mock).projects.locations.securityGateways;
+      final arg_request =
+          buildGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway();
+      final arg_parent = 'foo';
+      final arg_requestId = 'foo';
+      final arg_securityGatewayId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway.fromJson(
+                json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
+          queryMap['securityGatewayId']!.first,
+          unittest.equals(arg_securityGatewayId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(arg_request, arg_parent,
+          requestId: arg_requestId,
+          securityGatewayId: arg_securityGatewayId,
+          $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.BeyondCorpApi(mock).projects.locations.securityGateways;
+      final arg_name = 'foo';
+      final arg_requestId = 'foo';
+      final arg_validateOnly = true;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
+          queryMap['validateOnly']!.first,
+          unittest.equals('$arg_validateOnly'),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(arg_name,
+          requestId: arg_requestId,
+          validateOnly: arg_validateOnly,
+          $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.BeyondCorpApi(mock).projects.locations.securityGateways;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(
+            buildGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway(response
+          as api.GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway);
+    });
+
+    unittest.test('method--getIamPolicy', () async {
+      final mock = HttpServerMock();
+      final res = api.BeyondCorpApi(mock).projects.locations.securityGateways;
+      final arg_resource = 'foo';
+      final arg_options_requestedPolicyVersion = 42;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['options.requestedPolicyVersion']!.first),
+          unittest.equals(arg_options_requestedPolicyVersion),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleIamV1Policy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.BeyondCorpApi(mock).projects.locations.securityGateways;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(
+            buildGoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse(
+          response as api
+              .GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.BeyondCorpApi(mock).projects.locations.securityGateways;
+      final arg_request =
+          buildGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway();
+      final arg_name = 'foo';
+      final arg_requestId = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway.fromJson(
+                json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_name,
+          requestId: arg_requestId,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
+    });
+
+    unittest.test('method--setPeering', () async {
+      final mock = HttpServerMock();
+      final res = api.BeyondCorpApi(mock).projects.locations.securityGateways;
+      final arg_request =
+          buildGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest();
+      final arg_securityGateway = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest
+            .fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.setPeering(arg_request, arg_securityGateway,
+          $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
+    });
+
+    unittest.test('method--testIamPermissions', () async {
+      final mock = HttpServerMock();
+      final res = api.BeyondCorpApi(mock).projects.locations.securityGateways;
+      final arg_request = buildGoogleIamV1TestIamPermissionsRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleIamV1TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleIamV1TestIamPermissionsRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGoogleIamV1TestIamPermissionsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkGoogleIamV1TestIamPermissionsResponse(
+          response as api.GoogleIamV1TestIamPermissionsResponse);
+    });
+  });
+
+  unittest.group(
+      'resource-ProjectsLocationsSecurityGatewaysApplicationsResource', () {
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.BeyondCorpApi(mock)
+          .projects
+          .locations
+          .securityGateways
+          .applications;
+      final arg_name = 'foo';
+      final arg_requestId = 'foo';
+      final arg_validateOnly = true;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
+          queryMap['validateOnly']!.first,
+          unittest.equals('$arg_validateOnly'),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(arg_name,
+          requestId: arg_requestId,
+          validateOnly: arg_validateOnly,
+          $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.BeyondCorpApi(mock)
+          .projects
+          .locations
+          .securityGateways
+          .applications;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleCloudBeyondcorpSecuritygatewaysV1Application());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudBeyondcorpSecuritygatewaysV1Application(
+          response as api.GoogleCloudBeyondcorpSecuritygatewaysV1Application);
+    });
+
+    unittest.test('method--getIamPolicy', () async {
+      final mock = HttpServerMock();
+      final res = api.BeyondCorpApi(mock)
+          .projects
+          .locations
+          .securityGateways
+          .applications;
+      final arg_resource = 'foo';
+      final arg_options_requestedPolicyVersion = 42;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['options.requestedPolicyVersion']!.first),
+          unittest.equals(arg_options_requestedPolicyVersion),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleIamV1Policy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.BeyondCorpApi(mock)
+          .projects
+          .locations
+          .securityGateways
+          .applications;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(
+            buildGoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse(
+          response as api
+              .GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse);
+    });
+
+    unittest.test('method--setIamPolicy', () async {
+      final mock = HttpServerMock();
+      final res = api.BeyondCorpApi(mock)
+          .projects
+          .locations
+          .securityGateways
+          .applications;
+      final arg_request = buildGoogleIamV1SetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleIamV1SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleIamV1SetIamPolicyRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleIamV1Policy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
+    });
+  });
+
+  unittest.group('resource-VProjectsLocationsSecurityGatewaysResource', () {
+    unittest.test('method--setIamPolicy', () async {
+      final mock = HttpServerMock();
+      final res = api.BeyondCorpApi(mock).v.projects.locations.securityGateways;
+      final arg_request = buildGoogleIamV1SetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleIamV1SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleIamV1SetIamPolicyRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals('v/'),
+        );
+        pathOffset += 2;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleIamV1Policy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
     });
   });
 }

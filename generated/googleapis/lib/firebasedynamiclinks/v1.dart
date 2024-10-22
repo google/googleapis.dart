@@ -818,8 +818,12 @@ class DynamicLinkStats {
   /// Dynamic Link event stats.
   core.List<DynamicLinkEventStat>? linkEventStats;
 
+  /// Optional warnings associated this API request.
+  core.List<DynamicLinkWarning>? warnings;
+
   DynamicLinkStats({
     this.linkEventStats,
+    this.warnings,
   });
 
   DynamicLinkStats.fromJson(core.Map json_)
@@ -828,10 +832,15 @@ class DynamicLinkStats {
               ?.map((value) => DynamicLinkEventStat.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          warnings: (json_['warnings'] as core.List?)
+              ?.map((value) => DynamicLinkWarning.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (linkEventStats != null) 'linkEventStats': linkEventStats!,
+        if (warnings != null) 'warnings': warnings!,
       };
 }
 
@@ -871,8 +880,8 @@ class DynamicLinkWarning {
   /// - "BAD_DEBUG_PARAM" : Debug param format is incorrect.
   /// - "BAD_AD_PARAM" : isAd param format is incorrect.
   /// - "DEPRECATED_PARAM" : Indicates a certain param is deprecated.
-  /// - "UNRECOGNIZED_PARAM" : Indicates certain paramater is not recognized.
-  /// - "TOO_LONG_PARAM" : Indicates certain paramater is too long.
+  /// - "UNRECOGNIZED_PARAM" : Indicates certain parameter is not recognized.
+  /// - "TOO_LONG_PARAM" : Indicates certain parameter is too long.
   /// - "NOT_URI_SOCIAL_IMAGE_LINK" : Social meta tag image link is not a valid
   /// URI.
   /// - "BAD_URI_SCHEME_SOCIAL_IMAGE_LINK" : Social meta tag image link has an
@@ -883,6 +892,7 @@ class DynamicLinkWarning {
   /// - "LINK_WITH_FRAGMENTS" : Dynamic Link URL contains fragments.
   /// - "NOT_MATCHING_IOS_BUNDLE_ID_AND_STORE_ID" : The iOS bundle ID does not
   /// match with the given iOS store ID.
+  /// - "API_DEPRECATED" : The API is deprecated.
   core.String? warningCode;
 
   /// The document describing the warning, and helps resolve.
@@ -1239,6 +1249,9 @@ class GetIosReopenAttributionResponse {
   /// Scion term value to be propagated by iSDK to Scion at app-reopen.
   core.String? utmTerm;
 
+  /// Optional warnings associated this API request.
+  core.List<DynamicLinkWarning>? warning;
+
   GetIosReopenAttributionResponse({
     this.deepLink,
     this.invitationId,
@@ -1249,6 +1262,7 @@ class GetIosReopenAttributionResponse {
     this.utmMedium,
     this.utmSource,
     this.utmTerm,
+    this.warning,
   });
 
   GetIosReopenAttributionResponse.fromJson(core.Map json_)
@@ -1262,6 +1276,10 @@ class GetIosReopenAttributionResponse {
           utmMedium: json_['utmMedium'] as core.String?,
           utmSource: json_['utmSource'] as core.String?,
           utmTerm: json_['utmTerm'] as core.String?,
+          warning: (json_['warning'] as core.List?)
+              ?.map((value) => DynamicLinkWarning.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1274,6 +1292,7 @@ class GetIosReopenAttributionResponse {
         if (utmMedium != null) 'utmMedium': utmMedium!,
         if (utmSource != null) 'utmSource': utmSource!,
         if (utmTerm != null) 'utmTerm': utmTerm!,
+        if (warning != null) 'warning': warning!,
       };
 }
 

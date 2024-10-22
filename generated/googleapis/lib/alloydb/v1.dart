@@ -213,15 +213,15 @@ class ProjectsLocationsBackupsResource {
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server ignores the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if the original operation with the same request ID
+  /// was received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [validateOnly] - Optional. If set, the backend validates the request, but
   /// doesn't actually execute it.
@@ -278,15 +278,15 @@ class ProjectsLocationsBackupsResource {
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes after the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server ignores the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if the original operation with the same request ID
+  /// was received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [validateOnly] - Optional. If set, the backend validates the request, but
   /// doesn't actually execute it.
@@ -438,15 +438,15 @@ class ProjectsLocationsBackupsResource {
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server ignores the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if the original operation with the same request ID
+  /// was received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [updateMask] - Optional. Field mask is used to specify the fields to be
   /// overwritten in the Backup resource by the update. The fields specified in
@@ -522,19 +522,19 @@ class ProjectsLocationsClustersResource {
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server ignores the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if the original operation with the same request ID
+  /// was received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
   ///
-  /// [validateOnly] - Optional. If set, performs request validation (e.g.
-  /// permission checks and any other type of validation), but do not actually
-  /// execute the create request.
+  /// [validateOnly] - Optional. If set, performs request validation, for
+  /// example, permission checks and any other type of validation, but does not
+  /// actually execute the create request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -589,19 +589,19 @@ class ProjectsLocationsClustersResource {
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server ignores the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if the original operation with the same request ID
+  /// was received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
   ///
-  /// [validateOnly] - Optional. If set, performs request validation (e.g.
-  /// permission checks and any other type of validation), but do not actually
-  /// execute the create request.
+  /// [validateOnly] - Optional. If set, performs request validation, for
+  /// example, permission checks and any other type of validation, but does not
+  /// actually execute the create request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -659,19 +659,19 @@ class ProjectsLocationsClustersResource {
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes after the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server ignores the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if the original operation with the same request ID
+  /// was received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
   ///
-  /// [validateOnly] - Optional. If set, performs request validation (e.g.
-  /// permission checks and any other type of validation), but do not actually
-  /// execute the delete.
+  /// [validateOnly] - Optional. If set, performs request validation, for
+  /// example, permission checks and any other type of validation, but does not
+  /// actually execute the create request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -839,15 +839,15 @@ class ProjectsLocationsClustersResource {
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server ignores the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if the original operation with the same request ID
+  /// was received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [updateMask] - Optional. Field mask is used to specify the fields to be
   /// overwritten in the Cluster resource by the update. The fields specified in
@@ -855,9 +855,9 @@ class ProjectsLocationsClustersResource {
   /// field will be overwritten if it is in the mask. If the user does not
   /// provide a mask then all fields will be overwritten.
   ///
-  /// [validateOnly] - Optional. If set, performs request validation (e.g.
-  /// permission checks and any other type of validation), but do not actually
-  /// execute the update request.
+  /// [validateOnly] - Optional. If set, performs request validation, for
+  /// example, permission checks and any other type of validation, but does not
+  /// actually execute the create request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -985,6 +985,95 @@ class ProjectsLocationsClustersResource {
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Switches the roles of PRIMARY and SECONDARY clusters without any data
+  /// loss.
+  ///
+  /// This promotes the SECONDARY cluster to PRIMARY and sets up the original
+  /// PRIMARY cluster to replicate from this newly promoted cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the resource. For the required format, see
+  /// the comment on the Cluster.name field
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> switchover(
+    SwitchoverClusterRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':switchover';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Upgrades a single Cluster.
+  ///
+  /// Imperative only.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the cluster.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> upgrade(
+    UpgradeClusterRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':upgrade';
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsClustersInstancesResource {
@@ -1008,19 +1097,19 @@ class ProjectsLocationsClustersInstancesResource {
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server ignores the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if the original operation with the same request ID
+  /// was received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
   ///
-  /// [validateOnly] - Optional. If set, performs request validation (e.g.
-  /// permission checks and any other type of validation), but do not actually
-  /// execute the create request.
+  /// [validateOnly] - Optional. If set, performs request validation, for
+  /// example, permission checks and any other type of validation, but does not
+  /// actually execute the create request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1074,19 +1163,19 @@ class ProjectsLocationsClustersInstancesResource {
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server ignores the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if the original operation with the same request ID
+  /// was received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
   ///
-  /// [validateOnly] - Optional. If set, performs request validation (e.g.
-  /// permission checks and any other type of validation), but do not actually
-  /// execute the create request.
+  /// [validateOnly] - Optional. If set, performs request validation, for
+  /// example, permission checks and any other type of validation, but does not
+  /// actually execute the create request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1141,19 +1230,19 @@ class ProjectsLocationsClustersInstancesResource {
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes after the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server ignores the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if the original operation with the same request ID
+  /// was received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
   ///
-  /// [validateOnly] - Optional. If set, performs request validation (e.g.
-  /// permission checks and any other type of validation), but do not actually
-  /// execute the delete.
+  /// [validateOnly] - Optional. If set, performs request validation, for
+  /// example, permission checks and any other type of validation, but does not
+  /// actually execute the create request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1296,15 +1385,15 @@ class ProjectsLocationsClustersInstancesResource {
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes after the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server ignores the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if the original operation with the same request ID
+  /// was received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1463,15 +1552,15 @@ class ProjectsLocationsClustersInstancesResource {
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server ignores the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if the original operation with the same request ID
+  /// was received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [updateMask] - Optional. Field mask is used to specify the fields to be
   /// overwritten in the Instance resource by the update. The fields specified
@@ -1479,9 +1568,9 @@ class ProjectsLocationsClustersInstancesResource {
   /// field will be overwritten if it is in the mask. If the user does not
   /// provide a mask then all fields will be overwritten.
   ///
-  /// [validateOnly] - Optional. If set, performs request validation (e.g.
-  /// permission checks and any other type of validation), but do not actually
-  /// execute the update request.
+  /// [validateOnly] - Optional. If set, performs request validation, for
+  /// example, permission checks and any other type of validation, but does not
+  /// actually execute the create request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1585,15 +1674,15 @@ class ProjectsLocationsClustersUsersResource {
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server ignores the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if the original operation with the same request ID
+  /// was received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [userId] - Required. ID of the requesting object.
   ///
@@ -1648,15 +1737,15 @@ class ProjectsLocationsClustersUsersResource {
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes after the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server ignores the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if the original operation with the same request ID
+  /// was received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [validateOnly] - Optional. If set, the backend validates the request, but
   /// doesn't actually execute it.
@@ -1800,15 +1889,15 @@ class ProjectsLocationsClustersUsersResource {
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server ignores the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if the original operation with the same request ID
+  /// was received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [updateMask] - Optional. Field mask is used to specify the fields to be
   /// overwritten in the User resource by the update. The fields specified in
@@ -2257,6 +2346,7 @@ class Backup {
   /// - "POSTGRES_13" : DEPRECATED - The database version is Postgres 13.
   /// - "POSTGRES_14" : The database version is Postgres 14.
   /// - "POSTGRES_15" : The database version is Postgres 15.
+  /// - "POSTGRES_16" : The database version is Postgres 16.
   core.String? databaseVersion;
 
   /// Delete time stamp
@@ -2351,6 +2441,14 @@ class Backup {
   /// - "DELETING" : The backup is being deleted.
   core.String? state;
 
+  /// Input only.
+  ///
+  /// Immutable. Tag keys/values directly bound to this resource. For example:
+  /// ``` "123/environment": "production", "123/costCenter": "marketing" ```
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   /// The backup type, which suggests the trigger for the backup.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Backup Type is unknown.
@@ -2395,6 +2493,7 @@ class Backup {
     this.satisfiesPzs,
     this.sizeBytes,
     this.state,
+    this.tags,
     this.type,
     this.uid,
     this.updateTime,
@@ -2443,6 +2542,12 @@ class Backup {
           satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           sizeBytes: json_['sizeBytes'] as core.String?,
           state: json_['state'] as core.String?,
+          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           type: json_['type'] as core.String?,
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -2468,6 +2573,7 @@ class Backup {
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (sizeBytes != null) 'sizeBytes': sizeBytes!,
         if (state != null) 'state': state!,
+        if (tags != null) 'tags': tags!,
         if (type != null) 'type': type!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -2519,7 +2625,7 @@ class ClientConnectionConfig {
   /// Optional.
   core.bool? requireConnectors;
 
-  /// SSL config option for this instance.
+  /// SSL configuration option for this instance.
   ///
   /// Optional.
   SslConfig? sslConfig;
@@ -2610,6 +2716,7 @@ class Cluster {
   /// - "POSTGRES_13" : DEPRECATED - The database version is Postgres 13.
   /// - "POSTGRES_14" : The database version is Postgres 14.
   /// - "POSTGRES_15" : The database version is Postgres 15.
+  /// - "POSTGRES_16" : The database version is Postgres 16.
   core.String? databaseVersion;
 
   /// Delete time stamp
@@ -2748,6 +2855,29 @@ class Cluster {
   /// - "PROMOTING" : The cluster is being promoted.
   core.String? state;
 
+  /// Subscription type of the cluster.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SUBSCRIPTION_TYPE_UNSPECIFIED" : This is an unknown subscription type.
+  /// By default, the subscription type is STANDARD.
+  /// - "STANDARD" : Standard subscription.
+  /// - "TRIAL" : Trial subscription.
+  core.String? subscriptionType;
+
+  /// Input only.
+  ///
+  /// Immutable. Tag keys/values directly bound to this resource. For example:
+  /// ``` "123/environment": "production", "123/costCenter": "marketing" ```
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
+  /// Metadata for free trial clusters
+  ///
+  /// Output only.
+  TrialMetadata? trialMetadata;
+
   /// The system-generated UID of the resource.
   ///
   /// The UID is assigned when the resource is created, and it is retained until
@@ -2790,6 +2920,9 @@ class Cluster {
     this.secondaryConfig,
     this.sslConfig,
     this.state,
+    this.subscriptionType,
+    this.tags,
+    this.trialMetadata,
     this.uid,
     this.updateTime,
   });
@@ -2883,6 +3016,17 @@ class Cluster {
                   json_['sslConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           state: json_['state'] as core.String?,
+          subscriptionType: json_['subscriptionType'] as core.String?,
+          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          trialMetadata: json_.containsKey('trialMetadata')
+              ? TrialMetadata.fromJson(
+                  json_['trialMetadata'] as core.Map<core.String, core.dynamic>)
+              : null,
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -2921,6 +3065,9 @@ class Cluster {
         if (secondaryConfig != null) 'secondaryConfig': secondaryConfig!,
         if (sslConfig != null) 'sslConfig': sslConfig!,
         if (state != null) 'state': state!,
+        if (subscriptionType != null) 'subscriptionType': subscriptionType!,
+        if (tags != null) 'tags': tags!,
+        if (trialMetadata != null) 'trialMetadata': trialMetadata!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -3170,45 +3317,7 @@ class EncryptionInfo {
 }
 
 /// Message for triggering failover on an Instance
-class FailoverInstanceRequest {
-  /// An optional request ID to identify requests.
-  ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes after the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  /// If set, performs request validation (e.g. permission checks and any other
-  /// type of validation), but do not actually execute the failover.
-  ///
-  /// Optional.
-  core.bool? validateOnly;
-
-  FailoverInstanceRequest({
-    this.requestId,
-    this.validateOnly,
-  });
-
-  FailoverInstanceRequest.fromJson(core.Map json_)
-      : this(
-          requestId: json_['requestId'] as core.String?,
-          validateOnly: json_['validateOnly'] as core.bool?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-        if (validateOnly != null) 'validateOnly': validateOnly!,
-      };
-}
+typedef FailoverInstanceRequest = $Request05;
 
 /// The response message for Locations.ListLocations.
 class GoogleCloudLocationListLocationsResponse {
@@ -3246,7 +3355,7 @@ typedef GoogleCloudLocationLocation = $Location00;
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-typedef GoogleTypeTimeOfDay = $TimeOfDay;
+typedef GoogleTypeTimeOfDay = $TimeOfDay00;
 
 /// Message for triggering fault injection on an instance
 class InjectFaultRequest {
@@ -3261,21 +3370,22 @@ class InjectFaultRequest {
   /// An optional request ID to identify requests.
   ///
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes after the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server ignores the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if the original operation with the same request ID
+  /// was received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
   ///
   /// Optional.
   core.String? requestId;
 
-  /// If set, performs request validation (e.g. permission checks and any other
-  /// type of validation), but do not actually execute the fault injection.
+  /// If set, performs request validation, for example, permission checks and
+  /// any other type of validation, but does not actually execute the create
+  /// request.
   ///
   /// Optional.
   core.bool? validateOnly;
@@ -3409,7 +3519,7 @@ class Instance {
   /// Output only.
   core.String? name;
 
-  /// Instance level network configuration.
+  /// Instance-level network configuration.
   ///
   /// Optional.
   InstanceNetworkConfig? networkConfig;
@@ -3419,6 +3529,11 @@ class Instance {
   ///
   /// Output only.
   core.List<Node>? nodes;
+
+  /// All outbound public IP addresses configured for the instance.
+  ///
+  /// Output only.
+  core.List<core.String>? outboundPublicIpAddresses;
 
   /// The configuration for Private Service Connect (PSC) for the instance.
   ///
@@ -3513,6 +3628,7 @@ class Instance {
     this.name,
     this.networkConfig,
     this.nodes,
+    this.outboundPublicIpAddresses,
     this.pscInstanceConfig,
     this.publicIpAddress,
     this.queryInsightsConfig,
@@ -3575,6 +3691,10 @@ class Instance {
               ?.map((value) =>
                   Node.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
+          outboundPublicIpAddresses:
+              (json_['outboundPublicIpAddresses'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           pscInstanceConfig: json_.containsKey('pscInstanceConfig')
               ? PscInstanceConfig.fromJson(json_['pscInstanceConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -3618,6 +3738,8 @@ class Instance {
         if (name != null) 'name': name!,
         if (networkConfig != null) 'networkConfig': networkConfig!,
         if (nodes != null) 'nodes': nodes!,
+        if (outboundPublicIpAddresses != null)
+          'outboundPublicIpAddresses': outboundPublicIpAddresses!,
         if (pscInstanceConfig != null) 'pscInstanceConfig': pscInstanceConfig!,
         if (publicIpAddress != null) 'publicIpAddress': publicIpAddress!,
         if (queryInsightsConfig != null)
@@ -3632,12 +3754,18 @@ class Instance {
       };
 }
 
-/// Metadata related to instance level network configuration.
+/// Metadata related to instance-level network configuration.
 class InstanceNetworkConfig {
   /// A list of external network authorized to access this instance.
   ///
   /// Optional.
   core.List<AuthorizedNetwork>? authorizedExternalNetworks;
+
+  /// Enabling an outbound public IP address to support a database server
+  /// sending requests out into the internet.
+  ///
+  /// Optional.
+  core.bool? enableOutboundPublicIp;
 
   /// Enabling public ip for the instance.
   ///
@@ -3646,6 +3774,7 @@ class InstanceNetworkConfig {
 
   InstanceNetworkConfig({
     this.authorizedExternalNetworks,
+    this.enableOutboundPublicIp,
     this.enablePublicIp,
   });
 
@@ -3656,12 +3785,15 @@ class InstanceNetworkConfig {
                   ?.map((value) => AuthorizedNetwork.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList(),
+          enableOutboundPublicIp: json_['enableOutboundPublicIp'] as core.bool?,
           enablePublicIp: json_['enablePublicIp'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authorizedExternalNetworks != null)
           'authorizedExternalNetworks': authorizedExternalNetworks!,
+        if (enableOutboundPublicIp != null)
+          'enableOutboundPublicIp': enableOutboundPublicIp!,
         if (enablePublicIp != null) 'enablePublicIp': enablePublicIp!,
       };
 }
@@ -4230,21 +4362,22 @@ class PromoteClusterRequest {
   /// An optional request ID to identify requests.
   ///
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes after the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server ignores the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
   ///
   /// Optional.
   core.String? requestId;
 
-  /// If set, performs request validation (e.g. permission checks and any other
-  /// type of validation), but do not actually execute the delete.
+  /// If set, performs request validation, for example, permission checks and
+  /// any other type of validation, but does not actually execute the create
+  /// request.
   ///
   /// Optional.
   core.bool? validateOnly;
@@ -4470,40 +4603,54 @@ class ReadPoolConfig {
 }
 
 class RestartInstanceRequest {
+  /// Full name of the nodes as obtained from INSTANCE_VIEW_FULL to restart
+  /// upon.
+  ///
+  /// Applicable only to read instances.
+  ///
+  /// Optional.
+  core.List<core.String>? nodeIds;
+
   /// An optional request ID to identify requests.
   ///
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes after the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server ignores the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if the original operation with the same request ID
+  /// was received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
   ///
   /// Optional.
   core.String? requestId;
 
-  /// If set, performs request validation (e.g. permission checks and any other
-  /// type of validation), but do not actually execute the restart.
+  /// If set, performs request validation, for example, permission checks and
+  /// any other type of validation, but does not actually execute the create
+  /// request.
   ///
   /// Optional.
   core.bool? validateOnly;
 
   RestartInstanceRequest({
+    this.nodeIds,
     this.requestId,
     this.validateOnly,
   });
 
   RestartInstanceRequest.fromJson(core.Map json_)
       : this(
+          nodeIds: (json_['nodeIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           requestId: json_['requestId'] as core.String?,
           validateOnly: json_['validateOnly'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (nodeIds != null) 'nodeIds': nodeIds!,
         if (requestId != null) 'requestId': requestId!,
         if (validateOnly != null) 'validateOnly': validateOnly!,
       };
@@ -4534,21 +4681,22 @@ class RestoreClusterRequest {
   /// An optional request ID to identify requests.
   ///
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server ignores the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if the original operation with the same request ID
+  /// was received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
   ///
   /// Optional.
   core.String? requestId;
 
-  /// If set, performs request validation (e.g. permission checks and any other
-  /// type of validation), but do not actually execute the import request.
+  /// If set, performs request validation, for example, permission checks and
+  /// any other type of validation, but does not actually execute the create
+  /// request.
   ///
   /// Optional.
   core.bool? validateOnly;
@@ -4635,7 +4783,7 @@ class SslConfig {
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "SSL_MODE_UNSPECIFIED" : SSL mode not specified. Defaults to
+  /// - "SSL_MODE_UNSPECIFIED" : SSL mode is not specified. Defaults to
   /// ENCRYPTED_ONLY.
   /// - "SSL_MODE_ALLOW" : SSL connections are optional. CA verification not
   /// enforced.
@@ -4643,8 +4791,8 @@ class SslConfig {
   /// enforced. Clients may use locally self-signed certificates (default psql
   /// client behavior).
   /// - "SSL_MODE_VERIFY_CA" : SSL connections are required. CA verification
-  /// enforced. Clients must have certificates signed by a Cluster CA, e.g. via
-  /// GenerateClientCertificate.
+  /// enforced. Clients must have certificates signed by a Cluster CA, for
+  /// example, using GenerateClientCertificate.
   /// - "ALLOW_UNENCRYPTED_AND_ENCRYPTED" : SSL connections are optional. CA
   /// verification not enforced.
   /// - "ENCRYPTED_ONLY" : SSL connections are required. CA verification not
@@ -4675,7 +4823,7 @@ class SslConfig {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Restrictions on STRING type values
 class StringRestrictions {
@@ -4795,6 +4943,9 @@ class SupportedDatabaseFlag {
       };
 }
 
+/// Message for switching over to a cluster
+typedef SwitchoverClusterRequest = $Request05;
+
 /// A time based retention policy specifies that all backups within a certain
 /// time period should be retained.
 class TimeBasedRetention {
@@ -4815,6 +4966,110 @@ class TimeBasedRetention {
       };
 }
 
+/// Contains information and all metadata related to TRIAL clusters.
+class TrialMetadata {
+  /// End time of the trial cluster.
+  core.String? endTime;
+
+  /// grace end time of the cluster.
+  core.String? graceEndTime;
+
+  /// start time of the trial cluster.
+  core.String? startTime;
+
+  /// Upgrade time of trial cluster to Standard cluster.
+  core.String? upgradeTime;
+
+  TrialMetadata({
+    this.endTime,
+    this.graceEndTime,
+    this.startTime,
+    this.upgradeTime,
+  });
+
+  TrialMetadata.fromJson(core.Map json_)
+      : this(
+          endTime: json_['endTime'] as core.String?,
+          graceEndTime: json_['graceEndTime'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+          upgradeTime: json_['upgradeTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (graceEndTime != null) 'graceEndTime': graceEndTime!,
+        if (startTime != null) 'startTime': startTime!,
+        if (upgradeTime != null) 'upgradeTime': upgradeTime!,
+      };
+}
+
+/// Upgrades a cluster.
+class UpgradeClusterRequest {
+  /// The current etag of the Cluster.
+  ///
+  /// If an etag is provided and does not match the current etag of the Cluster,
+  /// upgrade will be blocked and an ABORTED error will be returned.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// An optional request ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server ignores the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if the original operation with the same request ID
+  /// was received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  /// If set, performs request validation, for example, permission checks and
+  /// any other type of validation, but does not actually execute the create
+  /// request.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  /// The version the cluster is going to be upgraded to.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DATABASE_VERSION_UNSPECIFIED" : This is an unknown database version.
+  /// - "POSTGRES_13" : DEPRECATED - The database version is Postgres 13.
+  /// - "POSTGRES_14" : The database version is Postgres 14.
+  /// - "POSTGRES_15" : The database version is Postgres 15.
+  /// - "POSTGRES_16" : The database version is Postgres 16.
+  core.String? version;
+
+  UpgradeClusterRequest({
+    this.etag,
+    this.requestId,
+    this.validateOnly,
+    this.version,
+  });
+
+  UpgradeClusterRequest.fromJson(core.Map json_)
+      : this(
+          etag: json_['etag'] as core.String?,
+          requestId: json_['requestId'] as core.String?,
+          validateOnly: json_['validateOnly'] as core.bool?,
+          version: json_['version'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (requestId != null) 'requestId': requestId!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// Message describing User object.
 class User {
   /// List of database roles this user has.
@@ -4824,6 +5079,11 @@ class User {
   ///
   /// Optional.
   core.List<core.String>? databaseRoles;
+
+  /// Input only.
+  ///
+  /// If the user already exists and it has additional roles, keep them granted.
+  core.bool? keepExtraRoles;
 
   /// Name of the resource in the form of
   /// projects/{project}/locations/{location}/cluster/{cluster}/users/{user}.
@@ -4849,6 +5109,7 @@ class User {
 
   User({
     this.databaseRoles,
+    this.keepExtraRoles,
     this.name,
     this.password,
     this.userType,
@@ -4859,6 +5120,7 @@ class User {
           databaseRoles: (json_['databaseRoles'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          keepExtraRoles: json_['keepExtraRoles'] as core.bool?,
           name: json_['name'] as core.String?,
           password: json_['password'] as core.String?,
           userType: json_['userType'] as core.String?,
@@ -4866,6 +5128,7 @@ class User {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (databaseRoles != null) 'databaseRoles': databaseRoles!,
+        if (keepExtraRoles != null) 'keepExtraRoles': keepExtraRoles!,
         if (name != null) 'name': name!,
         if (password != null) 'password': password!,
         if (userType != null) 'userType': userType!,

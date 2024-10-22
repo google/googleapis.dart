@@ -315,8 +315,8 @@ class AccessPoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name of the `AccessPolicy`. Format:
-  /// `accessPolicies/{access_policy}`
+  /// [name] - Output only. Identifier. Resource name of the `AccessPolicy`.
+  /// Format: `accessPolicies/{access_policy}`
   /// Value must have pattern `^accessPolicies/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Mask to control which fields get updated. Must be
@@ -664,7 +664,7 @@ class AccessPoliciesAccessLevelsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name for the `AccessLevel`. Format:
+  /// [name] - Identifier. Resource name for the `AccessLevel`. Format:
   /// `accessPolicies/{access_policy}/accessLevels/{access_level}`. The
   /// `access_level` component must begin with a letter, followed by
   /// alphanumeric characters or `_`. Its maximum length is 50 characters. After
@@ -1001,7 +1001,7 @@ class AccessPoliciesAuthorizedOrgsDescsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name for the `AuthorizedOrgsDesc`. Format:
+  /// [name] - Identifier. Resource name for the `AuthorizedOrgsDesc`. Format:
   /// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
   /// The `authorized_orgs_desc` component must begin with a letter, followed by
   /// alphanumeric characters or `_`. After you create an `AuthorizedOrgsDesc`,
@@ -1289,7 +1289,7 @@ class AccessPoliciesServicePerimetersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name for the `ServicePerimeter`. Format:
+  /// [name] - Identifier. Resource name for the `ServicePerimeter`. Format:
   /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`.
   /// The `service_perimeter` component must begin with a letter, followed by
   /// alphanumeric characters or `_`. After you create a `ServicePerimeter`, you
@@ -1825,10 +1825,21 @@ class OrganizationsGcpUserAccessBindingsResource {
   /// Value must have pattern
   /// `^organizations/\[^/\]+/gcpUserAccessBindings/\[^/\]+$`.
   ///
+  /// [append] - Optional. This field controls whether or not certain repeated
+  /// settings in the update request overwrite or append to existing settings on
+  /// the binding. If true, then append. Otherwise overwrite. So far, only
+  /// scoped_access_settings supports appending. Global access_levels,
+  /// dry_run_access_levels, and reauth_settings are not compatible with append
+  /// functionality, and the request will return an error if append=true when
+  /// these settings are in the update_mask. The request will also return an
+  /// error if append=true when "scoped_access_settings" is not set in the
+  /// update_mask.
+  ///
   /// [updateMask] - Required. Only the fields specified in this mask are
   /// updated. Because name and group_key cannot be changed, update_mask is
   /// required and may only contain the following fields: `access_levels`,
-  /// `dry_run_access_levels`. update_mask { paths: "access_levels" }
+  /// `dry_run_access_levels`, `reauth_settings`, `scoped_access_settings`.
+  /// update_mask { paths: "access_levels" }
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1843,11 +1854,13 @@ class OrganizationsGcpUserAccessBindingsResource {
   async.Future<Operation> patch(
     GcpUserAccessBinding request,
     core.String name, {
+    core.bool? append,
     core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (append != null) 'append': ['${append}'],
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1963,9 +1976,10 @@ class AccessLevel {
   /// Does not affect behavior.
   core.String? description;
 
-  /// Resource name for the `AccessLevel`.
+  /// Identifier.
   ///
-  /// Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The
+  /// Resource name for the `AccessLevel`. Format:
+  /// `accessPolicies/{access_policy}/accessLevels/{access_level}`. The
   /// `access_level` component must begin with a letter, followed by
   /// alphanumeric characters or `_`. Its maximum length is 50 characters. After
   /// you create an `AccessLevel`, you cannot change its `name`.
@@ -2014,78 +2028,72 @@ class AccessLevel {
 ///
 /// An access policy is globally visible within an organization, and the
 /// restrictions it specifies apply to all projects within an organization.
-class AccessPolicy {
-  /// An opaque identifier for the current version of the `AccessPolicy`.
-  ///
-  /// This will always be a strongly validated etag, meaning that two Access
-  /// Polices will be identical if and only if their etags are identical.
-  /// Clients should not expect this to be in any specific format.
-  ///
-  /// Output only.
-  core.String? etag;
+typedef AccessPolicy = $AccessPolicy;
 
-  /// Resource name of the `AccessPolicy`.
+/// Access scope represents the client scope, etc.
+///
+/// to which the settings will be applied to.
+class AccessScope {
+  /// Client scope for this access scope.
   ///
-  /// Format: `accessPolicies/{access_policy}`
-  ///
-  /// Output only.
-  core.String? name;
+  /// Optional.
+  ClientScope? clientScope;
 
-  /// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy.
-  ///
-  /// Currently immutable once created. Format:
-  /// `organizations/{organization_id}`
-  ///
-  /// Required.
-  core.String? parent;
-
-  /// The scopes of the AccessPolicy.
-  ///
-  /// Scopes define which resources a policy can restrict and where its
-  /// resources can be referenced. For example, policy A with
-  /// `scopes=["folders/123"]` has the following behavior: - ServicePerimeter
-  /// can only restrict projects within `folders/123`. - ServicePerimeter within
-  /// policy A can only reference access levels defined within policy A. - Only
-  /// one policy can include a given scope; thus, attempting to create a second
-  /// policy which includes `folders/123` will result in an error. If no scopes
-  /// are provided, then any resource within the organization can be restricted.
-  /// Scopes cannot be modified after a policy is created. Policies can only
-  /// have a single scope. Format: list of `folders/{folder_number}` or
-  /// `projects/{project_number}`
-  core.List<core.String>? scopes;
-
-  /// Human readable title.
-  ///
-  /// Does not affect behavior.
-  ///
-  /// Required.
-  core.String? title;
-
-  AccessPolicy({
-    this.etag,
-    this.name,
-    this.parent,
-    this.scopes,
-    this.title,
+  AccessScope({
+    this.clientScope,
   });
 
-  AccessPolicy.fromJson(core.Map json_)
+  AccessScope.fromJson(core.Map json_)
       : this(
-          etag: json_['etag'] as core.String?,
-          name: json_['name'] as core.String?,
-          parent: json_['parent'] as core.String?,
-          scopes: (json_['scopes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          title: json_['title'] as core.String?,
+          clientScope: json_.containsKey('clientScope')
+              ? ClientScope.fromJson(
+                  json_['clientScope'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (name != null) 'name': name!,
-        if (parent != null) 'parent': parent!,
-        if (scopes != null) 'scopes': scopes!,
-        if (title != null) 'title': title!,
+        if (clientScope != null) 'clientScope': clientScope!,
+      };
+}
+
+/// Access settings represent the set of conditions that must be met for access
+/// to be granted.
+///
+/// At least one of the fields must be set.
+class AccessSettings {
+  /// Access level that a user must have to be granted access.
+  ///
+  /// Only one access level is supported, not multiple. This repeated field must
+  /// have exactly one element. Example:
+  /// "accessPolicies/9522/accessLevels/device_trusted"
+  ///
+  /// Optional.
+  core.List<core.String>? accessLevels;
+
+  /// Reauth settings applied to user access on a given AccessScope.
+  ///
+  /// Optional.
+  ReauthSettings? reauthSettings;
+
+  AccessSettings({
+    this.accessLevels,
+    this.reauthSettings,
+  });
+
+  AccessSettings.fromJson(core.Map json_)
+      : this(
+          accessLevels: (json_['accessLevels'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          reauthSettings: json_.containsKey('reauthSettings')
+              ? ReauthSettings.fromJson(json_['reauthSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessLevels != null) 'accessLevels': accessLevels!,
+        if (reauthSettings != null) 'reauthSettings': reauthSettings!,
       };
 }
 
@@ -2251,9 +2259,9 @@ class AuthorizedOrgsDesc {
   /// - "AUTHORIZATION_TYPE_TRUST" : This authorization relationship is "trust".
   core.String? authorizationType;
 
-  /// Resource name for the `AuthorizedOrgsDesc`.
+  /// Identifier.
   ///
-  /// Format:
+  /// Resource name for the `AuthorizedOrgsDesc`. Format:
   /// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
   /// The `authorized_orgs_desc` component must begin with a letter, followed by
   /// alphanumeric characters or `_`. After you create an `AuthorizedOrgsDesc`,
@@ -2442,6 +2450,34 @@ class Binding {
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
+
+/// Client scope represents the application, etc.
+///
+/// subject to this binding's restrictions.
+class ClientScope {
+  /// The application that is subject to this binding's scope.
+  ///
+  /// Optional.
+  Application? restrictedClientApplication;
+
+  ClientScope({
+    this.restrictedClientApplication,
+  });
+
+  ClientScope.fromJson(core.Map json_)
+      : this(
+          restrictedClientApplication:
+              json_.containsKey('restrictedClientApplication')
+                  ? Application.fromJson(json_['restrictedClientApplication']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (restrictedClientApplication != null)
+          'restrictedClientApplication': restrictedClientApplication!,
+      };
+}
 
 /// A request to commit dry-run specs in all Service Perimeters belonging to an
 /// Access Policy.
@@ -2688,8 +2724,9 @@ class EgressFrom {
   /// A list of identities that are allowed access through \[EgressPolicy\].
   ///
   /// Identities can be an individual user, service account, Google group, or
-  /// third-party identity. The `v1` identities that have the prefix `user`,
-  /// `group`, `serviceAccount`, `principal`, and `principalSet` in
+  /// third-party identity. For third-party identity, only single identities are
+  /// supported and other identity types are not supported. The `v1` identities
+  /// that have the prefix `user`, `group`, `serviceAccount`, and `principal` in
   /// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
   core.List<core.String>? identities;
 
@@ -2937,6 +2974,11 @@ class GcpUserAccessBinding {
   /// Immutable.
   core.String? name;
 
+  /// GCSL policy for the group key.
+  ///
+  /// Optional.
+  ReauthSettings? reauthSettings;
+
   /// A list of applications that are subject to this binding's restrictions.
   ///
   /// If the list is empty, the binding restrictions will universally apply to
@@ -2945,12 +2987,22 @@ class GcpUserAccessBinding {
   /// Optional.
   core.List<Application>? restrictedClientApplications;
 
+  /// A list of scoped access settings that set this binding's restrictions on a
+  /// subset of applications.
+  ///
+  /// This field cannot be set if restricted_client_applications is set.
+  ///
+  /// Optional.
+  core.List<ScopedAccessSettings>? scopedAccessSettings;
+
   GcpUserAccessBinding({
     this.accessLevels,
     this.dryRunAccessLevels,
     this.groupKey,
     this.name,
+    this.reauthSettings,
     this.restrictedClientApplications,
+    this.scopedAccessSettings,
   });
 
   GcpUserAccessBinding.fromJson(core.Map json_)
@@ -2963,11 +3015,19 @@ class GcpUserAccessBinding {
               .toList(),
           groupKey: json_['groupKey'] as core.String?,
           name: json_['name'] as core.String?,
+          reauthSettings: json_.containsKey('reauthSettings')
+              ? ReauthSettings.fromJson(json_['reauthSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           restrictedClientApplications:
               (json_['restrictedClientApplications'] as core.List?)
                   ?.map((value) => Application.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList(),
+          scopedAccessSettings: (json_['scopedAccessSettings'] as core.List?)
+              ?.map((value) => ScopedAccessSettings.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2976,8 +3036,11 @@ class GcpUserAccessBinding {
           'dryRunAccessLevels': dryRunAccessLevels!,
         if (groupKey != null) 'groupKey': groupKey!,
         if (name != null) 'name': name!,
+        if (reauthSettings != null) 'reauthSettings': reauthSettings!,
         if (restrictedClientApplications != null)
           'restrictedClientApplications': restrictedClientApplications!,
+        if (scopedAccessSettings != null)
+          'scopedAccessSettings': scopedAccessSettings!,
       };
 }
 
@@ -3016,8 +3079,9 @@ class IngressFrom {
   /// A list of identities that are allowed access through \[IngressPolicy\].
   ///
   /// Identities can be an individual user, service account, Google group, or
-  /// third-party identity. The `v1` identities that have the prefix `user`,
-  /// `group`, `serviceAccount`, `principal`, and `principalSet` in
+  /// third-party identity. For third-party identity, only single identities are
+  /// supported and other identity types are not supported. The `v1` identities
+  /// that have the prefix `user`, `group`, `serviceAccount`, and `principal` in
   /// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
   core.List<core.String>? identities;
 
@@ -3558,6 +3622,87 @@ class Policy {
       };
 }
 
+/// Stores settings related to Google Cloud Session Length including session
+/// duration, the type of challenge (i.e. method) they should face when their
+/// session expires, and other related settings.
+class ReauthSettings {
+  /// How long a user is allowed to take between actions before a new access
+  /// token must be issued.
+  ///
+  /// Presently only set for Cloud Apps.
+  ///
+  /// Optional.
+  core.String? maxInactivity;
+
+  /// Reauth method when users GCP session is up.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "REAUTH_METHOD_UNSPECIFIED" : If method undefined in API, we will use
+  /// LOGIN by default.
+  /// - "LOGIN" : The user will prompted to perform regular login. Users who are
+  /// enrolled for two-step verification and haven't chosen to "Remember this
+  /// computer" will be prompted for their second factor.
+  /// - "SECURITY_KEY" : The user will be prompted to autheticate using their
+  /// security key. If no security key has been configured, then we will
+  /// fallback to LOGIN.
+  /// - "PASSWORD" : The user will be prompted for their password.
+  core.String? reauthMethod;
+
+  /// The session length.
+  ///
+  /// Setting this field to zero is equal to disabling. Reauth. Also can set
+  /// infinite session by flipping the enabled bit to false below. If
+  /// use_oidc_max_age is true, for OIDC apps, the session length will be the
+  /// minimum of this field and OIDC max_age param.
+  ///
+  /// Optional.
+  core.String? sessionLength;
+
+  /// Big red button to turn off GCSL.
+  ///
+  /// When false, all fields set above will be disregarded and the session
+  /// length is basically infinite.
+  ///
+  /// Optional.
+  core.bool? sessionLengthEnabled;
+
+  /// Only useful for OIDC apps.
+  ///
+  /// When false, the OIDC max_age param, if passed in the authentication
+  /// request will be ignored. When true, the re-auth period will be the minimum
+  /// of the session_length field and the max_age OIDC param.
+  ///
+  /// Optional.
+  core.bool? useOidcMaxAge;
+
+  ReauthSettings({
+    this.maxInactivity,
+    this.reauthMethod,
+    this.sessionLength,
+    this.sessionLengthEnabled,
+    this.useOidcMaxAge,
+  });
+
+  ReauthSettings.fromJson(core.Map json_)
+      : this(
+          maxInactivity: json_['maxInactivity'] as core.String?,
+          reauthMethod: json_['reauthMethod'] as core.String?,
+          sessionLength: json_['sessionLength'] as core.String?,
+          sessionLengthEnabled: json_['sessionLengthEnabled'] as core.bool?,
+          useOidcMaxAge: json_['useOidcMaxAge'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxInactivity != null) 'maxInactivity': maxInactivity!,
+        if (reauthMethod != null) 'reauthMethod': reauthMethod!,
+        if (sessionLength != null) 'sessionLength': sessionLength!,
+        if (sessionLengthEnabled != null)
+          'sessionLengthEnabled': sessionLengthEnabled!,
+        if (useOidcMaxAge != null) 'useOidcMaxAge': useOidcMaxAge!,
+      };
+}
+
 /// A request to replace all existing Access Levels in an Access Policy with the
 /// Access Levels provided.
 ///
@@ -3644,6 +3789,59 @@ class ReplaceServicePerimetersRequest {
       };
 }
 
+/// A relationship between access settings and its scope.
+class ScopedAccessSettings {
+  /// Access settings for this scoped access settings.
+  ///
+  /// This field may be empty if dry_run_settings is set.
+  ///
+  /// Optional.
+  AccessSettings? activeSettings;
+
+  /// Dry-run access settings for this scoped access settings.
+  ///
+  /// This field may be empty if active_settings is set.
+  ///
+  /// Optional.
+  AccessSettings? dryRunSettings;
+
+  /// Application, etc.
+  ///
+  /// to which the access settings will be applied to. Implicitly, this is the
+  /// scoped access settings key; as such, it must be unique and non-empty.
+  ///
+  /// Optional.
+  AccessScope? scope;
+
+  ScopedAccessSettings({
+    this.activeSettings,
+    this.dryRunSettings,
+    this.scope,
+  });
+
+  ScopedAccessSettings.fromJson(core.Map json_)
+      : this(
+          activeSettings: json_.containsKey('activeSettings')
+              ? AccessSettings.fromJson(json_['activeSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          dryRunSettings: json_.containsKey('dryRunSettings')
+              ? AccessSettings.fromJson(json_['dryRunSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          scope: json_.containsKey('scope')
+              ? AccessScope.fromJson(
+                  json_['scope'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activeSettings != null) 'activeSettings': activeSettings!,
+        if (dryRunSettings != null) 'dryRunSettings': dryRunSettings!,
+        if (scope != null) 'scope': scope!,
+      };
+}
+
 /// `ServicePerimeter` describes a set of Google Cloud resources which can
 /// freely import and export data amongst themselves, but not export outside of
 /// the `ServicePerimeter`.
@@ -3662,9 +3860,9 @@ class ServicePerimeter {
   /// Does not affect behavior.
   core.String? description;
 
-  /// Resource name for the `ServicePerimeter`.
+  /// Identifier.
   ///
-  /// Format:
+  /// Resource name for the `ServicePerimeter`. Format:
   /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`.
   /// The `service_perimeter` component must begin with a letter, followed by
   /// alphanumeric characters or `_`. After you create a `ServicePerimeter`, you
@@ -3890,7 +4088,7 @@ class SetIamPolicyRequest {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// `SupportedService` specifies the VPC Service Controls and its properties.
 class SupportedService {
@@ -3911,6 +4109,17 @@ class SupportedService {
   /// The service name or address of the supported service, such as
   /// `service.googleapis.com`.
   core.String? name;
+
+  /// The support stage of the service.
+  /// Possible string values are:
+  /// - "SERVICE_SUPPORT_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "GA" : GA features are open to all developers and are considered stable
+  /// and fully qualified for production use.
+  /// - "PREVIEW" : PREVIEW indicates a pre-release stage where the product is
+  /// functionally complete but undergoing real-world testing.
+  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
+  /// removed.
+  core.String? serviceSupportStage;
 
   /// The support stage of the service.
   /// Possible string values are:
@@ -3959,6 +4168,7 @@ class SupportedService {
     this.availableOnRestrictedVip,
     this.knownLimitations,
     this.name,
+    this.serviceSupportStage,
     this.supportStage,
     this.supportedMethods,
     this.title,
@@ -3970,6 +4180,7 @@ class SupportedService {
               json_['availableOnRestrictedVip'] as core.bool?,
           knownLimitations: json_['knownLimitations'] as core.bool?,
           name: json_['name'] as core.String?,
+          serviceSupportStage: json_['serviceSupportStage'] as core.String?,
           supportStage: json_['supportStage'] as core.String?,
           supportedMethods: (json_['supportedMethods'] as core.List?)
               ?.map((value) => MethodSelector.fromJson(
@@ -3983,6 +4194,8 @@ class SupportedService {
           'availableOnRestrictedVip': availableOnRestrictedVip!,
         if (knownLimitations != null) 'knownLimitations': knownLimitations!,
         if (name != null) 'name': name!,
+        if (serviceSupportStage != null)
+          'serviceSupportStage': serviceSupportStage!,
         if (supportStage != null) 'supportStage': supportStage!,
         if (supportedMethods != null) 'supportedMethods': supportedMethods!,
         if (title != null) 'title': title!,

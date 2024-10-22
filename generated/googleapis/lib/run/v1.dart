@@ -3986,6 +3986,8 @@ class Container {
   /// the PORT environment variable for the container to listen on.
   core.List<ContainerPort>? ports;
 
+  /// Readiness probe to be used for health checks.
+  ///
   /// Not supported by Cloud Run.
   Probe? readinessProbe;
 
@@ -4623,6 +4625,19 @@ class Execution {
 /// Use /Executions.GetExecution with the given name to get full execution
 /// including the latest status.
 class ExecutionReference {
+  /// Status for the execution completion.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "COMPLETION_STATUS_UNSPECIFIED" : The default value. This value is used
+  /// if the state is omitted.
+  /// - "EXECUTION_SUCCEEDED" : Job execution has succeeded.
+  /// - "EXECUTION_FAILED" : Job execution has failed.
+  /// - "EXECUTION_RUNNING" : Job execution is running normally.
+  /// - "EXECUTION_PENDING" : Waiting for backing resources to be provisioned.
+  /// - "EXECUTION_CANCELLED" : Job execution has been cancelled by the user.
+  core.String? completionStatus;
+
   /// Completion timestamp of the execution.
   ///
   /// Optional.
@@ -4633,28 +4648,39 @@ class ExecutionReference {
   /// Optional.
   core.String? creationTimestamp;
 
+  /// The read-only soft deletion timestamp of the execution.
+  ///
+  /// Optional.
+  core.String? deletionTimestamp;
+
   /// Name of the execution.
   ///
   /// Optional.
   core.String? name;
 
   ExecutionReference({
+    this.completionStatus,
     this.completionTimestamp,
     this.creationTimestamp,
+    this.deletionTimestamp,
     this.name,
   });
 
   ExecutionReference.fromJson(core.Map json_)
       : this(
+          completionStatus: json_['completionStatus'] as core.String?,
           completionTimestamp: json_['completionTimestamp'] as core.String?,
           creationTimestamp: json_['creationTimestamp'] as core.String?,
+          deletionTimestamp: json_['deletionTimestamp'] as core.String?,
           name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (completionStatus != null) 'completionStatus': completionStatus!,
         if (completionTimestamp != null)
           'completionTimestamp': completionTimestamp!,
         if (creationTimestamp != null) 'creationTimestamp': creationTimestamp!,
+        if (deletionTimestamp != null) 'deletionTimestamp': deletionTimestamp!,
         if (name != null) 'name': name!,
       };
 }
@@ -5104,7 +5130,7 @@ typedef GoogleLongrunningWaitOperationRequest = $WaitOperationRequest;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef GoogleRpcStatus = $Status;
+typedef GoogleRpcStatus = $Status00;
 
 /// HTTPGetAction describes an action based on HTTP Get requests.
 class HTTPGetAction {
@@ -5979,8 +6005,19 @@ class ObjectMeta {
   /// will be different depending on the resource type. *
   /// `autoscaling.knative.dev/maxScale`: Revision. *
   /// `autoscaling.knative.dev/minScale`: Revision. *
+  /// `run.googleapis.com/base-images`: Service, Revision. *
   /// `run.googleapis.com/binary-authorization-breakglass`: Service, Job, *
   /// `run.googleapis.com/binary-authorization`: Service, Job, Execution. *
+  /// `run.googleapis.com/build-base-image`: Service. *
+  /// `run.googleapis.com/build-enable-automatic-updates`: Service. *
+  /// `run.googleapis.com/build-environment-variables`: Service. *
+  /// `run.googleapis.com/build-function-target`: Service. *
+  /// `run.googleapis.com/build-id`: Service. *
+  /// `run.googleapis.com/build-image-uri`: Service. *
+  /// `run.googleapis.com/build-name`: Service. *
+  /// `run.googleapis.com/build-service-account`: Service. *
+  /// `run.googleapis.com/build-source-location`: Service. *
+  /// `run.googleapis.com/build-worker-pool`: Service. *
   /// `run.googleapis.com/client-name`: All resources. *
   /// `run.googleapis.com/cloudsql-instances`: Revision, Execution. *
   /// `run.googleapis.com/container-dependencies`: Revision . *
@@ -5992,9 +6029,10 @@ class ObjectMeta {
   /// `run.googleapis.com/encryption-key`: Revision, Execution. *
   /// `run.googleapis.com/execution-environment`: Revision, Execution. *
   /// `run.googleapis.com/gc-traffic-tags`: Service. *
+  /// `run.googleapis.com/health-check-disabled`: Revision. *
   /// `run.googleapis.com/ingress`: Service. *
   /// `run.googleapis.com/launch-stage`: Service, Job. *
-  /// `run.googleapis.com/minScale`: Service (ALPHA) *
+  /// `run.googleapis.com/minScale`: Service *
   /// `run.googleapis.com/network-interfaces`: Revision, Execution. *
   /// `run.googleapis.com/post-key-revocation-action-type`: Revision. *
   /// `run.googleapis.com/secrets`: Revision, Execution. *
@@ -6607,15 +6645,15 @@ class RevisionSpec {
   /// ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
   /// requests per container instance of the Revision.
   ///
-  /// If not specified, defaults to 80.
+  /// If not specified or 0, defaults to 80 when requested CPU \>= 1 and
+  /// defaults to 1 when requested CPU \< 1.
   core.int? containerConcurrency;
 
-  /// Containers holds the single container that defines the unit of execution
-  /// for this Revision.
+  /// Containers holds the list which define the units of execution for this
+  /// Revision.
   ///
   /// In the context of a Revision, we disallow a number of fields on this
-  /// Container, including: name and lifecycle. In Cloud Run, only a single
-  /// container may be provided.
+  /// Container, including: name and lifecycle.
   ///
   /// Required.
   core.List<Container>? containers;
@@ -6802,6 +6840,8 @@ class RevisionTemplate {
   /// `autoscaling.knative.dev/maxScale` sets the maximum number of instances. *
   /// `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections.
   /// Multiple values should be comma separated. *
+  /// `run.googleapis.com/health-check-disabled`: if true, deploy-time startup
+  /// probes will not run for this revision. *
   /// `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access
   /// connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress.
   /// Supported values are `all-traffic`, `all` (deprecated), and

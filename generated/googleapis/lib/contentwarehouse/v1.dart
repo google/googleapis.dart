@@ -6054,6 +6054,9 @@ class GoogleCloudDocumentaiV1BoundingPoly {
 /// for collaboration between users and Document AI to iterate and optimize for
 /// quality.
 class GoogleCloudDocumentaiV1Document {
+  /// Document chunked based on chunking config.
+  GoogleCloudDocumentaiV1DocumentChunkedDocument? chunkedDocument;
+
   /// Inline document content, represented as a stream of bytes.
   ///
   /// Note: As with all `bytes` fields, protobuffers use a pure binary
@@ -6067,6 +6070,9 @@ class GoogleCloudDocumentaiV1Document {
     content =
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
+
+  /// Parsed layout of the document.
+  GoogleCloudDocumentaiV1DocumentDocumentLayout? documentLayout;
 
   /// A list of entities detected on Document.text.
   ///
@@ -6127,7 +6133,9 @@ class GoogleCloudDocumentaiV1Document {
   core.String? uri;
 
   GoogleCloudDocumentaiV1Document({
+    this.chunkedDocument,
     this.content,
+    this.documentLayout,
     this.entities,
     this.entityRelations,
     this.error,
@@ -6143,7 +6151,17 @@ class GoogleCloudDocumentaiV1Document {
 
   GoogleCloudDocumentaiV1Document.fromJson(core.Map json_)
       : this(
+          chunkedDocument: json_.containsKey('chunkedDocument')
+              ? GoogleCloudDocumentaiV1DocumentChunkedDocument.fromJson(
+                  json_['chunkedDocument']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           content: json_['content'] as core.String?,
+          documentLayout: json_.containsKey('documentLayout')
+              ? GoogleCloudDocumentaiV1DocumentDocumentLayout.fromJson(
+                  json_['documentLayout']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           entities: (json_['entities'] as core.List?)
               ?.map((value) => GoogleCloudDocumentaiV1DocumentEntity.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -6184,7 +6202,9 @@ class GoogleCloudDocumentaiV1Document {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (chunkedDocument != null) 'chunkedDocument': chunkedDocument!,
         if (content != null) 'content': content!,
+        if (documentLayout != null) 'documentLayout': documentLayout!,
         if (entities != null) 'entities': entities!,
         if (entityRelations != null) 'entityRelations': entityRelations!,
         if (error != null) 'error': error!,
@@ -6196,6 +6216,465 @@ class GoogleCloudDocumentaiV1Document {
         if (textChanges != null) 'textChanges': textChanges!,
         if (textStyles != null) 'textStyles': textStyles!,
         if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Represents the chunks that the document is divided into.
+class GoogleCloudDocumentaiV1DocumentChunkedDocument {
+  /// List of chunks.
+  core.List<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk>? chunks;
+
+  GoogleCloudDocumentaiV1DocumentChunkedDocument({
+    this.chunks,
+  });
+
+  GoogleCloudDocumentaiV1DocumentChunkedDocument.fromJson(core.Map json_)
+      : this(
+          chunks: (json_['chunks'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (chunks != null) 'chunks': chunks!,
+      };
+}
+
+/// Represents a chunk.
+class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk {
+  /// ID of the chunk.
+  core.String? chunkId;
+
+  /// Text content of the chunk.
+  core.String? content;
+
+  /// Page footers associated with the chunk.
+  core.List<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter>?
+      pageFooters;
+
+  /// Page headers associated with the chunk.
+  core.List<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader>?
+      pageHeaders;
+
+  /// Page span of the chunk.
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan? pageSpan;
+
+  /// Unused.
+  core.List<core.String>? sourceBlockIds;
+
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk({
+    this.chunkId,
+    this.content,
+    this.pageFooters,
+    this.pageHeaders,
+    this.pageSpan,
+    this.sourceBlockIds,
+  });
+
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk.fromJson(core.Map json_)
+      : this(
+          chunkId: json_['chunkId'] as core.String?,
+          content: json_['content'] as core.String?,
+          pageFooters: (json_['pageFooters'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          pageHeaders: (json_['pageHeaders'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          pageSpan: json_.containsKey('pageSpan')
+              ? GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan
+                  .fromJson(
+                      json_['pageSpan'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sourceBlockIds: (json_['sourceBlockIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (chunkId != null) 'chunkId': chunkId!,
+        if (content != null) 'content': content!,
+        if (pageFooters != null) 'pageFooters': pageFooters!,
+        if (pageHeaders != null) 'pageHeaders': pageHeaders!,
+        if (pageSpan != null) 'pageSpan': pageSpan!,
+        if (sourceBlockIds != null) 'sourceBlockIds': sourceBlockIds!,
+      };
+}
+
+/// Represents the page footer associated with the chunk.
+class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter {
+  /// Page span of the footer.
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan? pageSpan;
+
+  /// Footer in text format.
+  core.String? text;
+
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter({
+    this.pageSpan,
+    this.text,
+  });
+
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter.fromJson(
+      core.Map json_)
+      : this(
+          pageSpan: json_.containsKey('pageSpan')
+              ? GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan
+                  .fromJson(
+                      json_['pageSpan'] as core.Map<core.String, core.dynamic>)
+              : null,
+          text: json_['text'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pageSpan != null) 'pageSpan': pageSpan!,
+        if (text != null) 'text': text!,
+      };
+}
+
+/// Represents the page header associated with the chunk.
+class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader {
+  /// Page span of the header.
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan? pageSpan;
+
+  /// Header in text format.
+  core.String? text;
+
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader({
+    this.pageSpan,
+    this.text,
+  });
+
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader.fromJson(
+      core.Map json_)
+      : this(
+          pageSpan: json_.containsKey('pageSpan')
+              ? GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan
+                  .fromJson(
+                      json_['pageSpan'] as core.Map<core.String, core.dynamic>)
+              : null,
+          text: json_['text'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pageSpan != null) 'pageSpan': pageSpan!,
+        if (text != null) 'text': text!,
+      };
+}
+
+/// Represents where the chunk starts and ends in the document.
+typedef GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan
+    = $GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan;
+
+/// Represents the parsed layout of a document as a collection of blocks that
+/// the document is divided into.
+class GoogleCloudDocumentaiV1DocumentDocumentLayout {
+  /// List of blocks in the document.
+  core.List<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock>?
+      blocks;
+
+  GoogleCloudDocumentaiV1DocumentDocumentLayout({
+    this.blocks,
+  });
+
+  GoogleCloudDocumentaiV1DocumentDocumentLayout.fromJson(core.Map json_)
+      : this(
+          blocks: (json_['blocks'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (blocks != null) 'blocks': blocks!,
+      };
+}
+
+/// Represents a block.
+///
+/// A block could be one of the various types (text, table, list) supported.
+class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock {
+  /// ID of the block.
+  core.String? blockId;
+
+  /// Block consisting of list content/structure.
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock?
+      listBlock;
+
+  /// Page span of the block.
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan?
+      pageSpan;
+
+  /// Block consisting of table content/structure.
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock?
+      tableBlock;
+
+  /// Block consisting of text content.
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock?
+      textBlock;
+
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock({
+    this.blockId,
+    this.listBlock,
+    this.pageSpan,
+    this.tableBlock,
+    this.textBlock,
+  });
+
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock.fromJson(
+      core.Map json_)
+      : this(
+          blockId: json_['blockId'] as core.String?,
+          listBlock: json_.containsKey('listBlock')
+              ? GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock
+                  .fromJson(
+                      json_['listBlock'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pageSpan: json_.containsKey('pageSpan')
+              ? GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan
+                  .fromJson(
+                      json_['pageSpan'] as core.Map<core.String, core.dynamic>)
+              : null,
+          tableBlock: json_.containsKey('tableBlock')
+              ? GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock
+                  .fromJson(json_['tableBlock']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          textBlock: json_.containsKey('textBlock')
+              ? GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock
+                  .fromJson(
+                      json_['textBlock'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (blockId != null) 'blockId': blockId!,
+        if (listBlock != null) 'listBlock': listBlock!,
+        if (pageSpan != null) 'pageSpan': pageSpan!,
+        if (tableBlock != null) 'tableBlock': tableBlock!,
+        if (textBlock != null) 'textBlock': textBlock!,
+      };
+}
+
+/// Represents a list type block.
+class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock {
+  /// List entries that constitute a list block.
+  core.List<
+          GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry>?
+      listEntries;
+
+  /// Type of the list_entries (if exist).
+  ///
+  /// Available options are `ordered` and `unordered`.
+  core.String? type;
+
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock({
+    this.listEntries,
+    this.type,
+  });
+
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock.fromJson(
+      core.Map json_)
+      : this(
+          listEntries: (json_['listEntries'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (listEntries != null) 'listEntries': listEntries!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Represents an entry in the list.
+class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry {
+  /// A list entry is a list of blocks.
+  ///
+  /// Repeated blocks support further hierarchies and nested blocks.
+  core.List<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock>?
+      blocks;
+
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry({
+    this.blocks,
+  });
+
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry.fromJson(
+      core.Map json_)
+      : this(
+          blocks: (json_['blocks'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (blocks != null) 'blocks': blocks!,
+      };
+}
+
+/// Represents where the block starts and ends in the document.
+typedef GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan
+    = $GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan;
+
+/// Represents a table type block.
+class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock {
+  /// Body rows containing main table content.
+  core.List<
+          GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow>?
+      bodyRows;
+
+  /// Table caption/title.
+  core.String? caption;
+
+  /// Header rows at the top of the table.
+  core.List<
+          GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow>?
+      headerRows;
+
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock({
+    this.bodyRows,
+    this.caption,
+    this.headerRows,
+  });
+
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock.fromJson(
+      core.Map json_)
+      : this(
+          bodyRows: (json_['bodyRows'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          caption: json_['caption'] as core.String?,
+          headerRows: (json_['headerRows'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bodyRows != null) 'bodyRows': bodyRows!,
+        if (caption != null) 'caption': caption!,
+        if (headerRows != null) 'headerRows': headerRows!,
+      };
+}
+
+/// Represents a cell in a table row.
+class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell {
+  /// A table cell is a list of blocks.
+  ///
+  /// Repeated blocks support further hierarchies and nested blocks.
+  core.List<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock>?
+      blocks;
+
+  /// How many columns this cell spans.
+  core.int? colSpan;
+
+  /// How many rows this cell spans.
+  core.int? rowSpan;
+
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell({
+    this.blocks,
+    this.colSpan,
+    this.rowSpan,
+  });
+
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell.fromJson(
+      core.Map json_)
+      : this(
+          blocks: (json_['blocks'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          colSpan: json_['colSpan'] as core.int?,
+          rowSpan: json_['rowSpan'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (blocks != null) 'blocks': blocks!,
+        if (colSpan != null) 'colSpan': colSpan!,
+        if (rowSpan != null) 'rowSpan': rowSpan!,
+      };
+}
+
+/// Represents a row in a table.
+class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow {
+  /// A table row is a list of table cells.
+  core.List<
+          GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell>?
+      cells;
+
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow({
+    this.cells,
+  });
+
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow.fromJson(
+      core.Map json_)
+      : this(
+          cells: (json_['cells'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cells != null) 'cells': cells!,
+      };
+}
+
+/// Represents a text type block.
+class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock {
+  /// A text block could further have child blocks.
+  ///
+  /// Repeated blocks support further hierarchies and nested blocks.
+  core.List<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock>?
+      blocks;
+
+  /// Text content stored in the block.
+  core.String? text;
+
+  /// Type of the text in the block.
+  ///
+  /// Available options are: `paragraph`, `subtitle`, `heading-1`, `heading-2`,
+  /// `heading-3`, `heading-4`, `heading-5`, `header`, `footer`.
+  core.String? type;
+
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock({
+    this.blocks,
+    this.text,
+    this.type,
+  });
+
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock.fromJson(
+      core.Map json_)
+      : this(
+          blocks: (json_['blocks'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          text: json_['text'] as core.String?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (blocks != null) 'blocks': blocks!,
+        if (text != null) 'text': text!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -8210,7 +8689,7 @@ typedef GoogleProtobufEmpty = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef GoogleRpcStatus = $Status;
+typedef GoogleRpcStatus = $Status00;
 
 /// Represents a color in the RGBA color space.
 ///

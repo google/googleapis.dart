@@ -41,6 +41,7 @@
 ///       - [FoldersLocationsBucketsLinksResource]
 ///       - [FoldersLocationsBucketsViewsResource]
 ///         - [FoldersLocationsBucketsViewsLogsResource]
+///     - [FoldersLocationsLogScopesResource]
 ///     - [FoldersLocationsOperationsResource]
 ///     - [FoldersLocationsRecentQueriesResource]
 ///     - [FoldersLocationsSavedQueriesResource]
@@ -60,6 +61,7 @@
 ///       - [OrganizationsLocationsBucketsLinksResource]
 ///       - [OrganizationsLocationsBucketsViewsResource]
 ///         - [OrganizationsLocationsBucketsViewsLogsResource]
+///     - [OrganizationsLocationsLogScopesResource]
 ///     - [OrganizationsLocationsOperationsResource]
 ///     - [OrganizationsLocationsRecentQueriesResource]
 ///     - [OrganizationsLocationsSavedQueriesResource]
@@ -72,6 +74,7 @@
 ///       - [ProjectsLocationsBucketsLinksResource]
 ///       - [ProjectsLocationsBucketsViewsResource]
 ///         - [ProjectsLocationsBucketsViewsLogsResource]
+///     - [ProjectsLocationsLogScopesResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsRecentQueriesResource]
 ///     - [ProjectsLocationsSavedQueriesResource]
@@ -1705,6 +1708,11 @@ class BillingAccountsLocationsRecentQueriesResource {
   /// in place of LOCATION_ID will return all recent queries.
   /// Value must have pattern `^billingAccounts/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [filter] - Optional. Specifies the type ("Logging" or "OpsAnalytics") of
+  /// the recent queries to list. The only valid value for this field is one of
+  /// the two allowable type function calls, which are the following:
+  /// type("Logging") type("OpsAnalytics")
+  ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
@@ -1726,11 +1734,13 @@ class BillingAccountsLocationsRecentQueriesResource {
   /// this method will complete with the same error.
   async.Future<ListRecentQueriesResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -1853,6 +1863,49 @@ class BillingAccountsLocationsSavedQueriesResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Returns all data associated with the requested query.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the saved query.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// For example:
+  /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/savedQueries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SavedQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedQuery> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SavedQuery.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists the SavedQueries that were created by the user making the request.
   ///
   /// Request parameters:
@@ -1867,6 +1920,17 @@ class BillingAccountsLocationsSavedQueriesResource {
   /// wildcard character - can be used for LOCATION_ID, for example:
   /// "projects/my-project/locations/-"
   /// Value must have pattern `^billingAccounts/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Specifies the type ("Logging" or "OpsAnalytics") and
+  /// the visibility (PRIVATE or SHARED) of the saved queries to list. If
+  /// provided, the filter must contain either the type function or a visibility
+  /// token, or both. If both are chosen, they can be placed in any order, but
+  /// they must be joined by the AND operator or the empty character.The two
+  /// supported type function calls are: type("Logging") type("OpsAnalytics")The
+  /// two supported visibility tokens are: visibility = PRIVATE visibility =
+  /// SHAREDFor example:type("Logging") AND visibility = PRIVATE
+  /// visibility=SHARED type("OpsAnalytics") type("OpsAnalytics)" visibility =
+  /// PRIVATE visibility = SHARED
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request.Non-positive values are ignored. The presence of nextPageToken in
@@ -1889,11 +1953,13 @@ class BillingAccountsLocationsSavedQueriesResource {
   /// this method will complete with the same error.
   async.Future<ListSavedQueriesResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -1907,6 +1973,64 @@ class BillingAccountsLocationsSavedQueriesResource {
       queryParams: queryParams_,
     );
     return ListSavedQueriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing SavedQuery.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name of the saved query.In the format:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// For a list of supported locations, see Supported Regions
+  /// (https://cloud.google.com/logging/docs/region-support#bucket-regions)After
+  /// the saved query is created, the location cannot be changed.If the user
+  /// doesn't provide a QUERY_ID, the system will generate an alphanumeric ID.
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/savedQueries/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. A non-empty list of fields to change in the
+  /// existing saved query. Fields are relative to the saved_query and new
+  /// values for the fields are taken from the corresponding fields in the
+  /// SavedQuery included in this request. Fields not mentioned in update_mask
+  /// are not changed and are ignored in the request.To update all mutable
+  /// fields, specify an update_mask of *.For example, to change the description
+  /// and query filter text of a saved query, specify an update_mask of
+  /// "description, query.filter".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SavedQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedQuery> patch(
+    SavedQuery request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SavedQuery.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2052,11 +2176,12 @@ class BillingAccountsSinksResource {
   /// examples:"projects/my-project" "organizations/123456789"
   /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
-  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// [customWriterIdentity] - Optional. The service account provided by the
   /// caller that will be used to write the log entries. The format must be
-  /// serviceAccount:some@email. This field can only be specified if you are
-  /// routing logs to a destination outside this sink's project. If not
-  /// specified, a Logging service account will automatically be generated.
+  /// serviceAccount:some@email. This field can only be specified when you are
+  /// routing logs to a log bucket that is in a different project than the sink.
+  /// When not specified, a Logging service account will automatically be
+  /// generated.
   ///
   /// [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
   /// returned as writer_identity in the new sink. If this value is omitted or
@@ -2273,11 +2398,12 @@ class BillingAccountsSinksResource {
   /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^billingAccounts/\[^/\]+/sinks/\[^/\]+$`.
   ///
-  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// [customWriterIdentity] - Optional. The service account provided by the
   /// caller that will be used to write the log entries. The format must be
-  /// serviceAccount:some@email. This field can only be specified if you are
-  /// routing logs to a destination outside this sink's project. If not
-  /// specified, a Logging service account will automatically be generated.
+  /// serviceAccount:some@email. This field can only be specified when you are
+  /// routing logs to a log bucket that is in a different project than the sink.
+  /// When not specified, a Logging service account will automatically be
+  /// generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -2359,11 +2485,12 @@ class BillingAccountsSinksResource {
   /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^billingAccounts/\[^/\]+/sinks/\[^/\]+$`.
   ///
-  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// [customWriterIdentity] - Optional. The service account provided by the
   /// caller that will be used to write the log entries. The format must be
-  /// serviceAccount:some@email. This field can only be specified if you are
-  /// routing logs to a destination outside this sink's project. If not
-  /// specified, a Logging service account will automatically be generated.
+  /// serviceAccount:some@email. This field can only be specified when you are
+  /// routing logs to a log bucket that is in a different project than the sink.
+  /// When not specified, a Logging service account will automatically be
+  /// generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -2923,7 +3050,8 @@ class FoldersResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name for the settings to update.
-  /// "organizations/\[ORGANIZATION_ID\]/settings" For
+  /// "organizations/\[ORGANIZATION_ID\]/settings"
+  /// "folders/\[FOLDER_ID\]/settings" For
   /// example:"organizations/12345/settings"
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
@@ -3213,6 +3341,8 @@ class FoldersLocationsResource {
 
   FoldersLocationsBucketsResource get buckets =>
       FoldersLocationsBucketsResource(_requester);
+  FoldersLocationsLogScopesResource get logScopes =>
+      FoldersLocationsLogScopesResource(_requester);
   FoldersLocationsOperationsResource get operations =>
       FoldersLocationsOperationsResource(_requester);
   FoldersLocationsRecentQueriesResource get recentQueries =>
@@ -4395,6 +4525,240 @@ class FoldersLocationsBucketsViewsLogsResource {
   }
 }
 
+class FoldersLocationsLogScopesResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsLogScopesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a log scope.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent project in which to create the log scope
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:"projects/my-project/locations/global"
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [logScopeId] - Required. A client-assigned identifier such as "log-scope".
+  /// Identifiers are limited to 100 characters and can include only letters,
+  /// digits, underscores, hyphens, and periods. First character has to be
+  /// alphanumeric.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogScope].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogScope> create(
+    LogScope request,
+    core.String parent, {
+    core.String? logScopeId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (logScopeId != null) 'logScopeId': [logScopeId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/logScopes';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return LogScope.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a log scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the log scope to delete:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/logScopes/\[LOG_SCOPE_ID\]"
+  /// For example:"projects/my-project/locations/global/logScopes/my-log-scope"
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/logScopes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a log scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the log scope:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/logScopes/\[LOG_SCOPE_ID\]"
+  /// For example:"projects/my-project/locations/global/logScopes/my-log-scope"
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/logScopes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogScope].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogScope> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return LogScope.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists log scopes.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource whose log scopes are to be
+  /// listed: "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request.Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLogScopesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLogScopesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/logScopes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListLogScopesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a log scope.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of the log scope.Log scopes are
+  /// only available in the global location. For
+  /// example:projects/my-project/locations/global/logScopes/my-log-scope
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/logScopes/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Field mask that specifies the fields in log_scope
+  /// that need an update. A field will be overwritten if, and only if, it is in
+  /// the update mask. name and output only fields cannot be updated.For a
+  /// detailed FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=description
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogScope].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogScope> patch(
+    LogScope request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return LogScope.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class FoldersLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -4561,6 +4925,11 @@ class FoldersLocationsRecentQueriesResource {
   /// in place of LOCATION_ID will return all recent queries.
   /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [filter] - Optional. Specifies the type ("Logging" or "OpsAnalytics") of
+  /// the recent queries to list. The only valid value for this field is one of
+  /// the two allowable type function calls, which are the following:
+  /// type("Logging") type("OpsAnalytics")
+  ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
@@ -4582,11 +4951,13 @@ class FoldersLocationsRecentQueriesResource {
   /// this method will complete with the same error.
   async.Future<ListRecentQueriesResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -4709,6 +5080,49 @@ class FoldersLocationsSavedQueriesResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Returns all data associated with the requested query.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the saved query.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// For example:
+  /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/savedQueries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SavedQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedQuery> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SavedQuery.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists the SavedQueries that were created by the user making the request.
   ///
   /// Request parameters:
@@ -4723,6 +5137,17 @@ class FoldersLocationsSavedQueriesResource {
   /// wildcard character - can be used for LOCATION_ID, for example:
   /// "projects/my-project/locations/-"
   /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Specifies the type ("Logging" or "OpsAnalytics") and
+  /// the visibility (PRIVATE or SHARED) of the saved queries to list. If
+  /// provided, the filter must contain either the type function or a visibility
+  /// token, or both. If both are chosen, they can be placed in any order, but
+  /// they must be joined by the AND operator or the empty character.The two
+  /// supported type function calls are: type("Logging") type("OpsAnalytics")The
+  /// two supported visibility tokens are: visibility = PRIVATE visibility =
+  /// SHAREDFor example:type("Logging") AND visibility = PRIVATE
+  /// visibility=SHARED type("OpsAnalytics") type("OpsAnalytics)" visibility =
+  /// PRIVATE visibility = SHARED
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request.Non-positive values are ignored. The presence of nextPageToken in
@@ -4745,11 +5170,13 @@ class FoldersLocationsSavedQueriesResource {
   /// this method will complete with the same error.
   async.Future<ListSavedQueriesResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -4763,6 +5190,64 @@ class FoldersLocationsSavedQueriesResource {
       queryParams: queryParams_,
     );
     return ListSavedQueriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing SavedQuery.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name of the saved query.In the format:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// For a list of supported locations, see Supported Regions
+  /// (https://cloud.google.com/logging/docs/region-support#bucket-regions)After
+  /// the saved query is created, the location cannot be changed.If the user
+  /// doesn't provide a QUERY_ID, the system will generate an alphanumeric ID.
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/savedQueries/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. A non-empty list of fields to change in the
+  /// existing saved query. Fields are relative to the saved_query and new
+  /// values for the fields are taken from the corresponding fields in the
+  /// SavedQuery included in this request. Fields not mentioned in update_mask
+  /// are not changed and are ignored in the request.To update all mutable
+  /// fields, specify an update_mask of *.For example, to change the description
+  /// and query filter text of a saved query, specify an update_mask of
+  /// "description, query.filter".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SavedQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedQuery> patch(
+    SavedQuery request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SavedQuery.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -4906,11 +5391,12 @@ class FoldersSinksResource {
   /// examples:"projects/my-project" "organizations/123456789"
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
-  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// [customWriterIdentity] - Optional. The service account provided by the
   /// caller that will be used to write the log entries. The format must be
-  /// serviceAccount:some@email. This field can only be specified if you are
-  /// routing logs to a destination outside this sink's project. If not
-  /// specified, a Logging service account will automatically be generated.
+  /// serviceAccount:some@email. This field can only be specified when you are
+  /// routing logs to a log bucket that is in a different project than the sink.
+  /// When not specified, a Logging service account will automatically be
+  /// generated.
   ///
   /// [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
   /// returned as writer_identity in the new sink. If this value is omitted or
@@ -5127,11 +5613,12 @@ class FoldersSinksResource {
   /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^folders/\[^/\]+/sinks/\[^/\]+$`.
   ///
-  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// [customWriterIdentity] - Optional. The service account provided by the
   /// caller that will be used to write the log entries. The format must be
-  /// serviceAccount:some@email. This field can only be specified if you are
-  /// routing logs to a destination outside this sink's project. If not
-  /// specified, a Logging service account will automatically be generated.
+  /// serviceAccount:some@email. This field can only be specified when you are
+  /// routing logs to a log bucket that is in a different project than the sink.
+  /// When not specified, a Logging service account will automatically be
+  /// generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -5213,11 +5700,12 @@ class FoldersSinksResource {
   /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^folders/\[^/\]+/sinks/\[^/\]+$`.
   ///
-  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// [customWriterIdentity] - Optional. The service account provided by the
   /// caller that will be used to write the log entries. The format must be
-  /// serviceAccount:some@email. This field can only be specified if you are
-  /// routing logs to a destination outside this sink's project. If not
-  /// specified, a Logging service account will automatically be generated.
+  /// serviceAccount:some@email. This field can only be specified when you are
+  /// routing logs to a log bucket that is in a different project than the sink.
+  /// When not specified, a Logging service account will automatically be
+  /// generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -6896,7 +7384,8 @@ class OrganizationsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name for the settings to update.
-  /// "organizations/\[ORGANIZATION_ID\]/settings" For
+  /// "organizations/\[ORGANIZATION_ID\]/settings"
+  /// "folders/\[FOLDER_ID\]/settings" For
   /// example:"organizations/12345/settings"
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
@@ -7187,6 +7676,8 @@ class OrganizationsLocationsResource {
 
   OrganizationsLocationsBucketsResource get buckets =>
       OrganizationsLocationsBucketsResource(_requester);
+  OrganizationsLocationsLogScopesResource get logScopes =>
+      OrganizationsLocationsLogScopesResource(_requester);
   OrganizationsLocationsOperationsResource get operations =>
       OrganizationsLocationsOperationsResource(_requester);
   OrganizationsLocationsRecentQueriesResource get recentQueries =>
@@ -8370,6 +8861,240 @@ class OrganizationsLocationsBucketsViewsLogsResource {
   }
 }
 
+class OrganizationsLocationsLogScopesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsLogScopesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a log scope.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent project in which to create the log scope
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:"projects/my-project/locations/global"
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [logScopeId] - Required. A client-assigned identifier such as "log-scope".
+  /// Identifiers are limited to 100 characters and can include only letters,
+  /// digits, underscores, hyphens, and periods. First character has to be
+  /// alphanumeric.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogScope].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogScope> create(
+    LogScope request,
+    core.String parent, {
+    core.String? logScopeId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (logScopeId != null) 'logScopeId': [logScopeId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/logScopes';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return LogScope.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a log scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the log scope to delete:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/logScopes/\[LOG_SCOPE_ID\]"
+  /// For example:"projects/my-project/locations/global/logScopes/my-log-scope"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/logScopes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a log scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the log scope:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/logScopes/\[LOG_SCOPE_ID\]"
+  /// For example:"projects/my-project/locations/global/logScopes/my-log-scope"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/logScopes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogScope].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogScope> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return LogScope.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists log scopes.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource whose log scopes are to be
+  /// listed: "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request.Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLogScopesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLogScopesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/logScopes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListLogScopesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a log scope.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of the log scope.Log scopes are
+  /// only available in the global location. For
+  /// example:projects/my-project/locations/global/logScopes/my-log-scope
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/logScopes/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Field mask that specifies the fields in log_scope
+  /// that need an update. A field will be overwritten if, and only if, it is in
+  /// the update mask. name and output only fields cannot be updated.For a
+  /// detailed FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=description
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogScope].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogScope> patch(
+    LogScope request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return LogScope.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class OrganizationsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -8536,6 +9261,11 @@ class OrganizationsLocationsRecentQueriesResource {
   /// in place of LOCATION_ID will return all recent queries.
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [filter] - Optional. Specifies the type ("Logging" or "OpsAnalytics") of
+  /// the recent queries to list. The only valid value for this field is one of
+  /// the two allowable type function calls, which are the following:
+  /// type("Logging") type("OpsAnalytics")
+  ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
@@ -8557,11 +9287,13 @@ class OrganizationsLocationsRecentQueriesResource {
   /// this method will complete with the same error.
   async.Future<ListRecentQueriesResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -8684,6 +9416,49 @@ class OrganizationsLocationsSavedQueriesResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Returns all data associated with the requested query.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the saved query.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// For example:
+  /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/savedQueries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SavedQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedQuery> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SavedQuery.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists the SavedQueries that were created by the user making the request.
   ///
   /// Request parameters:
@@ -8698,6 +9473,17 @@ class OrganizationsLocationsSavedQueriesResource {
   /// wildcard character - can be used for LOCATION_ID, for example:
   /// "projects/my-project/locations/-"
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Specifies the type ("Logging" or "OpsAnalytics") and
+  /// the visibility (PRIVATE or SHARED) of the saved queries to list. If
+  /// provided, the filter must contain either the type function or a visibility
+  /// token, or both. If both are chosen, they can be placed in any order, but
+  /// they must be joined by the AND operator or the empty character.The two
+  /// supported type function calls are: type("Logging") type("OpsAnalytics")The
+  /// two supported visibility tokens are: visibility = PRIVATE visibility =
+  /// SHAREDFor example:type("Logging") AND visibility = PRIVATE
+  /// visibility=SHARED type("OpsAnalytics") type("OpsAnalytics)" visibility =
+  /// PRIVATE visibility = SHARED
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request.Non-positive values are ignored. The presence of nextPageToken in
@@ -8720,11 +9506,13 @@ class OrganizationsLocationsSavedQueriesResource {
   /// this method will complete with the same error.
   async.Future<ListSavedQueriesResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -8738,6 +9526,64 @@ class OrganizationsLocationsSavedQueriesResource {
       queryParams: queryParams_,
     );
     return ListSavedQueriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing SavedQuery.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name of the saved query.In the format:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// For a list of supported locations, see Supported Regions
+  /// (https://cloud.google.com/logging/docs/region-support#bucket-regions)After
+  /// the saved query is created, the location cannot be changed.If the user
+  /// doesn't provide a QUERY_ID, the system will generate an alphanumeric ID.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/savedQueries/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. A non-empty list of fields to change in the
+  /// existing saved query. Fields are relative to the saved_query and new
+  /// values for the fields are taken from the corresponding fields in the
+  /// SavedQuery included in this request. Fields not mentioned in update_mask
+  /// are not changed and are ignored in the request.To update all mutable
+  /// fields, specify an update_mask of *.For example, to change the description
+  /// and query filter text of a saved query, specify an update_mask of
+  /// "description, query.filter".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SavedQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedQuery> patch(
+    SavedQuery request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SavedQuery.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -8881,11 +9727,12 @@ class OrganizationsSinksResource {
   /// examples:"projects/my-project" "organizations/123456789"
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// [customWriterIdentity] - Optional. The service account provided by the
   /// caller that will be used to write the log entries. The format must be
-  /// serviceAccount:some@email. This field can only be specified if you are
-  /// routing logs to a destination outside this sink's project. If not
-  /// specified, a Logging service account will automatically be generated.
+  /// serviceAccount:some@email. This field can only be specified when you are
+  /// routing logs to a log bucket that is in a different project than the sink.
+  /// When not specified, a Logging service account will automatically be
+  /// generated.
   ///
   /// [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
   /// returned as writer_identity in the new sink. If this value is omitted or
@@ -9102,11 +9949,12 @@ class OrganizationsSinksResource {
   /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^organizations/\[^/\]+/sinks/\[^/\]+$`.
   ///
-  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// [customWriterIdentity] - Optional. The service account provided by the
   /// caller that will be used to write the log entries. The format must be
-  /// serviceAccount:some@email. This field can only be specified if you are
-  /// routing logs to a destination outside this sink's project. If not
-  /// specified, a Logging service account will automatically be generated.
+  /// serviceAccount:some@email. This field can only be specified when you are
+  /// routing logs to a log bucket that is in a different project than the sink.
+  /// When not specified, a Logging service account will automatically be
+  /// generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -9188,11 +10036,12 @@ class OrganizationsSinksResource {
   /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^organizations/\[^/\]+/sinks/\[^/\]+$`.
   ///
-  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// [customWriterIdentity] - Optional. The service account provided by the
   /// caller that will be used to write the log entries. The format must be
-  /// serviceAccount:some@email. This field can only be specified if you are
-  /// routing logs to a destination outside this sink's project. If not
-  /// specified, a Logging service account will automatically be generated.
+  /// serviceAccount:some@email. This field can only be specified when you are
+  /// routing logs to a log bucket that is in a different project than the sink.
+  /// When not specified, a Logging service account will automatically be
+  /// generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -9612,6 +10461,8 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsBucketsResource get buckets =>
       ProjectsLocationsBucketsResource(_requester);
+  ProjectsLocationsLogScopesResource get logScopes =>
+      ProjectsLocationsLogScopesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsRecentQueriesResource get recentQueries =>
@@ -10794,6 +11645,240 @@ class ProjectsLocationsBucketsViewsLogsResource {
   }
 }
 
+class ProjectsLocationsLogScopesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsLogScopesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a log scope.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent project in which to create the log scope
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:"projects/my-project/locations/global"
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [logScopeId] - Required. A client-assigned identifier such as "log-scope".
+  /// Identifiers are limited to 100 characters and can include only letters,
+  /// digits, underscores, hyphens, and periods. First character has to be
+  /// alphanumeric.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogScope].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogScope> create(
+    LogScope request,
+    core.String parent, {
+    core.String? logScopeId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (logScopeId != null) 'logScopeId': [logScopeId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/logScopes';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return LogScope.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a log scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the log scope to delete:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/logScopes/\[LOG_SCOPE_ID\]"
+  /// For example:"projects/my-project/locations/global/logScopes/my-log-scope"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/logScopes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a log scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the log scope:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/logScopes/\[LOG_SCOPE_ID\]"
+  /// For example:"projects/my-project/locations/global/logScopes/my-log-scope"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/logScopes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogScope].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogScope> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return LogScope.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists log scopes.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource whose log scopes are to be
+  /// listed: "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request.Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLogScopesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLogScopesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/logScopes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListLogScopesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a log scope.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of the log scope.Log scopes are
+  /// only available in the global location. For
+  /// example:projects/my-project/locations/global/logScopes/my-log-scope
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/logScopes/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Field mask that specifies the fields in log_scope
+  /// that need an update. A field will be overwritten if, and only if, it is in
+  /// the update mask. name and output only fields cannot be updated.For a
+  /// detailed FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=description
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogScope].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogScope> patch(
+    LogScope request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return LogScope.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -10960,6 +12045,11 @@ class ProjectsLocationsRecentQueriesResource {
   /// in place of LOCATION_ID will return all recent queries.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [filter] - Optional. Specifies the type ("Logging" or "OpsAnalytics") of
+  /// the recent queries to list. The only valid value for this field is one of
+  /// the two allowable type function calls, which are the following:
+  /// type("Logging") type("OpsAnalytics")
+  ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
@@ -10981,11 +12071,13 @@ class ProjectsLocationsRecentQueriesResource {
   /// this method will complete with the same error.
   async.Future<ListRecentQueriesResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -11108,6 +12200,49 @@ class ProjectsLocationsSavedQueriesResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Returns all data associated with the requested query.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the saved query.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// For example:
+  /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/savedQueries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SavedQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedQuery> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SavedQuery.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists the SavedQueries that were created by the user making the request.
   ///
   /// Request parameters:
@@ -11122,6 +12257,17 @@ class ProjectsLocationsSavedQueriesResource {
   /// wildcard character - can be used for LOCATION_ID, for example:
   /// "projects/my-project/locations/-"
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Specifies the type ("Logging" or "OpsAnalytics") and
+  /// the visibility (PRIVATE or SHARED) of the saved queries to list. If
+  /// provided, the filter must contain either the type function or a visibility
+  /// token, or both. If both are chosen, they can be placed in any order, but
+  /// they must be joined by the AND operator or the empty character.The two
+  /// supported type function calls are: type("Logging") type("OpsAnalytics")The
+  /// two supported visibility tokens are: visibility = PRIVATE visibility =
+  /// SHAREDFor example:type("Logging") AND visibility = PRIVATE
+  /// visibility=SHARED type("OpsAnalytics") type("OpsAnalytics)" visibility =
+  /// PRIVATE visibility = SHARED
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request.Non-positive values are ignored. The presence of nextPageToken in
@@ -11144,11 +12290,13 @@ class ProjectsLocationsSavedQueriesResource {
   /// this method will complete with the same error.
   async.Future<ListSavedQueriesResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -11162,6 +12310,64 @@ class ProjectsLocationsSavedQueriesResource {
       queryParams: queryParams_,
     );
     return ListSavedQueriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing SavedQuery.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name of the saved query.In the format:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// For a list of supported locations, see Supported Regions
+  /// (https://cloud.google.com/logging/docs/region-support#bucket-regions)After
+  /// the saved query is created, the location cannot be changed.If the user
+  /// doesn't provide a QUERY_ID, the system will generate an alphanumeric ID.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/savedQueries/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. A non-empty list of fields to change in the
+  /// existing saved query. Fields are relative to the saved_query and new
+  /// values for the fields are taken from the corresponding fields in the
+  /// SavedQuery included in this request. Fields not mentioned in update_mask
+  /// are not changed and are ignored in the request.To update all mutable
+  /// fields, specify an update_mask of *.For example, to change the description
+  /// and query filter text of a saved query, specify an update_mask of
+  /// "description, query.filter".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SavedQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedQuery> patch(
+    SavedQuery request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SavedQuery.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -11519,11 +12725,12 @@ class ProjectsSinksResource {
   /// examples:"projects/my-project" "organizations/123456789"
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// [customWriterIdentity] - Optional. The service account provided by the
   /// caller that will be used to write the log entries. The format must be
-  /// serviceAccount:some@email. This field can only be specified if you are
-  /// routing logs to a destination outside this sink's project. If not
-  /// specified, a Logging service account will automatically be generated.
+  /// serviceAccount:some@email. This field can only be specified when you are
+  /// routing logs to a log bucket that is in a different project than the sink.
+  /// When not specified, a Logging service account will automatically be
+  /// generated.
   ///
   /// [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
   /// returned as writer_identity in the new sink. If this value is omitted or
@@ -11740,11 +12947,12 @@ class ProjectsSinksResource {
   /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^projects/\[^/\]+/sinks/\[^/\]+$`.
   ///
-  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// [customWriterIdentity] - Optional. The service account provided by the
   /// caller that will be used to write the log entries. The format must be
-  /// serviceAccount:some@email. This field can only be specified if you are
-  /// routing logs to a destination outside this sink's project. If not
-  /// specified, a Logging service account will automatically be generated.
+  /// serviceAccount:some@email. This field can only be specified when you are
+  /// routing logs to a log bucket that is in a different project than the sink.
+  /// When not specified, a Logging service account will automatically be
+  /// generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -11826,11 +13034,12 @@ class ProjectsSinksResource {
   /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^projects/\[^/\]+/sinks/\[^/\]+$`.
   ///
-  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// [customWriterIdentity] - Optional. The service account provided by the
   /// caller that will be used to write the log entries. The format must be
-  /// serviceAccount:some@email. This field can only be specified if you are
-  /// routing logs to a destination outside this sink's project. If not
-  /// specified, a Logging service account will automatically be generated.
+  /// serviceAccount:some@email. This field can only be specified when you are
+  /// routing logs to a log bucket that is in a different project than the sink.
+  /// When not specified, a Logging service account will automatically be
+  /// generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -11914,11 +13123,12 @@ class SinksResource {
   /// examples:"projects/my-project" "organizations/123456789"
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
-  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// [customWriterIdentity] - Optional. The service account provided by the
   /// caller that will be used to write the log entries. The format must be
-  /// serviceAccount:some@email. This field can only be specified if you are
-  /// routing logs to a destination outside this sink's project. If not
-  /// specified, a Logging service account will automatically be generated.
+  /// serviceAccount:some@email. This field can only be specified when you are
+  /// routing logs to a log bucket that is in a different project than the sink.
+  /// When not specified, a Logging service account will automatically be
+  /// generated.
   ///
   /// [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
   /// returned as writer_identity in the new sink. If this value is omitted or
@@ -12135,11 +13345,12 @@ class SinksResource {
   /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^\[^/\]+/\[^/\]+/sinks/\[^/\]+$`.
   ///
-  /// [customWriterIdentity] - Optional. A service account provided by the
+  /// [customWriterIdentity] - Optional. The service account provided by the
   /// caller that will be used to write the log entries. The format must be
-  /// serviceAccount:some@email. This field can only be specified if you are
-  /// routing logs to a destination outside this sink's project. If not
-  /// specified, a Logging service account will automatically be generated.
+  /// serviceAccount:some@email. This field can only be specified when you are
+  /// routing logs to a log bucket that is in a different project than the sink.
+  /// When not specified, a Logging service account will automatically be
+  /// generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -12389,7 +13600,8 @@ class V2Resource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name for the settings to update.
-  /// "organizations/\[ORGANIZATION_ID\]/settings" For
+  /// "organizations/\[ORGANIZATION_ID\]/settings"
+  /// "folders/\[FOLDER_ID\]/settings" For
   /// example:"organizations/12345/settings"
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
@@ -13010,11 +14222,14 @@ class HttpRequest {
 
   /// The request processing latency on the server, from the time the request
   /// was received until the response was sent.
+  ///
+  /// For WebSocket connections, this field refers to the entire time duration
+  /// of the connection.
   core.String? latency;
 
   /// Protocol used for the request.
   ///
-  /// Examples: "HTTP/1.1", "HTTP/2", "websocket"
+  /// Examples: "HTTP/1.1", "HTTP/2"
   core.String? protocol;
 
   /// The referer URL of the request, as defined in HTTP/1.1 Header Field
@@ -13134,8 +14349,8 @@ class IndexConfig {
   /// indexed, and other paths are not eligible for indexing.
   ///
   /// See indexing documentation(
-  /// https://cloud.google.com/logging/docs/view/advanced-queries#indexed-fields)
-  /// for details.For example: jsonPayload.request.status
+  /// https://cloud.google.com/logging/docs/analyze/custom-index) for
+  /// details.For example: jsonPayload.request.status
   ///
   /// Required.
   core.String? fieldPath;
@@ -13452,17 +14667,22 @@ class ListLogEntriesRequest {
   )
   core.List<core.String>? projectIds;
 
-  /// Names of one or more parent resources from which to retrieve log entries:
-  /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
-  /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]May
-  /// alternatively be one or more views:
+  /// Names of one or more parent resources from which to retrieve log entries.
+  ///
+  /// Resources may either be resource containers or specific LogViews. For the
+  /// case of resource containers, all logs ingested into that container will be
+  /// returned regardless of which LogBuckets they are actually stored in - i.e.
+  /// these queries may fan out to multiple regions. In the event of region
+  /// unavailability, specify a specific set of LogViews that do not include the
+  /// unavailable region. projects/\[PROJECT_ID\]
+  /// organizations/\[ORGANIZATION_ID\] billingAccounts/\[BILLING_ACCOUNT_ID\]
+  /// folders/\[FOLDER_ID\]
   /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
   /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]Projects
-  /// listed in the project_ids field are added to this list.
-  ///
-  /// A maximum of 100 resources may be specified in a single request.
+  /// listed in the project_ids field are added to this list. A maximum of 100
+  /// resources may be specified in a single request.
   ///
   /// Required.
   core.List<core.String>? resourceNames;
@@ -13569,6 +14789,40 @@ class ListLogMetricsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metrics != null) 'metrics': metrics!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The response from ListLogScopes.
+///
+/// Every project has a _Default log scope that cannot be modified or deleted.
+class ListLogScopesResponse {
+  /// A list of log scopes.
+  core.List<LogScope>? logScopes;
+
+  /// If there might be more results than appear in this response, then
+  /// nextPageToken is included.
+  ///
+  /// To get the next set of results, call the same method again using the value
+  /// of nextPageToken as pageToken.
+  core.String? nextPageToken;
+
+  ListLogScopesResponse({
+    this.logScopes,
+    this.nextPageToken,
+  });
+
+  ListLogScopesResponse.fromJson(core.Map json_)
+      : this(
+          logScopes: (json_['logScopes'] as core.List?)
+              ?.map((value) => LogScope.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (logScopes != null) 'logScopes': logScopes!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -13837,6 +15091,8 @@ typedef Location = $Location01;
 class LogBucket {
   /// Whether log analytics is enabled for this bucket.Once enabled, log
   /// analytics features cannot be disabled.
+  ///
+  /// Optional.
   core.bool? analyticsEnabled;
 
   /// The CMEK settings of the log bucket.
@@ -14713,6 +15969,69 @@ class LogMetric {
         if (updateTime != null) 'updateTime': updateTime!,
         if (valueExtractor != null) 'valueExtractor': valueExtractor!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// Describes a group of resources to read log entries from.
+class LogScope {
+  /// The creation timestamp of the log scope.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Describes this log scope.The maximum length of the description is 8000
+  /// characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The resource name of the log scope.Log scopes are only available in the
+  /// global location.
+  ///
+  /// For example:projects/my-project/locations/global/logScopes/my-log-scope
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Names of one or more parent resources: projects/\[PROJECT_ID\]May
+  /// alternatively be one or more views:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]A
+  /// log scope can include a maximum of 50 projects and a maximum of 100
+  /// resources in total.
+  ///
+  /// Required.
+  core.List<core.String>? resourceNames;
+
+  /// The last update timestamp of the log scope.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  LogScope({
+    this.createTime,
+    this.description,
+    this.name,
+    this.resourceNames,
+    this.updateTime,
+  });
+
+  LogScope.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          name: json_['name'] as core.String?,
+          resourceNames: (json_['resourceNames'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (resourceNames != null) 'resourceNames': resourceNames!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -15994,7 +17313,7 @@ class Settings {
 /// three pieces of data: error code, error message, and error details.You can
 /// find out more about this error model and how to work with it in the API
 /// Design Guide (https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// A field from the LogEntry that is added to the summary line
 /// (https://cloud.google.com/logging/docs/view/logs-explorer-interface#add-summary-fields)

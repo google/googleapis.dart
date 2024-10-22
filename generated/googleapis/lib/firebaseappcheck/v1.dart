@@ -33,6 +33,7 @@
 ///     - [ProjectsAppsRecaptchaV3ConfigResource]
 ///     - [ProjectsAppsSafetyNetConfigResource]
 ///   - [ProjectsServicesResource]
+///     - [ProjectsServicesResourcePoliciesResource]
 library;
 
 import 'dart:async' as async;
@@ -2090,6 +2091,9 @@ class ProjectsAppsSafetyNetConfigResource {
 class ProjectsServicesResource {
   final commons.ApiRequester _requester;
 
+  ProjectsServicesResourcePoliciesResource get resourcePolicies =>
+      ProjectsServicesResourcePoliciesResource(_requester);
+
   ProjectsServicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Atomically updates the specified Service configurations.
@@ -2147,7 +2151,8 @@ class ProjectsServicesResource {
   /// Currently, the following service IDs are supported: *
   /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) *
   /// `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
-  /// `firestore.googleapis.com` (Cloud Firestore)
+  /// `firestore.googleapis.com` (Cloud Firestore) * `oauth2.googleapis.com`
+  /// (Google Identity for iOS)
   /// Value must have pattern `^projects/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2247,7 +2252,8 @@ class ProjectsServicesResource {
   /// Currently, the following service IDs are supported: *
   /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) *
   /// `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
-  /// `firestore.googleapis.com` (Cloud Firestore)
+  /// `firestore.googleapis.com` (Cloud Firestore) * `oauth2.googleapis.com`
+  /// (Google Identity for iOS)
   /// Value must have pattern `^projects/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [updateMask] - Required. A comma-separated list of names of fields in the
@@ -2284,6 +2290,322 @@ class ProjectsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1Service.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsServicesResourcePoliciesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsServicesResourcePoliciesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Atomically updates the specified ResourcePolicy configurations.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent service name, in the format ```
+  /// projects/{project_number}/services/{service_id} ``` The parent collection
+  /// in the `name` field of any resource being updated must match this field,
+  /// or the entire batch fails.
+  /// Value must have pattern `^projects/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse>
+      batchUpdate(
+    GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/resourcePolicies:batchUpdate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates the specified ResourcePolicy configuration.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The relative resource name of the parent Service in
+  /// which the specified ResourcePolicy will be created, in the format: ```
+  /// projects/{project_number}/services/{service_id} ``` Note that the
+  /// `service_id` element must be a supported service ID. Currently, the
+  /// following service IDs are supported: * `oauth2.googleapis.com` (Google
+  /// Identity for iOS)
+  /// Value must have pattern `^projects/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1ResourcePolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1ResourcePolicy> create(
+    GoogleFirebaseAppcheckV1ResourcePolicy request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/resourcePolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1ResourcePolicy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified ResourcePolicy configuration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the ResourcePolicy to
+  /// delete, in the format: ```
+  /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
+  /// ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/services/\[^/\]+/resourcePolicies/\[^/\]+$`.
+  ///
+  /// [etag] - The checksum to be validated against the current ResourcePolicy,
+  /// to ensure the client has an up-to-date value before proceeding. This
+  /// checksum is computed by the server based on the values of fields in the
+  /// ResourcePolicy object, and can be obtained from the ResourcePolicy object
+  /// received from the last CreateResourcePolicy, GetResourcePolicy,
+  /// ListResourcePolicies, UpdateResourcePolicy, or BatchUpdateResourcePolicies
+  /// call. This etag is strongly validated as defined by RFC 7232.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the requested ResourcePolicy configuration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the ResourcePolicy to
+  /// retrieve, in the format: ```
+  /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
+  /// ``` Note that the `service_id` element must be a supported service ID.
+  /// Currently, the following service IDs are supported: *
+  /// `oauth2.googleapis.com` (Google Identity for iOS)
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/services/\[^/\]+/resourcePolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1ResourcePolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1ResourcePolicy> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1ResourcePolicy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all ResourcePolicy configurations for the specified project and
+  /// service.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The relative resource name of the parent Service for
+  /// which to list each associated ResourcePolicy, in the format: ```
+  /// projects/{project_number}/services/{service_id} ``` Note that the
+  /// `service_id` element must be a supported service ID. Currently, the
+  /// following service IDs are supported: * `oauth2.googleapis.com` (Google
+  /// Identity for iOS)
+  /// Value must have pattern `^projects/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filters the results by the specified rule. For the
+  /// exact syntax of this field, please consult the
+  /// \[AIP-160\](https://google.aip.dev/160) standard. Currently, since the
+  /// only fields in the ResourcePolicy resource are the scalar fields
+  /// `enforcement_mode` and `target_resource`, this method does not support the
+  /// traversal operator (`.`) or the has operator (`:`). Here are some examples
+  /// of valid filters: * `enforcement_mode = ENFORCED` * `target_resource =
+  /// "//oauth2.googleapis.com/projects/12345/oauthClients/"` *
+  /// `enforcement_mode = ENFORCED AND target_resource =
+  /// "//oauth2.googleapis.com/projects/12345/oauthClients/"`
+  ///
+  /// [pageSize] - The maximum number of ResourcePolicy objects to return in the
+  /// response. The server may return fewer than this at its own discretion. If
+  /// no value is specified (or too large a value is specified), the server will
+  /// impose its own limit.
+  ///
+  /// [pageToken] - Token returned from a previous call to ListResourcePolicies
+  /// indicating where in the set of ResourcePolicy objects to resume listing.
+  /// Provide this to retrieve the subsequent page. When paginating, all other
+  /// parameters provided to ListResourcePolicies must match the call that
+  /// provided the page token; if they do not match, the result is undefined.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1ListResourcePoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1ListResourcePoliciesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/resourcePolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1ListResourcePoliciesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified ResourcePolicy configuration.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Identifier. The relative name of the resource policy
+  /// object, in the format: ```
+  /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
+  /// ``` Note that the `service_id` element must be a supported service ID.
+  /// Currently, the following service IDs are supported: *
+  /// `oauth2.googleapis.com` (Google Identity for iOS) `resource_policy_id` is
+  /// a system-generated UID.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/services/\[^/\]+/resourcePolicies/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. A comma-separated list of names of fields in the
+  /// ResourcePolicy to update. Example: `enforcement_mode`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1ResourcePolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1ResourcePolicy> patch(
+    GoogleFirebaseAppcheckV1ResourcePolicy request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1ResourcePolicy.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2327,17 +2649,17 @@ class GoogleFirebaseAppcheckV1AppAttestConfig {
       };
 }
 
-/// Encapsulates an *App Check token*, which are used to access Firebase
-/// services protected by App Check.
+/// Encapsulates an *App Check token*, which are used to access backend services
+/// protected by App Check.
 class GoogleFirebaseAppcheckV1AppCheckToken {
   /// The App Check token.
   ///
   /// App Check tokens are signed [JWTs](https://tools.ietf.org/html/rfc7519)
-  /// containing claims that identify the attested app and Firebase project.
-  /// This token is used to access Firebase services protected by App Check.
-  /// These tokens can also be
+  /// containing claims that identify the attested app and GCP project. This
+  /// token is used to access Google services protected by App Check. These
+  /// tokens can also be
   /// [verified by your own custom backends](https://firebase.google.com/docs/app-check/custom-resource-backend)
-  /// using the Firebase Admin SDK.
+  /// using the Firebase Admin SDK or third-party libraries.
   core.String? token;
 
   /// The duration from the time this token is minted until its expiration.
@@ -2503,6 +2825,70 @@ class GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (configs != null) 'configs': configs!,
+      };
+}
+
+/// Request message for the BatchUpdateResourcePolicies method.
+class GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest {
+  /// The request messages specifying the ResourcePolicy objects to update.
+  ///
+  /// A maximum of 100 objects can be updated in a batch.
+  ///
+  /// Required.
+  core.List<GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest>? requests;
+
+  /// A comma-separated list of names of fields in the ResourcePolicy objects to
+  /// update.
+  ///
+  /// Example: `enforcement_mode`. If this field is present, the `update_mask`
+  /// field in the UpdateResourcePolicyRequest messages must all match this
+  /// field, or the entire batch fails and no updates will be committed.
+  ///
+  /// Optional.
+  core.String? updateMask;
+
+  GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest({
+    this.requests,
+    this.updateMask,
+  });
+
+  GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest.fromJson(
+      core.Map json_)
+      : this(
+          requests: (json_['requests'] as core.List?)
+              ?.map((value) =>
+                  GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          updateMask: json_['updateMask'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// Response message for the BatchUpdateResourcePolicies method.
+class GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse {
+  /// ResourcePolicy objects after the updates have been applied.
+  core.List<GoogleFirebaseAppcheckV1ResourcePolicy>? resourcePolicies;
+
+  GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse({
+    this.resourcePolicies,
+  });
+
+  GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse.fromJson(
+      core.Map json_)
+      : this(
+          resourcePolicies: (json_['resourcePolicies'] as core.List?)
+              ?.map((value) => GoogleFirebaseAppcheckV1ResourcePolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resourcePolicies != null) 'resourcePolicies': resourcePolicies!,
       };
 }
 
@@ -3204,6 +3590,40 @@ class GoogleFirebaseAppcheckV1ListDebugTokensResponse {
       };
 }
 
+/// Response message for the ListResourcePolicies method.
+class GoogleFirebaseAppcheckV1ListResourcePoliciesResponse {
+  /// If the result list is too large to fit in a single response, then a token
+  /// is returned.
+  ///
+  /// If the string is empty or omitted, then this response is the last page of
+  /// results. This token can be used in a subsequent call to
+  /// ListResourcePolicies to find the next group of ResourcePolicy objects.
+  /// Page tokens are short-lived and should not be persisted.
+  core.String? nextPageToken;
+
+  /// The ResourcePolicy objects retrieved.
+  core.List<GoogleFirebaseAppcheckV1ResourcePolicy>? resourcePolicies;
+
+  GoogleFirebaseAppcheckV1ListResourcePoliciesResponse({
+    this.nextPageToken,
+    this.resourcePolicies,
+  });
+
+  GoogleFirebaseAppcheckV1ListResourcePoliciesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          resourcePolicies: (json_['resourcePolicies'] as core.List?)
+              ?.map((value) => GoogleFirebaseAppcheckV1ResourcePolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (resourcePolicies != null) 'resourcePolicies': resourcePolicies!,
+      };
+}
+
 /// Response message for the ListServices method.
 class GoogleFirebaseAppcheckV1ListServicesResponse {
   /// If the result list is too large to fit in a single response, then a token
@@ -3475,6 +3895,115 @@ class GoogleFirebaseAppcheckV1RecaptchaV3Config {
       };
 }
 
+/// App Check enforcement policy for a specific resource of a Google service
+/// supported by App Check.
+///
+/// Note that this policy will override the service-level configuration.
+class GoogleFirebaseAppcheckV1ResourcePolicy {
+  /// The App Check enforcement mode for this resource.
+  ///
+  /// This will override the EnforcementMode setting on the service.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "OFF" : Firebase App Check is not enforced for the service, nor are App
+  /// Check metrics collected. Though the service is not protected by App Check
+  /// in this mode, other applicable protections, such as user authorization,
+  /// are still enforced. An unconfigured service is in this mode by default.
+  /// - "UNENFORCED" : Firebase App Check is not enforced for the service. App
+  /// Check metrics are collected to help you decide when to turn on enforcement
+  /// for the service. Though the service is not protected by App Check in this
+  /// mode, other applicable protections, such as user authorization, are still
+  /// enforced. Some services require certain conditions to be met before they
+  /// will work with App Check, such as requiring you to upgrade to a specific
+  /// service tier. Until those requirements are met for a service, this
+  /// `UNENFORCED` setting will have no effect and App Check will not work with
+  /// that service.
+  /// - "ENFORCED" : Firebase App Check is enforced for the service. The service
+  /// will reject any request that attempts to access your project's resources
+  /// if it does not have valid App Check token attached, with some exceptions
+  /// depending on the service; for example, some services will still allow
+  /// requests bearing the developer's privileged service account credentials
+  /// without an App Check token. App Check metrics continue to be collected to
+  /// help you detect issues with your App Check integration and monitor the
+  /// composition of your callers. While the service is protected by App Check,
+  /// other applicable protections, such as user authorization, continue to be
+  /// enforced at the same time. Use caution when choosing to enforce App Check
+  /// on a Firebase service. If your users have not updated to an App Check
+  /// capable version of your app, their apps will no longer be able to use your
+  /// Firebase services that are enforcing App Check. App Check metrics can help
+  /// you decide whether to enforce App Check on your Firebase services. If your
+  /// app has not launched yet, you should enable enforcement immediately, since
+  /// there are no outdated clients in use. Some services require certain
+  /// conditions to be met before they will work with App Check, such as
+  /// requiring you to upgrade to a specific service tier. Until those
+  /// requirements are met for a service, this `ENFORCED` setting will have no
+  /// effect and App Check will not work with that service.
+  core.String? enforcementMode;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  ///
+  /// This etag is strongly validated as defined by RFC 7232.
+  core.String? etag;
+
+  /// Identifier.
+  ///
+  /// The relative name of the resource policy object, in the format: ```
+  /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
+  /// ``` Note that the `service_id` element must be a supported service ID.
+  /// Currently, the following service IDs are supported: *
+  /// `oauth2.googleapis.com` (Google Identity for iOS) `resource_policy_id` is
+  /// a system-generated UID.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Service specific name of the resource object to which this policy applies,
+  /// in the format: * **iOS OAuth clients** (Google Identity for iOS):
+  /// `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauth_client_id}`
+  /// Note that the resource must belong to the service specified in the `name`
+  /// and be from the same project as this policy, but the resource is allowed
+  /// to be missing at the time of creation of this policy; in that case, we
+  /// make a best-effort attempt at respecting this policy, but it may not have
+  /// any effect until the resource is fully created.
+  ///
+  /// Required.
+  core.String? targetResource;
+
+  /// Timestamp when this resource policy configuration object was most recently
+  /// updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleFirebaseAppcheckV1ResourcePolicy({
+    this.enforcementMode,
+    this.etag,
+    this.name,
+    this.targetResource,
+    this.updateTime,
+  });
+
+  GoogleFirebaseAppcheckV1ResourcePolicy.fromJson(core.Map json_)
+      : this(
+          enforcementMode: json_['enforcementMode'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          name: json_['name'] as core.String?,
+          targetResource: json_['targetResource'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enforcementMode != null) 'enforcementMode': enforcementMode!,
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (targetResource != null) 'targetResource': targetResource!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// An app's SafetyNet configuration object.
 ///
 /// This configuration controls certain properties of the `AppCheckToken`
@@ -3562,7 +4091,8 @@ class GoogleFirebaseAppcheckV1Service {
   /// Currently, the following service IDs are supported: *
   /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) *
   /// `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
-  /// `firestore.googleapis.com` (Cloud Firestore)
+  /// `firestore.googleapis.com` (Cloud Firestore) * `oauth2.googleapis.com`
+  /// (Google Identity for iOS)
   ///
   /// Required.
   core.String? name;
@@ -3584,6 +4114,49 @@ class GoogleFirebaseAppcheckV1Service {
       };
 }
 
+/// Request message for the UpdateResourcePolicy method as well as an individual
+/// update message for the BatchUpdateResourcePolicies method.
+class GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest {
+  /// The ResourcePolicy to update.
+  ///
+  /// The ResourcePolicy's `name` field is used to identify the ResourcePolicy
+  /// to be updated, in the format: ```
+  /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
+  /// ``` Note that the `service_id` element must be a supported service ID.
+  /// Currently, the following service IDs are supported: *
+  /// `oauth2.googleapis.com` (Google Identity for iOS)
+  ///
+  /// Required.
+  GoogleFirebaseAppcheckV1ResourcePolicy? resourcePolicy;
+
+  /// A comma-separated list of names of fields in the ResourcePolicy to update.
+  ///
+  /// Example: `enforcement_mode`.
+  ///
+  /// Required.
+  core.String? updateMask;
+
+  GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest({
+    this.resourcePolicy,
+    this.updateMask,
+  });
+
+  GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest.fromJson(core.Map json_)
+      : this(
+          resourcePolicy: json_.containsKey('resourcePolicy')
+              ? GoogleFirebaseAppcheckV1ResourcePolicy.fromJson(
+                  json_['resourcePolicy']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_['updateMask'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resourcePolicy != null) 'resourcePolicy': resourcePolicy!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
 /// Request message for the UpdateService method as well as an individual update
 /// message for the BatchUpdateServices method.
 class GoogleFirebaseAppcheckV1UpdateServiceRequest {
@@ -3595,7 +4168,8 @@ class GoogleFirebaseAppcheckV1UpdateServiceRequest {
   /// Currently, the following service IDs are supported: *
   /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) *
   /// `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
-  /// `firestore.googleapis.com` (Cloud Firestore)
+  /// `firestore.googleapis.com` (Cloud Firestore) * `oauth2.googleapis.com`
+  /// (Google Identity for iOS)
   ///
   /// Required.
   GoogleFirebaseAppcheckV1Service? service;

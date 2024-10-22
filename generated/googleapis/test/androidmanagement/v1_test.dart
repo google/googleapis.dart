@@ -49,6 +49,7 @@ api.AdvancedSecurityOverrides buildAdvancedSecurityOverrides() {
   buildCounterAdvancedSecurityOverrides++;
   if (buildCounterAdvancedSecurityOverrides < 3) {
     o.commonCriteriaMode = 'foo';
+    o.contentProtectionPolicy = 'foo';
     o.developerSettings = 'foo';
     o.googlePlayProtectVerifyApps = 'foo';
     o.mtePolicy = 'foo';
@@ -64,6 +65,10 @@ void checkAdvancedSecurityOverrides(api.AdvancedSecurityOverrides o) {
   if (buildCounterAdvancedSecurityOverrides < 3) {
     unittest.expect(
       o.commonCriteriaMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.contentProtectionPolicy!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1008,6 +1013,7 @@ api.CommonCriteriaModeInfo buildCommonCriteriaModeInfo() {
   buildCounterCommonCriteriaModeInfo++;
   if (buildCounterCommonCriteriaModeInfo < 3) {
     o.commonCriteriaModeStatus = 'foo';
+    o.policySignatureVerificationStatus = 'foo';
   }
   buildCounterCommonCriteriaModeInfo--;
   return o;
@@ -1018,6 +1024,10 @@ void checkCommonCriteriaModeInfo(api.CommonCriteriaModeInfo o) {
   if (buildCounterCommonCriteriaModeInfo < 3) {
     unittest.expect(
       o.commonCriteriaModeStatus!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.policySignatureVerificationStatus!,
       unittest.equals('foo'),
     );
   }
@@ -1492,6 +1502,7 @@ api.DeviceConnectivityManagement buildDeviceConnectivityManagement() {
     o.tetheringSettings = 'foo';
     o.usbDataAccess = 'foo';
     o.wifiDirectSettings = 'foo';
+    o.wifiRoamingPolicy = buildWifiRoamingPolicy();
     o.wifiSsidPolicy = buildWifiSsidPolicy();
   }
   buildCounterDeviceConnectivityManagement--;
@@ -1517,6 +1528,7 @@ void checkDeviceConnectivityManagement(api.DeviceConnectivityManagement o) {
       o.wifiDirectSettings!,
       unittest.equals('foo'),
     );
+    checkWifiRoamingPolicy(o.wifiRoamingPolicy!);
     checkWifiSsidPolicy(o.wifiSsidPolicy!);
   }
   buildCounterDeviceConnectivityManagement--;
@@ -1648,6 +1660,27 @@ void checkDisplay(api.Display o) {
     );
   }
   buildCounterDisplay--;
+}
+
+core.int buildCounterDisplaySettings = 0;
+api.DisplaySettings buildDisplaySettings() {
+  final o = api.DisplaySettings();
+  buildCounterDisplaySettings++;
+  if (buildCounterDisplaySettings < 3) {
+    o.screenBrightnessSettings = buildScreenBrightnessSettings();
+    o.screenTimeoutSettings = buildScreenTimeoutSettings();
+  }
+  buildCounterDisplaySettings--;
+  return o;
+}
+
+void checkDisplaySettings(api.DisplaySettings o) {
+  buildCounterDisplaySettings++;
+  if (buildCounterDisplaySettings < 3) {
+    checkScreenBrightnessSettings(o.screenBrightnessSettings!);
+    checkScreenTimeoutSettings(o.screenTimeoutSettings!);
+  }
+  buildCounterDisplaySettings--;
 }
 
 core.int buildCounterDpcMigrationInfo = 0;
@@ -3879,6 +3912,7 @@ api.Policy buildPolicy() {
     o.androidDevicePolicyTracks = buildUnnamed70();
     o.appAutoUpdatePolicy = 'foo';
     o.applications = buildUnnamed71();
+    o.assistContentPolicy = 'foo';
     o.autoDateAndTimeZone = 'foo';
     o.autoTimeRequired = true;
     o.blockApplicationsEnabled = true;
@@ -3900,6 +3934,7 @@ api.Policy buildPolicy() {
     o.deviceConnectivityManagement = buildDeviceConnectivityManagement();
     o.deviceOwnerLockScreenInfo = buildUserFacingMessage();
     o.deviceRadioState = buildDeviceRadioState();
+    o.displaySettings = buildDisplaySettings();
     o.encryptionPolicy = 'foo';
     o.ensureVerifyAppsEnabled = true;
     o.factoryResetDisabled = true;
@@ -3983,6 +4018,10 @@ void checkPolicy(api.Policy o) {
     );
     checkUnnamed71(o.applications!);
     unittest.expect(
+      o.assistContentPolicy!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.autoDateAndTimeZone!,
       unittest.equals('foo'),
     );
@@ -4015,6 +4054,7 @@ void checkPolicy(api.Policy o) {
     checkDeviceConnectivityManagement(o.deviceConnectivityManagement!);
     checkUserFacingMessage(o.deviceOwnerLockScreenInfo!);
     checkDeviceRadioState(o.deviceRadioState!);
+    checkDisplaySettings(o.displaySettings!);
     unittest.expect(
       o.encryptionPolicy!,
       unittest.equals('foo'),
@@ -4328,6 +4368,60 @@ void checkProxyInfo(api.ProxyInfo o) {
   buildCounterProxyInfo--;
 }
 
+core.int buildCounterScreenBrightnessSettings = 0;
+api.ScreenBrightnessSettings buildScreenBrightnessSettings() {
+  final o = api.ScreenBrightnessSettings();
+  buildCounterScreenBrightnessSettings++;
+  if (buildCounterScreenBrightnessSettings < 3) {
+    o.screenBrightness = 42;
+    o.screenBrightnessMode = 'foo';
+  }
+  buildCounterScreenBrightnessSettings--;
+  return o;
+}
+
+void checkScreenBrightnessSettings(api.ScreenBrightnessSettings o) {
+  buildCounterScreenBrightnessSettings++;
+  if (buildCounterScreenBrightnessSettings < 3) {
+    unittest.expect(
+      o.screenBrightness!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.screenBrightnessMode!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterScreenBrightnessSettings--;
+}
+
+core.int buildCounterScreenTimeoutSettings = 0;
+api.ScreenTimeoutSettings buildScreenTimeoutSettings() {
+  final o = api.ScreenTimeoutSettings();
+  buildCounterScreenTimeoutSettings++;
+  if (buildCounterScreenTimeoutSettings < 3) {
+    o.screenTimeout = 'foo';
+    o.screenTimeoutMode = 'foo';
+  }
+  buildCounterScreenTimeoutSettings--;
+  return o;
+}
+
+void checkScreenTimeoutSettings(api.ScreenTimeoutSettings o) {
+  buildCounterScreenTimeoutSettings++;
+  if (buildCounterScreenTimeoutSettings < 3) {
+    unittest.expect(
+      o.screenTimeout!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.screenTimeoutMode!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterScreenTimeoutSettings--;
+}
+
 core.List<api.PostureDetail> buildUnnamed86() => [
       buildPostureDetail(),
       buildPostureDetail(),
@@ -4392,6 +4486,7 @@ api.SigninDetail buildSigninDetail() {
   buildCounterSigninDetail++;
   if (buildCounterSigninDetail < 3) {
     o.allowPersonalUsage = 'foo';
+    o.defaultStatus = 'foo';
     o.qrCode = 'foo';
     o.signinEnrollmentToken = 'foo';
     o.signinUrl = 'foo';
@@ -4406,6 +4501,10 @@ void checkSigninDetail(api.SigninDetail o) {
   if (buildCounterSigninDetail < 3) {
     unittest.expect(
       o.allowPersonalUsage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.defaultStatus!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -4836,6 +4935,7 @@ api.TelephonyInfo buildTelephonyInfo() {
   buildCounterTelephonyInfo++;
   if (buildCounterTelephonyInfo < 3) {
     o.carrierName = 'foo';
+    o.iccId = 'foo';
     o.phoneNumber = 'foo';
   }
   buildCounterTelephonyInfo--;
@@ -4847,6 +4947,10 @@ void checkTelephonyInfo(api.TelephonyInfo o) {
   if (buildCounterTelephonyInfo < 3) {
     unittest.expect(
       o.carrierName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.iccId!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -5143,6 +5247,63 @@ void checkWebToken(api.WebToken o) {
   buildCounterWebToken--;
 }
 
+core.List<api.WifiRoamingSetting> buildUnnamed96() => [
+      buildWifiRoamingSetting(),
+      buildWifiRoamingSetting(),
+    ];
+
+void checkUnnamed96(core.List<api.WifiRoamingSetting> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkWifiRoamingSetting(o[0]);
+  checkWifiRoamingSetting(o[1]);
+}
+
+core.int buildCounterWifiRoamingPolicy = 0;
+api.WifiRoamingPolicy buildWifiRoamingPolicy() {
+  final o = api.WifiRoamingPolicy();
+  buildCounterWifiRoamingPolicy++;
+  if (buildCounterWifiRoamingPolicy < 3) {
+    o.wifiRoamingSettings = buildUnnamed96();
+  }
+  buildCounterWifiRoamingPolicy--;
+  return o;
+}
+
+void checkWifiRoamingPolicy(api.WifiRoamingPolicy o) {
+  buildCounterWifiRoamingPolicy++;
+  if (buildCounterWifiRoamingPolicy < 3) {
+    checkUnnamed96(o.wifiRoamingSettings!);
+  }
+  buildCounterWifiRoamingPolicy--;
+}
+
+core.int buildCounterWifiRoamingSetting = 0;
+api.WifiRoamingSetting buildWifiRoamingSetting() {
+  final o = api.WifiRoamingSetting();
+  buildCounterWifiRoamingSetting++;
+  if (buildCounterWifiRoamingSetting < 3) {
+    o.wifiRoamingMode = 'foo';
+    o.wifiSsid = 'foo';
+  }
+  buildCounterWifiRoamingSetting--;
+  return o;
+}
+
+void checkWifiRoamingSetting(api.WifiRoamingSetting o) {
+  buildCounterWifiRoamingSetting++;
+  if (buildCounterWifiRoamingSetting < 3) {
+    unittest.expect(
+      o.wifiRoamingMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.wifiSsid!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterWifiRoamingSetting--;
+}
+
 core.int buildCounterWifiSsid = 0;
 api.WifiSsid buildWifiSsid() {
   final o = api.WifiSsid();
@@ -5165,12 +5326,12 @@ void checkWifiSsid(api.WifiSsid o) {
   buildCounterWifiSsid--;
 }
 
-core.List<api.WifiSsid> buildUnnamed96() => [
+core.List<api.WifiSsid> buildUnnamed97() => [
       buildWifiSsid(),
       buildWifiSsid(),
     ];
 
-void checkUnnamed96(core.List<api.WifiSsid> o) {
+void checkUnnamed97(core.List<api.WifiSsid> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWifiSsid(o[0]);
   checkWifiSsid(o[1]);
@@ -5182,7 +5343,7 @@ api.WifiSsidPolicy buildWifiSsidPolicy() {
   buildCounterWifiSsidPolicy++;
   if (buildCounterWifiSsidPolicy < 3) {
     o.wifiSsidPolicyType = 'foo';
-    o.wifiSsids = buildUnnamed96();
+    o.wifiSsids = buildUnnamed97();
   }
   buildCounterWifiSsidPolicy--;
   return o;
@@ -5195,7 +5356,7 @@ void checkWifiSsidPolicy(api.WifiSsidPolicy o) {
       o.wifiSsidPolicyType!,
       unittest.equals('foo'),
     );
-    checkUnnamed96(o.wifiSsids!);
+    checkUnnamed97(o.wifiSsids!);
   }
   buildCounterWifiSsidPolicy--;
 }
@@ -5224,12 +5385,12 @@ void checkWipeAction(api.WipeAction o) {
   buildCounterWipeAction--;
 }
 
-core.List<core.String> buildUnnamed97() => [
+core.List<core.String> buildUnnamed98() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed97(core.List<core.String> o) {
+void checkUnnamed98(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5509,6 +5670,16 @@ void main() {
       final od =
           api.Display.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDisplay(od);
+    });
+  });
+
+  unittest.group('obj-schema-DisplaySettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDisplaySettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DisplaySettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDisplaySettings(od);
     });
   });
 
@@ -5982,6 +6153,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ScreenBrightnessSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildScreenBrightnessSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ScreenBrightnessSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkScreenBrightnessSettings(od);
+    });
+  });
+
+  unittest.group('obj-schema-ScreenTimeoutSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildScreenTimeoutSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ScreenTimeoutSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkScreenTimeoutSettings(od);
+    });
+  });
+
   unittest.group('obj-schema-SecurityPosture', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSecurityPosture();
@@ -6199,6 +6390,26 @@ void main() {
       final od =
           api.WebToken.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkWebToken(od);
+    });
+  });
+
+  unittest.group('obj-schema-WifiRoamingPolicy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWifiRoamingPolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WifiRoamingPolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkWifiRoamingPolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-WifiRoamingSetting', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWifiRoamingSetting();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WifiRoamingSetting.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkWifiRoamingSetting(od);
     });
   });
 
@@ -6621,7 +6832,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.AndroidManagementApi(mock).enterprises.devices;
       final arg_name = 'foo';
-      final arg_wipeDataFlags = buildUnnamed97();
+      final arg_wipeDataFlags = buildUnnamed98();
       final arg_wipeReasonMessage = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

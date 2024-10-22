@@ -627,7 +627,9 @@ class ProjectsLocationsInstancesResource {
   ///
   /// [updateMask] - Mask of fields to update. At least one path must be
   /// supplied in this field. The elements of the repeated paths field may only
-  /// include these fields: * "description" * "file_shares" * "labels"
+  /// include these fields: * "description" * "file_shares" * "labels" *
+  /// "performance_config" * "deletion_protection_enabled" *
+  /// "deletion_protection_reason"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -656,6 +658,48 @@ class ProjectsLocationsInstancesResource {
     final response_ = await _requester.request(
       url_,
       'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Promote the standby instance (replica).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the instance, in the format
+  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> promoteReplica(
+    PromoteReplicaRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':promoteReplica';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
       body: body_,
       queryParams: queryParams_,
     );
@@ -1198,6 +1242,17 @@ class Backup {
   /// Output only.
   core.String? downloadBytes;
 
+  /// The file system protocol of the source Filestore instance that this backup
+  /// is created from.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "FILE_PROTOCOL_UNSPECIFIED" : FILE_PROTOCOL_UNSPECIFIED serves a "not
+  /// set" default value when a FileProtocol is a separate field in a message.
+  /// - "NFS_V3" : NFS 3.0.
+  /// - "NFS_V4_1" : NFS 4.1.
+  core.String? fileSystemProtocol;
+
   /// KMS key name used for data encryption.
   ///
   /// Immutable.
@@ -1279,11 +1334,20 @@ class Backup {
   /// Output only.
   core.String? storageBytes;
 
+  /// Input only.
+  ///
+  /// Immutable. Tag key-value pairs are bound to this resource. For example:
+  /// "123/environment": "production", "123/costCenter": "marketing"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   Backup({
     this.capacityGb,
     this.createTime,
     this.description,
     this.downloadBytes,
+    this.fileSystemProtocol,
     this.kmsKey,
     this.labels,
     this.name,
@@ -1294,6 +1358,7 @@ class Backup {
     this.sourceInstanceTier,
     this.state,
     this.storageBytes,
+    this.tags,
   });
 
   Backup.fromJson(core.Map json_)
@@ -1302,6 +1367,7 @@ class Backup {
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           downloadBytes: json_['downloadBytes'] as core.String?,
+          fileSystemProtocol: json_['fileSystemProtocol'] as core.String?,
           kmsKey: json_['kmsKey'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
@@ -1318,6 +1384,12 @@ class Backup {
           sourceInstanceTier: json_['sourceInstanceTier'] as core.String?,
           state: json_['state'] as core.String?,
           storageBytes: json_['storageBytes'] as core.String?,
+          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1325,6 +1397,8 @@ class Backup {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (downloadBytes != null) 'downloadBytes': downloadBytes!,
+        if (fileSystemProtocol != null)
+          'fileSystemProtocol': fileSystemProtocol!,
         if (kmsKey != null) 'kmsKey': kmsKey!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
@@ -1336,6 +1410,7 @@ class Backup {
           'sourceInstanceTier': sourceInstanceTier!,
         if (state != null) 'state': state!,
         if (storageBytes != null) 'storageBytes': storageBytes!,
+        if (tags != null) 'tags': tags!,
       };
 }
 
@@ -1402,12 +1477,73 @@ class FileShareConfig {
       };
 }
 
+/// Fixed IOPS (input/output operations per second) parameters.
+class FixedIOPS {
+  /// Maximum raw read IOPS.
+  ///
+  /// Required.
+  core.String? maxReadIops;
+
+  FixedIOPS({
+    this.maxReadIops,
+  });
+
+  FixedIOPS.fromJson(core.Map json_)
+      : this(
+          maxReadIops: json_['maxReadIops'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxReadIops != null) 'maxReadIops': maxReadIops!,
+      };
+}
+
+/// IOPS per TB.
+///
+/// Filestore defines TB as 1024^4 bytes (TiB).
+class IOPSPerTB {
+  /// Maximum read IOPS per TiB.
+  ///
+  /// Required.
+  core.String? maxReadIopsPerTb;
+
+  IOPSPerTB({
+    this.maxReadIopsPerTb,
+  });
+
+  IOPSPerTB.fromJson(core.Map json_)
+      : this(
+          maxReadIopsPerTb: json_['maxReadIopsPerTb'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxReadIopsPerTb != null) 'maxReadIopsPerTb': maxReadIopsPerTb!,
+      };
+}
+
 /// A Filestore instance.
 class Instance {
+  /// Indicates whether this instance's performance is configurable.
+  ///
+  /// If enabled, adjust it using the 'performance_config' field.
+  ///
+  /// Output only.
+  core.bool? configurablePerformanceEnabled;
+
   /// The time when the instance was created.
   ///
   /// Output only.
   core.String? createTime;
+
+  /// Indicates whether the instance is protected against deletion.
+  ///
+  /// Optional.
+  core.bool? deletionProtectionEnabled;
+
+  /// The reason for enabling deletion protection.
+  ///
+  /// Optional.
+  core.String? deletionProtectionReason;
 
   /// The description of the instance (2048 characters or less).
   core.String? description;
@@ -1438,7 +1574,30 @@ class Instance {
   /// For this version, only a single network is supported.
   core.List<NetworkConfig>? networks;
 
-  /// Replicaition configuration.
+  /// Used to configure performance.
+  ///
+  /// Optional.
+  PerformanceConfig? performanceConfig;
+
+  /// Used for getting performance limits.
+  ///
+  /// Output only.
+  PerformanceLimits? performanceLimits;
+
+  /// The protocol indicates the access protocol for all shares in the instance.
+  ///
+  /// This field is immutable and it cannot be changed after the instance has
+  /// been created. Default value: `NFS_V3`.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "FILE_PROTOCOL_UNSPECIFIED" : FILE_PROTOCOL_UNSPECIFIED serves a "not
+  /// set" default value when a FileProtocol is a separate field in a message.
+  /// - "NFS_V3" : NFS 3.0.
+  /// - "NFS_V4_1" : NFS 4.1.
+  core.String? protocol;
+
+  /// Replication configuration.
   ///
   /// Optional.
   Replication? replication;
@@ -1473,6 +1632,7 @@ class Instance {
   /// - "SUSPENDING" : The instance is in the process of becoming suspended.
   /// - "RESUMING" : The instance is in the process of becoming active.
   /// - "REVERTING" : The instance is reverting to a snapshot.
+  /// - "PROMOTING" : The replica instance is being promoted.
   core.String? state;
 
   /// Additional information about the instance state, if available.
@@ -1484,6 +1644,14 @@ class Instance {
   ///
   /// Output only.
   core.List<core.String>? suspensionReasons;
+
+  /// Input only.
+  ///
+  /// Immutable. Tag key-value pairs are bound to this resource. For example:
+  /// "123/environment": "production", "123/costCenter": "marketing"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
 
   /// The service tier of the instance.
   /// Possible string values are:
@@ -1508,7 +1676,10 @@ class Instance {
   core.String? tier;
 
   Instance({
+    this.configurablePerformanceEnabled,
     this.createTime,
+    this.deletionProtectionEnabled,
+    this.deletionProtectionReason,
     this.description,
     this.etag,
     this.fileShares,
@@ -1516,18 +1687,28 @@ class Instance {
     this.labels,
     this.name,
     this.networks,
+    this.performanceConfig,
+    this.performanceLimits,
+    this.protocol,
     this.replication,
     this.satisfiesPzi,
     this.satisfiesPzs,
     this.state,
     this.statusMessage,
     this.suspensionReasons,
+    this.tags,
     this.tier,
   });
 
   Instance.fromJson(core.Map json_)
       : this(
+          configurablePerformanceEnabled:
+              json_['configurablePerformanceEnabled'] as core.bool?,
           createTime: json_['createTime'] as core.String?,
+          deletionProtectionEnabled:
+              json_['deletionProtectionEnabled'] as core.bool?,
+          deletionProtectionReason:
+              json_['deletionProtectionReason'] as core.String?,
           description: json_['description'] as core.String?,
           etag: json_['etag'] as core.String?,
           fileShares: (json_['fileShares'] as core.List?)
@@ -1547,6 +1728,15 @@ class Instance {
               ?.map((value) => NetworkConfig.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          performanceConfig: json_.containsKey('performanceConfig')
+              ? PerformanceConfig.fromJson(json_['performanceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          performanceLimits: json_.containsKey('performanceLimits')
+              ? PerformanceLimits.fromJson(json_['performanceLimits']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          protocol: json_['protocol'] as core.String?,
           replication: json_.containsKey('replication')
               ? Replication.fromJson(
                   json_['replication'] as core.Map<core.String, core.dynamic>)
@@ -1558,11 +1748,23 @@ class Instance {
           suspensionReasons: (json_['suspensionReasons'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           tier: json_['tier'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (configurablePerformanceEnabled != null)
+          'configurablePerformanceEnabled': configurablePerformanceEnabled!,
         if (createTime != null) 'createTime': createTime!,
+        if (deletionProtectionEnabled != null)
+          'deletionProtectionEnabled': deletionProtectionEnabled!,
+        if (deletionProtectionReason != null)
+          'deletionProtectionReason': deletionProtectionReason!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
         if (fileShares != null) 'fileShares': fileShares!,
@@ -1570,12 +1772,16 @@ class Instance {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (networks != null) 'networks': networks!,
+        if (performanceConfig != null) 'performanceConfig': performanceConfig!,
+        if (performanceLimits != null) 'performanceLimits': performanceLimits!,
+        if (protocol != null) 'protocol': protocol!,
         if (replication != null) 'replication': replication!,
         if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
         if (statusMessage != null) 'statusMessage': statusMessage!,
         if (suspensionReasons != null) 'suspensionReasons': suspensionReasons!,
+        if (tags != null) 'tags': tags!,
         if (tier != null) 'tier': tier!,
       };
 }
@@ -1989,6 +2195,111 @@ class Operation {
       };
 }
 
+/// Used for setting the performance configuration.
+///
+/// If the user doesn't specify PerformanceConfig, automatically provision the
+/// default performance settings as described in
+/// https://cloud.google.com/filestore/docs/performance. Larger instances will
+/// be linearly set to more IOPS. If the instance's capacity is increased or
+/// decreased, its performance will be automatically adjusted upwards or
+/// downwards accordingly (respectively).
+class PerformanceConfig {
+  /// Choose a fixed provisioned IOPS value for the instance, which will remain
+  /// constant regardless of instance capacity.
+  ///
+  /// Value must be a multiple of 1000. If the chosen value is outside the
+  /// supported range for the instance's capacity during instance creation,
+  /// instance creation will fail with an `InvalidArgument` error. Similarly, if
+  /// an instance capacity update would result in a value outside the supported
+  /// range, the update will fail with an `InvalidArgument` error.
+  FixedIOPS? fixedIops;
+
+  /// Provision IOPS dynamically based on the capacity of the instance.
+  ///
+  /// Provisioned read IOPS will be calculated by multiplying the capacity of
+  /// the instance in TiB by the `iops_per_tb` value. For example, for a 2 TiB
+  /// instance with an `iops_per_tb` value of 17000 the provisioned read IOPS
+  /// will be 34000. If the calculated value is outside the supported range for
+  /// the instance's capacity during instance creation, instance creation will
+  /// fail with an `InvalidArgument` error. Similarly, if an instance capacity
+  /// update would result in a value outside the supported range, the update
+  /// will fail with an `InvalidArgument` error.
+  IOPSPerTB? iopsPerTb;
+
+  PerformanceConfig({
+    this.fixedIops,
+    this.iopsPerTb,
+  });
+
+  PerformanceConfig.fromJson(core.Map json_)
+      : this(
+          fixedIops: json_.containsKey('fixedIops')
+              ? FixedIOPS.fromJson(
+                  json_['fixedIops'] as core.Map<core.String, core.dynamic>)
+              : null,
+          iopsPerTb: json_.containsKey('iopsPerTb')
+              ? IOPSPerTB.fromJson(
+                  json_['iopsPerTb'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fixedIops != null) 'fixedIops': fixedIops!,
+        if (iopsPerTb != null) 'iopsPerTb': iopsPerTb!,
+      };
+}
+
+/// The enforced performance limits, calculated from the instance's performance
+/// configuration.
+class PerformanceLimits {
+  /// The max read IOPS.
+  ///
+  /// Output only.
+  core.String? maxReadIops;
+
+  /// The max read throughput in bytes per second.
+  ///
+  /// Output only.
+  core.String? maxReadThroughputBps;
+
+  /// The max write IOPS.
+  ///
+  /// Output only.
+  core.String? maxWriteIops;
+
+  /// The max write throughput in bytes per second.
+  ///
+  /// Output only.
+  core.String? maxWriteThroughputBps;
+
+  PerformanceLimits({
+    this.maxReadIops,
+    this.maxReadThroughputBps,
+    this.maxWriteIops,
+    this.maxWriteThroughputBps,
+  });
+
+  PerformanceLimits.fromJson(core.Map json_)
+      : this(
+          maxReadIops: json_['maxReadIops'] as core.String?,
+          maxReadThroughputBps: json_['maxReadThroughputBps'] as core.String?,
+          maxWriteIops: json_['maxWriteIops'] as core.String?,
+          maxWriteThroughputBps: json_['maxWriteThroughputBps'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxReadIops != null) 'maxReadIops': maxReadIops!,
+        if (maxReadThroughputBps != null)
+          'maxReadThroughputBps': maxReadThroughputBps!,
+        if (maxWriteIops != null) 'maxWriteIops': maxWriteIops!,
+        if (maxWriteThroughputBps != null)
+          'maxWriteThroughputBps': maxWriteThroughputBps!,
+      };
+}
+
+/// PromoteReplicaRequest promotes a Filestore standby instance (replica).
+typedef PromoteReplicaRequest = $Empty;
+
 /// Replica configuration for the instance.
 class ReplicaConfig {
   /// The timestamp of the latest replication snapshot taken on the active
@@ -2048,9 +2359,10 @@ class ReplicaConfig {
 
 /// Replication specifications.
 class Replication {
-  /// Replicas configuration on the instance.
+  /// Replication configuration for the replica instance associated with this
+  /// instance.
   ///
-  /// For now, only a single replica config is supported.
+  /// Only a single replica is supported.
   ///
   /// Optional.
   core.List<ReplicaConfig>? replicas;
@@ -2060,10 +2372,10 @@ class Replication {
   /// Optional.
   /// Possible string values are:
   /// - "ROLE_UNSPECIFIED" : Role not set.
-  /// - "ACTIVE" : The instance is a Active replication member, functions as the
-  /// replication source instance.
-  /// - "STANDBY" : The instance is a Standby replication member, functions as
-  /// the replication destination instance.
+  /// - "ACTIVE" : The instance is the `ACTIVE` replication member, functions as
+  /// the replication source instance.
+  /// - "STANDBY" : The instance is the `STANDBY` replication member, functions
+  /// as the replication destination instance.
   core.String? role;
 
   Replication({
@@ -2176,6 +2488,14 @@ class Snapshot {
   /// - "DELETING" : Snapshot is being deleted.
   core.String? state;
 
+  /// Input only.
+  ///
+  /// Immutable. Tag key-value pairs are bound to this resource. For example:
+  /// "123/environment": "production", "123/costCenter": "marketing"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   Snapshot({
     this.createTime,
     this.description,
@@ -2183,6 +2503,7 @@ class Snapshot {
     this.labels,
     this.name,
     this.state,
+    this.tags,
   });
 
   Snapshot.fromJson(core.Map json_)
@@ -2199,6 +2520,12 @@ class Snapshot {
           ),
           name: json_['name'] as core.String?,
           state: json_['state'] as core.String?,
+          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2209,6 +2536,7 @@ class Snapshot {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
+        if (tags != null) 'tags': tags!,
       };
 }
 
@@ -2219,4 +2547,4 @@ class Snapshot {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;

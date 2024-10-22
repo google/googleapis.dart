@@ -57,6 +57,11 @@ class PlacesApi {
       'https://www.googleapis.com/auth/maps-platform.places.details';
 
   /// Private Service:
+  /// https://www.googleapis.com/auth/maps-platform.places.getphotomedia
+  static const mapsPlatformPlacesGetphotomediaScope =
+      'https://www.googleapis.com/auth/maps-platform.places.getphotomedia';
+
+  /// Private Service:
   /// https://www.googleapis.com/auth/maps-platform.places.nearbysearch
   static const mapsPlatformPlacesNearbysearchScope =
       'https://www.googleapis.com/auth/maps-platform.places.nearbysearch';
@@ -403,6 +408,185 @@ class GoogleGeoTypeViewport {
   core.Map<core.String, core.dynamic> toJson() => {
         if (high != null) 'high': high!,
         if (low != null) 'low': low!,
+      };
+}
+
+/// A relational description of a location.
+///
+/// Includes a ranked set of nearby landmarks and precise containing areas and
+/// their relationship to the target location.
+class GoogleMapsPlacesV1AddressDescriptor {
+  /// A ranked list of containing or adjacent areas.
+  ///
+  /// The most recognizable and precise areas are ranked first.
+  core.List<GoogleMapsPlacesV1AddressDescriptorArea>? areas;
+
+  /// A ranked list of nearby landmarks.
+  ///
+  /// The most recognizable and nearby landmarks are ranked first.
+  core.List<GoogleMapsPlacesV1AddressDescriptorLandmark>? landmarks;
+
+  GoogleMapsPlacesV1AddressDescriptor({
+    this.areas,
+    this.landmarks,
+  });
+
+  GoogleMapsPlacesV1AddressDescriptor.fromJson(core.Map json_)
+      : this(
+          areas: (json_['areas'] as core.List?)
+              ?.map((value) => GoogleMapsPlacesV1AddressDescriptorArea.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          landmarks: (json_['landmarks'] as core.List?)
+              ?.map((value) =>
+                  GoogleMapsPlacesV1AddressDescriptorLandmark.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (areas != null) 'areas': areas!,
+        if (landmarks != null) 'landmarks': landmarks!,
+      };
+}
+
+/// Area information and the area's relationship with the target location.
+///
+/// Areas includes precise sublocality, neighborhoods, and large compounds that
+/// are useful for describing a location.
+class GoogleMapsPlacesV1AddressDescriptorArea {
+  /// Defines the spatial relationship between the target location and the area.
+  /// Possible string values are:
+  /// - "CONTAINMENT_UNSPECIFIED" : The containment is unspecified.
+  /// - "WITHIN" : The target location is within the area region, close to the
+  /// center.
+  /// - "OUTSKIRTS" : The target location is within the area region, close to
+  /// the edge.
+  /// - "NEAR" : The target location is outside the area region, but close by.
+  core.String? containment;
+
+  /// The area's display name.
+  GoogleTypeLocalizedText? displayName;
+
+  /// The area's resource name.
+  core.String? name;
+
+  /// The area's place id.
+  core.String? placeId;
+
+  GoogleMapsPlacesV1AddressDescriptorArea({
+    this.containment,
+    this.displayName,
+    this.name,
+    this.placeId,
+  });
+
+  GoogleMapsPlacesV1AddressDescriptorArea.fromJson(core.Map json_)
+      : this(
+          containment: json_['containment'] as core.String?,
+          displayName: json_.containsKey('displayName')
+              ? GoogleTypeLocalizedText.fromJson(
+                  json_['displayName'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_['name'] as core.String?,
+          placeId: json_['placeId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (containment != null) 'containment': containment!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (placeId != null) 'placeId': placeId!,
+      };
+}
+
+/// Basic landmark information and the landmark's relationship with the target
+/// location.
+///
+/// Landmarks are prominent places that can be used to describe a location.
+class GoogleMapsPlacesV1AddressDescriptorLandmark {
+  /// The landmark's display name.
+  GoogleTypeLocalizedText? displayName;
+
+  /// The landmark's resource name.
+  core.String? name;
+
+  /// The landmark's place id.
+  core.String? placeId;
+
+  /// Defines the spatial relationship between the target location and the
+  /// landmark.
+  /// Possible string values are:
+  /// - "NEAR" : This is the default relationship when nothing more specific
+  /// below applies.
+  /// - "WITHIN" : The landmark has a spatial geometry and the target is within
+  /// its bounds.
+  /// - "BESIDE" : The target is directly adjacent to the landmark.
+  /// - "ACROSS_THE_ROAD" : The target is directly opposite the landmark on the
+  /// other side of the road.
+  /// - "DOWN_THE_ROAD" : On the same route as the landmark but not besides or
+  /// across.
+  /// - "AROUND_THE_CORNER" : Not on the same route as the landmark but a single
+  /// turn away.
+  /// - "BEHIND" : Close to the landmark's structure but further away from its
+  /// street entrances.
+  core.String? spatialRelationship;
+
+  /// The straight line distance in meters between the target location and the
+  /// landmark.
+  core.double? straightLineDistanceMeters;
+
+  /// The travel distance in meters along the road network if known.
+  ///
+  /// This does not take into account the mode of transportation
+  /// (walking/driving).
+  core.double? travelDistanceMeters;
+
+  /// A set of type tags for this landmark.
+  ///
+  /// For a complete list of possible values, see
+  /// https://developers.google.com/maps/documentation/places/web-service/place-types.
+  core.List<core.String>? types;
+
+  GoogleMapsPlacesV1AddressDescriptorLandmark({
+    this.displayName,
+    this.name,
+    this.placeId,
+    this.spatialRelationship,
+    this.straightLineDistanceMeters,
+    this.travelDistanceMeters,
+    this.types,
+  });
+
+  GoogleMapsPlacesV1AddressDescriptorLandmark.fromJson(core.Map json_)
+      : this(
+          displayName: json_.containsKey('displayName')
+              ? GoogleTypeLocalizedText.fromJson(
+                  json_['displayName'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_['name'] as core.String?,
+          placeId: json_['placeId'] as core.String?,
+          spatialRelationship: json_['spatialRelationship'] as core.String?,
+          straightLineDistanceMeters:
+              (json_['straightLineDistanceMeters'] as core.num?)?.toDouble(),
+          travelDistanceMeters:
+              (json_['travelDistanceMeters'] as core.num?)?.toDouble(),
+          types: (json_['types'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (placeId != null) 'placeId': placeId!,
+        if (spatialRelationship != null)
+          'spatialRelationship': spatialRelationship!,
+        if (straightLineDistanceMeters != null)
+          'straightLineDistanceMeters': straightLineDistanceMeters!,
+        if (travelDistanceMeters != null)
+          'travelDistanceMeters': travelDistanceMeters!,
+        if (types != null) 'types': types!,
       };
 }
 
@@ -1602,6 +1786,14 @@ class GoogleMapsPlacesV1Place {
   /// change. A particular component may be missing in a later response.
   core.List<GoogleMapsPlacesV1PlaceAddressComponent>? addressComponents;
 
+  /// The address descriptor of the place.
+  ///
+  /// Address descriptors include additional information that help describe a
+  /// location using landmarks and areas. See address descriptor regional
+  /// coverage in
+  /// https://developers.google.com/maps/documentation/geocoding/address-descriptors/coverage.
+  GoogleMapsPlacesV1AddressDescriptor? addressDescriptor;
+
   /// The place's address in adr microformat: http://microformats.org/wiki/adr.
   core.String? adrFormatAddress;
 
@@ -1859,6 +2051,9 @@ class GoogleMapsPlacesV1Place {
   core.int? utcOffsetMinutes;
 
   /// A viewport suitable for displaying the place on an average-sized map.
+  ///
+  /// This viewport should not be used as the physical boundary or the service
+  /// area of the business.
   GoogleGeoTypeViewport? viewport;
 
   /// The authoritative website for this place, e.g. a business' homepage.
@@ -1871,6 +2066,7 @@ class GoogleMapsPlacesV1Place {
   GoogleMapsPlacesV1Place({
     this.accessibilityOptions,
     this.addressComponents,
+    this.addressDescriptor,
     this.adrFormatAddress,
     this.allowsDogs,
     this.areaSummary,
@@ -1945,6 +2141,11 @@ class GoogleMapsPlacesV1Place {
               ?.map((value) => GoogleMapsPlacesV1PlaceAddressComponent.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          addressDescriptor: json_.containsKey('addressDescriptor')
+              ? GoogleMapsPlacesV1AddressDescriptor.fromJson(
+                  json_['addressDescriptor']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           adrFormatAddress: json_['adrFormatAddress'] as core.String?,
           allowsDogs: json_['allowsDogs'] as core.bool?,
           areaSummary: json_.containsKey('areaSummary')
@@ -2083,6 +2284,7 @@ class GoogleMapsPlacesV1Place {
         if (accessibilityOptions != null)
           'accessibilityOptions': accessibilityOptions!,
         if (addressComponents != null) 'addressComponents': addressComponents!,
+        if (addressDescriptor != null) 'addressDescriptor': addressDescriptor!,
         if (adrFormatAddress != null) 'adrFormatAddress': adrFormatAddress!,
         if (allowsDogs != null) 'allowsDogs': allowsDogs!,
         if (areaSummary != null) 'areaSummary': areaSummary!,
@@ -2348,8 +2550,12 @@ class GoogleMapsPlacesV1PlaceGenerativeSummary {
 
 /// Information about business hour of the place.
 class GoogleMapsPlacesV1PlaceOpeningHours {
-  /// Is this place open right now? Always present unless we lack time-of-day or
-  /// timezone data for these opening hours.
+  /// Whether the opening hours period is currently active.
+  ///
+  /// For regular opening hours and current opening hours, this field means
+  /// whether the place is open. For secondary opening hours and current
+  /// secondary opening hours, this field means whether the secondary hours of
+  /// this place is active.
   core.bool? openNow;
 
   /// The periods that this place is open during the week.
@@ -2675,6 +2881,39 @@ class GoogleMapsPlacesV1PlaceSubDestination {
       };
 }
 
+/// A route polyline.
+///
+/// Only supports an
+/// [encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm),
+/// which can be passed as a string and includes compression with minimal
+/// lossiness. This is the Routes API default output.
+class GoogleMapsPlacesV1Polyline {
+  /// An
+  /// [encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm),
+  /// as returned by the
+  /// [Routes API by default](https://developers.google.com/maps/documentation/routes/reference/rest/v2/TopLevel/computeRoutes#polylineencoding).
+  ///
+  /// See the
+  /// [encoder](https://developers.google.com/maps/documentation/utilities/polylineutility)
+  /// and
+  /// [decoder](https://developers.google.com/maps/documentation/routes/polylinedecoder)
+  /// tools.
+  core.String? encodedPolyline;
+
+  GoogleMapsPlacesV1Polyline({
+    this.encodedPolyline,
+  });
+
+  GoogleMapsPlacesV1Polyline.fromJson(core.Map json_)
+      : this(
+          encodedPolyline: json_['encodedPolyline'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (encodedPolyline != null) 'encodedPolyline': encodedPolyline!,
+      };
+}
+
 /// Experimental: See
 /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
 /// for more details.
@@ -2778,6 +3017,217 @@ class GoogleMapsPlacesV1Review {
         if (relativePublishTimeDescription != null)
           'relativePublishTimeDescription': relativePublishTimeDescription!,
         if (text != null) 'text': text!,
+      };
+}
+
+/// Encapsulates a set of optional conditions to satisfy when calculating the
+/// routes.
+class GoogleMapsPlacesV1RouteModifiers {
+  /// When set to true, avoids ferries where reasonable, giving preference to
+  /// routes not containing ferries.
+  ///
+  /// Applies only to the `DRIVE` and `TWO_WHEELER` `TravelMode`.
+  ///
+  /// Optional.
+  core.bool? avoidFerries;
+
+  /// When set to true, avoids highways where reasonable, giving preference to
+  /// routes not containing highways.
+  ///
+  /// Applies only to the `DRIVE` and `TWO_WHEELER` `TravelMode`.
+  ///
+  /// Optional.
+  core.bool? avoidHighways;
+
+  /// When set to true, avoids navigating indoors where reasonable, giving
+  /// preference to routes not containing indoor navigation.
+  ///
+  /// Applies only to the `WALK` `TravelMode`.
+  ///
+  /// Optional.
+  core.bool? avoidIndoor;
+
+  /// When set to true, avoids toll roads where reasonable, giving preference to
+  /// routes not containing toll roads.
+  ///
+  /// Applies only to the `DRIVE` and `TWO_WHEELER` `TravelMode`.
+  ///
+  /// Optional.
+  core.bool? avoidTolls;
+
+  GoogleMapsPlacesV1RouteModifiers({
+    this.avoidFerries,
+    this.avoidHighways,
+    this.avoidIndoor,
+    this.avoidTolls,
+  });
+
+  GoogleMapsPlacesV1RouteModifiers.fromJson(core.Map json_)
+      : this(
+          avoidFerries: json_['avoidFerries'] as core.bool?,
+          avoidHighways: json_['avoidHighways'] as core.bool?,
+          avoidIndoor: json_['avoidIndoor'] as core.bool?,
+          avoidTolls: json_['avoidTolls'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (avoidFerries != null) 'avoidFerries': avoidFerries!,
+        if (avoidHighways != null) 'avoidHighways': avoidHighways!,
+        if (avoidIndoor != null) 'avoidIndoor': avoidIndoor!,
+        if (avoidTolls != null) 'avoidTolls': avoidTolls!,
+      };
+}
+
+/// Parameters to configure the routing calculations to the places in the
+/// response, both along a route (where result ranking will be influenced) and
+/// for calculating travel times on results.
+class GoogleMapsPlacesV1RoutingParameters {
+  /// An explicit routing origin that overrides the origin defined in the
+  /// polyline.
+  ///
+  /// By default, the polyline origin is used.
+  ///
+  /// Optional.
+  GoogleTypeLatLng? origin;
+
+  /// The route modifiers.
+  ///
+  /// Optional.
+  GoogleMapsPlacesV1RouteModifiers? routeModifiers;
+
+  /// Specifies how to compute the routing summaries.
+  ///
+  /// The server attempts to use the selected routing preference to compute the
+  /// route. The traffic aware routing preference is only available for the
+  /// `DRIVE` or `TWO_WHEELER` `travelMode`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ROUTING_PREFERENCE_UNSPECIFIED" : No routing preference specified.
+  /// Default to `TRAFFIC_UNAWARE`.
+  /// - "TRAFFIC_UNAWARE" : Computes routes without taking live traffic
+  /// conditions into consideration. Suitable when traffic conditions don't
+  /// matter or are not applicable. Using this value produces the lowest
+  /// latency. Note: For `TravelMode` `DRIVE` and `TWO_WHEELER`, the route and
+  /// duration chosen are based on road network and average time-independent
+  /// traffic conditions, not current road conditions. Consequently, routes may
+  /// include roads that are temporarily closed. Results for a given request may
+  /// vary over time due to changes in the road network, updated average traffic
+  /// conditions, and the distributed nature of the service. Results may also
+  /// vary between nearly-equivalent routes at any time or frequency.
+  /// - "TRAFFIC_AWARE" : Calculates routes taking live traffic conditions into
+  /// consideration. In contrast to `TRAFFIC_AWARE_OPTIMAL`, some optimizations
+  /// are applied to significantly reduce latency.
+  /// - "TRAFFIC_AWARE_OPTIMAL" : Calculates the routes taking live traffic
+  /// conditions into consideration, without applying most performance
+  /// optimizations. Using this value produces the highest latency.
+  core.String? routingPreference;
+
+  /// The travel mode.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TRAVEL_MODE_UNSPECIFIED" : No travel mode specified. Defaults to
+  /// `DRIVE`.
+  /// - "DRIVE" : Travel by passenger car.
+  /// - "BICYCLE" : Travel by bicycle. Not supported with
+  /// `search_along_route_parameters`.
+  /// - "WALK" : Travel by walking. Not supported with
+  /// `search_along_route_parameters`.
+  /// - "TWO_WHEELER" : Motorized two wheeled vehicles of all kinds such as
+  /// scooters and motorcycles. Note that this is distinct from the `BICYCLE`
+  /// travel mode which covers human-powered transport. Not supported with
+  /// `search_along_route_parameters`. Only supported in those countries listed
+  /// at \[Countries and regions supported for two-wheeled
+  /// vehicles\](https://developers.google.com/maps/documentation/routes/coverage-two-wheeled).
+  core.String? travelMode;
+
+  GoogleMapsPlacesV1RoutingParameters({
+    this.origin,
+    this.routeModifiers,
+    this.routingPreference,
+    this.travelMode,
+  });
+
+  GoogleMapsPlacesV1RoutingParameters.fromJson(core.Map json_)
+      : this(
+          origin: json_.containsKey('origin')
+              ? GoogleTypeLatLng.fromJson(
+                  json_['origin'] as core.Map<core.String, core.dynamic>)
+              : null,
+          routeModifiers: json_.containsKey('routeModifiers')
+              ? GoogleMapsPlacesV1RouteModifiers.fromJson(
+                  json_['routeModifiers']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          routingPreference: json_['routingPreference'] as core.String?,
+          travelMode: json_['travelMode'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (origin != null) 'origin': origin!,
+        if (routeModifiers != null) 'routeModifiers': routeModifiers!,
+        if (routingPreference != null) 'routingPreference': routingPreference!,
+        if (travelMode != null) 'travelMode': travelMode!,
+      };
+}
+
+/// The duration and distance from the routing origin to a place in the
+/// response, and a second leg from that place to the destination, if requested.
+///
+/// **Note:** Adding `routingSummaries` in the field mask without also including
+/// either the `routingParameters.origin` parameter or the
+/// `searchAlongRouteParameters.polyline.encodedPolyline` parameter in the
+/// request causes an error.
+class GoogleMapsPlacesV1RoutingSummary {
+  /// The legs of the trip.
+  ///
+  /// When you calculate travel duration and distance from a set origin, `legs`
+  /// contains a single leg containing the duration and distance from the origin
+  /// to the destination. When you do a search along route, `legs` contains two
+  /// legs: one from the origin to place, and one from the place to the
+  /// destination.
+  core.List<GoogleMapsPlacesV1RoutingSummaryLeg>? legs;
+
+  GoogleMapsPlacesV1RoutingSummary({
+    this.legs,
+  });
+
+  GoogleMapsPlacesV1RoutingSummary.fromJson(core.Map json_)
+      : this(
+          legs: (json_['legs'] as core.List?)
+              ?.map((value) => GoogleMapsPlacesV1RoutingSummaryLeg.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (legs != null) 'legs': legs!,
+      };
+}
+
+/// A leg is a single portion of a journey from one location to another.
+class GoogleMapsPlacesV1RoutingSummaryLeg {
+  /// The distance of this leg of the trip.
+  core.int? distanceMeters;
+
+  /// The time it takes to complete this leg of the trip.
+  core.String? duration;
+
+  GoogleMapsPlacesV1RoutingSummaryLeg({
+    this.distanceMeters,
+    this.duration,
+  });
+
+  GoogleMapsPlacesV1RoutingSummaryLeg.fromJson(core.Map json_)
+      : this(
+          distanceMeters: json_['distanceMeters'] as core.int?,
+          duration: json_['duration'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (distanceMeters != null) 'distanceMeters': distanceMeters!,
+        if (duration != null) 'duration': duration!,
       };
 }
 
@@ -2886,6 +3336,11 @@ class GoogleMapsPlacesV1SearchNearbyRequest {
   /// Note that 3-digit region codes are not currently supported.
   core.String? regionCode;
 
+  /// Parameters that affect the routing to the search results.
+  ///
+  /// Optional.
+  GoogleMapsPlacesV1RoutingParameters? routingParameters;
+
   GoogleMapsPlacesV1SearchNearbyRequest({
     this.excludedPrimaryTypes,
     this.excludedTypes,
@@ -2896,6 +3351,7 @@ class GoogleMapsPlacesV1SearchNearbyRequest {
     this.maxResultCount,
     this.rankPreference,
     this.regionCode,
+    this.routingParameters,
   });
 
   GoogleMapsPlacesV1SearchNearbyRequest.fromJson(core.Map json_)
@@ -2921,6 +3377,11 @@ class GoogleMapsPlacesV1SearchNearbyRequest {
           maxResultCount: json_['maxResultCount'] as core.int?,
           rankPreference: json_['rankPreference'] as core.String?,
           regionCode: json_['regionCode'] as core.String?,
+          routingParameters: json_.containsKey('routingParameters')
+              ? GoogleMapsPlacesV1RoutingParameters.fromJson(
+                  json_['routingParameters']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2936,6 +3397,7 @@ class GoogleMapsPlacesV1SearchNearbyRequest {
         if (maxResultCount != null) 'maxResultCount': maxResultCount!,
         if (rankPreference != null) 'rankPreference': rankPreference!,
         if (regionCode != null) 'regionCode': regionCode!,
+        if (routingParameters != null) 'routingParameters': routingParameters!,
       };
 }
 
@@ -2968,8 +3430,17 @@ class GoogleMapsPlacesV1SearchNearbyResponse {
   /// of places and specific location restriction.
   core.List<GoogleMapsPlacesV1Place>? places;
 
+  /// A list of routing summaries where each entry associates to the
+  /// corresponding place in the same index in the `places` field.
+  ///
+  /// If the routing summary is not available for one of the places, it will
+  /// contain an empty entry. This list should have as many entries as the list
+  /// of places if requested.
+  core.List<GoogleMapsPlacesV1RoutingSummary>? routingSummaries;
+
   GoogleMapsPlacesV1SearchNearbyResponse({
     this.places,
+    this.routingSummaries,
   });
 
   GoogleMapsPlacesV1SearchNearbyResponse.fromJson(core.Map json_)
@@ -2978,10 +3449,15 @@ class GoogleMapsPlacesV1SearchNearbyResponse {
               ?.map((value) => GoogleMapsPlacesV1Place.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          routingSummaries: (json_['routingSummaries'] as core.List?)
+              ?.map((value) => GoogleMapsPlacesV1RoutingSummary.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (places != null) 'places': places!,
+        if (routingSummaries != null) 'routingSummaries': routingSummaries!,
       };
 }
 
@@ -3099,6 +3575,17 @@ class GoogleMapsPlacesV1SearchTextRequest {
   /// Note that 3-digit region codes are not currently supported.
   core.String? regionCode;
 
+  /// Additional parameters for routing to results.
+  ///
+  /// Optional.
+  GoogleMapsPlacesV1RoutingParameters? routingParameters;
+
+  /// Additional parameters proto for searching along a route.
+  ///
+  /// Optional.
+  GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters?
+      searchAlongRouteParameters;
+
   /// Used to set strict type filtering for included_type.
   ///
   /// If set to true, only results of the same type will be returned. Default to
@@ -3124,6 +3611,8 @@ class GoogleMapsPlacesV1SearchTextRequest {
     this.priceLevels,
     this.rankPreference,
     this.regionCode,
+    this.routingParameters,
+    this.searchAlongRouteParameters,
     this.strictTypeFiltering,
     this.textQuery,
   });
@@ -3155,6 +3644,17 @@ class GoogleMapsPlacesV1SearchTextRequest {
               .toList(),
           rankPreference: json_['rankPreference'] as core.String?,
           regionCode: json_['regionCode'] as core.String?,
+          routingParameters: json_.containsKey('routingParameters')
+              ? GoogleMapsPlacesV1RoutingParameters.fromJson(
+                  json_['routingParameters']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          searchAlongRouteParameters: json_
+                  .containsKey('searchAlongRouteParameters')
+              ? GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters
+                  .fromJson(json_['searchAlongRouteParameters']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           strictTypeFiltering: json_['strictTypeFiltering'] as core.bool?,
           textQuery: json_['textQuery'] as core.String?,
         );
@@ -3174,6 +3674,9 @@ class GoogleMapsPlacesV1SearchTextRequest {
         if (priceLevels != null) 'priceLevels': priceLevels!,
         if (rankPreference != null) 'rankPreference': rankPreference!,
         if (regionCode != null) 'regionCode': regionCode!,
+        if (routingParameters != null) 'routingParameters': routingParameters!,
+        if (searchAlongRouteParameters != null)
+          'searchAlongRouteParameters': searchAlongRouteParameters!,
         if (strictTypeFiltering != null)
           'strictTypeFiltering': strictTypeFiltering!,
         if (textQuery != null) 'textQuery': textQuery!,
@@ -3290,6 +3793,44 @@ class GoogleMapsPlacesV1SearchTextRequestLocationRestriction {
       };
 }
 
+/// Specifies a precalculated polyline from the
+/// [Routes API](https://developers.google.com/maps/documentation/routes)
+/// defining the route to search.
+///
+/// Searching along a route is similar to using the `locationBias` or
+/// `locationRestriction` request option to bias the search results. However,
+/// while the `locationBias` and `locationRestriction` options let you specify a
+/// region to bias the search results, this option lets you bias the results
+/// along a trip route. Results are not guaranteed to be along the route
+/// provided, but rather are ranked within the search area defined by the
+/// polyline and, optionally, by the `locationBias` or `locationRestriction`
+/// based on minimal detour times from origin to destination. The results might
+/// be along an alternate route, especially if the provided polyline does not
+/// define an optimal route from origin to destination.
+class GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters {
+  /// The route polyline.
+  ///
+  /// Required.
+  GoogleMapsPlacesV1Polyline? polyline;
+
+  GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters({
+    this.polyline,
+  });
+
+  GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters.fromJson(
+      core.Map json_)
+      : this(
+          polyline: json_.containsKey('polyline')
+              ? GoogleMapsPlacesV1Polyline.fromJson(
+                  json_['polyline'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (polyline != null) 'polyline': polyline!,
+      };
+}
+
 /// Response proto for SearchText.
 class GoogleMapsPlacesV1SearchTextResponse {
   /// Experimental: See
@@ -3301,7 +3842,7 @@ class GoogleMapsPlacesV1SearchTextResponse {
   /// that are relevant to the `text_query` in the request are preferred. If the
   /// contextual content is not available for one of the places, it will return
   /// non-contextual content. It will be empty only when the content is
-  /// unavailable for this place. This list should have as many entries as the
+  /// unavailable for this place. This list will have as many entries as the
   /// list of places if requested.
   core.List<GoogleMapsPlacesV1ContextualContent>? contextualContents;
 
@@ -3313,10 +3854,19 @@ class GoogleMapsPlacesV1SearchTextResponse {
   /// A list of places that meet the user's text search criteria.
   core.List<GoogleMapsPlacesV1Place>? places;
 
+  /// A list of routing summaries where each entry associates to the
+  /// corresponding place in the same index in the `places` field.
+  ///
+  /// If the routing summary is not available for one of the places, it will
+  /// contain an empty entry. This list will have as many entries as the list of
+  /// places if requested.
+  core.List<GoogleMapsPlacesV1RoutingSummary>? routingSummaries;
+
   GoogleMapsPlacesV1SearchTextResponse({
     this.contextualContents,
     this.nextPageToken,
     this.places,
+    this.routingSummaries,
   });
 
   GoogleMapsPlacesV1SearchTextResponse.fromJson(core.Map json_)
@@ -3330,6 +3880,10 @@ class GoogleMapsPlacesV1SearchTextResponse {
               ?.map((value) => GoogleMapsPlacesV1Place.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          routingSummaries: (json_['routingSummaries'] as core.List?)
+              ?.map((value) => GoogleMapsPlacesV1RoutingSummary.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3337,6 +3891,7 @@ class GoogleMapsPlacesV1SearchTextResponse {
           'contextualContents': contextualContents!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (places != null) 'places': places!,
+        if (routingSummaries != null) 'routingSummaries': routingSummaries!,
       };
 }
 

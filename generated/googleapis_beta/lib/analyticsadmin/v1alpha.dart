@@ -258,7 +258,7 @@ class AccountsResource {
   ///
   /// [name] - Required. The name of the settings to lookup. Format:
   /// accounts/{account}/dataSharingSettings Example:
-  /// "accounts/1000/dataSharingSettings"
+  /// `accounts/1000/dataSharingSettings`
   /// Value must have pattern `^accounts/\[^/\]+/dataSharingSettings$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -293,7 +293,7 @@ class AccountsResource {
 
   /// Returns all accounts accessible by the caller.
   ///
-  /// Note that these accounts might not currently have GA4 properties.
+  /// Note that these accounts might not currently have GA properties.
   /// Soft-deleted (ie: "trashed") accounts are excluded by default. Returns an
   /// empty list if no relevant accounts are found.
   ///
@@ -442,13 +442,16 @@ class AccountsResource {
   /// Reports can be requested for a property. Reports may be requested for any
   /// property, but dimensions that aren't related to quota can only be
   /// requested on Google Analytics 360 properties. This method is only
-  /// available to Administrators. These data access records include GA4 UI
-  /// Reporting, GA4 UI Explorations, GA4 Data API, and other products like
+  /// available to Administrators. These data access records include GA UI
+  /// Reporting, GA UI Explorations, GA Data API, and other products like
   /// Firebase & Admob that can retrieve data from Google Analytics through a
   /// linkage. These records don't include property configuration changes like
   /// adding a stream or changing a property's time zone. For configuration
   /// change history, see
   /// [searchChangeHistoryEvents](https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/accounts/searchChangeHistoryEvents).
+  /// To give your feedback on this API, complete the
+  /// [Google Analytics Access Reports feedback](https://docs.google.com/forms/d/e/1FAIpQLSdmEBUrMzAEdiEKk5TV5dEHvDUZDRlgWYdQdAeSdtR4hVjEhw/viewform)
+  /// form.
   ///
   /// [request] - The metadata request object.
   ///
@@ -458,9 +461,9 @@ class AccountsResource {
   /// level or account level. If requested at the account level, Data Access
   /// Reports include all access for all properties under that account. To
   /// request at the property level, entity should be for example
-  /// 'properties/123' if "123" is your GA4 property ID. To request at the
-  /// account level, entity should be for example 'accounts/1234' if "1234" is
-  /// your GA4 Account ID.
+  /// 'properties/123' if "123" is your Google Analytics property ID. To request
+  /// at the account level, entity should be for example 'accounts/1234' if
+  /// "1234" is your Google Analytics Account ID.
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -505,7 +508,7 @@ class AccountsResource {
   /// Request parameters:
   ///
   /// [account] - Required. The account resource for which to return change
-  /// history resources. Format: accounts/{account} Example: "accounts/100"
+  /// history resources. Format: accounts/{account} Example: `accounts/100`
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1057,7 +1060,8 @@ class PropertiesResource {
         .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Creates an "GA4" property with the specified location and attributes.
+  /// Creates a Google Analytics property with the specified location and
+  /// attributes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1175,45 +1179,6 @@ class PropertiesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Create a subproperty and a subproperty event filter that applies to the
-  /// created subproperty.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleAnalyticsAdminV1alphaCreateSubpropertyResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleAnalyticsAdminV1alphaCreateSubpropertyResponse>
-      createSubproperty(
-    GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest request, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    const url_ = 'v1alpha/properties:createSubproperty';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleAnalyticsAdminV1alphaCreateSubpropertyResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Marks target Property as soft-deleted (ie: "trashed") and returns it.
   ///
   /// This API does not have a method to restore soft-deleted properties.
@@ -1221,7 +1186,7 @@ class PropertiesResource {
   /// are not restored before the expiration time, the Property and all child
   /// resources (eg: GoogleAdsLinks, Streams, AccessBindings) will be
   /// permanently purged. https://support.google.com/analytics/answer/6154772
-  /// Returns an error if the target is not found, or is not a GA4 Property.
+  /// Returns an error if the target is not found.
   ///
   /// Request parameters:
   ///
@@ -1384,7 +1349,7 @@ class PropertiesResource {
         .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lookup for a single "GA4" Property.
+  /// Lookup for a single GA Property.
   ///
   /// Request parameters:
   ///
@@ -1538,10 +1503,9 @@ class PropertiesResource {
 
   /// Returns child Properties under the specified parent Account.
   ///
-  /// Only "GA4" properties will be returned. Properties will be excluded if the
-  /// caller does not have access. Soft-deleted (ie: "trashed") properties are
-  /// excluded by default. Returns an empty list if no relevant properties are
-  /// found.
+  /// Properties will be excluded if the caller does not have access.
+  /// Soft-deleted (ie: "trashed") properties are excluded by default. Returns
+  /// an empty list if no relevant properties are found.
   ///
   /// Request parameters:
   ///
@@ -1698,6 +1662,46 @@ class PropertiesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Create a subproperty and a subproperty event filter that applies to the
+  /// created subproperty.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse>
+      provisionSubproperty(
+    GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1alpha/properties:provisionSubproperty';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns a customized report of data access records.
   ///
   /// The report provides records of each time a user reads Google Analytics
@@ -1705,13 +1709,16 @@ class PropertiesResource {
   /// Reports can be requested for a property. Reports may be requested for any
   /// property, but dimensions that aren't related to quota can only be
   /// requested on Google Analytics 360 properties. This method is only
-  /// available to Administrators. These data access records include GA4 UI
-  /// Reporting, GA4 UI Explorations, GA4 Data API, and other products like
+  /// available to Administrators. These data access records include GA UI
+  /// Reporting, GA UI Explorations, GA Data API, and other products like
   /// Firebase & Admob that can retrieve data from Google Analytics through a
   /// linkage. These records don't include property configuration changes like
   /// adding a stream or changing a property's time zone. For configuration
   /// change history, see
   /// [searchChangeHistoryEvents](https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/accounts/searchChangeHistoryEvents).
+  /// To give your feedback on this API, complete the
+  /// [Google Analytics Access Reports feedback](https://docs.google.com/forms/d/e/1FAIpQLSdmEBUrMzAEdiEKk5TV5dEHvDUZDRlgWYdQdAeSdtR4hVjEhw/viewform)
+  /// form.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1721,9 +1728,9 @@ class PropertiesResource {
   /// level or account level. If requested at the account level, Data Access
   /// Reports include all access for all properties under that account. To
   /// request at the property level, entity should be for example
-  /// 'properties/123' if "123" is your GA4 property ID. To request at the
-  /// account level, entity should be for example 'accounts/1234' if "1234" is
-  /// your GA4 Account ID.
+  /// 'properties/123' if "123" is your Google Analytics property ID. To request
+  /// at the account level, entity should be for example 'accounts/1234' if
+  /// "1234" is your Google Analytics Account ID.
   /// Value must have pattern `^properties/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2784,6 +2791,84 @@ class PropertiesBigQueryLinksResource {
   PropertiesBigQueryLinksResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates a BigQueryLink.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Example format: properties/1234
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaBigQueryLink].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaBigQueryLink> create(
+    GoogleAnalyticsAdminV1alphaBigQueryLink request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1alpha/' + core.Uri.encodeFull('$parent') + '/bigQueryLinks';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1alphaBigQueryLink.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a BigQueryLink on a property.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The BigQueryLink to delete. Example format:
+  /// properties/1234/bigQueryLinks/5678
+  /// Value must have pattern `^properties/\[^/\]+/bigQueryLinks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lookup for a single BigQuery Link.
   ///
   /// Request parameters:
@@ -2870,6 +2955,56 @@ class PropertiesBigQueryLinksResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a BigQueryLink.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name of this BigQuery link. Format:
+  /// 'properties/{property_id}/bigQueryLinks/{bigquery_link_id}' Format:
+  /// 'properties/1234/bigQueryLinks/abc567'
+  /// Value must have pattern `^properties/\[^/\]+/bigQueryLinks/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated. Field names
+  /// must be in snake case (e.g., "field_to_update"). Omitted fields will not
+  /// be updated. To replace the entire entity, use one path with the string "*"
+  /// to match all fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaBigQueryLink].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaBigQueryLink> patch(
+    GoogleAnalyticsAdminV1alphaBigQueryLink request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1alphaBigQueryLink.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3341,6 +3476,8 @@ class PropertiesConversionEventsResource {
   PropertiesConversionEventsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Deprecated: Use `CreateKeyEvent` instead.
+  ///
   /// Creates a conversion event with the specified attributes.
   ///
   /// [request] - The metadata request object.
@@ -3387,6 +3524,8 @@ class PropertiesConversionEventsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deprecated: Use `DeleteKeyEvent` instead.
+  ///
   /// Deletes a conversion event in a property.
   ///
   /// Request parameters:
@@ -3428,6 +3567,8 @@ class PropertiesConversionEventsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deprecated: Use `GetKeyEvent` instead.
+  ///
   /// Retrieve a single conversion event.
   ///
   /// Request parameters:
@@ -3469,8 +3610,9 @@ class PropertiesConversionEventsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns a list of conversion events in the specified parent property.
+  /// Deprecated: Use `ListKeyEvents` instead.
   ///
+  /// Returns a list of conversion events in the specified parent property.
   /// Returns an empty list if no conversion events are found.
   ///
   /// Request parameters:
@@ -3526,6 +3668,8 @@ class PropertiesConversionEventsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deprecated: Use `UpdateKeyEvent` instead.
+  ///
   /// Updates a conversion event with the specified attributes.
   ///
   /// [request] - The metadata request object.
@@ -4255,7 +4399,7 @@ class PropertiesDataStreamsResource {
   /// [name] - Required. The name of the site tag to lookup. Note that site tags
   /// are singletons and do not have unique IDs. Format:
   /// properties/{property_id}/dataStreams/{stream_id}/globalSiteTag Example:
-  /// "properties/123/dataStreams/456/globalSiteTag"
+  /// `properties/123/dataStreams/456/globalSiteTag`
   /// Value must have pattern
   /// `^properties/\[^/\]+/dataStreams/\[^/\]+/globalSiteTag$`.
   ///
@@ -4729,6 +4873,225 @@ class PropertiesDataStreamsEventEditRulesResource {
   PropertiesDataStreamsEventEditRulesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates an EventEditRule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Example format: properties/123/dataStreams/456
+  /// Value must have pattern `^properties/\[^/\]+/dataStreams/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaEventEditRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaEventEditRule> create(
+    GoogleAnalyticsAdminV1alphaEventEditRule request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/eventEditRules';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1alphaEventEditRule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an EventEditRule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Example format:
+  /// properties/123/dataStreams/456/eventEditRules/789
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/dataStreams/\[^/\]+/eventEditRules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lookup for a single EventEditRule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the EventEditRule to get. Example format:
+  /// properties/123/dataStreams/456/eventEditRules/789
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/dataStreams/\[^/\]+/eventEditRules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaEventEditRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaEventEditRule> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1alphaEventEditRule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists EventEditRules on a web data stream.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Example format: properties/123/dataStreams/456
+  /// Value must have pattern `^properties/\[^/\]+/dataStreams/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of resources to return. If
+  /// unspecified, at most 50 resources will be returned. The maximum value is
+  /// 200 (higher values will be coerced to the maximum).
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListEventEditRules` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListEventEditRules`
+  /// must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaListEventEditRulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaListEventEditRulesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/eventEditRules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1alphaListEventEditRulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an EventEditRule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Resource name for this EventEditRule resource.
+  /// Format:
+  /// properties/{property}/dataStreams/{data_stream}/eventEditRules/{event_edit_rule}
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/dataStreams/\[^/\]+/eventEditRules/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated. Field names
+  /// must be in snake case (e.g., "field_to_update"). Omitted fields will not
+  /// be updated. To replace the entire entity, use one path with the string "*"
+  /// to match all fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaEventEditRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaEventEditRule> patch(
+    GoogleAnalyticsAdminV1alphaEventEditRule request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1alphaEventEditRule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Changes the processing order of event edit rules on the specified stream.
   ///
   /// [request] - The metadata request object.
@@ -4862,7 +5225,7 @@ class PropertiesDataStreamsMeasurementProtocolSecretsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lookup for a single "GA4" MeasurementProtocolSecret.
+  /// Lookup for a single MeasurementProtocolSecret.
   ///
   /// Request parameters:
   ///
@@ -6023,7 +6386,7 @@ class PropertiesFirebaseLinksResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Format: properties/{property_id} Example:
-  /// properties/1234
+  /// `properties/1234`
   /// Value must have pattern `^properties/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6064,7 +6427,7 @@ class PropertiesFirebaseLinksResource {
   ///
   /// [name] - Required. Format:
   /// properties/{property_id}/firebaseLinks/{firebase_link_id} Example:
-  /// properties/1234/firebaseLinks/5678
+  /// `properties/1234/firebaseLinks/5678`
   /// Value must have pattern `^properties/\[^/\]+/firebaseLinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6103,7 +6466,7 @@ class PropertiesFirebaseLinksResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Format: properties/{property_id} Example:
-  /// properties/1234
+  /// `properties/1234`
   /// Value must have pattern `^properties/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of resources to return. The service may
@@ -7684,7 +8047,7 @@ typedef GoogleAnalyticsAdminV1alphaAccessStringFilter = $StringFilter;
 typedef GoogleAnalyticsAdminV1alphaAccount = $Account;
 
 /// A virtual resource representing an overview of an account and all its child
-/// GA4 properties.
+/// Google Analytics properties.
 class GoogleAnalyticsAdminV1alphaAccountSummary {
   /// Resource name of account referred to by this account summary Format:
   /// accounts/{account_id} Example: "accounts/1000"
@@ -7736,9 +8099,11 @@ typedef GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest
 typedef GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse
     = $Empty;
 
-/// A link between a GA4 Property and an AdSense for Content ad client.
+/// A link between a Google Analytics property and an AdSense for Content ad
+/// client.
 class GoogleAnalyticsAdminV1alphaAdSenseLink {
-  /// The AdSense ad client code that the GA4 property is linked to.
+  /// The AdSense ad client code that the Google Analytics property is linked
+  /// to.
   ///
   /// Example format: "ca-pub-1234567890"
   ///
@@ -7930,7 +8295,7 @@ class GoogleAnalyticsAdminV1alphaAttributionSettings {
       };
 }
 
-/// A resource message representing a GA4 Audience.
+/// A resource message representing an Audience.
 class GoogleAnalyticsAdminV1alphaAudience {
   /// It is automatically set by GA to false if this is an NPA Audience and is
   /// excluded from ads personalization.
@@ -8896,7 +9261,7 @@ class GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse {
       };
 }
 
-/// A link between a GA4 Property and BigQuery project.
+/// A link between a Google Analytics property and BigQuery project.
 class GoogleAnalyticsAdminV1alphaBigQueryLink {
   /// Time when the link was created.
   ///
@@ -8905,6 +9270,14 @@ class GoogleAnalyticsAdminV1alphaBigQueryLink {
 
   /// If set true, enables daily data export to the linked Google Cloud project.
   core.bool? dailyExportEnabled;
+
+  /// The geographic location where the created BigQuery dataset should reside.
+  ///
+  /// See https://cloud.google.com/bigquery/docs/locations for supported
+  /// locations.
+  ///
+  /// Required. Immutable.
+  core.String? datasetLocation;
 
   /// The list of event names that will be excluded from exports.
   core.List<core.String>? excludedEvents;
@@ -8949,6 +9322,7 @@ class GoogleAnalyticsAdminV1alphaBigQueryLink {
   GoogleAnalyticsAdminV1alphaBigQueryLink({
     this.createTime,
     this.dailyExportEnabled,
+    this.datasetLocation,
     this.excludedEvents,
     this.exportStreams,
     this.freshDailyExportEnabled,
@@ -8962,6 +9336,7 @@ class GoogleAnalyticsAdminV1alphaBigQueryLink {
       : this(
           createTime: json_['createTime'] as core.String?,
           dailyExportEnabled: json_['dailyExportEnabled'] as core.bool?,
+          datasetLocation: json_['datasetLocation'] as core.String?,
           excludedEvents: (json_['excludedEvents'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -8980,6 +9355,7 @@ class GoogleAnalyticsAdminV1alphaBigQueryLink {
         if (createTime != null) 'createTime': createTime!,
         if (dailyExportEnabled != null)
           'dailyExportEnabled': dailyExportEnabled!,
+        if (datasetLocation != null) 'datasetLocation': datasetLocation!,
         if (excludedEvents != null) 'excludedEvents': excludedEvents!,
         if (exportStreams != null) 'exportStreams': exportStreams!,
         if (freshDailyExportEnabled != null)
@@ -10141,76 +10517,6 @@ class GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse {
       };
 }
 
-/// Request message for CreateSubproperty RPC.
-class GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest {
-  /// The subproperty to create.
-  ///
-  /// Required.
-  GoogleAnalyticsAdminV1alphaProperty? subproperty;
-
-  /// The subproperty event filter to create on an ordinary property.
-  ///
-  /// Optional.
-  GoogleAnalyticsAdminV1alphaSubpropertyEventFilter? subpropertyEventFilter;
-
-  GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest({
-    this.subproperty,
-    this.subpropertyEventFilter,
-  });
-
-  GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest.fromJson(core.Map json_)
-      : this(
-          subproperty: json_.containsKey('subproperty')
-              ? GoogleAnalyticsAdminV1alphaProperty.fromJson(
-                  json_['subproperty'] as core.Map<core.String, core.dynamic>)
-              : null,
-          subpropertyEventFilter: json_.containsKey('subpropertyEventFilter')
-              ? GoogleAnalyticsAdminV1alphaSubpropertyEventFilter.fromJson(
-                  json_['subpropertyEventFilter']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (subproperty != null) 'subproperty': subproperty!,
-        if (subpropertyEventFilter != null)
-          'subpropertyEventFilter': subpropertyEventFilter!,
-      };
-}
-
-/// Response message for CreateSubproperty RPC.
-class GoogleAnalyticsAdminV1alphaCreateSubpropertyResponse {
-  /// The created subproperty.
-  GoogleAnalyticsAdminV1alphaProperty? subproperty;
-
-  /// The created subproperty event filter.
-  GoogleAnalyticsAdminV1alphaSubpropertyEventFilter? subpropertyEventFilter;
-
-  GoogleAnalyticsAdminV1alphaCreateSubpropertyResponse({
-    this.subproperty,
-    this.subpropertyEventFilter,
-  });
-
-  GoogleAnalyticsAdminV1alphaCreateSubpropertyResponse.fromJson(core.Map json_)
-      : this(
-          subproperty: json_.containsKey('subproperty')
-              ? GoogleAnalyticsAdminV1alphaProperty.fromJson(
-                  json_['subproperty'] as core.Map<core.String, core.dynamic>)
-              : null,
-          subpropertyEventFilter: json_.containsKey('subpropertyEventFilter')
-              ? GoogleAnalyticsAdminV1alphaSubpropertyEventFilter.fromJson(
-                  json_['subpropertyEventFilter']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (subproperty != null) 'subproperty': subproperty!,
-        if (subpropertyEventFilter != null)
-          'subpropertyEventFilter': subpropertyEventFilter!,
-      };
-}
-
 /// A definition for a CustomDimension.
 typedef GoogleAnalyticsAdminV1alphaCustomDimension = $CustomDimension;
 
@@ -10452,7 +10758,8 @@ class GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest {
       };
 }
 
-/// A link between a GA4 property and a Display & Video 360 advertiser.
+/// A link between a Google Analytics property and a Display & Video 360
+/// advertiser.
 class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink {
   /// Enables personalized advertising features with this integration.
   ///
@@ -10469,8 +10776,8 @@ class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink {
   /// Immutable.
   core.String? advertiserId;
 
-  /// Enables the import of campaign data from Display & Video 360 into the GA4
-  /// property.
+  /// Enables the import of campaign data from Display & Video 360 into the
+  /// Google Analytics property.
   ///
   /// After link creation, this can only be updated from the Display & Video 360
   /// product. If this field is not set on create, it will be defaulted to true.
@@ -10478,11 +10785,11 @@ class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink {
   /// Immutable.
   core.bool? campaignDataSharingEnabled;
 
-  /// Enables the import of cost data from Display & Video 360 into the GA4
-  /// property.
+  /// Enables the import of cost data from Display & Video 360 into the Google
+  /// Analytics property.
   ///
-  /// This can only be enabled if campaign_data_sharing_enabled is enabled.
-  /// After link creation, this can only be updated from the Display & Video 360
+  /// This can only be enabled if `campaign_data_sharing_enabled` is true. After
+  /// link creation, this can only be updated from the Display & Video 360
   /// product. If this field is not set on create, it will be defaulted to true.
   ///
   /// Immutable.
@@ -10532,8 +10839,8 @@ class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink {
       };
 }
 
-/// A proposal for a link between a GA4 property and a Display & Video 360
-/// advertiser.
+/// A proposal for a link between a Google Analytics property and a Display &
+/// Video 360 advertiser.
 ///
 /// A proposal is converted to a DisplayVideo360AdvertiserLink once approved.
 /// Google Analytics admins approve inbound proposals while Display & Video 360
@@ -10840,9 +11147,90 @@ class GoogleAnalyticsAdminV1alphaEventCreateRule {
       };
 }
 
+/// An Event Edit Rule defines conditions that will trigger the creation of an
+/// entirely new event based upon matched criteria of a source event.
+///
+/// Additional mutations of the parameters from the source event can be defined.
+/// Unlike Event Create rules, Event Edit Rules are applied in their defined
+/// order. Event Edit rules can't be used to modify an event created from an
+/// Event Create rule.
+class GoogleAnalyticsAdminV1alphaEventEditRule {
+  /// The display name of this event edit rule.
+  ///
+  /// Maximum of 255 characters.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// Conditions on the source event must match for this rule to be applied.
+  ///
+  /// Must have at least one condition, and can have up to 10 max.
+  ///
+  /// Required.
+  core.List<GoogleAnalyticsAdminV1alphaMatchingCondition>? eventConditions;
+
+  /// Identifier.
+  ///
+  /// Resource name for this EventEditRule resource. Format:
+  /// properties/{property}/dataStreams/{data_stream}/eventEditRules/{event_edit_rule}
+  core.String? name;
+
+  /// Parameter mutations define parameter behavior on the new event, and are
+  /// applied in order.
+  ///
+  /// A maximum of 20 mutations can be applied.
+  ///
+  /// Required.
+  core.List<GoogleAnalyticsAdminV1alphaParameterMutation>? parameterMutations;
+
+  /// The order for which this rule will be processed.
+  ///
+  /// Rules with an order value lower than this will be processed before this
+  /// rule, rules with an order value higher than this will be processed after
+  /// this rule. New event edit rules will be assigned an order value at the end
+  /// of the order. This value does not apply to event create rules.
+  ///
+  /// Output only.
+  core.String? processingOrder;
+
+  GoogleAnalyticsAdminV1alphaEventEditRule({
+    this.displayName,
+    this.eventConditions,
+    this.name,
+    this.parameterMutations,
+    this.processingOrder,
+  });
+
+  GoogleAnalyticsAdminV1alphaEventEditRule.fromJson(core.Map json_)
+      : this(
+          displayName: json_['displayName'] as core.String?,
+          eventConditions: (json_['eventConditions'] as core.List?)
+              ?.map((value) =>
+                  GoogleAnalyticsAdminV1alphaMatchingCondition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          name: json_['name'] as core.String?,
+          parameterMutations: (json_['parameterMutations'] as core.List?)
+              ?.map((value) =>
+                  GoogleAnalyticsAdminV1alphaParameterMutation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          processingOrder: json_['processingOrder'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (eventConditions != null) 'eventConditions': eventConditions!,
+        if (name != null) 'name': name!,
+        if (parameterMutations != null)
+          'parameterMutations': parameterMutations!,
+        if (processingOrder != null) 'processingOrder': processingOrder!,
+      };
+}
+
 /// Event setting conditions to match an event.
 class GoogleAnalyticsAdminV1alphaEventMapping {
-  /// Name of the GA4 event.
+  /// Name of the Google Analytics event.
   ///
   /// It must always be set. The max allowed display name length is 40 UTF-16
   /// code units.
@@ -10900,7 +11288,7 @@ class GoogleAnalyticsAdminV1alphaEventMapping {
       };
 }
 
-/// A resource message representing a GA4 ExpandedDataSet.
+/// A resource message representing an `ExpandedDataSet`.
 class GoogleAnalyticsAdminV1alphaExpandedDataSet {
   /// Time when expanded data set began (or will begin) collecing data.
   ///
@@ -11269,7 +11657,7 @@ class GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse {
       };
 }
 
-/// A link between a GA4 property and a Firebase project.
+/// A link between a Google Analytics property and a Firebase project.
 typedef GoogleAnalyticsAdminV1alphaFirebaseLink = $FirebaseLink;
 
 /// Read-only resource with the tag for sending data from a website to a
@@ -11308,7 +11696,7 @@ class GoogleAnalyticsAdminV1alphaGlobalSiteTag {
       };
 }
 
-/// A link between a GA4 property and a Google Ads account.
+/// A link between a Google Analytics property and a Google Ads account.
 typedef GoogleAnalyticsAdminV1alphaGoogleAdsLink = $GoogleAdsLink;
 
 /// Settings values for Google Signals.
@@ -12081,6 +12469,39 @@ class GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse {
       };
 }
 
+/// Response message for ListEventEditRules RPC.
+class GoogleAnalyticsAdminV1alphaListEventEditRulesResponse {
+  /// List of EventEditRules.
+  ///
+  /// These will be ordered stably, but in an arbitrary order.
+  core.List<GoogleAnalyticsAdminV1alphaEventEditRule>? eventEditRules;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleAnalyticsAdminV1alphaListEventEditRulesResponse({
+    this.eventEditRules,
+    this.nextPageToken,
+  });
+
+  GoogleAnalyticsAdminV1alphaListEventEditRulesResponse.fromJson(core.Map json_)
+      : this(
+          eventEditRules: (json_['eventEditRules'] as core.List?)
+              ?.map((value) =>
+                  GoogleAnalyticsAdminV1alphaEventEditRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventEditRules != null) 'eventEditRules': eventEditRules!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response message for ListExpandedDataSets RPC.
 class GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse {
   /// List of ExpandedDataSet.
@@ -12579,10 +13000,10 @@ class GoogleAnalyticsAdminV1alphaPostbackWindow {
       };
 }
 
-/// A resource message representing a Google Analytics GA4 property.
+/// A resource message representing a Google Analytics property.
 typedef GoogleAnalyticsAdminV1alphaProperty = $Property;
 
-/// A virtual resource representing metadata for a GA4 property.
+/// A virtual resource representing metadata for a Google Analytics property.
 typedef GoogleAnalyticsAdminV1alphaPropertySummary = $PropertySummary;
 
 /// Request message for ProvisionAccountTicket RPC.
@@ -12620,9 +13041,104 @@ class GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest {
 typedef GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse
     = $ProvisionAccountTicketResponse;
 
+/// Request message for CreateSubproperty RPC.
+class GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest {
+  /// The subproperty to create.
+  ///
+  /// Required.
+  GoogleAnalyticsAdminV1alphaProperty? subproperty;
+
+  /// The subproperty event filter to create on an ordinary property.
+  ///
+  /// Optional.
+  GoogleAnalyticsAdminV1alphaSubpropertyEventFilter? subpropertyEventFilter;
+
+  GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest({
+    this.subproperty,
+    this.subpropertyEventFilter,
+  });
+
+  GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest.fromJson(
+      core.Map json_)
+      : this(
+          subproperty: json_.containsKey('subproperty')
+              ? GoogleAnalyticsAdminV1alphaProperty.fromJson(
+                  json_['subproperty'] as core.Map<core.String, core.dynamic>)
+              : null,
+          subpropertyEventFilter: json_.containsKey('subpropertyEventFilter')
+              ? GoogleAnalyticsAdminV1alphaSubpropertyEventFilter.fromJson(
+                  json_['subpropertyEventFilter']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (subproperty != null) 'subproperty': subproperty!,
+        if (subpropertyEventFilter != null)
+          'subpropertyEventFilter': subpropertyEventFilter!,
+      };
+}
+
+/// Response message for ProvisionSubproperty RPC.
+class GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse {
+  /// The created subproperty.
+  GoogleAnalyticsAdminV1alphaProperty? subproperty;
+
+  /// The created subproperty event filter.
+  GoogleAnalyticsAdminV1alphaSubpropertyEventFilter? subpropertyEventFilter;
+
+  GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse({
+    this.subproperty,
+    this.subpropertyEventFilter,
+  });
+
+  GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse.fromJson(
+      core.Map json_)
+      : this(
+          subproperty: json_.containsKey('subproperty')
+              ? GoogleAnalyticsAdminV1alphaProperty.fromJson(
+                  json_['subproperty'] as core.Map<core.String, core.dynamic>)
+              : null,
+          subpropertyEventFilter: json_.containsKey('subpropertyEventFilter')
+              ? GoogleAnalyticsAdminV1alphaSubpropertyEventFilter.fromJson(
+                  json_['subpropertyEventFilter']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (subproperty != null) 'subproperty': subproperty!,
+        if (subpropertyEventFilter != null)
+          'subpropertyEventFilter': subpropertyEventFilter!,
+      };
+}
+
 /// Request message for ReorderEventEditRules RPC.
-typedef GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest
-    = $ReorderEventEditRulesRequest;
+class GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest {
+  /// EventEditRule resource names for the specified data stream, in the needed
+  /// processing order.
+  ///
+  /// All EventEditRules for the stream must be present in the list.
+  ///
+  /// Required.
+  core.List<core.String>? eventEditRules;
+
+  GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest({
+    this.eventEditRules,
+  });
+
+  GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest.fromJson(
+      core.Map json_)
+      : this(
+          eventEditRules: (json_['eventEditRules'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventEditRules != null) 'eventEditRules': eventEditRules!,
+      };
+}
 
 /// A link that references a source property under the parent rollup property.
 class GoogleAnalyticsAdminV1alphaRollupPropertySourceLink {
@@ -12986,7 +13502,7 @@ class GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema {
       };
 }
 
-/// A link between a GA4 property and a Search Ads 360 entity.
+/// A link between a Google Analytics property and a Search Ads 360 entity.
 class GoogleAnalyticsAdminV1alphaSearchAds360Link {
   /// Enables personalized advertising features with this integration.
   ///
@@ -13007,8 +13523,8 @@ class GoogleAnalyticsAdminV1alphaSearchAds360Link {
   /// Immutable.
   core.String? advertiserId;
 
-  /// Enables the import of campaign data from Search Ads 360 into the GA4
-  /// property.
+  /// Enables the import of campaign data from Search Ads 360 into the Google
+  /// Analytics property.
   ///
   /// After link creation, this can only be updated from the Search Ads 360
   /// product. If this field is not set on create, it will be defaulted to true.
@@ -13016,7 +13532,8 @@ class GoogleAnalyticsAdminV1alphaSearchAds360Link {
   /// Immutable.
   core.bool? campaignDataSharingEnabled;
 
-  /// Enables the import of cost data from Search Ads 360 to the GA4 property.
+  /// Enables the import of cost data from Search Ads 360 to the Google
+  /// Analytics property.
   ///
   /// This can only be enabled if campaign_data_sharing_enabled is enabled.
   /// After link creation, this can only be updated from the Search Ads 360
@@ -13122,7 +13639,7 @@ class GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest {
   /// Resource name for a child property.
   ///
   /// If set, only return changes made to this property or its child resources.
-  /// Format: properties/{propertyId} Example: "properties/100"
+  /// Format: properties/{propertyId} Example: `properties/100`
   ///
   /// Optional.
   core.String? property;
@@ -13246,7 +13763,7 @@ class GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest {
 typedef GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse
     = $Empty;
 
-/// A resource message representing a GA4 Subproperty event filter.
+/// A resource message representing a Google Analytics subproperty event filter.
 class GoogleAnalyticsAdminV1alphaSubpropertyEventFilter {
   /// Resource name of the Subproperty that uses this filter.
   ///

@@ -15,7 +15,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240609",
+    "revision": "20200809",
     "rootUrl": "https://kgsearch.googleapis.com/",
     "servicePath": "",
     "title": "Knowledge Graph Search API",

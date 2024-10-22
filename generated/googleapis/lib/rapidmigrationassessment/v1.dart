@@ -1231,13 +1231,13 @@ class Operation {
 }
 
 /// Message for pausing a Collector.
-typedef PauseCollectorRequest = $Request01;
+typedef PauseCollectorRequest = $Request00;
 
 /// Message for registering a Collector.
-typedef RegisterCollectorRequest = $Request01;
+typedef RegisterCollectorRequest = $Request00;
 
 /// Message for resuming a Collector.
-typedef ResumeCollectorRequest = $Request01;
+typedef ResumeCollectorRequest = $Request00;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -1246,7 +1246,7 @@ typedef ResumeCollectorRequest = $Request01;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Message describing a MC Source of type VSphere Scan.
 class VSphereScan {

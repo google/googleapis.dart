@@ -26,6 +26,25 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAdvancedVoiceOptions = 0;
+api.AdvancedVoiceOptions buildAdvancedVoiceOptions() {
+  final o = api.AdvancedVoiceOptions();
+  buildCounterAdvancedVoiceOptions++;
+  if (buildCounterAdvancedVoiceOptions < 3) {
+    o.lowLatencyJourneySynthesis = true;
+  }
+  buildCounterAdvancedVoiceOptions--;
+  return o;
+}
+
+void checkAdvancedVoiceOptions(api.AdvancedVoiceOptions o) {
+  buildCounterAdvancedVoiceOptions++;
+  if (buildCounterAdvancedVoiceOptions < 3) {
+    unittest.expect(o.lowLatencyJourneySynthesis!, unittest.isTrue);
+  }
+  buildCounterAdvancedVoiceOptions--;
+}
+
 core.List<core.String> buildUnnamed0() => [
       'foo',
       'foo',
@@ -102,6 +121,68 @@ void checkCancelOperationRequest(api.CancelOperationRequest o) {
   buildCounterCancelOperationRequest--;
 }
 
+core.int buildCounterCustomPronunciationParams = 0;
+api.CustomPronunciationParams buildCustomPronunciationParams() {
+  final o = api.CustomPronunciationParams();
+  buildCounterCustomPronunciationParams++;
+  if (buildCounterCustomPronunciationParams < 3) {
+    o.phoneticEncoding = 'foo';
+    o.phrase = 'foo';
+    o.pronunciation = 'foo';
+  }
+  buildCounterCustomPronunciationParams--;
+  return o;
+}
+
+void checkCustomPronunciationParams(api.CustomPronunciationParams o) {
+  buildCounterCustomPronunciationParams++;
+  if (buildCounterCustomPronunciationParams < 3) {
+    unittest.expect(
+      o.phoneticEncoding!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.phrase!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pronunciation!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCustomPronunciationParams--;
+}
+
+core.List<api.CustomPronunciationParams> buildUnnamed1() => [
+      buildCustomPronunciationParams(),
+      buildCustomPronunciationParams(),
+    ];
+
+void checkUnnamed1(core.List<api.CustomPronunciationParams> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCustomPronunciationParams(o[0]);
+  checkCustomPronunciationParams(o[1]);
+}
+
+core.int buildCounterCustomPronunciations = 0;
+api.CustomPronunciations buildCustomPronunciations() {
+  final o = api.CustomPronunciations();
+  buildCounterCustomPronunciations++;
+  if (buildCounterCustomPronunciations < 3) {
+    o.pronunciations = buildUnnamed1();
+  }
+  buildCounterCustomPronunciations--;
+  return o;
+}
+
+void checkCustomPronunciations(api.CustomPronunciations o) {
+  buildCounterCustomPronunciations++;
+  if (buildCounterCustomPronunciations < 3) {
+    checkUnnamed1(o.pronunciations!);
+  }
+  buildCounterCustomPronunciations--;
+}
+
 core.int buildCounterCustomVoiceParams = 0;
 api.CustomVoiceParams buildCustomVoiceParams() {
   final o = api.CustomVoiceParams();
@@ -144,12 +225,12 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<api.Operation> buildUnnamed1() => [
+core.List<api.Operation> buildUnnamed2() => [
       buildOperation(),
       buildOperation(),
     ];
 
-void checkUnnamed1(core.List<api.Operation> o) {
+void checkUnnamed2(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -161,7 +242,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed1();
+    o.operations = buildUnnamed2();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -174,17 +255,17 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed1(o.operations!);
+    checkUnnamed2(o.operations!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.List<api.Voice> buildUnnamed2() => [
+core.List<api.Voice> buildUnnamed3() => [
       buildVoice(),
       buildVoice(),
     ];
 
-void checkUnnamed2(core.List<api.Voice> o) {
+void checkUnnamed3(core.List<api.Voice> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVoice(o[0]);
   checkVoice(o[1]);
@@ -195,7 +276,7 @@ api.ListVoicesResponse buildListVoicesResponse() {
   final o = api.ListVoicesResponse();
   buildCounterListVoicesResponse++;
   if (buildCounterListVoicesResponse < 3) {
-    o.voices = buildUnnamed2();
+    o.voices = buildUnnamed3();
   }
   buildCounterListVoicesResponse--;
   return o;
@@ -204,12 +285,12 @@ api.ListVoicesResponse buildListVoicesResponse() {
 void checkListVoicesResponse(api.ListVoicesResponse o) {
   buildCounterListVoicesResponse++;
   if (buildCounterListVoicesResponse < 3) {
-    checkUnnamed2(o.voices!);
+    checkUnnamed3(o.voices!);
   }
   buildCounterListVoicesResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed3() => {
+core.Map<core.String, core.Object?> buildUnnamed4() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -222,7 +303,7 @@ core.Map<core.String, core.Object?> buildUnnamed3() => {
       },
     };
 
-void checkUnnamed3(core.Map<core.String, core.Object?> o) {
+void checkUnnamed4(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -254,7 +335,7 @@ void checkUnnamed3(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed4() => {
+core.Map<core.String, core.Object?> buildUnnamed5() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -267,7 +348,7 @@ core.Map<core.String, core.Object?> buildUnnamed4() => {
       },
     };
 
-void checkUnnamed4(core.Map<core.String, core.Object?> o) {
+void checkUnnamed5(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -306,9 +387,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed3();
+    o.metadata = buildUnnamed4();
     o.name = 'foo';
-    o.response = buildUnnamed4();
+    o.response = buildUnnamed5();
   }
   buildCounterOperation--;
   return o;
@@ -319,17 +400,17 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed3(o.metadata!);
+    checkUnnamed4(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed4(o.response!);
+    checkUnnamed5(o.response!);
   }
   buildCounterOperation--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed5() => {
+core.Map<core.String, core.Object?> buildUnnamed6() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -342,7 +423,7 @@ core.Map<core.String, core.Object?> buildUnnamed5() => {
       },
     };
 
-void checkUnnamed5(core.Map<core.String, core.Object?> o) {
+void checkUnnamed6(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -374,15 +455,15 @@ void checkUnnamed5(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed6() => [
-      buildUnnamed5(),
-      buildUnnamed5(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed7() => [
+      buildUnnamed6(),
+      buildUnnamed6(),
     ];
 
-void checkUnnamed6(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed7(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed5(o[0]);
-  checkUnnamed5(o[1]);
+  checkUnnamed6(o[0]);
+  checkUnnamed6(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -391,7 +472,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed6();
+    o.details = buildUnnamed7();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -405,7 +486,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed6(o.details!);
+    checkUnnamed7(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -419,6 +500,7 @@ api.SynthesisInput buildSynthesisInput() {
   final o = api.SynthesisInput();
   buildCounterSynthesisInput++;
   if (buildCounterSynthesisInput < 3) {
+    o.customPronunciations = buildCustomPronunciations();
     o.ssml = 'foo';
     o.text = 'foo';
   }
@@ -429,6 +511,7 @@ api.SynthesisInput buildSynthesisInput() {
 void checkSynthesisInput(api.SynthesisInput o) {
   buildCounterSynthesisInput++;
   if (buildCounterSynthesisInput < 3) {
+    checkCustomPronunciations(o.customPronunciations!);
     unittest.expect(
       o.ssml!,
       unittest.equals('foo'),
@@ -474,6 +557,7 @@ api.SynthesizeSpeechRequest buildSynthesizeSpeechRequest() {
   final o = api.SynthesizeSpeechRequest();
   buildCounterSynthesizeSpeechRequest++;
   if (buildCounterSynthesizeSpeechRequest < 3) {
+    o.advancedVoiceOptions = buildAdvancedVoiceOptions();
     o.audioConfig = buildAudioConfig();
     o.input = buildSynthesisInput();
     o.voice = buildVoiceSelectionParams();
@@ -485,6 +569,7 @@ api.SynthesizeSpeechRequest buildSynthesizeSpeechRequest() {
 void checkSynthesizeSpeechRequest(api.SynthesizeSpeechRequest o) {
   buildCounterSynthesizeSpeechRequest++;
   if (buildCounterSynthesizeSpeechRequest < 3) {
+    checkAdvancedVoiceOptions(o.advancedVoiceOptions!);
     checkAudioConfig(o.audioConfig!);
     checkSynthesisInput(o.input!);
     checkVoiceSelectionParams(o.voice!);
@@ -514,12 +599,12 @@ void checkSynthesizeSpeechResponse(api.SynthesizeSpeechResponse o) {
   buildCounterSynthesizeSpeechResponse--;
 }
 
-core.List<core.String> buildUnnamed7() => [
+core.List<core.String> buildUnnamed8() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed7(core.List<core.String> o) {
+void checkUnnamed8(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -536,7 +621,7 @@ api.Voice buildVoice() {
   final o = api.Voice();
   buildCounterVoice++;
   if (buildCounterVoice < 3) {
-    o.languageCodes = buildUnnamed7();
+    o.languageCodes = buildUnnamed8();
     o.name = 'foo';
     o.naturalSampleRateHertz = 42;
     o.ssmlGender = 'foo';
@@ -548,7 +633,7 @@ api.Voice buildVoice() {
 void checkVoice(api.Voice o) {
   buildCounterVoice++;
   if (buildCounterVoice < 3) {
-    checkUnnamed7(o.languageCodes!);
+    checkUnnamed8(o.languageCodes!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -600,6 +685,16 @@ void checkVoiceSelectionParams(api.VoiceSelectionParams o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AdvancedVoiceOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAdvancedVoiceOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AdvancedVoiceOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAdvancedVoiceOptions(od);
+    });
+  });
+
   unittest.group('obj-schema-AudioConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAudioConfig();
@@ -617,6 +712,26 @@ void main() {
       final od = api.CancelOperationRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkCancelOperationRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-CustomPronunciationParams', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCustomPronunciationParams();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CustomPronunciationParams.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCustomPronunciationParams(od);
+    });
+  });
+
+  unittest.group('obj-schema-CustomPronunciations', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCustomPronunciations();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CustomPronunciations.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCustomPronunciations(od);
     });
   });
 

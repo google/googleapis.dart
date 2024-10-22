@@ -517,11 +517,11 @@ class ProjectsLocationsConnectionsResource {
   /// request ID must be a valid UUID with the exception that zero UUID is not
   /// supported (00000000-0000-0000-0000-000000000000).
   ///
-  /// [updateMask] - Required. Field mask is used to specify the fields to be
-  /// overwritten in the Connection resource by the update. The fields specified
-  /// in the update_mask are relative to the resource, not the full request. A
-  /// field will be overwritten if it is in the mask. If the user does not
-  /// provide a mask then all fields will be overwritten.
+  /// [updateMask] - Optional. Required. Field mask is used to specify the
+  /// fields to be overwritten in the Connection resource by the update. The
+  /// fields specified in the update_mask are relative to the resource, not the
+  /// full request. A field will be overwritten if it is in the mask. If the
+  /// user does not provide a mask then all fields will be overwritten.
   ///
   /// [validateOnly] - Optional. If set, validate the request, but do not
   /// actually post it.
@@ -563,6 +563,50 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// ProcessGitHubEnterpriseWebhook is called by the external GitHub Enterprise
+  /// instances for notifying events.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Project and location where the webhook will be
+  /// received. Format: `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> processGitHubEnterpriseWebhook(
+    ProcessGitHubEnterpriseWebhookRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/connections:processGitHubEnterpriseWebhook';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -946,6 +990,95 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
     return ListGitRepositoryLinksResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// ProcessGitLabEnterpriseWebhook is called by the external GitLab Enterprise
+  /// instances for notifying events.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The GitRepositoryLink resource where the webhook will
+  /// be received. Format: `projects / * /locations / * /connections / *
+  /// /gitRepositoryLinks / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/gitRepositoryLinks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> processGitLabEnterpriseWebhook(
+    ProcessGitLabEnterpriseWebhookRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$name') +
+        ':processGitLabEnterpriseWebhook';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// ProcessGitLabWebhook is called by the GitLab.com for notifying events.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The GitRepositoryLink resource where the webhook will
+  /// be received. Format: `projects / * /locations / * /connections / *
+  /// /gitRepositoryLinks / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/gitRepositoryLinks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> processGitLabWebhook(
+    ProcessGitLabWebhookRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':processGitLabWebhook';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsOperationsResource {
@@ -1149,6 +1282,13 @@ class Connection {
   /// Output only.
   core.String? createTime;
 
+  /// The crypto key configuration.
+  ///
+  /// This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+  ///
+  /// Optional.
+  CryptoKeyConfig? cryptoKeyConfig;
+
   /// Delete timestamp
   ///
   /// Output only.
@@ -1171,6 +1311,15 @@ class Connection {
 
   /// Configuration for connections to github.com.
   GitHubConfig? githubConfig;
+
+  /// Configuration for connections to an instance of GitHub Enterprise.
+  GitHubEnterpriseConfig? githubEnterpriseConfig;
+
+  /// Configuration for connections to gitlab.com.
+  GitLabConfig? gitlabConfig;
+
+  /// Configuration for connections to an instance of GitLab Enterprise.
+  GitLabEnterpriseConfig? gitlabEnterpriseConfig;
 
   /// Installation state of the Connection.
   ///
@@ -1207,10 +1356,14 @@ class Connection {
   Connection({
     this.annotations,
     this.createTime,
+    this.cryptoKeyConfig,
     this.deleteTime,
     this.disabled,
     this.etag,
     this.githubConfig,
+    this.githubEnterpriseConfig,
+    this.gitlabConfig,
+    this.gitlabEnterpriseConfig,
     this.installationState,
     this.labels,
     this.name,
@@ -1230,12 +1383,28 @@ class Connection {
             ),
           ),
           createTime: json_['createTime'] as core.String?,
+          cryptoKeyConfig: json_.containsKey('cryptoKeyConfig')
+              ? CryptoKeyConfig.fromJson(json_['cryptoKeyConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           deleteTime: json_['deleteTime'] as core.String?,
           disabled: json_['disabled'] as core.bool?,
           etag: json_['etag'] as core.String?,
           githubConfig: json_.containsKey('githubConfig')
               ? GitHubConfig.fromJson(
                   json_['githubConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          githubEnterpriseConfig: json_.containsKey('githubEnterpriseConfig')
+              ? GitHubEnterpriseConfig.fromJson(json_['githubEnterpriseConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          gitlabConfig: json_.containsKey('gitlabConfig')
+              ? GitLabConfig.fromJson(
+                  json_['gitlabConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          gitlabEnterpriseConfig: json_.containsKey('gitlabEnterpriseConfig')
+              ? GitLabEnterpriseConfig.fromJson(json_['gitlabEnterpriseConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           installationState: json_.containsKey('installationState')
               ? InstallationState.fromJson(json_['installationState']
@@ -1257,16 +1426,48 @@ class Connection {
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotations != null) 'annotations': annotations!,
         if (createTime != null) 'createTime': createTime!,
+        if (cryptoKeyConfig != null) 'cryptoKeyConfig': cryptoKeyConfig!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (disabled != null) 'disabled': disabled!,
         if (etag != null) 'etag': etag!,
         if (githubConfig != null) 'githubConfig': githubConfig!,
+        if (githubEnterpriseConfig != null)
+          'githubEnterpriseConfig': githubEnterpriseConfig!,
+        if (gitlabConfig != null) 'gitlabConfig': gitlabConfig!,
+        if (gitlabEnterpriseConfig != null)
+          'gitlabEnterpriseConfig': gitlabEnterpriseConfig!,
         if (installationState != null) 'installationState': installationState!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (reconciling != null) 'reconciling': reconciling!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// The crypto key configuration.
+///
+/// This field is used by the Customer-managed encryption keys (CMEK) feature.
+class CryptoKeyConfig {
+  /// The name of the key which is used to encrypt/decrypt customer data.
+  ///
+  /// For key in Cloud KMS, the key should be in the format of `projects / *
+  /// /locations / * /keyRings / * /cryptoKeys / * `.
+  ///
+  /// Required.
+  core.String? keyReference;
+
+  CryptoKeyConfig({
+    this.keyReference,
+  });
+
+  CryptoKeyConfig.fromJson(core.Map json_)
+      : this(
+          keyReference: json_['keyReference'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keyReference != null) 'keyReference': keyReference!,
       };
 }
 
@@ -1404,6 +1605,277 @@ class GitHubConfig {
       };
 }
 
+/// Configuration for connections to an instance of GitHub Enterprise.
+class GitHubEnterpriseConfig {
+  /// ID of the GitHub App created from the manifest.
+  ///
+  /// Optional.
+  core.String? appId;
+
+  /// ID of the installation of the GitHub App.
+  ///
+  /// Optional.
+  core.String? appInstallationId;
+
+  /// The URL-friendly name of the GitHub App.
+  ///
+  /// Output only.
+  core.String? appSlug;
+
+  /// The URI of the GitHub Enterprise host this connection is for.
+  ///
+  /// Required.
+  core.String? hostUri;
+
+  /// The URI to navigate to in order to manage the installation associated with
+  /// this GitHubEnterpriseConfig.
+  ///
+  /// Output only.
+  core.String? installationUri;
+
+  /// SecretManager resource containing the private key of the GitHub App,
+  /// formatted as `projects / * /secrets / * /versions / * `.
+  ///
+  /// Optional.
+  core.String? privateKeySecretVersion;
+
+  /// GitHub Enterprise version installed at the host_uri.
+  ///
+  /// Output only.
+  core.String? serverVersion;
+
+  /// Configuration for using Service Directory to privately connect to a GitHub
+  /// Enterprise server.
+  ///
+  /// This should only be set if the GitHub Enterprise server is hosted
+  /// on-premises and not reachable by public internet. If this field is left
+  /// empty, calls to the GitHub Enterprise server will be made over the public
+  /// internet.
+  ///
+  /// Optional.
+  ServiceDirectoryConfig? serviceDirectoryConfig;
+
+  /// SSL certificate to use for requests to GitHub Enterprise.
+  ///
+  /// Optional.
+  core.String? sslCaCertificate;
+
+  /// SecretManager resource containing the webhook secret of the GitHub App,
+  /// formatted as `projects / * /secrets / * /versions / * `.
+  ///
+  /// Optional.
+  core.String? webhookSecretSecretVersion;
+
+  GitHubEnterpriseConfig({
+    this.appId,
+    this.appInstallationId,
+    this.appSlug,
+    this.hostUri,
+    this.installationUri,
+    this.privateKeySecretVersion,
+    this.serverVersion,
+    this.serviceDirectoryConfig,
+    this.sslCaCertificate,
+    this.webhookSecretSecretVersion,
+  });
+
+  GitHubEnterpriseConfig.fromJson(core.Map json_)
+      : this(
+          appId: json_['appId'] as core.String?,
+          appInstallationId: json_['appInstallationId'] as core.String?,
+          appSlug: json_['appSlug'] as core.String?,
+          hostUri: json_['hostUri'] as core.String?,
+          installationUri: json_['installationUri'] as core.String?,
+          privateKeySecretVersion:
+              json_['privateKeySecretVersion'] as core.String?,
+          serverVersion: json_['serverVersion'] as core.String?,
+          serviceDirectoryConfig: json_.containsKey('serviceDirectoryConfig')
+              ? ServiceDirectoryConfig.fromJson(json_['serviceDirectoryConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sslCaCertificate: json_['sslCaCertificate'] as core.String?,
+          webhookSecretSecretVersion:
+              json_['webhookSecretSecretVersion'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appId != null) 'appId': appId!,
+        if (appInstallationId != null) 'appInstallationId': appInstallationId!,
+        if (appSlug != null) 'appSlug': appSlug!,
+        if (hostUri != null) 'hostUri': hostUri!,
+        if (installationUri != null) 'installationUri': installationUri!,
+        if (privateKeySecretVersion != null)
+          'privateKeySecretVersion': privateKeySecretVersion!,
+        if (serverVersion != null) 'serverVersion': serverVersion!,
+        if (serviceDirectoryConfig != null)
+          'serviceDirectoryConfig': serviceDirectoryConfig!,
+        if (sslCaCertificate != null) 'sslCaCertificate': sslCaCertificate!,
+        if (webhookSecretSecretVersion != null)
+          'webhookSecretSecretVersion': webhookSecretSecretVersion!,
+      };
+}
+
+/// Configuration for connections to gitlab.com.
+class GitLabConfig {
+  /// A GitLab personal access token with the minimum `api` scope access and a
+  /// minimum role of `maintainer`.
+  ///
+  /// The GitLab Projects visible to this Personal Access Token will control
+  /// which Projects Developer Connect has access to.
+  ///
+  /// Required.
+  UserCredential? authorizerCredential;
+
+  /// A GitLab personal access token with the minimum `read_api` scope access
+  /// and a minimum role of `reporter`.
+  ///
+  /// The GitLab Projects visible to this Personal Access Token will control
+  /// which Projects Developer Connect has access to.
+  ///
+  /// Required.
+  UserCredential? readAuthorizerCredential;
+
+  /// SecretManager resource containing the webhook secret of a GitLab project,
+  /// formatted as `projects / * /secrets / * /versions / * `.
+  ///
+  /// This is used to validate webhooks.
+  ///
+  /// Required. Immutable.
+  core.String? webhookSecretSecretVersion;
+
+  GitLabConfig({
+    this.authorizerCredential,
+    this.readAuthorizerCredential,
+    this.webhookSecretSecretVersion,
+  });
+
+  GitLabConfig.fromJson(core.Map json_)
+      : this(
+          authorizerCredential: json_.containsKey('authorizerCredential')
+              ? UserCredential.fromJson(json_['authorizerCredential']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          readAuthorizerCredential:
+              json_.containsKey('readAuthorizerCredential')
+                  ? UserCredential.fromJson(json_['readAuthorizerCredential']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          webhookSecretSecretVersion:
+              json_['webhookSecretSecretVersion'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authorizerCredential != null)
+          'authorizerCredential': authorizerCredential!,
+        if (readAuthorizerCredential != null)
+          'readAuthorizerCredential': readAuthorizerCredential!,
+        if (webhookSecretSecretVersion != null)
+          'webhookSecretSecretVersion': webhookSecretSecretVersion!,
+      };
+}
+
+/// Configuration for connections to an instance of GitLab Enterprise.
+class GitLabEnterpriseConfig {
+  /// A GitLab personal access token with the minimum `api` scope access and a
+  /// minimum role of `maintainer`.
+  ///
+  /// The GitLab Projects visible to this Personal Access Token will control
+  /// which Projects Developer Connect has access to.
+  ///
+  /// Required.
+  UserCredential? authorizerCredential;
+
+  /// The URI of the GitLab Enterprise host this connection is for.
+  ///
+  /// Required.
+  core.String? hostUri;
+
+  /// A GitLab personal access token with the minimum `read_api` scope access
+  /// and a minimum role of `reporter`.
+  ///
+  /// The GitLab Projects visible to this Personal Access Token will control
+  /// which Projects Developer Connect has access to.
+  ///
+  /// Required.
+  UserCredential? readAuthorizerCredential;
+
+  /// Version of the GitLab Enterprise server running on the `host_uri`.
+  ///
+  /// Output only.
+  core.String? serverVersion;
+
+  /// Configuration for using Service Directory to privately connect to a GitLab
+  /// Enterprise instance.
+  ///
+  /// This should only be set if the GitLab Enterprise server is hosted
+  /// on-premises and not reachable by public internet. If this field is left
+  /// empty, calls to the GitLab Enterprise server will be made over the public
+  /// internet.
+  ///
+  /// Optional.
+  ServiceDirectoryConfig? serviceDirectoryConfig;
+
+  /// SSL Certificate Authority certificate to use for requests to GitLab
+  /// Enterprise instance.
+  ///
+  /// Optional.
+  core.String? sslCaCertificate;
+
+  /// SecretManager resource containing the webhook secret of a GitLab project,
+  /// formatted as `projects / * /secrets / * /versions / * `.
+  ///
+  /// This is used to validate webhooks.
+  ///
+  /// Required. Immutable.
+  core.String? webhookSecretSecretVersion;
+
+  GitLabEnterpriseConfig({
+    this.authorizerCredential,
+    this.hostUri,
+    this.readAuthorizerCredential,
+    this.serverVersion,
+    this.serviceDirectoryConfig,
+    this.sslCaCertificate,
+    this.webhookSecretSecretVersion,
+  });
+
+  GitLabEnterpriseConfig.fromJson(core.Map json_)
+      : this(
+          authorizerCredential: json_.containsKey('authorizerCredential')
+              ? UserCredential.fromJson(json_['authorizerCredential']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          hostUri: json_['hostUri'] as core.String?,
+          readAuthorizerCredential:
+              json_.containsKey('readAuthorizerCredential')
+                  ? UserCredential.fromJson(json_['readAuthorizerCredential']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          serverVersion: json_['serverVersion'] as core.String?,
+          serviceDirectoryConfig: json_.containsKey('serviceDirectoryConfig')
+              ? ServiceDirectoryConfig.fromJson(json_['serviceDirectoryConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sslCaCertificate: json_['sslCaCertificate'] as core.String?,
+          webhookSecretSecretVersion:
+              json_['webhookSecretSecretVersion'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authorizerCredential != null)
+          'authorizerCredential': authorizerCredential!,
+        if (hostUri != null) 'hostUri': hostUri!,
+        if (readAuthorizerCredential != null)
+          'readAuthorizerCredential': readAuthorizerCredential!,
+        if (serverVersion != null) 'serverVersion': serverVersion!,
+        if (serviceDirectoryConfig != null)
+          'serviceDirectoryConfig': serviceDirectoryConfig!,
+        if (sslCaCertificate != null) 'sslCaCertificate': sslCaCertificate!,
+        if (webhookSecretSecretVersion != null)
+          'webhookSecretSecretVersion': webhookSecretSecretVersion!,
+      };
+}
+
 /// Message describing the GitRepositoryLink object
 class GitRepositoryLink {
   /// Allows clients to store small amounts of arbitrary data.
@@ -1460,6 +1932,11 @@ class GitRepositoryLink {
   /// Output only.
   core.String? updateTime;
 
+  /// External ID of the webhook created for the repository.
+  ///
+  /// Output only.
+  core.String? webhookId;
+
   GitRepositoryLink({
     this.annotations,
     this.cloneUri,
@@ -1471,6 +1948,7 @@ class GitRepositoryLink {
     this.reconciling,
     this.uid,
     this.updateTime,
+    this.webhookId,
   });
 
   GitRepositoryLink.fromJson(core.Map json_)
@@ -1498,6 +1976,7 @@ class GitRepositoryLink {
           reconciling: json_['reconciling'] as core.bool?,
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
+          webhookId: json_['webhookId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1511,8 +1990,29 @@ class GitRepositoryLink {
         if (reconciling != null) 'reconciling': reconciling!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (webhookId != null) 'webhookId': webhookId!,
       };
 }
+
+/// Message that represents an arbitrary HTTP body.
+///
+/// It should only be used for payload formats that can't be represented as
+/// JSON, such as raw binary or an HTML page. This message can be used both in
+/// streaming and non-streaming API methods in the request as well as the
+/// response. It can be used as a top-level request field, which is convenient
+/// if one wants to extract parameters from either the URL or HTTP template into
+/// the request fields and also want access to the raw HTTP body. Example:
+/// message GetResourceRequest { // A unique request id. string request_id = 1;
+/// // The raw HTTP body is bound to this field. google.api.HttpBody http_body =
+/// 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns
+/// (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns
+/// (google.protobuf.Empty); } Example with streaming methods: service
+/// CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream
+/// google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns
+/// (stream google.api.HttpBody); } Use of this type only changes how the
+/// request and response bodies are handled, all other features will continue to
+/// work unchanged.
+typedef HttpBody = $HttpBody;
 
 /// Represents an installation of the GitHub App.
 class Installation {
@@ -1814,6 +2314,84 @@ class Operation {
       };
 }
 
+/// RPC request object accepted by the ProcessGitHubEnterpriseWebhook RPC
+/// method.
+class ProcessGitHubEnterpriseWebhookRequest {
+  /// HTTP request body.
+  ///
+  /// Required.
+  HttpBody? body;
+
+  ProcessGitHubEnterpriseWebhookRequest({
+    this.body,
+  });
+
+  ProcessGitHubEnterpriseWebhookRequest.fromJson(core.Map json_)
+      : this(
+          body: json_.containsKey('body')
+              ? HttpBody.fromJson(
+                  json_['body'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (body != null) 'body': body!,
+      };
+}
+
+/// RPC request object accepted by the ProcessGitLabEnterpriseWebhook RPC
+/// method.
+class ProcessGitLabEnterpriseWebhookRequest {
+  /// HTTP request body.
+  ///
+  /// Required.
+  HttpBody? body;
+
+  ProcessGitLabEnterpriseWebhookRequest({
+    this.body,
+  });
+
+  ProcessGitLabEnterpriseWebhookRequest.fromJson(core.Map json_)
+      : this(
+          body: json_.containsKey('body')
+              ? HttpBody.fromJson(
+                  json_['body'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (body != null) 'body': body!,
+      };
+}
+
+/// RPC request object accepted by the ProcessGitLabWebhook RPC method.
+class ProcessGitLabWebhookRequest {
+  /// HTTP request body.
+  ///
+  /// Required.
+  HttpBody? body;
+
+  ProcessGitLabWebhookRequest({
+    this.body,
+  });
+
+  ProcessGitLabWebhookRequest.fromJson(core.Map json_)
+      : this(
+          body: json_.containsKey('body')
+              ? HttpBody.fromJson(
+                  json_['body'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (body != null) 'body': body!,
+      };
+}
+
+/// ServiceDirectoryConfig represents Service Directory configuration for a
+/// connection.
+typedef ServiceDirectoryConfig = $ServiceDirectoryConfig;
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -1821,4 +2399,39 @@ class Operation {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
+
+/// Represents a personal access token that authorized the Connection, and
+/// associated metadata.
+class UserCredential {
+  /// A SecretManager resource containing the user token that authorizes the
+  /// Developer Connect connection.
+  ///
+  /// Format: `projects / * /secrets / * /versions / * `.
+  ///
+  /// Required.
+  core.String? userTokenSecretVersion;
+
+  /// The username associated with this token.
+  ///
+  /// Output only.
+  core.String? username;
+
+  UserCredential({
+    this.userTokenSecretVersion,
+    this.username,
+  });
+
+  UserCredential.fromJson(core.Map json_)
+      : this(
+          userTokenSecretVersion:
+              json_['userTokenSecretVersion'] as core.String?,
+          username: json_['username'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (userTokenSecretVersion != null)
+          'userTokenSecretVersion': userTokenSecretVersion!,
+        if (username != null) 'username': username!,
+      };
+}

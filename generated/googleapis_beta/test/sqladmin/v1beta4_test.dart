@@ -335,6 +335,7 @@ api.BackupRun buildBackupRun() {
     o.instance = 'foo';
     o.kind = 'foo';
     o.location = 'foo';
+    o.maxChargeableBytes = 'foo';
     o.selfLink = 'foo';
     o.startTime = 'foo';
     o.status = 'foo';
@@ -382,6 +383,10 @@ void checkBackupRun(api.BackupRun o) {
     );
     unittest.expect(
       o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxChargeableBytes!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -581,6 +586,7 @@ api.ConnectSettings buildConnectSettings() {
     o.pscEnabled = true;
     o.region = 'foo';
     o.serverCaCert = buildSslCert();
+    o.serverCaMode = 'foo';
   }
   buildCounterConnectSettings--;
   return o;
@@ -612,6 +618,10 @@ void checkConnectSettings(api.ConnectSettings o) {
       unittest.equals('foo'),
     );
     checkSslCert(o.serverCaCert!);
+    unittest.expect(
+      o.serverCaMode!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterConnectSettings--;
 }
@@ -856,6 +866,7 @@ api.DatabaseInstance buildDatabaseInstance() {
     o.replicaNames = buildUnnamed5();
     o.replicationCluster = buildReplicationCluster();
     o.rootPassword = 'foo';
+    o.satisfiesPzi = true;
     o.satisfiesPzs = true;
     o.scheduledMaintenance = buildSqlScheduledMaintenance();
     o.secondaryGceZone = 'foo';
@@ -866,6 +877,7 @@ api.DatabaseInstance buildDatabaseInstance() {
     o.sqlNetworkArchitecture = 'foo';
     o.state = 'foo';
     o.suspensionReason = buildUnnamed6();
+    o.switchTransactionLogsToCloudStorageEnabled = true;
     o.upgradableDatabaseVersions = buildUnnamed7();
     o.writeEndpoint = 'foo';
   }
@@ -971,6 +983,7 @@ void checkDatabaseInstance(api.DatabaseInstance o) {
       o.rootPassword!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     checkSqlScheduledMaintenance(o.scheduledMaintenance!);
     unittest.expect(
@@ -996,6 +1009,8 @@ void checkDatabaseInstance(api.DatabaseInstance o) {
       unittest.equals('foo'),
     );
     checkUnnamed6(o.suspensionReason!);
+    unittest.expect(
+        o.switchTransactionLogsToCloudStorageEnabled!, unittest.isTrue);
     checkUnnamed7(o.upgradableDatabaseVersions!);
     unittest.expect(
       o.writeEndpoint!,
@@ -1282,6 +1297,8 @@ api.ExportContextBakExportOptions buildExportContextBakExportOptions() {
     o.bakType = 'foo';
     o.copyOnly = true;
     o.differentialBase = true;
+    o.exportLogEndTime = 'foo';
+    o.exportLogStartTime = 'foo';
     o.stripeCount = 42;
     o.striped = true;
   }
@@ -1298,6 +1315,14 @@ void checkExportContextBakExportOptions(api.ExportContextBakExportOptions o) {
     );
     unittest.expect(o.copyOnly!, unittest.isTrue);
     unittest.expect(o.differentialBase!, unittest.isTrue);
+    unittest.expect(
+      o.exportLogEndTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.exportLogStartTime!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.stripeCount!,
       unittest.equals(42),
@@ -1390,6 +1415,29 @@ void checkExportContextSqlExportOptionsMysqlExportOptions(
   buildCounterExportContextSqlExportOptionsMysqlExportOptions--;
 }
 
+core.int buildCounterExportContextSqlExportOptionsPostgresExportOptions = 0;
+api.ExportContextSqlExportOptionsPostgresExportOptions
+    buildExportContextSqlExportOptionsPostgresExportOptions() {
+  final o = api.ExportContextSqlExportOptionsPostgresExportOptions();
+  buildCounterExportContextSqlExportOptionsPostgresExportOptions++;
+  if (buildCounterExportContextSqlExportOptionsPostgresExportOptions < 3) {
+    o.clean = true;
+    o.ifExists = true;
+  }
+  buildCounterExportContextSqlExportOptionsPostgresExportOptions--;
+  return o;
+}
+
+void checkExportContextSqlExportOptionsPostgresExportOptions(
+    api.ExportContextSqlExportOptionsPostgresExportOptions o) {
+  buildCounterExportContextSqlExportOptionsPostgresExportOptions++;
+  if (buildCounterExportContextSqlExportOptionsPostgresExportOptions < 3) {
+    unittest.expect(o.clean!, unittest.isTrue);
+    unittest.expect(o.ifExists!, unittest.isTrue);
+  }
+  buildCounterExportContextSqlExportOptionsPostgresExportOptions--;
+}
+
 core.List<core.String> buildUnnamed10() => [
       'foo',
       'foo',
@@ -1415,6 +1463,8 @@ api.ExportContextSqlExportOptions buildExportContextSqlExportOptions() {
     o.mysqlExportOptions =
         buildExportContextSqlExportOptionsMysqlExportOptions();
     o.parallel = true;
+    o.postgresExportOptions =
+        buildExportContextSqlExportOptionsPostgresExportOptions();
     o.schemaOnly = true;
     o.tables = buildUnnamed10();
     o.threads = 42;
@@ -1428,6 +1478,8 @@ void checkExportContextSqlExportOptions(api.ExportContextSqlExportOptions o) {
   if (buildCounterExportContextSqlExportOptions < 3) {
     checkExportContextSqlExportOptionsMysqlExportOptions(o.mysqlExportOptions!);
     unittest.expect(o.parallel!, unittest.isTrue);
+    checkExportContextSqlExportOptionsPostgresExportOptions(
+        o.postgresExportOptions!);
     unittest.expect(o.schemaOnly!, unittest.isTrue);
     checkUnnamed10(o.tables!);
     unittest.expect(
@@ -1865,12 +1917,37 @@ void checkImportContextCsvImportOptions(api.ImportContextCsvImportOptions o) {
   buildCounterImportContextCsvImportOptions--;
 }
 
+core.int buildCounterImportContextSqlImportOptionsPostgresImportOptions = 0;
+api.ImportContextSqlImportOptionsPostgresImportOptions
+    buildImportContextSqlImportOptionsPostgresImportOptions() {
+  final o = api.ImportContextSqlImportOptionsPostgresImportOptions();
+  buildCounterImportContextSqlImportOptionsPostgresImportOptions++;
+  if (buildCounterImportContextSqlImportOptionsPostgresImportOptions < 3) {
+    o.clean = true;
+    o.ifExists = true;
+  }
+  buildCounterImportContextSqlImportOptionsPostgresImportOptions--;
+  return o;
+}
+
+void checkImportContextSqlImportOptionsPostgresImportOptions(
+    api.ImportContextSqlImportOptionsPostgresImportOptions o) {
+  buildCounterImportContextSqlImportOptionsPostgresImportOptions++;
+  if (buildCounterImportContextSqlImportOptionsPostgresImportOptions < 3) {
+    unittest.expect(o.clean!, unittest.isTrue);
+    unittest.expect(o.ifExists!, unittest.isTrue);
+  }
+  buildCounterImportContextSqlImportOptionsPostgresImportOptions--;
+}
+
 core.int buildCounterImportContextSqlImportOptions = 0;
 api.ImportContextSqlImportOptions buildImportContextSqlImportOptions() {
   final o = api.ImportContextSqlImportOptions();
   buildCounterImportContextSqlImportOptions++;
   if (buildCounterImportContextSqlImportOptions < 3) {
     o.parallel = true;
+    o.postgresImportOptions =
+        buildImportContextSqlImportOptionsPostgresImportOptions();
     o.threads = 42;
   }
   buildCounterImportContextSqlImportOptions--;
@@ -1881,6 +1958,8 @@ void checkImportContextSqlImportOptions(api.ImportContextSqlImportOptions o) {
   buildCounterImportContextSqlImportOptions++;
   if (buildCounterImportContextSqlImportOptions < 3) {
     unittest.expect(o.parallel!, unittest.isTrue);
+    checkImportContextSqlImportOptionsPostgresImportOptions(
+        o.postgresImportOptions!);
     unittest.expect(
       o.threads!,
       unittest.equals(42),
@@ -2229,6 +2308,61 @@ void checkInstancesListServerCasResponse(api.InstancesListServerCasResponse o) {
   buildCounterInstancesListServerCasResponse--;
 }
 
+core.List<api.SslCert> buildUnnamed19() => [
+      buildSslCert(),
+      buildSslCert(),
+    ];
+
+void checkUnnamed19(core.List<api.SslCert> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSslCert(o[0]);
+  checkSslCert(o[1]);
+}
+
+core.List<api.SslCert> buildUnnamed20() => [
+      buildSslCert(),
+      buildSslCert(),
+    ];
+
+void checkUnnamed20(core.List<api.SslCert> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSslCert(o[0]);
+  checkSslCert(o[1]);
+}
+
+core.int buildCounterInstancesListServerCertificatesResponse = 0;
+api.InstancesListServerCertificatesResponse
+    buildInstancesListServerCertificatesResponse() {
+  final o = api.InstancesListServerCertificatesResponse();
+  buildCounterInstancesListServerCertificatesResponse++;
+  if (buildCounterInstancesListServerCertificatesResponse < 3) {
+    o.activeVersion = 'foo';
+    o.caCerts = buildUnnamed19();
+    o.kind = 'foo';
+    o.serverCerts = buildUnnamed20();
+  }
+  buildCounterInstancesListServerCertificatesResponse--;
+  return o;
+}
+
+void checkInstancesListServerCertificatesResponse(
+    api.InstancesListServerCertificatesResponse o) {
+  buildCounterInstancesListServerCertificatesResponse++;
+  if (buildCounterInstancesListServerCertificatesResponse < 3) {
+    unittest.expect(
+      o.activeVersion!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed19(o.caCerts!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed20(o.serverCerts!);
+  }
+  buildCounterInstancesListServerCertificatesResponse--;
+}
+
 core.int buildCounterInstancesReencryptRequest = 0;
 api.InstancesReencryptRequest buildInstancesReencryptRequest() {
   final o = api.InstancesReencryptRequest();
@@ -2286,6 +2420,27 @@ void checkInstancesRotateServerCaRequest(api.InstancesRotateServerCaRequest o) {
   buildCounterInstancesRotateServerCaRequest--;
 }
 
+core.int buildCounterInstancesRotateServerCertificateRequest = 0;
+api.InstancesRotateServerCertificateRequest
+    buildInstancesRotateServerCertificateRequest() {
+  final o = api.InstancesRotateServerCertificateRequest();
+  buildCounterInstancesRotateServerCertificateRequest++;
+  if (buildCounterInstancesRotateServerCertificateRequest < 3) {
+    o.rotateServerCertificateContext = buildRotateServerCertificateContext();
+  }
+  buildCounterInstancesRotateServerCertificateRequest--;
+  return o;
+}
+
+void checkInstancesRotateServerCertificateRequest(
+    api.InstancesRotateServerCertificateRequest o) {
+  buildCounterInstancesRotateServerCertificateRequest++;
+  if (buildCounterInstancesRotateServerCertificateRequest < 3) {
+    checkRotateServerCertificateContext(o.rotateServerCertificateContext!);
+  }
+  buildCounterInstancesRotateServerCertificateRequest--;
+}
+
 core.int buildCounterInstancesTruncateLogRequest = 0;
 api.InstancesTruncateLogRequest buildInstancesTruncateLogRequest() {
   final o = api.InstancesTruncateLogRequest();
@@ -2305,12 +2460,12 @@ void checkInstancesTruncateLogRequest(api.InstancesTruncateLogRequest o) {
   buildCounterInstancesTruncateLogRequest--;
 }
 
-core.List<api.AclEntry> buildUnnamed19() => [
+core.List<api.AclEntry> buildUnnamed21() => [
       buildAclEntry(),
       buildAclEntry(),
     ];
 
-void checkUnnamed19(core.List<api.AclEntry> o) {
+void checkUnnamed21(core.List<api.AclEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAclEntry(o[0]);
   checkAclEntry(o[1]);
@@ -2322,12 +2477,13 @@ api.IpConfiguration buildIpConfiguration() {
   buildCounterIpConfiguration++;
   if (buildCounterIpConfiguration < 3) {
     o.allocatedIpRange = 'foo';
-    o.authorizedNetworks = buildUnnamed19();
+    o.authorizedNetworks = buildUnnamed21();
     o.enablePrivatePathForGoogleCloudServices = true;
     o.ipv4Enabled = true;
     o.privateNetwork = 'foo';
     o.pscConfig = buildPscConfig();
     o.requireSsl = true;
+    o.serverCaMode = 'foo';
     o.sslMode = 'foo';
   }
   buildCounterIpConfiguration--;
@@ -2341,7 +2497,7 @@ void checkIpConfiguration(api.IpConfiguration o) {
       o.allocatedIpRange!,
       unittest.equals('foo'),
     );
-    checkUnnamed19(o.authorizedNetworks!);
+    checkUnnamed21(o.authorizedNetworks!);
     unittest.expect(
         o.enablePrivatePathForGoogleCloudServices!, unittest.isTrue);
     unittest.expect(o.ipv4Enabled!, unittest.isTrue);
@@ -2351,6 +2507,10 @@ void checkIpConfiguration(api.IpConfiguration o) {
     );
     checkPscConfig(o.pscConfig!);
     unittest.expect(o.requireSsl!, unittest.isTrue);
+    unittest.expect(
+      o.serverCaMode!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.sslMode!,
       unittest.equals('foo'),
@@ -2534,12 +2694,12 @@ void checkMySqlReplicaConfiguration(api.MySqlReplicaConfiguration o) {
   buildCounterMySqlReplicaConfiguration--;
 }
 
-core.List<api.SyncFlags> buildUnnamed20() => [
+core.List<api.SyncFlags> buildUnnamed22() => [
       buildSyncFlags(),
       buildSyncFlags(),
     ];
 
-void checkUnnamed20(core.List<api.SyncFlags> o) {
+void checkUnnamed22(core.List<api.SyncFlags> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSyncFlags(o[0]);
   checkSyncFlags(o[1]);
@@ -2550,7 +2710,7 @@ api.MySqlSyncConfig buildMySqlSyncConfig() {
   final o = api.MySqlSyncConfig();
   buildCounterMySqlSyncConfig++;
   if (buildCounterMySqlSyncConfig < 3) {
-    o.initialSyncFlags = buildUnnamed20();
+    o.initialSyncFlags = buildUnnamed22();
   }
   buildCounterMySqlSyncConfig--;
   return o;
@@ -2559,7 +2719,7 @@ api.MySqlSyncConfig buildMySqlSyncConfig() {
 void checkMySqlSyncConfig(api.MySqlSyncConfig o) {
   buildCounterMySqlSyncConfig++;
   if (buildCounterMySqlSyncConfig < 3) {
-    checkUnnamed20(o.initialSyncFlags!);
+    checkUnnamed22(o.initialSyncFlags!);
   }
   buildCounterMySqlSyncConfig--;
 }
@@ -2744,12 +2904,12 @@ void checkOperationError(api.OperationError o) {
   buildCounterOperationError--;
 }
 
-core.List<api.OperationError> buildUnnamed21() => [
+core.List<api.OperationError> buildUnnamed23() => [
       buildOperationError(),
       buildOperationError(),
     ];
 
-void checkUnnamed21(core.List<api.OperationError> o) {
+void checkUnnamed23(core.List<api.OperationError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationError(o[0]);
   checkOperationError(o[1]);
@@ -2760,7 +2920,7 @@ api.OperationErrors buildOperationErrors() {
   final o = api.OperationErrors();
   buildCounterOperationErrors++;
   if (buildCounterOperationErrors < 3) {
-    o.errors = buildUnnamed21();
+    o.errors = buildUnnamed23();
     o.kind = 'foo';
   }
   buildCounterOperationErrors--;
@@ -2770,7 +2930,7 @@ api.OperationErrors buildOperationErrors() {
 void checkOperationErrors(api.OperationErrors o) {
   buildCounterOperationErrors++;
   if (buildCounterOperationErrors < 3) {
-    checkUnnamed21(o.errors!);
+    checkUnnamed23(o.errors!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2779,12 +2939,12 @@ void checkOperationErrors(api.OperationErrors o) {
   buildCounterOperationErrors--;
 }
 
-core.List<api.Operation> buildUnnamed22() => [
+core.List<api.Operation> buildUnnamed24() => [
       buildOperation(),
       buildOperation(),
     ];
 
-void checkUnnamed22(core.List<api.Operation> o) {
+void checkUnnamed24(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -2795,7 +2955,7 @@ api.OperationsListResponse buildOperationsListResponse() {
   final o = api.OperationsListResponse();
   buildCounterOperationsListResponse++;
   if (buildCounterOperationsListResponse < 3) {
-    o.items = buildUnnamed22();
+    o.items = buildUnnamed24();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -2806,7 +2966,7 @@ api.OperationsListResponse buildOperationsListResponse() {
 void checkOperationsListResponse(api.OperationsListResponse o) {
   buildCounterOperationsListResponse++;
   if (buildCounterOperationsListResponse < 3) {
-    checkUnnamed22(o.items!);
+    checkUnnamed24(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2908,12 +3068,54 @@ void checkPerformDiskShrinkContext(api.PerformDiskShrinkContext o) {
   buildCounterPerformDiskShrinkContext--;
 }
 
-core.List<core.String> buildUnnamed23() => [
+core.int buildCounterPscAutoConnectionConfig = 0;
+api.PscAutoConnectionConfig buildPscAutoConnectionConfig() {
+  final o = api.PscAutoConnectionConfig();
+  buildCounterPscAutoConnectionConfig++;
+  if (buildCounterPscAutoConnectionConfig < 3) {
+    o.consumerNetwork = 'foo';
+    o.consumerNetworkStatus = 'foo';
+    o.consumerProject = 'foo';
+    o.ipAddress = 'foo';
+    o.status = 'foo';
+  }
+  buildCounterPscAutoConnectionConfig--;
+  return o;
+}
+
+void checkPscAutoConnectionConfig(api.PscAutoConnectionConfig o) {
+  buildCounterPscAutoConnectionConfig++;
+  if (buildCounterPscAutoConnectionConfig < 3) {
+    unittest.expect(
+      o.consumerNetwork!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.consumerNetworkStatus!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.consumerProject!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ipAddress!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.status!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPscAutoConnectionConfig--;
+}
+
+core.List<core.String> buildUnnamed25() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed23(core.List<core.String> o) {
+void checkUnnamed25(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2925,12 +3127,24 @@ void checkUnnamed23(core.List<core.String> o) {
   );
 }
 
+core.List<api.PscAutoConnectionConfig> buildUnnamed26() => [
+      buildPscAutoConnectionConfig(),
+      buildPscAutoConnectionConfig(),
+    ];
+
+void checkUnnamed26(core.List<api.PscAutoConnectionConfig> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPscAutoConnectionConfig(o[0]);
+  checkPscAutoConnectionConfig(o[1]);
+}
+
 core.int buildCounterPscConfig = 0;
 api.PscConfig buildPscConfig() {
   final o = api.PscConfig();
   buildCounterPscConfig++;
   if (buildCounterPscConfig < 3) {
-    o.allowedConsumerProjects = buildUnnamed23();
+    o.allowedConsumerProjects = buildUnnamed25();
+    o.pscAutoConnections = buildUnnamed26();
     o.pscEnabled = true;
   }
   buildCounterPscConfig--;
@@ -2940,7 +3154,8 @@ api.PscConfig buildPscConfig() {
 void checkPscConfig(api.PscConfig o) {
   buildCounterPscConfig++;
   if (buildCounterPscConfig < 3) {
-    checkUnnamed23(o.allowedConsumerProjects!);
+    checkUnnamed25(o.allowedConsumerProjects!);
+    checkUnnamed26(o.pscAutoConnections!);
     unittest.expect(o.pscEnabled!, unittest.isTrue);
   }
   buildCounterPscConfig--;
@@ -3094,12 +3309,39 @@ void checkRotateServerCaContext(api.RotateServerCaContext o) {
   buildCounterRotateServerCaContext--;
 }
 
-core.List<core.String> buildUnnamed24() => [
+core.int buildCounterRotateServerCertificateContext = 0;
+api.RotateServerCertificateContext buildRotateServerCertificateContext() {
+  final o = api.RotateServerCertificateContext();
+  buildCounterRotateServerCertificateContext++;
+  if (buildCounterRotateServerCertificateContext < 3) {
+    o.kind = 'foo';
+    o.nextVersion = 'foo';
+  }
+  buildCounterRotateServerCertificateContext--;
+  return o;
+}
+
+void checkRotateServerCertificateContext(api.RotateServerCertificateContext o) {
+  buildCounterRotateServerCertificateContext++;
+  if (buildCounterRotateServerCertificateContext < 3) {
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextVersion!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRotateServerCertificateContext--;
+}
+
+core.List<core.String> buildUnnamed27() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed24(core.List<core.String> o) {
+void checkUnnamed27(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3111,34 +3353,34 @@ void checkUnnamed24(core.List<core.String> o) {
   );
 }
 
-core.List<api.DatabaseFlags> buildUnnamed25() => [
+core.List<api.DatabaseFlags> buildUnnamed28() => [
       buildDatabaseFlags(),
       buildDatabaseFlags(),
     ];
 
-void checkUnnamed25(core.List<api.DatabaseFlags> o) {
+void checkUnnamed28(core.List<api.DatabaseFlags> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDatabaseFlags(o[0]);
   checkDatabaseFlags(o[1]);
 }
 
-core.List<api.DenyMaintenancePeriod> buildUnnamed26() => [
+core.List<api.DenyMaintenancePeriod> buildUnnamed29() => [
       buildDenyMaintenancePeriod(),
       buildDenyMaintenancePeriod(),
     ];
 
-void checkUnnamed26(core.List<api.DenyMaintenancePeriod> o) {
+void checkUnnamed29(core.List<api.DenyMaintenancePeriod> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDenyMaintenancePeriod(o[0]);
   checkDenyMaintenancePeriod(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed27() => {
+core.Map<core.String, core.String> buildUnnamed30() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed27(core.Map<core.String, core.String> o) {
+void checkUnnamed30(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -3158,7 +3400,7 @@ api.Settings buildSettings() {
     o.activationPolicy = 'foo';
     o.activeDirectoryConfig = buildSqlActiveDirectoryConfig();
     o.advancedMachineFeatures = buildAdvancedMachineFeatures();
-    o.authorizedGaeApplications = buildUnnamed24();
+    o.authorizedGaeApplications = buildUnnamed27();
     o.availabilityType = 'foo';
     o.backupConfiguration = buildBackupConfiguration();
     o.collation = 'foo';
@@ -3167,11 +3409,12 @@ api.Settings buildSettings() {
     o.dataCacheConfig = buildDataCacheConfig();
     o.dataDiskSizeGb = 'foo';
     o.dataDiskType = 'foo';
-    o.databaseFlags = buildUnnamed25();
+    o.databaseFlags = buildUnnamed28();
     o.databaseReplicationEnabled = true;
     o.deletionProtectionEnabled = true;
-    o.denyMaintenancePeriods = buildUnnamed26();
+    o.denyMaintenancePeriods = buildUnnamed29();
     o.edition = 'foo';
+    o.enableDataplexIntegration = true;
     o.enableGoogleMlIntegration = true;
     o.insightsConfig = buildInsightsConfig();
     o.ipConfiguration = buildIpConfiguration();
@@ -3187,7 +3430,7 @@ api.Settings buildSettings() {
     o.storageAutoResizeLimit = 'foo';
     o.tier = 'foo';
     o.timeZone = 'foo';
-    o.userLabels = buildUnnamed27();
+    o.userLabels = buildUnnamed30();
   }
   buildCounterSettings--;
   return o;
@@ -3202,7 +3445,7 @@ void checkSettings(api.Settings o) {
     );
     checkSqlActiveDirectoryConfig(o.activeDirectoryConfig!);
     checkAdvancedMachineFeatures(o.advancedMachineFeatures!);
-    checkUnnamed24(o.authorizedGaeApplications!);
+    checkUnnamed27(o.authorizedGaeApplications!);
     unittest.expect(
       o.availabilityType!,
       unittest.equals('foo'),
@@ -3226,14 +3469,15 @@ void checkSettings(api.Settings o) {
       o.dataDiskType!,
       unittest.equals('foo'),
     );
-    checkUnnamed25(o.databaseFlags!);
+    checkUnnamed28(o.databaseFlags!);
     unittest.expect(o.databaseReplicationEnabled!, unittest.isTrue);
     unittest.expect(o.deletionProtectionEnabled!, unittest.isTrue);
-    checkUnnamed26(o.denyMaintenancePeriods!);
+    checkUnnamed29(o.denyMaintenancePeriods!);
     unittest.expect(
       o.edition!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.enableDataplexIntegration!, unittest.isTrue);
     unittest.expect(o.enableGoogleMlIntegration!, unittest.isTrue);
     checkInsightsConfig(o.insightsConfig!);
     checkIpConfiguration(o.ipConfiguration!);
@@ -3270,7 +3514,7 @@ void checkSettings(api.Settings o) {
       o.timeZone!,
       unittest.equals('foo'),
     );
-    checkUnnamed27(o.userLabels!);
+    checkUnnamed30(o.userLabels!);
   }
   buildCounterSettings--;
 }
@@ -3561,23 +3805,23 @@ void checkSqlInstancesVerifyExternalSyncSettingsRequest(
   buildCounterSqlInstancesVerifyExternalSyncSettingsRequest--;
 }
 
-core.List<api.SqlExternalSyncSettingError> buildUnnamed28() => [
+core.List<api.SqlExternalSyncSettingError> buildUnnamed31() => [
       buildSqlExternalSyncSettingError(),
       buildSqlExternalSyncSettingError(),
     ];
 
-void checkUnnamed28(core.List<api.SqlExternalSyncSettingError> o) {
+void checkUnnamed31(core.List<api.SqlExternalSyncSettingError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSqlExternalSyncSettingError(o[0]);
   checkSqlExternalSyncSettingError(o[1]);
 }
 
-core.List<api.SqlExternalSyncSettingError> buildUnnamed29() => [
+core.List<api.SqlExternalSyncSettingError> buildUnnamed32() => [
       buildSqlExternalSyncSettingError(),
       buildSqlExternalSyncSettingError(),
     ];
 
-void checkUnnamed29(core.List<api.SqlExternalSyncSettingError> o) {
+void checkUnnamed32(core.List<api.SqlExternalSyncSettingError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSqlExternalSyncSettingError(o[0]);
   checkSqlExternalSyncSettingError(o[1]);
@@ -3589,9 +3833,9 @@ api.SqlInstancesVerifyExternalSyncSettingsResponse
   final o = api.SqlInstancesVerifyExternalSyncSettingsResponse();
   buildCounterSqlInstancesVerifyExternalSyncSettingsResponse++;
   if (buildCounterSqlInstancesVerifyExternalSyncSettingsResponse < 3) {
-    o.errors = buildUnnamed28();
+    o.errors = buildUnnamed31();
     o.kind = 'foo';
-    o.warnings = buildUnnamed29();
+    o.warnings = buildUnnamed32();
   }
   buildCounterSqlInstancesVerifyExternalSyncSettingsResponse--;
   return o;
@@ -3601,12 +3845,12 @@ void checkSqlInstancesVerifyExternalSyncSettingsResponse(
     api.SqlInstancesVerifyExternalSyncSettingsResponse o) {
   buildCounterSqlInstancesVerifyExternalSyncSettingsResponse++;
   if (buildCounterSqlInstancesVerifyExternalSyncSettingsResponse < 3) {
-    checkUnnamed28(o.errors!);
+    checkUnnamed31(o.errors!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed29(o.warnings!);
+    checkUnnamed32(o.warnings!);
   }
   buildCounterSqlInstancesVerifyExternalSyncSettingsResponse--;
 }
@@ -3733,12 +3977,12 @@ void checkSqlServerDatabaseDetails(api.SqlServerDatabaseDetails o) {
   buildCounterSqlServerDatabaseDetails--;
 }
 
-core.List<core.String> buildUnnamed30() => [
+core.List<core.String> buildUnnamed33() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed30(core.List<core.String> o) {
+void checkUnnamed33(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3756,7 +4000,7 @@ api.SqlServerUserDetails buildSqlServerUserDetails() {
   buildCounterSqlServerUserDetails++;
   if (buildCounterSqlServerUserDetails < 3) {
     o.disabled = true;
-    o.serverRoles = buildUnnamed30();
+    o.serverRoles = buildUnnamed33();
   }
   buildCounterSqlServerUserDetails--;
   return o;
@@ -3766,7 +4010,7 @@ void checkSqlServerUserDetails(api.SqlServerUserDetails o) {
   buildCounterSqlServerUserDetails++;
   if (buildCounterSqlServerUserDetails < 3) {
     unittest.expect(o.disabled!, unittest.isTrue);
-    checkUnnamed30(o.serverRoles!);
+    checkUnnamed33(o.serverRoles!);
   }
   buildCounterSqlServerUserDetails--;
 }
@@ -3934,12 +4178,12 @@ void checkSslCertsInsertResponse(api.SslCertsInsertResponse o) {
   buildCounterSslCertsInsertResponse--;
 }
 
-core.List<api.SslCert> buildUnnamed31() => [
+core.List<api.SslCert> buildUnnamed34() => [
       buildSslCert(),
       buildSslCert(),
     ];
 
-void checkUnnamed31(core.List<api.SslCert> o) {
+void checkUnnamed34(core.List<api.SslCert> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSslCert(o[0]);
   checkSslCert(o[1]);
@@ -3950,7 +4194,7 @@ api.SslCertsListResponse buildSslCertsListResponse() {
   final o = api.SslCertsListResponse();
   buildCounterSslCertsListResponse++;
   if (buildCounterSslCertsListResponse < 3) {
-    o.items = buildUnnamed31();
+    o.items = buildUnnamed34();
     o.kind = 'foo';
   }
   buildCounterSslCertsListResponse--;
@@ -3960,7 +4204,7 @@ api.SslCertsListResponse buildSslCertsListResponse() {
 void checkSslCertsListResponse(api.SslCertsListResponse o) {
   buildCounterSslCertsListResponse++;
   if (buildCounterSslCertsListResponse < 3) {
-    checkUnnamed31(o.items!);
+    checkUnnamed34(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -3996,12 +4240,12 @@ void checkSyncFlags(api.SyncFlags o) {
   buildCounterSyncFlags--;
 }
 
-core.List<core.String> buildUnnamed32() => [
+core.List<core.String> buildUnnamed35() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed32(core.List<core.String> o) {
+void checkUnnamed35(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4021,7 +4265,7 @@ api.Tier buildTier() {
     o.DiskQuota = 'foo';
     o.RAM = 'foo';
     o.kind = 'foo';
-    o.region = buildUnnamed32();
+    o.region = buildUnnamed35();
     o.tier = 'foo';
   }
   buildCounterTier--;
@@ -4043,7 +4287,7 @@ void checkTier(api.Tier o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed32(o.region!);
+    checkUnnamed35(o.region!);
     unittest.expect(
       o.tier!,
       unittest.equals('foo'),
@@ -4052,12 +4296,12 @@ void checkTier(api.Tier o) {
   buildCounterTier--;
 }
 
-core.List<api.Tier> buildUnnamed33() => [
+core.List<api.Tier> buildUnnamed36() => [
       buildTier(),
       buildTier(),
     ];
 
-void checkUnnamed33(core.List<api.Tier> o) {
+void checkUnnamed36(core.List<api.Tier> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTier(o[0]);
   checkTier(o[1]);
@@ -4068,7 +4312,7 @@ api.TiersListResponse buildTiersListResponse() {
   final o = api.TiersListResponse();
   buildCounterTiersListResponse++;
   if (buildCounterTiersListResponse < 3) {
-    o.items = buildUnnamed33();
+    o.items = buildUnnamed36();
     o.kind = 'foo';
   }
   buildCounterTiersListResponse--;
@@ -4078,7 +4322,7 @@ api.TiersListResponse buildTiersListResponse() {
 void checkTiersListResponse(api.TiersListResponse o) {
   buildCounterTiersListResponse++;
   if (buildCounterTiersListResponse < 3) {
-    checkUnnamed33(o.items!);
+    checkUnnamed36(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -4213,12 +4457,12 @@ void checkUserPasswordValidationPolicy(api.UserPasswordValidationPolicy o) {
   buildCounterUserPasswordValidationPolicy--;
 }
 
-core.List<api.User> buildUnnamed34() => [
+core.List<api.User> buildUnnamed37() => [
       buildUser(),
       buildUser(),
     ];
 
-void checkUnnamed34(core.List<api.User> o) {
+void checkUnnamed37(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUser(o[0]);
   checkUser(o[1]);
@@ -4229,7 +4473,7 @@ api.UsersListResponse buildUsersListResponse() {
   final o = api.UsersListResponse();
   buildCounterUsersListResponse++;
   if (buildCounterUsersListResponse < 3) {
-    o.items = buildUnnamed34();
+    o.items = buildUnnamed37();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -4240,7 +4484,7 @@ api.UsersListResponse buildUsersListResponse() {
 void checkUsersListResponse(api.UsersListResponse o) {
   buildCounterUsersListResponse++;
   if (buildCounterUsersListResponse < 3) {
-    checkUnnamed34(o.items!);
+    checkUnnamed37(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -4565,6 +4809,18 @@ void main() {
     });
   });
 
+  unittest.group(
+      'obj-schema-ExportContextSqlExportOptionsPostgresExportOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildExportContextSqlExportOptionsPostgresExportOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.ExportContextSqlExportOptionsPostgresExportOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkExportContextSqlExportOptionsPostgresExportOptions(od);
+    });
+  });
+
   unittest.group('obj-schema-ExportContextSqlExportOptions', () {
     unittest.test('to-json--from-json', () async {
       final o = buildExportContextSqlExportOptions();
@@ -4673,6 +4929,18 @@ void main() {
       final od = api.ImportContextCsvImportOptions.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkImportContextCsvImportOptions(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-ImportContextSqlImportOptionsPostgresImportOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildImportContextSqlImportOptionsPostgresImportOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.ImportContextSqlImportOptionsPostgresImportOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkImportContextSqlImportOptionsPostgresImportOptions(od);
     });
   });
 
@@ -4806,6 +5074,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-InstancesListServerCertificatesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInstancesListServerCertificatesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InstancesListServerCertificatesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkInstancesListServerCertificatesResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-InstancesReencryptRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildInstancesReencryptRequest();
@@ -4833,6 +5111,16 @@ void main() {
       final od = api.InstancesRotateServerCaRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkInstancesRotateServerCaRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-InstancesRotateServerCertificateRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInstancesRotateServerCertificateRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InstancesRotateServerCertificateRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkInstancesRotateServerCertificateRequest(od);
     });
   });
 
@@ -4986,6 +5274,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-PscAutoConnectionConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPscAutoConnectionConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PscAutoConnectionConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPscAutoConnectionConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-PscConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildPscConfig();
@@ -5043,6 +5341,16 @@ void main() {
       final od = api.RotateServerCaContext.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkRotateServerCaContext(od);
+    });
+  });
+
+  unittest.group('obj-schema-RotateServerCertificateContext', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRotateServerCertificateContext();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RotateServerCertificateContext.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRotateServerCertificateContext(od);
     });
   });
 
@@ -6473,6 +6781,177 @@ void main() {
   });
 
   unittest.group('resource-InstancesResource', () {
+    unittest.test('method--ListServerCertificates', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).instances;
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('sql/v1beta4/projects/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/instances/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('/instances/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/listServerCertificates', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_instance'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 23),
+          unittest.equals('/listServerCertificates'),
+        );
+        pathOffset += 23;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildInstancesListServerCertificatesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.ListServerCertificates(
+          arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkInstancesListServerCertificatesResponse(
+          response as api.InstancesListServerCertificatesResponse);
+    });
+
+    unittest.test('method--RotateServerCertificate', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).instances;
+      final arg_request = buildInstancesRotateServerCertificateRequest();
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.InstancesRotateServerCertificateRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInstancesRotateServerCertificateRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('sql/v1beta4/projects/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/instances/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('/instances/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/rotateServerCertificate', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_instance'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 24),
+          unittest.equals('/rotateServerCertificate'),
+        );
+        pathOffset += 24;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.RotateServerCertificate(
+          arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--acquireSsrsLease', () async {
       final mock = HttpServerMock();
       final res = api.SQLAdminApi(mock).instances;
@@ -6643,6 +7122,87 @@ void main() {
       checkOperation(response as api.Operation);
     });
 
+    unittest.test('method--addServerCertificate', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).instances;
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('sql/v1beta4/projects/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/instances/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('/instances/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/addServerCertificate', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_instance'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('/addServerCertificate'),
+        );
+        pathOffset += 21;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.addServerCertificate(arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--clone', () async {
       final mock = HttpServerMock();
       final res = api.SQLAdminApi(mock).instances;
@@ -6734,6 +7294,8 @@ void main() {
       final res = api.SQLAdminApi(mock).instances;
       final arg_project = 'foo';
       final arg_instance = 'foo';
+      final arg_finalBackupExpiryTime = 'foo';
+      final arg_finalBackupTtlDays = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -6787,6 +7349,14 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['finalBackupExpiryTime']!.first,
+          unittest.equals(arg_finalBackupExpiryTime),
+        );
+        unittest.expect(
+          queryMap['finalBackupTtlDays']!.first,
+          unittest.equals(arg_finalBackupTtlDays),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -6797,8 +7367,10 @@ void main() {
         final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response =
-          await res.delete(arg_project, arg_instance, $fields: arg_$fields);
+      final response = await res.delete(arg_project, arg_instance,
+          finalBackupExpiryTime: arg_finalBackupExpiryTime,
+          finalBackupTtlDays: arg_finalBackupTtlDays,
+          $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 

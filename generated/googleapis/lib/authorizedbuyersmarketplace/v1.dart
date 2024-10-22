@@ -1473,6 +1473,9 @@ class BuyersProposalsResource {
 
   /// Creates a note for this proposal and sends to the seller.
   ///
+  /// This method is not supported for proposals with DealType set to
+  /// 'PRIVATE_AUCTION'.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -4849,7 +4852,7 @@ class TechnologyTargeting {
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-typedef TimeOfDay = $TimeOfDay;
+typedef TimeOfDay = $TimeOfDay00;
 
 /// Represents a time zone from the
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).

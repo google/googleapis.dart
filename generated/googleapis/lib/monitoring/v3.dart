@@ -1353,23 +1353,24 @@ class ProjectsAlertPoliciesResource {
   /// operation, instead.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - If provided, this field specifies the criteria that must be met
-  /// by alert policies to be included in the response.For more details, see
-  /// sorting and filtering
+  /// [filter] - Optional. If provided, this field specifies the criteria that
+  /// must be met by alert policies to be included in the response.For more
+  /// details, see sorting and filtering
   /// (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).
   ///
-  /// [orderBy] - A comma-separated list of fields by which to sort the result.
-  /// Supports the same set of field references as the filter field. Entries can
-  /// be prefixed with a minus sign to sort by the field in descending order.For
-  /// more details, see sorting and filtering
+  /// [orderBy] - Optional. A comma-separated list of fields by which to sort
+  /// the result. Supports the same set of field references as the filter field.
+  /// Entries can be prefixed with a minus sign to sort by the field in
+  /// descending order.For more details, see sorting and filtering
   /// (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
+  /// [pageSize] - Optional. The maximum number of results to return in a single
+  /// response.
   ///
-  /// [pageToken] - If this field is not empty then it must contain the
-  /// nextPageToken value returned by a previous call to this method. Using this
-  /// field causes the method to return more results from the previous method
-  /// call.
+  /// [pageToken] - Optional. If this field is not empty then it must contain
+  /// the nextPageToken value returned by a previous call to this method. Using
+  /// this field causes the method to return more results from the previous
+  /// method call.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1421,8 +1422,8 @@ class ProjectsAlertPoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required if the policy exists. The resource name for this policy.
-  /// The format is:
+  /// [name] - Identifier. Required if the policy exists. The resource name for
+  /// this policy. The format is:
   /// projects/\[PROJECT_ID_OR_NUMBER\]/alertPolicies/\[ALERT_POLICY_ID\]
   /// \[ALERT_POLICY_ID\] is assigned by Cloud Monitoring when the policy is
   /// created. When calling the alertPolicies.create method, do not include the
@@ -2515,24 +2516,24 @@ class ProjectsNotificationChannelsResource {
   /// resource name, use the GetNotificationChannel operation.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - If provided, this field specifies the criteria that must be met
-  /// by notification channels to be included in the response.For more details,
-  /// see sorting and filtering
+  /// [filter] - Optional. If provided, this field specifies the criteria that
+  /// must be met by notification channels to be included in the response.For
+  /// more details, see sorting and filtering
   /// (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).
   ///
-  /// [orderBy] - A comma-separated list of fields by which to sort the result.
-  /// Supports the same set of fields as in filter. Entries can be prefixed with
-  /// a minus sign to sort in descending rather than ascending order.For more
-  /// details, see sorting and filtering
+  /// [orderBy] - Optional. A comma-separated list of fields by which to sort
+  /// the result. Supports the same set of fields as in filter. Entries can be
+  /// prefixed with a minus sign to sort in descending rather than ascending
+  /// order.For more details, see sorting and filtering
   /// (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// If not set to a positive number, a reasonable value will be chosen by the
-  /// service.
+  /// [pageSize] - Optional. The maximum number of results to return in a single
+  /// response. If not set to a positive number, a reasonable value will be
+  /// chosen by the service.
   ///
-  /// [pageToken] - If non-empty, page_token must contain a value returned as
-  /// the next_page_token in a previous response to request the next set of
-  /// results.
+  /// [pageToken] - Optional. If non-empty, page_token must contain a value
+  /// returned as the next_page_token in a previous response to request the next
+  /// set of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2583,12 +2584,13 @@ class ProjectsNotificationChannelsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The full REST resource name for this channel. The format is:
+  /// [name] - Identifier. The full REST resource name for this channel. The
+  /// format is:
   /// projects/\[PROJECT_ID_OR_NUMBER\]/notificationChannels/\[CHANNEL_ID\] The
   /// \[CHANNEL_ID\] is automatically assigned by the server on creation.
   /// Value must have pattern `^projects/\[^/\]+/notificationChannels/\[^/\]+$`.
   ///
-  /// [updateMask] - The fields to update.
+  /// [updateMask] - Optional. The fields to update.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3549,7 +3551,11 @@ class ProjectsTimeSeriesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Queries time series using Monitoring Query Language.
+  /// Queries time series by using Monitoring Query Language (MQL).
+  ///
+  /// We recommend using PromQL instead of MQL. For more information about the
+  /// status of MQL, see the MQL deprecation notice
+  /// (https://cloud.google.com/stackdriver/docs/deprecations/mql).
   ///
   /// [request] - The metadata request object.
   ///
@@ -3570,6 +3576,9 @@ class ProjectsTimeSeriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<QueryTimeSeriesResponse> query(
     QueryTimeSeriesRequest request,
     core.String name, {
@@ -4673,10 +4682,11 @@ class Aggregation {
 /// considered to be "unhealthy" and the ways to notify people or services about
 /// this state.
 ///
-/// For an overview of alert policies, see Introduction to Alerting
+/// For an overview of alerting policies, see Introduction to Alerting
 /// (https://cloud.google.com/monitoring/alerts/).
 class AlertPolicy {
-  /// Control over how this alert policy's notification channels are notified.
+  /// Control over how this alerting policy's notification channels are
+  /// notified.
   AlertStrategy? alertStrategy;
 
   /// How to combine the results of multiple conditions to determine if an
@@ -4747,9 +4757,10 @@ class AlertPolicy {
   /// If provided in a call to create or update, this field will be ignored.
   MutationRecord? mutationRecord;
 
-  /// Required if the policy exists.
+  /// Identifier.
   ///
-  /// The resource name for this policy. The format is:
+  /// Required if the policy exists. The resource name for this policy. The
+  /// format is:
   /// projects/\[PROJECT_ID_OR_NUMBER\]/alertPolicies/\[ALERT_POLICY_ID\]
   /// \[ALERT_POLICY_ID\] is assigned by Cloud Monitoring when the policy is
   /// created. When calling the alertPolicies.create method, do not include the
@@ -4766,7 +4777,7 @@ class AlertPolicy {
   /// is: projects/\[PROJECT_ID_OR_NUMBER\]/notificationChannels/\[CHANNEL_ID\]
   core.List<core.String>? notificationChannels;
 
-  /// The severity of an alert policy indicates how important incidents
+  /// The severity of an alerting policy indicates how important incidents
   /// generated by that policy are.
   ///
   /// The severity level will be displayed on the Incident detail page and in
@@ -4798,10 +4809,10 @@ class AlertPolicy {
   /// contain characters that are not allowed in user-label values.
   core.Map<core.String, core.String>? userLabels;
 
-  /// Read-only description of how the alert policy is invalid.
+  /// Read-only description of how the alerting policy is invalid.
   ///
-  /// This field is only set when the alert policy is invalid. An invalid alert
-  /// policy will not generate incidents.
+  /// This field is only set when the alerting policy is invalid. An invalid
+  /// alerting policy will not generate incidents.
   Status? validity;
 
   AlertPolicy({
@@ -4885,20 +4896,28 @@ class AlertPolicy {
 /// Control over how the notification channels in notification_channels are
 /// notified when this alert fires.
 class AlertStrategy {
-  /// If an alert policy that was active has no data for this long, any open
+  /// If an alerting policy that was active has no data for this long, any open
   /// incidents will close
   core.String? autoClose;
 
   /// Control how notifications will be sent out, on a per-channel basis.
   core.List<NotificationChannelStrategy>? notificationChannelStrategy;
 
-  /// Required for alert policies with a LogMatch condition.This limit is not
-  /// implemented for alert policies that are not log-based.
+  /// For log-based alert policies, the notification prompts is always OPENED.
+  ///
+  /// For non log-based alert policies, the notification prompts can be OPENED
+  /// or OPENED, CLOSED.
+  core.List<core.String>? notificationPrompts;
+
+  /// Required for log-based alerting policies, i.e. policies with a LogMatch
+  /// condition.This limit is not implemented for alerting policies that do not
+  /// have a LogMatch condition.
   NotificationRateLimit? notificationRateLimit;
 
   AlertStrategy({
     this.autoClose,
     this.notificationChannelStrategy,
+    this.notificationPrompts,
     this.notificationRateLimit,
   });
 
@@ -4910,6 +4929,9 @@ class AlertStrategy {
                   ?.map((value) => NotificationChannelStrategy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList(),
+          notificationPrompts: (json_['notificationPrompts'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           notificationRateLimit: json_.containsKey('notificationRateLimit')
               ? NotificationRateLimit.fromJson(json_['notificationRateLimit']
                   as core.Map<core.String, core.dynamic>)
@@ -4920,6 +4942,8 @@ class AlertStrategy {
         if (autoClose != null) 'autoClose': autoClose!,
         if (notificationChannelStrategy != null)
           'notificationChannelStrategy': notificationChannelStrategy!,
+        if (notificationPrompts != null)
+          'notificationPrompts': notificationPrompts!,
         if (notificationRateLimit != null)
           'notificationRateLimit': notificationRateLimit!,
       };
@@ -5098,6 +5122,30 @@ class BasicSli {
         if (location != null) 'location': location!,
         if (method != null) 'method': method!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// A test that uses an alerting result in a boolean column produced by the SQL
+/// query.
+class BooleanTest {
+  /// The name of the column containing the boolean value.
+  ///
+  /// If the value in a row is NULL, that row is ignored.
+  ///
+  /// Required.
+  core.String? column;
+
+  BooleanTest({
+    this.column,
+  });
+
+  BooleanTest.fromJson(core.Map json_)
+      : this(
+          column: json_['column'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (column != null) 'column': column!,
       };
 }
 
@@ -5522,6 +5570,9 @@ class Condition {
   /// A condition that uses the Prometheus query language to define alerts.
   PrometheusQueryLanguageCondition? conditionPrometheusQueryLanguage;
 
+  /// A condition that periodically evaluates a SQL query result.
+  SqlCondition? conditionSql;
+
   /// A condition that compares a time series against a threshold.
   MetricThreshold? conditionThreshold;
 
@@ -5555,6 +5606,7 @@ class Condition {
     this.conditionMatchedLog,
     this.conditionMonitoringQueryLanguage,
     this.conditionPrometheusQueryLanguage,
+    this.conditionSql,
     this.conditionThreshold,
     this.displayName,
     this.name,
@@ -5582,6 +5634,10 @@ class Condition {
                       json_['conditionPrometheusQueryLanguage']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          conditionSql: json_.containsKey('conditionSql')
+              ? SqlCondition.fromJson(
+                  json_['conditionSql'] as core.Map<core.String, core.dynamic>)
+              : null,
           conditionThreshold: json_.containsKey('conditionThreshold')
               ? MetricThreshold.fromJson(json_['conditionThreshold']
                   as core.Map<core.String, core.dynamic>)
@@ -5598,6 +5654,7 @@ class Condition {
           'conditionMonitoringQueryLanguage': conditionMonitoringQueryLanguage!,
         if (conditionPrometheusQueryLanguage != null)
           'conditionPrometheusQueryLanguage': conditionPrometheusQueryLanguage!,
+        if (conditionSql != null) 'conditionSql': conditionSql!,
         if (conditionThreshold != null)
           'conditionThreshold': conditionThreshold!,
         if (displayName != null) 'displayName': displayName!,
@@ -5856,6 +5913,43 @@ class Criteria {
 /// matches your intended service.
 typedef Custom = $Empty;
 
+/// Used to schedule the query to run every so many days.
+class Daily {
+  /// The time of day (in UTC) at which the query should run.
+  ///
+  /// If left unspecified, the server picks an arbitrary time of day and runs
+  /// the query at the same time each day.
+  ///
+  /// Optional.
+  TimeOfDay? executionTime;
+
+  /// The number of days between runs.
+  ///
+  /// Must be greater than or equal to 1 day and less than or equal to 31 days.
+  ///
+  /// Required.
+  core.int? periodicity;
+
+  Daily({
+    this.executionTime,
+    this.periodicity,
+  });
+
+  Daily.fromJson(core.Map json_)
+      : this(
+          executionTime: json_.containsKey('executionTime')
+              ? TimeOfDay.fromJson(
+                  json_['executionTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          periodicity: json_['periodicity'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (executionTime != null) 'executionTime': executionTime!,
+        if (periodicity != null) 'periodicity': periodicity!,
+      };
+}
+
 /// Distribution contains summary statistics for a population of values.
 ///
 /// It optionally contains a histogram representing the distribution of those
@@ -6008,8 +6102,15 @@ class Documentation {
   /// The content may not exceed 8,192 Unicode characters and may not exceed
   /// more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
   /// This text can be templatized by using variables
-  /// (https://cloud.google.com/monitoring/alerts/doc-variables).
+  /// (https://cloud.google.com/monitoring/alerts/doc-variables#doc-vars).
   core.String? content;
+
+  /// Links to content such as playbooks, repositories, and other resources.
+  ///
+  /// This field can contain up to 3 entries.
+  ///
+  /// Optional.
+  core.List<Link>? links;
 
   /// The format of the content field.
   ///
@@ -6027,14 +6128,15 @@ class Documentation {
   /// It is both the limit imposed by some third-party ticketing products and it
   /// is common to define textual fields in databases as VARCHAR(255).The
   /// contents of the subject line can be templatized by using variables
-  /// (https://cloud.google.com/monitoring/alerts/doc-variables). If this field
-  /// is missing or empty, a default subject line will be generated.
+  /// (https://cloud.google.com/monitoring/alerts/doc-variables#doc-vars). If
+  /// this field is missing or empty, a default subject line will be generated.
   ///
   /// Optional.
   core.String? subject;
 
   Documentation({
     this.content,
+    this.links,
     this.mimeType,
     this.subject,
   });
@@ -6042,12 +6144,17 @@ class Documentation {
   Documentation.fromJson(core.Map json_)
       : this(
           content: json_['content'] as core.String?,
+          links: (json_['links'] as core.List?)
+              ?.map((value) =>
+                  Link.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           mimeType: json_['mimeType'] as core.String?,
           subject: json_['subject'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
+        if (links != null) 'links': links!,
         if (mimeType != null) 'mimeType': mimeType!,
         if (subject != null) 'subject': subject!,
       };
@@ -6516,6 +6623,41 @@ class Group {
       };
 }
 
+/// Used to schedule the query to run every so many hours.
+class Hourly {
+  /// The number of minutes after the hour (in UTC) to run the query.
+  ///
+  /// Must be greater than or equal to 0 minutes and less than or equal to 59
+  /// minutes. If left unspecified, then an arbitrary offset is used.
+  ///
+  /// Optional.
+  core.int? minuteOffset;
+
+  /// The number of hours between runs.
+  ///
+  /// Must be greater than or equal to 1 hour and less than or equal to 48
+  /// hours.
+  ///
+  /// Required.
+  core.int? periodicity;
+
+  Hourly({
+    this.minuteOffset,
+    this.periodicity,
+  });
+
+  Hourly.fromJson(core.Map json_)
+      : this(
+          minuteOffset: json_['minuteOffset'] as core.int?,
+          periodicity: json_['periodicity'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (minuteOffset != null) 'minuteOffset': minuteOffset!,
+        if (periodicity != null) 'periodicity': periodicity!,
+      };
+}
+
 /// Information involved in an HTTP/HTTPS Uptime check request.
 class HttpCheck {
   /// If present, the check will only pass if the HTTP response status code is
@@ -6975,6 +7117,39 @@ class LatencyCriteria {
 /// the following boundaries:Upper bound (0 \<= i \< N-1): offset + (width *
 /// i).Lower bound (1 \<= i \< N): offset + (width * (i - 1)).
 typedef Linear = $Linear;
+
+/// Links to content such as playbooks, repositories, and other resources.
+class Link {
+  /// A short display name for the link.
+  ///
+  /// The display name must not be empty or exceed 63 characters. Example:
+  /// "playbook".
+  core.String? displayName;
+
+  /// The url of a webpage.
+  ///
+  /// A url can be templatized by using variables in the path or the query
+  /// parameters. The total length of a URL should not exceed 2083 characters
+  /// before and after variable expansion. Example:
+  /// "https://my_domain.com/playbook?name=${resource.name}"
+  core.String? url;
+
+  Link({
+    this.displayName,
+    this.url,
+  });
+
+  Link.fromJson(core.Map json_)
+      : this(
+          displayName: json_['displayName'] as core.String?,
+          url: json_['url'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (url != null) 'url': url!,
+      };
+}
 
 /// The protocol for the ListAlertPolicies response.
 class ListAlertPoliciesResponse {
@@ -8104,6 +8279,30 @@ class MetricThreshold {
       };
 }
 
+/// Used to schedule the query to run every so many minutes.
+class Minutes {
+  /// Number of minutes between runs.
+  ///
+  /// The interval must be greater than or equal to 5 minutes and less than or
+  /// equal to 1440 minutes.
+  ///
+  /// Required.
+  core.int? periodicity;
+
+  Minutes({
+    this.periodicity,
+  });
+
+  Minutes.fromJson(core.Map json_)
+      : this(
+          periodicity: json_['periodicity'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (periodicity != null) 'periodicity': periodicity!,
+      };
+}
+
 /// An object representing a resource that can be used for monitoring, logging,
 /// billing, or other purposes.
 ///
@@ -8292,8 +8491,8 @@ class MonitoredResourceDescriptor {
 /// message.
 typedef MonitoredResourceMetadata = $MonitoredResourceMetadata;
 
-/// A condition type that allows alert policies to be defined using Monitoring
-/// Query Language (https://cloud.google.com/monitoring/mql).
+/// A condition type that allows alerting policies to be defined using
+/// Monitoring Query Language (https://cloud.google.com/monitoring/mql).
 class MonitoringQueryLanguageCondition {
   /// The amount of time that a time series must violate the threshold to be
   /// considered failing.
@@ -8428,9 +8627,9 @@ class NotificationChannel {
   /// Records of the modification of this channel.
   core.List<MutationRecord>? mutationRecords;
 
-  /// The full REST resource name for this channel.
+  /// Identifier.
   ///
-  /// The format is:
+  /// The full REST resource name for this channel. The format is:
   /// projects/\[PROJECT_ID_OR_NUMBER\]/notificationChannels/\[CHANNEL_ID\] The
   /// \[CHANNEL_ID\] is automatically assigned by the server on creation.
   core.String? name;
@@ -8692,7 +8891,7 @@ class NotificationChannelStrategy {
       };
 }
 
-/// Control over the rate of notifications sent to this alert policy's
+/// Control over the rate of notifications sent to this alerting policy's
 /// notification channels.
 class NotificationRateLimit {
   /// Not more than one notification per period.
@@ -8849,8 +9048,8 @@ class PointData {
       };
 }
 
-/// A condition type that allows alert policies to be defined using Prometheus
-/// Query Language (PromQL)
+/// A condition type that allows alerting policies to be defined using
+/// Prometheus Query Language (PromQL)
 /// (https://prometheus.io/docs/prometheus/latest/querying/basics/).The
 /// PrometheusQueryLanguageCondition message contains information from a
 /// Prometheus alerting rule and its associated rule group.A Prometheus alerting
@@ -8915,9 +9114,9 @@ class PrometheusQueryLanguageCondition {
   /// Label names must be valid
   /// (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels).
   /// Label values can be templatized by using variables
-  /// (https://cloud.google.com/monitoring/alerts/doc-variables). The only
-  /// available variable names are the names of the labels in the PromQL result,
-  /// including "__name__" and "value". "labels" may be empty.
+  /// (https://cloud.google.com/monitoring/alerts/doc-variables#doc-vars). The
+  /// only available variable names are the names of the labels in the PromQL
+  /// result, including "__name__" and "value". "labels" may be empty.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
@@ -8982,6 +9181,10 @@ class PrometheusQueryLanguageCondition {
 }
 
 /// The QueryTimeSeries request.
+///
+/// For information about the status of Monitoring Query Language (MQL), see the
+/// MQL deprecation notice
+/// (https://cloud.google.com/stackdriver/docs/deprecations/mql).
 class QueryTimeSeriesRequest {
   /// A positive number that is the maximum number of time_series_data to
   /// return.
@@ -9023,6 +9226,10 @@ class QueryTimeSeriesRequest {
 }
 
 /// The QueryTimeSeries response.
+///
+/// For information about the status of Monitoring Query Language (MQL), see the
+/// MQL deprecation notice
+/// (https://cloud.google.com/stackdriver/docs/deprecations/mql).
 class QueryTimeSeriesResponse {
   /// If there are more results than have been returned, then this field is set
   /// to a non-empty value.
@@ -9206,6 +9413,51 @@ class ResponseStatusCode {
   core.Map<core.String, core.dynamic> toJson() => {
         if (statusClass != null) 'statusClass': statusClass!,
         if (statusValue != null) 'statusValue': statusValue!,
+      };
+}
+
+/// A test that checks if the number of rows in the result set violates some
+/// threshold.
+class RowCountTest {
+  /// The comparison to apply between the number of rows returned by the query
+  /// and the threshold.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "COMPARISON_UNSPECIFIED" : No ordering relationship is specified.
+  /// - "COMPARISON_GT" : True if the left argument is greater than the right
+  /// argument.
+  /// - "COMPARISON_GE" : True if the left argument is greater than or equal to
+  /// the right argument.
+  /// - "COMPARISON_LT" : True if the left argument is less than the right
+  /// argument.
+  /// - "COMPARISON_LE" : True if the left argument is less than or equal to the
+  /// right argument.
+  /// - "COMPARISON_EQ" : True if the left argument is equal to the right
+  /// argument.
+  /// - "COMPARISON_NE" : True if the left argument is not equal to the right
+  /// argument.
+  core.String? comparison;
+
+  /// The value against which to compare the row count.
+  ///
+  /// Required.
+  core.String? threshold;
+
+  RowCountTest({
+    this.comparison,
+    this.threshold,
+  });
+
+  RowCountTest.fromJson(core.Map json_)
+      : this(
+          comparison: json_['comparison'] as core.String?,
+          threshold: json_['threshold'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (comparison != null) 'comparison': comparison!,
+        if (threshold != null) 'threshold': threshold!,
       };
 }
 
@@ -9494,7 +9746,7 @@ class ServiceLevelObjective {
   /// The fraction of service that must be good in order for this objective to
   /// be met.
   ///
-  /// 0 \< goal \<= 0.999.
+  /// 0 \< goal \<= 0.9999.
   core.double? goal;
 
   /// Identifier.
@@ -9634,6 +9886,83 @@ class Snooze {
       };
 }
 
+/// A condition that allows alerting policies to be defined using GoogleSQL.
+///
+/// SQL conditions examine a sliding window of logs using GoogleSQL. Alert
+/// policies with SQL conditions may incur additional billing.
+class SqlCondition {
+  /// Test the boolean value in the indicated column.
+  BooleanTest? booleanTest;
+
+  /// Schedule the query to execute every so many days.
+  Daily? daily;
+
+  /// Schedule the query to execute every so many hours.
+  Hourly? hourly;
+
+  /// Schedule the query to execute every so many minutes.
+  Minutes? minutes;
+
+  /// The Log Analytics SQL query to run, as a string.
+  ///
+  /// The query must conform to the required shape. Specifically, the query must
+  /// not try to filter the input by time. A filter will automatically be
+  /// applied to filter the input so that the query receives all rows received
+  /// since the last time the query was run.For example, the following query
+  /// extracts all log entries containing an HTTP request:SELECT timestamp,
+  /// log_name, severity, http_request, resource, labels FROM
+  /// my-project.global._Default._AllLogs WHERE http_request IS NOT NULL
+  ///
+  /// Required.
+  core.String? query;
+
+  /// Test the row count against a threshold.
+  RowCountTest? rowCountTest;
+
+  SqlCondition({
+    this.booleanTest,
+    this.daily,
+    this.hourly,
+    this.minutes,
+    this.query,
+    this.rowCountTest,
+  });
+
+  SqlCondition.fromJson(core.Map json_)
+      : this(
+          booleanTest: json_.containsKey('booleanTest')
+              ? BooleanTest.fromJson(
+                  json_['booleanTest'] as core.Map<core.String, core.dynamic>)
+              : null,
+          daily: json_.containsKey('daily')
+              ? Daily.fromJson(
+                  json_['daily'] as core.Map<core.String, core.dynamic>)
+              : null,
+          hourly: json_.containsKey('hourly')
+              ? Hourly.fromJson(
+                  json_['hourly'] as core.Map<core.String, core.dynamic>)
+              : null,
+          minutes: json_.containsKey('minutes')
+              ? Minutes.fromJson(
+                  json_['minutes'] as core.Map<core.String, core.dynamic>)
+              : null,
+          query: json_['query'] as core.String?,
+          rowCountTest: json_.containsKey('rowCountTest')
+              ? RowCountTest.fromJson(
+                  json_['rowCountTest'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (booleanTest != null) 'booleanTest': booleanTest!,
+        if (daily != null) 'daily': daily!,
+        if (hourly != null) 'hourly': hourly!,
+        if (minutes != null) 'minutes': minutes!,
+        if (query != null) 'query': query!,
+        if (rowCountTest != null) 'rowCountTest': rowCountTest!,
+      };
+}
+
 /// The Status type defines a logical error model that is suitable for different
 /// programming environments, including REST APIs and RPC APIs.
 ///
@@ -9641,7 +9970,7 @@ class Snooze {
 /// three pieces of data: error code, error message, and error details.You can
 /// find out more about this error model and how to work with it in the API
 /// Design Guide (https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Describes a Synthetic Monitor to be invoked by Uptime.
 class SyntheticMonitorTarget {
@@ -9780,6 +10109,13 @@ class TimeInterval {
       };
 }
 
+/// Represents a time of day.
+///
+/// The date and time zone are either not significant or are specified
+/// elsewhere. An API may choose to allow leap seconds. Related types are
+/// google.type.Date and google.protobuf.Timestamp.
+typedef TimeOfDay = $TimeOfDay00;
+
 /// A collection of data points that describes the time-varying values of a
 /// metric.
 ///
@@ -9787,6 +10123,13 @@ class TimeInterval {
 /// resource and a fully-specified metric. This type is used for both listing
 /// and creating time series.
 class TimeSeries {
+  /// Input only.
+  ///
+  /// A detailed description of the time series that will be associated with the
+  /// google.api.MetricDescriptor for the metric. Once set, this field cannot be
+  /// changed through CreateTimeSeries.
+  core.String? description;
+
   /// The associated monitored resource metadata.
   ///
   /// When reading a time series, this field will include metadata labels that
@@ -9841,7 +10184,8 @@ class TimeSeries {
   /// The units in which the metric value is reported.
   ///
   /// It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION.
-  /// The unit defines the representation of the stored metric values.
+  /// The unit defines the representation of the stored metric values. This
+  /// field can only be changed through CreateTimeSeries when it is empty.
   core.String? unit;
 
   /// The value type of the time series.
@@ -9864,6 +10208,7 @@ class TimeSeries {
   core.String? valueType;
 
   TimeSeries({
+    this.description,
     this.metadata,
     this.metric,
     this.metricKind,
@@ -9875,6 +10220,7 @@ class TimeSeries {
 
   TimeSeries.fromJson(core.Map json_)
       : this(
+          description: json_['description'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? MonitoredResourceMetadata.fromJson(
                   json_['metadata'] as core.Map<core.String, core.dynamic>)
@@ -9897,6 +10243,7 @@ class TimeSeries {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
         if (metadata != null) 'metadata': metadata!,
         if (metric != null) 'metric': metric!,
         if (metricKind != null) 'metricKind': metricKind!,

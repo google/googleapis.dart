@@ -554,7 +554,7 @@ class GoogleCloudKmsV1CryptoKey {
   /// The period of time that versions of this key spend in the
   /// DESTROY_SCHEDULED state before transitioning to DESTROYED.
   ///
-  /// If not specified at creation time, the default duration is 24 hours.
+  /// If not specified at creation time, the default duration is 30 days.
   ///
   /// Immutable.
   core.String? destroyScheduledDuration;
@@ -563,6 +563,19 @@ class GoogleCloudKmsV1CryptoKey {
   ///
   /// Immutable.
   core.bool? importOnly;
+
+  /// The policy used for Key Access Justifications Policy Enforcement.
+  ///
+  /// If this field is present and this key is enrolled in Key Access
+  /// Justifications Policy Enforcement, the policy will be evaluated in
+  /// encrypt, decrypt, and sign operations, and the operation will fail if
+  /// rejected by the policy. The policy is defined by specifying zero or more
+  /// allowed justification codes.
+  /// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+  /// By default, this field is absent, and all justification codes are allowed.
+  ///
+  /// Optional.
+  GoogleCloudKmsV1KeyAccessJustificationsPolicy? keyAccessJustificationsPolicy;
 
   /// Labels with user-defined metadata.
   ///
@@ -633,6 +646,7 @@ class GoogleCloudKmsV1CryptoKey {
     this.cryptoKeyBackend,
     this.destroyScheduledDuration,
     this.importOnly,
+    this.keyAccessJustificationsPolicy,
     this.labels,
     this.name,
     this.nextRotationTime,
@@ -649,6 +663,12 @@ class GoogleCloudKmsV1CryptoKey {
           destroyScheduledDuration:
               json_['destroyScheduledDuration'] as core.String?,
           importOnly: json_['importOnly'] as core.bool?,
+          keyAccessJustificationsPolicy:
+              json_.containsKey('keyAccessJustificationsPolicy')
+                  ? GoogleCloudKmsV1KeyAccessJustificationsPolicy.fromJson(
+                      json_['keyAccessJustificationsPolicy']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -677,6 +697,8 @@ class GoogleCloudKmsV1CryptoKey {
         if (destroyScheduledDuration != null)
           'destroyScheduledDuration': destroyScheduledDuration!,
         if (importOnly != null) 'importOnly': importOnly!,
+        if (keyAccessJustificationsPolicy != null)
+          'keyAccessJustificationsPolicy': keyAccessJustificationsPolicy!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
@@ -984,6 +1006,11 @@ typedef GoogleCloudKmsV1CryptoKeyVersionTemplate = $CryptoKeyVersionTemplate;
 /// level and EXTERNAL_VPC protection levels.
 typedef GoogleCloudKmsV1ExternalProtectionLevelOptions
     = $ExternalProtectionLevelOptions;
+
+/// A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason
+/// values for encrypt, decrypt, and sign operations on a CryptoKey.
+typedef GoogleCloudKmsV1KeyAccessJustificationsPolicy
+    = $KeyAccessJustificationsPolicy;
 
 /// Contains an HSM-generated attestation about a key operation.
 ///

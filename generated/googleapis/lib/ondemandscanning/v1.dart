@@ -2066,6 +2066,7 @@ class PackageData {
   /// - "RUBYGEMS" : Ruby packges (from RubyGems package manager).
   /// - "RUST" : Rust packages from Cargo (Github ecosystem is `RUST`).
   /// - "COMPOSER" : PHP packages from Composer package manager.
+  /// - "SWIFT" : Swift packages from Swift Package Manager (SwiftPM).
   core.String? packageType;
 
   /// CVEs that this package is no longer vulnerable to
@@ -3000,7 +3001,7 @@ class SourceContext {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 typedef Subject = $Subject;
 
 /// The Upgrade Distribution represents metadata about the Upgrade for each

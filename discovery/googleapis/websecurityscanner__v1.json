@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240609",
+    "revision": "20231021",
     "rootUrl": "https://websecurityscanner.googleapis.com/",
     "servicePath": "",
     "title": "Web Security Scanner API",

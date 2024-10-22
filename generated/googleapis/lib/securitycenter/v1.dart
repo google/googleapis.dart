@@ -65,6 +65,7 @@
 ///   - [OrganizationsSourcesResource]
 ///     - [OrganizationsSourcesFindingsResource]
 ///       - [OrganizationsSourcesFindingsExternalSystemsResource]
+///   - [OrganizationsValuedResourcesResource]
 /// - [ProjectsResource]
 ///   - [ProjectsAssetsResource]
 ///   - [ProjectsBigQueryExportsResource]
@@ -155,8 +156,8 @@ class FoldersAssetsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent to group the assets by. Its
-  /// format is "organizations/\[organization_id\]", "folders/\[folder_id\]", or
-  /// "projects/\[project_id\]".
+  /// format is `organizations/[organization_id]`, `folders/[folder_id]`, or
+  /// `projects/[project_id]`.
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -201,8 +202,8 @@ class FoldersAssetsResource {
   /// [parent] - Required. The name of the parent resource that contains the
   /// assets. The value that you can specify on parent depends on the method in
   /// which you specify parent. You can specify one of the following values:
-  /// "organizations/\[organization_id\]", "folders/\[folder_id\]", or
-  /// "projects/\[project_id\]".
+  /// `organizations/[organization_id]`, `folders/[folder_id]`, or
+  /// `projects/[project_id]`.
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [compareDuration] - When compare_duration is set, the ListAssetsResult's
@@ -408,8 +409,8 @@ class FoldersBigQueryExportsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent resource of the new BigQuery
-  /// export. Its format is "organizations/\[organization_id\]",
-  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
+  /// export. Its format is `organizations/[organization_id]`,
+  /// `folders/[folder_id]`, or `projects/[project_id]`.
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [bigQueryExportId] - Required. Unique identifier provided by the client
@@ -456,9 +457,9 @@ class FoldersBigQueryExportsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the BigQuery export to delete. Its format
-  /// is organizations/{organization}/bigQueryExports/{export_id},
-  /// folders/{folder}/bigQueryExports/{export_id}, or
-  /// projects/{project}/bigQueryExports/{export_id}
+  /// is `organizations/{organization}/bigQueryExports/{export_id}`,
+  /// `folders/{folder}/bigQueryExports/{export_id}`, or
+  /// `projects/{project}/bigQueryExports/{export_id}`
   /// Value must have pattern `^folders/\[^/\]+/bigQueryExports/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -494,9 +495,9 @@ class FoldersBigQueryExportsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the BigQuery export to retrieve. Its format is
-  /// organizations/{organization}/bigQueryExports/{export_id},
-  /// folders/{folder}/bigQueryExports/{export_id}, or
-  /// projects/{project}/bigQueryExports/{export_id}
+  /// `organizations/{organization}/bigQueryExports/{export_id}`,
+  /// `folders/{folder}/bigQueryExports/{export_id}`, or
+  /// `projects/{project}/bigQueryExports/{export_id}`
   /// Value must have pattern `^folders/\[^/\]+/bigQueryExports/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -538,8 +539,8 @@ class FoldersBigQueryExportsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns the collection of BigQuery
-  /// exports. Its format is "organizations/\[organization_id\]",
-  /// "folders/\[folder_id\]", "projects/\[project_id\]".
+  /// exports. Its format is `organizations/[organization_id]`,
+  /// `folders/[folder_id]`, `projects/[project_id]`.
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of configs to return. The service may
@@ -659,9 +660,9 @@ class FoldersEventThreatDetectionSettingsResource {
   ///
   /// [parent] - Required. Resource name of the parent to validate the Custom
   /// Module under. Its format is: *
-  /// "organizations/{organization}/eventThreatDetectionSettings". *
-  /// "folders/{folder}/eventThreatDetectionSettings". *
-  /// "projects/{project}/eventThreatDetectionSettings".
+  /// `organizations/{organization}/eventThreatDetectionSettings`. *
+  /// `folders/{folder}/eventThreatDetectionSettings`. *
+  /// `projects/{project}/eventThreatDetectionSettings`.
   /// Value must have pattern `^folders/\[^/\]+/eventThreatDetectionSettings$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -717,9 +718,9 @@ class FoldersEventThreatDetectionSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The new custom module's parent. Its format is: *
-  /// "organizations/{organization}/eventThreatDetectionSettings". *
-  /// "folders/{folder}/eventThreatDetectionSettings". *
-  /// "projects/{project}/eventThreatDetectionSettings".
+  /// `organizations/{organization}/eventThreatDetectionSettings`. *
+  /// `folders/{folder}/eventThreatDetectionSettings`. *
+  /// `projects/{project}/eventThreatDetectionSettings`.
   /// Value must have pattern `^folders/\[^/\]+/eventThreatDetectionSettings$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -762,10 +763,10 @@ class FoldersEventThreatDetectionSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the custom module to delete. Its format is: *
-  /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
-  /// * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}".
+  /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`.
+  /// * `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`.
   /// *
-  /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+  /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
   /// Value must have pattern
   /// `^folders/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
   ///
@@ -802,10 +803,10 @@ class FoldersEventThreatDetectionSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the custom module to get. Its format is: *
-  /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
-  /// * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}".
+  /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`.
+  /// * `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`.
   /// *
-  /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+  /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
   /// Value must have pattern
   /// `^folders/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
   ///
@@ -847,9 +848,9 @@ class FoldersEventThreatDetectionSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the parent to list custom modules under. Its
-  /// format is: * "organizations/{organization}/eventThreatDetectionSettings".
-  /// * "folders/{folder}/eventThreatDetectionSettings". *
-  /// "projects/{project}/eventThreatDetectionSettings".
+  /// format is: * `organizations/{organization}/eventThreatDetectionSettings`.
+  /// * `folders/{folder}/eventThreatDetectionSettings`. *
+  /// `projects/{project}/eventThreatDetectionSettings`.
   /// Value must have pattern `^folders/\[^/\]+/eventThreatDetectionSettings$`.
   ///
   /// [pageSize] - The maximum number of modules to return. The service may
@@ -902,9 +903,9 @@ class FoldersEventThreatDetectionSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the parent to list custom modules under. Its
-  /// format is: * "organizations/{organization}/eventThreatDetectionSettings".
-  /// * "folders/{folder}/eventThreatDetectionSettings". *
-  /// "projects/{project}/eventThreatDetectionSettings".
+  /// format is: * `organizations/{organization}/eventThreatDetectionSettings`.
+  /// * `folders/{folder}/eventThreatDetectionSettings`. *
+  /// `projects/{project}/eventThreatDetectionSettings`.
   /// Value must have pattern `^folders/\[^/\]+/eventThreatDetectionSettings$`.
   ///
   /// [pageSize] - The maximum number of modules to return. The service may
@@ -970,10 +971,10 @@ class FoldersEventThreatDetectionSettingsCustomModulesResource {
   ///
   /// [name] - Immutable. The resource name of the Event Threat Detection custom
   /// module. Its format is: *
-  /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
-  /// * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}".
+  /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`.
+  /// * `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`.
   /// *
-  /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+  /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
   /// Value must have pattern
   /// `^folders/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
   ///
@@ -1028,11 +1029,11 @@ class FoldersEventThreatDetectionSettingsEffectiveCustomModulesResource {
   ///
   /// [name] - Required. The resource name of the effective Event Threat
   /// Detection custom module. Its format is: *
-  /// "organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// `organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
   /// *
-  /// "folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// `folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
   /// *
-  /// "projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// `projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
   /// Value must have pattern
   /// `^folders/\[^/\]+/eventThreatDetectionSettings/effectiveCustomModules/\[^/\]+$`.
   ///
@@ -1074,9 +1075,9 @@ class FoldersEventThreatDetectionSettingsEffectiveCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the parent to list custom modules for. Its
-  /// format is: * "organizations/{organization}/eventThreatDetectionSettings".
-  /// * "folders/{folder}/eventThreatDetectionSettings". *
-  /// "projects/{project}/eventThreatDetectionSettings".
+  /// format is: * `organizations/{organization}/eventThreatDetectionSettings`.
+  /// * `folders/{folder}/eventThreatDetectionSettings`. *
+  /// `projects/{project}/eventThreatDetectionSettings`.
   /// Value must have pattern `^folders/\[^/\]+/eventThreatDetectionSettings$`.
   ///
   /// [pageSize] - The maximum number of modules to return. The service may
@@ -1140,8 +1141,8 @@ class FoldersFindingsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, at which bulk action needs to be applied.
-  /// Its format is "organizations/\[organization_id\]",
-  /// "folders/\[folder_id\]", "projects/\[project_id\]".
+  /// Its format is `organizations/[organization_id]`, `folders/[folder_id]`,
+  /// `projects/[project_id]`.
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1191,67 +1192,17 @@ class FoldersLocationsMuteConfigsResource {
   FoldersLocationsMuteConfigsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a mute config.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. Resource name of the new mute configs's parent. Its
-  /// format is "organizations/\[organization_id\]", "folders/\[folder_id\]", or
-  /// "projects/\[project_id\]".
-  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [muteConfigId] - Required. Unique identifier provided by the client within
-  /// the parent scope. It must consist of only lowercase letters, numbers, and
-  /// hyphens, must start with a letter, must end with either a letter or a
-  /// number, and must be 63 characters or less.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleCloudSecuritycenterV1MuteConfig].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudSecuritycenterV1MuteConfig> create(
-    GoogleCloudSecuritycenterV1MuteConfig request,
-    core.String parent, {
-    core.String? muteConfigId,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (muteConfigId != null) 'muteConfigId': [muteConfigId],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/muteConfigs';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Deletes an existing mute config.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. Name of the mute config to delete. Its format is
-  /// organizations/{organization}/muteConfigs/{config_id},
-  /// folders/{folder}/muteConfigs/{config_id},
-  /// projects/{project}/muteConfigs/{config_id},
-  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-  /// projects/{project}/locations/global/muteConfigs/{config_id}.
+  /// `organizations/{organization}/muteConfigs/{config_id}`,
+  /// `folders/{folder}/muteConfigs/{config_id}`,
+  /// `projects/{project}/muteConfigs/{config_id}`,
+  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
@@ -1288,12 +1239,12 @@ class FoldersLocationsMuteConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the mute config to retrieve. Its format is
-  /// organizations/{organization}/muteConfigs/{config_id},
-  /// folders/{folder}/muteConfigs/{config_id},
-  /// projects/{project}/muteConfigs/{config_id},
-  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-  /// projects/{project}/locations/global/muteConfigs/{config_id}.
+  /// `organizations/{organization}/muteConfigs/{config_id}`,
+  /// `folders/{folder}/muteConfigs/{config_id}`,
+  /// `projects/{project}/muteConfigs/{config_id}`,
+  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
@@ -1326,58 +1277,6 @@ class FoldersLocationsMuteConfigsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists mute configs.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The parent, which owns the collection of mute
-  /// configs. Its format is "organizations/\[organization_id\]",
-  /// "folders/\[folder_id\]", "projects/\[project_id\]".
-  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+/muteConfigs$`.
-  ///
-  /// [pageSize] - The maximum number of configs to return. The service may
-  /// return fewer than this value. If unspecified, at most 10 configs will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
-  ///
-  /// [pageToken] - A page token, received from a previous `ListMuteConfigs`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListMuteConfigs` must match the call that
-  /// provided the page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListMuteConfigsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListMuteConfigsResponse> list(
-    core.String parent, {
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListMuteConfigsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Updates a mute config.
   ///
   /// [request] - The metadata request object.
@@ -1385,12 +1284,12 @@ class FoldersLocationsMuteConfigsResource {
   /// Request parameters:
   ///
   /// [name] - This field will be ignored if provided on config creation. Format
-  /// "organizations/{organization}/muteConfigs/{mute_config}"
-  /// "folders/{folder}/muteConfigs/{mute_config}"
-  /// "projects/{project}/muteConfigs/{mute_config}"
-  /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
-  /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
-  /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+  /// `organizations/{organization}/muteConfigs/{mute_config}`
+  /// `folders/{folder}/muteConfigs/{mute_config}`
+  /// `projects/{project}/muteConfigs/{mute_config}`
+  /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
+  /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
+  /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
@@ -1444,8 +1343,8 @@ class FoldersMuteConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the new mute configs's parent. Its
-  /// format is "organizations/\[organization_id\]", "folders/\[folder_id\]", or
-  /// "projects/\[project_id\]".
+  /// format is `organizations/[organization_id]`, `folders/[folder_id]`, or
+  /// `projects/[project_id]`.
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [muteConfigId] - Required. Unique identifier provided by the client within
@@ -1492,12 +1391,12 @@ class FoldersMuteConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the mute config to delete. Its format is
-  /// organizations/{organization}/muteConfigs/{config_id},
-  /// folders/{folder}/muteConfigs/{config_id},
-  /// projects/{project}/muteConfigs/{config_id},
-  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-  /// projects/{project}/locations/global/muteConfigs/{config_id}.
+  /// `organizations/{organization}/muteConfigs/{config_id}`,
+  /// `folders/{folder}/muteConfigs/{config_id}`,
+  /// `projects/{project}/muteConfigs/{config_id}`,
+  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
   /// Value must have pattern `^folders/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1533,12 +1432,12 @@ class FoldersMuteConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the mute config to retrieve. Its format is
-  /// organizations/{organization}/muteConfigs/{config_id},
-  /// folders/{folder}/muteConfigs/{config_id},
-  /// projects/{project}/muteConfigs/{config_id},
-  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-  /// projects/{project}/locations/global/muteConfigs/{config_id}.
+  /// `organizations/{organization}/muteConfigs/{config_id}`,
+  /// `folders/{folder}/muteConfigs/{config_id}`,
+  /// `projects/{project}/muteConfigs/{config_id}`,
+  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
   /// Value must have pattern `^folders/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1575,8 +1474,8 @@ class FoldersMuteConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns the collection of mute
-  /// configs. Its format is "organizations/\[organization_id\]",
-  /// "folders/\[folder_id\]", "projects/\[project_id\]".
+  /// configs. Its format is `organizations/[organization_id]`,
+  /// `folders/[folder_id]`, `projects/[project_id]`.
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of configs to return. The service may
@@ -1629,12 +1528,12 @@ class FoldersMuteConfigsResource {
   /// Request parameters:
   ///
   /// [name] - This field will be ignored if provided on config creation. Format
-  /// "organizations/{organization}/muteConfigs/{mute_config}"
-  /// "folders/{folder}/muteConfigs/{mute_config}"
-  /// "projects/{project}/muteConfigs/{mute_config}"
-  /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
-  /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
-  /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+  /// `organizations/{organization}/muteConfigs/{mute_config}`
+  /// `folders/{folder}/muteConfigs/{mute_config}`
+  /// `projects/{project}/muteConfigs/{mute_config}`
+  /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
+  /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
+  /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
   /// Value must have pattern `^folders/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [updateMask] - The list of fields to be updated. If empty all mutable
@@ -1688,8 +1587,8 @@ class FoldersNotificationConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the new notification config's
-  /// parent. Its format is "organizations/\[organization_id\]",
-  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
+  /// parent. Its format is `organizations/[organization_id]`,
+  /// `folders/[folder_id]`, or `projects/[project_id]`.
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [configId] - Required. Unique identifier provided by the client within the
@@ -1736,9 +1635,9 @@ class FoldersNotificationConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the notification config to delete. Its format
-  /// is "organizations/\[organization_id\]/notificationConfigs/\[config_id\]",
-  /// "folders/\[folder_id\]/notificationConfigs/\[config_id\]", or
-  /// "projects/\[project_id\]/notificationConfigs/\[config_id\]".
+  /// is `organizations/[organization_id]/notificationConfigs/[config_id]`,
+  /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
+  /// `projects/[project_id]/notificationConfigs/[config_id]`.
   /// Value must have pattern `^folders/\[^/\]+/notificationConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1774,9 +1673,9 @@ class FoldersNotificationConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the notification config to get. Its format is
-  /// "organizations/\[organization_id\]/notificationConfigs/\[config_id\]",
-  /// "folders/\[folder_id\]/notificationConfigs/\[config_id\]", or
-  /// "projects/\[project_id\]/notificationConfigs/\[config_id\]".
+  /// `organizations/[organization_id]/notificationConfigs/[config_id]`,
+  /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
+  /// `projects/[project_id]/notificationConfigs/[config_id]`.
   /// Value must have pattern `^folders/\[^/\]+/notificationConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1950,9 +1849,9 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the new custom module's parent. Its
-  /// format is "organizations/{organization}/securityHealthAnalyticsSettings",
-  /// "folders/{folder}/securityHealthAnalyticsSettings", or
-  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// format is `organizations/{organization}/securityHealthAnalyticsSettings`,
+  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+  /// `projects/{project}/securityHealthAnalyticsSettings`
   /// Value must have pattern
   /// `^folders/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
@@ -1998,10 +1897,10 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the custom module to delete. Its format is
-  /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
-  /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
+  /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`,
   /// or
-  /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+  /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
   /// Value must have pattern
   /// `^folders/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
   ///
@@ -2038,10 +1937,10 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the custom module to get. Its format is
-  /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
-  /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
+  /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`,
   /// or
-  /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+  /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
   /// Value must have pattern
   /// `^folders/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
   ///
@@ -2085,9 +1984,9 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of parent to list custom modules. Its format is
-  /// "organizations/{organization}/securityHealthAnalyticsSettings",
-  /// "folders/{folder}/securityHealthAnalyticsSettings", or
-  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+  /// `projects/{project}/securityHealthAnalyticsSettings`
   /// Value must have pattern
   /// `^folders/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
@@ -2136,9 +2035,9 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of parent to list descendant custom modules. Its
-  /// format is "organizations/{organization}/securityHealthAnalyticsSettings",
-  /// "folders/{folder}/securityHealthAnalyticsSettings", or
-  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// format is `organizations/{organization}/securityHealthAnalyticsSettings`,
+  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+  /// `projects/{project}/securityHealthAnalyticsSettings`
   /// Value must have pattern
   /// `^folders/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
@@ -2310,10 +2209,10 @@ class FoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource {
   ///
   /// [name] - Required. Name of the effective custom module to get. Its format
   /// is
-  /// "organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
-  /// "folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
+  /// `organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`,
+  /// `folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`,
   /// or
-  /// "projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}"
+  /// `projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`
   /// Value must have pattern
   /// `^folders/\[^/\]+/securityHealthAnalyticsSettings/effectiveCustomModules/\[^/\]+$`.
   ///
@@ -2358,9 +2257,9 @@ class FoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of parent to list effective custom modules. Its
-  /// format is "organizations/{organization}/securityHealthAnalyticsSettings",
-  /// "folders/{folder}/securityHealthAnalyticsSettings", or
-  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// format is `organizations/{organization}/securityHealthAnalyticsSettings`,
+  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+  /// `projects/{project}/securityHealthAnalyticsSettings`
   /// Value must have pattern
   /// `^folders/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
@@ -2419,8 +2318,8 @@ class FoldersSourcesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the parent of sources to list. Its
-  /// format should be "organizations/\[organization_id\]",
-  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
+  /// format should be `organizations/[organization_id]`, `folders/[folder_id]`,
+  /// or `projects/[project_id]`.
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
@@ -2486,12 +2385,12 @@ class FoldersSourcesFindingsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the source to groupBy. Its format is
-  /// "organizations/\[organization_id\]/sources/\[source_id\]",
-  /// folders/\[folder_id\]/sources/\[source_id\], or
-  /// projects/\[project_id\]/sources/\[source_id\]. To groupBy across all
-  /// sources provide a source_id of `-`. For example:
-  /// organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-,
-  /// or projects/{project_id}/sources/-
+  /// `organizations/[organization_id]/sources/[source_id]`,
+  /// `folders/[folder_id]/sources/[source_id]`, or
+  /// `projects/[project_id]/sources/[source_id]`. To groupBy across all sources
+  /// provide a source_id of `-`. For example:
+  /// `organizations/{organization_id}/sources/-,
+  /// folders/{folder_id}/sources/-`, or `projects/{project_id}/sources/-`
   /// Value must have pattern `^folders/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2534,12 +2433,12 @@ class FoldersSourcesFindingsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the source the findings belong to. Its format
-  /// is "organizations/\[organization_id\]/sources/\[source_id\],
-  /// folders/\[folder_id\]/sources/\[source_id\], or
-  /// projects/\[project_id\]/sources/\[source_id\]". To list across all sources
+  /// is `organizations/[organization_id]/sources/[source_id]`,
+  /// `folders/[folder_id]/sources/[source_id]`, or
+  /// `projects/[project_id]/sources/[source_id]`. To list across all sources
   /// provide a source_id of `-`. For example:
-  /// organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-
-  /// or projects/{projects_id}/sources/-
+  /// `organizations/{organization_id}/sources/-`,
+  /// `folders/{folder_id}/sources/-` or `projects/{projects_id}/sources/-`
   /// Value must have pattern `^folders/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [compareDuration] - When compare_duration is set, the ListFindingsResult's
@@ -2727,9 +2626,9 @@ class FoldersSourcesFindingsResource {
   /// [name] - Required. The
   /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
   /// of the finding. Example:
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-  /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+  /// `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
+  /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
+  /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
   /// Value must have pattern
   /// `^folders/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -2773,9 +2672,9 @@ class FoldersSourcesFindingsResource {
   /// [name] - Required. The
   /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
   /// of the finding. Example:
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-  /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+  /// `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
+  /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
+  /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
   /// Value must have pattern
   /// `^folders/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -2959,6 +2858,8 @@ class OrganizationsResource {
       OrganizationsSimulationsResource(_requester);
   OrganizationsSourcesResource get sources =>
       OrganizationsSourcesResource(_requester);
+  OrganizationsValuedResourcesResource get valuedResources =>
+      OrganizationsValuedResourcesResource(_requester);
 
   OrganizationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -2967,8 +2868,7 @@ class OrganizationsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the organization to get organization settings
-  /// for. Its format is
-  /// "organizations/\[organization_id\]/organizationSettings".
+  /// for. Its format is `organizations/[organization_id]/organizationSettings`.
   /// Value must have pattern `^organizations/\[^/\]+/organizationSettings$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3063,8 +2963,8 @@ class OrganizationsAssetsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent to group the assets by. Its
-  /// format is "organizations/\[organization_id\]", "folders/\[folder_id\]", or
-  /// "projects/\[project_id\]".
+  /// format is `organizations/[organization_id]`, `folders/[folder_id]`, or
+  /// `projects/[project_id]`.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3109,8 +3009,8 @@ class OrganizationsAssetsResource {
   /// [parent] - Required. The name of the parent resource that contains the
   /// assets. The value that you can specify on parent depends on the method in
   /// which you specify parent. You can specify one of the following values:
-  /// "organizations/\[organization_id\]", "folders/\[folder_id\]", or
-  /// "projects/\[project_id\]".
+  /// `organizations/[organization_id]`, `folders/[folder_id]`, or
+  /// `projects/[project_id]`.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [compareDuration] - When compare_duration is set, the ListAssetsResult's
@@ -3254,7 +3154,7 @@ class OrganizationsAssetsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the organization to run asset discovery for.
-  /// Its format is "organizations/\[organization_id\]".
+  /// Its format is `organizations/[organization_id]`.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3366,8 +3266,8 @@ class OrganizationsBigQueryExportsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent resource of the new BigQuery
-  /// export. Its format is "organizations/\[organization_id\]",
-  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
+  /// export. Its format is `organizations/[organization_id]`,
+  /// `folders/[folder_id]`, or `projects/[project_id]`.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [bigQueryExportId] - Required. Unique identifier provided by the client
@@ -3414,9 +3314,9 @@ class OrganizationsBigQueryExportsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the BigQuery export to delete. Its format
-  /// is organizations/{organization}/bigQueryExports/{export_id},
-  /// folders/{folder}/bigQueryExports/{export_id}, or
-  /// projects/{project}/bigQueryExports/{export_id}
+  /// is `organizations/{organization}/bigQueryExports/{export_id}`,
+  /// `folders/{folder}/bigQueryExports/{export_id}`, or
+  /// `projects/{project}/bigQueryExports/{export_id}`
   /// Value must have pattern `^organizations/\[^/\]+/bigQueryExports/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3452,9 +3352,9 @@ class OrganizationsBigQueryExportsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the BigQuery export to retrieve. Its format is
-  /// organizations/{organization}/bigQueryExports/{export_id},
-  /// folders/{folder}/bigQueryExports/{export_id}, or
-  /// projects/{project}/bigQueryExports/{export_id}
+  /// `organizations/{organization}/bigQueryExports/{export_id}`,
+  /// `folders/{folder}/bigQueryExports/{export_id}`, or
+  /// `projects/{project}/bigQueryExports/{export_id}`
   /// Value must have pattern `^organizations/\[^/\]+/bigQueryExports/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3496,8 +3396,8 @@ class OrganizationsBigQueryExportsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns the collection of BigQuery
-  /// exports. Its format is "organizations/\[organization_id\]",
-  /// "folders/\[folder_id\]", "projects/\[project_id\]".
+  /// exports. Its format is `organizations/[organization_id]`,
+  /// `folders/[folder_id]`, `projects/[project_id]`.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of configs to return. The service may
@@ -3619,9 +3519,9 @@ class OrganizationsEventThreatDetectionSettingsResource {
   ///
   /// [parent] - Required. Resource name of the parent to validate the Custom
   /// Module under. Its format is: *
-  /// "organizations/{organization}/eventThreatDetectionSettings". *
-  /// "folders/{folder}/eventThreatDetectionSettings". *
-  /// "projects/{project}/eventThreatDetectionSettings".
+  /// `organizations/{organization}/eventThreatDetectionSettings`. *
+  /// `folders/{folder}/eventThreatDetectionSettings`. *
+  /// `projects/{project}/eventThreatDetectionSettings`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings$`.
   ///
@@ -3678,9 +3578,9 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The new custom module's parent. Its format is: *
-  /// "organizations/{organization}/eventThreatDetectionSettings". *
-  /// "folders/{folder}/eventThreatDetectionSettings". *
-  /// "projects/{project}/eventThreatDetectionSettings".
+  /// `organizations/{organization}/eventThreatDetectionSettings`. *
+  /// `folders/{folder}/eventThreatDetectionSettings`. *
+  /// `projects/{project}/eventThreatDetectionSettings`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings$`.
   ///
@@ -3724,10 +3624,10 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the custom module to delete. Its format is: *
-  /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
-  /// * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}".
+  /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`.
+  /// * `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`.
   /// *
-  /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+  /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
   ///
@@ -3764,10 +3664,10 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the custom module to get. Its format is: *
-  /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
-  /// * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}".
+  /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`.
+  /// * `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`.
   /// *
-  /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+  /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
   ///
@@ -3809,9 +3709,9 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the parent to list custom modules under. Its
-  /// format is: * "organizations/{organization}/eventThreatDetectionSettings".
-  /// * "folders/{folder}/eventThreatDetectionSettings". *
-  /// "projects/{project}/eventThreatDetectionSettings".
+  /// format is: * `organizations/{organization}/eventThreatDetectionSettings`.
+  /// * `folders/{folder}/eventThreatDetectionSettings`. *
+  /// `projects/{project}/eventThreatDetectionSettings`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings$`.
   ///
@@ -3865,9 +3765,9 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the parent to list custom modules under. Its
-  /// format is: * "organizations/{organization}/eventThreatDetectionSettings".
-  /// * "folders/{folder}/eventThreatDetectionSettings". *
-  /// "projects/{project}/eventThreatDetectionSettings".
+  /// format is: * `organizations/{organization}/eventThreatDetectionSettings`.
+  /// * `folders/{folder}/eventThreatDetectionSettings`. *
+  /// `projects/{project}/eventThreatDetectionSettings`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings$`.
   ///
@@ -3934,10 +3834,10 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
   ///
   /// [name] - Immutable. The resource name of the Event Threat Detection custom
   /// module. Its format is: *
-  /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
-  /// * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}".
+  /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`.
+  /// * `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`.
   /// *
-  /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+  /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
   ///
@@ -3992,11 +3892,11 @@ class OrganizationsEventThreatDetectionSettingsEffectiveCustomModulesResource {
   ///
   /// [name] - Required. The resource name of the effective Event Threat
   /// Detection custom module. Its format is: *
-  /// "organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// `organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
   /// *
-  /// "folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// `folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
   /// *
-  /// "projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// `projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings/effectiveCustomModules/\[^/\]+$`.
   ///
@@ -4038,9 +3938,9 @@ class OrganizationsEventThreatDetectionSettingsEffectiveCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the parent to list custom modules for. Its
-  /// format is: * "organizations/{organization}/eventThreatDetectionSettings".
-  /// * "folders/{folder}/eventThreatDetectionSettings". *
-  /// "projects/{project}/eventThreatDetectionSettings".
+  /// format is: * `organizations/{organization}/eventThreatDetectionSettings`.
+  /// * `folders/{folder}/eventThreatDetectionSettings`. *
+  /// `projects/{project}/eventThreatDetectionSettings`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings$`.
   ///
@@ -4106,8 +4006,8 @@ class OrganizationsFindingsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, at which bulk action needs to be applied.
-  /// Its format is "organizations/\[organization_id\]",
-  /// "folders/\[folder_id\]", "projects/\[project_id\]".
+  /// Its format is `organizations/[organization_id]`, `folders/[folder_id]`,
+  /// `projects/[project_id]`.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4158,67 +4058,17 @@ class OrganizationsLocationsMuteConfigsResource {
   OrganizationsLocationsMuteConfigsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a mute config.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. Resource name of the new mute configs's parent. Its
-  /// format is "organizations/\[organization_id\]", "folders/\[folder_id\]", or
-  /// "projects/\[project_id\]".
-  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [muteConfigId] - Required. Unique identifier provided by the client within
-  /// the parent scope. It must consist of only lowercase letters, numbers, and
-  /// hyphens, must start with a letter, must end with either a letter or a
-  /// number, and must be 63 characters or less.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleCloudSecuritycenterV1MuteConfig].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudSecuritycenterV1MuteConfig> create(
-    GoogleCloudSecuritycenterV1MuteConfig request,
-    core.String parent, {
-    core.String? muteConfigId,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (muteConfigId != null) 'muteConfigId': [muteConfigId],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/muteConfigs';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Deletes an existing mute config.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. Name of the mute config to delete. Its format is
-  /// organizations/{organization}/muteConfigs/{config_id},
-  /// folders/{folder}/muteConfigs/{config_id},
-  /// projects/{project}/muteConfigs/{config_id},
-  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-  /// projects/{project}/locations/global/muteConfigs/{config_id}.
+  /// `organizations/{organization}/muteConfigs/{config_id}`,
+  /// `folders/{folder}/muteConfigs/{config_id}`,
+  /// `projects/{project}/muteConfigs/{config_id}`,
+  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
@@ -4255,12 +4105,12 @@ class OrganizationsLocationsMuteConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the mute config to retrieve. Its format is
-  /// organizations/{organization}/muteConfigs/{config_id},
-  /// folders/{folder}/muteConfigs/{config_id},
-  /// projects/{project}/muteConfigs/{config_id},
-  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-  /// projects/{project}/locations/global/muteConfigs/{config_id}.
+  /// `organizations/{organization}/muteConfigs/{config_id}`,
+  /// `folders/{folder}/muteConfigs/{config_id}`,
+  /// `projects/{project}/muteConfigs/{config_id}`,
+  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
@@ -4293,59 +4143,6 @@ class OrganizationsLocationsMuteConfigsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists mute configs.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The parent, which owns the collection of mute
-  /// configs. Its format is "organizations/\[organization_id\]",
-  /// "folders/\[folder_id\]", "projects/\[project_id\]".
-  /// Value must have pattern
-  /// `^organizations/\[^/\]+/locations/\[^/\]+/muteConfigs$`.
-  ///
-  /// [pageSize] - The maximum number of configs to return. The service may
-  /// return fewer than this value. If unspecified, at most 10 configs will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
-  ///
-  /// [pageToken] - A page token, received from a previous `ListMuteConfigs`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListMuteConfigs` must match the call that
-  /// provided the page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListMuteConfigsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListMuteConfigsResponse> list(
-    core.String parent, {
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListMuteConfigsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Updates a mute config.
   ///
   /// [request] - The metadata request object.
@@ -4353,12 +4150,12 @@ class OrganizationsLocationsMuteConfigsResource {
   /// Request parameters:
   ///
   /// [name] - This field will be ignored if provided on config creation. Format
-  /// "organizations/{organization}/muteConfigs/{mute_config}"
-  /// "folders/{folder}/muteConfigs/{mute_config}"
-  /// "projects/{project}/muteConfigs/{mute_config}"
-  /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
-  /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
-  /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+  /// `organizations/{organization}/muteConfigs/{mute_config}`
+  /// `folders/{folder}/muteConfigs/{mute_config}`
+  /// `projects/{project}/muteConfigs/{mute_config}`
+  /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
+  /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
+  /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
@@ -4413,8 +4210,8 @@ class OrganizationsMuteConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the new mute configs's parent. Its
-  /// format is "organizations/\[organization_id\]", "folders/\[folder_id\]", or
-  /// "projects/\[project_id\]".
+  /// format is `organizations/[organization_id]`, `folders/[folder_id]`, or
+  /// `projects/[project_id]`.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [muteConfigId] - Required. Unique identifier provided by the client within
@@ -4461,12 +4258,12 @@ class OrganizationsMuteConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the mute config to delete. Its format is
-  /// organizations/{organization}/muteConfigs/{config_id},
-  /// folders/{folder}/muteConfigs/{config_id},
-  /// projects/{project}/muteConfigs/{config_id},
-  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-  /// projects/{project}/locations/global/muteConfigs/{config_id}.
+  /// `organizations/{organization}/muteConfigs/{config_id}`,
+  /// `folders/{folder}/muteConfigs/{config_id}`,
+  /// `projects/{project}/muteConfigs/{config_id}`,
+  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
   /// Value must have pattern `^organizations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4502,12 +4299,12 @@ class OrganizationsMuteConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the mute config to retrieve. Its format is
-  /// organizations/{organization}/muteConfigs/{config_id},
-  /// folders/{folder}/muteConfigs/{config_id},
-  /// projects/{project}/muteConfigs/{config_id},
-  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-  /// projects/{project}/locations/global/muteConfigs/{config_id}.
+  /// `organizations/{organization}/muteConfigs/{config_id}`,
+  /// `folders/{folder}/muteConfigs/{config_id}`,
+  /// `projects/{project}/muteConfigs/{config_id}`,
+  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
   /// Value must have pattern `^organizations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4544,8 +4341,8 @@ class OrganizationsMuteConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns the collection of mute
-  /// configs. Its format is "organizations/\[organization_id\]",
-  /// "folders/\[folder_id\]", "projects/\[project_id\]".
+  /// configs. Its format is `organizations/[organization_id]`,
+  /// `folders/[folder_id]`, `projects/[project_id]`.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of configs to return. The service may
@@ -4598,12 +4395,12 @@ class OrganizationsMuteConfigsResource {
   /// Request parameters:
   ///
   /// [name] - This field will be ignored if provided on config creation. Format
-  /// "organizations/{organization}/muteConfigs/{mute_config}"
-  /// "folders/{folder}/muteConfigs/{mute_config}"
-  /// "projects/{project}/muteConfigs/{mute_config}"
-  /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
-  /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
-  /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+  /// `organizations/{organization}/muteConfigs/{mute_config}`
+  /// `folders/{folder}/muteConfigs/{mute_config}`
+  /// `projects/{project}/muteConfigs/{mute_config}`
+  /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
+  /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
+  /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
   /// Value must have pattern `^organizations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [updateMask] - The list of fields to be updated. If empty all mutable
@@ -4657,8 +4454,8 @@ class OrganizationsNotificationConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the new notification config's
-  /// parent. Its format is "organizations/\[organization_id\]",
-  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
+  /// parent. Its format is `organizations/[organization_id]`,
+  /// `folders/[folder_id]`, or `projects/[project_id]`.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [configId] - Required. Unique identifier provided by the client within the
@@ -4705,9 +4502,9 @@ class OrganizationsNotificationConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the notification config to delete. Its format
-  /// is "organizations/\[organization_id\]/notificationConfigs/\[config_id\]",
-  /// "folders/\[folder_id\]/notificationConfigs/\[config_id\]", or
-  /// "projects/\[project_id\]/notificationConfigs/\[config_id\]".
+  /// is `organizations/[organization_id]/notificationConfigs/[config_id]`,
+  /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
+  /// `projects/[project_id]/notificationConfigs/[config_id]`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/notificationConfigs/\[^/\]+$`.
   ///
@@ -4744,9 +4541,9 @@ class OrganizationsNotificationConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the notification config to get. Its format is
-  /// "organizations/\[organization_id\]/notificationConfigs/\[config_id\]",
-  /// "folders/\[folder_id\]/notificationConfigs/\[config_id\]", or
-  /// "projects/\[project_id\]/notificationConfigs/\[config_id\]".
+  /// `organizations/[organization_id]/notificationConfigs/[config_id]`,
+  /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
+  /// `projects/[project_id]/notificationConfigs/[config_id]`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/notificationConfigs/\[^/\]+$`.
   ///
@@ -5160,7 +4957,7 @@ class OrganizationsResourceValueConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the resource value config to retrieve. Its
-  /// format is organizations/{organization}/resourceValueConfigs/{config_id}.
+  /// format is `organizations/{organization}/resourceValueConfigs/{config_id}`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/resourceValueConfigs/\[^/\]+$`.
   ///
@@ -5198,7 +4995,7 @@ class OrganizationsResourceValueConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns the collection of resource
-  /// value configs. Its format is "organizations/\[organization_id\]"
+  /// value configs. Its format is `organizations/[organization_id]`
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [pageSize] - The number of results to return. The service may return fewer
@@ -5329,9 +5126,9 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the new custom module's parent. Its
-  /// format is "organizations/{organization}/securityHealthAnalyticsSettings",
-  /// "folders/{folder}/securityHealthAnalyticsSettings", or
-  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// format is `organizations/{organization}/securityHealthAnalyticsSettings`,
+  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+  /// `projects/{project}/securityHealthAnalyticsSettings`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
@@ -5377,10 +5174,10 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the custom module to delete. Its format is
-  /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
-  /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
+  /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`,
   /// or
-  /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+  /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
   ///
@@ -5417,10 +5214,10 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the custom module to get. Its format is
-  /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
-  /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
+  /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`,
   /// or
-  /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+  /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
   ///
@@ -5464,9 +5261,9 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of parent to list custom modules. Its format is
-  /// "organizations/{organization}/securityHealthAnalyticsSettings",
-  /// "folders/{folder}/securityHealthAnalyticsSettings", or
-  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+  /// `projects/{project}/securityHealthAnalyticsSettings`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
@@ -5515,9 +5312,9 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of parent to list descendant custom modules. Its
-  /// format is "organizations/{organization}/securityHealthAnalyticsSettings",
-  /// "folders/{folder}/securityHealthAnalyticsSettings", or
-  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// format is `organizations/{organization}/securityHealthAnalyticsSettings`,
+  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+  /// `projects/{project}/securityHealthAnalyticsSettings`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
@@ -5689,10 +5486,10 @@ class OrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource
   ///
   /// [name] - Required. Name of the effective custom module to get. Its format
   /// is
-  /// "organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
-  /// "folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
+  /// `organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`,
+  /// `folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`,
   /// or
-  /// "projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}"
+  /// `projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings/effectiveCustomModules/\[^/\]+$`.
   ///
@@ -5737,9 +5534,9 @@ class OrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource
   /// Request parameters:
   ///
   /// [parent] - Required. Name of parent to list effective custom modules. Its
-  /// format is "organizations/{organization}/securityHealthAnalyticsSettings",
-  /// "folders/{folder}/securityHealthAnalyticsSettings", or
-  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// format is `organizations/{organization}/securityHealthAnalyticsSettings`,
+  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+  /// `projects/{project}/securityHealthAnalyticsSettings`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
@@ -5805,8 +5602,8 @@ class OrganizationsSimulationsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The organization name or simulation name of this
-  /// simulation Valid format: "organizations/{organization}/simulations/latest"
-  /// "organizations/{organization}/simulations/{simulation}"
+  /// simulation Valid format: `organizations/{organization}/simulations/latest`
+  /// `organizations/{organization}/simulations/{simulation}`
   /// Value must have pattern `^organizations/\[^/\]+/simulations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5869,10 +5666,10 @@ class OrganizationsSimulationsAttackExposureResultsAttackPathsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of parent to list attack paths. Valid formats:
-  /// "organizations/{organization}",
-  /// "organizations/{organization}/simulations/{simulation}"
-  /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
-  /// "organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}"
+  /// `organizations/{organization}`,
+  /// `organizations/{organization}/simulations/{simulation}`
+  /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
+  /// `organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/simulations/\[^/\]+/attackExposureResults/\[^/\]+$`.
   ///
@@ -5934,9 +5731,9 @@ class OrganizationsSimulationsAttackExposureResultsValuedResourcesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of parent to list valued resources. Valid
-  /// formats: "organizations/{organization}",
-  /// "organizations/{organization}/simulations/{simulation}"
-  /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
+  /// formats: `organizations/{organization}`,
+  /// `organizations/{organization}/simulations/{simulation}`
+  /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/simulations/\[^/\]+/attackExposureResults/\[^/\]+$`.
   ///
@@ -5949,7 +5746,7 @@ class OrganizationsSimulationsAttackExposureResultsValuedResourcesResource {
   /// `resource_type` * `resource` * `display_name` Values should be a comma
   /// separated list of fields. For example: `exposed_score,resource_value`. The
   /// default sorting order is descending. To specify ascending or descending
-  /// order for a field, append a " ASC" or a " DESC" suffix, respectively; for
+  /// order for a field, append a ` ASC` or a ` DESC` suffix, respectively; for
   /// example: `exposed_score DESC`.
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
@@ -6010,10 +5807,10 @@ class OrganizationsSimulationsAttackPathsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of parent to list attack paths. Valid formats:
-  /// "organizations/{organization}",
-  /// "organizations/{organization}/simulations/{simulation}"
-  /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
-  /// "organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}"
+  /// `organizations/{organization}`,
+  /// `organizations/{organization}/simulations/{simulation}`
+  /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
+  /// `organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}`
   /// Value must have pattern `^organizations/\[^/\]+/simulations/\[^/\]+$`.
   ///
   /// [filter] - The filter expression that filters the attack path in the
@@ -6076,7 +5873,7 @@ class OrganizationsSimulationsValuedResourcesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of this valued resource Valid format:
-  /// "organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}"
+  /// `organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/simulations/\[^/\]+/valuedResources/\[^/\]+$`.
   ///
@@ -6114,9 +5911,9 @@ class OrganizationsSimulationsValuedResourcesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of parent to list valued resources. Valid
-  /// formats: "organizations/{organization}",
-  /// "organizations/{organization}/simulations/{simulation}"
-  /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
+  /// formats: `organizations/{organization}`,
+  /// `organizations/{organization}/simulations/{simulation}`
+  /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
   /// Value must have pattern `^organizations/\[^/\]+/simulations/\[^/\]+$`.
   ///
   /// [filter] - The filter expression that filters the valued resources in the
@@ -6128,7 +5925,7 @@ class OrganizationsSimulationsValuedResourcesResource {
   /// `resource_type` * `resource` * `display_name` Values should be a comma
   /// separated list of fields. For example: `exposed_score,resource_value`. The
   /// default sorting order is descending. To specify ascending or descending
-  /// order for a field, append a " ASC" or a " DESC" suffix, respectively; for
+  /// order for a field, append a ` ASC` or a ` DESC` suffix, respectively; for
   /// example: `exposed_score DESC`.
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
@@ -6190,10 +5987,10 @@ class OrganizationsSimulationsValuedResourcesAttackPathsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of parent to list attack paths. Valid formats:
-  /// "organizations/{organization}",
-  /// "organizations/{organization}/simulations/{simulation}"
-  /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
-  /// "organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}"
+  /// `organizations/{organization}`,
+  /// `organizations/{organization}/simulations/{simulation}`
+  /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
+  /// `organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/simulations/\[^/\]+/valuedResources/\[^/\]+$`.
   ///
@@ -6259,7 +6056,7 @@ class OrganizationsSourcesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the new source's parent. Its format
-  /// should be "organizations/\[organization_id\]".
+  /// should be `organizations/[organization_id]`.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6298,7 +6095,7 @@ class OrganizationsSourcesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Relative resource name of the source. Its format is
-  /// "organizations/\[organization_id\]/source/\[source_id\]".
+  /// `organizations/[organization_id]/source/[source_id]`.
   /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6377,8 +6174,8 @@ class OrganizationsSourcesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the parent of sources to list. Its
-  /// format should be "organizations/\[organization_id\]",
-  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
+  /// format should be `organizations/[organization_id]`, `folders/[folder_id]`,
+  /// or `projects/[project_id]`.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
@@ -6575,7 +6372,7 @@ class OrganizationsSourcesFindingsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the new finding's parent. Its format
-  /// should be "organizations/\[organization_id\]/sources/\[source_id\]".
+  /// should be `organizations/[organization_id]/sources/[source_id]`.
   /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [findingId] - Required. Unique identifier provided by the client within
@@ -6628,12 +6425,12 @@ class OrganizationsSourcesFindingsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the source to groupBy. Its format is
-  /// "organizations/\[organization_id\]/sources/\[source_id\]",
-  /// folders/\[folder_id\]/sources/\[source_id\], or
-  /// projects/\[project_id\]/sources/\[source_id\]. To groupBy across all
-  /// sources provide a source_id of `-`. For example:
-  /// organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-,
-  /// or projects/{project_id}/sources/-
+  /// `organizations/[organization_id]/sources/[source_id]`,
+  /// `folders/[folder_id]/sources/[source_id]`, or
+  /// `projects/[project_id]/sources/[source_id]`. To groupBy across all sources
+  /// provide a source_id of `-`. For example:
+  /// `organizations/{organization_id}/sources/-,
+  /// folders/{folder_id}/sources/-`, or `projects/{project_id}/sources/-`
   /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6676,12 +6473,12 @@ class OrganizationsSourcesFindingsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the source the findings belong to. Its format
-  /// is "organizations/\[organization_id\]/sources/\[source_id\],
-  /// folders/\[folder_id\]/sources/\[source_id\], or
-  /// projects/\[project_id\]/sources/\[source_id\]". To list across all sources
+  /// is `organizations/[organization_id]/sources/[source_id]`,
+  /// `folders/[folder_id]/sources/[source_id]`, or
+  /// `projects/[project_id]/sources/[source_id]`. To list across all sources
   /// provide a source_id of `-`. For example:
-  /// organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-
-  /// or projects/{projects_id}/sources/-
+  /// `organizations/{organization_id}/sources/-`,
+  /// `folders/{folder_id}/sources/-` or `projects/{projects_id}/sources/-`
   /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [compareDuration] - When compare_duration is set, the ListFindingsResult's
@@ -6869,9 +6666,9 @@ class OrganizationsSourcesFindingsResource {
   /// [name] - Required. The
   /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
   /// of the finding. Example:
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-  /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+  /// `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
+  /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
+  /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -6915,9 +6712,9 @@ class OrganizationsSourcesFindingsResource {
   /// [name] - Required. The
   /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
   /// of the finding. Example:
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-  /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+  /// `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
+  /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
+  /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -7073,6 +6870,80 @@ class OrganizationsSourcesFindingsExternalSystemsResource {
   }
 }
 
+class OrganizationsValuedResourcesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsValuedResourcesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the valued resources for a set of simulation results and filter.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of parent to list valued resources. Valid
+  /// formats: `organizations/{organization}`,
+  /// `organizations/{organization}/simulations/{simulation}`
+  /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [filter] - The filter expression that filters the valued resources in the
+  /// response. Supported fields: * `resource_value` supports = *
+  /// `resource_type` supports =
+  ///
+  /// [orderBy] - Optional. The fields by which to order the valued resources
+  /// response. Supported fields: * `exposed_score` * `resource_value` *
+  /// `resource_type` * `resource` * `display_name` Values should be a comma
+  /// separated list of fields. For example: `exposed_score,resource_value`. The
+  /// default sorting order is descending. To specify ascending or descending
+  /// order for a field, append a ` ASC` or a ` DESC` suffix, respectively; for
+  /// example: `exposed_score DESC`.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last
+  /// `ListValuedResourcesResponse`; indicates that this is a continuation of a
+  /// prior `ListValuedResources` call, and that the system should return the
+  /// next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListValuedResourcesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListValuedResourcesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/valuedResources';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListValuedResourcesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
@@ -7110,8 +6981,8 @@ class ProjectsAssetsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent to group the assets by. Its
-  /// format is "organizations/\[organization_id\]", "folders/\[folder_id\]", or
-  /// "projects/\[project_id\]".
+  /// format is `organizations/[organization_id]`, `folders/[folder_id]`, or
+  /// `projects/[project_id]`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -7156,8 +7027,8 @@ class ProjectsAssetsResource {
   /// [parent] - Required. The name of the parent resource that contains the
   /// assets. The value that you can specify on parent depends on the method in
   /// which you specify parent. You can specify one of the following values:
-  /// "organizations/\[organization_id\]", "folders/\[folder_id\]", or
-  /// "projects/\[project_id\]".
+  /// `organizations/[organization_id]`, `folders/[folder_id]`, or
+  /// `projects/[project_id]`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [compareDuration] - When compare_duration is set, the ListAssetsResult's
@@ -7363,8 +7234,8 @@ class ProjectsBigQueryExportsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent resource of the new BigQuery
-  /// export. Its format is "organizations/\[organization_id\]",
-  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
+  /// export. Its format is `organizations/[organization_id]`,
+  /// `folders/[folder_id]`, or `projects/[project_id]`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [bigQueryExportId] - Required. Unique identifier provided by the client
@@ -7411,9 +7282,9 @@ class ProjectsBigQueryExportsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the BigQuery export to delete. Its format
-  /// is organizations/{organization}/bigQueryExports/{export_id},
-  /// folders/{folder}/bigQueryExports/{export_id}, or
-  /// projects/{project}/bigQueryExports/{export_id}
+  /// is `organizations/{organization}/bigQueryExports/{export_id}`,
+  /// `folders/{folder}/bigQueryExports/{export_id}`, or
+  /// `projects/{project}/bigQueryExports/{export_id}`
   /// Value must have pattern `^projects/\[^/\]+/bigQueryExports/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -7449,9 +7320,9 @@ class ProjectsBigQueryExportsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the BigQuery export to retrieve. Its format is
-  /// organizations/{organization}/bigQueryExports/{export_id},
-  /// folders/{folder}/bigQueryExports/{export_id}, or
-  /// projects/{project}/bigQueryExports/{export_id}
+  /// `organizations/{organization}/bigQueryExports/{export_id}`,
+  /// `folders/{folder}/bigQueryExports/{export_id}`, or
+  /// `projects/{project}/bigQueryExports/{export_id}`
   /// Value must have pattern `^projects/\[^/\]+/bigQueryExports/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -7493,8 +7364,8 @@ class ProjectsBigQueryExportsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns the collection of BigQuery
-  /// exports. Its format is "organizations/\[organization_id\]",
-  /// "folders/\[folder_id\]", "projects/\[project_id\]".
+  /// exports. Its format is `organizations/[organization_id]`,
+  /// `folders/[folder_id]`, `projects/[project_id]`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of configs to return. The service may
@@ -7614,9 +7485,9 @@ class ProjectsEventThreatDetectionSettingsResource {
   ///
   /// [parent] - Required. Resource name of the parent to validate the Custom
   /// Module under. Its format is: *
-  /// "organizations/{organization}/eventThreatDetectionSettings". *
-  /// "folders/{folder}/eventThreatDetectionSettings". *
-  /// "projects/{project}/eventThreatDetectionSettings".
+  /// `organizations/{organization}/eventThreatDetectionSettings`. *
+  /// `folders/{folder}/eventThreatDetectionSettings`. *
+  /// `projects/{project}/eventThreatDetectionSettings`.
   /// Value must have pattern `^projects/\[^/\]+/eventThreatDetectionSettings$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -7672,9 +7543,9 @@ class ProjectsEventThreatDetectionSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The new custom module's parent. Its format is: *
-  /// "organizations/{organization}/eventThreatDetectionSettings". *
-  /// "folders/{folder}/eventThreatDetectionSettings". *
-  /// "projects/{project}/eventThreatDetectionSettings".
+  /// `organizations/{organization}/eventThreatDetectionSettings`. *
+  /// `folders/{folder}/eventThreatDetectionSettings`. *
+  /// `projects/{project}/eventThreatDetectionSettings`.
   /// Value must have pattern `^projects/\[^/\]+/eventThreatDetectionSettings$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -7717,10 +7588,10 @@ class ProjectsEventThreatDetectionSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the custom module to delete. Its format is: *
-  /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
-  /// * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}".
+  /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`.
+  /// * `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`.
   /// *
-  /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+  /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
   ///
@@ -7757,10 +7628,10 @@ class ProjectsEventThreatDetectionSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the custom module to get. Its format is: *
-  /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
-  /// * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}".
+  /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`.
+  /// * `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`.
   /// *
-  /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+  /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
   ///
@@ -7802,9 +7673,9 @@ class ProjectsEventThreatDetectionSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the parent to list custom modules under. Its
-  /// format is: * "organizations/{organization}/eventThreatDetectionSettings".
-  /// * "folders/{folder}/eventThreatDetectionSettings". *
-  /// "projects/{project}/eventThreatDetectionSettings".
+  /// format is: * `organizations/{organization}/eventThreatDetectionSettings`.
+  /// * `folders/{folder}/eventThreatDetectionSettings`. *
+  /// `projects/{project}/eventThreatDetectionSettings`.
   /// Value must have pattern `^projects/\[^/\]+/eventThreatDetectionSettings$`.
   ///
   /// [pageSize] - The maximum number of modules to return. The service may
@@ -7857,9 +7728,9 @@ class ProjectsEventThreatDetectionSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the parent to list custom modules under. Its
-  /// format is: * "organizations/{organization}/eventThreatDetectionSettings".
-  /// * "folders/{folder}/eventThreatDetectionSettings". *
-  /// "projects/{project}/eventThreatDetectionSettings".
+  /// format is: * `organizations/{organization}/eventThreatDetectionSettings`.
+  /// * `folders/{folder}/eventThreatDetectionSettings`. *
+  /// `projects/{project}/eventThreatDetectionSettings`.
   /// Value must have pattern `^projects/\[^/\]+/eventThreatDetectionSettings$`.
   ///
   /// [pageSize] - The maximum number of modules to return. The service may
@@ -7925,10 +7796,10 @@ class ProjectsEventThreatDetectionSettingsCustomModulesResource {
   ///
   /// [name] - Immutable. The resource name of the Event Threat Detection custom
   /// module. Its format is: *
-  /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
-  /// * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}".
+  /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`.
+  /// * `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`.
   /// *
-  /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+  /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
   ///
@@ -7983,11 +7854,11 @@ class ProjectsEventThreatDetectionSettingsEffectiveCustomModulesResource {
   ///
   /// [name] - Required. The resource name of the effective Event Threat
   /// Detection custom module. Its format is: *
-  /// "organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// `organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
   /// *
-  /// "folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// `folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
   /// *
-  /// "projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// `projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/eventThreatDetectionSettings/effectiveCustomModules/\[^/\]+$`.
   ///
@@ -8029,9 +7900,9 @@ class ProjectsEventThreatDetectionSettingsEffectiveCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the parent to list custom modules for. Its
-  /// format is: * "organizations/{organization}/eventThreatDetectionSettings".
-  /// * "folders/{folder}/eventThreatDetectionSettings". *
-  /// "projects/{project}/eventThreatDetectionSettings".
+  /// format is: * `organizations/{organization}/eventThreatDetectionSettings`.
+  /// * `folders/{folder}/eventThreatDetectionSettings`. *
+  /// `projects/{project}/eventThreatDetectionSettings`.
   /// Value must have pattern `^projects/\[^/\]+/eventThreatDetectionSettings$`.
   ///
   /// [pageSize] - The maximum number of modules to return. The service may
@@ -8095,8 +7966,8 @@ class ProjectsFindingsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, at which bulk action needs to be applied.
-  /// Its format is "organizations/\[organization_id\]",
-  /// "folders/\[folder_id\]", "projects/\[project_id\]".
+  /// Its format is `organizations/[organization_id]`, `folders/[folder_id]`,
+  /// `projects/[project_id]`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -8146,67 +8017,17 @@ class ProjectsLocationsMuteConfigsResource {
   ProjectsLocationsMuteConfigsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a mute config.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. Resource name of the new mute configs's parent. Its
-  /// format is "organizations/\[organization_id\]", "folders/\[folder_id\]", or
-  /// "projects/\[project_id\]".
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [muteConfigId] - Required. Unique identifier provided by the client within
-  /// the parent scope. It must consist of only lowercase letters, numbers, and
-  /// hyphens, must start with a letter, must end with either a letter or a
-  /// number, and must be 63 characters or less.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleCloudSecuritycenterV1MuteConfig].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudSecuritycenterV1MuteConfig> create(
-    GoogleCloudSecuritycenterV1MuteConfig request,
-    core.String parent, {
-    core.String? muteConfigId,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (muteConfigId != null) 'muteConfigId': [muteConfigId],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/muteConfigs';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Deletes an existing mute config.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. Name of the mute config to delete. Its format is
-  /// organizations/{organization}/muteConfigs/{config_id},
-  /// folders/{folder}/muteConfigs/{config_id},
-  /// projects/{project}/muteConfigs/{config_id},
-  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-  /// projects/{project}/locations/global/muteConfigs/{config_id}.
+  /// `organizations/{organization}/muteConfigs/{config_id}`,
+  /// `folders/{folder}/muteConfigs/{config_id}`,
+  /// `projects/{project}/muteConfigs/{config_id}`,
+  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
@@ -8243,12 +8064,12 @@ class ProjectsLocationsMuteConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the mute config to retrieve. Its format is
-  /// organizations/{organization}/muteConfigs/{config_id},
-  /// folders/{folder}/muteConfigs/{config_id},
-  /// projects/{project}/muteConfigs/{config_id},
-  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-  /// projects/{project}/locations/global/muteConfigs/{config_id}.
+  /// `organizations/{organization}/muteConfigs/{config_id}`,
+  /// `folders/{folder}/muteConfigs/{config_id}`,
+  /// `projects/{project}/muteConfigs/{config_id}`,
+  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
@@ -8281,59 +8102,6 @@ class ProjectsLocationsMuteConfigsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists mute configs.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The parent, which owns the collection of mute
-  /// configs. Its format is "organizations/\[organization_id\]",
-  /// "folders/\[folder_id\]", "projects/\[project_id\]".
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/muteConfigs$`.
-  ///
-  /// [pageSize] - The maximum number of configs to return. The service may
-  /// return fewer than this value. If unspecified, at most 10 configs will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
-  ///
-  /// [pageToken] - A page token, received from a previous `ListMuteConfigs`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListMuteConfigs` must match the call that
-  /// provided the page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListMuteConfigsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListMuteConfigsResponse> list(
-    core.String parent, {
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListMuteConfigsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Updates a mute config.
   ///
   /// [request] - The metadata request object.
@@ -8341,12 +8109,12 @@ class ProjectsLocationsMuteConfigsResource {
   /// Request parameters:
   ///
   /// [name] - This field will be ignored if provided on config creation. Format
-  /// "organizations/{organization}/muteConfigs/{mute_config}"
-  /// "folders/{folder}/muteConfigs/{mute_config}"
-  /// "projects/{project}/muteConfigs/{mute_config}"
-  /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
-  /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
-  /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+  /// `organizations/{organization}/muteConfigs/{mute_config}`
+  /// `folders/{folder}/muteConfigs/{mute_config}`
+  /// `projects/{project}/muteConfigs/{mute_config}`
+  /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
+  /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
+  /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
@@ -8401,8 +8169,8 @@ class ProjectsMuteConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the new mute configs's parent. Its
-  /// format is "organizations/\[organization_id\]", "folders/\[folder_id\]", or
-  /// "projects/\[project_id\]".
+  /// format is `organizations/[organization_id]`, `folders/[folder_id]`, or
+  /// `projects/[project_id]`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [muteConfigId] - Required. Unique identifier provided by the client within
@@ -8449,12 +8217,12 @@ class ProjectsMuteConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the mute config to delete. Its format is
-  /// organizations/{organization}/muteConfigs/{config_id},
-  /// folders/{folder}/muteConfigs/{config_id},
-  /// projects/{project}/muteConfigs/{config_id},
-  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-  /// projects/{project}/locations/global/muteConfigs/{config_id}.
+  /// `organizations/{organization}/muteConfigs/{config_id}`,
+  /// `folders/{folder}/muteConfigs/{config_id}`,
+  /// `projects/{project}/muteConfigs/{config_id}`,
+  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
   /// Value must have pattern `^projects/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -8490,12 +8258,12 @@ class ProjectsMuteConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the mute config to retrieve. Its format is
-  /// organizations/{organization}/muteConfigs/{config_id},
-  /// folders/{folder}/muteConfigs/{config_id},
-  /// projects/{project}/muteConfigs/{config_id},
-  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-  /// projects/{project}/locations/global/muteConfigs/{config_id}.
+  /// `organizations/{organization}/muteConfigs/{config_id}`,
+  /// `folders/{folder}/muteConfigs/{config_id}`,
+  /// `projects/{project}/muteConfigs/{config_id}`,
+  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
   /// Value must have pattern `^projects/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -8532,8 +8300,8 @@ class ProjectsMuteConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns the collection of mute
-  /// configs. Its format is "organizations/\[organization_id\]",
-  /// "folders/\[folder_id\]", "projects/\[project_id\]".
+  /// configs. Its format is `organizations/[organization_id]`,
+  /// `folders/[folder_id]`, `projects/[project_id]`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of configs to return. The service may
@@ -8586,12 +8354,12 @@ class ProjectsMuteConfigsResource {
   /// Request parameters:
   ///
   /// [name] - This field will be ignored if provided on config creation. Format
-  /// "organizations/{organization}/muteConfigs/{mute_config}"
-  /// "folders/{folder}/muteConfigs/{mute_config}"
-  /// "projects/{project}/muteConfigs/{mute_config}"
-  /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
-  /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
-  /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+  /// `organizations/{organization}/muteConfigs/{mute_config}`
+  /// `folders/{folder}/muteConfigs/{mute_config}`
+  /// `projects/{project}/muteConfigs/{mute_config}`
+  /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
+  /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
+  /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
   /// Value must have pattern `^projects/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [updateMask] - The list of fields to be updated. If empty all mutable
@@ -8645,8 +8413,8 @@ class ProjectsNotificationConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the new notification config's
-  /// parent. Its format is "organizations/\[organization_id\]",
-  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
+  /// parent. Its format is `organizations/[organization_id]`,
+  /// `folders/[folder_id]`, or `projects/[project_id]`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [configId] - Required. Unique identifier provided by the client within the
@@ -8693,9 +8461,9 @@ class ProjectsNotificationConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the notification config to delete. Its format
-  /// is "organizations/\[organization_id\]/notificationConfigs/\[config_id\]",
-  /// "folders/\[folder_id\]/notificationConfigs/\[config_id\]", or
-  /// "projects/\[project_id\]/notificationConfigs/\[config_id\]".
+  /// is `organizations/[organization_id]/notificationConfigs/[config_id]`,
+  /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
+  /// `projects/[project_id]/notificationConfigs/[config_id]`.
   /// Value must have pattern `^projects/\[^/\]+/notificationConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -8731,9 +8499,9 @@ class ProjectsNotificationConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the notification config to get. Its format is
-  /// "organizations/\[organization_id\]/notificationConfigs/\[config_id\]",
-  /// "folders/\[folder_id\]/notificationConfigs/\[config_id\]", or
-  /// "projects/\[project_id\]/notificationConfigs/\[config_id\]".
+  /// `organizations/[organization_id]/notificationConfigs/[config_id]`,
+  /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
+  /// `projects/[project_id]/notificationConfigs/[config_id]`.
   /// Value must have pattern `^projects/\[^/\]+/notificationConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -8907,9 +8675,9 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the new custom module's parent. Its
-  /// format is "organizations/{organization}/securityHealthAnalyticsSettings",
-  /// "folders/{folder}/securityHealthAnalyticsSettings", or
-  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// format is `organizations/{organization}/securityHealthAnalyticsSettings`,
+  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+  /// `projects/{project}/securityHealthAnalyticsSettings`
   /// Value must have pattern
   /// `^projects/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
@@ -8955,10 +8723,10 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the custom module to delete. Its format is
-  /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
-  /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
+  /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`,
   /// or
-  /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+  /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
   ///
@@ -8995,10 +8763,10 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the custom module to get. Its format is
-  /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
-  /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}",
+  /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
+  /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`,
   /// or
-  /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+  /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
   ///
@@ -9042,9 +8810,9 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of parent to list custom modules. Its format is
-  /// "organizations/{organization}/securityHealthAnalyticsSettings",
-  /// "folders/{folder}/securityHealthAnalyticsSettings", or
-  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+  /// `projects/{project}/securityHealthAnalyticsSettings`
   /// Value must have pattern
   /// `^projects/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
@@ -9093,9 +8861,9 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of parent to list descendant custom modules. Its
-  /// format is "organizations/{organization}/securityHealthAnalyticsSettings",
-  /// "folders/{folder}/securityHealthAnalyticsSettings", or
-  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// format is `organizations/{organization}/securityHealthAnalyticsSettings`,
+  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+  /// `projects/{project}/securityHealthAnalyticsSettings`
   /// Value must have pattern
   /// `^projects/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
@@ -9267,10 +9035,10 @@ class ProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource {
   ///
   /// [name] - Required. Name of the effective custom module to get. Its format
   /// is
-  /// "organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
-  /// "folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
+  /// `organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`,
+  /// `folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`,
   /// or
-  /// "projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}"
+  /// `projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/securityHealthAnalyticsSettings/effectiveCustomModules/\[^/\]+$`.
   ///
@@ -9315,9 +9083,9 @@ class ProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of parent to list effective custom modules. Its
-  /// format is "organizations/{organization}/securityHealthAnalyticsSettings",
-  /// "folders/{folder}/securityHealthAnalyticsSettings", or
-  /// "projects/{project}/securityHealthAnalyticsSettings"
+  /// format is `organizations/{organization}/securityHealthAnalyticsSettings`,
+  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+  /// `projects/{project}/securityHealthAnalyticsSettings`
   /// Value must have pattern
   /// `^projects/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
@@ -9376,8 +9144,8 @@ class ProjectsSourcesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the parent of sources to list. Its
-  /// format should be "organizations/\[organization_id\]",
-  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
+  /// format should be `organizations/[organization_id]`, `folders/[folder_id]`,
+  /// or `projects/[project_id]`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
@@ -9443,12 +9211,12 @@ class ProjectsSourcesFindingsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the source to groupBy. Its format is
-  /// "organizations/\[organization_id\]/sources/\[source_id\]",
-  /// folders/\[folder_id\]/sources/\[source_id\], or
-  /// projects/\[project_id\]/sources/\[source_id\]. To groupBy across all
-  /// sources provide a source_id of `-`. For example:
-  /// organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-,
-  /// or projects/{project_id}/sources/-
+  /// `organizations/[organization_id]/sources/[source_id]`,
+  /// `folders/[folder_id]/sources/[source_id]`, or
+  /// `projects/[project_id]/sources/[source_id]`. To groupBy across all sources
+  /// provide a source_id of `-`. For example:
+  /// `organizations/{organization_id}/sources/-,
+  /// folders/{folder_id}/sources/-`, or `projects/{project_id}/sources/-`
   /// Value must have pattern `^projects/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -9491,12 +9259,12 @@ class ProjectsSourcesFindingsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the source the findings belong to. Its format
-  /// is "organizations/\[organization_id\]/sources/\[source_id\],
-  /// folders/\[folder_id\]/sources/\[source_id\], or
-  /// projects/\[project_id\]/sources/\[source_id\]". To list across all sources
+  /// is `organizations/[organization_id]/sources/[source_id]`,
+  /// `folders/[folder_id]/sources/[source_id]`, or
+  /// `projects/[project_id]/sources/[source_id]`. To list across all sources
   /// provide a source_id of `-`. For example:
-  /// organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-
-  /// or projects/{projects_id}/sources/-
+  /// `organizations/{organization_id}/sources/-`,
+  /// `folders/{folder_id}/sources/-` or `projects/{projects_id}/sources/-`
   /// Value must have pattern `^projects/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [compareDuration] - When compare_duration is set, the ListFindingsResult's
@@ -9684,9 +9452,9 @@ class ProjectsSourcesFindingsResource {
   /// [name] - Required. The
   /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
   /// of the finding. Example:
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-  /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+  /// `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
+  /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
+  /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -9730,9 +9498,9 @@ class ProjectsSourcesFindingsResource {
   /// [name] - Required. The
   /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
   /// of the finding. Example:
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-  /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+  /// `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
+  /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
+  /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -10326,7 +10094,7 @@ class AttackExposure {
   /// The resource name of the attack path simulation result that contains the
   /// details regarding this attack exposure score.
   ///
-  /// Example: organizations/123/simulations/456/attackExposureResults/789
+  /// Example: `organizations/123/simulations/456/attackExposureResults/789`
   core.String? attackExposureResult;
 
   /// The number of high value resources that are exposed as a result of this
@@ -10477,12 +10245,12 @@ class AttackPathNode {
 
   /// The name of the resource at this point in the attack path.
   ///
-  /// The format of the name follows the Cloud Asset Inventory \[resource name
-  /// format\]("https://cloud.google.com/asset-inventory/docs/resource-name-format")
+  /// The format of the name follows the Cloud Asset Inventory
+  /// [resource name format](https://cloud.google.com/asset-inventory/docs/resource-name-format)
   core.String? resource;
 
   /// The
-  /// [supported resource type](https://cloud.google.com/asset-inventory/docs/supported-asset-types")
+  /// [supported resource type](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
   core.String? resourceType;
 
   /// Unique id of the attack path node.
@@ -10760,6 +10528,162 @@ class AwsOrganizationalUnit {
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// Represents an Azure management group.
+class AzureManagementGroup {
+  /// The display name of the Azure management group.
+  core.String? displayName;
+
+  /// The UUID of the Azure management group, for example,
+  /// `20000000-0001-0000-0000-000000000000`.
+  core.String? id;
+
+  AzureManagementGroup({
+    this.displayName,
+    this.id,
+  });
+
+  AzureManagementGroup.fromJson(core.Map json_)
+      : this(
+          displayName: json_['displayName'] as core.String?,
+          id: json_['id'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (id != null) 'id': id!,
+      };
+}
+
+/// Azure metadata associated with the resource, only applicable if the
+/// finding's cloud provider is Microsoft Azure.
+class AzureMetadata {
+  /// A list of Azure management groups associated with the resource, ordered
+  /// from lowest level (closest to the subscription) to highest level.
+  core.List<AzureManagementGroup>? managementGroups;
+
+  /// The Azure resource group associated with the resource.
+  AzureResourceGroup? resourceGroup;
+
+  /// The Azure subscription associated with the resource.
+  AzureSubscription? subscription;
+
+  /// The Azure Entra tenant associated with the resource.
+  AzureTenant? tenant;
+
+  AzureMetadata({
+    this.managementGroups,
+    this.resourceGroup,
+    this.subscription,
+    this.tenant,
+  });
+
+  AzureMetadata.fromJson(core.Map json_)
+      : this(
+          managementGroups: (json_['managementGroups'] as core.List?)
+              ?.map((value) => AzureManagementGroup.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          resourceGroup: json_.containsKey('resourceGroup')
+              ? AzureResourceGroup.fromJson(
+                  json_['resourceGroup'] as core.Map<core.String, core.dynamic>)
+              : null,
+          subscription: json_.containsKey('subscription')
+              ? AzureSubscription.fromJson(
+                  json_['subscription'] as core.Map<core.String, core.dynamic>)
+              : null,
+          tenant: json_.containsKey('tenant')
+              ? AzureTenant.fromJson(
+                  json_['tenant'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (managementGroups != null) 'managementGroups': managementGroups!,
+        if (resourceGroup != null) 'resourceGroup': resourceGroup!,
+        if (subscription != null) 'subscription': subscription!,
+        if (tenant != null) 'tenant': tenant!,
+      };
+}
+
+/// Represents an Azure resource group.
+class AzureResourceGroup {
+  /// The ID of the Azure resource group.
+  core.String? id;
+
+  /// The name of the Azure resource group.
+  ///
+  /// This is not a UUID.
+  core.String? name;
+
+  AzureResourceGroup({
+    this.id,
+    this.name,
+  });
+
+  AzureResourceGroup.fromJson(core.Map json_)
+      : this(
+          id: json_['id'] as core.String?,
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Represents an Azure subscription.
+class AzureSubscription {
+  /// The display name of the Azure subscription.
+  core.String? displayName;
+
+  /// The UUID of the Azure subscription, for example,
+  /// `291bba3f-e0a5-47bc-a099-3bdcb2a50a05`.
+  core.String? id;
+
+  AzureSubscription({
+    this.displayName,
+    this.id,
+  });
+
+  AzureSubscription.fromJson(core.Map json_)
+      : this(
+          displayName: json_['displayName'] as core.String?,
+          id: json_['id'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (id != null) 'id': id!,
+      };
+}
+
+/// Represents a Microsoft Entra tenant.
+class AzureTenant {
+  /// The display name of the Azure tenant.
+  core.String? displayName;
+
+  /// The ID of the Microsoft Entra tenant, for example,
+  /// "a11aaa11-aa11-1aa1-11aa-1aaa11a".
+  core.String? id;
+
+  AzureTenant({
+    this.displayName,
+    this.id,
+  });
+
+  AzureTenant.fromJson(core.Map json_)
+      : this(
+          displayName: json_['displayName'] as core.String?,
+          id: json_['id'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (id != null) 'id': id!,
       };
 }
 
@@ -11062,20 +10986,73 @@ class BulkMuteFindingsRequest {
   )
   core.String? muteAnnotation;
 
+  /// All findings matching the given filter will have their mute state set to
+  /// this value.
+  ///
+  /// The default value is `MUTED`. Setting this to `UNDEFINED` will clear the
+  /// mute state on all matching findings.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MUTE_STATE_UNSPECIFIED" : Unused.
+  /// - "MUTED" : Matching findings will be muted (default).
+  /// - "UNDEFINED" : Matching findings will have their mute state cleared.
+  core.String? muteState;
+
   BulkMuteFindingsRequest({
     this.filter,
     this.muteAnnotation,
+    this.muteState,
   });
 
   BulkMuteFindingsRequest.fromJson(core.Map json_)
       : this(
           filter: json_['filter'] as core.String?,
           muteAnnotation: json_['muteAnnotation'] as core.String?,
+          muteState: json_['muteState'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (filter != null) 'filter': filter!,
         if (muteAnnotation != null) 'muteAnnotation': muteAnnotation!,
+        if (muteState != null) 'muteState': muteState!,
+      };
+}
+
+/// YAML-based rule that uses CEL, which supports the declaration of variables
+/// and a filtering predicate.
+///
+/// A vulnerable resource is emitted if the evaluation is false. Given: 1) the
+/// resource types as: - resource_types: "compute.googleapis.com/Instance" -
+/// resource_types: "compute.googleapis.com/Firewall" 2) the CEL policy spec as:
+/// name: bad_instance resource_filters: - name: instance resource_type:
+/// compute.googleapis.com/Instance filter: \> instance.status == 'RUNNING' &&
+/// 'public' in instance.tags.items - name: firewall resource_type:
+/// compute.googleapis.com/Firewall filter: \> firewall.direction == 'INGRESS'
+/// && !firewall.disabled && firewall.allowed.exists(rule,
+/// rule.IPProtocol.upperAscii() in \['TCP', 'ALL'\] && rule.ports.exists(port,
+/// network.portsInRange(port, '11-256'))) rule: match: - predicate: \>
+/// instance.networkInterfaces.exists(net, firewall.network == net.network)
+/// output: \> {'message': 'Compute instance with publicly accessible ports',
+/// 'instance': instance.name} Users are able to join resource types together
+/// using the exact format as Kubernetes Validating Admission policies.
+class CelPolicySpec {
+  /// The CEL policy to evaluate to produce findings.
+  ///
+  /// A finding is generated when the policy validation evaluates to false.
+  core.String? spec;
+
+  CelPolicySpec({
+    this.spec,
+  });
+
+  CelPolicySpec.fromJson(core.Map json_)
+      : this(
+          spec: json_['spec'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (spec != null) 'spec': spec!,
       };
 }
 
@@ -11573,6 +11550,9 @@ class Cve {
   /// https://www.first.org/cvss/v3.1/specification-document
   Cvssv3? cvssv3;
 
+  /// Date the first publicly available exploit or PoC was released.
+  core.String? exploitReleaseDate;
+
   /// The exploitation activity of the vulnerability in the wild.
   /// Possible string values are:
   /// - "EXPLOITATION_ACTIVITY_UNSPECIFIED" : Invalid or empty value.
@@ -11583,6 +11563,9 @@ class Cve {
   /// for exploitation.
   /// - "NO_KNOWN" : No known exploitation activity.
   core.String? exploitationActivity;
+
+  /// Date of the earliest known exploitation.
+  core.String? firstExploitationDate;
 
   /// The unique identifier for the vulnerability.
   ///
@@ -11620,7 +11603,9 @@ class Cve {
 
   Cve({
     this.cvssv3,
+    this.exploitReleaseDate,
     this.exploitationActivity,
+    this.firstExploitationDate,
     this.id,
     this.impact,
     this.observedInTheWild,
@@ -11635,7 +11620,9 @@ class Cve {
               ? Cvssv3.fromJson(
                   json_['cvssv3'] as core.Map<core.String, core.dynamic>)
               : null,
+          exploitReleaseDate: json_['exploitReleaseDate'] as core.String?,
           exploitationActivity: json_['exploitationActivity'] as core.String?,
+          firstExploitationDate: json_['firstExploitationDate'] as core.String?,
           id: json_['id'] as core.String?,
           impact: json_['impact'] as core.String?,
           observedInTheWild: json_['observedInTheWild'] as core.bool?,
@@ -11649,8 +11636,12 @@ class Cve {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cvssv3 != null) 'cvssv3': cvssv3!,
+        if (exploitReleaseDate != null)
+          'exploitReleaseDate': exploitReleaseDate!,
         if (exploitationActivity != null)
           'exploitationActivity': exploitationActivity!,
+        if (firstExploitationDate != null)
+          'firstExploitationDate': firstExploitationDate!,
         if (id != null) 'id': id!,
         if (impact != null) 'impact': impact!,
         if (observedInTheWild != null) 'observedInTheWild': observedInTheWild!,
@@ -11808,6 +11799,105 @@ class Cvssv3 {
       };
 }
 
+/// Details about a data access attempt made by a principal not authorized under
+/// applicable data security policy.
+class DataAccessEvent {
+  /// Unique identifier for data access event.
+  core.String? eventId;
+
+  /// Timestamp of data access event.
+  core.String? eventTime;
+
+  /// The operation performed by the principal to access the data.
+  /// Possible string values are:
+  /// - "OPERATION_UNSPECIFIED" : The operation is unspecified.
+  /// - "READ" : Represents a read operation.
+  /// - "MOVE" : Represents a move operation.
+  /// - "COPY" : Represents a copy operation.
+  core.String? operation;
+
+  /// The email address of the principal that accessed the data.
+  ///
+  /// The principal could be a user account, service account, Google group, or
+  /// other.
+  core.String? principalEmail;
+
+  DataAccessEvent({
+    this.eventId,
+    this.eventTime,
+    this.operation,
+    this.principalEmail,
+  });
+
+  DataAccessEvent.fromJson(core.Map json_)
+      : this(
+          eventId: json_['eventId'] as core.String?,
+          eventTime: json_['eventTime'] as core.String?,
+          operation: json_['operation'] as core.String?,
+          principalEmail: json_['principalEmail'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventId != null) 'eventId': eventId!,
+        if (eventTime != null) 'eventTime': eventTime!,
+        if (operation != null) 'operation': operation!,
+        if (principalEmail != null) 'principalEmail': principalEmail!,
+      };
+}
+
+/// Details about a data flow event, in which either the data is moved to or is
+/// accessed from a non-compliant geo-location, as defined in the applicable
+/// data security policy.
+class DataFlowEvent {
+  /// Unique identifier for data flow event.
+  core.String? eventId;
+
+  /// Timestamp of data flow event.
+  core.String? eventTime;
+
+  /// The operation performed by the principal for the data flow event.
+  /// Possible string values are:
+  /// - "OPERATION_UNSPECIFIED" : The operation is unspecified.
+  /// - "READ" : Represents a read operation.
+  /// - "MOVE" : Represents a move operation.
+  /// - "COPY" : Represents a copy operation.
+  core.String? operation;
+
+  /// The email address of the principal that initiated the data flow event.
+  ///
+  /// The principal could be a user account, service account, Google group, or
+  /// other.
+  core.String? principalEmail;
+
+  /// Non-compliant location of the principal or the data destination.
+  core.String? violatedLocation;
+
+  DataFlowEvent({
+    this.eventId,
+    this.eventTime,
+    this.operation,
+    this.principalEmail,
+    this.violatedLocation,
+  });
+
+  DataFlowEvent.fromJson(core.Map json_)
+      : this(
+          eventId: json_['eventId'] as core.String?,
+          eventTime: json_['eventTime'] as core.String?,
+          operation: json_['operation'] as core.String?,
+          principalEmail: json_['principalEmail'] as core.String?,
+          violatedLocation: json_['violatedLocation'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventId != null) 'eventId': eventId!,
+        if (eventTime != null) 'eventTime': eventTime!,
+        if (operation != null) 'operation': operation!,
+        if (principalEmail != null) 'principalEmail': principalEmail!,
+        if (violatedLocation != null) 'violatedLocation': violatedLocation!,
+      };
+}
+
 /// Represents database access information, such as queries.
 ///
 /// A database may be a sub-resource of an instance (as in the case of Cloud SQL
@@ -11937,6 +12027,34 @@ class DiskPath {
       };
 }
 
+/// The record of a dynamic mute rule that matches the finding.
+class DynamicMuteRecord {
+  /// When the dynamic mute rule first matched the finding.
+  core.String? matchTime;
+
+  /// The relative resource name of the mute rule, represented by a mute config,
+  /// that created this record, for example
+  /// `organizations/123/muteConfigs/mymuteconfig` or
+  /// `organizations/123/locations/global/muteConfigs/mymuteconfig`.
+  core.String? muteConfig;
+
+  DynamicMuteRecord({
+    this.matchTime,
+    this.muteConfig,
+  });
+
+  DynamicMuteRecord.fromJson(core.Map json_)
+      : this(
+          matchTime: json_['matchTime'] as core.String?,
+          muteConfig: json_['muteConfig'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (matchTime != null) 'matchTime': matchTime!,
+        if (muteConfig != null) 'muteConfig': muteConfig!,
+      };
+}
+
 /// An EffectiveEventThreatDetectionCustomModule is the representation of an
 /// Event Threat Detection custom module at a specified level of the resource
 /// hierarchy: organization, folder, or project.
@@ -11980,11 +12098,11 @@ class EffectiveEventThreatDetectionCustomModule {
   /// The resource name of the effective ETD custom module.
   ///
   /// Its format is: *
-  /// "organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// `organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
   /// *
-  /// "folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// `folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
   /// *
-  /// "projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// `projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
   ///
   /// Output only.
   core.String? name;
@@ -12110,10 +12228,10 @@ class EventThreatDetectionCustomModule {
   /// The resource name of the Event Threat Detection custom module.
   ///
   /// Its format is: *
-  /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
-  /// * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}".
+  /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`.
+  /// * `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`.
   /// *
-  /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+  /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
   ///
   /// Immutable.
   core.String? name;
@@ -12407,6 +12525,12 @@ class Finding {
   /// The time at which the finding was created in Security Command Center.
   core.String? createTime;
 
+  /// Data access events associated with the finding.
+  core.List<DataAccessEvent>? dataAccessEvents;
+
+  /// Data flow events associated with the finding.
+  core.List<DataFlowEvent>? dataFlowEvents;
+
   /// Database associated with the finding.
   Database? database;
 
@@ -12456,7 +12580,19 @@ class Finding {
   /// - "SCC_ERROR" : Describes an error that prevents some SCC functionality.
   /// - "POSTURE_VIOLATION" : Describes a potential security risk due to a
   /// change in the security posture.
+  /// - "TOXIC_COMBINATION" : Describes a group of security issues that, when
+  /// the issues occur together, represent a greater risk than when the issues
+  /// occur independently. A group of such issues is referred to as a toxic
+  /// combination.
+  /// - "SENSITIVE_DATA_RISK" : Describes a potential security risk to data
+  /// assets that contain sensitive data.
   core.String? findingClass;
+
+  /// Contains details about groups of which this finding is a member.
+  ///
+  /// A group is a collection of findings that are related in some way. This
+  /// field cannot be updated. Its value is ignored in all update requests.
+  core.List<GroupMembership>? groupMemberships;
 
   /// Represents IAM bindings associated with the finding.
   core.List<IamBinding>? iamBindings;
@@ -12504,6 +12640,11 @@ class Finding {
   /// - "UNMUTED" : Finding has been unmuted.
   /// - "UNDEFINED" : Finding has never been muted/unmuted.
   core.String? mute;
+
+  /// The mute information regarding this finding.
+  ///
+  /// Output only.
+  MuteInfo? muteInfo;
 
   /// Records additional information about the mute operation, for example, the
   /// \[mute configuration\](/security-command-center/docs/how-to-mute-findings)
@@ -12634,6 +12775,14 @@ class Finding {
   /// otherwise addressed and is no longer active.
   core.String? state;
 
+  /// Contains details about a group of security issues that, when the issues
+  /// occur together, represent a greater risk than when the issues occur
+  /// independently.
+  ///
+  /// A group of such issues is referred to as a toxic combination. This field
+  /// cannot be updated. Its value is ignored in all update requests.
+  ToxicCombination? toxicCombination;
+
   /// Represents vulnerability-specific fields like CVE and CVSS scores.
   ///
   /// CVE stands for Common Vulnerabilities and Exposures
@@ -12655,6 +12804,8 @@ class Finding {
     this.contacts,
     this.containers,
     this.createTime,
+    this.dataAccessEvents,
+    this.dataFlowEvents,
     this.database,
     this.description,
     this.eventTime,
@@ -12663,6 +12814,7 @@ class Finding {
     this.externalUri,
     this.files,
     this.findingClass,
+    this.groupMemberships,
     this.iamBindings,
     this.indicator,
     this.kernelRootkit,
@@ -12672,6 +12824,7 @@ class Finding {
     this.mitreAttack,
     this.moduleName,
     this.mute,
+    this.muteInfo,
     this.muteInitiator,
     this.muteUpdateTime,
     this.name,
@@ -12687,6 +12840,7 @@ class Finding {
     this.severity,
     this.sourceProperties,
     this.state,
+    this.toxicCombination,
     this.vulnerability,
   });
 
@@ -12743,6 +12897,14 @@ class Finding {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           createTime: json_['createTime'] as core.String?,
+          dataAccessEvents: (json_['dataAccessEvents'] as core.List?)
+              ?.map((value) => DataAccessEvent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          dataFlowEvents: (json_['dataFlowEvents'] as core.List?)
+              ?.map((value) => DataFlowEvent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           database: json_.containsKey('database')
               ? Database.fromJson(
                   json_['database'] as core.Map<core.String, core.dynamic>)
@@ -12768,6 +12930,10 @@ class Finding {
                   File.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           findingClass: json_['findingClass'] as core.String?,
+          groupMemberships: (json_['groupMemberships'] as core.List?)
+              ?.map((value) => GroupMembership.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           iamBindings: (json_['iamBindings'] as core.List?)
               ?.map((value) => IamBinding.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -12798,6 +12964,10 @@ class Finding {
               : null,
           moduleName: json_['moduleName'] as core.String?,
           mute: json_['mute'] as core.String?,
+          muteInfo: json_.containsKey('muteInfo')
+              ? MuteInfo.fromJson(
+                  json_['muteInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
           muteInitiator: json_['muteInitiator'] as core.String?,
           muteUpdateTime: json_['muteUpdateTime'] as core.String?,
           name: json_['name'] as core.String?,
@@ -12830,6 +13000,10 @@ class Finding {
               ? json_['sourceProperties'] as core.Map<core.String, core.dynamic>
               : null,
           state: json_['state'] as core.String?,
+          toxicCombination: json_.containsKey('toxicCombination')
+              ? ToxicCombination.fromJson(json_['toxicCombination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           vulnerability: json_.containsKey('vulnerability')
               ? Vulnerability.fromJson(
                   json_['vulnerability'] as core.Map<core.String, core.dynamic>)
@@ -12854,6 +13028,8 @@ class Finding {
         if (contacts != null) 'contacts': contacts!,
         if (containers != null) 'containers': containers!,
         if (createTime != null) 'createTime': createTime!,
+        if (dataAccessEvents != null) 'dataAccessEvents': dataAccessEvents!,
+        if (dataFlowEvents != null) 'dataFlowEvents': dataFlowEvents!,
         if (database != null) 'database': database!,
         if (description != null) 'description': description!,
         if (eventTime != null) 'eventTime': eventTime!,
@@ -12862,6 +13038,7 @@ class Finding {
         if (externalUri != null) 'externalUri': externalUri!,
         if (files != null) 'files': files!,
         if (findingClass != null) 'findingClass': findingClass!,
+        if (groupMemberships != null) 'groupMemberships': groupMemberships!,
         if (iamBindings != null) 'iamBindings': iamBindings!,
         if (indicator != null) 'indicator': indicator!,
         if (kernelRootkit != null) 'kernelRootkit': kernelRootkit!,
@@ -12871,6 +13048,7 @@ class Finding {
         if (mitreAttack != null) 'mitreAttack': mitreAttack!,
         if (moduleName != null) 'moduleName': moduleName!,
         if (mute != null) 'mute': mute!,
+        if (muteInfo != null) 'muteInfo': muteInfo!,
         if (muteInitiator != null) 'muteInitiator': muteInitiator!,
         if (muteUpdateTime != null) 'muteUpdateTime': muteUpdateTime!,
         if (name != null) 'name': name!,
@@ -12886,6 +13064,7 @@ class Finding {
         if (severity != null) 'severity': severity!,
         if (sourceProperties != null) 'sourceProperties': sourceProperties!,
         if (state != null) 'state': state!,
+        if (toxicCombination != null) 'toxicCombination': toxicCombination!,
         if (vulnerability != null) 'vulnerability': vulnerability!,
       };
 }
@@ -13119,6 +13298,9 @@ class GoogleCloudSecuritycenterV1Binding {
 /// Use the custom module configuration to create custom detectors that generate
 /// custom findings for resources that you specify.
 class GoogleCloudSecuritycenterV1CustomConfig {
+  /// The CEL policy spec attached to the custom module.
+  CelPolicySpec? celPolicy;
+
   /// Custom output properties.
   GoogleCloudSecuritycenterV1CustomOutputSpec? customOutput;
 
@@ -13158,6 +13340,7 @@ class GoogleCloudSecuritycenterV1CustomConfig {
   core.String? severity;
 
   GoogleCloudSecuritycenterV1CustomConfig({
+    this.celPolicy,
     this.customOutput,
     this.description,
     this.predicate,
@@ -13168,6 +13351,10 @@ class GoogleCloudSecuritycenterV1CustomConfig {
 
   GoogleCloudSecuritycenterV1CustomConfig.fromJson(core.Map json_)
       : this(
+          celPolicy: json_.containsKey('celPolicy')
+              ? CelPolicySpec.fromJson(
+                  json_['celPolicy'] as core.Map<core.String, core.dynamic>)
+              : null,
           customOutput: json_.containsKey('customOutput')
               ? GoogleCloudSecuritycenterV1CustomOutputSpec.fromJson(
                   json_['customOutput'] as core.Map<core.String, core.dynamic>)
@@ -13187,6 +13374,7 @@ class GoogleCloudSecuritycenterV1CustomConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (celPolicy != null) 'celPolicy': celPolicy!,
         if (customOutput != null) 'customOutput': customOutput!,
         if (description != null) 'description': description!,
         if (predicate != null) 'predicate': predicate!,
@@ -13409,6 +13597,14 @@ class GoogleCloudSecuritycenterV1MuteConfig {
   )
   core.String? displayName;
 
+  /// The expiry of the mute config.
+  ///
+  /// Only applicable for dynamic configs. If the expiry is set, when the config
+  /// expires, it is removed from all findings.
+  ///
+  /// Optional.
+  core.String? expiryTime;
+
   /// An expression that defines the filter to apply across create/update events
   /// of findings.
   ///
@@ -13436,13 +13632,33 @@ class GoogleCloudSecuritycenterV1MuteConfig {
 
   /// This field will be ignored if provided on config creation.
   ///
-  /// Format "organizations/{organization}/muteConfigs/{mute_config}"
-  /// "folders/{folder}/muteConfigs/{mute_config}"
-  /// "projects/{project}/muteConfigs/{mute_config}"
-  /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
-  /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
-  /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+  /// Format `organizations/{organization}/muteConfigs/{mute_config}`
+  /// `folders/{folder}/muteConfigs/{mute_config}`
+  /// `projects/{project}/muteConfigs/{mute_config}`
+  /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
+  /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
+  /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
   core.String? name;
+
+  /// The type of the mute config, which determines what type of mute state the
+  /// config affects.
+  ///
+  /// The static mute state takes precedence over the dynamic mute state.
+  /// Immutable after creation. STATIC by default if not set during creation.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MUTE_CONFIG_TYPE_UNSPECIFIED" : Unused.
+  /// - "STATIC" : A static mute config, which sets the static mute state of
+  /// future matching findings to muted. Once the static mute state has been
+  /// set, finding or config modifications will not affect the state.
+  /// - "DYNAMIC" : A dynamic mute config, which is applied to existing and
+  /// future matching findings, setting their dynamic mute state to "muted". If
+  /// the config is updated or deleted, or a matching finding is updated, such
+  /// that the finding doesn't match the config, the config will be removed from
+  /// the finding, and the finding's dynamic mute state may become "unmuted"
+  /// (unless other configs still match).
+  core.String? type;
 
   /// The most recent time at which the mute config was updated.
   ///
@@ -13456,9 +13672,11 @@ class GoogleCloudSecuritycenterV1MuteConfig {
     this.createTime,
     this.description,
     this.displayName,
+    this.expiryTime,
     this.filter,
     this.mostRecentEditor,
     this.name,
+    this.type,
     this.updateTime,
   });
 
@@ -13467,9 +13685,11 @@ class GoogleCloudSecuritycenterV1MuteConfig {
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
+          expiryTime: json_['expiryTime'] as core.String?,
           filter: json_['filter'] as core.String?,
           mostRecentEditor: json_['mostRecentEditor'] as core.String?,
           name: json_['name'] as core.String?,
+          type: json_['type'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );
 
@@ -13477,9 +13697,11 @@ class GoogleCloudSecuritycenterV1MuteConfig {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
+        if (expiryTime != null) 'expiryTime': expiryTime!,
         if (filter != null) 'filter': filter!,
         if (mostRecentEditor != null) 'mostRecentEditor': mostRecentEditor!,
         if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -13560,16 +13782,16 @@ class GoogleCloudSecuritycenterV1ResourceValueConfig {
   /// Name for the resource value configuration
   core.String? name;
 
-  /// List of resource labels to search for, evaluated with AND.
+  /// List of resource labels to search for, evaluated with `AND`.
   ///
-  /// For example, "resource_labels_selector": {"key": "value", "env": "prod"}
-  /// will match resources with labels "key": "value" AND "env": "prod"
+  /// For example, `"resource_labels_selector": {"key": "value", "env": "prod"}`
+  /// will match resources with labels "key": "value" `AND` "env": "prod"
   /// https://cloud.google.com/resource-manager/docs/creating-managing-labels
   core.Map<core.String, core.String>? resourceLabelsSelector;
 
   /// Apply resource_value only to resources that match resource_type.
   ///
-  /// resource_type will be checked with AND of other resources. For example,
+  /// resource_type will be checked with `AND` of other resources. For example,
   /// "storage.googleapis.com/Bucket" with resource_value "HIGH" will apply
   /// "HIGH" value only to "storage.googleapis.com/Bucket" resources.
   core.String? resourceType;
@@ -13588,7 +13810,7 @@ class GoogleCloudSecuritycenterV1ResourceValueConfig {
   /// Project or folder to scope this configuration to.
   ///
   /// For example, "project/456" would apply this configuration only to
-  /// resources in "project/456" scope will be checked with AND of other
+  /// resources in "project/456" scope will be checked with `AND` of other
   /// resources.
   core.String? scope;
 
@@ -13600,10 +13822,10 @@ class GoogleCloudSecuritycenterV1ResourceValueConfig {
   GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping?
       sensitiveDataProtectionMapping;
 
-  /// Tag values combined with AND to check against.
+  /// Tag values combined with `AND` to check against.
   ///
-  /// Values in the form "tagValues/123" Example: \[ "tagValues/123",
-  /// "tagValues/456", "tagValues/789" \]
+  /// Values in the form "tagValues/123" Example: `[ "tagValues/123",
+  /// "tagValues/456", "tagValues/789" ]`
   /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
   ///
   /// Required.
@@ -14142,6 +14364,36 @@ class GroupFindingsResponse {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (readTime != null) 'readTime': readTime!,
         if (totalSize != null) 'totalSize': totalSize!,
+      };
+}
+
+/// Contains details about groups of which this finding is a member.
+///
+/// A group is a collection of findings that are related in some way.
+class GroupMembership {
+  /// ID of the group.
+  core.String? groupId;
+
+  /// Type of group.
+  /// Possible string values are:
+  /// - "GROUP_TYPE_UNSPECIFIED" : Default value.
+  /// - "GROUP_TYPE_TOXIC_COMBINATION" : Group represents a toxic combination.
+  core.String? groupType;
+
+  GroupMembership({
+    this.groupId,
+    this.groupType,
+  });
+
+  GroupMembership.fromJson(core.Map json_)
+      : this(
+          groupId: json_['groupId'] as core.String?,
+          groupType: json_['groupType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (groupId != null) 'groupId': groupId!,
+        if (groupType != null) 'groupType': groupType!,
       };
 }
 
@@ -15280,6 +15532,41 @@ class MitreAttack {
       };
 }
 
+/// Mute information about the finding, including whether the finding has a
+/// static mute or any matching dynamic mute rules.
+class MuteInfo {
+  /// The list of dynamic mute rules that currently match the finding.
+  core.List<DynamicMuteRecord>? dynamicMuteRecords;
+
+  /// If set, the static mute applied to this finding.
+  ///
+  /// Static mutes override dynamic mutes. If unset, there is no static mute.
+  StaticMute? staticMute;
+
+  MuteInfo({
+    this.dynamicMuteRecords,
+    this.staticMute,
+  });
+
+  MuteInfo.fromJson(core.Map json_)
+      : this(
+          dynamicMuteRecords: (json_['dynamicMuteRecords'] as core.List?)
+              ?.map((value) => DynamicMuteRecord.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          staticMute: json_.containsKey('staticMute')
+              ? StaticMute.fromJson(
+                  json_['staticMute'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dynamicMuteRecords != null)
+          'dynamicMuteRecords': dynamicMuteRecords!,
+        if (staticMute != null) 'staticMute': staticMute!,
+      };
+}
+
 /// Kubernetes nodes associated with the finding.
 class Node {
   /// [Full resource name](https://google.aip.dev/122#full-resource-names) of
@@ -15669,7 +15956,7 @@ class Package {
 class PathNodeAssociatedFinding {
   /// Canonical name of the associated findings.
   ///
-  /// Example: organizations/123/sources/456/findings/789
+  /// Example: `organizations/123/sources/456/findings/789`
   core.String? canonicalFinding;
 
   /// The additional taxonomy group within findings from a given source.
@@ -16124,6 +16411,9 @@ class Resource {
   /// The AWS metadata associated with the finding.
   AwsMetadata? awsMetadata;
 
+  /// The Azure metadata associated with the finding.
+  AzureMetadata? azureMetadata;
+
   /// Indicates which cloud provider the finding is from.
   /// Possible string values are:
   /// - "CLOUD_PROVIDER_UNSPECIFIED" : The cloud provider is unspecified.
@@ -16171,12 +16461,12 @@ class Resource {
   /// A string representation of the resource path.
   ///
   /// For Google Cloud, it has the format of
-  /// org/{organization_id}/folder/{folder_id}/folder/{folder_id}/project/{project_id}
+  /// `org/{organization_id}/folder/{folder_id}/folder/{folder_id}/project/{project_id}`
   /// where there can be any number of folders. For AWS, it has the format of
-  /// org/{organization_id}/ou/{organizational_unit_id}/ou/{organizational_unit_id}/account/{account_id}
+  /// `org/{organization_id}/ou/{organizational_unit_id}/ou/{organizational_unit_id}/account/{account_id}`
   /// where there can be any number of organizational units. For Azure, it has
   /// the format of
-  /// mg/{management_group_id}/mg/{management_group_id}/subscription/{subscription_id}/rg/{resource_group_name}
+  /// `mg/{management_group_id}/mg/{management_group_id}/subscription/{subscription_id}/rg/{resource_group_name}`
   /// where there can be any number of management groups.
   core.String? resourcePathString;
 
@@ -16188,6 +16478,7 @@ class Resource {
 
   Resource({
     this.awsMetadata,
+    this.azureMetadata,
     this.cloudProvider,
     this.displayName,
     this.folders,
@@ -16209,6 +16500,10 @@ class Resource {
           awsMetadata: json_.containsKey('awsMetadata')
               ? AwsMetadata.fromJson(
                   json_['awsMetadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          azureMetadata: json_.containsKey('azureMetadata')
+              ? AzureMetadata.fromJson(
+                  json_['azureMetadata'] as core.Map<core.String, core.dynamic>)
               : null,
           cloudProvider: json_['cloudProvider'] as core.String?,
           displayName: json_['displayName'] as core.String?,
@@ -16234,6 +16529,7 @@ class Resource {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (awsMetadata != null) 'awsMetadata': awsMetadata!,
+        if (azureMetadata != null) 'azureMetadata': azureMetadata!,
         if (cloudProvider != null) 'cloudProvider': cloudProvider!,
         if (displayName != null) 'displayName': displayName!,
         if (folders != null) 'folders': folders!,
@@ -16981,7 +17277,7 @@ class Simulation {
   /// Output only.
   core.String? createTime;
 
-  /// Full resource name of the Simulation: organizations/123/simulations/456
+  /// Full resource name of the Simulation: `organizations/123/simulations/456`
   core.String? name;
 
   /// Resource value configurations' metadata used in this simulation.
@@ -17077,6 +17373,43 @@ class Source {
       };
 }
 
+/// Information about the static mute state.
+///
+/// A static mute state overrides any dynamic mute rules that apply to this
+/// finding. The static mute state can be set by a static mute rule or by muting
+/// the finding directly.
+class StaticMute {
+  /// When the static mute was applied.
+  core.String? applyTime;
+
+  /// The static mute state.
+  ///
+  /// If the value is `MUTED` or `UNMUTED`, then the finding's overall mute
+  /// state will have the same value.
+  /// Possible string values are:
+  /// - "MUTE_UNSPECIFIED" : Unspecified.
+  /// - "MUTED" : Finding has been muted.
+  /// - "UNMUTED" : Finding has been unmuted.
+  /// - "UNDEFINED" : Finding has never been muted/unmuted.
+  core.String? state;
+
+  StaticMute({
+    this.applyTime,
+    this.state,
+  });
+
+  StaticMute.fromJson(core.Map json_)
+      : this(
+          applyTime: json_['applyTime'] as core.String?,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (applyTime != null) 'applyTime': applyTime!,
+        if (state != null) 'state': state!,
+      };
+}
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -17084,7 +17417,7 @@ class Source {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// The config for streaming-based notifications, which send each event as soon
 /// as it is detected.
@@ -17208,6 +17541,46 @@ class TicketInfo {
         if (status != null) 'status': status!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Contains details about a group of security issues that, when the issues
+/// occur together, represent a greater risk than when the issues occur
+/// independently.
+///
+/// A group of such issues is referred to as a toxic combination.
+class ToxicCombination {
+  /// The
+  /// [Attack exposure score](https://cloud.google.com/security-command-center/docs/attack-exposure-learn#attack_exposure_scores)
+  /// of this toxic combination.
+  ///
+  /// The score is a measure of how much this toxic combination exposes one or
+  /// more high-value resources to potential attack.
+  core.double? attackExposureScore;
+
+  /// List of resource names of findings associated with this toxic combination.
+  ///
+  /// For example, `organizations/123/sources/456/findings/789`.
+  core.List<core.String>? relatedFindings;
+
+  ToxicCombination({
+    this.attackExposureScore,
+    this.relatedFindings,
+  });
+
+  ToxicCombination.fromJson(core.Map json_)
+      : this(
+          attackExposureScore:
+              (json_['attackExposureScore'] as core.num?)?.toDouble(),
+          relatedFindings: (json_['relatedFindings'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attackExposureScore != null)
+          'attackExposureScore': attackExposureScore!,
+        if (relatedFindings != null) 'relatedFindings': relatedFindings!,
       };
 }
 

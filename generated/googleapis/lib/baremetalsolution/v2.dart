@@ -3930,11 +3930,19 @@ class NetworkConfig {
   /// List of VLAN attachments.
   ///
   /// As of now there are always 2 attachments, but it is going to change in the
-  /// future (multi vlan).
+  /// future (multi vlan). Use only one of vlan_attachments or vrf
   core.List<IntakeVlanAttachment>? vlanAttachments;
 
   /// Whether the VLAN attachment pair is located in the same project.
   core.bool? vlanSameProject;
+
+  /// The name of a pre-existing Vrf that the network should be attached to.
+  ///
+  /// Format is `vrfs/{vrf}`. If vrf is specified, vlan_attachments must be
+  /// empty.
+  ///
+  /// Optional.
+  core.String? vrf;
 
   NetworkConfig({
     this.bandwidth,
@@ -3948,6 +3956,7 @@ class NetworkConfig {
     this.userNote,
     this.vlanAttachments,
     this.vlanSameProject,
+    this.vrf,
   });
 
   NetworkConfig.fromJson(core.Map json_)
@@ -3966,6 +3975,7 @@ class NetworkConfig {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           vlanSameProject: json_['vlanSameProject'] as core.bool?,
+          vrf: json_['vrf'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3981,6 +3991,7 @@ class NetworkConfig {
         if (userNote != null) 'userNote': userNote!,
         if (vlanAttachments != null) 'vlanAttachments': vlanAttachments!,
         if (vlanSameProject != null) 'vlanSameProject': vlanSameProject!,
+        if (vrf != null) 'vrf': vrf!,
       };
 }
 
@@ -4857,7 +4868,7 @@ typedef StartInstanceRequest = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Message requesting to stop a server.
 typedef StopInstanceRequest = $Empty;

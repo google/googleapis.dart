@@ -784,9 +784,7 @@ class EnterprisesEnrollmentTokensResource {
   ///
   /// It's up to the caller's responsibility to manage the lifecycle of newly
   /// created tokens and deleting them when they're not intended to be used
-  /// anymore. Once an enrollment token has been created, it's not possible to
-  /// retrieve the token's content anymore using AM API. It is recommended for
-  /// EMMs to securely store the token if it's intended to be reused.
+  /// anymore.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1655,11 +1653,14 @@ class AdvancedSecurityOverrides {
   /// (https://www.commoncriteriaportal.org/) (CC).
   ///
   /// Enabling Common Criteria Mode increases certain security components on a
-  /// device, including AES-GCM encryption of Bluetooth Long Term Keys, and
-  /// Wi-Fi configuration stores.Warning: Common Criteria Mode enforces a strict
-  /// security model typically only required for IT products used in national
-  /// security systems and other highly sensitive organizations. Standard device
-  /// use may be affected. Only enabled if required.
+  /// device, see CommonCriteriaMode for details.Warning: Common Criteria Mode
+  /// enforces a strict security model typically only required for IT products
+  /// used in national security systems and other highly sensitive
+  /// organizations. Standard device use may be affected. Only enabled if
+  /// required. If Common Criteria Mode is turned off after being enabled
+  /// previously, all user-configured Wi-Fi networks may be lost and any
+  /// enterprise-configured Wi-Fi networks that require user input may need to
+  /// be reconfigured.
   /// Possible string values are:
   /// - "COMMON_CRITERIA_MODE_UNSPECIFIED" : Unspecified. Defaults to
   /// COMMON_CRITERIA_MODE_DISABLED.
@@ -1667,6 +1668,27 @@ class AdvancedSecurityOverrides {
   /// Mode.
   /// - "COMMON_CRITERIA_MODE_ENABLED" : Enables Common Criteria Mode.
   core.String? commonCriteriaMode;
+
+  /// Controls whether content protection, which scans for deceptive apps, is
+  /// enabled.
+  ///
+  /// This is supported on Android 15 and above.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CONTENT_PROTECTION_POLICY_UNSPECIFIED" : Unspecified. Defaults to
+  /// CONTENT_PROTECTION_DISABLED.
+  /// - "CONTENT_PROTECTION_DISABLED" : Content protection is disabled and the
+  /// user cannot change this.
+  /// - "CONTENT_PROTECTION_ENFORCED" : Content protection is enabled and the
+  /// user cannot change this.Supported on Android 15 and above. A
+  /// nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 15.
+  /// - "CONTENT_PROTECTION_USER_CHOICE" : Content protection is not controlled
+  /// by the policy. The user is allowed to choose the behavior of content
+  /// protection.Supported on Android 15 and above. A nonComplianceDetail with
+  /// API_LEVEL is reported if the Android version is less than 15.
+  core.String? contentProtectionPolicy;
 
   /// Controls access to developer settings: developer options and safe boot.
   ///
@@ -1747,6 +1769,7 @@ class AdvancedSecurityOverrides {
 
   AdvancedSecurityOverrides({
     this.commonCriteriaMode,
+    this.contentProtectionPolicy,
     this.developerSettings,
     this.googlePlayProtectVerifyApps,
     this.mtePolicy,
@@ -1757,6 +1780,8 @@ class AdvancedSecurityOverrides {
   AdvancedSecurityOverrides.fromJson(core.Map json_)
       : this(
           commonCriteriaMode: json_['commonCriteriaMode'] as core.String?,
+          contentProtectionPolicy:
+              json_['contentProtectionPolicy'] as core.String?,
           developerSettings: json_['developerSettings'] as core.String?,
           googlePlayProtectVerifyApps:
               json_['googlePlayProtectVerifyApps'] as core.String?,
@@ -1771,6 +1796,8 @@ class AdvancedSecurityOverrides {
   core.Map<core.String, core.dynamic> toJson() => {
         if (commonCriteriaMode != null)
           'commonCriteriaMode': commonCriteriaMode!,
+        if (contentProtectionPolicy != null)
+          'contentProtectionPolicy': contentProtectionPolicy!,
         if (developerSettings != null) 'developerSettings': developerSettings!,
         if (googlePlayProtectVerifyApps != null)
           'googlePlayProtectVerifyApps': googlePlayProtectVerifyApps!,
@@ -3044,19 +3071,44 @@ class CommonCriteriaModeInfo {
   /// enabled.
   core.String? commonCriteriaModeStatus;
 
+  /// The status of policy signature verification.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "POLICY_SIGNATURE_VERIFICATION_STATUS_UNSPECIFIED" : Unspecified. The
+  /// verification status has not been reported. This is set only if
+  /// statusReportingSettings.commonCriteriaModeEnabled is false.
+  /// - "POLICY_SIGNATURE_VERIFICATION_DISABLED" : Policy signature verification
+  /// is disabled on the device as common_criteria_mode is set to false.
+  /// - "POLICY_SIGNATURE_VERIFICATION_SUCCEEDED" : Policy signature
+  /// verification succeeded.
+  /// - "POLICY_SIGNATURE_VERIFICATION_NOT_SUPPORTED" : Policy signature
+  /// verification is not supported, e.g. because the device has been enrolled
+  /// with a CloudDPC version that does not support the policy signature
+  /// verification.
+  /// - "POLICY_SIGNATURE_VERIFICATION_FAILED" : The policy signature
+  /// verification failed. The policy has not been applied.
+  core.String? policySignatureVerificationStatus;
+
   CommonCriteriaModeInfo({
     this.commonCriteriaModeStatus,
+    this.policySignatureVerificationStatus,
   });
 
   CommonCriteriaModeInfo.fromJson(core.Map json_)
       : this(
           commonCriteriaModeStatus:
               json_['commonCriteriaModeStatus'] as core.String?,
+          policySignatureVerificationStatus:
+              json_['policySignatureVerificationStatus'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commonCriteriaModeStatus != null)
           'commonCriteriaModeStatus': commonCriteriaModeStatus!,
+        if (policySignatureVerificationStatus != null)
+          'policySignatureVerificationStatus':
+              policySignatureVerificationStatus!,
       };
 }
 
@@ -3443,7 +3495,7 @@ class Device {
   /// Common Criteria for Information Technology Security Evaluation
   /// (https://www.commoncriteriaportal.org/) (CC).This information is only
   /// available if statusReportingSettings.commonCriteriaModeEnabled is true in
-  /// the device's policy.
+  /// the device's policy the device is company-owned.
   CommonCriteriaModeInfo? commonCriteriaModeInfo;
 
   /// Device settings information.
@@ -3904,6 +3956,11 @@ class DeviceConnectivityManagement {
   /// less than 13.
   core.String? wifiDirectSettings;
 
+  /// Wi-Fi roaming policy.
+  ///
+  /// Optional.
+  WifiRoamingPolicy? wifiRoamingPolicy;
+
   /// Restrictions on which Wi-Fi SSIDs the device can connect to.
   ///
   /// Note that this does not affect which networks can be configured on the
@@ -3915,6 +3972,7 @@ class DeviceConnectivityManagement {
     this.tetheringSettings,
     this.usbDataAccess,
     this.wifiDirectSettings,
+    this.wifiRoamingPolicy,
     this.wifiSsidPolicy,
   });
 
@@ -3924,6 +3982,10 @@ class DeviceConnectivityManagement {
           tetheringSettings: json_['tetheringSettings'] as core.String?,
           usbDataAccess: json_['usbDataAccess'] as core.String?,
           wifiDirectSettings: json_['wifiDirectSettings'] as core.String?,
+          wifiRoamingPolicy: json_.containsKey('wifiRoamingPolicy')
+              ? WifiRoamingPolicy.fromJson(json_['wifiRoamingPolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           wifiSsidPolicy: json_.containsKey('wifiSsidPolicy')
               ? WifiSsidPolicy.fromJson(json_['wifiSsidPolicy']
                   as core.Map<core.String, core.dynamic>)
@@ -3936,6 +3998,7 @@ class DeviceConnectivityManagement {
         if (usbDataAccess != null) 'usbDataAccess': usbDataAccess!,
         if (wifiDirectSettings != null)
           'wifiDirectSettings': wifiDirectSettings!,
+        if (wifiRoamingPolicy != null) 'wifiRoamingPolicy': wifiRoamingPolicy!,
         if (wifiSsidPolicy != null) 'wifiSsidPolicy': wifiSsidPolicy!,
       };
 }
@@ -4175,6 +4238,45 @@ class Display {
         if (refreshRate != null) 'refreshRate': refreshRate!,
         if (state != null) 'state': state!,
         if (width != null) 'width': width!,
+      };
+}
+
+/// Controls for the display settings.
+class DisplaySettings {
+  /// Controls the screen brightness settings.
+  ///
+  /// Optional.
+  ScreenBrightnessSettings? screenBrightnessSettings;
+
+  /// Controls the screen timeout settings.
+  ///
+  /// Optional.
+  ScreenTimeoutSettings? screenTimeoutSettings;
+
+  DisplaySettings({
+    this.screenBrightnessSettings,
+    this.screenTimeoutSettings,
+  });
+
+  DisplaySettings.fromJson(core.Map json_)
+      : this(
+          screenBrightnessSettings:
+              json_.containsKey('screenBrightnessSettings')
+                  ? ScreenBrightnessSettings.fromJson(
+                      json_['screenBrightnessSettings']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          screenTimeoutSettings: json_.containsKey('screenTimeoutSettings')
+              ? ScreenTimeoutSettings.fromJson(json_['screenTimeoutSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (screenBrightnessSettings != null)
+          'screenBrightnessSettings': screenBrightnessSettings!,
+        if (screenTimeoutSettings != null)
+          'screenTimeoutSettings': screenTimeoutSettings!,
       };
 }
 
@@ -5808,11 +5910,11 @@ class NonComplianceDetail {
 
   /// The reason the device is not in compliance with the setting.
   /// Possible string values are:
-  /// - "NON_COMPLIANCE_REASON_UNSPECIFIED" : This value is disallowed.
+  /// - "NON_COMPLIANCE_REASON_UNSPECIFIED" : This value is not used.
   /// - "API_LEVEL" : The setting is not supported in the API level of the
   /// Android version running on the device.
-  /// - "MANAGEMENT_MODE" : The management mode (profile owner, device owner,
-  /// etc.) doesn't support the setting.
+  /// - "MANAGEMENT_MODE" : The management mode (such as fully managed or work
+  /// profile) doesn't support the setting.
   /// - "USER_ACTION" : The user has not taken required action to comply with
   /// the setting.
   /// - "INVALID_VALUE" : The setting has an invalid value.
@@ -5937,11 +6039,11 @@ class NonComplianceDetailCondition {
   ///
   /// If not set, then this condition matches any reason.
   /// Possible string values are:
-  /// - "NON_COMPLIANCE_REASON_UNSPECIFIED" : This value is disallowed.
+  /// - "NON_COMPLIANCE_REASON_UNSPECIFIED" : This value is not used.
   /// - "API_LEVEL" : The setting is not supported in the API level of the
   /// Android version running on the device.
-  /// - "MANAGEMENT_MODE" : The management mode (profile owner, device owner,
-  /// etc.) doesn't support the setting.
+  /// - "MANAGEMENT_MODE" : The management mode (such as fully managed or work
+  /// profile) doesn't support the setting.
   /// - "USER_ACTION" : The user has not taken required action to comply with
   /// the setting.
   /// - "INVALID_VALUE" : The setting has an invalid value.
@@ -6693,6 +6795,25 @@ class Policy {
   /// This can have at most 3,000 elements.
   core.List<ApplicationPolicy>? applications;
 
+  /// Controls whether AssistContent
+  /// (https://developer.android.com/reference/android/app/assist/AssistContent)
+  /// is allowed to be sent to a privileged app such as an assistant app.
+  ///
+  /// AssistContent includes screenshots and information about an app, such as
+  /// package name. This is supported on Android 15 and above.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ASSIST_CONTENT_POLICY_UNSPECIFIED" : Unspecified. Defaults to
+  /// ASSIST_CONTENT_ALLOWED.
+  /// - "ASSIST_CONTENT_DISALLOWED" : Assist content is blocked from being sent
+  /// to a privileged app.Supported on Android 15 and above. A
+  /// nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 15.
+  /// - "ASSIST_CONTENT_ALLOWED" : Assist content is allowed to be sent to a
+  /// privileged app.Supported on Android 15 and above.
+  core.String? assistContentPolicy;
+
   /// Whether auto date, time, and time zone are enabled on a company-owned
   /// device.
   ///
@@ -6868,6 +6989,11 @@ class Policy {
 
   /// Covers controls for radio state such as Wi-Fi, bluetooth, and more.
   DeviceRadioState? deviceRadioState;
+
+  /// Controls for the display settings.
+  ///
+  /// Optional.
+  DisplaySettings? displaySettings;
 
   /// Whether encryption is enabled
   /// Possible string values are:
@@ -7289,7 +7415,7 @@ class Policy {
   )
   core.bool? wifiConfigDisabled;
 
-  /// DEPRECATED - Use wifi_config_disabled.
+  /// This is deprecated.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -7304,6 +7430,7 @@ class Policy {
     this.androidDevicePolicyTracks,
     this.appAutoUpdatePolicy,
     this.applications,
+    this.assistContentPolicy,
     this.autoDateAndTimeZone,
     this.autoTimeRequired,
     this.blockApplicationsEnabled,
@@ -7325,6 +7452,7 @@ class Policy {
     this.deviceConnectivityManagement,
     this.deviceOwnerLockScreenInfo,
     this.deviceRadioState,
+    this.displaySettings,
     this.encryptionPolicy,
     this.ensureVerifyAppsEnabled,
     this.factoryResetDisabled,
@@ -7417,6 +7545,7 @@ class Policy {
               ?.map((value) => ApplicationPolicy.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          assistContentPolicy: json_['assistContentPolicy'] as core.String?,
           autoDateAndTimeZone: json_['autoDateAndTimeZone'] as core.String?,
           autoTimeRequired: json_['autoTimeRequired'] as core.bool?,
           blockApplicationsEnabled:
@@ -7465,6 +7594,10 @@ class Policy {
               : null,
           deviceRadioState: json_.containsKey('deviceRadioState')
               ? DeviceRadioState.fromJson(json_['deviceRadioState']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          displaySettings: json_.containsKey('displaySettings')
+              ? DisplaySettings.fromJson(json_['displaySettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
           encryptionPolicy: json_['encryptionPolicy'] as core.String?,
@@ -7628,6 +7761,8 @@ class Policy {
         if (appAutoUpdatePolicy != null)
           'appAutoUpdatePolicy': appAutoUpdatePolicy!,
         if (applications != null) 'applications': applications!,
+        if (assistContentPolicy != null)
+          'assistContentPolicy': assistContentPolicy!,
         if (autoDateAndTimeZone != null)
           'autoDateAndTimeZone': autoDateAndTimeZone!,
         if (autoTimeRequired != null) 'autoTimeRequired': autoTimeRequired!,
@@ -7664,6 +7799,7 @@ class Policy {
         if (deviceOwnerLockScreenInfo != null)
           'deviceOwnerLockScreenInfo': deviceOwnerLockScreenInfo!,
         if (deviceRadioState != null) 'deviceRadioState': deviceRadioState!,
+        if (displaySettings != null) 'displaySettings': displaySettings!,
         if (encryptionPolicy != null) 'encryptionPolicy': encryptionPolicy!,
         if (ensureVerifyAppsEnabled != null)
           'ensureVerifyAppsEnabled': ensureVerifyAppsEnabled!,
@@ -8052,6 +8188,116 @@ class ProxyInfo {
       };
 }
 
+/// Controls for the screen brightness settings.
+class ScreenBrightnessSettings {
+  /// The screen brightness between 1 and 255 where 1 is the lowest and 255 is
+  /// the highest brightness.
+  ///
+  /// A value of 0 (default) means no screen brightness set. Any other value is
+  /// rejected. screenBrightnessMode must be either BRIGHTNESS_AUTOMATIC or
+  /// BRIGHTNESS_FIXED to set this. Supported on Android 9 and above on fully
+  /// managed devices. A NonComplianceDetail with API_LEVEL is reported if the
+  /// Android version is less than 9. Supported on work profiles on
+  /// company-owned devices on Android 15 and above.
+  ///
+  /// Optional.
+  core.int? screenBrightness;
+
+  /// Controls the screen brightness mode.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SCREEN_BRIGHTNESS_MODE_UNSPECIFIED" : Unspecified. Defaults to
+  /// BRIGHTNESS_USER_CHOICE.
+  /// - "BRIGHTNESS_USER_CHOICE" : The user is allowed to configure the screen
+  /// brightness. screenBrightness must not be set.
+  /// - "BRIGHTNESS_AUTOMATIC" : The screen brightness mode is automatic in
+  /// which the brightness is automatically adjusted and the user is not allowed
+  /// to configure the screen brightness. screenBrightness can still be set and
+  /// it is taken into account while the brightness is automatically adjusted.
+  /// Supported on Android 9 and above on fully managed devices. A
+  /// NonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 9. Supported on work profiles on company-owned devices on
+  /// Android 15 and above.
+  /// - "BRIGHTNESS_FIXED" : The screen brightness mode is fixed in which the
+  /// brightness is set to screenBrightness and the user is not allowed to
+  /// configure the screen brightness. screenBrightness must be set. Supported
+  /// on Android 9 and above on fully managed devices. A NonComplianceDetail
+  /// with API_LEVEL is reported if the Android version is less than 9.
+  /// Supported on work profiles on company-owned devices on Android 15 and
+  /// above.
+  core.String? screenBrightnessMode;
+
+  ScreenBrightnessSettings({
+    this.screenBrightness,
+    this.screenBrightnessMode,
+  });
+
+  ScreenBrightnessSettings.fromJson(core.Map json_)
+      : this(
+          screenBrightness: json_['screenBrightness'] as core.int?,
+          screenBrightnessMode: json_['screenBrightnessMode'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (screenBrightness != null) 'screenBrightness': screenBrightness!,
+        if (screenBrightnessMode != null)
+          'screenBrightnessMode': screenBrightnessMode!,
+      };
+}
+
+/// Controls the screen timeout settings.
+class ScreenTimeoutSettings {
+  /// Controls the screen timeout duration.
+  ///
+  /// The screen timeout duration must be greater than 0, otherwise it is
+  /// rejected. Additionally, it should not be greater than maximumTimeToLock,
+  /// otherwise the screen timeout is set to maximumTimeToLock and a
+  /// NonComplianceDetail with INVALID_VALUE reason and
+  /// SCREEN_TIMEOUT_GREATER_THAN_MAXIMUM_TIME_TO_LOCK specific reason is
+  /// reported. If the screen timeout is less than a certain lower bound, it is
+  /// set to the lower bound. The lower bound may vary across devices. If this
+  /// is set, screenTimeoutMode must be SCREEN_TIMEOUT_ENFORCED. Supported on
+  /// Android 9 and above on fully managed devices. A NonComplianceDetail with
+  /// API_LEVEL is reported if the Android version is less than 9. Supported on
+  /// work profiles on company-owned devices on Android 15 and above.
+  ///
+  /// Optional.
+  core.String? screenTimeout;
+
+  /// Controls whether the user is allowed to configure the screen timeout.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SCREEN_TIMEOUT_MODE_UNSPECIFIED" : Unspecified. Defaults to
+  /// SCREEN_TIMEOUT_USER_CHOICE.
+  /// - "SCREEN_TIMEOUT_USER_CHOICE" : The user is allowed to configure the
+  /// screen timeout. screenTimeout must not be set.
+  /// - "SCREEN_TIMEOUT_ENFORCED" : The screen timeout is set to screenTimeout
+  /// and the user is not allowed to configure the timeout. screenTimeout must
+  /// be set. Supported on Android 9 and above on fully managed devices. A
+  /// NonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 9. Supported on work profiles on company-owned devices on
+  /// Android 15 and above.
+  core.String? screenTimeoutMode;
+
+  ScreenTimeoutSettings({
+    this.screenTimeout,
+    this.screenTimeoutMode,
+  });
+
+  ScreenTimeoutSettings.fromJson(core.Map json_)
+      : this(
+          screenTimeout: json_['screenTimeout'] as core.String?,
+          screenTimeoutMode: json_['screenTimeoutMode'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (screenTimeout != null) 'screenTimeout': screenTimeout!,
+        if (screenTimeoutMode != null) 'screenTimeoutMode': screenTimeoutMode!,
+      };
+}
+
 /// The security posture of the device, as determined by the current device
 /// state and the policies applied.
 class SecurityPosture {
@@ -8174,6 +8420,27 @@ class SigninDetail {
   /// authentication are not expected.
   core.String? allowPersonalUsage;
 
+  /// Whether the sign-in URL should be used by default for the enterprise.
+  ///
+  /// The SigninDetail with defaultStatus set to SIGNIN_DETAIL_IS_DEFAULT is
+  /// used for Google account enrollment method. Only one of an enterprise's
+  /// signinDetails can have defaultStatus set to SIGNIN_DETAIL_IS_DEFAULT. If
+  /// an Enterprise has at least one signinDetails and none of them have
+  /// defaultStatus set to SIGNIN_DETAIL_IS_DEFAULT then the first one from the
+  /// list is selected and has set defaultStatus to SIGNIN_DETAIL_IS_DEFAULT. If
+  /// no signinDetails specified for the Enterprise then the Google Account
+  /// device enrollment will fail.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SIGNIN_DETAIL_DEFAULT_STATUS_UNSPECIFIED" : Equivalent to
+  /// SIGNIN_DETAIL_IS_NOT_DEFAULT.
+  /// - "SIGNIN_DETAIL_IS_DEFAULT" : The sign-in URL will be used by default for
+  /// the enterprise.
+  /// - "SIGNIN_DETAIL_IS_NOT_DEFAULT" : The sign-in URL will not be used by
+  /// default for the enterprise.
+  core.String? defaultStatus;
+
   /// A JSON string whose UTF-8 representation can be used to generate a QR code
   /// to enroll a device with this enrollment token.
   ///
@@ -8202,6 +8469,7 @@ class SigninDetail {
 
   SigninDetail({
     this.allowPersonalUsage,
+    this.defaultStatus,
     this.qrCode,
     this.signinEnrollmentToken,
     this.signinUrl,
@@ -8211,6 +8479,7 @@ class SigninDetail {
   SigninDetail.fromJson(core.Map json_)
       : this(
           allowPersonalUsage: json_['allowPersonalUsage'] as core.String?,
+          defaultStatus: json_['defaultStatus'] as core.String?,
           qrCode: json_['qrCode'] as core.String?,
           signinEnrollmentToken: json_['signinEnrollmentToken'] as core.String?,
           signinUrl: json_['signinUrl'] as core.String?,
@@ -8220,6 +8489,7 @@ class SigninDetail {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowPersonalUsage != null)
           'allowPersonalUsage': allowPersonalUsage!,
+        if (defaultStatus != null) 'defaultStatus': defaultStatus!,
         if (qrCode != null) 'qrCode': qrCode!,
         if (signinEnrollmentToken != null)
           'signinEnrollmentToken': signinEnrollmentToken!,
@@ -8491,7 +8761,7 @@ class StartLostModeStatus {
 /// three pieces of data: error code, error message, and error details.You can
 /// find out more about this error model and how to work with it in the API
 /// Design Guide (https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Settings controlling the behavior of status reports.
 class StatusReportingSettings {
@@ -8504,6 +8774,8 @@ class StatusReportingSettings {
   core.bool? applicationReportsEnabled;
 
   /// Whether Common Criteria Mode reporting is enabled.
+  ///
+  /// This is supported only on company-owned devices.
   core.bool? commonCriteriaModeEnabled;
 
   /// Whether device settings reporting is enabled.
@@ -8753,22 +9025,30 @@ class TelephonyInfo {
   /// The carrier name associated with this SIM card.
   core.String? carrierName;
 
+  /// The ICCID associated with this SIM card.
+  ///
+  /// Output only.
+  core.String? iccId;
+
   /// The phone number associated with this SIM card.
   core.String? phoneNumber;
 
   TelephonyInfo({
     this.carrierName,
+    this.iccId,
     this.phoneNumber,
   });
 
   TelephonyInfo.fromJson(core.Map json_)
       : this(
           carrierName: json_['carrierName'] as core.String?,
+          iccId: json_['iccId'] as core.String?,
           phoneNumber: json_['phoneNumber'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (carrierName != null) 'carrierName': carrierName!,
+        if (iccId != null) 'iccId': iccId!,
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
       };
 }
@@ -9047,6 +9327,74 @@ class WebToken {
         if (parentFrameUrl != null) 'parentFrameUrl': parentFrameUrl!,
         if (permissions != null) 'permissions': permissions!,
         if (value != null) 'value': value!,
+      };
+}
+
+/// Wi-Fi roaming policy.
+class WifiRoamingPolicy {
+  /// Wi-Fi roaming settings.
+  ///
+  /// SSIDs provided in this list must be unique, the policy will be rejected
+  /// otherwise.
+  ///
+  /// Optional.
+  core.List<WifiRoamingSetting>? wifiRoamingSettings;
+
+  WifiRoamingPolicy({
+    this.wifiRoamingSettings,
+  });
+
+  WifiRoamingPolicy.fromJson(core.Map json_)
+      : this(
+          wifiRoamingSettings: (json_['wifiRoamingSettings'] as core.List?)
+              ?.map((value) => WifiRoamingSetting.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (wifiRoamingSettings != null)
+          'wifiRoamingSettings': wifiRoamingSettings!,
+      };
+}
+
+/// Wi-Fi roaming setting.
+class WifiRoamingSetting {
+  /// Wi-Fi roaming mode for the specified SSID.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "WIFI_ROAMING_MODE_UNSPECIFIED" : Unspecified. Defaults to
+  /// WIFI_ROAMING_DEFAULT.
+  /// - "WIFI_ROAMING_DEFAULT" : Default Wi-Fi roaming mode of the device.
+  /// - "WIFI_ROAMING_AGGRESSIVE" : Aggressive roaming mode which allows quicker
+  /// Wi-Fi roaming. Supported on Android 15 and above on fully managed devices
+  /// and work profiles on company-owned devices. A nonComplianceDetail with
+  /// MANAGEMENT_MODE is reported for other management modes. A
+  /// nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 15. A nonComplianceDetail with DEVICE_INCOMPATIBLE is reported
+  /// if the device does not support aggressive roaming mode.
+  core.String? wifiRoamingMode;
+
+  /// SSID of the Wi-Fi network.
+  ///
+  /// Required.
+  core.String? wifiSsid;
+
+  WifiRoamingSetting({
+    this.wifiRoamingMode,
+    this.wifiSsid,
+  });
+
+  WifiRoamingSetting.fromJson(core.Map json_)
+      : this(
+          wifiRoamingMode: json_['wifiRoamingMode'] as core.String?,
+          wifiSsid: json_['wifiSsid'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (wifiRoamingMode != null) 'wifiRoamingMode': wifiRoamingMode!,
+        if (wifiSsid != null) 'wifiSsid': wifiSsid!,
       };
 }
 

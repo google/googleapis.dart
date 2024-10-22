@@ -2406,6 +2406,31 @@ class Asset {
       };
 }
 
+/// The enhanced metadata information for a resource.
+class AssetEnrichment {
+  /// The resource owners for a resource.
+  ///
+  /// Note that this field only contains the members that have "roles/owner"
+  /// role in the resource's IAM Policy.
+  ResourceOwners? resourceOwners;
+
+  AssetEnrichment({
+    this.resourceOwners,
+  });
+
+  AssetEnrichment.fromJson(core.Map json_)
+      : this(
+          resourceOwners: json_.containsKey('resourceOwners')
+              ? ResourceOwners.fromJson(json_['resourceOwners']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resourceOwners != null) 'resourceOwners': resourceOwners!,
+      };
+}
+
 /// Attached resource representation, which is defined by the corresponding
 /// service provider.
 ///
@@ -4466,81 +4491,7 @@ class GoogleIdentityAccesscontextmanagerV1AccessLevel {
 ///
 /// An access policy is globally visible within an organization, and the
 /// restrictions it specifies apply to all projects within an organization.
-class GoogleIdentityAccesscontextmanagerV1AccessPolicy {
-  /// An opaque identifier for the current version of the `AccessPolicy`.
-  ///
-  /// This will always be a strongly validated etag, meaning that two Access
-  /// Policies will be identical if and only if their etags are identical.
-  /// Clients should not expect this to be in any specific format.
-  ///
-  /// Output only.
-  core.String? etag;
-
-  /// Identifier.
-  ///
-  /// Resource name of the `AccessPolicy`. Format:
-  /// `accessPolicies/{access_policy}`
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy.
-  ///
-  /// Currently immutable once created. Format:
-  /// `organizations/{organization_id}`
-  ///
-  /// Required.
-  core.String? parent;
-
-  /// The scopes of the AccessPolicy.
-  ///
-  /// Scopes define which resources a policy can restrict and where its
-  /// resources can be referenced. For example, policy A with
-  /// `scopes=["folders/123"]` has the following behavior: - ServicePerimeter
-  /// can only restrict projects within `folders/123`. - ServicePerimeter within
-  /// policy A can only reference access levels defined within policy A. - Only
-  /// one policy can include a given scope; thus, attempting to create a second
-  /// policy which includes `folders/123` will result in an error. If no scopes
-  /// are provided, then any resource within the organization can be restricted.
-  /// Scopes cannot be modified after a policy is created. Policies can only
-  /// have a single scope. Format: list of `folders/{folder_number}` or
-  /// `projects/{project_number}`
-  core.List<core.String>? scopes;
-
-  /// Human readable title.
-  ///
-  /// Does not affect behavior.
-  ///
-  /// Required.
-  core.String? title;
-
-  GoogleIdentityAccesscontextmanagerV1AccessPolicy({
-    this.etag,
-    this.name,
-    this.parent,
-    this.scopes,
-    this.title,
-  });
-
-  GoogleIdentityAccesscontextmanagerV1AccessPolicy.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          name: json_['name'] as core.String?,
-          parent: json_['parent'] as core.String?,
-          scopes: (json_['scopes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          title: json_['title'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (name != null) 'name': name!,
-        if (parent != null) 'parent': parent!,
-        if (scopes != null) 'scopes': scopes!,
-        if (title != null) 'title': title!,
-      };
-}
+typedef GoogleIdentityAccesscontextmanagerV1AccessPolicy = $AccessPolicy;
 
 /// Identification for an API Operation.
 class GoogleIdentityAccesscontextmanagerV1ApiOperation {
@@ -4841,8 +4792,9 @@ class GoogleIdentityAccesscontextmanagerV1EgressFrom {
   /// A list of identities that are allowed access through \[EgressPolicy\].
   ///
   /// Identities can be an individual user, service account, Google group, or
-  /// third-party identity. The `v1` identities that have the prefix `user`,
-  /// `group`, `serviceAccount`, `principal`, and `principalSet` in
+  /// third-party identity. For third-party identity, only single identities are
+  /// supported and other identity types are not supported. The `v1` identities
+  /// that have the prefix `user`, `group`, `serviceAccount`, and `principal` in
   /// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
   core.List<core.String>? identities;
 
@@ -5030,8 +4982,9 @@ class GoogleIdentityAccesscontextmanagerV1IngressFrom {
   /// A list of identities that are allowed access through \[IngressPolicy\].
   ///
   /// Identities can be an individual user, service account, Google group, or
-  /// third-party identity. The `v1` identities that have the prefix `user`,
-  /// `group`, `serviceAccount`, `principal`, and `principalSet` in
+  /// third-party identity. For third-party identity, only single identities are
+  /// supported and other identity types are not supported. The `v1` identities
+  /// that have the prefix `user`, `group`, `serviceAccount`, and `principal` in
   /// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
   core.List<core.String>? identities;
 
@@ -5973,7 +5926,7 @@ class Item {
 
   /// The specific type of inventory, correlating to its specific details.
   /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Invalid. An type must be specified.
+  /// - "TYPE_UNSPECIFIED" : Invalid. A type must be specified.
   /// - "INSTALLED_PACKAGE" : This represents a package that is installed on the
   /// VM.
   /// - "AVAILABLE_PACKAGE" : This represents an update that is available for a
@@ -6872,9 +6825,11 @@ class QueryAssetsRequest {
 class QueryAssetsResponse {
   /// The query response, which can be either an `error` or a valid `response`.
   ///
-  /// If `done` == `false` and the query result is being saved in a output, the
+  /// If `done` == `false` and the query result is being saved in an output, the
   /// output_config field will be set. If `done` == `true`, exactly one of
-  /// `error`, `query_result` or `output_config` will be set.
+  /// `error`, `query_result` or `output_config` will be set. \[done\] is unset
+  /// unless the \[QueryAssetsResponse\] contains a
+  /// \[QueryAssetsResponse.job_reference\].
   core.bool? done;
 
   /// Error status.
@@ -6883,8 +6838,9 @@ class QueryAssetsResponse {
   /// Reference to a query job.
   core.String? jobReference;
 
-  /// Output configuration which indicates instead of being returned in API
-  /// response on the fly, the query result will be saved in a specific output.
+  /// Output configuration, which indicates that instead of being returned in an
+  /// API response on the fly, the query result will be saved in a specific
+  /// output.
   QueryAssetsOutputConfig? outputConfig;
 
   /// Result of the query.
@@ -7288,9 +7244,28 @@ class Resource {
       };
 }
 
+/// The resource owners information.
+class ResourceOwners {
+  /// List of resource owners.
+  core.List<core.String>? resourceOwners;
+
+  ResourceOwners({
+    this.resourceOwners,
+  });
+
+  ResourceOwners.fromJson(core.Map json_)
+      : this(
+          resourceOwners: (json_['resourceOwners'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resourceOwners != null) 'resourceOwners': resourceOwners!,
+      };
+}
+
 /// A result of Resource Search, containing information of a cloud resource.
-///
-/// Next ID: 36
 class ResourceSearchResult {
   /// The additional searchable attributes of this resource.
   ///
@@ -7366,6 +7341,18 @@ class ResourceSearchResult {
   /// `effectiveTagValues="123456789/env/prod"` -
   /// `effectiveTagValueIds="tagValues/456"`
   core.List<EffectiveTagDetails>? effectiveTags;
+
+  /// Enrichments of the asset.
+  ///
+  /// Currently supported enrichment types with SearchAllResources API: *
+  /// RESOURCE_OWNERS The corresponding read masks in order to get the
+  /// enrichment: * enrichments.resource_owners The corresponding required
+  /// permissions: * cloudasset.assets.searchEnrichmentResourceOwners Example
+  /// query to get resource owner enrichment: ``` scope: "projects/my-project"
+  /// query: "name: my-project" assetTypes:
+  /// "cloudresourcemanager.googleapis.com/Project" readMask: { paths:
+  /// "asset_type" paths: "name" paths: "enrichments.resource_owners" } ```
+  core.List<AssetEnrichment>? enrichments;
 
   /// The folder(s) that this resource belongs to, in the form of
   /// folders/{FOLDER_NUMBER}.
@@ -7586,6 +7573,7 @@ class ResourceSearchResult {
     this.description,
     this.displayName,
     this.effectiveTags,
+    this.enrichments,
     this.folders,
     this.kmsKey,
     this.kmsKeys,
@@ -7624,6 +7612,10 @@ class ResourceSearchResult {
           displayName: json_['displayName'] as core.String?,
           effectiveTags: (json_['effectiveTags'] as core.List?)
               ?.map((value) => EffectiveTagDetails.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          enrichments: (json_['enrichments'] as core.List?)
+              ?.map((value) => AssetEnrichment.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           folders: (json_['folders'] as core.List?)
@@ -7697,6 +7689,7 @@ class ResourceSearchResult {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (effectiveTags != null) 'effectiveTags': effectiveTags!,
+        if (enrichments != null) 'enrichments': enrichments!,
         if (folders != null) 'folders': folders!,
         if (kmsKey != null) 'kmsKey': kmsKey!,
         if (kmsKeys != null) 'kmsKeys': kmsKeys!,
@@ -8027,7 +8020,7 @@ class SoftwarePackage {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// A field in TableSchema.
 class TableFieldSchema {

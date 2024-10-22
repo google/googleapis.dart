@@ -2318,6 +2318,16 @@ class Mutation {
   /// conflicts.
   core.String? baseVersion;
 
+  /// The strategy to use when a conflict is detected.
+  ///
+  /// Defaults to `SERVER_VALUE`. If this is set, then
+  /// `conflict_detection_strategy` must also be set.
+  /// Possible string values are:
+  /// - "STRATEGY_UNSPECIFIED" : Unspecified. Defaults to `SERVER_VALUE`.
+  /// - "SERVER_VALUE" : The server entity is kept.
+  /// - "FAIL" : The whole commit request fails.
+  core.String? conflictResolutionStrategy;
+
   /// The key of the entity to delete.
   ///
   /// The entity may or may not already exist. Must have a complete key path and
@@ -2339,6 +2349,15 @@ class Mutation {
   /// are deleted.
   PropertyMask? propertyMask;
 
+  /// The transforms to perform on the entity.
+  ///
+  /// This field can be set only when the operation is `insert`, `update`, or
+  /// `upsert`. If present, the transforms are be applied to the entity
+  /// regardless of the property mask, in order, after the operation.
+  ///
+  /// Optional.
+  core.List<PropertyTransform>? propertyTransforms;
+
   /// The entity to update.
   ///
   /// The entity must already exist. Must have a complete key path.
@@ -2358,9 +2377,11 @@ class Mutation {
 
   Mutation({
     this.baseVersion,
+    this.conflictResolutionStrategy,
     this.delete,
     this.insert,
     this.propertyMask,
+    this.propertyTransforms,
     this.update,
     this.updateTime,
     this.upsert,
@@ -2369,6 +2390,8 @@ class Mutation {
   Mutation.fromJson(core.Map json_)
       : this(
           baseVersion: json_['baseVersion'] as core.String?,
+          conflictResolutionStrategy:
+              json_['conflictResolutionStrategy'] as core.String?,
           delete: json_.containsKey('delete')
               ? Key.fromJson(
                   json_['delete'] as core.Map<core.String, core.dynamic>)
@@ -2381,6 +2404,10 @@ class Mutation {
               ? PropertyMask.fromJson(
                   json_['propertyMask'] as core.Map<core.String, core.dynamic>)
               : null,
+          propertyTransforms: (json_['propertyTransforms'] as core.List?)
+              ?.map((value) => PropertyTransform.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           update: json_.containsKey('update')
               ? Entity.fromJson(
                   json_['update'] as core.Map<core.String, core.dynamic>)
@@ -2394,9 +2421,13 @@ class Mutation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (baseVersion != null) 'baseVersion': baseVersion!,
+        if (conflictResolutionStrategy != null)
+          'conflictResolutionStrategy': conflictResolutionStrategy!,
         if (delete != null) 'delete': delete!,
         if (insert != null) 'insert': insert!,
         if (propertyMask != null) 'propertyMask': propertyMask!,
+        if (propertyTransforms != null)
+          'propertyTransforms': propertyTransforms!,
         if (update != null) 'update': update!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (upsert != null) 'upsert': upsert!,
@@ -2421,6 +2452,10 @@ class MutationResult {
   /// Set only when the mutation allocated a key.
   Key? key;
 
+  /// The results of applying each PropertyTransform, in the same order of the
+  /// request.
+  core.List<Value>? transformResults;
+
   /// The update time of the entity on the server after processing the mutation.
   ///
   /// If the mutation doesn't change anything on the server, then the timestamp
@@ -2440,6 +2475,7 @@ class MutationResult {
     this.conflictDetected,
     this.createTime,
     this.key,
+    this.transformResults,
     this.updateTime,
     this.version,
   });
@@ -2452,6 +2488,10 @@ class MutationResult {
               ? Key.fromJson(
                   json_['key'] as core.Map<core.String, core.dynamic>)
               : null,
+          transformResults: (json_['transformResults'] as core.List?)
+              ?.map((value) =>
+                  Value.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           updateTime: json_['updateTime'] as core.String?,
           version: json_['version'] as core.String?,
         );
@@ -2460,6 +2500,7 @@ class MutationResult {
         if (conflictDetected != null) 'conflictDetected': conflictDetected!,
         if (createTime != null) 'createTime': createTime!,
         if (key != null) 'key': key!,
+        if (transformResults != null) 'transformResults': transformResults!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (version != null) 'version': version!,
       };
@@ -2721,6 +2762,137 @@ class PropertyReference {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
+      };
+}
+
+/// A transformation of an entity property.
+class PropertyTransform {
+  /// Appends the given elements in order if they are not already present in the
+  /// current property value.
+  ///
+  /// If the property is not an array, or if the property does not yet exist, it
+  /// is first set to the empty array. Equivalent numbers of different types
+  /// (e.g. 3L and 3.0) are considered equal when checking if a value is
+  /// missing. NaN is equal to NaN, and the null value is equal to the null
+  /// value. If the input contains multiple equivalent values, only the first
+  /// will be considered. The corresponding transform result will be the null
+  /// value.
+  ArrayValue? appendMissingElements;
+
+  /// Adds the given value to the property's current value.
+  ///
+  /// This must be an integer or a double value. If the property is not an
+  /// integer or double, or if the property does not yet exist, the
+  /// transformation will set the property to the given value. If either of the
+  /// given value or the current property value are doubles, both values will be
+  /// interpreted as doubles. Double arithmetic and representation of double
+  /// values follows IEEE 754 semantics. If there is positive/negative integer
+  /// overflow, the property is resolved to the largest magnitude
+  /// positive/negative integer.
+  Value? increment;
+
+  /// Sets the property to the maximum of its current value and the given value.
+  ///
+  /// This must be an integer or a double value. If the property is not an
+  /// integer or double, or if the property does not yet exist, the
+  /// transformation will set the property to the given value. If a maximum
+  /// operation is applied where the property and the input value are of mixed
+  /// types (that is - one is an integer and one is a double) the property takes
+  /// on the type of the larger operand. If the operands are equivalent (e.g. 3
+  /// and 3.0), the property does not change. 0, 0.0, and -0.0 are all zero. The
+  /// maximum of a zero stored value and zero input value is always the stored
+  /// value. The maximum of any numeric value x and NaN is NaN.
+  Value? maximum;
+
+  /// Sets the property to the minimum of its current value and the given value.
+  ///
+  /// This must be an integer or a double value. If the property is not an
+  /// integer or double, or if the property does not yet exist, the
+  /// transformation will set the property to the input value. If a minimum
+  /// operation is applied where the property and the input value are of mixed
+  /// types (that is - one is an integer and one is a double) the property takes
+  /// on the type of the smaller operand. If the operands are equivalent (e.g. 3
+  /// and 3.0), the property does not change. 0, 0.0, and -0.0 are all zero. The
+  /// minimum of a zero stored value and zero input value is always the stored
+  /// value. The minimum of any numeric value x and NaN is NaN.
+  Value? minimum;
+
+  /// The name of the property.
+  ///
+  /// Property paths (a list of property names separated by dots (`.`)) may be
+  /// used to refer to properties inside entity values. For example `foo.bar`
+  /// means the property `bar` inside the entity property `foo`. If a property
+  /// name contains a dot `.` or a backlslash `\`, then that name must be
+  /// escaped.
+  ///
+  /// Optional.
+  core.String? property;
+
+  /// Removes all of the given elements from the array in the property.
+  ///
+  /// If the property is not an array, or if the property does not yet exist, it
+  /// is set to the empty array. Equivalent numbers of different types (e.g. 3L
+  /// and 3.0) are considered equal when deciding whether an element should be
+  /// removed. NaN is equal to NaN, and the null value is equal to the null
+  /// value. This will remove all equivalent values if there are duplicates. The
+  /// corresponding transform result will be the null value.
+  ArrayValue? removeAllFromArray;
+
+  /// Sets the property to the given server value.
+  /// Possible string values are:
+  /// - "SERVER_VALUE_UNSPECIFIED" : Unspecified. This value must not be used.
+  /// - "REQUEST_TIME" : The time at which the server processed the request,
+  /// with millisecond precision. If used on multiple properties (same or
+  /// different entities) in a transaction, all the properties will get the same
+  /// server timestamp.
+  core.String? setToServerValue;
+
+  PropertyTransform({
+    this.appendMissingElements,
+    this.increment,
+    this.maximum,
+    this.minimum,
+    this.property,
+    this.removeAllFromArray,
+    this.setToServerValue,
+  });
+
+  PropertyTransform.fromJson(core.Map json_)
+      : this(
+          appendMissingElements: json_.containsKey('appendMissingElements')
+              ? ArrayValue.fromJson(json_['appendMissingElements']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          increment: json_.containsKey('increment')
+              ? Value.fromJson(
+                  json_['increment'] as core.Map<core.String, core.dynamic>)
+              : null,
+          maximum: json_.containsKey('maximum')
+              ? Value.fromJson(
+                  json_['maximum'] as core.Map<core.String, core.dynamic>)
+              : null,
+          minimum: json_.containsKey('minimum')
+              ? Value.fromJson(
+                  json_['minimum'] as core.Map<core.String, core.dynamic>)
+              : null,
+          property: json_['property'] as core.String?,
+          removeAllFromArray: json_.containsKey('removeAllFromArray')
+              ? ArrayValue.fromJson(json_['removeAllFromArray']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          setToServerValue: json_['setToServerValue'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appendMissingElements != null)
+          'appendMissingElements': appendMissingElements!,
+        if (increment != null) 'increment': increment!,
+        if (maximum != null) 'maximum': maximum!,
+        if (minimum != null) 'minimum': minimum!,
+        if (property != null) 'property': property!,
+        if (removeAllFromArray != null)
+          'removeAllFromArray': removeAllFromArray!,
+        if (setToServerValue != null) 'setToServerValue': setToServerValue!,
       };
 }
 
@@ -3441,7 +3613,7 @@ class RunQueryResponse {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Sum of the values of the requested property.
 ///

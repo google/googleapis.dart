@@ -6,25 +6,25 @@
                     "description": "Private Service: https://www.googleapis.com/auth/chat.bot"
                 },
                 "https://www.googleapis.com/auth/chat.memberships": {
-                    "description": "View, add, update, and remove members from conversations in Google Chat"
+                    "description": "See, add, update, and remove members from conversations and spaces in Google Chat"
                 },
                 "https://www.googleapis.com/auth/chat.memberships.readonly": {
                     "description": "View members in Google Chat conversations."
                 },
                 "https://www.googleapis.com/auth/chat.messages": {
-                    "description": "View, compose, send, update, and delete messages, and add, view, and delete reactions to messages."
+                    "description": "See, compose, send, update, and delete messages and their associated attachments, and add, see, and delete reactions to messages."
                 },
                 "https://www.googleapis.com/auth/chat.messages.reactions": {
-                    "description": "View, add, and delete reactions to messages in Google Chat"
+                    "description": "See, add, and delete reactions to messages in Google Chat"
                 },
                 "https://www.googleapis.com/auth/chat.messages.reactions.readonly": {
                     "description": "View reactions to messages in Google Chat"
                 },
                 "https://www.googleapis.com/auth/chat.messages.readonly": {
-                    "description": "View messages and reactions in Google Chat"
+                    "description": "See messages and their associated reactions and attachments in Google Chat"
                 },
                 "https://www.googleapis.com/auth/chat.spaces": {
-                    "description": "Create conversations and spaces and see or edit metadata (including history settings and access settings) in Google Chat"
+                    "description": "Create conversations and spaces and see or update metadata (including history settings and access settings) in Google Chat"
                 },
                 "https://www.googleapis.com/auth/chat.spaces.readonly": {
                     "description": "View chat and spaces in Google Chat"
@@ -55,7 +55,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240604",
+    "revision": "20241008",
     "rootUrl": "https://workspaceevents.googleapis.com/",
     "servicePath": "",
     "title": "Google Workspace Events API",
@@ -350,14 +350,14 @@
                     ],
                     "parameters": {
                         "name": {
-                            "description": "Optional. Immutable. Identifier. Resource name of the subscription. Format: `subscriptions/{subscription}`",
+                            "description": "Identifier. Resource name of the subscription. Format: `subscriptions/{subscription}`",
                             "location": "path",
                             "pattern": "^subscriptions/[^/]+$",
                             "required": true,
                             "type": "string"
                         },
                         "updateMask": {
-                            "description": "Optional. The field to update. If omitted, updates any fields included in the request. You can update one of the following fields in a subscription: * `expire_time`: The timestamp when the subscription expires. * `ttl`: The time-to-live (TTL) or duration of the subscription. To fully replace the subscription (the equivalent of `PUT`), use `*`. Any omitted fields are updated with empty values.",
+                            "description": "Optional. The field to update. If omitted, updates any fields included in the request. You can update one of the following fields in a subscription: * `expire_time`: The timestamp when the subscription expires. * `ttl`: The time-to-live (TTL) or duration of the subscription. * `event_types`: The list of event types to receive about the target resource. To fully replace the subscription (the equivalent of `PUT`), use `*`. Any omitted fields are updated with empty values.",
                             "format": "google-fieldmask",
                             "location": "query",
                             "type": "string"
@@ -562,7 +562,7 @@
                     "type": "string"
                 },
                 "eventTypes": {
-                    "description": "Required. Immutable. Unordered list. Input for creating a subscription. Otherwise, output only. One or more types of events to receive about the target resource. Formatted according to the CloudEvents specification. The supported event types depend on the target resource of your subscription. For details, see [Supported Google Workspace events](https://developers.google.com/workspace/events/guides#supported-events). By default, you also receive events about the [lifecycle of your subscription](https://developers.google.com/workspace/events/guides/events-lifecycle). You don't need to specify lifecycle events for this field. If you specify an event type that doesn't exist for the target resource, the request returns an HTTP `400 Bad Request` status code.",
+                    "description": "Required. Unordered list. Input for creating a subscription. Otherwise, output only. One or more types of events to receive about the target resource. Formatted according to the CloudEvents specification. The supported event types depend on the target resource of your subscription. For details, see [Supported Google Workspace events](https://developers.google.com/workspace/events/guides#supported-events). By default, you also receive events about the [lifecycle of your subscription](https://developers.google.com/workspace/events/guides/events-lifecycle). You don't need to specify lifecycle events for this field. If you specify an event type that doesn't exist for the target resource, the request returns an HTTP `400 Bad Request` status code.",
                     "items": {
                         "type": "string"
                     },
@@ -574,7 +574,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Optional. Immutable. Identifier. Resource name of the subscription. Format: `subscriptions/{subscription}`",
+                    "description": "Identifier. Resource name of the subscription. Format: `subscriptions/{subscription}`",
                     "type": "string"
                 },
                 "notificationEndpoint": {

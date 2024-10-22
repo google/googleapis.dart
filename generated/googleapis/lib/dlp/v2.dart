@@ -35,6 +35,7 @@
 ///     - [OrganizationsLocationsDeidentifyTemplatesResource]
 ///     - [OrganizationsLocationsDiscoveryConfigsResource]
 ///     - [OrganizationsLocationsDlpJobsResource]
+///     - [OrganizationsLocationsFileStoreDataProfilesResource]
 ///     - [OrganizationsLocationsInspectTemplatesResource]
 ///     - [OrganizationsLocationsJobTriggersResource]
 ///     - [OrganizationsLocationsProjectDataProfilesResource]
@@ -55,6 +56,7 @@
 ///     - [ProjectsLocationsDeidentifyTemplatesResource]
 ///     - [ProjectsLocationsDiscoveryConfigsResource]
 ///     - [ProjectsLocationsDlpJobsResource]
+///     - [ProjectsLocationsFileStoreDataProfilesResource]
 ///     - [ProjectsLocationsImageResource]
 ///     - [ProjectsLocationsInspectTemplatesResource]
 ///     - [ProjectsLocationsJobTriggersResource]
@@ -124,7 +126,7 @@ class InfoTypesResource {
   /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [parent] - The parent resource name. The format of this value is as
-  /// follows: locations/ LOCATION_ID
+  /// follows: `locations/{location_id}`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -186,7 +188,7 @@ class LocationsInfoTypesResource {
   /// Request parameters:
   ///
   /// [parent] - The parent resource name. The format of this value is as
-  /// follows: locations/ LOCATION_ID
+  /// follows: `locations/{location_id}`
   /// Value must have pattern `^locations/\[^/\]+$`.
   ///
   /// [filter] - filter to only return infoTypes supported by certain parts of
@@ -271,11 +273,11 @@ class OrganizationsDeidentifyTemplatesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` +
   /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no
+  /// location specified (defaults to global): `organizations/{org_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -416,11 +418,11 @@ class OrganizationsDeidentifyTemplatesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` +
   /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no
+  /// location specified (defaults to global): `organizations/{org_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -429,7 +431,7 @@ class OrganizationsDeidentifyTemplatesResource {
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
-  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Example:
   /// `name asc,update_time, create_time desc` Supported fields are: -
@@ -554,11 +556,11 @@ class OrganizationsInspectTemplatesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` +
   /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no
+  /// location specified (defaults to global): `organizations/{org_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -698,11 +700,11 @@ class OrganizationsInspectTemplatesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` +
   /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no
+  /// location specified (defaults to global): `organizations/{org_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -711,7 +713,7 @@ class OrganizationsInspectTemplatesResource {
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
-  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Example:
   /// `name asc,update_time, create_time desc` Supported fields are: -
@@ -825,6 +827,9 @@ class OrganizationsLocationsResource {
       OrganizationsLocationsDiscoveryConfigsResource(_requester);
   OrganizationsLocationsDlpJobsResource get dlpJobs =>
       OrganizationsLocationsDlpJobsResource(_requester);
+  OrganizationsLocationsFileStoreDataProfilesResource
+      get fileStoreDataProfiles =>
+          OrganizationsLocationsFileStoreDataProfilesResource(_requester);
   OrganizationsLocationsInspectTemplatesResource get inspectTemplates =>
       OrganizationsLocationsInspectTemplatesResource(_requester);
   OrganizationsLocationsJobTriggersResource get jobTriggers =>
@@ -912,7 +917,7 @@ class OrganizationsLocationsColumnDataProfilesResource {
   /// AND info_type = STREET_ADDRESS The length of this field should be no more
   /// than 500 characters.
   ///
-  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Only one
   /// order field at a time is allowed. Examples: * `project_id asc` *
@@ -973,12 +978,232 @@ class OrganizationsLocationsConnectionsResource {
   OrganizationsLocationsConnectionsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Create a Connection to an external data source.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource name. The format of this value varies
+  /// depending on the scope of the request (project or organization): +
+  /// Projects scope: `projects/{project_id}/locations/{location_id}` +
+  /// Organizations scope: `organizations/{org_id}/locations/{location_id}`
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2Connection].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2Connection> create(
+    GooglePrivacyDlpV2CreateConnectionRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/connections';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2Connection.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a Connection.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the Connection to be deleted, in the
+  /// format:
+  /// `projects/{project}/locations/{location}/connections/{connection}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a Connection by name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name in the format:
+  /// `projects/{project}/locations/{location}/connections/{connection}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2Connection].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2Connection> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2Connection.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Connections in a parent.
+  ///
+  /// Use SearchConnections to see all connections within an organization.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the organization or project, for
+  /// example, `organizations/433245324/locations/europe` or
+  /// `projects/project-id/locations/asia`.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Supported field/value: `state` -
+  /// MISSING|AVAILABLE|ERROR
+  ///
+  /// [pageSize] - Optional. Number of results per page, max 1000.
+  ///
+  /// [pageToken] - Optional. Page token from a previous page to return the next
+  /// set of results. If set, all other request fields must match the original
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ListConnectionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ListConnectionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/connections';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2ListConnectionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update a Connection.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name in the format:
+  /// `projects/{project}/locations/{location}/connections/{connection}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2Connection].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2Connection> patch(
+    GooglePrivacyDlpV2UpdateConnectionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2Connection.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Searches for Connections in a parent.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Parent name, typically an organization, without
-  /// location. For example: `organizations/12345678`.
+  /// [parent] - Required. Resource name of the organization or project with a
+  /// wildcard location, for example, `organizations/433245324/locations/-` or
+  /// `projects/project-id/locations/-`.
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. Supported field/value: - `state` -
@@ -1048,11 +1273,11 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` +
   /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no
+  /// location specified (defaults to global): `organizations/{org_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -1193,11 +1418,11 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` +
   /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no
+  /// location specified (defaults to global): `organizations/{org_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -1206,7 +1431,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
-  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Example:
   /// `name asc,update_time, create_time desc` Supported fields are: -
@@ -1321,11 +1546,14 @@ class OrganizationsLocationsDiscoveryConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Parent resource name. The format of this value is as
-  /// follows: `projects/`PROJECT_ID`/locations/`LOCATION_ID The following
-  /// example `parent` string specifies a parent project with the identifier
-  /// `example-project`, and specifies the `europe-west3` location for
-  /// processing data: parent=projects/example-project/locations/europe-west3
+  /// [parent] - Required. Parent resource name. The format of this value varies
+  /// depending on the scope of the request (project or organization): +
+  /// Projects scope: `projects/{project_id}/locations/{location_id}` +
+  /// Organizations scope: `organizations/{org_id}/locations/{location_id}` The
+  /// following example `parent` string specifies a parent project with the
+  /// identifier `example-project`, and specifies the `europe-west3` location
+  /// for processing data:
+  /// parent=projects/example-project/locations/europe-west3
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1441,13 +1669,13 @@ class OrganizationsLocationsDiscoveryConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Parent resource name. The format of this value is as
-  /// follows: `projects/`PROJECT_ID`/locations/`LOCATION_ID The following
+  /// follows: `projects/{project_id}/locations/{location_id}` The following
   /// example `parent` string specifies a parent project with the identifier
   /// `example-project`, and specifies the `europe-west3` location for
   /// processing data: parent=projects/example-project/locations/europe-west3
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [orderBy] - Comma separated list of config fields to order by, followed by
+  /// [orderBy] - Comma-separated list of config fields to order by, followed by
   /// `asc` or `desc` postfix. This list is case insensitive. The default
   /// sorting order is ascending. Redundant space characters are insignificant.
   /// Example: `name asc,update_time, create_time desc` Supported fields are: -
@@ -1560,8 +1788,8 @@ class OrganizationsLocationsDlpJobsResource {
   /// depending on whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -1589,7 +1817,7 @@ class OrganizationsLocationsDlpJobsResource {
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
-  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Example:
   /// `name asc, end_time asc, create_time desc` Supported fields are: -
@@ -1649,6 +1877,176 @@ class OrganizationsLocationsDlpJobsResource {
   }
 }
 
+class OrganizationsLocationsFileStoreDataProfilesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsFileStoreDataProfilesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Delete a FileStoreDataProfile.
+  ///
+  /// Will not prevent the profile from being regenerated if the resource is
+  /// still included in a discovery configuration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the file store data profile.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/fileStoreDataProfiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a file store data profile.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name, for example
+  /// `organizations/12345/locations/us/fileStoreDataProfiles/53234423`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/fileStoreDataProfiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2FileStoreDataProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2FileStoreDataProfile> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2FileStoreDataProfile.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists file store data profiles for an organization.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the organization or project, for
+  /// example `organizations/433245324/locations/europe` or
+  /// `projects/project-id/locations/asia`.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Allows filtering. Supported syntax: * Filter
+  /// expressions are made up of one or more restrictions. * Restrictions can be
+  /// combined by `AND` or `OR` logical operators. A sequence of restrictions
+  /// implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+  /// {value}`. * Supported fields/values: - `project_id` - The Google Cloud
+  /// project ID. - `account_id` - The AWS account ID. - `file_store_path` - The
+  /// path like "gs://bucket". - `data_source_type` - The profile's data source
+  /// type, like "google/storage/bucket". - `data_storage_location` - The
+  /// location where the file store's data is stored, like "us-central1". -
+  /// `sensitivity_level` - HIGH|MODERATE|LOW - `data_risk_level` -
+  /// HIGH|MODERATE|LOW - `resource_visibility`: PUBLIC|RESTRICTED -
+  /// `status_code` - an RPC status code as defined in
+  /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto
+  /// * The operator must be `=` or `!=`. Examples: * `project_id = 12345 AND
+  /// status_code = 1` * `project_id = 12345 AND sensitivity_level = HIGH` *
+  /// `project_id = 12345 AND resource_visibility = PUBLIC` * `file_store_path =
+  /// "gs://mybucket"` The length of this field should be no more than 500
+  /// characters.
+  ///
+  /// [orderBy] - Optional. Comma-separated list of fields to order by, followed
+  /// by `asc` or `desc` postfix. This list is case insensitive. The default
+  /// sorting order is ascending. Redundant space characters are insignificant.
+  /// Only one order field at a time is allowed. Examples: * `project_id asc` *
+  /// `name` * `sensitivity_level desc` Supported fields are: - `project_id`:
+  /// The Google Cloud project ID. - `sensitivity_level`: How sensitive the data
+  /// in a table is, at most. - `data_risk_level`: How much risk is associated
+  /// with this data. - `profile_last_generated`: When the profile was last
+  /// updated in epoch seconds. - `last_modified`: The last time the resource
+  /// was modified. - `resource_visibility`: Visibility restriction for this
+  /// resource. - `name`: The name of the profile. - `create_time`: The time the
+  /// file store was first created.
+  ///
+  /// [pageSize] - Optional. Size of the page. This value can be limited by the
+  /// server. If zero, server returns a page of max size 100.
+  ///
+  /// [pageToken] - Optional. Page token to continue retrieval.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ListFileStoreDataProfilesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ListFileStoreDataProfilesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$parent') + '/fileStoreDataProfiles';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2ListFileStoreDataProfilesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class OrganizationsLocationsInspectTemplatesResource {
   final commons.ApiRequester _requester;
 
@@ -1671,11 +2069,11 @@ class OrganizationsLocationsInspectTemplatesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` +
   /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no
+  /// location specified (defaults to global): `organizations/{org_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -1815,11 +2213,11 @@ class OrganizationsLocationsInspectTemplatesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` +
   /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no
+  /// location specified (defaults to global): `organizations/{org_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -1828,7 +2226,7 @@ class OrganizationsLocationsInspectTemplatesResource {
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
-  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Example:
   /// `name asc,update_time, create_time desc` Supported fields are: -
@@ -1950,8 +2348,8 @@ class OrganizationsLocationsJobTriggersResource {
   /// depending on whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -2086,8 +2484,8 @@ class OrganizationsLocationsJobTriggersResource {
   /// depending on whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -2112,7 +2510,7 @@ class OrganizationsLocationsJobTriggersResource {
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
-  /// [orderBy] - Comma separated list of triggeredJob fields to order by,
+  /// [orderBy] - Comma-separated list of triggeredJob fields to order by,
   /// followed by `asc` or `desc` postfix. This list is case insensitive. The
   /// default sorting order is ascending. Redundant space characters are
   /// insignificant. Example: `name asc,update_time, create_time desc` Supported
@@ -2287,7 +2685,7 @@ class OrganizationsLocationsProjectDataProfilesResource {
   /// status_code = 1` * `project_id = 12345 AND sensitivity_level = HIGH` The
   /// length of this field should be no more than 500 characters.
   ///
-  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Only one
   /// order field at a time is allowed. Examples: * `project_id` *
@@ -2362,11 +2760,11 @@ class OrganizationsLocationsStoredInfoTypesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` +
   /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no
+  /// location specified (defaults to global): `organizations/{org_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -2505,8 +2903,8 @@ class OrganizationsLocationsStoredInfoTypesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -2515,7 +2913,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
-  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Example:
   /// `name asc, display_name, create_time desc` Supported fields are: -
@@ -2725,7 +3123,7 @@ class OrganizationsLocationsTableDataProfilesResource {
   /// `project_id = 12345 AND resource_visibility = PUBLIC` The length of this
   /// field should be no more than 500 characters.
   ///
-  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Only one
   /// order field at a time is allowed. Examples: * `project_id asc` *
@@ -2803,11 +3201,11 @@ class OrganizationsStoredInfoTypesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` +
   /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no
+  /// location specified (defaults to global): `organizations/{org_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -2944,8 +3342,8 @@ class OrganizationsStoredInfoTypesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -2954,7 +3352,7 @@ class OrganizationsStoredInfoTypesResource {
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
-  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Example:
   /// `name asc, display_name, create_time desc` Supported fields are: -
@@ -3097,8 +3495,8 @@ class ProjectsContentResource {
   /// on whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -3156,8 +3554,8 @@ class ProjectsContentResource {
   /// on whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -3210,8 +3608,8 @@ class ProjectsContentResource {
   /// depending on whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -3273,11 +3671,11 @@ class ProjectsDeidentifyTemplatesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` +
   /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no
+  /// location specified (defaults to global): `organizations/{org_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -3416,11 +3814,11 @@ class ProjectsDeidentifyTemplatesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` +
   /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no
+  /// location specified (defaults to global): `organizations/{org_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -3429,7 +3827,7 @@ class ProjectsDeidentifyTemplatesResource {
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
-  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Example:
   /// `name asc,update_time, create_time desc` Supported fields are: -
@@ -3603,8 +4001,8 @@ class ProjectsDlpJobsResource {
   /// depending on whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -3742,8 +4140,8 @@ class ProjectsDlpJobsResource {
   /// depending on whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -3771,7 +4169,7 @@ class ProjectsDlpJobsResource {
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
-  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Example:
   /// `name asc, end_time asc, create_time desc` Supported fields are: -
@@ -3854,8 +4252,8 @@ class ProjectsImageResource {
   /// on whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -3917,11 +4315,11 @@ class ProjectsInspectTemplatesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` +
   /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no
+  /// location specified (defaults to global): `organizations/{org_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -4059,11 +4457,11 @@ class ProjectsInspectTemplatesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` +
   /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no
+  /// location specified (defaults to global): `organizations/{org_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -4072,7 +4470,7 @@ class ProjectsInspectTemplatesResource {
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
-  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Example:
   /// `name asc,update_time, create_time desc` Supported fields are: -
@@ -4238,8 +4636,8 @@ class ProjectsJobTriggersResource {
   /// depending on whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -4372,8 +4770,8 @@ class ProjectsJobTriggersResource {
   /// depending on whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -4398,7 +4796,7 @@ class ProjectsJobTriggersResource {
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
-  /// [orderBy] - Comma separated list of triggeredJob fields to order by,
+  /// [orderBy] - Comma-separated list of triggeredJob fields to order by,
   /// followed by `asc` or `desc` postfix. This list is case insensitive. The
   /// default sorting order is ascending. Redundant space characters are
   /// insignificant. Example: `name asc,update_time, create_time desc` Supported
@@ -4524,6 +4922,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsDiscoveryConfigsResource(_requester);
   ProjectsLocationsDlpJobsResource get dlpJobs =>
       ProjectsLocationsDlpJobsResource(_requester);
+  ProjectsLocationsFileStoreDataProfilesResource get fileStoreDataProfiles =>
+      ProjectsLocationsFileStoreDataProfilesResource(_requester);
   ProjectsLocationsImageResource get image =>
       ProjectsLocationsImageResource(_requester);
   ProjectsLocationsInspectTemplatesResource get inspectTemplates =>
@@ -4612,7 +5012,7 @@ class ProjectsLocationsColumnDataProfilesResource {
   /// AND info_type = STREET_ADDRESS The length of this field should be no more
   /// than 500 characters.
   ///
-  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Only one
   /// order field at a time is allowed. Examples: * `project_id asc` *
@@ -4679,8 +5079,10 @@ class ProjectsLocationsConnectionsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Parent resource name in the format:
-  /// `projects/{project}/locations/{location}`.
+  /// [parent] - Required. Parent resource name. The format of this value varies
+  /// depending on the scope of the request (project or organization): +
+  /// Projects scope: `projects/{project_id}/locations/{location_id}` +
+  /// Organizations scope: `organizations/{org_id}/locations/{location_id}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4794,10 +5196,13 @@ class ProjectsLocationsConnectionsResource {
 
   /// Lists Connections in a parent.
   ///
+  /// Use SearchConnections to see all connections within an organization.
+  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Parent name, for example:
-  /// `projects/project-id/locations/global`.
+  /// [parent] - Required. Resource name of the organization or project, for
+  /// example, `organizations/433245324/locations/europe` or
+  /// `projects/project-id/locations/asia`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. Supported field/value: `state` -
@@ -4891,8 +5296,9 @@ class ProjectsLocationsConnectionsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Parent name, typically an organization, without
-  /// location. For example: `organizations/12345678`.
+  /// [parent] - Required. Resource name of the organization or project with a
+  /// wildcard location, for example, `organizations/433245324/locations/-` or
+  /// `projects/project-id/locations/-`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. Supported field/value: - `state` -
@@ -4963,8 +5369,8 @@ class ProjectsLocationsContentResource {
   /// on whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -5022,8 +5428,8 @@ class ProjectsLocationsContentResource {
   /// on whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -5076,8 +5482,8 @@ class ProjectsLocationsContentResource {
   /// depending on whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -5139,11 +5545,11 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` +
   /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no
+  /// location specified (defaults to global): `organizations/{org_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -5284,11 +5690,11 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` +
   /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no
+  /// location specified (defaults to global): `organizations/{org_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -5297,7 +5703,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
-  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Example:
   /// `name asc,update_time, create_time desc` Supported fields are: -
@@ -5412,11 +5818,14 @@ class ProjectsLocationsDiscoveryConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Parent resource name. The format of this value is as
-  /// follows: `projects/`PROJECT_ID`/locations/`LOCATION_ID The following
-  /// example `parent` string specifies a parent project with the identifier
-  /// `example-project`, and specifies the `europe-west3` location for
-  /// processing data: parent=projects/example-project/locations/europe-west3
+  /// [parent] - Required. Parent resource name. The format of this value varies
+  /// depending on the scope of the request (project or organization): +
+  /// Projects scope: `projects/{project_id}/locations/{location_id}` +
+  /// Organizations scope: `organizations/{org_id}/locations/{location_id}` The
+  /// following example `parent` string specifies a parent project with the
+  /// identifier `example-project`, and specifies the `europe-west3` location
+  /// for processing data:
+  /// parent=projects/example-project/locations/europe-west3
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5532,13 +5941,13 @@ class ProjectsLocationsDiscoveryConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Parent resource name. The format of this value is as
-  /// follows: `projects/`PROJECT_ID`/locations/`LOCATION_ID The following
+  /// follows: `projects/{project_id}/locations/{location_id}` The following
   /// example `parent` string specifies a parent project with the identifier
   /// `example-project`, and specifies the `europe-west3` location for
   /// processing data: parent=projects/example-project/locations/europe-west3
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [orderBy] - Comma separated list of config fields to order by, followed by
+  /// [orderBy] - Comma-separated list of config fields to order by, followed by
   /// `asc` or `desc` postfix. This list is case insensitive. The default
   /// sorting order is ascending. Redundant space characters are insignificant.
   /// Example: `name asc,update_time, create_time desc` Supported fields are: -
@@ -5705,8 +6114,8 @@ class ProjectsLocationsDlpJobsResource {
   /// depending on whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -5937,8 +6346,8 @@ class ProjectsLocationsDlpJobsResource {
   /// depending on whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -5966,7 +6375,7 @@ class ProjectsLocationsDlpJobsResource {
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
-  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Example:
   /// `name asc, end_time asc, create_time desc` Supported fields are: -
@@ -6026,6 +6435,175 @@ class ProjectsLocationsDlpJobsResource {
   }
 }
 
+class ProjectsLocationsFileStoreDataProfilesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsFileStoreDataProfilesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Delete a FileStoreDataProfile.
+  ///
+  /// Will not prevent the profile from being regenerated if the resource is
+  /// still included in a discovery configuration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the file store data profile.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/fileStoreDataProfiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a file store data profile.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name, for example
+  /// `organizations/12345/locations/us/fileStoreDataProfiles/53234423`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/fileStoreDataProfiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2FileStoreDataProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2FileStoreDataProfile> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2FileStoreDataProfile.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists file store data profiles for an organization.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the organization or project, for
+  /// example `organizations/433245324/locations/europe` or
+  /// `projects/project-id/locations/asia`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Allows filtering. Supported syntax: * Filter
+  /// expressions are made up of one or more restrictions. * Restrictions can be
+  /// combined by `AND` or `OR` logical operators. A sequence of restrictions
+  /// implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+  /// {value}`. * Supported fields/values: - `project_id` - The Google Cloud
+  /// project ID. - `account_id` - The AWS account ID. - `file_store_path` - The
+  /// path like "gs://bucket". - `data_source_type` - The profile's data source
+  /// type, like "google/storage/bucket". - `data_storage_location` - The
+  /// location where the file store's data is stored, like "us-central1". -
+  /// `sensitivity_level` - HIGH|MODERATE|LOW - `data_risk_level` -
+  /// HIGH|MODERATE|LOW - `resource_visibility`: PUBLIC|RESTRICTED -
+  /// `status_code` - an RPC status code as defined in
+  /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto
+  /// * The operator must be `=` or `!=`. Examples: * `project_id = 12345 AND
+  /// status_code = 1` * `project_id = 12345 AND sensitivity_level = HIGH` *
+  /// `project_id = 12345 AND resource_visibility = PUBLIC` * `file_store_path =
+  /// "gs://mybucket"` The length of this field should be no more than 500
+  /// characters.
+  ///
+  /// [orderBy] - Optional. Comma-separated list of fields to order by, followed
+  /// by `asc` or `desc` postfix. This list is case insensitive. The default
+  /// sorting order is ascending. Redundant space characters are insignificant.
+  /// Only one order field at a time is allowed. Examples: * `project_id asc` *
+  /// `name` * `sensitivity_level desc` Supported fields are: - `project_id`:
+  /// The Google Cloud project ID. - `sensitivity_level`: How sensitive the data
+  /// in a table is, at most. - `data_risk_level`: How much risk is associated
+  /// with this data. - `profile_last_generated`: When the profile was last
+  /// updated in epoch seconds. - `last_modified`: The last time the resource
+  /// was modified. - `resource_visibility`: Visibility restriction for this
+  /// resource. - `name`: The name of the profile. - `create_time`: The time the
+  /// file store was first created.
+  ///
+  /// [pageSize] - Optional. Size of the page. This value can be limited by the
+  /// server. If zero, server returns a page of max size 100.
+  ///
+  /// [pageToken] - Optional. Page token to continue retrieval.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ListFileStoreDataProfilesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ListFileStoreDataProfilesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$parent') + '/fileStoreDataProfiles';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2ListFileStoreDataProfilesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsImageResource {
   final commons.ApiRequester _requester;
 
@@ -6050,8 +6628,8 @@ class ProjectsLocationsImageResource {
   /// on whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -6113,11 +6691,11 @@ class ProjectsLocationsInspectTemplatesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` +
   /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no
+  /// location specified (defaults to global): `organizations/{org_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -6257,11 +6835,11 @@ class ProjectsLocationsInspectTemplatesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` +
   /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no
+  /// location specified (defaults to global): `organizations/{org_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -6270,7 +6848,7 @@ class ProjectsLocationsInspectTemplatesResource {
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
-  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Example:
   /// `name asc,update_time, create_time desc` Supported fields are: -
@@ -6438,8 +7016,8 @@ class ProjectsLocationsJobTriggersResource {
   /// depending on whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -6620,8 +7198,8 @@ class ProjectsLocationsJobTriggersResource {
   /// depending on whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -6646,7 +7224,7 @@ class ProjectsLocationsJobTriggersResource {
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
-  /// [orderBy] - Comma separated list of triggeredJob fields to order by,
+  /// [orderBy] - Comma-separated list of triggeredJob fields to order by,
   /// followed by `asc` or `desc` postfix. This list is case insensitive. The
   /// default sorting order is ascending. Redundant space characters are
   /// insignificant. Example: `name asc,update_time, create_time desc` Supported
@@ -6821,7 +7399,7 @@ class ProjectsLocationsProjectDataProfilesResource {
   /// status_code = 1` * `project_id = 12345 AND sensitivity_level = HIGH` The
   /// length of this field should be no more than 500 characters.
   ///
-  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Only one
   /// order field at a time is allowed. Examples: * `project_id` *
@@ -6896,11 +7474,11 @@ class ProjectsLocationsStoredInfoTypesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` +
   /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no
+  /// location specified (defaults to global): `organizations/{org_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -7039,8 +7617,8 @@ class ProjectsLocationsStoredInfoTypesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -7049,7 +7627,7 @@ class ProjectsLocationsStoredInfoTypesResource {
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
-  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Example:
   /// `name asc, display_name, create_time desc` Supported fields are: -
@@ -7259,7 +7837,7 @@ class ProjectsLocationsTableDataProfilesResource {
   /// `project_id = 12345 AND resource_visibility = PUBLIC` The length of this
   /// field should be no more than 500 characters.
   ///
-  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Only one
   /// order field at a time is allowed. Examples: * `project_id asc` *
@@ -7337,11 +7915,11 @@ class ProjectsStoredInfoTypesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` +
   /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no
+  /// location specified (defaults to global): `organizations/{org_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -7478,8 +8056,8 @@ class ProjectsStoredInfoTypesResource {
   /// whether you have
   /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
-  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
+  /// location specified (defaults to global): `projects/{project_id}` The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -7488,7 +8066,7 @@ class ProjectsStoredInfoTypesResource {
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
-  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Example:
   /// `name asc, display_name, create_time desc` Supported fields are: -
@@ -7720,8 +8298,112 @@ typedef GooglePrivacyDlpV2AllOtherBigQueryTables = $Empty;
 /// Match database resources not covered by any other filter.
 typedef GooglePrivacyDlpV2AllOtherDatabaseResources = $Empty;
 
+/// Match discovery resources not covered by any other filter.
+typedef GooglePrivacyDlpV2AllOtherResources = $Empty;
+
 /// Apply to all text.
 typedef GooglePrivacyDlpV2AllText = $Empty;
+
+/// Amazon S3 bucket.
+class GooglePrivacyDlpV2AmazonS3Bucket {
+  /// The AWS account.
+  GooglePrivacyDlpV2AwsAccount? awsAccount;
+
+  /// The bucket name.
+  ///
+  /// Required.
+  core.String? bucketName;
+
+  GooglePrivacyDlpV2AmazonS3Bucket({
+    this.awsAccount,
+    this.bucketName,
+  });
+
+  GooglePrivacyDlpV2AmazonS3Bucket.fromJson(core.Map json_)
+      : this(
+          awsAccount: json_.containsKey('awsAccount')
+              ? GooglePrivacyDlpV2AwsAccount.fromJson(
+                  json_['awsAccount'] as core.Map<core.String, core.dynamic>)
+              : null,
+          bucketName: json_['bucketName'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (awsAccount != null) 'awsAccount': awsAccount!,
+        if (bucketName != null) 'bucketName': bucketName!,
+      };
+}
+
+/// Amazon S3 bucket conditions.
+class GooglePrivacyDlpV2AmazonS3BucketConditions {
+  /// Bucket types that should be profiled.
+  ///
+  /// Optional. Defaults to TYPE_ALL_SUPPORTED if unspecified.
+  ///
+  /// Optional.
+  core.List<core.String>? bucketTypes;
+
+  /// Object classes that should be profiled.
+  ///
+  /// Optional. Defaults to ALL_SUPPORTED_CLASSES if unspecified.
+  ///
+  /// Optional.
+  core.List<core.String>? objectStorageClasses;
+
+  GooglePrivacyDlpV2AmazonS3BucketConditions({
+    this.bucketTypes,
+    this.objectStorageClasses,
+  });
+
+  GooglePrivacyDlpV2AmazonS3BucketConditions.fromJson(core.Map json_)
+      : this(
+          bucketTypes: (json_['bucketTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          objectStorageClasses: (json_['objectStorageClasses'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucketTypes != null) 'bucketTypes': bucketTypes!,
+        if (objectStorageClasses != null)
+          'objectStorageClasses': objectStorageClasses!,
+      };
+}
+
+/// Amazon S3 bucket regex.
+class GooglePrivacyDlpV2AmazonS3BucketRegex {
+  /// The AWS account regex.
+  GooglePrivacyDlpV2AwsAccountRegex? awsAccountRegex;
+
+  /// Regex to test the bucket name against.
+  ///
+  /// If empty, all buckets match.
+  ///
+  /// Optional.
+  core.String? bucketNameRegex;
+
+  GooglePrivacyDlpV2AmazonS3BucketRegex({
+    this.awsAccountRegex,
+    this.bucketNameRegex,
+  });
+
+  GooglePrivacyDlpV2AmazonS3BucketRegex.fromJson(core.Map json_)
+      : this(
+          awsAccountRegex: json_.containsKey('awsAccountRegex')
+              ? GooglePrivacyDlpV2AwsAccountRegex.fromJson(
+                  json_['awsAccountRegex']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          bucketNameRegex: json_['bucketNameRegex'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (awsAccountRegex != null) 'awsAccountRegex': awsAccountRegex!,
+        if (bucketNameRegex != null) 'bucketNameRegex': bucketNameRegex!,
+      };
+}
 
 /// Result of a risk analysis operation request.
 class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails {
@@ -7887,6 +8569,82 @@ class GooglePrivacyDlpV2AuxiliaryTable {
         if (quasiIds != null) 'quasiIds': quasiIds!,
         if (relativeFrequency != null) 'relativeFrequency': relativeFrequency!,
         if (table != null) 'table': table!,
+      };
+}
+
+/// AWS account.
+class GooglePrivacyDlpV2AwsAccount {
+  /// AWS account ID.
+  ///
+  /// Required.
+  core.String? accountId;
+
+  GooglePrivacyDlpV2AwsAccount({
+    this.accountId,
+  });
+
+  GooglePrivacyDlpV2AwsAccount.fromJson(core.Map json_)
+      : this(
+          accountId: json_['accountId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+      };
+}
+
+/// AWS account regex.
+class GooglePrivacyDlpV2AwsAccountRegex {
+  /// Regex to test the AWS account ID against.
+  ///
+  /// If empty, all accounts match.
+  ///
+  /// Optional.
+  core.String? accountIdRegex;
+
+  GooglePrivacyDlpV2AwsAccountRegex({
+    this.accountIdRegex,
+  });
+
+  GooglePrivacyDlpV2AwsAccountRegex.fromJson(core.Map json_)
+      : this(
+          accountIdRegex: json_['accountIdRegex'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountIdRegex != null) 'accountIdRegex': accountIdRegex!,
+      };
+}
+
+/// The AWS starting location for discovery.
+class GooglePrivacyDlpV2AwsDiscoveryStartingLocation {
+  /// The AWS account ID that this discovery config applies to.
+  ///
+  /// Within an AWS organization, you can find the AWS account ID inside an AWS
+  /// account ARN. Example:
+  /// arn:{partition}:organizations::{management_account_id}:account/{org_id}/{account_id}
+  core.String? accountId;
+
+  /// All AWS assets stored in Asset Inventory that didn't match other AWS
+  /// discovery configs.
+  core.bool? allAssetInventoryAssets;
+
+  GooglePrivacyDlpV2AwsDiscoveryStartingLocation({
+    this.accountId,
+    this.allAssetInventoryAssets,
+  });
+
+  GooglePrivacyDlpV2AwsDiscoveryStartingLocation.fromJson(core.Map json_)
+      : this(
+          accountId: json_['accountId'] as core.String?,
+          allAssetInventoryAssets:
+              json_['allAssetInventoryAssets'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (allAssetInventoryAssets != null)
+          'allAssetInventoryAssets': allAssetInventoryAssets!,
       };
 }
 
@@ -8345,11 +9103,11 @@ class GooglePrivacyDlpV2Bucket {
 /// Generalization function that buckets values based on ranges.
 ///
 /// The ranges and replacement values are dynamically provided by the user for
-/// custom behavior, such as 1-30 -\> LOW 31-65 -\> MEDIUM 66-100 -\> HIGH This
-/// can be used on data of type: number, long, string, timestamp. If the bound
-/// `Value` type differs from the type of data being transformed, we will first
-/// attempt converting the type of the data to be transformed to match the type
-/// of the bound before comparing. See
+/// custom behavior, such as 1-30 -\> LOW, 31-65 -\> MEDIUM, 66-100 -\> HIGH.
+/// This can be used on data of type: number, long, string, timestamp. If the
+/// bound `Value` type differs from the type of data being transformed, we will
+/// first attempt converting the type of the data to be transformed to match the
+/// type of the bound before comparing. See
 /// https://cloud.google.com/sensitive-data-protection/docs/concepts-bucketing
 /// to learn more.
 class GooglePrivacyDlpV2BucketingConfig {
@@ -8404,6 +9162,9 @@ class GooglePrivacyDlpV2ByteContentItem {
   /// - "AVRO" : avro
   /// - "CSV" : csv
   /// - "TSV" : tsv
+  /// - "AUDIO" : Audio file types. Only used for profiling.
+  /// - "VIDEO" : Video file types. Only used for profiling.
+  /// - "EXECUTABLE" : Executable file types. Only used for profiling.
   core.String? type;
 
   GooglePrivacyDlpV2ByteContentItem({
@@ -8781,6 +9542,71 @@ class GooglePrivacyDlpV2CloudSqlProperties {
       };
 }
 
+/// Target used to match against for discovery with Cloud Storage buckets.
+class GooglePrivacyDlpV2CloudStorageDiscoveryTarget {
+  /// In addition to matching the filter, these conditions must be true before a
+  /// profile is generated.
+  ///
+  /// Optional.
+  GooglePrivacyDlpV2DiscoveryFileStoreConditions? conditions;
+
+  /// Disable profiling for buckets that match this filter.
+  ///
+  /// Optional.
+  GooglePrivacyDlpV2Disabled? disabled;
+
+  /// The buckets the generation_cadence applies to.
+  ///
+  /// The first target with a matching filter will be the one to apply to a
+  /// bucket.
+  ///
+  /// Required.
+  GooglePrivacyDlpV2DiscoveryCloudStorageFilter? filter;
+
+  /// How often and when to update profiles.
+  ///
+  /// New buckets that match both the filter and conditions are scanned as
+  /// quickly as possible depending on system capacity.
+  ///
+  /// Optional.
+  GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence? generationCadence;
+
+  GooglePrivacyDlpV2CloudStorageDiscoveryTarget({
+    this.conditions,
+    this.disabled,
+    this.filter,
+    this.generationCadence,
+  });
+
+  GooglePrivacyDlpV2CloudStorageDiscoveryTarget.fromJson(core.Map json_)
+      : this(
+          conditions: json_.containsKey('conditions')
+              ? GooglePrivacyDlpV2DiscoveryFileStoreConditions.fromJson(
+                  json_['conditions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          disabled: json_.containsKey('disabled')
+              ? GooglePrivacyDlpV2Disabled.fromJson(
+                  json_['disabled'] as core.Map<core.String, core.dynamic>)
+              : null,
+          filter: json_.containsKey('filter')
+              ? GooglePrivacyDlpV2DiscoveryCloudStorageFilter.fromJson(
+                  json_['filter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          generationCadence: json_.containsKey('generationCadence')
+              ? GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence
+                  .fromJson(json_['generationCadence']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conditions != null) 'conditions': conditions!,
+        if (disabled != null) 'disabled': disabled!,
+        if (filter != null) 'filter': filter!,
+        if (generationCadence != null) 'generationCadence': generationCadence!,
+      };
+}
+
 /// Message representing a set of files in Cloud Storage.
 class GooglePrivacyDlpV2CloudStorageFileSet {
   /// The url, in the format `gs:///`.
@@ -8910,6 +9736,42 @@ class GooglePrivacyDlpV2CloudStoragePath {
       };
 }
 
+/// A pattern to match against one or more file stores.
+///
+/// At least one pattern must be specified. Regular expressions use RE2
+/// [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found
+/// under the google/re2 repository on GitHub.
+class GooglePrivacyDlpV2CloudStorageRegex {
+  /// Regex to test the bucket name against.
+  ///
+  /// If empty, all buckets match. Example: "marketing2021" or
+  /// "(marketing)\d{4}" will both match the bucket gs://marketing2021
+  ///
+  /// Optional.
+  core.String? bucketNameRegex;
+
+  /// For organizations, if unset, will match all projects.
+  ///
+  /// Optional.
+  core.String? projectIdRegex;
+
+  GooglePrivacyDlpV2CloudStorageRegex({
+    this.bucketNameRegex,
+    this.projectIdRegex,
+  });
+
+  GooglePrivacyDlpV2CloudStorageRegex.fromJson(core.Map json_)
+      : this(
+          bucketNameRegex: json_['bucketNameRegex'] as core.String?,
+          projectIdRegex: json_['projectIdRegex'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucketNameRegex != null) 'bucketNameRegex': bucketNameRegex!,
+        if (projectIdRegex != null) 'projectIdRegex': projectIdRegex!,
+      };
+}
+
 /// Message representing a set of files in a Cloud Storage bucket.
 ///
 /// Regular expressions are used to allow fine-grained control over which files
@@ -8977,6 +9839,36 @@ class GooglePrivacyDlpV2CloudStorageRegexFileSet {
         if (bucketName != null) 'bucketName': bucketName!,
         if (excludeRegex != null) 'excludeRegex': excludeRegex!,
         if (includeRegex != null) 'includeRegex': includeRegex!,
+      };
+}
+
+/// Identifies a single Cloud Storage bucket.
+class GooglePrivacyDlpV2CloudStorageResourceReference {
+  /// The bucket to scan.
+  ///
+  /// Required.
+  core.String? bucketName;
+
+  /// If within a project-level config, then this must match the config's
+  /// project id.
+  ///
+  /// Required.
+  core.String? projectId;
+
+  GooglePrivacyDlpV2CloudStorageResourceReference({
+    this.bucketName,
+    this.projectId,
+  });
+
+  GooglePrivacyDlpV2CloudStorageResourceReference.fromJson(core.Map json_)
+      : this(
+          bucketName: json_['bucketName'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucketName != null) 'bucketName': bucketName!,
+        if (projectId != null) 'projectId': projectId!,
       };
 }
 
@@ -9053,13 +9945,13 @@ class GooglePrivacyDlpV2ColumnDataProfile {
   /// The data risk level for this column.
   GooglePrivacyDlpV2DataRiskLevel? dataRiskLevel;
 
-  /// The BigQuery dataset ID.
+  /// The BigQuery dataset ID, if the resource profiled is a BigQuery table.
   core.String? datasetId;
 
-  /// The BigQuery location where the dataset's data is stored.
+  /// If supported, the location where the dataset's data is stored.
   ///
   /// See https://cloud.google.com/bigquery/docs/locations for supported
-  /// locations.
+  /// BigQuery locations.
   core.String? datasetLocation;
 
   /// The Google Cloud project ID that owns the profiled resource.
@@ -9132,7 +10024,7 @@ class GooglePrivacyDlpV2ColumnDataProfile {
   /// The resource name of the resource this column is within.
   core.String? tableFullResource;
 
-  /// The BigQuery table ID.
+  /// The table ID.
   core.String? tableId;
 
   GooglePrivacyDlpV2ColumnDataProfile({
@@ -10071,8 +10963,7 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
   /// must appear only once. Number of characters must be in the range \[2,
   /// 95\]. This must be encoded as ASCII. The order of characters does not
   /// matter. The full list of allowed characters is:
-  /// 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
-  /// ~\`!@#$%^&*()_-+={\[}\]|\:;"'\<,\>.?/
+  /// \`\`0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz~\`!@#$%^&*()_-+={\[}\]|\:;"'\<,\>.?/\`\`
   core.String? customAlphabet;
 
   /// The native way to select the alphabet.
@@ -10278,9 +11169,25 @@ class GooglePrivacyDlpV2DataProfileAction {
   /// Publish a message into the Pub/Sub topic.
   GooglePrivacyDlpV2PubSubNotification? pubSubNotification;
 
+  /// Publishes generated data profiles to Google Security Operations.
+  ///
+  /// For more information, see \[Use Sensitive Data Protection data in
+  /// context-aware
+  /// analytics\](https://cloud.google.com/chronicle/docs/detection/usecase-dlp-high-risk-user-download).
+  GooglePrivacyDlpV2PublishToChronicle? publishToChronicle;
+
+  /// Publishes findings to SCC for each data profile.
+  GooglePrivacyDlpV2PublishToSecurityCommandCenter? publishToScc;
+
+  /// Tags the profiled resources with the specified tag values.
+  GooglePrivacyDlpV2TagResources? tagResources;
+
   GooglePrivacyDlpV2DataProfileAction({
     this.exportData,
     this.pubSubNotification,
+    this.publishToChronicle,
+    this.publishToScc,
+    this.tagResources,
   });
 
   GooglePrivacyDlpV2DataProfileAction.fromJson(core.Map json_)
@@ -10294,12 +11201,29 @@ class GooglePrivacyDlpV2DataProfileAction {
                   json_['pubSubNotification']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          publishToChronicle: json_.containsKey('publishToChronicle')
+              ? GooglePrivacyDlpV2PublishToChronicle.fromJson(
+                  json_['publishToChronicle']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          publishToScc: json_.containsKey('publishToScc')
+              ? GooglePrivacyDlpV2PublishToSecurityCommandCenter.fromJson(
+                  json_['publishToScc'] as core.Map<core.String, core.dynamic>)
+              : null,
+          tagResources: json_.containsKey('tagResources')
+              ? GooglePrivacyDlpV2TagResources.fromJson(
+                  json_['tagResources'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exportData != null) 'exportData': exportData!,
         if (pubSubNotification != null)
           'pubSubNotification': pubSubNotification!,
+        if (publishToChronicle != null)
+          'publishToChronicle': publishToChronicle!,
+        if (publishToScc != null) 'publishToScc': publishToScc!,
+        if (tagResources != null) 'tagResources': tagResources!,
       };
 }
 
@@ -10397,6 +11321,10 @@ class GooglePrivacyDlpV2DataProfileJobConfig {
   /// The data to scan.
   GooglePrivacyDlpV2DataProfileLocation? location;
 
+  /// Must be set only when scanning other clouds.
+  GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation?
+      otherCloudStartingLocation;
+
   /// The project that will run the scan.
   ///
   /// The DLP service account that exists within this project must have access
@@ -10407,6 +11335,7 @@ class GooglePrivacyDlpV2DataProfileJobConfig {
     this.dataProfileActions,
     this.inspectTemplates,
     this.location,
+    this.otherCloudStartingLocation,
     this.projectId,
   });
 
@@ -10423,6 +11352,12 @@ class GooglePrivacyDlpV2DataProfileJobConfig {
               ? GooglePrivacyDlpV2DataProfileLocation.fromJson(
                   json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
+          otherCloudStartingLocation: json_
+                  .containsKey('otherCloudStartingLocation')
+              ? GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation.fromJson(
+                  json_['otherCloudStartingLocation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           projectId: json_['projectId'] as core.String?,
         );
 
@@ -10431,12 +11366,36 @@ class GooglePrivacyDlpV2DataProfileJobConfig {
           'dataProfileActions': dataProfileActions!,
         if (inspectTemplates != null) 'inspectTemplates': inspectTemplates!,
         if (location != null) 'location': location!,
+        if (otherCloudStartingLocation != null)
+          'otherCloudStartingLocation': otherCloudStartingLocation!,
         if (projectId != null) 'projectId': projectId!,
       };
 }
 
 /// The data that will be profiled.
-typedef GooglePrivacyDlpV2DataProfileLocation = $Location02;
+class GooglePrivacyDlpV2DataProfileLocation {
+  /// The ID of the folder within an organization to scan.
+  core.String? folderId;
+
+  /// The ID of an organization to scan.
+  core.String? organizationId;
+
+  GooglePrivacyDlpV2DataProfileLocation({
+    this.folderId,
+    this.organizationId,
+  });
+
+  GooglePrivacyDlpV2DataProfileLocation.fromJson(core.Map json_)
+      : this(
+          folderId: json_['folderId'] as core.String?,
+          organizationId: json_['organizationId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (folderId != null) 'folderId': folderId!,
+        if (organizationId != null) 'organizationId': organizationId!,
+      };
+}
 
 /// A condition for determining whether a Pub/Sub should be triggered.
 class GooglePrivacyDlpV2DataProfilePubSubCondition {
@@ -10470,6 +11429,7 @@ class GooglePrivacyDlpV2DataRiskLevel {
   /// - "RISK_LOW" : Low risk - Lower indication of sensitive data that appears
   /// to have additional access restrictions in place or no indication of
   /// sensitive data found.
+  /// - "RISK_UNKNOWN" : Unable to determine risk.
   /// - "RISK_MODERATE" : Medium risk - Sensitive data may be present but
   /// additional access or fine grain access restrictions appear to be present.
   /// Consider limiting access even further or transform data to mask.
@@ -10497,7 +11457,8 @@ class GooglePrivacyDlpV2DataRiskLevel {
 class GooglePrivacyDlpV2DataSourceType {
   /// An identifying string to the type of resource being profiled.
   ///
-  /// Current values: google/bigquery/table, google/project
+  /// Current values: * google/bigquery/table * google/project *
+  /// google/sql/table * google/gcs/bucket
   ///
   /// Output only.
   core.String? dataSource;
@@ -10862,7 +11823,7 @@ class GooglePrivacyDlpV2Deidentify {
   /// User settable Cloud Storage bucket and folders to store de-identified
   /// files.
   ///
-  /// This field must be set for cloud storage deidentification. The output
+  /// This field must be set for Cloud Storage deidentification. The output
   /// Cloud Storage bucket must be different from the input bucket.
   /// De-identified files will overwrite files in the output path. Form of:
   /// gs://bucket/folder/ or gs://bucket
@@ -10872,11 +11833,11 @@ class GooglePrivacyDlpV2Deidentify {
 
   /// List of user-specified file type groups to transform.
   ///
-  /// If specified, only the files with these filetypes will be transformed. If
+  /// If specified, only the files with these file types will be transformed. If
   /// empty, all supported files will be transformed. Supported types may be
   /// automatically added over time. If a file type is set in this field that
   /// isn't supported by the Deidentify action then the job will fail and will
-  /// not be successfully created/started. Currently the only filetypes
+  /// not be successfully created/started. Currently the only file types
   /// supported are: IMAGES, TEXT_FILES, CSV, TSV.
   core.List<core.String>? fileTypesToTransform;
 
@@ -11725,6 +12686,13 @@ class GooglePrivacyDlpV2DiscoveryCloudSqlFilter {
 ///
 /// New tables are scanned as quickly as possible depending on system capacity.
 class GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence {
+  /// Governs when to update data profiles when the inspection rules defined by
+  /// the `InspectTemplate` change.
+  ///
+  /// If not set, changing the template will not cause a data profile to update.
+  GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence?
+      inspectTemplateModifiedCadence;
+
   /// Data changes (non-schema changes) in Cloud SQL tables can't trigger
   /// reprofiling.
   ///
@@ -11744,12 +12712,19 @@ class GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence {
   GooglePrivacyDlpV2SchemaModifiedCadence? schemaModifiedCadence;
 
   GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence({
+    this.inspectTemplateModifiedCadence,
     this.refreshFrequency,
     this.schemaModifiedCadence,
   });
 
   GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence.fromJson(core.Map json_)
       : this(
+          inspectTemplateModifiedCadence:
+              json_.containsKey('inspectTemplateModifiedCadence')
+                  ? GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence
+                      .fromJson(json_['inspectTemplateModifiedCadence']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           refreshFrequency: json_['refreshFrequency'] as core.String?,
           schemaModifiedCadence: json_.containsKey('schemaModifiedCadence')
               ? GooglePrivacyDlpV2SchemaModifiedCadence.fromJson(
@@ -11759,9 +12734,174 @@ class GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (inspectTemplateModifiedCadence != null)
+          'inspectTemplateModifiedCadence': inspectTemplateModifiedCadence!,
         if (refreshFrequency != null) 'refreshFrequency': refreshFrequency!,
         if (schemaModifiedCadence != null)
           'schemaModifiedCadence': schemaModifiedCadence!,
+      };
+}
+
+/// Requirements that must be true before a Cloud Storage bucket or object is
+/// scanned in discovery for the first time.
+///
+/// There is an AND relationship between the top-level attributes.
+class GooglePrivacyDlpV2DiscoveryCloudStorageConditions {
+  /// Only objects with the specified attributes will be scanned.
+  ///
+  /// Defaults to \[ALL_SUPPORTED_BUCKETS\] if unset.
+  ///
+  /// Required.
+  core.List<core.String>? includedBucketAttributes;
+
+  /// Only objects with the specified attributes will be scanned.
+  ///
+  /// If an object has one of the specified attributes but is inside an excluded
+  /// bucket, it will not be scanned. Defaults to \[ALL_SUPPORTED_OBJECTS\]. A
+  /// profile will be created even if no objects match the
+  /// included_object_attributes.
+  ///
+  /// Required.
+  core.List<core.String>? includedObjectAttributes;
+
+  GooglePrivacyDlpV2DiscoveryCloudStorageConditions({
+    this.includedBucketAttributes,
+    this.includedObjectAttributes,
+  });
+
+  GooglePrivacyDlpV2DiscoveryCloudStorageConditions.fromJson(core.Map json_)
+      : this(
+          includedBucketAttributes:
+              (json_['includedBucketAttributes'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+          includedObjectAttributes:
+              (json_['includedObjectAttributes'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (includedBucketAttributes != null)
+          'includedBucketAttributes': includedBucketAttributes!,
+        if (includedObjectAttributes != null)
+          'includedObjectAttributes': includedObjectAttributes!,
+      };
+}
+
+/// Determines which buckets will have profiles generated within an organization
+/// or project.
+///
+/// Includes the ability to filter by regular expression patterns on project ID
+/// and bucket name.
+class GooglePrivacyDlpV2DiscoveryCloudStorageFilter {
+  /// The bucket to scan.
+  ///
+  /// Targets including this can only include one target (the target with this
+  /// bucket). This enables profiling the contents of a single bucket, while the
+  /// other options allow for easy profiling of many bucets within a project or
+  /// an organization.
+  ///
+  /// Optional.
+  GooglePrivacyDlpV2CloudStorageResourceReference?
+      cloudStorageResourceReference;
+
+  /// A specific set of buckets for this filter to apply to.
+  ///
+  /// Optional.
+  GooglePrivacyDlpV2FileStoreCollection? collection;
+
+  /// Catch-all.
+  ///
+  /// This should always be the last target in the list because anything above
+  /// it will apply first. Should only appear once in a configuration. If none
+  /// is specified, a default one will be added automatically.
+  ///
+  /// Optional.
+  GooglePrivacyDlpV2AllOtherResources? others;
+
+  GooglePrivacyDlpV2DiscoveryCloudStorageFilter({
+    this.cloudStorageResourceReference,
+    this.collection,
+    this.others,
+  });
+
+  GooglePrivacyDlpV2DiscoveryCloudStorageFilter.fromJson(core.Map json_)
+      : this(
+          cloudStorageResourceReference:
+              json_.containsKey('cloudStorageResourceReference')
+                  ? GooglePrivacyDlpV2CloudStorageResourceReference.fromJson(
+                      json_['cloudStorageResourceReference']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          collection: json_.containsKey('collection')
+              ? GooglePrivacyDlpV2FileStoreCollection.fromJson(
+                  json_['collection'] as core.Map<core.String, core.dynamic>)
+              : null,
+          others: json_.containsKey('others')
+              ? GooglePrivacyDlpV2AllOtherResources.fromJson(
+                  json_['others'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudStorageResourceReference != null)
+          'cloudStorageResourceReference': cloudStorageResourceReference!,
+        if (collection != null) 'collection': collection!,
+        if (others != null) 'others': others!,
+      };
+}
+
+/// How often existing buckets should have their profiles refreshed.
+///
+/// New buckets are scanned as quickly as possible depending on system capacity.
+class GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence {
+  /// Governs when to update data profiles when the inspection rules defined by
+  /// the `InspectTemplate` change.
+  ///
+  /// If not set, changing the template will not cause a data profile to update.
+  ///
+  /// Optional.
+  GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence?
+      inspectTemplateModifiedCadence;
+
+  /// Data changes in Cloud Storage can't trigger reprofiling.
+  ///
+  /// If you set this field, profiles are refreshed at this frequency regardless
+  /// of whether the underlying buckets have changed. Defaults to never.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "UPDATE_FREQUENCY_UNSPECIFIED" : Unspecified.
+  /// - "UPDATE_FREQUENCY_NEVER" : After the data profile is created, it will
+  /// never be updated.
+  /// - "UPDATE_FREQUENCY_DAILY" : The data profile can be updated up to once
+  /// every 24 hours.
+  /// - "UPDATE_FREQUENCY_MONTHLY" : The data profile can be updated up to once
+  /// every 30 days. Default.
+  core.String? refreshFrequency;
+
+  GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence({
+    this.inspectTemplateModifiedCadence,
+    this.refreshFrequency,
+  });
+
+  GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence.fromJson(
+      core.Map json_)
+      : this(
+          inspectTemplateModifiedCadence:
+              json_.containsKey('inspectTemplateModifiedCadence')
+                  ? GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence
+                      .fromJson(json_['inspectTemplateModifiedCadence']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          refreshFrequency: json_['refreshFrequency'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (inspectTemplateModifiedCadence != null)
+          'inspectTemplateModifiedCadence': inspectTemplateModifiedCadence!,
+        if (refreshFrequency != null) 'refreshFrequency': refreshFrequency!,
       };
 }
 
@@ -11818,6 +12958,10 @@ class GooglePrivacyDlpV2DiscoveryConfig {
   /// Only set when the parent is an org.
   GooglePrivacyDlpV2OrgConfig? orgConfig;
 
+  /// Must be set only when scanning other clouds.
+  GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation?
+      otherCloudStartingLocation;
+
   /// A status for this configuration.
   ///
   /// Required.
@@ -11844,6 +12988,7 @@ class GooglePrivacyDlpV2DiscoveryConfig {
     this.lastRunTime,
     this.name,
     this.orgConfig,
+    this.otherCloudStartingLocation,
     this.status,
     this.targets,
     this.updateTime,
@@ -11870,6 +13015,12 @@ class GooglePrivacyDlpV2DiscoveryConfig {
               ? GooglePrivacyDlpV2OrgConfig.fromJson(
                   json_['orgConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          otherCloudStartingLocation: json_
+                  .containsKey('otherCloudStartingLocation')
+              ? GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation.fromJson(
+                  json_['otherCloudStartingLocation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           status: json_['status'] as core.String?,
           targets: (json_['targets'] as core.List?)
               ?.map((value) => GooglePrivacyDlpV2DiscoveryTarget.fromJson(
@@ -11887,9 +13038,60 @@ class GooglePrivacyDlpV2DiscoveryConfig {
         if (lastRunTime != null) 'lastRunTime': lastRunTime!,
         if (name != null) 'name': name!,
         if (orgConfig != null) 'orgConfig': orgConfig!,
+        if (otherCloudStartingLocation != null)
+          'otherCloudStartingLocation': otherCloudStartingLocation!,
         if (status != null) 'status': status!,
         if (targets != null) 'targets': targets!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Requirements that must be true before a file store is scanned in discovery
+/// for the first time.
+///
+/// There is an AND relationship between the top-level attributes.
+class GooglePrivacyDlpV2DiscoveryFileStoreConditions {
+  /// Cloud Storage conditions.
+  ///
+  /// Optional.
+  GooglePrivacyDlpV2DiscoveryCloudStorageConditions? cloudStorageConditions;
+
+  /// File store must have been created after this date.
+  ///
+  /// Used to avoid backfilling.
+  ///
+  /// Optional.
+  core.String? createdAfter;
+
+  /// Minimum age a file store must have.
+  ///
+  /// If set, the value must be 1 hour or greater.
+  ///
+  /// Optional.
+  core.String? minAge;
+
+  GooglePrivacyDlpV2DiscoveryFileStoreConditions({
+    this.cloudStorageConditions,
+    this.createdAfter,
+    this.minAge,
+  });
+
+  GooglePrivacyDlpV2DiscoveryFileStoreConditions.fromJson(core.Map json_)
+      : this(
+          cloudStorageConditions: json_.containsKey('cloudStorageConditions')
+              ? GooglePrivacyDlpV2DiscoveryCloudStorageConditions.fromJson(
+                  json_['cloudStorageConditions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          createdAfter: json_['createdAfter'] as core.String?,
+          minAge: json_['minAge'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudStorageConditions != null)
+          'cloudStorageConditions': cloudStorageConditions!,
+        if (createdAfter != null) 'createdAfter': createdAfter!,
+        if (minAge != null) 'minAge': minAge!,
       };
 }
 
@@ -11898,6 +13100,27 @@ class GooglePrivacyDlpV2DiscoveryConfig {
 ///
 /// New tables are scanned as quickly as possible depending on system capacity.
 class GooglePrivacyDlpV2DiscoveryGenerationCadence {
+  /// Governs when to update data profiles when the inspection rules defined by
+  /// the `InspectTemplate` change.
+  ///
+  /// If not set, changing the template will not cause a data profile to update.
+  GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence?
+      inspectTemplateModifiedCadence;
+
+  /// Frequency at which profiles should be updated, regardless of whether the
+  /// underlying resource has changed.
+  ///
+  /// Defaults to never.
+  /// Possible string values are:
+  /// - "UPDATE_FREQUENCY_UNSPECIFIED" : Unspecified.
+  /// - "UPDATE_FREQUENCY_NEVER" : After the data profile is created, it will
+  /// never be updated.
+  /// - "UPDATE_FREQUENCY_DAILY" : The data profile can be updated up to once
+  /// every 24 hours.
+  /// - "UPDATE_FREQUENCY_MONTHLY" : The data profile can be updated up to once
+  /// every 30 days. Default.
+  core.String? refreshFrequency;
+
   /// Governs when to update data profiles when a schema is modified.
   GooglePrivacyDlpV2DiscoverySchemaModifiedCadence? schemaModifiedCadence;
 
@@ -11905,12 +13128,21 @@ class GooglePrivacyDlpV2DiscoveryGenerationCadence {
   GooglePrivacyDlpV2DiscoveryTableModifiedCadence? tableModifiedCadence;
 
   GooglePrivacyDlpV2DiscoveryGenerationCadence({
+    this.inspectTemplateModifiedCadence,
+    this.refreshFrequency,
     this.schemaModifiedCadence,
     this.tableModifiedCadence,
   });
 
   GooglePrivacyDlpV2DiscoveryGenerationCadence.fromJson(core.Map json_)
       : this(
+          inspectTemplateModifiedCadence:
+              json_.containsKey('inspectTemplateModifiedCadence')
+                  ? GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence
+                      .fromJson(json_['inspectTemplateModifiedCadence']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          refreshFrequency: json_['refreshFrequency'] as core.String?,
           schemaModifiedCadence: json_.containsKey('schemaModifiedCadence')
               ? GooglePrivacyDlpV2DiscoverySchemaModifiedCadence.fromJson(
                   json_['schemaModifiedCadence']
@@ -11924,10 +13156,185 @@ class GooglePrivacyDlpV2DiscoveryGenerationCadence {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (inspectTemplateModifiedCadence != null)
+          'inspectTemplateModifiedCadence': inspectTemplateModifiedCadence!,
+        if (refreshFrequency != null) 'refreshFrequency': refreshFrequency!,
         if (schemaModifiedCadence != null)
           'schemaModifiedCadence': schemaModifiedCadence!,
         if (tableModifiedCadence != null)
           'tableModifiedCadence': tableModifiedCadence!,
+      };
+}
+
+/// The cadence at which to update data profiles when the inspection rules
+/// defined by the `InspectTemplate` change.
+class GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence {
+  /// How frequently data profiles can be updated when the template is modified.
+  ///
+  /// Defaults to never.
+  /// Possible string values are:
+  /// - "UPDATE_FREQUENCY_UNSPECIFIED" : Unspecified.
+  /// - "UPDATE_FREQUENCY_NEVER" : After the data profile is created, it will
+  /// never be updated.
+  /// - "UPDATE_FREQUENCY_DAILY" : The data profile can be updated up to once
+  /// every 24 hours.
+  /// - "UPDATE_FREQUENCY_MONTHLY" : The data profile can be updated up to once
+  /// every 30 days. Default.
+  core.String? frequency;
+
+  GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence({
+    this.frequency,
+  });
+
+  GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence.fromJson(
+      core.Map json_)
+      : this(
+          frequency: json_['frequency'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (frequency != null) 'frequency': frequency!,
+      };
+}
+
+/// Requirements that must be true before a resource is profiled for the first
+/// time.
+class GooglePrivacyDlpV2DiscoveryOtherCloudConditions {
+  /// Amazon S3 bucket conditions.
+  GooglePrivacyDlpV2AmazonS3BucketConditions? amazonS3BucketConditions;
+
+  /// Minimum age a resource must be before Cloud DLP can profile it.
+  ///
+  /// Value must be 1 hour or greater.
+  core.String? minAge;
+
+  GooglePrivacyDlpV2DiscoveryOtherCloudConditions({
+    this.amazonS3BucketConditions,
+    this.minAge,
+  });
+
+  GooglePrivacyDlpV2DiscoveryOtherCloudConditions.fromJson(core.Map json_)
+      : this(
+          amazonS3BucketConditions:
+              json_.containsKey('amazonS3BucketConditions')
+                  ? GooglePrivacyDlpV2AmazonS3BucketConditions.fromJson(
+                      json_['amazonS3BucketConditions']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          minAge: json_['minAge'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (amazonS3BucketConditions != null)
+          'amazonS3BucketConditions': amazonS3BucketConditions!,
+        if (minAge != null) 'minAge': minAge!,
+      };
+}
+
+/// Determines which resources from the other cloud will have profiles
+/// generated.
+///
+/// Includes the ability to filter by resource names.
+class GooglePrivacyDlpV2DiscoveryOtherCloudFilter {
+  /// A collection of resources for this filter to apply to.
+  GooglePrivacyDlpV2OtherCloudResourceCollection? collection;
+
+  /// Catch-all.
+  ///
+  /// This should always be the last target in the list because anything above
+  /// it will apply first. Should only appear once in a configuration. If none
+  /// is specified, a default one will be added automatically.
+  ///
+  /// Optional.
+  GooglePrivacyDlpV2AllOtherResources? others;
+
+  /// The resource to scan.
+  ///
+  /// Configs using this filter can only have one target (the target with this
+  /// single resource reference).
+  GooglePrivacyDlpV2OtherCloudSingleResourceReference? singleResource;
+
+  GooglePrivacyDlpV2DiscoveryOtherCloudFilter({
+    this.collection,
+    this.others,
+    this.singleResource,
+  });
+
+  GooglePrivacyDlpV2DiscoveryOtherCloudFilter.fromJson(core.Map json_)
+      : this(
+          collection: json_.containsKey('collection')
+              ? GooglePrivacyDlpV2OtherCloudResourceCollection.fromJson(
+                  json_['collection'] as core.Map<core.String, core.dynamic>)
+              : null,
+          others: json_.containsKey('others')
+              ? GooglePrivacyDlpV2AllOtherResources.fromJson(
+                  json_['others'] as core.Map<core.String, core.dynamic>)
+              : null,
+          singleResource: json_.containsKey('singleResource')
+              ? GooglePrivacyDlpV2OtherCloudSingleResourceReference.fromJson(
+                  json_['singleResource']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (collection != null) 'collection': collection!,
+        if (others != null) 'others': others!,
+        if (singleResource != null) 'singleResource': singleResource!,
+      };
+}
+
+/// How often existing resources should have their profiles refreshed.
+///
+/// New resources are scanned as quickly as possible depending on system
+/// capacity.
+class GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence {
+  /// Governs when to update data profiles when the inspection rules defined by
+  /// the `InspectTemplate` change.
+  ///
+  /// If not set, changing the template will not cause a data profile to update.
+  ///
+  /// Optional.
+  GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence?
+      inspectTemplateModifiedCadence;
+
+  /// Frequency to update profiles regardless of whether the underlying resource
+  /// has changes.
+  ///
+  /// Defaults to never.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "UPDATE_FREQUENCY_UNSPECIFIED" : Unspecified.
+  /// - "UPDATE_FREQUENCY_NEVER" : After the data profile is created, it will
+  /// never be updated.
+  /// - "UPDATE_FREQUENCY_DAILY" : The data profile can be updated up to once
+  /// every 24 hours.
+  /// - "UPDATE_FREQUENCY_MONTHLY" : The data profile can be updated up to once
+  /// every 30 days. Default.
+  core.String? refreshFrequency;
+
+  GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence({
+    this.inspectTemplateModifiedCadence,
+    this.refreshFrequency,
+  });
+
+  GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence.fromJson(
+      core.Map json_)
+      : this(
+          inspectTemplateModifiedCadence:
+              json_.containsKey('inspectTemplateModifiedCadence')
+                  ? GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence
+                      .fromJson(json_['inspectTemplateModifiedCadence']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          refreshFrequency: json_['refreshFrequency'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (inspectTemplateModifiedCadence != null)
+          'inspectTemplateModifiedCadence': inspectTemplateModifiedCadence!,
+        if (refreshFrequency != null) 'refreshFrequency': refreshFrequency!,
       };
 }
 
@@ -11974,7 +13381,29 @@ class GooglePrivacyDlpV2DiscoverySchemaModifiedCadence {
 /// The location to begin a discovery scan.
 ///
 /// Denotes an organization ID or folder ID within an organization.
-typedef GooglePrivacyDlpV2DiscoveryStartingLocation = $Location02;
+class GooglePrivacyDlpV2DiscoveryStartingLocation {
+  /// The ID of the folder within an organization to be scanned.
+  core.String? folderId;
+
+  /// The ID of an organization to scan.
+  core.String? organizationId;
+
+  GooglePrivacyDlpV2DiscoveryStartingLocation({
+    this.folderId,
+    this.organizationId,
+  });
+
+  GooglePrivacyDlpV2DiscoveryStartingLocation.fromJson(core.Map json_)
+      : this(
+          folderId: json_['folderId'] as core.String?,
+          organizationId: json_['organizationId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (folderId != null) 'folderId': folderId!,
+        if (organizationId != null) 'organizationId': organizationId!,
+      };
+}
 
 /// The cadence at which to update data profiles when a table is modified.
 class GooglePrivacyDlpV2DiscoveryTableModifiedCadence {
@@ -12028,6 +13457,16 @@ class GooglePrivacyDlpV2DiscoveryTarget {
   /// The first target to match a table will be the one applied.
   GooglePrivacyDlpV2CloudSqlDiscoveryTarget? cloudSqlTarget;
 
+  /// Cloud Storage target for Discovery.
+  ///
+  /// The first target to match a table will be the one applied.
+  GooglePrivacyDlpV2CloudStorageDiscoveryTarget? cloudStorageTarget;
+
+  /// Other clouds target for discovery.
+  ///
+  /// The first target to match a resource will be the one applied.
+  GooglePrivacyDlpV2OtherCloudDiscoveryTarget? otherCloudTarget;
+
   /// Discovery target that looks for credentials and secrets stored in cloud
   /// resource metadata and reports them as vulnerabilities to Security Command
   /// Center.
@@ -12038,6 +13477,8 @@ class GooglePrivacyDlpV2DiscoveryTarget {
   GooglePrivacyDlpV2DiscoveryTarget({
     this.bigQueryTarget,
     this.cloudSqlTarget,
+    this.cloudStorageTarget,
+    this.otherCloudTarget,
     this.secretsTarget,
   });
 
@@ -12053,6 +13494,16 @@ class GooglePrivacyDlpV2DiscoveryTarget {
                   json_['cloudSqlTarget']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          cloudStorageTarget: json_.containsKey('cloudStorageTarget')
+              ? GooglePrivacyDlpV2CloudStorageDiscoveryTarget.fromJson(
+                  json_['cloudStorageTarget']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          otherCloudTarget: json_.containsKey('otherCloudTarget')
+              ? GooglePrivacyDlpV2OtherCloudDiscoveryTarget.fromJson(
+                  json_['otherCloudTarget']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           secretsTarget: json_.containsKey('secretsTarget')
               ? GooglePrivacyDlpV2SecretsDiscoveryTarget.fromJson(
                   json_['secretsTarget'] as core.Map<core.String, core.dynamic>)
@@ -12062,6 +13513,9 @@ class GooglePrivacyDlpV2DiscoveryTarget {
   core.Map<core.String, core.dynamic> toJson() => {
         if (bigQueryTarget != null) 'bigQueryTarget': bigQueryTarget!,
         if (cloudSqlTarget != null) 'cloudSqlTarget': cloudSqlTarget!,
+        if (cloudStorageTarget != null)
+          'cloudStorageTarget': cloudStorageTarget!,
+        if (otherCloudTarget != null) 'otherCloudTarget': otherCloudTarget!,
         if (secretsTarget != null) 'secretsTarget': secretsTarget!,
       };
 }
@@ -12235,6 +13689,15 @@ class GooglePrivacyDlpV2Error {
   /// Detailed error codes and messages.
   GoogleRpcStatus? details;
 
+  /// Additional information about the error.
+  /// Possible string values are:
+  /// - "ERROR_INFO_UNSPECIFIED" : Unused.
+  /// - "IMAGE_SCAN_UNAVAILABLE_IN_REGION" : Image scan is not available in the
+  /// region.
+  /// - "FILE_STORE_CLUSTER_UNSUPPORTED" : File store cluster is not supported
+  /// for profile generation.
+  core.String? extraInfo;
+
   /// The times the error occurred.
   ///
   /// List includes the oldest timestamp and the last 9 timestamps.
@@ -12242,6 +13705,7 @@ class GooglePrivacyDlpV2Error {
 
   GooglePrivacyDlpV2Error({
     this.details,
+    this.extraInfo,
     this.timestamps,
   });
 
@@ -12251,6 +13715,7 @@ class GooglePrivacyDlpV2Error {
               ? GoogleRpcStatus.fromJson(
                   json_['details'] as core.Map<core.String, core.dynamic>)
               : null,
+          extraInfo: json_['extraInfo'] as core.String?,
           timestamps: (json_['timestamps'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -12258,6 +13723,7 @@ class GooglePrivacyDlpV2Error {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (details != null) 'details': details!,
+        if (extraInfo != null) 'extraInfo': extraInfo!,
         if (timestamps != null) 'timestamps': timestamps!,
       };
 }
@@ -12555,6 +14021,162 @@ class GooglePrivacyDlpV2FieldTransformation {
       };
 }
 
+/// The file cluster summary.
+class GooglePrivacyDlpV2FileClusterSummary {
+  /// The data risk level of this cluster.
+  ///
+  /// RISK_LOW if nothing has been scanned.
+  GooglePrivacyDlpV2DataRiskLevel? dataRiskLevel;
+
+  /// A list of errors detected while scanning this cluster.
+  ///
+  /// The list is truncated to 10 per cluster.
+  core.List<GooglePrivacyDlpV2Error>? errors;
+
+  /// The file cluster type.
+  GooglePrivacyDlpV2FileClusterType? fileClusterType;
+
+  /// A sample of file types scanned in this cluster.
+  ///
+  /// Empty if no files were scanned. File extensions can be derived from the
+  /// file name or the file content.
+  core.List<GooglePrivacyDlpV2FileExtensionInfo>? fileExtensionsScanned;
+
+  /// A sample of file types seen in this cluster.
+  ///
+  /// Empty if no files were seen. File extensions can be derived from the file
+  /// name or the file content.
+  core.List<GooglePrivacyDlpV2FileExtensionInfo>? fileExtensionsSeen;
+
+  /// InfoTypes detected in this cluster.
+  core.List<GooglePrivacyDlpV2FileStoreInfoTypeSummary>?
+      fileStoreInfoTypeSummaries;
+
+  /// True if no files exist in this cluster.
+  ///
+  /// If the bucket had more files than could be listed, this will be false even
+  /// if no files for this cluster were seen and file_extensions_seen is empty.
+  core.bool? noFilesExist;
+
+  /// The sensitivity score of this cluster.
+  ///
+  /// The score will be SENSITIVITY_LOW if nothing has been scanned.
+  GooglePrivacyDlpV2SensitivityScore? sensitivityScore;
+
+  GooglePrivacyDlpV2FileClusterSummary({
+    this.dataRiskLevel,
+    this.errors,
+    this.fileClusterType,
+    this.fileExtensionsScanned,
+    this.fileExtensionsSeen,
+    this.fileStoreInfoTypeSummaries,
+    this.noFilesExist,
+    this.sensitivityScore,
+  });
+
+  GooglePrivacyDlpV2FileClusterSummary.fromJson(core.Map json_)
+      : this(
+          dataRiskLevel: json_.containsKey('dataRiskLevel')
+              ? GooglePrivacyDlpV2DataRiskLevel.fromJson(
+                  json_['dataRiskLevel'] as core.Map<core.String, core.dynamic>)
+              : null,
+          errors: (json_['errors'] as core.List?)
+              ?.map((value) => GooglePrivacyDlpV2Error.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          fileClusterType: json_.containsKey('fileClusterType')
+              ? GooglePrivacyDlpV2FileClusterType.fromJson(
+                  json_['fileClusterType']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          fileExtensionsScanned: (json_['fileExtensionsScanned'] as core.List?)
+              ?.map((value) => GooglePrivacyDlpV2FileExtensionInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          fileExtensionsSeen: (json_['fileExtensionsSeen'] as core.List?)
+              ?.map((value) => GooglePrivacyDlpV2FileExtensionInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          fileStoreInfoTypeSummaries:
+              (json_['fileStoreInfoTypeSummaries'] as core.List?)
+                  ?.map((value) =>
+                      GooglePrivacyDlpV2FileStoreInfoTypeSummary.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+          noFilesExist: json_['noFilesExist'] as core.bool?,
+          sensitivityScore: json_.containsKey('sensitivityScore')
+              ? GooglePrivacyDlpV2SensitivityScore.fromJson(
+                  json_['sensitivityScore']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataRiskLevel != null) 'dataRiskLevel': dataRiskLevel!,
+        if (errors != null) 'errors': errors!,
+        if (fileClusterType != null) 'fileClusterType': fileClusterType!,
+        if (fileExtensionsScanned != null)
+          'fileExtensionsScanned': fileExtensionsScanned!,
+        if (fileExtensionsSeen != null)
+          'fileExtensionsSeen': fileExtensionsSeen!,
+        if (fileStoreInfoTypeSummaries != null)
+          'fileStoreInfoTypeSummaries': fileStoreInfoTypeSummaries!,
+        if (noFilesExist != null) 'noFilesExist': noFilesExist!,
+        if (sensitivityScore != null) 'sensitivityScore': sensitivityScore!,
+      };
+}
+
+/// Message used to identify file cluster type being profiled.
+class GooglePrivacyDlpV2FileClusterType {
+  /// Cluster type.
+  /// Possible string values are:
+  /// - "CLUSTER_UNSPECIFIED" : Unused.
+  /// - "CLUSTER_UNKNOWN" : Unsupported files.
+  /// - "CLUSTER_TEXT" : Plain text.
+  /// - "CLUSTER_STRUCTURED_DATA" : Structured data like CSV, TSV etc.
+  /// - "CLUSTER_SOURCE_CODE" : Source code.
+  /// - "CLUSTER_RICH_DOCUMENT" : Rich document like docx, xlsx etc.
+  /// - "CLUSTER_IMAGE" : Images like jpeg, bmp.
+  /// - "CLUSTER_ARCHIVE" : Archives and containers like .zip, .tar etc.
+  /// - "CLUSTER_MULTIMEDIA" : Multimedia like .mp4, .avi etc.
+  /// - "CLUSTER_EXECUTABLE" : Executable files like .exe, .class, .apk etc.
+  core.String? cluster;
+
+  GooglePrivacyDlpV2FileClusterType({
+    this.cluster,
+  });
+
+  GooglePrivacyDlpV2FileClusterType.fromJson(core.Map json_)
+      : this(
+          cluster: json_['cluster'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cluster != null) 'cluster': cluster!,
+      };
+}
+
+/// Information regarding the discovered file extension.
+class GooglePrivacyDlpV2FileExtensionInfo {
+  /// The file extension if set.
+  ///
+  /// (aka .pdf, .jpg, .txt)
+  core.String? fileExtension;
+
+  GooglePrivacyDlpV2FileExtensionInfo({
+    this.fileExtension,
+  });
+
+  GooglePrivacyDlpV2FileExtensionInfo.fromJson(core.Map json_)
+      : this(
+          fileExtension: json_['fileExtension'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fileExtension != null) 'fileExtension': fileExtension!,
+      };
+}
+
 /// Set of files to scan.
 class GooglePrivacyDlpV2FileSet {
   /// The regex-filtered set of files to scan.
@@ -12589,6 +14211,353 @@ class GooglePrivacyDlpV2FileSet {
   core.Map<core.String, core.dynamic> toJson() => {
         if (regexFileSet != null) 'regexFileSet': regexFileSet!,
         if (url != null) 'url': url!,
+      };
+}
+
+/// Match file stores (e.g. buckets) using regex filters.
+class GooglePrivacyDlpV2FileStoreCollection {
+  /// A collection of regular expressions to match a file store against.
+  ///
+  /// Optional.
+  GooglePrivacyDlpV2FileStoreRegexes? includeRegexes;
+
+  GooglePrivacyDlpV2FileStoreCollection({
+    this.includeRegexes,
+  });
+
+  GooglePrivacyDlpV2FileStoreCollection.fromJson(core.Map json_)
+      : this(
+          includeRegexes: json_.containsKey('includeRegexes')
+              ? GooglePrivacyDlpV2FileStoreRegexes.fromJson(
+                  json_['includeRegexes']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (includeRegexes != null) 'includeRegexes': includeRegexes!,
+      };
+}
+
+/// The profile for a file store.
+///
+/// * Cloud Storage: maps 1:1 with a bucket. * Amazon S3: maps 1:1 with a
+/// bucket.
+class GooglePrivacyDlpV2FileStoreDataProfile {
+  /// The snapshot of the configurations used to generate the profile.
+  GooglePrivacyDlpV2DataProfileConfigSnapshot? configSnapshot;
+
+  /// The time the file store was first created.
+  core.String? createTime;
+
+  /// The data risk level of this resource.
+  GooglePrivacyDlpV2DataRiskLevel? dataRiskLevel;
+
+  /// The resource type that was profiled.
+  GooglePrivacyDlpV2DataSourceType? dataSourceType;
+
+  /// For resources that have multiple storage locations, these are those
+  /// regions.
+  ///
+  /// For Cloud Storage this is the list of regions chosen for dual-region
+  /// storage. `file_store_location` will normally be the corresponding
+  /// multi-region for the list of individual locations. The first region is
+  /// always picked as the processing and storage location for the data profile.
+  core.List<core.String>? dataStorageLocations;
+
+  /// FileClusterSummary per each cluster.
+  core.List<GooglePrivacyDlpV2FileClusterSummary>? fileClusterSummaries;
+
+  /// InfoTypes detected in this file store.
+  core.List<GooglePrivacyDlpV2FileStoreInfoTypeSummary>?
+      fileStoreInfoTypeSummaries;
+
+  /// The file store does not have any files.
+  core.bool? fileStoreIsEmpty;
+
+  /// The location of the file store.
+  ///
+  /// * Cloud Storage:
+  /// https://cloud.google.com/storage/docs/locations#available-locations *
+  /// Amazon S3:
+  /// https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints
+  core.String? fileStoreLocation;
+
+  /// The file store path.
+  ///
+  /// * Cloud Storage: `gs://{bucket}` * Amazon S3: `s3://{bucket}`
+  core.String? fileStorePath;
+
+  /// The resource name of the resource profiled.
+  ///
+  /// https://cloud.google.com/apis/design/resource_names#full_resource_name
+  /// Example format of an S3 bucket full resource name:
+  /// `//cloudasset.googleapis.com/organizations/{org_id}/otherCloudConnections/aws/arn:aws:s3:::{bucket_name}`
+  core.String? fullResource;
+
+  /// The time the file store was last modified.
+  core.String? lastModifiedTime;
+
+  /// The location type of the bucket (region, dual-region, multi-region, etc).
+  ///
+  /// If dual-region, expect data_storage_locations to be populated.
+  core.String? locationType;
+
+  /// The name of the profile.
+  core.String? name;
+
+  /// The last time the profile was generated.
+  core.String? profileLastGenerated;
+
+  /// Success or error status from the most recent profile generation attempt.
+  ///
+  /// May be empty if the profile is still being generated.
+  GooglePrivacyDlpV2ProfileStatus? profileStatus;
+
+  /// The resource name of the project data profile for this file store.
+  core.String? projectDataProfile;
+
+  /// The Google Cloud project ID that owns the resource.
+  ///
+  /// For Amazon S3 buckets, this is the AWS Account Id.
+  core.String? projectId;
+
+  /// Attributes of the resource being profiled.
+  ///
+  /// Currently used attributes: * customer_managed_encryption: boolean - true:
+  /// the resource is encrypted with a customer-managed key. - false: the
+  /// resource is encrypted with a provider-managed key.
+  core.Map<core.String, GooglePrivacyDlpV2Value>? resourceAttributes;
+
+  /// The labels applied to the resource at the time the profile was generated.
+  core.Map<core.String, core.String>? resourceLabels;
+
+  /// How broadly a resource has been shared.
+  /// Possible string values are:
+  /// - "RESOURCE_VISIBILITY_UNSPECIFIED" : Unused.
+  /// - "RESOURCE_VISIBILITY_PUBLIC" : Visible to any user.
+  /// - "RESOURCE_VISIBILITY_INCONCLUSIVE" : May contain public items. For
+  /// example, if a Cloud Storage bucket has uniform bucket level access
+  /// disabled, some objects inside it may be public, but none are known yet.
+  /// - "RESOURCE_VISIBILITY_RESTRICTED" : Visible only to specific users.
+  core.String? resourceVisibility;
+
+  /// The sensitivity score of this resource.
+  GooglePrivacyDlpV2SensitivityScore? sensitivityScore;
+
+  /// State of a profile.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unused.
+  /// - "RUNNING" : The profile is currently running. Once a profile has
+  /// finished it will transition to DONE.
+  /// - "DONE" : The profile is no longer generating. If
+  /// profile_status.status.code is 0, the profile succeeded, otherwise, it
+  /// failed.
+  core.String? state;
+
+  GooglePrivacyDlpV2FileStoreDataProfile({
+    this.configSnapshot,
+    this.createTime,
+    this.dataRiskLevel,
+    this.dataSourceType,
+    this.dataStorageLocations,
+    this.fileClusterSummaries,
+    this.fileStoreInfoTypeSummaries,
+    this.fileStoreIsEmpty,
+    this.fileStoreLocation,
+    this.fileStorePath,
+    this.fullResource,
+    this.lastModifiedTime,
+    this.locationType,
+    this.name,
+    this.profileLastGenerated,
+    this.profileStatus,
+    this.projectDataProfile,
+    this.projectId,
+    this.resourceAttributes,
+    this.resourceLabels,
+    this.resourceVisibility,
+    this.sensitivityScore,
+    this.state,
+  });
+
+  GooglePrivacyDlpV2FileStoreDataProfile.fromJson(core.Map json_)
+      : this(
+          configSnapshot: json_.containsKey('configSnapshot')
+              ? GooglePrivacyDlpV2DataProfileConfigSnapshot.fromJson(
+                  json_['configSnapshot']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: json_['createTime'] as core.String?,
+          dataRiskLevel: json_.containsKey('dataRiskLevel')
+              ? GooglePrivacyDlpV2DataRiskLevel.fromJson(
+                  json_['dataRiskLevel'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dataSourceType: json_.containsKey('dataSourceType')
+              ? GooglePrivacyDlpV2DataSourceType.fromJson(
+                  json_['dataSourceType']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          dataStorageLocations: (json_['dataStorageLocations'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          fileClusterSummaries: (json_['fileClusterSummaries'] as core.List?)
+              ?.map((value) => GooglePrivacyDlpV2FileClusterSummary.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          fileStoreInfoTypeSummaries:
+              (json_['fileStoreInfoTypeSummaries'] as core.List?)
+                  ?.map((value) =>
+                      GooglePrivacyDlpV2FileStoreInfoTypeSummary.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+          fileStoreIsEmpty: json_['fileStoreIsEmpty'] as core.bool?,
+          fileStoreLocation: json_['fileStoreLocation'] as core.String?,
+          fileStorePath: json_['fileStorePath'] as core.String?,
+          fullResource: json_['fullResource'] as core.String?,
+          lastModifiedTime: json_['lastModifiedTime'] as core.String?,
+          locationType: json_['locationType'] as core.String?,
+          name: json_['name'] as core.String?,
+          profileLastGenerated: json_['profileLastGenerated'] as core.String?,
+          profileStatus: json_.containsKey('profileStatus')
+              ? GooglePrivacyDlpV2ProfileStatus.fromJson(
+                  json_['profileStatus'] as core.Map<core.String, core.dynamic>)
+              : null,
+          projectDataProfile: json_['projectDataProfile'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
+          resourceAttributes: (json_['resourceAttributes']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GooglePrivacyDlpV2Value.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          resourceLabels:
+              (json_['resourceLabels'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          resourceVisibility: json_['resourceVisibility'] as core.String?,
+          sensitivityScore: json_.containsKey('sensitivityScore')
+              ? GooglePrivacyDlpV2SensitivityScore.fromJson(
+                  json_['sensitivityScore']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (configSnapshot != null) 'configSnapshot': configSnapshot!,
+        if (createTime != null) 'createTime': createTime!,
+        if (dataRiskLevel != null) 'dataRiskLevel': dataRiskLevel!,
+        if (dataSourceType != null) 'dataSourceType': dataSourceType!,
+        if (dataStorageLocations != null)
+          'dataStorageLocations': dataStorageLocations!,
+        if (fileClusterSummaries != null)
+          'fileClusterSummaries': fileClusterSummaries!,
+        if (fileStoreInfoTypeSummaries != null)
+          'fileStoreInfoTypeSummaries': fileStoreInfoTypeSummaries!,
+        if (fileStoreIsEmpty != null) 'fileStoreIsEmpty': fileStoreIsEmpty!,
+        if (fileStoreLocation != null) 'fileStoreLocation': fileStoreLocation!,
+        if (fileStorePath != null) 'fileStorePath': fileStorePath!,
+        if (fullResource != null) 'fullResource': fullResource!,
+        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
+        if (locationType != null) 'locationType': locationType!,
+        if (name != null) 'name': name!,
+        if (profileLastGenerated != null)
+          'profileLastGenerated': profileLastGenerated!,
+        if (profileStatus != null) 'profileStatus': profileStatus!,
+        if (projectDataProfile != null)
+          'projectDataProfile': projectDataProfile!,
+        if (projectId != null) 'projectId': projectId!,
+        if (resourceAttributes != null)
+          'resourceAttributes': resourceAttributes!,
+        if (resourceLabels != null) 'resourceLabels': resourceLabels!,
+        if (resourceVisibility != null)
+          'resourceVisibility': resourceVisibility!,
+        if (sensitivityScore != null) 'sensitivityScore': sensitivityScore!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Information regarding the discovered InfoType.
+class GooglePrivacyDlpV2FileStoreInfoTypeSummary {
+  /// The InfoType seen.
+  GooglePrivacyDlpV2InfoType? infoType;
+
+  GooglePrivacyDlpV2FileStoreInfoTypeSummary({
+    this.infoType,
+  });
+
+  GooglePrivacyDlpV2FileStoreInfoTypeSummary.fromJson(core.Map json_)
+      : this(
+          infoType: json_.containsKey('infoType')
+              ? GooglePrivacyDlpV2InfoType.fromJson(
+                  json_['infoType'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (infoType != null) 'infoType': infoType!,
+      };
+}
+
+/// A pattern to match against one or more file stores.
+class GooglePrivacyDlpV2FileStoreRegex {
+  /// Regex for Cloud Storage.
+  ///
+  /// Optional.
+  GooglePrivacyDlpV2CloudStorageRegex? cloudStorageRegex;
+
+  GooglePrivacyDlpV2FileStoreRegex({
+    this.cloudStorageRegex,
+  });
+
+  GooglePrivacyDlpV2FileStoreRegex.fromJson(core.Map json_)
+      : this(
+          cloudStorageRegex: json_.containsKey('cloudStorageRegex')
+              ? GooglePrivacyDlpV2CloudStorageRegex.fromJson(
+                  json_['cloudStorageRegex']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudStorageRegex != null) 'cloudStorageRegex': cloudStorageRegex!,
+      };
+}
+
+/// A collection of regular expressions to determine what file store to match
+/// against.
+class GooglePrivacyDlpV2FileStoreRegexes {
+  /// The group of regular expression patterns to match against one or more file
+  /// stores.
+  ///
+  /// Maximum of 100 entries. The sum of all regular expression's length can't
+  /// exceed 10 KiB.
+  ///
+  /// Required.
+  core.List<GooglePrivacyDlpV2FileStoreRegex>? patterns;
+
+  GooglePrivacyDlpV2FileStoreRegexes({
+    this.patterns,
+  });
+
+  GooglePrivacyDlpV2FileStoreRegexes.fromJson(core.Map json_)
+      : this(
+          patterns: (json_['patterns'] as core.List?)
+              ?.map((value) => GooglePrivacyDlpV2FileStoreRegex.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (patterns != null) 'patterns': patterns!,
       };
 }
 
@@ -13379,8 +15348,10 @@ class GooglePrivacyDlpV2InfoTypeCategory {
   /// - "GLOBAL" : The infoType is not issued by or tied to a specific region,
   /// but is used almost everywhere.
   /// - "ARGENTINA" : The infoType is typically used in Argentina.
+  /// - "ARMENIA" : The infoType is typically used in Armenia.
   /// - "AUSTRALIA" : The infoType is typically used in Australia.
   /// - "AZERBAIJAN" : The infoType is typically used in Azerbaijan.
+  /// - "BELARUS" : The infoType is typically used in Belarus.
   /// - "BELGIUM" : The infoType is typically used in Belgium.
   /// - "BRAZIL" : The infoType is typically used in Brazil.
   /// - "CANADA" : The infoType is typically used in Canada.
@@ -15186,6 +17157,36 @@ class GooglePrivacyDlpV2ListDlpJobsResponse {
       };
 }
 
+/// List of file store data profiles generated for a given organization or
+/// project.
+class GooglePrivacyDlpV2ListFileStoreDataProfilesResponse {
+  /// List of data profiles.
+  core.List<GooglePrivacyDlpV2FileStoreDataProfile>? fileStoreDataProfiles;
+
+  /// The next page token.
+  core.String? nextPageToken;
+
+  GooglePrivacyDlpV2ListFileStoreDataProfilesResponse({
+    this.fileStoreDataProfiles,
+    this.nextPageToken,
+  });
+
+  GooglePrivacyDlpV2ListFileStoreDataProfilesResponse.fromJson(core.Map json_)
+      : this(
+          fileStoreDataProfiles: (json_['fileStoreDataProfiles'] as core.List?)
+              ?.map((value) => GooglePrivacyDlpV2FileStoreDataProfile.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fileStoreDataProfiles != null)
+          'fileStoreDataProfiles': fileStoreDataProfiles!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response to the ListInfoTypes request.
 class GooglePrivacyDlpV2ListInfoTypesResponse {
   /// Set of sensitive infoTypes.
@@ -15571,6 +17572,209 @@ class GooglePrivacyDlpV2OrgConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (location != null) 'location': location!,
         if (projectId != null) 'projectId': projectId!,
+      };
+}
+
+/// The other cloud starting location for discovery.
+class GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation {
+  /// The AWS starting location for discovery.
+  GooglePrivacyDlpV2AwsDiscoveryStartingLocation? awsLocation;
+
+  GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation({
+    this.awsLocation,
+  });
+
+  GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation.fromJson(core.Map json_)
+      : this(
+          awsLocation: json_.containsKey('awsLocation')
+              ? GooglePrivacyDlpV2AwsDiscoveryStartingLocation.fromJson(
+                  json_['awsLocation'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (awsLocation != null) 'awsLocation': awsLocation!,
+      };
+}
+
+/// Target used to match against for discovery of resources from other clouds.
+///
+/// An \[AWS connector in Security Command Center
+/// (Enterprise\](https://cloud.google.com/security-command-center/docs/connect-scc-to-aws)
+/// is required to use this feature.
+class GooglePrivacyDlpV2OtherCloudDiscoveryTarget {
+  /// In addition to matching the filter, these conditions must be true before a
+  /// profile is generated.
+  ///
+  /// Optional.
+  GooglePrivacyDlpV2DiscoveryOtherCloudConditions? conditions;
+
+  /// The type of data profiles generated by this discovery target.
+  ///
+  /// Supported values are: * aws/s3/bucket
+  ///
+  /// Required.
+  GooglePrivacyDlpV2DataSourceType? dataSourceType;
+
+  /// Disable profiling for resources that match this filter.
+  GooglePrivacyDlpV2Disabled? disabled;
+
+  /// The resources that the discovery cadence applies to.
+  ///
+  /// The first target with a matching filter will be the one to apply to a
+  /// resource.
+  ///
+  /// Required.
+  GooglePrivacyDlpV2DiscoveryOtherCloudFilter? filter;
+
+  /// How often and when to update data profiles.
+  ///
+  /// New resources that match both the filter and conditions are scanned as
+  /// quickly as possible depending on system capacity.
+  GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence? generationCadence;
+
+  GooglePrivacyDlpV2OtherCloudDiscoveryTarget({
+    this.conditions,
+    this.dataSourceType,
+    this.disabled,
+    this.filter,
+    this.generationCadence,
+  });
+
+  GooglePrivacyDlpV2OtherCloudDiscoveryTarget.fromJson(core.Map json_)
+      : this(
+          conditions: json_.containsKey('conditions')
+              ? GooglePrivacyDlpV2DiscoveryOtherCloudConditions.fromJson(
+                  json_['conditions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dataSourceType: json_.containsKey('dataSourceType')
+              ? GooglePrivacyDlpV2DataSourceType.fromJson(
+                  json_['dataSourceType']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          disabled: json_.containsKey('disabled')
+              ? GooglePrivacyDlpV2Disabled.fromJson(
+                  json_['disabled'] as core.Map<core.String, core.dynamic>)
+              : null,
+          filter: json_.containsKey('filter')
+              ? GooglePrivacyDlpV2DiscoveryOtherCloudFilter.fromJson(
+                  json_['filter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          generationCadence: json_.containsKey('generationCadence')
+              ? GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence.fromJson(
+                  json_['generationCadence']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conditions != null) 'conditions': conditions!,
+        if (dataSourceType != null) 'dataSourceType': dataSourceType!,
+        if (disabled != null) 'disabled': disabled!,
+        if (filter != null) 'filter': filter!,
+        if (generationCadence != null) 'generationCadence': generationCadence!,
+      };
+}
+
+/// Match resources using regex filters.
+class GooglePrivacyDlpV2OtherCloudResourceCollection {
+  /// A collection of regular expressions to match a resource against.
+  GooglePrivacyDlpV2OtherCloudResourceRegexes? includeRegexes;
+
+  GooglePrivacyDlpV2OtherCloudResourceCollection({
+    this.includeRegexes,
+  });
+
+  GooglePrivacyDlpV2OtherCloudResourceCollection.fromJson(core.Map json_)
+      : this(
+          includeRegexes: json_.containsKey('includeRegexes')
+              ? GooglePrivacyDlpV2OtherCloudResourceRegexes.fromJson(
+                  json_['includeRegexes']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (includeRegexes != null) 'includeRegexes': includeRegexes!,
+      };
+}
+
+/// A pattern to match against one or more resources.
+///
+/// At least one pattern must be specified. Regular expressions use RE2
+/// [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found
+/// under the google/re2 repository on GitHub.
+class GooglePrivacyDlpV2OtherCloudResourceRegex {
+  /// Regex for Amazon S3 buckets.
+  GooglePrivacyDlpV2AmazonS3BucketRegex? amazonS3BucketRegex;
+
+  GooglePrivacyDlpV2OtherCloudResourceRegex({
+    this.amazonS3BucketRegex,
+  });
+
+  GooglePrivacyDlpV2OtherCloudResourceRegex.fromJson(core.Map json_)
+      : this(
+          amazonS3BucketRegex: json_.containsKey('amazonS3BucketRegex')
+              ? GooglePrivacyDlpV2AmazonS3BucketRegex.fromJson(
+                  json_['amazonS3BucketRegex']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (amazonS3BucketRegex != null)
+          'amazonS3BucketRegex': amazonS3BucketRegex!,
+      };
+}
+
+/// A collection of regular expressions to determine what resources to match
+/// against.
+class GooglePrivacyDlpV2OtherCloudResourceRegexes {
+  /// A group of regular expression patterns to match against one or more
+  /// resources.
+  ///
+  /// Maximum of 100 entries. The sum of all regular expression's length can't
+  /// exceed 10 KiB.
+  core.List<GooglePrivacyDlpV2OtherCloudResourceRegex>? patterns;
+
+  GooglePrivacyDlpV2OtherCloudResourceRegexes({
+    this.patterns,
+  });
+
+  GooglePrivacyDlpV2OtherCloudResourceRegexes.fromJson(core.Map json_)
+      : this(
+          patterns: (json_['patterns'] as core.List?)
+              ?.map((value) =>
+                  GooglePrivacyDlpV2OtherCloudResourceRegex.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (patterns != null) 'patterns': patterns!,
+      };
+}
+
+/// Identifies a single resource, like a single Amazon S3 bucket.
+class GooglePrivacyDlpV2OtherCloudSingleResourceReference {
+  /// Amazon S3 bucket.
+  GooglePrivacyDlpV2AmazonS3Bucket? amazonS3Bucket;
+
+  GooglePrivacyDlpV2OtherCloudSingleResourceReference({
+    this.amazonS3Bucket,
+  });
+
+  GooglePrivacyDlpV2OtherCloudSingleResourceReference.fromJson(core.Map json_)
+      : this(
+          amazonS3Bucket: json_.containsKey('amazonS3Bucket')
+              ? GooglePrivacyDlpV2AmazonS3Bucket.fromJson(
+                  json_['amazonS3Bucket']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (amazonS3Bucket != null) 'amazonS3Bucket': amazonS3Bucket!,
       };
 }
 
@@ -15997,6 +18201,9 @@ class GooglePrivacyDlpV2ProjectDataProfile {
   /// The data risk level of this project.
   GooglePrivacyDlpV2DataRiskLevel? dataRiskLevel;
 
+  /// The number of file store data profiles generated for this project.
+  core.String? fileStoreDataProfileCount;
+
   /// The resource name of the profile.
   core.String? name;
 
@@ -16006,19 +18213,24 @@ class GooglePrivacyDlpV2ProjectDataProfile {
   /// Success or error status of the last attempt to profile the project.
   GooglePrivacyDlpV2ProfileStatus? profileStatus;
 
-  /// Project ID that was profiled.
+  /// Project ID or account that was profiled.
   core.String? projectId;
 
   /// The sensitivity score of this project.
   GooglePrivacyDlpV2SensitivityScore? sensitivityScore;
 
+  /// The number of table data profiles generated for this project.
+  core.String? tableDataProfileCount;
+
   GooglePrivacyDlpV2ProjectDataProfile({
     this.dataRiskLevel,
+    this.fileStoreDataProfileCount,
     this.name,
     this.profileLastGenerated,
     this.profileStatus,
     this.projectId,
     this.sensitivityScore,
+    this.tableDataProfileCount,
   });
 
   GooglePrivacyDlpV2ProjectDataProfile.fromJson(core.Map json_)
@@ -16027,6 +18239,8 @@ class GooglePrivacyDlpV2ProjectDataProfile {
               ? GooglePrivacyDlpV2DataRiskLevel.fromJson(
                   json_['dataRiskLevel'] as core.Map<core.String, core.dynamic>)
               : null,
+          fileStoreDataProfileCount:
+              json_['fileStoreDataProfileCount'] as core.String?,
           name: json_['name'] as core.String?,
           profileLastGenerated: json_['profileLastGenerated'] as core.String?,
           profileStatus: json_.containsKey('profileStatus')
@@ -16039,16 +18253,21 @@ class GooglePrivacyDlpV2ProjectDataProfile {
                   json_['sensitivityScore']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          tableDataProfileCount: json_['tableDataProfileCount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataRiskLevel != null) 'dataRiskLevel': dataRiskLevel!,
+        if (fileStoreDataProfileCount != null)
+          'fileStoreDataProfileCount': fileStoreDataProfileCount!,
         if (name != null) 'name': name!,
         if (profileLastGenerated != null)
           'profileLastGenerated': profileLastGenerated!,
         if (profileStatus != null) 'profileStatus': profileStatus!,
         if (projectId != null) 'projectId': projectId!,
         if (sensitivityScore != null) 'sensitivityScore': sensitivityScore!,
+        if (tableDataProfileCount != null)
+          'tableDataProfileCount': tableDataProfileCount!,
       };
 }
 
@@ -16164,6 +18383,7 @@ class GooglePrivacyDlpV2PubSubNotification {
   /// - "DETAIL_LEVEL_UNSPECIFIED" : Unused.
   /// - "TABLE_PROFILE" : The full table data profile.
   /// - "RESOURCE_NAME" : The name of the profiled resource.
+  /// - "FILE_STORE_PROFILE" : The full file store data profile.
   core.String? detailOfMessage;
 
   /// The type of event that triggers a Pub/Sub.
@@ -16245,6 +18465,9 @@ typedef GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog = $Empty;
 /// instance of this action can be specified. Compatible with: Inspect
 typedef GooglePrivacyDlpV2PublishSummaryToCscc = $Empty;
 
+/// Message expressing intention to publish to Google Security Operations.
+typedef GooglePrivacyDlpV2PublishToChronicle = $Empty;
+
 /// Publish a message into a given Pub/Sub topic when DlpJob has completed.
 ///
 /// The message contains a single field, `DlpJobName`, which is equal to the
@@ -16272,6 +18495,9 @@ class GooglePrivacyDlpV2PublishToPubSub {
         if (topic != null) 'topic': topic!,
       };
 }
+
+/// If set, a summary finding will be created/updated in SCC for each profile.
+typedef GooglePrivacyDlpV2PublishToSecurityCommandCenter = $Empty;
 
 /// Enable Stackdriver metric dlp.googleapis.com/finding_count.
 ///
@@ -17359,6 +19585,7 @@ class GooglePrivacyDlpV2SensitivityScore {
   /// - "SENSITIVITY_SCORE_UNSPECIFIED" : Unused.
   /// - "SENSITIVITY_LOW" : No sensitive information detected. The resource
   /// isn't publicly accessible.
+  /// - "SENSITIVITY_UNKNOWN" : Unable to determine sensitivity.
   /// - "SENSITIVITY_MODERATE" : Medium risk. Contains personally identifiable
   /// information (PII), potentially sensitive data, or fields with free-text
   /// data that are at a higher risk of having intermittent sensitive data.
@@ -17874,7 +20101,8 @@ class GooglePrivacyDlpV2TableDataProfile {
   /// The number of columns skipped in the table because of an error.
   core.String? failedColumnCount;
 
-  /// The resource name of the resource profiled.
+  /// The Cloud Asset Inventory resource that was profiled in order to generate
+  /// this TableDataProfile.
   ///
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
   core.String? fullResource;
@@ -17899,7 +20127,7 @@ class GooglePrivacyDlpV2TableDataProfile {
   /// May be empty if the profile is still being generated.
   GooglePrivacyDlpV2ProfileStatus? profileStatus;
 
-  /// The resource name to the project data profile for this table.
+  /// The resource name of the project data profile for this table.
   core.String? projectDataProfile;
 
   /// The labels applied to the resource at the time the profile was generated.
@@ -17911,7 +20139,7 @@ class GooglePrivacyDlpV2TableDataProfile {
   /// - "RESOURCE_VISIBILITY_PUBLIC" : Visible to any user.
   /// - "RESOURCE_VISIBILITY_INCONCLUSIVE" : May contain public items. For
   /// example, if a Cloud Storage bucket has uniform bucket level access
-  /// disabled, some objects inside it may be public.
+  /// disabled, some objects inside it may be public, but none are known yet.
   /// - "RESOURCE_VISIBILITY_RESTRICTED" : Visible only to specific users.
   core.String? resourceVisibility;
 
@@ -17936,7 +20164,7 @@ class GooglePrivacyDlpV2TableDataProfile {
   /// failed.
   core.String? state;
 
-  /// If the resource is BigQuery, the BigQuery table ID.
+  /// The table ID.
   core.String? tableId;
 
   /// The size of the table when the profile was generated.
@@ -18145,6 +20373,124 @@ class GooglePrivacyDlpV2TableReference {
       };
 }
 
+/// The tag to attach to profiles matching the condition.
+///
+/// At most one `TagCondition` can be specified per sensitivity level.
+class GooglePrivacyDlpV2TagCondition {
+  /// Conditions attaching the tag to a resource on its profile having this
+  /// sensitivity score.
+  GooglePrivacyDlpV2SensitivityScore? sensitivityScore;
+
+  /// The tag value to attach to resources.
+  GooglePrivacyDlpV2TagValue? tag;
+
+  GooglePrivacyDlpV2TagCondition({
+    this.sensitivityScore,
+    this.tag,
+  });
+
+  GooglePrivacyDlpV2TagCondition.fromJson(core.Map json_)
+      : this(
+          sensitivityScore: json_.containsKey('sensitivityScore')
+              ? GooglePrivacyDlpV2SensitivityScore.fromJson(
+                  json_['sensitivityScore']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          tag: json_.containsKey('tag')
+              ? GooglePrivacyDlpV2TagValue.fromJson(
+                  json_['tag'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sensitivityScore != null) 'sensitivityScore': sensitivityScore!,
+        if (tag != null) 'tag': tag!,
+      };
+}
+
+/// If set, attaches the
+/// [tags](https://cloud.google.com/resource-manager/docs/tags/tags-overview)
+/// provided to profiled resources.
+///
+/// Tags support
+/// [access control](https://cloud.google.com/iam/docs/tags-access-control). You
+/// can conditionally grant or deny access to a resource based on whether the
+/// resource has a specific tag.
+class GooglePrivacyDlpV2TagResources {
+  /// Whether applying a tag to a resource should lower the risk of the profile
+  /// for that resource.
+  ///
+  /// For example, in conjunction with an
+  /// [IAM deny policy](https://cloud.google.com/iam/docs/deny-overview), you
+  /// can deny all principals a permission if a tag value is present, mitigating
+  /// the risk of the resource. This also lowers the data risk of resources at
+  /// the lower levels of the resource hierarchy. For example, reducing the data
+  /// risk of a table data profile also reduces the data risk of the constituent
+  /// column data profiles.
+  core.bool? lowerDataRiskToLow;
+
+  /// The profile generations for which the tag should be attached to resources.
+  ///
+  /// If you attach a tag to only new profiles, then if the sensitivity score of
+  /// a profile subsequently changes, its tag doesn't change. By default, this
+  /// field includes only new profiles. To include both new and updated profiles
+  /// for tagging, this field should explicitly include both
+  /// `PROFILE_GENERATION_NEW` and `PROFILE_GENERATION_UPDATE`.
+  core.List<core.String>? profileGenerationsToTag;
+
+  /// The tags to associate with different conditions.
+  core.List<GooglePrivacyDlpV2TagCondition>? tagConditions;
+
+  GooglePrivacyDlpV2TagResources({
+    this.lowerDataRiskToLow,
+    this.profileGenerationsToTag,
+    this.tagConditions,
+  });
+
+  GooglePrivacyDlpV2TagResources.fromJson(core.Map json_)
+      : this(
+          lowerDataRiskToLow: json_['lowerDataRiskToLow'] as core.bool?,
+          profileGenerationsToTag:
+              (json_['profileGenerationsToTag'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+          tagConditions: (json_['tagConditions'] as core.List?)
+              ?.map((value) => GooglePrivacyDlpV2TagCondition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lowerDataRiskToLow != null)
+          'lowerDataRiskToLow': lowerDataRiskToLow!,
+        if (profileGenerationsToTag != null)
+          'profileGenerationsToTag': profileGenerationsToTag!,
+        if (tagConditions != null) 'tagConditions': tagConditions!,
+      };
+}
+
+/// A value of a tag.
+class GooglePrivacyDlpV2TagValue {
+  /// The namespaced name for the tag value to attach to resources.
+  ///
+  /// Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`, for
+  /// example, "123456/environment/prod".
+  core.String? namespacedValue;
+
+  GooglePrivacyDlpV2TagValue({
+    this.namespacedValue,
+  });
+
+  GooglePrivacyDlpV2TagValue.fromJson(core.Map json_)
+      : this(
+          namespacedValue: json_['namespacedValue'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (namespacedValue != null) 'namespacedValue': namespacedValue!,
+      };
+}
+
 /// A column with a semantic tag attached.
 class GooglePrivacyDlpV2TaggedField {
   /// A column can be tagged with a custom tag.
@@ -18285,9 +20631,9 @@ class GooglePrivacyDlpV2TimespanConfig {
 
   /// Specification of the field containing the timestamp of scanned items.
   ///
-  /// Used for data sources like Datastore and BigQuery. *For BigQuery* If this
-  /// value is not specified and the table was modified between the given start
-  /// and end times, the entire table will be scanned. If this value is
+  /// Used for data sources like Datastore and BigQuery. **For BigQuery** If
+  /// this value is not specified and the table was modified between the given
+  /// start and end times, the entire table will be scanned. If this value is
   /// specified, then rows are filtered based on the given start and end times.
   /// Rows with a `NULL` value in the provided BigQuery column are skipped.
   /// Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`,
@@ -18295,11 +20641,12 @@ class GooglePrivacyDlpV2TimespanConfig {
   /// [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time),
   /// you can use any of the following pseudo-columns as your timestamp field.
   /// When used with Cloud DLP, these pseudo-column names are case sensitive. -
-  /// _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If
-  /// this value is specified, then entities are filtered based on the given
-  /// start and end times. If an entity does not contain the provided timestamp
-  /// property or contains empty or invalid values, then it is included. Valid
-  /// data types of the provided timestamp property are: `TIMESTAMP`. See the
+  /// `_PARTITIONTIME` - `_PARTITIONDATE` - `_PARTITION_LOAD_TIME` **For
+  /// Datastore** If this value is specified, then entities are filtered based
+  /// on the given start and end times. If an entity does not contain the
+  /// provided timestamp property or contains empty or invalid values, then it
+  /// is included. Valid data types of the provided timestamp property are:
+  /// `TIMESTAMP`. See the
   /// [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-timespan)
   /// related to this operation.
   GooglePrivacyDlpV2FieldId? timestampField;
@@ -19015,7 +21362,7 @@ typedef GoogleProtobufEmpty = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef GoogleRpcStatus = $Status;
+typedef GoogleRpcStatus = $Status00;
 
 /// Represents a whole or partial calendar date, such as a birthday.
 ///
@@ -19034,4 +21381,4 @@ typedef GoogleTypeDate = $Date;
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-typedef GoogleTypeTimeOfDay = $TimeOfDay;
+typedef GoogleTypeTimeOfDay = $TimeOfDay00;

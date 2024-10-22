@@ -1932,6 +1932,11 @@ class Environment {
   /// Reserved for future use.
   ///
   /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
   core.bool? satisfiesPzs;
 
   /// The current state of the environment.
@@ -1968,6 +1973,7 @@ class Environment {
     this.createTime,
     this.labels,
     this.name,
+    this.satisfiesPzi,
     this.satisfiesPzs,
     this.state,
     this.storageConfig,
@@ -1990,6 +1996,7 @@ class Environment {
             ),
           ),
           name: json_['name'] as core.String?,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
           satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           state: json_['state'] as core.String?,
           storageConfig: json_.containsKey('storageConfig')
@@ -2005,6 +2012,7 @@ class Environment {
         if (createTime != null) 'createTime': createTime!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
         if (storageConfig != null) 'storageConfig': storageConfig!,
@@ -3835,7 +3843,7 @@ class SoftwareConfig {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Stop Airflow Command request.
 class StopAirflowCommandRequest {

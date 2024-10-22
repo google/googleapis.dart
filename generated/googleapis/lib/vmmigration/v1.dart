@@ -701,12 +701,10 @@ class ProjectsLocationsImageImportsResource {
   /// [parent] - Required. The parent, which owns this collection of targets.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. The filter request (according to
-  /// https://google.aip.dev/160).
+  /// [filter] - Optional. The filter request (according to AIP-160).
   ///
   /// [orderBy] - Optional. The order by fields for the result (according to
-  /// https://google.aip.dev/132#ordering). Currently ordering is only possible
-  /// by "name" field.
+  /// AIP-132). Currently ordering is only possible by "name" field.
   ///
   /// [pageSize] - Optional. The maximum number of targets to return. The
   /// service may return fewer than this value. If unspecified, at most 500
@@ -849,12 +847,10 @@ class ProjectsLocationsImageImportsImageImportJobsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/imageImports/\[^/\]+$`.
   ///
-  /// [filter] - Optional. The filter request (according to
-  /// https://google.aip.dev/160).
+  /// [filter] - Optional. The filter request (according to AIP-160).
   ///
   /// [orderBy] - Optional. The order by fields for the result (according to
-  /// https://google.aip.dev/132#ordering). Currently ordering is only possible
-  /// by "name" field.
+  /// AIP-132). Currently ordering is only possible by "name" field.
   ///
   /// [pageSize] - Optional. The maximum number of targets to return. The
   /// service may return fewer than this value. If unspecified, at most 500
@@ -3551,6 +3547,16 @@ class AwsSourceDetails {
 
 /// Represent the source AWS VM details.
 class AwsSourceVmDetails {
+  /// The VM architecture.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "VM_ARCHITECTURE_UNSPECIFIED" : The architecture is unknown.
+  /// - "VM_ARCHITECTURE_X86_FAMILY" : The architecture is one of the x86
+  /// architectures.
+  /// - "VM_ARCHITECTURE_ARM64" : The architecture is ARM64.
+  core.String? architecture;
+
   /// The total size of the disks being migrated in bytes.
   ///
   /// Output only.
@@ -3576,6 +3582,7 @@ class AwsSourceVmDetails {
   VmCapabilities? vmCapabilitiesInfo;
 
   AwsSourceVmDetails({
+    this.architecture,
     this.committedStorageBytes,
     this.disks,
     this.firmware,
@@ -3584,6 +3591,7 @@ class AwsSourceVmDetails {
 
   AwsSourceVmDetails.fromJson(core.Map json_)
       : this(
+          architecture: json_['architecture'] as core.String?,
           committedStorageBytes: json_['committedStorageBytes'] as core.String?,
           disks: (json_['disks'] as core.List?)
               ?.map((value) => AwsDiskDetails.fromJson(
@@ -3597,6 +3605,7 @@ class AwsSourceVmDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
         if (committedStorageBytes != null)
           'committedStorageBytes': committedStorageBytes!,
         if (disks != null) 'disks': disks!,
@@ -3917,6 +3926,16 @@ class AzureSourceDetails {
 
 /// Represent the source Azure VM details.
 class AzureSourceVmDetails {
+  /// The VM architecture.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "VM_ARCHITECTURE_UNSPECIFIED" : The architecture is unknown.
+  /// - "VM_ARCHITECTURE_X86_FAMILY" : The architecture is one of the x86
+  /// architectures.
+  /// - "VM_ARCHITECTURE_ARM64" : The architecture is ARM64.
+  core.String? architecture;
+
   /// The total size of the disks being migrated in bytes.
   ///
   /// Output only.
@@ -3942,6 +3961,7 @@ class AzureSourceVmDetails {
   VmCapabilities? vmCapabilitiesInfo;
 
   AzureSourceVmDetails({
+    this.architecture,
     this.committedStorageBytes,
     this.disks,
     this.firmware,
@@ -3950,6 +3970,7 @@ class AzureSourceVmDetails {
 
   AzureSourceVmDetails.fromJson(core.Map json_)
       : this(
+          architecture: json_['architecture'] as core.String?,
           committedStorageBytes: json_['committedStorageBytes'] as core.String?,
           disks: (json_['disks'] as core.List?)
               ?.map((value) => AzureDiskDetails.fromJson(
@@ -3963,6 +3984,7 @@ class AzureSourceVmDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
         if (committedStorageBytes != null)
           'committedStorageBytes': committedStorageBytes!,
         if (disks != null) 'disks': disks!,
@@ -3974,6 +3996,14 @@ class AzureSourceVmDetails {
 
 /// AzureVmDetails describes a VM in Azure.
 class AzureVmDetails {
+  /// The CPU architecture.
+  /// Possible string values are:
+  /// - "VM_ARCHITECTURE_UNSPECIFIED" : The architecture is unknown.
+  /// - "VM_ARCHITECTURE_X86_FAMILY" : The architecture is one of the x86
+  /// architectures.
+  /// - "VM_ARCHITECTURE_ARM64" : The architecture is ARM64.
+  core.String? architecture;
+
   /// The VM Boot Option.
   /// Possible string values are:
   /// - "BOOT_OPTION_UNSPECIFIED" : The boot option is unknown.
@@ -4029,6 +4059,7 @@ class AzureVmDetails {
   core.String? vmSize;
 
   AzureVmDetails({
+    this.architecture,
     this.bootOption,
     this.committedStorageMb,
     this.computerName,
@@ -4046,6 +4077,7 @@ class AzureVmDetails {
 
   AzureVmDetails.fromJson(core.Map json_)
       : this(
+          architecture: json_['architecture'] as core.String?,
           bootOption: json_['bootOption'] as core.String?,
           committedStorageMb: json_['committedStorageMb'] as core.String?,
           computerName: json_['computerName'] as core.String?,
@@ -4076,6 +4108,7 @@ class AzureVmDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
         if (bootOption != null) 'bootOption': bootOption!,
         if (committedStorageMb != null)
           'committedStorageMb': committedStorageMb!,
@@ -4143,6 +4176,8 @@ class BootDiskDefaults {
   /// - "COMPUTE_ENGINE_DISK_TYPE_SSD" : SSD hard disk type.
   /// - "COMPUTE_ENGINE_DISK_TYPE_BALANCED" : An alternative to SSD persistent
   /// disks that balance performance and cost.
+  /// - "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED" : Hyperdisk balanced disk
+  /// type.
   core.String? diskType;
 
   /// The encryption to apply to the boot disk.
@@ -4519,6 +4554,18 @@ class ComputeEngineTargetDefaults {
   /// Output only.
   AppliedLicense? appliedLicense;
 
+  /// By default the virtual machine will keep its existing boot option.
+  ///
+  /// Setting this property will trigger an internal process which will convert
+  /// the virtual machine from using the existing boot option to another.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "BOOT_CONVERSION_UNSPECIFIED" : Unspecified conversion type.
+  /// - "NONE" : No conversion.
+  /// - "BIOS_TO_EFI" : Convert from BIOS to EFI.
+  core.String? bootConversion;
+
   /// The VM Boot Option, as set in the source VM.
   ///
   /// Output only.
@@ -4539,7 +4586,24 @@ class ComputeEngineTargetDefaults {
   /// - "COMPUTE_ENGINE_DISK_TYPE_SSD" : SSD hard disk type.
   /// - "COMPUTE_ENGINE_DISK_TYPE_BALANCED" : An alternative to SSD persistent
   /// disks that balance performance and cost.
+  /// - "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED" : Hyperdisk balanced disk
+  /// type.
   core.String? diskType;
+
+  /// Defines whether the instance has integrity monitoring enabled.
+  ///
+  /// This can be set to true only if the VM boot option is EFI, and vTPM is
+  /// enabled.
+  ///
+  /// Optional.
+  core.bool? enableIntegrityMonitoring;
+
+  /// Defines whether the instance has vTPM enabled.
+  ///
+  /// This can be set to true only if the VM boot option is EFI.
+  ///
+  /// Optional.
+  core.bool? enableVtpm;
 
   /// The encryption to apply to the VM disks.
   ///
@@ -4598,9 +4662,12 @@ class ComputeEngineTargetDefaults {
   ComputeEngineTargetDefaults({
     this.additionalLicenses,
     this.appliedLicense,
+    this.bootConversion,
     this.bootOption,
     this.computeScheduling,
     this.diskType,
+    this.enableIntegrityMonitoring,
+    this.enableVtpm,
     this.encryption,
     this.hostname,
     this.labels,
@@ -4626,12 +4693,16 @@ class ComputeEngineTargetDefaults {
               ? AppliedLicense.fromJson(json_['appliedLicense']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          bootConversion: json_['bootConversion'] as core.String?,
           bootOption: json_['bootOption'] as core.String?,
           computeScheduling: json_.containsKey('computeScheduling')
               ? ComputeScheduling.fromJson(json_['computeScheduling']
                   as core.Map<core.String, core.dynamic>)
               : null,
           diskType: json_['diskType'] as core.String?,
+          enableIntegrityMonitoring:
+              json_['enableIntegrityMonitoring'] as core.bool?,
+          enableVtpm: json_['enableVtpm'] as core.bool?,
           encryption: json_.containsKey('encryption')
               ? Encryption.fromJson(
                   json_['encryption'] as core.Map<core.String, core.dynamic>)
@@ -4672,9 +4743,13 @@ class ComputeEngineTargetDefaults {
         if (additionalLicenses != null)
           'additionalLicenses': additionalLicenses!,
         if (appliedLicense != null) 'appliedLicense': appliedLicense!,
+        if (bootConversion != null) 'bootConversion': bootConversion!,
         if (bootOption != null) 'bootOption': bootOption!,
         if (computeScheduling != null) 'computeScheduling': computeScheduling!,
         if (diskType != null) 'diskType': diskType!,
+        if (enableIntegrityMonitoring != null)
+          'enableIntegrityMonitoring': enableIntegrityMonitoring!,
+        if (enableVtpm != null) 'enableVtpm': enableVtpm!,
         if (encryption != null) 'encryption': encryption!,
         if (hostname != null) 'hostname': hostname!,
         if (labels != null) 'labels': labels!,
@@ -4701,6 +4776,18 @@ class ComputeEngineTargetDetails {
   /// The OS license returned from the adaptation module report.
   AppliedLicense? appliedLicense;
 
+  /// By default the virtual machine will keep its existing boot option.
+  ///
+  /// Setting this property will trigger an internal process which will convert
+  /// the virtual machine from using the existing boot option to another.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "BOOT_CONVERSION_UNSPECIFIED" : Unspecified conversion type.
+  /// - "NONE" : No conversion.
+  /// - "BIOS_TO_EFI" : Convert from BIOS to EFI.
+  core.String? bootConversion;
+
   /// The VM Boot Option, as set in the source VM.
   /// Possible string values are:
   /// - "COMPUTE_ENGINE_BOOT_OPTION_UNSPECIFIED" : The boot option is unknown.
@@ -4719,7 +4806,19 @@ class ComputeEngineTargetDetails {
   /// - "COMPUTE_ENGINE_DISK_TYPE_SSD" : SSD hard disk type.
   /// - "COMPUTE_ENGINE_DISK_TYPE_BALANCED" : An alternative to SSD persistent
   /// disks that balance performance and cost.
+  /// - "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED" : Hyperdisk balanced disk
+  /// type.
   core.String? diskType;
+
+  /// Defines whether the instance has integrity monitoring enabled.
+  ///
+  /// Optional.
+  core.bool? enableIntegrityMonitoring;
+
+  /// Defines whether the instance has vTPM enabled.
+  ///
+  /// Optional.
+  core.bool? enableVtpm;
 
   /// The encryption to apply to the VM disks.
   ///
@@ -4777,9 +4876,12 @@ class ComputeEngineTargetDetails {
   ComputeEngineTargetDetails({
     this.additionalLicenses,
     this.appliedLicense,
+    this.bootConversion,
     this.bootOption,
     this.computeScheduling,
     this.diskType,
+    this.enableIntegrityMonitoring,
+    this.enableVtpm,
     this.encryption,
     this.hostname,
     this.labels,
@@ -4805,12 +4907,16 @@ class ComputeEngineTargetDetails {
               ? AppliedLicense.fromJson(json_['appliedLicense']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          bootConversion: json_['bootConversion'] as core.String?,
           bootOption: json_['bootOption'] as core.String?,
           computeScheduling: json_.containsKey('computeScheduling')
               ? ComputeScheduling.fromJson(json_['computeScheduling']
                   as core.Map<core.String, core.dynamic>)
               : null,
           diskType: json_['diskType'] as core.String?,
+          enableIntegrityMonitoring:
+              json_['enableIntegrityMonitoring'] as core.bool?,
+          enableVtpm: json_['enableVtpm'] as core.bool?,
           encryption: json_.containsKey('encryption')
               ? Encryption.fromJson(
                   json_['encryption'] as core.Map<core.String, core.dynamic>)
@@ -4851,9 +4957,13 @@ class ComputeEngineTargetDetails {
         if (additionalLicenses != null)
           'additionalLicenses': additionalLicenses!,
         if (appliedLicense != null) 'appliedLicense': appliedLicense!,
+        if (bootConversion != null) 'bootConversion': bootConversion!,
         if (bootOption != null) 'bootOption': bootOption!,
         if (computeScheduling != null) 'computeScheduling': computeScheduling!,
         if (diskType != null) 'diskType': diskType!,
+        if (enableIntegrityMonitoring != null)
+          'enableIntegrityMonitoring': enableIntegrityMonitoring!,
+        if (enableVtpm != null) 'enableVtpm': enableVtpm!,
         if (encryption != null) 'encryption': encryption!,
         if (hostname != null) 'hostname': hostname!,
         if (labels != null) 'labels': labels!,
@@ -4873,6 +4983,9 @@ class ComputeEngineTargetDetails {
 
 /// Scheduling information for VM on maintenance/restart behaviour and node
 /// allocation in sole tenant nodes.
+///
+/// Options for instance behavior when the host machine undergoes maintenance
+/// that may temporarily impact instance performance.
 class ComputeScheduling {
   /// The minimum number of virtual CPUs this instance will consume when running
   /// on a sole-tenant node.
@@ -5449,6 +5562,11 @@ class DiskImageDefaults {
 class DiskImageTargetDetails {
   /// Additional licenses to assign to the image.
   ///
+  /// Format:
+  /// https://www.googleapis.com/compute/v1/projects/PROJECT_ID/global/licenses/LICENSE_NAME
+  /// Or
+  /// https://www.googleapis.com/compute/beta/projects/PROJECT_ID/global/licenses/LICENSE_NAME
+  ///
   /// Optional.
   core.List<core.String>? additionalLicenses;
 
@@ -5587,6 +5705,16 @@ class DisksMigrationVmTargetDefaults {
   /// Optional.
   ComputeScheduling? computeScheduling;
 
+  /// Defines whether the instance has integrity monitoring enabled.
+  ///
+  /// Optional.
+  core.bool? enableIntegrityMonitoring;
+
+  /// Defines whether the instance has vTPM enabled.
+  ///
+  /// Optional.
+  core.bool? enableVtpm;
+
   /// The encryption to apply to the VM.
   ///
   /// Optional.
@@ -5650,6 +5778,8 @@ class DisksMigrationVmTargetDefaults {
     this.additionalLicenses,
     this.bootDiskDefaults,
     this.computeScheduling,
+    this.enableIntegrityMonitoring,
+    this.enableVtpm,
     this.encryption,
     this.hostname,
     this.labels,
@@ -5676,6 +5806,9 @@ class DisksMigrationVmTargetDefaults {
               ? ComputeScheduling.fromJson(json_['computeScheduling']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          enableIntegrityMonitoring:
+              json_['enableIntegrityMonitoring'] as core.bool?,
+          enableVtpm: json_['enableVtpm'] as core.bool?,
           encryption: json_.containsKey('encryption')
               ? Encryption.fromJson(
                   json_['encryption'] as core.Map<core.String, core.dynamic>)
@@ -5714,6 +5847,9 @@ class DisksMigrationVmTargetDefaults {
           'additionalLicenses': additionalLicenses!,
         if (bootDiskDefaults != null) 'bootDiskDefaults': bootDiskDefaults!,
         if (computeScheduling != null) 'computeScheduling': computeScheduling!,
+        if (enableIntegrityMonitoring != null)
+          'enableIntegrityMonitoring': enableIntegrityMonitoring!,
+        if (enableVtpm != null) 'enableVtpm': enableVtpm!,
         if (encryption != null) 'encryption': encryption!,
         if (hostname != null) 'hostname': hostname!,
         if (labels != null) 'labels': labels!,
@@ -5931,6 +6067,12 @@ class ImageImport {
   /// Immutable.
   Encryption? encryption;
 
+  /// Target details for importing a machine image, will be used by
+  /// ImageImportJob.
+  ///
+  /// Immutable.
+  MachineImageTargetDetails? machineImageTargetDefaults;
+
   /// The resource path of the ImageImport.
   ///
   /// Output only.
@@ -5948,6 +6090,7 @@ class ImageImport {
     this.createTime,
     this.diskImageTargetDefaults,
     this.encryption,
+    this.machineImageTargetDefaults,
     this.name,
     this.recentImageImportJobs,
   });
@@ -5964,6 +6107,12 @@ class ImageImport {
               ? Encryption.fromJson(
                   json_['encryption'] as core.Map<core.String, core.dynamic>)
               : null,
+          machineImageTargetDefaults:
+              json_.containsKey('machineImageTargetDefaults')
+                  ? MachineImageTargetDetails.fromJson(
+                      json_['machineImageTargetDefaults']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           name: json_['name'] as core.String?,
           recentImageImportJobs: (json_['recentImageImportJobs'] as core.List?)
               ?.map((value) => ImageImportJob.fromJson(
@@ -5977,6 +6126,8 @@ class ImageImport {
         if (diskImageTargetDefaults != null)
           'diskImageTargetDefaults': diskImageTargetDefaults!,
         if (encryption != null) 'encryption': encryption!,
+        if (machineImageTargetDefaults != null)
+          'machineImageTargetDefaults': machineImageTargetDefaults!,
         if (name != null) 'name': name!,
         if (recentImageImportJobs != null)
           'recentImageImportJobs': recentImageImportJobs!,
@@ -6018,6 +6169,11 @@ class ImageImportJob {
   /// Output only.
   core.List<Status>? errors;
 
+  /// Target details used to import a machine image.
+  ///
+  /// Output only.
+  MachineImageTargetDetails? machineImageTargetDetails;
+
   /// The resource path of the ImageImportJob.
   ///
   /// Output only.
@@ -6053,6 +6209,7 @@ class ImageImportJob {
     this.diskImageTargetDetails,
     this.endTime,
     this.errors,
+    this.machineImageTargetDetails,
     this.name,
     this.state,
     this.steps,
@@ -6075,6 +6232,12 @@ class ImageImportJob {
               ?.map((value) =>
                   Status.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
+          machineImageTargetDetails:
+              json_.containsKey('machineImageTargetDetails')
+                  ? MachineImageTargetDetails.fromJson(
+                      json_['machineImageTargetDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           name: json_['name'] as core.String?,
           state: json_['state'] as core.String?,
           steps: (json_['steps'] as core.List?)
@@ -6095,6 +6258,8 @@ class ImageImportJob {
           'diskImageTargetDetails': diskImageTargetDetails!,
         if (endTime != null) 'endTime': endTime!,
         if (errors != null) 'errors': errors!,
+        if (machineImageTargetDetails != null)
+          'machineImageTargetDetails': machineImageTargetDetails!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
         if (steps != null) 'steps': steps!,
@@ -6773,6 +6938,213 @@ typedef LocalizedMessage = $LocalizedMessage;
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
+/// Parameters overriding decisions based on the source machine image
+/// configurations.
+class MachineImageParametersOverrides {
+  /// The machine type to create the MachineImage with.
+  ///
+  /// If empty, the service will choose a relevant machine type based on the
+  /// information from the source image. For more information about machine
+  /// types, please refer to
+  /// https://cloud.google.com/compute/docs/machine-resource.
+  ///
+  /// Optional.
+  core.String? machineType;
+
+  MachineImageParametersOverrides({
+    this.machineType,
+  });
+
+  MachineImageParametersOverrides.fromJson(core.Map json_)
+      : this(
+          machineType: json_['machineType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (machineType != null) 'machineType': machineType!,
+      };
+}
+
+/// The target details of the machine image resource that will be created by the
+/// image import job.
+class MachineImageTargetDetails {
+  /// Additional licenses to assign to the instance created by the machine
+  /// image.
+  ///
+  /// Format:
+  /// https://www.googleapis.com/compute/v1/projects/PROJECT_ID/global/licenses/LICENSE_NAME
+  /// Or
+  /// https://www.googleapis.com/compute/beta/projects/PROJECT_ID/global/licenses/LICENSE_NAME
+  ///
+  /// Optional.
+  core.List<core.String>? additionalLicenses;
+
+  /// An optional description of the machine image.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The encryption to apply to the machine image.
+  ///
+  /// Immutable.
+  Encryption? encryption;
+
+  /// The labels to apply to the instance created by the machine image.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The name of the machine image to be created.
+  ///
+  /// Required.
+  core.String? machineImageName;
+
+  /// Parameters overriding decisions based on the source machine image
+  /// configurations.
+  ///
+  /// Optional.
+  MachineImageParametersOverrides? machineImageParametersOverrides;
+
+  /// The network interfaces to create with the instance created by the machine
+  /// image.
+  ///
+  /// Internal and external IP addresses are ignored for machine image import.
+  ///
+  /// Optional.
+  core.List<NetworkInterface>? networkInterfaces;
+
+  /// Use to set the parameters relevant for the OS adaptation process.
+  ///
+  /// Optional.
+  ImageImportOsAdaptationParameters? osAdaptationParameters;
+
+  /// The service account to assign to the instance created by the machine
+  /// image.
+  ///
+  /// Optional.
+  ServiceAccount? serviceAccount;
+
+  /// Shielded instance configuration.
+  ///
+  /// Optional.
+  ShieldedInstanceConfig? shieldedInstanceConfig;
+
+  /// Set to true to set the machine image storageLocations to the single region
+  /// of the import job.
+  ///
+  /// When false, the closest multi-region is selected.
+  ///
+  /// Optional.
+  core.bool? singleRegionStorage;
+
+  /// Use to skip OS adaptation process.
+  ///
+  /// Optional.
+  SkipOsAdaptation? skipOsAdaptation;
+
+  /// The tags to apply to the instance created by the machine image.
+  ///
+  /// Optional.
+  core.List<core.String>? tags;
+
+  /// Reference to the TargetProject resource that represents the target project
+  /// in which the imported machine image will be created.
+  ///
+  /// Required.
+  core.String? targetProject;
+
+  MachineImageTargetDetails({
+    this.additionalLicenses,
+    this.description,
+    this.encryption,
+    this.labels,
+    this.machineImageName,
+    this.machineImageParametersOverrides,
+    this.networkInterfaces,
+    this.osAdaptationParameters,
+    this.serviceAccount,
+    this.shieldedInstanceConfig,
+    this.singleRegionStorage,
+    this.skipOsAdaptation,
+    this.tags,
+    this.targetProject,
+  });
+
+  MachineImageTargetDetails.fromJson(core.Map json_)
+      : this(
+          additionalLicenses: (json_['additionalLicenses'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          description: json_['description'] as core.String?,
+          encryption: json_.containsKey('encryption')
+              ? Encryption.fromJson(
+                  json_['encryption'] as core.Map<core.String, core.dynamic>)
+              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          machineImageName: json_['machineImageName'] as core.String?,
+          machineImageParametersOverrides:
+              json_.containsKey('machineImageParametersOverrides')
+                  ? MachineImageParametersOverrides.fromJson(
+                      json_['machineImageParametersOverrides']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          networkInterfaces: (json_['networkInterfaces'] as core.List?)
+              ?.map((value) => NetworkInterface.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          osAdaptationParameters: json_.containsKey('osAdaptationParameters')
+              ? ImageImportOsAdaptationParameters.fromJson(
+                  json_['osAdaptationParameters']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          serviceAccount: json_.containsKey('serviceAccount')
+              ? ServiceAccount.fromJson(json_['serviceAccount']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          shieldedInstanceConfig: json_.containsKey('shieldedInstanceConfig')
+              ? ShieldedInstanceConfig.fromJson(json_['shieldedInstanceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          singleRegionStorage: json_['singleRegionStorage'] as core.bool?,
+          skipOsAdaptation: json_.containsKey('skipOsAdaptation')
+              ? SkipOsAdaptation.fromJson(json_['skipOsAdaptation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          tags: (json_['tags'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          targetProject: json_['targetProject'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalLicenses != null)
+          'additionalLicenses': additionalLicenses!,
+        if (description != null) 'description': description!,
+        if (encryption != null) 'encryption': encryption!,
+        if (labels != null) 'labels': labels!,
+        if (machineImageName != null) 'machineImageName': machineImageName!,
+        if (machineImageParametersOverrides != null)
+          'machineImageParametersOverrides': machineImageParametersOverrides!,
+        if (networkInterfaces != null) 'networkInterfaces': networkInterfaces!,
+        if (osAdaptationParameters != null)
+          'osAdaptationParameters': osAdaptationParameters!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (shieldedInstanceConfig != null)
+          'shieldedInstanceConfig': shieldedInstanceConfig!,
+        if (singleRegionStorage != null)
+          'singleRegionStorage': singleRegionStorage!,
+        if (skipOsAdaptation != null) 'skipOsAdaptation': skipOsAdaptation!,
+        if (tags != null) 'tags': tags!,
+        if (targetProject != null) 'targetProject': targetProject!,
+      };
+}
+
 /// MigratingVm describes the VM that will be migrated from a Source environment
 /// and its replication state.
 class MigratingVm {
@@ -7141,13 +7513,30 @@ class NetworkInterface {
   /// The network to connect the NIC to.
   core.String? network;
 
+  /// The networking tier used for optimizing connectivity between instances and
+  /// systems on the internet.
+  ///
+  /// Applies only for external ephemeral IP addresses. If left empty, will
+  /// default to PREMIUM.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "COMPUTE_ENGINE_NETWORK_TIER_UNSPECIFIED" : An unspecified network tier.
+  /// Will be used as PREMIUM.
+  /// - "NETWORK_TIER_STANDARD" : A standard network tier.
+  /// - "NETWORK_TIER_PREMIUM" : A premium network tier.
+  core.String? networkTier;
+
   /// The subnetwork to connect the NIC to.
+  ///
+  /// Optional.
   core.String? subnetwork;
 
   NetworkInterface({
     this.externalIp,
     this.internalIp,
     this.network,
+    this.networkTier,
     this.subnetwork,
   });
 
@@ -7156,6 +7545,7 @@ class NetworkInterface {
           externalIp: json_['externalIp'] as core.String?,
           internalIp: json_['internalIp'] as core.String?,
           network: json_['network'] as core.String?,
+          networkTier: json_['networkTier'] as core.String?,
           subnetwork: json_['subnetwork'] as core.String?,
         );
 
@@ -7163,6 +7553,7 @@ class NetworkInterface {
         if (externalIp != null) 'externalIp': externalIp!,
         if (internalIp != null) 'internalIp': internalIp!,
         if (network != null) 'network': network!,
+        if (networkTier != null) 'networkTier': networkTier!,
         if (subnetwork != null) 'subnetwork': subnetwork!,
       };
 }
@@ -7359,6 +7750,8 @@ class PersistentDiskDefaults {
   /// - "COMPUTE_ENGINE_DISK_TYPE_SSD" : SSD hard disk type.
   /// - "COMPUTE_ENGINE_DISK_TYPE_BALANCED" : An alternative to SSD persistent
   /// disks that balance performance and cost.
+  /// - "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED" : Hyperdisk balanced disk
+  /// type.
   core.String? diskType;
 
   /// The encryption to apply to the disk.
@@ -7373,7 +7766,7 @@ class PersistentDiskDefaults {
 
   /// Details for attachment of the disk to a VM.
   ///
-  /// Used when the disk is set to be attacked to a target VM.
+  /// Used when the disk is set to be attached to a target VM.
   ///
   /// Optional.
   VmAttachmentDetails? vmAttachmentDetails;
@@ -7688,8 +8081,98 @@ class SchedulingNodeAffinity {
       };
 }
 
+/// Service account to assign to the instance created by the machine image.
+class ServiceAccount {
+  /// The email address of the service account.
+  ///
+  /// Required.
+  core.String? email;
+
+  /// The list of scopes to be made available for this service account.
+  ///
+  /// Optional.
+  core.List<core.String>? scopes;
+
+  ServiceAccount({
+    this.email,
+    this.scopes,
+  });
+
+  ServiceAccount.fromJson(core.Map json_)
+      : this(
+          email: json_['email'] as core.String?,
+          scopes: (json_['scopes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (email != null) 'email': email!,
+        if (scopes != null) 'scopes': scopes!,
+      };
+}
+
+/// Shielded instance configuration.
+class ShieldedInstanceConfig {
+  /// Defines whether the instance created by the machine image has integrity
+  /// monitoring enabled.
+  ///
+  /// This can be set to true only if the image boot option is EFI, and vTPM is
+  /// enabled.
+  ///
+  /// Optional.
+  core.bool? enableIntegrityMonitoring;
+
+  /// Defines whether the instance created by the machine image has vTPM
+  /// enabled.
+  ///
+  /// This can be set to true only if the image boot option is EFI.
+  ///
+  /// Optional.
+  core.bool? enableVtpm;
+
+  /// Defines whether the instance created by the machine image has Secure Boot
+  /// enabled.
+  ///
+  /// This can be set to true only if the image boot option is EFI.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SECURE_BOOT_UNSPECIFIED" : No explicit value is selected. Will use the
+  /// configuration of the source (if exists, otherwise the default will be
+  /// false).
+  /// - "TRUE" : Use secure boot. This can be set to true only if the image boot
+  /// option is EFI.
+  /// - "FALSE" : Do not use secure boot.
+  core.String? secureBoot;
+
+  ShieldedInstanceConfig({
+    this.enableIntegrityMonitoring,
+    this.enableVtpm,
+    this.secureBoot,
+  });
+
+  ShieldedInstanceConfig.fromJson(core.Map json_)
+      : this(
+          enableIntegrityMonitoring:
+              json_['enableIntegrityMonitoring'] as core.bool?,
+          enableVtpm: json_['enableVtpm'] as core.bool?,
+          secureBoot: json_['secureBoot'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableIntegrityMonitoring != null)
+          'enableIntegrityMonitoring': enableIntegrityMonitoring!,
+        if (enableVtpm != null) 'enableVtpm': enableVtpm!,
+        if (secureBoot != null) 'secureBoot': secureBoot!,
+      };
+}
+
 /// ShuttingDownSourceVMStep contains specific step details.
 typedef ShuttingDownSourceVMStep = $Empty;
+
+/// Mentions that the machine image import is not using OS adaptation process.
+typedef SkipOsAdaptation = $Empty;
 
 /// Source message describes a specific vm migration Source resource.
 ///
@@ -7796,7 +8279,7 @@ typedef StartMigrationRequest = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Tag is an AWS tag representation.
 class Tag {
@@ -8336,6 +8819,16 @@ class VmwareSourceDetails {
 
 /// Represent the source Vmware VM details.
 class VmwareSourceVmDetails {
+  /// The VM architecture.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "VM_ARCHITECTURE_UNSPECIFIED" : The architecture is unknown.
+  /// - "VM_ARCHITECTURE_X86_FAMILY" : The architecture is one of the x86
+  /// architectures.
+  /// - "VM_ARCHITECTURE_ARM64" : The architecture is ARM64.
+  core.String? architecture;
+
   /// The total size of the disks being migrated in bytes.
   ///
   /// Output only.
@@ -8361,6 +8854,7 @@ class VmwareSourceVmDetails {
   VmCapabilities? vmCapabilitiesInfo;
 
   VmwareSourceVmDetails({
+    this.architecture,
     this.committedStorageBytes,
     this.disks,
     this.firmware,
@@ -8369,6 +8863,7 @@ class VmwareSourceVmDetails {
 
   VmwareSourceVmDetails.fromJson(core.Map json_)
       : this(
+          architecture: json_['architecture'] as core.String?,
           committedStorageBytes: json_['committedStorageBytes'] as core.String?,
           disks: (json_['disks'] as core.List?)
               ?.map((value) => VmwareDiskDetails.fromJson(
@@ -8382,6 +8877,7 @@ class VmwareSourceVmDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
         if (committedStorageBytes != null)
           'committedStorageBytes': committedStorageBytes!,
         if (disks != null) 'disks': disks!,
@@ -8393,6 +8889,16 @@ class VmwareSourceVmDetails {
 
 /// VmwareVmDetails describes a VM in vCenter.
 class VmwareVmDetails {
+  /// The CPU architecture.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "VM_ARCHITECTURE_UNSPECIFIED" : The architecture is unknown.
+  /// - "VM_ARCHITECTURE_X86_FAMILY" : The architecture is one of the x86
+  /// architectures.
+  /// - "VM_ARCHITECTURE_ARM64" : The architecture is ARM64.
+  core.String? architecture;
+
   /// The VM Boot Option.
   ///
   /// Output only.
@@ -8450,6 +8956,7 @@ class VmwareVmDetails {
   core.String? vmId;
 
   VmwareVmDetails({
+    this.architecture,
     this.bootOption,
     this.committedStorageMb,
     this.cpuCount,
@@ -8466,6 +8973,7 @@ class VmwareVmDetails {
 
   VmwareVmDetails.fromJson(core.Map json_)
       : this(
+          architecture: json_['architecture'] as core.String?,
           bootOption: json_['bootOption'] as core.String?,
           committedStorageMb: json_['committedStorageMb'] as core.String?,
           cpuCount: json_['cpuCount'] as core.int?,
@@ -8481,6 +8989,7 @@ class VmwareVmDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
         if (bootOption != null) 'bootOption': bootOption!,
         if (committedStorageMb != null)
           'committedStorageMb': committedStorageMb!,

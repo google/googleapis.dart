@@ -15,6 +15,58 @@
     "description": "Connect third-party source code management to Google",
     "discoveryVersion": "v1",
     "documentationLink": "http://cloud.google.com/developer-connect/docs/overview",
+    "endpoints": [
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://developerconnect.us-central1.rep.googleapis.com/",
+            "location": "us-central1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://developerconnect.europe-west1.rep.googleapis.com/",
+            "location": "europe-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://developerconnect.asia-east1.rep.googleapis.com/",
+            "location": "asia-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://developerconnect.asia-east2.rep.googleapis.com/",
+            "location": "asia-east2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://developerconnect.europe-west4.rep.googleapis.com/",
+            "location": "europe-west4"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://developerconnect.us-east4.rep.googleapis.com/",
+            "location": "us-east4"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://developerconnect.us-east5.rep.googleapis.com/",
+            "location": "us-east5"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://developerconnect.asia-southeast1.rep.googleapis.com/",
+            "location": "asia-southeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://developerconnect.us-west1.rep.googleapis.com/",
+            "location": "us-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://developerconnect.us-west2.rep.googleapis.com/",
+            "location": "us-west2"
+        }
+    ],
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -25,7 +77,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240605",
+    "revision": "20241014",
     "rootUrl": "https://developerconnect.googleapis.com/",
     "servicePath": "",
     "title": "Developer Connect API",
@@ -425,7 +477,7 @@
                                             "type": "string"
                                         },
                                         "updateMask": {
-                                            "description": "Required. Field mask is used to specify the fields to be overwritten in the Connection resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.",
+                                            "description": "Optional. Required. Field mask is used to specify the fields to be overwritten in the Connection resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.",
                                             "format": "google-fieldmask",
                                             "location": "query",
                                             "type": "string"
@@ -446,6 +498,31 @@
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
+                                },
+                                "processGitHubEnterpriseWebhook": {
+                                    "description": "ProcessGitHubEnterpriseWebhook is called by the external GitHub Enterprise instances for notifying events.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/connections:processGitHubEnterpriseWebhook",
+                                    "httpMethod": "POST",
+                                    "id": "developerconnect.projects.locations.connections.processGitHubEnterpriseWebhook",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. Project and location where the webhook will be received. Format: `projects/*/locations/*`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/connections:processGitHubEnterpriseWebhook",
+                                    "request": {
+                                        "$ref": "ProcessGitHubEnterpriseWebhookRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Empty"
+                                    }
                                 }
                             },
                             "resources": {
@@ -711,6 +788,59 @@
                                             "scopes": [
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
+                                        },
+                                        "processGitLabEnterpriseWebhook": {
+                                            "description": "ProcessGitLabEnterpriseWebhook is called by the external GitLab Enterprise instances for notifying events.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/gitRepositoryLinks/{gitRepositoryLinksId}:processGitLabEnterpriseWebhook",
+                                            "httpMethod": "POST",
+                                            "id": "developerconnect.projects.locations.connections.gitRepositoryLinks.processGitLabEnterpriseWebhook",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "description": "Required. The GitRepositoryLink resource where the webhook will be received. Format: `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/connections/[^/]+/gitRepositoryLinks/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+name}:processGitLabEnterpriseWebhook",
+                                            "request": {
+                                                "$ref": "ProcessGitLabEnterpriseWebhookRequest"
+                                            },
+                                            "response": {
+                                                "$ref": "Empty"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
+                                        "processGitLabWebhook": {
+                                            "description": "ProcessGitLabWebhook is called by the GitLab.com for notifying events.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/gitRepositoryLinks/{gitRepositoryLinksId}:processGitLabWebhook",
+                                            "httpMethod": "POST",
+                                            "id": "developerconnect.projects.locations.connections.gitRepositoryLinks.processGitLabWebhook",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "description": "Required. The GitRepositoryLink resource where the webhook will be received. Format: `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/connections/[^/]+/gitRepositoryLinks/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+name}:processGitLabWebhook",
+                                            "request": {
+                                                "$ref": "ProcessGitLabWebhookRequest"
+                                            },
+                                            "response": {
+                                                "$ref": "Empty"
+                                            }
                                         }
                                     }
                                 }
@@ -868,6 +998,10 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "cryptoKeyConfig": {
+                    "$ref": "CryptoKeyConfig",
+                    "description": "Optional. The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature."
+                },
                 "deleteTime": {
                     "description": "Output only. [Output only] Delete timestamp",
                     "format": "google-datetime",
@@ -885,6 +1019,18 @@
                 "githubConfig": {
                     "$ref": "GitHubConfig",
                     "description": "Configuration for connections to github.com."
+                },
+                "githubEnterpriseConfig": {
+                    "$ref": "GitHubEnterpriseConfig",
+                    "description": "Configuration for connections to an instance of GitHub Enterprise."
+                },
+                "gitlabConfig": {
+                    "$ref": "GitLabConfig",
+                    "description": "Configuration for connections to gitlab.com."
+                },
+                "gitlabEnterpriseConfig": {
+                    "$ref": "GitLabEnterpriseConfig",
+                    "description": "Configuration for connections to an instance of GitLab Enterprise."
                 },
                 "installationState": {
                     "$ref": "InstallationState",
@@ -916,6 +1062,17 @@
                     "description": "Output only. [Output only] Update timestamp",
                     "format": "google-datetime",
                     "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CryptoKeyConfig": {
+            "description": "The crypto key configuration. This field is used by the Customer-managed encryption keys (CMEK) feature.",
+            "id": "CryptoKeyConfig",
+            "properties": {
+                "keyReference": {
+                    "description": "Required. The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.",
                     "type": "string"
                 }
             },
@@ -1064,6 +1221,113 @@
             },
             "type": "object"
         },
+        "GitHubEnterpriseConfig": {
+            "description": "Configuration for connections to an instance of GitHub Enterprise.",
+            "id": "GitHubEnterpriseConfig",
+            "properties": {
+                "appId": {
+                    "description": "Optional. ID of the GitHub App created from the manifest.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "appInstallationId": {
+                    "description": "Optional. ID of the installation of the GitHub App.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "appSlug": {
+                    "description": "Output only. The URL-friendly name of the GitHub App.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "hostUri": {
+                    "description": "Required. The URI of the GitHub Enterprise host this connection is for.",
+                    "type": "string"
+                },
+                "installationUri": {
+                    "description": "Output only. The URI to navigate to in order to manage the installation associated with this GitHubEnterpriseConfig.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "privateKeySecretVersion": {
+                    "description": "Optional. SecretManager resource containing the private key of the GitHub App, formatted as `projects/*/secrets/*/versions/*`.",
+                    "type": "string"
+                },
+                "serverVersion": {
+                    "description": "Output only. GitHub Enterprise version installed at the host_uri.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "serviceDirectoryConfig": {
+                    "$ref": "ServiceDirectoryConfig",
+                    "description": "Optional. Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public internet."
+                },
+                "sslCaCertificate": {
+                    "description": "Optional. SSL certificate to use for requests to GitHub Enterprise.",
+                    "type": "string"
+                },
+                "webhookSecretSecretVersion": {
+                    "description": "Optional. SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*/secrets/*/versions/*`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GitLabConfig": {
+            "description": "Configuration for connections to gitlab.com.",
+            "id": "GitLabConfig",
+            "properties": {
+                "authorizerCredential": {
+                    "$ref": "UserCredential",
+                    "description": "Required. A GitLab personal access token with the minimum `api` scope access and a minimum role of `maintainer`. The GitLab Projects visible to this Personal Access Token will control which Projects Developer Connect has access to."
+                },
+                "readAuthorizerCredential": {
+                    "$ref": "UserCredential",
+                    "description": "Required. A GitLab personal access token with the minimum `read_api` scope access and a minimum role of `reporter`. The GitLab Projects visible to this Personal Access Token will control which Projects Developer Connect has access to."
+                },
+                "webhookSecretSecretVersion": {
+                    "description": "Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project, formatted as `projects/*/secrets/*/versions/*`. This is used to validate webhooks.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GitLabEnterpriseConfig": {
+            "description": "Configuration for connections to an instance of GitLab Enterprise.",
+            "id": "GitLabEnterpriseConfig",
+            "properties": {
+                "authorizerCredential": {
+                    "$ref": "UserCredential",
+                    "description": "Required. A GitLab personal access token with the minimum `api` scope access and a minimum role of `maintainer`. The GitLab Projects visible to this Personal Access Token will control which Projects Developer Connect has access to."
+                },
+                "hostUri": {
+                    "description": "Required. The URI of the GitLab Enterprise host this connection is for.",
+                    "type": "string"
+                },
+                "readAuthorizerCredential": {
+                    "$ref": "UserCredential",
+                    "description": "Required. A GitLab personal access token with the minimum `read_api` scope access and a minimum role of `reporter`. The GitLab Projects visible to this Personal Access Token will control which Projects Developer Connect has access to."
+                },
+                "serverVersion": {
+                    "description": "Output only. Version of the GitLab Enterprise server running on the `host_uri`.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "serviceDirectoryConfig": {
+                    "$ref": "ServiceDirectoryConfig",
+                    "description": "Optional. Configuration for using Service Directory to privately connect to a GitLab Enterprise instance. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet."
+                },
+                "sslCaCertificate": {
+                    "description": "Optional. SSL Certificate Authority certificate to use for requests to GitLab Enterprise instance.",
+                    "type": "string"
+                },
+                "webhookSecretSecretVersion": {
+                    "description": "Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project, formatted as `projects/*/secrets/*/versions/*`. This is used to validate webhooks.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GitRepositoryLink": {
             "description": "Message describing the GitRepositoryLink object",
             "id": "GitRepositoryLink",
@@ -1121,6 +1385,38 @@
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
+                },
+                "webhookId": {
+                    "description": "Output only. External ID of the webhook created for the repository.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "HttpBody": {
+            "description": "Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged.",
+            "id": "HttpBody",
+            "properties": {
+                "contentType": {
+                    "description": "The HTTP Content-Type header value specifying the content type of the body.",
+                    "type": "string"
+                },
+                "data": {
+                    "description": "The HTTP request/response body as raw binary.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "extensions": {
+                    "description": "Application specific response metadata. Must be set in the first response for streaming APIs.",
+                    "items": {
+                        "additionalProperties": {
+                            "description": "Properties of the object. Contains field @type with type URL.",
+                            "type": "any"
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -1407,6 +1703,50 @@
             },
             "type": "object"
         },
+        "ProcessGitHubEnterpriseWebhookRequest": {
+            "description": "RPC request object accepted by the ProcessGitHubEnterpriseWebhook RPC method.",
+            "id": "ProcessGitHubEnterpriseWebhookRequest",
+            "properties": {
+                "body": {
+                    "$ref": "HttpBody",
+                    "description": "Required. HTTP request body."
+                }
+            },
+            "type": "object"
+        },
+        "ProcessGitLabEnterpriseWebhookRequest": {
+            "description": "RPC request object accepted by the ProcessGitLabEnterpriseWebhook RPC method.",
+            "id": "ProcessGitLabEnterpriseWebhookRequest",
+            "properties": {
+                "body": {
+                    "$ref": "HttpBody",
+                    "description": "Required. HTTP request body."
+                }
+            },
+            "type": "object"
+        },
+        "ProcessGitLabWebhookRequest": {
+            "description": "RPC request object accepted by the ProcessGitLabWebhook RPC method.",
+            "id": "ProcessGitLabWebhookRequest",
+            "properties": {
+                "body": {
+                    "$ref": "HttpBody",
+                    "description": "Required. HTTP request body."
+                }
+            },
+            "type": "object"
+        },
+        "ServiceDirectoryConfig": {
+            "description": "ServiceDirectoryConfig represents Service Directory configuration for a connection.",
+            "id": "ServiceDirectoryConfig",
+            "properties": {
+                "service": {
+                    "description": "Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Status": {
             "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
             "id": "Status",
@@ -1429,6 +1769,22 @@
                 },
                 "message": {
                     "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UserCredential": {
+            "description": "Represents a personal access token that authorized the Connection, and associated metadata.",
+            "id": "UserCredential",
+            "properties": {
+                "userTokenSecretVersion": {
+                    "description": "Required. A SecretManager resource containing the user token that authorizes the Developer Connect connection. Format: `projects/*/secrets/*/versions/*`.",
+                    "type": "string"
+                },
+                "username": {
+                    "description": "Output only. The username associated with this token.",
+                    "readOnly": true,
                     "type": "string"
                 }
             },

@@ -2912,6 +2912,8 @@ class AcceleratorConfig {
   /// Workstations.
   /// - "NVIDIA_TESLA_P4_VWS" : Accelerator type is NVIDIA Tesla P4 Virtual
   /// Workstations.
+  /// - "NVIDIA_H100_80GB" : Accelerator type is NVIDIA H100 80GB.
+  /// - "NVIDIA_H100_MEGA_80GB" : Accelerator type is NVIDIA H100 Mega 80GB.
   /// - "TPU_V2" : (Coming soon) Accelerator type is TPU V2.
   /// - "TPU_V3" : (Coming soon) Accelerator type is TPU V3.
   core.String? type;
@@ -4158,8 +4160,8 @@ class Instance {
   /// `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
   core.String? subnet;
 
-  /// The Compute Engine tags to add to runtime (see
-  /// [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+  /// The Compute Engine network tags to add to runtime (see
+  /// [Add network tags](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
   ///
   /// Optional.
   core.List<core.String>? tags;
@@ -5197,7 +5199,7 @@ class Policy {
 }
 
 /// Request for getting a new access token.
-typedef RefreshRuntimeTokenInternalRequest = $Request09;
+typedef RefreshRuntimeTokenInternalRequest = $Request11;
 
 /// Response with a new access token.
 class RefreshRuntimeTokenInternalResponse {
@@ -6136,6 +6138,8 @@ class SetInstanceAcceleratorRequest {
   /// Workstations.
   /// - "NVIDIA_TESLA_P4_VWS" : Accelerator type is NVIDIA Tesla P4 Virtual
   /// Workstations.
+  /// - "NVIDIA_H100_80GB" : Accelerator type is NVIDIA H100 80GB.
+  /// - "NVIDIA_H100_MEGA_80GB" : Accelerator type is NVIDIA H100 Mega 80GB.
   /// - "TPU_V2" : (Coming soon) Accelerator type is TPU V2.
   /// - "TPU_V3" : (Coming soon) Accelerator type is TPU V3.
   core.String? type;
@@ -6226,7 +6230,7 @@ typedef StartRuntimeRequest = $RuntimeRequest;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Request for stopping a notebook instance
 typedef StopInstanceRequest = $Empty;
@@ -6745,8 +6749,8 @@ class VirtualMachineConfig {
   /// Optional.
   core.String? subnet;
 
-  /// The Compute Engine tags to add to runtime (see
-  /// [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+  /// The Compute Engine network tags to add to runtime (see
+  /// [Add network tags](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
   ///
   /// Optional.
   core.List<core.String>? tags;

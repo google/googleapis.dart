@@ -71,9 +71,9 @@ class ForecastResource {
   /// request (minimum value 1, maximum value is 5).
   ///
   /// [languageCode] - Optional. Allows the client to choose the language for
-  /// the response. If data cannot be provided for that language the API uses
-  /// the closest match. Allowed values rely on the IETF BCP-47 standard.
-  /// Default value is "en".
+  /// the response. If data cannot be provided for that language, the API uses
+  /// the closest match. Allowed values rely on the IETF BCP-47 standard. The
+  /// default value is "en".
   ///
   /// [location_latitude] - The latitude in degrees. It must be in the range
   /// \[-90.0, +90.0\].
@@ -82,16 +82,17 @@ class ForecastResource {
   /// \[-180.0, +180.0\].
   ///
   /// [pageSize] - Optional. The maximum number of daily info records to return
-  /// per page. The default and max value is 5 (5 days of data).
+  /// per page. The default and max value is 5, indicating 5 days of data.
   ///
   /// [pageToken] - Optional. A page token received from a previous daily call.
   /// It is used to retrieve the subsequent page. Note that when providing a
-  /// value for the page token all other request parameters provided must match
+  /// value for the page token, all other request parameters provided must match
   /// the previous call that provided the page token.
   ///
   /// [plantsDescription] - Optional. Contains general information about plants,
   /// including details on their seasonality, special shapes and colors,
-  /// information about allergic cross-reactions, and plant photos.
+  /// information about allergic cross-reactions, and plant photos. The default
+  /// value is "true".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -166,8 +167,7 @@ class MapTypesHeatmapTilesResource {
   /// - "TREE_UPI" : The heatmap type will represent a tree index graphical map.
   /// - "GRASS_UPI" : The heatmap type will represent a grass index graphical
   /// map.
-  /// - "WEED_UPI" : The heatmap type will represent a weed index graphically
-  /// map.
+  /// - "WEED_UPI" : The heatmap type will represent a weed index graphical map.
   ///
   /// [zoom] - Required. The map's zoom level. Defines how large or small the
   /// contents of a map appear in a map view. * Zoom level 0 is the entire world
@@ -286,11 +286,11 @@ class DayInfo {
   /// The date in UTC at which the pollen forecast data is represented.
   Date? date;
 
-  /// This list will include (up to) 15 pollen species affecting the location
+  /// This list will include up to 15 pollen species affecting the location
   /// specified in the request.
   core.List<PlantInfo>? plantInfo;
 
-  /// This list will include (up to) three pollen types (grass, weed, tree)
+  /// This list will include up to three pollen types (GRASS, WEED, TREE)
   /// affecting the location specified in the request.
   core.List<PollenTypeInfo>? pollenTypeInfo;
 
@@ -552,6 +552,9 @@ class PlantInfo {
   /// - "GRAMINALES" : Graminales is classified as a grass pollen type.
   /// - "RAGWEED" : Ragweed is classified as a weed pollen type.
   /// - "MUGWORT" : Mugwort is classified as a weed pollen type.
+  /// - "JAPANESE_CEDAR" : Japanese cedar is classified as a tree pollen type.
+  /// - "JAPANESE_CYPRESS" : Japanese cypress is classified as a tree pollen
+  /// type.
   core.String? code;
 
   /// A human readable representation of the plant name.

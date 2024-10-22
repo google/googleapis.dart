@@ -173,6 +173,14 @@ class DocumentsResource {
   ///
   /// [documentId] - The ID of the document to retrieve.
   ///
+  /// [includeTabsContent] - Whether to populate the Document.tabs field instead
+  /// of the text content fields like `body` and `documentStyle` on Document. -
+  /// When `True`: Document content populates in the Document.tabs field instead
+  /// of the text content fields in Document. - When `False`: The content of the
+  /// document's first tab populates the content fields in Document excluding
+  /// Document.tabs. If a document has only one tab, then that tab is used to
+  /// populate the document content. Document.tabs will be empty.
+  ///
   /// [suggestionsViewMode] - The suggestions view mode to apply to the
   /// document. This allows viewing the document with all suggestions inline,
   /// accepted or rejected. If one is not specified, DEFAULT_FOR_CURRENT_ACCESS
@@ -206,10 +214,13 @@ class DocumentsResource {
   /// this method will complete with the same error.
   async.Future<Document> get(
     core.String documentId, {
+    core.bool? includeTabsContent,
     core.String? suggestionsViewMode,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (includeTabsContent != null)
+        'includeTabsContent': ['${includeTabsContent}'],
       if (suggestionsViewMode != null)
         'suggestionsViewMode': [suggestionsViewMode],
       if ($fields != null) 'fields': [$fields],
@@ -441,6 +452,31 @@ class Body {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
+      };
+}
+
+/// A reference to a bookmark in this document.
+class BookmarkLink {
+  /// The ID of a bookmark in this document.
+  core.String? id;
+
+  /// The ID of the tab containing this bookmark.
+  core.String? tabId;
+
+  BookmarkLink({
+    this.id,
+    this.tabId,
+  });
+
+  BookmarkLink.fromJson(core.Map json_)
+      : this(
+          id: json_['id'] as core.String?,
+          tabId: json_['tabId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (tabId != null) 'tabId': tabId!,
       };
 }
 
@@ -1083,17 +1119,30 @@ class DeleteFooterRequest {
   /// from the previous section.
   core.String? footerId;
 
+  /// The tab that contains the footer to delete.
+  ///
+  /// When omitted, the request is applied to the first tab. In a document
+  /// containing a single tab: - If provided, must match the singular tab's ID.
+  /// - If omitted, the request applies to the singular tab. In a document
+  /// containing multiple tabs: - If provided, the request applies to the
+  /// specified tab. - If omitted, the request applies to the first tab in the
+  /// document.
+  core.String? tabId;
+
   DeleteFooterRequest({
     this.footerId,
+    this.tabId,
   });
 
   DeleteFooterRequest.fromJson(core.Map json_)
       : this(
           footerId: json_['footerId'] as core.String?,
+          tabId: json_['tabId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (footerId != null) 'footerId': footerId!,
+        if (tabId != null) 'tabId': tabId!,
       };
 }
 
@@ -1108,17 +1157,30 @@ class DeleteHeaderRequest {
   /// from the previous section.
   core.String? headerId;
 
+  /// The tab containing the header to delete.
+  ///
+  /// When omitted, the request is applied to the first tab. In a document
+  /// containing a single tab: - If provided, must match the singular tab's ID.
+  /// - If omitted, the request applies to the singular tab. In a document
+  /// containing multiple tabs: - If provided, the request applies to the
+  /// specified tab. - If omitted, the request applies to the first tab in the
+  /// document.
+  core.String? tabId;
+
   DeleteHeaderRequest({
     this.headerId,
+    this.tabId,
   });
 
   DeleteHeaderRequest.fromJson(core.Map json_)
       : this(
           headerId: json_['headerId'] as core.String?,
+          tabId: json_['tabId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (headerId != null) 'headerId': headerId!,
+        if (tabId != null) 'tabId': tabId!,
       };
 }
 
@@ -1132,20 +1194,39 @@ class DeleteNamedRangeRequest {
   /// The ID of the named range to delete.
   core.String? namedRangeId;
 
+  /// The criteria used to specify which tab(s) the range deletion should occur
+  /// in.
+  ///
+  /// When omitted, the range deletion is applied to all tabs. In a document
+  /// containing a single tab: - If provided, must match the singular tab's ID.
+  /// - If omitted, the range deletion applies to the singular tab. In a
+  /// document containing multiple tabs: - If provided, the range deletion
+  /// applies to the specified tabs. - If not provided, the range deletion
+  /// applies to all tabs.
+  ///
+  /// Optional.
+  TabsCriteria? tabsCriteria;
+
   DeleteNamedRangeRequest({
     this.name,
     this.namedRangeId,
+    this.tabsCriteria,
   });
 
   DeleteNamedRangeRequest.fromJson(core.Map json_)
       : this(
           name: json_['name'] as core.String?,
           namedRangeId: json_['namedRangeId'] as core.String?,
+          tabsCriteria: json_.containsKey('tabsCriteria')
+              ? TabsCriteria.fromJson(
+                  json_['tabsCriteria'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (namedRangeId != null) 'namedRangeId': namedRangeId!,
+        if (tabsCriteria != null) 'tabsCriteria': tabsCriteria!,
       };
 }
 
@@ -1180,17 +1261,30 @@ class DeletePositionedObjectRequest {
   /// The ID of the positioned object to delete.
   core.String? objectId;
 
+  /// The tab that the positioned object to delete is in.
+  ///
+  /// When omitted, the request is applied to the first tab. In a document
+  /// containing a single tab: - If provided, must match the singular tab's ID.
+  /// - If omitted, the request applies to the singular tab. In a document
+  /// containing multiple tabs: - If provided, the request applies to the
+  /// specified tab. - If omitted, the request applies to the first tab in the
+  /// document.
+  core.String? tabId;
+
   DeletePositionedObjectRequest({
     this.objectId,
+    this.tabId,
   });
 
   DeletePositionedObjectRequest.fromJson(core.Map json_)
       : this(
           objectId: json_['objectId'] as core.String?,
+          tabId: json_['tabId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (objectId != null) 'objectId': objectId!,
+        if (tabId != null) 'tabId': tabId!,
       };
 }
 
@@ -1279,6 +1373,11 @@ class Dimension {
 class Document {
   /// The main body of the document.
   ///
+  /// Legacy field: Instead, use Document.tabs.documentTab.body, which exposes
+  /// the actual document content from all tabs when the includeTabsContent
+  /// parameter is set to `true`. If `false` or unset, this field contains
+  /// information about the first tab in the document.
+  ///
   /// Output only.
   Body? body;
 
@@ -1289,45 +1388,90 @@ class Document {
 
   /// The style of the document.
   ///
+  /// Legacy field: Instead, use Document.tabs.documentTab.documentStyle, which
+  /// exposes the actual document content from all tabs when the
+  /// includeTabsContent parameter is set to `true`. If `false` or unset, this
+  /// field contains information about the first tab in the document.
+  ///
   /// Output only.
   DocumentStyle? documentStyle;
 
   /// The footers in the document, keyed by footer ID.
+  ///
+  /// Legacy field: Instead, use Document.tabs.documentTab.footers, which
+  /// exposes the actual document content from all tabs when the
+  /// includeTabsContent parameter is set to `true`. If `false` or unset, this
+  /// field contains information about the first tab in the document.
   ///
   /// Output only.
   core.Map<core.String, Footer>? footers;
 
   /// The footnotes in the document, keyed by footnote ID.
   ///
+  /// Legacy field: Instead, use Document.tabs.documentTab.footnotes, which
+  /// exposes the actual document content from all tabs when the
+  /// includeTabsContent parameter is set to `true`. If `false` or unset, this
+  /// field contains information about the first tab in the document.
+  ///
   /// Output only.
   core.Map<core.String, Footnote>? footnotes;
 
   /// The headers in the document, keyed by header ID.
+  ///
+  /// Legacy field: Instead, use Document.tabs.documentTab.headers, which
+  /// exposes the actual document content from all tabs when the
+  /// includeTabsContent parameter is set to `true`. If `false` or unset, this
+  /// field contains information about the first tab in the document.
   ///
   /// Output only.
   core.Map<core.String, Header>? headers;
 
   /// The inline objects in the document, keyed by object ID.
   ///
+  /// Legacy field: Instead, use Document.tabs.documentTab.inlineObjects, which
+  /// exposes the actual document content from all tabs when the
+  /// includeTabsContent parameter is set to `true`. If `false` or unset, this
+  /// field contains information about the first tab in the document.
+  ///
   /// Output only.
   core.Map<core.String, InlineObject>? inlineObjects;
 
   /// The lists in the document, keyed by list ID.
+  ///
+  /// Legacy field: Instead, use Document.tabs.documentTab.lists, which exposes
+  /// the actual document content from all tabs when the includeTabsContent
+  /// parameter is set to `true`. If `false` or unset, this field contains
+  /// information about the first tab in the document.
   ///
   /// Output only.
   core.Map<core.String, List>? lists;
 
   /// The named ranges in the document, keyed by name.
   ///
+  /// Legacy field: Instead, use Document.tabs.documentTab.namedRanges, which
+  /// exposes the actual document content from all tabs when the
+  /// includeTabsContent parameter is set to `true`. If `false` or unset, this
+  /// field contains information about the first tab in the document.
+  ///
   /// Output only.
   core.Map<core.String, NamedRanges>? namedRanges;
 
   /// The named styles of the document.
   ///
+  /// Legacy field: Instead, use Document.tabs.documentTab.namedStyles, which
+  /// exposes the actual document content from all tabs when the
+  /// includeTabsContent parameter is set to `true`. If `false` or unset, this
+  /// field contains information about the first tab in the document.
+  ///
   /// Output only.
   NamedStyles? namedStyles;
 
   /// The positioned objects in the document, keyed by object ID.
+  ///
+  /// Legacy field: Instead, use Document.tabs.documentTab.positionedObjects,
+  /// which exposes the actual document content from all tabs when the
+  /// includeTabsContent parameter is set to `true`. If `false` or unset, this
+  /// field contains information about the first tab in the document.
   ///
   /// Output only.
   core.Map<core.String, PositionedObject>? positionedObjects;
@@ -1352,11 +1496,23 @@ class Document {
   /// The suggested changes to the style of the document, keyed by suggestion
   /// ID.
   ///
+  /// Legacy field: Instead, use
+  /// Document.tabs.documentTab.suggestedDocumentStyleChanges, which exposes the
+  /// actual document content from all tabs when the includeTabsContent
+  /// parameter is set to `true`. If `false` or unset, this field contains
+  /// information about the first tab in the document.
+  ///
   /// Output only.
   core.Map<core.String, SuggestedDocumentStyle>? suggestedDocumentStyleChanges;
 
   /// The suggested changes to the named styles of the document, keyed by
   /// suggestion ID.
+  ///
+  /// Legacy field: Instead, use
+  /// Document.tabs.documentTab.suggestedNamedStylesChanges, which exposes the
+  /// actual document content from all tabs when the includeTabsContent
+  /// parameter is set to `true`. If `false` or unset, this field contains
+  /// information about the first tab in the document.
   ///
   /// Output only.
   core.Map<core.String, SuggestedNamedStyles>? suggestedNamedStylesChanges;
@@ -1385,6 +1541,12 @@ class Document {
   /// document.
   core.String? suggestionsViewMode;
 
+  /// Tabs that are part of a document.
+  ///
+  /// Tabs can contain child tabs, a tab nested within another tab. Child tabs
+  /// are represented by the Tab.childTabs field.
+  core.List<Tab>? tabs;
+
   /// The title of the document.
   core.String? title;
 
@@ -1404,6 +1566,7 @@ class Document {
     this.suggestedDocumentStyleChanges,
     this.suggestedNamedStylesChanges,
     this.suggestionsViewMode,
+    this.tabs,
     this.title,
   });
 
@@ -1496,6 +1659,10 @@ class Document {
             ),
           ),
           suggestionsViewMode: json_['suggestionsViewMode'] as core.String?,
+          tabs: (json_['tabs'] as core.List?)
+              ?.map((value) =>
+                  Tab.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           title: json_['title'] as core.String?,
         );
 
@@ -1518,6 +1685,7 @@ class Document {
           'suggestedNamedStylesChanges': suggestedNamedStylesChanges!,
         if (suggestionsViewMode != null)
           'suggestionsViewMode': suggestionsViewMode!,
+        if (tabs != null) 'tabs': tabs!,
         if (title != null) 'title': title!,
       };
 }
@@ -1904,6 +2072,167 @@ class DocumentStyleSuggestionState {
       };
 }
 
+/// A tab with document contents.
+class DocumentTab {
+  /// The main body of the document tab.
+  Body? body;
+
+  /// The style of the document tab.
+  DocumentStyle? documentStyle;
+
+  /// The footers in the document tab, keyed by footer ID.
+  core.Map<core.String, Footer>? footers;
+
+  /// The footnotes in the document tab, keyed by footnote ID.
+  core.Map<core.String, Footnote>? footnotes;
+
+  /// The headers in the document tab, keyed by header ID.
+  core.Map<core.String, Header>? headers;
+
+  /// The inline objects in the document tab, keyed by object ID.
+  core.Map<core.String, InlineObject>? inlineObjects;
+
+  /// The lists in the document tab, keyed by list ID.
+  core.Map<core.String, List>? lists;
+
+  /// The named ranges in the document tab, keyed by name.
+  core.Map<core.String, NamedRanges>? namedRanges;
+
+  /// The named styles of the document tab.
+  NamedStyles? namedStyles;
+
+  /// The positioned objects in the document tab, keyed by object ID.
+  core.Map<core.String, PositionedObject>? positionedObjects;
+
+  /// The suggested changes to the style of the document tab, keyed by
+  /// suggestion ID.
+  core.Map<core.String, SuggestedDocumentStyle>? suggestedDocumentStyleChanges;
+
+  /// The suggested changes to the named styles of the document tab, keyed by
+  /// suggestion ID.
+  core.Map<core.String, SuggestedNamedStyles>? suggestedNamedStylesChanges;
+
+  DocumentTab({
+    this.body,
+    this.documentStyle,
+    this.footers,
+    this.footnotes,
+    this.headers,
+    this.inlineObjects,
+    this.lists,
+    this.namedRanges,
+    this.namedStyles,
+    this.positionedObjects,
+    this.suggestedDocumentStyleChanges,
+    this.suggestedNamedStylesChanges,
+  });
+
+  DocumentTab.fromJson(core.Map json_)
+      : this(
+          body: json_.containsKey('body')
+              ? Body.fromJson(
+                  json_['body'] as core.Map<core.String, core.dynamic>)
+              : null,
+          documentStyle: json_.containsKey('documentStyle')
+              ? DocumentStyle.fromJson(
+                  json_['documentStyle'] as core.Map<core.String, core.dynamic>)
+              : null,
+          footers:
+              (json_['footers'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              Footer.fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          footnotes:
+              (json_['footnotes'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              Footnote.fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          headers:
+              (json_['headers'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              Header.fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          inlineObjects:
+              (json_['inlineObjects'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              InlineObject.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          lists: (json_['lists'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              List.fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          namedRanges:
+              (json_['namedRanges'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              NamedRanges.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          namedStyles: json_.containsKey('namedStyles')
+              ? NamedStyles.fromJson(
+                  json_['namedStyles'] as core.Map<core.String, core.dynamic>)
+              : null,
+          positionedObjects: (json_['positionedObjects']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              PositionedObject.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          suggestedDocumentStyleChanges: (json_['suggestedDocumentStyleChanges']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              SuggestedDocumentStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          suggestedNamedStylesChanges: (json_['suggestedNamedStylesChanges']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              SuggestedNamedStyles.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (body != null) 'body': body!,
+        if (documentStyle != null) 'documentStyle': documentStyle!,
+        if (footers != null) 'footers': footers!,
+        if (footnotes != null) 'footnotes': footnotes!,
+        if (headers != null) 'headers': headers!,
+        if (inlineObjects != null) 'inlineObjects': inlineObjects!,
+        if (lists != null) 'lists': lists!,
+        if (namedRanges != null) 'namedRanges': namedRanges!,
+        if (namedStyles != null) 'namedStyles': namedStyles!,
+        if (positionedObjects != null) 'positionedObjects': positionedObjects!,
+        if (suggestedDocumentStyleChanges != null)
+          'suggestedDocumentStyleChanges': suggestedDocumentStyleChanges!,
+        if (suggestedNamedStylesChanges != null)
+          'suggestedNamedStylesChanges': suggestedNamedStylesChanges!,
+      };
+}
+
 /// The properties of an embedded drawing and used to differentiate the object
 /// type.
 ///
@@ -2268,17 +2597,30 @@ class EndOfSegmentLocation {
   /// An empty segment ID signifies the document's body.
   core.String? segmentId;
 
+  /// The tab that the location is in.
+  ///
+  /// When omitted, the request is applied to the first tab. In a document
+  /// containing a single tab: - If provided, must match the singular tab's ID.
+  /// - If omitted, the request applies to the singular tab. In a document
+  /// containing multiple tabs: - If provided, the request applies to the
+  /// specified tab. - If omitted, the request applies to the first tab in the
+  /// document.
+  core.String? tabId;
+
   EndOfSegmentLocation({
     this.segmentId,
+    this.tabId,
   });
 
   EndOfSegmentLocation.fromJson(core.Map json_)
       : this(
           segmentId: json_['segmentId'] as core.String?,
+          tabId: json_['tabId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (segmentId != null) 'segmentId': segmentId!,
+        if (tabId != null) 'tabId': tabId!,
       };
 }
 
@@ -2482,6 +2824,31 @@ class Header {
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (headerId != null) 'headerId': headerId!,
+      };
+}
+
+/// A reference to a heading in this document.
+class HeadingLink {
+  /// The ID of a heading in this document.
+  core.String? id;
+
+  /// The ID of the tab containing this heading.
+  core.String? tabId;
+
+  HeadingLink({
+    this.id,
+    this.tabId,
+  });
+
+  HeadingLink.fromJson(core.Map json_)
+      : this(
+          id: json_['id'] as core.String?,
+          tabId: json_['tabId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (tabId != null) 'tabId': tabId!,
       };
 }
 
@@ -3272,31 +3639,82 @@ class InsertTextRequest {
 
 /// A reference to another portion of a document or an external URL resource.
 class Link {
+  /// A bookmark in this document.
+  ///
+  /// In documents containing a single tab, links to bookmarks within the
+  /// singular tab continue to return Link.bookmarkId when the
+  /// includeTabsContent parameter is set to `false` or unset. Otherwise, this
+  /// field is returned.
+  BookmarkLink? bookmark;
+
   /// The ID of a bookmark in this document.
+  ///
+  /// Legacy field: Instead, set includeTabsContent to `true` and use
+  /// Link.bookmark for read and write operations. This field is only returned
+  /// when includeTabsContent is set to `false` in documents containing a single
+  /// tab and links to a bookmark within the singular tab. Otherwise,
+  /// Link.bookmark is returned. If this field is used in a write request, the
+  /// bookmark is considered to be from the tab ID specified in the request. If
+  /// a tab ID is not specified in the request, it is considered to be from the
+  /// first tab in the document.
   core.String? bookmarkId;
 
+  /// A heading in this document.
+  ///
+  /// In documents containing a single tab, links to headings within the
+  /// singular tab continue to return Link.headingId when the includeTabsContent
+  /// parameter is set to `false` or unset. Otherwise, this field is returned.
+  HeadingLink? heading;
+
   /// The ID of a heading in this document.
+  ///
+  /// Legacy field: Instead, set includeTabsContent to `true` and use
+  /// Link.heading for read and write operations. This field is only returned
+  /// when includeTabsContent is set to `false` in documents containing a single
+  /// tab and links to a heading within the singular tab. Otherwise,
+  /// Link.heading is returned. If this field is used in a write request, the
+  /// heading is considered to be from the tab ID specified in the request. If a
+  /// tab ID is not specified in the request, it is considered to be from the
+  /// first tab in the document.
   core.String? headingId;
+
+  /// The ID of a tab in this document.
+  core.String? tabId;
 
   /// An external URL.
   core.String? url;
 
   Link({
+    this.bookmark,
     this.bookmarkId,
+    this.heading,
     this.headingId,
+    this.tabId,
     this.url,
   });
 
   Link.fromJson(core.Map json_)
       : this(
+          bookmark: json_.containsKey('bookmark')
+              ? BookmarkLink.fromJson(
+                  json_['bookmark'] as core.Map<core.String, core.dynamic>)
+              : null,
           bookmarkId: json_['bookmarkId'] as core.String?,
+          heading: json_.containsKey('heading')
+              ? HeadingLink.fromJson(
+                  json_['heading'] as core.Map<core.String, core.dynamic>)
+              : null,
           headingId: json_['headingId'] as core.String?,
+          tabId: json_['tabId'] as core.String?,
           url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bookmark != null) 'bookmark': bookmark!,
         if (bookmarkId != null) 'bookmarkId': bookmarkId!,
+        if (heading != null) 'heading': heading!,
         if (headingId != null) 'headingId': headingId!,
+        if (tabId != null) 'tabId': tabId!,
         if (url != null) 'url': url!,
       };
 }
@@ -3489,20 +3907,33 @@ class Location {
   /// An empty segment ID signifies the document's body.
   core.String? segmentId;
 
+  /// The tab that the location is in.
+  ///
+  /// When omitted, the request is applied to the first tab. In a document
+  /// containing a single tab: - If provided, must match the singular tab's ID.
+  /// - If omitted, the request applies to the singular tab. In a document
+  /// containing multiple tabs: - If provided, the request applies to the
+  /// specified tab. - If omitted, the request applies to the first tab in the
+  /// document.
+  core.String? tabId;
+
   Location({
     this.index,
     this.segmentId,
+    this.tabId,
   });
 
   Location.fromJson(core.Map json_)
       : this(
           index: json_['index'] as core.int?,
           segmentId: json_['segmentId'] as core.String?,
+          tabId: json_['tabId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (index != null) 'index': index!,
         if (segmentId != null) 'segmentId': segmentId!,
+        if (tabId != null) 'tabId': tabId!,
       };
 }
 
@@ -5245,10 +5676,21 @@ class Range {
   /// ranges.
   core.int? startIndex;
 
+  /// The tab that contains this range.
+  ///
+  /// When omitted, the request applies to the first tab. In a document
+  /// containing a single tab: - If provided, must match the singular tab's ID.
+  /// - If omitted, the request applies to the singular tab. In a document
+  /// containing multiple tabs: - If provided, the request applies to the
+  /// specified tab. - If omitted, the request applies to the first tab in the
+  /// document.
+  core.String? tabId;
+
   Range({
     this.endIndex,
     this.segmentId,
     this.startIndex,
+    this.tabId,
   });
 
   Range.fromJson(core.Map json_)
@@ -5256,12 +5698,14 @@ class Range {
           endIndex: json_['endIndex'] as core.int?,
           segmentId: json_['segmentId'] as core.String?,
           startIndex: json_['startIndex'] as core.int?,
+          tabId: json_['tabId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endIndex != null) 'endIndex': endIndex!,
         if (segmentId != null) 'segmentId': segmentId!,
         if (startIndex != null) 'startIndex': startIndex!,
+        if (tabId != null) 'tabId': tabId!,
       };
 }
 
@@ -5273,9 +5717,21 @@ class ReplaceAllTextRequest {
   /// The text that will replace the matched text.
   core.String? replaceText;
 
+  /// The criteria used to specify in which tabs the replacement occurs.
+  ///
+  /// When omitted, the replacement applies to all tabs. In a document
+  /// containing a single tab: - If provided, must match the singular tab's ID.
+  /// - If omitted, the replacement applies to the singular tab. In a document
+  /// containing multiple tabs: - If provided, the replacement applies to the
+  /// specified tabs. - If omitted, the replacement applies to all tabs.
+  ///
+  /// Optional.
+  TabsCriteria? tabsCriteria;
+
   ReplaceAllTextRequest({
     this.containsText,
     this.replaceText,
+    this.tabsCriteria,
   });
 
   ReplaceAllTextRequest.fromJson(core.Map json_)
@@ -5285,11 +5741,16 @@ class ReplaceAllTextRequest {
                   json_['containsText'] as core.Map<core.String, core.dynamic>)
               : null,
           replaceText: json_['replaceText'] as core.String?,
+          tabsCriteria: json_.containsKey('tabsCriteria')
+              ? TabsCriteria.fromJson(
+                  json_['tabsCriteria'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (containsText != null) 'containsText': containsText!,
         if (replaceText != null) 'replaceText': replaceText!,
+        if (tabsCriteria != null) 'tabsCriteria': tabsCriteria!,
       };
 }
 
@@ -5316,6 +5777,16 @@ class ReplaceImageRequest {
   /// original image.
   core.String? imageReplaceMethod;
 
+  /// The tab that the image to be replaced is in.
+  ///
+  /// When omitted, the request is applied to the first tab. In a document
+  /// containing a single tab: - If provided, must match the singular tab's ID.
+  /// - If omitted, the request applies to the singular tab. In a document
+  /// containing multiple tabs: - If provided, the request applies to the
+  /// specified tab. - If omitted, the request applies to the first tab in the
+  /// document.
+  core.String? tabId;
+
   /// The URI of the new image.
   ///
   /// The image is fetched once at insertion time and a copy is stored for
@@ -5328,6 +5799,7 @@ class ReplaceImageRequest {
   ReplaceImageRequest({
     this.imageObjectId,
     this.imageReplaceMethod,
+    this.tabId,
     this.uri,
   });
 
@@ -5335,6 +5807,7 @@ class ReplaceImageRequest {
       : this(
           imageObjectId: json_['imageObjectId'] as core.String?,
           imageReplaceMethod: json_['imageReplaceMethod'] as core.String?,
+          tabId: json_['tabId'] as core.String?,
           uri: json_['uri'] as core.String?,
         );
 
@@ -5342,6 +5815,7 @@ class ReplaceImageRequest {
         if (imageObjectId != null) 'imageObjectId': imageObjectId!,
         if (imageReplaceMethod != null)
           'imageReplaceMethod': imageReplaceMethod!,
+        if (tabId != null) 'tabId': tabId!,
         if (uri != null) 'uri': uri!,
       };
 }
@@ -5368,12 +5842,24 @@ class ReplaceNamedRangeContentRequest {
   /// name, then the request will be a no-op.
   core.String? namedRangeName;
 
+  /// The criteria used to specify in which tabs the replacement occurs.
+  ///
+  /// When omitted, the replacement applies to all tabs. In a document
+  /// containing a single tab: - If provided, must match the singular tab's ID.
+  /// - If omitted, the replacement applies to the singular tab. In a document
+  /// containing multiple tabs: - If provided, the replacement applies to the
+  /// specified tabs. - If omitted, the replacement applies to all tabs.
+  ///
+  /// Optional.
+  TabsCriteria? tabsCriteria;
+
   /// Replaces the content of the specified named range(s) with the given text.
   core.String? text;
 
   ReplaceNamedRangeContentRequest({
     this.namedRangeId,
     this.namedRangeName,
+    this.tabsCriteria,
     this.text,
   });
 
@@ -5381,12 +5867,17 @@ class ReplaceNamedRangeContentRequest {
       : this(
           namedRangeId: json_['namedRangeId'] as core.String?,
           namedRangeName: json_['namedRangeName'] as core.String?,
+          tabsCriteria: json_.containsKey('tabsCriteria')
+              ? TabsCriteria.fromJson(
+                  json_['tabsCriteria'] as core.Map<core.String, core.dynamic>)
+              : null,
           text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (namedRangeId != null) 'namedRangeId': namedRangeId!,
         if (namedRangeName != null) 'namedRangeName': namedRangeName!,
+        if (tabsCriteria != null) 'tabsCriteria': tabsCriteria!,
         if (text != null) 'text': text!,
       };
 }
@@ -6929,6 +7420,102 @@ class SuggestedTextStyle {
       };
 }
 
+/// A tab in a document.
+class Tab {
+  /// The child tabs nested within this tab.
+  core.List<Tab>? childTabs;
+
+  /// A tab with document contents, like text and images.
+  DocumentTab? documentTab;
+
+  /// The properties of the tab, like ID and title.
+  TabProperties? tabProperties;
+
+  Tab({
+    this.childTabs,
+    this.documentTab,
+    this.tabProperties,
+  });
+
+  Tab.fromJson(core.Map json_)
+      : this(
+          childTabs: (json_['childTabs'] as core.List?)
+              ?.map((value) =>
+                  Tab.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          documentTab: json_.containsKey('documentTab')
+              ? DocumentTab.fromJson(
+                  json_['documentTab'] as core.Map<core.String, core.dynamic>)
+              : null,
+          tabProperties: json_.containsKey('tabProperties')
+              ? TabProperties.fromJson(
+                  json_['tabProperties'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (childTabs != null) 'childTabs': childTabs!,
+        if (documentTab != null) 'documentTab': documentTab!,
+        if (tabProperties != null) 'tabProperties': tabProperties!,
+      };
+}
+
+/// Properties of a tab.
+class TabProperties {
+  /// The zero-based index of the tab within the parent.
+  core.int? index;
+
+  /// The depth of the tab within the document.
+  ///
+  /// Root-level tabs start at 0.
+  ///
+  /// Output only.
+  core.int? nestingLevel;
+
+  /// The ID of the parent tab.
+  ///
+  /// Empty when the current tab is a root-level tab, which means it doesn't
+  /// have any parents.
+  ///
+  /// Optional.
+  core.String? parentTabId;
+
+  /// The ID of the tab.
+  ///
+  /// This field can't be changed.
+  ///
+  /// Output only.
+  core.String? tabId;
+
+  /// The user-visible name of the tab.
+  core.String? title;
+
+  TabProperties({
+    this.index,
+    this.nestingLevel,
+    this.parentTabId,
+    this.tabId,
+    this.title,
+  });
+
+  TabProperties.fromJson(core.Map json_)
+      : this(
+          index: json_['index'] as core.int?,
+          nestingLevel: json_['nestingLevel'] as core.int?,
+          parentTabId: json_['parentTabId'] as core.String?,
+          tabId: json_['tabId'] as core.String?,
+          title: json_['title'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (index != null) 'index': index!,
+        if (nestingLevel != null) 'nestingLevel': nestingLevel!,
+        if (parentTabId != null) 'parentTabId': parentTabId!,
+        if (tabId != null) 'tabId': tabId!,
+        if (title != null) 'title': title!,
+      };
+}
+
 /// A tab stop within a paragraph.
 class TabStop {
   /// The alignment of this tab stop.
@@ -7736,6 +8323,27 @@ class TableStyle {
       };
 }
 
+/// A criteria that specifies in which tabs a request executes.
+class TabsCriteria {
+  /// The list of tab IDs in which the request executes.
+  core.List<core.String>? tabIds;
+
+  TabsCriteria({
+    this.tabIds,
+  });
+
+  TabsCriteria.fromJson(core.Map json_)
+      : this(
+          tabIds: (json_['tabIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tabIds != null) 'tabIds': tabIds!,
+      };
+}
+
 /// A ParagraphElement that represents a run of text that all has the same
 /// styling.
 class TextRun {
@@ -8090,9 +8698,20 @@ class UpdateDocumentStyleRequest {
   /// `"background"`.
   core.String? fields;
 
+  /// The tab that contains the style to update.
+  ///
+  /// When omitted, the request applies to the first tab. In a document
+  /// containing a single tab: - If provided, must match the singular tab's ID.
+  /// - If omitted, the request applies to the singular tab. In a document
+  /// containing multiple tabs: - If provided, the request applies to the
+  /// specified tab. - If not provided, the request applies to the first tab in
+  /// the document.
+  core.String? tabId;
+
   UpdateDocumentStyleRequest({
     this.documentStyle,
     this.fields,
+    this.tabId,
   });
 
   UpdateDocumentStyleRequest.fromJson(core.Map json_)
@@ -8102,11 +8721,13 @@ class UpdateDocumentStyleRequest {
                   json_['documentStyle'] as core.Map<core.String, core.dynamic>)
               : null,
           fields: json_['fields'] as core.String?,
+          tabId: json_['tabId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (documentStyle != null) 'documentStyle': documentStyle!,
         if (fields != null) 'fields': fields!,
+        if (tabId != null) 'tabId': tabId!,
       };
 }
 

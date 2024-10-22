@@ -487,13 +487,20 @@ class TransferJobsResource {
   /// Request parameters:
   ///
   /// [filter] - Required. A list of query parameters specified as JSON text in
-  /// the form of: `{"projectId":"my_project_id",
+  /// the form of: ``` { "projectId":"my_project_id",
   /// "jobNames":["jobid1","jobid2",...],
-  /// "jobStatuses":["status1","status2",...]}` Since `jobNames` and
-  /// `jobStatuses` support multiple values, their values must be specified with
-  /// array notation. `projectId` is required. `jobNames` and `jobStatuses` are
-  /// optional. The valid values for `jobStatuses` are case-insensitive:
-  /// ENABLED, DISABLED, and DELETED.
+  /// "jobStatuses":["status1","status2",...],
+  /// "dataBackend":"QUERY_REPLICATION_CONFIGS",
+  /// "sourceBucket":"source-bucket-name", "sinkBucket":"sink-bucket-name", }
+  /// ``` The JSON formatting in the example is for display only; provide the
+  /// query parameters without spaces or line breaks. * `projectId` is required.
+  /// * Since `jobNames` and `jobStatuses` support multiple values, their values
+  /// must be specified with array notation. `jobNames` and `jobStatuses` are
+  /// optional. Valid values are case-insensitive: * ENABLED * DISABLED *
+  /// DELETED * Specify `"dataBackend":"QUERY_REPLICATION_CONFIGS"` to return a
+  /// list of cross-bucket replication jobs. * Limit the results to jobs from a
+  /// particular bucket with `sourceBucket` and/or to a particular bucket with
+  /// `sinkBucket`.
   ///
   /// [pageSize] - The list page size. The max allowed value is 256.
   ///
@@ -1704,8 +1711,8 @@ class MetadataOptions {
   /// transfers.
   ///
   /// If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
-  /// This behavior is supported for transfers to GCS buckets from GCS, S3,
-  /// Azure, S3 Compatible, and Azure sources.
+  /// This behavior is supported for transfers to Cloud Storage buckets from
+  /// Cloud Storage, Amazon S3, S3-compatible storage, and Azure sources.
   /// Possible string values are:
   /// - "TIME_CREATED_UNSPECIFIED" : TimeCreated behavior is unspecified.
   /// - "TIME_CREATED_SKIP" : Do not preserve the `timeCreated` metadata from
@@ -2046,24 +2053,27 @@ class PosixFilesystem {
       };
 }
 
-/// Specifies the configuration for running a replication job.
+/// Specifies the configuration for a cross-bucket replication job.
+///
+/// Cross-bucket replication copies new or updated objects from a source Cloud
+/// Storage bucket to a destination Cloud Storage bucket. Existing objects in
+/// the source bucket are not copied by a new cross-bucket replication job.
 class ReplicationSpec {
-  /// Specifies cloud Storage data sink.
+  /// The Cloud Storage bucket to which to replicate objects.
   GcsData? gcsDataSink;
 
-  /// Specifies cloud Storage data source.
+  /// The Cloud Storage bucket from which to replicate objects.
   GcsData? gcsDataSource;
 
-  /// Specifies the object conditions to only include objects that satisfy these
-  /// conditions in the set of data source objects.
+  /// Object conditions that determine which objects are transferred.
   ///
-  /// Object conditions based on objects' "last modification time" do not
-  /// exclude objects in a data sink.
+  /// For replication jobs, only `include_prefixes` and `exclude_prefixes` are
+  /// supported.
   ObjectConditions? objectConditions;
 
-  /// Specifies the actions to be performed on the object during replication.
+  /// Specifies the metadata options to be applied during replication.
   ///
-  /// Delete options are not supported for replication and when specified, the
+  /// Delete options are not supported. If a delete option is specified, the
   /// request fails with an INVALID_ARGUMENT error.
   TransferOptions? transferOptions;
 
@@ -2300,14 +2310,14 @@ class Schedule {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Represents a time of day.
 ///
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-typedef TimeOfDay = $TimeOfDay;
+typedef TimeOfDay = $TimeOfDay00;
 
 /// This resource represents the configuration of a transfer job that runs
 /// periodically.

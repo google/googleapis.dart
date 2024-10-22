@@ -406,6 +406,29 @@ class VoicesResource {
   }
 }
 
+/// Used for advanced voice options.
+class AdvancedVoiceOptions {
+  /// Only for Jounrney voices.
+  ///
+  /// If false, the synthesis will be context aware and have higher latency.
+  core.bool? lowLatencyJourneySynthesis;
+
+  AdvancedVoiceOptions({
+    this.lowLatencyJourneySynthesis,
+  });
+
+  AdvancedVoiceOptions.fromJson(core.Map json_)
+      : this(
+          lowLatencyJourneySynthesis:
+              json_['lowLatencyJourneySynthesis'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lowLatencyJourneySynthesis != null)
+          'lowLatencyJourneySynthesis': lowLatencyJourneySynthesis!,
+      };
+}
+
 /// Description of audio data to be synthesized.
 class AudioConfig {
   /// The format of the audio byte stream.
@@ -516,6 +539,70 @@ class AudioConfig {
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
+
+/// Pronunciation customization for a phrase.
+class CustomPronunciationParams {
+  /// The phonetic encoding of the phrase.
+  /// Possible string values are:
+  /// - "PHONETIC_ENCODING_UNSPECIFIED" : Not specified.
+  /// - "PHONETIC_ENCODING_IPA" : IPA. (e.g. apple -\> ˈæpəl )
+  /// https://en.wikipedia.org/wiki/International_Phonetic_Alphabet
+  /// - "PHONETIC_ENCODING_X_SAMPA" : X-SAMPA (e.g. apple -\> "{p@l" )
+  /// https://en.wikipedia.org/wiki/X-SAMPA
+  core.String? phoneticEncoding;
+
+  /// The phrase to which the customization will be applied.
+  ///
+  /// The phrase can be multiple words (in the case of proper nouns etc), but
+  /// should not span to a whole sentence.
+  core.String? phrase;
+
+  /// The pronunciation of the phrase.
+  ///
+  /// This must be in the phonetic encoding specified above.
+  core.String? pronunciation;
+
+  CustomPronunciationParams({
+    this.phoneticEncoding,
+    this.phrase,
+    this.pronunciation,
+  });
+
+  CustomPronunciationParams.fromJson(core.Map json_)
+      : this(
+          phoneticEncoding: json_['phoneticEncoding'] as core.String?,
+          phrase: json_['phrase'] as core.String?,
+          pronunciation: json_['pronunciation'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (phoneticEncoding != null) 'phoneticEncoding': phoneticEncoding!,
+        if (phrase != null) 'phrase': phrase!,
+        if (pronunciation != null) 'pronunciation': pronunciation!,
+      };
+}
+
+/// A collection of pronunciation customizations.
+class CustomPronunciations {
+  /// The pronunciation customizations to be applied.
+  core.List<CustomPronunciationParams>? pronunciations;
+
+  CustomPronunciations({
+    this.pronunciations,
+  });
+
+  CustomPronunciations.fromJson(core.Map json_)
+      : this(
+          pronunciations: (json_['pronunciations'] as core.List?)
+              ?.map((value) => CustomPronunciationParams.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pronunciations != null) 'pronunciations': pronunciations!,
+      };
+}
 
 /// Description of the custom voice to be synthesized.
 class CustomVoiceParams {
@@ -699,13 +786,26 @@ class Operation {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Contains text input to be synthesized.
 ///
 /// Either `text` or `ssml` must be supplied. Supplying both or neither returns
 /// google.rpc.Code.INVALID_ARGUMENT. The input size is limited to 5000 bytes.
 class SynthesisInput {
+  /// The pronunciation customizations to be applied to the input.
+  ///
+  /// If this is set, the input will be synthesized using the given
+  /// pronunciation customizations. The initial support will be for EFIGS
+  /// (English, French, Italian, German, Spanish) languages, as provided in
+  /// VoiceSelectionParams. Journey and Instant Clone voices are not supported
+  /// yet. In order to customize the pronunciation of a phrase, there must be an
+  /// exact match of the phrase in the input types. If using SSML, the phrase
+  /// must not be inside a phoneme tag (entirely or partially).
+  ///
+  /// Optional.
+  CustomPronunciations? customPronunciations;
+
   /// The SSML document to be synthesized.
   ///
   /// The SSML document must be valid and well-formed. Otherwise the RPC will
@@ -717,17 +817,24 @@ class SynthesisInput {
   core.String? text;
 
   SynthesisInput({
+    this.customPronunciations,
     this.ssml,
     this.text,
   });
 
   SynthesisInput.fromJson(core.Map json_)
       : this(
+          customPronunciations: json_.containsKey('customPronunciations')
+              ? CustomPronunciations.fromJson(json_['customPronunciations']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           ssml: json_['ssml'] as core.String?,
           text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (customPronunciations != null)
+          'customPronunciations': customPronunciations!,
         if (ssml != null) 'ssml': ssml!,
         if (text != null) 'text': text!,
       };
@@ -742,8 +849,6 @@ class SynthesizeLongAudioRequest {
   AudioConfig? audioConfig;
 
   /// The Synthesizer requires either plain text or SSML as input.
-  ///
-  /// While Long Audio is in preview, SSML is temporarily unsupported.
   ///
   /// Required.
   SynthesisInput? input;
@@ -795,6 +900,9 @@ class SynthesizeLongAudioRequest {
 
 /// The top-level message sent by the client for the `SynthesizeSpeech` method.
 class SynthesizeSpeechRequest {
+  /// Adnanced voice options.
+  AdvancedVoiceOptions? advancedVoiceOptions;
+
   /// The configuration of the synthesized audio.
   ///
   /// Required.
@@ -811,6 +919,7 @@ class SynthesizeSpeechRequest {
   VoiceSelectionParams? voice;
 
   SynthesizeSpeechRequest({
+    this.advancedVoiceOptions,
     this.audioConfig,
     this.input,
     this.voice,
@@ -818,6 +927,10 @@ class SynthesizeSpeechRequest {
 
   SynthesizeSpeechRequest.fromJson(core.Map json_)
       : this(
+          advancedVoiceOptions: json_.containsKey('advancedVoiceOptions')
+              ? AdvancedVoiceOptions.fromJson(json_['advancedVoiceOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           audioConfig: json_.containsKey('audioConfig')
               ? AudioConfig.fromJson(
                   json_['audioConfig'] as core.Map<core.String, core.dynamic>)
@@ -833,6 +946,8 @@ class SynthesizeSpeechRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (advancedVoiceOptions != null)
+          'advancedVoiceOptions': advancedVoiceOptions!,
         if (audioConfig != null) 'audioConfig': audioConfig!,
         if (input != null) 'input': input!,
         if (voice != null) 'voice': voice!,

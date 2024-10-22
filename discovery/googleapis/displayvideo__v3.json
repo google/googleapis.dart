@@ -34,7 +34,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240604",
+    "revision": "20241017",
     "rootUrl": "https://displayvideo.googleapis.com/",
     "servicePath": "",
     "title": "Display & Video 360 API",
@@ -5193,7 +5193,7 @@
                                             "type": "string"
                                         },
                                         "targetingType": {
-                                            "description": "Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`",
+                                            "description": "Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD`",
                                             "enum": [
                                                 "TARGETING_TYPE_UNSPECIFIED",
                                                 "TARGETING_TYPE_CHANNEL",
@@ -5350,7 +5350,7 @@
                                             "type": "string"
                                         },
                                         "targetingType": {
-                                            "description": "Required. Identifies the type of assigned targeting options to list. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`",
+                                            "description": "Required. Identifies the type of assigned targeting options to list. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD`",
                                             "enum": [
                                                 "TARGETING_TYPE_UNSPECIFIED",
                                                 "TARGETING_TYPE_CHANNEL",
@@ -9568,6 +9568,116 @@
             "description": "Details of Adloox settings.",
             "id": "Adloox",
             "properties": {
+                "adultExplicitSexualContent": {
+                    "description": "Optional. Adult explicit sexual content.",
+                    "enum": [
+                        "GARM_RISK_EXCLUSION_UNSPECIFIED",
+                        "GARM_RISK_EXCLUSION_FLOOR",
+                        "GARM_RISK_EXCLUSION_HIGH",
+                        "GARM_RISK_EXCLUSION_MEDIUM",
+                        "GARM_RISK_EXCLUSION_LOW"
+                    ],
+                    "enumDescriptions": [
+                        "This enum is only a placeholder and it doesn't specify any GARM risk level option.",
+                        "Exclude floor risk.",
+                        "Exclude high and floor risk.",
+                        "Exclude high, medium, and floor risk.",
+                        "Exclude All Level of Risk (Low, Medium, High and Floor)."
+                    ],
+                    "type": "string"
+                },
+                "armsAmmunitionContent": {
+                    "description": "Optional. Arms ammunition content.",
+                    "enum": [
+                        "GARM_RISK_EXCLUSION_UNSPECIFIED",
+                        "GARM_RISK_EXCLUSION_FLOOR",
+                        "GARM_RISK_EXCLUSION_HIGH",
+                        "GARM_RISK_EXCLUSION_MEDIUM",
+                        "GARM_RISK_EXCLUSION_LOW"
+                    ],
+                    "enumDescriptions": [
+                        "This enum is only a placeholder and it doesn't specify any GARM risk level option.",
+                        "Exclude floor risk.",
+                        "Exclude high and floor risk.",
+                        "Exclude high, medium, and floor risk.",
+                        "Exclude All Level of Risk (Low, Medium, High and Floor)."
+                    ],
+                    "type": "string"
+                },
+                "crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent": {
+                    "description": "Optional. Crime harmful acts to individuals society human rights violations content.",
+                    "enum": [
+                        "GARM_RISK_EXCLUSION_UNSPECIFIED",
+                        "GARM_RISK_EXCLUSION_FLOOR",
+                        "GARM_RISK_EXCLUSION_HIGH",
+                        "GARM_RISK_EXCLUSION_MEDIUM",
+                        "GARM_RISK_EXCLUSION_LOW"
+                    ],
+                    "enumDescriptions": [
+                        "This enum is only a placeholder and it doesn't specify any GARM risk level option.",
+                        "Exclude floor risk.",
+                        "Exclude high and floor risk.",
+                        "Exclude high, medium, and floor risk.",
+                        "Exclude All Level of Risk (Low, Medium, High and Floor)."
+                    ],
+                    "type": "string"
+                },
+                "deathInjuryMilitaryConflictContent": {
+                    "description": "Optional. Death injury military conflict content.",
+                    "enum": [
+                        "GARM_RISK_EXCLUSION_UNSPECIFIED",
+                        "GARM_RISK_EXCLUSION_FLOOR",
+                        "GARM_RISK_EXCLUSION_HIGH",
+                        "GARM_RISK_EXCLUSION_MEDIUM",
+                        "GARM_RISK_EXCLUSION_LOW"
+                    ],
+                    "enumDescriptions": [
+                        "This enum is only a placeholder and it doesn't specify any GARM risk level option.",
+                        "Exclude floor risk.",
+                        "Exclude high and floor risk.",
+                        "Exclude high, medium, and floor risk.",
+                        "Exclude All Level of Risk (Low, Medium, High and Floor)."
+                    ],
+                    "type": "string"
+                },
+                "debatedSensitiveSocialIssueContent": {
+                    "description": "Optional. Debated sensitive social issue content.",
+                    "enum": [
+                        "GARM_RISK_EXCLUSION_UNSPECIFIED",
+                        "GARM_RISK_EXCLUSION_FLOOR",
+                        "GARM_RISK_EXCLUSION_HIGH",
+                        "GARM_RISK_EXCLUSION_MEDIUM",
+                        "GARM_RISK_EXCLUSION_LOW"
+                    ],
+                    "enumDescriptions": [
+                        "This enum is only a placeholder and it doesn't specify any GARM risk level option.",
+                        "Exclude floor risk.",
+                        "Exclude high and floor risk.",
+                        "Exclude high, medium, and floor risk.",
+                        "Exclude All Level of Risk (Low, Medium, High and Floor)."
+                    ],
+                    "type": "string"
+                },
+                "displayIabViewability": {
+                    "description": "Optional. Display IAB viewability.",
+                    "enum": [
+                        "DISPLAY_IAB_VIEWABILITY_UNSPECIFIED",
+                        "DISPLAY_IAB_VIEWABILITY_10",
+                        "DISPLAY_IAB_VIEWABILITY_20",
+                        "DISPLAY_IAB_VIEWABILITY_35",
+                        "DISPLAY_IAB_VIEWABILITY_50",
+                        "DISPLAY_IAB_VIEWABILITY_75"
+                    ],
+                    "enumDescriptions": [
+                        "This enum is only a placeholder and it doesn't specify any display viewability options.",
+                        "10%+ in view (IAB display viewability standard).",
+                        "20%+ in view (IAB display viewability standard).",
+                        "35%+ in view (IAB display viewability standard).",
+                        "50%+ in view (IAB display viewability standard).",
+                        "75%+ in view (IAB display viewability standard)."
+                    ],
+                    "type": "string"
+                },
                 "excludedAdlooxCategories": {
                     "description": "Adloox's brand safety settings.",
                     "items": {
@@ -9596,6 +9706,167 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "excludedFraudIvtMfaCategories": {
+                    "description": "Optional. Adloox's fraud IVT MFA settings.",
+                    "items": {
+                        "enum": [
+                            "FRAUD_IVT_MFA_CATEGORY_UNSPECIFIED",
+                            "FRAUD_IVT_MFA"
+                        ],
+                        "enumDescriptions": [
+                            "This enum is only a placeholder and it doesn't specify any fraud IVT MFA categories.",
+                            "FRAUD, IVT, MFA."
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "hateSpeechActsAggressionContent": {
+                    "description": "Optional. Hate speech acts of aggression content.",
+                    "enum": [
+                        "GARM_RISK_EXCLUSION_UNSPECIFIED",
+                        "GARM_RISK_EXCLUSION_FLOOR",
+                        "GARM_RISK_EXCLUSION_HIGH",
+                        "GARM_RISK_EXCLUSION_MEDIUM",
+                        "GARM_RISK_EXCLUSION_LOW"
+                    ],
+                    "enumDescriptions": [
+                        "This enum is only a placeholder and it doesn't specify any GARM risk level option.",
+                        "Exclude floor risk.",
+                        "Exclude high and floor risk.",
+                        "Exclude high, medium, and floor risk.",
+                        "Exclude All Level of Risk (Low, Medium, High and Floor)."
+                    ],
+                    "type": "string"
+                },
+                "illegalDrugsTobaccoEcigarettesVapingAlcoholContent": {
+                    "description": "Optional. Illegal drugs tobacco ecigarettes vaping alcohol content.",
+                    "enum": [
+                        "GARM_RISK_EXCLUSION_UNSPECIFIED",
+                        "GARM_RISK_EXCLUSION_FLOOR",
+                        "GARM_RISK_EXCLUSION_HIGH",
+                        "GARM_RISK_EXCLUSION_MEDIUM",
+                        "GARM_RISK_EXCLUSION_LOW"
+                    ],
+                    "enumDescriptions": [
+                        "This enum is only a placeholder and it doesn't specify any GARM risk level option.",
+                        "Exclude floor risk.",
+                        "Exclude high and floor risk.",
+                        "Exclude high, medium, and floor risk.",
+                        "Exclude All Level of Risk (Low, Medium, High and Floor)."
+                    ],
+                    "type": "string"
+                },
+                "misinformationContent": {
+                    "description": "Optional. Misinformation content.",
+                    "enum": [
+                        "GARM_RISK_EXCLUSION_UNSPECIFIED",
+                        "GARM_RISK_EXCLUSION_FLOOR",
+                        "GARM_RISK_EXCLUSION_HIGH",
+                        "GARM_RISK_EXCLUSION_MEDIUM",
+                        "GARM_RISK_EXCLUSION_LOW"
+                    ],
+                    "enumDescriptions": [
+                        "This enum is only a placeholder and it doesn't specify any GARM risk level option.",
+                        "Exclude floor risk.",
+                        "Exclude high and floor risk.",
+                        "Exclude high, medium, and floor risk.",
+                        "Exclude All Level of Risk (Low, Medium, High and Floor)."
+                    ],
+                    "type": "string"
+                },
+                "obscenityProfanityContent": {
+                    "description": "Optional. Obscenity profanity content.",
+                    "enum": [
+                        "GARM_RISK_EXCLUSION_UNSPECIFIED",
+                        "GARM_RISK_EXCLUSION_FLOOR",
+                        "GARM_RISK_EXCLUSION_HIGH",
+                        "GARM_RISK_EXCLUSION_MEDIUM",
+                        "GARM_RISK_EXCLUSION_LOW"
+                    ],
+                    "enumDescriptions": [
+                        "This enum is only a placeholder and it doesn't specify any GARM risk level option.",
+                        "Exclude floor risk.",
+                        "Exclude high and floor risk.",
+                        "Exclude high, medium, and floor risk.",
+                        "Exclude All Level of Risk (Low, Medium, High and Floor)."
+                    ],
+                    "type": "string"
+                },
+                "onlinePiracyContent": {
+                    "description": "Optional. Online piracy content.",
+                    "enum": [
+                        "GARM_RISK_EXCLUSION_UNSPECIFIED",
+                        "GARM_RISK_EXCLUSION_FLOOR",
+                        "GARM_RISK_EXCLUSION_HIGH",
+                        "GARM_RISK_EXCLUSION_MEDIUM",
+                        "GARM_RISK_EXCLUSION_LOW"
+                    ],
+                    "enumDescriptions": [
+                        "This enum is only a placeholder and it doesn't specify any GARM risk level option.",
+                        "Exclude floor risk.",
+                        "Exclude high and floor risk.",
+                        "Exclude high, medium, and floor risk.",
+                        "Exclude All Level of Risk (Low, Medium, High and Floor)."
+                    ],
+                    "type": "string"
+                },
+                "spamHarmfulContent": {
+                    "description": "Optional. Spam harmful content.",
+                    "enum": [
+                        "GARM_RISK_EXCLUSION_UNSPECIFIED",
+                        "GARM_RISK_EXCLUSION_FLOOR",
+                        "GARM_RISK_EXCLUSION_HIGH",
+                        "GARM_RISK_EXCLUSION_MEDIUM",
+                        "GARM_RISK_EXCLUSION_LOW"
+                    ],
+                    "enumDescriptions": [
+                        "This enum is only a placeholder and it doesn't specify any GARM risk level option.",
+                        "Exclude floor risk.",
+                        "Exclude high and floor risk.",
+                        "Exclude high, medium, and floor risk.",
+                        "Exclude All Level of Risk (Low, Medium, High and Floor)."
+                    ],
+                    "type": "string"
+                },
+                "terrorismContent": {
+                    "description": "Optional. Terrorism content.",
+                    "enum": [
+                        "GARM_RISK_EXCLUSION_UNSPECIFIED",
+                        "GARM_RISK_EXCLUSION_FLOOR",
+                        "GARM_RISK_EXCLUSION_HIGH",
+                        "GARM_RISK_EXCLUSION_MEDIUM",
+                        "GARM_RISK_EXCLUSION_LOW"
+                    ],
+                    "enumDescriptions": [
+                        "This enum is only a placeholder and it doesn't specify any GARM risk level option.",
+                        "Exclude floor risk.",
+                        "Exclude high and floor risk.",
+                        "Exclude high, medium, and floor risk.",
+                        "Exclude All Level of Risk (Low, Medium, High and Floor)."
+                    ],
+                    "type": "string"
+                },
+                "videoIabViewability": {
+                    "description": "Optional. Video IAB viewability.",
+                    "enum": [
+                        "VIDEO_IAB_VIEWABILITY_UNSPECIFIED",
+                        "VIDEO_IAB_VIEWABILITY_10",
+                        "VIDEO_IAB_VIEWABILITY_20",
+                        "VIDEO_IAB_VIEWABILITY_35",
+                        "VIDEO_IAB_VIEWABILITY_50",
+                        "VIDEO_IAB_VIEWABILITY_75"
+                    ],
+                    "enumDescriptions": [
+                        "This enum is only a placeholder and it doesn't specify any video viewability options.",
+                        "10%+ in view (IAB video viewability standard).",
+                        "20%+ in view (IAB video viewability standard).",
+                        "35%+ in view (IAB video viewability standard).",
+                        "50%+ in view (IAB video viewability standard).",
+                        "75%+ in view (IAB video viewability standard)."
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -10050,7 +10321,8 @@
                         "EXCHANGE_UNITY_GBID",
                         "EXCHANGE_CHARTBOOST_GBID",
                         "EXCHANGE_ADMOST_GBID",
-                        "EXCHANGE_TOPON_GBID"
+                        "EXCHANGE_TOPON_GBID",
+                        "EXCHANGE_NETFLIX"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -10134,7 +10406,8 @@
                         "Unity LevelPlay.",
                         "Chartboost Mediation.",
                         "AdMost.",
-                        "TopOn."
+                        "TopOn.",
+                        "Netflix."
                     ],
                     "type": "string"
                 },
@@ -12907,10 +13180,12 @@
                         "SDF_VERSION_5_5",
                         "SDF_VERSION_6",
                         "SDF_VERSION_7",
-                        "SDF_VERSION_7_1"
+                        "SDF_VERSION_7_1",
+                        "SDF_VERSION_8"
                     ],
                     "enumDeprecated": [
                         false,
+                        true,
                         true,
                         true,
                         true,
@@ -12939,7 +13214,8 @@
                         "SDF version 5.5",
                         "SDF version 6",
                         "SDF version 7. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version.",
-                        "SDF version 7.1. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version."
+                        "SDF version 7.1. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version.",
+                        "SDF version 8. **This SDF version is in beta. It is only available to a subset of users.**"
                     ],
                     "type": "string"
                 }
@@ -14045,14 +14321,16 @@
                         "DEVICE_TYPE_COMPUTER",
                         "DEVICE_TYPE_CONNECTED_TV",
                         "DEVICE_TYPE_SMART_PHONE",
-                        "DEVICE_TYPE_TABLET"
+                        "DEVICE_TYPE_TABLET",
+                        "DEVICE_TYPE_CONNECTED_DEVICE"
                     ],
                     "enumDescriptions": [
                         "Default value when device type is not specified in this version. This enum is a placeholder for default value and does not represent a real device type option.",
                         "Computer.",
                         "Connected TV.",
                         "Smart phone.",
-                        "Tablet."
+                        "Tablet.",
+                        "Connected device."
                     ],
                     "type": "string"
                 },
@@ -14076,14 +14354,16 @@
                         "DEVICE_TYPE_COMPUTER",
                         "DEVICE_TYPE_CONNECTED_TV",
                         "DEVICE_TYPE_SMART_PHONE",
-                        "DEVICE_TYPE_TABLET"
+                        "DEVICE_TYPE_TABLET",
+                        "DEVICE_TYPE_CONNECTED_DEVICE"
                     ],
                     "enumDescriptions": [
                         "Default value when device type is not specified in this version. This enum is a placeholder for default value and does not represent a real device type option.",
                         "Computer.",
                         "Connected TV.",
                         "Smart phone.",
-                        "Tablet."
+                        "Tablet.",
+                        "Connected device."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -14821,7 +15101,8 @@
                         "EXCHANGE_UNITY_GBID",
                         "EXCHANGE_CHARTBOOST_GBID",
                         "EXCHANGE_ADMOST_GBID",
-                        "EXCHANGE_TOPON_GBID"
+                        "EXCHANGE_TOPON_GBID",
+                        "EXCHANGE_NETFLIX"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -14905,7 +15186,8 @@
                         "Unity LevelPlay.",
                         "Chartboost Mediation.",
                         "AdMost.",
-                        "TopOn."
+                        "TopOn.",
+                        "Netflix."
                     ],
                     "type": "string"
                 }
@@ -15014,7 +15296,8 @@
                         "EXCHANGE_UNITY_GBID",
                         "EXCHANGE_CHARTBOOST_GBID",
                         "EXCHANGE_ADMOST_GBID",
-                        "EXCHANGE_TOPON_GBID"
+                        "EXCHANGE_TOPON_GBID",
+                        "EXCHANGE_NETFLIX"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -15098,7 +15381,8 @@
                         "Unity LevelPlay.",
                         "Chartboost Mediation.",
                         "AdMost.",
-                        "TopOn."
+                        "TopOn.",
+                        "Netflix."
                     ],
                     "type": "string"
                 },
@@ -15208,7 +15492,8 @@
                         "EXCHANGE_UNITY_GBID",
                         "EXCHANGE_CHARTBOOST_GBID",
                         "EXCHANGE_ADMOST_GBID",
-                        "EXCHANGE_TOPON_GBID"
+                        "EXCHANGE_TOPON_GBID",
+                        "EXCHANGE_NETFLIX"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -15292,7 +15577,8 @@
                         "Unity LevelPlay.",
                         "Chartboost Mediation.",
                         "AdMost.",
-                        "TopOn."
+                        "TopOn.",
+                        "Netflix."
                     ],
                     "type": "string"
                 },
@@ -15403,7 +15689,8 @@
                         "EXCHANGE_UNITY_GBID",
                         "EXCHANGE_CHARTBOOST_GBID",
                         "EXCHANGE_ADMOST_GBID",
-                        "EXCHANGE_TOPON_GBID"
+                        "EXCHANGE_TOPON_GBID",
+                        "EXCHANGE_NETFLIX"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -15487,7 +15774,8 @@
                         "Unity LevelPlay.",
                         "Chartboost Mediation.",
                         "AdMost.",
-                        "TopOn."
+                        "TopOn.",
+                        "Netflix."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -16449,7 +16737,8 @@
                         "EXCHANGE_UNITY_GBID",
                         "EXCHANGE_CHARTBOOST_GBID",
                         "EXCHANGE_ADMOST_GBID",
-                        "EXCHANGE_TOPON_GBID"
+                        "EXCHANGE_TOPON_GBID",
+                        "EXCHANGE_NETFLIX"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -16533,7 +16822,8 @@
                         "Unity LevelPlay.",
                         "Chartboost Mediation.",
                         "AdMost.",
-                        "TopOn."
+                        "TopOn.",
+                        "Netflix."
                     ],
                     "type": "string"
                 },
@@ -16720,6 +17010,14 @@
                     },
                     "type": "array"
                 },
+                "adGroupQaIds": {
+                    "description": "Optional. YouTube Ad Groups, by ID, to download in QA format. All IDs must belong to the same Advertiser or Partner specified in CreateSdfDownloadTaskRequest.",
+                    "items": {
+                        "format": "int64",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "campaignIds": {
                     "description": "Campaigns to download by ID. All IDs must belong to the same Advertiser or Partner specified in CreateSdfDownloadTaskRequest.",
                     "items": {
@@ -16738,6 +17036,14 @@
                 },
                 "lineItemIds": {
                     "description": "Line Items to download by ID. All IDs must belong to the same Advertiser or Partner specified in CreateSdfDownloadTaskRequest.",
+                    "items": {
+                        "format": "int64",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "lineItemQaIds": {
+                    "description": "Optional. Line Items, by ID, to download in QA format. All IDs must belong to the same Advertiser or Partner specified in CreateSdfDownloadTaskRequest.",
                     "items": {
                         "format": "int64",
                         "type": "string"
@@ -16877,9 +17183,29 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "optimizationObjective": {
+                    "description": "Optional. The optimization objective of the insertion order. **This field is only available to allowlisted customers.** If a customer is not allowlisted, this field will be null and attempts to set it will return an error.",
+                    "enum": [
+                        "OPTIMIZATION_OBJECTIVE_UNSPECIFIED",
+                        "CONVERSION",
+                        "CLICK",
+                        "BRAND_AWARENESS",
+                        "CUSTOM",
+                        "NO_OBJECTIVE"
+                    ],
+                    "enumDescriptions": [
+                        "Type value is not specified or is unknown in this version.",
+                        "Prioritize impressions that increase sales and conversions.",
+                        "Prioritize impressions that increase website traffic, apps, app stores.",
+                        "Prioritize impressions of specific quality.",
+                        "Objective is defined by the assigned custom bidding algorithm.",
+                        "Objective is not defined. Any KPI or bidding strategy can be used."
+                    ],
+                    "type": "string"
+                },
                 "pacing": {
                     "$ref": "Pacing",
-                    "description": "Required. The budget spending speed setting of the insertion order."
+                    "description": "Required. The budget spending speed setting of the insertion order. *Warning*: Starting on **November 5, 2024**, pacing_type `PACING_TYPE_ASAP` will no longer be compatible with pacing_period `PACING_PERIOD_FLIGHT`. [Read more about this announced change](/display-video/api/deprecations#features.io_asap)."
                 },
                 "partnerCosts": {
                     "description": "The partner costs associated with the insertion order. If absent or empty in CreateInsertionOrder method, the newly created insertion order will inherit partner costs from the partner settings.",
@@ -17338,7 +17664,8 @@
                         "EXCHANGE_UNITY_GBID",
                         "EXCHANGE_CHARTBOOST_GBID",
                         "EXCHANGE_ADMOST_GBID",
-                        "EXCHANGE_TOPON_GBID"
+                        "EXCHANGE_TOPON_GBID",
+                        "EXCHANGE_NETFLIX"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -17422,7 +17749,8 @@
                         "Unity LevelPlay.",
                         "Chartboost Mediation.",
                         "AdMost.",
-                        "TopOn."
+                        "TopOn.",
+                        "Netflix."
                     ],
                     "type": "string"
                 },
@@ -19546,7 +19874,7 @@
                     "type": "string"
                 },
                 "pacingType": {
-                    "description": "Required. The type of pacing that defines how the budget amount will be spent across the pacing_period.",
+                    "description": "Required. The type of pacing that defines how the budget amount will be spent across the pacing_period. *Warning*: Starting on **November 5, 2024**, `PACING_TYPE_ASAP` will no longer be compatible with pacing_period `PACING_PERIOD_FLIGHT` for insertion orders. [Read more about this announced change](/display-video/api/deprecations#features.io_asap).",
                     "enum": [
                         "PACING_TYPE_UNSPECIFIED",
                         "PACING_TYPE_AHEAD",
@@ -19578,7 +19906,9 @@
                             "FILE_TYPE_INSERTION_ORDER",
                             "FILE_TYPE_LINE_ITEM",
                             "FILE_TYPE_AD_GROUP",
-                            "FILE_TYPE_AD"
+                            "FILE_TYPE_AD",
+                            "FILE_TYPE_LINE_ITEM_QA",
+                            "FILE_TYPE_AD_GROUP_QA"
                         ],
                         "enumDescriptions": [
                             "Default value when type is unspecified or is unknown in this version.",
@@ -19587,7 +19917,9 @@
                             "Insertion Order.",
                             "Line Item.",
                             "YouTube Ad Group.",
-                            "YouTube Ad."
+                            "YouTube Ad.",
+                            "Line Item - QA format.",
+                            "YouTube Ad Group - QA format."
                         ],
                         "type": "string"
                     },
@@ -19618,8 +19950,8 @@
                         "Advertiser ID. If selected, all filter IDs must be Advertiser IDs that belong to the Partner specified in CreateSdfDownloadTaskRequest.",
                         "Campaign ID. If selected, all filter IDs must be Campaign IDs that belong to the Advertiser or Partner specified in CreateSdfDownloadTaskRequest.",
                         "Media Product ID. If selected, all filter IDs must be Media Product IDs that belong to the Advertiser or Partner specified in CreateSdfDownloadTaskRequest. Can only be used for downloading `FILE_TYPE_MEDIA_PRODUCT`.",
-                        "Insertion Order ID. If selected, all filter IDs must be Insertion Order IDs that belong to the Advertiser or Partner specified in CreateSdfDownloadTaskRequest. Can only be used for downloading `FILE_TYPE_INSERTION_ORDER`, `FILE_TYPE_LINE_ITEM`, `FILE_TYPE_AD_GROUP`, and `FILE_TYPE_AD`.",
-                        "Line Item ID. If selected, all filter IDs must be Line Item IDs that belong to the Advertiser or Partner specified in CreateSdfDownloadTaskRequest. Can only be used for downloading `FILE_TYPE_LINE_ITEM`, `FILE_TYPE_AD_GROUP`, and `FILE_TYPE_AD`."
+                        "Insertion Order ID. If selected, all filter IDs must be Insertion Order IDs that belong to the Advertiser or Partner specified in CreateSdfDownloadTaskRequest. Can only be used for downloading `FILE_TYPE_INSERTION_ORDER`, `FILE_TYPE_LINE_ITEM`, `FILE_TYPE_LINE_ITEM_QA`, `FILE_TYPE_AD_GROUP`, `FILE_TYPE_AD_GROUP_QA`, and `FILE_TYPE_AD`.",
+                        "Line Item ID. If selected, all filter IDs must be Line Item IDs that belong to the Advertiser or Partner specified in CreateSdfDownloadTaskRequest. Can only be used for downloading `FILE_TYPE_LINE_ITEM`, `FILE_TYPE_LINE_ITEM_QA`,`FILE_TYPE_AD_GROUP`, `FILE_TYPE_AD_GROUP_QA`, and `FILE_TYPE_AD`."
                     ],
                     "type": "string"
                 }
@@ -19969,6 +20301,7 @@
                         "PERFORMANCE_GOAL_TYPE_VIEWABILITY",
                         "PERFORMANCE_GOAL_TYPE_CPIAVC",
                         "PERFORMANCE_GOAL_TYPE_CPE",
+                        "PERFORMANCE_GOAL_TYPE_CPV",
                         "PERFORMANCE_GOAL_TYPE_CLICK_CVR",
                         "PERFORMANCE_GOAL_TYPE_IMPRESSION_CVR",
                         "PERFORMANCE_GOAL_TYPE_VCPM",
@@ -19986,6 +20319,7 @@
                         "The performance goal is set in Viewability percentage.",
                         "The performance goal is set as CPIAVC (cost per impression audible and visible at completion).",
                         "The performance goal is set in CPE (cost per engagement).",
+                        "The performance goal is set in CPV (cost per view).",
                         "The performance goal is set in click conversion rate (conversions per click) percentage.",
                         "The performance goal is set in impression conversion rate (conversions per impression) percentage.",
                         "The performance goal is set in VCPM (cost per thousand viewable impressions).",
@@ -20491,7 +20825,8 @@
                     "type": "array"
                 },
                 "publisherReviewStatuses": {
-                    "description": "Publisher review statuses for the creative. **Warning:** This field will be deprecated on June 26th, 2024. After this date, this field will be empty. Read our [feature deprecation announcement](/display-video/api/deprecations#features.creative_publisher_review_statuses) for more information.",
+                    "deprecated": true,
+                    "description": "Publisher review statuses for the creative.",
                     "items": {
                         "$ref": "PublisherReviewStatus"
                     },
@@ -20561,10 +20896,12 @@
                         "SDF_VERSION_5_5",
                         "SDF_VERSION_6",
                         "SDF_VERSION_7",
-                        "SDF_VERSION_7_1"
+                        "SDF_VERSION_7_1",
+                        "SDF_VERSION_8"
                     ],
                     "enumDeprecated": [
                         false,
+                        true,
                         true,
                         true,
                         true,
@@ -20593,7 +20930,8 @@
                         "SDF version 5.5",
                         "SDF version 6",
                         "SDF version 7. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version.",
-                        "SDF version 7.1. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version."
+                        "SDF version 7.1. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version.",
+                        "SDF version 8. **This SDF version is in beta. It is only available to a subset of users.**"
                     ],
                     "type": "string"
                 }
@@ -20641,10 +20979,12 @@
                         "SDF_VERSION_5_5",
                         "SDF_VERSION_6",
                         "SDF_VERSION_7",
-                        "SDF_VERSION_7_1"
+                        "SDF_VERSION_7_1",
+                        "SDF_VERSION_8"
                     ],
                     "enumDeprecated": [
                         false,
+                        true,
                         true,
                         true,
                         true,
@@ -20673,7 +21013,8 @@
                         "SDF version 5.5",
                         "SDF version 6",
                         "SDF version 7. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version.",
-                        "SDF version 7.1. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version."
+                        "SDF version 7.1. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version.",
+                        "SDF version 8. **This SDF version is in beta. It is only available to a subset of users.**"
                     ],
                     "type": "string"
                 }
@@ -20778,8 +21119,8 @@
                         "Content related to motor vehicle, aviation or other transportation accidents.",
                         "Issues that evoke strong, opposing views and spark debate. These include issues that are controversial in most countries and markets (such as abortion), as well as those that are controversial in specific countries and markets (such as immigration reform in the United States).",
                         "Content which may be considered shocking or disturbing, such as violent news stories, stunts, or toilet humor.",
-                        "YouTube videos embedded on websites outside of YouTube.com. Only applicable to YouTube and Partners line items.",
-                        "Video of live events streamed over the internet. Only applicable to YouTube and Partners line items."
+                        "YouTube videos embedded on websites outside of YouTube.com.",
+                        "Video of live events streamed over the internet."
                     ],
                     "type": "string"
                 }
@@ -20833,8 +21174,8 @@
                         "Content related to motor vehicle, aviation or other transportation accidents.",
                         "Issues that evoke strong, opposing views and spark debate. These include issues that are controversial in most countries and markets (such as abortion), as well as those that are controversial in specific countries and markets (such as immigration reform in the United States).",
                         "Content which may be considered shocking or disturbing, such as violent news stories, stunts, or toilet humor.",
-                        "YouTube videos embedded on websites outside of YouTube.com. Only applicable to YouTube and Partners line items.",
-                        "Video of live events streamed over the internet. Only applicable to YouTube and Partners line items."
+                        "YouTube videos embedded on websites outside of YouTube.com.",
+                        "Video of live events streamed over the internet."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -20995,7 +21336,7 @@
                     "type": "boolean"
                 },
                 "enableOptimizedTargeting": {
-                    "description": "Required. Whether to enable Optimized Targeting for the line item.",
+                    "description": "Required. Whether to enable Optimized Targeting for the line item. Optimized targeting is not compatible with all bid strategies. Attempting to set this field to `true` for a line item using one of the following combinations of BiddingStrategy fields and BiddingStrategyPerformanceGoalType will result in an error: maximize_auto_spend_bid: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED` performance_goal_auto_bid: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`",
                     "type": "boolean"
                 }
             },

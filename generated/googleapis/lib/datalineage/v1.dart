@@ -1470,7 +1470,8 @@ class GoogleCloudDatacatalogLineageV1Origin {
   /// Type of the source.
   ///
   /// Use of a source_type other than `CUSTOM` for process creation or updating
-  /// is highly discouraged, and may be restricted in the future without notice.
+  /// is highly discouraged. It may cause additional billing costs and be
+  /// restricted in the future without notice.
   /// Possible string values are:
   /// - "SOURCE_TYPE_UNSPECIFIED" : Source is Unspecified
   /// - "CUSTOM" : A custom source
@@ -1479,6 +1480,7 @@ class GoogleCloudDatacatalogLineageV1Origin {
   /// - "COMPOSER" : Composer
   /// - "LOOKER_STUDIO" : Looker Studio
   /// - "DATAPROC" : Dataproc
+  /// - "VERTEX_AI" : Vertex AI
   core.String? sourceType;
 
   GoogleCloudDatacatalogLineageV1Origin({
@@ -1974,4 +1976,4 @@ typedef GoogleProtobufEmpty = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef GoogleRpcStatus = $Status;
+typedef GoogleRpcStatus = $Status00;

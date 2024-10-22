@@ -1570,30 +1570,6 @@ void checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
-core.int buildCounterPatchServiceAccountKeyRequest = 0;
-api.PatchServiceAccountKeyRequest buildPatchServiceAccountKeyRequest() {
-  final o = api.PatchServiceAccountKeyRequest();
-  buildCounterPatchServiceAccountKeyRequest++;
-  if (buildCounterPatchServiceAccountKeyRequest < 3) {
-    o.serviceAccountKey = buildServiceAccountKey();
-    o.updateMask = 'foo';
-  }
-  buildCounterPatchServiceAccountKeyRequest--;
-  return o;
-}
-
-void checkPatchServiceAccountKeyRequest(api.PatchServiceAccountKeyRequest o) {
-  buildCounterPatchServiceAccountKeyRequest++;
-  if (buildCounterPatchServiceAccountKeyRequest < 3) {
-    checkServiceAccountKey(o.serviceAccountKey!);
-    unittest.expect(
-      o.updateMask!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterPatchServiceAccountKeyRequest--;
-}
-
 core.int buildCounterPatchServiceAccountRequest = 0;
 api.PatchServiceAccountRequest buildPatchServiceAccountRequest() {
   final o = api.PatchServiceAccountRequest();
@@ -2075,9 +2051,6 @@ api.ServiceAccountKey buildServiceAccountKey() {
   final o = api.ServiceAccountKey();
   buildCounterServiceAccountKey++;
   if (buildCounterServiceAccountKey < 3) {
-    o.contact = 'foo';
-    o.creator = 'foo';
-    o.description = 'foo';
     o.disableReason = 'foo';
     o.disabled = true;
     o.extendedStatus = buildUnnamed29();
@@ -2098,18 +2071,6 @@ api.ServiceAccountKey buildServiceAccountKey() {
 void checkServiceAccountKey(api.ServiceAccountKey o) {
   buildCounterServiceAccountKey++;
   if (buildCounterServiceAccountKey < 3) {
-    unittest.expect(
-      o.contact!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.creator!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.description!,
-      unittest.equals('foo'),
-    );
     unittest.expect(
       o.disableReason!,
       unittest.equals('foo'),
@@ -3466,16 +3427,6 @@ void main() {
       final od =
           api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOperation(od);
-    });
-  });
-
-  unittest.group('obj-schema-PatchServiceAccountKeyRequest', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildPatchServiceAccountKeyRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.PatchServiceAccountKeyRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkPatchServiceAccountKeyRequest(od);
     });
   });
 
@@ -9567,64 +9518,6 @@ void main() {
           keyTypes: arg_keyTypes, $fields: arg_$fields);
       checkListServiceAccountKeysResponse(
           response as api.ListServiceAccountKeysResponse);
-    });
-
-    unittest.test('method--patch', () async {
-      final mock = HttpServerMock();
-      final res = api.IamApi(mock).projects.serviceAccounts.keys;
-      final arg_request = buildPatchServiceAccountKeyRequest();
-      final arg_name = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.PatchServiceAccountKeyRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkPatchServiceAccountKeyRequest(obj);
-
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildServiceAccountKey());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.patch(arg_request, arg_name, $fields: arg_$fields);
-      checkServiceAccountKey(response as api.ServiceAccountKey);
     });
 
     unittest.test('method--upload', () async {

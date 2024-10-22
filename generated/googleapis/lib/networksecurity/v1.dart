@@ -29,6 +29,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsAddressGroupsResource]
 ///     - [ProjectsLocationsAuthorizationPoliciesResource]
+///     - [ProjectsLocationsAuthzPoliciesResource]
 ///     - [ProjectsLocationsClientTlsPoliciesResource]
 ///     - [ProjectsLocationsFirewallEndpointAssociationsResource]
 ///     - [ProjectsLocationsGatewaySecurityPoliciesResource]
@@ -1500,6 +1501,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsAddressGroupsResource(_requester);
   ProjectsLocationsAuthorizationPoliciesResource get authorizationPolicies =>
       ProjectsLocationsAuthorizationPoliciesResource(_requester);
+  ProjectsLocationsAuthzPoliciesResource get authzPolicies =>
+      ProjectsLocationsAuthzPoliciesResource(_requester);
   ProjectsLocationsClientTlsPoliciesResource get clientTlsPolicies =>
       ProjectsLocationsClientTlsPoliciesResource(_requester);
   ProjectsLocationsFirewallEndpointAssociationsResource
@@ -2571,6 +2574,170 @@ class ProjectsLocationsAuthorizationPoliciesResource {
   /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/authorizationPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAuthzPoliciesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAuthzPoliciesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authzPolicies/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authzPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authzPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4870,6 +5037,11 @@ class AddressGroup {
   /// Required.
   core.String? name;
 
+  /// List of supported purposes of the Address Group.
+  ///
+  /// Optional.
+  core.List<core.String>? purpose;
+
   /// Server-defined fully-qualified URL for this resource.
   ///
   /// Output only.
@@ -4898,6 +5070,7 @@ class AddressGroup {
     this.items,
     this.labels,
     this.name,
+    this.purpose,
     this.selfLink,
     this.type,
     this.updateTime,
@@ -4919,6 +5092,9 @@ class AddressGroup {
             ),
           ),
           name: json_['name'] as core.String?,
+          purpose: (json_['purpose'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           selfLink: json_['selfLink'] as core.String?,
           type: json_['type'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -4931,6 +5107,7 @@ class AddressGroup {
         if (items != null) 'items': items!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (purpose != null) 'purpose': purpose!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (type != null) 'type': type!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -5215,6 +5392,31 @@ class CloneAddressGroupItemsRequest {
       };
 }
 
+/// CustomMirroringProfile defines an action for mirroring traffic to a
+/// collector's EndpointGroup
+class CustomMirroringProfile {
+  /// The MirroringEndpointGroup to which traffic associated with the SP should
+  /// be mirrored.
+  ///
+  /// Required.
+  core.String? mirroringEndpointGroup;
+
+  CustomMirroringProfile({
+    this.mirroringEndpointGroup,
+  });
+
+  CustomMirroringProfile.fromJson(core.Map json_)
+      : this(
+          mirroringEndpointGroup:
+              json_['mirroringEndpointGroup'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mirroringEndpointGroup != null)
+          'mirroringEndpointGroup': mirroringEndpointGroup!,
+      };
+}
+
 /// Specification of traffic destination attributes.
 class Destination {
   /// List of host names to match.
@@ -5488,6 +5690,7 @@ class FirewallEndpointAssociation {
   /// - "ACTIVE" : Active and ready for traffic.
   /// - "DELETING" : Being deleted.
   /// - "INACTIVE" : Down or in an error state.
+  /// - "ORPHAN" : The GCP project that housed the association has been deleted.
   core.String? state;
 
   /// The URL of the TlsInspectionPolicy that is being associated.
@@ -6735,8 +6938,8 @@ typedef Location = $Location00;
 class MTLSPolicy {
   /// Required if the policy is to be used with Traffic Director.
   ///
-  /// For external HTTPS load balancers it must be empty. Defines the mechanism
-  /// to obtain the Certificate Authority certificate to validate the client
+  /// For Application Load Balancers it must be empty. Defines the mechanism to
+  /// obtain the Certificate Authority certificate to validate the client
   /// certificate.
   core.List<ValidationCA>? clientValidationCa;
 
@@ -6744,8 +6947,8 @@ class MTLSPolicy {
   /// load balancer, the `client_validation_mode` specifies how the client
   /// connection is handled.
   ///
-  /// Required if the policy is to be used with the external HTTPS load
-  /// balancing. For Traffic Director it must be empty.
+  /// Required if the policy is to be used with the Application Load Balancers.
+  /// For Traffic Director it must be empty.
   /// Possible string values are:
   /// - "CLIENT_VALIDATION_MODE_UNSPECIFIED" : Not allowed.
   /// - "ALLOW_INVALID_OR_MISSING_CLIENT_CERT" : Allow connection even if
@@ -6766,7 +6969,7 @@ class MTLSPolicy {
   ///
   /// If specified, the chain validation will be performed against certificates
   /// configured in the given TrustConfig. Allowed only if the policy is to be
-  /// used with external HTTPS load balancers.
+  /// used with Application Load Balancers.
   core.String? clientValidationTrustConfig;
 
   MTLSPolicy({
@@ -6961,12 +7164,15 @@ class Rule {
 /// SecurityProfile is a resource that defines the behavior for one of many
 /// ProfileTypes.
 ///
-/// Next ID: 10
+/// Next ID: 12
 class SecurityProfile {
   /// Resource creation timestamp.
   ///
   /// Output only.
   core.String? createTime;
+
+  /// The custom Packet Mirroring v2 configuration for the SecurityProfile.
+  CustomMirroringProfile? customMirroringProfile;
 
   /// An optional description of the profile.
   ///
@@ -7005,6 +7211,7 @@ class SecurityProfile {
   /// Possible string values are:
   /// - "PROFILE_TYPE_UNSPECIFIED" : Profile type not specified.
   /// - "THREAT_PREVENTION" : Profile type for threat prevention.
+  /// - "CUSTOM_MIRRORING" : Profile type for packet mirroring v2
   core.String? type;
 
   /// Last resource update timestamp.
@@ -7014,6 +7221,7 @@ class SecurityProfile {
 
   SecurityProfile({
     this.createTime,
+    this.customMirroringProfile,
     this.description,
     this.etag,
     this.labels,
@@ -7026,6 +7234,10 @@ class SecurityProfile {
   SecurityProfile.fromJson(core.Map json_)
       : this(
           createTime: json_['createTime'] as core.String?,
+          customMirroringProfile: json_.containsKey('customMirroringProfile')
+              ? CustomMirroringProfile.fromJson(json_['customMirroringProfile']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           description: json_['description'] as core.String?,
           etag: json_['etag'] as core.String?,
           labels:
@@ -7047,6 +7259,8 @@ class SecurityProfile {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (customMirroringProfile != null)
+          'customMirroringProfile': customMirroringProfile!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
         if (labels != null) 'labels': labels!,
@@ -7061,12 +7275,17 @@ class SecurityProfile {
 /// SecurityProfileGroup is a resource that defines the behavior for various
 /// ProfileTypes.
 ///
-/// Next ID: 9
+/// Next ID: 11
 class SecurityProfileGroup {
   /// Resource creation timestamp.
   ///
   /// Output only.
   core.String? createTime;
+
+  /// Reference to a SecurityProfile with the CustomMirroring configuration.
+  ///
+  /// Optional.
+  core.String? customMirroringProfile;
 
   /// An optional description of the profile group.
   ///
@@ -7096,8 +7315,7 @@ class SecurityProfileGroup {
   /// Immutable.
   core.String? name;
 
-  /// Reference to a SecurityProfile with the threat prevention configuration
-  /// for the SecurityProfileGroup.
+  /// Reference to a SecurityProfile with the ThreatPrevention configuration.
   ///
   /// Optional.
   core.String? threatPreventionProfile;
@@ -7109,6 +7327,7 @@ class SecurityProfileGroup {
 
   SecurityProfileGroup({
     this.createTime,
+    this.customMirroringProfile,
     this.description,
     this.etag,
     this.labels,
@@ -7120,6 +7339,8 @@ class SecurityProfileGroup {
   SecurityProfileGroup.fromJson(core.Map json_)
       : this(
           createTime: json_['createTime'] as core.String?,
+          customMirroringProfile:
+              json_['customMirroringProfile'] as core.String?,
           description: json_['description'] as core.String?,
           etag: json_['etag'] as core.String?,
           labels:
@@ -7137,6 +7358,8 @@ class SecurityProfileGroup {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (customMirroringProfile != null)
+          'customMirroringProfile': customMirroringProfile!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
         if (labels != null) 'labels': labels!,
@@ -7152,15 +7375,15 @@ class SecurityProfileGroup {
 ///
 /// This resource itself does not affect configuration unless it is attached to
 /// a target HTTPS proxy or endpoint config selector resource. ServerTlsPolicy
-/// in the form accepted by external HTTPS load balancers can be attached only
-/// to TargetHttpsProxy with an `EXTERNAL` or `EXTERNAL_MANAGED` load balancing
-/// scheme. Traffic Director compatible ServerTlsPolicies can be attached to
-/// EndpointPolicy and TargetHttpsProxy with Traffic Director
-/// `INTERNAL_SELF_MANAGED` load balancing scheme.
+/// in the form accepted by Application Load Balancers can be attached only to
+/// TargetHttpsProxy with an `EXTERNAL`, `EXTERNAL_MANAGED` or
+/// `INTERNAL_MANAGED` load balancing scheme. Traffic Director compatible
+/// ServerTlsPolicies can be attached to EndpointPolicy and TargetHttpsProxy
+/// with Traffic Director `INTERNAL_SELF_MANAGED` load balancing scheme.
 class ServerTlsPolicy {
   /// This field applies only for Traffic Director policies.
   ///
-  /// It is must be set to false for external HTTPS load balancer policies.
+  /// It is must be set to false for Application Load Balancer policies.
   /// Determines if server allows plaintext connections. If set to true, server
   /// allows plain text connections. By default, it is set to false. This
   /// setting is not exclusive of other encryption modes. For example, if
@@ -7182,8 +7405,8 @@ class ServerTlsPolicy {
   /// Set of label tags associated with the resource.
   core.Map<core.String, core.String>? labels;
 
-  /// This field is required if the policy is used with external HTTPS load
-  /// balancers.
+  /// This field is required if the policy is used with Application Load
+  /// Balancers.
   ///
   /// This field can be empty for Traffic Director. Defines a mechanism to
   /// provision peer validation certificates for peer to peer authentication
@@ -7203,7 +7426,7 @@ class ServerTlsPolicy {
 
   /// Optional if policy is to be used with Traffic Director.
   ///
-  /// For external HTTPS load balancer must be empty. Defines a mechanism to
+  /// For Application Load Balancers must be empty. Defines a mechanism to
   /// provision server identity (public and private keys). Cannot be combined
   /// with `allow_open` as a permissive mode that allows both plain text and TLS
   /// is not supported.
@@ -7373,7 +7596,7 @@ class Source {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Defines what action to take for a specific threat_id match.
 class ThreatOverride {

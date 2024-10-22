@@ -2139,6 +2139,9 @@ class DeviceIdentifier {
   /// Validated on input.
   core.String? imei;
 
+  /// The device’s second IMEI number.
+  core.String? imei2;
+
   /// The device manufacturer’s name.
   ///
   /// Matches the device's built-in value returned from
@@ -2148,6 +2151,9 @@ class DeviceIdentifier {
 
   /// The device’s MEID number.
   core.String? meid;
+
+  /// The device’s second MEID number.
+  core.String? meid2;
 
   /// The device model's name.
   ///
@@ -2165,8 +2171,10 @@ class DeviceIdentifier {
     this.chromeOsAttestedDeviceId,
     this.deviceType,
     this.imei,
+    this.imei2,
     this.manufacturer,
     this.meid,
+    this.meid2,
     this.model,
     this.serialNumber,
   });
@@ -2177,8 +2185,10 @@ class DeviceIdentifier {
               json_['chromeOsAttestedDeviceId'] as core.String?,
           deviceType: json_['deviceType'] as core.String?,
           imei: json_['imei'] as core.String?,
+          imei2: json_['imei2'] as core.String?,
           manufacturer: json_['manufacturer'] as core.String?,
           meid: json_['meid'] as core.String?,
+          meid2: json_['meid2'] as core.String?,
           model: json_['model'] as core.String?,
           serialNumber: json_['serialNumber'] as core.String?,
         );
@@ -2188,8 +2198,10 @@ class DeviceIdentifier {
           'chromeOsAttestedDeviceId': chromeOsAttestedDeviceId!,
         if (deviceType != null) 'deviceType': deviceType!,
         if (imei != null) 'imei': imei!,
+        if (imei2 != null) 'imei2': imei2!,
         if (manufacturer != null) 'manufacturer': manufacturer!,
         if (meid != null) 'meid': meid!,
+        if (meid2 != null) 'meid2': meid2!,
         if (model != null) 'model': model!,
         if (serialNumber != null) 'serialNumber': serialNumber!,
       };
@@ -2915,7 +2927,7 @@ class PartnerUnclaim {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Request message to unclaim a device.
 class UnclaimDeviceRequest {

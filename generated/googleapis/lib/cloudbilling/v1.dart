@@ -1209,6 +1209,19 @@ typedef AuditLogConfig = $AuditLogConfig;
 ///
 /// You can assign a billing account to one or more projects.
 class BillingAccount {
+  /// The currency in which the billing account is billed and charged,
+  /// represented as an ISO 4217 code such as `USD`.
+  ///
+  /// Billing account currency is determined at the time of billing account
+  /// creation and cannot be updated subsequently, so this field should not be
+  /// set on update requests. In addition, a subaccount always matches the
+  /// currency of its parent billing account, so this field should not be set on
+  /// subaccount creation requests. Clients can read this field to determine the
+  /// currency of an existing billing account.
+  ///
+  /// Optional.
+  core.String? currencyCode;
+
   /// The display name given to the billing account, such as `My Billing
   /// Account`.
   ///
@@ -1253,6 +1266,7 @@ class BillingAccount {
   core.String? parent;
 
   BillingAccount({
+    this.currencyCode,
     this.displayName,
     this.masterBillingAccount,
     this.name,
@@ -1262,6 +1276,7 @@ class BillingAccount {
 
   BillingAccount.fromJson(core.Map json_)
       : this(
+          currencyCode: json_['currencyCode'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           masterBillingAccount: json_['masterBillingAccount'] as core.String?,
           name: json_['name'] as core.String?,
@@ -1270,6 +1285,7 @@ class BillingAccount {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode!,
         if (displayName != null) 'displayName': displayName!,
         if (masterBillingAccount != null)
           'masterBillingAccount': masterBillingAccount!,

@@ -27,6 +27,9 @@
 /// - [CommentsResource]
 /// - [DrivesResource]
 /// - [FilesResource]
+///   - [FilesAccessproposalsResource]
+/// - [OperationResource]
+/// - [OperationsResource]
 /// - [PermissionsResource]
 /// - [RepliesResource]
 /// - [RevisionsResource]
@@ -105,6 +108,8 @@ class DriveApi {
   CommentsResource get comments => CommentsResource(_requester);
   DrivesResource get drives => DrivesResource(_requester);
   FilesResource get files => FilesResource(_requester);
+  OperationResource get operation => OperationResource(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
   PermissionsResource get permissions => PermissionsResource(_requester);
   RepliesResource get replies => RepliesResource(_requester);
   RevisionsResource get revisions => RevisionsResource(_requester);
@@ -1120,6 +1125,9 @@ class DrivesResource {
 class FilesResource {
   final commons.ApiRequester _requester;
 
+  FilesAccessproposalsResource get accessproposals =>
+      FilesAccessproposalsResource(_requester);
+
   FilesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a copy of a file and applies any requested updates with patch
@@ -1395,6 +1403,59 @@ class FilesResource {
     );
   }
 
+  /// Downloads content of a file.
+  ///
+  /// Operations are valid for 24 hours from the time of creation.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - Required. The ID of the file to download.
+  ///
+  /// [mimeType] - Optional. The MIME type the file should be downloaded as.
+  /// This field can only be set when downloading Google Workspace documents.
+  /// See \[Export MIME types for Google Workspace
+  /// documents\](/drive/api/guides/ref-export-formats) for the list of
+  /// supported MIME types. If not set, a Google Workspace document is
+  /// downloaded with a default MIME type. The default MIME type might change in
+  /// the future.
+  ///
+  /// [revisionId] - Optional. The revision ID of the file to download. This
+  /// field can only be set when downloading blob files, Google Docs, and Google
+  /// Sheets. Returns `INVALID_ARGUMENT` if downloading a specific revision on
+  /// the file is unsupported.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> download(
+    core.String fileId, {
+    core.String? mimeType,
+    core.String? revisionId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (mimeType != null) 'mimeType': [mimeType],
+      if (revisionId != null) 'revisionId': [revisionId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'files/' + commons.escapeVariable('$fileId') + '/download';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Permanently deletes all of the user's trashed files.
   ///
   /// Request parameters:
@@ -1550,7 +1611,8 @@ class FilesResource {
   ///
   /// [acknowledgeAbuse] - Whether the user is acknowledging the risk of
   /// downloading known malware or other abusive files. This is only applicable
-  /// when alt=media.
+  /// when the `alt` parameter is set to `media` and the user is the owner of
+  /// the file or an organizer of the shared drive in which the file resides.
   ///
   /// [includeLabels] - A comma-separated list of IDs of labels to include in
   /// the `labelInfo` part of the response.
@@ -1654,12 +1716,21 @@ class FilesResource {
   /// [includeTeamDriveItems] - Deprecated: Use `includeItemsFromAllDrives`
   /// instead.
   ///
-  /// [orderBy] - A comma-separated list of sort keys. Valid keys are
-  /// 'createdTime', 'folder', 'modifiedByMeTime', 'modifiedTime', 'name',
-  /// 'name_natural', 'quotaBytesUsed', 'recency', 'sharedWithMeTime',
-  /// 'starred', and 'viewedByMeTime'. Each key sorts ascending by default, but
-  /// can be reversed with the 'desc' modifier. Example usage:
-  /// ?orderBy=folder,modifiedTime desc,name.
+  /// [orderBy] - A comma-separated list of sort keys. Valid keys are: *
+  /// `createdTime`: When the file was created. * `folder`: The folder ID. This
+  /// field is sorted using alphabetical ordering. * `modifiedByMeTime`: The
+  /// last time the file was modified by the user. * `modifiedTime`: The last
+  /// time the file was modified by anyone. * `name`: The name of the file. This
+  /// field is sorted using alphabetical ordering, so 1, 12, 2, 22. *
+  /// `name_natural`: The name of the file. This field is sorted using natural
+  /// sort ordering, so 1, 2, 12, 22. * `quotaBytesUsed`: The number of storage
+  /// quota bytes used by the file. * `recency`: The most recent timestamp from
+  /// the file's date-time fields. * `sharedWithMeTime`: When the file was
+  /// shared with the user, if applicable. * `starred`: Whether the user has
+  /// starred the file. * `viewedByMeTime`: The last time the file was viewed by
+  /// the user. Each key sorts ascending by default, but can be reversed with
+  /// the 'desc' modifier. Example usage: `?orderBy=folder,modifiedTime
+  /// desc,name`.
   ///
   /// [pageSize] - The maximum number of files to return per page. Partial or
   /// empty result pages are possible even before the end of the files list has
@@ -1966,7 +2037,8 @@ class FilesResource {
   ///
   /// [acknowledgeAbuse] - Whether the user is acknowledging the risk of
   /// downloading known malware or other abusive files. This is only applicable
-  /// when alt=media.
+  /// when the `alt` parameter is set to `media` and the user is the owner of
+  /// the file or an organizer of the shared drive in which the file resides.
   ///
   /// [includeLabels] - A comma-separated list of IDs of labels to include in
   /// the `labelInfo` part of the response.
@@ -2021,6 +2093,300 @@ class FilesResource {
       queryParams: queryParams_,
     );
     return Channel.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class FilesAccessproposalsResource {
+  final commons.ApiRequester _requester;
+
+  FilesAccessproposalsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List the AccessProposals on a file.
+  ///
+  /// Note: Only approvers are able to list AccessProposals on a file. If the
+  /// user is not an approver, returns a 403.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - Required. The id of the item the request is on.
+  ///
+  /// [pageSize] - Optional. The number of results per page
+  ///
+  /// [pageToken] - Optional. The continuation token on the list of access
+  /// requests.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAccessProposalsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAccessProposalsResponse> list(
+    core.String fileId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'files/' + commons.escapeVariable('$fileId') + '/accessproposals';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAccessProposalsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Used to approve or deny an Access Proposal.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - Required. The id of the item the request is on.
+  ///
+  /// [proposalId] - Required. The id of the access proposal to resolve.
+  ///
+  /// [action] - Required. The action to take on the AccessProposal.
+  /// Possible string values are:
+  /// - "ACTION_UNSPECIFIED" : Unspecified action
+  /// - "ACCEPT" : The user accepts the proposal
+  /// - "DENY" : The user denies the proposal
+  ///
+  /// [role] - Optional. The roles the approver has allowed, if any. Note: This
+  /// field is required for the `ACCEPT` action.
+  ///
+  /// [sendNotification] - Optional. Whether to send an email to the requester
+  /// when the AccessProposal is denied or accepted.
+  ///
+  /// [view] - Optional. Indicates the view for this access proposal. This
+  /// should only be set when the proposal belongs to a view. `published` is the
+  /// only supported value.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> resolve(
+    core.String fileId,
+    core.String proposalId, {
+    core.String? action,
+    core.List<core.String>? role,
+    core.bool? sendNotification,
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (action != null) 'action': [action],
+      if (role != null) 'role': role,
+      if (sendNotification != null) 'sendNotification': ['${sendNotification}'],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'files/' +
+        commons.escapeVariable('$fileId') +
+        '/accessproposals/' +
+        commons.escapeVariable('$proposalId') +
+        ':resolve';
+
+    await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+}
+
+class OperationResource {
+  final commons.ApiRequester _requester;
+
+  OperationResource(commons.ApiRequester client) : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> cancel(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'operation/' + commons.escapeVariable('$name') + ':cancel';
+
+    await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'operation/' + commons.escapeVariable('$name');
+
+    await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+}
+
+class OperationsResource {
+  final commons.ApiRequester _requester;
+
+  OperationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'operations/' + commons.escapeVariable('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [name] - The name of the operation's parent resource.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list({
+    core.String? filter,
+    core.String? name,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (name != null) 'name': [name],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'operations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2708,7 +3074,8 @@ class RevisionsResource {
   ///
   /// [acknowledgeAbuse] - Whether the user is acknowledging the risk of
   /// downloading known malware or other abusive files. This is only applicable
-  /// when alt=media.
+  /// when the `alt` parameter is set to `media` and the user is the owner of
+  /// the file or an organizer of the shared drive in which the file resides.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3334,6 +3701,96 @@ class About {
         if (storageQuota != null) 'storageQuota': storageQuota!,
         if (teamDriveThemes != null) 'teamDriveThemes': teamDriveThemes!,
         if (user != null) 'user': user!,
+      };
+}
+
+/// The Access Proposal resource for outstanding access proposals on a file
+class AccessProposal {
+  /// The creation time
+  core.String? createTime;
+
+  /// The file id that the proposal for access is on
+  core.String? fileId;
+
+  /// The id of the access proposal
+  core.String? proposalId;
+
+  /// The email address of the user that will receive permissions if accepted
+  core.String? recipientEmailAddress;
+
+  /// The message that the requester added to the proposal
+  core.String? requestMessage;
+
+  /// The email address of the requesting user
+  core.String? requesterEmailAddress;
+
+  /// A wrapper for the role and view of an access proposal.
+  core.List<AccessProposalRoleAndView>? rolesAndViews;
+
+  AccessProposal({
+    this.createTime,
+    this.fileId,
+    this.proposalId,
+    this.recipientEmailAddress,
+    this.requestMessage,
+    this.requesterEmailAddress,
+    this.rolesAndViews,
+  });
+
+  AccessProposal.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          fileId: json_['fileId'] as core.String?,
+          proposalId: json_['proposalId'] as core.String?,
+          recipientEmailAddress: json_['recipientEmailAddress'] as core.String?,
+          requestMessage: json_['requestMessage'] as core.String?,
+          requesterEmailAddress: json_['requesterEmailAddress'] as core.String?,
+          rolesAndViews: (json_['rolesAndViews'] as core.List?)
+              ?.map((value) => AccessProposalRoleAndView.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (fileId != null) 'fileId': fileId!,
+        if (proposalId != null) 'proposalId': proposalId!,
+        if (recipientEmailAddress != null)
+          'recipientEmailAddress': recipientEmailAddress!,
+        if (requestMessage != null) 'requestMessage': requestMessage!,
+        if (requesterEmailAddress != null)
+          'requesterEmailAddress': requesterEmailAddress!,
+        if (rolesAndViews != null) 'rolesAndViews': rolesAndViews!,
+      };
+}
+
+/// A wrapper for the role and view of an access proposal.
+class AccessProposalRoleAndView {
+  /// The role that was proposed by the requester New values may be added in the
+  /// future, but the following are currently possible: * `writer` * `commenter`
+  /// * `reader`
+  core.String? role;
+
+  /// Indicates the view for this access proposal.
+  ///
+  /// Only populated for proposals that belong to a view. `published` is the
+  /// only supported value.
+  core.String? view;
+
+  AccessProposalRoleAndView({
+    this.role,
+    this.view,
+  });
+
+  AccessProposalRoleAndView.fromJson(core.Map json_)
+      : this(
+          role: json_['role'] as core.String?,
+          view: json_['view'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (role != null) 'role': role!,
+        if (view != null) 'view': view!,
       };
 }
 
@@ -5423,9 +5880,12 @@ class FileLinkShareMetadata {
 /// Shortcut file details.
 ///
 /// Only populated for shortcut files, which have the mimeType field set to
-/// `application/vnd.google-apps.shortcut`.
+/// `application/vnd.google-apps.shortcut`. Can only be set on `files.create`
+/// requests.
 class FileShortcutDetails {
   /// The ID of the file that this shortcut points to.
+  ///
+  /// Can only be set on `files.create` requests.
   core.String? targetId;
 
   /// The MIME type of the file that this shortcut points to.
@@ -5641,6 +6101,9 @@ class File {
 
   /// The last user to modify the file.
   ///
+  /// This field is only populated when the last modification was performed by a
+  /// signed-in user.
+  ///
   /// Output only.
   User? lastModifyingUser;
 
@@ -5706,13 +6169,14 @@ class File {
   /// Output only.
   core.List<User>? owners;
 
-  /// The IDs of the parent folders which contain the file.
+  /// The ID of the parent folder containing the file.
   ///
-  /// If not specified as part of a create request, the file is placed directly
-  /// in the user's My Drive folder. If not specified as part of a copy request,
-  /// the file inherits any discoverable parents of the source file. Update
-  /// requests must use the `addParents` and `removeParents` parameters to
-  /// modify the parents list.
+  /// A file can only have one parent folder; specifying multiple parents isn't
+  /// supported. If not specified as part of a create request, the file is
+  /// placed directly in the user's My Drive folder. If not specified as part of
+  /// a copy request, the file inherits any discoverable parent of the source
+  /// file. Update requests must use the `addParents` and `removeParents`
+  /// parameters to modify the parents list.
   core.List<core.String>? parents;
 
   /// List of permission IDs for users with access to this file.
@@ -5780,7 +6244,8 @@ class File {
   /// Shortcut file details.
   ///
   /// Only populated for shortcut files, which have the mimeType field set to
-  /// `application/vnd.google-apps.shortcut`.
+  /// `application/vnd.google-apps.shortcut`. Can only be set on `files.create`
+  /// requests.
   FileShortcutDetails? shortcutDetails;
 
   /// Size in bytes of blobs and first party editor files.
@@ -5811,9 +6276,12 @@ class File {
 
   /// A short-lived link to the file's thumbnail, if available.
   ///
-  /// Typically lasts on the order of hours. Only populated when the requesting
-  /// app can access the file's content. If the file isn't shared publicly, the
-  /// URL returned in `Files.thumbnailLink` must be fetched using a credentialed
+  /// Typically lasts on the order of hours. Not intended for direct usage on
+  /// web applications due to \[Cross-Origin Resource Sharing
+  /// (CORS)\](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies,
+  /// consider using a proxy server. Only populated when the requesting app can
+  /// access the file's content. If the file isn't shared publicly, the URL
+  /// returned in `Files.thumbnailLink` must be fetched using a credentialed
   /// request.
   ///
   /// Output only.
@@ -6561,6 +7029,68 @@ class LabelModification {
       };
 }
 
+/// The response to an Access Proposal list request.
+class ListAccessProposalsResponse {
+  /// The list of Access Proposals.
+  ///
+  /// This field is only populated in v3 and v3beta.
+  core.List<AccessProposal>? accessProposals;
+
+  /// The continuation token for the next page of results.
+  ///
+  /// This will be absent if the end of the results list has been reached. If
+  /// the token is rejected for any reason, it should be discarded, and
+  /// pagination should be restarted from the first page of results.
+  core.String? nextPageToken;
+
+  ListAccessProposalsResponse({
+    this.accessProposals,
+    this.nextPageToken,
+  });
+
+  ListAccessProposalsResponse.fromJson(core.Map json_)
+      : this(
+          accessProposals: (json_['accessProposals'] as core.List?)
+              ?.map((value) => AccessProposal.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessProposals != null) 'accessProposals': accessProposals!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The response message for Operations.ListOperations.
+class ListOperationsResponse {
+  /// The standard List next-page token.
+  core.String? nextPageToken;
+
+  /// A list of operations that matches the specified filter in the request.
+  core.List<Operation>? operations;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
+
+  ListOperationsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (operations != null) 'operations': operations!,
+      };
+}
+
 /// A request to modify the set of labels on a file.
 ///
 /// This request may contain many modifications that will either all succeed or
@@ -6620,6 +7150,82 @@ class ModifyLabelsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (modifiedLabels != null) 'modifiedLabels': modifiedLabels!,
+      };
+}
+
+/// This resource represents a long-running operation that is the result of a
+/// network API call.
+class Operation {
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// available.
+  core.bool? done;
+
+  /// The error result of the operation in case of failure or cancellation.
+  Status? error;
+
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The server-assigned name, which is only unique within the same service
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
+  core.String? name;
+
+  /// The normal, successful response of the operation.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? response;
+
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
+
+  Operation.fromJson(core.Map json_)
+      : this(
+          done: json_['done'] as core.bool?,
+          error: json_.containsKey('error')
+              ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
+              : null,
+          name: json_['name'] as core.String?,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -7135,6 +7741,9 @@ class Revision {
 
   /// The last user to modify this revision.
   ///
+  /// This field is only populated when the last modification was performed by a
+  /// signed-in user.
+  ///
   /// Output only.
   User? lastModifyingUser;
 
@@ -7328,6 +7937,15 @@ class StartPageToken {
         if (startPageToken != null) 'startPageToken': startPageToken!,
       };
 }
+
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+typedef Status = $Status00;
 
 /// An image file and cropping parameters from which a background image for this
 /// Team Drive is set.

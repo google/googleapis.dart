@@ -422,6 +422,7 @@ api.Instance buildInstance() {
     o.eventPublishConfig = buildEventPublishConfig();
     o.gcsBucket = 'foo';
     o.labels = buildUnnamed6();
+    o.maintenancePolicy = buildMaintenancePolicy();
     o.name = 'foo';
     o.networkConfig = buildNetworkConfig();
     o.options = buildUnnamed7();
@@ -482,6 +483,7 @@ void checkInstance(api.Instance o) {
       unittest.equals('foo'),
     );
     checkUnnamed6(o.labels!);
+    checkMaintenancePolicy(o.maintenancePolicy!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -834,6 +836,46 @@ void checkLocation(api.Location o) {
   buildCounterLocation--;
 }
 
+core.int buildCounterMaintenancePolicy = 0;
+api.MaintenancePolicy buildMaintenancePolicy() {
+  final o = api.MaintenancePolicy();
+  buildCounterMaintenancePolicy++;
+  if (buildCounterMaintenancePolicy < 3) {
+    o.maintenanceExclusionWindow = buildTimeWindow();
+    o.maintenanceWindow = buildMaintenanceWindow();
+  }
+  buildCounterMaintenancePolicy--;
+  return o;
+}
+
+void checkMaintenancePolicy(api.MaintenancePolicy o) {
+  buildCounterMaintenancePolicy++;
+  if (buildCounterMaintenancePolicy < 3) {
+    checkTimeWindow(o.maintenanceExclusionWindow!);
+    checkMaintenanceWindow(o.maintenanceWindow!);
+  }
+  buildCounterMaintenancePolicy--;
+}
+
+core.int buildCounterMaintenanceWindow = 0;
+api.MaintenanceWindow buildMaintenanceWindow() {
+  final o = api.MaintenanceWindow();
+  buildCounterMaintenanceWindow++;
+  if (buildCounterMaintenanceWindow < 3) {
+    o.recurringTimeWindow = buildRecurringTimeWindow();
+  }
+  buildCounterMaintenanceWindow--;
+  return o;
+}
+
+void checkMaintenanceWindow(api.MaintenanceWindow o) {
+  buildCounterMaintenanceWindow++;
+  if (buildCounterMaintenanceWindow < 3) {
+    checkRecurringTimeWindow(o.recurringTimeWindow!);
+  }
+  buildCounterMaintenanceWindow--;
+}
+
 core.int buildCounterNetworkConfig = 0;
 api.NetworkConfig buildNetworkConfig() {
   final o = api.NetworkConfig();
@@ -1073,6 +1115,30 @@ void checkPrivateServiceConnectConfig(api.PrivateServiceConnectConfig o) {
   buildCounterPrivateServiceConnectConfig--;
 }
 
+core.int buildCounterRecurringTimeWindow = 0;
+api.RecurringTimeWindow buildRecurringTimeWindow() {
+  final o = api.RecurringTimeWindow();
+  buildCounterRecurringTimeWindow++;
+  if (buildCounterRecurringTimeWindow < 3) {
+    o.recurrence = 'foo';
+    o.window = buildTimeWindow();
+  }
+  buildCounterRecurringTimeWindow--;
+  return o;
+}
+
+void checkRecurringTimeWindow(api.RecurringTimeWindow o) {
+  buildCounterRecurringTimeWindow++;
+  if (buildCounterRecurringTimeWindow < 3) {
+    unittest.expect(
+      o.recurrence!,
+      unittest.equals('foo'),
+    );
+    checkTimeWindow(o.window!);
+  }
+  buildCounterRecurringTimeWindow--;
+}
+
 core.int buildCounterRestartInstanceRequest = 0;
 api.RestartInstanceRequest buildRestartInstanceRequest() {
   final o = api.RestartInstanceRequest();
@@ -1267,6 +1333,33 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
     checkUnnamed23(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
+}
+
+core.int buildCounterTimeWindow = 0;
+api.TimeWindow buildTimeWindow() {
+  final o = api.TimeWindow();
+  buildCounterTimeWindow++;
+  if (buildCounterTimeWindow < 3) {
+    o.endTime = 'foo';
+    o.startTime = 'foo';
+  }
+  buildCounterTimeWindow--;
+  return o;
+}
+
+void checkTimeWindow(api.TimeWindow o) {
+  buildCounterTimeWindow++;
+  if (buildCounterTimeWindow < 3) {
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTimeWindow--;
 }
 
 core.List<core.String> buildUnnamed24() => [
@@ -1488,6 +1581,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-MaintenancePolicy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMaintenancePolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MaintenancePolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMaintenancePolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-MaintenanceWindow', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMaintenanceWindow();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MaintenanceWindow.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMaintenanceWindow(od);
+    });
+  });
+
   unittest.group('obj-schema-NetworkConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildNetworkConfig();
@@ -1525,6 +1638,16 @@ void main() {
       final od = api.PrivateServiceConnectConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkPrivateServiceConnectConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-RecurringTimeWindow', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRecurringTimeWindow();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RecurringTimeWindow.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRecurringTimeWindow(od);
     });
   });
 
@@ -1575,6 +1698,16 @@ void main() {
       final od = api.TestIamPermissionsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTestIamPermissionsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-TimeWindow', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTimeWindow();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.TimeWindow.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkTimeWindow(od);
     });
   });
 
@@ -1646,7 +1779,6 @@ void main() {
       final res = api.DataFusionApi(mock).projects.locations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
-      final arg_includeUnrevealedLocations = true;
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -1687,10 +1819,6 @@ void main() {
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          queryMap['includeUnrevealedLocations']!.first,
-          unittest.equals('$arg_includeUnrevealedLocations'),
-        );
-        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -1711,7 +1839,6 @@ void main() {
       }), true);
       final response = await res.list(arg_name,
           filter: arg_filter,
-          includeUnrevealedLocations: arg_includeUnrevealedLocations,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           $fields: arg_$fields);

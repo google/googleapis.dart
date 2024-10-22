@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240609",
+    "revision": "20240707",
     "rootUrl": "https://essentialcontacts.googleapis.com/",
     "servicePath": "",
     "title": "Essential Contacts API",
@@ -925,7 +925,7 @@
                     "type": "string"
                 },
                 "validationState": {
-                    "description": "The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.",
+                    "description": "Output only. The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.",
                     "enum": [
                         "VALIDATION_STATE_UNSPECIFIED",
                         "VALID",
@@ -936,6 +936,7 @@
                         "The contact is marked as valid. This is usually done manually by the contact admin. All new contacts begin in the valid state.",
                         "The contact is considered invalid. This may become the state if the contact's email is found to be unreachable."
                     ],
+                    "readOnly": true,
                     "type": "string"
                 }
             },

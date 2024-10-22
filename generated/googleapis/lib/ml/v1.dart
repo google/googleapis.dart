@@ -3257,7 +3257,7 @@ class GoogleCloudMlV1ContainerSpec {
 }
 
 /// Represents the config of disk options.
-typedef GoogleCloudMlV1DiskConfig = $Shared03;
+typedef GoogleCloudMlV1DiskConfig = $Shared04;
 
 /// Represents a custom encryption key configuration that can be applied to a
 /// resource.
@@ -6644,7 +6644,7 @@ typedef GoogleProtobufEmpty = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef GoogleRpcStatus = $Status;
+typedef GoogleRpcStatus = $Status00;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.

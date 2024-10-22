@@ -1478,8 +1478,6 @@ class ProjectsLocationsStreamsResource {
   /// Use this method to start, resume or recover a stream with a non default
   /// CDC strategy.
   ///
-  /// NOTE: This feature is currently experimental.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -3013,6 +3011,8 @@ class MysqlObjectIdentifier {
 }
 
 /// MySQL database profile.
+///
+/// Next ID: 7.
 class MysqlProfile {
   /// Hostname for the MySQL connection.
   ///
@@ -3021,9 +3021,10 @@ class MysqlProfile {
 
   /// Input only.
   ///
-  /// Password for the MySQL connection.
+  /// Password for the MySQL connection. Mutually exclusive with the
+  /// `secret_manager_stored_password` field.
   ///
-  /// Required.
+  /// Optional.
   core.String? password;
 
   /// Port for the MySQL connection, default value is 3306.
@@ -3389,6 +3390,8 @@ class OracleColumn {
 typedef OracleObjectIdentifier = $ObjectIdentifier;
 
 /// Oracle database profile.
+///
+/// Next ID: 10.
 class OracleProfile {
   /// Connection string attributes
   core.Map<core.String, core.String>? connectionAttributes;
@@ -3410,7 +3413,9 @@ class OracleProfile {
 
   /// Password for the Oracle connection.
   ///
-  /// Required.
+  /// Mutually exclusive with the `secret_manager_stored_password` field.
+  ///
+  /// Optional.
   core.String? password;
 
   /// Port for the Oracle connection, default value is 1521.
@@ -3733,6 +3738,8 @@ class PostgresqlColumn {
 typedef PostgresqlObjectIdentifier = $ObjectIdentifier;
 
 /// PostgreSQL database profile.
+///
+/// Next ID: 7.
 class PostgresqlProfile {
   /// Database for the PostgreSQL connection.
   ///
@@ -3746,7 +3753,9 @@ class PostgresqlProfile {
 
   /// Password for the PostgreSQL connection.
   ///
-  /// Required.
+  /// Mutually exclusive with the `secret_manager_stored_password` field.
+  ///
+  /// Optional.
   core.String? password;
 
   /// Port for the PostgreSQL connection, default value is 5432.
@@ -4126,8 +4135,14 @@ class RunStreamRequest {
   /// Optional.
   CdcStrategy? cdcStrategy;
 
+  /// Update the stream without validating it.
+  ///
+  /// Optional.
+  core.bool? force;
+
   RunStreamRequest({
     this.cdcStrategy,
+    this.force,
   });
 
   RunStreamRequest.fromJson(core.Map json_)
@@ -4136,10 +4151,12 @@ class RunStreamRequest {
               ? CdcStrategy.fromJson(
                   json_['cdcStrategy'] as core.Map<core.String, core.dynamic>)
               : null,
+          force: json_['force'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cdcStrategy != null) 'cdcStrategy': cdcStrategy!,
+        if (force != null) 'force': force!,
       };
 }
 
@@ -4403,7 +4420,9 @@ class SqlServerColumn {
 /// SQLServer data source object identifier.
 typedef SqlServerObjectIdentifier = $ObjectIdentifier;
 
-/// SQLServer database profile
+/// SQLServer database profile.
+///
+/// Next ID: 8.
 class SqlServerProfile {
   /// Database for the SQLServer connection.
   ///
@@ -4417,7 +4436,9 @@ class SqlServerProfile {
 
   /// Password for the SQLServer connection.
   ///
-  /// Required.
+  /// Mutually exclusive with the `secret_manager_stored_password` field.
+  ///
+  /// Optional.
   core.String? password;
 
   /// Port for the SQLServer connection, default value is 1433.
@@ -4642,7 +4663,7 @@ typedef StaticServiceIpConnectivity = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Request for manually stopping a running backfill job for a specific stream
 /// object.

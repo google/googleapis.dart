@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240605",
+    "revision": "20240904",
     "rootUrl": "https://cloudcontrolspartner.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Controls Partner API",
@@ -341,9 +341,11 @@
                                     },
                                     "resources": {
                                         "accessApprovalRequests": {
+                                            "deprecated": true,
                                             "methods": {
                                                 "list": {
-                                                    "description": "Lists access requests associated with a workload",
+                                                    "deprecated": true,
+                                                    "description": "Deprecated: Only returns access approval requests directly associated with an assured workload folder.",
                                                     "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}/workloads/{workloadsId}/accessApprovalRequests",
                                                     "httpMethod": "GET",
                                                     "id": "cloudcontrolspartner.organizations.locations.customers.workloads.accessApprovalRequests.list",
@@ -594,14 +596,16 @@
             "properties": {
                 "customerOnboardingState": {
                     "$ref": "CustomerOnboardingState",
-                    "description": "Container for customer onboarding steps"
+                    "description": "Output only. Container for customer onboarding steps",
+                    "readOnly": true
                 },
                 "displayName": {
-                    "description": "The customer organization's display name. E.g. \"google.com\".",
+                    "description": "Required. Display name for the customer",
                     "type": "string"
                 },
                 "isOnboarded": {
-                    "description": "Indicates whether a customer is fully onboarded",
+                    "description": "Output only. Indicates whether a customer is fully onboarded",
+                    "readOnly": true,
                     "type": "boolean"
                 },
                 "name": {
@@ -1007,14 +1011,16 @@
                             "ACCESS_TRANSPARENCY_AND_EMERGENCY_ACCESS_LOGS",
                             "ASSURED_WORKLOADS_MONITORING",
                             "ACCESS_APPROVAL_REQUESTS",
-                            "ASSURED_WORKLOADS_EKM_CONNECTION_STATUS"
+                            "ASSURED_WORKLOADS_EKM_CONNECTION_STATUS",
+                            "ACCESS_TRANSPARENCY_LOGS_SUPPORT_CASE_VIEWER"
                         ],
                         "enumDescriptions": [
                             "Unspecified partner permission",
                             "Permission for Access Transparency and emergency logs",
                             "Permission for Assured Workloads monitoring violations",
                             "Permission for Access Approval requests",
-                            "Permission for External Key Manager connection status"
+                            "Permission for External Key Manager connection status",
+                            "Permission for support case details for Access Transparency log entries"
                         ],
                         "type": "string"
                     },

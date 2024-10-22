@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240606",
+    "revision": "20240924",
     "rootUrl": "https://connectors.googleapis.com/",
     "servicePath": "",
     "title": "Connectors API",
@@ -1324,6 +1324,21 @@
                                             "pattern": "^projects/[^/]+/locations/[^/]+/endpointAttachments/[^/]+$",
                                             "required": true,
                                             "type": "string"
+                                        },
+                                        "view": {
+                                            "description": "Optional. Specifies which fields of the EndpointAttachment are returned in the response. Defaults to `ENDPOINT_ATTACHMENT_VIEW_BASIC` view.",
+                                            "enum": [
+                                                "ENDPOINT_ATTACHMENT_VIEW_UNSPECIFIED",
+                                                "ENDPOINT_ATTACHMENT_VIEW_BASIC",
+                                                "ENDPOINT_ATTACHMENT_VIEW_FULL"
+                                            ],
+                                            "enumDescriptions": [
+                                                "ENDPOINT_ATTACHMENT_VIEW_UNSPECIFIED.",
+                                                "Do not include status.",
+                                                "Includes Status."
+                                            ],
+                                            "location": "query",
+                                            "type": "string"
                                         }
                                     },
                                     "path": "v1/{+name}",
@@ -1369,6 +1384,21 @@
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
+                                            "type": "string"
+                                        },
+                                        "view": {
+                                            "description": "Optional. Specifies which fields of the EndpointAttachment are returned in the response. Defaults to `ENDPOINT_ATTACHMENT_VIEW_BASIC` view.",
+                                            "enum": [
+                                                "ENDPOINT_ATTACHMENT_VIEW_UNSPECIFIED",
+                                                "ENDPOINT_ATTACHMENT_VIEW_BASIC",
+                                                "ENDPOINT_ATTACHMENT_VIEW_FULL"
+                                            ],
+                                            "enumDescriptions": [
+                                                "ENDPOINT_ATTACHMENT_VIEW_UNSPECIFIED.",
+                                                "Do not include status.",
+                                                "Includes Status."
+                                            ],
+                                            "location": "query",
                                             "type": "string"
                                         }
                                     },
@@ -2262,6 +2292,46 @@
                                     "resources": {
                                         "versions": {
                                             "methods": {
+                                                "fetchAuthSchema": {
+                                                    "description": "fetch and return the list of auth config variables required to override the connection backend auth.",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/providers/{providersId}/connectors/{connectorsId}/versions/{versionsId}:fetchAuthSchema",
+                                                    "httpMethod": "GET",
+                                                    "id": "connectors.projects.locations.providers.connectors.versions.fetchAuthSchema",
+                                                    "parameterOrder": [
+                                                        "name"
+                                                    ],
+                                                    "parameters": {
+                                                        "name": {
+                                                            "description": "Required. Parent resource of the Connector Version, of the form: `projects/*/locations/*/providers/*/connectors/*/versions/*`",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/[^/]+/providers/[^/]+/connectors/[^/]+/versions/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "view": {
+                                                            "description": "Optional. View of the AuthSchema. The default value is BASIC.",
+                                                            "enum": [
+                                                                "AUTH_SCHEMA_VIEW_UNSPECIFIED",
+                                                                "BASIC",
+                                                                "JSON_SCHEMA"
+                                                            ],
+                                                            "enumDescriptions": [
+                                                                "Default value.",
+                                                                "Basic view of the AuthSchema.",
+                                                                "JSON schema view of the AuthSchema."
+                                                            ],
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v1/{+name}:fetchAuthSchema",
+                                                    "response": {
+                                                        "$ref": "FetchAuthSchemaResponse"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                },
                                                 "get": {
                                                     "description": "Gets details of a single connector version.",
                                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/providers/{providersId}/connectors/{connectorsId}/versions/{versionsId}",
@@ -2504,7 +2574,8 @@
                         "OAUTH2_CLIENT_CREDENTIALS",
                         "SSH_PUBLIC_KEY",
                         "OAUTH2_AUTH_CODE_FLOW",
-                        "GOOGLE_AUTHENTICATION"
+                        "GOOGLE_AUTHENTICATION",
+                        "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED"
                     ],
                     "enumDescriptions": [
                         "Authentication type not specified.",
@@ -2513,13 +2584,18 @@
                         "Oauth 2.0 Client Credentials Grant Authentication",
                         "SSH Public Key Authentication",
                         "Oauth 2.0 Authorization Code Flow",
-                        "Google authentication"
+                        "Google authentication",
+                        "Oauth 2.0 Authorization Code Flow with Google Provided OAuth Client"
                     ],
                     "type": "string"
                 },
                 "oauth2AuthCodeFlow": {
                     "$ref": "Oauth2AuthCodeFlow",
                     "description": "Oauth2AuthCodeFlow."
+                },
+                "oauth2AuthCodeFlowGoogleManaged": {
+                    "$ref": "Oauth2AuthCodeFlowGoogleManaged",
+                    "description": "Oauth2AuthCodeFlowGoogleManaged."
                 },
                 "oauth2ClientCredentials": {
                     "$ref": "Oauth2ClientCredentials",
@@ -2557,7 +2633,8 @@
                         "OAUTH2_CLIENT_CREDENTIALS",
                         "SSH_PUBLIC_KEY",
                         "OAUTH2_AUTH_CODE_FLOW",
-                        "GOOGLE_AUTHENTICATION"
+                        "GOOGLE_AUTHENTICATION",
+                        "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED"
                     ],
                     "enumDescriptions": [
                         "Authentication type not specified.",
@@ -2566,7 +2643,8 @@
                         "Oauth 2.0 Client Credentials Grant Authentication",
                         "SSH Public Key Authentication",
                         "Oauth 2.0 Authorization Code Flow",
-                        "Google authentication"
+                        "Google authentication",
+                        "Oauth 2.0 Authorization Code Flow with Google Provided OAuth Client"
                     ],
                     "type": "string"
                 },
@@ -2584,6 +2662,136 @@
                 "displayName": {
                     "description": "Display name for authentication template.",
                     "type": "string"
+                },
+                "isDefault": {
+                    "description": "Whether the auth config is the default one.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "AuthField": {
+            "description": "AuthField defines a field in an authentication type.",
+            "id": "AuthField",
+            "properties": {
+                "dataType": {
+                    "description": "Data type of the field.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Description of the field.",
+                    "type": "string"
+                },
+                "key": {
+                    "description": "Key of the field.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AuthObject": {
+            "description": "AuthObject defines a JSON schema of an authentication type.",
+            "id": "AuthObject",
+            "properties": {
+                "additionalProperties": {
+                    "description": "Whether the object has additional properties.",
+                    "type": "boolean"
+                },
+                "authKey": {
+                    "description": "Auth key of the object.",
+                    "type": "string"
+                },
+                "authType": {
+                    "description": "Auth type of the object.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Description of the object.",
+                    "type": "string"
+                },
+                "isDefault": {
+                    "description": "Whether the object is the default one.",
+                    "type": "boolean"
+                },
+                "properties": {
+                    "additionalProperties": {
+                        "$ref": "AuthProperty"
+                    },
+                    "description": "Properties of the object.",
+                    "type": "object"
+                },
+                "type": {
+                    "description": "Type of the object.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AuthProperty": {
+            "description": "AuthProperty defines a property of an authentication type.",
+            "id": "AuthProperty",
+            "properties": {
+                "description": {
+                    "description": "Description of the property.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Type of the property.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AuthSchema": {
+            "description": "AuthSchema defines the schema of an authentication type.",
+            "id": "AuthSchema",
+            "properties": {
+                "authFields": {
+                    "description": "List of AuthFields.",
+                    "items": {
+                        "$ref": "AuthField"
+                    },
+                    "type": "array"
+                },
+                "authKey": {
+                    "description": "Auth key of the schema.",
+                    "type": "string"
+                },
+                "authType": {
+                    "description": "Auth type of the schema.",
+                    "enum": [
+                        "AUTH_TYPE_UNSPECIFIED",
+                        "USER_PASSWORD",
+                        "OAUTH2_JWT_BEARER",
+                        "OAUTH2_CLIENT_CREDENTIALS",
+                        "SSH_PUBLIC_KEY",
+                        "OAUTH2_AUTH_CODE_FLOW",
+                        "GOOGLE_AUTHENTICATION",
+                        "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED"
+                    ],
+                    "enumDescriptions": [
+                        "Authentication type not specified.",
+                        "Username and Password Authentication.",
+                        "JSON Web Token (JWT) Profile for Oauth 2.0 Authorization Grant based authentication",
+                        "Oauth 2.0 Client Credentials Grant Authentication",
+                        "SSH Public Key Authentication",
+                        "Oauth 2.0 Authorization Code Flow",
+                        "Google authentication",
+                        "Oauth 2.0 Authorization Code Flow with Google Provided OAuth Client"
+                    ],
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Description of the schema.",
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "Display name of the schema.",
+                    "type": "string"
+                },
+                "isDefault": {
+                    "description": "Whether the auth schema is the default one.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -2596,8 +2804,16 @@
                     "description": "The client ID assigned to the Google Cloud Connectors OAuth app for the connector data source.",
                     "type": "string"
                 },
+                "clientSecret": {
+                    "$ref": "Secret",
+                    "description": "Optional. The client secret assigned to the Google Cloud Connectors OAuth app for the connector data source."
+                },
                 "enablePkce": {
                     "description": "Whether to enable PKCE for the auth code flow.",
+                    "type": "boolean"
+                },
+                "omitQueryParams": {
+                    "description": "Optional. Omit query params from the redirect URI.",
                     "type": "boolean"
                 },
                 "scopes": {
@@ -2824,9 +3040,17 @@
             "description": "Connection represents an instance of connector.",
             "id": "Connection",
             "properties": {
+                "asyncOperationsEnabled": {
+                    "description": "Optional. Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.",
+                    "type": "boolean"
+                },
                 "authConfig": {
                     "$ref": "AuthConfig",
                     "description": "Optional. Configuration for establishing the connection's authentication with an external system."
+                },
+                "authOverrideEnabled": {
+                    "description": "Optional. Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.",
+                    "type": "boolean"
                 },
                 "billingConfig": {
                     "$ref": "BillingConfig",
@@ -2919,6 +3143,11 @@
                     "description": "Output only. Eventing Runtime Data.",
                     "readOnly": true
                 },
+                "host": {
+                    "description": "Output only. The name of the Hostname of the Service Directory service with TLS.",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "imageLocation": {
                     "description": "Output only. GCR location where the runtime image is stored. formatted like: gcr.io/{bucketName}/{imageName}",
                     "readOnly": true,
@@ -2989,6 +3218,11 @@
                 "suspended": {
                     "description": "Optional. Suspended indicates if a user has suspended a connection or not.",
                     "type": "boolean"
+                },
+                "tlsServiceDirectory": {
+                    "description": "Output only. The name of the Service Directory service with TLS.",
+                    "readOnly": true,
+                    "type": "string"
                 },
                 "updateTime": {
                     "description": "Output only. Updated time.",
@@ -3116,6 +3350,23 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "connectorType": {
+                    "description": "Output only. The type of the connector.",
+                    "enum": [
+                        "CONNECTOR_TYPE_UNSPECIFIED",
+                        "CONNECTOR_TYPE_GOOGLE",
+                        "CONNECTOR_TYPE_TECHNICAL",
+                        "CONNECTOR_TYPE_THIRD_PARTY"
+                    ],
+                    "enumDescriptions": [
+                        "Default value.",
+                        "Google connectors.",
+                        "Technical connectors.",
+                        "Third Party connectors."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "createTime": {
                     "description": "Output only. Created time.",
                     "format": "google-datetime",
@@ -3205,6 +3456,10 @@
             "description": "This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version",
             "id": "ConnectorInfraConfig",
             "properties": {
+                "alwaysAllocateCpu": {
+                    "description": "Indicates that the Cloud Run CPU should always be allocated.",
+                    "type": "boolean"
+                },
                 "connectionRatelimitWindowSeconds": {
                     "description": "The window used for ratelimiting runtime requests to connections.",
                     "format": "int64",
@@ -3232,6 +3487,23 @@
                     "description": "Max QPS supported for internal requests originating from Connd.",
                     "format": "int64",
                     "type": "string"
+                },
+                "maxInstanceRequestConcurrency": {
+                    "description": "Max Instance Request Conncurrency for Cloud Run service.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "migrateDeploymentModel": {
+                    "description": "Indicate whether connector is being migrated to cloud run deployment model.",
+                    "type": "boolean"
+                },
+                "migrateTls": {
+                    "description": "Indicate whether connector is being migrated to TLS.",
+                    "type": "boolean"
+                },
+                "provisionCloudSpanner": {
+                    "description": "Indicate whether cloud spanner is required for connector job.",
+                    "type": "boolean"
                 },
                 "ratelimitThreshold": {
                     "description": "Max QPS supported by the connector version before throttling of requests.",
@@ -3312,6 +3584,21 @@
                     "description": "Output only. Eventing configuration supported by the Connector.",
                     "readOnly": true
                 },
+                "isAsyncOperationsSupported": {
+                    "description": "Output only. Is async operations supported.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "isCustomActionsSupported": {
+                    "description": "Output only. Is custom actions supported.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "isCustomEntitiesSupported": {
+                    "description": "Output only. Is custom entities supported.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
                 "labels": {
                     "additionalProperties": {
                         "type": "string"
@@ -3376,6 +3663,22 @@
                     "description": "Output only. Information about the runtime features supported by the Connector.",
                     "readOnly": true
                 },
+                "supportedStandardActions": {
+                    "description": "Output only. Supported standard actions.",
+                    "items": {
+                        "$ref": "StandardAction"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
+                "supportedStandardEntities": {
+                    "description": "Output only. Supported standard entities.",
+                    "items": {
+                        "$ref": "StandardEntity"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
                 "unsupportedConnectionTypes": {
                     "description": "Output only. Unsupported connection types.",
                     "items": {
@@ -3429,6 +3732,25 @@
                     ],
                     "type": "string"
                 },
+                "deploymentModelMigrationState": {
+                    "description": "Output only. Status of the deployment model migration.",
+                    "enum": [
+                        "DEPLOYMENT_MODEL_MIGRATION_STATE_UNSPECIFIED",
+                        "IN_PROGRESS",
+                        "COMPLETED",
+                        "ROLLEDBACK",
+                        "ROLLBACK_IN_PROGRESS"
+                    ],
+                    "enumDescriptions": [
+                        "Deployment model migration state is not specified.",
+                        "Deployment model migration is in progress.",
+                        "Deployment model migration is completed.",
+                        "Deployment model migration rolledback.",
+                        "Deployment model migration rollback in progress."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "hpaConfig": {
                     "$ref": "HPAConfig",
                     "description": "Output only. HPA autoscaling config.",
@@ -3439,6 +3761,12 @@
                     "format": "int64",
                     "readOnly": true,
                     "type": "string"
+                },
+                "maxInstanceRequestConcurrency": {
+                    "description": "Output only. Max instance request concurrency.",
+                    "format": "int32",
+                    "readOnly": true,
+                    "type": "integer"
                 },
                 "ratelimitThreshold": {
                     "description": "Output only. Max QPS supported by the connector version before throttling of requests.",
@@ -3458,6 +3786,21 @@
                 },
                 "sharedDeployment": {
                     "description": "Output only. The name of shared connector deployment.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "tlsMigrationState": {
+                    "description": "Output only. Status of the TLS migration.",
+                    "enum": [
+                        "TLS_MIGRATION_STATE_UNSPECIFIED",
+                        "TLS_MIGRATION_NOT_STARTED",
+                        "TLS_MIGRATION_COMPLETED"
+                    ],
+                    "enumDescriptions": [
+                        "TLS migration state is not specified.",
+                        "TLS migration is in progress.",
+                        "TLS migration is completed."
+                    ],
                     "readOnly": true,
                     "type": "string"
                 }
@@ -3956,6 +4299,31 @@
                     "description": "Required. The path of the service attachment",
                     "type": "string"
                 },
+                "state": {
+                    "description": "Output only. The Private Service Connect Connection Endpoint State. This value is only available in the Full view.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "PENDING",
+                        "ACCEPTED",
+                        "REJECTED",
+                        "CLOSED",
+                        "FROZEN",
+                        "NEEDS_ATTENTION",
+                        "ACCEPTED_NOT_PROGRAMMED"
+                    ],
+                    "enumDescriptions": [
+                        "STATE_UNSPECIFIED.",
+                        "The endpoint is pending acceptance by the producer.",
+                        "The endpoint has been accepted by the producer.",
+                        "The endpoint has been rejected by the producer.",
+                        "The endpoint has been closed by the producer and will not serve traffic going forward.",
+                        "The endpoint has been frozen by the producer and will not serve traffic.",
+                        "The endpoint has been accepted by the producer, but it is not ready to serve the traffic due to producer side issues.",
+                        "The endpoint has been accepted by the producer, but it cannot be programmed to the data plane due to invariant violation."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "updateTime": {
                     "description": "Output only. Updated time.",
                     "format": "google-datetime",
@@ -4444,6 +4812,24 @@
                         "$ref": "ExtractionRule"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "FetchAuthSchemaResponse": {
+            "description": "Response message for Connectors.GetAuthSchema.",
+            "id": "FetchAuthSchemaResponse",
+            "properties": {
+                "authSchemas": {
+                    "description": "List of AuthSchemas.",
+                    "items": {
+                        "$ref": "AuthSchema"
+                    },
+                    "type": "array"
+                },
+                "jsonSchema": {
+                    "$ref": "JsonAuthSchema",
+                    "description": "JSON schema of the AuthSchemas. This is only populated if the view is JSON_SCHEMA. The schema is in draft-07 format."
                 }
             },
             "type": "object"
@@ -5024,6 +5410,24 @@
                         "JMS Topic."
                     ],
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "JsonAuthSchema": {
+            "description": "JsonAuthSchema defines the JSON schema of all authentication types.",
+            "id": "JsonAuthSchema",
+            "properties": {
+                "$schema": {
+                    "description": "JSON schema of the AuthSchemas.",
+                    "type": "string"
+                },
+                "oneOf": {
+                    "description": "List of AuthObjects.",
+                    "items": {
+                        "$ref": "AuthObject"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -5873,7 +6277,7 @@
                     "type": "array"
                 },
                 "valueSeparator": {
-                    "description": "Required. Value separator.",
+                    "description": "Required. Value separator. Only \",\" can be used for OAuth auth code flow scope field.",
                     "type": "string"
                 }
             },
@@ -6015,6 +6419,28 @@
                 },
                 "scopes": {
                     "description": "Scopes the connection will request when the user performs the auth code flow.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Oauth2AuthCodeFlowGoogleManaged": {
+            "description": "Parameters to support Oauth 2.0 Auth Code Grant Authentication using Google Provided OAuth Client. See https://tools.ietf.org/html/rfc6749#section-1.3.1 for more details.",
+            "id": "Oauth2AuthCodeFlowGoogleManaged",
+            "properties": {
+                "authCode": {
+                    "description": "Optional. Authorization code to be exchanged for access and refresh tokens.",
+                    "type": "string"
+                },
+                "redirectUri": {
+                    "description": "Optional. Redirect URI to be provided during the auth code exchange.",
+                    "type": "string"
+                },
+                "scopes": {
+                    "description": "Required. Scopes the connection will request when the user performs the auth code flow.",
                     "items": {
                         "type": "string"
                     },
@@ -6517,6 +6943,10 @@
                     ],
                     "type": "string"
                 },
+                "defaultValue": {
+                    "description": "The following field specifies the default value of the Parameter provided by the external system if a value is not provided.",
+                    "type": "any"
+                },
                 "description": {
                     "description": "A brief description of the field.",
                     "type": "string"
@@ -6528,6 +6958,10 @@
                 "jsonSchema": {
                     "$ref": "JsonSchema",
                     "description": "JsonSchema representation of this action's result"
+                },
+                "nullable": {
+                    "description": "Specifies whether a null value is allowed.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -7133,6 +7567,28 @@
                         "TLS Handshake",
                         "mutual TLS (MTLS) Handshake"
                     ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "StandardAction": {
+            "description": "Standard action",
+            "id": "StandardAction",
+            "properties": {
+                "name": {
+                    "description": "Name of the standard action.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "StandardEntity": {
+            "description": "Standard entity",
+            "id": "StandardEntity",
+            "properties": {
+                "name": {
+                    "description": "Name of the standard entity.",
                     "type": "string"
                 }
             },

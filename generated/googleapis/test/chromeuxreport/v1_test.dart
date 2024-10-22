@@ -31,7 +31,11 @@ api.Bin buildBin() {
   final o = api.Bin();
   buildCounterBin++;
   if (buildCounterBin < 3) {
-    o.density = 42.0;
+    o.density = {
+      'list': [1, 2, 3],
+      'bool': true,
+      'string': 'foo'
+    };
     o.end = {
       'list': [1, 2, 3],
       'bool': true,
@@ -50,11 +54,7 @@ api.Bin buildBin() {
 void checkBin(api.Bin o) {
   buildCounterBin++;
   if (buildCounterBin < 3) {
-    unittest.expect(
-      o.density!,
-      unittest.equals(42.0),
-    );
-    var casted1 = (o.end!) as core.Map;
+    var casted1 = (o.density!) as core.Map;
     unittest.expect(casted1, unittest.hasLength(3));
     unittest.expect(
       casted1['list'],
@@ -68,7 +68,7 @@ void checkBin(api.Bin o) {
       casted1['string'],
       unittest.equals('foo'),
     );
-    var casted2 = (o.start!) as core.Map;
+    var casted2 = (o.end!) as core.Map;
     unittest.expect(casted2, unittest.hasLength(3));
     unittest.expect(
       casted2['list'],
@@ -80,6 +80,20 @@ void checkBin(api.Bin o) {
     );
     unittest.expect(
       casted2['string'],
+      unittest.equals('foo'),
+    );
+    var casted3 = (o.start!) as core.Map;
+    unittest.expect(casted3, unittest.hasLength(3));
+    unittest.expect(
+      casted3['list'],
+      unittest.equals([1, 2, 3]),
+    );
+    unittest.expect(
+      casted3['bool'],
+      unittest.equals(true),
+    );
+    unittest.expect(
+      casted3['string'],
       unittest.equals('foo'),
     );
   }
@@ -403,18 +417,18 @@ api.Percentiles buildPercentiles() {
 void checkPercentiles(api.Percentiles o) {
   buildCounterPercentiles++;
   if (buildCounterPercentiles < 3) {
-    var casted3 = (o.p75!) as core.Map;
-    unittest.expect(casted3, unittest.hasLength(3));
+    var casted4 = (o.p75!) as core.Map;
+    unittest.expect(casted4, unittest.hasLength(3));
     unittest.expect(
-      casted3['list'],
+      casted4['list'],
       unittest.equals([1, 2, 3]),
     );
     unittest.expect(
-      casted3['bool'],
+      casted4['bool'],
       unittest.equals(true),
     );
     unittest.expect(
-      casted3['string'],
+      casted4['string'],
       unittest.equals('foo'),
     );
   }
@@ -646,21 +660,7 @@ void checkTimeseriesBin(api.TimeseriesBin o) {
   buildCounterTimeseriesBin++;
   if (buildCounterTimeseriesBin < 3) {
     checkUnnamed10(o.densities!);
-    var casted4 = (o.end!) as core.Map;
-    unittest.expect(casted4, unittest.hasLength(3));
-    unittest.expect(
-      casted4['list'],
-      unittest.equals([1, 2, 3]),
-    );
-    unittest.expect(
-      casted4['bool'],
-      unittest.equals(true),
-    );
-    unittest.expect(
-      casted4['string'],
-      unittest.equals('foo'),
-    );
-    var casted5 = (o.start!) as core.Map;
+    var casted5 = (o.end!) as core.Map;
     unittest.expect(casted5, unittest.hasLength(3));
     unittest.expect(
       casted5['list'],
@@ -672,6 +672,20 @@ void checkTimeseriesBin(api.TimeseriesBin o) {
     );
     unittest.expect(
       casted5['string'],
+      unittest.equals('foo'),
+    );
+    var casted6 = (o.start!) as core.Map;
+    unittest.expect(casted6, unittest.hasLength(3));
+    unittest.expect(
+      casted6['list'],
+      unittest.equals([1, 2, 3]),
+    );
+    unittest.expect(
+      casted6['bool'],
+      unittest.equals(true),
+    );
+    unittest.expect(
+      casted6['string'],
       unittest.equals('foo'),
     );
   }
@@ -693,21 +707,7 @@ core.List<core.Object?> buildUnnamed11() => [
 
 void checkUnnamed11(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted6 = (o[0]) as core.Map;
-  unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(
-    casted6['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted6['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted6['string'],
-    unittest.equals('foo'),
-  );
-  var casted7 = (o[1]) as core.Map;
+  var casted7 = (o[0]) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
   unittest.expect(
     casted7['list'],
@@ -719,6 +719,20 @@ void checkUnnamed11(core.List<core.Object?> o) {
   );
   unittest.expect(
     casted7['string'],
+    unittest.equals('foo'),
+  );
+  var casted8 = (o[1]) as core.Map;
+  unittest.expect(casted8, unittest.hasLength(3));
+  unittest.expect(
+    casted8['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted8['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted8['string'],
     unittest.equals('foo'),
   );
 }

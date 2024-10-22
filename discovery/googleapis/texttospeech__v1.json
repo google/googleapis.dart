@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240530",
+    "revision": "20241008",
     "rootUrl": "https://texttospeech.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Text-to-Speech API",
@@ -323,6 +323,17 @@
         }
     },
     "schemas": {
+        "AdvancedVoiceOptions": {
+            "description": "Used for advanced voice options.",
+            "id": "AdvancedVoiceOptions",
+            "properties": {
+                "lowLatencyJourneySynthesis": {
+                    "description": "Only for Jounrney voices. If false, the synthesis will be context aware and have higher latency.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "AudioConfig": {
             "description": "Description of audio data to be synthesized.",
             "id": "AudioConfig",
@@ -381,6 +392,49 @@
             "description": "The request message for Operations.CancelOperation.",
             "id": "CancelOperationRequest",
             "properties": {},
+            "type": "object"
+        },
+        "CustomPronunciationParams": {
+            "description": "Pronunciation customization for a phrase.",
+            "id": "CustomPronunciationParams",
+            "properties": {
+                "phoneticEncoding": {
+                    "description": "The phonetic encoding of the phrase.",
+                    "enum": [
+                        "PHONETIC_ENCODING_UNSPECIFIED",
+                        "PHONETIC_ENCODING_IPA",
+                        "PHONETIC_ENCODING_X_SAMPA"
+                    ],
+                    "enumDescriptions": [
+                        "Not specified.",
+                        "IPA. (e.g. apple -> ˈæpəl ) https://en.wikipedia.org/wiki/International_Phonetic_Alphabet",
+                        "X-SAMPA (e.g. apple -> \"{p@l\" ) https://en.wikipedia.org/wiki/X-SAMPA"
+                    ],
+                    "type": "string"
+                },
+                "phrase": {
+                    "description": "The phrase to which the customization will be applied. The phrase can be multiple words (in the case of proper nouns etc), but should not span to a whole sentence.",
+                    "type": "string"
+                },
+                "pronunciation": {
+                    "description": "The pronunciation of the phrase. This must be in the phonetic encoding specified above.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CustomPronunciations": {
+            "description": "A collection of pronunciation customizations.",
+            "id": "CustomPronunciations",
+            "properties": {
+                "pronunciations": {
+                    "description": "The pronunciation customizations to be applied.",
+                    "items": {
+                        "$ref": "CustomPronunciationParams"
+                    },
+                    "type": "array"
+                }
+            },
             "type": "object"
         },
         "CustomVoiceParams": {
@@ -536,6 +590,10 @@
             "description": "Contains text input to be synthesized. Either `text` or `ssml` must be supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT. The input size is limited to 5000 bytes.",
             "id": "SynthesisInput",
             "properties": {
+                "customPronunciations": {
+                    "$ref": "CustomPronunciations",
+                    "description": "Optional. The pronunciation customizations to be applied to the input. If this is set, the input will be synthesized using the given pronunciation customizations. The initial support will be for EFIGS (English, French, Italian, German, Spanish) languages, as provided in VoiceSelectionParams. Journey and Instant Clone voices are not supported yet. In order to customize the pronunciation of a phrase, there must be an exact match of the phrase in the input types. If using SSML, the phrase must not be inside a phoneme tag (entirely or partially)."
+                },
                 "ssml": {
                     "description": "The SSML document to be synthesized. The SSML document must be valid and well-formed. Otherwise the RPC will fail and return google.rpc.Code.INVALID_ARGUMENT. For more information, see [SSML](https://cloud.google.com/text-to-speech/docs/ssml).",
                     "type": "string"
@@ -580,7 +638,7 @@
                 },
                 "input": {
                     "$ref": "SynthesisInput",
-                    "description": "Required. The Synthesizer requires either plain text or SSML as input. While Long Audio is in preview, SSML is temporarily unsupported."
+                    "description": "Required. The Synthesizer requires either plain text or SSML as input."
                 },
                 "outputGcsUri": {
                     "description": "Required. Specifies a Cloud Storage URI for the synthesis results. Must be specified in the format: `gs://bucket_name/object_name`, and the bucket must already exist.",
@@ -597,6 +655,10 @@
             "description": "The top-level message sent by the client for the `SynthesizeSpeech` method.",
             "id": "SynthesizeSpeechRequest",
             "properties": {
+                "advancedVoiceOptions": {
+                    "$ref": "AdvancedVoiceOptions",
+                    "description": "Adnanced voice options."
+                },
                 "audioConfig": {
                     "$ref": "AudioConfig",
                     "description": "Required. The configuration of the synthesized audio."

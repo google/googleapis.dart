@@ -840,17 +840,17 @@ typedef StateError = $StateError;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Workflow program to be executed by Workflows.
 class Workflow {
-  /// A list of all KMS crypto keys used to encrypt or decrpt the data
+  /// A list of all KMS crypto keys used to encrypt or decrypt the data
   /// associated with the workflow.
   ///
   /// Output only.
   core.List<core.String>? allKmsKeys;
 
-  /// A list of all KMS crypto keys versions used to encrypt or decrpt the data
+  /// A list of all KMS crypto key versions used to encrypt or decrypt the data
   /// associated with the workflow.
   ///
   /// Output only.
@@ -905,6 +905,17 @@ class Workflow {
   /// Must be at most 1000 Unicode characters long. This is a workflow-wide
   /// field and is not tied to a specific revision.
   core.String? description;
+
+  /// Describes the level of the execution history feature to apply to this
+  /// workflow.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EXECUTION_HISTORY_LEVEL_UNSPECIFIED" : The default/unset value.
+  /// - "EXECUTION_HISTORY_BASIC" : Enable execution history basic feature.
+  /// - "EXECUTION_HISTORY_DETAILED" : Enable execution history detailed
+  /// feature.
+  core.String? executionHistoryLevel;
 
   /// Labels associated with this workflow.
   ///
@@ -995,6 +1006,7 @@ class Workflow {
     this.cryptoKeyName,
     this.cryptoKeyVersion,
     this.description,
+    this.executionHistoryLevel,
     this.labels,
     this.name,
     this.revisionCreateTime,
@@ -1020,6 +1032,7 @@ class Workflow {
           cryptoKeyName: json_['cryptoKeyName'] as core.String?,
           cryptoKeyVersion: json_['cryptoKeyVersion'] as core.String?,
           description: json_['description'] as core.String?,
+          executionHistoryLevel: json_['executionHistoryLevel'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -1057,6 +1070,8 @@ class Workflow {
         if (cryptoKeyName != null) 'cryptoKeyName': cryptoKeyName!,
         if (cryptoKeyVersion != null) 'cryptoKeyVersion': cryptoKeyVersion!,
         if (description != null) 'description': description!,
+        if (executionHistoryLevel != null)
+          'executionHistoryLevel': executionHistoryLevel!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (revisionCreateTime != null)

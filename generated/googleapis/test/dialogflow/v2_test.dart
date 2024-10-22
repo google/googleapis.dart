@@ -1285,6 +1285,8 @@ api.GoogleCloudDialogflowV2ConversationDataset
     o.displayName = 'foo';
     o.inputConfig = buildGoogleCloudDialogflowV2InputConfig();
     o.name = 'foo';
+    o.satisfiesPzi = true;
+    o.satisfiesPzs = true;
   }
   buildCounterGoogleCloudDialogflowV2ConversationDataset--;
   return o;
@@ -1316,6 +1318,8 @@ void checkGoogleCloudDialogflowV2ConversationDataset(
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
   }
   buildCounterGoogleCloudDialogflowV2ConversationDataset--;
 }
@@ -1368,6 +1372,8 @@ api.GoogleCloudDialogflowV2ConversationModel
     o.displayName = 'foo';
     o.languageCode = 'foo';
     o.name = 'foo';
+    o.satisfiesPzi = true;
+    o.satisfiesPzs = true;
     o.smartReplyModelMetadata =
         buildGoogleCloudDialogflowV2SmartReplyModelMetadata();
     o.state = 'foo';
@@ -1399,6 +1405,8 @@ void checkGoogleCloudDialogflowV2ConversationModel(
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     checkGoogleCloudDialogflowV2SmartReplyModelMetadata(
         o.smartReplyModelMetadata!);
     unittest.expect(
@@ -1830,6 +1838,35 @@ void checkGoogleCloudDialogflowV2DtmfParameters(
     unittest.expect(o.acceptsDtmfInput!, unittest.isTrue);
   }
   buildCounterGoogleCloudDialogflowV2DtmfParameters--;
+}
+
+core.int buildCounterGoogleCloudDialogflowV2EncryptionSpec = 0;
+api.GoogleCloudDialogflowV2EncryptionSpec
+    buildGoogleCloudDialogflowV2EncryptionSpec() {
+  final o = api.GoogleCloudDialogflowV2EncryptionSpec();
+  buildCounterGoogleCloudDialogflowV2EncryptionSpec++;
+  if (buildCounterGoogleCloudDialogflowV2EncryptionSpec < 3) {
+    o.kmsKey = 'foo';
+    o.name = 'foo';
+  }
+  buildCounterGoogleCloudDialogflowV2EncryptionSpec--;
+  return o;
+}
+
+void checkGoogleCloudDialogflowV2EncryptionSpec(
+    api.GoogleCloudDialogflowV2EncryptionSpec o) {
+  buildCounterGoogleCloudDialogflowV2EncryptionSpec++;
+  if (buildCounterGoogleCloudDialogflowV2EncryptionSpec < 3) {
+    unittest.expect(
+      o.kmsKey!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDialogflowV2EncryptionSpec--;
 }
 
 core.List<api.GoogleCloudDialogflowV2EntityTypeEntity> buildUnnamed20() => [
@@ -3746,6 +3783,27 @@ void checkGoogleCloudDialogflowV2InferenceParameter(
     );
   }
   buildCounterGoogleCloudDialogflowV2InferenceParameter--;
+}
+
+core.int buildCounterGoogleCloudDialogflowV2InitializeEncryptionSpecRequest = 0;
+api.GoogleCloudDialogflowV2InitializeEncryptionSpecRequest
+    buildGoogleCloudDialogflowV2InitializeEncryptionSpecRequest() {
+  final o = api.GoogleCloudDialogflowV2InitializeEncryptionSpecRequest();
+  buildCounterGoogleCloudDialogflowV2InitializeEncryptionSpecRequest++;
+  if (buildCounterGoogleCloudDialogflowV2InitializeEncryptionSpecRequest < 3) {
+    o.encryptionSpec = buildGoogleCloudDialogflowV2EncryptionSpec();
+  }
+  buildCounterGoogleCloudDialogflowV2InitializeEncryptionSpecRequest--;
+  return o;
+}
+
+void checkGoogleCloudDialogflowV2InitializeEncryptionSpecRequest(
+    api.GoogleCloudDialogflowV2InitializeEncryptionSpecRequest o) {
+  buildCounterGoogleCloudDialogflowV2InitializeEncryptionSpecRequest++;
+  if (buildCounterGoogleCloudDialogflowV2InitializeEncryptionSpecRequest < 3) {
+    checkGoogleCloudDialogflowV2EncryptionSpec(o.encryptionSpec!);
+  }
+  buildCounterGoogleCloudDialogflowV2InitializeEncryptionSpecRequest--;
 }
 
 core.List<core.String> buildUnnamed41() => [
@@ -7589,7 +7647,11 @@ api.GoogleCloudDialogflowV2SpeechToTextConfig
   final o = api.GoogleCloudDialogflowV2SpeechToTextConfig();
   buildCounterGoogleCloudDialogflowV2SpeechToTextConfig++;
   if (buildCounterGoogleCloudDialogflowV2SpeechToTextConfig < 3) {
+    o.audioEncoding = 'foo';
+    o.enableWordInfo = true;
+    o.languageCode = 'foo';
     o.model = 'foo';
+    o.sampleRateHertz = 42;
     o.speechModelVariant = 'foo';
     o.useTimeoutBasedEndpointing = true;
   }
@@ -7602,8 +7664,21 @@ void checkGoogleCloudDialogflowV2SpeechToTextConfig(
   buildCounterGoogleCloudDialogflowV2SpeechToTextConfig++;
   if (buildCounterGoogleCloudDialogflowV2SpeechToTextConfig < 3) {
     unittest.expect(
+      o.audioEncoding!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.enableWordInfo!, unittest.isTrue);
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.model!,
       unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sampleRateHertz!,
+      unittest.equals(42),
     );
     unittest.expect(
       o.speechModelVariant!,
@@ -9501,6 +9576,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleCloudDialogflowV2EncryptionSpec', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDialogflowV2EncryptionSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDialogflowV2EncryptionSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDialogflowV2EncryptionSpec(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudDialogflowV2EntityType', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudDialogflowV2EntityType();
@@ -10094,6 +10179,18 @@ void main() {
       final od = api.GoogleCloudDialogflowV2InferenceParameter.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDialogflowV2InferenceParameter(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudDialogflowV2InitializeEncryptionSpecRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDialogflowV2InitializeEncryptionSpecRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDialogflowV2InitializeEncryptionSpecRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDialogflowV2InitializeEncryptionSpecRequest(od);
     });
   });
 
@@ -19516,6 +19613,61 @@ void main() {
           response as api.GoogleCloudDialogflowV2Agent);
     });
 
+    unittest.test('method--getEncryptionSpec', () async {
+      final mock = HttpServerMock();
+      final res = api.DialogflowApi(mock).projects.locations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGoogleCloudDialogflowV2EncryptionSpec());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getEncryptionSpec(arg_name, $fields: arg_$fields);
+      checkGoogleCloudDialogflowV2EncryptionSpec(
+          response as api.GoogleCloudDialogflowV2EncryptionSpec);
+    });
+
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.DialogflowApi(mock).projects.locations;
@@ -25990,6 +26142,69 @@ void main() {
           $fields: arg_$fields);
       checkGoogleCloudDialogflowV2SuggestConversationSummaryResponse(response
           as api.GoogleCloudDialogflowV2SuggestConversationSummaryResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsEncryptionSpecResource', () {
+    unittest.test('method--initialize', () async {
+      final mock = HttpServerMock();
+      final res = api.DialogflowApi(mock).projects.locations.encryptionSpec;
+      final arg_request =
+          buildGoogleCloudDialogflowV2InitializeEncryptionSpecRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GoogleCloudDialogflowV2InitializeEncryptionSpecRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudDialogflowV2InitializeEncryptionSpecRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.initialize(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
   });
 

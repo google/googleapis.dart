@@ -59,6 +59,42 @@ class DivisionsResource {
 
   DivisionsResource(commons.ApiRequester client) : _requester = client;
 
+  /// Lookup OCDIDs and names for divisions related to an address.
+  ///
+  /// Request parameters:
+  ///
+  /// [address] - null
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DivisionByAddressResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DivisionByAddressResponse> queryDivisionByAddress({
+    core.String? address,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (address != null) 'address': [address],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'civicinfo/v2/divisionsByAddress';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DivisionByAddressResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Searches for political divisions by their natural name or OCD ID.
   ///
   /// Request parameters:
@@ -836,6 +872,39 @@ class Contest {
         if (sources != null) 'sources': sources!,
         if (special != null) 'special': special!,
         if (type != null) 'type': type!,
+      };
+}
+
+class DivisionByAddressResponse {
+  core.Map<core.String, GeographicDivision>? divisions;
+
+  /// The normalized version of the requested address.
+  SimpleAddressType? normalizedInput;
+
+  DivisionByAddressResponse({
+    this.divisions,
+    this.normalizedInput,
+  });
+
+  DivisionByAddressResponse.fromJson(core.Map json_)
+      : this(
+          divisions:
+              (json_['divisions'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GeographicDivision.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          normalizedInput: json_.containsKey('normalizedInput')
+              ? SimpleAddressType.fromJson(json_['normalizedInput']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (divisions != null) 'divisions': divisions!,
+        if (normalizedInput != null) 'normalizedInput': normalizedInput!,
       };
 }
 

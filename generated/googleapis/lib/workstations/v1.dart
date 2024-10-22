@@ -1836,6 +1836,103 @@ class Binding {
       };
 }
 
+/// A configuration that workstations can boost to.
+class BoostConfig {
+  /// A list of the type and count of accelerator cards attached to the boost
+  /// instance.
+  ///
+  /// Defaults to `none`.
+  ///
+  /// Optional.
+  core.List<Accelerator>? accelerators;
+
+  /// The size of the boot disk for the VM in gigabytes (GB).
+  ///
+  /// The minimum boot disk size is `30` GB. Defaults to `50` GB.
+  ///
+  /// Optional.
+  core.int? bootDiskSizeGb;
+
+  /// Whether to enable nested virtualization on boosted Cloud Workstations VMs
+  /// running using this boost configuration.
+  ///
+  /// Defaults to false. Nested virtualization lets you run virtual machine (VM)
+  /// instances inside your workstation. Before enabling nested virtualization,
+  /// consider the following important considerations. Cloud Workstations
+  /// instances are subject to the
+  /// [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions):
+  /// * **Organization policy**: projects, folders, or organizations may be
+  /// restricted from creating nested VMs if the **Disable VM nested
+  /// virtualization** constraint is enforced in the organization policy. For
+  /// more information, see the Compute Engine section,
+  /// [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed).
+  /// * **Performance**: nested VMs might experience a 10% or greater decrease
+  /// in performance for workloads that are CPU-bound and possibly greater than
+  /// a 10% decrease for workloads that are input/output bound. * **Machine
+  /// Type**: nested virtualization can only be enabled on boost configurations
+  /// that specify a machine_type in the N1 or N2 machine series.
+  ///
+  /// Optional.
+  core.bool? enableNestedVirtualization;
+
+  /// The id to be used for the boost configuration.
+  ///
+  /// Optional. Required.
+  core.String? id;
+
+  /// The type of machine that boosted VM instances will use—for example,
+  /// `e2-standard-4`.
+  ///
+  /// For more information about machine types that Cloud Workstations supports,
+  /// see the list of
+  /// [available machine types](https://cloud.google.com/workstations/docs/available-machine-types).
+  /// Defaults to `e2-standard-4`.
+  ///
+  /// Optional.
+  core.String? machineType;
+
+  /// The number of boost VMs that the system should keep idle so that
+  /// workstations can be boosted quickly.
+  ///
+  /// Defaults to `0`.
+  ///
+  /// Optional.
+  core.int? poolSize;
+
+  BoostConfig({
+    this.accelerators,
+    this.bootDiskSizeGb,
+    this.enableNestedVirtualization,
+    this.id,
+    this.machineType,
+    this.poolSize,
+  });
+
+  BoostConfig.fromJson(core.Map json_)
+      : this(
+          accelerators: (json_['accelerators'] as core.List?)
+              ?.map((value) => Accelerator.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          bootDiskSizeGb: json_['bootDiskSizeGb'] as core.int?,
+          enableNestedVirtualization:
+              json_['enableNestedVirtualization'] as core.bool?,
+          id: json_['id'] as core.String?,
+          machineType: json_['machineType'] as core.String?,
+          poolSize: json_['poolSize'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accelerators != null) 'accelerators': accelerators!,
+        if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
+        if (enableNestedVirtualization != null)
+          'enableNestedVirtualization': enableNestedVirtualization!,
+        if (id != null) 'id': id!,
+        if (machineType != null) 'machineType': machineType!,
+        if (poolSize != null) 'poolSize': poolSize!,
+      };
+}
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
@@ -1965,9 +2062,9 @@ class CustomerEncryptionKey {
       };
 }
 
-/// Configuration options for private workstation clusters.
+/// Configuration options for a custom domain.
 class DomainConfig {
-  /// Whether Workstations endpoint is private.
+  /// Domain used by Workstations for HTTP ingress.
   ///
   /// Immutable.
   core.String? domain;
@@ -2069,6 +2166,12 @@ class GceInstance {
   /// Optional.
   core.List<Accelerator>? accelerators;
 
+  /// A list of the boost configurations that workstations created using this
+  /// workstation configuration are allowed to use.
+  ///
+  /// Optional.
+  core.List<BoostConfig>? boostConfigs;
+
   /// The size of the boot disk for the VM in gigabytes (GB).
   ///
   /// The minimum boot disk size is `30` GB. Defaults to `50` GB.
@@ -2101,10 +2204,10 @@ class GceInstance {
   /// Whether to enable nested virtualization on Cloud Workstations VMs created
   /// using this workstation configuration.
   ///
-  /// Nested virtualization lets you run virtual machine (VM) instances inside
-  /// your workstation. Before enabling nested virtualization, consider the
-  /// following important considerations. Cloud Workstations instances are
-  /// subject to the
+  /// Defaults to false. Nested virtualization lets you run virtual machine (VM)
+  /// instances inside your workstation. Before enabling nested virtualization,
+  /// consider the following important considerations. Cloud Workstations
+  /// instances are subject to the
   /// [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions):
   /// * **Organization policy**: projects, folders, or organizations may be
   /// restricted from creating nested VMs if the **Disable VM nested
@@ -2116,14 +2219,6 @@ class GceInstance {
   /// a 10% decrease for workloads that are input/output bound. * **Machine
   /// Type**: nested virtualization can only be enabled on workstation
   /// configurations that specify a machine_type in the N1 or N2 machine series.
-  /// * **GPUs**: nested virtualization may not be enabled on workstation
-  /// configurations with accelerators. * **Operating System**: because
-  /// \[Container-Optimized
-  /// OS\](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos)
-  /// does not support nested virtualization, when nested virtualization is
-  /// enabled, the underlying Compute Engine VM instances boot from an
-  /// [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts)
-  /// image.
   ///
   /// Optional.
   core.bool? enableNestedVirtualization;
@@ -2195,8 +2290,19 @@ class GceInstance {
   /// Optional.
   core.List<core.String>? tags;
 
+  /// Resource manager tags to be bound to this instance.
+  ///
+  /// Tag keys and values have the same definition as
+  /// [resource manager tags](https://cloud.google.com/resource-manager/docs/tags/tags-overview).
+  /// Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the
+  /// format `tagValues/456`.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? vmTags;
+
   GceInstance({
     this.accelerators,
+    this.boostConfigs,
     this.bootDiskSizeGb,
     this.confidentialInstanceConfig,
     this.disablePublicIpAddresses,
@@ -2209,12 +2315,17 @@ class GceInstance {
     this.serviceAccountScopes,
     this.shieldedInstanceConfig,
     this.tags,
+    this.vmTags,
   });
 
   GceInstance.fromJson(core.Map json_)
       : this(
           accelerators: (json_['accelerators'] as core.List?)
               ?.map((value) => Accelerator.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          boostConfigs: (json_['boostConfigs'] as core.List?)
+              ?.map((value) => BoostConfig.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           bootDiskSizeGb: json_['bootDiskSizeGb'] as core.int?,
@@ -2244,10 +2355,18 @@ class GceInstance {
           tags: (json_['tags'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          vmTags:
+              (json_['vmTags'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accelerators != null) 'accelerators': accelerators!,
+        if (boostConfigs != null) 'boostConfigs': boostConfigs!,
         if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
         if (confidentialInstanceConfig != null)
           'confidentialInstanceConfig': confidentialInstanceConfig!,
@@ -2265,6 +2384,7 @@ class GceInstance {
         if (shieldedInstanceConfig != null)
           'shieldedInstanceConfig': shieldedInstanceConfig!,
         if (tags != null) 'tags': tags!,
+        if (vmTags != null) 'vmTags': vmTags!,
       };
 }
 
@@ -2456,6 +2576,16 @@ class GenerateAccessTokenRequest {
   /// hour in the future.
   core.String? expireTime;
 
+  /// Port for which the access token should be generated.
+  ///
+  /// If specified, the generated access token grants access only to the
+  /// specified port of the workstation. If specified, values must be within the
+  /// range \[1 - 65535\]. If not specified, the generated access token grants
+  /// access to all ports of the workstation.
+  ///
+  /// Optional.
+  core.int? port;
+
   /// Desired lifetime duration of the access token.
   ///
   /// This value must be at most 24 hours. If a value is not specified, the
@@ -2464,17 +2594,20 @@ class GenerateAccessTokenRequest {
 
   GenerateAccessTokenRequest({
     this.expireTime,
+    this.port,
     this.ttl,
   });
 
   GenerateAccessTokenRequest.fromJson(core.Map json_)
       : this(
           expireTime: json_['expireTime'] as core.String?,
+          port: json_['port'] as core.int?,
           ttl: json_['ttl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (expireTime != null) 'expireTime': expireTime!,
+        if (port != null) 'port': port!,
         if (ttl != null) 'ttl': ttl!,
       };
 }
@@ -3010,10 +3143,76 @@ class Policy {
       };
 }
 
+/// A PortRange defines a range of ports.
+///
+/// Both first and last are inclusive. To specify a single port, both first and
+/// last should be the same.
+class PortRange {
+  /// Starting port number for the current range of ports.
+  ///
+  /// Valid ports are 22, 80, and ports within the range 1024-65535.
+  ///
+  /// Required.
+  core.int? first;
+
+  /// Ending port number for the current range of ports.
+  ///
+  /// Valid ports are 22, 80, and ports within the range 1024-65535.
+  ///
+  /// Required.
+  core.int? last;
+
+  PortRange({
+    this.first,
+    this.last,
+  });
+
+  PortRange.fromJson(core.Map json_)
+      : this(
+          first: json_['first'] as core.int?,
+          last: json_['last'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (first != null) 'first': first!,
+        if (last != null) 'last': last!,
+      };
+}
+
+/// Configuration options for private workstation clusters.
 class PrivateClusterConfig {
+  /// Additional projects that are allowed to attach to the workstation
+  /// cluster's service attachment.
+  ///
+  /// By default, the workstation cluster's project and the VPC host project (if
+  /// different) are allowed.
+  ///
+  /// Optional.
   core.List<core.String>? allowedProjects;
+
+  /// Hostname for the workstation cluster.
+  ///
+  /// This field will be populated only when private endpoint is enabled. To
+  /// access workstations in the workstation cluster, create a new DNS zone
+  /// mapping this domain name to an internal IP address and a forwarding rule
+  /// mapping that address to the service attachment.
+  ///
+  /// Output only.
   core.String? clusterHostname;
+
+  /// Whether Workstations endpoint is private.
+  ///
+  /// Immutable.
   core.bool? enablePrivateEndpoint;
+
+  /// Service attachment URI for the workstation cluster.
+  ///
+  /// The service attachemnt is created when private endpoint is enabled. To
+  /// access workstations in the workstation cluster, configure access to the
+  /// managed service using
+  /// [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-services).
+  ///
+  /// Output only.
   core.String? serviceAttachmentUri;
 
   PrivateClusterConfig({
@@ -3117,7 +3316,7 @@ typedef StartWorkstationRequest = $WorkstationRequest;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Request message for StopWorkstation.
 typedef StopWorkstationRequest = $WorkstationRequest;
@@ -3402,6 +3601,14 @@ class WorkstationCluster {
   /// Immutable.
   core.String? subnetwork;
 
+  /// Tag keys/values directly bound to this resource.
+  ///
+  /// For example: "123/environment": "production", "123/costCenter":
+  /// "marketing"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   /// A system-assigned unique identifier for this workstation cluster.
   ///
   /// Output only.
@@ -3428,6 +3635,7 @@ class WorkstationCluster {
     this.privateClusterConfig,
     this.reconciling,
     this.subnetwork,
+    this.tags,
     this.uid,
     this.updateTime,
   });
@@ -3471,6 +3679,12 @@ class WorkstationCluster {
               : null,
           reconciling: json_['reconciling'] as core.bool?,
           subnetwork: json_['subnetwork'] as core.String?,
+          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -3492,6 +3706,7 @@ class WorkstationCluster {
           'privateClusterConfig': privateClusterConfig!,
         if (reconciling != null) 'reconciling': reconciling!,
         if (subnetwork != null) 'subnetwork': subnetwork!,
+        if (tags != null) 'tags': tags!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -3507,6 +3722,15 @@ class WorkstationCluster {
 /// (IAM)\](https://cloud.google.com/iam/docs/overview) rules to grant access to
 /// teams or to individual developers.
 class WorkstationConfig {
+  /// A list of PortRanges specifying single ports or ranges of ports that are
+  /// externally accessible in the workstation.
+  ///
+  /// Allowed ports must be one of 22, 80, or within range 1024-65535. If not
+  /// specified defaults to ports 22, 80, and ports 1024-65535.
+  ///
+  /// Optional.
+  core.List<PortRange>? allowedPorts;
+
   /// Client-specified annotations.
   ///
   /// Optional.
@@ -3558,10 +3782,15 @@ class WorkstationConfig {
 
   /// Whether to enable Linux `auditd` logging on the workstation.
   ///
-  /// When enabled, a service account must also be specified that has
-  /// `logging.buckets.write` permission on the project. Operating system audit
-  /// logging is distinct from
-  /// [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+  /// When enabled, a service_account must also be specified that has
+  /// `roles/logging.logWriter` and `roles/monitoring.metricWriter` on the
+  /// project. Operating system audit logging is distinct from
+  /// [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging)
+  /// and
+  /// [Container output logging](https://cloud.google.com/workstations/docs/container-output-logging#overview).
+  /// Operating system audit logs are available in the
+  /// [Cloud Logging](https://cloud.google.com/logging/docs) console by
+  /// querying: resource.type="gce_instance" log_name:"/logs/linux-auditd"
   ///
   /// Optional.
   core.bool? enableAuditAgent;
@@ -3597,6 +3826,15 @@ class WorkstationConfig {
   /// Optional.
   core.String? etag;
 
+  /// Grant creator of a workstation `roles/workstations.policyAdmin` role along
+  /// with `roles/workstations.user` role on the workstation created by them.
+  ///
+  /// This allows workstation users to share access to either their entire
+  /// workstation, or individual ports. Defaults to false.
+  ///
+  /// Optional.
+  core.bool? grantWorkstationAdminRoleOnCreate;
+
   /// Runtime host for the workstation.
   ///
   /// Optional.
@@ -3620,6 +3858,20 @@ class WorkstationConfig {
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
+
+  /// Maximum number of workstations under this configuration a user can have
+  /// `workstations.workstation.use` permission on.
+  ///
+  /// Only enforced on CreateWorkstation API calls on the user issuing the API
+  /// request. Can be overridden by: - granting a user
+  /// workstations.workstationConfigs.exemptMaxUsableWorkstationLimit
+  /// permission, or - having a user with that permission create a workstation
+  /// and granting another user `workstations.workstation.use` permission on
+  /// that workstation. If not specified, defaults to `0`, which indicates
+  /// unlimited.
+  ///
+  /// Optional.
+  core.int? maxUsableWorkstations;
 
   /// Identifier.
   ///
@@ -3687,6 +3939,7 @@ class WorkstationConfig {
   core.String? updateTime;
 
   WorkstationConfig({
+    this.allowedPorts,
     this.annotations,
     this.conditions,
     this.container,
@@ -3699,9 +3952,11 @@ class WorkstationConfig {
     this.encryptionKey,
     this.ephemeralDirectories,
     this.etag,
+    this.grantWorkstationAdminRoleOnCreate,
     this.host,
     this.idleTimeout,
     this.labels,
+    this.maxUsableWorkstations,
     this.name,
     this.persistentDirectories,
     this.readinessChecks,
@@ -3714,6 +3969,10 @@ class WorkstationConfig {
 
   WorkstationConfig.fromJson(core.Map json_)
       : this(
+          allowedPorts: (json_['allowedPorts'] as core.List?)
+              ?.map((value) => PortRange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           annotations:
               (json_['annotations'] as core.Map<core.String, core.dynamic>?)
                   ?.map(
@@ -3745,6 +4004,8 @@ class WorkstationConfig {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           etag: json_['etag'] as core.String?,
+          grantWorkstationAdminRoleOnCreate:
+              json_['grantWorkstationAdminRoleOnCreate'] as core.bool?,
           host: json_.containsKey('host')
               ? Host.fromJson(
                   json_['host'] as core.Map<core.String, core.dynamic>)
@@ -3757,6 +4018,7 @@ class WorkstationConfig {
               value as core.String,
             ),
           ),
+          maxUsableWorkstations: json_['maxUsableWorkstations'] as core.int?,
           name: json_['name'] as core.String?,
           persistentDirectories: (json_['persistentDirectories'] as core.List?)
               ?.map((value) => PersistentDirectory.fromJson(
@@ -3776,6 +4038,7 @@ class WorkstationConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allowedPorts != null) 'allowedPorts': allowedPorts!,
         if (annotations != null) 'annotations': annotations!,
         if (conditions != null) 'conditions': conditions!,
         if (container != null) 'container': container!,
@@ -3790,9 +4053,14 @@ class WorkstationConfig {
         if (ephemeralDirectories != null)
           'ephemeralDirectories': ephemeralDirectories!,
         if (etag != null) 'etag': etag!,
+        if (grantWorkstationAdminRoleOnCreate != null)
+          'grantWorkstationAdminRoleOnCreate':
+              grantWorkstationAdminRoleOnCreate!,
         if (host != null) 'host': host!,
         if (idleTimeout != null) 'idleTimeout': idleTimeout!,
         if (labels != null) 'labels': labels!,
+        if (maxUsableWorkstations != null)
+          'maxUsableWorkstations': maxUsableWorkstations!,
         if (name != null) 'name': name!,
         if (persistentDirectories != null)
           'persistentDirectories': persistentDirectories!,

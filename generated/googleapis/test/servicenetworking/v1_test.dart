@@ -188,6 +188,7 @@ api.AddSubnetworkRequest buildAddSubnetworkRequest() {
     o.requestedRanges = buildUnnamed1();
     o.role = 'foo';
     o.secondaryIpRangeSpecs = buildUnnamed2();
+    o.skipRequestedAddressValidation = true;
     o.subnetwork = 'foo';
     o.subnetworkUsers = buildUnnamed3();
     o.useCustomComputeIdempotencyWindow = true;
@@ -251,6 +252,7 @@ void checkAddSubnetworkRequest(api.AddSubnetworkRequest o) {
       unittest.equals('foo'),
     );
     checkUnnamed2(o.secondaryIpRangeSpecs!);
+    unittest.expect(o.skipRequestedAddressValidation!, unittest.isTrue);
     unittest.expect(
       o.subnetwork!,
       unittest.equals('foo'),

@@ -26,6 +26,10 @@
 ///   - [ProjectsEventsResource]
 ///   - [ProjectsGroupStatsResource]
 ///   - [ProjectsGroupsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsEventsResource]
+///     - [ProjectsLocationsGroupStatsResource]
+///     - [ProjectsLocationsGroupsResource]
 library;
 
 import 'dart:async' as async;
@@ -68,6 +72,8 @@ class ProjectsResource {
   ProjectsGroupStatsResource get groupStats =>
       ProjectsGroupStatsResource(_requester);
   ProjectsGroupsResource get groups => ProjectsGroupsResource(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 
@@ -76,9 +82,14 @@ class ProjectsResource {
   /// Request parameters:
   ///
   /// [projectName] - Required. The resource name of the Google Cloud Platform
-  /// project. Written as `projects/{projectID}`, where `{projectID}` is the
-  /// [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).
-  /// Example: `projects/my-project-123`.
+  /// project. Written as `projects/{projectID}` or
+  /// `projects/{projectID}/locations/{location}`, where `{projectID}` is the
+  /// [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840)
+  /// and `{location}` is a Cloud region. Examples: `projects/my-project-123`,
+  /// `projects/my-project-123/locations/global`. For a list of supported
+  /// locations, see
+  /// [Supported Regions](https://cloud.google.com/logging/docs/region-support).
+  /// `global` is the default when unspecified.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -121,9 +132,14 @@ class ProjectsEventsResource {
   /// Request parameters:
   ///
   /// [projectName] - Required. The resource name of the Google Cloud Platform
-  /// project. Written as `projects/{projectID}`, where `{projectID}` is the
-  /// [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).
-  /// Example: `projects/my-project-123`.
+  /// project. Written as `projects/{projectID}` or
+  /// `projects/{projectID}/locations/{location}`, where `{projectID}` is the
+  /// [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840)
+  /// and `{location}` is a Cloud region. Examples: `projects/my-project-123`,
+  /// `projects/my-project-123/locations/global`. For a list of supported
+  /// locations, see
+  /// [Supported Regions](https://cloud.google.com/logging/docs/region-support).
+  /// `global` is the default when unspecified.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [groupId] - Required. The group for which events shall be returned. The
@@ -216,13 +232,12 @@ class ProjectsEventsResource {
   /// `key` parameter. For example: `POST
   /// https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456`
   /// **Note:** [Error Reporting](https://cloud.google.com/error-reporting) is a
-  /// global service built on Cloud Logging and can analyze log entries when all
-  /// of the following are true: * The log entries are stored in a log bucket in
-  /// the `global` location. * Customer-managed encryption keys (CMEK) are
-  /// disabled on the log bucket. * The log bucket satisfies one of the
-  /// following: * The log bucket is stored in the same project where the logs
-  /// originated. * The logs were routed to a project, and then that project
-  /// stored those logs in a log bucket that it owns.
+  /// service built on Cloud Logging and can analyze log entries when all of the
+  /// following are true: * Customer-managed encryption keys (CMEK) are disabled
+  /// on the log bucket. * The log bucket satisfies one of the following: * The
+  /// log bucket is stored in the same project where the logs originated. * The
+  /// logs were routed to a project, and then that project stored those logs in
+  /// a log bucket that it owns.
   ///
   /// [request] - The metadata request object.
   ///
@@ -281,7 +296,15 @@ class ProjectsGroupStatsResource {
   /// project. Written as `projects/{projectID}` or `projects/{projectNumber}`,
   /// where `{projectID}` and `{projectNumber}` can be found in the
   /// [Google Cloud console](https://support.google.com/cloud/answer/6158840).
-  /// Examples: `projects/my-project-123`, `projects/5551234`.
+  /// It may also include a location, such as
+  /// `projects/{projectID}/locations/{location}` where `{location}` is a cloud
+  /// region. Examples: `projects/my-project-123`, `projects/5551234`,
+  /// `projects/my-project-123/locations/us-central1`,
+  /// `projects/5551234/locations/us-central1`. For a list of supported
+  /// locations, see
+  /// [Supported Regions](https://cloud.google.com/logging/docs/region-support).
+  /// `global` is the default when unspecified. Use `-` as a wildcard to request
+  /// group stats from all regions.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [alignment] - Optional. The alignment of the timed counts to be returned.
@@ -421,15 +444,20 @@ class ProjectsGroupsResource {
   ///
   /// Request parameters:
   ///
-  /// [groupName] - Required. The group resource name. Written as
-  /// `projects/{projectID}/groups/{group_id}`. Call groupStats.list to return a
-  /// list of groups belonging to this project. Example:
-  /// `projects/my-project-123/groups/my-group` In the group resource name, the
-  /// `group_id` is a unique identifier for a particular error group. The
-  /// identifier is derived from key parts of the error-log content and is
-  /// treated as Service Data. For information about how Service Data is
-  /// handled, see
+  /// [groupName] - Required. The group resource name. Written as either
+  /// `projects/{projectID}/groups/{group_id}` or
+  /// `projects/{projectID}/locations/{location}/groups/{group_id}`. Call
+  /// groupStats.list to return a list of groups belonging to this project.
+  /// Examples: `projects/my-project-123/groups/my-group`,
+  /// `projects/my-project-123/locations/global/groups/my-group` In the group
+  /// resource name, the `group_id` is a unique identifier for a particular
+  /// error group. The identifier is derived from key parts of the error-log
+  /// content and is treated as Service Data. For information about how Service
+  /// Data is handled, see
   /// [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
+  /// For a list of supported locations, see
+  /// [Supported Regions](https://cloud.google.com/logging/docs/region-support).
+  /// `global` is the default when unspecified.
   /// Value must have pattern `^projects/\[^/\]+/groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -470,14 +498,446 @@ class ProjectsGroupsResource {
   /// Request parameters:
   ///
   /// [name] - The group resource name. Written as
-  /// `projects/{projectID}/groups/{group_id}`. Example:
-  /// `projects/my-project-123/groups/my-group` In the group resource name, the
+  /// `projects/{projectID}/groups/{group_id}` or
+  /// `projects/{projectID}/locations/{location}/groups/{group_id}` Examples:
+  /// `projects/my-project-123/groups/my-group`,
+  /// `projects/my-project-123/locations/us-central1/groups/my-group` In the
+  /// group resource name, the `group_id` is a unique identifier for a
+  /// particular error group. The identifier is derived from key parts of the
+  /// error-log content and is treated as Service Data. For information about
+  /// how Service Data is handled, see
+  /// [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
+  /// For a list of supported locations, see
+  /// [Supported Regions](https://cloud.google.com/logging/docs/region-support).
+  /// `global` is the default when unspecified.
+  /// Value must have pattern `^projects/\[^/\]+/groups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ErrorGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ErrorGroup> update(
+    ErrorGroup request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ErrorGroup.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsEventsResource get events =>
+      ProjectsLocationsEventsResource(_requester);
+  ProjectsLocationsGroupStatsResource get groupStats =>
+      ProjectsLocationsGroupStatsResource(_requester);
+  ProjectsLocationsGroupsResource get groups =>
+      ProjectsLocationsGroupsResource(_requester);
+
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Deletes all error events of a given project.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectName] - Required. The resource name of the Google Cloud Platform
+  /// project. Written as `projects/{projectID}` or
+  /// `projects/{projectID}/locations/{location}`, where `{projectID}` is the
+  /// [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840)
+  /// and `{location}` is a Cloud region. Examples: `projects/my-project-123`,
+  /// `projects/my-project-123/locations/global`. For a list of supported
+  /// locations, see
+  /// [Supported Regions](https://cloud.google.com/logging/docs/region-support).
+  /// `global` is the default when unspecified.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DeleteEventsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DeleteEventsResponse> deleteEvents(
+    core.String projectName, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$projectName') + '/events';
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return DeleteEventsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsEventsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsEventsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the specified events.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectName] - Required. The resource name of the Google Cloud Platform
+  /// project. Written as `projects/{projectID}` or
+  /// `projects/{projectID}/locations/{location}`, where `{projectID}` is the
+  /// [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840)
+  /// and `{location}` is a Cloud region. Examples: `projects/my-project-123`,
+  /// `projects/my-project-123/locations/global`. For a list of supported
+  /// locations, see
+  /// [Supported Regions](https://cloud.google.com/logging/docs/region-support).
+  /// `global` is the default when unspecified.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [groupId] - Required. The group for which events shall be returned. The
   /// `group_id` is a unique identifier for a particular error group. The
   /// identifier is derived from key parts of the error-log content and is
   /// treated as Service Data. For information about how Service Data is
   /// handled, see
   /// [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
-  /// Value must have pattern `^projects/\[^/\]+/groups/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return per
+  /// response.
+  ///
+  /// [pageToken] - Optional. A `next_page_token` provided by a previous
+  /// response.
+  ///
+  /// [serviceFilter_resourceType] - Optional. The exact value to match against
+  /// \[`ServiceContext.resource_type`\](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
+  ///
+  /// [serviceFilter_service] - Optional. The exact value to match against
+  /// \[`ServiceContext.service`\](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
+  ///
+  /// [serviceFilter_version] - Optional. The exact value to match against
+  /// \[`ServiceContext.version`\](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
+  ///
+  /// [timeRange_period] - Restricts the query to the specified time range.
+  /// Possible string values are:
+  /// - "PERIOD_UNSPECIFIED" : Do not use.
+  /// - "PERIOD_1_HOUR" : Retrieve data for the last hour. Recommended minimum
+  /// timed count duration: 1 min.
+  /// - "PERIOD_6_HOURS" : Retrieve data for the last 6 hours. Recommended
+  /// minimum timed count duration: 10 min.
+  /// - "PERIOD_1_DAY" : Retrieve data for the last day. Recommended minimum
+  /// timed count duration: 1 hour.
+  /// - "PERIOD_1_WEEK" : Retrieve data for the last week. Recommended minimum
+  /// timed count duration: 6 hours.
+  /// - "PERIOD_30_DAYS" : Retrieve data for the last 30 days. Recommended
+  /// minimum timed count duration: 1 day.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListEventsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListEventsResponse> list(
+    core.String projectName, {
+    core.String? groupId,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? serviceFilter_resourceType,
+    core.String? serviceFilter_service,
+    core.String? serviceFilter_version,
+    core.String? timeRange_period,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (groupId != null) 'groupId': [groupId],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (serviceFilter_resourceType != null)
+        'serviceFilter.resourceType': [serviceFilter_resourceType],
+      if (serviceFilter_service != null)
+        'serviceFilter.service': [serviceFilter_service],
+      if (serviceFilter_version != null)
+        'serviceFilter.version': [serviceFilter_version],
+      if (timeRange_period != null) 'timeRange.period': [timeRange_period],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$projectName') + '/events';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListEventsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGroupStatsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGroupStatsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the specified groups.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectName] - Required. The resource name of the Google Cloud Platform
+  /// project. Written as `projects/{projectID}` or `projects/{projectNumber}`,
+  /// where `{projectID}` and `{projectNumber}` can be found in the
+  /// [Google Cloud console](https://support.google.com/cloud/answer/6158840).
+  /// It may also include a location, such as
+  /// `projects/{projectID}/locations/{location}` where `{location}` is a cloud
+  /// region. Examples: `projects/my-project-123`, `projects/5551234`,
+  /// `projects/my-project-123/locations/us-central1`,
+  /// `projects/5551234/locations/us-central1`. For a list of supported
+  /// locations, see
+  /// [Supported Regions](https://cloud.google.com/logging/docs/region-support).
+  /// `global` is the default when unspecified. Use `-` as a wildcard to request
+  /// group stats from all regions.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [alignment] - Optional. The alignment of the timed counts to be returned.
+  /// Default is `ALIGNMENT_EQUAL_AT_END`.
+  /// Possible string values are:
+  /// - "ERROR_COUNT_ALIGNMENT_UNSPECIFIED" : No alignment specified.
+  /// - "ALIGNMENT_EQUAL_ROUNDED" : The time periods shall be consecutive, have
+  /// width equal to the requested duration, and be aligned at the
+  /// alignment_time provided in the request. The alignment_time does not have
+  /// to be inside the query period but even if it is outside, only time periods
+  /// are returned which overlap with the query period. A rounded alignment will
+  /// typically result in a different size of the first or the last time period.
+  /// - "ALIGNMENT_EQUAL_AT_END" : The time periods shall be consecutive, have
+  /// width equal to the requested duration, and be aligned at the end of the
+  /// requested time period. This can result in a different size of the first
+  /// time period.
+  ///
+  /// [alignmentTime] - Optional. Time where the timed counts shall be aligned
+  /// if rounded alignment is chosen. Default is 00:00 UTC.
+  ///
+  /// [groupId] - Optional. List all ErrorGroupStats with these IDs. The
+  /// `group_id` is a unique identifier for a particular error group. The
+  /// identifier is derived from key parts of the error-log content and is
+  /// treated as Service Data. For information about how Service Data is
+  /// handled, see
+  /// [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
+  ///
+  /// [order] - Optional. The sort order in which the results are returned.
+  /// Default is `COUNT_DESC`.
+  /// Possible string values are:
+  /// - "GROUP_ORDER_UNSPECIFIED" : No group order specified.
+  /// - "COUNT_DESC" : Total count of errors in the given time window in
+  /// descending order.
+  /// - "LAST_SEEN_DESC" : Timestamp when the group was last seen in the given
+  /// time window in descending order.
+  /// - "CREATED_DESC" : Timestamp when the group was created in descending
+  /// order.
+  /// - "AFFECTED_USERS_DESC" : Number of affected users in the given time
+  /// window in descending order.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return per
+  /// response. Default is 20.
+  ///
+  /// [pageToken] - Optional. A next_page_token provided by a previous response.
+  /// To view additional results, pass this token along with the identical query
+  /// parameters as the first request.
+  ///
+  /// [serviceFilter_resourceType] - Optional. The exact value to match against
+  /// \[`ServiceContext.resource_type`\](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
+  ///
+  /// [serviceFilter_service] - Optional. The exact value to match against
+  /// \[`ServiceContext.service`\](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
+  ///
+  /// [serviceFilter_version] - Optional. The exact value to match against
+  /// \[`ServiceContext.version`\](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
+  ///
+  /// [timeRange_period] - Restricts the query to the specified time range.
+  /// Possible string values are:
+  /// - "PERIOD_UNSPECIFIED" : Do not use.
+  /// - "PERIOD_1_HOUR" : Retrieve data for the last hour. Recommended minimum
+  /// timed count duration: 1 min.
+  /// - "PERIOD_6_HOURS" : Retrieve data for the last 6 hours. Recommended
+  /// minimum timed count duration: 10 min.
+  /// - "PERIOD_1_DAY" : Retrieve data for the last day. Recommended minimum
+  /// timed count duration: 1 hour.
+  /// - "PERIOD_1_WEEK" : Retrieve data for the last week. Recommended minimum
+  /// timed count duration: 6 hours.
+  /// - "PERIOD_30_DAYS" : Retrieve data for the last 30 days. Recommended
+  /// minimum timed count duration: 1 day.
+  ///
+  /// [timedCountDuration] - Optional. The preferred duration for a single
+  /// returned TimedCount. If not set, no timed counts are returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGroupStatsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGroupStatsResponse> list(
+    core.String projectName, {
+    core.String? alignment,
+    core.String? alignmentTime,
+    core.List<core.String>? groupId,
+    core.String? order,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? serviceFilter_resourceType,
+    core.String? serviceFilter_service,
+    core.String? serviceFilter_version,
+    core.String? timeRange_period,
+    core.String? timedCountDuration,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (alignment != null) 'alignment': [alignment],
+      if (alignmentTime != null) 'alignmentTime': [alignmentTime],
+      if (groupId != null) 'groupId': groupId,
+      if (order != null) 'order': [order],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (serviceFilter_resourceType != null)
+        'serviceFilter.resourceType': [serviceFilter_resourceType],
+      if (serviceFilter_service != null)
+        'serviceFilter.service': [serviceFilter_service],
+      if (serviceFilter_version != null)
+        'serviceFilter.version': [serviceFilter_version],
+      if (timeRange_period != null) 'timeRange.period': [timeRange_period],
+      if (timedCountDuration != null)
+        'timedCountDuration': [timedCountDuration],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1beta1/' + core.Uri.encodeFull('$projectName') + '/groupStats';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListGroupStatsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGroupsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGroupsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get the specified group.
+  ///
+  /// Request parameters:
+  ///
+  /// [groupName] - Required. The group resource name. Written as either
+  /// `projects/{projectID}/groups/{group_id}` or
+  /// `projects/{projectID}/locations/{location}/groups/{group_id}`. Call
+  /// groupStats.list to return a list of groups belonging to this project.
+  /// Examples: `projects/my-project-123/groups/my-group`,
+  /// `projects/my-project-123/locations/global/groups/my-group` In the group
+  /// resource name, the `group_id` is a unique identifier for a particular
+  /// error group. The identifier is derived from key parts of the error-log
+  /// content and is treated as Service Data. For information about how Service
+  /// Data is handled, see
+  /// [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
+  /// For a list of supported locations, see
+  /// [Supported Regions](https://cloud.google.com/logging/docs/region-support).
+  /// `global` is the default when unspecified.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/groups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ErrorGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ErrorGroup> get(
+    core.String groupName, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$groupName');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ErrorGroup.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Replace the data for the specified group.
+  ///
+  /// Fails if the group does not exist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The group resource name. Written as
+  /// `projects/{projectID}/groups/{group_id}` or
+  /// `projects/{projectID}/locations/{location}/groups/{group_id}` Examples:
+  /// `projects/my-project-123/groups/my-group`,
+  /// `projects/my-project-123/locations/us-central1/groups/my-group` In the
+  /// group resource name, the `group_id` is a unique identifier for a
+  /// particular error group. The identifier is derived from key parts of the
+  /// error-log content and is treated as Service Data. For information about
+  /// how Service Data is handled, see
+  /// [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
+  /// For a list of supported locations, see
+  /// [Supported Regions](https://cloud.google.com/logging/docs/region-support).
+  /// `global` is the default when unspecified.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -637,13 +1097,18 @@ class ErrorGroup {
 
   /// The group resource name.
   ///
-  /// Written as `projects/{projectID}/groups/{group_id}`. Example:
-  /// `projects/my-project-123/groups/my-group` In the group resource name, the
-  /// `group_id` is a unique identifier for a particular error group. The
-  /// identifier is derived from key parts of the error-log content and is
-  /// treated as Service Data. For information about how Service Data is
-  /// handled, see
+  /// Written as `projects/{projectID}/groups/{group_id}` or
+  /// `projects/{projectID}/locations/{location}/groups/{group_id}` Examples:
+  /// `projects/my-project-123/groups/my-group`,
+  /// `projects/my-project-123/locations/us-central1/groups/my-group` In the
+  /// group resource name, the `group_id` is a unique identifier for a
+  /// particular error group. The identifier is derived from key parts of the
+  /// error-log content and is treated as Service Data. For information about
+  /// how Service Data is handled, see
   /// [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
+  /// For a list of supported locations, see
+  /// [Supported Regions](https://cloud.google.com/logging/docs/region-support).
+  /// `global` is the default when unspecified.
   core.String? name;
 
   /// Error group's resolution status.
@@ -983,7 +1448,7 @@ class ReportedErrorEvent {
   /// error|Warning): "` and contain the result of
   /// \[`(string)$exception`\](https://php.net/manual/en/exception.tostring.php).
   /// * **Go**: Must be the return value of
-  /// \[`runtime.Stack()`\](https://golang.org/pkg/runtime/debug/#Stack).
+  /// \[`debug.Stack()`\](https://pkg.go.dev/runtime/debug#Stack).
   ///
   /// Required.
   core.String? message;

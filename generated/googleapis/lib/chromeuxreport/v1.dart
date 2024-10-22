@@ -151,7 +151,10 @@ class RecordsResource {
 class Bin {
   /// The proportion of users that experienced this bin's value for the given
   /// metric.
-  core.double? density;
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? density;
 
   /// End is the end of the data bin.
   ///
@@ -176,7 +179,7 @@ class Bin {
 
   Bin.fromJson(core.Map json_)
       : this(
-          density: (json_['density'] as core.num?)?.toDouble(),
+          density: json_['density'],
           end: json_['end'],
           start: json_['start'],
         );

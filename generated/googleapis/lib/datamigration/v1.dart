@@ -27,6 +27,7 @@
 ///     - [ProjectsLocationsConversionWorkspacesResource]
 ///       - [ProjectsLocationsConversionWorkspacesMappingRulesResource]
 ///     - [ProjectsLocationsMigrationJobsResource]
+///       - [ProjectsLocationsMigrationJobsObjectsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsPrivateConnectionsResource]
 library;
@@ -1775,6 +1776,9 @@ class ProjectsLocationsConversionWorkspacesMappingRulesResource {
 class ProjectsLocationsMigrationJobsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsMigrationJobsObjectsResource get objects =>
+      ProjectsLocationsMigrationJobsObjectsResource(_requester);
+
   ProjectsLocationsMigrationJobsResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -2584,6 +2588,168 @@ class ProjectsLocationsMigrationJobsResource {
   }
 }
 
+class ProjectsLocationsMigrationJobsObjectsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsMigrationJobsObjectsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/migrationJobs/\[^/\]+/objects/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/migrationJobs/\[^/\]+/objects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert_1.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/migrationJobs/\[^/\]+/objects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert_1.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -3180,6 +3346,7 @@ class AlloyDbSettings {
   /// - "DATABASE_VERSION_UNSPECIFIED" : This is an unknown database version.
   /// - "POSTGRES_14" : The database version is Postgres 14.
   /// - "POSTGRES_15" : The database version is Postgres 15.
+  /// - "POSTGRES_16" : The database version is Postgres 16.
   core.String? databaseVersion;
 
   /// The encryption config can be specified to encrypt the data disks and other
@@ -3441,6 +3608,27 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
+/// AuthorizedNetwork contains metadata for an authorized network.
+class AuthorizedNetwork {
+  /// CIDR range for one authorzied network of the instance.
+  ///
+  /// Optional.
+  core.String? cidrRange;
+
+  AuthorizedNetwork({
+    this.cidrRange,
+  });
+
+  AuthorizedNetwork.fromJson(core.Map json_)
+      : this(
+          cidrRange: json_['cidrRange'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cidrRange != null) 'cidrRange': cidrRange!,
+      };
+}
+
 /// Execution log of a background job.
 class BackgroundJobLogEntry {
   /// Apply job details.
@@ -3561,6 +3749,39 @@ class BackgroundJobLogEntry {
         if (requestAutocommit != null) 'requestAutocommit': requestAutocommit!,
         if (seedJobDetails != null) 'seedJobDetails': seedJobDetails!,
         if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// Configuration to use Binary Log Parser CDC technique.
+class BinaryLogParser {
+  /// Use Oracle directories.
+  LogFileDirectories? logFileDirectories;
+
+  /// Use Oracle ASM.
+  OracleAsmLogFileAccess? oracleAsmLogFileAccess;
+
+  BinaryLogParser({
+    this.logFileDirectories,
+    this.oracleAsmLogFileAccess,
+  });
+
+  BinaryLogParser.fromJson(core.Map json_)
+      : this(
+          logFileDirectories: json_.containsKey('logFileDirectories')
+              ? LogFileDirectories.fromJson(json_['logFileDirectories']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          oracleAsmLogFileAccess: json_.containsKey('oracleAsmLogFileAccess')
+              ? OracleAsmLogFileAccess.fromJson(json_['oracleAsmLogFileAccess']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (logFileDirectories != null)
+          'logFileDirectories': logFileDirectories!,
+        if (oracleAsmLogFileAccess != null)
+          'oracleAsmLogFileAccess': oracleAsmLogFileAccess!,
       };
 }
 
@@ -3806,6 +4027,8 @@ class CloudSqlSettings {
   core.Map<core.String, core.String>? databaseFlags;
 
   /// The database engine type and version.
+  ///
+  /// Deprecated. Use database_version_name instead.
   /// Possible string values are:
   /// - "SQL_DATABASE_VERSION_UNSPECIFIED" : Unspecified version.
   /// - "MYSQL_5_6" : MySQL 5.6.
@@ -3833,6 +4056,9 @@ class CloudSqlSettings {
   /// version is 35.
   /// - "MYSQL_8_0_36" : The database major version is MySQL 8.0 and the minor
   /// version is 36.
+  /// - "MYSQL_8_0_37" : The database major version is MySQL 8.0 and the minor
+  /// version is 37.
+  /// - "MYSQL_8_4" : MySQL 8.4.
   /// - "POSTGRES_9_6" : PostgreSQL 9.6.
   /// - "POSTGRES_11" : PostgreSQL 11.
   /// - "POSTGRES_10" : PostgreSQL 10.
@@ -3842,6 +4068,11 @@ class CloudSqlSettings {
   /// - "POSTGRES_15" : PostgreSQL 15.
   /// - "POSTGRES_16" : PostgreSQL 16.
   core.String? databaseVersion;
+
+  /// The database engine type and version name.
+  ///
+  /// Optional.
+  core.String? databaseVersionName;
 
   /// The edition of the given Cloud SQL instance.
   ///
@@ -3917,6 +4148,7 @@ class CloudSqlSettings {
     this.dataDiskType,
     this.databaseFlags,
     this.databaseVersion,
+    this.databaseVersionName,
     this.edition,
     this.ipConfig,
     this.rootPassword,
@@ -3951,6 +4183,7 @@ class CloudSqlSettings {
             ),
           ),
           databaseVersion: json_['databaseVersion'] as core.String?,
+          databaseVersionName: json_['databaseVersionName'] as core.String?,
           edition: json_['edition'] as core.String?,
           ipConfig: json_.containsKey('ipConfig')
               ? SqlIpConfig.fromJson(
@@ -3986,6 +4219,8 @@ class CloudSqlSettings {
         if (dataDiskType != null) 'dataDiskType': dataDiskType!,
         if (databaseFlags != null) 'databaseFlags': databaseFlags!,
         if (databaseVersion != null) 'databaseVersion': databaseVersion!,
+        if (databaseVersionName != null)
+          'databaseVersionName': databaseVersionName!,
         if (edition != null) 'edition': edition!,
         if (ipConfig != null) 'ipConfig': ipConfig!,
         if (rootPassword != null) 'rootPassword': rootPassword!,
@@ -4270,12 +4505,21 @@ class ConnectionProfile {
   /// The database provider.
   /// Possible string values are:
   /// - "DATABASE_PROVIDER_UNSPECIFIED" : Use this value for on-premise source
-  /// database instances.
+  /// database instances and ORACLE.
   /// - "CLOUDSQL" : Cloud SQL is the source instance provider.
   /// - "RDS" : Amazon RDS is the source instance provider.
   /// - "AURORA" : Amazon Aurora is the source instance provider.
   /// - "ALLOYDB" : AlloyDB for PostgreSQL is the source instance provider.
   core.String? provider;
+
+  /// The connection profile role.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ROLE_UNSPECIFIED" : The role is unspecified.
+  /// - "SOURCE" : The role is source.
+  /// - "DESTINATION" : The role is destination.
+  core.String? role;
 
   /// Connection profile for a SQL Server data source.
   SqlServerConnectionProfile? sqlserver;
@@ -4312,6 +4556,7 @@ class ConnectionProfile {
     this.oracle,
     this.postgresql,
     this.provider,
+    this.role,
     this.sqlserver,
     this.state,
     this.updateTime,
@@ -4354,6 +4599,7 @@ class ConnectionProfile {
                   json_['postgresql'] as core.Map<core.String, core.dynamic>)
               : null,
           provider: json_['provider'] as core.String?,
+          role: json_['role'] as core.String?,
           sqlserver: json_.containsKey('sqlserver')
               ? SqlServerConnectionProfile.fromJson(
                   json_['sqlserver'] as core.Map<core.String, core.dynamic>)
@@ -4374,6 +4620,7 @@ class ConnectionProfile {
         if (oracle != null) 'oracle': oracle!,
         if (postgresql != null) 'postgresql': postgresql!,
         if (provider != null) 'provider': provider!,
+        if (role != null) 'role': role!,
         if (sqlserver != null) 'sqlserver': sqlserver!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -4968,7 +5215,7 @@ class DatabaseType {
   /// The database provider.
   /// Possible string values are:
   /// - "DATABASE_PROVIDER_UNSPECIFIED" : Use this value for on-premise source
-  /// database instances.
+  /// database instances and ORACLE.
   /// - "CLOUDSQL" : Cloud SQL is the source instance provider.
   /// - "RDS" : Amazon RDS is the source instance provider.
   /// - "AURORA" : Amazon Aurora is the source instance provider.
@@ -5816,6 +6063,50 @@ class IndexEntity {
       };
 }
 
+/// Metadata related to instance level network configuration.
+class InstanceNetworkConfig {
+  /// A list of external network authorized to access this instance.
+  ///
+  /// Optional.
+  core.List<AuthorizedNetwork>? authorizedExternalNetworks;
+
+  /// Enabling an outbound public IP address to support a database server
+  /// sending requests out into the internet.
+  ///
+  /// Optional.
+  core.bool? enableOutboundPublicIp;
+
+  /// Enabling public ip for the instance.
+  ///
+  /// Optional.
+  core.bool? enablePublicIp;
+
+  InstanceNetworkConfig({
+    this.authorizedExternalNetworks,
+    this.enableOutboundPublicIp,
+    this.enablePublicIp,
+  });
+
+  InstanceNetworkConfig.fromJson(core.Map json_)
+      : this(
+          authorizedExternalNetworks:
+              (json_['authorizedExternalNetworks'] as core.List?)
+                  ?.map((value) => AuthorizedNetwork.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+          enableOutboundPublicIp: json_['enableOutboundPublicIp'] as core.bool?,
+          enablePublicIp: json_['enablePublicIp'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authorizedExternalNetworks != null)
+          'authorizedExternalNetworks': authorizedExternalNetworks!,
+        if (enableOutboundPublicIp != null)
+          'enableOutboundPublicIp': enableOutboundPublicIp!,
+        if (enablePublicIp != null) 'enablePublicIp': enablePublicIp!,
+      };
+}
+
 /// Filter based on relation between source value and compare value of type
 /// integer in ConditionalColumnSetValue
 class IntComparisonFilter {
@@ -6099,6 +6390,40 @@ class ListPrivateConnectionsResponse {
 
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
+
+/// Configuration to specify the Oracle directories to access the log files.
+class LogFileDirectories {
+  /// Oracle directory for archived logs.
+  ///
+  /// Required.
+  core.String? archivedLogDirectory;
+
+  /// Oracle directory for online logs.
+  ///
+  /// Required.
+  core.String? onlineLogDirectory;
+
+  LogFileDirectories({
+    this.archivedLogDirectory,
+    this.onlineLogDirectory,
+  });
+
+  LogFileDirectories.fromJson(core.Map json_)
+      : this(
+          archivedLogDirectory: json_['archivedLogDirectory'] as core.String?,
+          onlineLogDirectory: json_['onlineLogDirectory'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (archivedLogDirectory != null)
+          'archivedLogDirectory': archivedLogDirectory!,
+        if (onlineLogDirectory != null)
+          'onlineLogDirectory': onlineLogDirectory!,
+      };
+}
+
+/// Configuration to use LogMiner CDC method.
+typedef LogMiner = $Empty;
 
 /// MachineConfig describes the configuration of a machine.
 typedef MachineConfig = $MachineConfig;
@@ -6549,6 +6874,10 @@ class MigrationJob {
   /// projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
   core.String? name;
 
+  /// Configuration for heterogeneous **Oracle to Cloud SQL for PostgreSQL** and
+  /// **Oracle to AlloyDB for PostgreSQL** migrations.
+  OracleToPostgresConfig? oracleToPostgresConfig;
+
   /// Data dump parallelism settings used by the migration.
   ///
   /// Optional.
@@ -6647,6 +6976,7 @@ class MigrationJob {
     this.filter,
     this.labels,
     this.name,
+    this.oracleToPostgresConfig,
     this.performanceConfig,
     this.phase,
     this.reverseSshConnectivity,
@@ -6695,6 +7025,10 @@ class MigrationJob {
             ),
           ),
           name: json_['name'] as core.String?,
+          oracleToPostgresConfig: json_.containsKey('oracleToPostgresConfig')
+              ? OracleToPostgresConfig.fromJson(json_['oracleToPostgresConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           performanceConfig: json_.containsKey('performanceConfig')
               ? PerformanceConfig.fromJson(json_['performanceConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -6746,6 +7080,8 @@ class MigrationJob {
         if (filter != null) 'filter': filter!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (oracleToPostgresConfig != null)
+          'oracleToPostgresConfig': oracleToPostgresConfig!,
         if (performanceConfig != null) 'performanceConfig': performanceConfig!,
         if (phase != null) 'phase': phase!,
         if (reverseSshConnectivity != null)
@@ -7084,6 +7420,83 @@ class Operation {
       };
 }
 
+/// Configuration for Oracle Automatic Storage Management (ASM) connection.
+class OracleAsmConfig {
+  /// ASM service name for the Oracle ASM connection.
+  ///
+  /// Required.
+  core.String? asmService;
+
+  /// Hostname for the Oracle ASM connection.
+  ///
+  /// Required.
+  core.String? hostname;
+
+  /// Input only.
+  ///
+  /// Password for the Oracle ASM connection.
+  ///
+  /// Required.
+  core.String? password;
+
+  /// Indicates whether a new password is included in the request.
+  ///
+  /// Output only.
+  core.bool? passwordSet;
+
+  /// Port for the Oracle ASM connection.
+  ///
+  /// Required.
+  core.int? port;
+
+  /// SSL configuration for the Oracle connection.
+  ///
+  /// Optional.
+  SslConfig? ssl;
+
+  /// Username for the Oracle ASM connection.
+  ///
+  /// Required.
+  core.String? username;
+
+  OracleAsmConfig({
+    this.asmService,
+    this.hostname,
+    this.password,
+    this.passwordSet,
+    this.port,
+    this.ssl,
+    this.username,
+  });
+
+  OracleAsmConfig.fromJson(core.Map json_)
+      : this(
+          asmService: json_['asmService'] as core.String?,
+          hostname: json_['hostname'] as core.String?,
+          password: json_['password'] as core.String?,
+          passwordSet: json_['passwordSet'] as core.bool?,
+          port: json_['port'] as core.int?,
+          ssl: json_.containsKey('ssl')
+              ? SslConfig.fromJson(
+                  json_['ssl'] as core.Map<core.String, core.dynamic>)
+              : null,
+          username: json_['username'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (asmService != null) 'asmService': asmService!,
+        if (hostname != null) 'hostname': hostname!,
+        if (password != null) 'password': password!,
+        if (passwordSet != null) 'passwordSet': passwordSet!,
+        if (port != null) 'port': port!,
+        if (ssl != null) 'ssl': ssl!,
+        if (username != null) 'username': username!,
+      };
+}
+
+/// Configuration to use Oracle ASM to access the log files.
+typedef OracleAsmLogFileAccess = $Empty;
+
 /// Specifies connection parameters required specifically for Oracle databases.
 class OracleConnectionProfile {
   /// Database service for the Oracle connection.
@@ -7098,6 +7511,11 @@ class OracleConnectionProfile {
   ///
   /// Required.
   core.String? host;
+
+  /// Configuration for Oracle ASM connection.
+  ///
+  /// Optional.
+  OracleAsmConfig? oracleAsmConfig;
 
   /// Input only.
   ///
@@ -7142,6 +7560,7 @@ class OracleConnectionProfile {
     this.databaseService,
     this.forwardSshConnectivity,
     this.host,
+    this.oracleAsmConfig,
     this.password,
     this.passwordSet,
     this.port,
@@ -7160,6 +7579,10 @@ class OracleConnectionProfile {
                       as core.Map<core.String, core.dynamic>)
               : null,
           host: json_['host'] as core.String?,
+          oracleAsmConfig: json_.containsKey('oracleAsmConfig')
+              ? OracleAsmConfig.fromJson(json_['oracleAsmConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           password: json_['password'] as core.String?,
           passwordSet: json_['passwordSet'] as core.bool?,
           port: json_['port'] as core.int?,
@@ -7185,6 +7608,7 @@ class OracleConnectionProfile {
         if (forwardSshConnectivity != null)
           'forwardSshConnectivity': forwardSshConnectivity!,
         if (host != null) 'host': host!,
+        if (oracleAsmConfig != null) 'oracleAsmConfig': oracleAsmConfig!,
         if (password != null) 'password': password!,
         if (passwordSet != null) 'passwordSet': passwordSet!,
         if (port != null) 'port': port!,
@@ -7194,6 +7618,115 @@ class OracleConnectionProfile {
         if (staticServiceIpConnectivity != null)
           'staticServiceIpConnectivity': staticServiceIpConnectivity!,
         if (username != null) 'username': username!,
+      };
+}
+
+/// Configuration for Oracle as a source in a migration.
+class OracleSourceConfig {
+  /// Use Binary Log Parser.
+  BinaryLogParser? binaryLogParser;
+
+  /// The schema change number (SCN) to start CDC data migration from.
+  ///
+  /// Optional.
+  core.String? cdcStartPosition;
+
+  /// Use LogMiner.
+  LogMiner? logMiner;
+
+  /// Maximum number of connections Database Migration Service will open to the
+  /// source for CDC phase.
+  ///
+  /// Optional.
+  core.int? maxConcurrentCdcConnections;
+
+  /// Maximum number of connections Database Migration Service will open to the
+  /// source for full dump phase.
+  ///
+  /// Optional.
+  core.int? maxConcurrentFullDumpConnections;
+
+  /// Whether to skip full dump or not.
+  ///
+  /// Optional.
+  core.bool? skipFullDump;
+
+  OracleSourceConfig({
+    this.binaryLogParser,
+    this.cdcStartPosition,
+    this.logMiner,
+    this.maxConcurrentCdcConnections,
+    this.maxConcurrentFullDumpConnections,
+    this.skipFullDump,
+  });
+
+  OracleSourceConfig.fromJson(core.Map json_)
+      : this(
+          binaryLogParser: json_.containsKey('binaryLogParser')
+              ? BinaryLogParser.fromJson(json_['binaryLogParser']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          cdcStartPosition: json_['cdcStartPosition'] as core.String?,
+          logMiner: json_.containsKey('logMiner')
+              ? LogMiner.fromJson(
+                  json_['logMiner'] as core.Map<core.String, core.dynamic>)
+              : null,
+          maxConcurrentCdcConnections:
+              json_['maxConcurrentCdcConnections'] as core.int?,
+          maxConcurrentFullDumpConnections:
+              json_['maxConcurrentFullDumpConnections'] as core.int?,
+          skipFullDump: json_['skipFullDump'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (binaryLogParser != null) 'binaryLogParser': binaryLogParser!,
+        if (cdcStartPosition != null) 'cdcStartPosition': cdcStartPosition!,
+        if (logMiner != null) 'logMiner': logMiner!,
+        if (maxConcurrentCdcConnections != null)
+          'maxConcurrentCdcConnections': maxConcurrentCdcConnections!,
+        if (maxConcurrentFullDumpConnections != null)
+          'maxConcurrentFullDumpConnections': maxConcurrentFullDumpConnections!,
+        if (skipFullDump != null) 'skipFullDump': skipFullDump!,
+      };
+}
+
+/// Configuration for heterogeneous **Oracle to Cloud SQL for PostgreSQL** and
+/// **Oracle to AlloyDB for PostgreSQL** migrations.
+class OracleToPostgresConfig {
+  /// Configuration for Oracle source.
+  ///
+  /// Optional.
+  OracleSourceConfig? oracleSourceConfig;
+
+  /// Configuration for Postgres destination.
+  ///
+  /// Optional.
+  PostgresDestinationConfig? postgresDestinationConfig;
+
+  OracleToPostgresConfig({
+    this.oracleSourceConfig,
+    this.postgresDestinationConfig,
+  });
+
+  OracleToPostgresConfig.fromJson(core.Map json_)
+      : this(
+          oracleSourceConfig: json_.containsKey('oracleSourceConfig')
+              ? OracleSourceConfig.fromJson(json_['oracleSourceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          postgresDestinationConfig:
+              json_.containsKey('postgresDestinationConfig')
+                  ? PostgresDestinationConfig.fromJson(
+                      json_['postgresDestinationConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (oracleSourceConfig != null)
+          'oracleSourceConfig': oracleSourceConfig!,
+        if (postgresDestinationConfig != null)
+          'postgresDestinationConfig': postgresDestinationConfig!,
       };
 }
 
@@ -7540,6 +8073,39 @@ class PostgreSqlConnectionProfile {
       };
 }
 
+/// Configuration for Postgres as a destination in a migration.
+class PostgresDestinationConfig {
+  /// Maximum number of connections Database Migration Service will open to the
+  /// destination for data migration.
+  ///
+  /// Optional.
+  core.int? maxConcurrentConnections;
+
+  /// Timeout for data migration transactions.
+  ///
+  /// Optional.
+  core.String? transactionTimeout;
+
+  PostgresDestinationConfig({
+    this.maxConcurrentConnections,
+    this.transactionTimeout,
+  });
+
+  PostgresDestinationConfig.fromJson(core.Map json_)
+      : this(
+          maxConcurrentConnections:
+              json_['maxConcurrentConnections'] as core.int?,
+          transactionTimeout: json_['transactionTimeout'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxConcurrentConnections != null)
+          'maxConcurrentConnections': maxConcurrentConnections!,
+        if (transactionTimeout != null)
+          'transactionTimeout': transactionTimeout!,
+      };
+}
+
 /// Settings for the cluster's primary instance
 class PrimaryInstanceSettings {
   /// Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster
@@ -7555,6 +8121,11 @@ class PrimaryInstanceSettings {
   /// Required.
   core.String? id;
 
+  /// Metadata related to instance level network configuration.
+  ///
+  /// Optional.
+  InstanceNetworkConfig? instanceNetworkConfig;
+
   /// Labels for the AlloyDB primary instance created by DMS.
   ///
   /// An object containing a list of 'key', 'value' pairs.
@@ -7562,6 +8133,11 @@ class PrimaryInstanceSettings {
 
   /// Configuration for the machines that host the underlying database engine.
   MachineConfig? machineConfig;
+
+  /// All outbound public IP addresses configured for the instance.
+  ///
+  /// Output only.
+  core.List<core.String>? outboundPublicIpAddresses;
 
   /// The private IP address for the Instance.
   ///
@@ -7573,8 +8149,10 @@ class PrimaryInstanceSettings {
   PrimaryInstanceSettings({
     this.databaseFlags,
     this.id,
+    this.instanceNetworkConfig,
     this.labels,
     this.machineConfig,
+    this.outboundPublicIpAddresses,
     this.privateIp,
   });
 
@@ -7589,6 +8167,10 @@ class PrimaryInstanceSettings {
             ),
           ),
           id: json_['id'] as core.String?,
+          instanceNetworkConfig: json_.containsKey('instanceNetworkConfig')
+              ? InstanceNetworkConfig.fromJson(json_['instanceNetworkConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -7600,14 +8182,22 @@ class PrimaryInstanceSettings {
               ? MachineConfig.fromJson(
                   json_['machineConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          outboundPublicIpAddresses:
+              (json_['outboundPublicIpAddresses'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           privateIp: json_['privateIp'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (databaseFlags != null) 'databaseFlags': databaseFlags!,
         if (id != null) 'id': id!,
+        if (instanceNetworkConfig != null)
+          'instanceNetworkConfig': instanceNetworkConfig!,
         if (labels != null) 'labels': labels!,
         if (machineConfig != null) 'machineConfig': machineConfig!,
+        if (outboundPublicIpAddresses != null)
+          'outboundPublicIpAddresses': outboundPublicIpAddresses!,
         if (privateIp != null) 'privateIp': privateIp!,
       };
 }
@@ -8869,6 +9459,11 @@ class SqlServerHomogeneousMigrationJobConfig {
   /// Required.
   core.List<SqlServerDatabaseBackup>? databaseBackups;
 
+  /// Promote databases when ready.
+  ///
+  /// Optional.
+  core.bool? promoteWhenReady;
+
   /// Enable differential backups.
   ///
   /// Optional.
@@ -8877,6 +9472,7 @@ class SqlServerHomogeneousMigrationJobConfig {
   SqlServerHomogeneousMigrationJobConfig({
     this.backupFilePattern,
     this.databaseBackups,
+    this.promoteWhenReady,
     this.useDiffBackup,
   });
 
@@ -8887,12 +9483,14 @@ class SqlServerHomogeneousMigrationJobConfig {
               ?.map((value) => SqlServerDatabaseBackup.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          promoteWhenReady: json_['promoteWhenReady'] as core.bool?,
           useDiffBackup: json_['useDiffBackup'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backupFilePattern != null) 'backupFilePattern': backupFilePattern!,
         if (databaseBackups != null) 'databaseBackups': databaseBackups!,
+        if (promoteWhenReady != null) 'promoteWhenReady': promoteWhenReady!,
         if (useDiffBackup != null) 'useDiffBackup': useDiffBackup!,
       };
 }
@@ -8944,7 +9542,7 @@ class SslConfig {
   /// The ssl config type according to 'client_key', 'client_certificate' and
   /// 'ca_certificate'.
   ///
-  /// Output only.
+  /// Optional.
   /// Possible string values are:
   /// - "SSL_TYPE_UNSPECIFIED" : Unspecified.
   /// - "SERVER_ONLY" : Only 'ca_certificate' specified.
@@ -9015,7 +9613,7 @@ typedef StaticServiceIpConnectivity = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Request message for 'StopMigrationJob' request.
 typedef StopMigrationJobRequest = $Empty;

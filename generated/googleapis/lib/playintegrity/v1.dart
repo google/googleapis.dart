@@ -24,6 +24,7 @@
 ///
 /// Create an instance of [PlayIntegrityApi] to access these resources:
 ///
+/// - [DeviceRecallResource]
 /// - [V1Resource]
 library;
 
@@ -34,6 +35,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -51,6 +53,7 @@ class PlayIntegrityApi {
 
   final commons.ApiRequester _requester;
 
+  DeviceRecallResource get deviceRecall => DeviceRecallResource(_requester);
   V1Resource get v1 => V1Resource(_requester);
 
   PlayIntegrityApi(http.Client client,
@@ -58,6 +61,59 @@ class PlayIntegrityApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+}
+
+class DeviceRecallResource {
+  final commons.ApiRequester _requester;
+
+  DeviceRecallResource(commons.ApiRequester client) : _requester = client;
+
+  /// Writes recall bits for the device where Play Integrity API token is
+  /// obtained.
+  ///
+  /// The endpoint is available to select Play partners in an early access
+  /// program (EAP).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. Package name of the app the attached integrity
+  /// token belongs to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WriteDeviceRecallResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WriteDeviceRecallResponse> write(
+    WriteDeviceRecallRequest request,
+    core.String packageName, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$packageName') + '/deviceRecall:write';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return WriteDeviceRecallResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class V1Resource {
@@ -365,9 +421,10 @@ class DecodeIntegrityTokenResponse {
 }
 
 /// Contains the device attestation information.
-///
-/// Next tag: 4
 class DeviceIntegrity {
+  /// Details about the device recall bits set by the developer.
+  DeviceRecall? deviceRecall;
+
   /// Details about the integrity of the device the app is running on.
   core.List<core.String>? deviceRecognitionVerdict;
 
@@ -375,12 +432,17 @@ class DeviceIntegrity {
   RecentDeviceActivity? recentDeviceActivity;
 
   DeviceIntegrity({
+    this.deviceRecall,
     this.deviceRecognitionVerdict,
     this.recentDeviceActivity,
   });
 
   DeviceIntegrity.fromJson(core.Map json_)
       : this(
+          deviceRecall: json_.containsKey('deviceRecall')
+              ? DeviceRecall.fromJson(
+                  json_['deviceRecall'] as core.Map<core.String, core.dynamic>)
+              : null,
           deviceRecognitionVerdict:
               (json_['deviceRecognitionVerdict'] as core.List?)
                   ?.map((value) => value as core.String)
@@ -392,10 +454,46 @@ class DeviceIntegrity {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceRecall != null) 'deviceRecall': deviceRecall!,
         if (deviceRecognitionVerdict != null)
           'deviceRecognitionVerdict': deviceRecognitionVerdict!,
         if (recentDeviceActivity != null)
           'recentDeviceActivity': recentDeviceActivity!,
+      };
+}
+
+/// Contains the recall bits per device set by the developer.
+class DeviceRecall {
+  /// Contains the recall bits values.
+  ///
+  /// Required.
+  Values? values;
+
+  /// Contains the recall bits write dates.
+  ///
+  /// Required.
+  WriteDates? writeDates;
+
+  DeviceRecall({
+    this.values,
+    this.writeDates,
+  });
+
+  DeviceRecall.fromJson(core.Map json_)
+      : this(
+          values: json_.containsKey('values')
+              ? Values.fromJson(
+                  json_['values'] as core.Map<core.String, core.dynamic>)
+              : null,
+          writeDates: json_.containsKey('writeDates')
+              ? WriteDates.fromJson(
+                  json_['writeDates'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (values != null) 'values': values!,
+        if (writeDates != null) 'writeDates': writeDates!,
       };
 }
 
@@ -621,3 +719,120 @@ class TokenPayloadExternal {
         if (testingDetails != null) 'testingDetails': testingDetails!,
       };
 }
+
+/// Contains the recall bits values.
+class Values {
+  /// First recall bit value.
+  ///
+  /// Required.
+  core.bool? bitFirst;
+
+  /// Second recall bit value.
+  ///
+  /// Required.
+  core.bool? bitSecond;
+
+  /// Third recall bit value.
+  ///
+  /// Required.
+  core.bool? bitThird;
+
+  Values({
+    this.bitFirst,
+    this.bitSecond,
+    this.bitThird,
+  });
+
+  Values.fromJson(core.Map json_)
+      : this(
+          bitFirst: json_['bitFirst'] as core.bool?,
+          bitSecond: json_['bitSecond'] as core.bool?,
+          bitThird: json_['bitThird'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bitFirst != null) 'bitFirst': bitFirst!,
+        if (bitSecond != null) 'bitSecond': bitSecond!,
+        if (bitThird != null) 'bitThird': bitThird!,
+      };
+}
+
+/// Contains the recall bits write dates.
+class WriteDates {
+  /// Write time in YYYYMM format (in UTC, e.g. 202402) for the first bit.
+  ///
+  /// Note that this value won't be set if the first bit is false.
+  ///
+  /// Optional.
+  core.int? yyyymmFirst;
+
+  /// Write time in YYYYMM format (in UTC, e.g. 202402) for the second bit.
+  ///
+  /// Note that this value won't be set if the second bit is false.
+  ///
+  /// Optional.
+  core.int? yyyymmSecond;
+
+  /// Write time in YYYYMM format (in UTC, e.g. 202402) for the third bit.
+  ///
+  /// Note that this value won't be set if the third bit is false.
+  ///
+  /// Optional.
+  core.int? yyyymmThird;
+
+  WriteDates({
+    this.yyyymmFirst,
+    this.yyyymmSecond,
+    this.yyyymmThird,
+  });
+
+  WriteDates.fromJson(core.Map json_)
+      : this(
+          yyyymmFirst: json_['yyyymmFirst'] as core.int?,
+          yyyymmSecond: json_['yyyymmSecond'] as core.int?,
+          yyyymmThird: json_['yyyymmThird'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (yyyymmFirst != null) 'yyyymmFirst': yyyymmFirst!,
+        if (yyyymmSecond != null) 'yyyymmSecond': yyyymmSecond!,
+        if (yyyymmThird != null) 'yyyymmThird': yyyymmThird!,
+      };
+}
+
+/// Request to write device recall bits.
+class WriteDeviceRecallRequest {
+  /// Integrity token obtained from calling Play Integrity API.
+  ///
+  /// Required.
+  core.String? integrityToken;
+
+  /// The new values for the device recall bits to be written.
+  ///
+  /// Required.
+  Values? newValues;
+
+  WriteDeviceRecallRequest({
+    this.integrityToken,
+    this.newValues,
+  });
+
+  WriteDeviceRecallRequest.fromJson(core.Map json_)
+      : this(
+          integrityToken: json_['integrityToken'] as core.String?,
+          newValues: json_.containsKey('newValues')
+              ? Values.fromJson(
+                  json_['newValues'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (integrityToken != null) 'integrityToken': integrityToken!,
+        if (newValues != null) 'newValues': newValues!,
+      };
+}
+
+/// Response for the Write Device Recall action.
+///
+/// Currently empty.
+typedef WriteDeviceRecallResponse = $Empty;

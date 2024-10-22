@@ -2,6 +2,9 @@
     "auth": {
         "oauth2": {
             "scopes": {
+                "https://www.googleapis.com/auth/dataportability.alerts.subscriptions": {
+                    "description": "Move a copy of the Google Alerts subscriptions you created."
+                },
                 "https://www.googleapis.com/auth/dataportability.businessmessaging.conversations": {
                     "description": "Move a copy of messages between you and the businesses you have conversations with across Google services."
                 },
@@ -152,6 +155,9 @@
                 "https://www.googleapis.com/auth/dataportability.youtube.channel": {
                     "description": "Move a copy of information about your YouTube channel."
                 },
+                "https://www.googleapis.com/auth/dataportability.youtube.clips": {
+                    "description": "Move a copy of your YouTube clips metadata."
+                },
                 "https://www.googleapis.com/auth/dataportability.youtube.comments": {
                     "description": "Move a copy of your YouTube comments."
                 },
@@ -211,7 +217,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240611",
+    "revision": "20240828",
     "rootUrl": "https://dataportability.googleapis.com/",
     "servicePath": "",
     "title": "Data Portability API",
@@ -319,6 +325,7 @@
                         "$ref": "PortabilityArchiveState"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/dataportability.alerts.subscriptions",
                         "https://www.googleapis.com/auth/dataportability.businessmessaging.conversations",
                         "https://www.googleapis.com/auth/dataportability.chrome.autofill",
                         "https://www.googleapis.com/auth/dataportability.chrome.bookmarks",
@@ -369,6 +376,7 @@
                         "https://www.googleapis.com/auth/dataportability.shopping.reviews",
                         "https://www.googleapis.com/auth/dataportability.streetview.imagery",
                         "https://www.googleapis.com/auth/dataportability.youtube.channel",
+                        "https://www.googleapis.com/auth/dataportability.youtube.clips",
                         "https://www.googleapis.com/auth/dataportability.youtube.comments",
                         "https://www.googleapis.com/auth/dataportability.youtube.live_chat",
                         "https://www.googleapis.com/auth/dataportability.youtube.music",
@@ -409,6 +417,7 @@
                         "$ref": "RetryPortabilityArchiveResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/dataportability.alerts.subscriptions",
                         "https://www.googleapis.com/auth/dataportability.businessmessaging.conversations",
                         "https://www.googleapis.com/auth/dataportability.chrome.autofill",
                         "https://www.googleapis.com/auth/dataportability.chrome.bookmarks",
@@ -459,6 +468,7 @@
                         "https://www.googleapis.com/auth/dataportability.shopping.reviews",
                         "https://www.googleapis.com/auth/dataportability.streetview.imagery",
                         "https://www.googleapis.com/auth/dataportability.youtube.channel",
+                        "https://www.googleapis.com/auth/dataportability.youtube.clips",
                         "https://www.googleapis.com/auth/dataportability.youtube.comments",
                         "https://www.googleapis.com/auth/dataportability.youtube.live_chat",
                         "https://www.googleapis.com/auth/dataportability.youtube.music",
@@ -493,6 +503,7 @@
                         "$ref": "Empty"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/dataportability.alerts.subscriptions",
                         "https://www.googleapis.com/auth/dataportability.businessmessaging.conversations",
                         "https://www.googleapis.com/auth/dataportability.chrome.autofill",
                         "https://www.googleapis.com/auth/dataportability.chrome.bookmarks",
@@ -543,6 +554,7 @@
                         "https://www.googleapis.com/auth/dataportability.shopping.reviews",
                         "https://www.googleapis.com/auth/dataportability.streetview.imagery",
                         "https://www.googleapis.com/auth/dataportability.youtube.channel",
+                        "https://www.googleapis.com/auth/dataportability.youtube.clips",
                         "https://www.googleapis.com/auth/dataportability.youtube.comments",
                         "https://www.googleapis.com/auth/dataportability.youtube.live_chat",
                         "https://www.googleapis.com/auth/dataportability.youtube.music",
@@ -577,6 +589,7 @@
                         "$ref": "InitiatePortabilityArchiveResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/dataportability.alerts.subscriptions",
                         "https://www.googleapis.com/auth/dataportability.businessmessaging.conversations",
                         "https://www.googleapis.com/auth/dataportability.chrome.autofill",
                         "https://www.googleapis.com/auth/dataportability.chrome.bookmarks",
@@ -627,6 +640,7 @@
                         "https://www.googleapis.com/auth/dataportability.shopping.reviews",
                         "https://www.googleapis.com/auth/dataportability.streetview.imagery",
                         "https://www.googleapis.com/auth/dataportability.youtube.channel",
+                        "https://www.googleapis.com/auth/dataportability.youtube.clips",
                         "https://www.googleapis.com/auth/dataportability.youtube.comments",
                         "https://www.googleapis.com/auth/dataportability.youtube.live_chat",
                         "https://www.googleapis.com/auth/dataportability.youtube.music",

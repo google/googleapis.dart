@@ -1802,6 +1802,15 @@ class ProjectsLocationsEndpointAttachmentsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/endpointAttachments/\[^/\]+$`.
   ///
+  /// [view] - Optional. Specifies which fields of the EndpointAttachment are
+  /// returned in the response. Defaults to `ENDPOINT_ATTACHMENT_VIEW_BASIC`
+  /// view.
+  /// Possible string values are:
+  /// - "ENDPOINT_ATTACHMENT_VIEW_UNSPECIFIED" :
+  /// ENDPOINT_ATTACHMENT_VIEW_UNSPECIFIED.
+  /// - "ENDPOINT_ATTACHMENT_VIEW_BASIC" : Do not include status.
+  /// - "ENDPOINT_ATTACHMENT_VIEW_FULL" : Includes Status.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1814,9 +1823,11 @@ class ProjectsLocationsEndpointAttachmentsResource {
   /// this method will complete with the same error.
   async.Future<EndpointAttachment> get(
     core.String name, {
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1847,6 +1858,15 @@ class ProjectsLocationsEndpointAttachmentsResource {
   ///
   /// [pageToken] - Page token.
   ///
+  /// [view] - Optional. Specifies which fields of the EndpointAttachment are
+  /// returned in the response. Defaults to `ENDPOINT_ATTACHMENT_VIEW_BASIC`
+  /// view.
+  /// Possible string values are:
+  /// - "ENDPOINT_ATTACHMENT_VIEW_UNSPECIFIED" :
+  /// ENDPOINT_ATTACHMENT_VIEW_UNSPECIFIED.
+  /// - "ENDPOINT_ATTACHMENT_VIEW_BASIC" : Do not include status.
+  /// - "ENDPOINT_ATTACHMENT_VIEW_FULL" : Includes Status.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1863,6 +1883,7 @@ class ProjectsLocationsEndpointAttachmentsResource {
     core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -1870,6 +1891,7 @@ class ProjectsLocationsEndpointAttachmentsResource {
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3188,6 +3210,54 @@ class ProjectsLocationsProvidersConnectorsVersionsResource {
       commons.ApiRequester client)
       : _requester = client;
 
+  /// fetch and return the list of auth config variables required to override
+  /// the connection backend auth.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Parent resource of the Connector Version, of the form:
+  /// `projects / * /locations / * /providers / * /connectors / * /versions / *
+  /// `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/providers/\[^/\]+/connectors/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [view] - Optional. View of the AuthSchema. The default value is BASIC.
+  /// Possible string values are:
+  /// - "AUTH_SCHEMA_VIEW_UNSPECIFIED" : Default value.
+  /// - "BASIC" : Basic view of the AuthSchema.
+  /// - "JSON_SCHEMA" : JSON schema view of the AuthSchema.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchAuthSchemaResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchAuthSchemaResponse> fetchAuthSchema(
+    core.String name, {
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':fetchAuthSchema';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FetchAuthSchemaResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets details of a single connector version.
   ///
   /// Request parameters:
@@ -3462,10 +3532,15 @@ class AuthConfig {
   /// - "SSH_PUBLIC_KEY" : SSH Public Key Authentication
   /// - "OAUTH2_AUTH_CODE_FLOW" : Oauth 2.0 Authorization Code Flow
   /// - "GOOGLE_AUTHENTICATION" : Google authentication
+  /// - "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED" : Oauth 2.0 Authorization Code
+  /// Flow with Google Provided OAuth Client
   core.String? authType;
 
   /// Oauth2AuthCodeFlow.
   Oauth2AuthCodeFlow? oauth2AuthCodeFlow;
+
+  /// Oauth2AuthCodeFlowGoogleManaged.
+  Oauth2AuthCodeFlowGoogleManaged? oauth2AuthCodeFlowGoogleManaged;
 
   /// Oauth2ClientCredentials.
   Oauth2ClientCredentials? oauth2ClientCredentials;
@@ -3484,6 +3559,7 @@ class AuthConfig {
     this.authKey,
     this.authType,
     this.oauth2AuthCodeFlow,
+    this.oauth2AuthCodeFlowGoogleManaged,
     this.oauth2ClientCredentials,
     this.oauth2JwtBearer,
     this.sshPublicKey,
@@ -3502,6 +3578,12 @@ class AuthConfig {
               ? Oauth2AuthCodeFlow.fromJson(json_['oauth2AuthCodeFlow']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          oauth2AuthCodeFlowGoogleManaged:
+              json_.containsKey('oauth2AuthCodeFlowGoogleManaged')
+                  ? Oauth2AuthCodeFlowGoogleManaged.fromJson(
+                      json_['oauth2AuthCodeFlowGoogleManaged']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           oauth2ClientCredentials: json_.containsKey('oauth2ClientCredentials')
               ? Oauth2ClientCredentials.fromJson(
                   json_['oauth2ClientCredentials']
@@ -3528,6 +3610,8 @@ class AuthConfig {
         if (authType != null) 'authType': authType!,
         if (oauth2AuthCodeFlow != null)
           'oauth2AuthCodeFlow': oauth2AuthCodeFlow!,
+        if (oauth2AuthCodeFlowGoogleManaged != null)
+          'oauth2AuthCodeFlowGoogleManaged': oauth2AuthCodeFlowGoogleManaged!,
         if (oauth2ClientCredentials != null)
           'oauth2ClientCredentials': oauth2ClientCredentials!,
         if (oauth2JwtBearer != null) 'oauth2JwtBearer': oauth2JwtBearer!,
@@ -3552,6 +3636,8 @@ class AuthConfigTemplate {
   /// - "SSH_PUBLIC_KEY" : SSH Public Key Authentication
   /// - "OAUTH2_AUTH_CODE_FLOW" : Oauth 2.0 Authorization Code Flow
   /// - "GOOGLE_AUTHENTICATION" : Google authentication
+  /// - "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED" : Oauth 2.0 Authorization Code
+  /// Flow with Google Provided OAuth Client
   core.String? authType;
 
   /// Config variables to describe an `AuthConfig` for a `Connection`.
@@ -3563,12 +3649,16 @@ class AuthConfigTemplate {
   /// Display name for authentication template.
   core.String? displayName;
 
+  /// Whether the auth config is the default one.
+  core.bool? isDefault;
+
   AuthConfigTemplate({
     this.authKey,
     this.authType,
     this.configVariableTemplates,
     this.description,
     this.displayName,
+    this.isDefault,
   });
 
   AuthConfigTemplate.fromJson(core.Map json_)
@@ -3582,6 +3672,7 @@ class AuthConfigTemplate {
                   .toList(),
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
+          isDefault: json_['isDefault'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3591,6 +3682,191 @@ class AuthConfigTemplate {
           'configVariableTemplates': configVariableTemplates!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
+        if (isDefault != null) 'isDefault': isDefault!,
+      };
+}
+
+/// AuthField defines a field in an authentication type.
+class AuthField {
+  /// Data type of the field.
+  core.String? dataType;
+
+  /// Description of the field.
+  core.String? description;
+
+  /// Key of the field.
+  core.String? key;
+
+  AuthField({
+    this.dataType,
+    this.description,
+    this.key,
+  });
+
+  AuthField.fromJson(core.Map json_)
+      : this(
+          dataType: json_['dataType'] as core.String?,
+          description: json_['description'] as core.String?,
+          key: json_['key'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataType != null) 'dataType': dataType!,
+        if (description != null) 'description': description!,
+        if (key != null) 'key': key!,
+      };
+}
+
+/// AuthObject defines a JSON schema of an authentication type.
+class AuthObject {
+  /// Whether the object has additional properties.
+  core.bool? additionalProperties;
+
+  /// Auth key of the object.
+  core.String? authKey;
+
+  /// Auth type of the object.
+  core.String? authType;
+
+  /// Description of the object.
+  core.String? description;
+
+  /// Whether the object is the default one.
+  core.bool? isDefault;
+
+  /// Properties of the object.
+  core.Map<core.String, AuthProperty>? properties;
+
+  /// Type of the object.
+  core.String? type;
+
+  AuthObject({
+    this.additionalProperties,
+    this.authKey,
+    this.authType,
+    this.description,
+    this.isDefault,
+    this.properties,
+    this.type,
+  });
+
+  AuthObject.fromJson(core.Map json_)
+      : this(
+          additionalProperties: json_['additionalProperties'] as core.bool?,
+          authKey: json_['authKey'] as core.String?,
+          authType: json_['authType'] as core.String?,
+          description: json_['description'] as core.String?,
+          isDefault: json_['isDefault'] as core.bool?,
+          properties:
+              (json_['properties'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              AuthProperty.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalProperties != null)
+          'additionalProperties': additionalProperties!,
+        if (authKey != null) 'authKey': authKey!,
+        if (authType != null) 'authType': authType!,
+        if (description != null) 'description': description!,
+        if (isDefault != null) 'isDefault': isDefault!,
+        if (properties != null) 'properties': properties!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// AuthProperty defines a property of an authentication type.
+class AuthProperty {
+  /// Description of the property.
+  core.String? description;
+
+  /// Type of the property.
+  core.String? type;
+
+  AuthProperty({
+    this.description,
+    this.type,
+  });
+
+  AuthProperty.fromJson(core.Map json_)
+      : this(
+          description: json_['description'] as core.String?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// AuthSchema defines the schema of an authentication type.
+class AuthSchema {
+  /// List of AuthFields.
+  core.List<AuthField>? authFields;
+
+  /// Auth key of the schema.
+  core.String? authKey;
+
+  /// Auth type of the schema.
+  /// Possible string values are:
+  /// - "AUTH_TYPE_UNSPECIFIED" : Authentication type not specified.
+  /// - "USER_PASSWORD" : Username and Password Authentication.
+  /// - "OAUTH2_JWT_BEARER" : JSON Web Token (JWT) Profile for Oauth 2.0
+  /// Authorization Grant based authentication
+  /// - "OAUTH2_CLIENT_CREDENTIALS" : Oauth 2.0 Client Credentials Grant
+  /// Authentication
+  /// - "SSH_PUBLIC_KEY" : SSH Public Key Authentication
+  /// - "OAUTH2_AUTH_CODE_FLOW" : Oauth 2.0 Authorization Code Flow
+  /// - "GOOGLE_AUTHENTICATION" : Google authentication
+  /// - "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED" : Oauth 2.0 Authorization Code
+  /// Flow with Google Provided OAuth Client
+  core.String? authType;
+
+  /// Description of the schema.
+  core.String? description;
+
+  /// Display name of the schema.
+  core.String? displayName;
+
+  /// Whether the auth schema is the default one.
+  core.bool? isDefault;
+
+  AuthSchema({
+    this.authFields,
+    this.authKey,
+    this.authType,
+    this.description,
+    this.displayName,
+    this.isDefault,
+  });
+
+  AuthSchema.fromJson(core.Map json_)
+      : this(
+          authFields: (json_['authFields'] as core.List?)
+              ?.map((value) => AuthField.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          authKey: json_['authKey'] as core.String?,
+          authType: json_['authType'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          isDefault: json_['isDefault'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authFields != null) 'authFields': authFields!,
+        if (authKey != null) 'authKey': authKey!,
+        if (authType != null) 'authType': authType!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (isDefault != null) 'isDefault': isDefault!,
       };
 }
 
@@ -3601,8 +3877,19 @@ class AuthorizationCodeLink {
   /// connector data source.
   core.String? clientId;
 
+  /// The client secret assigned to the Google Cloud Connectors OAuth app for
+  /// the connector data source.
+  ///
+  /// Optional.
+  Secret? clientSecret;
+
   /// Whether to enable PKCE for the auth code flow.
   core.bool? enablePkce;
+
+  /// Omit query params from the redirect URI.
+  ///
+  /// Optional.
+  core.bool? omitQueryParams;
 
   /// The scopes for which the user will authorize Google Cloud Connectors on
   /// the connector data source.
@@ -3614,7 +3901,9 @@ class AuthorizationCodeLink {
 
   AuthorizationCodeLink({
     this.clientId,
+    this.clientSecret,
     this.enablePkce,
+    this.omitQueryParams,
     this.scopes,
     this.uri,
   });
@@ -3622,7 +3911,12 @@ class AuthorizationCodeLink {
   AuthorizationCodeLink.fromJson(core.Map json_)
       : this(
           clientId: json_['clientId'] as core.String?,
+          clientSecret: json_.containsKey('clientSecret')
+              ? Secret.fromJson(
+                  json_['clientSecret'] as core.Map<core.String, core.dynamic>)
+              : null,
           enablePkce: json_['enablePkce'] as core.bool?,
+          omitQueryParams: json_['omitQueryParams'] as core.bool?,
           scopes: (json_['scopes'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -3631,7 +3925,9 @@ class AuthorizationCodeLink {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clientId != null) 'clientId': clientId!,
+        if (clientSecret != null) 'clientSecret': clientSecret!,
         if (enablePkce != null) 'enablePkce': enablePkce!,
+        if (omitQueryParams != null) 'omitQueryParams': omitQueryParams!,
         if (scopes != null) 'scopes': scopes!,
         if (uri != null) 'uri': uri!,
       };
@@ -3969,11 +4265,27 @@ class ConfigVariableTemplate {
 
 /// Connection represents an instance of connector.
 class Connection {
+  /// Async operations enabled for the connection.
+  ///
+  /// If Async Operations is enabled, Connection allows the customers to
+  /// initiate async long running operations using the actions API.
+  ///
+  /// Optional.
+  core.bool? asyncOperationsEnabled;
+
   /// Configuration for establishing the connection's authentication with an
   /// external system.
   ///
   /// Optional.
   AuthConfig? authConfig;
+
+  /// Auth override enabled for the connection.
+  ///
+  /// If Auth Override is enabled, Connection allows the backend service auth to
+  /// be overridden in the entities/actions API.
+  ///
+  /// Optional.
+  core.bool? authOverrideEnabled;
 
   /// Billing config for the connection.
   ///
@@ -4064,6 +4376,11 @@ class Connection {
   /// Output only.
   EventingRuntimeData? eventingRuntimeData;
 
+  /// The name of the Hostname of the Service Directory service with TLS.
+  ///
+  /// Output only.
+  core.String? host;
+
   /// GCR location where the runtime image is stored.
   ///
   /// formatted like: gcr.io/{bucketName}/{imageName}
@@ -4143,13 +4460,20 @@ class Connection {
   /// Optional.
   core.bool? suspended;
 
+  /// The name of the Service Directory service with TLS.
+  ///
+  /// Output only.
+  core.String? tlsServiceDirectory;
+
   /// Updated time.
   ///
   /// Output only.
   core.String? updateTime;
 
   Connection({
+    this.asyncOperationsEnabled,
     this.authConfig,
+    this.authOverrideEnabled,
     this.billingConfig,
     this.configVariables,
     this.connectionRevision,
@@ -4163,6 +4487,7 @@ class Connection {
     this.eventingConfig,
     this.eventingEnablementType,
     this.eventingRuntimeData,
+    this.host,
     this.imageLocation,
     this.isTrustedTester,
     this.labels,
@@ -4176,15 +4501,18 @@ class Connection {
     this.status,
     this.subscriptionType,
     this.suspended,
+    this.tlsServiceDirectory,
     this.updateTime,
   });
 
   Connection.fromJson(core.Map json_)
       : this(
+          asyncOperationsEnabled: json_['asyncOperationsEnabled'] as core.bool?,
           authConfig: json_.containsKey('authConfig')
               ? AuthConfig.fromJson(
                   json_['authConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          authOverrideEnabled: json_['authOverrideEnabled'] as core.bool?,
           billingConfig: json_.containsKey('billingConfig')
               ? BillingConfig.fromJson(
                   json_['billingConfig'] as core.Map<core.String, core.dynamic>)
@@ -4220,6 +4548,7 @@ class Connection {
               ? EventingRuntimeData.fromJson(json_['eventingRuntimeData']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          host: json_['host'] as core.String?,
           imageLocation: json_['imageLocation'] as core.String?,
           isTrustedTester: json_['isTrustedTester'] as core.bool?,
           labels:
@@ -4254,11 +4583,16 @@ class Connection {
               : null,
           subscriptionType: json_['subscriptionType'] as core.String?,
           suspended: json_['suspended'] as core.bool?,
+          tlsServiceDirectory: json_['tlsServiceDirectory'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (asyncOperationsEnabled != null)
+          'asyncOperationsEnabled': asyncOperationsEnabled!,
         if (authConfig != null) 'authConfig': authConfig!,
+        if (authOverrideEnabled != null)
+          'authOverrideEnabled': authOverrideEnabled!,
         if (billingConfig != null) 'billingConfig': billingConfig!,
         if (configVariables != null) 'configVariables': configVariables!,
         if (connectionRevision != null)
@@ -4279,6 +4613,7 @@ class Connection {
           'eventingEnablementType': eventingEnablementType!,
         if (eventingRuntimeData != null)
           'eventingRuntimeData': eventingRuntimeData!,
+        if (host != null) 'host': host!,
         if (imageLocation != null) 'imageLocation': imageLocation!,
         if (isTrustedTester != null) 'isTrustedTester': isTrustedTester!,
         if (labels != null) 'labels': labels!,
@@ -4292,6 +4627,8 @@ class Connection {
         if (status != null) 'status': status!,
         if (subscriptionType != null) 'subscriptionType': subscriptionType!,
         if (suspended != null) 'suspended': suspended!,
+        if (tlsServiceDirectory != null)
+          'tlsServiceDirectory': tlsServiceDirectory!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -4393,6 +4730,16 @@ class Connector {
   /// Output only.
   core.String? category;
 
+  /// The type of the connector.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CONNECTOR_TYPE_UNSPECIFIED" : Default value.
+  /// - "CONNECTOR_TYPE_GOOGLE" : Google connectors.
+  /// - "CONNECTOR_TYPE_TECHNICAL" : Technical connectors.
+  /// - "CONNECTOR_TYPE_THIRD_PARTY" : Third Party connectors.
+  core.String? connectorType;
+
   /// Created time.
   ///
   /// Output only.
@@ -4470,6 +4817,7 @@ class Connector {
 
   Connector({
     this.category,
+    this.connectorType,
     this.createTime,
     this.description,
     this.displayName,
@@ -4487,6 +4835,7 @@ class Connector {
   Connector.fromJson(core.Map json_)
       : this(
           category: json_['category'] as core.String?,
+          connectorType: json_['connectorType'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
@@ -4514,6 +4863,7 @@ class Connector {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (category != null) 'category': category!,
+        if (connectorType != null) 'connectorType': connectorType!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
@@ -4532,6 +4882,9 @@ class Connector {
 /// This cofiguration provides infra configs like rate limit threshold which
 /// need to be configurable for every connector version
 class ConnectorInfraConfig {
+  /// Indicates that the Cloud Run CPU should always be allocated.
+  core.bool? alwaysAllocateCpu;
+
   /// The window used for ratelimiting runtime requests to connections.
   core.String? connectionRatelimitWindowSeconds;
 
@@ -4548,6 +4901,19 @@ class ConnectorInfraConfig {
   /// Max QPS supported for internal requests originating from Connd.
   core.String? internalclientRatelimitThreshold;
 
+  /// Max Instance Request Conncurrency for Cloud Run service.
+  core.int? maxInstanceRequestConcurrency;
+
+  /// Indicate whether connector is being migrated to cloud run deployment
+  /// model.
+  core.bool? migrateDeploymentModel;
+
+  /// Indicate whether connector is being migrated to TLS.
+  core.bool? migrateTls;
+
+  /// Indicate whether cloud spanner is required for connector job.
+  core.bool? provisionCloudSpanner;
+
   /// Max QPS supported by the connector version before throttling of requests.
   core.String? ratelimitThreshold;
 
@@ -4561,10 +4927,15 @@ class ConnectorInfraConfig {
   core.String? sharedDeployment;
 
   ConnectorInfraConfig({
+    this.alwaysAllocateCpu,
     this.connectionRatelimitWindowSeconds,
     this.deploymentModel,
     this.hpaConfig,
     this.internalclientRatelimitThreshold,
+    this.maxInstanceRequestConcurrency,
+    this.migrateDeploymentModel,
+    this.migrateTls,
+    this.provisionCloudSpanner,
     this.ratelimitThreshold,
     this.resourceLimits,
     this.resourceRequests,
@@ -4573,6 +4944,7 @@ class ConnectorInfraConfig {
 
   ConnectorInfraConfig.fromJson(core.Map json_)
       : this(
+          alwaysAllocateCpu: json_['alwaysAllocateCpu'] as core.bool?,
           connectionRatelimitWindowSeconds:
               json_['connectionRatelimitWindowSeconds'] as core.String?,
           deploymentModel: json_['deploymentModel'] as core.String?,
@@ -4582,6 +4954,11 @@ class ConnectorInfraConfig {
               : null,
           internalclientRatelimitThreshold:
               json_['internalclientRatelimitThreshold'] as core.String?,
+          maxInstanceRequestConcurrency:
+              json_['maxInstanceRequestConcurrency'] as core.int?,
+          migrateDeploymentModel: json_['migrateDeploymentModel'] as core.bool?,
+          migrateTls: json_['migrateTls'] as core.bool?,
+          provisionCloudSpanner: json_['provisionCloudSpanner'] as core.bool?,
           ratelimitThreshold: json_['ratelimitThreshold'] as core.String?,
           resourceLimits: json_.containsKey('resourceLimits')
               ? ResourceLimits.fromJson(json_['resourceLimits']
@@ -4595,12 +4972,20 @@ class ConnectorInfraConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (alwaysAllocateCpu != null) 'alwaysAllocateCpu': alwaysAllocateCpu!,
         if (connectionRatelimitWindowSeconds != null)
           'connectionRatelimitWindowSeconds': connectionRatelimitWindowSeconds!,
         if (deploymentModel != null) 'deploymentModel': deploymentModel!,
         if (hpaConfig != null) 'hpaConfig': hpaConfig!,
         if (internalclientRatelimitThreshold != null)
           'internalclientRatelimitThreshold': internalclientRatelimitThreshold!,
+        if (maxInstanceRequestConcurrency != null)
+          'maxInstanceRequestConcurrency': maxInstanceRequestConcurrency!,
+        if (migrateDeploymentModel != null)
+          'migrateDeploymentModel': migrateDeploymentModel!,
+        if (migrateTls != null) 'migrateTls': migrateTls!,
+        if (provisionCloudSpanner != null)
+          'provisionCloudSpanner': provisionCloudSpanner!,
         if (ratelimitThreshold != null)
           'ratelimitThreshold': ratelimitThreshold!,
         if (resourceLimits != null) 'resourceLimits': resourceLimits!,
@@ -4655,6 +5040,21 @@ class ConnectorVersion {
   ///
   /// Output only.
   EventingConfigTemplate? eventingConfigTemplate;
+
+  /// Is async operations supported.
+  ///
+  /// Output only.
+  core.bool? isAsyncOperationsSupported;
+
+  /// Is custom actions supported.
+  ///
+  /// Output only.
+  core.bool? isCustomActionsSupported;
+
+  /// Is custom entities supported.
+  ///
+  /// Output only.
+  core.bool? isCustomEntitiesSupported;
 
   /// Resource labels to represent user-provided metadata.
   ///
@@ -4714,6 +5114,16 @@ class ConnectorVersion {
   /// Output only.
   SupportedRuntimeFeatures? supportedRuntimeFeatures;
 
+  /// Supported standard actions.
+  ///
+  /// Output only.
+  core.List<StandardAction>? supportedStandardActions;
+
+  /// Supported standard entities.
+  ///
+  /// Output only.
+  core.List<StandardEntity>? supportedStandardEntities;
+
   /// Unsupported connection types.
   ///
   /// Output only.
@@ -4734,6 +5144,9 @@ class ConnectorVersion {
     this.displayName,
     this.egressControlConfig,
     this.eventingConfigTemplate,
+    this.isAsyncOperationsSupported,
+    this.isCustomActionsSupported,
+    this.isCustomEntitiesSupported,
     this.labels,
     this.launchStage,
     this.name,
@@ -4743,6 +5156,8 @@ class ConnectorVersion {
     this.schemaRefreshConfig,
     this.sslConfigTemplate,
     this.supportedRuntimeFeatures,
+    this.supportedStandardActions,
+    this.supportedStandardEntities,
     this.unsupportedConnectionTypes,
     this.updateTime,
   });
@@ -4778,6 +5193,12 @@ class ConnectorVersion {
               ? EventingConfigTemplate.fromJson(json_['eventingConfigTemplate']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          isAsyncOperationsSupported:
+              json_['isAsyncOperationsSupported'] as core.bool?,
+          isCustomActionsSupported:
+              json_['isCustomActionsSupported'] as core.bool?,
+          isCustomEntitiesSupported:
+              json_['isCustomEntitiesSupported'] as core.bool?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -4810,6 +5231,16 @@ class ConnectorVersion {
                       json_['supportedRuntimeFeatures']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          supportedStandardActions:
+              (json_['supportedStandardActions'] as core.List?)
+                  ?.map((value) => StandardAction.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+          supportedStandardEntities:
+              (json_['supportedStandardEntities'] as core.List?)
+                  ?.map((value) => StandardEntity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
           unsupportedConnectionTypes:
               (json_['unsupportedConnectionTypes'] as core.List?)
                   ?.map((value) => value as core.String)
@@ -4834,6 +5265,12 @@ class ConnectorVersion {
           'egressControlConfig': egressControlConfig!,
         if (eventingConfigTemplate != null)
           'eventingConfigTemplate': eventingConfigTemplate!,
+        if (isAsyncOperationsSupported != null)
+          'isAsyncOperationsSupported': isAsyncOperationsSupported!,
+        if (isCustomActionsSupported != null)
+          'isCustomActionsSupported': isCustomActionsSupported!,
+        if (isCustomEntitiesSupported != null)
+          'isCustomEntitiesSupported': isCustomEntitiesSupported!,
         if (labels != null) 'labels': labels!,
         if (launchStage != null) 'launchStage': launchStage!,
         if (name != null) 'name': name!,
@@ -4845,6 +5282,10 @@ class ConnectorVersion {
         if (sslConfigTemplate != null) 'sslConfigTemplate': sslConfigTemplate!,
         if (supportedRuntimeFeatures != null)
           'supportedRuntimeFeatures': supportedRuntimeFeatures!,
+        if (supportedStandardActions != null)
+          'supportedStandardActions': supportedStandardActions!,
+        if (supportedStandardEntities != null)
+          'supportedStandardEntities': supportedStandardEntities!,
         if (unsupportedConnectionTypes != null)
           'unsupportedConnectionTypes': unsupportedConnectionTypes!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -4868,6 +5309,19 @@ class ConnectorVersionInfraConfig {
   /// - "CLOUD_RUN_MST" : Cloud run mst.
   core.String? deploymentModel;
 
+  /// Status of the deployment model migration.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DEPLOYMENT_MODEL_MIGRATION_STATE_UNSPECIFIED" : Deployment model
+  /// migration state is not specified.
+  /// - "IN_PROGRESS" : Deployment model migration is in progress.
+  /// - "COMPLETED" : Deployment model migration is completed.
+  /// - "ROLLEDBACK" : Deployment model migration rolledback.
+  /// - "ROLLBACK_IN_PROGRESS" : Deployment model migration rollback in
+  /// progress.
+  core.String? deploymentModelMigrationState;
+
   /// HPA autoscaling config.
   ///
   /// Output only.
@@ -4877,6 +5331,11 @@ class ConnectorVersionInfraConfig {
   ///
   /// Output only.
   core.String? internalclientRatelimitThreshold;
+
+  /// Max instance request concurrency.
+  ///
+  /// Output only.
+  core.int? maxInstanceRequestConcurrency;
 
   /// Max QPS supported by the connector version before throttling of requests.
   ///
@@ -4898,15 +5357,28 @@ class ConnectorVersionInfraConfig {
   /// Output only.
   core.String? sharedDeployment;
 
+  /// Status of the TLS migration.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TLS_MIGRATION_STATE_UNSPECIFIED" : TLS migration state is not
+  /// specified.
+  /// - "TLS_MIGRATION_NOT_STARTED" : TLS migration is in progress.
+  /// - "TLS_MIGRATION_COMPLETED" : TLS migration is completed.
+  core.String? tlsMigrationState;
+
   ConnectorVersionInfraConfig({
     this.connectionRatelimitWindowSeconds,
     this.deploymentModel,
+    this.deploymentModelMigrationState,
     this.hpaConfig,
     this.internalclientRatelimitThreshold,
+    this.maxInstanceRequestConcurrency,
     this.ratelimitThreshold,
     this.resourceLimits,
     this.resourceRequests,
     this.sharedDeployment,
+    this.tlsMigrationState,
   });
 
   ConnectorVersionInfraConfig.fromJson(core.Map json_)
@@ -4914,12 +5386,16 @@ class ConnectorVersionInfraConfig {
           connectionRatelimitWindowSeconds:
               json_['connectionRatelimitWindowSeconds'] as core.String?,
           deploymentModel: json_['deploymentModel'] as core.String?,
+          deploymentModelMigrationState:
+              json_['deploymentModelMigrationState'] as core.String?,
           hpaConfig: json_.containsKey('hpaConfig')
               ? HPAConfig.fromJson(
                   json_['hpaConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           internalclientRatelimitThreshold:
               json_['internalclientRatelimitThreshold'] as core.String?,
+          maxInstanceRequestConcurrency:
+              json_['maxInstanceRequestConcurrency'] as core.int?,
           ratelimitThreshold: json_['ratelimitThreshold'] as core.String?,
           resourceLimits: json_.containsKey('resourceLimits')
               ? ResourceLimits.fromJson(json_['resourceLimits']
@@ -4930,20 +5406,26 @@ class ConnectorVersionInfraConfig {
                   as core.Map<core.String, core.dynamic>)
               : null,
           sharedDeployment: json_['sharedDeployment'] as core.String?,
+          tlsMigrationState: json_['tlsMigrationState'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (connectionRatelimitWindowSeconds != null)
           'connectionRatelimitWindowSeconds': connectionRatelimitWindowSeconds!,
         if (deploymentModel != null) 'deploymentModel': deploymentModel!,
+        if (deploymentModelMigrationState != null)
+          'deploymentModelMigrationState': deploymentModelMigrationState!,
         if (hpaConfig != null) 'hpaConfig': hpaConfig!,
         if (internalclientRatelimitThreshold != null)
           'internalclientRatelimitThreshold': internalclientRatelimitThreshold!,
+        if (maxInstanceRequestConcurrency != null)
+          'maxInstanceRequestConcurrency': maxInstanceRequestConcurrency!,
         if (ratelimitThreshold != null)
           'ratelimitThreshold': ratelimitThreshold!,
         if (resourceLimits != null) 'resourceLimits': resourceLimits!,
         if (resourceRequests != null) 'resourceRequests': resourceRequests!,
         if (sharedDeployment != null) 'sharedDeployment': sharedDeployment!,
+        if (tlsMigrationState != null) 'tlsMigrationState': tlsMigrationState!,
       };
 }
 
@@ -5494,6 +5976,27 @@ class EndpointAttachment {
   /// Required.
   core.String? serviceAttachment;
 
+  /// The Private Service Connect Connection Endpoint State.
+  ///
+  /// This value is only available in the Full view.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : STATE_UNSPECIFIED.
+  /// - "PENDING" : The endpoint is pending acceptance by the producer.
+  /// - "ACCEPTED" : The endpoint has been accepted by the producer.
+  /// - "REJECTED" : The endpoint has been rejected by the producer.
+  /// - "CLOSED" : The endpoint has been closed by the producer and will not
+  /// serve traffic going forward.
+  /// - "FROZEN" : The endpoint has been frozen by the producer and will not
+  /// serve traffic.
+  /// - "NEEDS_ATTENTION" : The endpoint has been accepted by the producer, but
+  /// it is not ready to serve the traffic due to producer side issues.
+  /// - "ACCEPTED_NOT_PROGRAMMED" : The endpoint has been accepted by the
+  /// producer, but it cannot be programmed to the data plane due to invariant
+  /// violation.
+  core.String? state;
+
   /// Updated time.
   ///
   /// Output only.
@@ -5507,6 +6010,7 @@ class EndpointAttachment {
     this.labels,
     this.name,
     this.serviceAttachment,
+    this.state,
     this.updateTime,
   });
 
@@ -5525,6 +6029,7 @@ class EndpointAttachment {
           ),
           name: json_['name'] as core.String?,
           serviceAttachment: json_['serviceAttachment'] as core.String?,
+          state: json_['state'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );
 
@@ -5537,6 +6042,7 @@ class EndpointAttachment {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (serviceAttachment != null) 'serviceAttachment': serviceAttachment!,
+        if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -6302,6 +6808,40 @@ class ExtractionRules {
       };
 }
 
+/// Response message for Connectors.GetAuthSchema.
+class FetchAuthSchemaResponse {
+  /// List of AuthSchemas.
+  core.List<AuthSchema>? authSchemas;
+
+  /// JSON schema of the AuthSchemas.
+  ///
+  /// This is only populated if the view is JSON_SCHEMA. The schema is in
+  /// draft-07 format.
+  JsonAuthSchema? jsonSchema;
+
+  FetchAuthSchemaResponse({
+    this.authSchemas,
+    this.jsonSchema,
+  });
+
+  FetchAuthSchemaResponse.fromJson(core.Map json_)
+      : this(
+          authSchemas: (json_['authSchemas'] as core.List?)
+              ?.map((value) => AuthSchema.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          jsonSchema: json_.containsKey('jsonSchema')
+              ? JsonAuthSchema.fromJson(
+                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authSchemas != null) 'authSchemas': authSchemas!,
+        if (jsonSchema != null) 'jsonSchema': jsonSchema!,
+      };
+}
+
 /// Metadata of an entity field.
 class Field {
   /// The following map contains fields that are not explicitly mentioned
@@ -6647,6 +7187,34 @@ class JMS {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// JsonAuthSchema defines the JSON schema of all authentication types.
+class JsonAuthSchema {
+  /// JSON schema of the AuthSchemas.
+  core.String? P_schema;
+
+  /// List of AuthObjects.
+  core.List<AuthObject>? oneOf;
+
+  JsonAuthSchema({
+    this.P_schema,
+    this.oneOf,
+  });
+
+  JsonAuthSchema.fromJson(core.Map json_)
+      : this(
+          P_schema: json_['\$schema'] as core.String?,
+          oneOf: (json_['oneOf'] as core.List?)
+              ?.map((value) => AuthObject.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (P_schema != null) '\$schema': P_schema!,
+        if (oneOf != null) 'oneOf': oneOf!,
       };
 }
 
@@ -7496,6 +8064,8 @@ class MultipleSelectConfig {
 
   /// Value separator.
   ///
+  /// Only "," can be used for OAuth auth code flow scope field.
+  ///
   /// Required.
   core.String? valueSeparator;
 
@@ -7674,6 +8244,12 @@ class Oauth2AuthCodeFlow {
         if (scopes != null) 'scopes': scopes!,
       };
 }
+
+/// Parameters to support Oauth 2.0 Auth Code Grant Authentication using Google
+/// Provided OAuth Client.
+///
+/// See https://tools.ietf.org/html/rfc6749#section-1.3.1 for more details.
+typedef Oauth2AuthCodeFlowGoogleManaged = $Oauth2AuthCodeFlowGoogleManaged;
 
 /// Parameters to support Oauth 2.0 Client Credentials Grant Authentication.
 ///
@@ -8200,6 +8776,13 @@ class ResultMetadata {
   /// instead.
   core.String? dataType;
 
+  /// The following field specifies the default value of the Parameter provided
+  /// by the external system if a value is not provided.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? defaultValue;
+
   /// A brief description of the field.
   core.String? description;
 
@@ -8209,29 +8792,38 @@ class ResultMetadata {
   /// JsonSchema representation of this action's result
   JsonSchema? jsonSchema;
 
+  /// Specifies whether a null value is allowed.
+  core.bool? nullable;
+
   ResultMetadata({
     this.dataType,
+    this.defaultValue,
     this.description,
     this.field,
     this.jsonSchema,
+    this.nullable,
   });
 
   ResultMetadata.fromJson(core.Map json_)
       : this(
           dataType: json_['dataType'] as core.String?,
+          defaultValue: json_['defaultValue'],
           description: json_['description'] as core.String?,
           field: json_['field'] as core.String?,
           jsonSchema: json_.containsKey('jsonSchema')
               ? JsonSchema.fromJson(
                   json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
               : null,
+          nullable: json_['nullable'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataType != null) 'dataType': dataType!,
+        if (defaultValue != null) 'defaultValue': defaultValue!,
         if (description != null) 'description': description!,
         if (field != null) 'field': field!,
         if (jsonSchema != null) 'jsonSchema': jsonSchema!,
+        if (nullable != null) 'nullable': nullable!,
       };
 }
 
@@ -8983,6 +9575,44 @@ class SslConfigTemplate {
       };
 }
 
+/// Standard action
+class StandardAction {
+  /// Name of the standard action.
+  core.String? name;
+
+  StandardAction({
+    this.name,
+  });
+
+  StandardAction.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Standard entity
+class StandardEntity {
+  /// Name of the standard entity.
+  core.String? name;
+
+  StandardEntity({
+    this.name,
+  });
+
+  StandardEntity.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -8990,7 +9620,7 @@ class SslConfigTemplate {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Supported runtime features of a connector version.
 class SupportedRuntimeFeatures {

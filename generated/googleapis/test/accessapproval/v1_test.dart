@@ -200,6 +200,7 @@ api.ApprovalRequest buildApprovalRequest() {
     o.dismiss = buildDismissDecision();
     o.name = 'foo';
     o.requestTime = 'foo';
+    o.requestedAugmentedInfo = buildAugmentedInfo();
     o.requestedDuration = 'foo';
     o.requestedExpiration = 'foo';
     o.requestedLocations = buildAccessLocations();
@@ -224,6 +225,7 @@ void checkApprovalRequest(api.ApprovalRequest o) {
       o.requestTime!,
       unittest.equals('foo'),
     );
+    checkAugmentedInfo(o.requestedAugmentedInfo!);
     unittest.expect(
       o.requestedDuration!,
       unittest.equals('foo'),
@@ -299,6 +301,28 @@ void checkApproveDecision(api.ApproveDecision o) {
     checkSignatureInfo(o.signatureInfo!);
   }
   buildCounterApproveDecision--;
+}
+
+core.int buildCounterAugmentedInfo = 0;
+api.AugmentedInfo buildAugmentedInfo() {
+  final o = api.AugmentedInfo();
+  buildCounterAugmentedInfo++;
+  if (buildCounterAugmentedInfo < 3) {
+    o.command = 'foo';
+  }
+  buildCounterAugmentedInfo--;
+  return o;
+}
+
+void checkAugmentedInfo(api.AugmentedInfo o) {
+  buildCounterAugmentedInfo++;
+  if (buildCounterAugmentedInfo < 3) {
+    unittest.expect(
+      o.command!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAugmentedInfo--;
 }
 
 core.int buildCounterDismissApprovalRequestMessage = 0;
@@ -562,6 +586,16 @@ void main() {
       final od = api.ApproveDecision.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkApproveDecision(od);
+    });
+  });
+
+  unittest.group('obj-schema-AugmentedInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAugmentedInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AugmentedInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAugmentedInfo(od);
     });
   });
 
