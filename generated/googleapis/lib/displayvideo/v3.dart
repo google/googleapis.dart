@@ -7139,7 +7139,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
   /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
-  /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
+  /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` *
+  /// `TARGETING_TYPE_KEYWORD`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -7303,7 +7304,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// options to list. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
   /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
-  /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
+  /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` *
+  /// `TARGETING_TYPE_KEYWORD`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -13003,7 +13005,300 @@ class AdGroupAssignedTargetingOption {
 typedef AdUrl = $AdUrl;
 
 /// Details of Adloox settings.
-typedef Adloox = $Adloox;
+class Adloox {
+  /// Adult explicit sexual content.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
+  /// it doesn't specify any GARM risk level option.
+  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
+  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
+  /// and Floor).
+  core.String? adultExplicitSexualContent;
+
+  /// Arms ammunition content.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
+  /// it doesn't specify any GARM risk level option.
+  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
+  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
+  /// and Floor).
+  core.String? armsAmmunitionContent;
+
+  /// Crime harmful acts to individuals society human rights violations content.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
+  /// it doesn't specify any GARM risk level option.
+  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
+  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
+  /// and Floor).
+  core.String? crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent;
+
+  /// Death injury military conflict content.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
+  /// it doesn't specify any GARM risk level option.
+  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
+  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
+  /// and Floor).
+  core.String? deathInjuryMilitaryConflictContent;
+
+  /// Debated sensitive social issue content.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
+  /// it doesn't specify any GARM risk level option.
+  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
+  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
+  /// and Floor).
+  core.String? debatedSensitiveSocialIssueContent;
+
+  /// Display IAB viewability.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DISPLAY_IAB_VIEWABILITY_UNSPECIFIED" : This enum is only a placeholder
+  /// and it doesn't specify any display viewability options.
+  /// - "DISPLAY_IAB_VIEWABILITY_10" : 10%+ in view (IAB display viewability
+  /// standard).
+  /// - "DISPLAY_IAB_VIEWABILITY_20" : 20%+ in view (IAB display viewability
+  /// standard).
+  /// - "DISPLAY_IAB_VIEWABILITY_35" : 35%+ in view (IAB display viewability
+  /// standard).
+  /// - "DISPLAY_IAB_VIEWABILITY_50" : 50%+ in view (IAB display viewability
+  /// standard).
+  /// - "DISPLAY_IAB_VIEWABILITY_75" : 75%+ in view (IAB display viewability
+  /// standard).
+  core.String? displayIabViewability;
+
+  /// Adloox's brand safety settings.
+  core.List<core.String>? excludedAdlooxCategories;
+
+  /// Adloox's fraud IVT MFA settings.
+  ///
+  /// Optional.
+  core.List<core.String>? excludedFraudIvtMfaCategories;
+
+  /// Hate speech acts of aggression content.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
+  /// it doesn't specify any GARM risk level option.
+  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
+  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
+  /// and Floor).
+  core.String? hateSpeechActsAggressionContent;
+
+  /// Illegal drugs tobacco ecigarettes vaping alcohol content.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
+  /// it doesn't specify any GARM risk level option.
+  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
+  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
+  /// and Floor).
+  core.String? illegalDrugsTobaccoEcigarettesVapingAlcoholContent;
+
+  /// Misinformation content.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
+  /// it doesn't specify any GARM risk level option.
+  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
+  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
+  /// and Floor).
+  core.String? misinformationContent;
+
+  /// Obscenity profanity content.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
+  /// it doesn't specify any GARM risk level option.
+  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
+  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
+  /// and Floor).
+  core.String? obscenityProfanityContent;
+
+  /// Online piracy content.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
+  /// it doesn't specify any GARM risk level option.
+  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
+  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
+  /// and Floor).
+  core.String? onlinePiracyContent;
+
+  /// Spam harmful content.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
+  /// it doesn't specify any GARM risk level option.
+  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
+  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
+  /// and Floor).
+  core.String? spamHarmfulContent;
+
+  /// Terrorism content.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
+  /// it doesn't specify any GARM risk level option.
+  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
+  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
+  /// and Floor).
+  core.String? terrorismContent;
+
+  /// Video IAB viewability.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "VIDEO_IAB_VIEWABILITY_UNSPECIFIED" : This enum is only a placeholder
+  /// and it doesn't specify any video viewability options.
+  /// - "VIDEO_IAB_VIEWABILITY_10" : 10%+ in view (IAB video viewability
+  /// standard).
+  /// - "VIDEO_IAB_VIEWABILITY_20" : 20%+ in view (IAB video viewability
+  /// standard).
+  /// - "VIDEO_IAB_VIEWABILITY_35" : 35%+ in view (IAB video viewability
+  /// standard).
+  /// - "VIDEO_IAB_VIEWABILITY_50" : 50%+ in view (IAB video viewability
+  /// standard).
+  /// - "VIDEO_IAB_VIEWABILITY_75" : 75%+ in view (IAB video viewability
+  /// standard).
+  core.String? videoIabViewability;
+
+  Adloox({
+    this.adultExplicitSexualContent,
+    this.armsAmmunitionContent,
+    this.crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent,
+    this.deathInjuryMilitaryConflictContent,
+    this.debatedSensitiveSocialIssueContent,
+    this.displayIabViewability,
+    this.excludedAdlooxCategories,
+    this.excludedFraudIvtMfaCategories,
+    this.hateSpeechActsAggressionContent,
+    this.illegalDrugsTobaccoEcigarettesVapingAlcoholContent,
+    this.misinformationContent,
+    this.obscenityProfanityContent,
+    this.onlinePiracyContent,
+    this.spamHarmfulContent,
+    this.terrorismContent,
+    this.videoIabViewability,
+  });
+
+  Adloox.fromJson(core.Map json_)
+      : this(
+          adultExplicitSexualContent:
+              json_['adultExplicitSexualContent'] as core.String?,
+          armsAmmunitionContent: json_['armsAmmunitionContent'] as core.String?,
+          crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent: json_[
+                  'crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent']
+              as core.String?,
+          deathInjuryMilitaryConflictContent:
+              json_['deathInjuryMilitaryConflictContent'] as core.String?,
+          debatedSensitiveSocialIssueContent:
+              json_['debatedSensitiveSocialIssueContent'] as core.String?,
+          displayIabViewability: json_['displayIabViewability'] as core.String?,
+          excludedAdlooxCategories:
+              (json_['excludedAdlooxCategories'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+          excludedFraudIvtMfaCategories:
+              (json_['excludedFraudIvtMfaCategories'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+          hateSpeechActsAggressionContent:
+              json_['hateSpeechActsAggressionContent'] as core.String?,
+          illegalDrugsTobaccoEcigarettesVapingAlcoholContent:
+              json_['illegalDrugsTobaccoEcigarettesVapingAlcoholContent']
+                  as core.String?,
+          misinformationContent: json_['misinformationContent'] as core.String?,
+          obscenityProfanityContent:
+              json_['obscenityProfanityContent'] as core.String?,
+          onlinePiracyContent: json_['onlinePiracyContent'] as core.String?,
+          spamHarmfulContent: json_['spamHarmfulContent'] as core.String?,
+          terrorismContent: json_['terrorismContent'] as core.String?,
+          videoIabViewability: json_['videoIabViewability'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adultExplicitSexualContent != null)
+          'adultExplicitSexualContent': adultExplicitSexualContent!,
+        if (armsAmmunitionContent != null)
+          'armsAmmunitionContent': armsAmmunitionContent!,
+        if (crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent !=
+            null)
+          'crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent':
+              crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent!,
+        if (deathInjuryMilitaryConflictContent != null)
+          'deathInjuryMilitaryConflictContent':
+              deathInjuryMilitaryConflictContent!,
+        if (debatedSensitiveSocialIssueContent != null)
+          'debatedSensitiveSocialIssueContent':
+              debatedSensitiveSocialIssueContent!,
+        if (displayIabViewability != null)
+          'displayIabViewability': displayIabViewability!,
+        if (excludedAdlooxCategories != null)
+          'excludedAdlooxCategories': excludedAdlooxCategories!,
+        if (excludedFraudIvtMfaCategories != null)
+          'excludedFraudIvtMfaCategories': excludedFraudIvtMfaCategories!,
+        if (hateSpeechActsAggressionContent != null)
+          'hateSpeechActsAggressionContent': hateSpeechActsAggressionContent!,
+        if (illegalDrugsTobaccoEcigarettesVapingAlcoholContent != null)
+          'illegalDrugsTobaccoEcigarettesVapingAlcoholContent':
+              illegalDrugsTobaccoEcigarettesVapingAlcoholContent!,
+        if (misinformationContent != null)
+          'misinformationContent': misinformationContent!,
+        if (obscenityProfanityContent != null)
+          'obscenityProfanityContent': obscenityProfanityContent!,
+        if (onlinePiracyContent != null)
+          'onlinePiracyContent': onlinePiracyContent!,
+        if (spamHarmfulContent != null)
+          'spamHarmfulContent': spamHarmfulContent!,
+        if (terrorismContent != null) 'terrorismContent': terrorismContent!,
+        if (videoIabViewability != null)
+          'videoIabViewability': videoIabViewability!,
+      };
+}
 
 /// A single advertiser in Display & Video 360 (DV360).
 class Advertiser {
@@ -16461,6 +16756,8 @@ class CreateSdfDownloadTaskRequest {
   /// - "SDF_VERSION_7_1" : SDF version 7.1. Read the \[v7 migration
   /// guide\](/display-video/api/structured-data-file/v7-migration-guide) before
   /// migrating to this version.
+  /// - "SDF_VERSION_8" : SDF version 8. **This SDF version is in beta. It is
+  /// only available to a subset of users.**
   core.String? version;
 
   CreateSdfDownloadTaskRequest({
@@ -18965,6 +19262,7 @@ class GuaranteedOrder {
   /// - "EXCHANGE_CHARTBOOST_GBID" : Chartboost Mediation.
   /// - "EXCHANGE_ADMOST_GBID" : AdMost.
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
+  /// - "EXCHANGE_NETFLIX" : Netflix.
   core.String? exchange;
 
   /// The unique identifier of the guaranteed order.
@@ -19111,7 +19409,109 @@ typedef HouseholdIncomeTargetingOptionDetails
     = $HouseholdIncomeTargetingOptionDetails;
 
 /// A filtering option that filters entities by their entity IDs.
-typedef IdFilter = $IdFilter;
+class IdFilter {
+  /// YouTube Ads to download by ID.
+  ///
+  /// All IDs must belong to the same Advertiser or Partner specified in
+  /// CreateSdfDownloadTaskRequest.
+  core.List<core.String>? adGroupAdIds;
+
+  /// YouTube Ad Groups to download by ID.
+  ///
+  /// All IDs must belong to the same Advertiser or Partner specified in
+  /// CreateSdfDownloadTaskRequest.
+  core.List<core.String>? adGroupIds;
+
+  /// YouTube Ad Groups, by ID, to download in QA format.
+  ///
+  /// All IDs must belong to the same Advertiser or Partner specified in
+  /// CreateSdfDownloadTaskRequest.
+  ///
+  /// Optional.
+  core.List<core.String>? adGroupQaIds;
+
+  /// Campaigns to download by ID.
+  ///
+  /// All IDs must belong to the same Advertiser or Partner specified in
+  /// CreateSdfDownloadTaskRequest.
+  core.List<core.String>? campaignIds;
+
+  /// Insertion Orders to download by ID.
+  ///
+  /// All IDs must belong to the same Advertiser or Partner specified in
+  /// CreateSdfDownloadTaskRequest.
+  core.List<core.String>? insertionOrderIds;
+
+  /// Line Items to download by ID.
+  ///
+  /// All IDs must belong to the same Advertiser or Partner specified in
+  /// CreateSdfDownloadTaskRequest.
+  core.List<core.String>? lineItemIds;
+
+  /// Line Items, by ID, to download in QA format.
+  ///
+  /// All IDs must belong to the same Advertiser or Partner specified in
+  /// CreateSdfDownloadTaskRequest.
+  ///
+  /// Optional.
+  core.List<core.String>? lineItemQaIds;
+
+  /// Media Products to download by ID.
+  ///
+  /// All IDs must belong to the same Advertiser or Partner specified in
+  /// CreateSdfDownloadTaskRequest.
+  core.List<core.String>? mediaProductIds;
+
+  IdFilter({
+    this.adGroupAdIds,
+    this.adGroupIds,
+    this.adGroupQaIds,
+    this.campaignIds,
+    this.insertionOrderIds,
+    this.lineItemIds,
+    this.lineItemQaIds,
+    this.mediaProductIds,
+  });
+
+  IdFilter.fromJson(core.Map json_)
+      : this(
+          adGroupAdIds: (json_['adGroupAdIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          adGroupIds: (json_['adGroupIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          adGroupQaIds: (json_['adGroupQaIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          campaignIds: (json_['campaignIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          insertionOrderIds: (json_['insertionOrderIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          lineItemIds: (json_['lineItemIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          lineItemQaIds: (json_['lineItemQaIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          mediaProductIds: (json_['mediaProductIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adGroupAdIds != null) 'adGroupAdIds': adGroupAdIds!,
+        if (adGroupIds != null) 'adGroupIds': adGroupIds!,
+        if (adGroupQaIds != null) 'adGroupQaIds': adGroupQaIds!,
+        if (campaignIds != null) 'campaignIds': campaignIds!,
+        if (insertionOrderIds != null) 'insertionOrderIds': insertionOrderIds!,
+        if (lineItemIds != null) 'lineItemIds': lineItemIds!,
+        if (lineItemQaIds != null) 'lineItemQaIds': lineItemQaIds!,
+        if (mediaProductIds != null) 'mediaProductIds': mediaProductIds!,
+      };
+}
 
 /// Meta data of an image asset.
 class ImageAsset {
@@ -19277,7 +19677,33 @@ class InsertionOrder {
   /// Output only.
   core.String? name;
 
+  /// The optimization objective of the insertion order.
+  ///
+  /// **This field is only available to allowlisted customers.** If a customer
+  /// is not allowlisted, this field will be null and attempts to set it will
+  /// return an error.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "OPTIMIZATION_OBJECTIVE_UNSPECIFIED" : Type value is not specified or is
+  /// unknown in this version.
+  /// - "CONVERSION" : Prioritize impressions that increase sales and
+  /// conversions.
+  /// - "CLICK" : Prioritize impressions that increase website traffic, apps,
+  /// app stores.
+  /// - "BRAND_AWARENESS" : Prioritize impressions of specific quality.
+  /// - "CUSTOM" : Objective is defined by the assigned custom bidding
+  /// algorithm.
+  /// - "NO_OBJECTIVE" : Objective is not defined. Any KPI or bidding strategy
+  /// can be used.
+  core.String? optimizationObjective;
+
   /// The budget spending speed setting of the insertion order.
+  ///
+  /// *Warning*: Starting on **November 5, 2024**, pacing_type
+  /// `PACING_TYPE_ASAP` will no longer be compatible with pacing_period
+  /// `PACING_PERIOD_FLIGHT`. \[Read more about this announced
+  /// change\](/display-video/api/deprecations#features.io_asap).
   ///
   /// Required.
   Pacing? pacing;
@@ -19326,6 +19752,7 @@ class InsertionOrder {
     this.integrationDetails,
     this.kpi,
     this.name,
+    this.optimizationObjective,
     this.pacing,
     this.partnerCosts,
     this.reservationType,
@@ -19361,6 +19788,7 @@ class InsertionOrder {
                   json_['kpi'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
+          optimizationObjective: json_['optimizationObjective'] as core.String?,
           pacing: json_.containsKey('pacing')
               ? Pacing.fromJson(
                   json_['pacing'] as core.Map<core.String, core.dynamic>)
@@ -19388,6 +19816,8 @@ class InsertionOrder {
           'integrationDetails': integrationDetails!,
         if (kpi != null) 'kpi': kpi!,
         if (name != null) 'name': name!,
+        if (optimizationObjective != null)
+          'optimizationObjective': optimizationObjective!,
         if (pacing != null) 'pacing': pacing!,
         if (partnerCosts != null) 'partnerCosts': partnerCosts!,
         if (reservationType != null) 'reservationType': reservationType!,
@@ -19652,6 +20082,7 @@ class InventorySource {
   /// - "EXCHANGE_CHARTBOOST_GBID" : Chartboost Mediation.
   /// - "EXCHANGE_ADMOST_GBID" : AdMost.
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
+  /// - "EXCHANGE_NETFLIX" : Netflix.
   core.String? exchange;
 
   /// The ID of the guaranteed order that this inventory source belongs to.
@@ -22336,7 +22767,73 @@ typedef Pacing = $Pacing;
 
 /// A filtering option that filters on selected file types belonging to a chosen
 /// set of filter entities.
-typedef ParentEntityFilter = $ParentEntityFilter;
+class ParentEntityFilter {
+  /// File types that will be returned.
+  ///
+  /// Required.
+  core.List<core.String>? fileType;
+
+  /// The IDs of the specified filter type.
+  ///
+  /// This is used to filter entities to fetch. If filter type is not
+  /// `FILTER_TYPE_NONE`, at least one ID must be specified.
+  core.List<core.String>? filterIds;
+
+  /// Filter type used to filter fetched entities.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "FILTER_TYPE_UNSPECIFIED" : Default value when type is unspecified or is
+  /// unknown in this version.
+  /// - "FILTER_TYPE_NONE" : If selected, no filter will be applied to the
+  /// download. Can only be used if an Advertiser is specified in
+  /// CreateSdfDownloadTaskRequest.
+  /// - "FILTER_TYPE_ADVERTISER_ID" : Advertiser ID. If selected, all filter IDs
+  /// must be Advertiser IDs that belong to the Partner specified in
+  /// CreateSdfDownloadTaskRequest.
+  /// - "FILTER_TYPE_CAMPAIGN_ID" : Campaign ID. If selected, all filter IDs
+  /// must be Campaign IDs that belong to the Advertiser or Partner specified in
+  /// CreateSdfDownloadTaskRequest.
+  /// - "FILTER_TYPE_MEDIA_PRODUCT_ID" : Media Product ID. If selected, all
+  /// filter IDs must be Media Product IDs that belong to the Advertiser or
+  /// Partner specified in CreateSdfDownloadTaskRequest. Can only be used for
+  /// downloading `FILE_TYPE_MEDIA_PRODUCT`.
+  /// - "FILTER_TYPE_INSERTION_ORDER_ID" : Insertion Order ID. If selected, all
+  /// filter IDs must be Insertion Order IDs that belong to the Advertiser or
+  /// Partner specified in CreateSdfDownloadTaskRequest. Can only be used for
+  /// downloading `FILE_TYPE_INSERTION_ORDER`, `FILE_TYPE_LINE_ITEM`,
+  /// `FILE_TYPE_LINE_ITEM_QA`, `FILE_TYPE_AD_GROUP`, `FILE_TYPE_AD_GROUP_QA`,
+  /// and `FILE_TYPE_AD`.
+  /// - "FILTER_TYPE_LINE_ITEM_ID" : Line Item ID. If selected, all filter IDs
+  /// must be Line Item IDs that belong to the Advertiser or Partner specified
+  /// in CreateSdfDownloadTaskRequest. Can only be used for downloading
+  /// `FILE_TYPE_LINE_ITEM`, `FILE_TYPE_LINE_ITEM_QA`,`FILE_TYPE_AD_GROUP`,
+  /// `FILE_TYPE_AD_GROUP_QA`, and `FILE_TYPE_AD`.
+  core.String? filterType;
+
+  ParentEntityFilter({
+    this.fileType,
+    this.filterIds,
+    this.filterType,
+  });
+
+  ParentEntityFilter.fromJson(core.Map json_)
+      : this(
+          fileType: (json_['fileType'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          filterIds: (json_['filterIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          filterType: json_['filterType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fileType != null) 'fileType': fileType!,
+        if (filterIds != null) 'filterIds': filterIds!,
+        if (filterType != null) 'filterType': filterType!,
+      };
+}
 
 /// Details for assigned parental status targeting option.
 ///
@@ -22924,11 +23421,9 @@ class ReviewStatusInfo {
   core.List<ExchangeReviewStatus>? exchangeReviewStatuses;
 
   /// Publisher review statuses for the creative.
-  ///
-  /// **Warning:** This field will be deprecated on June 26th, 2024. After this
-  /// date, this field will be empty. Read our \[feature deprecation
-  /// announcement\](/display-video/api/deprecations#features.creative_publisher_review_statuses)
-  /// for more information.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<PublisherReviewStatus>? publisherReviewStatuses;
 
   ReviewStatusInfo({
@@ -23122,7 +23617,7 @@ typedef Site = $Site;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Details for assigned sub-exchange targeting option.
 ///
@@ -23170,6 +23665,16 @@ class TargetingExpansionConfig {
   core.bool? audienceExpansionSeedListExcluded;
 
   /// Whether to enable Optimized Targeting for the line item.
+  ///
+  /// Optimized targeting is not compatible with all bid strategies. Attempting
+  /// to set this field to `true` for a line item using one of the following
+  /// combinations of BiddingStrategy fields and
+  /// BiddingStrategyPerformanceGoalType will result in an error:
+  /// maximize_auto_spend_bid: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA` *
+  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN` *
+  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED`
+  /// performance_goal_auto_bid: *
+  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`
   ///
   /// Required.
   core.bool? enableOptimizedTargeting;

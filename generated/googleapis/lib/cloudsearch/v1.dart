@@ -3868,7 +3868,7 @@ class DoublePropertyOptions {
 }
 
 /// List of double values.
-typedef DoubleValues = $Shared05;
+typedef DoubleValues = $Shared06;
 
 /// A person's email address.
 class EmailAddress {
@@ -5018,7 +5018,7 @@ class IntegerPropertyOptions {
 }
 
 /// List of integer values.
-typedef IntegerValues = $Shared06;
+typedef IntegerValues = $Shared07;
 
 /// Represents an interaction between a user and an item.
 class Interaction {
@@ -8613,7 +8613,7 @@ class StartUploadItemRequest {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// A structured data object consisting of named properties.
 class StructuredDataObject {

@@ -2349,6 +2349,7 @@ api.RunStreamRequest buildRunStreamRequest() {
   buildCounterRunStreamRequest++;
   if (buildCounterRunStreamRequest < 3) {
     o.cdcStrategy = buildCdcStrategy();
+    o.force = true;
   }
   buildCounterRunStreamRequest--;
   return o;
@@ -2358,6 +2359,7 @@ void checkRunStreamRequest(api.RunStreamRequest o) {
   buildCounterRunStreamRequest++;
   if (buildCounterRunStreamRequest < 3) {
     checkCdcStrategy(o.cdcStrategy!);
+    unittest.expect(o.force!, unittest.isTrue);
   }
   buildCounterRunStreamRequest--;
 }

@@ -3903,6 +3903,18 @@ class AssetPerformanceData {
 
 /// AWS EC2 specific details.
 class AwsEc2PlatformDetails {
+  /// Whether the machine is hyperthreaded.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "HYPERTHREADING_STATUS_UNSPECIFIED" : Simultaneous Multithreading status
+  /// unknown.
+  /// - "HYPERTHREADING_STATUS_DISABLED" : Simultaneous Multithreading is
+  /// disabled or unavailable.
+  /// - "HYPERTHREADING_STATUS_ENABLED" : Simultaneous Multithreading is
+  /// enabled.
+  core.String? hyperthreading;
+
   /// The location of the machine in the AWS format.
   core.String? location;
 
@@ -3910,17 +3922,20 @@ class AwsEc2PlatformDetails {
   core.String? machineTypeLabel;
 
   AwsEc2PlatformDetails({
+    this.hyperthreading,
     this.location,
     this.machineTypeLabel,
   });
 
   AwsEc2PlatformDetails.fromJson(core.Map json_)
       : this(
+          hyperthreading: json_['hyperthreading'] as core.String?,
           location: json_['location'] as core.String?,
           machineTypeLabel: json_['machineTypeLabel'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (hyperthreading != null) 'hyperthreading': hyperthreading!,
         if (location != null) 'location': location!,
         if (machineTypeLabel != null) 'machineTypeLabel': machineTypeLabel!,
       };
@@ -3928,6 +3943,16 @@ class AwsEc2PlatformDetails {
 
 /// Azure VM specific details.
 class AzureVmPlatformDetails {
+  /// Whether the machine is hyperthreaded.
+  /// Possible string values are:
+  /// - "HYPERTHREADING_STATUS_UNSPECIFIED" : Simultaneous Multithreading status
+  /// unknown.
+  /// - "HYPERTHREADING_STATUS_DISABLED" : Simultaneous Multithreading is
+  /// disabled or unavailable.
+  /// - "HYPERTHREADING_STATUS_ENABLED" : Simultaneous Multithreading is
+  /// enabled.
+  core.String? hyperthreading;
+
   /// The location of the machine in the Azure format.
   core.String? location;
 
@@ -3938,6 +3963,7 @@ class AzureVmPlatformDetails {
   core.String? provisioningState;
 
   AzureVmPlatformDetails({
+    this.hyperthreading,
     this.location,
     this.machineTypeLabel,
     this.provisioningState,
@@ -3945,12 +3971,14 @@ class AzureVmPlatformDetails {
 
   AzureVmPlatformDetails.fromJson(core.Map json_)
       : this(
+          hyperthreading: json_['hyperthreading'] as core.String?,
           location: json_['location'] as core.String?,
           machineTypeLabel: json_['machineTypeLabel'] as core.String?,
           provisioningState: json_['provisioningState'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (hyperthreading != null) 'hyperthreading': hyperthreading!,
         if (location != null) 'location': location!,
         if (machineTypeLabel != null) 'machineTypeLabel': machineTypeLabel!,
         if (provisioningState != null) 'provisioningState': provisioningState!,
@@ -4185,9 +4213,13 @@ class ComputeEnginePreferences {
 /// Compute Engine target shape descriptor.
 class ComputeEngineShapeDescriptor {
   /// Number of logical cores.
+  ///
+  /// Output only.
   core.int? logicalCoreCount;
 
   /// Compute Engine machine type.
+  ///
+  /// Output only.
   core.String? machineType;
 
   /// Memory in mebibytes.
@@ -4197,11 +4229,15 @@ class ComputeEngineShapeDescriptor {
   core.int? physicalCoreCount;
 
   /// Compute Engine machine series.
+  ///
+  /// Output only.
   core.String? series;
 
   /// Compute Engine storage.
   ///
   /// Never empty.
+  ///
+  /// Output only.
   core.List<ComputeStorageDescriptor>? storage;
 
   ComputeEngineShapeDescriptor({
@@ -4239,9 +4275,13 @@ class ComputeEngineShapeDescriptor {
 /// Compute Engine storage option descriptor.
 class ComputeStorageDescriptor {
   /// Disk size in GiB.
+  ///
+  /// Output only.
   core.int? sizeGb;
 
   /// Disk type backing the storage.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "PERSISTENT_DISK_TYPE_UNSPECIFIED" : Unspecified (default value).
   /// Selecting this value allows the system to use any disk type according to
@@ -5016,6 +5056,8 @@ class FileValidationReport {
 /// Describes the fit level of an asset for migration to a specific target.
 class FitDescriptor {
   /// Fit level.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "FIT_LEVEL_UNSPECIFIED" : Not enough information.
   /// - "FIT" : Fit.
@@ -5206,6 +5248,16 @@ class GenericInsight {
 
 /// Generic platform details.
 class GenericPlatformDetails {
+  /// Whether the machine is hyperthreaded.
+  /// Possible string values are:
+  /// - "HYPERTHREADING_STATUS_UNSPECIFIED" : Simultaneous Multithreading status
+  /// unknown.
+  /// - "HYPERTHREADING_STATUS_DISABLED" : Simultaneous Multithreading is
+  /// disabled or unavailable.
+  /// - "HYPERTHREADING_STATUS_ENABLED" : Simultaneous Multithreading is
+  /// enabled.
+  core.String? hyperthreading;
+
   /// Free text representation of the machine location.
   ///
   /// The format of this field should not be relied on. Different VMs in the
@@ -5213,15 +5265,18 @@ class GenericPlatformDetails {
   core.String? location;
 
   GenericPlatformDetails({
+    this.hyperthreading,
     this.location,
   });
 
   GenericPlatformDetails.fromJson(core.Map json_)
       : this(
+          hyperthreading: json_['hyperthreading'] as core.String?,
           location: json_['location'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (hyperthreading != null) 'hyperthreading': hyperthreading!,
         if (location != null) 'location': location!,
       };
 }
@@ -5831,6 +5886,9 @@ class ImportJob {
 
 /// A resource that reports the import job errors at row level.
 class ImportRowError {
+  /// Error details for a CSV file.
+  ImportRowErrorCsvErrorDetails? csvError;
+
   /// The list of errors detected in the row.
   core.List<ImportError>? errors;
 
@@ -5846,15 +5904,24 @@ class ImportRowError {
   /// The VM UUID.
   core.String? vmUuid;
 
+  /// Error details for an XLSX file.
+  ImportRowErrorXlsxErrorDetails? xlsxError;
+
   ImportRowError({
+    this.csvError,
     this.errors,
     this.rowNumber,
     this.vmName,
     this.vmUuid,
+    this.xlsxError,
   });
 
   ImportRowError.fromJson(core.Map json_)
       : this(
+          csvError: json_.containsKey('csvError')
+              ? ImportRowErrorCsvErrorDetails.fromJson(
+                  json_['csvError'] as core.Map<core.String, core.dynamic>)
+              : null,
           errors: (json_['errors'] as core.List?)
               ?.map((value) => ImportError.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -5862,13 +5929,63 @@ class ImportRowError {
           rowNumber: json_['rowNumber'] as core.int?,
           vmName: json_['vmName'] as core.String?,
           vmUuid: json_['vmUuid'] as core.String?,
+          xlsxError: json_.containsKey('xlsxError')
+              ? ImportRowErrorXlsxErrorDetails.fromJson(
+                  json_['xlsxError'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (csvError != null) 'csvError': csvError!,
         if (errors != null) 'errors': errors!,
         if (rowNumber != null) 'rowNumber': rowNumber!,
         if (vmName != null) 'vmName': vmName!,
         if (vmUuid != null) 'vmUuid': vmUuid!,
+        if (xlsxError != null) 'xlsxError': xlsxError!,
+      };
+}
+
+/// Error details for a CSV file.
+class ImportRowErrorCsvErrorDetails {
+  /// The row number where the error was detected.
+  core.int? rowNumber;
+
+  ImportRowErrorCsvErrorDetails({
+    this.rowNumber,
+  });
+
+  ImportRowErrorCsvErrorDetails.fromJson(core.Map json_)
+      : this(
+          rowNumber: json_['rowNumber'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rowNumber != null) 'rowNumber': rowNumber!,
+      };
+}
+
+/// Error details for an XLSX file.
+class ImportRowErrorXlsxErrorDetails {
+  /// The row number where the error was detected.
+  core.int? rowNumber;
+
+  /// The name of the sheet where the error was detected.
+  core.String? sheet;
+
+  ImportRowErrorXlsxErrorDetails({
+    this.rowNumber,
+    this.sheet,
+  });
+
+  ImportRowErrorXlsxErrorDetails.fromJson(core.Map json_)
+      : this(
+          rowNumber: json_['rowNumber'] as core.int?,
+          sheet: json_['sheet'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rowNumber != null) 'rowNumber': rowNumber!,
+        if (sheet != null) 'sheet': sheet!,
       };
 }
 
@@ -6376,7 +6493,12 @@ class MachineArchitectureDetails {
   /// Number of processor sockets allocated to the machine.
   core.int? cpuSocketCount;
 
+  /// Deprecated: use MachineDetails.core_count instead.
+  ///
   /// Number of CPU threads allocated to the machine.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? cpuThreadCount;
 
   /// Firmware type.
@@ -6439,7 +6561,7 @@ class MachineDetails {
   /// Architecture details (vendor, CPU architecture).
   MachineArchitectureDetails? architecture;
 
-  /// Number of CPU cores in the machine.
+  /// Number of logical CPU cores in the machine.
   ///
   /// Must be non-negative.
   core.int? coreCount;
@@ -7227,6 +7349,16 @@ class PerformanceSample {
 
 /// Platform specific details for Physical Machines.
 class PhysicalPlatformDetails {
+  /// Whether the machine is hyperthreaded.
+  /// Possible string values are:
+  /// - "HYPERTHREADING_STATUS_UNSPECIFIED" : Simultaneous Multithreading status
+  /// unknown.
+  /// - "HYPERTHREADING_STATUS_DISABLED" : Simultaneous Multithreading is
+  /// disabled or unavailable.
+  /// - "HYPERTHREADING_STATUS_ENABLED" : Simultaneous Multithreading is
+  /// enabled.
+  core.String? hyperthreading;
+
   /// Free text representation of the machine location.
   ///
   /// The format of this field should not be relied on. Different machines in
@@ -7234,15 +7366,18 @@ class PhysicalPlatformDetails {
   core.String? location;
 
   PhysicalPlatformDetails({
+    this.hyperthreading,
     this.location,
   });
 
   PhysicalPlatformDetails.fromJson(core.Map json_)
       : this(
+          hyperthreading: json_['hyperthreading'] as core.String?,
           location: json_['location'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (hyperthreading != null) 'hyperthreading': hyperthreading!,
         if (location != null) 'location': location!,
       };
 }
@@ -7668,7 +7803,7 @@ class ReportSummary {
 
 /// Aggregate statistics for a collection of assets.
 class ReportSummaryAssetAggregateStats {
-  /// Histogram showing a distribution of CPU core counts.
+  /// Histogram showing a distribution of logical CPU core counts.
   ReportSummaryHistogramChartData? coreCountHistogram;
 
   /// Histogram showing a distribution of memory sizes.
@@ -8331,7 +8466,7 @@ class ReportSummaryVmwareNodeAllocation {
 }
 
 /// A request to run an import job.
-typedef RunImportJobRequest = $Request01;
+typedef RunImportJobRequest = $Request00;
 
 /// Guest OS running process details.
 class RunningProcess {
@@ -8786,7 +8921,7 @@ class Source {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// A request to update an asset.
 class UpdateAssetRequest {
@@ -8888,7 +9023,7 @@ class UploadFileInfo {
 }
 
 /// A request to validate an import job.
-typedef ValidateImportJobRequest = $Request01;
+typedef ValidateImportJobRequest = $Request00;
 
 /// A resource that aggregates errors across import job files.
 class ValidationReport {
@@ -9176,6 +9311,16 @@ class VmwareEnginePreferences {
 
 /// VMware specific details.
 class VmwarePlatformDetails {
+  /// Whether the ESX is hyperthreaded.
+  /// Possible string values are:
+  /// - "HYPERTHREADING_STATUS_UNSPECIFIED" : Simultaneous Multithreading status
+  /// unknown.
+  /// - "HYPERTHREADING_STATUS_DISABLED" : Simultaneous Multithreading is
+  /// disabled or unavailable.
+  /// - "HYPERTHREADING_STATUS_ENABLED" : Simultaneous Multithreading is
+  /// enabled.
+  core.String? esxHyperthreading;
+
   /// ESX version.
   core.String? esxVersion;
 
@@ -9196,6 +9341,7 @@ class VmwarePlatformDetails {
   core.String? vcenterVmId;
 
   VmwarePlatformDetails({
+    this.esxHyperthreading,
     this.esxVersion,
     this.osid,
     this.vcenterFolder,
@@ -9206,6 +9352,7 @@ class VmwarePlatformDetails {
 
   VmwarePlatformDetails.fromJson(core.Map json_)
       : this(
+          esxHyperthreading: json_['esxHyperthreading'] as core.String?,
           esxVersion: json_['esxVersion'] as core.String?,
           osid: json_['osid'] as core.String?,
           vcenterFolder: json_['vcenterFolder'] as core.String?,
@@ -9215,6 +9362,7 @@ class VmwarePlatformDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (esxHyperthreading != null) 'esxHyperthreading': esxHyperthreading!,
         if (esxVersion != null) 'esxVersion': esxVersion!,
         if (osid != null) 'osid': osid!,
         if (vcenterFolder != null) 'vcenterFolder': vcenterFolder!,

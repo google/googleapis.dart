@@ -610,6 +610,7 @@ api.Workflow buildWorkflow() {
     o.cryptoKeyName = 'foo';
     o.cryptoKeyVersion = 'foo';
     o.description = 'foo';
+    o.executionHistoryLevel = 'foo';
     o.labels = buildUnnamed13();
     o.name = 'foo';
     o.revisionCreateTime = 'foo';
@@ -648,6 +649,10 @@ void checkWorkflow(api.Workflow o) {
     );
     unittest.expect(
       o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.executionHistoryLevel!,
       unittest.equals('foo'),
     );
     checkUnnamed13(o.labels!);

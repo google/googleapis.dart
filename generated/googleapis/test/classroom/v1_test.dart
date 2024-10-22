@@ -26,12 +26,148 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.Material> buildUnnamed0() => [
+core.List<api.CopyHistory> buildUnnamed0() => [
+      buildCopyHistory(),
+      buildCopyHistory(),
+    ];
+
+void checkUnnamed0(core.List<api.CopyHistory> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCopyHistory(o[0]);
+  checkCopyHistory(o[1]);
+}
+
+core.int buildCounterAddOnAttachment = 0;
+api.AddOnAttachment buildAddOnAttachment() {
+  final o = api.AddOnAttachment();
+  buildCounterAddOnAttachment++;
+  if (buildCounterAddOnAttachment < 3) {
+    o.copyHistory = buildUnnamed0();
+    o.courseId = 'foo';
+    o.dueDate = buildDate();
+    o.dueTime = buildTimeOfDay();
+    o.id = 'foo';
+    o.itemId = 'foo';
+    o.maxPoints = 42.0;
+    o.postId = 'foo';
+    o.studentViewUri = buildEmbedUri();
+    o.studentWorkReviewUri = buildEmbedUri();
+    o.teacherViewUri = buildEmbedUri();
+    o.title = 'foo';
+  }
+  buildCounterAddOnAttachment--;
+  return o;
+}
+
+void checkAddOnAttachment(api.AddOnAttachment o) {
+  buildCounterAddOnAttachment++;
+  if (buildCounterAddOnAttachment < 3) {
+    checkUnnamed0(o.copyHistory!);
+    unittest.expect(
+      o.courseId!,
+      unittest.equals('foo'),
+    );
+    checkDate(o.dueDate!);
+    checkTimeOfDay(o.dueTime!);
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.itemId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxPoints!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.postId!,
+      unittest.equals('foo'),
+    );
+    checkEmbedUri(o.studentViewUri!);
+    checkEmbedUri(o.studentWorkReviewUri!);
+    checkEmbedUri(o.teacherViewUri!);
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAddOnAttachment--;
+}
+
+core.int buildCounterAddOnAttachmentStudentSubmission = 0;
+api.AddOnAttachmentStudentSubmission buildAddOnAttachmentStudentSubmission() {
+  final o = api.AddOnAttachmentStudentSubmission();
+  buildCounterAddOnAttachmentStudentSubmission++;
+  if (buildCounterAddOnAttachmentStudentSubmission < 3) {
+    o.pointsEarned = 42.0;
+    o.postSubmissionState = 'foo';
+  }
+  buildCounterAddOnAttachmentStudentSubmission--;
+  return o;
+}
+
+void checkAddOnAttachmentStudentSubmission(
+    api.AddOnAttachmentStudentSubmission o) {
+  buildCounterAddOnAttachmentStudentSubmission++;
+  if (buildCounterAddOnAttachmentStudentSubmission < 3) {
+    unittest.expect(
+      o.pointsEarned!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.postSubmissionState!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAddOnAttachmentStudentSubmission--;
+}
+
+core.int buildCounterAddOnContext = 0;
+api.AddOnContext buildAddOnContext() {
+  final o = api.AddOnContext();
+  buildCounterAddOnContext++;
+  if (buildCounterAddOnContext < 3) {
+    o.courseId = 'foo';
+    o.itemId = 'foo';
+    o.postId = 'foo';
+    o.studentContext = buildStudentContext();
+    o.supportsStudentWork = true;
+    o.teacherContext = buildTeacherContext();
+  }
+  buildCounterAddOnContext--;
+  return o;
+}
+
+void checkAddOnContext(api.AddOnContext o) {
+  buildCounterAddOnContext++;
+  if (buildCounterAddOnContext < 3) {
+    unittest.expect(
+      o.courseId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.itemId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.postId!,
+      unittest.equals('foo'),
+    );
+    checkStudentContext(o.studentContext!);
+    unittest.expect(o.supportsStudentWork!, unittest.isTrue);
+    checkTeacherContext(o.teacherContext!);
+  }
+  buildCounterAddOnContext--;
+}
+
+core.List<api.Material> buildUnnamed1() => [
       buildMaterial(),
       buildMaterial(),
     ];
 
-void checkUnnamed0(core.List<api.Material> o) {
+void checkUnnamed1(core.List<api.Material> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMaterial(o[0]);
   checkMaterial(o[1]);
@@ -49,7 +185,7 @@ api.Announcement buildAnnouncement() {
     o.creatorUserId = 'foo';
     o.id = 'foo';
     o.individualStudentsOptions = buildIndividualStudentsOptions();
-    o.materials = buildUnnamed0();
+    o.materials = buildUnnamed1();
     o.scheduledTime = 'foo';
     o.state = 'foo';
     o.text = 'foo';
@@ -87,7 +223,7 @@ void checkAnnouncement(api.Announcement o) {
       unittest.equals('foo'),
     );
     checkIndividualStudentsOptions(o.individualStudentsOptions!);
-    checkUnnamed0(o.materials!);
+    checkUnnamed1(o.materials!);
     unittest.expect(
       o.scheduledTime!,
       unittest.equals('foo'),
@@ -127,12 +263,12 @@ void checkAssignment(api.Assignment o) {
   buildCounterAssignment--;
 }
 
-core.List<api.Attachment> buildUnnamed1() => [
+core.List<api.Attachment> buildUnnamed2() => [
       buildAttachment(),
       buildAttachment(),
     ];
 
-void checkUnnamed1(core.List<api.Attachment> o) {
+void checkUnnamed2(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachment(o[0]);
   checkAttachment(o[1]);
@@ -143,7 +279,7 @@ api.AssignmentSubmission buildAssignmentSubmission() {
   final o = api.AssignmentSubmission();
   buildCounterAssignmentSubmission++;
   if (buildCounterAssignmentSubmission < 3) {
-    o.attachments = buildUnnamed1();
+    o.attachments = buildUnnamed2();
   }
   buildCounterAssignmentSubmission--;
   return o;
@@ -152,7 +288,7 @@ api.AssignmentSubmission buildAssignmentSubmission() {
 void checkAssignmentSubmission(api.AssignmentSubmission o) {
   buildCounterAssignmentSubmission++;
   if (buildCounterAssignmentSubmission < 3) {
-    checkUnnamed1(o.attachments!);
+    checkUnnamed2(o.attachments!);
   }
   buildCounterAssignmentSubmission--;
 }
@@ -204,12 +340,49 @@ void checkCloudPubsubTopic(api.CloudPubsubTopic o) {
   buildCounterCloudPubsubTopic--;
 }
 
-core.List<api.CourseMaterialSet> buildUnnamed2() => [
+core.int buildCounterCopyHistory = 0;
+api.CopyHistory buildCopyHistory() {
+  final o = api.CopyHistory();
+  buildCounterCopyHistory++;
+  if (buildCounterCopyHistory < 3) {
+    o.attachmentId = 'foo';
+    o.courseId = 'foo';
+    o.itemId = 'foo';
+    o.postId = 'foo';
+  }
+  buildCounterCopyHistory--;
+  return o;
+}
+
+void checkCopyHistory(api.CopyHistory o) {
+  buildCounterCopyHistory++;
+  if (buildCounterCopyHistory < 3) {
+    unittest.expect(
+      o.attachmentId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.courseId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.itemId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.postId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCopyHistory--;
+}
+
+core.List<api.CourseMaterialSet> buildUnnamed3() => [
       buildCourseMaterialSet(),
       buildCourseMaterialSet(),
     ];
 
-void checkUnnamed2(core.List<api.CourseMaterialSet> o) {
+void checkUnnamed3(core.List<api.CourseMaterialSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCourseMaterialSet(o[0]);
   checkCourseMaterialSet(o[1]);
@@ -223,7 +396,7 @@ api.Course buildCourse() {
     o.alternateLink = 'foo';
     o.calendarId = 'foo';
     o.courseGroupEmail = 'foo';
-    o.courseMaterialSets = buildUnnamed2();
+    o.courseMaterialSets = buildUnnamed3();
     o.courseState = 'foo';
     o.creationTime = 'foo';
     o.description = 'foo';
@@ -259,7 +432,7 @@ void checkCourse(api.Course o) {
       o.courseGroupEmail!,
       unittest.equals('foo'),
     );
-    checkUnnamed2(o.courseMaterialSets!);
+    checkUnnamed3(o.courseMaterialSets!);
     unittest.expect(
       o.courseState!,
       unittest.equals('foo'),
@@ -362,12 +535,12 @@ void checkCourseMaterial(api.CourseMaterial o) {
   buildCounterCourseMaterial--;
 }
 
-core.List<api.CourseMaterial> buildUnnamed3() => [
+core.List<api.CourseMaterial> buildUnnamed4() => [
       buildCourseMaterial(),
       buildCourseMaterial(),
     ];
 
-void checkUnnamed3(core.List<api.CourseMaterial> o) {
+void checkUnnamed4(core.List<api.CourseMaterial> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCourseMaterial(o[0]);
   checkCourseMaterial(o[1]);
@@ -378,7 +551,7 @@ api.CourseMaterialSet buildCourseMaterialSet() {
   final o = api.CourseMaterialSet();
   buildCounterCourseMaterialSet++;
   if (buildCounterCourseMaterialSet < 3) {
-    o.materials = buildUnnamed3();
+    o.materials = buildUnnamed4();
     o.title = 'foo';
   }
   buildCounterCourseMaterialSet--;
@@ -388,7 +561,7 @@ api.CourseMaterialSet buildCourseMaterialSet() {
 void checkCourseMaterialSet(api.CourseMaterialSet o) {
   buildCounterCourseMaterialSet++;
   if (buildCounterCourseMaterialSet < 3) {
-    checkUnnamed3(o.materials!);
+    checkUnnamed4(o.materials!);
     unittest.expect(
       o.title!,
       unittest.equals('foo'),
@@ -419,12 +592,12 @@ void checkCourseRosterChangesInfo(api.CourseRosterChangesInfo o) {
   buildCounterCourseRosterChangesInfo--;
 }
 
-core.List<api.Material> buildUnnamed4() => [
+core.List<api.Material> buildUnnamed5() => [
       buildMaterial(),
       buildMaterial(),
     ];
 
-void checkUnnamed4(core.List<api.Material> o) {
+void checkUnnamed5(core.List<api.Material> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMaterial(o[0]);
   checkMaterial(o[1]);
@@ -448,7 +621,7 @@ api.CourseWork buildCourseWork() {
     o.gradeCategory = buildGradeCategory();
     o.id = 'foo';
     o.individualStudentsOptions = buildIndividualStudentsOptions();
-    o.materials = buildUnnamed4();
+    o.materials = buildUnnamed5();
     o.maxPoints = 42.0;
     o.multipleChoiceQuestion = buildMultipleChoiceQuestion();
     o.scheduledTime = 'foo';
@@ -500,7 +673,7 @@ void checkCourseWork(api.CourseWork o) {
       unittest.equals('foo'),
     );
     checkIndividualStudentsOptions(o.individualStudentsOptions!);
-    checkUnnamed4(o.materials!);
+    checkUnnamed5(o.materials!);
     unittest.expect(
       o.maxPoints!,
       unittest.equals(42.0),
@@ -560,12 +733,12 @@ void checkCourseWorkChangesInfo(api.CourseWorkChangesInfo o) {
   buildCounterCourseWorkChangesInfo--;
 }
 
-core.List<api.Material> buildUnnamed5() => [
+core.List<api.Material> buildUnnamed6() => [
       buildMaterial(),
       buildMaterial(),
     ];
 
-void checkUnnamed5(core.List<api.Material> o) {
+void checkUnnamed6(core.List<api.Material> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMaterial(o[0]);
   checkMaterial(o[1]);
@@ -584,7 +757,7 @@ api.CourseWorkMaterial buildCourseWorkMaterial() {
     o.description = 'foo';
     o.id = 'foo';
     o.individualStudentsOptions = buildIndividualStudentsOptions();
-    o.materials = buildUnnamed5();
+    o.materials = buildUnnamed6();
     o.scheduledTime = 'foo';
     o.state = 'foo';
     o.title = 'foo';
@@ -627,7 +800,7 @@ void checkCourseWorkMaterial(api.CourseWorkMaterial o) {
       unittest.equals('foo'),
     );
     checkIndividualStudentsOptions(o.individualStudentsOptions!);
-    checkUnnamed5(o.materials!);
+    checkUnnamed6(o.materials!);
     unittest.expect(
       o.scheduledTime!,
       unittest.equals('foo'),
@@ -751,6 +924,28 @@ void checkDriveFolder(api.DriveFolder o) {
     );
   }
   buildCounterDriveFolder--;
+}
+
+core.int buildCounterEmbedUri = 0;
+api.EmbedUri buildEmbedUri() {
+  final o = api.EmbedUri();
+  buildCounterEmbedUri++;
+  if (buildCounterEmbedUri < 3) {
+    o.uri = 'foo';
+  }
+  buildCounterEmbedUri--;
+  return o;
+}
+
+void checkEmbedUri(api.EmbedUri o) {
+  buildCounterEmbedUri++;
+  if (buildCounterEmbedUri < 3) {
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEmbedUri--;
 }
 
 core.int buildCounterEmpty = 0;
@@ -932,12 +1127,12 @@ void checkGradeHistory(api.GradeHistory o) {
   buildCounterGradeHistory--;
 }
 
-core.List<api.GradeCategory> buildUnnamed6() => [
+core.List<api.GradeCategory> buildUnnamed7() => [
       buildGradeCategory(),
       buildGradeCategory(),
     ];
 
-void checkUnnamed6(core.List<api.GradeCategory> o) {
+void checkUnnamed7(core.List<api.GradeCategory> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGradeCategory(o[0]);
   checkGradeCategory(o[1]);
@@ -950,7 +1145,7 @@ api.GradebookSettings buildGradebookSettings() {
   if (buildCounterGradebookSettings < 3) {
     o.calculationType = 'foo';
     o.displaySetting = 'foo';
-    o.gradeCategories = buildUnnamed6();
+    o.gradeCategories = buildUnnamed7();
   }
   buildCounterGradebookSettings--;
   return o;
@@ -967,7 +1162,7 @@ void checkGradebookSettings(api.GradebookSettings o) {
       o.displaySetting!,
       unittest.equals('foo'),
     );
-    checkUnnamed6(o.gradeCategories!);
+    checkUnnamed7(o.gradeCategories!);
   }
   buildCounterGradebookSettings--;
 }
@@ -1048,12 +1243,12 @@ void checkGuardianInvitation(api.GuardianInvitation o) {
   buildCounterGuardianInvitation--;
 }
 
-core.List<core.String> buildUnnamed7() => [
+core.List<core.String> buildUnnamed8() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed7(core.List<core.String> o) {
+void checkUnnamed8(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1070,7 +1265,7 @@ api.IndividualStudentsOptions buildIndividualStudentsOptions() {
   final o = api.IndividualStudentsOptions();
   buildCounterIndividualStudentsOptions++;
   if (buildCounterIndividualStudentsOptions < 3) {
-    o.studentIds = buildUnnamed7();
+    o.studentIds = buildUnnamed8();
   }
   buildCounterIndividualStudentsOptions--;
   return o;
@@ -1079,7 +1274,7 @@ api.IndividualStudentsOptions buildIndividualStudentsOptions() {
 void checkIndividualStudentsOptions(api.IndividualStudentsOptions o) {
   buildCounterIndividualStudentsOptions++;
   if (buildCounterIndividualStudentsOptions < 3) {
-    checkUnnamed7(o.studentIds!);
+    checkUnnamed8(o.studentIds!);
   }
   buildCounterIndividualStudentsOptions--;
 }
@@ -1153,12 +1348,47 @@ void checkLink(api.Link o) {
   buildCounterLink--;
 }
 
-core.List<api.Announcement> buildUnnamed8() => [
+core.List<api.AddOnAttachment> buildUnnamed9() => [
+      buildAddOnAttachment(),
+      buildAddOnAttachment(),
+    ];
+
+void checkUnnamed9(core.List<api.AddOnAttachment> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAddOnAttachment(o[0]);
+  checkAddOnAttachment(o[1]);
+}
+
+core.int buildCounterListAddOnAttachmentsResponse = 0;
+api.ListAddOnAttachmentsResponse buildListAddOnAttachmentsResponse() {
+  final o = api.ListAddOnAttachmentsResponse();
+  buildCounterListAddOnAttachmentsResponse++;
+  if (buildCounterListAddOnAttachmentsResponse < 3) {
+    o.addOnAttachments = buildUnnamed9();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterListAddOnAttachmentsResponse--;
+  return o;
+}
+
+void checkListAddOnAttachmentsResponse(api.ListAddOnAttachmentsResponse o) {
+  buildCounterListAddOnAttachmentsResponse++;
+  if (buildCounterListAddOnAttachmentsResponse < 3) {
+    checkUnnamed9(o.addOnAttachments!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterListAddOnAttachmentsResponse--;
+}
+
+core.List<api.Announcement> buildUnnamed10() => [
       buildAnnouncement(),
       buildAnnouncement(),
     ];
 
-void checkUnnamed8(core.List<api.Announcement> o) {
+void checkUnnamed10(core.List<api.Announcement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnouncement(o[0]);
   checkAnnouncement(o[1]);
@@ -1169,7 +1399,7 @@ api.ListAnnouncementsResponse buildListAnnouncementsResponse() {
   final o = api.ListAnnouncementsResponse();
   buildCounterListAnnouncementsResponse++;
   if (buildCounterListAnnouncementsResponse < 3) {
-    o.announcements = buildUnnamed8();
+    o.announcements = buildUnnamed10();
     o.nextPageToken = 'foo';
   }
   buildCounterListAnnouncementsResponse--;
@@ -1179,7 +1409,7 @@ api.ListAnnouncementsResponse buildListAnnouncementsResponse() {
 void checkListAnnouncementsResponse(api.ListAnnouncementsResponse o) {
   buildCounterListAnnouncementsResponse++;
   if (buildCounterListAnnouncementsResponse < 3) {
-    checkUnnamed8(o.announcements!);
+    checkUnnamed10(o.announcements!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1188,12 +1418,12 @@ void checkListAnnouncementsResponse(api.ListAnnouncementsResponse o) {
   buildCounterListAnnouncementsResponse--;
 }
 
-core.List<api.CourseAlias> buildUnnamed9() => [
+core.List<api.CourseAlias> buildUnnamed11() => [
       buildCourseAlias(),
       buildCourseAlias(),
     ];
 
-void checkUnnamed9(core.List<api.CourseAlias> o) {
+void checkUnnamed11(core.List<api.CourseAlias> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCourseAlias(o[0]);
   checkCourseAlias(o[1]);
@@ -1204,7 +1434,7 @@ api.ListCourseAliasesResponse buildListCourseAliasesResponse() {
   final o = api.ListCourseAliasesResponse();
   buildCounterListCourseAliasesResponse++;
   if (buildCounterListCourseAliasesResponse < 3) {
-    o.aliases = buildUnnamed9();
+    o.aliases = buildUnnamed11();
     o.nextPageToken = 'foo';
   }
   buildCounterListCourseAliasesResponse--;
@@ -1214,7 +1444,7 @@ api.ListCourseAliasesResponse buildListCourseAliasesResponse() {
 void checkListCourseAliasesResponse(api.ListCourseAliasesResponse o) {
   buildCounterListCourseAliasesResponse++;
   if (buildCounterListCourseAliasesResponse < 3) {
-    checkUnnamed9(o.aliases!);
+    checkUnnamed11(o.aliases!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1223,12 +1453,12 @@ void checkListCourseAliasesResponse(api.ListCourseAliasesResponse o) {
   buildCounterListCourseAliasesResponse--;
 }
 
-core.List<api.CourseWorkMaterial> buildUnnamed10() => [
+core.List<api.CourseWorkMaterial> buildUnnamed12() => [
       buildCourseWorkMaterial(),
       buildCourseWorkMaterial(),
     ];
 
-void checkUnnamed10(core.List<api.CourseWorkMaterial> o) {
+void checkUnnamed12(core.List<api.CourseWorkMaterial> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCourseWorkMaterial(o[0]);
   checkCourseWorkMaterial(o[1]);
@@ -1239,7 +1469,7 @@ api.ListCourseWorkMaterialResponse buildListCourseWorkMaterialResponse() {
   final o = api.ListCourseWorkMaterialResponse();
   buildCounterListCourseWorkMaterialResponse++;
   if (buildCounterListCourseWorkMaterialResponse < 3) {
-    o.courseWorkMaterial = buildUnnamed10();
+    o.courseWorkMaterial = buildUnnamed12();
     o.nextPageToken = 'foo';
   }
   buildCounterListCourseWorkMaterialResponse--;
@@ -1249,7 +1479,7 @@ api.ListCourseWorkMaterialResponse buildListCourseWorkMaterialResponse() {
 void checkListCourseWorkMaterialResponse(api.ListCourseWorkMaterialResponse o) {
   buildCounterListCourseWorkMaterialResponse++;
   if (buildCounterListCourseWorkMaterialResponse < 3) {
-    checkUnnamed10(o.courseWorkMaterial!);
+    checkUnnamed12(o.courseWorkMaterial!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1258,12 +1488,12 @@ void checkListCourseWorkMaterialResponse(api.ListCourseWorkMaterialResponse o) {
   buildCounterListCourseWorkMaterialResponse--;
 }
 
-core.List<api.CourseWork> buildUnnamed11() => [
+core.List<api.CourseWork> buildUnnamed13() => [
       buildCourseWork(),
       buildCourseWork(),
     ];
 
-void checkUnnamed11(core.List<api.CourseWork> o) {
+void checkUnnamed13(core.List<api.CourseWork> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCourseWork(o[0]);
   checkCourseWork(o[1]);
@@ -1274,7 +1504,7 @@ api.ListCourseWorkResponse buildListCourseWorkResponse() {
   final o = api.ListCourseWorkResponse();
   buildCounterListCourseWorkResponse++;
   if (buildCounterListCourseWorkResponse < 3) {
-    o.courseWork = buildUnnamed11();
+    o.courseWork = buildUnnamed13();
     o.nextPageToken = 'foo';
   }
   buildCounterListCourseWorkResponse--;
@@ -1284,7 +1514,7 @@ api.ListCourseWorkResponse buildListCourseWorkResponse() {
 void checkListCourseWorkResponse(api.ListCourseWorkResponse o) {
   buildCounterListCourseWorkResponse++;
   if (buildCounterListCourseWorkResponse < 3) {
-    checkUnnamed11(o.courseWork!);
+    checkUnnamed13(o.courseWork!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1293,12 +1523,12 @@ void checkListCourseWorkResponse(api.ListCourseWorkResponse o) {
   buildCounterListCourseWorkResponse--;
 }
 
-core.List<api.Course> buildUnnamed12() => [
+core.List<api.Course> buildUnnamed14() => [
       buildCourse(),
       buildCourse(),
     ];
 
-void checkUnnamed12(core.List<api.Course> o) {
+void checkUnnamed14(core.List<api.Course> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCourse(o[0]);
   checkCourse(o[1]);
@@ -1309,7 +1539,7 @@ api.ListCoursesResponse buildListCoursesResponse() {
   final o = api.ListCoursesResponse();
   buildCounterListCoursesResponse++;
   if (buildCounterListCoursesResponse < 3) {
-    o.courses = buildUnnamed12();
+    o.courses = buildUnnamed14();
     o.nextPageToken = 'foo';
   }
   buildCounterListCoursesResponse--;
@@ -1319,7 +1549,7 @@ api.ListCoursesResponse buildListCoursesResponse() {
 void checkListCoursesResponse(api.ListCoursesResponse o) {
   buildCounterListCoursesResponse++;
   if (buildCounterListCoursesResponse < 3) {
-    checkUnnamed12(o.courses!);
+    checkUnnamed14(o.courses!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1328,12 +1558,12 @@ void checkListCoursesResponse(api.ListCoursesResponse o) {
   buildCounterListCoursesResponse--;
 }
 
-core.List<api.GuardianInvitation> buildUnnamed13() => [
+core.List<api.GuardianInvitation> buildUnnamed15() => [
       buildGuardianInvitation(),
       buildGuardianInvitation(),
     ];
 
-void checkUnnamed13(core.List<api.GuardianInvitation> o) {
+void checkUnnamed15(core.List<api.GuardianInvitation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGuardianInvitation(o[0]);
   checkGuardianInvitation(o[1]);
@@ -1344,7 +1574,7 @@ api.ListGuardianInvitationsResponse buildListGuardianInvitationsResponse() {
   final o = api.ListGuardianInvitationsResponse();
   buildCounterListGuardianInvitationsResponse++;
   if (buildCounterListGuardianInvitationsResponse < 3) {
-    o.guardianInvitations = buildUnnamed13();
+    o.guardianInvitations = buildUnnamed15();
     o.nextPageToken = 'foo';
   }
   buildCounterListGuardianInvitationsResponse--;
@@ -1355,7 +1585,7 @@ void checkListGuardianInvitationsResponse(
     api.ListGuardianInvitationsResponse o) {
   buildCounterListGuardianInvitationsResponse++;
   if (buildCounterListGuardianInvitationsResponse < 3) {
-    checkUnnamed13(o.guardianInvitations!);
+    checkUnnamed15(o.guardianInvitations!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1364,12 +1594,12 @@ void checkListGuardianInvitationsResponse(
   buildCounterListGuardianInvitationsResponse--;
 }
 
-core.List<api.Guardian> buildUnnamed14() => [
+core.List<api.Guardian> buildUnnamed16() => [
       buildGuardian(),
       buildGuardian(),
     ];
 
-void checkUnnamed14(core.List<api.Guardian> o) {
+void checkUnnamed16(core.List<api.Guardian> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGuardian(o[0]);
   checkGuardian(o[1]);
@@ -1380,7 +1610,7 @@ api.ListGuardiansResponse buildListGuardiansResponse() {
   final o = api.ListGuardiansResponse();
   buildCounterListGuardiansResponse++;
   if (buildCounterListGuardiansResponse < 3) {
-    o.guardians = buildUnnamed14();
+    o.guardians = buildUnnamed16();
     o.nextPageToken = 'foo';
   }
   buildCounterListGuardiansResponse--;
@@ -1390,7 +1620,7 @@ api.ListGuardiansResponse buildListGuardiansResponse() {
 void checkListGuardiansResponse(api.ListGuardiansResponse o) {
   buildCounterListGuardiansResponse++;
   if (buildCounterListGuardiansResponse < 3) {
-    checkUnnamed14(o.guardians!);
+    checkUnnamed16(o.guardians!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1399,12 +1629,12 @@ void checkListGuardiansResponse(api.ListGuardiansResponse o) {
   buildCounterListGuardiansResponse--;
 }
 
-core.List<api.Invitation> buildUnnamed15() => [
+core.List<api.Invitation> buildUnnamed17() => [
       buildInvitation(),
       buildInvitation(),
     ];
 
-void checkUnnamed15(core.List<api.Invitation> o) {
+void checkUnnamed17(core.List<api.Invitation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInvitation(o[0]);
   checkInvitation(o[1]);
@@ -1415,7 +1645,7 @@ api.ListInvitationsResponse buildListInvitationsResponse() {
   final o = api.ListInvitationsResponse();
   buildCounterListInvitationsResponse++;
   if (buildCounterListInvitationsResponse < 3) {
-    o.invitations = buildUnnamed15();
+    o.invitations = buildUnnamed17();
     o.nextPageToken = 'foo';
   }
   buildCounterListInvitationsResponse--;
@@ -1425,7 +1655,7 @@ api.ListInvitationsResponse buildListInvitationsResponse() {
 void checkListInvitationsResponse(api.ListInvitationsResponse o) {
   buildCounterListInvitationsResponse++;
   if (buildCounterListInvitationsResponse < 3) {
-    checkUnnamed15(o.invitations!);
+    checkUnnamed17(o.invitations!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1434,12 +1664,12 @@ void checkListInvitationsResponse(api.ListInvitationsResponse o) {
   buildCounterListInvitationsResponse--;
 }
 
-core.List<api.StudentSubmission> buildUnnamed16() => [
+core.List<api.StudentSubmission> buildUnnamed18() => [
       buildStudentSubmission(),
       buildStudentSubmission(),
     ];
 
-void checkUnnamed16(core.List<api.StudentSubmission> o) {
+void checkUnnamed18(core.List<api.StudentSubmission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStudentSubmission(o[0]);
   checkStudentSubmission(o[1]);
@@ -1451,7 +1681,7 @@ api.ListStudentSubmissionsResponse buildListStudentSubmissionsResponse() {
   buildCounterListStudentSubmissionsResponse++;
   if (buildCounterListStudentSubmissionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.studentSubmissions = buildUnnamed16();
+    o.studentSubmissions = buildUnnamed18();
   }
   buildCounterListStudentSubmissionsResponse--;
   return o;
@@ -1464,17 +1694,17 @@ void checkListStudentSubmissionsResponse(api.ListStudentSubmissionsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed16(o.studentSubmissions!);
+    checkUnnamed18(o.studentSubmissions!);
   }
   buildCounterListStudentSubmissionsResponse--;
 }
 
-core.List<api.Student> buildUnnamed17() => [
+core.List<api.Student> buildUnnamed19() => [
       buildStudent(),
       buildStudent(),
     ];
 
-void checkUnnamed17(core.List<api.Student> o) {
+void checkUnnamed19(core.List<api.Student> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStudent(o[0]);
   checkStudent(o[1]);
@@ -1486,7 +1716,7 @@ api.ListStudentsResponse buildListStudentsResponse() {
   buildCounterListStudentsResponse++;
   if (buildCounterListStudentsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.students = buildUnnamed17();
+    o.students = buildUnnamed19();
   }
   buildCounterListStudentsResponse--;
   return o;
@@ -1499,17 +1729,17 @@ void checkListStudentsResponse(api.ListStudentsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed17(o.students!);
+    checkUnnamed19(o.students!);
   }
   buildCounterListStudentsResponse--;
 }
 
-core.List<api.Teacher> buildUnnamed18() => [
+core.List<api.Teacher> buildUnnamed20() => [
       buildTeacher(),
       buildTeacher(),
     ];
 
-void checkUnnamed18(core.List<api.Teacher> o) {
+void checkUnnamed20(core.List<api.Teacher> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTeacher(o[0]);
   checkTeacher(o[1]);
@@ -1521,7 +1751,7 @@ api.ListTeachersResponse buildListTeachersResponse() {
   buildCounterListTeachersResponse++;
   if (buildCounterListTeachersResponse < 3) {
     o.nextPageToken = 'foo';
-    o.teachers = buildUnnamed18();
+    o.teachers = buildUnnamed20();
   }
   buildCounterListTeachersResponse--;
   return o;
@@ -1534,17 +1764,17 @@ void checkListTeachersResponse(api.ListTeachersResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed18(o.teachers!);
+    checkUnnamed20(o.teachers!);
   }
   buildCounterListTeachersResponse--;
 }
 
-core.List<api.Topic> buildUnnamed19() => [
+core.List<api.Topic> buildUnnamed21() => [
       buildTopic(),
       buildTopic(),
     ];
 
-void checkUnnamed19(core.List<api.Topic> o) {
+void checkUnnamed21(core.List<api.Topic> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTopic(o[0]);
   checkTopic(o[1]);
@@ -1556,7 +1786,7 @@ api.ListTopicResponse buildListTopicResponse() {
   buildCounterListTopicResponse++;
   if (buildCounterListTopicResponse < 3) {
     o.nextPageToken = 'foo';
-    o.topic = buildUnnamed19();
+    o.topic = buildUnnamed21();
   }
   buildCounterListTopicResponse--;
   return o;
@@ -1569,7 +1799,7 @@ void checkListTopicResponse(api.ListTopicResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed19(o.topic!);
+    checkUnnamed21(o.topic!);
   }
   buildCounterListTopicResponse--;
 }
@@ -1625,12 +1855,12 @@ void checkModifyAnnouncementAssigneesRequest(
   buildCounterModifyAnnouncementAssigneesRequest--;
 }
 
-core.List<api.Attachment> buildUnnamed20() => [
+core.List<api.Attachment> buildUnnamed22() => [
       buildAttachment(),
       buildAttachment(),
     ];
 
-void checkUnnamed20(core.List<api.Attachment> o) {
+void checkUnnamed22(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachment(o[0]);
   checkAttachment(o[1]);
@@ -1641,7 +1871,7 @@ api.ModifyAttachmentsRequest buildModifyAttachmentsRequest() {
   final o = api.ModifyAttachmentsRequest();
   buildCounterModifyAttachmentsRequest++;
   if (buildCounterModifyAttachmentsRequest < 3) {
-    o.addAttachments = buildUnnamed20();
+    o.addAttachments = buildUnnamed22();
   }
   buildCounterModifyAttachmentsRequest--;
   return o;
@@ -1650,7 +1880,7 @@ api.ModifyAttachmentsRequest buildModifyAttachmentsRequest() {
 void checkModifyAttachmentsRequest(api.ModifyAttachmentsRequest o) {
   buildCounterModifyAttachmentsRequest++;
   if (buildCounterModifyAttachmentsRequest < 3) {
-    checkUnnamed20(o.addAttachments!);
+    checkUnnamed22(o.addAttachments!);
   }
   buildCounterModifyAttachmentsRequest--;
 }
@@ -1680,62 +1910,6 @@ void checkModifyCourseWorkAssigneesRequest(
   buildCounterModifyCourseWorkAssigneesRequest--;
 }
 
-core.List<core.String> buildUnnamed21() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed21(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed22() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed22(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterModifyIndividualStudentsOptions = 0;
-api.ModifyIndividualStudentsOptions buildModifyIndividualStudentsOptions() {
-  final o = api.ModifyIndividualStudentsOptions();
-  buildCounterModifyIndividualStudentsOptions++;
-  if (buildCounterModifyIndividualStudentsOptions < 3) {
-    o.addStudentIds = buildUnnamed21();
-    o.removeStudentIds = buildUnnamed22();
-  }
-  buildCounterModifyIndividualStudentsOptions--;
-  return o;
-}
-
-void checkModifyIndividualStudentsOptions(
-    api.ModifyIndividualStudentsOptions o) {
-  buildCounterModifyIndividualStudentsOptions++;
-  if (buildCounterModifyIndividualStudentsOptions < 3) {
-    checkUnnamed21(o.addStudentIds!);
-    checkUnnamed22(o.removeStudentIds!);
-  }
-  buildCounterModifyIndividualStudentsOptions--;
-}
-
 core.List<core.String> buildUnnamed23() => [
       'foo',
       'foo',
@@ -1753,12 +1927,68 @@ void checkUnnamed23(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed24() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed24(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterModifyIndividualStudentsOptions = 0;
+api.ModifyIndividualStudentsOptions buildModifyIndividualStudentsOptions() {
+  final o = api.ModifyIndividualStudentsOptions();
+  buildCounterModifyIndividualStudentsOptions++;
+  if (buildCounterModifyIndividualStudentsOptions < 3) {
+    o.addStudentIds = buildUnnamed23();
+    o.removeStudentIds = buildUnnamed24();
+  }
+  buildCounterModifyIndividualStudentsOptions--;
+  return o;
+}
+
+void checkModifyIndividualStudentsOptions(
+    api.ModifyIndividualStudentsOptions o) {
+  buildCounterModifyIndividualStudentsOptions++;
+  if (buildCounterModifyIndividualStudentsOptions < 3) {
+    checkUnnamed23(o.addStudentIds!);
+    checkUnnamed24(o.removeStudentIds!);
+  }
+  buildCounterModifyIndividualStudentsOptions--;
+}
+
+core.List<core.String> buildUnnamed25() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed25(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterMultipleChoiceQuestion = 0;
 api.MultipleChoiceQuestion buildMultipleChoiceQuestion() {
   final o = api.MultipleChoiceQuestion();
   buildCounterMultipleChoiceQuestion++;
   if (buildCounterMultipleChoiceQuestion < 3) {
-    o.choices = buildUnnamed23();
+    o.choices = buildUnnamed25();
   }
   buildCounterMultipleChoiceQuestion--;
   return o;
@@ -1767,7 +1997,7 @@ api.MultipleChoiceQuestion buildMultipleChoiceQuestion() {
 void checkMultipleChoiceQuestion(api.MultipleChoiceQuestion o) {
   buildCounterMultipleChoiceQuestion++;
   if (buildCounterMultipleChoiceQuestion < 3) {
-    checkUnnamed23(o.choices!);
+    checkUnnamed25(o.choices!);
   }
   buildCounterMultipleChoiceQuestion--;
 }
@@ -1997,12 +2227,34 @@ void checkStudent(api.Student o) {
   buildCounterStudent--;
 }
 
-core.List<api.SubmissionHistory> buildUnnamed24() => [
+core.int buildCounterStudentContext = 0;
+api.StudentContext buildStudentContext() {
+  final o = api.StudentContext();
+  buildCounterStudentContext++;
+  if (buildCounterStudentContext < 3) {
+    o.submissionId = 'foo';
+  }
+  buildCounterStudentContext--;
+  return o;
+}
+
+void checkStudentContext(api.StudentContext o) {
+  buildCounterStudentContext++;
+  if (buildCounterStudentContext < 3) {
+    unittest.expect(
+      o.submissionId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterStudentContext--;
+}
+
+core.List<api.SubmissionHistory> buildUnnamed26() => [
       buildSubmissionHistory(),
       buildSubmissionHistory(),
     ];
 
-void checkUnnamed24(core.List<api.SubmissionHistory> o) {
+void checkUnnamed26(core.List<api.SubmissionHistory> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubmissionHistory(o[0]);
   checkSubmissionHistory(o[1]);
@@ -2027,7 +2279,7 @@ api.StudentSubmission buildStudentSubmission() {
     o.multipleChoiceSubmission = buildMultipleChoiceSubmission();
     o.shortAnswerSubmission = buildShortAnswerSubmission();
     o.state = 'foo';
-    o.submissionHistory = buildUnnamed24();
+    o.submissionHistory = buildUnnamed26();
     o.updateTime = 'foo';
     o.userId = 'foo';
   }
@@ -2079,7 +2331,7 @@ void checkStudentSubmission(api.StudentSubmission o) {
       o.state!,
       unittest.equals('foo'),
     );
-    checkUnnamed24(o.submissionHistory!);
+    checkUnnamed26(o.submissionHistory!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -2140,6 +2392,21 @@ void checkTeacher(api.Teacher o) {
     );
   }
   buildCounterTeacher--;
+}
+
+core.int buildCounterTeacherContext = 0;
+api.TeacherContext buildTeacherContext() {
+  final o = api.TeacherContext();
+  buildCounterTeacherContext++;
+  if (buildCounterTeacherContext < 3) {}
+  buildCounterTeacherContext--;
+  return o;
+}
+
+void checkTeacherContext(api.TeacherContext o) {
+  buildCounterTeacherContext++;
+  if (buildCounterTeacherContext < 3) {}
+  buildCounterTeacherContext--;
 }
 
 core.int buildCounterTimeOfDay = 0;
@@ -2231,12 +2498,12 @@ void checkTurnInStudentSubmissionRequest(api.TurnInStudentSubmissionRequest o) {
   buildCounterTurnInStudentSubmissionRequest--;
 }
 
-core.List<api.GlobalPermission> buildUnnamed25() => [
+core.List<api.GlobalPermission> buildUnnamed27() => [
       buildGlobalPermission(),
       buildGlobalPermission(),
     ];
 
-void checkUnnamed25(core.List<api.GlobalPermission> o) {
+void checkUnnamed27(core.List<api.GlobalPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGlobalPermission(o[0]);
   checkGlobalPermission(o[1]);
@@ -2250,7 +2517,7 @@ api.UserProfile buildUserProfile() {
     o.emailAddress = 'foo';
     o.id = 'foo';
     o.name = buildName();
-    o.permissions = buildUnnamed25();
+    o.permissions = buildUnnamed27();
     o.photoUrl = 'foo';
     o.verifiedTeacher = true;
   }
@@ -2270,7 +2537,7 @@ void checkUserProfile(api.UserProfile o) {
       unittest.equals('foo'),
     );
     checkName(o.name!);
-    checkUnnamed25(o.permissions!);
+    checkUnnamed27(o.permissions!);
     unittest.expect(
       o.photoUrl!,
       unittest.equals('foo'),
@@ -2315,40 +2582,6 @@ void checkYouTubeVideo(api.YouTubeVideo o) {
     );
   }
   buildCounterYouTubeVideo--;
-}
-
-core.List<core.String> buildUnnamed26() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed26(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed27() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed27(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
 }
 
 core.List<core.String> buildUnnamed28() => [
@@ -2419,7 +2652,71 @@ void checkUnnamed31(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed32() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed32(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed33() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed33(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 void main() {
+  unittest.group('obj-schema-AddOnAttachment', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAddOnAttachment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AddOnAttachment.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAddOnAttachment(od);
+    });
+  });
+
+  unittest.group('obj-schema-AddOnAttachmentStudentSubmission', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAddOnAttachmentStudentSubmission();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AddOnAttachmentStudentSubmission.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAddOnAttachmentStudentSubmission(od);
+    });
+  });
+
+  unittest.group('obj-schema-AddOnContext', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAddOnContext();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AddOnContext.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAddOnContext(od);
+    });
+  });
+
   unittest.group('obj-schema-Announcement', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAnnouncement();
@@ -2467,6 +2764,16 @@ void main() {
       final od = api.CloudPubsubTopic.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkCloudPubsubTopic(od);
+    });
+  });
+
+  unittest.group('obj-schema-CopyHistory', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCopyHistory();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CopyHistory.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCopyHistory(od);
     });
   });
 
@@ -2577,6 +2884,16 @@ void main() {
       final od = api.DriveFolder.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkDriveFolder(od);
+    });
+  });
+
+  unittest.group('obj-schema-EmbedUri', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEmbedUri();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.EmbedUri.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkEmbedUri(od);
     });
   });
 
@@ -2697,6 +3014,16 @@ void main() {
       final od =
           api.Link.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLink(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListAddOnAttachmentsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListAddOnAttachmentsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListAddOnAttachmentsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListAddOnAttachmentsResponse(od);
     });
   });
 
@@ -2970,6 +3297,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-StudentContext', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStudentContext();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StudentContext.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkStudentContext(od);
+    });
+  });
+
   unittest.group('obj-schema-StudentSubmission', () {
     unittest.test('to-json--from-json', () async {
       final o = buildStudentSubmission();
@@ -2997,6 +3334,16 @@ void main() {
       final od =
           api.Teacher.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkTeacher(od);
+    });
+  });
+
+  unittest.group('obj-schema-TeacherContext', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTeacherContext();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TeacherContext.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTeacherContext(od);
     });
   });
 
@@ -3223,7 +3570,7 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.ClassroomApi(mock).courses;
-      final arg_courseStates = buildUnnamed26();
+      final arg_courseStates = buildUnnamed28();
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_studentId = 'foo';
@@ -3875,11 +4222,110 @@ void main() {
       checkAnnouncement(response as api.Announcement);
     });
 
+    unittest.test('method--getAddOnContext', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock).courses.announcements;
+      final arg_courseId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_addOnToken = 'foo';
+      final arg_attachmentId = 'foo';
+      final arg_postId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/announcements/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals('/announcements/'),
+        );
+        pathOffset += 15;
+        index = path.indexOf('/addOnContext', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_itemId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('/addOnContext'),
+        );
+        pathOffset += 13;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['addOnToken']!.first,
+          unittest.equals(arg_addOnToken),
+        );
+        unittest.expect(
+          queryMap['attachmentId']!.first,
+          unittest.equals(arg_attachmentId),
+        );
+        unittest.expect(
+          queryMap['postId']!.first,
+          unittest.equals(arg_postId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAddOnContext());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getAddOnContext(arg_courseId, arg_itemId,
+          addOnToken: arg_addOnToken,
+          attachmentId: arg_attachmentId,
+          postId: arg_postId,
+          $fields: arg_$fields);
+      checkAddOnContext(response as api.AddOnContext);
+    });
+
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.ClassroomApi(mock).courses.announcements;
       final arg_courseId = 'foo';
-      final arg_announcementStates = buildUnnamed27();
+      final arg_announcementStates = buildUnnamed29();
       final arg_orderBy = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -4136,6 +4582,495 @@ void main() {
     });
   });
 
+  unittest.group('resource-CoursesAnnouncementsAddOnAttachmentsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock).courses.announcements.addOnAttachments;
+      final arg_request = buildAddOnAttachment();
+      final arg_courseId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_addOnToken = 'foo';
+      final arg_postId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.AddOnAttachment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAddOnAttachment(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/announcements/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals('/announcements/'),
+        );
+        pathOffset += 15;
+        index = path.indexOf('/addOnAttachments', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_itemId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals('/addOnAttachments'),
+        );
+        pathOffset += 17;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['addOnToken']!.first,
+          unittest.equals(arg_addOnToken),
+        );
+        unittest.expect(
+          queryMap['postId']!.first,
+          unittest.equals(arg_postId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAddOnAttachment());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(arg_request, arg_courseId, arg_itemId,
+          addOnToken: arg_addOnToken, postId: arg_postId, $fields: arg_$fields);
+      checkAddOnAttachment(response as api.AddOnAttachment);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock).courses.announcements.addOnAttachments;
+      final arg_courseId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_attachmentId = 'foo';
+      final arg_postId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/announcements/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals('/announcements/'),
+        );
+        pathOffset += 15;
+        index = path.indexOf('/addOnAttachments/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_itemId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals('/addOnAttachments/'),
+        );
+        pathOffset += 18;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_attachmentId'),
+        );
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['postId']!.first,
+          unittest.equals(arg_postId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(
+          arg_courseId, arg_itemId, arg_attachmentId,
+          postId: arg_postId, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock).courses.announcements.addOnAttachments;
+      final arg_courseId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_attachmentId = 'foo';
+      final arg_postId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/announcements/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals('/announcements/'),
+        );
+        pathOffset += 15;
+        index = path.indexOf('/addOnAttachments/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_itemId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals('/addOnAttachments/'),
+        );
+        pathOffset += 18;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_attachmentId'),
+        );
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['postId']!.first,
+          unittest.equals(arg_postId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAddOnAttachment());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_courseId, arg_itemId, arg_attachmentId,
+          postId: arg_postId, $fields: arg_$fields);
+      checkAddOnAttachment(response as api.AddOnAttachment);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock).courses.announcements.addOnAttachments;
+      final arg_courseId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_postId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/announcements/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals('/announcements/'),
+        );
+        pathOffset += 15;
+        index = path.indexOf('/addOnAttachments', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_itemId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals('/addOnAttachments'),
+        );
+        pathOffset += 17;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['postId']!.first,
+          unittest.equals(arg_postId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListAddOnAttachmentsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_courseId, arg_itemId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          postId: arg_postId,
+          $fields: arg_$fields);
+      checkListAddOnAttachmentsResponse(
+          response as api.ListAddOnAttachmentsResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock).courses.announcements.addOnAttachments;
+      final arg_request = buildAddOnAttachment();
+      final arg_courseId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_attachmentId = 'foo';
+      final arg_postId = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.AddOnAttachment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAddOnAttachment(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/announcements/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals('/announcements/'),
+        );
+        pathOffset += 15;
+        index = path.indexOf('/addOnAttachments/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_itemId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals('/addOnAttachments/'),
+        );
+        pathOffset += 18;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_attachmentId'),
+        );
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['postId']!.first,
+          unittest.equals(arg_postId),
+        );
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAddOnAttachment());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(
+          arg_request, arg_courseId, arg_itemId, arg_attachmentId,
+          postId: arg_postId, updateMask: arg_updateMask, $fields: arg_$fields);
+      checkAddOnAttachment(response as api.AddOnAttachment);
+    });
+  });
+
   unittest.group('resource-CoursesCourseWorkResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
@@ -4354,11 +5289,110 @@ void main() {
       checkCourseWork(response as api.CourseWork);
     });
 
+    unittest.test('method--getAddOnContext', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock).courses.courseWork;
+      final arg_courseId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_addOnToken = 'foo';
+      final arg_attachmentId = 'foo';
+      final arg_postId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/courseWork/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('/courseWork/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf('/addOnContext', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_itemId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('/addOnContext'),
+        );
+        pathOffset += 13;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['addOnToken']!.first,
+          unittest.equals(arg_addOnToken),
+        );
+        unittest.expect(
+          queryMap['attachmentId']!.first,
+          unittest.equals(arg_attachmentId),
+        );
+        unittest.expect(
+          queryMap['postId']!.first,
+          unittest.equals(arg_postId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAddOnContext());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getAddOnContext(arg_courseId, arg_itemId,
+          addOnToken: arg_addOnToken,
+          attachmentId: arg_attachmentId,
+          postId: arg_postId,
+          $fields: arg_$fields);
+      checkAddOnContext(response as api.AddOnContext);
+    });
+
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.ClassroomApi(mock).courses.courseWork;
       final arg_courseId = 'foo';
-      final arg_courseWorkStates = buildUnnamed28();
+      final arg_courseWorkStates = buildUnnamed30();
       final arg_orderBy = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -4615,6 +5649,739 @@ void main() {
     });
   });
 
+  unittest.group('resource-CoursesCourseWorkAddOnAttachmentsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock).courses.courseWork.addOnAttachments;
+      final arg_request = buildAddOnAttachment();
+      final arg_courseId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_addOnToken = 'foo';
+      final arg_postId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.AddOnAttachment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAddOnAttachment(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/courseWork/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('/courseWork/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf('/addOnAttachments', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_itemId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals('/addOnAttachments'),
+        );
+        pathOffset += 17;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['addOnToken']!.first,
+          unittest.equals(arg_addOnToken),
+        );
+        unittest.expect(
+          queryMap['postId']!.first,
+          unittest.equals(arg_postId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAddOnAttachment());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(arg_request, arg_courseId, arg_itemId,
+          addOnToken: arg_addOnToken, postId: arg_postId, $fields: arg_$fields);
+      checkAddOnAttachment(response as api.AddOnAttachment);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock).courses.courseWork.addOnAttachments;
+      final arg_courseId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_attachmentId = 'foo';
+      final arg_postId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/courseWork/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('/courseWork/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf('/addOnAttachments/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_itemId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals('/addOnAttachments/'),
+        );
+        pathOffset += 18;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_attachmentId'),
+        );
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['postId']!.first,
+          unittest.equals(arg_postId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(
+          arg_courseId, arg_itemId, arg_attachmentId,
+          postId: arg_postId, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock).courses.courseWork.addOnAttachments;
+      final arg_courseId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_attachmentId = 'foo';
+      final arg_postId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/courseWork/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('/courseWork/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf('/addOnAttachments/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_itemId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals('/addOnAttachments/'),
+        );
+        pathOffset += 18;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_attachmentId'),
+        );
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['postId']!.first,
+          unittest.equals(arg_postId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAddOnAttachment());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_courseId, arg_itemId, arg_attachmentId,
+          postId: arg_postId, $fields: arg_$fields);
+      checkAddOnAttachment(response as api.AddOnAttachment);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock).courses.courseWork.addOnAttachments;
+      final arg_courseId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_postId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/courseWork/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('/courseWork/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf('/addOnAttachments', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_itemId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals('/addOnAttachments'),
+        );
+        pathOffset += 17;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['postId']!.first,
+          unittest.equals(arg_postId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListAddOnAttachmentsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_courseId, arg_itemId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          postId: arg_postId,
+          $fields: arg_$fields);
+      checkListAddOnAttachmentsResponse(
+          response as api.ListAddOnAttachmentsResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock).courses.courseWork.addOnAttachments;
+      final arg_request = buildAddOnAttachment();
+      final arg_courseId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_attachmentId = 'foo';
+      final arg_postId = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.AddOnAttachment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAddOnAttachment(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/courseWork/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('/courseWork/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf('/addOnAttachments/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_itemId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals('/addOnAttachments/'),
+        );
+        pathOffset += 18;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_attachmentId'),
+        );
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['postId']!.first,
+          unittest.equals(arg_postId),
+        );
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAddOnAttachment());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(
+          arg_request, arg_courseId, arg_itemId, arg_attachmentId,
+          postId: arg_postId, updateMask: arg_updateMask, $fields: arg_$fields);
+      checkAddOnAttachment(response as api.AddOnAttachment);
+    });
+  });
+
+  unittest.group(
+      'resource-CoursesCourseWorkAddOnAttachmentsStudentSubmissionsResource',
+      () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock)
+          .courses
+          .courseWork
+          .addOnAttachments
+          .studentSubmissions;
+      final arg_courseId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_attachmentId = 'foo';
+      final arg_submissionId = 'foo';
+      final arg_postId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/courseWork/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('/courseWork/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf('/addOnAttachments/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_itemId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals('/addOnAttachments/'),
+        );
+        pathOffset += 18;
+        index = path.indexOf('/studentSubmissions/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_attachmentId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals('/studentSubmissions/'),
+        );
+        pathOffset += 20;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_submissionId'),
+        );
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['postId']!.first,
+          unittest.equals(arg_postId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildAddOnAttachmentStudentSubmission());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(
+          arg_courseId, arg_itemId, arg_attachmentId, arg_submissionId,
+          postId: arg_postId, $fields: arg_$fields);
+      checkAddOnAttachmentStudentSubmission(
+          response as api.AddOnAttachmentStudentSubmission);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock)
+          .courses
+          .courseWork
+          .addOnAttachments
+          .studentSubmissions;
+      final arg_request = buildAddOnAttachmentStudentSubmission();
+      final arg_courseId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_attachmentId = 'foo';
+      final arg_submissionId = 'foo';
+      final arg_postId = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.AddOnAttachmentStudentSubmission.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAddOnAttachmentStudentSubmission(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/courseWork/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('/courseWork/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf('/addOnAttachments/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_itemId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals('/addOnAttachments/'),
+        );
+        pathOffset += 18;
+        index = path.indexOf('/studentSubmissions/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_attachmentId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals('/studentSubmissions/'),
+        );
+        pathOffset += 20;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_submissionId'),
+        );
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['postId']!.first,
+          unittest.equals(arg_postId),
+        );
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildAddOnAttachmentStudentSubmission());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_courseId, arg_itemId,
+          arg_attachmentId, arg_submissionId,
+          postId: arg_postId, updateMask: arg_updateMask, $fields: arg_$fields);
+      checkAddOnAttachmentStudentSubmission(
+          response as api.AddOnAttachmentStudentSubmission);
+    });
+  });
+
   unittest.group('resource-CoursesCourseWorkStudentSubmissionsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
@@ -4712,7 +6479,7 @@ void main() {
       final arg_late = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
-      final arg_states = buildUnnamed29();
+      final arg_states = buildUnnamed31();
       final arg_userId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5542,11 +7309,110 @@ void main() {
       checkCourseWorkMaterial(response as api.CourseWorkMaterial);
     });
 
+    unittest.test('method--getAddOnContext', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock).courses.courseWorkMaterials;
+      final arg_courseId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_addOnToken = 'foo';
+      final arg_attachmentId = 'foo';
+      final arg_postId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/courseWorkMaterials/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('/courseWorkMaterials/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/addOnContext', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_itemId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('/addOnContext'),
+        );
+        pathOffset += 13;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['addOnToken']!.first,
+          unittest.equals(arg_addOnToken),
+        );
+        unittest.expect(
+          queryMap['attachmentId']!.first,
+          unittest.equals(arg_attachmentId),
+        );
+        unittest.expect(
+          queryMap['postId']!.first,
+          unittest.equals(arg_postId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAddOnContext());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getAddOnContext(arg_courseId, arg_itemId,
+          addOnToken: arg_addOnToken,
+          attachmentId: arg_attachmentId,
+          postId: arg_postId,
+          $fields: arg_$fields);
+      checkAddOnContext(response as api.AddOnContext);
+    });
+
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.ClassroomApi(mock).courses.courseWorkMaterials;
       final arg_courseId = 'foo';
-      final arg_courseWorkMaterialStates = buildUnnamed30();
+      final arg_courseWorkMaterialStates = buildUnnamed32();
       final arg_materialDriveId = 'foo';
       final arg_materialLink = 'foo';
       final arg_orderBy = 'foo';
@@ -5726,6 +7592,1334 @@ void main() {
       final response = await res.patch(arg_request, arg_courseId, arg_id,
           updateMask: arg_updateMask, $fields: arg_$fields);
       checkCourseWorkMaterial(response as api.CourseWorkMaterial);
+    });
+  });
+
+  unittest.group('resource-CoursesCourseWorkMaterialsAddOnAttachmentsResource',
+      () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.ClassroomApi(mock).courses.courseWorkMaterials.addOnAttachments;
+      final arg_request = buildAddOnAttachment();
+      final arg_courseId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_addOnToken = 'foo';
+      final arg_postId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.AddOnAttachment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAddOnAttachment(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/courseWorkMaterials/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('/courseWorkMaterials/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/addOnAttachments', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_itemId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals('/addOnAttachments'),
+        );
+        pathOffset += 17;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['addOnToken']!.first,
+          unittest.equals(arg_addOnToken),
+        );
+        unittest.expect(
+          queryMap['postId']!.first,
+          unittest.equals(arg_postId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAddOnAttachment());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(arg_request, arg_courseId, arg_itemId,
+          addOnToken: arg_addOnToken, postId: arg_postId, $fields: arg_$fields);
+      checkAddOnAttachment(response as api.AddOnAttachment);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.ClassroomApi(mock).courses.courseWorkMaterials.addOnAttachments;
+      final arg_courseId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_attachmentId = 'foo';
+      final arg_postId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/courseWorkMaterials/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('/courseWorkMaterials/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/addOnAttachments/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_itemId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals('/addOnAttachments/'),
+        );
+        pathOffset += 18;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_attachmentId'),
+        );
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['postId']!.first,
+          unittest.equals(arg_postId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(
+          arg_courseId, arg_itemId, arg_attachmentId,
+          postId: arg_postId, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.ClassroomApi(mock).courses.courseWorkMaterials.addOnAttachments;
+      final arg_courseId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_attachmentId = 'foo';
+      final arg_postId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/courseWorkMaterials/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('/courseWorkMaterials/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/addOnAttachments/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_itemId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals('/addOnAttachments/'),
+        );
+        pathOffset += 18;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_attachmentId'),
+        );
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['postId']!.first,
+          unittest.equals(arg_postId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAddOnAttachment());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_courseId, arg_itemId, arg_attachmentId,
+          postId: arg_postId, $fields: arg_$fields);
+      checkAddOnAttachment(response as api.AddOnAttachment);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.ClassroomApi(mock).courses.courseWorkMaterials.addOnAttachments;
+      final arg_courseId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_postId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/courseWorkMaterials/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('/courseWorkMaterials/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/addOnAttachments', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_itemId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals('/addOnAttachments'),
+        );
+        pathOffset += 17;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['postId']!.first,
+          unittest.equals(arg_postId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListAddOnAttachmentsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_courseId, arg_itemId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          postId: arg_postId,
+          $fields: arg_$fields);
+      checkListAddOnAttachmentsResponse(
+          response as api.ListAddOnAttachmentsResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.ClassroomApi(mock).courses.courseWorkMaterials.addOnAttachments;
+      final arg_request = buildAddOnAttachment();
+      final arg_courseId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_attachmentId = 'foo';
+      final arg_postId = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.AddOnAttachment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAddOnAttachment(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/courseWorkMaterials/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('/courseWorkMaterials/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/addOnAttachments/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_itemId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals('/addOnAttachments/'),
+        );
+        pathOffset += 18;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_attachmentId'),
+        );
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['postId']!.first,
+          unittest.equals(arg_postId),
+        );
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAddOnAttachment());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(
+          arg_request, arg_courseId, arg_itemId, arg_attachmentId,
+          postId: arg_postId, updateMask: arg_updateMask, $fields: arg_$fields);
+      checkAddOnAttachment(response as api.AddOnAttachment);
+    });
+  });
+
+  unittest.group('resource-CoursesPostsResource', () {
+    unittest.test('method--getAddOnContext', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock).courses.posts;
+      final arg_courseId = 'foo';
+      final arg_postId = 'foo';
+      final arg_addOnToken = 'foo';
+      final arg_attachmentId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/posts/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('/posts/'),
+        );
+        pathOffset += 7;
+        index = path.indexOf('/addOnContext', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_postId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('/addOnContext'),
+        );
+        pathOffset += 13;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['addOnToken']!.first,
+          unittest.equals(arg_addOnToken),
+        );
+        unittest.expect(
+          queryMap['attachmentId']!.first,
+          unittest.equals(arg_attachmentId),
+        );
+        unittest.expect(
+          queryMap['itemId']!.first,
+          unittest.equals(arg_itemId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAddOnContext());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getAddOnContext(arg_courseId, arg_postId,
+          addOnToken: arg_addOnToken,
+          attachmentId: arg_attachmentId,
+          itemId: arg_itemId,
+          $fields: arg_$fields);
+      checkAddOnContext(response as api.AddOnContext);
+    });
+  });
+
+  unittest.group('resource-CoursesPostsAddOnAttachmentsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock).courses.posts.addOnAttachments;
+      final arg_request = buildAddOnAttachment();
+      final arg_courseId = 'foo';
+      final arg_postId = 'foo';
+      final arg_addOnToken = 'foo';
+      final arg_itemId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.AddOnAttachment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAddOnAttachment(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/posts/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('/posts/'),
+        );
+        pathOffset += 7;
+        index = path.indexOf('/addOnAttachments', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_postId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals('/addOnAttachments'),
+        );
+        pathOffset += 17;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['addOnToken']!.first,
+          unittest.equals(arg_addOnToken),
+        );
+        unittest.expect(
+          queryMap['itemId']!.first,
+          unittest.equals(arg_itemId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAddOnAttachment());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(arg_request, arg_courseId, arg_postId,
+          addOnToken: arg_addOnToken, itemId: arg_itemId, $fields: arg_$fields);
+      checkAddOnAttachment(response as api.AddOnAttachment);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock).courses.posts.addOnAttachments;
+      final arg_courseId = 'foo';
+      final arg_postId = 'foo';
+      final arg_attachmentId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/posts/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('/posts/'),
+        );
+        pathOffset += 7;
+        index = path.indexOf('/addOnAttachments/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_postId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals('/addOnAttachments/'),
+        );
+        pathOffset += 18;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_attachmentId'),
+        );
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['itemId']!.first,
+          unittest.equals(arg_itemId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(
+          arg_courseId, arg_postId, arg_attachmentId,
+          itemId: arg_itemId, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock).courses.posts.addOnAttachments;
+      final arg_courseId = 'foo';
+      final arg_postId = 'foo';
+      final arg_attachmentId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/posts/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('/posts/'),
+        );
+        pathOffset += 7;
+        index = path.indexOf('/addOnAttachments/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_postId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals('/addOnAttachments/'),
+        );
+        pathOffset += 18;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_attachmentId'),
+        );
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['itemId']!.first,
+          unittest.equals(arg_itemId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAddOnAttachment());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_courseId, arg_postId, arg_attachmentId,
+          itemId: arg_itemId, $fields: arg_$fields);
+      checkAddOnAttachment(response as api.AddOnAttachment);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock).courses.posts.addOnAttachments;
+      final arg_courseId = 'foo';
+      final arg_postId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/posts/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('/posts/'),
+        );
+        pathOffset += 7;
+        index = path.indexOf('/addOnAttachments', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_postId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals('/addOnAttachments'),
+        );
+        pathOffset += 17;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['itemId']!.first,
+          unittest.equals(arg_itemId),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListAddOnAttachmentsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_courseId, arg_postId,
+          itemId: arg_itemId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAddOnAttachmentsResponse(
+          response as api.ListAddOnAttachmentsResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock).courses.posts.addOnAttachments;
+      final arg_request = buildAddOnAttachment();
+      final arg_courseId = 'foo';
+      final arg_postId = 'foo';
+      final arg_attachmentId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.AddOnAttachment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAddOnAttachment(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/posts/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('/posts/'),
+        );
+        pathOffset += 7;
+        index = path.indexOf('/addOnAttachments/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_postId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals('/addOnAttachments/'),
+        );
+        pathOffset += 18;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_attachmentId'),
+        );
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['itemId']!.first,
+          unittest.equals(arg_itemId),
+        );
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAddOnAttachment());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(
+          arg_request, arg_courseId, arg_postId, arg_attachmentId,
+          itemId: arg_itemId, updateMask: arg_updateMask, $fields: arg_$fields);
+      checkAddOnAttachment(response as api.AddOnAttachment);
+    });
+  });
+
+  unittest.group(
+      'resource-CoursesPostsAddOnAttachmentsStudentSubmissionsResource', () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock)
+          .courses
+          .posts
+          .addOnAttachments
+          .studentSubmissions;
+      final arg_courseId = 'foo';
+      final arg_postId = 'foo';
+      final arg_attachmentId = 'foo';
+      final arg_submissionId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/posts/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('/posts/'),
+        );
+        pathOffset += 7;
+        index = path.indexOf('/addOnAttachments/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_postId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals('/addOnAttachments/'),
+        );
+        pathOffset += 18;
+        index = path.indexOf('/studentSubmissions/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_attachmentId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals('/studentSubmissions/'),
+        );
+        pathOffset += 20;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_submissionId'),
+        );
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['itemId']!.first,
+          unittest.equals(arg_itemId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildAddOnAttachmentStudentSubmission());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(
+          arg_courseId, arg_postId, arg_attachmentId, arg_submissionId,
+          itemId: arg_itemId, $fields: arg_$fields);
+      checkAddOnAttachmentStudentSubmission(
+          response as api.AddOnAttachmentStudentSubmission);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.ClassroomApi(mock)
+          .courses
+          .posts
+          .addOnAttachments
+          .studentSubmissions;
+      final arg_request = buildAddOnAttachmentStudentSubmission();
+      final arg_courseId = 'foo';
+      final arg_postId = 'foo';
+      final arg_attachmentId = 'foo';
+      final arg_submissionId = 'foo';
+      final arg_itemId = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.AddOnAttachmentStudentSubmission.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAddOnAttachmentStudentSubmission(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('v1/courses/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/posts/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_courseId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('/posts/'),
+        );
+        pathOffset += 7;
+        index = path.indexOf('/addOnAttachments/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_postId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals('/addOnAttachments/'),
+        );
+        pathOffset += 18;
+        index = path.indexOf('/studentSubmissions/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_attachmentId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals('/studentSubmissions/'),
+        );
+        pathOffset += 20;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_submissionId'),
+        );
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['itemId']!.first,
+          unittest.equals(arg_itemId),
+        );
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildAddOnAttachmentStudentSubmission());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_courseId, arg_postId,
+          arg_attachmentId, arg_submissionId,
+          itemId: arg_itemId, updateMask: arg_updateMask, $fields: arg_$fields);
+      checkAddOnAttachmentStudentSubmission(
+          response as api.AddOnAttachmentStudentSubmission);
     });
   });
 
@@ -7345,7 +10539,7 @@ void main() {
       final arg_invitedEmailAddress = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
-      final arg_states = buildUnnamed31();
+      final arg_states = buildUnnamed33();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;

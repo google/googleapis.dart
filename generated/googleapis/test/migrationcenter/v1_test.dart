@@ -671,6 +671,7 @@ api.AwsEc2PlatformDetails buildAwsEc2PlatformDetails() {
   final o = api.AwsEc2PlatformDetails();
   buildCounterAwsEc2PlatformDetails++;
   if (buildCounterAwsEc2PlatformDetails < 3) {
+    o.hyperthreading = 'foo';
     o.location = 'foo';
     o.machineTypeLabel = 'foo';
   }
@@ -681,6 +682,10 @@ api.AwsEc2PlatformDetails buildAwsEc2PlatformDetails() {
 void checkAwsEc2PlatformDetails(api.AwsEc2PlatformDetails o) {
   buildCounterAwsEc2PlatformDetails++;
   if (buildCounterAwsEc2PlatformDetails < 3) {
+    unittest.expect(
+      o.hyperthreading!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.location!,
       unittest.equals('foo'),
@@ -698,6 +703,7 @@ api.AzureVmPlatformDetails buildAzureVmPlatformDetails() {
   final o = api.AzureVmPlatformDetails();
   buildCounterAzureVmPlatformDetails++;
   if (buildCounterAzureVmPlatformDetails < 3) {
+    o.hyperthreading = 'foo';
     o.location = 'foo';
     o.machineTypeLabel = 'foo';
     o.provisioningState = 'foo';
@@ -709,6 +715,10 @@ api.AzureVmPlatformDetails buildAzureVmPlatformDetails() {
 void checkAzureVmPlatformDetails(api.AzureVmPlatformDetails o) {
   buildCounterAzureVmPlatformDetails++;
   if (buildCounterAzureVmPlatformDetails < 3) {
+    unittest.expect(
+      o.hyperthreading!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.location!,
       unittest.equals('foo'),
@@ -1855,6 +1865,7 @@ api.GenericPlatformDetails buildGenericPlatformDetails() {
   final o = api.GenericPlatformDetails();
   buildCounterGenericPlatformDetails++;
   if (buildCounterGenericPlatformDetails < 3) {
+    o.hyperthreading = 'foo';
     o.location = 'foo';
   }
   buildCounterGenericPlatformDetails--;
@@ -1864,6 +1875,10 @@ api.GenericPlatformDetails buildGenericPlatformDetails() {
 void checkGenericPlatformDetails(api.GenericPlatformDetails o) {
   buildCounterGenericPlatformDetails++;
   if (buildCounterGenericPlatformDetails < 3) {
+    unittest.expect(
+      o.hyperthreading!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.location!,
       unittest.equals('foo'),
@@ -2368,10 +2383,12 @@ api.ImportRowError buildImportRowError() {
   final o = api.ImportRowError();
   buildCounterImportRowError++;
   if (buildCounterImportRowError < 3) {
+    o.csvError = buildImportRowErrorCsvErrorDetails();
     o.errors = buildUnnamed34();
     o.rowNumber = 42;
     o.vmName = 'foo';
     o.vmUuid = 'foo';
+    o.xlsxError = buildImportRowErrorXlsxErrorDetails();
   }
   buildCounterImportRowError--;
   return o;
@@ -2380,6 +2397,7 @@ api.ImportRowError buildImportRowError() {
 void checkImportRowError(api.ImportRowError o) {
   buildCounterImportRowError++;
   if (buildCounterImportRowError < 3) {
+    checkImportRowErrorCsvErrorDetails(o.csvError!);
     checkUnnamed34(o.errors!);
     unittest.expect(
       o.rowNumber!,
@@ -2393,8 +2411,58 @@ void checkImportRowError(api.ImportRowError o) {
       o.vmUuid!,
       unittest.equals('foo'),
     );
+    checkImportRowErrorXlsxErrorDetails(o.xlsxError!);
   }
   buildCounterImportRowError--;
+}
+
+core.int buildCounterImportRowErrorCsvErrorDetails = 0;
+api.ImportRowErrorCsvErrorDetails buildImportRowErrorCsvErrorDetails() {
+  final o = api.ImportRowErrorCsvErrorDetails();
+  buildCounterImportRowErrorCsvErrorDetails++;
+  if (buildCounterImportRowErrorCsvErrorDetails < 3) {
+    o.rowNumber = 42;
+  }
+  buildCounterImportRowErrorCsvErrorDetails--;
+  return o;
+}
+
+void checkImportRowErrorCsvErrorDetails(api.ImportRowErrorCsvErrorDetails o) {
+  buildCounterImportRowErrorCsvErrorDetails++;
+  if (buildCounterImportRowErrorCsvErrorDetails < 3) {
+    unittest.expect(
+      o.rowNumber!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterImportRowErrorCsvErrorDetails--;
+}
+
+core.int buildCounterImportRowErrorXlsxErrorDetails = 0;
+api.ImportRowErrorXlsxErrorDetails buildImportRowErrorXlsxErrorDetails() {
+  final o = api.ImportRowErrorXlsxErrorDetails();
+  buildCounterImportRowErrorXlsxErrorDetails++;
+  if (buildCounterImportRowErrorXlsxErrorDetails < 3) {
+    o.rowNumber = 42;
+    o.sheet = 'foo';
+  }
+  buildCounterImportRowErrorXlsxErrorDetails--;
+  return o;
+}
+
+void checkImportRowErrorXlsxErrorDetails(api.ImportRowErrorXlsxErrorDetails o) {
+  buildCounterImportRowErrorXlsxErrorDetails++;
+  if (buildCounterImportRowErrorXlsxErrorDetails < 3) {
+    unittest.expect(
+      o.rowNumber!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.sheet!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterImportRowErrorXlsxErrorDetails--;
 }
 
 core.int buildCounterInsight = 0;
@@ -4000,6 +4068,7 @@ api.PhysicalPlatformDetails buildPhysicalPlatformDetails() {
   final o = api.PhysicalPlatformDetails();
   buildCounterPhysicalPlatformDetails++;
   if (buildCounterPhysicalPlatformDetails < 3) {
+    o.hyperthreading = 'foo';
     o.location = 'foo';
   }
   buildCounterPhysicalPlatformDetails--;
@@ -4009,6 +4078,10 @@ api.PhysicalPlatformDetails buildPhysicalPlatformDetails() {
 void checkPhysicalPlatformDetails(api.PhysicalPlatformDetails o) {
   buildCounterPhysicalPlatformDetails++;
   if (buildCounterPhysicalPlatformDetails < 3) {
+    unittest.expect(
+      o.hyperthreading!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.location!,
       unittest.equals('foo'),
@@ -5676,6 +5749,7 @@ api.VmwarePlatformDetails buildVmwarePlatformDetails() {
   final o = api.VmwarePlatformDetails();
   buildCounterVmwarePlatformDetails++;
   if (buildCounterVmwarePlatformDetails < 3) {
+    o.esxHyperthreading = 'foo';
     o.esxVersion = 'foo';
     o.osid = 'foo';
     o.vcenterFolder = 'foo';
@@ -5690,6 +5764,10 @@ api.VmwarePlatformDetails buildVmwarePlatformDetails() {
 void checkVmwarePlatformDetails(api.VmwarePlatformDetails o) {
   buildCounterVmwarePlatformDetails++;
   if (buildCounterVmwarePlatformDetails < 3) {
+    unittest.expect(
+      o.esxHyperthreading!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.esxVersion!,
       unittest.equals('foo'),
@@ -6376,6 +6454,26 @@ void main() {
       final od = api.ImportRowError.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkImportRowError(od);
+    });
+  });
+
+  unittest.group('obj-schema-ImportRowErrorCsvErrorDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildImportRowErrorCsvErrorDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ImportRowErrorCsvErrorDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkImportRowErrorCsvErrorDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-ImportRowErrorXlsxErrorDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildImportRowErrorXlsxErrorDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ImportRowErrorXlsxErrorDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkImportRowErrorXlsxErrorDetails(od);
     });
   });
 

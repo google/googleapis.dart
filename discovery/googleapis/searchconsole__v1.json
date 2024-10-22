@@ -17,7 +17,7 @@
     "canonicalName": "Search Console",
     "description": "The Search Console API provides access to both Search Console data (verified users only) and to public information on an URL basis (anyone)",
     "discoveryVersion": "v1",
-    "documentationLink": "https://developers.google.com/webmaster-tools/search-console-api/",
+    "documentationLink": "https://developers.google.com/webmaster-tools/about",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240608",
+    "revision": "20240708",
     "rootUrl": "https://searchconsole.googleapis.com/",
     "servicePath": "",
     "title": "Google Search Console API",

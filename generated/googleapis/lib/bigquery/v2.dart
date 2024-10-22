@@ -265,11 +265,10 @@ class DatasetsResource {
   /// [all] - Whether to list all datasets, including hidden ones
   ///
   /// [filter] - An expression for filtering the results of the request by
-  /// label. The syntax is \"labels.\<name\>\[:\<value\>\]\". Multiple filters
-  /// can be ANDed together by connecting with a space. Example:
-  /// \"labels.department:receiving labels.active\". See \[Filtering datasets
-  /// using
-  /// labels\](/bigquery/docs/filtering-labels#filtering_datasets_using_labels)
+  /// label. The syntax is `labels.[:]`. Multiple filters can be ANDed together
+  /// by connecting with a space. Example: `labels.department:receiving
+  /// labels.active`. See
+  /// [Filtering datasets using labels](https://cloud.google.com/bigquery/docs/filtering-labels#filtering_datasets_using_labels)
   /// for details.
   ///
   /// [maxResults] - The maximum number of results to return in a single
@@ -490,8 +489,8 @@ class JobsResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [location] - The geographic location of the job. You must specify the
-  /// location to run the job for the following scenarios: - If the location to
-  /// run a job is not in the `us` or the `eu` multi-regional location - If the
+  /// location to run the job for the following scenarios: * If the location to
+  /// run a job is not in the `us` or the `eu` multi-regional location * If the
   /// job's location is in a single region (for example, `us-central1`) For more
   /// information, see
   /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
@@ -599,8 +598,8 @@ class JobsResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [location] - The geographic location of the job. You must specify the
-  /// location to run the job for the following scenarios: - If the location to
-  /// run a job is not in the `us` or the `eu` multi-regional location - If the
+  /// location to run the job for the following scenarios: * If the location to
+  /// run a job is not in the `us` or the `eu` multi-regional location * If the
   /// job's location is in a single region (for example, `us-central1`) For more
   /// information, see
   /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
@@ -653,8 +652,8 @@ class JobsResource {
   /// int64. Default is false.
   ///
   /// [location] - The geographic location of the job. You must specify the
-  /// location to run the job for the following scenarios: - If the location to
-  /// run a job is not in the `us` or the `eu` multi-regional location - If the
+  /// location to run the job for the following scenarios: * If the location to
+  /// run a job is not in the `us` or the `eu` multi-regional location * If the
   /// job's location is in a single region (for example, `us-central1`) For more
   /// information, see
   /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
@@ -3206,8 +3205,8 @@ class BigLakeConfiguration {
   /// external storage, such as Cloud Storage.
   ///
   /// The connection_id can have the form
-  /// "\<project\_id\>.\<location\_id\>.\<connection\_id\>" or
-  /// "projects/\<project\_id\>/locations/\<location\_id\>/connections/\<connection\_id\>".
+  /// \`{project}.{location}.{connection_id}\` or
+  /// \`projects/{project}/locations/{location}/connections/{connection_id}".
   ///
   /// Required.
   core.String? connectionId;
@@ -3224,7 +3223,7 @@ class BigLakeConfiguration {
   /// data is stored.
   ///
   /// The '*' wildcard character is not allowed. The URI should be in the format
-  /// "gs://bucket/path_to_table/"
+  /// `gs://bucket/path_to_table/`
   ///
   /// Required.
   core.String? storageUri;
@@ -3319,7 +3318,7 @@ class BigtableColumn {
   /// Qualifier of the column.
   ///
   /// Columns in the parent column family that has this exact qualifier are
-  /// exposed as . field. If the qualifier is valid UTF-8 string, it can be
+  /// exposed as `.` field. If the qualifier is valid UTF-8 string, it can be
   /// specified in the qualifier_string field. Otherwise, a base-64 encoded
   /// value must be set to qualifier_encoded. The column field name is the same
   /// as the column qualifier. However, if the qualifier is not a valid BigQuery
@@ -3386,8 +3385,8 @@ class BigtableColumnFamily {
   /// a list of (column name, value) pairs.
   ///
   /// All columns whose qualifier matches a qualifier in this list can be
-  /// accessed as .. Other columns can be accessed as a list through .Column
-  /// field.
+  /// accessed as `.`. Other columns can be accessed as a list through the
+  /// `.Column` field.
   ///
   /// Optional.
   core.List<BigtableColumn>? columns;
@@ -4158,8 +4157,12 @@ class ConfusionMatrix {
 /// format in which a you can specify a query label, see labels in the
 /// JobConfiguration resource type:
 /// https://cloud.google.com/bigquery/docs/reference/rest/v2/Job#jobconfiguration
-/// Additional properties are allowed, but ignored. Specifying multiple
-/// connection properties with the same key returns an error.
+/// * **service_account**: indicates the service account to use to run a
+/// continuous query. If set, the query job uses the service account to access
+/// Google Cloud resources. Service account access is bounded by the IAM
+/// permissions that you have granted to the service account. Additional
+/// properties are allowed, but ignored. Specifying multiple connection
+/// properties with the same key returns an error.
 class ConnectionProperty {
   /// The key of the property to set.
   core.String? key;
@@ -4361,6 +4364,27 @@ class DataMaskingStatistics {
       };
 }
 
+/// Data policy option proto, it currently supports name only, will support
+/// precedence later.
+class DataPolicyOption {
+  /// Data policy resource name in the form of
+  /// projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+  core.String? name;
+
+  DataPolicyOption({
+    this.name,
+  });
+
+  DataPolicyOption.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Data split result.
 ///
 /// This contains references to the training and evaluation data tables that
@@ -4433,11 +4457,11 @@ class DatasetAccess {
   /// An IAM role ID that should be granted to the user, group, or domain
   /// specified in this access entry.
   ///
-  /// The following legacy mappings will be applied: OWNER \<=\>
-  /// roles/bigquery.dataOwner WRITER \<=\> roles/bigquery.dataEditor READER
-  /// \<=\> roles/bigquery.dataViewer This field will accept any of the above
-  /// formats, but will return only the legacy format. For example, if you set
-  /// this field to "roles/bigquery.dataOwner", it will be returned back as
+  /// The following legacy mappings will be applied: * `OWNER`:
+  /// `roles/bigquery.dataOwner` * `WRITER`: `roles/bigquery.dataEditor` *
+  /// `READER`: `roles/bigquery.dataViewer` This field will accept any of the
+  /// above formats, but will return only the legacy format. For example, if you
+  /// set this field to "roles/bigquery.dataOwner", it will be returned back as
   /// "OWNER".
   core.String? role;
 
@@ -4452,10 +4476,10 @@ class DatasetAccess {
 
   /// \[Pick one\] A special group to grant access to.
   ///
-  /// Possible values include: projectOwners: Owners of the enclosing project.
-  /// projectReaders: Readers of the enclosing project. projectWriters: Writers
-  /// of the enclosing project. allAuthenticatedUsers: All authenticated
-  /// BigQuery users. Maps to similarly-named IAM members.
+  /// Possible values include: * projectOwners: Owners of the enclosing project.
+  /// * projectReaders: Readers of the enclosing project. * projectWriters:
+  /// Writers of the enclosing project. * allAuthenticatedUsers: All
+  /// authenticated BigQuery users. Maps to similarly-named IAM members.
   core.String? specialGroup;
 
   /// \[Pick one\] An email address of a user to grant access to.
@@ -4551,6 +4575,7 @@ class DatasetTags {
       };
 }
 
+/// Represents a BigQuery dataset.
 class Dataset {
   /// An array of objects that define dataset access for one or more entities.
   ///
@@ -4560,7 +4585,10 @@ class Dataset {
   /// entities: access.specialGroup: projectReaders; access.role: READER;
   /// access.specialGroup: projectWriters; access.role: WRITER;
   /// access.specialGroup: projectOwners; access.role: OWNER;
-  /// access.userByEmail: \[dataset creator email\]; access.role: OWNER;
+  /// access.userByEmail: \[dataset creator email\]; access.role: OWNER; If you
+  /// patch a dataset, then this field is overwritten by the patched dataset's
+  /// access field. To add entities, you must supply the entire existing access
+  /// array in addition to any new entities that you want to add.
   ///
   /// Optional.
   core.List<DatasetAccess>? access;
@@ -4707,8 +4735,9 @@ class Dataset {
   /// The labels associated with this dataset.
   ///
   /// You can use these to organize and group your datasets. You can set this
-  /// property when inserting or updating a dataset. See Creating and Updating
-  /// Dataset Labels for more information.
+  /// property when inserting or updating a dataset. See
+  /// [Creating and Updating Dataset Labels](https://cloud.google.com/bigquery/docs/creating-managing-labels#creating_and_updating_dataset_labels)
+  /// for more information.
   core.Map<core.String, core.String>? labels;
 
   /// The date when this dataset was last modified, in milliseconds since the
@@ -4747,14 +4776,15 @@ class Dataset {
   /// Optional.
   core.String? maxTimeTravelHours;
 
-  /// The \[tags\](/bigquery/docs/tags) attached to this dataset.
+  /// The [tags](https://cloud.google.com/bigquery/docs/tags) attached to this
+  /// dataset.
   ///
   /// Tag keys are globally unique. Tag key is expected to be in the namespaced
   /// format, for example "123456789012/environment" where 123456789012 is the
   /// ID of the parent organization or project resource for this tag key. Tag
   /// value is expected to be the short name, for example "Production". See
-  /// \[Tag definitions\](/iam/docs/tags-access-control#definitions) for more
-  /// details.
+  /// [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+  /// for more details.
   ///
   /// Optional.
   core.Map<core.String, core.String>? resourceTags;
@@ -4762,9 +4792,9 @@ class Dataset {
   /// Restriction config for all tables and dataset.
   ///
   /// If set, restrict certain accesses on the dataset and all its tables based
-  /// on the config. See \[Data
-  /// egress\](/bigquery/docs/analytics-hub-introduction#data_egress) for more
-  /// details.
+  /// on the config. See
+  /// [Data egress](https://cloud.google.com/bigquery/docs/analytics-hub-introduction#data_egress)
+  /// for more details.
   ///
   /// Optional. Output only.
   RestrictionConfig? restrictions;
@@ -4795,9 +4825,14 @@ class Dataset {
   /// - "PHYSICAL" : Billing for physical bytes.
   core.String? storageBillingModel;
 
-  /// Tags for the Dataset.
+  /// Tags for the dataset.
+  ///
+  /// To provide tags as inputs, use the `resourceTags` field.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<DatasetTags>? tags;
 
   /// Same as `type` in `ListFormatDataset`.
@@ -5142,6 +5177,7 @@ class DatasetList {
       };
 }
 
+/// Identifier for a dataset.
 class DatasetReference {
   /// A unique ID for this dataset, without the project name.
   ///
@@ -5513,6 +5549,7 @@ class DoubleRange {
       };
 }
 
+/// Configuration for Cloud KMS encryption settings.
 class EncryptionConfiguration {
   /// Describes the Cloud KMS encryption key that will be used to protect
   /// destination BigQuery table.
@@ -6154,8 +6191,8 @@ class ExternalDataConfiguration {
   /// storage, such as Azure Blob, Cloud Storage, or S3.
   ///
   /// The connection_id can have the form
-  /// "\<project\_id\>.\<location\_id\>.\<connection\_id\>" or
-  /// "projects/\<project\_id\>/locations/\<location\_id\>/connections/\<connection\_id\>".
+  /// `{project_id}.{location_id};{connection_id}` or
+  /// `projects/{project_id}/locations/{location_id}/connections/{connection_id}`.
   ///
   /// Optional.
   core.String? connectionId;
@@ -7235,8 +7272,8 @@ class HparamSearchSpaces {
       };
 }
 
-/// Training info of a trial in \[hyperparameter
-/// tuning\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview)
+/// Training info of a trial in
+/// [hyperparameter tuning](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview)
 /// models.
 class HparamTuningTrial {
   /// Ending time of the trial.
@@ -7387,6 +7424,8 @@ class IndexUnusedReason {
   /// search function that cannot make use of the index has been selected.
   /// - "QUERY_CACHE_HIT" : Indicates that the query was cached, and thus the
   /// search index was not used.
+  /// - "STALE_INDEX" : The index cannot be used in the search query because it
+  /// is stale.
   /// - "INTERNAL_ERROR" : Indicates an internal error that causes the search
   /// index to be unused.
   /// - "OTHER_REASON" : Indicates that the reason search indexes cannot be used
@@ -7657,10 +7696,9 @@ class Job {
   /// Output only.
   core.String? id;
 
-  /// If set, it provides the reason why a Job was created.
+  /// The reason why a Job was created.
   ///
-  /// If not set, it should be treated as the default: REQUESTED. This feature
-  /// is not yet available. Jobs will always be created.
+  /// [Preview](https://cloud.google.com/products/#product-launch-stages)
   ///
   /// Output only.
   JobCreationReason? jobCreationReason;
@@ -9069,8 +9107,8 @@ class JobConfigurationTableCopy {
 ///
 /// For
 /// \[`jobs.insert`\](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/insert)
-/// method calls it will always be `REQUESTED`. This feature is not yet
-/// available. Jobs will always be created.
+/// method calls it will always be `REQUESTED`.
+/// [Preview](https://cloud.google.com/products/#product-launch-stages)
 class JobCreationReason {
   /// Specifies the high level reason why a Job was created.
   ///
@@ -9349,6 +9387,18 @@ class JobStatistics {
   /// Output only.
   DataMaskingStatistics? dataMaskingStatistics;
 
+  /// Name of edition corresponding to the reservation for this job at the time
+  /// of this update.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "RESERVATION_EDITION_UNSPECIFIED" : Default value, which will be treated
+  /// as ENTERPRISE.
+  /// - "STANDARD" : Standard edition.
+  /// - "ENTERPRISE" : Enterprise edition.
+  /// - "ENTERPRISE_PLUS" : Enterprise plus edition.
+  core.String? edition;
+
   /// End time of this job, in milliseconds since the epoch.
   ///
   /// This field will be present whenever a job is in the DONE state.
@@ -9463,6 +9513,7 @@ class JobStatistics {
     this.copy,
     this.creationTime,
     this.dataMaskingStatistics,
+    this.edition,
     this.endTime,
     this.extract,
     this.finalExecutionDurationMs,
@@ -9494,6 +9545,7 @@ class JobStatistics {
               ? DataMaskingStatistics.fromJson(json_['dataMaskingStatistics']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          edition: json_['edition'] as core.String?,
           endTime: json_['endTime'] as core.String?,
           extract: json_.containsKey('extract')
               ? JobStatistics4.fromJson(
@@ -9548,6 +9600,7 @@ class JobStatistics {
         if (creationTime != null) 'creationTime': creationTime!,
         if (dataMaskingStatistics != null)
           'dataMaskingStatistics': dataMaskingStatistics!,
+        if (edition != null) 'edition': edition!,
         if (endTime != null) 'endTime': endTime!,
         if (extract != null) 'extract': extract!,
         if (finalExecutionDurationMs != null)
@@ -9800,88 +9853,88 @@ class JobStatistics2 {
   /// The type of query statement, if valid.
   ///
   /// Possible values: * `SELECT`:
-  /// \[`SELECT`\](/bigquery/docs/reference/standard-sql/query-syntax#select_list)
+  /// \[`SELECT`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#select_list)
   /// statement. * `ASSERT`:
-  /// \[`ASSERT`\](/bigquery/docs/reference/standard-sql/debugging-statements#assert)
+  /// \[`ASSERT`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/debugging-statements#assert)
   /// statement. * `INSERT`:
-  /// \[`INSERT`\](/bigquery/docs/reference/standard-sql/dml-syntax#insert_statement)
+  /// \[`INSERT`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax#insert_statement)
   /// statement. * `UPDATE`:
-  /// \[`UPDATE`\](/bigquery/docs/reference/standard-sql/query-syntax#update_statement)
+  /// \[`UPDATE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#update_statement)
   /// statement. * `DELETE`:
-  /// \[`DELETE`\](/bigquery/docs/reference/standard-sql/data-manipulation-language)
+  /// \[`DELETE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
   /// statement. * `MERGE`:
-  /// \[`MERGE`\](/bigquery/docs/reference/standard-sql/data-manipulation-language)
+  /// \[`MERGE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
   /// statement. * `CREATE_TABLE`: \[`CREATE
-  /// TABLE`\](/bigquery/docs/reference/standard-sql/data-definition-language#create_table_statement)
+  /// TABLE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_table_statement)
   /// statement, without `AS SELECT`. * `CREATE_TABLE_AS_SELECT`: \[`CREATE
   /// TABLE AS
-  /// SELECT`\](/bigquery/docs/reference/standard-sql/data-definition-language#query_statement)
+  /// SELECT`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#query_statement)
   /// statement. * `CREATE_VIEW`: \[`CREATE
-  /// VIEW`\](/bigquery/docs/reference/standard-sql/data-definition-language#create_view_statement)
+  /// VIEW`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_view_statement)
   /// statement. * `CREATE_MODEL`: \[`CREATE
-  /// MODEL`\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create#create_model_statement)
+  /// MODEL`\](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create#create_model_statement)
   /// statement. * `CREATE_MATERIALIZED_VIEW`: \[`CREATE MATERIALIZED
-  /// VIEW`\](/bigquery/docs/reference/standard-sql/data-definition-language#create_materialized_view_statement)
+  /// VIEW`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_materialized_view_statement)
   /// statement. * `CREATE_FUNCTION`: \[`CREATE
-  /// FUNCTION`\](/bigquery/docs/reference/standard-sql/data-definition-language#create_function_statement)
+  /// FUNCTION`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_function_statement)
   /// statement. * `CREATE_TABLE_FUNCTION`: \[`CREATE TABLE
-  /// FUNCTION`\](/bigquery/docs/reference/standard-sql/data-definition-language#create_table_function_statement)
+  /// FUNCTION`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_table_function_statement)
   /// statement. * `CREATE_PROCEDURE`: \[`CREATE
-  /// PROCEDURE`\](/bigquery/docs/reference/standard-sql/data-definition-language#create_procedure)
+  /// PROCEDURE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_procedure)
   /// statement. * `CREATE_ROW_ACCESS_POLICY`: \[`CREATE ROW ACCESS
-  /// POLICY`\](/bigquery/docs/reference/standard-sql/data-definition-language#create_row_access_policy_statement)
+  /// POLICY`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_row_access_policy_statement)
   /// statement. * `CREATE_SCHEMA`: \[`CREATE
-  /// SCHEMA`\](/bigquery/docs/reference/standard-sql/data-definition-language#create_schema_statement)
+  /// SCHEMA`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_schema_statement)
   /// statement. * `CREATE_SNAPSHOT_TABLE`: \[`CREATE SNAPSHOT
-  /// TABLE`\](/bigquery/docs/reference/standard-sql/data-definition-language#create_snapshot_table_statement)
+  /// TABLE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_snapshot_table_statement)
   /// statement. * `CREATE_SEARCH_INDEX`: \[`CREATE SEARCH
-  /// INDEX`\](/bigquery/docs/reference/standard-sql/data-definition-language#create_search_index_statement)
+  /// INDEX`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_search_index_statement)
   /// statement. * `DROP_TABLE`: \[`DROP
-  /// TABLE`\](/bigquery/docs/reference/standard-sql/data-definition-language#drop_table_statement)
+  /// TABLE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_table_statement)
   /// statement. * `DROP_EXTERNAL_TABLE`: \[`DROP EXTERNAL
-  /// TABLE`\](/bigquery/docs/reference/standard-sql/data-definition-language#drop_external_table_statement)
+  /// TABLE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_external_table_statement)
   /// statement. * `DROP_VIEW`: \[`DROP
-  /// VIEW`\](/bigquery/docs/reference/standard-sql/data-definition-language#drop_view_statement)
+  /// VIEW`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_view_statement)
   /// statement. * `DROP_MODEL`: \[`DROP
-  /// MODEL`\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-drop-model)
+  /// MODEL`\](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-drop-model)
   /// statement. * `DROP_MATERIALIZED_VIEW`: \[`DROP MATERIALIZED
-  /// VIEW`\](/bigquery/docs/reference/standard-sql/data-definition-language#drop_materialized_view_statement)
+  /// VIEW`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_materialized_view_statement)
   /// statement. * `DROP_FUNCTION` : \[`DROP
-  /// FUNCTION`\](/bigquery/docs/reference/standard-sql/data-definition-language#drop_function_statement)
+  /// FUNCTION`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_function_statement)
   /// statement. * `DROP_TABLE_FUNCTION` : \[`DROP TABLE
-  /// FUNCTION`\](/bigquery/docs/reference/standard-sql/data-definition-language#drop_table_function)
+  /// FUNCTION`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_table_function)
   /// statement. * `DROP_PROCEDURE`: \[`DROP
-  /// PROCEDURE`\](/bigquery/docs/reference/standard-sql/data-definition-language#drop_procedure_statement)
+  /// PROCEDURE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_procedure_statement)
   /// statement. * `DROP_SEARCH_INDEX`: \[`DROP SEARCH
-  /// INDEX`\](/bigquery/docs/reference/standard-sql/data-definition-language#drop_search_index)
+  /// INDEX`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_search_index)
   /// statement. * `DROP_SCHEMA`: \[`DROP
-  /// SCHEMA`\](/bigquery/docs/reference/standard-sql/data-definition-language#drop_schema_statement)
+  /// SCHEMA`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_schema_statement)
   /// statement. * `DROP_SNAPSHOT_TABLE`: \[`DROP SNAPSHOT
-  /// TABLE`\](/bigquery/docs/reference/standard-sql/data-definition-language#drop_snapshot_table_statement)
+  /// TABLE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_snapshot_table_statement)
   /// statement. * `DROP_ROW_ACCESS_POLICY`: \[`DROP [ALL] ROW ACCESS
-  /// POLICY|POLICIES`\](/bigquery/docs/reference/standard-sql/data-definition-language#drop_row_access_policy_statement)
+  /// POLICY|POLICIES`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_row_access_policy_statement)
   /// statement. * `ALTER_TABLE`: \[`ALTER
-  /// TABLE`\](/bigquery/docs/reference/standard-sql/data-definition-language#alter_table_set_options_statement)
+  /// TABLE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_table_set_options_statement)
   /// statement. * `ALTER_VIEW`: \[`ALTER
-  /// VIEW`\](/bigquery/docs/reference/standard-sql/data-definition-language#alter_view_set_options_statement)
+  /// VIEW`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_view_set_options_statement)
   /// statement. * `ALTER_MATERIALIZED_VIEW`: \[`ALTER MATERIALIZED
-  /// VIEW`\](/bigquery/docs/reference/standard-sql/data-definition-language#alter_materialized_view_set_options_statement)
+  /// VIEW`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_materialized_view_set_options_statement)
   /// statement. * `ALTER_SCHEMA`: \[`ALTER
-  /// SCHEMA`\](/bigquery/docs/reference/standard-sql/data-definition-language#aalter_schema_set_options_statement)
+  /// SCHEMA`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#aalter_schema_set_options_statement)
   /// statement. * `SCRIPT`:
-  /// \[`SCRIPT`\](/bigquery/docs/reference/standard-sql/procedural-language). *
-  /// `TRUNCATE_TABLE`: \[`TRUNCATE
-  /// TABLE`\](/bigquery/docs/reference/standard-sql/dml-syntax#truncate_table_statement)
+  /// \[`SCRIPT`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language).
+  /// * `TRUNCATE_TABLE`: \[`TRUNCATE
+  /// TABLE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax#truncate_table_statement)
   /// statement. * `CREATE_EXTERNAL_TABLE`: \[`CREATE EXTERNAL
-  /// TABLE`\](/bigquery/docs/reference/standard-sql/data-definition-language#create_external_table_statement)
+  /// TABLE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_external_table_statement)
   /// statement. * `EXPORT_DATA`: \[`EXPORT
-  /// DATA`\](/bigquery/docs/reference/standard-sql/other-statements#export_data_statement)
+  /// DATA`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/other-statements#export_data_statement)
   /// statement. * `EXPORT_MODEL`: \[`EXPORT
-  /// MODEL`\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-export-model)
+  /// MODEL`\](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-export-model)
   /// statement. * `LOAD_DATA`: \[`LOAD
-  /// DATA`\](/bigquery/docs/reference/standard-sql/other-statements#load_data_statement)
+  /// DATA`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/other-statements#load_data_statement)
   /// statement. * `CALL`:
-  /// \[`CALL`\](/bigquery/docs/reference/standard-sql/procedural-language#call)
+  /// \[`CALL`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language#call)
   /// statement.
   ///
   /// Output only.
@@ -10956,8 +11009,8 @@ class MetadataCacheStatistics {
 
 /// Job statistics specific to a BigQuery ML training job.
 class MlStatistics {
-  /// Trials of a \[hyperparameter tuning
-  /// job\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview)
+  /// Trials of a
+  /// [hyperparameter tuning job](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview)
   /// sorted by trial_id.
   ///
   /// Output only.
@@ -10965,8 +11018,8 @@ class MlStatistics {
 
   /// Results for all completed iterations.
   ///
-  /// Empty for \[hyperparameter tuning
-  /// jobs\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview).
+  /// Empty for
+  /// [hyperparameter tuning jobs](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview).
   core.List<IterationResult>? iterationResults;
 
   /// Maximum number of iterations specified as max_iterations in the 'CREATE
@@ -11006,8 +11059,9 @@ class MlStatistics {
   /// - "RANDOM_FOREST_CLASSIFIER" : Random forest classifier model.
   /// - "TENSORFLOW_LITE" : An imported TensorFlow Lite model.
   /// - "ONNX" : An imported ONNX model.
-  /// - "TRANSFORM_ONLY" : Model to capture the manual preprocessing logic in
-  /// the transform clause.
+  /// - "TRANSFORM_ONLY" : Model to capture the columns and logic in the
+  /// TRANSFORM clause along with statistics useful for ML analytic functions.
+  /// - "CONTRIBUTION_ANALYSIS" : The contribution analysis model.
   core.String? modelType;
 
   /// Training type of the job.
@@ -11016,8 +11070,8 @@ class MlStatistics {
   /// Possible string values are:
   /// - "TRAINING_TYPE_UNSPECIFIED" : Unspecified training type.
   /// - "SINGLE_TRAINING" : Single training with fixed parameter space.
-  /// - "HPARAM_TUNING" : \[Hyperparameter tuning
-  /// training\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview).
+  /// - "HPARAM_TUNING" :
+  /// [Hyperparameter tuning training](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview).
   core.String? trainingType;
 
   MlStatistics({
@@ -11066,10 +11120,10 @@ class Model {
 
   /// The default trial_id to use in TVFs when the trial_id is not passed in.
   ///
-  /// For single-objective \[hyperparameter
-  /// tuning\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview)
-  /// models, this is the best trial ID. For multi-objective \[hyperparameter
-  /// tuning\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview)
+  /// For single-objective
+  /// [hyperparameter tuning](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview)
+  /// models, this is the best trial ID. For multi-objective
+  /// [hyperparameter tuning](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview)
   /// models, this is the smallest trial ID among all Pareto optimal trials.
   ///
   /// Output only.
@@ -11120,8 +11174,8 @@ class Model {
   /// Output only.
   HparamSearchSpaces? hparamSearchSpaces;
 
-  /// Trials of a \[hyperparameter
-  /// tuning\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview)
+  /// Trials of a
+  /// [hyperparameter tuning](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview)
   /// model sorted by trial_id.
   ///
   /// Output only.
@@ -11188,16 +11242,17 @@ class Model {
   /// - "RANDOM_FOREST_CLASSIFIER" : Random forest classifier model.
   /// - "TENSORFLOW_LITE" : An imported TensorFlow Lite model.
   /// - "ONNX" : An imported ONNX model.
-  /// - "TRANSFORM_ONLY" : Model to capture the manual preprocessing logic in
-  /// the transform clause.
+  /// - "TRANSFORM_ONLY" : Model to capture the columns and logic in the
+  /// TRANSFORM clause along with statistics useful for ML analytic functions.
+  /// - "CONTRIBUTION_ANALYSIS" : The contribution analysis model.
   core.String? modelType;
 
-  /// For single-objective \[hyperparameter
-  /// tuning\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview)
+  /// For single-objective
+  /// [hyperparameter tuning](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview)
   /// models, it only contains the best trial.
   ///
-  /// For multi-objective \[hyperparameter
-  /// tuning\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview)
+  /// For multi-objective
+  /// [hyperparameter tuning](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview)
   /// models, it contains all Pareto optimal trials sorted by trial_id.
   ///
   /// Output only.
@@ -11396,7 +11451,7 @@ class ModelExtractOptions {
   /// model.
   ///
   /// If not specified, the trial with id =
-  /// \[Model\](/bigquery/docs/reference/rest/v2/models#resource:-model).defaultTrialId
+  /// [Model](https://cloud.google.com/bigquery/docs/reference/rest/v2/models#resource:-model).defaultTrialId
   /// is exported. This field is ignored for models not trained with
   /// hyperparameter tuning.
   core.String? trialId;
@@ -11564,7 +11619,7 @@ class PartitionSkew {
 class PartitionedColumn {
   /// The name of the partition column.
   ///
-  /// Output only.
+  /// Required.
   core.String? field;
 
   PartitionedColumn({
@@ -11581,15 +11636,21 @@ class PartitionedColumn {
       };
 }
 
-/// The partitioning information, which includes managed table and external
-/// table partition information.
+/// The partitioning information, which includes managed table, external table
+/// and metastore partitioned table partition information.
 class PartitioningDefinition {
   /// Details about each partitioning column.
   ///
-  /// BigQuery native tables only support 1 partitioning column. Other table
-  /// types may support 0, 1 or more partitioning columns.
+  /// This field is output only for all partitioning types other than metastore
+  /// partitioned tables. BigQuery native tables only support 1 partitioning
+  /// column. Other table types may support 0, 1 or more partitioning columns.
+  /// For metastore partitioned tables, the order must match the definition
+  /// order in the Hive Metastore, where it must match the physical layout of
+  /// the table. For example, CREATE TABLE a_table(id BIGINT, name STRING)
+  /// PARTITIONED BY (city STRING, state STRING). In this case the values must
+  /// be \['city', 'state'\] in that order.
   ///
-  /// Output only.
+  /// Optional.
   core.List<PartitionedColumn>? partitionedColumn;
 
   PartitioningDefinition({
@@ -12285,8 +12346,8 @@ class QueryRequest {
   /// If not set, jobs are always required.
   ///
   /// If set, the query request will follow the behavior described
-  /// JobCreationMode. This feature is not yet available. Jobs will always be
-  /// created.
+  /// JobCreationMode.
+  /// [Preview](https://cloud.google.com/products/#product-launch-stages)
   ///
   /// Optional.
   /// Possible string values are:
@@ -12535,13 +12596,11 @@ class QueryResponse {
   /// false, totalRows will not be available.
   core.bool? jobComplete;
 
-  /// Only relevant when a job_reference is present in the response.
+  /// The reason why a Job was created.
   ///
-  /// If job_reference is not present it will always be unset. When
-  /// job_reference is present, this field should be interpreted as follows: If
-  /// set, it will provide the reason of why a Job was created. If not set, it
-  /// should be treated as the default: REQUESTED. This feature is not yet
-  /// available. Jobs will always be created.
+  /// Only relevant when a job_reference is present in the response. If
+  /// job_reference is not present it will always be unset.
+  /// [Preview](https://cloud.google.com/products/#product-launch-stages)
   ///
   /// Optional.
   JobCreationReason? jobCreationReason;
@@ -12552,6 +12611,8 @@ class QueryResponse {
   /// which case GetQueryResults can be used to read the results once the query
   /// has completed. Since this API only returns the first page of results,
   /// subsequent pages can be fetched via the same mechanism (GetQueryResults).
+  /// If job_creation_mode was set to `JOB_CREATION_OPTIONAL` and the query
+  /// completes without creating a job, this field will be empty.
   JobReference? jobReference;
 
   /// The resource type.
@@ -12573,10 +12634,9 @@ class QueryResponse {
   /// [Paging through table data](https://cloud.google.com/bigquery/docs/paging-results).
   core.String? pageToken;
 
-  /// Query ID for the completed query.
+  /// Auto-generated ID for the query.
   ///
-  /// This ID will be auto-generated. This field is not yet available and it is
-  /// currently not guaranteed to be populated.
+  /// [Preview](https://cloud.google.com/products/#product-launch-stages)
   core.String? queryId;
 
   /// An object with as many results as can be contained within the maximum
@@ -12777,10 +12837,9 @@ class RangePartitioningRange {
 }
 
 class RangePartitioning {
-  /// \[Experimental\] The table is partitioned by this field.
+  /// The name of the column to partition the table on.
   ///
-  /// The field must be a top-level NULLABLE/REQUIRED field. The only supported
-  /// type is INTEGER/INT64.
+  /// It must be a top-level, INT64 column whose mode is NULLABLE or REQUIRED.
   ///
   /// Required.
   core.String? field;
@@ -13102,9 +13161,9 @@ class RestrictionConfig {
   /// Output only.
   /// Possible string values are:
   /// - "RESTRICTION_TYPE_UNSPECIFIED" : Should never be used.
-  /// - "RESTRICTED_DATA_EGRESS" : Restrict data egress. See \[Data
-  /// egress\](/bigquery/docs/analytics-hub-introduction#data_egress) for more
-  /// details.
+  /// - "RESTRICTED_DATA_EGRESS" : Restrict data egress. See
+  /// [Data egress](https://cloud.google.com/bigquery/docs/analytics-hub-introduction#data_egress)
+  /// for more details.
   core.String? type;
 
   RestrictionConfig({
@@ -14308,7 +14367,8 @@ class StagePerformanceStandaloneInsight {
 /// "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT\>: {
 /// "typeKind": "STRUCT", "structType": { "fields": \[ { "name": "x", "type":
 /// {"typeKind": "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY",
-/// "arrayElementType": {"typeKind": "DATE"} } } \] } }
+/// "arrayElementType": {"typeKind": "DATE"} } } \] } } * RANGE: { "typeKind":
+/// "RANGE", "rangeElementType": {"typeKind": "DATE"} }
 class StandardSqlDataType {
   /// The type of the array's elements, if type_kind = "ARRAY".
   StandardSqlDataType? arrayElementType;
@@ -14476,8 +14536,8 @@ class StorageDescriptor {
   core.String? inputFormat;
 
   /// The physical location of the table (e.g.
-  /// 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or
-  /// 'gs://spark-dataproc-data/pangea-data / * ').
+  /// `gs://spark-dataproc-data/pangea-data/case_sensitive/` or
+  /// `gs://spark-dataproc-data/pangea-data / * `).
   ///
   /// The maximum length is 2056 bytes.
   ///
@@ -14865,10 +14925,13 @@ class Table {
   core.String? numTotalPhysicalBytes;
 
   /// The partition information for all table formats, including managed
-  /// partitioned tables, hive partitioned tables, and iceberg partitioned
-  /// tables.
+  /// partitioned tables, hive partitioned tables, iceberg partitioned, and
+  /// metastore partitioned tables.
   ///
-  /// Output only.
+  /// This field is only populated for metastore partitioned tables. For other
+  /// table formats, this is an output only field.
+  ///
+  /// Optional.
   PartitioningDefinition? partitionDefinition;
 
   /// If specified, configures range partitioning for this table.
@@ -14900,8 +14963,8 @@ class Table {
   /// Restriction config for table.
   ///
   /// If set, restrict certain accesses on the table based on the config. See
-  /// \[Data egress\](/bigquery/docs/analytics-hub-introduction#data_egress) for
-  /// more details.
+  /// [Data egress](https://cloud.google.com/bigquery/docs/analytics-hub-introduction#data_egress)
+  /// for more details.
   ///
   /// Optional. Output only.
   RestrictionConfig? restrictions;
@@ -14958,9 +15021,9 @@ class Table {
   /// references data stored in an external storage system, such as Google Cloud
   /// Storage. * `MATERIALIZED_VIEW`: A precomputed view defined by a SQL query.
   /// * `SNAPSHOT`: An immutable BigQuery table that preserves the contents of a
-  /// base table at a particular time. See additional information on \[table
-  /// snapshots\](/bigquery/docs/table-snapshots-intro). The default value is
-  /// `TABLE`.
+  /// base table at a particular time. See additional information on
+  /// [table snapshots](https://cloud.google.com/bigquery/docs/table-snapshots-intro).
+  /// The default value is `TABLE`.
   ///
   /// Output only.
   core.String? type;
@@ -15714,6 +15777,11 @@ class TableFieldSchema {
   /// Optional.
   core.String? collation;
 
+  /// Data policy options, will replace the data_policies.
+  ///
+  /// Optional.
+  core.List<DataPolicyOption>? dataPolicies;
+
   /// A SQL expression to specify the
   /// [default value](https://cloud.google.com/bigquery/docs/default-values) for
   /// this field.
@@ -15828,9 +15896,8 @@ class TableFieldSchema {
   ///
   /// Possible values include: * STRING * BYTES * INTEGER (or INT64) * FLOAT (or
   /// FLOAT64) * BOOLEAN (or BOOL) * TIMESTAMP * DATE * TIME * DATETIME *
-  /// GEOGRAPHY * NUMERIC * BIGNUMERIC * JSON * RECORD (or STRUCT) * RANGE
-  /// (\[Preview\](/products/#product-launch-stages)) Use of RECORD/STRUCT
-  /// indicates that the field contains a nested schema.
+  /// GEOGRAPHY * NUMERIC * BIGNUMERIC * JSON * RECORD (or STRUCT) * RANGE Use
+  /// of RECORD/STRUCT indicates that the field contains a nested schema.
   ///
   /// Required.
   core.String? type;
@@ -15838,6 +15905,7 @@ class TableFieldSchema {
   TableFieldSchema({
     this.categories,
     this.collation,
+    this.dataPolicies,
     this.defaultValueExpression,
     this.description,
     this.fields,
@@ -15860,6 +15928,10 @@ class TableFieldSchema {
                   json_['categories'] as core.Map<core.String, core.dynamic>)
               : null,
           collation: json_['collation'] as core.String?,
+          dataPolicies: (json_['dataPolicies'] as core.List?)
+              ?.map((value) => DataPolicyOption.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           defaultValueExpression:
               json_['defaultValueExpression'] as core.String?,
           description: json_['description'] as core.String?,
@@ -15889,6 +15961,7 @@ class TableFieldSchema {
   core.Map<core.String, core.dynamic> toJson() => {
         if (categories != null) 'categories': categories!,
         if (collation != null) 'collation': collation!,
+        if (dataPolicies != null) 'dataPolicies': dataPolicies!,
         if (defaultValueExpression != null)
           'defaultValueExpression': defaultValueExpression!,
         if (description != null) 'description': description!,
@@ -16112,10 +16185,14 @@ class TableMetadataCacheUsage {
   /// Free form human-readable reason metadata caching was unused for the job.
   core.String? explanation;
 
+  /// Duration since last refresh as of this job for managed tables (indicates
+  /// metadata cache staleness as seen by this job).
+  core.String? staleness;
+
   /// Metadata caching eligible table referenced in the query.
   TableReference? tableReference;
 
-  /// \[Table type\](/bigquery/docs/reference/rest/v2/tables#Table.FIELDS.type).
+  /// [Table type](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#Table.FIELDS.type).
   core.String? tableType;
 
   /// Reason for not using metadata caching for the table.
@@ -16132,6 +16209,7 @@ class TableMetadataCacheUsage {
 
   TableMetadataCacheUsage({
     this.explanation,
+    this.staleness,
     this.tableReference,
     this.tableType,
     this.unusedReason,
@@ -16140,6 +16218,7 @@ class TableMetadataCacheUsage {
   TableMetadataCacheUsage.fromJson(core.Map json_)
       : this(
           explanation: json_['explanation'] as core.String?,
+          staleness: json_['staleness'] as core.String?,
           tableReference: json_.containsKey('tableReference')
               ? TableReference.fromJson(json_['tableReference']
                   as core.Map<core.String, core.dynamic>)
@@ -16150,6 +16229,7 @@ class TableMetadataCacheUsage {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (explanation != null) 'explanation': explanation!,
+        if (staleness != null) 'staleness': staleness!,
         if (tableReference != null) 'tableReference': tableReference!,
         if (tableType != null) 'tableType': tableType!,
         if (unusedReason != null) 'unusedReason': unusedReason!,
@@ -16472,6 +16552,14 @@ class TrainingOptions {
   /// models.
   core.double? colsampleBytree;
 
+  /// The contribution metric.
+  ///
+  /// Applies to contribution analysis models. Allowed formats supported are for
+  /// summable and summable ratio contribution metrics. These include
+  /// expressions such as "SUM(x)" or "SUM(x)/SUM(y)", where x and y are column
+  /// names from the base table.
+  core.String? contributionMetric;
+
   /// Type of normalization algorithm for boosted tree models using dart
   /// booster.
   /// Possible string values are:
@@ -16524,6 +16612,13 @@ class TrainingOptions {
 
   /// If true, perform decompose time series and save the results.
   core.bool? decomposeTimeSeries;
+
+  /// Names of the columns to slice on.
+  ///
+  /// Applies to contribution analysis models.
+  ///
+  /// Optional.
+  core.List<core.String>? dimensionIdColumns;
 
   /// Distance type for clustering models.
   /// Possible string values are:
@@ -16662,6 +16757,12 @@ class TrainingOptions {
   /// Number of integral steps for the integrated gradients explain method.
   core.String? integratedGradientsNumSteps;
 
+  /// Name of the column used to determine the rows corresponding to control and
+  /// test.
+  ///
+  /// Applies to contribution analysis models.
+  core.String? isTestColumn;
+
   /// Item column specified for matrix factorization models.
   core.String? itemColumn;
 
@@ -16730,6 +16831,11 @@ class TrainingOptions {
 
   /// Maximum depth of a tree for boosted tree models.
   core.String? maxTreeDepth;
+
+  /// The apriori support minimum.
+  ///
+  /// Applies to contribution analysis models.
+  core.double? minAprioriSupport;
 
   /// When early_stop is true, stops training when accuracy improvement is less
   /// than 'min_relative_progress'.
@@ -16911,12 +17017,14 @@ class TrainingOptions {
     this.colsampleBylevel,
     this.colsampleBynode,
     this.colsampleBytree,
+    this.contributionMetric,
     this.dartNormalizeType,
     this.dataFrequency,
     this.dataSplitColumn,
     this.dataSplitEvalFraction,
     this.dataSplitMethod,
     this.decomposeTimeSeries,
+    this.dimensionIdColumns,
     this.distanceType,
     this.dropout,
     this.earlyStop,
@@ -16933,6 +17041,7 @@ class TrainingOptions {
     this.inputLabelColumns,
     this.instanceWeightColumn,
     this.integratedGradientsNumSteps,
+    this.isTestColumn,
     this.itemColumn,
     this.kmeansInitializationColumn,
     this.kmeansInitializationMethod,
@@ -16947,6 +17056,7 @@ class TrainingOptions {
     this.maxParallelTrials,
     this.maxTimeSeriesLength,
     this.maxTreeDepth,
+    this.minAprioriSupport,
     this.minRelativeProgress,
     this.minSplitLoss,
     this.minTimeSeriesLength,
@@ -17004,6 +17114,7 @@ class TrainingOptions {
               (json_['colsampleBylevel'] as core.num?)?.toDouble(),
           colsampleBynode: (json_['colsampleBynode'] as core.num?)?.toDouble(),
           colsampleBytree: (json_['colsampleBytree'] as core.num?)?.toDouble(),
+          contributionMetric: json_['contributionMetric'] as core.String?,
           dartNormalizeType: json_['dartNormalizeType'] as core.String?,
           dataFrequency: json_['dataFrequency'] as core.String?,
           dataSplitColumn: json_['dataSplitColumn'] as core.String?,
@@ -17011,6 +17122,9 @@ class TrainingOptions {
               (json_['dataSplitEvalFraction'] as core.num?)?.toDouble(),
           dataSplitMethod: json_['dataSplitMethod'] as core.String?,
           decomposeTimeSeries: json_['decomposeTimeSeries'] as core.bool?,
+          dimensionIdColumns: (json_['dimensionIdColumns'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           distanceType: json_['distanceType'] as core.String?,
           dropout: (json_['dropout'] as core.num?)?.toDouble(),
           earlyStop: json_['earlyStop'] as core.bool?,
@@ -17038,6 +17152,7 @@ class TrainingOptions {
           instanceWeightColumn: json_['instanceWeightColumn'] as core.String?,
           integratedGradientsNumSteps:
               json_['integratedGradientsNumSteps'] as core.String?,
+          isTestColumn: json_['isTestColumn'] as core.String?,
           itemColumn: json_['itemColumn'] as core.String?,
           kmeansInitializationColumn:
               json_['kmeansInitializationColumn'] as core.String?,
@@ -17063,6 +17178,8 @@ class TrainingOptions {
           maxParallelTrials: json_['maxParallelTrials'] as core.String?,
           maxTimeSeriesLength: json_['maxTimeSeriesLength'] as core.String?,
           maxTreeDepth: json_['maxTreeDepth'] as core.String?,
+          minAprioriSupport:
+              (json_['minAprioriSupport'] as core.num?)?.toDouble(),
           minRelativeProgress:
               (json_['minRelativeProgress'] as core.num?)?.toDouble(),
           minSplitLoss: (json_['minSplitLoss'] as core.num?)?.toDouble(),
@@ -17134,6 +17251,8 @@ class TrainingOptions {
         if (colsampleBylevel != null) 'colsampleBylevel': colsampleBylevel!,
         if (colsampleBynode != null) 'colsampleBynode': colsampleBynode!,
         if (colsampleBytree != null) 'colsampleBytree': colsampleBytree!,
+        if (contributionMetric != null)
+          'contributionMetric': contributionMetric!,
         if (dartNormalizeType != null) 'dartNormalizeType': dartNormalizeType!,
         if (dataFrequency != null) 'dataFrequency': dataFrequency!,
         if (dataSplitColumn != null) 'dataSplitColumn': dataSplitColumn!,
@@ -17142,6 +17261,8 @@ class TrainingOptions {
         if (dataSplitMethod != null) 'dataSplitMethod': dataSplitMethod!,
         if (decomposeTimeSeries != null)
           'decomposeTimeSeries': decomposeTimeSeries!,
+        if (dimensionIdColumns != null)
+          'dimensionIdColumns': dimensionIdColumns!,
         if (distanceType != null) 'distanceType': distanceType!,
         if (dropout != null) 'dropout': dropout!,
         if (earlyStop != null) 'earlyStop': earlyStop!,
@@ -17162,6 +17283,7 @@ class TrainingOptions {
           'instanceWeightColumn': instanceWeightColumn!,
         if (integratedGradientsNumSteps != null)
           'integratedGradientsNumSteps': integratedGradientsNumSteps!,
+        if (isTestColumn != null) 'isTestColumn': isTestColumn!,
         if (itemColumn != null) 'itemColumn': itemColumn!,
         if (kmeansInitializationColumn != null)
           'kmeansInitializationColumn': kmeansInitializationColumn!,
@@ -17179,6 +17301,7 @@ class TrainingOptions {
         if (maxTimeSeriesLength != null)
           'maxTimeSeriesLength': maxTimeSeriesLength!,
         if (maxTreeDepth != null) 'maxTreeDepth': maxTreeDepth!,
+        if (minAprioriSupport != null) 'minAprioriSupport': minAprioriSupport!,
         if (minRelativeProgress != null)
           'minRelativeProgress': minRelativeProgress!,
         if (minSplitLoss != null) 'minSplitLoss': minSplitLoss!,

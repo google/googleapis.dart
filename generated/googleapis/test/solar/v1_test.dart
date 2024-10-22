@@ -861,6 +861,40 @@ void checkSolarPotential(api.SolarPotential o) {
   buildCounterSolarPotential--;
 }
 
+core.List<core.String> buildUnnamed9() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed9(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed10() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed10(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 void main() {
   unittest.group('obj-schema-BuildingInsights', () {
     unittest.test('to-json--from-json', () async {
@@ -1056,6 +1090,7 @@ void main() {
     unittest.test('method--findClosest', () async {
       final mock = HttpServerMock();
       final res = api.SolarApi(mock).buildingInsights;
+      final arg_experiments = buildUnnamed9();
       final arg_location_latitude = 42.0;
       final arg_location_longitude = 42.0;
       final arg_requiredQuality = 'foo';
@@ -1092,6 +1127,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['experiments']!,
+          unittest.equals(arg_experiments),
+        );
+        unittest.expect(
           core.num.parse(queryMap['location.latitude']!.first),
           unittest.equals(arg_location_latitude),
         );
@@ -1115,6 +1154,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.findClosest(
+          experiments: arg_experiments,
           location_latitude: arg_location_latitude,
           location_longitude: arg_location_longitude,
           requiredQuality: arg_requiredQuality,
@@ -1128,6 +1168,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.SolarApi(mock).dataLayers;
       final arg_exactQualityRequired = true;
+      final arg_experiments = buildUnnamed10();
       final arg_location_latitude = 42.0;
       final arg_location_longitude = 42.0;
       final arg_pixelSizeMeters = 42.0;
@@ -1171,6 +1212,10 @@ void main() {
           unittest.equals('$arg_exactQualityRequired'),
         );
         unittest.expect(
+          queryMap['experiments']!,
+          unittest.equals(arg_experiments),
+        );
+        unittest.expect(
           core.num.parse(queryMap['location.latitude']!.first),
           unittest.equals(arg_location_latitude),
         );
@@ -1207,6 +1252,7 @@ void main() {
       }), true);
       final response = await res.get(
           exactQualityRequired: arg_exactQualityRequired,
+          experiments: arg_experiments,
           location_latitude: arg_location_latitude,
           location_longitude: arg_location_longitude,
           pixelSizeMeters: arg_pixelSizeMeters,

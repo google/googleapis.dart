@@ -1323,7 +1323,7 @@ class ProjectsLocationsAgentsEnvironmentsResource {
   /// Request parameters:
   ///
   /// [environment] - Required. The environment to deploy the flow to. Format:
-  /// `projects//locations//agents// environments/`.
+  /// `projects//locations//agents//environments/`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/environments/\[^/\]+$`.
   ///
@@ -1613,7 +1613,7 @@ class ProjectsLocationsAgentsEnvironmentsContinuousTestResultsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The environment to list results for. Format:
-  /// `projects//locations//agents// environments/`.
+  /// `projects//locations//agents//environments/`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/environments/\[^/\]+$`.
   ///
@@ -1934,7 +1934,7 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the experiment. Format:
-  /// projects//locations//agents//environments//experiments/..
+  /// projects//locations//agents//environments//experiments/.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/environments/\[^/\]+/experiments/\[^/\]+$`.
   ///
@@ -3695,8 +3695,8 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
   ///
   /// [baseVersion] - Required. Name of the base flow version to compare with
   /// the target version. Use version ID `0` to indicate the draft version of
-  /// the specified flow. Format: `projects//locations//agents/
-  /// /flows//versions/`.
+  /// the specified flow. Format:
+  /// `projects//locations//agents//flows//versions/`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/flows/\[^/\]+/versions/\[^/\]+$`.
   ///
@@ -5203,7 +5203,7 @@ class ProjectsLocationsAgentsTestCasesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Agent name. Format: `projects//locations//agents/ `.
+  /// [parent] - Required. Agent name. Format: `projects//locations//agents/`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+$`.
   ///
@@ -5538,7 +5538,7 @@ class ProjectsLocationsAgentsTestCasesResource {
   ///
   /// [name] - The unique identifier of the test case. TestCases.CreateTestCase
   /// will populate the name automatically. Otherwise use format:
-  /// `projects//locations//agents/ /testCases/`.
+  /// `projects//locations//agents//testCases/`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/testCases/\[^/\]+$`.
   ///
@@ -5590,8 +5590,8 @@ class ProjectsLocationsAgentsTestCasesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Format of test case name to run: `projects//locations/
-  /// /agents//testCases/`.
+  /// [name] - Required. Format of test case name to run:
+  /// `projects//locations//agents//testCases/`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/testCases/\[^/\]+$`.
   ///
@@ -5679,8 +5679,8 @@ class ProjectsLocationsAgentsTestCasesResultsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The test case to list results for. Format:
-  /// `projects//locations//agents// testCases/`. Specify a `-` as a wildcard
-  /// for TestCase ID to list results across multiple test cases.
+  /// `projects//locations//agents//testCases/`. Specify a `-` as a wildcard for
+  /// TestCase ID to list results across multiple test cases.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/testCases/\[^/\]+$`.
   ///
@@ -6900,13 +6900,19 @@ class GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings {
 
 /// Define behaviors on logging.
 class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings {
+  /// Enables consent-based end-user input redaction, if true, a pre-defined
+  /// session parameter `$session.params.conversation-redaction` will be used to
+  /// determine if the utterance should be redacted.
+  core.bool? enableConsentBasedRedaction;
+
   /// Enables DF Interaction logging.
   core.bool? enableInteractionLogging;
 
-  /// Enables StackDriver logging.
+  /// Enables Google Cloud Logging.
   core.bool? enableStackdriverLogging;
 
   GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings({
+    this.enableConsentBasedRedaction,
     this.enableInteractionLogging,
     this.enableStackdriverLogging,
   });
@@ -6914,6 +6920,8 @@ class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings {
   GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings.fromJson(
       core.Map json_)
       : this(
+          enableConsentBasedRedaction:
+              json_['enableConsentBasedRedaction'] as core.bool?,
           enableInteractionLogging:
               json_['enableInteractionLogging'] as core.bool?,
           enableStackdriverLogging:
@@ -6921,6 +6929,8 @@ class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (enableConsentBasedRedaction != null)
+          'enableConsentBasedRedaction': enableConsentBasedRedaction!,
         if (enableInteractionLogging != null)
           'enableInteractionLogging': enableInteractionLogging!,
         if (enableStackdriverLogging != null)
@@ -7007,6 +7017,12 @@ class GoogleCloudDialogflowCxV3Agent {
   /// [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo)
   /// integration.
   core.String? avatarUri;
+
+  /// Settings for custom client certificates.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3AgentClientCertificateSettings?
+      clientCertificateSettings;
 
   /// The default language of the agent as a language tag.
   ///
@@ -7108,6 +7124,7 @@ class GoogleCloudDialogflowCxV3Agent {
     this.advancedSettings,
     this.answerFeedbackSettings,
     this.avatarUri,
+    this.clientCertificateSettings,
     this.defaultLanguageCode,
     this.description,
     this.displayName,
@@ -7140,6 +7157,12 @@ class GoogleCloudDialogflowCxV3Agent {
                       as core.Map<core.String, core.dynamic>)
               : null,
           avatarUri: json_['avatarUri'] as core.String?,
+          clientCertificateSettings:
+              json_.containsKey('clientCertificateSettings')
+                  ? GoogleCloudDialogflowCxV3AgentClientCertificateSettings
+                      .fromJson(json_['clientCertificateSettings']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           defaultLanguageCode: json_['defaultLanguageCode'] as core.String?,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
@@ -7189,6 +7212,8 @@ class GoogleCloudDialogflowCxV3Agent {
         if (answerFeedbackSettings != null)
           'answerFeedbackSettings': answerFeedbackSettings!,
         if (avatarUri != null) 'avatarUri': avatarUri!,
+        if (clientCertificateSettings != null)
+          'clientCertificateSettings': clientCertificateSettings!,
         if (defaultLanguageCode != null)
           'defaultLanguageCode': defaultLanguageCode!,
         if (description != null) 'description': description!,
@@ -7242,6 +7267,53 @@ class GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings {
   core.Map<core.String, core.dynamic> toJson() => {
         if (enableAnswerFeedback != null)
           'enableAnswerFeedback': enableAnswerFeedback!,
+      };
+}
+
+/// Settings for custom client certificates.
+class GoogleCloudDialogflowCxV3AgentClientCertificateSettings {
+  /// The name of the SecretManager secret version resource storing the
+  /// passphrase.
+  ///
+  /// 'passphrase' should be left unset if the private key is not encrypted.
+  /// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+  ///
+  /// Optional.
+  core.String? passphrase;
+
+  /// The name of the SecretManager secret version resource storing the private
+  /// key encoded in PEM format.
+  ///
+  /// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+  ///
+  /// Required.
+  core.String? privateKey;
+
+  /// The ssl certificate encoded in PEM format.
+  ///
+  /// This string must include the begin header and end footer lines.
+  ///
+  /// Required.
+  core.String? sslCertificate;
+
+  GoogleCloudDialogflowCxV3AgentClientCertificateSettings({
+    this.passphrase,
+    this.privateKey,
+    this.sslCertificate,
+  });
+
+  GoogleCloudDialogflowCxV3AgentClientCertificateSettings.fromJson(
+      core.Map json_)
+      : this(
+          passphrase: json_['passphrase'] as core.String?,
+          privateKey: json_['privateKey'] as core.String?,
+          sslCertificate: json_['sslCertificate'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (passphrase != null) 'passphrase': passphrase!,
+        if (privateKey != null) 'privateKey': privateKey!,
+        if (sslCertificate != null) 'sslCertificate': sslCertificate!,
       };
 }
 
@@ -7577,7 +7649,7 @@ class GoogleCloudDialogflowCxV3BargeInConfig {
 
 /// The request message for TestCases.BatchDeleteTestCases.
 class GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest {
-  /// Format of test case names: `projects//locations/ /agents//testCases/`.
+  /// Format of test case names: `projects//locations//agents//testCases/`.
   ///
   /// Required.
   core.List<core.String>? names;
@@ -7685,6 +7757,13 @@ class GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec {
   /// Optional.
   core.double? boost;
 
+  /// Complex specification for custom ranking based on customer defined
+  /// attribute value.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec?
+      boostControlSpec;
+
   /// An expression which specifies a boost condition.
   ///
   /// The syntax and supported fields are the same as a filter expression.
@@ -7697,18 +7776,144 @@ class GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec {
 
   GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec({
     this.boost,
+    this.boostControlSpec,
     this.condition,
   });
 
   GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec.fromJson(core.Map json_)
       : this(
           boost: (json_['boost'] as core.num?)?.toDouble(),
+          boostControlSpec: json_.containsKey('boostControlSpec')
+              ? GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec
+                  .fromJson(json_['boostControlSpec']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           condition: json_['condition'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boost != null) 'boost': boost!,
+        if (boostControlSpec != null) 'boostControlSpec': boostControlSpec!,
         if (condition != null) 'condition': condition!,
+      };
+}
+
+/// Specification for custom ranking based on customer specified attribute
+/// value.
+///
+/// It provides more controls for customized ranking than the simple (condition,
+/// boost) combination above.
+class GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec {
+  /// The attribute type to be used to determine the boost amount.
+  ///
+  /// The attribute value can be derived from the field value of the specified
+  /// field_name. In the case of numerical it is straightforward i.e.
+  /// attribute_value = numerical_field_value. In the case of freshness however,
+  /// attribute_value = (time.now() - datetime_field_value).
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ATTRIBUTE_TYPE_UNSPECIFIED" : Unspecified AttributeType.
+  /// - "NUMERICAL" : The value of the numerical field will be used to
+  /// dynamically update the boost amount. In this case, the attribute_value
+  /// (the x value) of the control point will be the actual value of the
+  /// numerical field for which the boost_amount is specified.
+  /// - "FRESHNESS" : For the freshness use case the attribute value will be the
+  /// duration between the current time and the date in the datetime field
+  /// specified. The value must be formatted as an XSD `dayTimeDuration` value
+  /// (a restricted subset of an ISO 8601 duration value). The pattern for this
+  /// is: `nDnM]`. E.g. `5D`, `3DT12H30M`, `T24H`.
+  core.String? attributeType;
+
+  /// The control points used to define the curve.
+  ///
+  /// The monotonic function (defined through the interpolation_type above)
+  /// passes through the control points listed here.
+  ///
+  /// Optional.
+  core.List<
+          GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint>?
+      controlPoints;
+
+  /// The name of the field whose value will be used to determine the boost
+  /// amount.
+  ///
+  /// Optional.
+  core.String? fieldName;
+
+  /// The interpolation type to be applied to connect the control points listed
+  /// below.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "INTERPOLATION_TYPE_UNSPECIFIED" : Interpolation type is unspecified. In
+  /// this case, it defaults to Linear.
+  /// - "LINEAR" : Piecewise linear interpolation will be applied.
+  core.String? interpolationType;
+
+  GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec({
+    this.attributeType,
+    this.controlPoints,
+    this.fieldName,
+    this.interpolationType,
+  });
+
+  GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec.fromJson(
+      core.Map json_)
+      : this(
+          attributeType: json_['attributeType'] as core.String?,
+          controlPoints: (json_['controlPoints'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          fieldName: json_['fieldName'] as core.String?,
+          interpolationType: json_['interpolationType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributeType != null) 'attributeType': attributeType!,
+        if (controlPoints != null) 'controlPoints': controlPoints!,
+        if (fieldName != null) 'fieldName': fieldName!,
+        if (interpolationType != null) 'interpolationType': interpolationType!,
+      };
+}
+
+/// The control points used to define the curve.
+///
+/// The curve defined through these control points can only be monotonically
+/// increasing or decreasing(constant values are acceptable).
+class GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint {
+  /// Can be one of: 1.
+  ///
+  /// The numerical field value. 2. The duration spec for freshness: The value
+  /// must be formatted as an XSD `dayTimeDuration` value (a restricted subset
+  /// of an ISO 8601 duration value). The pattern for this is: `nDnM]`.
+  ///
+  /// Optional.
+  core.String? attributeValue;
+
+  /// The value between -1 to 1 by which to boost the score if the
+  /// attribute_value evaluates to the value specified above.
+  ///
+  /// Optional.
+  core.double? boostAmount;
+
+  GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint({
+    this.attributeValue,
+    this.boostAmount,
+  });
+
+  GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint.fromJson(
+      core.Map json_)
+      : this(
+          attributeValue: json_['attributeValue'] as core.String?,
+          boostAmount: (json_['boostAmount'] as core.num?)?.toDouble(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributeValue != null) 'attributeValue': attributeValue!,
+        if (boostAmount != null) 'boostAmount': boostAmount!,
       };
 }
 
@@ -8530,7 +8735,7 @@ class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet {
 class GoogleCloudDialogflowCxV3DeployFlowRequest {
   /// The flow version to deploy.
   ///
-  /// Format: `projects//locations//agents// flows//versions/`.
+  /// Format: `projects//locations//agents//flows//versions/`.
   ///
   /// Required.
   core.String? flowVersion;
@@ -9084,7 +9289,7 @@ class GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig {
   /// A list of test case names to run.
   ///
   /// They should be under the same agent. Format of each test case name:
-  /// `projects//locations/ /agents//testCases/`
+  /// `projects//locations//agents//testCases/`
   core.List<core.String>? testCases;
 
   GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig({
@@ -9113,7 +9318,11 @@ class GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig {
 
 /// Configuration for the version.
 class GoogleCloudDialogflowCxV3EnvironmentVersionConfig {
-  /// Format: projects//locations//agents//flows//versions/.
+  /// Both flow and playbook versions are supported.
+  ///
+  /// Format for flow version: projects//locations//agents//flows//versions/.
+  /// Format for playbook version:
+  /// projects//locations//agents//playbooks//versions/.
   ///
   /// Required.
   core.String? version;
@@ -9186,6 +9395,11 @@ class GoogleCloudDialogflowCxV3EventHandler {
   /// Format: `projects//locations//agents//flows//pages/`.
   core.String? targetPage;
 
+  /// The target playbook to transition to.
+  ///
+  /// Format: `projects//locations//agents//playbooks/`.
+  core.String? targetPlaybook;
+
   /// The fulfillment to call when the event occurs.
   ///
   /// Handling webhook errors with a fulfillment enabled with webhook could
@@ -9198,6 +9412,7 @@ class GoogleCloudDialogflowCxV3EventHandler {
     this.name,
     this.targetFlow,
     this.targetPage,
+    this.targetPlaybook,
     this.triggerFulfillment,
   });
 
@@ -9207,6 +9422,7 @@ class GoogleCloudDialogflowCxV3EventHandler {
           name: json_['name'] as core.String?,
           targetFlow: json_['targetFlow'] as core.String?,
           targetPage: json_['targetPage'] as core.String?,
+          targetPlaybook: json_['targetPlaybook'] as core.String?,
           triggerFulfillment: json_.containsKey('triggerFulfillment')
               ? GoogleCloudDialogflowCxV3Fulfillment.fromJson(
                   json_['triggerFulfillment']
@@ -9219,6 +9435,7 @@ class GoogleCloudDialogflowCxV3EventHandler {
         if (name != null) 'name': name!,
         if (targetFlow != null) 'targetFlow': targetFlow!,
         if (targetPage != null) 'targetPage': targetPage!,
+        if (targetPlaybook != null) 'targetPlaybook': targetPlaybook!,
         if (triggerFulfillment != null)
           'triggerFulfillment': triggerFulfillment!,
       };
@@ -9275,7 +9492,7 @@ class GoogleCloudDialogflowCxV3Experiment {
 
   /// The name of the experiment.
   ///
-  /// Format: projects//locations//agents//environments//experiments/..
+  /// Format: projects//locations//agents//environments//experiments/.
   core.String? name;
 
   /// Inference result of the experiment.
@@ -10026,6 +10243,11 @@ class GoogleCloudDialogflowCxV3Flow {
   GoogleCloudDialogflowCxV3KnowledgeConnectorSettings?
       knowledgeConnectorSettings;
 
+  /// Indicates whether the flow is locked for changes.
+  ///
+  /// If the flow is locked, modifications to the flow will be rejected.
+  core.bool? locked;
+
   /// Multi-lingual agent settings for this flow.
   ///
   /// Optional.
@@ -10044,8 +10266,8 @@ class GoogleCloudDialogflowCxV3Flow {
   ///
   /// * They are inherited by every page's transition route groups. Transition
   /// route groups defined in the page have higher priority than those defined
-  /// in the flow.
-  /// Format:`projects//locations//agents//flows//transitionRouteGroups/` or
+  /// in the flow. Format:
+  /// `projects//locations//agents//flows//transitionRouteGroups/` or
   /// `projects//locations//agents//transitionRouteGroups/` for agent-level
   /// groups.
   core.List<core.String>? transitionRouteGroups;
@@ -10069,6 +10291,7 @@ class GoogleCloudDialogflowCxV3Flow {
     this.displayName,
     this.eventHandlers,
     this.knowledgeConnectorSettings,
+    this.locked,
     this.multiLanguageSettings,
     this.name,
     this.nluSettings,
@@ -10095,6 +10318,7 @@ class GoogleCloudDialogflowCxV3Flow {
                   json_['knowledgeConnectorSettings']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          locked: json_['locked'] as core.bool?,
           multiLanguageSettings: json_.containsKey('multiLanguageSettings')
               ? GoogleCloudDialogflowCxV3FlowMultiLanguageSettings.fromJson(
                   json_['multiLanguageSettings']
@@ -10122,6 +10346,7 @@ class GoogleCloudDialogflowCxV3Flow {
         if (eventHandlers != null) 'eventHandlers': eventHandlers!,
         if (knowledgeConnectorSettings != null)
           'knowledgeConnectorSettings': knowledgeConnectorSettings!,
+        if (locked != null) 'locked': locked!,
         if (multiLanguageSettings != null)
           'multiLanguageSettings': multiLanguageSettings!,
         if (name != null) 'name': name!,
@@ -11393,6 +11618,8 @@ class GoogleCloudDialogflowCxV3InputAudioConfig {
   /// (octets) as specified in RFC 5574. In other words, each RTP header is
   /// replaced with a single byte containing the block length. Only Speex
   /// wideband is supported. `sample_rate_hertz` must be 16000.
+  /// - "AUDIO_ENCODING_ALAW" : 8-bit samples that compand 13-bit audio samples
+  /// using G.711 PCMU/a-law.
   core.String? audioEncoding;
 
   /// Configuration of barge-in behavior during the streaming of input audio.
@@ -12578,6 +12805,8 @@ class GoogleCloudDialogflowCxV3Match {
   /// - "NO_MATCH" : No match was found for the query.
   /// - "NO_INPUT" : Indicates an empty query.
   /// - "EVENT" : The query directly triggered an event.
+  /// - "KNOWLEDGE_CONNECTOR" : The query was matched to a Knowledge Connector
+  /// answer.
   /// - "PLAYBOOK" : The query was handled by a `Playbook`.
   core.String? matchType;
 
@@ -12752,7 +12981,8 @@ class GoogleCloudDialogflowCxV3NluSettings {
   /// If the returned score value is less than the threshold value, then a
   /// no-match event will be triggered. The score values range from 0.0
   /// (completely uncertain) to 1.0 (completely certain). If set to 0.0, the
-  /// default of 0.3 is used.
+  /// default of 0.3 is used. You can set a separate classification threshold
+  /// for the flow in each language enabled for the agent.
   core.double? classificationThreshold;
 
   /// Indicates NLU model training mode.
@@ -12815,6 +13045,8 @@ class GoogleCloudDialogflowCxV3OutputAudioConfig {
   /// same bitrate.
   /// - "OUTPUT_AUDIO_ENCODING_MULAW" : 8-bit samples that compand 14-bit audio
   /// samples using G.711 PCMU/mu-law.
+  /// - "OUTPUT_AUDIO_ENCODING_ALAW" : 8-bit samples that compand 13-bit audio
+  /// samples using G.711 PCMU/a-law.
   core.String? audioEncoding;
 
   /// The synthesis sample rate (in hertz) for this audio.
@@ -13349,8 +13581,8 @@ class GoogleCloudDialogflowCxV3QueryResult {
   /// Data store connection feature output signals.
   ///
   /// Filled only when data stores are involved in serving the query and
-  /// DetectIntentRequest.populate data_store_connection_quality_signals is set
-  /// to true in the request.
+  /// DetectIntentRequest.populate_data_store_connection_signals is set to true
+  /// in the request.
   ///
   /// Optional.
   GoogleCloudDialogflowCxV3DataStoreConnectionSignals?
@@ -14039,7 +14271,10 @@ class GoogleCloudDialogflowCxV3ResponseMessageText {
   /// Output only.
   core.bool? allowPlaybackInterruption;
 
-  /// A collection of text responses.
+  /// A collection of text response variants.
+  ///
+  /// If multiple variants are defined, only one text response variant is
+  /// returned at runtime.
   ///
   /// Required.
   core.List<core.String>? text;
@@ -14632,7 +14867,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings {
 /// Sentiment analysis inspects user input and identifies the prevailing
 /// subjective opinion, especially to determine a user's attitude as positive,
 /// negative, or neutral.
-typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared10;
+typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared11;
 
 /// Session entity types are referred to as **User** entity types and are
 /// entities that are built for an individual user such as favorites,
@@ -14871,7 +15106,7 @@ class GoogleCloudDialogflowCxV3TestCase {
   /// The unique identifier of the test case.
   ///
   /// TestCases.CreateTestCase will populate the name automatically. Otherwise
-  /// use format: `projects//locations//agents/ /testCases/`.
+  /// use format: `projects//locations//agents//testCases/`.
   core.String? name;
 
   /// Additional freeform notes about the test case.
@@ -14959,7 +15194,7 @@ class GoogleCloudDialogflowCxV3TestCaseResult {
 
   /// The resource name for the test case result.
   ///
-  /// Format: `projects//locations//agents//testCases/ /results/`.
+  /// Format: `projects//locations//agents//testCases//results/`.
   core.String? name;
 
   /// Whether the test case passed in the agent environment.
@@ -15008,16 +15243,16 @@ class GoogleCloudDialogflowCxV3TestConfig {
   ///
   /// Format: `projects//locations//agents//flows/`. Only one of `flow` and
   /// `page` should be set to indicate the starting point of the test case. If
-  /// both are set, `page` takes precedence over `flow`. If neither is set, the
-  /// test case will start with start page on the default start flow.
+  /// neither is set, the test case will start with start page on the default
+  /// start flow.
   core.String? flow;
 
   /// The page to start the test case with.
   ///
   /// Format: `projects//locations//agents//flows//pages/`. Only one of `flow`
   /// and `page` should be set to indicate the starting point of the test case.
-  /// If both are set, `page` takes precedence over `flow`. If neither is set,
-  /// the test case will start with start page on the default start flow.
+  /// If neither is set, the test case will start with start page on the default
+  /// start flow.
   core.String? page;
 
   /// Session parameters to be compared when calculating differences.
@@ -15523,10 +15758,10 @@ class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition {
 }
 
 /// The request message for Agents.ValidateAgent.
-typedef GoogleCloudDialogflowCxV3ValidateAgentRequest = $Request08;
+typedef GoogleCloudDialogflowCxV3ValidateAgentRequest = $Request10;
 
 /// The request message for Flows.ValidateFlow.
-typedef GoogleCloudDialogflowCxV3ValidateFlowRequest = $Request08;
+typedef GoogleCloudDialogflowCxV3ValidateFlowRequest = $Request10;
 
 /// Agent/flow validation message.
 class GoogleCloudDialogflowCxV3ValidationMessage {
@@ -16289,7 +16524,7 @@ typedef GoogleProtobufEmpty = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef GoogleRpcStatus = $Status;
+typedef GoogleRpcStatus = $Status00;
 
 /// An object that represents a latitude/longitude pair.
 ///

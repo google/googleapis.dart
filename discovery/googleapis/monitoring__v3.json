@@ -34,7 +34,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240602",
+    "revision": "20241003",
     "rootUrl": "https://monitoring.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Monitoring API",
@@ -760,7 +760,7 @@
                             ],
                             "parameters": {
                                 "filter": {
-                                    "description": "If provided, this field specifies the criteria that must be met by alert policies to be included in the response.For more details, see sorting and filtering (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).",
+                                    "description": "Optional. If provided, this field specifies the criteria that must be met by alert policies to be included in the response.For more details, see sorting and filtering (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -772,18 +772,18 @@
                                     "type": "string"
                                 },
                                 "orderBy": {
-                                    "description": "A comma-separated list of fields by which to sort the result. Supports the same set of field references as the filter field. Entries can be prefixed with a minus sign to sort by the field in descending order.For more details, see sorting and filtering (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).",
+                                    "description": "Optional. A comma-separated list of fields by which to sort the result. Supports the same set of field references as the filter field. Entries can be prefixed with a minus sign to sort by the field in descending order.For more details, see sorting and filtering (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).",
                                     "location": "query",
                                     "type": "string"
                                 },
                                 "pageSize": {
-                                    "description": "The maximum number of results to return in a single response.",
+                                    "description": "Optional. The maximum number of results to return in a single response.",
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "If this field is not empty then it must contain the nextPageToken value returned by a previous call to this method. Using this field causes the method to return more results from the previous method call.",
+                                    "description": "Optional. If this field is not empty then it must contain the nextPageToken value returned by a previous call to this method. Using this field causes the method to return more results from the previous method call.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -808,7 +808,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Cloud Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.",
+                                    "description": "Identifier. Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Cloud Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+/alertPolicies/[^/]+$",
                                     "required": true,
@@ -1518,7 +1518,7 @@
                             ],
                             "parameters": {
                                 "filter": {
-                                    "description": "If provided, this field specifies the criteria that must be met by notification channels to be included in the response.For more details, see sorting and filtering (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).",
+                                    "description": "Optional. If provided, this field specifies the criteria that must be met by notification channels to be included in the response.For more details, see sorting and filtering (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -1530,18 +1530,18 @@
                                     "type": "string"
                                 },
                                 "orderBy": {
-                                    "description": "A comma-separated list of fields by which to sort the result. Supports the same set of fields as in filter. Entries can be prefixed with a minus sign to sort in descending rather than ascending order.For more details, see sorting and filtering (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).",
+                                    "description": "Optional. A comma-separated list of fields by which to sort the result. Supports the same set of fields as in filter. Entries can be prefixed with a minus sign to sort in descending rather than ascending order.For more details, see sorting and filtering (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).",
                                     "location": "query",
                                     "type": "string"
                                 },
                                 "pageSize": {
-                                    "description": "The maximum number of results to return in a single response. If not set to a positive number, a reasonable value will be chosen by the service.",
+                                    "description": "Optional. The maximum number of results to return in a single response. If not set to a positive number, a reasonable value will be chosen by the service.",
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "If non-empty, page_token must contain a value returned as the next_page_token in a previous response to request the next set of results.",
+                                    "description": "Optional. If non-empty, page_token must contain a value returned as the next_page_token in a previous response to request the next set of results.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -1566,14 +1566,14 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "The full REST resource name for this channel. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the server on creation.",
+                                    "description": "Identifier. The full REST resource name for this channel. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the server on creation.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+/notificationChannels/[^/]+$",
                                     "required": true,
                                     "type": "string"
                                 },
                                 "updateMask": {
-                                    "description": "The fields to update.",
+                                    "description": "Optional. The fields to update.",
                                     "format": "google-fieldmask",
                                     "location": "query",
                                     "type": "string"
@@ -2117,7 +2117,8 @@
                             ]
                         },
                         "query": {
-                            "description": "Queries time series using Monitoring Query Language.",
+                            "deprecated": true,
+                            "description": "Queries time series by using Monitoring Query Language (MQL). We recommend using PromQL instead of MQL. For more information about the status of MQL, see the MQL deprecation notice (https://cloud.google.com/stackdriver/docs/deprecations/mql).",
                             "flatPath": "v3/projects/{projectsId}/timeSeries:query",
                             "httpMethod": "POST",
                             "id": "monitoring.projects.timeSeries.query",
@@ -2821,12 +2822,12 @@
             "type": "object"
         },
         "AlertPolicy": {
-            "description": "A description of the conditions under which some aspect of your system is considered to be \"unhealthy\" and the ways to notify people or services about this state. For an overview of alert policies, see Introduction to Alerting (https://cloud.google.com/monitoring/alerts/).",
+            "description": "A description of the conditions under which some aspect of your system is considered to be \"unhealthy\" and the ways to notify people or services about this state. For an overview of alerting policies, see Introduction to Alerting (https://cloud.google.com/monitoring/alerts/).",
             "id": "AlertPolicy",
             "properties": {
                 "alertStrategy": {
                     "$ref": "AlertStrategy",
-                    "description": "Control over how this alert policy's notification channels are notified."
+                    "description": "Control over how this alerting policy's notification channels are notified."
                 },
                 "combiner": {
                     "description": "How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.",
@@ -2872,7 +2873,7 @@
                     "description": "A read-only record of the most recent change to the alerting policy. If provided in a call to create or update, this field will be ignored."
                 },
                 "name": {
-                    "description": "Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Cloud Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.",
+                    "description": "Identifier. Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Cloud Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.",
                     "type": "string"
                 },
                 "notificationChannels": {
@@ -2883,7 +2884,7 @@
                     "type": "array"
                 },
                 "severity": {
-                    "description": "Optional. The severity of an alert policy indicates how important incidents generated by that policy are. The severity level will be displayed on the Incident detail page and in notifications.",
+                    "description": "Optional. The severity of an alerting policy indicates how important incidents generated by that policy are. The severity level will be displayed on the Incident detail page and in notifications.",
                     "enum": [
                         "SEVERITY_UNSPECIFIED",
                         "CRITICAL",
@@ -2907,7 +2908,7 @@
                 },
                 "validity": {
                     "$ref": "Status",
-                    "description": "Read-only description of how the alert policy is invalid. This field is only set when the alert policy is invalid. An invalid alert policy will not generate incidents."
+                    "description": "Read-only description of how the alerting policy is invalid. This field is only set when the alerting policy is invalid. An invalid alerting policy will not generate incidents."
                 }
             },
             "type": "object"
@@ -2917,7 +2918,7 @@
             "id": "AlertStrategy",
             "properties": {
                 "autoClose": {
-                    "description": "If an alert policy that was active has no data for this long, any open incidents will close",
+                    "description": "If an alerting policy that was active has no data for this long, any open incidents will close",
                     "format": "google-duration",
                     "type": "string"
                 },
@@ -2928,9 +2929,26 @@
                     },
                     "type": "array"
                 },
+                "notificationPrompts": {
+                    "description": "For log-based alert policies, the notification prompts is always OPENED. For non log-based alert policies, the notification prompts can be OPENED or OPENED, CLOSED.",
+                    "items": {
+                        "enum": [
+                            "NOTIFICATION_PROMPT_UNSPECIFIED",
+                            "OPENED",
+                            "CLOSED"
+                        ],
+                        "enumDescriptions": [
+                            "No strategy specified. Treated as error.",
+                            "Notify when an incident is opened.",
+                            "Notify when an incident is closed."
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "notificationRateLimit": {
                     "$ref": "NotificationRateLimit",
-                    "description": "Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based."
+                    "description": "Required for log-based alerting policies, i.e. policies with a LogMatch condition.This limit is not implemented for alerting policies that do not have a LogMatch condition."
                 }
             },
             "type": "object"
@@ -3017,6 +3035,17 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "BooleanTest": {
+            "description": "A test that uses an alerting result in a boolean column produced by the SQL query.",
+            "id": "BooleanTest",
+            "properties": {
+                "column": {
+                    "description": "Required. The name of the column containing the boolean value. If the value in a row is NULL, that row is ignored.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3244,6 +3273,10 @@
                     "$ref": "PrometheusQueryLanguageCondition",
                     "description": "A condition that uses the Prometheus query language to define alerts."
                 },
+                "conditionSql": {
+                    "$ref": "SqlCondition",
+                    "description": "A condition that periodically evaluates a SQL query result."
+                },
                 "conditionThreshold": {
                     "$ref": "MetricThreshold",
                     "description": "A condition that compares a time series against a threshold."
@@ -3394,6 +3427,22 @@
             "properties": {},
             "type": "object"
         },
+        "Daily": {
+            "description": "Used to schedule the query to run every so many days.",
+            "id": "Daily",
+            "properties": {
+                "executionTime": {
+                    "$ref": "TimeOfDay",
+                    "description": "Optional. The time of day (in UTC) at which the query should run. If left unspecified, the server picks an arbitrary time of day and runs the query at the same time each day."
+                },
+                "periodicity": {
+                    "description": "Required. The number of days between runs. Must be greater than or equal to 1 day and less than or equal to 31 days.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "Distribution": {
             "description": "Distribution contains summary statistics for a population of values. It optionally contains a histogram representing the distribution of those values across a set of buckets.The summary statistics are the count, mean, sum of the squared deviation from the mean, the minimum, and the maximum of the set of population of values. The histogram is based on a sequence of buckets and gives a count of values that fall into each bucket. The boundaries of the buckets are given either explicitly or by formulas for buckets of fixed or exponentially increasing widths.Although it is not forbidden, it is generally a bad idea to include non-finite values (infinities or NaNs) in the population of values, as this will render the mean and sum_of_squared_deviation fields meaningless.",
             "id": "Distribution",
@@ -3459,15 +3508,22 @@
             "id": "Documentation",
             "properties": {
                 "content": {
-                    "description": "The body of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).",
+                    "description": "The body of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables#doc-vars).",
                     "type": "string"
+                },
+                "links": {
+                    "description": "Optional. Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.",
+                    "items": {
+                        "$ref": "Link"
+                    },
+                    "type": "array"
                 },
                 "mimeType": {
                     "description": "The format of the content field. Presently, only the value \"text/markdown\" is supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for more information.",
                     "type": "string"
                 },
                 "subject": {
-                    "description": "Optional. The subject line of the notification. The subject line may not exceed 10,240 bytes. In notifications generated by this policy, the contents of the subject line after variable expansion will be truncated to 255 bytes or shorter at the latest UTF-8 character boundary. The 255-byte limit is recommended by this thread (https://stackoverflow.com/questions/1592291/what-is-the-email-subject-length-limit). It is both the limit imposed by some third-party ticketing products and it is common to define textual fields in databases as VARCHAR(255).The contents of the subject line can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables). If this field is missing or empty, a default subject line will be generated.",
+                    "description": "Optional. The subject line of the notification. The subject line may not exceed 10,240 bytes. In notifications generated by this policy, the contents of the subject line after variable expansion will be truncated to 255 bytes or shorter at the latest UTF-8 character boundary. The 255-byte limit is recommended by this thread (https://stackoverflow.com/questions/1592291/what-is-the-email-subject-length-limit). It is both the limit imposed by some third-party ticketing products and it is common to define textual fields in databases as VARCHAR(255).The contents of the subject line can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables#doc-vars). If this field is missing or empty, a default subject line will be generated.",
                     "type": "string"
                 }
             },
@@ -3848,6 +3904,23 @@
             },
             "type": "object"
         },
+        "Hourly": {
+            "description": "Used to schedule the query to run every so many hours.",
+            "id": "Hourly",
+            "properties": {
+                "minuteOffset": {
+                    "description": "Optional. The number of minutes after the hour (in UTC) to run the query. Must be greater than or equal to 0 minutes and less than or equal to 59 minutes. If left unspecified, then an arbitrary offset is used.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "periodicity": {
+                    "description": "Required. The number of hours between runs. Must be greater than or equal to 1 hour and less than or equal to 48 hours.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "HttpCheck": {
             "description": "Information involved in an HTTP/HTTPS Uptime check request.",
             "id": "HttpCheck",
@@ -4104,6 +4177,21 @@
                     "description": "Must be greater than 0.",
                     "format": "double",
                     "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "Link": {
+            "description": "Links to content such as playbooks, repositories, and other resources.",
+            "id": "Link",
+            "properties": {
+                "displayName": {
+                    "description": "A short display name for the link. The display name must not be empty or exceed 63 characters. Example: \"playbook\".",
+                    "type": "string"
+                },
+                "url": {
+                    "description": "The url of a webpage. A url can be templatized by using variables in the path or the query parameters. The total length of a URL should not exceed 2083 characters before and after variable expansion. Example: \"https://my_domain.com/playbook?name=${resource.name}\"",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -4600,6 +4688,25 @@
                     "description": "The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.",
                     "format": "google-duration",
                     "type": "string"
+                },
+                "timeSeriesResourceHierarchyLevel": {
+                    "description": "The scope of the timeseries data of the metric.",
+                    "items": {
+                        "enum": [
+                            "TIME_SERIES_RESOURCE_HIERARCHY_LEVEL_UNSPECIFIED",
+                            "PROJECT",
+                            "ORGANIZATION",
+                            "FOLDER"
+                        ],
+                        "enumDescriptions": [
+                            "Do not use this default value.",
+                            "Scopes a metric to a project.",
+                            "Scopes a metric to an organization.",
+                            "Scopes a metric to a folder."
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -4704,6 +4811,18 @@
             },
             "type": "object"
         },
+        "Minutes": {
+            "description": "Used to schedule the query to run every so many minutes.",
+            "id": "Minutes",
+            "properties": {
+                "periodicity": {
+                    "description": "Required. Number of minutes between runs. The interval must be greater than or equal to 5 minutes and less than or equal to 1440 minutes.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "MonitoredResource": {
             "description": "An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for \"gce_instance\" has labels \"project_id\", \"instance_id\" and \"zone\": { \"type\": \"gce_instance\", \"labels\": { \"project_id\": \"my-project\", \"instance_id\": \"12345678901234\", \"zone\": \"us-central1-a\" }} ",
             "id": "MonitoredResource",
@@ -4799,7 +4918,7 @@
             "type": "object"
         },
         "MonitoringQueryLanguageCondition": {
-            "description": "A condition type that allows alert policies to be defined using Monitoring Query Language (https://cloud.google.com/monitoring/mql).",
+            "description": "A condition type that allows alerting policies to be defined using Monitoring Query Language (https://cloud.google.com/monitoring/mql).",
             "id": "MonitoringQueryLanguageCondition",
             "properties": {
                 "duration": {
@@ -4885,7 +5004,7 @@
                     "type": "array"
                 },
                 "name": {
-                    "description": "The full REST resource name for this channel. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the server on creation.",
+                    "description": "Identifier. The full REST resource name for this channel. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the server on creation.",
                     "type": "string"
                 },
                 "type": {
@@ -5008,7 +5127,7 @@
             "type": "object"
         },
         "NotificationRateLimit": {
-            "description": "Control over the rate of notifications sent to this alert policy's notification channels.",
+            "description": "Control over the rate of notifications sent to this alerting policy's notification channels.",
             "id": "NotificationRateLimit",
             "properties": {
                 "period": {
@@ -5139,7 +5258,7 @@
             "type": "object"
         },
         "PrometheusQueryLanguageCondition": {
-            "description": "A condition type that allows alert policies to be defined using Prometheus Query Language (PromQL) (https://prometheus.io/docs/prometheus/latest/querying/basics/).The PrometheusQueryLanguageCondition message contains information from a Prometheus alerting rule and its associated rule group.A Prometheus alerting rule is described here (https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/). The semantics of a Prometheus alerting rule is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule).A Prometheus rule group is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/). The semantics of a Prometheus rule group is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule_group).Because Cloud Alerting has no representation of a Prometheus rule group resource, we must embed the information of the parent rule group inside each of the conditions that refer to it. We must also update the contents of all Prometheus alerts in case the information of their rule group changes.The PrometheusQueryLanguageCondition protocol buffer combines the information of the corresponding rule group and alerting rule. The structure of the PrometheusQueryLanguageCondition protocol buffer does NOT mimic the structure of the Prometheus rule group and alerting rule YAML declarations. The PrometheusQueryLanguageCondition protocol buffer may change in the future to support future rule group and/or alerting rule features. There are no new such features at the present time (2023-06-26).",
+            "description": "A condition type that allows alerting policies to be defined using Prometheus Query Language (PromQL) (https://prometheus.io/docs/prometheus/latest/querying/basics/).The PrometheusQueryLanguageCondition message contains information from a Prometheus alerting rule and its associated rule group.A Prometheus alerting rule is described here (https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/). The semantics of a Prometheus alerting rule is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule).A Prometheus rule group is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/). The semantics of a Prometheus rule group is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule_group).Because Cloud Alerting has no representation of a Prometheus rule group resource, we must embed the information of the parent rule group inside each of the conditions that refer to it. We must also update the contents of all Prometheus alerts in case the information of their rule group changes.The PrometheusQueryLanguageCondition protocol buffer combines the information of the corresponding rule group and alerting rule. The structure of the PrometheusQueryLanguageCondition protocol buffer does NOT mimic the structure of the Prometheus rule group and alerting rule YAML declarations. The PrometheusQueryLanguageCondition protocol buffer may change in the future to support future rule group and/or alerting rule features. There are no new such features at the present time (2023-06-26).",
             "id": "PrometheusQueryLanguageCondition",
             "properties": {
                 "alertRule": {
@@ -5160,7 +5279,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Optional. Labels to add to or overwrite in the PromQL query result. Label names must be valid (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). Label values can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables). The only available variable names are the names of the labels in the PromQL result, including \"__name__\" and \"value\". \"labels\" may be empty.",
+                    "description": "Optional. Labels to add to or overwrite in the PromQL query result. Label names must be valid (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). Label values can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables#doc-vars). The only available variable names are the names of the labels in the PromQL result, including \"__name__\" and \"value\". \"labels\" may be empty.",
                     "type": "object"
                 },
                 "query": {
@@ -5175,7 +5294,8 @@
             "type": "object"
         },
         "QueryTimeSeriesRequest": {
-            "description": "The QueryTimeSeries request.",
+            "deprecated": true,
+            "description": "The QueryTimeSeries request. For information about the status of Monitoring Query Language (MQL), see the MQL deprecation notice (https://cloud.google.com/stackdriver/docs/deprecations/mql).",
             "id": "QueryTimeSeriesRequest",
             "properties": {
                 "pageSize": {
@@ -5195,7 +5315,8 @@
             "type": "object"
         },
         "QueryTimeSeriesResponse": {
-            "description": "The QueryTimeSeries response.",
+            "deprecated": true,
+            "description": "The QueryTimeSeries response. For information about the status of Monitoring Query Language (MQL), see the MQL deprecation notice (https://cloud.google.com/stackdriver/docs/deprecations/mql).",
             "id": "QueryTimeSeriesResponse",
             "properties": {
                 "nextPageToken": {
@@ -5310,6 +5431,40 @@
                     "description": "A status code to accept.",
                     "format": "int32",
                     "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "RowCountTest": {
+            "description": "A test that checks if the number of rows in the result set violates some threshold.",
+            "id": "RowCountTest",
+            "properties": {
+                "comparison": {
+                    "description": "Required. The comparison to apply between the number of rows returned by the query and the threshold.",
+                    "enum": [
+                        "COMPARISON_UNSPECIFIED",
+                        "COMPARISON_GT",
+                        "COMPARISON_GE",
+                        "COMPARISON_LT",
+                        "COMPARISON_LE",
+                        "COMPARISON_EQ",
+                        "COMPARISON_NE"
+                    ],
+                    "enumDescriptions": [
+                        "No ordering relationship is specified.",
+                        "True if the left argument is greater than the right argument.",
+                        "True if the left argument is greater than or equal to the right argument.",
+                        "True if the left argument is less than the right argument.",
+                        "True if the left argument is less than or equal to the right argument.",
+                        "True if the left argument is equal to the right argument.",
+                        "True if the left argument is not equal to the right argument."
+                    ],
+                    "type": "string"
+                },
+                "threshold": {
+                    "description": "Required. The value against which to compare the row count.",
+                    "format": "int64",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -5461,7 +5616,7 @@
                     "type": "string"
                 },
                 "goal": {
-                    "description": "The fraction of service that must be good in order for this objective to be met. 0 < goal <= 0.999.",
+                    "description": "The fraction of service that must be good in order for this objective to be met. 0 < goal <= 0.9999.",
                     "format": "double",
                     "type": "number"
                 },
@@ -5529,6 +5684,37 @@
                 "spanName": {
                     "description": "The resource name of the span. The format is: projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID] [TRACE_ID] is a unique identifier for a trace within a project; it is a 32-character hexadecimal encoding of a 16-byte array.[SPAN_ID] is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte array.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SqlCondition": {
+            "description": "A condition that allows alerting policies to be defined using GoogleSQL. SQL conditions examine a sliding window of logs using GoogleSQL. Alert policies with SQL conditions may incur additional billing.",
+            "id": "SqlCondition",
+            "properties": {
+                "booleanTest": {
+                    "$ref": "BooleanTest",
+                    "description": "Test the boolean value in the indicated column."
+                },
+                "daily": {
+                    "$ref": "Daily",
+                    "description": "Schedule the query to execute every so many days."
+                },
+                "hourly": {
+                    "$ref": "Hourly",
+                    "description": "Schedule the query to execute every so many hours."
+                },
+                "minutes": {
+                    "$ref": "Minutes",
+                    "description": "Schedule the query to execute every so many minutes."
+                },
+                "query": {
+                    "description": "Required. The Log Analytics SQL query to run, as a string. The query must conform to the required shape. Specifically, the query must not try to filter the input by time. A filter will automatically be applied to filter the input so that the query receives all rows received since the last time the query was run.For example, the following query extracts all log entries containing an HTTP request:SELECT timestamp, log_name, severity, http_request, resource, labels FROM my-project.global._Default._AllLogs WHERE http_request IS NOT NULL",
+                    "type": "string"
+                },
+                "rowCountTest": {
+                    "$ref": "RowCountTest",
+                    "description": "Test the row count against a threshold."
                 }
             },
             "type": "object"
@@ -5615,10 +5801,41 @@
             },
             "type": "object"
         },
+        "TimeOfDay": {
+            "description": "Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and google.protobuf.Timestamp.",
+            "id": "TimeOfDay",
+            "properties": {
+                "hours": {
+                    "description": "Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value \"24:00:00\" for scenarios like business closing time.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "minutes": {
+                    "description": "Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "nanos": {
+                    "description": "Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "seconds": {
+                    "description": "Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "TimeSeries": {
             "description": "A collection of data points that describes the time-varying values of a metric. A time series is identified by a combination of a fully-specified monitored resource and a fully-specified metric. This type is used for both listing and creating time series.",
             "id": "TimeSeries",
             "properties": {
+                "description": {
+                    "description": "Input only. A detailed description of the time series that will be associated with the google.api.MetricDescriptor for the metric. Once set, this field cannot be changed through CreateTimeSeries.",
+                    "type": "string"
+                },
                 "metadata": {
                     "$ref": "MonitoredResourceMetadata",
                     "description": "Output only. The associated monitored resource metadata. When reading a time series, this field will include metadata labels that are explicitly named in the reduction. When creating a time series, this field is ignored."
@@ -5655,7 +5872,7 @@
                     "description": "The associated monitored resource. Custom metrics can use only certain monitored resource types in their time series data. For more information, see Monitored resources for custom metrics (https://cloud.google.com/monitoring/custom-metrics/creating-metrics#custom-metric-resources)."
                 },
                 "unit": {
-                    "description": "The units in which the metric value is reported. It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of the stored metric values.",
+                    "description": "The units in which the metric value is reported. It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of the stored metric values. This field can only be changed through CreateTimeSeries when it is empty.",
                     "type": "string"
                 },
                 "valueType": {

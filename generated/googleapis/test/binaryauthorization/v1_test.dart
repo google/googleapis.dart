@@ -1025,6 +1025,7 @@ api.PlatformPolicy buildPlatformPolicy() {
   buildCounterPlatformPolicy++;
   if (buildCounterPlatformPolicy < 3) {
     o.description = 'foo';
+    o.etag = 'foo';
     o.gkePolicy = buildGkePolicy();
     o.name = 'foo';
     o.updateTime = 'foo';
@@ -1038,6 +1039,10 @@ void checkPlatformPolicy(api.PlatformPolicy o) {
   if (buildCounterPlatformPolicy < 3) {
     unittest.expect(
       o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.etag!,
       unittest.equals('foo'),
     );
     checkGkePolicy(o.gkePolicy!);
@@ -3067,6 +3072,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.BinaryAuthorizationApi(mock).projects.platforms.policies;
       final arg_name = 'foo';
+      final arg_etag = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -3101,6 +3107,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['etag']!.first,
+          unittest.equals(arg_etag),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -3111,7 +3121,8 @@ void main() {
         final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.delete(arg_name, $fields: arg_$fields);
+      final response =
+          await res.delete(arg_name, etag: arg_etag, $fields: arg_$fields);
       checkEmpty(response as api.Empty);
     });
 

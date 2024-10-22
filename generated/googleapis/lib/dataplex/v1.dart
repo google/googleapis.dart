@@ -20,6 +20,10 @@
 ///
 /// Create an instance of [CloudDataplexApi] to access these resources:
 ///
+/// - [OrganizationsResource]
+///   - [OrganizationsLocationsResource]
+///     - [OrganizationsLocationsEncryptionConfigsResource]
+///     - [OrganizationsLocationsOperationsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsAspectTypesResource]
@@ -30,7 +34,11 @@
 ///       - [ProjectsLocationsDataTaxonomiesAttributesResource]
 ///     - [ProjectsLocationsEntryGroupsResource]
 ///       - [ProjectsLocationsEntryGroupsEntriesResource]
+///     - [ProjectsLocationsEntryLinkTypesResource]
 ///     - [ProjectsLocationsEntryTypesResource]
+///     - [ProjectsLocationsGlossariesResource]
+///       - [ProjectsLocationsGlossariesCategoriesResource]
+///       - [ProjectsLocationsGlossariesTermsResource]
 ///     - [ProjectsLocationsGovernanceRulesResource]
 ///     - [ProjectsLocationsLakesResource]
 ///       - [ProjectsLocationsLakesActionsResource]
@@ -46,6 +54,7 @@
 ///           - [ProjectsLocationsLakesZonesAssetsActionsResource]
 ///         - [ProjectsLocationsLakesZonesEntitiesResource]
 ///           - [ProjectsLocationsLakesZonesEntitiesPartitionsResource]
+///     - [ProjectsLocationsMetadataJobsResource]
 ///     - [ProjectsLocationsOperationsResource]
 library;
 
@@ -71,6 +80,7 @@ class CloudDataplexApi {
 
   final commons.ApiRequester _requester;
 
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudDataplexApi(http.Client client,
@@ -78,6 +88,379 @@ class CloudDataplexApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+}
+
+class OrganizationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsResource get locations =>
+      OrganizationsLocationsResource(_requester);
+
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class OrganizationsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsEncryptionConfigsResource get encryptionConfigs =>
+      OrganizationsLocationsEncryptionConfigsResource(_requester);
+  OrganizationsLocationsOperationsResource get operations =>
+      OrganizationsLocationsOperationsResource(_requester);
+
+  OrganizationsLocationsResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class OrganizationsLocationsEncryptionConfigsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsEncryptionConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/encryptionConfigs/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy.Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected.Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset.The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1.To learn which resources support
+  /// conditions in their IAM policies, see the IAM documentation
+  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// PERMISSION_DENIED errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/encryptionConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/encryptionConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsLocationsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or
+  /// other methods to check whether the cancellation succeeded or whether the
+  /// operation completed despite cancellation. On successful cancellation, the
+  /// operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// Code.CANCELLED.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    GoogleLongrunningCancelOperationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns google.rpc.Code.UNIMPLEMENTED.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns UNIMPLEMENTED.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningListOperationsResponse> listOperations(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsResource {
@@ -102,12 +485,18 @@ class ProjectsLocationsResource {
       ProjectsLocationsDataTaxonomiesResource(_requester);
   ProjectsLocationsEntryGroupsResource get entryGroups =>
       ProjectsLocationsEntryGroupsResource(_requester);
+  ProjectsLocationsEntryLinkTypesResource get entryLinkTypes =>
+      ProjectsLocationsEntryLinkTypesResource(_requester);
   ProjectsLocationsEntryTypesResource get entryTypes =>
       ProjectsLocationsEntryTypesResource(_requester);
+  ProjectsLocationsGlossariesResource get glossaries =>
+      ProjectsLocationsGlossariesResource(_requester);
   ProjectsLocationsGovernanceRulesResource get governanceRules =>
       ProjectsLocationsGovernanceRulesResource(_requester);
   ProjectsLocationsLakesResource get lakes =>
       ProjectsLocationsLakesResource(_requester);
+  ProjectsLocationsMetadataJobsResource get metadataJobs =>
+      ProjectsLocationsMetadataJobsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
 
@@ -201,7 +590,13 @@ class ProjectsLocationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Looks up a single entry.
+  /// Looks up a single Entry by name using the permission on the source
+  /// system.Caution: The BigQuery metadata that is stored in Dataplex Catalog
+  /// is changing.
+  ///
+  /// For more information, see Changes to BigQuery metadata stored in Dataplex
+  /// Catalog
+  /// (https://cloud.google.com/dataplex/docs/biqquery-metadata-changes).
   ///
   /// Request parameters:
   ///
@@ -210,26 +605,25 @@ class ProjectsLocationsResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [aspectTypes_1] - Optional. Limits the aspects returned to the provided
-  /// aspect types. Only works if the CUSTOM view is selected.
+  /// aspect types. It only works for CUSTOM view.
   ///
   /// [entry] - Required. The resource name of the Entry:
   /// projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry}.
   ///
   /// [paths] - Optional. Limits the aspects returned to those associated with
-  /// the provided paths within the Entry. Only works if the CUSTOM view is
-  /// selected.
+  /// the provided paths within the Entry. It only works for CUSTOM view.
   ///
-  /// [view] - Optional. View for controlling which parts of an entry are to be
-  /// returned.
+  /// [view] - Optional. View to control which parts of an entry the service
+  /// should return.
   /// Possible string values are:
   /// - "ENTRY_VIEW_UNSPECIFIED" : Unspecified EntryView. Defaults to FULL.
   /// - "BASIC" : Returns entry only, without aspects.
   /// - "FULL" : Returns all required aspects as well as the keys of all
   /// non-required aspects.
   /// - "CUSTOM" : Returns aspects matching custom fields in GetEntryRequest. If
-  /// the number of aspects would exceed 100, the first 100 will be returned.
-  /// - "ALL" : Returns all aspects. If the number of aspects would exceed 100,
-  /// the first 100 will be returned.
+  /// the number of aspects exceeds 100, the first 100 will be returned.
+  /// - "ALL" : Returns all aspects. If the number of aspects exceeds 100, the
+  /// first 100 will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -268,7 +662,7 @@ class ProjectsLocationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Searches for entries matching given query and scope.
+  /// Searches for Entries matching the given query and scope.
   ///
   /// Request parameters:
   ///
@@ -276,19 +670,22 @@ class ProjectsLocationsResource {
   /// in the following form: projects/{project}/locations/{location}.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [orderBy] - Optional. Ordering of the results. Supported options to be
-  /// added later.
+  /// [orderBy] - Optional. Specifies the ordering of results.
   ///
-  /// [pageSize] - Optional. Pagination.
+  /// [pageSize] - Optional. Number of results in the search page. If \<=0, then
+  /// defaults to 10. Max limit for page_size is 1000. Throws an invalid
+  /// argument for page_size \> 1000.
   ///
-  /// [pageToken] - null
+  /// [pageToken] - Optional. Page token received from a previous SearchEntries
+  /// call. Provide this to retrieve the subsequent page.
   ///
   /// [query] - Required. The query against which entries in scope should be
   /// matched.
   ///
   /// [scope] - Optional. The scope under which the search should be operating.
-  /// Should either be organizations/ or projects/. If left unspecified, it will
-  /// default to the organization where the project provided in name is located.
+  /// It must either be organizations/ or projects/. If it is unspecified, it
+  /// defaults to the organization where the project provided in name is
+  /// located.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -336,7 +733,7 @@ class ProjectsLocationsAspectTypesResource {
   ProjectsLocationsAspectTypesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates an AspectType
+  /// Creates an AspectType.
   ///
   /// [request] - The metadata request object.
   ///
@@ -344,13 +741,13 @@ class ProjectsLocationsAspectTypesResource {
   ///
   /// [parent] - Required. The resource name of the AspectType, of the form:
   /// projects/{project_number}/locations/{location_id} where location_id refers
-  /// to a GCP region.
+  /// to a Google Cloud region.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [aspectTypeId] - Required. AspectType identifier.
   ///
-  /// [validateOnly] - Optional. Only validate the request, but do not perform
-  /// mutations. The default is false.
+  /// [validateOnly] - Optional. The service validates the request without
+  /// performing any mutations. The default is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -388,7 +785,7 @@ class ProjectsLocationsAspectTypesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a AspectType resource.
+  /// Deletes an AspectType.
   ///
   /// Request parameters:
   ///
@@ -399,7 +796,7 @@ class ProjectsLocationsAspectTypesResource {
   ///
   /// [etag] - Optional. If the client provided etag value does not match the
   /// current etag value, the DeleteAspectTypeRequest method returns an ABORTED
-  /// error response
+  /// error response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -432,7 +829,7 @@ class ProjectsLocationsAspectTypesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieves a AspectType resource.
+  /// Gets an AspectType.
   ///
   /// Request parameters:
   ///
@@ -534,25 +931,25 @@ class ProjectsLocationsAspectTypesResource {
   ///
   /// [parent] - Required. The resource name of the AspectType location, of the
   /// form: projects/{project_number}/locations/{location_id} where location_id
-  /// refers to a GCP region.
+  /// refers to a Google Cloud region.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filter request. Filters are case-sensitive. The
-  /// following formats are supported:labels.key1 = "value1" labels:key1 name =
-  /// "value" These restrictions can be coinjoined with AND, OR and NOT
+  /// service supports the following formats: labels.key1 = "value1" labels:key1
+  /// name = "value"These restrictions can be conjoined with AND, OR, and NOT
   /// conjunctions.
   ///
-  /// [orderBy] - Optional. Order by fields (name or create_time) for the
-  /// result. If not specified, the ordering is undefined.
+  /// [orderBy] - Optional. Orders the result by name or create_time fields. If
+  /// not specified, the ordering is undefined.
   ///
   /// [pageSize] - Optional. Maximum number of AspectTypes to return. The
-  /// service may return fewer than this value. If unspecified, at most 10
-  /// AspectTypes will be returned. The maximum value is 1000; values above 1000
-  /// will be coerced to 1000.
+  /// service may return fewer than this value. If unspecified, the service
+  /// returns at most 10 AspectTypes. The maximum value is 1000; values above
+  /// 1000 will be coerced to 1000.
   ///
   /// [pageToken] - Optional. Page token received from a previous
   /// ListAspectTypes call. Provide this to retrieve the subsequent page. When
-  /// paginating, all other parameters provided to ListAspectTypes must match
+  /// paginating, all other parameters you provide to ListAspectTypes must match
   /// the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -592,7 +989,7 @@ class ProjectsLocationsAspectTypesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a AspectType resource.
+  /// Updates an AspectType.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2701,7 +3098,7 @@ class ProjectsLocationsEntryGroupsResource {
   ProjectsLocationsEntryGroupsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates an EntryGroup
+  /// Creates an EntryGroup.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2714,8 +3111,8 @@ class ProjectsLocationsEntryGroupsResource {
   ///
   /// [entryGroupId] - Required. EntryGroup identifier.
   ///
-  /// [validateOnly] - Optional. Only validate the request, but do not perform
-  /// mutations. The default is false.
+  /// [validateOnly] - Optional. The service validates the request without
+  /// performing any mutations. The default is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2753,7 +3150,7 @@ class ProjectsLocationsEntryGroupsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a EntryGroup resource.
+  /// Deletes an EntryGroup.
   ///
   /// Request parameters:
   ///
@@ -2764,7 +3161,7 @@ class ProjectsLocationsEntryGroupsResource {
   ///
   /// [etag] - Optional. If the client provided etag value does not match the
   /// current etag value, the DeleteEntryGroupRequest method returns an ABORTED
-  /// error response
+  /// error response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2797,7 +3194,7 @@ class ProjectsLocationsEntryGroupsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieves a EntryGroup resource.
+  /// Gets an EntryGroup.
   ///
   /// Request parameters:
   ///
@@ -2899,7 +3296,7 @@ class ProjectsLocationsEntryGroupsResource {
   ///
   /// [parent] - Required. The resource name of the entryGroup location, of the
   /// form: projects/{project_number}/locations/{location_id} where location_id
-  /// refers to a GCP region.
+  /// refers to a Google Cloud region.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filter request.
@@ -2907,13 +3304,13 @@ class ProjectsLocationsEntryGroupsResource {
   /// [orderBy] - Optional. Order by fields for the result.
   ///
   /// [pageSize] - Optional. Maximum number of EntryGroups to return. The
-  /// service may return fewer than this value. If unspecified, at most 10
-  /// EntryGroups will be returned. The maximum value is 1000; values above 1000
-  /// will be coerced to 1000.
+  /// service may return fewer than this value. If unspecified, the service
+  /// returns at most 10 EntryGroups. The maximum value is 1000; values above
+  /// 1000 will be coerced to 1000.
   ///
   /// [pageToken] - Optional. Page token received from a previous
   /// ListEntryGroups call. Provide this to retrieve the subsequent page. When
-  /// paginating, all other parameters provided to ListEntryGroups must match
+  /// paginating, all other parameters you provide to ListEntryGroups must match
   /// the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2953,22 +3350,22 @@ class ProjectsLocationsEntryGroupsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a EntryGroup resource.
+  /// Updates an EntryGroup.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The relative resource name of the EntryGroup, of the
-  /// form:
-  /// projects/{project_number}/locations/{location_id}/entryGroups/{entry_group_id}.
+  /// [name] - Output only. The relative resource name of the EntryGroup, in the
+  /// format
+  /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Mask of fields to update.
   ///
-  /// [validateOnly] - Optional. Only validate the request, but do not perform
-  /// mutations. The default is false.
+  /// [validateOnly] - Optional. The service validates the request, without
+  /// performing any mutations. The default is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3124,17 +3521,17 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+$`.
   ///
   /// [entryId] - Required. Entry identifier. It has to be unique within an
-  /// Entry Group.Entries corresponding to Google Cloud resources use Entry ID
-  /// format based on Full Resource Names
+  /// Entry Group.Entries corresponding to Google Cloud resources use an Entry
+  /// ID format based on full resource names
   /// (https://cloud.google.com/apis/design/resource_names#full_resource_name).
-  /// The format is a Full Resource Name of the resource without the prefix
-  /// double slashes in the API Service Name part of Full Resource Name. This
-  /// allows retrieval of entries using their associated resource name.For
-  /// example if the Full Resource Name of a resource is
+  /// The format is a full resource name of the resource without the prefix
+  /// double slashes in the API service name part of the full resource name.
+  /// This allows retrieval of entries using their associated resource name.For
+  /// example, if the full resource name of a resource is
   /// //library.googleapis.com/shelves/shelf1/books/book2, then the suggested
   /// entry_id is library.googleapis.com/shelves/shelf1/books/book2.It is also
   /// suggested to follow the same convention for entries corresponding to
-  /// resources from other providers or systems than Google Cloud.The maximum
+  /// resources from providers or systems other than Google Cloud.The maximum
   /// size of the field is 4000 characters.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3209,7 +3606,12 @@ class ProjectsLocationsEntryGroupsEntriesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a single entry.
+  /// Gets an Entry.Caution: The BigQuery metadata that is stored in Dataplex
+  /// Catalog is changing.
+  ///
+  /// For more information, see Changes to BigQuery metadata stored in Dataplex
+  /// Catalog
+  /// (https://cloud.google.com/dataplex/docs/biqquery-metadata-changes).
   ///
   /// Request parameters:
   ///
@@ -3219,23 +3621,22 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/entries/.*$`.
   ///
   /// [aspectTypes] - Optional. Limits the aspects returned to the provided
-  /// aspect types. Only works if the CUSTOM view is selected.
+  /// aspect types. It only works for CUSTOM view.
   ///
   /// [paths] - Optional. Limits the aspects returned to those associated with
-  /// the provided paths within the Entry. Only works if the CUSTOM view is
-  /// selected.
+  /// the provided paths within the Entry. It only works for CUSTOM view.
   ///
-  /// [view] - Optional. View for controlling which parts of an entry are to be
-  /// returned.
+  /// [view] - Optional. View to control which parts of an entry the service
+  /// should return.
   /// Possible string values are:
   /// - "ENTRY_VIEW_UNSPECIFIED" : Unspecified EntryView. Defaults to FULL.
   /// - "BASIC" : Returns entry only, without aspects.
   /// - "FULL" : Returns all required aspects as well as the keys of all
   /// non-required aspects.
   /// - "CUSTOM" : Returns aspects matching custom fields in GetEntryRequest. If
-  /// the number of aspects would exceed 100, the first 100 will be returned.
-  /// - "ALL" : Returns all aspects. If the number of aspects would exceed 100,
-  /// the first 100 will be returned.
+  /// the number of aspects exceeds 100, the first 100 will be returned.
+  /// - "ALL" : Returns all aspects. If the number of aspects exceeds 100, the
+  /// first 100 will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3272,7 +3673,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists entries within an entry group.
+  /// Lists Entries within an EntryGroup.
   ///
   /// Request parameters:
   ///
@@ -3282,22 +3683,25 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+$`.
   ///
   /// [filter] - Optional. A filter on the entries to return. Filters are
-  /// case-sensitive. The request can be filtered by the following fields:
-  /// entry_type, entry_source.display_name. The comparison operators are =, !=,
-  /// \<, \>, \<=, \>= (strings are compared according to lexical order) The
-  /// logical operators AND, OR, NOT can be used in the filter. Wildcard "*" can
-  /// be used, but for entry_type the full project id or number needs to be
-  /// provided. Example filter expressions:
+  /// case-sensitive. You can filter the request by the following fields:
+  /// entry_type entry_source.display_nameThe comparison operators are =, !=,
+  /// \<, \>, \<=, \>=. The service compares strings according to lexical
+  /// order.You can use the logical operators AND, OR, NOT in the filter.You can
+  /// use Wildcard "*", but for entry_type you need to provide the full project
+  /// id or number.Example filter expressions:
   /// "entry_source.display_name=AnExampleDisplayName"
   /// "entry_type=projects/example-project/locations/global/entryTypes/example-entry_type"
   /// "entry_type=projects/example-project/locations/us/entryTypes/a* OR
   /// entry_type=projects/another-project/locations / * " "NOT
   /// entry_source.display_name=AnotherExampleDisplayName"
   ///
-  /// [pageSize] - null
+  /// [pageSize] - Optional. Number of items to return per page. If there are
+  /// remaining results, the service returns a next_page_token. If unspecified,
+  /// the service returns at most 10 Entries. The maximum value is 100; values
+  /// above 100 will be coerced to 100.
   ///
-  /// [pageToken] - Optional. The pagination token returned by a previous
-  /// request.
+  /// [pageToken] - Optional. Page token received from a previous ListEntries
+  /// call. Provide this to retrieve the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3340,30 +3744,33 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Identifier. The relative resource name of the Entry, of the form:
-  /// projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry}.
+  /// [name] - Identifier. The relative resource name of the entry, in the
+  /// format
+  /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/entries/.*$`.
   ///
-  /// [allowMissing] - Optional. If set to true and the entry does not exist, it
-  /// will be created.
+  /// [allowMissing] - Optional. If set to true and the entry doesn't exist, the
+  /// service will create it.
   ///
-  /// [aspectKeys] - Optional. The map keys of the Aspects which should be
-  /// modified. Supports the following syntaxes: * - matches aspect on given
-  /// type and empty path * @path - matches aspect on given type and specified
-  /// path * * - matches aspects on given type for all paths * *@path - matches
-  /// aspects of all types on the given pathExisting aspects matching the syntax
-  /// will not be removed unless delete_missing_aspects is set to true.If this
-  /// field is left empty, it will be treated as specifying exactly those
-  /// Aspects present in the request.
+  /// [aspectKeys] - Optional. The map keys of the Aspects which the service
+  /// should modify. It supports the following syntaxes: - matches an aspect of
+  /// the given type and empty path. @path - matches an aspect of the given type
+  /// and specified path. For example, to attach an aspect to a field that is
+  /// specified by the schema aspect, the path should have the format Schema.. *
+  /// - matches aspects of the given type for all paths. *@path - matches
+  /// aspects of all types on the given path.The service will not remove
+  /// existing aspects matching the syntax unless delete_missing_aspects is set
+  /// to true.If this field is left empty, the service treats it as specifying
+  /// exactly those Aspects present in the request.
   ///
   /// [deleteMissingAspects] - Optional. If set to true and the aspect_keys
-  /// specify aspect ranges, any existing aspects from that range not provided
-  /// in the request will be deleted.
+  /// specify aspect ranges, the service deletes any existing aspects from that
+  /// range that weren't provided in the request.
   ///
   /// [updateMask] - Optional. Mask of fields to update. To update Aspects, the
   /// update_mask must contain the value "aspects".If the update_mask is empty,
-  /// all modifiable fields present in the request will be updated.
+  /// the service will update all modifiable fields present in the request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3407,13 +3814,177 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   }
 }
 
+class ProjectsLocationsEntryLinkTypesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsEntryLinkTypesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryLinkTypes/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy.Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected.Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset.The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1.To learn which resources support
+  /// conditions in their IAM policies, see the IAM documentation
+  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// PERMISSION_DENIED errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryLinkTypes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryLinkTypes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsEntryTypesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsEntryTypesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates an EntryType
+  /// Creates an EntryType.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3421,13 +3992,13 @@ class ProjectsLocationsEntryTypesResource {
   ///
   /// [parent] - Required. The resource name of the EntryType, of the form:
   /// projects/{project_number}/locations/{location_id} where location_id refers
-  /// to a GCP region.
+  /// to a Google Cloud region.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [entryTypeId] - Required. EntryType identifier.
   ///
-  /// [validateOnly] - Optional. Only validate the request, but do not perform
-  /// mutations. The default is false.
+  /// [validateOnly] - Optional. The service validates the request without
+  /// performing any mutations. The default is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3465,7 +4036,7 @@ class ProjectsLocationsEntryTypesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a EntryType resource.
+  /// Deletes an EntryType.
   ///
   /// Request parameters:
   ///
@@ -3476,7 +4047,7 @@ class ProjectsLocationsEntryTypesResource {
   ///
   /// [etag] - Optional. If the client provided etag value does not match the
   /// current etag value, the DeleteEntryTypeRequest method returns an ABORTED
-  /// error response
+  /// error response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3509,7 +4080,7 @@ class ProjectsLocationsEntryTypesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieves a EntryType resource.
+  /// Gets an EntryType.
   ///
   /// Request parameters:
   ///
@@ -3611,25 +4182,25 @@ class ProjectsLocationsEntryTypesResource {
   ///
   /// [parent] - Required. The resource name of the EntryType location, of the
   /// form: projects/{project_number}/locations/{location_id} where location_id
-  /// refers to a GCP region.
+  /// refers to a Google Cloud region.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filter request. Filters are case-sensitive. The
-  /// following formats are supported:labels.key1 = "value1" labels:key1 name =
-  /// "value" These restrictions can be coinjoined with AND, OR and NOT
+  /// service supports the following formats: labels.key1 = "value1" labels:key1
+  /// name = "value"These restrictions can be conjoined with AND, OR, and NOT
   /// conjunctions.
   ///
-  /// [orderBy] - Optional. Order by fields (name or create_time) for the
-  /// result. If not specified, the ordering is undefined.
+  /// [orderBy] - Optional. Orders the result by name or create_time fields. If
+  /// not specified, the ordering is undefined.
   ///
   /// [pageSize] - Optional. Maximum number of EntryTypes to return. The service
-  /// may return fewer than this value. If unspecified, at most 10 EntryTypes
-  /// will be returned. The maximum value is 1000; values above 1000 will be
+  /// may return fewer than this value. If unspecified, the service returns at
+  /// most 10 EntryTypes. The maximum value is 1000; values above 1000 will be
   /// coerced to 1000.
   ///
   /// [pageToken] - Optional. Page token received from a previous ListEntryTypes
   /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to ListEntryTypes must match the call that
+  /// other parameters you provided to ListEntryTypes must match the call that
   /// provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3669,7 +4240,7 @@ class ProjectsLocationsEntryTypesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a EntryType resource.
+  /// Updates an EntryType.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3683,8 +4254,8 @@ class ProjectsLocationsEntryTypesResource {
   ///
   /// [updateMask] - Required. Mask of fields to update.
   ///
-  /// [validateOnly] - Optional. Only validate the request, but do not perform
-  /// mutations. The default is false.
+  /// [validateOnly] - Optional. The service validates the request without
+  /// performing any mutations. The default is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3787,6 +4358,503 @@ class ProjectsLocationsEntryTypesResource {
   /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/entryTypes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGlossariesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlossariesCategoriesResource get categories =>
+      ProjectsLocationsGlossariesCategoriesResource(_requester);
+  ProjectsLocationsGlossariesTermsResource get terms =>
+      ProjectsLocationsGlossariesTermsResource(_requester);
+
+  ProjectsLocationsGlossariesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/glossaries/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy.Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected.Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset.The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1.To learn which resources support
+  /// conditions in their IAM policies, see the IAM documentation
+  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// PERMISSION_DENIED errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/glossaries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/glossaries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGlossariesCategoriesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlossariesCategoriesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/glossaries/\[^/\]+/categories/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy.Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected.Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset.The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1.To learn which resources support
+  /// conditions in their IAM policies, see the IAM documentation
+  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// PERMISSION_DENIED errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/glossaries/\[^/\]+/categories/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/glossaries/\[^/\]+/categories/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGlossariesTermsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlossariesTermsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/glossaries/\[^/\]+/terms/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy.Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected.Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset.The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1.To learn which resources support
+  /// conditions in their IAM policies, see the IAM documentation
+  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// PERMISSION_DENIED errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/glossaries/\[^/\]+/terms/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/glossaries/\[^/\]+/terms/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7794,6 +8862,209 @@ class ProjectsLocationsLakesZonesEntitiesPartitionsResource {
   }
 }
 
+class ProjectsLocationsMetadataJobsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsMetadataJobsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Cancels a metadata job.If you cancel a metadata import job that is in
+  /// progress, the changes in the job might be partially applied.
+  ///
+  /// We recommend that you reset the state of the entry groups in your project
+  /// by running another metadata job that reverts the changes from the canceled
+  /// job.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the job, in the format
+  /// projects/{project_id_or_number}/locations/{location_id}/metadataJobs/{metadata_job_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/metadataJobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    GoogleCloudDataplexV1CancelMetadataJobRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a metadata job.
+  ///
+  /// For example, use a metadata job to import Dataplex Catalog entries and
+  /// aspects from a third-party system into Dataplex.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the parent location, in the
+  /// format projects/{project_id_or_number}/locations/{location_id}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [metadataJobId] - Optional. The metadata job ID. If not provided, a unique
+  /// ID is generated with the prefix metadata-job-.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudDataplexV1MetadataJob request,
+    core.String parent, {
+    core.String? metadataJobId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (metadataJobId != null) 'metadataJobId': [metadataJobId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/metadataJobs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a metadata job.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the metadata job, in the format
+  /// projects/{project_id_or_number}/locations/{location_id}/metadataJobs/{metadata_job_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/metadataJobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1MetadataJob].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1MetadataJob> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1MetadataJob.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists metadata jobs.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the parent location, in the
+  /// format projects/{project_id_or_number}/locations/{location_id}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter request. Filters are case-sensitive. The
+  /// service supports the following formats: labels.key1 = "value1" labels:key1
+  /// name = "value"You can combine filters with AND, OR, and NOT operators.
+  ///
+  /// [orderBy] - Optional. The field to sort the results by, either name or
+  /// create_time. If not specified, the ordering is undefined.
+  ///
+  /// [pageSize] - Optional. The maximum number of metadata jobs to return. The
+  /// service might return fewer jobs than this value. If unspecified, at most
+  /// 10 jobs are returned. The maximum value is 1,000.
+  ///
+  /// [pageToken] - Optional. The page token received from a previous
+  /// ListMetadataJobs call. Provide this token to retrieve the subsequent page
+  /// of results. When paginating, all other parameters that are provided to the
+  /// ListMetadataJobs request must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1ListMetadataJobsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1ListMetadataJobsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/metadataJobs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1ListMetadataJobsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -8322,6 +9593,9 @@ typedef GoogleCloudDataplexV1ActionUnauthorizedResource = $Empty;
 
 /// An aspect is a single piece of metadata describing an entry.
 class GoogleCloudDataplexV1Aspect {
+  /// Information related to the source system of the aspect.
+  ///
+  /// Optional.
   GoogleCloudDataplexV1AspectSource? aspectSource;
 
   /// The resource name of the type used to create this Aspect.
@@ -8336,8 +9610,7 @@ class GoogleCloudDataplexV1Aspect {
 
   /// The content of the aspect, according to its aspect type schema.
   ///
-  /// This will replace content. The maximum size of the field is 120KB (encoded
-  /// as UTF-8).
+  /// The maximum size of the field is 120KB (encoded as UTF-8).
   ///
   /// Required.
   ///
@@ -8389,35 +9662,45 @@ class GoogleCloudDataplexV1Aspect {
       };
 }
 
-/// AspectSource contains source system related information for the aspect.
+/// Information related to the source system of the aspect.
 class GoogleCloudDataplexV1AspectSource {
-  /// The create time of the aspect in the source system.
+  /// The time the aspect was created in the source system.
   core.String? createTime;
 
-  /// The update time of the aspect in the source system.
+  /// The version of the data format used to produce this data.
+  ///
+  /// This field is used to indicated when the underlying data format changes
+  /// (e.g., schema modifications, changes to the source URL format definition,
+  /// etc).
+  core.String? dataVersion;
+
+  /// The time the aspect was last updated in the source system.
   core.String? updateTime;
 
   GoogleCloudDataplexV1AspectSource({
     this.createTime,
+    this.dataVersion,
     this.updateTime,
   });
 
   GoogleCloudDataplexV1AspectSource.fromJson(core.Map json_)
       : this(
           createTime: json_['createTime'] as core.String?,
+          dataVersion: json_['dataVersion'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (dataVersion != null) 'dataVersion': dataVersion!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
-/// Aspect Type is a template for creating Aspects, and represents the
-/// JSON-schema for a given Entry, e.g., BigQuery Table Schema.
+/// AspectType is a template for creating Aspects, and represents the
+/// JSON-schema for a given Entry, for example, BigQuery Table Schema.
 class GoogleCloudDataplexV1AspectType {
-  /// Authorization defined for this type.
+  /// Defines the Authorization for this type.
   ///
   /// Immutable.
   GoogleCloudDataplexV1AspectTypeAuthorization? authorization;
@@ -8437,9 +9720,10 @@ class GoogleCloudDataplexV1AspectType {
   /// Optional.
   core.String? displayName;
 
-  /// This checksum is computed by the server based on the value of other
-  /// fields, and may be sent on update and delete requests to ensure the client
-  /// has an up-to-date value before proceeding.
+  /// The service computes this checksum.
+  ///
+  /// The client may send it on update and delete requests to ensure it has an
+  /// up-to-date value before proceeding.
   core.String? etag;
 
   /// User-defined labels for the AspectType.
@@ -8476,8 +9760,8 @@ class GoogleCloudDataplexV1AspectType {
 
   /// System generated globally unique ID for the AspectType.
   ///
-  /// This ID will be different if the AspectType is deleted and re-created with
-  /// the same name.
+  /// If you delete and recreate the AspectType with the same name, then this ID
+  /// will be different.
   ///
   /// Output only.
   core.String? uid;
@@ -8544,10 +9828,10 @@ class GoogleCloudDataplexV1AspectType {
       };
 }
 
-/// Autorization for an Aspect Type.
+/// Autorization for an AspectType.
 class GoogleCloudDataplexV1AspectTypeAuthorization {
-  /// The IAM permission grantable on the Entry Group to allow access to
-  /// instantiate Aspects of Dataplex owned Aspect Types, only settable for
+  /// The IAM permission grantable on the EntryGroup to allow access to
+  /// instantiate Aspects of Dataplex owned AspectTypes, only settable for
   /// Dataplex owned Types.
   ///
   /// Immutable.
@@ -8569,19 +9853,19 @@ class GoogleCloudDataplexV1AspectTypeAuthorization {
       };
 }
 
-/// MetadataTemplate definition for AspectType
+/// MetadataTemplate definition for an AspectType.
 class GoogleCloudDataplexV1AspectTypeMetadataTemplate {
   /// Specifies annotations on this field.
   ///
   /// Optional.
   GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations? annotations;
 
-  /// array_items needs to be set if the type is array.
+  /// If the type is array, set array_items.
   ///
   /// array_items can refer to a primitive field or a complex (record only)
-  /// field. To specify a primitive field, just name and type needs to be set in
+  /// field. To specify a primitive field, you only need to set name and type in
   /// the nested MetadataTemplate. The recommended value for the name field is
-  /// item, as this is not used in the actual payload.
+  /// item, as this isn't used in the actual payload.
   ///
   /// Optional.
   GoogleCloudDataplexV1AspectTypeMetadataTemplate? arrayItems;
@@ -8593,7 +9877,7 @@ class GoogleCloudDataplexV1AspectTypeMetadataTemplate {
 
   /// The list of values for an enum type.
   ///
-  /// Needs to be defined if the type is enum.
+  /// You must define it if the type is enum.
   ///
   /// Optional.
   core.List<GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue>?
@@ -8611,12 +9895,12 @@ class GoogleCloudDataplexV1AspectTypeMetadataTemplate {
   /// Optional.
   core.int? index;
 
-  /// map_items needs to be set if the type is map.
+  /// If the type is map, set map_items.
   ///
   /// map_items can refer to a primitive field or a complex (record only) field.
-  /// To specify a primitive field, just name and type needs to be set in the
+  /// To specify a primitive field, you only need to set name and type in the
   /// nested MetadataTemplate. The recommended value for the name field is item,
-  /// as this is not used in the actual payload.
+  /// as this isn't used in the actual payload.
   ///
   /// Optional.
   GoogleCloudDataplexV1AspectTypeMetadataTemplate? mapItems;
@@ -8626,36 +9910,36 @@ class GoogleCloudDataplexV1AspectTypeMetadataTemplate {
   /// Required.
   core.String? name;
 
-  /// Field definition, needs to be specified if the type is record.
+  /// Field definition.
   ///
-  /// Defines the nested fields.
+  /// You must specify it if the type is record. It defines the nested fields.
   ///
   /// Optional.
   core.List<GoogleCloudDataplexV1AspectTypeMetadataTemplate>? recordFields;
 
   /// The datatype of this field.
   ///
-  /// The following values are supported: Primitive types (string, integer,
-  /// boolean, double, datetime); datetime must be of the format RFC3339 UTC
-  /// "Zulu" (Examples: "2014-10-02T15:01:23Z" and
-  /// "2014-10-02T15:01:23.045123456Z"). Complex types (enum, array, map,
-  /// record).
+  /// The following values are supported:Primitive types: string integer boolean
+  /// double datetime. Must be of the format RFC3339 UTC "Zulu" (Examples:
+  /// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z").Complex
+  /// types: enum array map record
   ///
   /// Required.
   core.String? type;
 
-  /// Id can be used if this definition of the field needs to be reused later.
+  /// You can use type id if this definition of the field needs to be reused
+  /// later.
   ///
-  /// Id needs to be unique across the entire template. Id can only be specified
-  /// if the field type is record.
+  /// The type id must be unique across the entire template. You can only
+  /// specify it if the field type is record.
   ///
   /// Optional.
   core.String? typeId;
 
-  /// A reference to another field definition (instead of an inline definition).
+  /// A reference to another field definition (not an inline definition).
   ///
   /// The value must be equal to the value of an id field defined elsewhere in
-  /// the MetadataTemplate. Only fields with type as record can refer to other
+  /// the MetadataTemplate. Only fields with record type can refer to other
   /// fields.
   ///
   /// Optional.
@@ -8727,35 +10011,37 @@ class GoogleCloudDataplexV1AspectTypeMetadataTemplate {
       };
 }
 
-/// Definition of the annotations of a field
+/// Definition of the annotations of a field.
 class GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations {
-  /// Marks a field as deprecated, a deprecation message can be included.
+  /// Marks a field as deprecated.
+  ///
+  /// You can include a deprecation message.
   ///
   /// Optional.
   core.String? deprecated;
 
-  /// Specify a description for a field
+  /// Description for a field.
   ///
   /// Optional.
   core.String? description;
 
-  /// Specify a displayname for a field.
+  /// Display name for a field.
   ///
   /// Optional.
   core.String? displayName;
 
-  /// Specify a display order for a field.
+  /// Display order for a field.
   ///
-  /// Display order can be used to reorder where a field is rendered
+  /// You can use this to reorder where a field is rendered.
   ///
   /// Optional.
   core.int? displayOrder;
 
-  /// String Type annotations can be used to specify special meaning to string
+  /// You can use String Type annotations to specify special meaning to string
   /// fields.
   ///
   /// The following values are supported: richText: The field must be
-  /// interpreted as a rich text field. url: A fully qualified url link.
+  /// interpreted as a rich text field. url: A fully qualified URL link.
   /// resource: A service qualified resource reference.
   ///
   /// Optional.
@@ -8763,7 +10049,7 @@ class GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations {
 
   /// Suggested hints for string fields.
   ///
-  /// These can be used to suggest values to users, through an UI for example.
+  /// You can use them to suggest values to users through console.
   ///
   /// Optional.
   core.List<core.String>? stringValues;
@@ -8800,9 +10086,9 @@ class GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations {
       };
 }
 
-/// Definition of the constraints of a field
+/// Definition of the constraints of a field.
 class GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints {
-  /// Marks this as an optional/required field.
+  /// Marks this field as optional or required.
   ///
   /// Optional.
   core.bool? required;
@@ -8822,24 +10108,23 @@ class GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints {
       };
 }
 
-/// Definition of Enumvalue (to be used by enum fields)
+/// Definition of Enumvalue, to be used for enum fields.
 class GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue {
-  /// Optional deprecation message to be set if an enum value needs to be
-  /// deprecated.
+  /// You can set this message if you need to deprecate an enum value.
   ///
   /// Optional.
   core.String? deprecated;
 
-  /// Index for the enum.
+  /// Index for the enum value.
   ///
-  /// Cannot be modified.
+  /// It can't be modified.
   ///
   /// Required.
   core.int? index;
 
   /// Name of the enumvalue.
   ///
-  /// This is the actual value that the aspect will contain.
+  /// This is the actual value that the aspect can contain.
   ///
   /// Required.
   core.String? name;
@@ -9391,6 +10676,9 @@ class GoogleCloudDataplexV1AssetStatus {
 
 /// Cancel task jobs.
 typedef GoogleCloudDataplexV1CancelJobRequest = $Empty;
+
+/// Cancel metadata job request.
+typedef GoogleCloudDataplexV1CancelMetadataJobRequest = $Empty;
 
 /// Content represents a user-visible notebook or a sql script
 class GoogleCloudDataplexV1Content {
@@ -10049,8 +11337,8 @@ class GoogleCloudDataplexV1DataProfileResultProfileField {
 class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo {
   /// Ratio of rows with distinct values against total scanned rows.
   ///
-  /// Not available for complex non-groupable field type RECORD and fields with
-  /// REPEATABLE mode.
+  /// Not available for complex non-groupable field type, including RECORD,
+  /// ARRAY, GEOGRAPHY, and JSON, as well as fields with REPEATABLE mode.
   core.double? distinctRatio;
 
   /// Double type field information.
@@ -10072,8 +11360,9 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo {
   /// occur in the scanned data.
   ///
   /// N is 10 or equal to the number of distinct values in the field, whichever
-  /// is smaller. Not available for complex non-groupable field type RECORD and
-  /// fields with REPEATABLE mode.
+  /// is smaller. Not available for complex non-groupable field type, including
+  /// RECORD, ARRAY, GEOGRAPHY, and JSON, as well as fields with REPEATABLE
+  /// mode.
   core.List<
           GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue>?
       topNValues;
@@ -10511,7 +11800,7 @@ class GoogleCloudDataplexV1DataQualityDimension {
   /// The dimension name a rule belongs to.
   ///
   /// Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY",
-  /// "VALIDITY", "UNIQUENESS", "INTEGRITY"
+  /// "VALIDITY", "UNIQUENESS", "FRESHNESS", "VOLUME"
   core.String? name;
 
   GoogleCloudDataplexV1DataQualityDimension({
@@ -10712,7 +12001,7 @@ class GoogleCloudDataplexV1DataQualityRule {
   ///
   /// Results are also aggregated at the dimension level. Supported dimensions
   /// are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS",
-  /// "INTEGRITY"
+  /// "FRESHNESS", "VOLUME"
   ///
   /// Required.
   core.String? dimension;
@@ -10767,6 +12056,13 @@ class GoogleCloudDataplexV1DataQualityRule {
   GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation?
       statisticRangeExpectation;
 
+  /// Whether the Rule is active or suspended.
+  ///
+  /// Default is false.
+  ///
+  /// Optional.
+  core.bool? suspended;
+
   /// Aggregate rule which evaluates whether the provided expression is true for
   /// a table.
   GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation?
@@ -10796,6 +12092,7 @@ class GoogleCloudDataplexV1DataQualityRule {
     this.setExpectation,
     this.sqlAssertion,
     this.statisticRangeExpectation,
+    this.suspended,
     this.tableConditionExpectation,
     this.threshold,
     this.uniquenessExpectation,
@@ -10843,6 +12140,7 @@ class GoogleCloudDataplexV1DataQualityRule {
                   .fromJson(json_['statisticRangeExpectation']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          suspended: json_['suspended'] as core.bool?,
           tableConditionExpectation: json_
                   .containsKey('tableConditionExpectation')
               ? GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation
@@ -10873,6 +12171,7 @@ class GoogleCloudDataplexV1DataQualityRule {
         if (sqlAssertion != null) 'sqlAssertion': sqlAssertion!,
         if (statisticRangeExpectation != null)
           'statisticRangeExpectation': statisticRangeExpectation!,
+        if (suspended != null) 'suspended': suspended!,
         if (tableConditionExpectation != null)
           'tableConditionExpectation': tableConditionExpectation!,
         if (threshold != null) 'threshold': threshold!,
@@ -11444,20 +12743,20 @@ class GoogleCloudDataplexV1DataScan {
   /// Required.
   GoogleCloudDataplexV1DataSource? data;
 
-  /// The result of the data profile scan.
+  /// The result of a data profile scan.
   ///
   /// Output only.
   GoogleCloudDataplexV1DataProfileResult? dataProfileResult;
 
-  /// DataProfileScan related setting.
+  /// Settings for a data profile scan.
   GoogleCloudDataplexV1DataProfileSpec? dataProfileSpec;
 
-  /// The result of the data quality scan.
+  /// The result of a data quality scan.
   ///
   /// Output only.
   GoogleCloudDataplexV1DataQualityResult? dataQualityResult;
 
-  /// DataQualityScan related setting.
+  /// Settings for a data quality scan.
   GoogleCloudDataplexV1DataQualitySpec? dataQualitySpec;
 
   /// Description of the scan.
@@ -11513,9 +12812,9 @@ class GoogleCloudDataplexV1DataScan {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "DATA_SCAN_TYPE_UNSPECIFIED" : The DataScan type is unspecified.
-  /// - "DATA_QUALITY" : Data Quality scan.
-  /// - "DATA_PROFILE" : Data Profile scan.
+  /// - "DATA_SCAN_TYPE_UNSPECIFIED" : The data scan type is unspecified.
+  /// - "DATA_QUALITY" : Data quality scan.
+  /// - "DATA_PROFILE" : Data profile scan.
   core.String? type;
 
   /// System generated globally unique ID for the scan.
@@ -11660,6 +12959,11 @@ class GoogleCloudDataplexV1DataScanExecutionSpec {
 
 /// Status of the data scan execution.
 class GoogleCloudDataplexV1DataScanExecutionStatus {
+  /// The time when the DataScanJob execution was created.
+  ///
+  /// Optional.
+  core.String? latestJobCreateTime;
+
   /// The time when the latest DataScanJob ended.
   core.String? latestJobEndTime;
 
@@ -11667,17 +12971,21 @@ class GoogleCloudDataplexV1DataScanExecutionStatus {
   core.String? latestJobStartTime;
 
   GoogleCloudDataplexV1DataScanExecutionStatus({
+    this.latestJobCreateTime,
     this.latestJobEndTime,
     this.latestJobStartTime,
   });
 
   GoogleCloudDataplexV1DataScanExecutionStatus.fromJson(core.Map json_)
       : this(
+          latestJobCreateTime: json_['latestJobCreateTime'] as core.String?,
           latestJobEndTime: json_['latestJobEndTime'] as core.String?,
           latestJobStartTime: json_['latestJobStartTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (latestJobCreateTime != null)
+          'latestJobCreateTime': latestJobCreateTime!,
         if (latestJobEndTime != null) 'latestJobEndTime': latestJobEndTime!,
         if (latestJobStartTime != null)
           'latestJobStartTime': latestJobStartTime!,
@@ -11686,22 +12994,27 @@ class GoogleCloudDataplexV1DataScanExecutionStatus {
 
 /// A DataScanJob represents an instance of DataScan execution.
 class GoogleCloudDataplexV1DataScanJob {
-  /// The result of the data profile scan.
+  /// The time when the DataScanJob was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The result of a data profile scan.
   ///
   /// Output only.
   GoogleCloudDataplexV1DataProfileResult? dataProfileResult;
 
-  /// DataProfileScan related setting.
+  /// Settings for a data profile scan.
   ///
   /// Output only.
   GoogleCloudDataplexV1DataProfileSpec? dataProfileSpec;
 
-  /// The result of the data quality scan.
+  /// The result of a data quality scan.
   ///
   /// Output only.
   GoogleCloudDataplexV1DataQualityResult? dataQualityResult;
 
-  /// DataQualityScan related setting.
+  /// Settings for a data quality scan.
   ///
   /// Output only.
   GoogleCloudDataplexV1DataQualitySpec? dataQualitySpec;
@@ -11746,9 +13059,9 @@ class GoogleCloudDataplexV1DataScanJob {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "DATA_SCAN_TYPE_UNSPECIFIED" : The DataScan type is unspecified.
-  /// - "DATA_QUALITY" : Data Quality scan.
-  /// - "DATA_PROFILE" : Data Profile scan.
+  /// - "DATA_SCAN_TYPE_UNSPECIFIED" : The data scan type is unspecified.
+  /// - "DATA_QUALITY" : Data quality scan.
+  /// - "DATA_PROFILE" : Data profile scan.
   core.String? type;
 
   /// System generated globally unique ID for the DataScanJob.
@@ -11757,6 +13070,7 @@ class GoogleCloudDataplexV1DataScanJob {
   core.String? uid;
 
   GoogleCloudDataplexV1DataScanJob({
+    this.createTime,
     this.dataProfileResult,
     this.dataProfileSpec,
     this.dataQualityResult,
@@ -11772,6 +13086,7 @@ class GoogleCloudDataplexV1DataScanJob {
 
   GoogleCloudDataplexV1DataScanJob.fromJson(core.Map json_)
       : this(
+          createTime: json_['createTime'] as core.String?,
           dataProfileResult: json_.containsKey('dataProfileResult')
               ? GoogleCloudDataplexV1DataProfileResult.fromJson(
                   json_['dataProfileResult']
@@ -11802,6 +13117,7 @@ class GoogleCloudDataplexV1DataScanJob {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
         if (dataProfileResult != null) 'dataProfileResult': dataProfileResult!,
         if (dataProfileSpec != null) 'dataProfileSpec': dataProfileSpec!,
         if (dataQualityResult != null) 'dataQualityResult': dataQualityResult!,
@@ -12238,45 +13554,51 @@ class GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility {
       };
 }
 
-/// An entry is a representation of a data asset which can be described by
+/// An entry is a representation of a data resource that can be described by
 /// various metadata.
 class GoogleCloudDataplexV1Entry {
-  /// The Aspects attached to the Entry.
+  /// The aspects that are attached to the entry.
   ///
-  /// The format for the key can be one of the following: 1.
-  /// {projectId}.{locationId}.{aspectTypeId} (if the aspect is attached
-  /// directly to the entry) 2. {projectId}.{locationId}.{aspectTypeId}@{path}
-  /// (if the aspect is attached to an entry's path)
+  /// Depending on how the aspect is attached to the entry, the format of the
+  /// aspect key can be one of the following: If the aspect is attached directly
+  /// to the entry: {project_id_or_number}.{location_id}.{aspect_type_id} If the
+  /// aspect is attached to an entry's path:
+  /// {project_id_or_number}.{location_id}.{aspect_type_id}@{path}
   ///
   /// Optional.
   core.Map<core.String, GoogleCloudDataplexV1Aspect>? aspects;
 
-  /// The time when the Entry was created.
+  /// The time when the entry was created in Dataplex.
   ///
   /// Output only.
   core.String? createTime;
 
-  /// Source system related information for an entry.
+  /// Information related to the source system of the data resource that is
+  /// represented by the entry.
   ///
   /// Optional.
   GoogleCloudDataplexV1EntrySource? entrySource;
 
-  /// The resource name of the EntryType used to create this Entry.
+  /// The relative resource name of the entry type that was used to create this
+  /// entry, in the format
+  /// projects/{project_id_or_number}/locations/{location_id}/entryTypes/{entry_type_id}.
   ///
   /// Required. Immutable.
   core.String? entryType;
 
-  /// A name for the entry that can reference it in an external system.
+  /// A name for the entry that can be referenced by an external system.
   ///
-  /// The maximum size of the field is 4000 characters.
+  /// For more information, see Fully qualified names
+  /// (https://cloud.google.com/data-catalog/docs/fully-qualified-names). The
+  /// maximum size of the field is 4000 characters.
   ///
   /// Optional.
   core.String? fullyQualifiedName;
 
   /// Identifier.
   ///
-  /// The relative resource name of the Entry, of the form:
-  /// projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry}.
+  /// The relative resource name of the entry, in the format
+  /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}.
   core.String? name;
 
   /// The resource name of the parent entry.
@@ -12284,7 +13606,7 @@ class GoogleCloudDataplexV1Entry {
   /// Optional. Immutable.
   core.String? parentEntry;
 
-  /// The time when the Entry was last updated.
+  /// The time when the entry was last updated in Dataplex.
   ///
   /// Output only.
   core.String? updateTime;
@@ -12352,9 +13674,9 @@ class GoogleCloudDataplexV1EntryGroup {
   /// Optional.
   core.String? displayName;
 
-  /// This checksum is computed by the server based on the value of other
-  /// fields, and may be sent on update and delete requests to ensure the client
-  /// has an up-to-date value before proceeding.
+  /// This checksum is computed by the service, and might be sent on update and
+  /// delete requests to ensure the client has an up-to-date value before
+  /// proceeding.
   core.String? etag;
 
   /// User-defined labels for the EntryGroup.
@@ -12362,8 +13684,8 @@ class GoogleCloudDataplexV1EntryGroup {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
-  /// The relative resource name of the EntryGroup, of the form:
-  /// projects/{project_number}/locations/{location_id}/entryGroups/{entry_group_id}.
+  /// The relative resource name of the EntryGroup, in the format
+  /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}.
   ///
   /// Output only.
   core.String? name;
@@ -12386,8 +13708,8 @@ class GoogleCloudDataplexV1EntryGroup {
 
   /// System generated globally unique ID for the EntryGroup.
   ///
-  /// This ID will be different if the EntryGroup is deleted and re-created with
-  /// the same name.
+  /// If you delete and recreate the EntryGroup with the same name, this ID will
+  /// be different.
   ///
   /// Output only.
   core.String? uid;
@@ -12441,24 +13763,26 @@ class GoogleCloudDataplexV1EntryGroup {
       };
 }
 
-/// EntrySource contains source system related information for the entry.
+/// Information related to the source system of the data resource that is
+/// represented by the entry.
 class GoogleCloudDataplexV1EntrySource {
-  /// The ancestors of the Entry in the source system.
+  /// The entries representing the ancestors of the data resource in the source
+  /// system.
   ///
   /// Immutable.
   core.List<GoogleCloudDataplexV1EntrySourceAncestor>? ancestors;
 
-  /// The create time of the resource in the source system.
+  /// The time when the resource was created in the source system.
   core.String? createTime;
 
-  /// Description of the Entry.
+  /// A description of the data resource.
   ///
-  /// The maximum size of the field is 2000 characters.
+  /// Maximum length is 2,000 characters.
   core.String? description;
 
-  /// User friendly display name.
+  /// A user-friendly display name.
   ///
-  /// The maximum size of the field is 500 characters.
+  /// Maximum length is 500 characters.
   core.String? displayName;
 
   /// User-defined labels.
@@ -12468,29 +13792,33 @@ class GoogleCloudDataplexV1EntrySource {
 
   /// Location of the resource in the source system.
   ///
-  /// Entry will be searchable by this location. By default, this should match
-  /// the location of the EntryGroup containing this entry. A different value
-  /// allows capturing source location for data external to GCP.
+  /// You can search the entry by this location. By default, this should match
+  /// the location of the entry group containing this entry. A different value
+  /// allows capturing the source location for data external to Google Cloud.
   ///
   /// Output only.
   core.String? location;
 
   /// The platform containing the source system.
   ///
-  /// The maximum size of the field is 64 characters.
+  /// Maximum length is 64 characters.
   core.String? platform;
 
   /// The name of the resource in the source system.
   ///
-  /// The maximum size of the field is 4000 characters.
+  /// Maximum length is 4,000 characters.
   core.String? resource;
 
   /// The name of the source system.
   ///
-  /// The maximum size of the field is 64 characters.
+  /// Maximum length is 64 characters.
   core.String? system;
 
-  /// The update time of the resource in the source system.
+  /// The time when the resource was last updated in the source system.
+  ///
+  /// If the entry exists in the system and its EntrySource has update_time
+  /// populated, further updates to the EntrySource of the entry must provide
+  /// incremental updates to its update_time.
   core.String? updateTime;
 
   GoogleCloudDataplexV1EntrySource({
@@ -12544,8 +13872,8 @@ class GoogleCloudDataplexV1EntrySource {
       };
 }
 
-/// Ancestor contains information about individual items in the hierarchy of an
-/// Entry.
+/// Information about individual items in the hierarchy that is associated with
+/// the data resource.
 class GoogleCloudDataplexV1EntrySourceAncestor {
   /// The name of the ancestor resource.
   ///
@@ -12596,9 +13924,9 @@ class GoogleCloudDataplexV1EntryType {
   /// Optional.
   core.String? displayName;
 
-  /// This checksum is computed by the server based on the value of other
-  /// fields, and may be sent on update and delete requests to ensure the client
-  /// has an up-to-date value before proceeding.
+  /// This checksum is computed by the service, and might be sent on update and
+  /// delete requests to ensure the client has an up-to-date value before
+  /// proceeding.
   ///
   /// Optional.
   core.String? etag;
@@ -12629,7 +13957,7 @@ class GoogleCloudDataplexV1EntryType {
   /// Optional.
   core.String? system;
 
-  /// Indicates the class this Entry Type belongs to, for example, TABLE,
+  /// Indicates the classes this Entry Type belongs to, for example, TABLE,
   /// DATABASE, MODEL.
   ///
   /// Optional.
@@ -13535,16 +14863,16 @@ class GoogleCloudDataplexV1ListActionsResponse {
       };
 }
 
-/// List AspectTypes response
+/// List AspectTypes response.
 class GoogleCloudDataplexV1ListAspectTypesResponse {
-  /// ListAspectTypes under the given parent location.
+  /// AspectTypes under the given parent location.
   core.List<GoogleCloudDataplexV1AspectType>? aspectTypes;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
   core.String? nextPageToken;
 
-  /// Locations that could not be reached.
+  /// Locations that the service couldn't reach.
   core.List<core.String>? unreachableLocations;
 
   GoogleCloudDataplexV1ListAspectTypesResponse({
@@ -13843,11 +15171,13 @@ class GoogleCloudDataplexV1ListEntitiesResponse {
       };
 }
 
+/// List Entries response.
 class GoogleCloudDataplexV1ListEntriesResponse {
-  /// The list of entries.
+  /// The list of entries under the given parent location.
   core.List<GoogleCloudDataplexV1Entry>? entries;
 
-  /// Pagination token.
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
   core.String? nextPageToken;
 
   GoogleCloudDataplexV1ListEntriesResponse({
@@ -13870,16 +15200,16 @@ class GoogleCloudDataplexV1ListEntriesResponse {
       };
 }
 
-/// List ListEntryGroups response.
+/// List entry groups response.
 class GoogleCloudDataplexV1ListEntryGroupsResponse {
-  /// ListEntryGroups under the given parent location.
+  /// Entry groups under the given parent location.
   core.List<GoogleCloudDataplexV1EntryGroup>? entryGroups;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
   core.String? nextPageToken;
 
-  /// Locations that could not be reached.
+  /// Locations that the service couldn't reach.
   core.List<core.String>? unreachableLocations;
 
   GoogleCloudDataplexV1ListEntryGroupsResponse({
@@ -13908,16 +15238,16 @@ class GoogleCloudDataplexV1ListEntryGroupsResponse {
       };
 }
 
-/// List EntryTypes response
+/// List EntryTypes response.
 class GoogleCloudDataplexV1ListEntryTypesResponse {
-  /// ListEntryTypes under the given parent location.
+  /// EntryTypes under the given parent location.
   core.List<GoogleCloudDataplexV1EntryType>? entryTypes;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
   core.String? nextPageToken;
 
-  /// Locations that could not be reached.
+  /// Locations that the service couldn't reach.
   core.List<core.String>? unreachableLocations;
 
   GoogleCloudDataplexV1ListEntryTypesResponse({
@@ -14036,6 +15366,45 @@ class GoogleCloudDataplexV1ListLakesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (lakes != null) 'lakes': lakes!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachableLocations != null)
+          'unreachableLocations': unreachableLocations!,
+      };
+}
+
+/// List metadata jobs response.
+class GoogleCloudDataplexV1ListMetadataJobsResponse {
+  /// Metadata jobs under the specified parent location.
+  core.List<GoogleCloudDataplexV1MetadataJob>? metadataJobs;
+
+  /// A token to retrieve the next page of results.
+  ///
+  /// If there are no more results in the list, the value is empty.
+  core.String? nextPageToken;
+
+  /// Locations that the service couldn't reach.
+  core.List<core.String>? unreachableLocations;
+
+  GoogleCloudDataplexV1ListMetadataJobsResponse({
+    this.metadataJobs,
+    this.nextPageToken,
+    this.unreachableLocations,
+  });
+
+  GoogleCloudDataplexV1ListMetadataJobsResponse.fromJson(core.Map json_)
+      : this(
+          metadataJobs: (json_['metadataJobs'] as core.List?)
+              ?.map((value) => GoogleCloudDataplexV1MetadataJob.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachableLocations: (json_['unreachableLocations'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metadataJobs != null) 'metadataJobs': metadataJobs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachableLocations != null)
           'unreachableLocations': unreachableLocations!,
@@ -14164,6 +15533,417 @@ class GoogleCloudDataplexV1ListZonesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (zones != null) 'zones': zones!,
+      };
+}
+
+/// A metadata job resource.
+class GoogleCloudDataplexV1MetadataJob {
+  /// The time when the metadata job was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Import job result.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1MetadataJobImportJobResult? importResult;
+
+  /// Import job specification.
+  GoogleCloudDataplexV1MetadataJobImportJobSpec? importSpec;
+
+  /// User-defined labels.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The name of the resource that the configuration is applied to, in the
+  /// format
+  /// projects/{project_number}/locations/{location_id}/metadataJobs/{metadata_job_id}.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Metadata job status.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1MetadataJobStatus? status;
+
+  /// Metadata job type.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified.
+  /// - "IMPORT" : Import job.
+  core.String? type;
+
+  /// A system-generated, globally unique ID for the metadata job.
+  ///
+  /// If the metadata job is deleted and then re-created with the same name,
+  /// this ID is different.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The time when the metadata job was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudDataplexV1MetadataJob({
+    this.createTime,
+    this.importResult,
+    this.importSpec,
+    this.labels,
+    this.name,
+    this.status,
+    this.type,
+    this.uid,
+    this.updateTime,
+  });
+
+  GoogleCloudDataplexV1MetadataJob.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          importResult: json_.containsKey('importResult')
+              ? GoogleCloudDataplexV1MetadataJobImportJobResult.fromJson(
+                  json_['importResult'] as core.Map<core.String, core.dynamic>)
+              : null,
+          importSpec: json_.containsKey('importSpec')
+              ? GoogleCloudDataplexV1MetadataJobImportJobSpec.fromJson(
+                  json_['importSpec'] as core.Map<core.String, core.dynamic>)
+              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          name: json_['name'] as core.String?,
+          status: json_.containsKey('status')
+              ? GoogleCloudDataplexV1MetadataJobStatus.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: json_['type'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (importResult != null) 'importResult': importResult!,
+        if (importSpec != null) 'importSpec': importSpec!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (status != null) 'status': status!,
+        if (type != null) 'type': type!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Results from a metadata import job.
+class GoogleCloudDataplexV1MetadataJobImportJobResult {
+  /// The total number of entries that were created.
+  ///
+  /// Output only.
+  core.String? createdEntries;
+
+  /// The total number of entries that were deleted.
+  ///
+  /// Output only.
+  core.String? deletedEntries;
+
+  /// The total number of entries that were recreated.
+  ///
+  /// Output only.
+  core.String? recreatedEntries;
+
+  /// The total number of entries that were unchanged.
+  ///
+  /// Output only.
+  core.String? unchangedEntries;
+
+  /// The time when the status was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// The total number of entries that were updated.
+  ///
+  /// Output only.
+  core.String? updatedEntries;
+
+  GoogleCloudDataplexV1MetadataJobImportJobResult({
+    this.createdEntries,
+    this.deletedEntries,
+    this.recreatedEntries,
+    this.unchangedEntries,
+    this.updateTime,
+    this.updatedEntries,
+  });
+
+  GoogleCloudDataplexV1MetadataJobImportJobResult.fromJson(core.Map json_)
+      : this(
+          createdEntries: json_['createdEntries'] as core.String?,
+          deletedEntries: json_['deletedEntries'] as core.String?,
+          recreatedEntries: json_['recreatedEntries'] as core.String?,
+          unchangedEntries: json_['unchangedEntries'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          updatedEntries: json_['updatedEntries'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createdEntries != null) 'createdEntries': createdEntries!,
+        if (deletedEntries != null) 'deletedEntries': deletedEntries!,
+        if (recreatedEntries != null) 'recreatedEntries': recreatedEntries!,
+        if (unchangedEntries != null) 'unchangedEntries': unchangedEntries!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (updatedEntries != null) 'updatedEntries': updatedEntries!,
+      };
+}
+
+/// Job specification for a metadata import job
+class GoogleCloudDataplexV1MetadataJobImportJobSpec {
+  /// The sync mode for aspects.
+  ///
+  /// Only INCREMENTAL mode is supported for aspects. An aspect is modified only
+  /// if the metadata import file includes a reference to the aspect in the
+  /// update_mask field and the aspect_keys field.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "SYNC_MODE_UNSPECIFIED" : Sync mode unspecified.
+  /// - "FULL" : All resources in the job's scope are modified. If a resource
+  /// exists in Dataplex but isn't included in the metadata import file, the
+  /// resource is deleted when you run the metadata job. Use this mode to
+  /// perform a full sync of the set of entries in the job scope.
+  /// - "INCREMENTAL" : Only the entries and aspects that are explicitly
+  /// included in the metadata import file are modified. Use this mode to modify
+  /// a subset of resources while leaving unreferenced resources unchanged.
+  core.String? aspectSyncMode;
+
+  /// The sync mode for entries.
+  ///
+  /// Only FULL mode is supported for entries. All entries in the job's scope
+  /// are modified. If an entry exists in Dataplex but isn't included in the
+  /// metadata import file, the entry is deleted when you run the metadata job.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "SYNC_MODE_UNSPECIFIED" : Sync mode unspecified.
+  /// - "FULL" : All resources in the job's scope are modified. If a resource
+  /// exists in Dataplex but isn't included in the metadata import file, the
+  /// resource is deleted when you run the metadata job. Use this mode to
+  /// perform a full sync of the set of entries in the job scope.
+  /// - "INCREMENTAL" : Only the entries and aspects that are explicitly
+  /// included in the metadata import file are modified. Use this mode to modify
+  /// a subset of resources while leaving unreferenced resources unchanged.
+  core.String? entrySyncMode;
+
+  /// The level of logs to write to Cloud Logging for this job.Debug-level logs
+  /// provide highly-detailed information for troubleshooting, but their
+  /// increased verbosity could incur additional costs
+  /// (https://cloud.google.com/stackdriver/pricing) that might not be merited
+  /// for all jobs.If unspecified, defaults to INFO.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "LOG_LEVEL_UNSPECIFIED" : Log level unspecified.
+  /// - "DEBUG" : Debug-level logging. Captures detailed logs for each import
+  /// item. Use debug-level logging to troubleshoot issues with specific import
+  /// items. For example, use debug-level logging to identify resources that are
+  /// missing from the job scope, entries or aspects that don't conform to the
+  /// associated entry type or aspect type, or other misconfigurations with the
+  /// metadata import file.Depending on the size of your metadata job and the
+  /// number of logs that are generated, debug-level logging might incur
+  /// additional costs (https://cloud.google.com/stackdriver/pricing).
+  /// - "INFO" : Info-level logging. Captures logs at the overall job level.
+  /// Includes aggregate logs about import items, but doesn't specify which
+  /// import item has an error.
+  core.String? logLevel;
+
+  /// A boundary on the scope of impact that the metadata import job can have.
+  ///
+  /// Required.
+  GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope? scope;
+
+  /// The time when the process that created the metadata import files began.
+  ///
+  /// Optional.
+  core.String? sourceCreateTime;
+
+  /// The URI of a Cloud Storage bucket or folder (beginning with gs:// and
+  /// ending with /) that contains the metadata import files for this job.A
+  /// metadata import file defines the values to set for each of the entries and
+  /// aspects in a metadata job.
+  ///
+  /// For more information about how to create a metadata import file and the
+  /// file requirements, see Metadata import file
+  /// (https://cloud.google.com/dataplex/docs/import-metadata#metadata-import-file).You
+  /// can provide multiple metadata import files in the same metadata job. The
+  /// bucket or folder must contain at least one metadata import file, in JSON
+  /// Lines format (either .json or .jsonl file extension).In FULL entry sync
+  /// mode, don't save the metadata import file in a folder named
+  /// SOURCE_STORAGE_URI/deletions/.Caution: If the metadata import file
+  /// contains no data, all entries and aspects that belong to the job's scope
+  /// are deleted.
+  ///
+  /// Optional.
+  core.String? sourceStorageUri;
+
+  GoogleCloudDataplexV1MetadataJobImportJobSpec({
+    this.aspectSyncMode,
+    this.entrySyncMode,
+    this.logLevel,
+    this.scope,
+    this.sourceCreateTime,
+    this.sourceStorageUri,
+  });
+
+  GoogleCloudDataplexV1MetadataJobImportJobSpec.fromJson(core.Map json_)
+      : this(
+          aspectSyncMode: json_['aspectSyncMode'] as core.String?,
+          entrySyncMode: json_['entrySyncMode'] as core.String?,
+          logLevel: json_['logLevel'] as core.String?,
+          scope: json_.containsKey('scope')
+              ? GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope
+                  .fromJson(
+                      json_['scope'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sourceCreateTime: json_['sourceCreateTime'] as core.String?,
+          sourceStorageUri: json_['sourceStorageUri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aspectSyncMode != null) 'aspectSyncMode': aspectSyncMode!,
+        if (entrySyncMode != null) 'entrySyncMode': entrySyncMode!,
+        if (logLevel != null) 'logLevel': logLevel!,
+        if (scope != null) 'scope': scope!,
+        if (sourceCreateTime != null) 'sourceCreateTime': sourceCreateTime!,
+        if (sourceStorageUri != null) 'sourceStorageUri': sourceStorageUri!,
+      };
+}
+
+/// A boundary on the scope of impact that the metadata import job can have.
+class GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope {
+  /// The aspect types that are in scope for the import job, specified as
+  /// relative resource names in the format
+  /// projects/{project_number_or_id}/locations/{location_id}/aspectTypes/{aspect_type_id}.
+  ///
+  /// The job modifies only the aspects that belong to these aspect types.If the
+  /// metadata import file attempts to modify an aspect whose type isn't
+  /// included in this list, the import job is halted before modifying any
+  /// entries or aspects.The location of an aspect type must either match the
+  /// location of the job, or the aspect type must be global.
+  ///
+  /// Optional.
+  core.List<core.String>? aspectTypes;
+
+  /// The entry group that is in scope for the import job, specified as a
+  /// relative resource name in the format
+  /// projects/{project_number_or_id}/locations/{location_id}/entryGroups/{entry_group_id}.
+  ///
+  /// Only entries that belong to the specified entry group are affected by the
+  /// job.Must contain exactly one element. The entry group and the job must be
+  /// in the same location.
+  ///
+  /// Required.
+  core.List<core.String>? entryGroups;
+
+  /// The entry types that are in scope for the import job, specified as
+  /// relative resource names in the format
+  /// projects/{project_number_or_id}/locations/{location_id}/entryTypes/{entry_type_id}.
+  ///
+  /// The job modifies only the entries that belong to these entry types.If the
+  /// metadata import file attempts to modify an entry whose type isn't included
+  /// in this list, the import job is halted before modifying any entries or
+  /// aspects.The location of an entry type must either match the location of
+  /// the job, or the entry type must be global.
+  ///
+  /// Required.
+  core.List<core.String>? entryTypes;
+
+  GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope({
+    this.aspectTypes,
+    this.entryGroups,
+    this.entryTypes,
+  });
+
+  GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope.fromJson(
+      core.Map json_)
+      : this(
+          aspectTypes: (json_['aspectTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          entryGroups: (json_['entryGroups'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          entryTypes: (json_['entryTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aspectTypes != null) 'aspectTypes': aspectTypes!,
+        if (entryGroups != null) 'entryGroups': entryGroups!,
+        if (entryTypes != null) 'entryTypes': entryTypes!,
+      };
+}
+
+/// Metadata job status.
+class GoogleCloudDataplexV1MetadataJobStatus {
+  /// Progress tracking.
+  ///
+  /// Output only.
+  core.int? completionPercent;
+
+  /// Message relating to the progression of a metadata job.
+  ///
+  /// Output only.
+  core.String? message;
+
+  /// State of the metadata job.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State unspecified.
+  /// - "QUEUED" : The job is queued.
+  /// - "RUNNING" : The job is running.
+  /// - "CANCELING" : The job is being canceled.
+  /// - "CANCELED" : The job is canceled.
+  /// - "SUCCEEDED" : The job succeeded.
+  /// - "FAILED" : The job failed.
+  /// - "SUCCEEDED_WITH_ERRORS" : The job completed with some errors.
+  core.String? state;
+
+  /// The time when the status was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudDataplexV1MetadataJobStatus({
+    this.completionPercent,
+    this.message,
+    this.state,
+    this.updateTime,
+  });
+
+  GoogleCloudDataplexV1MetadataJobStatus.fromJson(core.Map json_)
+      : this(
+          completionPercent: json_['completionPercent'] as core.int?,
+          message: json_['message'] as core.String?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (completionPercent != null) 'completionPercent': completionPercent!,
+        if (message != null) 'message': message!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -14637,7 +16417,8 @@ class GoogleCloudDataplexV1SchemaSchemaField {
 }
 
 class GoogleCloudDataplexV1SearchEntriesResponse {
-  /// Pagination token.
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
   core.String? nextPageToken;
 
   /// The results matching the search query.
@@ -14645,12 +16426,12 @@ class GoogleCloudDataplexV1SearchEntriesResponse {
 
   /// The estimated total number of matching entries.
   ///
-  /// Not guaranteed to be accurate.
+  /// This number isn't guaranteed to be accurate.
   core.int? totalSize;
 
-  /// Unreachable locations.
+  /// Locations that the service couldn't reach.
   ///
-  /// Search results don't include data from those locations.
+  /// Search results don't include data from these locations.
   core.List<core.String>? unreachable;
 
   GoogleCloudDataplexV1SearchEntriesResponse({
@@ -15587,9 +17368,8 @@ class GoogleCloudDataplexV1TaskSparkTaskConfig {
 
   /// A reference to a query file.
   ///
-  /// This can be the Cloud Storage URI of the query file or it can the path to
-  /// a SqlScript Content. The execution args are used to declare a set of
-  /// script variables (set key="value";).
+  /// This should be the Cloud Storage URI of the query file. The execution args
+  /// are used to declare a set of script variables (set key="value";).
   core.String? sqlScriptFile;
 
   GoogleCloudDataplexV1TaskSparkTaskConfig({
@@ -16501,7 +18281,7 @@ class GoogleLongrunningOperation {
 /// three pieces of data: error code, error message, and error details.You can
 /// find out more about this error model and how to work with it in the API
 /// Design Guide (https://cloud.google.com/apis/design/errors).
-typedef GoogleRpcStatus = $Status;
+typedef GoogleRpcStatus = $Status00;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.

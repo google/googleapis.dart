@@ -230,8 +230,6 @@ class CreativeAssetMetadata {
   ///
   /// Value: the fixed string "dfareporting#creativeAssetMetadata".
   core.String? kind;
-  MediaRequestInfo? mediaRequestInfo;
-  MediaResponseInfo? mediaResponseInfo;
 
   /// True if the uploaded asset is a rich media asset.
   ///
@@ -267,8 +265,6 @@ class CreativeAssetMetadata {
     this.id,
     this.idDimensionValue,
     this.kind,
-    this.mediaRequestInfo,
-    this.mediaResponseInfo,
     this.richMedia,
     this.timerCustomEvents,
     this.warnedValidationRules,
@@ -301,14 +297,6 @@ class CreativeAssetMetadata {
                   as core.Map<core.String, core.dynamic>)
               : null,
           kind: json_['kind'] as core.String?,
-          mediaRequestInfo: json_.containsKey('mediaRequestInfo')
-              ? MediaRequestInfo.fromJson(json_['mediaRequestInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          mediaResponseInfo: json_.containsKey('mediaResponseInfo')
-              ? MediaResponseInfo.fromJson(json_['mediaResponseInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
           richMedia: json_['richMedia'] as core.bool?,
           timerCustomEvents: (json_['timerCustomEvents'] as core.List?)
               ?.map((value) => CreativeCustomEvent.fromJson(
@@ -329,8 +317,6 @@ class CreativeAssetMetadata {
         if (id != null) 'id': id!,
         if (idDimensionValue != null) 'idDimensionValue': idDimensionValue!,
         if (kind != null) 'kind': kind!,
-        if (mediaRequestInfo != null) 'mediaRequestInfo': mediaRequestInfo!,
-        if (mediaResponseInfo != null) 'mediaResponseInfo': mediaResponseInfo!,
         if (richMedia != null) 'richMedia': richMedia!,
         if (timerCustomEvents != null) 'timerCustomEvents': timerCustomEvents!,
         if (warnedValidationRules != null)
@@ -461,154 +447,6 @@ class CreativeCustomEvent {
 
 /// Represents a DimensionValue resource.
 typedef DimensionValue = $DimensionValue;
-
-/// Extra information added to operations that support Scotty media requests.
-typedef MediaRequestInfo = $MediaRequestInfo;
-
-/// This message is for backends to pass their scotty media specific fields to
-/// ESF.
-///
-/// Backend will include this in their response message to ESF. Example:
-/// ExportFile is an rpc defined for upload using scotty from ESF. rpc
-/// ExportFile(ExportFileRequest) returns (ExportFileResponse) Message
-/// ExportFileResponse will include apiserving.MediaResponseInfo to tell ESF
-/// about data like dynamic_dropzone it needs to pass to Scotty. message
-/// ExportFileResponse { optional gdata.Media blob = 1; optional
-/// apiserving.MediaResponseInfo media_response_info = 2 }
-class MediaResponseInfo {
-  /// Data to copy from backend response to the next backend requests.
-  ///
-  /// Custom data is returned to Scotty in the agent_state field, which Scotty
-  /// will then provide in subsequent upload notifications.
-  core.String? customData;
-
-  /// Specifies any transformation to be applied to data before persisting it or
-  /// retrieving from storage.
-  ///
-  /// E.g., encryption options for blobstore2. This should be of the form
-  /// uploader_service.DataStorageTransform.
-  core.String? dataStorageTransform;
-  core.List<core.int> get dataStorageTransformAsBytes =>
-      convert.base64.decode(dataStorageTransform!);
-
-  set dataStorageTransformAsBytes(core.List<core.int> bytes_) {
-    dataStorageTransform =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// Specifies the Scotty Drop Target to use for uploads.
-  ///
-  /// If present in a media response, Scotty does not upload to a standard drop
-  /// zone. Instead, Scotty saves the upload directly to the location specified
-  /// in this drop target. Unlike drop zones, the drop target is the final
-  /// storage location for an upload. So, the agent does not need to clone the
-  /// blob at the end of the upload. The agent is responsible for garbage
-  /// collecting any orphaned blobs that may occur due to aborted uploads. For
-  /// more information, see the drop target design doc here:
-  /// http://goto/ScottyDropTarget This field will be preferred to
-  /// dynamicDropzone. If provided, the identified field in the response must be
-  /// of the type uploader.agent.DropTarget.
-  core.String? dynamicDropTarget;
-  core.List<core.int> get dynamicDropTargetAsBytes =>
-      convert.base64.decode(dynamicDropTarget!);
-
-  set dynamicDropTargetAsBytes(core.List<core.int> bytes_) {
-    dynamicDropTarget =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// Specifies the Scotty dropzone to use for uploads.
-  core.String? dynamicDropzone;
-
-  /// Request class to use for all Blobstore operations for this request.
-  /// Possible string values are:
-  /// - "UNKNOWN_REQUEST_CLASS" : Unpopulated request_class in log files will be
-  /// taken as 0 in dremel query. GoogleSQL will try to cast it to enum by
-  /// default. An unused 0 value is added to avoid GoogleSQL casting error.
-  /// Please refer to b/69677280.
-  /// - "LATENCY_SENSITIVE" : A latency-sensitive request.
-  /// - "PRODUCTION_BATCH" : A request generated by a batch process.
-  /// - "BEST_EFFORT" : A best-effort request.
-  core.String? requestClass;
-
-  /// Requester ID passed along to be recorded in the Scotty logs
-  core.String? scottyAgentUserId;
-
-  /// Customer-specific data to be recorded in the Scotty logs type is
-  /// logs_proto_scotty.CustomerLog
-  core.String? scottyCustomerLog;
-  core.List<core.int> get scottyCustomerLogAsBytes =>
-      convert.base64.decode(scottyCustomerLog!);
-
-  set scottyCustomerLogAsBytes(core.List<core.int> bytes_) {
-    scottyCustomerLog =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// Specifies the TrafficClass that Scotty should use for any RPCs to fetch
-  /// the response bytes.
-  ///
-  /// Will override the traffic class GTOS of the incoming http request. This is
-  /// a temporary field to facilitate whitelisting and experimentation by the
-  /// bigstore agent only. For instance, this does not apply to RTMP reads.
-  /// WARNING: DO NOT USE WITHOUT PERMISSION FROM THE SCOTTY TEAM.
-  /// Possible string values are:
-  /// - "BE1" : Application-selectable traffic classes Best effort
-  /// - "AF1" : Assured forwarding priority 1
-  /// - "AF2" : Assured forwarding priority 2
-  /// - "AF3" : Assured forwarding priority 3
-  /// - "AF4" : Assured forwarding priority 4
-  /// - "NC1" : Network control
-  /// - "NC0" : Network control
-  /// - "BE0" : Best effort at high packet loss
-  /// - "LLQ" : Low-latency queue (LLQ) best effort (go/llq)
-  /// - "LLQ1" : LLQ best effort (go/llq2)
-  /// - "LLQ2" : LLQ assured forwarding priority 2 (go/llq2)
-  core.String? trafficClassField;
-
-  /// Tells Scotty to verify hashes on the agent's behalf by parsing out the
-  /// X-Goog-Hash header.
-  core.bool? verifyHashFromHeader;
-
-  MediaResponseInfo({
-    this.customData,
-    this.dataStorageTransform,
-    this.dynamicDropTarget,
-    this.dynamicDropzone,
-    this.requestClass,
-    this.scottyAgentUserId,
-    this.scottyCustomerLog,
-    this.trafficClassField,
-    this.verifyHashFromHeader,
-  });
-
-  MediaResponseInfo.fromJson(core.Map json_)
-      : this(
-          customData: json_['customData'] as core.String?,
-          dataStorageTransform: json_['dataStorageTransform'] as core.String?,
-          dynamicDropTarget: json_['dynamicDropTarget'] as core.String?,
-          dynamicDropzone: json_['dynamicDropzone'] as core.String?,
-          requestClass: json_['requestClass'] as core.String?,
-          scottyAgentUserId: json_['scottyAgentUserId'] as core.String?,
-          scottyCustomerLog: json_['scottyCustomerLog'] as core.String?,
-          trafficClassField: json_['trafficClassField'] as core.String?,
-          verifyHashFromHeader: json_['verifyHashFromHeader'] as core.bool?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customData != null) 'customData': customData!,
-        if (dataStorageTransform != null)
-          'dataStorageTransform': dataStorageTransform!,
-        if (dynamicDropTarget != null) 'dynamicDropTarget': dynamicDropTarget!,
-        if (dynamicDropzone != null) 'dynamicDropzone': dynamicDropzone!,
-        if (requestClass != null) 'requestClass': requestClass!,
-        if (scottyAgentUserId != null) 'scottyAgentUserId': scottyAgentUserId!,
-        if (scottyCustomerLog != null) 'scottyCustomerLog': scottyCustomerLog!,
-        if (trafficClassField != null) 'trafficClassField': trafficClassField!,
-        if (verifyHashFromHeader != null)
-          'verifyHashFromHeader': verifyHashFromHeader!,
-      };
-}
 
 /// Offset Position.
 typedef OffsetPosition = $OffsetPosition;

@@ -139,6 +139,7 @@ api.BillingAccount buildBillingAccount() {
   final o = api.BillingAccount();
   buildCounterBillingAccount++;
   if (buildCounterBillingAccount < 3) {
+    o.currencyCode = 'foo';
     o.displayName = 'foo';
     o.masterBillingAccount = 'foo';
     o.name = 'foo';
@@ -152,6 +153,10 @@ api.BillingAccount buildBillingAccount() {
 void checkBillingAccount(api.BillingAccount o) {
   buildCounterBillingAccount++;
   if (buildCounterBillingAccount < 3) {
+    unittest.expect(
+      o.currencyCode!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.displayName!,
       unittest.equals('foo'),

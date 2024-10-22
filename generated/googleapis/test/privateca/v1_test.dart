@@ -692,6 +692,7 @@ api.CertificateDescription buildCertificateDescription() {
     o.publicKey = buildPublicKey();
     o.subjectDescription = buildSubjectDescription();
     o.subjectKeyId = buildKeyId();
+    o.tbsCertificateDigest = 'foo';
     o.x509Description = buildX509Parameters();
   }
   buildCounterCertificateDescription--;
@@ -708,6 +709,10 @@ void checkCertificateDescription(api.CertificateDescription o) {
     checkPublicKey(o.publicKey!);
     checkSubjectDescription(o.subjectDescription!);
     checkKeyId(o.subjectKeyId!);
+    unittest.expect(
+      o.tbsCertificateDigest!,
+      unittest.equals('foo'),
+    );
     checkX509Parameters(o.x509Description!);
   }
   buildCounterCertificateDescription--;

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240531",
+    "revision": "20240329",
     "rootUrl": "https://lifesciences.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Life Sciences API",

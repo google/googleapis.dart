@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240607",
+    "revision": "20241014",
     "rootUrl": "https://datalineage.googleapis.com/",
     "servicePath": "",
     "title": "Data Lineage API",
@@ -1048,7 +1048,7 @@
                     "type": "string"
                 },
                 "sourceType": {
-                    "description": "Type of the source. Use of a source_type other than `CUSTOM` for process creation or updating is highly discouraged, and may be restricted in the future without notice.",
+                    "description": "Type of the source. Use of a source_type other than `CUSTOM` for process creation or updating is highly discouraged. It may cause additional billing costs and be restricted in the future without notice.",
                     "enum": [
                         "SOURCE_TYPE_UNSPECIFIED",
                         "CUSTOM",
@@ -1056,7 +1056,8 @@
                         "DATA_FUSION",
                         "COMPOSER",
                         "LOOKER_STUDIO",
-                        "DATAPROC"
+                        "DATAPROC",
+                        "VERTEX_AI"
                     ],
                     "enumDescriptions": [
                         "Source is Unspecified",
@@ -1065,7 +1066,8 @@
                         "Data Fusion",
                         "Composer",
                         "Looker Studio",
-                        "Dataproc"
+                        "Dataproc",
+                        "Vertex AI"
                     ],
                     "type": "string"
                 }

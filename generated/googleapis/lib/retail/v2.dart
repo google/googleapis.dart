@@ -32,6 +32,8 @@
 ///         - [ProjectsLocationsCatalogsBranchesProductsResource]
 ///       - [ProjectsLocationsCatalogsCompletionDataResource]
 ///       - [ProjectsLocationsCatalogsControlsResource]
+///       - [ProjectsLocationsCatalogsGenerativeQuestionResource]
+///       - [ProjectsLocationsCatalogsGenerativeQuestionsResource]
 ///       - [ProjectsLocationsCatalogsModelsResource]
 ///       - [ProjectsLocationsCatalogsOperationsResource]
 ///       - [ProjectsLocationsCatalogsPlacementsResource]
@@ -110,6 +112,11 @@ class ProjectsLocationsCatalogsResource {
       ProjectsLocationsCatalogsCompletionDataResource(_requester);
   ProjectsLocationsCatalogsControlsResource get controls =>
       ProjectsLocationsCatalogsControlsResource(_requester);
+  ProjectsLocationsCatalogsGenerativeQuestionResource get generativeQuestion =>
+      ProjectsLocationsCatalogsGenerativeQuestionResource(_requester);
+  ProjectsLocationsCatalogsGenerativeQuestionsResource
+      get generativeQuestions =>
+          ProjectsLocationsCatalogsGenerativeQuestionsResource(_requester);
   ProjectsLocationsCatalogsModelsResource get models =>
       ProjectsLocationsCatalogsModelsResource(_requester);
   ProjectsLocationsCatalogsOperationsResource get operations =>
@@ -394,6 +401,47 @@ class ProjectsLocationsCatalogsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Manages overal generative question feature state -- enables toggling
+  /// feature on and off.
+  ///
+  /// Request parameters:
+  ///
+  /// [catalog] - Required. Resource name of the parent catalog. Format:
+  /// projects/{project}/locations/{location}/catalogs/{catalog}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2GenerativeQuestionsFeatureConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2GenerativeQuestionsFeatureConfig>
+      getGenerativeQuestionFeature(
+    core.String catalog, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$catalog') + '/generativeQuestionFeature';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRetailV2GenerativeQuestionsFeatureConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists all the Catalogs associated with the project.
   ///
   /// Request parameters:
@@ -666,6 +714,110 @@ class ProjectsLocationsCatalogsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2CompletionConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Allows management of individual questions.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [catalog] - Required. Resource name of the catalog. Format:
+  /// projects/{project}/locations/{location}/catalogs/{catalog}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Indicates which fields in the provided
+  /// GenerativeQuestionConfig to update. The following are NOT supported: *
+  /// GenerativeQuestionConfig.frequency If not set or empty, all supported
+  /// fields are updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2GenerativeQuestionConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2GenerativeQuestionConfig>
+      updateGenerativeQuestion(
+    GoogleCloudRetailV2GenerativeQuestionConfig request,
+    core.String catalog, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$catalog') + '/generativeQuestion';
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRetailV2GenerativeQuestionConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Manages overal generative question feature state -- enables toggling
+  /// feature on and off.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [catalog] - Required. Resource name of the affected catalog. Format:
+  /// projects/{project}/locations/{location}/catalogs/{catalog}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Indicates which fields in the provided
+  /// GenerativeQuestionsFeatureConfig to update. If not set or empty, all
+  /// supported fields are updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2GenerativeQuestionsFeatureConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2GenerativeQuestionsFeatureConfig>
+      updateGenerativeQuestionFeature(
+    GoogleCloudRetailV2GenerativeQuestionsFeatureConfig request,
+    core.String catalog, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$catalog') + '/generativeQuestionFeature';
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRetailV2GenerativeQuestionsFeatureConfig.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1875,6 +2027,109 @@ class ProjectsLocationsCatalogsControlsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2Control.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsCatalogsGenerativeQuestionResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsCatalogsGenerativeQuestionResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Allows management of multiple questions.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Optional. Resource name of the parent catalog. Format:
+  /// projects/{project}/locations/{location}/catalogs/{catalog}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse>
+      batchUpdate(
+    GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' +
+        core.Uri.encodeFull('$parent') +
+        '/generativeQuestion:batchUpdate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsCatalogsGenerativeQuestionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsCatalogsGenerativeQuestionsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Returns all questions for a given catalog.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the parent catalog. Format:
+  /// projects/{project}/locations/{location}/catalogs/{catalog}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse> list(
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$parent') + '/generativeQuestions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3666,6 +3921,61 @@ class GoogleCloudRetailV2Audience {
       };
 }
 
+/// Request for BatchUpdateGenerativeQuestionConfig method.
+class GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest {
+  /// The updates question configs.
+  ///
+  /// Required.
+  core.List<GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest>? requests;
+
+  GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest({
+    this.requests,
+  });
+
+  GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest.fromJson(
+      core.Map json_)
+      : this(
+          requests: (json_['requests'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// Aggregated response for UpdateGenerativeQuestionConfig method.
+class GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse {
+  /// The updates question configs.
+  ///
+  /// Optional.
+  core.List<GoogleCloudRetailV2GenerativeQuestionConfig>?
+      generativeQuestionConfigs;
+
+  GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse({
+    this.generativeQuestionConfigs,
+  });
+
+  GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse.fromJson(
+      core.Map json_)
+      : this(
+          generativeQuestionConfigs:
+              (json_['generativeQuestionConfigs'] as core.List?)
+                  ?.map((value) =>
+                      GoogleCloudRetailV2GenerativeQuestionConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (generativeQuestionConfigs != null)
+          'generativeQuestionConfigs': generativeQuestionConfigs!,
+      };
+}
+
 /// BigQuery source import data from.
 class GoogleCloudRetailV2BigQuerySource {
   /// The schema to use when parsing the data from the source.
@@ -4103,36 +4413,18 @@ class GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet {
   /// either a textual custom attribute or a numerical custom attribute.
   core.String? mergedFacetKey;
 
-  /// Each instance is a list of facet values that map into the same (possibly
-  /// different) merged facet value.
-  ///
-  /// For the current attribute config, each facet value should map to at most
-  /// one merged facet value.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.List<GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue>?
-      mergedFacetValues;
-
   GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet({
     this.mergedFacetKey,
-    this.mergedFacetValues,
   });
 
   GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet.fromJson(
       core.Map json_)
       : this(
           mergedFacetKey: json_['mergedFacetKey'] as core.String?,
-          mergedFacetValues: (json_['mergedFacetValues'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mergedFacetKey != null) 'mergedFacetKey': mergedFacetKey!,
-        if (mergedFacetValues != null) 'mergedFacetValues': mergedFacetValues!,
       };
 }
 
@@ -4264,6 +4556,14 @@ class GoogleCloudRetailV2ColorInfo {
 
 /// Response of the autocomplete query.
 class GoogleCloudRetailV2CompleteQueryResponse {
+  /// A map of matched attribute suggestions.
+  ///
+  /// This field is only available for "cloud-retail" dataset. Current supported
+  /// keys: * `brands` * `categories`
+  core.Map<core.String,
+          GoogleCloudRetailV2CompleteQueryResponseAttributeResult>?
+      attributeResults;
+
   /// A unique complete token.
   ///
   /// This should be included in the UserEvent.completion_detail for search
@@ -4296,6 +4596,7 @@ class GoogleCloudRetailV2CompleteQueryResponse {
       recentSearchResults;
 
   GoogleCloudRetailV2CompleteQueryResponse({
+    this.attributeResults,
     this.attributionToken,
     this.completionResults,
     this.recentSearchResults,
@@ -4303,6 +4604,15 @@ class GoogleCloudRetailV2CompleteQueryResponse {
 
   GoogleCloudRetailV2CompleteQueryResponse.fromJson(core.Map json_)
       : this(
+          attributeResults: (json_['attributeResults']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudRetailV2CompleteQueryResponseAttributeResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           attributionToken: json_['attributionToken'] as core.String?,
           completionResults: (json_['completionResults'] as core.List?)
               ?.map((value) =>
@@ -4317,10 +4627,34 @@ class GoogleCloudRetailV2CompleteQueryResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (attributeResults != null) 'attributeResults': attributeResults!,
         if (attributionToken != null) 'attributionToken': attributionToken!,
         if (completionResults != null) 'completionResults': completionResults!,
         if (recentSearchResults != null)
           'recentSearchResults': recentSearchResults!,
+      };
+}
+
+/// Resource that represents attribute results.
+///
+/// The list of suggestions for the attribute.
+class GoogleCloudRetailV2CompleteQueryResponseAttributeResult {
+  core.List<core.String>? suggestions;
+
+  GoogleCloudRetailV2CompleteQueryResponseAttributeResult({
+    this.suggestions,
+  });
+
+  GoogleCloudRetailV2CompleteQueryResponseAttributeResult.fromJson(
+      core.Map json_)
+      : this(
+          suggestions: (json_['suggestions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (suggestions != null) 'suggestions': suggestions!,
       };
 }
 
@@ -4363,7 +4697,7 @@ class GoogleCloudRetailV2CompleteQueryResponseCompletionResult {
       };
 }
 
-/// Recent search of this user.
+/// Deprecated: Recent search of this user.
 class GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult {
   /// The recent search query.
   core.String? recentSearch;
@@ -5074,6 +5408,127 @@ class GoogleCloudRetailV2GcsSource {
       };
 }
 
+/// Configuration for a single generated question.
+class GoogleCloudRetailV2GenerativeQuestionConfig {
+  /// Whether the question is asked at serving time.
+  ///
+  /// Optional.
+  core.bool? allowedInConversation;
+
+  /// Resource name of the catalog.
+  ///
+  /// Format: projects/{project}/locations/{location}/catalogs/{catalog}
+  ///
+  /// Required.
+  core.String? catalog;
+
+  /// Values that can be used to answer the question.
+  ///
+  /// Output only.
+  core.List<core.String>? exampleValues;
+
+  /// The facet to which the question is associated.
+  ///
+  /// Required.
+  core.String? facet;
+
+  /// The question that will be used at serving time.
+  ///
+  /// Question can have a max length of 300 bytes. When not populated,
+  /// generated_question should be used.
+  ///
+  /// Optional.
+  core.String? finalQuestion;
+
+  /// The ratio of how often a question was asked.
+  ///
+  /// Output only.
+  core.double? frequency;
+
+  /// The LLM generated question.
+  ///
+  /// Output only.
+  core.String? generatedQuestion;
+
+  GoogleCloudRetailV2GenerativeQuestionConfig({
+    this.allowedInConversation,
+    this.catalog,
+    this.exampleValues,
+    this.facet,
+    this.finalQuestion,
+    this.frequency,
+    this.generatedQuestion,
+  });
+
+  GoogleCloudRetailV2GenerativeQuestionConfig.fromJson(core.Map json_)
+      : this(
+          allowedInConversation: json_['allowedInConversation'] as core.bool?,
+          catalog: json_['catalog'] as core.String?,
+          exampleValues: (json_['exampleValues'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          facet: json_['facet'] as core.String?,
+          finalQuestion: json_['finalQuestion'] as core.String?,
+          frequency: (json_['frequency'] as core.num?)?.toDouble(),
+          generatedQuestion: json_['generatedQuestion'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowedInConversation != null)
+          'allowedInConversation': allowedInConversation!,
+        if (catalog != null) 'catalog': catalog!,
+        if (exampleValues != null) 'exampleValues': exampleValues!,
+        if (facet != null) 'facet': facet!,
+        if (finalQuestion != null) 'finalQuestion': finalQuestion!,
+        if (frequency != null) 'frequency': frequency!,
+        if (generatedQuestion != null) 'generatedQuestion': generatedQuestion!,
+      };
+}
+
+/// Configuration for overall generative question feature state.
+class GoogleCloudRetailV2GenerativeQuestionsFeatureConfig {
+  /// Resource name of the affected catalog.
+  ///
+  /// Format: projects/{project}/locations/{location}/catalogs/{catalog}
+  ///
+  /// Required.
+  core.String? catalog;
+
+  /// Determines whether questions will be used at serving time.
+  ///
+  /// Note: This feature cannot be enabled until initial data requirements are
+  /// satisfied.
+  ///
+  /// Optional.
+  core.bool? featureEnabled;
+
+  /// Minimum number of products in the response to trigger follow-up questions.
+  ///
+  /// Value must be 0 or positive.
+  ///
+  /// Optional.
+  core.int? minimumProducts;
+
+  GoogleCloudRetailV2GenerativeQuestionsFeatureConfig({
+    this.catalog,
+    this.featureEnabled,
+    this.minimumProducts,
+  });
+
+  GoogleCloudRetailV2GenerativeQuestionsFeatureConfig.fromJson(core.Map json_)
+      : this(
+          catalog: json_['catalog'] as core.String?,
+          featureEnabled: json_['featureEnabled'] as core.bool?,
+          minimumProducts: json_['minimumProducts'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (catalog != null) 'catalog': catalog!,
+        if (featureEnabled != null) 'featureEnabled': featureEnabled!,
+        if (minimumProducts != null) 'minimumProducts': minimumProducts!,
+      };
+}
+
 /// Response message of CatalogService.GetDefaultBranch.
 class GoogleCloudRetailV2GetDefaultBranchResponse {
   /// Full resource name of the branch id currently set as default branch.
@@ -5432,6 +5887,33 @@ class GoogleCloudRetailV2ListControlsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (controls != null) 'controls': controls!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response for ListQuestions method.
+class GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse {
+  /// All the questions for a given catalog.
+  core.List<GoogleCloudRetailV2GenerativeQuestionConfig>?
+      generativeQuestionConfigs;
+
+  GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse({
+    this.generativeQuestionConfigs,
+  });
+
+  GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse.fromJson(
+      core.Map json_)
+      : this(
+          generativeQuestionConfigs:
+              (json_['generativeQuestionConfigs'] as core.List?)
+                  ?.map((value) =>
+                      GoogleCloudRetailV2GenerativeQuestionConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (generativeQuestionConfigs != null)
+          'generativeQuestionConfigs': generativeQuestionConfigs!,
       };
 }
 
@@ -6418,8 +6900,12 @@ class GoogleCloudRetailV2Product {
 
   /// The online availability of the Product.
   ///
-  /// Default to Availability.IN_STOCK. Corresponding properties: Google
-  /// Merchant Center property
+  /// Default to Availability.IN_STOCK. For primary products with variants set
+  /// the availability of the primary as Availability.OUT_OF_STOCK and set the
+  /// true availability at the variant level. This way the primary product will
+  /// be considered "in stock" as long as it has at least one variant in stock.
+  /// For primary products with no variants set the true availability at the
+  /// primary level. Corresponding properties: Google Merchant Center property
   /// [availability](https://support.google.com/merchants/answer/6324448).
   /// Schema.org property [Offer.availability](https://schema.org/availability).
   /// Possible string values are:
@@ -6660,11 +7146,10 @@ class GoogleCloudRetailV2Product {
   /// key of a custom attribute, as specified in attributes. For Type.PRIMARY
   /// and Type.COLLECTION, the following fields are always returned in
   /// SearchResponse by default: * name For Type.VARIANT, the following fields
-  /// are always returned in by default: * name * color_info The maximum number
-  /// of paths is 30. Otherwise, an INVALID_ARGUMENT error is returned. Note:
-  /// Returning more fields in SearchResponse can increase response payload size
-  /// and serving latency. This field is deprecated. Use the retrievable
-  /// site-wide control instead.
+  /// are always returned in by default: * name * color_info Note: Returning
+  /// more fields in SearchResponse can increase response payload size and
+  /// serving latency. This field is deprecated. Use the retrievable site-wide
+  /// control instead.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -6927,6 +7412,63 @@ class GoogleCloudRetailV2Product {
         if (type != null) 'type': type!,
         if (uri != null) 'uri': uri!,
         if (variants != null) 'variants': variants!,
+      };
+}
+
+/// Product attribute name and numeric interval.
+class GoogleCloudRetailV2ProductAttributeInterval {
+  /// The numeric interval (e.g. \[10, 20))
+  GoogleCloudRetailV2Interval? interval;
+
+  /// The attribute name (e.g. "length")
+  core.String? name;
+
+  GoogleCloudRetailV2ProductAttributeInterval({
+    this.interval,
+    this.name,
+  });
+
+  GoogleCloudRetailV2ProductAttributeInterval.fromJson(core.Map json_)
+      : this(
+          interval: json_.containsKey('interval')
+              ? GoogleCloudRetailV2Interval.fromJson(
+                  json_['interval'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (interval != null) 'interval': interval!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Product attribute which structured by an attribute name and value.
+///
+/// This structure is used in conversational search filters and answers. For
+/// example, if we have `name=color` and `value=red`, this means that the color
+/// is `red`.
+class GoogleCloudRetailV2ProductAttributeValue {
+  /// The attribute name.
+  core.String? name;
+
+  /// The attribute value.
+  core.String? value;
+
+  GoogleCloudRetailV2ProductAttributeValue({
+    this.name,
+    this.value,
+  });
+
+  GoogleCloudRetailV2ProductAttributeValue.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+          value: json_['value'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -7806,7 +8348,7 @@ class GoogleCloudRetailV2RuleForceReturnFacetAction {
   /// Each instance corresponds to a force return attribute for the given
   /// condition.
   ///
-  /// There can't be more 3 instances here.
+  /// There can't be more 15 instances here.
   core.List<
           GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment>?
       facetPositionAdjustments;
@@ -8084,6 +8626,13 @@ class GoogleCloudRetailV2SearchRequest {
   /// see SearchRequest.filter.
   core.String? canonicalFilter;
 
+  /// This field specifies all conversational related parameters addition to
+  /// traditional retail search.
+  ///
+  /// Optional.
+  GoogleCloudRetailV2SearchRequestConversationalSearchSpec?
+      conversationalSearchSpec;
+
   /// Refer to https://cloud.google.com/retail/docs/configs#dynamic to enable
   /// dynamic facets.
   ///
@@ -8222,6 +8771,11 @@ class GoogleCloudRetailV2SearchRequest {
   /// spell correction will take effect.
   GoogleCloudRetailV2SearchRequestSpellCorrectionSpec? spellCorrectionSpec;
 
+  /// This field specifies tile navigation related parameters.
+  ///
+  /// Optional.
+  GoogleCloudRetailV2SearchRequestTileNavigationSpec? tileNavigationSpec;
+
   /// User information.
   GoogleCloudRetailV2UserInfo? userInfo;
 
@@ -8272,6 +8826,7 @@ class GoogleCloudRetailV2SearchRequest {
     this.boostSpec,
     this.branch,
     this.canonicalFilter,
+    this.conversationalSearchSpec,
     this.dynamicFacetSpec,
     this.entity,
     this.facetSpecs,
@@ -8287,6 +8842,7 @@ class GoogleCloudRetailV2SearchRequest {
     this.queryExpansionSpec,
     this.searchMode,
     this.spellCorrectionSpec,
+    this.tileNavigationSpec,
     this.userInfo,
     this.variantRollupKeys,
     this.visitorId,
@@ -8300,6 +8856,12 @@ class GoogleCloudRetailV2SearchRequest {
               : null,
           branch: json_['branch'] as core.String?,
           canonicalFilter: json_['canonicalFilter'] as core.String?,
+          conversationalSearchSpec:
+              json_.containsKey('conversationalSearchSpec')
+                  ? GoogleCloudRetailV2SearchRequestConversationalSearchSpec
+                      .fromJson(json_['conversationalSearchSpec']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           dynamicFacetSpec: json_.containsKey('dynamicFacetSpec')
               ? GoogleCloudRetailV2SearchRequestDynamicFacetSpec.fromJson(
                   json_['dynamicFacetSpec']
@@ -8343,6 +8905,11 @@ class GoogleCloudRetailV2SearchRequest {
                   json_['spellCorrectionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          tileNavigationSpec: json_.containsKey('tileNavigationSpec')
+              ? GoogleCloudRetailV2SearchRequestTileNavigationSpec.fromJson(
+                  json_['tileNavigationSpec']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           userInfo: json_.containsKey('userInfo')
               ? GoogleCloudRetailV2UserInfo.fromJson(
                   json_['userInfo'] as core.Map<core.String, core.dynamic>)
@@ -8357,6 +8924,8 @@ class GoogleCloudRetailV2SearchRequest {
         if (boostSpec != null) 'boostSpec': boostSpec!,
         if (branch != null) 'branch': branch!,
         if (canonicalFilter != null) 'canonicalFilter': canonicalFilter!,
+        if (conversationalSearchSpec != null)
+          'conversationalSearchSpec': conversationalSearchSpec!,
         if (dynamicFacetSpec != null) 'dynamicFacetSpec': dynamicFacetSpec!,
         if (entity != null) 'entity': entity!,
         if (facetSpecs != null) 'facetSpecs': facetSpecs!,
@@ -8375,6 +8944,8 @@ class GoogleCloudRetailV2SearchRequest {
         if (searchMode != null) 'searchMode': searchMode!,
         if (spellCorrectionSpec != null)
           'spellCorrectionSpec': spellCorrectionSpec!,
+        if (tileNavigationSpec != null)
+          'tileNavigationSpec': tileNavigationSpec!,
         if (userInfo != null) 'userInfo': userInfo!,
         if (variantRollupKeys != null) 'variantRollupKeys': variantRollupKeys!,
         if (visitorId != null) 'visitorId': visitorId!,
@@ -8463,6 +9034,139 @@ class GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec {
   core.Map<core.String, core.dynamic> toJson() => {
         if (boost != null) 'boost': boost!,
         if (condition != null) 'condition': condition!,
+      };
+}
+
+/// This field specifies all conversational related parameters addition to
+/// traditional retail search.
+class GoogleCloudRetailV2SearchRequestConversationalSearchSpec {
+  /// This field specifies the conversation id, which maintains the state of the
+  /// conversation between client side and server side.
+  ///
+  /// Use the value from the previous
+  /// ConversationalSearchResult.conversation_id. For the initial request, this
+  /// should be empty.
+  core.String? conversationId;
+
+  /// This field specifies whether the customer would like to do conversational
+  /// search.
+  ///
+  /// If this field is set to true, conversational related extra information
+  /// will be returned from server side, including follow-up question, answer
+  /// options, etc.
+  core.bool? followupConversationRequested;
+
+  /// This field specifies the current user answer during the conversational
+  /// search.
+  ///
+  /// This can be either user selected from suggested answers or user input
+  /// plain text.
+  GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswer?
+      userAnswer;
+
+  GoogleCloudRetailV2SearchRequestConversationalSearchSpec({
+    this.conversationId,
+    this.followupConversationRequested,
+    this.userAnswer,
+  });
+
+  GoogleCloudRetailV2SearchRequestConversationalSearchSpec.fromJson(
+      core.Map json_)
+      : this(
+          conversationId: json_['conversationId'] as core.String?,
+          followupConversationRequested:
+              json_['followupConversationRequested'] as core.bool?,
+          userAnswer: json_.containsKey('userAnswer')
+              ? GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswer
+                  .fromJson(json_['userAnswer']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversationId != null) 'conversationId': conversationId!,
+        if (followupConversationRequested != null)
+          'followupConversationRequested': followupConversationRequested!,
+        if (userAnswer != null) 'userAnswer': userAnswer!,
+      };
+}
+
+/// This field specifies the current user answer during the conversational
+/// search.
+///
+/// This can be either user selected from suggested answers or user input plain
+/// text.
+class GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswer {
+  /// This field specifies the selected attributes during the conversational
+  /// search.
+  ///
+  /// This should be a subset of ConversationalSearchResult.suggested_answers.
+  GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswerSelectedAnswer?
+      selectedAnswer;
+
+  /// This field specifies the incremental input text from the user during the
+  /// conversational search.
+  core.String? textAnswer;
+
+  GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswer({
+    this.selectedAnswer,
+    this.textAnswer,
+  });
+
+  GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswer.fromJson(
+      core.Map json_)
+      : this(
+          selectedAnswer: json_.containsKey('selectedAnswer')
+              ? GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswerSelectedAnswer
+                  .fromJson(json_['selectedAnswer']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          textAnswer: json_['textAnswer'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (selectedAnswer != null) 'selectedAnswer': selectedAnswer!,
+        if (textAnswer != null) 'textAnswer': textAnswer!,
+      };
+}
+
+/// This field specifies the selected answers during the conversational search.
+class GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswerSelectedAnswer {
+  /// This field specifies the selected answer which is a attribute key-value.
+  GoogleCloudRetailV2ProductAttributeValue? productAttributeValue;
+
+  /// This field is deprecated and should not be set.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.List<GoogleCloudRetailV2ProductAttributeValue>? productAttributeValues;
+
+  GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswerSelectedAnswer({
+    this.productAttributeValue,
+    this.productAttributeValues,
+  });
+
+  GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswerSelectedAnswer.fromJson(
+      core.Map json_)
+      : this(
+          productAttributeValue: json_.containsKey('productAttributeValue')
+              ? GoogleCloudRetailV2ProductAttributeValue.fromJson(
+                  json_['productAttributeValue']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          productAttributeValues:
+              (json_['productAttributeValues'] as core.List?)
+                  ?.map((value) =>
+                      GoogleCloudRetailV2ProductAttributeValue.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (productAttributeValue != null)
+          'productAttributeValue': productAttributeValue!,
+        if (productAttributeValues != null)
+          'productAttributeValues': productAttributeValues!,
       };
 }
 
@@ -8814,6 +9518,40 @@ class GoogleCloudRetailV2SearchRequestSpellCorrectionSpec {
       };
 }
 
+/// This field specifies tile navigation related parameters.
+class GoogleCloudRetailV2SearchRequestTileNavigationSpec {
+  /// This field specifies the tiles which are already clicked in client side.
+  ///
+  /// NOTE: This field is not being used for filtering search products. Client
+  /// side should also put all the applied tiles in SearchRequest.filter.
+  core.List<GoogleCloudRetailV2Tile>? appliedTiles;
+
+  /// This field specifies whether the customer would like to request tile
+  /// navigation.
+  core.bool? tileNavigationRequested;
+
+  GoogleCloudRetailV2SearchRequestTileNavigationSpec({
+    this.appliedTiles,
+    this.tileNavigationRequested,
+  });
+
+  GoogleCloudRetailV2SearchRequestTileNavigationSpec.fromJson(core.Map json_)
+      : this(
+          appliedTiles: (json_['appliedTiles'] as core.List?)
+              ?.map((value) => GoogleCloudRetailV2Tile.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          tileNavigationRequested:
+              json_['tileNavigationRequested'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appliedTiles != null) 'appliedTiles': appliedTiles!,
+        if (tileNavigationRequested != null)
+          'tileNavigationRequested': tileNavigationRequested!,
+      };
+}
+
 /// Response message for SearchService.Search method.
 class GoogleCloudRetailV2SearchResponse {
   /// The fully qualified resource name of applied
@@ -8825,6 +9563,11 @@ class GoogleCloudRetailV2SearchResponse {
   /// This should be included in the UserEvent logs resulting from this search,
   /// which enables accurate attribution of search model performance.
   core.String? attributionToken;
+
+  /// This field specifies all related information that is needed on client side
+  /// for UI rendering of conversational retail search.
+  GoogleCloudRetailV2SearchResponseConversationalSearchResult?
+      conversationalSearchResult;
 
   /// Contains the spell corrected query, if found.
   ///
@@ -8865,6 +9608,10 @@ class GoogleCloudRetailV2SearchResponse {
   /// The order represents the ranking.
   core.List<GoogleCloudRetailV2SearchResponseSearchResult>? results;
 
+  /// This field specifies all related information for tile navigation that will
+  /// be used in client side.
+  GoogleCloudRetailV2SearchResponseTileNavigationResult? tileNavigationResult;
+
   /// The estimated total count of matched items irrespective of pagination.
   ///
   /// The count of results returned by pagination may be less than the
@@ -8874,6 +9621,7 @@ class GoogleCloudRetailV2SearchResponse {
   GoogleCloudRetailV2SearchResponse({
     this.appliedControls,
     this.attributionToken,
+    this.conversationalSearchResult,
     this.correctedQuery,
     this.experimentInfo,
     this.facets,
@@ -8882,6 +9630,7 @@ class GoogleCloudRetailV2SearchResponse {
     this.queryExpansionInfo,
     this.redirectUri,
     this.results,
+    this.tileNavigationResult,
     this.totalSize,
   });
 
@@ -8891,6 +9640,12 @@ class GoogleCloudRetailV2SearchResponse {
               ?.map((value) => value as core.String)
               .toList(),
           attributionToken: json_['attributionToken'] as core.String?,
+          conversationalSearchResult:
+              json_.containsKey('conversationalSearchResult')
+                  ? GoogleCloudRetailV2SearchResponseConversationalSearchResult
+                      .fromJson(json_['conversationalSearchResult']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           correctedQuery: json_['correctedQuery'] as core.String?,
           experimentInfo: (json_['experimentInfo'] as core.List?)
               ?.map((value) => GoogleCloudRetailV2ExperimentInfo.fromJson(
@@ -8918,12 +9673,19 @@ class GoogleCloudRetailV2SearchResponse {
                   GoogleCloudRetailV2SearchResponseSearchResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
               .toList(),
+          tileNavigationResult: json_.containsKey('tileNavigationResult')
+              ? GoogleCloudRetailV2SearchResponseTileNavigationResult.fromJson(
+                  json_['tileNavigationResult']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           totalSize: json_['totalSize'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appliedControls != null) 'appliedControls': appliedControls!,
         if (attributionToken != null) 'attributionToken': attributionToken!,
+        if (conversationalSearchResult != null)
+          'conversationalSearchResult': conversationalSearchResult!,
         if (correctedQuery != null) 'correctedQuery': correctedQuery!,
         if (experimentInfo != null) 'experimentInfo': experimentInfo!,
         if (facets != null) 'facets': facets!,
@@ -8934,7 +9696,158 @@ class GoogleCloudRetailV2SearchResponse {
           'queryExpansionInfo': queryExpansionInfo!,
         if (redirectUri != null) 'redirectUri': redirectUri!,
         if (results != null) 'results': results!,
+        if (tileNavigationResult != null)
+          'tileNavigationResult': tileNavigationResult!,
         if (totalSize != null) 'totalSize': totalSize!,
+      };
+}
+
+/// This field specifies all related information that is needed on client side
+/// for UI rendering of conversational retail search.
+class GoogleCloudRetailV2SearchResponseConversationalSearchResult {
+  /// This is the incremental additional filters implied from the current user
+  /// answer.
+  ///
+  /// User should add the suggested addition filters to the previous
+  /// SearchRequest.filter, and use the merged filter in the follow up search
+  /// request.
+  GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter?
+      additionalFilter;
+
+  /// This field is deprecated but will be kept for backward compatibility.
+  ///
+  /// There is expected to have only one additional filter and the value will be
+  /// the same to the same as field `additional_filter`.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.List<
+          GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter>?
+      additionalFilters;
+
+  /// Conversation UUID.
+  ///
+  /// This field will be stored in client side storage to maintain the
+  /// conversation session with server and will be used for next search
+  /// request's SearchRequest.ConversationalSearchSpec.conversation_id to
+  /// restore conversation state in server.
+  core.String? conversationId;
+
+  /// The follow-up question.
+  ///
+  /// e.g., `What is the color?`
+  core.String? followupQuestion;
+
+  /// The current refined query for the conversational search.
+  ///
+  /// This field will be used in customer UI that the query in the search bar
+  /// should be replaced with the refined query. For example, if
+  /// SearchRequest.query is `dress` and next
+  /// SearchRequest.ConversationalSearchSpec.UserAnswer.text_answer is `red
+  /// color`, which does not match any product attribute value filters, the
+  /// refined query will be `dress, red color`.
+  core.String? refinedQuery;
+
+  /// The answer options provided to client for the follow-up question.
+  core.List<
+          GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswer>?
+      suggestedAnswers;
+
+  GoogleCloudRetailV2SearchResponseConversationalSearchResult({
+    this.additionalFilter,
+    this.additionalFilters,
+    this.conversationId,
+    this.followupQuestion,
+    this.refinedQuery,
+    this.suggestedAnswers,
+  });
+
+  GoogleCloudRetailV2SearchResponseConversationalSearchResult.fromJson(
+      core.Map json_)
+      : this(
+          additionalFilter: json_.containsKey('additionalFilter')
+              ? GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter
+                  .fromJson(json_['additionalFilter']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          additionalFilters: (json_['additionalFilters'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          conversationId: json_['conversationId'] as core.String?,
+          followupQuestion: json_['followupQuestion'] as core.String?,
+          refinedQuery: json_['refinedQuery'] as core.String?,
+          suggestedAnswers: (json_['suggestedAnswers'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswer
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalFilter != null) 'additionalFilter': additionalFilter!,
+        if (additionalFilters != null) 'additionalFilters': additionalFilters!,
+        if (conversationId != null) 'conversationId': conversationId!,
+        if (followupQuestion != null) 'followupQuestion': followupQuestion!,
+        if (refinedQuery != null) 'refinedQuery': refinedQuery!,
+        if (suggestedAnswers != null) 'suggestedAnswers': suggestedAnswers!,
+      };
+}
+
+/// Additional filter that client side need to apply.
+class GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter {
+  /// Product attribute value, including an attribute key and an attribute
+  /// value.
+  ///
+  /// Other types can be added here in the future.
+  GoogleCloudRetailV2ProductAttributeValue? productAttributeValue;
+
+  GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter({
+    this.productAttributeValue,
+  });
+
+  GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter.fromJson(
+      core.Map json_)
+      : this(
+          productAttributeValue: json_.containsKey('productAttributeValue')
+              ? GoogleCloudRetailV2ProductAttributeValue.fromJson(
+                  json_['productAttributeValue']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (productAttributeValue != null)
+          'productAttributeValue': productAttributeValue!,
+      };
+}
+
+/// Suggested answers to the follow-up question.
+class GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswer {
+  /// Product attribute value, including an attribute key and an attribute
+  /// value.
+  ///
+  /// Other types can be added here in the future.
+  GoogleCloudRetailV2ProductAttributeValue? productAttributeValue;
+
+  GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswer({
+    this.productAttributeValue,
+  });
+
+  GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswer.fromJson(
+      core.Map json_)
+      : this(
+          productAttributeValue: json_.containsKey('productAttributeValue')
+              ? GoogleCloudRetailV2ProductAttributeValue.fromJson(
+                  json_['productAttributeValue']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (productAttributeValue != null)
+          'productAttributeValue': productAttributeValue!,
       };
 }
 
@@ -9157,6 +10070,29 @@ class GoogleCloudRetailV2SearchResponseSearchResult {
         if (product != null) 'product': product!,
         if (variantRollupValues != null)
           'variantRollupValues': variantRollupValues!,
+      };
+}
+
+/// This field specifies all related information for tile navigation that will
+/// be used in client side.
+class GoogleCloudRetailV2SearchResponseTileNavigationResult {
+  /// The current tiles that are used for tile navigation, sorted by engagement.
+  core.List<GoogleCloudRetailV2Tile>? tiles;
+
+  GoogleCloudRetailV2SearchResponseTileNavigationResult({
+    this.tiles,
+  });
+
+  GoogleCloudRetailV2SearchResponseTileNavigationResult.fromJson(core.Map json_)
+      : this(
+          tiles: (json_['tiles'] as core.List?)
+              ?.map((value) => GoogleCloudRetailV2Tile.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tiles != null) 'tiles': tiles!,
       };
 }
 
@@ -9566,9 +10502,96 @@ class GoogleCloudRetailV2SetInventoryRequest {
       };
 }
 
+/// This field specifies the tile information including an attribute key,
+/// attribute value.
+///
+/// More fields will be added in the future, eg: product id or product counts,
+/// etc.
+class GoogleCloudRetailV2Tile {
+  /// The product attribute key-numeric interval.
+  GoogleCloudRetailV2ProductAttributeInterval? productAttributeInterval;
+
+  /// The product attribute key-value.
+  GoogleCloudRetailV2ProductAttributeValue? productAttributeValue;
+
+  /// The representative product id for this tile.
+  core.String? representativeProductId;
+
+  GoogleCloudRetailV2Tile({
+    this.productAttributeInterval,
+    this.productAttributeValue,
+    this.representativeProductId,
+  });
+
+  GoogleCloudRetailV2Tile.fromJson(core.Map json_)
+      : this(
+          productAttributeInterval:
+              json_.containsKey('productAttributeInterval')
+                  ? GoogleCloudRetailV2ProductAttributeInterval.fromJson(
+                      json_['productAttributeInterval']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          productAttributeValue: json_.containsKey('productAttributeValue')
+              ? GoogleCloudRetailV2ProductAttributeValue.fromJson(
+                  json_['productAttributeValue']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          representativeProductId:
+              json_['representativeProductId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (productAttributeInterval != null)
+          'productAttributeInterval': productAttributeInterval!,
+        if (productAttributeValue != null)
+          'productAttributeValue': productAttributeValue!,
+        if (representativeProductId != null)
+          'representativeProductId': representativeProductId!,
+      };
+}
+
 /// Request to manually start a tuning process now (instead of waiting for the
 /// periodically scheduled tuning to happen).
 typedef GoogleCloudRetailV2TuneModelRequest = $Empty;
+
+/// Request for UpdateGenerativeQuestionConfig method.
+class GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest {
+  /// The question to update.
+  ///
+  /// Required.
+  GoogleCloudRetailV2GenerativeQuestionConfig? generativeQuestionConfig;
+
+  /// Indicates which fields in the provided GenerativeQuestionConfig to update.
+  ///
+  /// The following are NOT supported: * GenerativeQuestionConfig.frequency If
+  /// not set or empty, all supported fields are updated.
+  ///
+  /// Optional.
+  core.String? updateMask;
+
+  GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest({
+    this.generativeQuestionConfig,
+    this.updateMask,
+  });
+
+  GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest.fromJson(
+      core.Map json_)
+      : this(
+          generativeQuestionConfig:
+              json_.containsKey('generativeQuestionConfig')
+                  ? GoogleCloudRetailV2GenerativeQuestionConfig.fromJson(
+                      json_['generativeQuestionConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          updateMask: json_['updateMask'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (generativeQuestionConfig != null)
+          'generativeQuestionConfig': generativeQuestionConfig!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
 
 /// UserEvent captures all metadata information Retail API needs to know about
 /// how end users interact with customers' website.
@@ -10131,7 +11154,7 @@ typedef GoogleProtobufEmpty = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef GoogleRpcStatus = $Status;
+typedef GoogleRpcStatus = $Status00;
 
 /// Represents a whole or partial calendar date, such as a birthday.
 ///

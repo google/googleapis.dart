@@ -344,7 +344,7 @@ class ProjectsLocationsEvaluationsResource {
   /// [parent] - Required. Parent value for ListEvaluationsRequest
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Filtering results
+  /// [filter] - Filter to be applied when listing the evaluation results.
   ///
   /// [orderBy] - Hint for how to order the results
   ///
@@ -598,7 +598,7 @@ class ProjectsLocationsEvaluationsExecutionsResultsResource {
       commons.ApiRequester client)
       : _requester = client;
 
-  /// List the running result of a single Execution.
+  /// Lists the result of a single evaluation.
   ///
   /// Request parameters:
   ///
@@ -1018,6 +1018,40 @@ class ProjectsLocationsRulesResource {
   }
 }
 
+/// * An AgentCommand specifies a one-time executable program for the agent to
+/// run.
+class AgentCommand {
+  /// command is the name of the agent one-time executable that will be invoked.
+  core.String? command;
+
+  /// parameters is a map of key/value pairs that can be used to specify
+  /// additional one-time executable settings.
+  core.Map<core.String, core.String>? parameters;
+
+  AgentCommand({
+    this.command,
+    this.parameters,
+  });
+
+  AgentCommand.fromJson(core.Map json_)
+      : this(
+          command: json_['command'] as core.String?,
+          parameters:
+              (json_['parameters'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (command != null) 'command': command!,
+        if (parameters != null) 'parameters': parameters!,
+      };
+}
+
 /// Message describing big query destination
 class BigQueryDestination {
   /// determine if results will be saved in a new table
@@ -1051,6 +1085,37 @@ class BigQueryDestination {
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
+
+/// * Command specifies the type of command to execute.
+class Command {
+  /// AgentCommand specifies a one-time executable program for the agent to run.
+  AgentCommand? agentCommand;
+
+  /// ShellCommand is invoked via the agent's command line executor.
+  ShellCommand? shellCommand;
+
+  Command({
+    this.agentCommand,
+    this.shellCommand,
+  });
+
+  Command.fromJson(core.Map json_)
+      : this(
+          agentCommand: json_.containsKey('agentCommand')
+              ? AgentCommand.fromJson(
+                  json_['agentCommand'] as core.Map<core.String, core.dynamic>)
+              : null,
+          shellCommand: json_.containsKey('shellCommand')
+              ? ShellCommand.fromJson(
+                  json_['shellCommand'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentCommand != null) 'agentCommand': agentCommand!,
+        if (shellCommand != null) 'shellCommand': shellCommand!,
+      };
+}
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -1209,6 +1274,11 @@ class Execution {
   /// projects/{project}/locations/{location}/evaluations/{evaluation}/executions/{execution}
   core.String? name;
 
+  /// execution result summary per rule
+  ///
+  /// Output only.
+  core.List<RuleExecutionResult>? ruleResults;
+
   /// type represent whether the execution executed directly by user or
   /// scheduled according evaluation.schedule field.
   /// Possible string values are:
@@ -1239,6 +1309,7 @@ class Execution {
     this.inventoryTime,
     this.labels,
     this.name,
+    this.ruleResults,
     this.runType,
     this.startTime,
     this.state,
@@ -1261,6 +1332,10 @@ class Execution {
             ),
           ),
           name: json_['name'] as core.String?,
+          ruleResults: (json_['ruleResults'] as core.List?)
+              ?.map((value) => RuleExecutionResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           runType: json_['runType'] as core.String?,
           startTime: json_['startTime'] as core.String?,
           state: json_['state'] as core.String?,
@@ -1274,6 +1349,7 @@ class Execution {
         if (inventoryTime != null) 'inventoryTime': inventoryTime!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (ruleResults != null) 'ruleResults': ruleResults!,
         if (runType != null) 'runType': runType!,
         if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,
@@ -1282,35 +1358,51 @@ class Execution {
 
 /// Message describing the result of an execution
 class ExecutionResult {
-  /// the document url of the rule
+  /// The commands to remediate the violation.
+  core.List<Command>? commands;
+
+  /// The URL for the documentation of the rule.
   core.String? documentationUrl;
 
-  /// the violate resource
+  /// The resource that violates the rule.
   Resource? resource;
 
-  /// the rule which violate in execution
+  /// The rule that is violated in an evaluation.
   core.String? rule;
 
-  /// severity of violation
+  /// The severity of violation.
   core.String? severity;
 
-  /// the details of violation in result
+  /// Execution result type of the scanned resource
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unknown state
+  /// - "TYPE_PASSED" : resource successfully passed the rule
+  /// - "TYPE_VIOLATED" : resource violated the rule
+  core.String? type;
+
+  /// The details of violation in an evaluation result.
   ViolationDetails? violationDetails;
 
-  /// the violation message of an execution
+  /// The violation message of an execution.
   core.String? violationMessage;
 
   ExecutionResult({
+    this.commands,
     this.documentationUrl,
     this.resource,
     this.rule,
     this.severity,
+    this.type,
     this.violationDetails,
     this.violationMessage,
   });
 
   ExecutionResult.fromJson(core.Map json_)
       : this(
+          commands: (json_['commands'] as core.List?)
+              ?.map((value) => Command.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           documentationUrl: json_['documentationUrl'] as core.String?,
           resource: json_.containsKey('resource')
               ? Resource.fromJson(
@@ -1318,6 +1410,7 @@ class ExecutionResult {
               : null,
           rule: json_['rule'] as core.String?,
           severity: json_['severity'] as core.String?,
+          type: json_['type'] as core.String?,
           violationDetails: json_.containsKey('violationDetails')
               ? ViolationDetails.fromJson(json_['violationDetails']
                   as core.Map<core.String, core.dynamic>)
@@ -1326,10 +1419,12 @@ class ExecutionResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (commands != null) 'commands': commands!,
         if (documentationUrl != null) 'documentationUrl': documentationUrl!,
         if (resource != null) 'resource': resource!,
         if (rule != null) 'rule': rule!,
         if (severity != null) 'severity': severity!,
+        if (type != null) 'type': type!,
         if (violationDetails != null) 'violationDetails': violationDetails!,
         if (violationMessage != null) 'violationMessage': violationMessage!,
       };
@@ -1337,11 +1432,19 @@ class ExecutionResult {
 
 /// Message for external data sources
 class ExternalDataSources {
+  /// The asset type of the external data source this can be one of
+  /// go/cai-asset-types to override the default asset type or it can be a
+  /// custom type defined by the user custom type must match the asset type in
+  /// the rule
+  ///
+  /// Required.
+  core.String? assetType;
+
   /// Name of external data source.
   ///
   /// The name will be used inside the rego/sql to refer the external data
   ///
-  /// Required.
+  /// Optional.
   core.String? name;
 
   /// Type of external data source
@@ -1360,6 +1463,7 @@ class ExternalDataSources {
   core.String? uri;
 
   ExternalDataSources({
+    this.assetType,
     this.name,
     this.type,
     this.uri,
@@ -1367,12 +1471,14 @@ class ExternalDataSources {
 
   ExternalDataSources.fromJson(core.Map json_)
       : this(
+          assetType: json_['assetType'] as core.String?,
           name: json_['name'] as core.String?,
           type: json_['type'] as core.String?,
           uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (assetType != null) 'assetType': assetType!,
         if (name != null) 'name': name!,
         if (type != null) 'type': type!,
         if (uri != null) 'uri': uri!,
@@ -1757,13 +1863,13 @@ class Operation {
 
 /// Message represent resource in execution result
 class Resource {
-  /// the name of the resource
+  /// The name of the resource.
   core.String? name;
 
-  /// the service account accosiate with resource
+  /// The service account associated with the resource.
   core.String? serviceAccount;
 
-  /// the type of reresource
+  /// The type of resource.
   core.String? type;
 
   Resource({
@@ -1958,6 +2064,57 @@ class Rule {
       };
 }
 
+/// Message for execution result summary per rule
+class RuleExecutionResult {
+  /// Execution message, if any
+  core.String? message;
+
+  /// Number of violations
+  core.String? resultCount;
+
+  /// rule name
+  core.String? rule;
+
+  /// Number of total scanned resources
+  core.String? scannedResourceCount;
+
+  /// The execution status
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unknown state
+  /// - "STATE_SUCCESS" : execution completed successfully
+  /// - "STATE_FAILURE" : execution completed with failures
+  /// - "STATE_SKIPPED" : execution was not executed
+  core.String? state;
+
+  RuleExecutionResult({
+    this.message,
+    this.resultCount,
+    this.rule,
+    this.scannedResourceCount,
+    this.state,
+  });
+
+  RuleExecutionResult.fromJson(core.Map json_)
+      : this(
+          message: json_['message'] as core.String?,
+          resultCount: json_['resultCount'] as core.String?,
+          rule: json_['rule'] as core.String?,
+          scannedResourceCount: json_['scannedResourceCount'] as core.String?,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (message != null) 'message': message!,
+        if (resultCount != null) 'resultCount': resultCount!,
+        if (rule != null) 'rule': rule!,
+        if (scannedResourceCount != null)
+          'scannedResourceCount': scannedResourceCount!,
+        if (state != null) 'state': state!,
+      };
+}
+
 /// Message for creating a Execution
 class RunEvaluationRequest {
   /// The resource being created
@@ -2118,6 +2275,11 @@ class SapDiscoveryComponent {
   /// Required.
   core.String? hostProject;
 
+  /// A list of replication sites used in Disaster Recovery (DR) configurations.
+  ///
+  /// Optional.
+  core.List<SapDiscoveryComponent>? replicationSites;
+
   /// The resources in a component.
   ///
   /// Optional.
@@ -2143,6 +2305,7 @@ class SapDiscoveryComponent {
     this.databaseProperties,
     this.haHosts,
     this.hostProject,
+    this.replicationSites,
     this.resources,
     this.sid,
     this.topologyType,
@@ -2164,6 +2327,10 @@ class SapDiscoveryComponent {
               ?.map((value) => value as core.String)
               .toList(),
           hostProject: json_['hostProject'] as core.String?,
+          replicationSites: (json_['replicationSites'] as core.List?)
+              ?.map((value) => SapDiscoveryComponent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           resources: (json_['resources'] as core.List?)
               ?.map((value) => SapDiscoveryResource.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -2179,6 +2346,7 @@ class SapDiscoveryComponent {
           'databaseProperties': databaseProperties!,
         if (haHosts != null) 'haHosts': haHosts!,
         if (hostProject != null) 'hostProject': hostProject!,
+        if (replicationSites != null) 'replicationSites': replicationSites!,
         if (resources != null) 'resources': resources!,
         if (sid != null) 'sid': sid!,
         if (topologyType != null) 'topologyType': topologyType!,
@@ -2187,11 +2355,12 @@ class SapDiscoveryComponent {
 
 /// A set of properties describing an SAP Application layer.
 class SapDiscoveryComponentApplicationProperties {
-  /// Indicates whether this is a Java or ABAP Netweaver instance.
-  ///
-  /// true means it is ABAP, false means it is Java.
+  /// Deprecated: ApplicationType now tells you whether this is ABAP or Java.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? abap;
 
   /// Instance number of the SAP application instance.
@@ -2207,6 +2376,8 @@ class SapDiscoveryComponentApplicationProperties {
   /// Possible string values are:
   /// - "APPLICATION_TYPE_UNSPECIFIED" : Unspecified application type
   /// - "NETWEAVER" : SAP Netweaver
+  /// - "NETWEAVER_ABAP" : SAP Netweaver ABAP
+  /// - "NETWEAVER_JAVA" : SAP Netweaver Java
   core.String? applicationType;
 
   /// Instance number of the ASCS instance.
@@ -2491,6 +2662,9 @@ class SapDiscoveryResourceInstanceProperties {
   /// The VM's instance number.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? instanceNumber;
 
   /// Bitmask of instance role, a resource may have multiple roles at once.
@@ -2502,7 +2676,32 @@ class SapDiscoveryResourceInstanceProperties {
   /// - "INSTANCE_ROLE_ERS" : Enqueue replication server.
   /// - "INSTANCE_ROLE_APP_SERVER" : Application server.
   /// - "INSTANCE_ROLE_DATABASE" : Database node.
+  /// - "INSTANCE_ROLE_ASCS_ERS" : Combinations of roles. Application central
+  /// services and enqueue replication server.
+  /// - "INSTANCE_ROLE_ASCS_APP_SERVER" : Application central services and
+  /// application server.
+  /// - "INSTANCE_ROLE_ASCS_DATABASE" : Application central services and
+  /// database.
+  /// - "INSTANCE_ROLE_ERS_APP_SERVER" : Enqueue replication server and
+  /// application server.
+  /// - "INSTANCE_ROLE_ERS_DATABASE" : Enqueue replication server and database.
+  /// - "INSTANCE_ROLE_APP_SERVER_DATABASE" : Application server and database.
+  /// - "INSTANCE_ROLE_ASCS_ERS_APP_SERVER" : Application central services,
+  /// enqueue replication server and application server.
+  /// - "INSTANCE_ROLE_ASCS_ERS_DATABASE" : Application central services,
+  /// enqueue replication server and database.
+  /// - "INSTANCE_ROLE_ASCS_APP_SERVER_DATABASE" : Application central services,
+  /// application server and database.
+  /// - "INSTANCE_ROLE_ERS_APP_SERVER_DATABASE" : Enqueue replication server,
+  /// application server and database.
+  /// - "INSTANCE_ROLE_ASCS_ERS_APP_SERVER_DATABASE" : Application central
+  /// services, enqueue replication server, application server and database.
   core.String? instanceRole;
+
+  /// Instance is part of a DR site.
+  ///
+  /// Optional.
+  core.bool? isDrSite;
 
   /// A virtual hostname of the instance if it has one.
   ///
@@ -2514,6 +2713,7 @@ class SapDiscoveryResourceInstanceProperties {
     this.clusterInstances,
     this.instanceNumber,
     this.instanceRole,
+    this.isDrSite,
     this.virtualHostname,
   });
 
@@ -2529,6 +2729,7 @@ class SapDiscoveryResourceInstanceProperties {
               .toList(),
           instanceNumber: json_['instanceNumber'] as core.String?,
           instanceRole: json_['instanceRole'] as core.String?,
+          isDrSite: json_['isDrSite'] as core.bool?,
           virtualHostname: json_['virtualHostname'] as core.String?,
         );
 
@@ -2537,6 +2738,7 @@ class SapDiscoveryResourceInstanceProperties {
         if (clusterInstances != null) 'clusterInstances': clusterInstances!,
         if (instanceNumber != null) 'instanceNumber': instanceNumber!,
         if (instanceRole != null) 'instanceRole': instanceRole!,
+        if (isDrSite != null) 'isDrSite': isDrSite!,
         if (virtualHostname != null) 'virtualHostname': virtualHostname!,
       };
 }
@@ -2816,6 +3018,39 @@ class ScannedResource {
       };
 }
 
+/// * A ShellCommand is invoked via the agent's command line executor
+class ShellCommand {
+  /// args is a string of arguments to be passed to the command.
+  core.String? args;
+
+  /// command is the name of the command to be executed.
+  core.String? command;
+
+  /// If not specified, the default timeout is 60 seconds.
+  ///
+  /// Optional.
+  core.int? timeoutSeconds;
+
+  ShellCommand({
+    this.args,
+    this.command,
+    this.timeoutSeconds,
+  });
+
+  ShellCommand.fromJson(core.Map json_)
+      : this(
+          args: json_['args'] as core.String?,
+          command: json_['command'] as core.String?,
+          timeoutSeconds: json_['timeoutSeconds'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (args != null) 'args': args!,
+        if (command != null) 'command': command!,
+        if (timeoutSeconds != null) 'timeoutSeconds': timeoutSeconds!,
+      };
+}
+
 /// A presentation of SQLServer workload insight.
 ///
 /// The schema of SqlServer workloads validation related data.
@@ -2949,17 +3184,17 @@ class SqlserverValidationValidationDetail {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
-/// Message describing the violdation in execution result
+/// Message describing the violation in an evaluation result.
 class ViolationDetails {
-  /// the name of asset
+  /// The name of the asset.
   core.String? asset;
 
-  /// observed
+  /// Details of the violation.
   core.Map<core.String, core.String>? observed;
 
-  /// the service account associate with resource
+  /// The service account associated with the resource.
   core.String? serviceAccount;
 
   ViolationDetails({

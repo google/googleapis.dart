@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240611",
+    "revision": "20210806",
     "rootUrl": "https://libraryagent.googleapis.com/",
     "servicePath": "",
     "title": "Library Agent API",

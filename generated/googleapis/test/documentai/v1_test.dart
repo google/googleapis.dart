@@ -3899,6 +3899,7 @@ api.GoogleCloudDocumentaiV1ProcessRequest
   if (buildCounterGoogleCloudDocumentaiV1ProcessRequest < 3) {
     o.fieldMask = 'foo';
     o.gcsDocument = buildGoogleCloudDocumentaiV1GcsDocument();
+    o.imagelessMode = true;
     o.inlineDocument = buildGoogleCloudDocumentaiV1Document();
     o.labels = buildUnnamed69();
     o.processOptions = buildGoogleCloudDocumentaiV1ProcessOptions();
@@ -3918,6 +3919,7 @@ void checkGoogleCloudDocumentaiV1ProcessRequest(
       unittest.equals('foo'),
     );
     checkGoogleCloudDocumentaiV1GcsDocument(o.gcsDocument!);
+    unittest.expect(o.imagelessMode!, unittest.isTrue);
     checkGoogleCloudDocumentaiV1Document(o.inlineDocument!);
     checkUnnamed69(o.labels!);
     checkGoogleCloudDocumentaiV1ProcessOptions(o.processOptions!);
@@ -4137,6 +4139,8 @@ api.GoogleCloudDocumentaiV1ProcessorVersion
         buildGoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo();
     o.displayName = 'foo';
     o.documentSchema = buildGoogleCloudDocumentaiV1DocumentSchema();
+    o.genAiModelInfo =
+        buildGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo();
     o.googleManaged = true;
     o.kmsKeyName = 'foo';
     o.kmsKeyVersionName = 'foo';
@@ -4166,6 +4170,8 @@ void checkGoogleCloudDocumentaiV1ProcessorVersion(
       unittest.equals('foo'),
     );
     checkGoogleCloudDocumentaiV1DocumentSchema(o.documentSchema!);
+    checkGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo(
+        o.genAiModelInfo!);
     unittest.expect(o.googleManaged!, unittest.isTrue);
     unittest.expect(
       o.kmsKeyName!,
@@ -4250,6 +4256,100 @@ void checkGoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo(
     );
   }
   buildCounterGoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo--;
+}
+
+core.int buildCounterGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo = 0;
+api.GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo
+    buildGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo() {
+  final o = api.GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo();
+  buildCounterGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo++;
+  if (buildCounterGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo < 3) {
+    o.customGenAiModelInfo =
+        buildGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo();
+    o.foundationGenAiModelInfo =
+        buildGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo();
+  }
+  buildCounterGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo--;
+  return o;
+}
+
+void checkGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo(
+    api.GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo o) {
+  buildCounterGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo++;
+  if (buildCounterGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo < 3) {
+    checkGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo(
+        o.customGenAiModelInfo!);
+    checkGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo(
+        o.foundationGenAiModelInfo!);
+  }
+  buildCounterGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo--;
+}
+
+core.int
+    buildCounterGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo =
+    0;
+api.GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo
+    buildGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo() {
+  final o = api
+      .GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo();
+  buildCounterGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo++;
+  if (buildCounterGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo <
+      3) {
+    o.baseProcessorVersionId = 'foo';
+    o.customModelType = 'foo';
+  }
+  buildCounterGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo--;
+  return o;
+}
+
+void checkGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo(
+    api.GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo
+        o) {
+  buildCounterGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo++;
+  if (buildCounterGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo <
+      3) {
+    unittest.expect(
+      o.baseProcessorVersionId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.customModelType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo--;
+}
+
+core.int
+    buildCounterGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo =
+    0;
+api.GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo
+    buildGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo() {
+  final o = api
+      .GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo();
+  buildCounterGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo++;
+  if (buildCounterGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo <
+      3) {
+    o.finetuningAllowed = true;
+    o.minTrainLabeledDocuments = 42;
+  }
+  buildCounterGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo--;
+  return o;
+}
+
+void checkGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo(
+    api.GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo
+        o) {
+  buildCounterGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo++;
+  if (buildCounterGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo <
+      3) {
+    unittest.expect(o.finetuningAllowed!, unittest.isTrue);
+    unittest.expect(
+      o.minTrainLabeledDocuments!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo--;
 }
 
 core.int buildCounterGoogleCloudDocumentaiV1RawDocument = 0;
@@ -6305,6 +6405,48 @@ void main() {
           api.GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo(
+          od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo(
+          od);
     });
   });
 

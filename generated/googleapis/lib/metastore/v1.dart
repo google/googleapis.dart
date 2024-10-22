@@ -30,6 +30,7 @@
 ///       - [ProjectsLocationsServicesDatabasesResource]
 ///         - [ProjectsLocationsServicesDatabasesTablesResource]
 ///       - [ProjectsLocationsServicesMetadataImportsResource]
+///       - [ProjectsLocationsServicesMigrationExecutionsResource]
 library;
 
 import 'dart:async' as async;
@@ -807,6 +808,9 @@ class ProjectsLocationsServicesResource {
       ProjectsLocationsServicesDatabasesResource(_requester);
   ProjectsLocationsServicesMetadataImportsResource get metadataImports =>
       ProjectsLocationsServicesMetadataImportsResource(_requester);
+  ProjectsLocationsServicesMigrationExecutionsResource
+      get migrationExecutions =>
+          ProjectsLocationsServicesMigrationExecutionsResource(_requester);
 
   ProjectsLocationsServicesResource(commons.ApiRequester client)
       : _requester = client;
@@ -894,6 +898,95 @@ class ProjectsLocationsServicesResource {
 
     final url_ =
         'v1/' + core.Uri.encodeFull('$service') + ':alterTableProperties';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Cancels the ongoing Managed Migration process.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [service] - Required. The relative resource name of the metastore service
+  /// to cancel the ongoing migration to, in the following
+  /// format:projects/{project_id}/locations/{location_id}/services/{service_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> cancelMigration(
+    CancelMigrationRequest request,
+    core.String service, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$service') + ':cancelMigration';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Completes the managed migration process.
+  ///
+  /// The Dataproc Metastore service will switch to using its own backend
+  /// database after successful migration.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [service] - Required. The relative resource name of the metastore service
+  /// to complete the migration to, in the following
+  /// format:projects/{project_id}/locations/{location_id}/services/{service_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> completeMigration(
+    CompleteMigrationRequest request,
+    core.String service, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$service') + ':completeMigration';
 
     final response_ = await _requester.request(
       url_,
@@ -1456,6 +1549,49 @@ class ProjectsLocationsServicesResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Starts the Managed Migration process.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [service] - Required. The relative resource name of the metastore service
+  /// to start migrating to, in the following
+  /// format:projects/{project_id}/locations/{location_id}/services/{service_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> startMigration(
+    StartMigrationRequest request,
+    core.String service, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$service') + ':startMigration';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -2301,6 +2437,170 @@ class ProjectsLocationsServicesMetadataImportsResource {
   }
 }
 
+class ProjectsLocationsServicesMigrationExecutionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsServicesMigrationExecutionsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes a single migration execution.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the migrationExecution to
+  /// delete, in the following
+  /// form:projects/{project_number}/locations/{location_id}/services/{service_id}/migrationExecutions/{migration_execution_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/migrationExecutions/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID. Specify a unique request ID to allow
+  /// the server to ignore the request if it has completed. The server will
+  /// ignore subsequent requests that provide a duplicate request ID for at
+  /// least 60 minutes after the first request.For example, if an initial
+  /// request times out, followed by another request with the same request ID,
+  /// the server ignores the second request to prevent the creation of duplicate
+  /// commitments.The request ID must be a valid UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A
+  /// zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single migration execution.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the migration execution
+  /// to retrieve, in the following
+  /// form:projects/{project_number}/locations/{location_id}/services/{service_id}/migrationExecutions/{migration_execution_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/migrationExecutions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MigrationExecution].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MigrationExecution> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return MigrationExecution.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists migration executions on a service.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The relative resource name of the service whose
+  /// migration executions to list, in the following
+  /// form:projects/{project_number}/locations/{location_id}/services/{service_id}/migrationExecutions.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filter to apply to list results.
+  ///
+  /// [orderBy] - Optional. Specify the ordering of results as described in
+  /// Sorting Order
+  /// (https://cloud.google.com/apis/design/design_patterns#sorting_order). If
+  /// not specified, the results will be sorted in the default order.
+  ///
+  /// [pageSize] - Optional. The maximum number of migration executions to
+  /// return. The response may contain less than the maximum number. If
+  /// unspecified, no more than 500 migration executions are returned. The
+  /// maximum value is 1000; values above 1000 are changed to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// DataprocMetastore.ListMigrationExecutions call. Provide this token to
+  /// retrieve the subsequent page.To retrieve the first page, supply an empty
+  /// page token.When paginating, other parameters provided to
+  /// DataprocMetastore.ListMigrationExecutions must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMigrationExecutionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMigrationExecutionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/migrationExecutions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMigrationExecutionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// Request message for DataprocMetastore.AlterMetadataResourceLocation.
 class AlterMetadataResourceLocationRequest {
   /// The new location URI for the metadata resource.
@@ -2440,6 +2740,48 @@ class AuditConfig {
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
+
+/// Represents the autoscaling configuration of a metastore service.
+class AutoscalingConfig {
+  /// Whether or not autoscaling is enabled for this service.
+  ///
+  /// Optional.
+  core.bool? autoscalingEnabled;
+
+  /// The scaling factor of a service with autoscaling enabled.
+  ///
+  /// Output only.
+  core.double? autoscalingFactor;
+
+  /// The LimitConfig of the service.
+  ///
+  /// Optional.
+  LimitConfig? limitConfig;
+
+  AutoscalingConfig({
+    this.autoscalingEnabled,
+    this.autoscalingFactor,
+    this.limitConfig,
+  });
+
+  AutoscalingConfig.fromJson(core.Map json_)
+      : this(
+          autoscalingEnabled: json_['autoscalingEnabled'] as core.bool?,
+          autoscalingFactor:
+              (json_['autoscalingFactor'] as core.num?)?.toDouble(),
+          limitConfig: json_.containsKey('limitConfig')
+              ? LimitConfig.fromJson(
+                  json_['limitConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoscalingEnabled != null)
+          'autoscalingEnabled': autoscalingEnabled!,
+        if (autoscalingFactor != null) 'autoscalingFactor': autoscalingFactor!,
+        if (limitConfig != null) 'limitConfig': limitConfig!,
+      };
+}
 
 /// Configuration information for the auxiliary service versions.
 class AuxiliaryVersionConfig {
@@ -2710,8 +3052,252 @@ class Binding {
       };
 }
 
+/// Request message for DataprocMetastore.CancelMigration.
+typedef CancelMigrationRequest = $Empty;
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
+
+/// Configuration information to start the Change Data Capture (CDC) streams
+/// from customer database to backend database of Dataproc Metastore.
+class CdcConfig {
+  /// The bucket to write the intermediate stream event data in.
+  ///
+  /// The bucket name must be without any prefix like "gs://". See the bucket
+  /// naming requirements
+  /// (https://cloud.google.com/storage/docs/buckets#naming). This field is
+  /// optional. If not set, the Artifacts Cloud Storage bucket will be used.
+  ///
+  /// Optional.
+  core.String? bucket;
+
+  /// Input only.
+  ///
+  /// The password for the user that Datastream service should use for the MySQL
+  /// connection. This field is not returned on request.
+  ///
+  /// Required.
+  core.String? password;
+
+  /// The URL of the subnetwork resource to create the VM instance hosting the
+  /// reverse proxy in.
+  ///
+  /// More context in
+  /// https://cloud.google.com/datastream/docs/private-connectivity#reverse-csql-proxy
+  /// The subnetwork should reside in the network provided in the request that
+  /// Datastream will peer to and should be in the same region as Datastream, in
+  /// the following format.
+  /// projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id}
+  ///
+  /// Required.
+  core.String? reverseProxySubnet;
+
+  /// The root path inside the Cloud Storage bucket.
+  ///
+  /// The stream event data will be written to this path. The default value is
+  /// /migration.
+  ///
+  /// Optional.
+  core.String? rootPath;
+
+  /// A /29 CIDR IP range for peering with datastream.
+  ///
+  /// Required.
+  core.String? subnetIpRange;
+
+  /// The username that the Datastream service should use for the MySQL
+  /// connection.
+  ///
+  /// Required.
+  core.String? username;
+
+  /// Fully qualified name of the Cloud SQL instance's VPC network or the shared
+  /// VPC network that Datastream will peer to, in the following format:
+  /// projects/{project_id}/locations/global/networks/{network_id}.
+  ///
+  /// More context in
+  /// https://cloud.google.com/datastream/docs/network-connectivity-options#privateconnectivity
+  ///
+  /// Required.
+  core.String? vpcNetwork;
+
+  CdcConfig({
+    this.bucket,
+    this.password,
+    this.reverseProxySubnet,
+    this.rootPath,
+    this.subnetIpRange,
+    this.username,
+    this.vpcNetwork,
+  });
+
+  CdcConfig.fromJson(core.Map json_)
+      : this(
+          bucket: json_['bucket'] as core.String?,
+          password: json_['password'] as core.String?,
+          reverseProxySubnet: json_['reverseProxySubnet'] as core.String?,
+          rootPath: json_['rootPath'] as core.String?,
+          subnetIpRange: json_['subnetIpRange'] as core.String?,
+          username: json_['username'] as core.String?,
+          vpcNetwork: json_['vpcNetwork'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucket != null) 'bucket': bucket!,
+        if (password != null) 'password': password!,
+        if (reverseProxySubnet != null)
+          'reverseProxySubnet': reverseProxySubnet!,
+        if (rootPath != null) 'rootPath': rootPath!,
+        if (subnetIpRange != null) 'subnetIpRange': subnetIpRange!,
+        if (username != null) 'username': username!,
+        if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
+      };
+}
+
+/// Configuration information to establish customer database connection before
+/// the cutover phase of migration
+class CloudSQLConnectionConfig {
+  /// The hive database name.
+  ///
+  /// Required.
+  core.String? hiveDatabaseName;
+
+  /// Cloud SQL database connection name (project_id:region:instance_name)
+  ///
+  /// Required.
+  core.String? instanceConnectionName;
+
+  /// The private IP address of the Cloud SQL instance.
+  ///
+  /// Required.
+  core.String? ipAddress;
+
+  /// The relative resource name of the subnetwork to be used for Private
+  /// Service Connect.
+  ///
+  /// Note that this cannot be a regular subnet and is used only for NAT.
+  /// (https://cloud.google.com/vpc/docs/about-vpc-hosted-services#psc-subnets)
+  /// This subnet is used to publish the SOCKS5 proxy service. The subnet size
+  /// must be at least /29 and it should reside in a network through which the
+  /// Cloud SQL instance is accessible. The resource name should be in the
+  /// format,
+  /// projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id}
+  ///
+  /// Required.
+  core.String? natSubnet;
+
+  /// Input only.
+  ///
+  /// The password for the user that Dataproc Metastore service will be using to
+  /// connect to the database. This field is not returned on request.
+  ///
+  /// Required.
+  core.String? password;
+
+  /// The network port of the database.
+  ///
+  /// Required.
+  core.int? port;
+
+  /// The relative resource name of the subnetwork to deploy the SOCKS5 proxy
+  /// service in.
+  ///
+  /// The subnetwork should reside in a network through which the Cloud SQL
+  /// instance is accessible. The resource name should be in the format,
+  /// projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id}
+  ///
+  /// Required.
+  core.String? proxySubnet;
+
+  /// The username that Dataproc Metastore service will use to connect to the
+  /// database.
+  ///
+  /// Required.
+  core.String? username;
+
+  CloudSQLConnectionConfig({
+    this.hiveDatabaseName,
+    this.instanceConnectionName,
+    this.ipAddress,
+    this.natSubnet,
+    this.password,
+    this.port,
+    this.proxySubnet,
+    this.username,
+  });
+
+  CloudSQLConnectionConfig.fromJson(core.Map json_)
+      : this(
+          hiveDatabaseName: json_['hiveDatabaseName'] as core.String?,
+          instanceConnectionName:
+              json_['instanceConnectionName'] as core.String?,
+          ipAddress: json_['ipAddress'] as core.String?,
+          natSubnet: json_['natSubnet'] as core.String?,
+          password: json_['password'] as core.String?,
+          port: json_['port'] as core.int?,
+          proxySubnet: json_['proxySubnet'] as core.String?,
+          username: json_['username'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hiveDatabaseName != null) 'hiveDatabaseName': hiveDatabaseName!,
+        if (instanceConnectionName != null)
+          'instanceConnectionName': instanceConnectionName!,
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (natSubnet != null) 'natSubnet': natSubnet!,
+        if (password != null) 'password': password!,
+        if (port != null) 'port': port!,
+        if (proxySubnet != null) 'proxySubnet': proxySubnet!,
+        if (username != null) 'username': username!,
+      };
+}
+
+/// Configuration information for migrating from self-managed hive metastore on
+/// Google Cloud using Cloud SQL as the backend database to Dataproc Metastore.
+class CloudSQLMigrationConfig {
+  /// Configuration information to start the Change Data Capture (CDC) streams
+  /// from customer database to backend database of Dataproc Metastore.
+  ///
+  /// Dataproc Metastore switches to using its backend database after the
+  /// cutover phase of migration.
+  ///
+  /// Required.
+  CdcConfig? cdcConfig;
+
+  /// Configuration information to establish customer database connection before
+  /// the cutover phase of migration
+  ///
+  /// Required.
+  CloudSQLConnectionConfig? cloudSqlConnectionConfig;
+
+  CloudSQLMigrationConfig({
+    this.cdcConfig,
+    this.cloudSqlConnectionConfig,
+  });
+
+  CloudSQLMigrationConfig.fromJson(core.Map json_)
+      : this(
+          cdcConfig: json_.containsKey('cdcConfig')
+              ? CdcConfig.fromJson(
+                  json_['cdcConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          cloudSqlConnectionConfig:
+              json_.containsKey('cloudSqlConnectionConfig')
+                  ? CloudSQLConnectionConfig.fromJson(
+                      json_['cloudSqlConnectionConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cdcConfig != null) 'cdcConfig': cdcConfig!,
+        if (cloudSqlConnectionConfig != null)
+          'cloudSqlConnectionConfig': cloudSqlConnectionConfig!,
+      };
+}
+
+/// Request message for DataprocMetastore.CompleteMigration.
+typedef CompleteMigrationRequest = $Empty;
 
 /// Contains information of the customer's network configurations.
 class Consumer {
@@ -3257,6 +3843,37 @@ class LatestBackup {
       };
 }
 
+/// Represents the autoscaling limit configuration of a metastore service.
+class LimitConfig {
+  /// The highest scaling factor that the service should be autoscaled to.
+  ///
+  /// Optional.
+  core.double? maxScalingFactor;
+
+  /// The lowest scaling factor that the service should be autoscaled to.
+  ///
+  /// Optional.
+  core.double? minScalingFactor;
+
+  LimitConfig({
+    this.maxScalingFactor,
+    this.minScalingFactor,
+  });
+
+  LimitConfig.fromJson(core.Map json_)
+      : this(
+          maxScalingFactor:
+              (json_['maxScalingFactor'] as core.num?)?.toDouble(),
+          minScalingFactor:
+              (json_['minScalingFactor'] as core.num?)?.toDouble(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxScalingFactor != null) 'maxScalingFactor': maxScalingFactor!,
+        if (minScalingFactor != null) 'minScalingFactor': minScalingFactor!,
+      };
+}
+
 /// Response message for DataprocMetastore.ListBackups.
 class ListBackupsResponse {
   /// The backups of the specified service.
@@ -3394,6 +4011,45 @@ class ListMetadataImportsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metadataImports != null) 'metadataImports': metadataImports!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response message for DataprocMetastore.ListMigrationExecutions.
+class ListMigrationExecutionsResponse {
+  /// The migration executions on the specified service.
+  core.List<MigrationExecution>? migrationExecutions;
+
+  /// A token that can be sent as page_token to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListMigrationExecutionsResponse({
+    this.migrationExecutions,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListMigrationExecutionsResponse.fromJson(core.Map json_)
+      : this(
+          migrationExecutions: (json_['migrationExecutions'] as core.List?)
+              ?.map((value) => MigrationExecution.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (migrationExecutions != null)
+          'migrationExecutions': migrationExecutions!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -3704,6 +4360,105 @@ class MetadataManagementActivity {
   core.Map<core.String, core.dynamic> toJson() => {
         if (metadataExports != null) 'metadataExports': metadataExports!,
         if (restores != null) 'restores': restores!,
+      };
+}
+
+/// The details of a migration execution resource.
+class MigrationExecution {
+  /// Configuration information specific to migrating from self-managed hive
+  /// metastore on Google Cloud using Cloud SQL as the backend database to
+  /// Dataproc Metastore.
+  CloudSQLMigrationConfig? cloudSqlMigrationConfig;
+
+  /// The time when the migration execution was started.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The time when the migration execution finished.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// The relative resource name of the migration execution, in the following
+  /// form:
+  /// projects/{project_number}/locations/{location_id}/services/{service_id}/migrationExecutions/{migration_execution_id}
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The current phase of the migration execution.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PHASE_UNSPECIFIED" : The phase of the migration execution is unknown.
+  /// - "REPLICATION" : Replication phase refers to the migration phase when
+  /// Dataproc Metastore is running a pipeline to replicate changes in the
+  /// customer database to its backend database. During this phase, Dataproc
+  /// Metastore uses the customer database as the hive metastore backend
+  /// database.
+  /// - "CUTOVER" : Cutover phase refers to the migration phase when Dataproc
+  /// Metastore switches to using its own backend database. Migration enters
+  /// this phase when customer is done migrating all their clusters/workloads to
+  /// Dataproc Metastore and triggers CompleteMigration.
+  core.String? phase;
+
+  /// The current state of the migration execution.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state of the migration execution is unknown.
+  /// - "STARTING" : The migration execution is starting.
+  /// - "RUNNING" : The migration execution is running.
+  /// - "CANCELLING" : The migration execution is in the process of being
+  /// cancelled.
+  /// - "AWAITING_USER_ACTION" : The migration execution is awaiting user
+  /// action.
+  /// - "SUCCEEDED" : The migration execution has completed successfully.
+  /// - "FAILED" : The migration execution has failed.
+  /// - "CANCELLED" : The migration execution is cancelled.
+  /// - "DELETING" : The migration execution is being deleted.
+  core.String? state;
+
+  /// Additional information about the current state of the migration execution.
+  ///
+  /// Output only.
+  core.String? stateMessage;
+
+  MigrationExecution({
+    this.cloudSqlMigrationConfig,
+    this.createTime,
+    this.endTime,
+    this.name,
+    this.phase,
+    this.state,
+    this.stateMessage,
+  });
+
+  MigrationExecution.fromJson(core.Map json_)
+      : this(
+          cloudSqlMigrationConfig: json_.containsKey('cloudSqlMigrationConfig')
+              ? CloudSQLMigrationConfig.fromJson(
+                  json_['cloudSqlMigrationConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: json_['createTime'] as core.String?,
+          endTime: json_['endTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          phase: json_['phase'] as core.String?,
+          state: json_['state'] as core.String?,
+          stateMessage: json_['stateMessage'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudSqlMigrationConfig != null)
+          'cloudSqlMigrationConfig': cloudSqlMigrationConfig!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
+        if (name != null) 'name': name!,
+        if (phase != null) 'phase': phase!,
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
       };
 }
 
@@ -4135,6 +4890,11 @@ class RestoreServiceRequest {
 
 /// Represents the scaling configuration of a metastore service.
 class ScalingConfig {
+  /// The autoscaling configuration.
+  ///
+  /// Optional.
+  AutoscalingConfig? autoscalingConfig;
+
   /// An enum of readable instance sizes, with each instance size mapping to a
   /// float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
   /// Possible string values are:
@@ -4153,17 +4913,23 @@ class ScalingConfig {
   core.double? scalingFactor;
 
   ScalingConfig({
+    this.autoscalingConfig,
     this.instanceSize,
     this.scalingFactor,
   });
 
   ScalingConfig.fromJson(core.Map json_)
       : this(
+          autoscalingConfig: json_.containsKey('autoscalingConfig')
+              ? AutoscalingConfig.fromJson(json_['autoscalingConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           instanceSize: json_['instanceSize'] as core.String?,
           scalingFactor: (json_['scalingFactor'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (autoscalingConfig != null) 'autoscalingConfig': autoscalingConfig!,
         if (instanceSize != null) 'instanceSize': instanceSize!,
         if (scalingFactor != null) 'scalingFactor': scalingFactor!,
       };
@@ -4397,6 +5163,9 @@ class Service {
   /// used.
   /// - "ERROR" : The metastore service has encountered an error and cannot be
   /// used. The metastore service should be deleted.
+  /// - "AUTOSCALING" : The Dataproc Metastore service 2 is being scaled up or
+  /// down.
+  /// - "MIGRATING" : The metastore service is processing a managed migration.
   core.String? state;
 
   /// Additional information about the current state of the metastore service,
@@ -4588,6 +5357,48 @@ class SetIamPolicyRequest {
       };
 }
 
+/// Request message for DataprocMetastore.StartMigration.
+class StartMigrationRequest {
+  /// The configuration details for the migration.
+  ///
+  /// Required.
+  MigrationExecution? migrationExecution;
+
+  /// A request ID.
+  ///
+  /// Specify a unique request ID to allow the server to ignore the request if
+  /// it has completed. The server will ignore subsequent requests that provide
+  /// a duplicate request ID for at least 60 minutes after the first request.For
+  /// example, if an initial request times out, followed by another request with
+  /// the same request ID, the server ignores the second request to prevent the
+  /// creation of duplicate commitments.The request ID must be a valid UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A
+  /// zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  StartMigrationRequest({
+    this.migrationExecution,
+    this.requestId,
+  });
+
+  StartMigrationRequest.fromJson(core.Map json_)
+      : this(
+          migrationExecution: json_.containsKey('migrationExecution')
+              ? MigrationExecution.fromJson(json_['migrationExecution']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          requestId: json_['requestId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (migrationExecution != null)
+          'migrationExecution': migrationExecution!,
+        if (requestId != null) 'requestId': requestId!,
+      };
+}
+
 /// The Status type defines a logical error model that is suitable for different
 /// programming environments, including REST APIs and RPC APIs.
 ///
@@ -4595,7 +5406,7 @@ class SetIamPolicyRequest {
 /// three pieces of data: error code, error message, and error details.You can
 /// find out more about this error model and how to work with it in the API
 /// Design Guide (https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Telemetry Configuration for the Dataproc Metastore service.
 class TelemetryConfig {

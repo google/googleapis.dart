@@ -315,16 +315,18 @@ class ProjectsLocationsCertificateIssuanceConfigsResource {
   /// should be listed, specified in the format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Filter expression to restrict the Certificates Configs
-  /// returned.
+  /// [filter] - Optional. Filter expression to restrict the Certificates
+  /// Configs returned.
   ///
-  /// [orderBy] - A list of Certificate Config field names used to specify the
-  /// order of the returned results. The default sorting order is ascending. To
-  /// specify descending order for a field, add a suffix `" desc"`.
+  /// [orderBy] - Optional. A list of Certificate Config field names used to
+  /// specify the order of the returned results. The default sorting order is
+  /// ascending. To specify descending order for a field, add a suffix `"
+  /// desc"`.
   ///
-  /// [pageSize] - Maximum number of certificate configs to return per call.
+  /// [pageSize] - Optional. Maximum number of certificate configs to return per
+  /// call.
   ///
-  /// [pageToken] - The value returned by the last
+  /// [pageToken] - Optional. The value returned by the last
   /// `ListCertificateIssuanceConfigsResponse`. Indicates that this is a
   /// continuation of a prior `ListCertificateIssuanceConfigs` call, and that
   /// the system should return the next page of data.
@@ -365,6 +367,55 @@ class ProjectsLocationsCertificateIssuanceConfigsResource {
     );
     return ListCertificateIssuanceConfigsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a CertificateIssuanceConfig.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. A user-defined name of the certificate issuance
+  /// config. CertificateIssuanceConfig names must be unique globally and match
+  /// pattern `projects / * /locations / * /certificateIssuanceConfigs / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/certificateIssuanceConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The update mask applies to the resource. For the
+  /// `FieldMask` definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    CertificateIssuanceConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -512,15 +563,18 @@ class ProjectsLocationsCertificateMapsResource {
   /// * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Filter expression to restrict the Certificates Maps returned.
+  /// [filter] - Optional. Filter expression to restrict the Certificates Maps
+  /// returned.
   ///
-  /// [orderBy] - A list of Certificate Map field names used to specify the
-  /// order of the returned results. The default sorting order is ascending. To
-  /// specify descending order for a field, add a suffix `" desc"`.
+  /// [orderBy] - Optional. A list of Certificate Map field names used to
+  /// specify the order of the returned results. The default sorting order is
+  /// ascending. To specify descending order for a field, add a suffix `"
+  /// desc"`.
   ///
-  /// [pageSize] - Maximum number of certificate maps to return per call.
+  /// [pageSize] - Optional. Maximum number of certificate maps to return per
+  /// call.
   ///
-  /// [pageToken] - The value returned by the last
+  /// [pageToken] - Optional. The value returned by the last
   /// `ListCertificateMapsResponse`. Indicates that this is a continuation of a
   /// prior `ListCertificateMaps` call, and that the system should return the
   /// next page of data.
@@ -568,9 +622,9 @@ class ProjectsLocationsCertificateMapsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - A user-defined name of the Certificate Map. Certificate Map names
-  /// must be unique globally and match pattern `projects / * /locations / *
-  /// /certificateMaps / * `.
+  /// [name] - Identifier. A user-defined name of the Certificate Map.
+  /// Certificate Map names must be unique globally and match pattern `projects
+  /// / * /locations / * /certificateMaps / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/certificateMaps/\[^/\]+$`.
   ///
@@ -755,19 +809,20 @@ class ProjectsLocationsCertificateMapsCertificateMapEntriesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/certificateMaps/\[^/\]+$`.
   ///
-  /// [filter] - Filter expression to restrict the returned Certificate Map
-  /// Entries.
+  /// [filter] - Optional. Filter expression to restrict the returned
+  /// Certificate Map Entries.
   ///
-  /// [orderBy] - A list of Certificate Map Entry field names used to specify
-  /// the order of the returned results. The default sorting order is ascending.
-  /// To specify descending order for a field, add a suffix `" desc"`.
+  /// [orderBy] - Optional. A list of Certificate Map Entry field names used to
+  /// specify the order of the returned results. The default sorting order is
+  /// ascending. To specify descending order for a field, add a suffix `"
+  /// desc"`.
   ///
-  /// [pageSize] - Maximum number of certificate map entries to return. The
-  /// service may return fewer than this value. If unspecified, at most 50
-  /// certificate map entries will be returned. The maximum value is 1000;
-  /// values above 1000 will be coerced to 1000.
+  /// [pageSize] - Optional. Maximum number of certificate map entries to
+  /// return. The service may return fewer than this value. If unspecified, at
+  /// most 50 certificate map entries will be returned. The maximum value is
+  /// 1000; values above 1000 will be coerced to 1000.
   ///
-  /// [pageToken] - The value returned by the last
+  /// [pageToken] - Optional. The value returned by the last
   /// `ListCertificateMapEntriesResponse`. Indicates that this is a continuation
   /// of a prior `ListCertificateMapEntries` call, and that the system should
   /// return the next page of data.
@@ -816,9 +871,10 @@ class ProjectsLocationsCertificateMapsCertificateMapEntriesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - A user-defined name of the Certificate Map Entry. Certificate Map
-  /// Entry names must be unique globally and match pattern `projects / *
-  /// /locations / * /certificateMaps / * /certificateMapEntries / * `.
+  /// [name] - Identifier. A user-defined name of the Certificate Map Entry.
+  /// Certificate Map Entry names must be unique globally and match pattern
+  /// `projects / * /locations / * /certificateMaps / * /certificateMapEntries /
+  /// * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/certificateMaps/\[^/\]+/certificateMapEntries/\[^/\]+$`.
   ///
@@ -994,17 +1050,19 @@ class ProjectsLocationsCertificatesResource {
   /// should be listed, specified in the format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Filter expression to restrict the Certificates returned.
+  /// [filter] - Optional. Filter expression to restrict the Certificates
+  /// returned.
   ///
-  /// [orderBy] - A list of Certificate field names used to specify the order of
-  /// the returned results. The default sorting order is ascending. To specify
-  /// descending order for a field, add a suffix `" desc"`.
+  /// [orderBy] - Optional. A list of Certificate field names used to specify
+  /// the order of the returned results. The default sorting order is ascending.
+  /// To specify descending order for a field, add a suffix `" desc"`.
   ///
-  /// [pageSize] - Maximum number of certificates to return per call.
+  /// [pageSize] - Optional. Maximum number of certificates to return per call.
   ///
-  /// [pageToken] - The value returned by the last `ListCertificatesResponse`.
-  /// Indicates that this is a continuation of a prior `ListCertificates` call,
-  /// and that the system should return the next page of data.
+  /// [pageToken] - Optional. The value returned by the last
+  /// `ListCertificatesResponse`. Indicates that this is a continuation of a
+  /// prior `ListCertificates` call, and that the system should return the next
+  /// page of data.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1049,9 +1107,9 @@ class ProjectsLocationsCertificatesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - A user-defined name of the certificate. Certificate names must be
-  /// unique globally and match pattern `projects / * /locations / *
-  /// /certificates / * `.
+  /// [name] - Identifier. A user-defined name of the certificate. Certificate
+  /// names must be unique globally and match pattern `projects / * /locations /
+  /// * /certificates / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/certificates/\[^/\]+$`.
   ///
@@ -1230,15 +1288,18 @@ class ProjectsLocationsDnsAuthorizationsResource {
   /// /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Filter expression to restrict the Dns Authorizations returned.
+  /// [filter] - Optional. Filter expression to restrict the Dns Authorizations
+  /// returned.
   ///
-  /// [orderBy] - A list of Dns Authorization field names used to specify the
-  /// order of the returned results. The default sorting order is ascending. To
-  /// specify descending order for a field, add a suffix `" desc"`.
+  /// [orderBy] - Optional. A list of Dns Authorization field names used to
+  /// specify the order of the returned results. The default sorting order is
+  /// ascending. To specify descending order for a field, add a suffix `"
+  /// desc"`.
   ///
-  /// [pageSize] - Maximum number of dns authorizations to return per call.
+  /// [pageSize] - Optional. Maximum number of dns authorizations to return per
+  /// call.
   ///
-  /// [pageToken] - The value returned by the last
+  /// [pageToken] - Optional. The value returned by the last
   /// `ListDnsAuthorizationsResponse`. Indicates that this is a continuation of
   /// a prior `ListDnsAuthorizations` call, and that the system should return
   /// the next page of data.
@@ -1286,9 +1347,9 @@ class ProjectsLocationsDnsAuthorizationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - A user-defined name of the dns authorization. DnsAuthorization
-  /// names must be unique globally and match pattern `projects / * /locations /
-  /// * /dnsAuthorizations / * `.
+  /// [name] - Identifier. A user-defined name of the dns authorization.
+  /// DnsAuthorization names must be unique globally and match pattern `projects
+  /// / * /locations / * /dnsAuthorizations / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dnsAuthorizations/\[^/\]+$`.
   ///
@@ -1577,9 +1638,9 @@ class ProjectsLocationsTrustConfigsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/trustConfigs/\[^/\]+$`.
   ///
-  /// [etag] - The current etag of the TrustConfig. If an etag is provided and
-  /// does not match the current etag of the resource, deletion will be blocked
-  /// and an ABORTED error will be returned.
+  /// [etag] - Optional. The current etag of the TrustConfig. If an etag is
+  /// provided and does not match the current etag of the resource, deletion
+  /// will be blocked and an ABORTED error will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1657,17 +1718,19 @@ class ProjectsLocationsTrustConfigsResource {
   /// should be listed, specified in the format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Filter expression to restrict the TrustConfigs returned.
+  /// [filter] - Optional. Filter expression to restrict the TrustConfigs
+  /// returned.
   ///
-  /// [orderBy] - A list of TrustConfig field names used to specify the order of
-  /// the returned results. The default sorting order is ascending. To specify
-  /// descending order for a field, add a suffix `" desc"`.
+  /// [orderBy] - Optional. A list of TrustConfig field names used to specify
+  /// the order of the returned results. The default sorting order is ascending.
+  /// To specify descending order for a field, add a suffix `" desc"`.
   ///
-  /// [pageSize] - Maximum number of TrustConfigs to return per call.
+  /// [pageSize] - Optional. Maximum number of TrustConfigs to return per call.
   ///
-  /// [pageToken] - The value returned by the last `ListTrustConfigsResponse`.
-  /// Indicates that this is a continuation of a prior `ListTrustConfigs` call,
-  /// and that the system should return the next page of data.
+  /// [pageToken] - Optional. The value returned by the last
+  /// `ListTrustConfigsResponse`. Indicates that this is a continuation of a
+  /// prior `ListTrustConfigs` call, and that the system should return the next
+  /// page of data.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1712,9 +1775,9 @@ class ProjectsLocationsTrustConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - A user-defined name of the trust config. TrustConfig names must
-  /// be unique globally and match pattern `projects / * /locations / *
-  /// /trustConfigs / * `.
+  /// [name] - Identifier. A user-defined name of the trust config. TrustConfig
+  /// names must be unique globally and match pattern `projects / * /locations /
+  /// * /trustConfigs / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/trustConfigs/\[^/\]+$`.
   ///
@@ -1791,6 +1854,8 @@ class AuthorizationAttemptInfo {
   core.String? details;
 
   /// Domain name of the authorization attempt.
+  ///
+  /// Output only.
   core.String? domain;
 
   /// Reason for failure of the authorization attempt for the domain.
@@ -1854,6 +1919,8 @@ class Certificate {
   core.String? createTime;
 
   /// One or more paragraphs of text description of a certificate.
+  ///
+  /// Optional.
   core.String? description;
 
   /// The expiry timestamp of a Certificate.
@@ -1862,15 +1929,18 @@ class Certificate {
   core.String? expireTime;
 
   /// Set of labels associated with a Certificate.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// If set, contains configuration and state of a managed certificate.
   ManagedCertificate? managed;
 
-  /// A user-defined name of the certificate.
+  /// Identifier.
   ///
-  /// Certificate names must be unique globally and match pattern `projects / *
-  /// /locations / * /certificates / * `.
+  /// A user-defined name of the certificate. Certificate names must be unique
+  /// globally and match pattern `projects / * /locations / * /certificates / *
+  /// `.
   core.String? name;
 
   /// The PEM-encoded certificate chain.
@@ -1889,7 +1959,7 @@ class Certificate {
 
   /// The scope of the certificate.
   ///
-  /// Immutable.
+  /// Optional. Immutable.
   /// Possible string values are:
   /// - "DEFAULT" : Certificates with default scope are served from core Google
   /// data centers. If unsure, choose this option.
@@ -2034,6 +2104,8 @@ class CertificateIssuanceConfig {
   core.String? createTime;
 
   /// One or more paragraphs of text description of a CertificateIssuanceConfig.
+  ///
+  /// Optional.
   core.String? description;
 
   /// The key algorithm to use when generating the private key.
@@ -2046,6 +2118,8 @@ class CertificateIssuanceConfig {
   core.String? keyAlgorithm;
 
   /// Set of labels associated with a CertificateIssuanceConfig.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// Workload certificate lifetime requested.
@@ -2053,8 +2127,9 @@ class CertificateIssuanceConfig {
   /// Required.
   core.String? lifetime;
 
-  /// A user-defined name of the certificate issuance config.
+  /// Identifier.
   ///
+  /// A user-defined name of the certificate issuance config.
   /// CertificateIssuanceConfig names must be unique globally and match pattern
   /// `projects / * /locations / * /certificateIssuanceConfigs / * `.
   core.String? name;
@@ -2132,6 +2207,8 @@ class CertificateMap {
   core.String? createTime;
 
   /// One or more paragraphs of text description of a certificate map.
+  ///
+  /// Optional.
   core.String? description;
 
   /// A list of GCLB targets that use this Certificate Map.
@@ -2143,12 +2220,15 @@ class CertificateMap {
   core.List<GclbTarget>? gclbTargets;
 
   /// Set of labels associated with a Certificate Map.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
-  /// A user-defined name of the Certificate Map.
+  /// Identifier.
   ///
-  /// Certificate Map names must be unique globally and match pattern `projects
-  /// / * /locations / * /certificateMaps / * `.
+  /// A user-defined name of the Certificate Map. Certificate Map names must be
+  /// unique globally and match pattern `projects / * /locations / *
+  /// /certificateMaps / * `.
   core.String? name;
 
   /// The update timestamp of a Certificate Map.
@@ -2201,6 +2281,8 @@ class CertificateMapEntry {
   /// There can be defined up to four certificates in each Certificate Map
   /// Entry. Each certificate must match pattern `projects / * /locations / *
   /// /certificates / * `.
+  ///
+  /// Optional.
   core.List<core.String>? certificates;
 
   /// The creation timestamp of a Certificate Map Entry.
@@ -2209,6 +2291,8 @@ class CertificateMapEntry {
   core.String? createTime;
 
   /// One or more paragraphs of text description of a certificate map entry.
+  ///
+  /// Optional.
   core.String? description;
 
   /// A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression
@@ -2218,6 +2302,8 @@ class CertificateMapEntry {
   core.String? hostname;
 
   /// Set of labels associated with a Certificate Map Entry.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// A predefined matcher for particular cases, other than SNI selection.
@@ -2227,11 +2313,11 @@ class CertificateMapEntry {
   /// specified in the request or SNI couldn't be found in the map.
   core.String? matcher;
 
-  /// A user-defined name of the Certificate Map Entry.
+  /// Identifier.
   ///
-  /// Certificate Map Entry names must be unique globally and match pattern
-  /// `projects / * /locations / * /certificateMaps / * /certificateMapEntries /
-  /// * `.
+  /// A user-defined name of the Certificate Map Entry. Certificate Map Entry
+  /// names must be unique globally and match pattern `projects / * /locations /
+  /// * /certificateMaps / * /certificateMapEntries / * `.
   core.String? name;
 
   /// A serving state of this Certificate Map Entry.
@@ -2304,6 +2390,8 @@ class DnsAuthorization {
   core.String? createTime;
 
   /// One or more paragraphs of text description of a DnsAuthorization.
+  ///
+  /// Optional.
   core.String? description;
 
   /// DNS Resource Record that needs to be added to DNS configuration.
@@ -2321,20 +2409,23 @@ class DnsAuthorization {
   core.String? domain;
 
   /// Set of labels associated with a DnsAuthorization.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
-  /// A user-defined name of the dns authorization.
+  /// Identifier.
   ///
-  /// DnsAuthorization names must be unique globally and match pattern `projects
-  /// / * /locations / * /dnsAuthorizations / * `.
+  /// A user-defined name of the dns authorization. DnsAuthorization names must
+  /// be unique globally and match pattern `projects / * /locations / *
+  /// /dnsAuthorizations / * `.
   core.String? name;
 
   /// Type of DnsAuthorization.
   ///
   /// If unset during resource creation the following default will be used: - in
-  /// location global: FIXED_RECORD.
+  /// location `global`: FIXED_RECORD, - in other locations: PER_PROJECT_RECORD.
   ///
-  /// Immutable.
+  /// Optional. Immutable.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Type is unspecified.
   /// - "FIXED_RECORD" : FIXED_RECORD DNS authorization uses DNS-01 validation
@@ -2853,14 +2944,14 @@ class ManagedCertificate {
 
   /// Authorizations that will be used for performing domain authorization.
   ///
-  /// Immutable.
+  /// Optional. Immutable.
   core.List<core.String>? dnsAuthorizations;
 
   /// The domains for which a managed SSL certificate will be generated.
   ///
   /// Wildcard domains are only supported with DNS challenge resolution.
   ///
-  /// Immutable.
+  /// Optional. Immutable.
   core.List<core.String>? domains;
 
   /// The resource name for a CertificateIssuanceConfig used to configure
@@ -2871,7 +2962,7 @@ class ManagedCertificate {
   /// as documented at
   /// https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
   ///
-  /// Immutable.
+  /// Optional. Immutable.
   core.String? issuanceConfig;
 
   /// Information about issues with provisioning a Managed Certificate.
@@ -3059,11 +3150,15 @@ class SelfManagedCertificate {
   ///
   /// The PEM-encoded certificate chain. Leaf certificate comes first, followed
   /// by intermediate ones if any.
+  ///
+  /// Optional.
   core.String? pemCertificate;
 
   /// Input only.
   ///
   /// The PEM-encoded private key of the leaf certificate.
+  ///
+  /// Optional.
   core.String? pemPrivateKey;
 
   SelfManagedCertificate({
@@ -3090,7 +3185,7 @@ class SelfManagedCertificate {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Defines a trust anchor.
 class TrustAnchor {
@@ -3129,6 +3224,8 @@ class TrustConfig {
   core.String? createTime;
 
   /// One or more paragraphs of text description of a TrustConfig.
+  ///
+  /// Optional.
   core.String? description;
 
   /// This checksum is computed by the server based on the value of other
@@ -3137,12 +3234,15 @@ class TrustConfig {
   core.String? etag;
 
   /// Set of labels associated with a TrustConfig.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
-  /// A user-defined name of the trust config.
+  /// Identifier.
   ///
-  /// TrustConfig names must be unique globally and match pattern `projects / *
-  /// /locations / * /trustConfigs / * `.
+  /// A user-defined name of the trust config. TrustConfig names must be unique
+  /// globally and match pattern `projects / * /locations / * /trustConfigs / *
+  /// `.
   core.String? name;
 
   /// Set of trust stores to perform validation against.
@@ -3150,6 +3250,8 @@ class TrustConfig {
   /// This field is supported when TrustConfig is configured with Load
   /// Balancers, currently not supported for SPIFFE certificate validation. Only
   /// one TrustStore specified is currently allowed.
+  ///
+  /// Optional.
   core.List<TrustStore>? trustStores;
 
   /// The last update timestamp of a TrustConfig.
@@ -3213,10 +3315,14 @@ class TrustStore {
   ///
   /// The field is currently not supported if TrustConfig is used for the
   /// workload certificate feature.
+  ///
+  /// Optional.
   core.List<IntermediateCA>? intermediateCas;
 
   /// List of Trust Anchors to be used while performing validation against a
   /// given TrustStore.
+  ///
+  /// Optional.
   core.List<TrustAnchor>? trustAnchors;
 
   TrustStore({

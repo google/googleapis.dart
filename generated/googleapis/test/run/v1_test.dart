@@ -995,8 +995,10 @@ api.ExecutionReference buildExecutionReference() {
   final o = api.ExecutionReference();
   buildCounterExecutionReference++;
   if (buildCounterExecutionReference < 3) {
+    o.completionStatus = 'foo';
     o.completionTimestamp = 'foo';
     o.creationTimestamp = 'foo';
+    o.deletionTimestamp = 'foo';
     o.name = 'foo';
   }
   buildCounterExecutionReference--;
@@ -1007,11 +1009,19 @@ void checkExecutionReference(api.ExecutionReference o) {
   buildCounterExecutionReference++;
   if (buildCounterExecutionReference < 3) {
     unittest.expect(
+      o.completionStatus!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.completionTimestamp!,
       unittest.equals('foo'),
     );
     unittest.expect(
       o.creationTimestamp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.deletionTimestamp!,
       unittest.equals('foo'),
     );
     unittest.expect(

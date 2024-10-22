@@ -1394,7 +1394,7 @@ typedef MetricRule = $MetricRule;
 /// mixin construct implies that all methods in `AccessControl` are also
 /// declared with same name and request/response types in `Storage`. A
 /// documentation generator or annotation processor will see the effective
-/// `Storage.GetAcl` method after inherting documentation and annotations as
+/// `Storage.GetAcl` method after inheriting documentation and annotations as
 /// follows: service Storage { // Get the underlying ACL object. rpc
 /// GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get =
 /// "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern
@@ -1825,7 +1825,7 @@ typedef SourceContext = $SourceContext;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Configuration controlling usage of a service.
 class Usage {

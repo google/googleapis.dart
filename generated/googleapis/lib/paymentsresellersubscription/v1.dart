@@ -74,7 +74,8 @@ class PartnersProductsResource {
 
   /// To retrieve the products that can be resold by the partner.
   ///
-  /// It should be autenticated with a service account.
+  /// It should be autenticated with a service account. - This API doesn't apply
+  /// to YouTube products currently.
   ///
   /// Request parameters:
   ///
@@ -196,10 +197,11 @@ class PartnersPromotionsResource {
         .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// To retrieve the promotions, such as free trial, that can be used by the
+  /// Retrieves the promotions, such as free trial, that can be used by the
   /// partner.
   ///
-  /// It should be autenticated with a service account.
+  /// - This API doesn't apply to YouTube promotions currently. It should be
+  /// autenticated with a service account.
   ///
   /// Request parameters:
   ///
@@ -570,11 +572,12 @@ class PartnersSubscriptionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Used by partners to revoke the pending cancellation of a subscription,
-  /// which is currently in `STATE_CANCEL_AT_END_OF_CYCLE` state.
+  /// Revokes the pending cancellation of a subscription, which is currently in
+  /// `STATE_CANCEL_AT_END_OF_CYCLE` state.
   ///
-  /// If the subscription is already cancelled, the request will fail. It should
-  /// be called directly by the partner using service accounts.
+  /// If the subscription is already cancelled, the request will fail. - **This
+  /// API doesn't apply to YouTube subscriptions.** It should be called directly
+  /// by the partner using service accounts.
   ///
   /// [request] - The metadata request object.
   ///
@@ -661,14 +664,17 @@ class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest {
   /// the billing cycle.
   ///
   /// Otherwise, Google defers the cancelation at renewal_time, and will not
-  /// issue a refund.
+  /// issue a refund. - YouTube subscriptions must use this option currently.
+  /// However, the user will still have access to the subscription until the end
+  /// of the billing cycle.
   ///
   /// Optional.
   core.bool? cancelImmediately;
 
   /// Specifies the reason for the cancellation.
   /// Possible string values are:
-  /// - "CANCELLATION_REASON_UNSPECIFIED" : Reason is unspecified.
+  /// - "CANCELLATION_REASON_UNSPECIFIED" : Reason is unspecified. Should not be
+  /// used.
   /// - "CANCELLATION_REASON_FRAUD" : Fraudualant transaction.
   /// - "CANCELLATION_REASON_REMORSE" : Buyer's remorse.
   /// - "CANCELLATION_REASON_ACCIDENTAL_PURCHASE" : Accidential purchase.
@@ -760,8 +766,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1Duration {
       };
 }
 
-/// Partner request for entitling the previously provisioned subscription to an
-/// end user.
+/// LINT.IfChange Partner request for entitling the previously provisioned
+/// subscription to an end user.
 ///
 /// The end user identity is inferred from the request OAuth context.
 class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest {
@@ -1974,7 +1980,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "CANCELLATION_REASON_UNSPECIFIED" : Reason is unspecified.
+  /// - "CANCELLATION_REASON_UNSPECIFIED" : Reason is unspecified. Should not be
+  /// used.
   /// - "CANCELLATION_REASON_FRAUD" : Fraudualant transaction.
   /// - "CANCELLATION_REASON_REMORSE" : Buyer's remorse.
   /// - "CANCELLATION_REASON_ACCIDENTAL_PURCHASE" : Accidential purchase.

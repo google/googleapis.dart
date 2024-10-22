@@ -510,8 +510,8 @@ class ProjectsLocationsCaPoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name for this CaPool in the format
-  /// `projects / * /locations / * /caPools / * `.
+  /// [name] - Output only. Identifier. The resource name for this CaPool in the
+  /// format `projects / * /locations / * /caPools / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/caPools/\[^/\]+$`.
   ///
@@ -1096,9 +1096,9 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name for this CertificateAuthority in
-  /// the format `projects / * /locations / * /caPools / *
-  /// /certificateAuthorities / * `.
+  /// [name] - Output only. Identifier. The resource name for this
+  /// CertificateAuthority in the format `projects / * /locations / * /caPools /
+  /// * /certificateAuthorities / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/caPools/\[^/\]+/certificateAuthorities/\[^/\]+$`.
   ///
@@ -2775,6 +2775,8 @@ class CaPool {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
+  /// Identifier.
+  ///
   /// The resource name for this CaPool in the format `projects / * /locations /
   /// * /caPools / * `.
   ///
@@ -3091,6 +3093,8 @@ class CertificateAuthority {
   /// Required. Immutable.
   core.String? lifetime;
 
+  /// Identifier.
+  ///
   /// The resource name for this CertificateAuthority in the format `projects /
   /// * /locations / * /caPools / * /certificateAuthorities / * `.
   ///
@@ -3387,6 +3391,13 @@ class CertificateDescription {
   /// public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
   KeyId? subjectKeyId;
 
+  /// The hash of the pre-signed certificate, which will be signed by the CA.
+  ///
+  /// Corresponds to the TBS Certificate in
+  /// https://tools.ietf.org/html/rfc5280#section-4.1.2. The field will always
+  /// be populated.
+  core.String? tbsCertificateDigest;
+
   /// Describes some of the technical X.509 fields in a certificate.
   X509Parameters? x509Description;
 
@@ -3398,6 +3409,7 @@ class CertificateDescription {
     this.publicKey,
     this.subjectDescription,
     this.subjectKeyId,
+    this.tbsCertificateDigest,
     this.x509Description,
   });
 
@@ -3430,6 +3442,7 @@ class CertificateDescription {
               ? KeyId.fromJson(
                   json_['subjectKeyId'] as core.Map<core.String, core.dynamic>)
               : null,
+          tbsCertificateDigest: json_['tbsCertificateDigest'] as core.String?,
           x509Description: json_.containsKey('x509Description')
               ? X509Parameters.fromJson(json_['x509Description']
                   as core.Map<core.String, core.dynamic>)
@@ -3447,6 +3460,8 @@ class CertificateDescription {
         if (subjectDescription != null)
           'subjectDescription': subjectDescription!,
         if (subjectKeyId != null) 'subjectKeyId': subjectKeyId!,
+        if (tbsCertificateDigest != null)
+          'tbsCertificateDigest': tbsCertificateDigest!,
         if (x509Description != null) 'x509Description': x509Description!,
       };
 }
@@ -5312,7 +5327,7 @@ class SetIamPolicyRequest {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Subject describes parts of a distinguished name that, in turn, describes the
 /// subject of the certificate.

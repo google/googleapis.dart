@@ -92,6 +92,36 @@ void checkCancelExecutionRequest(api.CancelExecutionRequest o) {
   buildCounterCancelExecutionRequest--;
 }
 
+core.int buildCounterDeleteExecutionHistoryRequest = 0;
+api.DeleteExecutionHistoryRequest buildDeleteExecutionHistoryRequest() {
+  final o = api.DeleteExecutionHistoryRequest();
+  buildCounterDeleteExecutionHistoryRequest++;
+  if (buildCounterDeleteExecutionHistoryRequest < 3) {}
+  buildCounterDeleteExecutionHistoryRequest--;
+  return o;
+}
+
+void checkDeleteExecutionHistoryRequest(api.DeleteExecutionHistoryRequest o) {
+  buildCounterDeleteExecutionHistoryRequest++;
+  if (buildCounterDeleteExecutionHistoryRequest < 3) {}
+  buildCounterDeleteExecutionHistoryRequest--;
+}
+
+core.int buildCounterEmpty = 0;
+api.Empty buildEmpty() {
+  final o = api.Empty();
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
+  return o;
+}
+
+void checkEmpty(api.Empty o) {
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
+}
+
 core.int buildCounterError = 0;
 api.Error buildError() {
   final o = api.Error();
@@ -172,6 +202,7 @@ api.Execution buildExecution() {
     o.duration = 'foo';
     o.endTime = 'foo';
     o.error = buildError();
+    o.executionHistoryLevel = 'foo';
     o.labels = buildUnnamed1();
     o.name = 'foo';
     o.result = 'foo';
@@ -211,6 +242,10 @@ void checkExecution(api.Execution o) {
       unittest.equals('foo'),
     );
     checkError(o.error!);
+    unittest.expect(
+      o.executionHistoryLevel!,
+      unittest.equals('foo'),
+    );
     checkUnnamed1(o.labels!);
     unittest.expect(
       o.name!,
@@ -668,6 +703,7 @@ api.StepEntry buildStepEntry() {
     o.stepEntryMetadata = buildStepEntryMetadata();
     o.stepType = 'foo';
     o.updateTime = 'foo';
+    o.variableData = buildVariableData();
   }
   buildCounterStepEntry--;
   return o;
@@ -711,6 +747,7 @@ void checkStepEntry(api.StepEntry o) {
       o.updateTime!,
       unittest.equals('foo'),
     );
+    checkVariableData(o.variableData!);
   }
   buildCounterStepEntry--;
 }
@@ -786,6 +823,70 @@ void checkTriggerPubsubExecutionRequest(api.TriggerPubsubExecutionRequest o) {
   buildCounterTriggerPubsubExecutionRequest--;
 }
 
+core.Map<core.String, core.Object?> buildUnnamed9() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
+
+void checkUnnamed9(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted1 = (o['x']!) as core.Map;
+  unittest.expect(casted1, unittest.hasLength(3));
+  unittest.expect(
+    casted1['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted1['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted1['string'],
+    unittest.equals('foo'),
+  );
+  var casted2 = (o['y']!) as core.Map;
+  unittest.expect(casted2, unittest.hasLength(3));
+  unittest.expect(
+    casted2['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted2['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted2['string'],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterVariableData = 0;
+api.VariableData buildVariableData() {
+  final o = api.VariableData();
+  buildCounterVariableData++;
+  if (buildCounterVariableData < 3) {
+    o.variables = buildUnnamed9();
+  }
+  buildCounterVariableData--;
+  return o;
+}
+
+void checkVariableData(api.VariableData o) {
+  buildCounterVariableData++;
+  if (buildCounterVariableData < 3) {
+    checkUnnamed9(o.variables!);
+  }
+  buildCounterVariableData--;
+}
+
 void main() {
   unittest.group('obj-schema-Callback', () {
     unittest.test('to-json--from-json', () async {
@@ -804,6 +905,26 @@ void main() {
       final od = api.CancelExecutionRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkCancelExecutionRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-DeleteExecutionHistoryRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDeleteExecutionHistoryRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeleteExecutionHistoryRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDeleteExecutionHistoryRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEmpty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkEmpty(od);
     });
   });
 
@@ -984,6 +1105,16 @@ void main() {
       final od = api.TriggerPubsubExecutionRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTriggerPubsubExecutionRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-VariableData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVariableData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.VariableData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkVariableData(od);
     });
   });
 
@@ -1171,6 +1302,68 @@ void main() {
       final response =
           await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkExecution(response as api.Execution);
+    });
+
+    unittest.test('method--deleteExecutionHistory', () async {
+      final mock = HttpServerMock();
+      final res = api.WorkflowExecutionsApi(mock)
+          .projects
+          .locations
+          .workflows
+          .executions;
+      final arg_request = buildDeleteExecutionHistoryRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.DeleteExecutionHistoryRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDeleteExecutionHistoryRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.deleteExecutionHistory(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
     unittest.test('method--exportData', () async {
@@ -1463,6 +1656,7 @@ void main() {
           .executions
           .stepEntries;
       final arg_name = 'foo';
+      final arg_view = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -1497,6 +1691,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['view']!.first,
+          unittest.equals(arg_view),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -1507,7 +1705,8 @@ void main() {
         final resp = convert.json.encode(buildStepEntry());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.get(arg_name, $fields: arg_$fields);
+      final response =
+          await res.get(arg_name, view: arg_view, $fields: arg_$fields);
       checkStepEntry(response as api.StepEntry);
     });
 
@@ -1525,6 +1724,7 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_skip = 42;
+      final arg_view = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -1579,6 +1779,10 @@ void main() {
           unittest.equals(arg_skip),
         );
         unittest.expect(
+          queryMap['view']!.first,
+          unittest.equals(arg_view),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -1595,6 +1799,7 @@ void main() {
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           skip: arg_skip,
+          view: arg_view,
           $fields: arg_$fields);
       checkListStepEntriesResponse(response as api.ListStepEntriesResponse);
     });

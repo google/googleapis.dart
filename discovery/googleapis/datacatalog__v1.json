@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240605",
+    "revision": "20240614",
     "rootUrl": "https://datacatalog.googleapis.com/",
     "servicePath": "",
     "title": "Google Cloud Data Catalog API",
@@ -4213,9 +4213,13 @@
                         "DATAPLEX_TRANSFER_STATUS_UNSPECIFIED",
                         "MIGRATED"
                     ],
+                    "enumDeprecated": [
+                        false,
+                        true
+                    ],
                     "enumDescriptions": [
                         "Default value. TagTemplate and its tags are only visible and editable in DataCatalog.",
-                        "TagTemplate and its tags are auto-copied to Dataplex service. Visible in both services. Editable in DataCatalog, read-only in Dataplex."
+                        "TagTemplate and its tags are auto-copied to Dataplex service. Visible in both services. Editable in DataCatalog, read-only in Dataplex. Deprecated: Individual TagTemplate migration is deprecated in favor of organization or project wide TagTemplate migration opt-in."
                     ],
                     "type": "string"
                 },

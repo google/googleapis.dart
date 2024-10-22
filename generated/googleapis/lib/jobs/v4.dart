@@ -4073,7 +4073,7 @@ class SpellingCorrection {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// A Tenant resource represents a tenant in the service.
 ///
@@ -4118,7 +4118,7 @@ class Tenant {
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-typedef TimeOfDay = $TimeOfDay;
+typedef TimeOfDay = $TimeOfDay01;
 
 /// Message representing a period of time between two timestamps.
 class TimestampRange {

@@ -91,11 +91,11 @@ class DirectoryApi {
   static const adminDirectoryCustomerReadonlyScope =
       'https://www.googleapis.com/auth/admin.directory.customer.readonly';
 
-  /// View and manage your Chrome OS devices' metadata
+  /// View and manage your ChromeOS devices' metadata
   static const adminDirectoryDeviceChromeosScope =
       'https://www.googleapis.com/auth/admin.directory.device.chromeos';
 
-  /// View your Chrome OS devices' metadata
+  /// View your ChromeOS devices' metadata
   static const adminDirectoryDeviceChromeosReadonlyScope =
       'https://www.googleapis.com/auth/admin.directory.device.chromeos.readonly';
 
@@ -2329,7 +2329,8 @@ class GroupsResource {
   ///
   /// [userKey] - Email or immutable ID of the user if only those groups are to
   /// be listed, the given user is a member of. If it's an ID, it should match
-  /// with the ID of the user object.
+  /// with the ID of the user object. Cannot be used with the `customer`
+  /// parameter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5480,7 +5481,12 @@ class UsersResource {
   /// the user isn't fully created due to propagation delay in our backends.
   /// Check the error details for the "User creation is not complete" message to
   /// see if this is the case. Retrying the calls after some time can help in
-  /// this case.
+  /// this case. If `resolveConflictAccount` is set to `true`, a `202` response
+  /// code means that a conflicting unmanaged account exists and was invited to
+  /// join the organization. A `409` response code means that a conflicting
+  /// account exists so the user wasn't created based on the
+  /// [handling unmanaged user accounts](https://support.google.com/a/answer/11112794)
+  /// option selected.
   ///
   /// [request] - The metadata request object.
   ///
@@ -8914,8 +8920,9 @@ class DirectoryChromeosdevicesCommand {
   /// The type of the command.
   /// Possible string values are:
   /// - "COMMAND_TYPE_UNSPECIFIED" : The command type was unspecified.
-  /// - "REBOOT" : Reboot the device. Can only be issued to Kiosk and managed
-  /// guest session devices.
+  /// - "REBOOT" : Reboot the device. Can be issued to Kiosk and managed guest
+  /// session devices, and regular devices running ChromeOS version 113 or
+  /// later.
   /// - "TAKE_A_SCREENSHOT" : Take a screenshot of the device. Only available if
   /// the device is in Kiosk Mode.
   /// - "SET_VOLUME" : Set the volume of the device. Can only be issued to Kiosk
@@ -9030,8 +9037,9 @@ class DirectoryChromeosdevicesIssueCommandRequest {
   /// The type of command.
   /// Possible string values are:
   /// - "COMMAND_TYPE_UNSPECIFIED" : The command type was unspecified.
-  /// - "REBOOT" : Reboot the device. Can only be issued to Kiosk and managed
-  /// guest session devices.
+  /// - "REBOOT" : Reboot the device. Can be issued to Kiosk and managed guest
+  /// session devices, and regular devices running ChromeOS version 113 or
+  /// later.
   /// - "TAKE_A_SCREENSHOT" : Take a screenshot of the device. Only available if
   /// the device is in Kiosk Mode.
   /// - "SET_VOLUME" : Set the volume of the device. Can only be issued to Kiosk
@@ -9062,13 +9070,23 @@ class DirectoryChromeosdevicesIssueCommandRequest {
   /// a stringified JSON object in the form: { "volume": 50 }. The volume has to
   /// be an integer in the range \[0,100\]. * `DEVICE_START_CRD_SESSION`:
   /// Payload is optionally a stringified JSON object in the form: {
-  /// "ackedUserPresence": true }. `ackedUserPresence` is a boolean. By default,
-  /// `ackedUserPresence` is set to `false`. To start a Chrome Remote Desktop
-  /// session for an active device, set `ackedUserPresence` to `true`. *
-  /// `REBOOT`: Payload is a stringified JSON object in the form: {
-  /// "user_session_delay_seconds": 300 }. The delay has to be in the range \[0,
-  /// 300\]. * `FETCH_SUPPORT_PACKET`: Payload is optionally a stringified JSON
-  /// object in the form: {"supportPacketDetails":{ "issueCaseId":
+  /// "ackedUserPresence": true, "crdSessionType": string }. `ackedUserPresence`
+  /// is a boolean. By default, `ackedUserPresence` is set to `false`. To start
+  /// a Chrome Remote Desktop session for an active device, set
+  /// `ackedUserPresence` to `true`. `crdSessionType` can only select from
+  /// values `private` (which grants the remote admin exclusive control of the
+  /// ChromeOS device) or `shared` (which allows the admin and the local user to
+  /// share control of the ChromeOS device). If not set, `crdSessionType`
+  /// defaults to `shared`. * `REBOOT`: Payload is a stringified JSON object in
+  /// the form: { "user_session_delay_seconds": 300 }. The
+  /// `user_session_delay_seconds` is the amount of seconds to wait before
+  /// rebooting the device if a user is logged in. It has to be an integer in
+  /// the range \[0,300\]. When payload is not present for reboot, 0 delay is
+  /// the default. Note: This only applies if an actual user is logged in,
+  /// including a Guest. If the device is in the login screen or in Kiosk mode
+  /// the value is not respected and the device immediately reboots. *
+  /// `FETCH_SUPPORT_PACKET`: Payload is optionally a stringified JSON object in
+  /// the form: {"supportPacketDetails":{ "issueCaseId":
   /// optional_support_case_id_string, "issueDescription":
   /// optional_issue_description_string, "requestedDataCollectors": \[\]}} The
   /// list of available `data_collector_enums` are as following: Chrome System
@@ -11495,7 +11513,7 @@ class Schemas {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// JSON template for token resource in Directory API.
 class Token {

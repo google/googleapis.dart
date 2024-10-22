@@ -958,9 +958,9 @@ class Connection {
   /// Output only.
   core.bool? hasCredential;
 
-  /// The Cloud KMS key that is used for encryption.
+  /// The Cloud KMS key that is used for credentials encryption.
   ///
-  /// Example:
+  /// If omitted, internal Google owned encryption keys are used. Example:
   /// `projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]`
   ///
   /// Optional.

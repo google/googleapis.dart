@@ -4044,6 +4044,26 @@ class WebAppConfig {
   /// Immutable.
   core.String? projectId;
 
+  /// The globally unique, Google-assigned canonical identifier for the Project.
+  ///
+  /// Use this identifier when configuring integrations and/or making API calls
+  /// to Google Cloud or third-party services.
+  ///
+  /// Output only. Immutable.
+  core.String? projectNumber;
+
+  /// Duplicate field for the URL of the default RTDB instances (if there is
+  /// one) that uses the same field name as the unified V2 config file format.
+  ///
+  /// We wanted to make a single config file format for all the app platforms
+  /// (Android, iOS and web) and we had to pick consistent names for all the
+  /// fields since there was some varience between the platforms. If the request
+  /// asks for the V2 format we will populate this field instead of
+  /// realtime_database_instance_uri.
+  ///
+  /// Optional.
+  core.String? realtimeDatabaseUrl;
+
   /// **DEPRECATED.** _Instead, find the default Cloud Storage for Firebase
   /// bucket using the
   /// [list endpoint](https://firebase.google.com/docs/reference/rest/storage/rest/v1beta/projects.buckets/list)
@@ -4057,6 +4077,9 @@ class WebAppConfig {
   )
   core.String? storageBucket;
 
+  /// Version of the config specification.
+  core.String? version;
+
   WebAppConfig({
     this.apiKey,
     this.appId,
@@ -4066,7 +4089,10 @@ class WebAppConfig {
     this.measurementId,
     this.messagingSenderId,
     this.projectId,
+    this.projectNumber,
+    this.realtimeDatabaseUrl,
     this.storageBucket,
+    this.version,
   });
 
   WebAppConfig.fromJson(core.Map json_)
@@ -4079,7 +4105,10 @@ class WebAppConfig {
           measurementId: json_['measurementId'] as core.String?,
           messagingSenderId: json_['messagingSenderId'] as core.String?,
           projectId: json_['projectId'] as core.String?,
+          projectNumber: json_['projectNumber'] as core.String?,
+          realtimeDatabaseUrl: json_['realtimeDatabaseUrl'] as core.String?,
           storageBucket: json_['storageBucket'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4091,6 +4120,10 @@ class WebAppConfig {
         if (measurementId != null) 'measurementId': measurementId!,
         if (messagingSenderId != null) 'messagingSenderId': messagingSenderId!,
         if (projectId != null) 'projectId': projectId!,
+        if (projectNumber != null) 'projectNumber': projectNumber!,
+        if (realtimeDatabaseUrl != null)
+          'realtimeDatabaseUrl': realtimeDatabaseUrl!,
         if (storageBucket != null) 'storageBucket': storageBucket!,
+        if (version != null) 'version': version!,
       };
 }

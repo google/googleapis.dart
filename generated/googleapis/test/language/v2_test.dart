@@ -286,6 +286,7 @@ api.ClassificationCategory buildClassificationCategory() {
   if (buildCounterClassificationCategory < 3) {
     o.confidence = 42.0;
     o.name = 'foo';
+    o.severity = 42.0;
   }
   buildCounterClassificationCategory--;
   return o;
@@ -301,6 +302,10 @@ void checkClassificationCategory(api.ClassificationCategory o) {
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.severity!,
+      unittest.equals(42.0),
     );
   }
   buildCounterClassificationCategory--;
@@ -497,6 +502,7 @@ api.ModerateTextRequest buildModerateTextRequest() {
   buildCounterModerateTextRequest++;
   if (buildCounterModerateTextRequest < 3) {
     o.document = buildDocument();
+    o.modelVersion = 'foo';
   }
   buildCounterModerateTextRequest--;
   return o;
@@ -506,6 +512,10 @@ void checkModerateTextRequest(api.ModerateTextRequest o) {
   buildCounterModerateTextRequest++;
   if (buildCounterModerateTextRequest < 3) {
     checkDocument(o.document!);
+    unittest.expect(
+      o.modelVersion!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterModerateTextRequest--;
 }

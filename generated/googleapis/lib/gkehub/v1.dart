@@ -28,6 +28,7 @@
 ///     - [ProjectsLocationsFleetsResource]
 ///     - [ProjectsLocationsMembershipsResource]
 ///       - [ProjectsLocationsMembershipsBindingsResource]
+///       - [ProjectsLocationsMembershipsRbacrolebindingsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsScopesResource]
 ///       - [ProjectsLocationsScopesNamespacesResource]
@@ -388,6 +389,11 @@ class ProjectsLocationsFeaturesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/features/\[^/\]+$`.
   ///
+  /// [returnPartialSuccess] - Optional. If set to true, the response will
+  /// return partial results when some regions are unreachable and the
+  /// unreachable field in Feature proto will be populated. If set to false, the
+  /// request will fail when some regions are unreachable.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -400,9 +406,12 @@ class ProjectsLocationsFeaturesResource {
   /// this method will complete with the same error.
   async.Future<Feature> get(
     core.String name, {
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -499,6 +508,11 @@ class ProjectsLocationsFeaturesResource {
   /// specifies the position in the list from where to continue listing the
   /// resources.
   ///
+  /// [returnPartialSuccess] - Optional. If set to true, the response will
+  /// return partial results when some regions are unreachable and the
+  /// unreachable field in Feature proto will be populated. If set to false, the
+  /// request will fail when some regions are unreachable.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -515,6 +529,7 @@ class ProjectsLocationsFeaturesResource {
     core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -522,6 +537,8 @@ class ProjectsLocationsFeaturesResource {
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -924,6 +941,8 @@ class ProjectsLocationsMembershipsResource {
 
   ProjectsLocationsMembershipsBindingsResource get bindings =>
       ProjectsLocationsMembershipsBindingsResource(_requester);
+  ProjectsLocationsMembershipsRbacrolebindingsResource get rbacrolebindings =>
+      ProjectsLocationsMembershipsRbacrolebindingsResource(_requester);
 
   ProjectsLocationsMembershipsResource(commons.ApiRequester client)
       : _requester = client;
@@ -1667,6 +1686,297 @@ class ProjectsLocationsMembershipsBindingsResource {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
     MembershipBinding request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsMembershipsRbacrolebindingsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsMembershipsRbacrolebindingsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a Membership RBACRoleBinding.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent (project and location) where the
+  /// RBACRoleBinding will be created. Specified in the format `projects / *
+  /// /locations / * /memberships / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/memberships/\[^/\]+$`.
+  ///
+  /// [rbacrolebindingId] - Required. Client chosen ID for the RBACRoleBinding.
+  /// `rbacrolebinding_id` must be a valid RFC 1123 compliant DNS label: 1. At
+  /// most 63 characters in length 2. It must consist of lower case alphanumeric
+  /// characters or `-` 3. It must start and end with an alphanumeric character
+  /// Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with
+  /// a maximum length of 63 characters.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    RBACRoleBinding request,
+    core.String parent, {
+    core.String? rbacrolebindingId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (rbacrolebindingId != null) 'rbacrolebindingId': [rbacrolebindingId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/rbacrolebindings';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a Membership RBACRoleBinding.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The RBACRoleBinding resource name in the format
+  /// `projects / * /locations / * /memberships / * /rbacrolebindings / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/memberships/\[^/\]+/rbacrolebindings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Generates a YAML of the RBAC policies for the specified RoleBinding and
+  /// its associated impersonation resources.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent (project and location) where the
+  /// RBACRoleBinding will be created. Specified in the format `projects / *
+  /// /locations / * /memberships / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/memberships/\[^/\]+$`.
+  ///
+  /// [rbacrolebindingId] - Required. Client chosen ID for the RBACRoleBinding.
+  /// `rbacrolebinding_id` must be a valid RFC 1123 compliant DNS label: 1. At
+  /// most 63 characters in length 2. It must consist of lower case alphanumeric
+  /// characters or `-` 3. It must start and end with an alphanumeric character
+  /// Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with
+  /// a maximum length of 63 characters.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GenerateMembershipRBACRoleBindingYAMLResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GenerateMembershipRBACRoleBindingYAMLResponse>
+      generateMembershipRBACRoleBindingYAML(
+    RBACRoleBinding request,
+    core.String parent, {
+    core.String? rbacrolebindingId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (rbacrolebindingId != null) 'rbacrolebindingId': [rbacrolebindingId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/rbacrolebindings:generateMembershipRBACRoleBindingYAML';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GenerateMembershipRBACRoleBindingYAMLResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the details of a Membership RBACRoleBinding.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The RBACRoleBinding resource name in the format
+  /// `projects / * /locations / * /memberships / * /rbacrolebindings / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/memberships/\[^/\]+/rbacrolebindings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RBACRoleBinding].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RBACRoleBinding> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RBACRoleBinding.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all Membership RBACRoleBindings.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent (project and location) where the Features
+  /// will be listed. Specified in the format `projects / * /locations / *
+  /// /memberships / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/memberships/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. When requesting a 'page' of resources, `page_size`
+  /// specifies number of resources to return. If unspecified or set to 0, all
+  /// resources will be returned.
+  ///
+  /// [pageToken] - Optional. Token returned by previous call to
+  /// `ListMembershipRBACRoleBindings` which specifies the position in the list
+  /// from where to continue listing the resources.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMembershipRBACRoleBindingsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMembershipRBACRoleBindingsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/rbacrolebindings';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMembershipRBACRoleBindingsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a Membership RBACRoleBinding.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name for the rbacrolebinding
+  /// `projects/{project}/locations/{location}/scopes/{scope}/rbacrolebindings/{rbacrolebinding}`
+  /// or
+  /// `projects/{project}/locations/{location}/memberships/{membership}/rbacrolebindings/{rbacrolebinding}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/memberships/\[^/\]+/rbacrolebindings/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    RBACRoleBinding request,
     core.String name, {
     core.String? updateMask,
     core.String? $fields,
@@ -3446,29 +3756,7 @@ class ClusterUpgradeGKEUpgradeState {
 ///
 /// A membership can be ignored because it was manually upgraded to a newer
 /// version than RC default.
-class ClusterUpgradeIgnoredMembership {
-  /// Time when the membership was first set to ignored.
-  core.String? ignoredTime;
-
-  /// Reason why the membership is ignored.
-  core.String? reason;
-
-  ClusterUpgradeIgnoredMembership({
-    this.ignoredTime,
-    this.reason,
-  });
-
-  ClusterUpgradeIgnoredMembership.fromJson(core.Map json_)
-      : this(
-          ignoredTime: json_['ignoredTime'] as core.String?,
-          reason: json_['reason'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (ignoredTime != null) 'ignoredTime': ignoredTime!,
-        if (reason != null) 'reason': reason!,
-      };
-}
+typedef ClusterUpgradeIgnoredMembership = $ClusterUpgradeIgnoredMembership;
 
 /// ScopeGKEUpgradeState is a GKEUpgrade and its state per-membership.
 class ClusterUpgradeMembershipGKEUpgradeState {
@@ -3561,52 +3849,9 @@ class ClusterUpgradePostConditions {
 }
 
 /// UpgradeStatus provides status information for each upgrade.
-class ClusterUpgradeUpgradeStatus {
-  /// Status code of the upgrade.
-  /// Possible string values are:
-  /// - "CODE_UNSPECIFIED" : Required by https://linter.aip.dev/126/unspecified.
-  /// - "INELIGIBLE" : The upgrade is ineligible. At the scope level, this means
-  /// the upgrade is ineligible for all the clusters in the scope.
-  /// - "PENDING" : The upgrade is pending. At the scope level, this means the
-  /// upgrade is pending for all the clusters in the scope.
-  /// - "IN_PROGRESS" : The upgrade is in progress. At the scope level, this
-  /// means the upgrade is in progress for at least one cluster in the scope.
-  /// - "SOAKING" : The upgrade has finished and is soaking until the soaking
-  /// time is up. At the scope level, this means at least one cluster is in
-  /// soaking while the rest are either soaking or complete.
-  /// - "FORCED_SOAKING" : A cluster will be forced to enter soaking if an
-  /// upgrade doesn't finish within a certain limit, despite it's actual status.
-  /// - "COMPLETE" : The upgrade has passed all post conditions (soaking). At
-  /// the scope level, this means all eligible clusters are in COMPLETE status.
-  core.String? code;
+typedef ClusterUpgradeUpgradeStatus = $ClusterUpgradeUpgradeStatus;
 
-  /// Reason for this status.
-  core.String? reason;
-
-  /// Last timestamp the status was updated.
-  core.String? updateTime;
-
-  ClusterUpgradeUpgradeStatus({
-    this.code,
-    this.reason,
-    this.updateTime,
-  });
-
-  ClusterUpgradeUpgradeStatus.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          reason: json_['reason'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (reason != null) 'reason': reason!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
-
-/// CommonFeatureSpec contains Hub-wide configuration information
+/// CommonFeatureSpec contains Fleet-wide configuration information
 class CommonFeatureSpec {
   /// Appdevexperience specific spec.
   AppDevExperienceFeatureSpec? appdevexperience;
@@ -3668,7 +3913,7 @@ class CommonFeatureSpec {
       };
 }
 
-/// CommonFeatureState contains Hub-wide Feature status information.
+/// CommonFeatureState contains Fleet-wide Feature status information.
 class CommonFeatureState {
   /// Appdevexperience specific state.
   AppDevExperienceFeatureState? appdevexperience;
@@ -3679,7 +3924,7 @@ class CommonFeatureState {
   /// FleetObservability feature state.
   FleetObservabilityFeatureState? fleetobservability;
 
-  /// The "running state" of the Feature in this Hub.
+  /// The "running state" of the Feature in this Fleet.
   ///
   /// Output only.
   FeatureState? state;
@@ -3772,6 +4017,42 @@ class CommonFleetDefaultMemberConfigSpec {
         if (policycontroller != null) 'policycontroller': policycontroller!,
       };
 }
+
+/// CompliancePostureConfig defines the settings needed to enable/disable
+/// features for the Compliance Posture.
+class CompliancePostureConfig {
+  /// List of enabled compliance standards.
+  core.List<ComplianceStandard>? complianceStandards;
+
+  /// Defines the enablement mode for Compliance Posture.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Default value not specified.
+  /// - "DISABLED" : Disables Compliance Posture features on the cluster.
+  /// - "ENABLED" : Enables Compliance Posture features on the cluster.
+  core.String? mode;
+
+  CompliancePostureConfig({
+    this.complianceStandards,
+    this.mode,
+  });
+
+  CompliancePostureConfig.fromJson(core.Map json_)
+      : this(
+          complianceStandards: (json_['complianceStandards'] as core.List?)
+              ?.map((value) => ComplianceStandard.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          mode: json_['mode'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (complianceStandards != null)
+          'complianceStandards': complianceStandards!,
+        if (mode != null) 'mode': mode!,
+      };
+}
+
+typedef ComplianceStandard = $ComplianceStandard;
 
 /// Configuration for Config Sync
 class ConfigManagementConfigSync {
@@ -3898,6 +4179,15 @@ class ConfigManagementConfigSyncDeploymentState {
   /// - "PENDING" : Deployment is installing or terminating
   core.String? monitor;
 
+  /// Deployment state of otel-collector
+  /// Possible string values are:
+  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
+  /// - "NOT_INSTALLED" : Deployment is not installed
+  /// - "INSTALLED" : Deployment is installed
+  /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
+  core.String? otelCollector;
+
   /// Deployment state of reconciler-manager pod
   /// Possible string values are:
   /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
@@ -3906,6 +4196,15 @@ class ConfigManagementConfigSyncDeploymentState {
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
   /// - "PENDING" : Deployment is installing or terminating
   core.String? reconcilerManager;
+
+  /// Deployment state of resource-group-controller-manager
+  /// Possible string values are:
+  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
+  /// - "NOT_INSTALLED" : Deployment is not installed
+  /// - "INSTALLED" : Deployment is installed
+  /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
+  core.String? resourceGroupControllerManager;
 
   /// Deployment state of root-reconciler
   /// Possible string values are:
@@ -3930,7 +4229,9 @@ class ConfigManagementConfigSyncDeploymentState {
     this.gitSync,
     this.importer,
     this.monitor,
+    this.otelCollector,
     this.reconcilerManager,
+    this.resourceGroupControllerManager,
     this.rootReconciler,
     this.syncer,
   });
@@ -3941,7 +4242,10 @@ class ConfigManagementConfigSyncDeploymentState {
           gitSync: json_['gitSync'] as core.String?,
           importer: json_['importer'] as core.String?,
           monitor: json_['monitor'] as core.String?,
+          otelCollector: json_['otelCollector'] as core.String?,
           reconcilerManager: json_['reconcilerManager'] as core.String?,
+          resourceGroupControllerManager:
+              json_['resourceGroupControllerManager'] as core.String?,
           rootReconciler: json_['rootReconciler'] as core.String?,
           syncer: json_['syncer'] as core.String?,
         );
@@ -3951,7 +4255,10 @@ class ConfigManagementConfigSyncDeploymentState {
         if (gitSync != null) 'gitSync': gitSync!,
         if (importer != null) 'importer': importer!,
         if (monitor != null) 'monitor': monitor!,
+        if (otelCollector != null) 'otelCollector': otelCollector!,
         if (reconcilerManager != null) 'reconcilerManager': reconcilerManager!,
+        if (resourceGroupControllerManager != null)
+          'resourceGroupControllerManager': resourceGroupControllerManager!,
         if (rootReconciler != null) 'rootReconciler': rootReconciler!,
         if (syncer != null) 'syncer': syncer!,
       };
@@ -3962,6 +4269,17 @@ typedef ConfigManagementConfigSyncError = $Error;
 
 /// State information for ConfigSync
 class ConfigManagementConfigSyncState {
+  /// Whether syncing resources to the cluster is stopped at the cluster level.
+  /// Possible string values are:
+  /// - "STOP_SYNCING_STATE_UNSPECIFIED" : State cannot be determined
+  /// - "NOT_STOPPED" : Syncing resources to the cluster is not stopped at the
+  /// cluster level.
+  /// - "PENDING" : Some reconcilers stop syncing resources to the cluster,
+  /// while others are still syncing.
+  /// - "STOPPED" : Syncing resources to the cluster is stopped at the cluster
+  /// level.
+  core.String? clusterLevelStopSyncingState;
+
   /// Information about the deployment of ConfigSync, including the version of
   /// the various Pods deployed
   ConfigManagementConfigSyncDeploymentState? deploymentState;
@@ -4006,6 +4324,7 @@ class ConfigManagementConfigSyncState {
   ConfigManagementConfigSyncVersion? version;
 
   ConfigManagementConfigSyncState({
+    this.clusterLevelStopSyncingState,
     this.deploymentState,
     this.errors,
     this.reposyncCrd,
@@ -4017,6 +4336,8 @@ class ConfigManagementConfigSyncState {
 
   ConfigManagementConfigSyncState.fromJson(core.Map json_)
       : this(
+          clusterLevelStopSyncingState:
+              json_['clusterLevelStopSyncingState'] as core.String?,
           deploymentState: json_.containsKey('deploymentState')
               ? ConfigManagementConfigSyncDeploymentState.fromJson(
                   json_['deploymentState']
@@ -4040,6 +4361,8 @@ class ConfigManagementConfigSyncState {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterLevelStopSyncingState != null)
+          'clusterLevelStopSyncingState': clusterLevelStopSyncingState!,
         if (deploymentState != null) 'deploymentState': deploymentState!,
         if (errors != null) 'errors': errors!,
         if (reposyncCrd != null) 'reposyncCrd': reposyncCrd!,
@@ -4052,7 +4375,7 @@ class ConfigManagementConfigSyncState {
 
 /// Specific versioning information pertaining to ConfigSync's Pods
 class ConfigManagementConfigSyncVersion {
-  /// Version of the deployed admission_webhook pod
+  /// Version of the deployed admission-webhook pod
   core.String? admissionWebhook;
 
   /// Version of the deployed git-sync pod
@@ -4064,8 +4387,14 @@ class ConfigManagementConfigSyncVersion {
   /// Version of the deployed monitor pod
   core.String? monitor;
 
+  /// Version of the deployed otel-collector pod
+  core.String? otelCollector;
+
   /// Version of the deployed reconciler-manager pod
   core.String? reconcilerManager;
+
+  /// Version of the deployed resource-group-controller-manager pod
+  core.String? resourceGroupControllerManager;
 
   /// Version of the deployed reconciler container in root-reconciler pod
   core.String? rootReconciler;
@@ -4078,7 +4407,9 @@ class ConfigManagementConfigSyncVersion {
     this.gitSync,
     this.importer,
     this.monitor,
+    this.otelCollector,
     this.reconcilerManager,
+    this.resourceGroupControllerManager,
     this.rootReconciler,
     this.syncer,
   });
@@ -4089,7 +4420,10 @@ class ConfigManagementConfigSyncVersion {
           gitSync: json_['gitSync'] as core.String?,
           importer: json_['importer'] as core.String?,
           monitor: json_['monitor'] as core.String?,
+          otelCollector: json_['otelCollector'] as core.String?,
           reconcilerManager: json_['reconcilerManager'] as core.String?,
+          resourceGroupControllerManager:
+              json_['resourceGroupControllerManager'] as core.String?,
           rootReconciler: json_['rootReconciler'] as core.String?,
           syncer: json_['syncer'] as core.String?,
         );
@@ -4099,7 +4433,10 @@ class ConfigManagementConfigSyncVersion {
         if (gitSync != null) 'gitSync': gitSync!,
         if (importer != null) 'importer': importer!,
         if (monitor != null) 'monitor': monitor!,
+        if (otelCollector != null) 'otelCollector': otelCollector!,
         if (reconcilerManager != null) 'reconcilerManager': reconcilerManager!,
+        if (resourceGroupControllerManager != null)
+          'resourceGroupControllerManager': resourceGroupControllerManager!,
         if (rootReconciler != null) 'rootReconciler': rootReconciler!,
         if (syncer != null) 'syncer': syncer!,
       };
@@ -4198,145 +4535,14 @@ class ConfigManagementGatekeeperDeploymentState {
 }
 
 /// Git repo configuration for a single cluster.
-class ConfigManagementGitConfig {
-  /// The Google Cloud Service Account Email used for auth when secret_type is
-  /// gcpServiceAccount.
-  core.String? gcpServiceAccountEmail;
-
-  /// URL for the HTTPS proxy to be used when communicating with the Git repo.
-  core.String? httpsProxy;
-
-  /// The path within the Git repository that represents the top level of the
-  /// repo to sync.
-  ///
-  /// Default: the root directory of the repository.
-  core.String? policyDir;
-
-  /// Type of secret configured for access to the Git repo.
-  ///
-  /// Must be one of ssh, cookiefile, gcenode, token, gcpserviceaccount or none.
-  /// The validation of this is case-sensitive. Required.
-  core.String? secretType;
-
-  /// The branch of the repository to sync from.
-  ///
-  /// Default: master.
-  core.String? syncBranch;
-
-  /// The URL of the Git repository to use as the source of truth.
-  core.String? syncRepo;
-
-  /// Git revision (tag or hash) to check out.
-  ///
-  /// Default HEAD.
-  core.String? syncRev;
-
-  /// Period in seconds between consecutive syncs.
-  ///
-  /// Default: 15.
-  core.String? syncWaitSecs;
-
-  ConfigManagementGitConfig({
-    this.gcpServiceAccountEmail,
-    this.httpsProxy,
-    this.policyDir,
-    this.secretType,
-    this.syncBranch,
-    this.syncRepo,
-    this.syncRev,
-    this.syncWaitSecs,
-  });
-
-  ConfigManagementGitConfig.fromJson(core.Map json_)
-      : this(
-          gcpServiceAccountEmail:
-              json_['gcpServiceAccountEmail'] as core.String?,
-          httpsProxy: json_['httpsProxy'] as core.String?,
-          policyDir: json_['policyDir'] as core.String?,
-          secretType: json_['secretType'] as core.String?,
-          syncBranch: json_['syncBranch'] as core.String?,
-          syncRepo: json_['syncRepo'] as core.String?,
-          syncRev: json_['syncRev'] as core.String?,
-          syncWaitSecs: json_['syncWaitSecs'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (gcpServiceAccountEmail != null)
-          'gcpServiceAccountEmail': gcpServiceAccountEmail!,
-        if (httpsProxy != null) 'httpsProxy': httpsProxy!,
-        if (policyDir != null) 'policyDir': policyDir!,
-        if (secretType != null) 'secretType': secretType!,
-        if (syncBranch != null) 'syncBranch': syncBranch!,
-        if (syncRepo != null) 'syncRepo': syncRepo!,
-        if (syncRev != null) 'syncRev': syncRev!,
-        if (syncWaitSecs != null) 'syncWaitSecs': syncWaitSecs!,
-      };
-}
+typedef ConfigManagementGitConfig = $ConfigManagementGitConfig;
 
 /// A Kubernetes object's GVK
-class ConfigManagementGroupVersionKind {
-  /// Kubernetes Group
-  core.String? group;
-
-  /// Kubernetes Kind
-  core.String? kind;
-
-  /// Kubernetes Version
-  core.String? version;
-
-  ConfigManagementGroupVersionKind({
-    this.group,
-    this.kind,
-    this.version,
-  });
-
-  ConfigManagementGroupVersionKind.fromJson(core.Map json_)
-      : this(
-          group: json_['group'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (group != null) 'group': group!,
-        if (kind != null) 'kind': kind!,
-        if (version != null) 'version': version!,
-      };
-}
+typedef ConfigManagementGroupVersionKind = $ConfigManagementGroupVersionKind;
 
 /// Configuration for Hierarchy Controller
-class ConfigManagementHierarchyControllerConfig {
-  /// Whether hierarchical resource quota is enabled in this cluster.
-  core.bool? enableHierarchicalResourceQuota;
-
-  /// Whether pod tree labels are enabled in this cluster.
-  core.bool? enablePodTreeLabels;
-
-  /// Whether Hierarchy Controller is enabled in this cluster.
-  core.bool? enabled;
-
-  ConfigManagementHierarchyControllerConfig({
-    this.enableHierarchicalResourceQuota,
-    this.enablePodTreeLabels,
-    this.enabled,
-  });
-
-  ConfigManagementHierarchyControllerConfig.fromJson(core.Map json_)
-      : this(
-          enableHierarchicalResourceQuota:
-              json_['enableHierarchicalResourceQuota'] as core.bool?,
-          enablePodTreeLabels: json_['enablePodTreeLabels'] as core.bool?,
-          enabled: json_['enabled'] as core.bool?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (enableHierarchicalResourceQuota != null)
-          'enableHierarchicalResourceQuota': enableHierarchicalResourceQuota!,
-        if (enablePodTreeLabels != null)
-          'enablePodTreeLabels': enablePodTreeLabels!,
-        if (enabled != null) 'enabled': enabled!,
-      };
-}
+typedef ConfigManagementHierarchyControllerConfig
+    = $ConfigManagementHierarchyControllerConfig;
 
 /// Deployment state for Hierarchy Controller
 class ConfigManagementHierarchyControllerDeploymentState {
@@ -4452,6 +4658,10 @@ class ConfigManagementMembershipSpec {
   ConfigManagementConfigSync? configSync;
 
   /// Hierarchy Controller configuration for the cluster.
+  ///
+  /// Deprecated: Configuring Hierarchy Controller through the configmanagement
+  /// feature is no longer recommended. Use
+  /// https://github.com/kubernetes-sigs/hierarchical-namespaces instead.
   ConfigManagementHierarchyControllerConfig? hierarchyController;
 
   /// Enables automatic Feature management.
@@ -4463,6 +4673,10 @@ class ConfigManagementMembershipSpec {
   core.String? management;
 
   /// Policy Controller configuration for the cluster.
+  ///
+  /// Deprecated: Configuring Policy Controller through the configmanagement
+  /// feature is no longer recommended. Use the policycontroller feature
+  /// instead.
   ConfigManagementPolicyController? policyController;
 
   /// Version of ACM installed.
@@ -4586,56 +4800,7 @@ class ConfigManagementMembershipState {
 }
 
 /// OCI repo configuration for a single cluster
-class ConfigManagementOciConfig {
-  /// The Google Cloud Service Account Email used for auth when secret_type is
-  /// gcpServiceAccount.
-  core.String? gcpServiceAccountEmail;
-
-  /// The absolute path of the directory that contains the local resources.
-  ///
-  /// Default: the root directory of the image.
-  core.String? policyDir;
-
-  /// Type of secret configured for access to the Git repo.
-  core.String? secretType;
-
-  /// The OCI image repository URL for the package to sync from.
-  ///
-  /// e.g. `LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME`.
-  core.String? syncRepo;
-
-  /// Period in seconds between consecutive syncs.
-  ///
-  /// Default: 15.
-  core.String? syncWaitSecs;
-
-  ConfigManagementOciConfig({
-    this.gcpServiceAccountEmail,
-    this.policyDir,
-    this.secretType,
-    this.syncRepo,
-    this.syncWaitSecs,
-  });
-
-  ConfigManagementOciConfig.fromJson(core.Map json_)
-      : this(
-          gcpServiceAccountEmail:
-              json_['gcpServiceAccountEmail'] as core.String?,
-          policyDir: json_['policyDir'] as core.String?,
-          secretType: json_['secretType'] as core.String?,
-          syncRepo: json_['syncRepo'] as core.String?,
-          syncWaitSecs: json_['syncWaitSecs'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (gcpServiceAccountEmail != null)
-          'gcpServiceAccountEmail': gcpServiceAccountEmail!,
-        if (policyDir != null) 'policyDir': policyDir!,
-        if (secretType != null) 'secretType': secretType!,
-        if (syncRepo != null) 'syncRepo': syncRepo!,
-        if (syncWaitSecs != null) 'syncWaitSecs': syncWaitSecs!,
-      };
-}
+typedef ConfigManagementOciConfig = $ConfigManagementOciConfig;
 
 /// State information for an ACM's Operator
 class ConfigManagementOperatorState {
@@ -4768,42 +4933,15 @@ class ConfigManagementPolicyController {
 }
 
 /// State for the migration of PolicyController from ACM -\> PoCo Hub.
-class ConfigManagementPolicyControllerMigration {
-  /// Last time this membership spec was copied to PoCo feature.
-  core.String? copyTime;
-
-  /// Stage of the migration.
-  /// Possible string values are:
-  /// - "STAGE_UNSPECIFIED" : Unknown state of migration.
-  /// - "ACM_MANAGED" : ACM Hub/Operator manages policycontroller. No migration
-  /// yet completed.
-  /// - "POCO_MANAGED" : All migrations steps complete; Poco Hub now manages
-  /// policycontroller.
-  core.String? stage;
-
-  ConfigManagementPolicyControllerMigration({
-    this.copyTime,
-    this.stage,
-  });
-
-  ConfigManagementPolicyControllerMigration.fromJson(core.Map json_)
-      : this(
-          copyTime: json_['copyTime'] as core.String?,
-          stage: json_['stage'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (copyTime != null) 'copyTime': copyTime!,
-        if (stage != null) 'stage': stage!,
-      };
-}
+typedef ConfigManagementPolicyControllerMigration
+    = $ConfigManagementPolicyControllerMigration;
 
 /// PolicyControllerMonitoring specifies the backends Policy Controller should
 /// export metrics to.
 ///
 /// For example, to specify metrics should be exported to Cloud Monitoring and
 /// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
-typedef ConfigManagementPolicyControllerMonitoring = $Shared11;
+typedef ConfigManagementPolicyControllerMonitoring = $Shared02;
 
 /// State for PolicyControllerState.
 class ConfigManagementPolicyControllerState {
@@ -4847,24 +4985,8 @@ class ConfigManagementPolicyControllerState {
 }
 
 /// The build version of Gatekeeper Policy Controller is using.
-class ConfigManagementPolicyControllerVersion {
-  /// The gatekeeper image tag that is composed of ACM version, git tag, build
-  /// number.
-  core.String? version;
-
-  ConfigManagementPolicyControllerVersion({
-    this.version,
-  });
-
-  ConfigManagementPolicyControllerVersion.fromJson(core.Map json_)
-      : this(
-          version: json_['version'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (version != null) 'version': version!,
-      };
-}
+typedef ConfigManagementPolicyControllerVersion
+    = $ConfigManagementPolicyControllerVersion;
 
 /// An ACM created error representing a problem syncing configurations
 class ConfigManagementSyncError {
@@ -5033,11 +5155,20 @@ class DefaultClusterConfig {
   /// Optional.
   BinaryAuthorizationConfig? binaryAuthorizationConfig;
 
+  /// Enable/Disable Compliance Posture features for the cluster.
+  ///
+  /// Note that on UpdateFleet, only full replacement of this field is allowed.
+  /// Users are not allowed for partial updates through field mask.
+  ///
+  /// Optional.
+  CompliancePostureConfig? compliancePostureConfig;
+
   /// Enable/Disable Security Posture features for the cluster.
   SecurityPostureConfig? securityPostureConfig;
 
   DefaultClusterConfig({
     this.binaryAuthorizationConfig,
+    this.compliancePostureConfig,
     this.securityPostureConfig,
   });
 
@@ -5049,6 +5180,11 @@ class DefaultClusterConfig {
                       json_['binaryAuthorizationConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          compliancePostureConfig: json_.containsKey('compliancePostureConfig')
+              ? CompliancePostureConfig.fromJson(
+                  json_['compliancePostureConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           securityPostureConfig: json_.containsKey('securityPostureConfig')
               ? SecurityPostureConfig.fromJson(json_['securityPostureConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -5058,6 +5194,8 @@ class DefaultClusterConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (binaryAuthorizationConfig != null)
           'binaryAuthorizationConfig': binaryAuthorizationConfig!,
+        if (compliancePostureConfig != null)
+          'compliancePostureConfig': compliancePostureConfig!,
         if (securityPostureConfig != null)
           'securityPostureConfig': securityPostureConfig!,
       };
@@ -5115,7 +5253,7 @@ typedef Empty = $Empty;
 /// information.
 typedef Expr = $Expr;
 
-/// Feature represents the settings and status of any Hub Feature.
+/// Feature represents the settings and status of any Fleet Feature.
 class Feature {
   /// When the Feature resource was created.
   ///
@@ -5200,18 +5338,23 @@ class Feature {
   /// Output only.
   core.Map<core.String, ScopeFeatureState>? scopeStates;
 
-  /// Hub-wide Feature configuration.
+  /// Fleet-wide Feature configuration.
   ///
-  /// If this Feature does not support any Hub-wide configuration, this field
+  /// If this Feature does not support any Fleet-wide configuration, this field
   /// may be unused.
   ///
   /// Optional.
   CommonFeatureSpec? spec;
 
-  /// The Hub-wide Feature state.
+  /// The Fleet-wide Feature state.
   ///
   /// Output only.
   CommonFeatureState? state;
+
+  /// List of locations that could not be reached while fetching this feature.
+  ///
+  /// Output only.
+  core.List<core.String>? unreachable;
 
   /// When the Feature resource was last updated.
   ///
@@ -5231,6 +5374,7 @@ class Feature {
     this.scopeStates,
     this.spec,
     this.state,
+    this.unreachable,
     this.updateTime,
   });
 
@@ -5300,6 +5444,9 @@ class Feature {
               ? CommonFeatureState.fromJson(
                   json_['state'] as core.Map<core.String, core.dynamic>)
               : null,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           updateTime: json_['updateTime'] as core.String?,
         );
 
@@ -5317,6 +5464,7 @@ class Feature {
         if (scopeStates != null) 'scopeStates': scopeStates!,
         if (spec != null) 'spec': spec!,
         if (state != null) 'state': state!,
+        if (unreachable != null) 'unreachable': unreachable!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -5324,7 +5472,7 @@ class Feature {
 /// FeatureResourceState describes the state of a Feature *resource* in the
 /// GkeHub API.
 ///
-/// See `FeatureState` for the "running state" of the Feature in the Hub and
+/// See `FeatureState` for the "running state" of the Feature in the Fleet and
 /// across Memberships.
 class FeatureResourceState {
   /// The current state of the Feature resource in the Hub API.
@@ -5332,11 +5480,11 @@ class FeatureResourceState {
   /// - "STATE_UNSPECIFIED" : State is unknown or not set.
   /// - "ENABLING" : The Feature is being enabled, and the Feature resource is
   /// being created. Once complete, the corresponding Feature will be enabled in
-  /// this Hub.
-  /// - "ACTIVE" : The Feature is enabled in this Hub, and the Feature resource
-  /// is fully available.
-  /// - "DISABLING" : The Feature is being disabled in this Hub, and the Feature
-  /// resource is being deleted.
+  /// this Fleet.
+  /// - "ACTIVE" : The Feature is enabled in this Fleet, and the Feature
+  /// resource is fully available.
+  /// - "DISABLING" : The Feature is being disabled in this Fleet, and the
+  /// Feature resource is being deleted.
   /// - "UPDATING" : The Feature resource is being updated.
   /// - "SERVICE_UPDATING" : The Feature resource is being updated by the Hub
   /// Service.
@@ -5800,6 +5948,25 @@ class GenerateConnectManifestResponse {
       };
 }
 
+/// Response for GenerateRBACRoleBindingYAML.
+class GenerateMembershipRBACRoleBindingYAMLResponse {
+  /// a yaml text blob including the RBAC policies.
+  core.String? roleBindingsYaml;
+
+  GenerateMembershipRBACRoleBindingYAMLResponse({
+    this.roleBindingsYaml,
+  });
+
+  GenerateMembershipRBACRoleBindingYAMLResponse.fromJson(core.Map json_)
+      : this(
+          roleBindingsYaml: json_['roleBindingsYaml'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (roleBindingsYaml != null) 'roleBindingsYaml': roleBindingsYaml!,
+      };
+}
+
 /// GkeCluster contains information specific to GKE clusters.
 class GkeCluster {
   /// If cluster_missing is set then it denotes that the GKE cluster no longer
@@ -5841,7 +6008,7 @@ class GkeCluster {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef GoogleRpcStatus = $Status;
+typedef GoogleRpcStatus = $Status00;
 
 /// Configuration of an auth method for a member/cluster.
 ///
@@ -5917,163 +6084,45 @@ class IdentityServiceAuthMethod {
 }
 
 /// Configuration for the AzureAD Auth flow.
-class IdentityServiceAzureADConfig {
-  /// ID for the registered client application that makes authentication
-  /// requests to the Azure AD identity provider.
-  core.String? clientId;
+typedef IdentityServiceAzureADConfig = $IdentityServiceAzureADConfig;
 
-  /// Input only.
-  ///
-  /// Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.
-  core.String? clientSecret;
-
-  /// Encrypted AzureAD client secret.
-  ///
-  /// Output only.
-  core.String? encryptedClientSecret;
-  core.List<core.int> get encryptedClientSecretAsBytes =>
-      convert.base64.decode(encryptedClientSecret!);
-
-  set encryptedClientSecretAsBytes(core.List<core.int> bytes_) {
-    encryptedClientSecret =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// Format of the AzureAD groups that the client wants for auth.
-  ///
-  /// Optional.
-  core.String? groupFormat;
-
-  /// The redirect URL that kubectl uses for authorization.
-  core.String? kubectlRedirectUri;
-
-  /// Kind of Azure AD account to be authenticated.
-  ///
-  /// Supported values are or for accounts belonging to a specific tenant.
-  core.String? tenant;
-
-  /// Claim in the AzureAD ID Token that holds the user details.
-  ///
-  /// Optional.
-  core.String? userClaim;
-
-  IdentityServiceAzureADConfig({
-    this.clientId,
-    this.clientSecret,
-    this.encryptedClientSecret,
-    this.groupFormat,
-    this.kubectlRedirectUri,
-    this.tenant,
-    this.userClaim,
-  });
-
-  IdentityServiceAzureADConfig.fromJson(core.Map json_)
-      : this(
-          clientId: json_['clientId'] as core.String?,
-          clientSecret: json_['clientSecret'] as core.String?,
-          encryptedClientSecret: json_['encryptedClientSecret'] as core.String?,
-          groupFormat: json_['groupFormat'] as core.String?,
-          kubectlRedirectUri: json_['kubectlRedirectUri'] as core.String?,
-          tenant: json_['tenant'] as core.String?,
-          userClaim: json_['userClaim'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (clientId != null) 'clientId': clientId!,
-        if (clientSecret != null) 'clientSecret': clientSecret!,
-        if (encryptedClientSecret != null)
-          'encryptedClientSecret': encryptedClientSecret!,
-        if (groupFormat != null) 'groupFormat': groupFormat!,
-        if (kubectlRedirectUri != null)
-          'kubectlRedirectUri': kubectlRedirectUri!,
-        if (tenant != null) 'tenant': tenant!,
-        if (userClaim != null) 'userClaim': userClaim!,
-      };
-}
+/// Configuration options for the AIS diagnostic interface.
+typedef IdentityServiceDiagnosticInterface
+    = $IdentityServiceDiagnosticInterface;
 
 /// Configuration for the Google Plugin Auth flow.
-class IdentityServiceGoogleConfig {
-  /// Disable automatic configuration of Google Plugin on supported platforms.
-  core.bool? disable;
-
-  IdentityServiceGoogleConfig({
-    this.disable,
-  });
-
-  IdentityServiceGoogleConfig.fromJson(core.Map json_)
-      : this(
-          disable: json_['disable'] as core.bool?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (disable != null) 'disable': disable!,
-      };
-}
+typedef IdentityServiceGoogleConfig = $IdentityServiceGoogleConfig;
 
 /// Contains the properties for locating and authenticating groups in the
 /// directory.
-class IdentityServiceGroupConfig {
-  /// The location of the subtree in the LDAP directory to search for group
-  /// entries.
-  ///
-  /// Required.
-  core.String? baseDn;
-
-  /// Optional filter to be used when searching for groups a user belongs to.
-  ///
-  /// This can be used to explicitly match only certain groups in order to
-  /// reduce the amount of groups returned for each user. This defaults to
-  /// "(objectClass=Group)".
-  ///
-  /// Optional.
-  core.String? filter;
-
-  /// The identifying name of each group a user belongs to.
-  ///
-  /// For example, if this is set to "distinguishedName" then RBACs and other
-  /// group expectations should be written as full DNs. This defaults to
-  /// "distinguishedName".
-  ///
-  /// Optional.
-  core.String? idAttribute;
-
-  IdentityServiceGroupConfig({
-    this.baseDn,
-    this.filter,
-    this.idAttribute,
-  });
-
-  IdentityServiceGroupConfig.fromJson(core.Map json_)
-      : this(
-          baseDn: json_['baseDn'] as core.String?,
-          filter: json_['filter'] as core.String?,
-          idAttribute: json_['idAttribute'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (baseDn != null) 'baseDn': baseDn!,
-        if (filter != null) 'filter': filter!,
-        if (idAttribute != null) 'idAttribute': idAttribute!,
-      };
-}
+typedef IdentityServiceGroupConfig = $IdentityServiceGroupConfig;
 
 /// Holds non-protocol-related configuration options.
 class IdentityServiceIdentityServiceOptions {
+  /// Configuration options for the AIS diagnostic interface.
+  IdentityServiceDiagnosticInterface? diagnosticInterface;
+
   /// Determines the lifespan of STS tokens issued by Anthos Identity Service.
-  ///
-  /// Optional.
   core.String? sessionDuration;
 
   IdentityServiceIdentityServiceOptions({
+    this.diagnosticInterface,
     this.sessionDuration,
   });
 
   IdentityServiceIdentityServiceOptions.fromJson(core.Map json_)
       : this(
+          diagnosticInterface: json_.containsKey('diagnosticInterface')
+              ? IdentityServiceDiagnosticInterface.fromJson(
+                  json_['diagnosticInterface']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           sessionDuration: json_['sessionDuration'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (diagnosticInterface != null)
+          'diagnosticInterface': diagnosticInterface!,
         if (sessionDuration != null) 'sessionDuration': sessionDuration!,
       };
 }
@@ -6224,284 +6273,13 @@ class IdentityServiceMembershipState {
 }
 
 /// Configuration for OIDC Auth flow.
-class IdentityServiceOidcConfig {
-  /// PEM-encoded CA for OIDC provider.
-  core.String? certificateAuthorityData;
-
-  /// ID for OIDC client application.
-  core.String? clientId;
-
-  /// Input only.
-  ///
-  /// Unencrypted OIDC client secret will be passed to the GKE Hub CLH.
-  core.String? clientSecret;
-
-  /// Flag to denote if reverse proxy is used to connect to auth provider.
-  ///
-  /// This flag should be set to true when provider is not reachable by Google
-  /// Cloud Console.
-  core.bool? deployCloudConsoleProxy;
-
-  /// Enable access token.
-  core.bool? enableAccessToken;
-
-  /// Encrypted OIDC Client secret
-  ///
-  /// Output only.
-  core.String? encryptedClientSecret;
-  core.List<core.int> get encryptedClientSecretAsBytes =>
-      convert.base64.decode(encryptedClientSecret!);
-
-  set encryptedClientSecretAsBytes(core.List<core.int> bytes_) {
-    encryptedClientSecret =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// Comma-separated list of key-value pairs.
-  core.String? extraParams;
-
-  /// Prefix to prepend to group name.
-  core.String? groupPrefix;
-
-  /// Claim in OIDC ID token that holds group information.
-  core.String? groupsClaim;
-
-  /// URI for the OIDC provider.
-  ///
-  /// This should point to the level below .well-known/openid-configuration.
-  core.String? issuerUri;
-
-  /// Registered redirect uri to redirect users going through OAuth flow using
-  /// kubectl plugin.
-  core.String? kubectlRedirectUri;
-
-  /// Comma-separated list of identifiers.
-  core.String? scopes;
-
-  /// Claim in OIDC ID token that holds username.
-  core.String? userClaim;
-
-  /// Prefix to prepend to user name.
-  core.String? userPrefix;
-
-  IdentityServiceOidcConfig({
-    this.certificateAuthorityData,
-    this.clientId,
-    this.clientSecret,
-    this.deployCloudConsoleProxy,
-    this.enableAccessToken,
-    this.encryptedClientSecret,
-    this.extraParams,
-    this.groupPrefix,
-    this.groupsClaim,
-    this.issuerUri,
-    this.kubectlRedirectUri,
-    this.scopes,
-    this.userClaim,
-    this.userPrefix,
-  });
-
-  IdentityServiceOidcConfig.fromJson(core.Map json_)
-      : this(
-          certificateAuthorityData:
-              json_['certificateAuthorityData'] as core.String?,
-          clientId: json_['clientId'] as core.String?,
-          clientSecret: json_['clientSecret'] as core.String?,
-          deployCloudConsoleProxy:
-              json_['deployCloudConsoleProxy'] as core.bool?,
-          enableAccessToken: json_['enableAccessToken'] as core.bool?,
-          encryptedClientSecret: json_['encryptedClientSecret'] as core.String?,
-          extraParams: json_['extraParams'] as core.String?,
-          groupPrefix: json_['groupPrefix'] as core.String?,
-          groupsClaim: json_['groupsClaim'] as core.String?,
-          issuerUri: json_['issuerUri'] as core.String?,
-          kubectlRedirectUri: json_['kubectlRedirectUri'] as core.String?,
-          scopes: json_['scopes'] as core.String?,
-          userClaim: json_['userClaim'] as core.String?,
-          userPrefix: json_['userPrefix'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (certificateAuthorityData != null)
-          'certificateAuthorityData': certificateAuthorityData!,
-        if (clientId != null) 'clientId': clientId!,
-        if (clientSecret != null) 'clientSecret': clientSecret!,
-        if (deployCloudConsoleProxy != null)
-          'deployCloudConsoleProxy': deployCloudConsoleProxy!,
-        if (enableAccessToken != null) 'enableAccessToken': enableAccessToken!,
-        if (encryptedClientSecret != null)
-          'encryptedClientSecret': encryptedClientSecret!,
-        if (extraParams != null) 'extraParams': extraParams!,
-        if (groupPrefix != null) 'groupPrefix': groupPrefix!,
-        if (groupsClaim != null) 'groupsClaim': groupsClaim!,
-        if (issuerUri != null) 'issuerUri': issuerUri!,
-        if (kubectlRedirectUri != null)
-          'kubectlRedirectUri': kubectlRedirectUri!,
-        if (scopes != null) 'scopes': scopes!,
-        if (userClaim != null) 'userClaim': userClaim!,
-        if (userPrefix != null) 'userPrefix': userPrefix!,
-      };
-}
+typedef IdentityServiceOidcConfig = $IdentityServiceOidcConfig;
 
 /// Configuration for the SAML Auth flow.
-class IdentityServiceSamlConfig {
-  /// The mapping of additional user attributes like nickname, birthday and
-  /// address etc..
-  ///
-  /// `key` is the name of this additional attribute. `value` is a string
-  /// presenting as CEL(common expression language, go/cel) used for getting the
-  /// value from the resources. Take nickname as an example, in this case, `key`
-  /// is "attribute.nickname" and `value` is "assertion.nickname".
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? attributeMapping;
-
-  /// Prefix to prepend to group name.
-  ///
-  /// Optional.
-  core.String? groupPrefix;
-
-  /// The SAML attribute to read groups from.
-  ///
-  /// This value is expected to be a string and will be passed along as-is (with
-  /// the option of being prefixed by the `group_prefix`).
-  ///
-  /// Optional.
-  core.String? groupsAttribute;
-
-  /// The list of IdP certificates to validate the SAML response against.
-  ///
-  /// Required.
-  core.List<core.String>? identityProviderCertificates;
-
-  /// The entity ID of the SAML IdP.
-  ///
-  /// Required.
-  core.String? identityProviderId;
-
-  /// The URI where the SAML IdP exposes the SSO service.
-  ///
-  /// Required.
-  core.String? identityProviderSsoUri;
-
-  /// The SAML attribute to read username from.
-  ///
-  /// If unspecified, the username will be read from the NameID element of the
-  /// assertion in SAML response. This value is expected to be a string and will
-  /// be passed along as-is (with the option of being prefixed by the
-  /// `user_prefix`).
-  ///
-  /// Optional.
-  core.String? userAttribute;
-
-  /// Prefix to prepend to user name.
-  ///
-  /// Optional.
-  core.String? userPrefix;
-
-  IdentityServiceSamlConfig({
-    this.attributeMapping,
-    this.groupPrefix,
-    this.groupsAttribute,
-    this.identityProviderCertificates,
-    this.identityProviderId,
-    this.identityProviderSsoUri,
-    this.userAttribute,
-    this.userPrefix,
-  });
-
-  IdentityServiceSamlConfig.fromJson(core.Map json_)
-      : this(
-          attributeMapping: (json_['attributeMapping']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          groupPrefix: json_['groupPrefix'] as core.String?,
-          groupsAttribute: json_['groupsAttribute'] as core.String?,
-          identityProviderCertificates:
-              (json_['identityProviderCertificates'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          identityProviderId: json_['identityProviderId'] as core.String?,
-          identityProviderSsoUri:
-              json_['identityProviderSsoUri'] as core.String?,
-          userAttribute: json_['userAttribute'] as core.String?,
-          userPrefix: json_['userPrefix'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (attributeMapping != null) 'attributeMapping': attributeMapping!,
-        if (groupPrefix != null) 'groupPrefix': groupPrefix!,
-        if (groupsAttribute != null) 'groupsAttribute': groupsAttribute!,
-        if (identityProviderCertificates != null)
-          'identityProviderCertificates': identityProviderCertificates!,
-        if (identityProviderId != null)
-          'identityProviderId': identityProviderId!,
-        if (identityProviderSsoUri != null)
-          'identityProviderSsoUri': identityProviderSsoUri!,
-        if (userAttribute != null) 'userAttribute': userAttribute!,
-        if (userPrefix != null) 'userPrefix': userPrefix!,
-      };
-}
+typedef IdentityServiceSamlConfig = $IdentityServiceSamlConfig;
 
 /// Server settings for the external LDAP server.
-class IdentityServiceServerConfig {
-  /// Contains a Base64 encoded, PEM formatted certificate authority certificate
-  /// for the LDAP server.
-  ///
-  /// This must be provided for the "ldaps" and "startTLS" connections.
-  ///
-  /// Optional.
-  core.String? certificateAuthorityData;
-  core.List<core.int> get certificateAuthorityDataAsBytes =>
-      convert.base64.decode(certificateAuthorityData!);
-
-  set certificateAuthorityDataAsBytes(core.List<core.int> bytes_) {
-    certificateAuthorityData =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// Defines the connection type to communicate with the LDAP server.
-  ///
-  /// If `starttls` or `ldaps` is specified, the certificate_authority_data
-  /// should not be empty.
-  ///
-  /// Optional.
-  core.String? connectionType;
-
-  /// Defines the hostname or IP of the LDAP server.
-  ///
-  /// Port is optional and will default to 389, if unspecified. For example,
-  /// "ldap.server.example" or "10.10.10.10:389".
-  ///
-  /// Required.
-  core.String? host;
-
-  IdentityServiceServerConfig({
-    this.certificateAuthorityData,
-    this.connectionType,
-    this.host,
-  });
-
-  IdentityServiceServerConfig.fromJson(core.Map json_)
-      : this(
-          certificateAuthorityData:
-              json_['certificateAuthorityData'] as core.String?,
-          connectionType: json_['connectionType'] as core.String?,
-          host: json_['host'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (certificateAuthorityData != null)
-          'certificateAuthorityData': certificateAuthorityData!,
-        if (connectionType != null) 'connectionType': connectionType!,
-        if (host != null) 'host': host!,
-      };
-}
+typedef IdentityServiceServerConfig = $IdentityServiceServerConfig;
 
 /// Contains the credentials of the service account which is authorized to
 /// perform the LDAP search in the directory.
@@ -6532,113 +6310,11 @@ class IdentityServiceServiceAccountConfig {
 }
 
 /// The structure holds the LDAP simple binding credential.
-class IdentityServiceSimpleBindCredentials {
-  /// The distinguished name(DN) of the service account object/user.
-  ///
-  /// Required.
-  core.String? dn;
-
-  /// The encrypted password of the service account object/user.
-  ///
-  /// Output only.
-  core.String? encryptedPassword;
-  core.List<core.int> get encryptedPasswordAsBytes =>
-      convert.base64.decode(encryptedPassword!);
-
-  set encryptedPasswordAsBytes(core.List<core.int> bytes_) {
-    encryptedPassword =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// Input only.
-  ///
-  /// The password of the service account object/user.
-  ///
-  /// Required.
-  core.String? password;
-
-  IdentityServiceSimpleBindCredentials({
-    this.dn,
-    this.encryptedPassword,
-    this.password,
-  });
-
-  IdentityServiceSimpleBindCredentials.fromJson(core.Map json_)
-      : this(
-          dn: json_['dn'] as core.String?,
-          encryptedPassword: json_['encryptedPassword'] as core.String?,
-          password: json_['password'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dn != null) 'dn': dn!,
-        if (encryptedPassword != null) 'encryptedPassword': encryptedPassword!,
-        if (password != null) 'password': password!,
-      };
-}
+typedef IdentityServiceSimpleBindCredentials
+    = $IdentityServiceSimpleBindCredentials;
 
 /// Defines where users exist in the LDAP directory.
-class IdentityServiceUserConfig {
-  /// The location of the subtree in the LDAP directory to search for user
-  /// entries.
-  ///
-  /// Required.
-  core.String? baseDn;
-
-  /// Filter to apply when searching for the user.
-  ///
-  /// This can be used to further restrict the user accounts which are allowed
-  /// to login. This defaults to "(objectClass=User)".
-  ///
-  /// Optional.
-  core.String? filter;
-
-  /// Determines which attribute to use as the user's identity after they are
-  /// authenticated.
-  ///
-  /// This is distinct from the loginAttribute field to allow users to login
-  /// with a username, but then have their actual identifier be an email address
-  /// or full Distinguished Name (DN). For example, setting loginAttribute to
-  /// "sAMAccountName" and identifierAttribute to "userPrincipalName" would
-  /// allow a user to login as "bsmith", but actual RBAC policies for the user
-  /// would be written as "bsmith@example.com". Using "userPrincipalName" is
-  /// recommended since this will be unique for each user. This defaults to
-  /// "userPrincipalName".
-  ///
-  /// Optional.
-  core.String? idAttribute;
-
-  /// The name of the attribute which matches against the input username.
-  ///
-  /// This is used to find the user in the LDAP database e.g. "(=)" and is
-  /// combined with the optional filter field. This defaults to
-  /// "userPrincipalName".
-  ///
-  /// Optional.
-  core.String? loginAttribute;
-
-  IdentityServiceUserConfig({
-    this.baseDn,
-    this.filter,
-    this.idAttribute,
-    this.loginAttribute,
-  });
-
-  IdentityServiceUserConfig.fromJson(core.Map json_)
-      : this(
-          baseDn: json_['baseDn'] as core.String?,
-          filter: json_['filter'] as core.String?,
-          idAttribute: json_['idAttribute'] as core.String?,
-          loginAttribute: json_['loginAttribute'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (baseDn != null) 'baseDn': baseDn!,
-        if (filter != null) 'filter': filter!,
-        if (idAttribute != null) 'idAttribute': idAttribute!,
-        if (loginAttribute != null) 'loginAttribute': loginAttribute!,
-      };
-}
+typedef IdentityServiceUserConfig = $IdentityServiceUserConfig;
 
 /// KubernetesMetadata provides informational metadata for Memberships
 /// representing Kubernetes clusters.
@@ -6958,6 +6634,46 @@ class ListMembershipBindingsResponse {
         if (membershipBindings != null)
           'membershipBindings': membershipBindings!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// List of Membership RBACRoleBindings.
+class ListMembershipRBACRoleBindingsResponse {
+  /// A token to request the next page of resources from the
+  /// `ListMembershipRBACRoleBindings` method.
+  ///
+  /// The value of an empty string means that there are no more resources to
+  /// return.
+  core.String? nextPageToken;
+
+  /// The list of Membership RBACRoleBindings.
+  core.List<RBACRoleBinding>? rbacrolebindings;
+
+  /// List of locations that could not be reached while fetching this list.
+  core.List<core.String>? unreachable;
+
+  ListMembershipRBACRoleBindingsResponse({
+    this.nextPageToken,
+    this.rbacrolebindings,
+    this.unreachable,
+  });
+
+  ListMembershipRBACRoleBindingsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          rbacrolebindings: (json_['rbacrolebindings'] as core.List?)
+              ?.map((value) => RBACRoleBinding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (rbacrolebindings != null) 'rbacrolebindings': rbacrolebindings!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
 }
@@ -7553,8 +7269,6 @@ class MembershipEndpoint {
 
 /// MembershipFeatureSpec contains configuration information for a single
 /// Membership.
-///
-/// NOTE: Please use snake case in your feature name.
 class MembershipFeatureSpec {
   /// Config Management-specific spec.
   ConfigManagementMembershipSpec? configmanagement;
@@ -8569,7 +8283,7 @@ class PolicyControllerMembershipState {
 ///
 /// For example, to specify metrics should be exported to Cloud Monitoring and
 /// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
-typedef PolicyControllerMonitoringConfig = $Shared11;
+typedef PolicyControllerMonitoringConfig = $Shared02;
 
 /// OnClusterState represents the state of a sub-component of Policy Controller.
 class PolicyControllerOnClusterState {
@@ -8792,29 +8506,7 @@ class PolicyControllerPolicyControllerDeploymentConfig {
 }
 
 /// ResourceList contains container resource requirements.
-class PolicyControllerResourceList {
-  /// CPU requirement expressed in Kubernetes resource units.
-  core.String? cpu;
-
-  /// Memory requirement expressed in Kubernetes resource units.
-  core.String? memory;
-
-  PolicyControllerResourceList({
-    this.cpu,
-    this.memory,
-  });
-
-  PolicyControllerResourceList.fromJson(core.Map json_)
-      : this(
-          cpu: json_['cpu'] as core.String?,
-          memory: json_['memory'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cpu != null) 'cpu': cpu!,
-        if (memory != null) 'memory': memory!,
-      };
-}
+typedef PolicyControllerResourceList = $PolicyControllerResourceList;
 
 /// ResourceRequirements describes the compute resource requirements.
 class PolicyControllerResourceRequirements {
@@ -8850,66 +8542,11 @@ class PolicyControllerResourceRequirements {
 }
 
 /// The config specifying which default library templates to install.
-class PolicyControllerTemplateLibraryConfig {
-  /// Configures the manner in which the template library is installed on the
-  /// cluster.
-  /// Possible string values are:
-  /// - "INSTALLATION_UNSPECIFIED" : No installation strategy has been
-  /// specified.
-  /// - "NOT_INSTALLED" : Do not install the template library.
-  /// - "ALL" : Install the entire template library.
-  core.String? installation;
-
-  PolicyControllerTemplateLibraryConfig({
-    this.installation,
-  });
-
-  PolicyControllerTemplateLibraryConfig.fromJson(core.Map json_)
-      : this(
-          installation: json_['installation'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (installation != null) 'installation': installation!,
-      };
-}
+typedef PolicyControllerTemplateLibraryConfig
+    = $PolicyControllerTemplateLibraryConfig;
 
 /// Toleration of a node taint.
-class PolicyControllerToleration {
-  /// Matches a taint effect.
-  core.String? effect;
-
-  /// Matches a taint key (not necessarily unique).
-  core.String? key;
-
-  /// Matches a taint operator.
-  core.String? operator;
-
-  /// Matches a taint value.
-  core.String? value;
-
-  PolicyControllerToleration({
-    this.effect,
-    this.key,
-    this.operator,
-    this.value,
-  });
-
-  PolicyControllerToleration.fromJson(core.Map json_)
-      : this(
-          effect: json_['effect'] as core.String?,
-          key: json_['key'] as core.String?,
-          operator: json_['operator'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (effect != null) 'effect': effect!,
-        if (key != null) 'key': key!,
-        if (operator != null) 'operator': operator!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef PolicyControllerToleration = $PolicyControllerToleration;
 
 /// RBACRoleBinding represents a rbacrolebinding across the Fleet
 class RBACRoleBinding {
@@ -9053,9 +8690,13 @@ class ResourceManifest {
   ///
   /// If unset, the manifest is assumed to be namespace scoped. This field is
   /// used for REST mapping when applying the resource in a cluster.
+  ///
+  /// Output only.
   core.bool? clusterScoped;
 
   /// YAML manifest of the resource.
+  ///
+  /// Output only.
   core.String? manifest;
 
   ResourceManifest({
@@ -9310,90 +8951,7 @@ class ScopeLifecycleState {
 typedef SecurityPostureConfig = $SecurityPostureConfig;
 
 /// Condition being reported.
-class ServiceMeshCondition {
-  /// Unique identifier of the condition which describes the condition
-  /// recognizable to the user.
-  /// Possible string values are:
-  /// - "CODE_UNSPECIFIED" : Default Unspecified code
-  /// - "MESH_IAM_PERMISSION_DENIED" : Mesh IAM permission denied error code
-  /// - "CNI_CONFIG_UNSUPPORTED" : CNI config unsupported error code
-  /// - "GKE_SANDBOX_UNSUPPORTED" : GKE sandbox unsupported error code
-  /// - "NODEPOOL_WORKLOAD_IDENTITY_FEDERATION_REQUIRED" : Nodepool workload
-  /// identity federation required error code
-  /// - "CNI_INSTALLATION_FAILED" : CNI installation failed error code
-  /// - "CNI_POD_UNSCHEDULABLE" : CNI pod unschedulable error code
-  /// - "UNSUPPORTED_MULTIPLE_CONTROL_PLANES" : Multiple control planes
-  /// unsupported error code
-  /// - "VPCSC_GA_SUPPORTED" : VPC-SC GA is supported for this control plane.
-  /// - "CONFIG_APPLY_INTERNAL_ERROR" : Configuration (Istio/k8s resources)
-  /// failed to apply due to internal error.
-  /// - "CONFIG_VALIDATION_ERROR" : Configuration failed to be applied due to
-  /// being invalid.
-  /// - "CONFIG_VALIDATION_WARNING" : Encountered configuration(s) with possible
-  /// unintended behavior or invalid configuration. These configs may not have
-  /// been applied.
-  /// - "QUOTA_EXCEEDED_BACKEND_SERVICES" : BackendService quota exceeded error
-  /// code.
-  /// - "QUOTA_EXCEEDED_HEALTH_CHECKS" : HealthCheck quota exceeded error code.
-  /// - "QUOTA_EXCEEDED_HTTP_ROUTES" : HTTPRoute quota exceeded error code.
-  /// - "QUOTA_EXCEEDED_TCP_ROUTES" : TCPRoute quota exceeded error code.
-  /// - "QUOTA_EXCEEDED_TLS_ROUTES" : TLS routes quota exceeded error code.
-  /// - "QUOTA_EXCEEDED_TRAFFIC_POLICIES" : TrafficPolicy quota exceeded error
-  /// code.
-  /// - "QUOTA_EXCEEDED_ENDPOINT_POLICIES" : EndpointPolicy quota exceeded error
-  /// code.
-  /// - "QUOTA_EXCEEDED_GATEWAYS" : Gateway quota exceeded error code.
-  /// - "QUOTA_EXCEEDED_MESHES" : Mesh quota exceeded error code.
-  /// - "QUOTA_EXCEEDED_SERVER_TLS_POLICIES" : ServerTLSPolicy quota exceeded
-  /// error code.
-  /// - "QUOTA_EXCEEDED_CLIENT_TLS_POLICIES" : ClientTLSPolicy quota exceeded
-  /// error code.
-  /// - "QUOTA_EXCEEDED_SERVICE_LB_POLICIES" : ServiceLBPolicy quota exceeded
-  /// error code.
-  /// - "QUOTA_EXCEEDED_HTTP_FILTERS" : HTTPFilter quota exceeded error code.
-  /// - "QUOTA_EXCEEDED_TCP_FILTERS" : TCPFilter quota exceeded error code.
-  /// - "QUOTA_EXCEEDED_NETWORK_ENDPOINT_GROUPS" : NetworkEndpointGroup quota
-  /// exceeded error code.
-  core.String? code;
-
-  /// A short summary about the issue.
-  core.String? details;
-
-  /// Links contains actionable information.
-  core.String? documentationLink;
-
-  /// Severity level of the condition.
-  /// Possible string values are:
-  /// - "SEVERITY_UNSPECIFIED" : Unspecified severity
-  /// - "ERROR" : Indicates an issue that prevents the mesh from operating
-  /// correctly
-  /// - "WARNING" : Indicates a setting is likely wrong, but the mesh is still
-  /// able to operate
-  /// - "INFO" : An informational message, not requiring any action
-  core.String? severity;
-
-  ServiceMeshCondition({
-    this.code,
-    this.details,
-    this.documentationLink,
-    this.severity,
-  });
-
-  ServiceMeshCondition.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          details: json_['details'] as core.String?,
-          documentationLink: json_['documentationLink'] as core.String?,
-          severity: json_['severity'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (documentationLink != null) 'documentationLink': documentationLink!,
-        if (severity != null) 'severity': severity!,
-      };
-}
+typedef ServiceMeshCondition = $ServiceMeshCondition;
 
 /// Status of control plane management.
 class ServiceMeshControlPlaneManagement {
@@ -9512,6 +9070,8 @@ class ServiceMeshMembershipSpec {
   core.String? controlPlane;
 
   /// Enables automatic Service Mesh management.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "MANAGEMENT_UNSPECIFIED" : Unspecified
   /// - "MANAGEMENT_AUTOMATIC" : Google should manage my Service Mesh for the
@@ -9589,29 +9149,7 @@ class ServiceMeshMembershipState {
 }
 
 /// Structured and human-readable details for a status.
-class ServiceMeshStatusDetails {
-  /// A machine-readable code that further describes a broad status.
-  core.String? code;
-
-  /// Human-readable explanation of code.
-  core.String? details;
-
-  ServiceMeshStatusDetails({
-    this.code,
-    this.details,
-  });
-
-  ServiceMeshStatusDetails.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          details: json_['details'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-      };
-}
+typedef ServiceMeshStatusDetails = $ServiceMeshStatusDetails;
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
@@ -9649,38 +9187,7 @@ class SetIamPolicyRequest {
 }
 
 /// Status specifies state for the subcomponent.
-class Status {
-  /// Code specifies AppDevExperienceFeature's subcomponent ready state.
-  /// Possible string values are:
-  /// - "CODE_UNSPECIFIED" : Not set.
-  /// - "OK" : AppDevExperienceFeature's specified subcomponent is ready.
-  /// - "FAILED" : AppDevExperienceFeature's specified subcomponent ready state
-  /// is false. This means AppDevExperienceFeature has encountered an issue that
-  /// blocks all, or a portion, of its normal operation. See the `description`
-  /// for more details.
-  /// - "UNKNOWN" : AppDevExperienceFeature's specified subcomponent has a
-  /// pending or unknown state.
-  core.String? code;
-
-  /// Description is populated if Code is Failed, explaining why it has failed.
-  core.String? description;
-
-  Status({
-    this.code,
-    this.description,
-  });
-
-  Status.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          description: json_['description'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (description != null) 'description': description!,
-      };
-}
+typedef Status = $Status01;
 
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;

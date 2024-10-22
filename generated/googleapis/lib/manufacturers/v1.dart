@@ -621,6 +621,16 @@ class Attributes {
   /// https://support.google.com/manufacturers/answer/7443550
   core.List<core.String>? includedDestination;
 
+  /// List of countries to show this product in.
+  ///
+  /// Countries provided in this attribute will override any of the countries
+  /// configured at feed level. The values should be: the
+  /// [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
+  /// of the countries in which this item will be shown.
+  ///
+  /// Optional.
+  core.List<core.String>? intendedCountry;
+
   /// The item group id of the product.
   ///
   /// For more information, see
@@ -775,6 +785,7 @@ class Attributes {
     this.gtin,
     this.imageLink,
     this.includedDestination,
+    this.intendedCountry,
     this.itemGroupId,
     this.material,
     this.mpn,
@@ -848,6 +859,9 @@ class Attributes {
           includedDestination: (json_['includedDestination'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          intendedCountry: (json_['intendedCountry'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           itemGroupId: json_['itemGroupId'] as core.String?,
           material: json_['material'] as core.String?,
           mpn: json_['mpn'] as core.String?,
@@ -915,6 +929,7 @@ class Attributes {
         if (imageLink != null) 'imageLink': imageLink!,
         if (includedDestination != null)
           'includedDestination': includedDestination!,
+        if (intendedCountry != null) 'intendedCountry': intendedCountry!,
         if (itemGroupId != null) 'itemGroupId': itemGroupId!,
         if (material != null) 'material': material!,
         if (mpn != null) 'mpn': mpn!,
@@ -1070,8 +1085,24 @@ class Count {
 
 /// The destination status.
 class DestinationStatus {
+  /// List of country codes (ISO 3166-1 alpha-2) where the offer is approved.
+  ///
+  /// Output only.
+  core.List<core.String>? approvedCountries;
+
   /// The name of the destination.
   core.String? destination;
+
+  /// List of country codes (ISO 3166-1 alpha-2) where the offer is disapproved.
+  ///
+  /// Output only.
+  core.List<core.String>? disapprovedCountries;
+
+  /// List of country codes (ISO 3166-1 alpha-2) where the offer is pending
+  /// approval.
+  ///
+  /// Output only.
+  core.List<core.String>? pendingCountries;
 
   /// The status of the destination.
   /// Possible string values are:
@@ -1082,18 +1113,34 @@ class DestinationStatus {
   core.String? status;
 
   DestinationStatus({
+    this.approvedCountries,
     this.destination,
+    this.disapprovedCountries,
+    this.pendingCountries,
     this.status,
   });
 
   DestinationStatus.fromJson(core.Map json_)
       : this(
+          approvedCountries: (json_['approvedCountries'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           destination: json_['destination'] as core.String?,
+          disapprovedCountries: (json_['disapprovedCountries'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          pendingCountries: (json_['pendingCountries'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           status: json_['status'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (approvedCountries != null) 'approvedCountries': approvedCountries!,
         if (destination != null) 'destination': destination!,
+        if (disapprovedCountries != null)
+          'disapprovedCountries': disapprovedCountries!,
+        if (pendingCountries != null) 'pendingCountries': pendingCountries!,
         if (status != null) 'status': status!,
       };
 }
@@ -1340,6 +1387,12 @@ class Image {
 
 /// Product issue.
 class Issue {
+  /// List of country codes (ISO 3166-1 alpha-2) where issue applies to the
+  /// manufacturer product.
+  ///
+  /// Output only.
+  core.List<core.String>? applicableCountries;
+
   /// If present, the attribute that triggered the issue.
   ///
   /// For more information about attributes, see
@@ -1386,6 +1439,7 @@ class Issue {
   core.String? type;
 
   Issue({
+    this.applicableCountries,
     this.attribute,
     this.description,
     this.destination,
@@ -1398,6 +1452,9 @@ class Issue {
 
   Issue.fromJson(core.Map json_)
       : this(
+          applicableCountries: (json_['applicableCountries'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           attribute: json_['attribute'] as core.String?,
           description: json_['description'] as core.String?,
           destination: json_['destination'] as core.String?,
@@ -1409,6 +1466,8 @@ class Issue {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (applicableCountries != null)
+          'applicableCountries': applicableCountries!,
         if (attribute != null) 'attribute': attribute!,
         if (description != null) 'description': description!,
         if (destination != null) 'destination': destination!,
@@ -1902,6 +1961,11 @@ class Product {
   /// The status of the destinations.
   core.List<DestinationStatus>? destinationStatuses;
 
+  /// The feed label for the product.
+  ///
+  /// Optional.
+  core.String? feedLabel;
+
   /// A server-generated list of issues associated with the product.
   core.List<Issue>? issues;
 
@@ -1933,6 +1997,7 @@ class Product {
     this.attributes,
     this.contentLanguage,
     this.destinationStatuses,
+    this.feedLabel,
     this.issues,
     this.name,
     this.parent,
@@ -1951,6 +2016,7 @@ class Product {
               ?.map((value) => DestinationStatus.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          feedLabel: json_['feedLabel'] as core.String?,
           issues: (json_['issues'] as core.List?)
               ?.map((value) =>
                   Issue.fromJson(value as core.Map<core.String, core.dynamic>))
@@ -1966,6 +2032,7 @@ class Product {
         if (contentLanguage != null) 'contentLanguage': contentLanguage!,
         if (destinationStatuses != null)
           'destinationStatuses': destinationStatuses!,
+        if (feedLabel != null) 'feedLabel': feedLabel!,
         if (issues != null) 'issues': issues!,
         if (name != null) 'name': name!,
         if (parent != null) 'parent': parent!,

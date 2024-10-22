@@ -47,6 +47,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 ///
 /// This enables data portability and facilitates switching services.
 class DataPortabilityApi {
+  /// Move a copy of the Google Alerts subscriptions you created.
+  static const dataportabilityAlertsSubscriptionsScope =
+      'https://www.googleapis.com/auth/dataportability.alerts.subscriptions';
+
   /// Move a copy of messages between you and the businesses you have
   /// conversations with across Google services.
   static const dataportabilityBusinessmessagingConversationsScope =
@@ -256,6 +260,10 @@ class DataPortabilityApi {
   /// Move a copy of information about your YouTube channel.
   static const dataportabilityYoutubeChannelScope =
       'https://www.googleapis.com/auth/dataportability.youtube.channel';
+
+  /// Move a copy of your YouTube clips metadata.
+  static const dataportabilityYoutubeClipsScope =
+      'https://www.googleapis.com/auth/dataportability.youtube.clips';
 
   /// Move a copy of your YouTube comments.
   static const dataportabilityYoutubeCommentsScope =

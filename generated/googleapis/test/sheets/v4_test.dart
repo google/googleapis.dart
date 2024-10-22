@@ -3260,6 +3260,7 @@ api.DataSourceSpec buildDataSourceSpec() {
   buildCounterDataSourceSpec++;
   if (buildCounterDataSourceSpec < 3) {
     o.bigQuery = buildBigQueryDataSourceSpec();
+    o.looker = buildLookerDataSourceSpec();
     o.parameters = buildUnnamed39();
   }
   buildCounterDataSourceSpec--;
@@ -3270,6 +3271,7 @@ void checkDataSourceSpec(api.DataSourceSpec o) {
   buildCounterDataSourceSpec++;
   if (buildCounterDataSourceSpec < 3) {
     checkBigQueryDataSourceSpec(o.bigQuery!);
+    checkLookerDataSourceSpec(o.looker!);
     checkUnnamed39(o.parameters!);
   }
   buildCounterDataSourceSpec--;
@@ -5083,6 +5085,38 @@ void checkLink(api.Link o) {
     );
   }
   buildCounterLink--;
+}
+
+core.int buildCounterLookerDataSourceSpec = 0;
+api.LookerDataSourceSpec buildLookerDataSourceSpec() {
+  final o = api.LookerDataSourceSpec();
+  buildCounterLookerDataSourceSpec++;
+  if (buildCounterLookerDataSourceSpec < 3) {
+    o.explore = 'foo';
+    o.instanceUri = 'foo';
+    o.model = 'foo';
+  }
+  buildCounterLookerDataSourceSpec--;
+  return o;
+}
+
+void checkLookerDataSourceSpec(api.LookerDataSourceSpec o) {
+  buildCounterLookerDataSourceSpec++;
+  if (buildCounterLookerDataSourceSpec < 3) {
+    unittest.expect(
+      o.explore!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.instanceUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.model!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterLookerDataSourceSpec--;
 }
 
 core.List<api.ManualRuleGroup> buildUnnamed58() => [
@@ -9943,6 +9977,16 @@ void main() {
       final od =
           api.Link.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLink(od);
+    });
+  });
+
+  unittest.group('obj-schema-LookerDataSourceSpec', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLookerDataSourceSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LookerDataSourceSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkLookerDataSourceSpec(od);
     });
   });
 

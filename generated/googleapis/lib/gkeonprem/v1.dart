@@ -12,7 +12,7 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Anthos On-Prem API - v1
+/// GDC Virtual API - v1
 ///
 /// For more information, see
 /// <https://cloud.google.com/anthos/clusters/docs/on-prem/>
@@ -202,6 +202,12 @@ class ProjectsLocationsBareMetalAdminClustersResource {
   /// cluster is created in. Format: "projects/{project}/locations/{location}"
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [allowPreflightFailure] - Optional. If set to true, CLM will force CCFE to
+  /// persist the cluster resource in RMS when the creation fails during
+  /// standalone preflight checks. In that case the subsequent create call will
+  /// fail with "cluster already exists" error and hence a update cluster is
+  /// required to fix the cluster.
+  ///
   /// [bareMetalAdminClusterId] - Required. User provided identifier that is
   /// used as part of the resource name; must conform to RFC-1034 and
   /// additionally restrict to lower-cased letters. This comes out roughly to:
@@ -222,12 +228,15 @@ class ProjectsLocationsBareMetalAdminClustersResource {
   async.Future<Operation> create(
     BareMetalAdminCluster request,
     core.String parent, {
+    core.bool? allowPreflightFailure,
     core.String? bareMetalAdminClusterId,
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowPreflightFailure != null)
+        'allowPreflightFailure': ['${allowPreflightFailure}'],
       if (bareMetalAdminClusterId != null)
         'bareMetalAdminClusterId': [bareMetalAdminClusterId],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
@@ -304,6 +313,9 @@ class ProjectsLocationsBareMetalAdminClustersResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/bareMetalAdminClusters/\[^/\]+$`.
   ///
+  /// [allowMissing] - Optional. If true, return BareMetal Admin Cluster
+  /// including the one that only exists in RMS.
+  ///
   /// [view] - View for bare metal admin cluster. When \`BASIC\` is specified,
   /// only the cluster resource name and membership are returned. The
   /// default/unset value \`CLUSTER_VIEW_UNSPECIFIED\` is the same as \`FULL',
@@ -329,10 +341,12 @@ class ProjectsLocationsBareMetalAdminClustersResource {
   /// this method will complete with the same error.
   async.Future<BareMetalAdminCluster> get(
     core.String name, {
+    core.bool? allowMissing,
     core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
@@ -413,6 +427,9 @@ class ProjectsLocationsBareMetalAdminClustersResource {
   /// clusters are listed in. Format: "projects/{project}/locations/{location}"
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [allowMissing] - Optional. If true, return list of BareMetal Admin
+  /// Clusters including the ones that only exists in RMS.
+  ///
   /// [pageSize] - Requested page size. Server may return fewer items than
   /// requested. If unspecified, at most 50 clusters will be returned. The
   /// maximum value is 1000; values above 1000 will be coerced to 1000.
@@ -445,12 +462,14 @@ class ProjectsLocationsBareMetalAdminClustersResource {
   /// this method will complete with the same error.
   async.Future<ListBareMetalAdminClustersResponse> list(
     core.String parent, {
+    core.bool? allowMissing,
     core.int? pageSize,
     core.String? pageToken,
     core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
@@ -860,6 +879,12 @@ class ProjectsLocationsBareMetalClustersResource {
   /// cluster is created in. Format: "projects/{project}/locations/{location}"
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [allowPreflightFailure] - Optional. If set to true, CLM will force CCFE to
+  /// persist the cluster resource in RMS when the creation fails during
+  /// standalone preflight checks. In that case the subsequent create call will
+  /// fail with "cluster already exists" error and hence a update cluster is
+  /// required to fix the cluster.
+  ///
   /// [bareMetalClusterId] - Required. User provided identifier that is used as
   /// part of the resource name; must conform to RFC-1034 and additionally
   /// restrict to lower-cased letters. This comes out roughly to:
@@ -880,12 +905,15 @@ class ProjectsLocationsBareMetalClustersResource {
   async.Future<Operation> create(
     BareMetalCluster request,
     core.String parent, {
+    core.bool? allowPreflightFailure,
     core.String? bareMetalClusterId,
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowPreflightFailure != null)
+        'allowPreflightFailure': ['${allowPreflightFailure}'],
       if (bareMetalClusterId != null)
         'bareMetalClusterId': [bareMetalClusterId],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
@@ -1029,6 +1057,9 @@ class ProjectsLocationsBareMetalClustersResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/bareMetalClusters/\[^/\]+$`.
   ///
+  /// [allowMissing] - Optional. If true, return BareMetal Cluster including the
+  /// one that only exists in RMS.
+  ///
   /// [view] - View for bare metal user cluster. When \`BASIC\` is specified,
   /// only the cluster resource name and admin cluster membership are returned.
   /// The default/unset value \`CLUSTER_VIEW_UNSPECIFIED\` is the same as
@@ -1053,10 +1084,12 @@ class ProjectsLocationsBareMetalClustersResource {
   /// this method will complete with the same error.
   async.Future<BareMetalCluster> get(
     core.String name, {
+    core.bool? allowMissing,
     core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1137,6 +1170,9 @@ class ProjectsLocationsBareMetalClustersResource {
   /// clusters are listed in. Format: "projects/{project}/locations/{location}"
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [allowMissing] - Optional. If true, return list of BareMetal Clusters
+  /// including the ones that only exists in RMS.
+  ///
   /// [filter] - A resource filtering expression following
   /// https://google.aip.dev/160. When non-empty, only resource's whose
   /// attributes field matches the filter are returned.
@@ -1173,6 +1209,7 @@ class ProjectsLocationsBareMetalClustersResource {
   /// this method will complete with the same error.
   async.Future<ListBareMetalClustersResponse> list(
     core.String parent, {
+    core.bool? allowMissing,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
@@ -1180,6 +1217,7 @@ class ProjectsLocationsBareMetalClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2510,6 +2548,9 @@ class ProjectsLocationsVmwareAdminClustersResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/vmwareAdminClusters/\[^/\]+$`.
   ///
+  /// [allowMissing] - Optional. If true, return Vmware Admin Cluster including
+  /// the one that only exists in RMS.
+  ///
   /// [view] - View for VMware admin cluster. When \`BASIC\` is specified, only
   /// the cluster resource name and membership are returned. The default/unset
   /// value \`CLUSTER_VIEW_UNSPECIFIED\` is the same as \`FULL', which returns
@@ -2535,10 +2576,12 @@ class ProjectsLocationsVmwareAdminClustersResource {
   /// this method will complete with the same error.
   async.Future<VmwareAdminCluster> get(
     core.String name, {
+    core.bool? allowMissing,
     core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
@@ -2619,6 +2662,9 @@ class ProjectsLocationsVmwareAdminClustersResource {
   /// clusters are listed in. Format: "projects/{project}/locations/{location}"
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [allowMissing] - Optional. If true, return list of Vmware Admin Clusters
+  /// including the ones that only exists in RMS.
+  ///
   /// [pageSize] - Requested page size. Server may return fewer items than
   /// requested. If unspecified, at most 50 clusters will be returned. The
   /// maximum value is 1000; values above 1000 will be coerced to 1000.
@@ -2651,12 +2697,14 @@ class ProjectsLocationsVmwareAdminClustersResource {
   /// this method will complete with the same error.
   async.Future<ListVmwareAdminClustersResponse> list(
     core.String parent, {
+    core.bool? allowMissing,
     core.int? pageSize,
     core.String? pageToken,
     core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
@@ -3008,6 +3056,12 @@ class ProjectsLocationsVmwareClustersResource {
   /// cluster is created in. Format: "projects/{project}/locations/{location}"
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [allowPreflightFailure] - Optional. If set to true, CLM will force CCFE to
+  /// persist the cluster resource in RMS when the creation fails during
+  /// standalone preflight checks. In that case the subsequent create call will
+  /// fail with "cluster already exists" error and hence a update cluster is
+  /// required to fix the cluster.
+  ///
   /// [validateOnly] - Validate the request without actually doing any updates.
   ///
   /// [vmwareClusterId] - User provided identifier that is used as part of the
@@ -3027,12 +3081,15 @@ class ProjectsLocationsVmwareClustersResource {
   async.Future<Operation> create(
     VmwareCluster request,
     core.String parent, {
+    core.bool? allowPreflightFailure,
     core.bool? validateOnly,
     core.String? vmwareClusterId,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowPreflightFailure != null)
+        'allowPreflightFailure': ['${allowPreflightFailure}'],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if (vmwareClusterId != null) 'vmwareClusterId': [vmwareClusterId],
       if ($fields != null) 'fields': [$fields],
@@ -3174,6 +3231,9 @@ class ProjectsLocationsVmwareClustersResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/vmwareClusters/\[^/\]+$`.
   ///
+  /// [allowMissing] - Optional. If true, return Vmware Cluster including the
+  /// one that only exists in RMS.
+  ///
   /// [view] - View for VMware user cluster. When \`BASIC\` is specified, only
   /// the cluster resource name and admin cluster membership are returned. The
   /// default/unset value \`CLUSTER_VIEW_UNSPECIFIED\` is the same as \`FULL',
@@ -3198,10 +3258,12 @@ class ProjectsLocationsVmwareClustersResource {
   /// this method will complete with the same error.
   async.Future<VmwareCluster> get(
     core.String name, {
+    core.bool? allowMissing,
     core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
@@ -3282,6 +3344,9 @@ class ProjectsLocationsVmwareClustersResource {
   /// clusters are listed in. Format: "projects/{project}/locations/{location}"
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [allowMissing] - Optional. If true, return list of Vmware Clusters
+  /// including the ones that only exists in RMS.
+  ///
   /// [filter] - A resource filtering expression following
   /// https://google.aip.dev/160. When non-empty, only resource's whose
   /// attributes field matches the filter are returned.
@@ -3317,6 +3382,7 @@ class ProjectsLocationsVmwareClustersResource {
   /// this method will complete with the same error.
   async.Future<ListVmwareClustersResponse> list(
     core.String parent, {
+    core.bool? allowMissing,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
@@ -3324,6 +3390,7 @@ class ProjectsLocationsVmwareClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -5705,6 +5772,13 @@ typedef BareMetalClusterOperationsConfig = $ClusterOperationsConfig;
 
 /// BareMetalClusterUpgradePolicy defines the cluster upgrade policy.
 class BareMetalClusterUpgradePolicy {
+  /// Pause is used to show the upgrade pause status.
+  ///
+  /// It's view only for now.
+  ///
+  /// Output only.
+  core.bool? pause;
+
   /// Specifies which upgrade policy to use.
   /// Possible string values are:
   /// - "NODE_POOL_POLICY_UNSPECIFIED" : No upgrade policy selected.
@@ -5713,15 +5787,18 @@ class BareMetalClusterUpgradePolicy {
   core.String? policy;
 
   BareMetalClusterUpgradePolicy({
+    this.pause,
     this.policy,
   });
 
   BareMetalClusterUpgradePolicy.fromJson(core.Map json_)
       : this(
+          pause: json_['pause'] as core.bool?,
           policy: json_['policy'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (pause != null) 'pause': pause!,
         if (policy != null) 'policy': policy!,
       };
 }
@@ -7893,9 +7970,18 @@ class ResourceStatus {
   /// requiring user intervention.
   core.String? errorMessage;
 
+  /// Reflect current version of the resource.
+  core.String? version;
+
+  /// Shows the mapping of a given version to the number of machines under this
+  /// version.
+  Versions? versions;
+
   ResourceStatus({
     this.conditions,
     this.errorMessage,
+    this.version,
+    this.versions,
   });
 
   ResourceStatus.fromJson(core.Map json_)
@@ -7905,11 +7991,18 @@ class ResourceStatus {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           errorMessage: json_['errorMessage'] as core.String?,
+          version: json_['version'] as core.String?,
+          versions: json_.containsKey('versions')
+              ? Versions.fromJson(
+                  json_['versions'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conditions != null) 'conditions': conditions!,
         if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (version != null) 'version': version!,
+        if (versions != null) 'versions': versions!,
       };
 }
 
@@ -7946,7 +8039,7 @@ class SetIamPolicyRequest {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
@@ -8110,6 +8203,55 @@ class ValidationCheckStatus {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (result != null) 'result': result!,
+      };
+}
+
+/// Version describes the number of nodes at a given version under a resource.
+class Version {
+  /// Number of machines under the above version.
+  core.String? count;
+
+  /// Resource version.
+  core.String? version;
+
+  Version({
+    this.count,
+    this.version,
+  });
+
+  Version.fromJson(core.Map json_)
+      : this(
+          count: json_['count'] as core.String?,
+          version: json_['version'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (count != null) 'count': count!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// Versions describes the mapping of a given version to the number of machines
+/// under this version.
+class Versions {
+  /// Shows the mapping of a given version to the number of machines under this
+  /// version.
+  core.List<Version>? versions;
+
+  Versions({
+    this.versions,
+  });
+
+  Versions.fromJson(core.Map json_)
+      : this(
+          versions: (json_['versions'] as core.List?)
+              ?.map((value) => Version.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (versions != null) 'versions': versions!,
       };
 }
 
@@ -8321,6 +8463,11 @@ class VmwareAdminCluster {
   /// Output only.
   core.String? updateTime;
 
+  /// ValidationCheck represents the result of the preflight check job.
+  ///
+  /// Output only.
+  ValidationCheck? validationCheck;
+
   /// The VMware admin cluster VCenter configuration.
   VmwareAdminVCenterConfig? vcenter;
 
@@ -8350,6 +8497,7 @@ class VmwareAdminCluster {
     this.status,
     this.uid,
     this.updateTime,
+    this.validationCheck,
     this.vcenter,
   });
 
@@ -8423,6 +8571,10 @@ class VmwareAdminCluster {
               : null,
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
+          validationCheck: json_.containsKey('validationCheck')
+              ? ValidationCheck.fromJson(json_['validationCheck']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           vcenter: json_.containsKey('vcenter')
               ? VmwareAdminVCenterConfig.fromJson(
                   json_['vcenter'] as core.Map<core.String, core.dynamic>)
@@ -8457,6 +8609,7 @@ class VmwareAdminCluster {
         if (status != null) 'status': status!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (validationCheck != null) 'validationCheck': validationCheck!,
         if (vcenter != null) 'vcenter': vcenter!,
       };
 }

@@ -318,6 +318,8 @@ api.GoogleCloudKmsV1CryptoKey buildGoogleCloudKmsV1CryptoKey() {
     o.cryptoKeyBackend = 'foo';
     o.destroyScheduledDuration = 'foo';
     o.importOnly = true;
+    o.keyAccessJustificationsPolicy =
+        buildGoogleCloudKmsV1KeyAccessJustificationsPolicy();
     o.labels = buildUnnamed7();
     o.name = 'foo';
     o.nextRotationTime = 'foo';
@@ -346,6 +348,8 @@ void checkGoogleCloudKmsV1CryptoKey(api.GoogleCloudKmsV1CryptoKey o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.importOnly!, unittest.isTrue);
+    checkGoogleCloudKmsV1KeyAccessJustificationsPolicy(
+        o.keyAccessJustificationsPolicy!);
     checkUnnamed7(o.labels!);
     unittest.expect(
       o.name!,
@@ -518,6 +522,44 @@ void checkGoogleCloudKmsV1ExternalProtectionLevelOptions(
   buildCounterGoogleCloudKmsV1ExternalProtectionLevelOptions--;
 }
 
+core.List<core.String> buildUnnamed8() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed8(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterGoogleCloudKmsV1KeyAccessJustificationsPolicy = 0;
+api.GoogleCloudKmsV1KeyAccessJustificationsPolicy
+    buildGoogleCloudKmsV1KeyAccessJustificationsPolicy() {
+  final o = api.GoogleCloudKmsV1KeyAccessJustificationsPolicy();
+  buildCounterGoogleCloudKmsV1KeyAccessJustificationsPolicy++;
+  if (buildCounterGoogleCloudKmsV1KeyAccessJustificationsPolicy < 3) {
+    o.allowedAccessReasons = buildUnnamed8();
+  }
+  buildCounterGoogleCloudKmsV1KeyAccessJustificationsPolicy--;
+  return o;
+}
+
+void checkGoogleCloudKmsV1KeyAccessJustificationsPolicy(
+    api.GoogleCloudKmsV1KeyAccessJustificationsPolicy o) {
+  buildCounterGoogleCloudKmsV1KeyAccessJustificationsPolicy++;
+  if (buildCounterGoogleCloudKmsV1KeyAccessJustificationsPolicy < 3) {
+    checkUnnamed8(o.allowedAccessReasons!);
+  }
+  buildCounterGoogleCloudKmsV1KeyAccessJustificationsPolicy--;
+}
+
 core.int buildCounterGoogleCloudKmsV1KeyOperationAttestation = 0;
 api.GoogleCloudKmsV1KeyOperationAttestation
     buildGoogleCloudKmsV1KeyOperationAttestation() {
@@ -549,23 +591,6 @@ void checkGoogleCloudKmsV1KeyOperationAttestation(
     );
   }
   buildCounterGoogleCloudKmsV1KeyOperationAttestation--;
-}
-
-core.List<core.String> buildUnnamed8() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed8(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
 }
 
 core.List<core.String> buildUnnamed9() => [
@@ -602,6 +627,23 @@ void checkUnnamed10(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed11() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed11(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterGoogleCloudKmsV1KeyOperationAttestationCertificateChains =
     0;
 api.GoogleCloudKmsV1KeyOperationAttestationCertificateChains
@@ -610,9 +652,9 @@ api.GoogleCloudKmsV1KeyOperationAttestationCertificateChains
   buildCounterGoogleCloudKmsV1KeyOperationAttestationCertificateChains++;
   if (buildCounterGoogleCloudKmsV1KeyOperationAttestationCertificateChains <
       3) {
-    o.caviumCerts = buildUnnamed8();
-    o.googleCardCerts = buildUnnamed9();
-    o.googlePartitionCerts = buildUnnamed10();
+    o.caviumCerts = buildUnnamed9();
+    o.googleCardCerts = buildUnnamed10();
+    o.googlePartitionCerts = buildUnnamed11();
   }
   buildCounterGoogleCloudKmsV1KeyOperationAttestationCertificateChains--;
   return o;
@@ -623,19 +665,19 @@ void checkGoogleCloudKmsV1KeyOperationAttestationCertificateChains(
   buildCounterGoogleCloudKmsV1KeyOperationAttestationCertificateChains++;
   if (buildCounterGoogleCloudKmsV1KeyOperationAttestationCertificateChains <
       3) {
-    checkUnnamed8(o.caviumCerts!);
-    checkUnnamed9(o.googleCardCerts!);
-    checkUnnamed10(o.googlePartitionCerts!);
+    checkUnnamed9(o.caviumCerts!);
+    checkUnnamed10(o.googleCardCerts!);
+    checkUnnamed11(o.googlePartitionCerts!);
   }
   buildCounterGoogleCloudKmsV1KeyOperationAttestationCertificateChains--;
 }
 
-core.List<core.String> buildUnnamed11() => [
+core.List<core.String> buildUnnamed12() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed11(core.List<core.String> o) {
+void checkUnnamed12(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -735,6 +777,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleCloudKmsV1KeyAccessJustificationsPolicy',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudKmsV1KeyAccessJustificationsPolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudKmsV1KeyAccessJustificationsPolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudKmsV1KeyAccessJustificationsPolicy(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudKmsV1KeyOperationAttestation', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudKmsV1KeyOperationAttestation();
@@ -766,7 +819,7 @@ void main() {
       final arg_cryptoKey = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
-      final arg_resourceTypes = buildUnnamed11();
+      final arg_resourceTypes = buildUnnamed12();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;

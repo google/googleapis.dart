@@ -71,6 +71,8 @@ class BuildingInsightsResource {
   ///
   /// Request parameters:
   ///
+  /// [experiments] - Optional. Specifies the pre-GA features to enable.
+  ///
   /// [location_latitude] - The latitude in degrees. It must be in the range
   /// \[-90.0, +90.0\].
   ///
@@ -82,12 +84,14 @@ class BuildingInsightsResource {
   /// specifying this is equivalent to restricting to HIGH quality only.
   /// Possible string values are:
   /// - "IMAGERY_QUALITY_UNSPECIFIED" : No quality is known.
-  /// - "HIGH" : The underlying imagery and DSM data were processed at 0.1
-  /// m/pixel.
-  /// - "MEDIUM" : The underlying imagery and DSM data were processed at 0.25
-  /// m/pixel.
-  /// - "LOW" : The underlying imagery and DSM data were processed at 0.5
-  /// m/pixel.
+  /// - "HIGH" : Solar data is derived from aerial imagery captured at
+  /// low-altitude and processed at 0.1 m/pixel.
+  /// - "MEDIUM" : Solar data is derived from enhanced aerial imagery captured
+  /// at high-altitude and processed at 0.25 m/pixel.
+  /// - "LOW" : Solar data is derived from enhanced satellite imagery processed
+  /// at 0.25 m/pixel.
+  /// - "BASE" : Solar data is derived from enhanced satellite imagery processed
+  /// at 0.25 m/pixel.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -100,12 +104,14 @@ class BuildingInsightsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BuildingInsights> findClosest({
+    core.List<core.String>? experiments,
     core.double? location_latitude,
     core.double? location_longitude,
     core.String? requiredQuality,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (experiments != null) 'experiments': experiments,
       if (location_latitude != null)
         'location.latitude': ['${location_latitude}'],
       if (location_longitude != null)
@@ -146,6 +152,8 @@ class DataLayersResource {
   /// `MEDIUM` quality imagery is returned if `required_quality` is set to
   /// `MEDIUM`.
   ///
+  /// [experiments] - Optional. Specifies the pre-GA experiments to enable.
+  ///
   /// [location_latitude] - The latitude in degrees. It must be in the range
   /// \[-90.0, +90.0\].
   ///
@@ -173,12 +181,14 @@ class DataLayersResource {
   /// specifying this is equivalent to restricting to HIGH quality only.
   /// Possible string values are:
   /// - "IMAGERY_QUALITY_UNSPECIFIED" : No quality is known.
-  /// - "HIGH" : The underlying imagery and DSM data were processed at 0.1
-  /// m/pixel.
-  /// - "MEDIUM" : The underlying imagery and DSM data were processed at 0.25
-  /// m/pixel.
-  /// - "LOW" : The underlying imagery and DSM data were processed at 0.5
-  /// m/pixel.
+  /// - "HIGH" : Solar data is derived from aerial imagery captured at
+  /// low-altitude and processed at 0.1 m/pixel.
+  /// - "MEDIUM" : Solar data is derived from enhanced aerial imagery captured
+  /// at high-altitude and processed at 0.25 m/pixel.
+  /// - "LOW" : Solar data is derived from enhanced satellite imagery processed
+  /// at 0.25 m/pixel.
+  /// - "BASE" : Solar data is derived from enhanced satellite imagery processed
+  /// at 0.25 m/pixel.
   ///
   /// [view] - Optional. The desired subset of the data to return.
   /// Possible string values are:
@@ -203,6 +213,7 @@ class DataLayersResource {
   /// this method will complete with the same error.
   async.Future<DataLayers> get({
     core.bool? exactQualityRequired,
+    core.List<core.String>? experiments,
     core.double? location_latitude,
     core.double? location_longitude,
     core.double? pixelSizeMeters,
@@ -214,6 +225,7 @@ class DataLayersResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (exactQualityRequired != null)
         'exactQualityRequired': ['${exactQualityRequired}'],
+      if (experiments != null) 'experiments': experiments,
       if (location_latitude != null)
         'location.latitude': ['${location_latitude}'],
       if (location_longitude != null)
@@ -306,12 +318,14 @@ class BuildingInsights {
   /// The quality of the imagery used to compute the data for this building.
   /// Possible string values are:
   /// - "IMAGERY_QUALITY_UNSPECIFIED" : No quality is known.
-  /// - "HIGH" : The underlying imagery and DSM data were processed at 0.1
-  /// m/pixel.
-  /// - "MEDIUM" : The underlying imagery and DSM data were processed at 0.25
-  /// m/pixel.
-  /// - "LOW" : The underlying imagery and DSM data were processed at 0.5
-  /// m/pixel.
+  /// - "HIGH" : Solar data is derived from aerial imagery captured at
+  /// low-altitude and processed at 0.1 m/pixel.
+  /// - "MEDIUM" : Solar data is derived from enhanced aerial imagery captured
+  /// at high-altitude and processed at 0.25 m/pixel.
+  /// - "LOW" : Solar data is derived from enhanced satellite imagery processed
+  /// at 0.25 m/pixel.
+  /// - "BASE" : Solar data is derived from enhanced satellite imagery processed
+  /// at 0.25 m/pixel.
   core.String? imageryQuality;
 
   /// The resource name for the building, of the format `building/`.
@@ -519,12 +533,14 @@ class DataLayers {
   /// The quality of the result's imagery.
   /// Possible string values are:
   /// - "IMAGERY_QUALITY_UNSPECIFIED" : No quality is known.
-  /// - "HIGH" : The underlying imagery and DSM data were processed at 0.1
-  /// m/pixel.
-  /// - "MEDIUM" : The underlying imagery and DSM data were processed at 0.25
-  /// m/pixel.
-  /// - "LOW" : The underlying imagery and DSM data were processed at 0.5
-  /// m/pixel.
+  /// - "HIGH" : Solar data is derived from aerial imagery captured at
+  /// low-altitude and processed at 0.1 m/pixel.
+  /// - "MEDIUM" : Solar data is derived from enhanced aerial imagery captured
+  /// at high-altitude and processed at 0.25 m/pixel.
+  /// - "LOW" : Solar data is derived from enhanced satellite imagery processed
+  /// at 0.25 m/pixel.
+  /// - "BASE" : Solar data is derived from enhanced satellite imagery processed
+  /// at 0.25 m/pixel.
   core.String? imageryQuality;
 
   /// The URL for the building mask image: one bit per pixel saying whether that

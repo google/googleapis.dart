@@ -408,6 +408,7 @@ api.Environment buildEnvironment() {
     o.createTime = 'foo';
     o.labels = buildUnnamed0();
     o.name = 'foo';
+    o.satisfiesPzi = true;
     o.satisfiesPzs = true;
     o.state = 'foo';
     o.storageConfig = buildStorageConfig();
@@ -431,6 +432,7 @@ void checkEnvironment(api.Environment o) {
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.state!,

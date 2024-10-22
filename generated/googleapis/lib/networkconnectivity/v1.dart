@@ -4512,9 +4512,27 @@ class Binding {
 
 /// Allow the producer to specify which consumers can connect to it.
 class ConsumerPscConfig {
+  /// The project ID or project number of the consumer project.
+  ///
+  /// This project is the one that the consumer uses to interact with the
+  /// producer instance. From the perspective of a consumer who's created a
+  /// producer instance, this is the project of the producer instance. Format:
+  /// 'projects/' Eg. 'projects/consumer-project' or 'projects/1234'
+  ///
+  /// Required.
+  core.String? consumerInstanceProject;
+
   /// This is used in PSC consumer ForwardingRule to control whether the PSC
   /// endpoint can be accessed from another region.
   core.bool? disableGlobalAccess;
+
+  /// The requested IP version for the PSC connection.
+  /// Possible string values are:
+  /// - "IP_VERSION_UNSPECIFIED" : Default value. We will use IPv4 or IPv6
+  /// depending on the IP version of first available subnetwork.
+  /// - "IPV4" : Will use IPv4 only.
+  /// - "IPV6" : Will use IPv6 only.
+  core.String? ipVersion;
 
   /// The resource path of the consumer network where PSC connections are
   /// allowed to be created in.
@@ -4524,10 +4542,20 @@ class ConsumerPscConfig {
   /// projects/{projectNumOrId}/global/networks/{networkId}.
   core.String? network;
 
+  /// Use producer_instance_metadata instead.
+  ///
   /// An immutable identifier for the producer instance.
   ///
-  /// Immutable.
+  /// Immutable. Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? producerInstanceId;
+
+  /// An immutable map for the producer instance metadata.
+  ///
+  /// Immutable.
+  core.Map<core.String, core.String>? producerInstanceMetadata;
 
   /// The consumer project where PSC connections are allowed to be created in.
   core.String? project;
@@ -4553,12 +4581,18 @@ class ConsumerPscConfig {
   /// this network and Service Class
   /// - "POLICY_LIMIT_REACHED" : Service Connection Policy limit reached for
   /// this network and Service Class
+  /// - "CONSUMER_INSTANCE_PROJECT_NOT_ALLOWLISTED" : The consumer instance
+  /// project is not in AllowedGoogleProducersResourceHierarchyLevels of the
+  /// matching ServiceConnectionPolicy.
   core.String? state;
 
   ConsumerPscConfig({
+    this.consumerInstanceProject,
     this.disableGlobalAccess,
+    this.ipVersion,
     this.network,
     this.producerInstanceId,
+    this.producerInstanceMetadata,
     this.project,
     this.serviceAttachmentIpAddressMap,
     this.state,
@@ -4566,9 +4600,20 @@ class ConsumerPscConfig {
 
   ConsumerPscConfig.fromJson(core.Map json_)
       : this(
+          consumerInstanceProject:
+              json_['consumerInstanceProject'] as core.String?,
           disableGlobalAccess: json_['disableGlobalAccess'] as core.bool?,
+          ipVersion: json_['ipVersion'] as core.String?,
           network: json_['network'] as core.String?,
           producerInstanceId: json_['producerInstanceId'] as core.String?,
+          producerInstanceMetadata: (json_['producerInstanceMetadata']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           project: json_['project'] as core.String?,
           serviceAttachmentIpAddressMap: (json_['serviceAttachmentIpAddressMap']
                   as core.Map<core.String, core.dynamic>?)
@@ -4582,11 +4627,16 @@ class ConsumerPscConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (consumerInstanceProject != null)
+          'consumerInstanceProject': consumerInstanceProject!,
         if (disableGlobalAccess != null)
           'disableGlobalAccess': disableGlobalAccess!,
+        if (ipVersion != null) 'ipVersion': ipVersion!,
         if (network != null) 'network': network!,
         if (producerInstanceId != null)
           'producerInstanceId': producerInstanceId!,
+        if (producerInstanceMetadata != null)
+          'producerInstanceMetadata': producerInstanceMetadata!,
         if (project != null) 'project': project!,
         if (serviceAttachmentIpAddressMap != null)
           'serviceAttachmentIpAddressMap': serviceAttachmentIpAddressMap!,
@@ -4616,6 +4666,9 @@ class ConsumerPscConnection {
   /// internal.
   /// - "ERROR_CONSUMER_SIDE" : The error is due to the setup on consumer side.
   /// - "ERROR_PRODUCER_SIDE" : The error is due to the setup on producer side.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? errorType;
 
   /// The URI of the consumer forwarding rule created.
@@ -4631,16 +4684,34 @@ class ConsumerPscConnection {
   /// service connection map.
   core.String? ip;
 
+  /// The requested IP version for the PSC connection.
+  /// Possible string values are:
+  /// - "IP_VERSION_UNSPECIFIED" : Default value. We will use IPv4 or IPv6
+  /// depending on the IP version of first available subnetwork.
+  /// - "IPV4" : Will use IPv4 only.
+  /// - "IPV6" : Will use IPv6 only.
+  core.String? ipVersion;
+
   /// The consumer network whose PSC forwarding rule is connected to the service
   /// attachments in this service connection map.
   ///
   /// Note that the network could be on a different project (shared VPC).
   core.String? network;
 
+  /// Use producer_instance_metadata instead.
+  ///
   /// An immutable identifier for the producer instance.
   ///
-  /// Immutable.
+  /// Immutable. Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? producerInstanceId;
+
+  /// An immutable map for the producer instance metadata.
+  ///
+  /// Immutable.
+  core.Map<core.String, core.String>? producerInstanceMetadata;
 
   /// The consumer project whose PSC forwarding rule is connected to the service
   /// attachments in this service connection map.
@@ -4662,11 +4733,17 @@ class ConsumerPscConnection {
   /// The state of the PSC connection.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : An invalid state as the default case.
-  /// - "ACTIVE" : The connection is fully established and ready to use.
+  /// - "ACTIVE" : The connection has been created successfully. However, for
+  /// the up-to-date connection status, please use the service attachment's
+  /// "ConnectedEndpoint.status" as the source of truth.
   /// - "FAILED" : The connection is not functional since some resources on the
   /// connection fail to be created.
   /// - "CREATING" : The connection is being created.
   /// - "DELETING" : The connection is being deleted.
+  /// - "CREATE_REPAIRING" : The connection is being repaired to complete
+  /// creation.
+  /// - "DELETE_REPAIRING" : The connection is being repaired to complete
+  /// deletion.
   core.String? state;
 
   ConsumerPscConnection({
@@ -4676,8 +4753,10 @@ class ConsumerPscConnection {
     this.forwardingRule,
     this.gceOperation,
     this.ip,
+    this.ipVersion,
     this.network,
     this.producerInstanceId,
+    this.producerInstanceMetadata,
     this.project,
     this.pscConnectionId,
     this.selectedSubnetwork,
@@ -4699,8 +4778,17 @@ class ConsumerPscConnection {
           forwardingRule: json_['forwardingRule'] as core.String?,
           gceOperation: json_['gceOperation'] as core.String?,
           ip: json_['ip'] as core.String?,
+          ipVersion: json_['ipVersion'] as core.String?,
           network: json_['network'] as core.String?,
           producerInstanceId: json_['producerInstanceId'] as core.String?,
+          producerInstanceMetadata: (json_['producerInstanceMetadata']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           project: json_['project'] as core.String?,
           pscConnectionId: json_['pscConnectionId'] as core.String?,
           selectedSubnetwork: json_['selectedSubnetwork'] as core.String?,
@@ -4715,9 +4803,12 @@ class ConsumerPscConnection {
         if (forwardingRule != null) 'forwardingRule': forwardingRule!,
         if (gceOperation != null) 'gceOperation': gceOperation!,
         if (ip != null) 'ip': ip!,
+        if (ipVersion != null) 'ipVersion': ipVersion!,
         if (network != null) 'network': network!,
         if (producerInstanceId != null)
           'producerInstanceId': producerInstanceId!,
+        if (producerInstanceMetadata != null)
+          'producerInstanceMetadata': producerInstanceMetadata!,
         if (project != null) 'project': project!,
         if (pscConnectionId != null) 'pscConnectionId': pscConnectionId!,
         if (selectedSubnetwork != null)
@@ -4993,7 +5084,7 @@ class GoogleRpcErrorInfo {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef GoogleRpcStatus = $Status;
+typedef GoogleRpcStatus = $Status00;
 
 /// A group represents a subset of spokes attached to a hub.
 class Group {
@@ -5340,10 +5431,21 @@ class InternalRange {
   core.String? description;
 
   /// The IP range that this internal range defines.
+  ///
+  /// NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and
+  /// peering=FOR_SELF. NOTE: For IPv6 Ranges this field is compulsory, i.e. the
+  /// address range must be specified explicitly.
   core.String? ipCidrRange;
 
   /// User-defined labels.
   core.Map<core.String, core.String>? labels;
+
+  /// Must be present if usage is set to FOR_MIGRATION.
+  ///
+  /// This field is for internal use.
+  ///
+  /// Optional.
+  Migration? migration;
 
   /// The name of an internal range.
   ///
@@ -5394,10 +5496,13 @@ class InternalRange {
 
   /// An alternate to ip_cidr_range.
   ///
-  /// Can be set when trying to create a reservation that automatically finds a
-  /// free range of the given size. If both ip_cidr_range and prefix_length are
-  /// set, there is an error if the range sizes do not match. Can also be used
-  /// during updates to change the range size.
+  /// Can be set when trying to create an IPv4 reservation that automatically
+  /// finds a free range of the given size. If both ip_cidr_range and
+  /// prefix_length are set, there is an error if the range sizes do not match.
+  /// Can also be used during updates to change the range size. NOTE: For IPv6
+  /// this field only works if ip_cidr_range is set as well, and both fields
+  /// must match. In other words, with IPv6 this field only works as a redundant
+  /// parameter.
   core.int? prefixLength;
 
   /// Can be set to narrow down or pick a different address space while
@@ -5427,6 +5532,10 @@ class InternalRange {
   /// associated with VPC resources and are meant to block out address ranges
   /// for various use cases, like for example, usage on-prem, with dynamic route
   /// announcements via interconnect.
+  /// - "FOR_MIGRATION" : Ranges created FOR_MIGRATION can be used to lock a
+  /// CIDR range between a source and target subnet. If usage is set to
+  /// FOR_MIGRATION, the peering value has to be set to FOR_SELF or default to
+  /// FOR_SELF when unset. This value is for internal use.
   core.String? usage;
 
   /// The list of resources that refer to this internal range.
@@ -5445,6 +5554,7 @@ class InternalRange {
     this.description,
     this.ipCidrRange,
     this.labels,
+    this.migration,
     this.name,
     this.network,
     this.overlaps,
@@ -5468,6 +5578,10 @@ class InternalRange {
               value as core.String,
             ),
           ),
+          migration: json_.containsKey('migration')
+              ? Migration.fromJson(
+                  json_['migration'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_['name'] as core.String?,
           network: json_['network'] as core.String?,
           overlaps: (json_['overlaps'] as core.List?)
@@ -5490,6 +5604,7 @@ class InternalRange {
         if (description != null) 'description': description!,
         if (ipCidrRange != null) 'ipCidrRange': ipCidrRange!,
         if (labels != null) 'labels': labels!,
+        if (migration != null) 'migration': migration!,
         if (name != null) 'name': name!,
         if (network != null) 'network': network!,
         if (overlaps != null) 'overlaps': overlaps!,
@@ -5508,6 +5623,14 @@ class InternalRange {
 /// prefixes to Google Cloud. Alternatively, in active/passive configurations,
 /// all attachments should be capable of advertising the same prefixes.
 class LinkedInterconnectAttachments {
+  /// IP ranges allowed to be included during import from hub (does not control
+  /// transit connectivity).
+  ///
+  /// The only allowed value for now is "ALL_IPV4_RANGES".
+  ///
+  /// Optional.
+  core.List<core.String>? includeImportRanges;
+
   /// A value that controls whether site-to-site data transfer is enabled for
   /// these resources.
   ///
@@ -5524,6 +5647,7 @@ class LinkedInterconnectAttachments {
   core.String? vpcNetwork;
 
   LinkedInterconnectAttachments({
+    this.includeImportRanges,
     this.siteToSiteDataTransfer,
     this.uris,
     this.vpcNetwork,
@@ -5531,6 +5655,9 @@ class LinkedInterconnectAttachments {
 
   LinkedInterconnectAttachments.fromJson(core.Map json_)
       : this(
+          includeImportRanges: (json_['includeImportRanges'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           siteToSiteDataTransfer: json_['siteToSiteDataTransfer'] as core.bool?,
           uris: (json_['uris'] as core.List?)
               ?.map((value) => value as core.String)
@@ -5539,10 +5666,74 @@ class LinkedInterconnectAttachments {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (includeImportRanges != null)
+          'includeImportRanges': includeImportRanges!,
         if (siteToSiteDataTransfer != null)
           'siteToSiteDataTransfer': siteToSiteDataTransfer!,
         if (uris != null) 'uris': uris!,
         if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
+      };
+}
+
+/// Next ID: 7
+class LinkedProducerVpcNetwork {
+  /// IP ranges encompassing the subnets to be excluded from peering.
+  ///
+  /// Optional.
+  core.List<core.String>? excludeExportRanges;
+
+  /// The URI of the Service Consumer VPC that the Producer VPC is peered with.
+  ///
+  /// Immutable.
+  core.String? network;
+
+  /// The name of the VPC peering between the Service Consumer VPC and the
+  /// Producer VPC (defined in the Tenant project) which is added to the NCC
+  /// hub.
+  ///
+  /// This peering must be in ACTIVE state.
+  ///
+  /// Immutable.
+  core.String? peering;
+
+  /// The URI of the Producer VPC.
+  ///
+  /// Output only.
+  core.String? producerNetwork;
+
+  /// The Service Consumer Network spoke.
+  ///
+  /// Output only.
+  core.String? serviceConsumerVpcSpoke;
+
+  LinkedProducerVpcNetwork({
+    this.excludeExportRanges,
+    this.network,
+    this.peering,
+    this.producerNetwork,
+    this.serviceConsumerVpcSpoke,
+  });
+
+  LinkedProducerVpcNetwork.fromJson(core.Map json_)
+      : this(
+          excludeExportRanges: (json_['excludeExportRanges'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          network: json_['network'] as core.String?,
+          peering: json_['peering'] as core.String?,
+          producerNetwork: json_['producerNetwork'] as core.String?,
+          serviceConsumerVpcSpoke:
+              json_['serviceConsumerVpcSpoke'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (excludeExportRanges != null)
+          'excludeExportRanges': excludeExportRanges!,
+        if (network != null) 'network': network!,
+        if (peering != null) 'peering': peering!,
+        if (producerNetwork != null) 'producerNetwork': producerNetwork!,
+        if (serviceConsumerVpcSpoke != null)
+          'serviceConsumerVpcSpoke': serviceConsumerVpcSpoke!,
       };
 }
 
@@ -5552,6 +5743,14 @@ class LinkedInterconnectAttachments {
 /// the same set of sites outside of Google Cloud, we recommend that you
 /// associate those instances with the same spoke.
 class LinkedRouterApplianceInstances {
+  /// IP ranges allowed to be included during import from hub (does not control
+  /// transit connectivity).
+  ///
+  /// The only allowed value for now is "ALL_IPV4_RANGES".
+  ///
+  /// Optional.
+  core.List<core.String>? includeImportRanges;
+
   /// The list of router appliance instances.
   core.List<RouterApplianceInstance>? instances;
 
@@ -5568,6 +5767,7 @@ class LinkedRouterApplianceInstances {
   core.String? vpcNetwork;
 
   LinkedRouterApplianceInstances({
+    this.includeImportRanges,
     this.instances,
     this.siteToSiteDataTransfer,
     this.vpcNetwork,
@@ -5575,6 +5775,9 @@ class LinkedRouterApplianceInstances {
 
   LinkedRouterApplianceInstances.fromJson(core.Map json_)
       : this(
+          includeImportRanges: (json_['includeImportRanges'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           instances: (json_['instances'] as core.List?)
               ?.map((value) => RouterApplianceInstance.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -5584,6 +5787,8 @@ class LinkedRouterApplianceInstances {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (includeImportRanges != null)
+          'includeImportRanges': includeImportRanges!,
         if (instances != null) 'instances': instances!,
         if (siteToSiteDataTransfer != null)
           'siteToSiteDataTransfer': siteToSiteDataTransfer!,
@@ -5603,6 +5808,15 @@ class LinkedVpcNetwork {
   /// Optional.
   core.List<core.String>? includeExportRanges;
 
+  /// The list of Producer VPC spokes that this VPC spoke is a service consumer
+  /// VPC spoke for.
+  ///
+  /// These producer VPCs are connected through VPC peering to this spoke's
+  /// backing VPC network.
+  ///
+  /// Output only.
+  core.List<core.String>? producerVpcSpokes;
+
   /// The URI of the VPC network resource.
   ///
   /// Required.
@@ -5611,6 +5825,7 @@ class LinkedVpcNetwork {
   LinkedVpcNetwork({
     this.excludeExportRanges,
     this.includeExportRanges,
+    this.producerVpcSpokes,
     this.uri,
   });
 
@@ -5622,6 +5837,9 @@ class LinkedVpcNetwork {
           includeExportRanges: (json_['includeExportRanges'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          producerVpcSpokes: (json_['producerVpcSpokes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           uri: json_['uri'] as core.String?,
         );
 
@@ -5630,6 +5848,7 @@ class LinkedVpcNetwork {
           'excludeExportRanges': excludeExportRanges!,
         if (includeExportRanges != null)
           'includeExportRanges': includeExportRanges!,
+        if (producerVpcSpokes != null) 'producerVpcSpokes': producerVpcSpokes!,
         if (uri != null) 'uri': uri!,
       };
 }
@@ -5641,6 +5860,14 @@ class LinkedVpcNetwork {
 /// configuration, all tunnels should be capable of advertising the same
 /// prefixes.
 class LinkedVpnTunnels {
+  /// IP ranges allowed to be included during import from hub (does not control
+  /// transit connectivity).
+  ///
+  /// The only allowed value for now is "ALL_IPV4_RANGES".
+  ///
+  /// Optional.
+  core.List<core.String>? includeImportRanges;
+
   /// A value that controls whether site-to-site data transfer is enabled for
   /// these resources.
   ///
@@ -5657,6 +5884,7 @@ class LinkedVpnTunnels {
   core.String? vpcNetwork;
 
   LinkedVpnTunnels({
+    this.includeImportRanges,
     this.siteToSiteDataTransfer,
     this.uris,
     this.vpcNetwork,
@@ -5664,6 +5892,9 @@ class LinkedVpnTunnels {
 
   LinkedVpnTunnels.fromJson(core.Map json_)
       : this(
+          includeImportRanges: (json_['includeImportRanges'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           siteToSiteDataTransfer: json_['siteToSiteDataTransfer'] as core.bool?,
           uris: (json_['uris'] as core.List?)
               ?.map((value) => value as core.String)
@@ -5672,6 +5903,8 @@ class LinkedVpnTunnels {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (includeImportRanges != null)
+          'includeImportRanges': includeImportRanges!,
         if (siteToSiteDataTransfer != null)
           'siteToSiteDataTransfer': siteToSiteDataTransfer!,
         if (uris != null) 'uris': uris!,
@@ -6225,6 +6458,43 @@ class ListSpokesResponse {
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
+/// Specification for migration with source and target resource names.
+class Migration {
+  /// Resource path as an URI of the source resource, for example a subnet.
+  ///
+  /// The project for the source resource should match the project for the
+  /// InternalRange. An example:
+  /// /projects/{project}/regions/{region}/subnetworks/{subnet}
+  ///
+  /// Immutable.
+  core.String? source;
+
+  /// Resource path of the target resource.
+  ///
+  /// The target project can be different, as in the cases when migrating to
+  /// peer networks. The resource For example:
+  /// /projects/{project}/regions/{region}/subnetworks/{subnet}
+  ///
+  /// Immutable.
+  core.String? target;
+
+  Migration({
+    this.source,
+    this.target,
+  });
+
+  Migration.fromJson(core.Map json_)
+      : this(
+          source: json_['source'] as core.String?,
+          target: json_['target'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (source != null) 'source': source!,
+        if (target != null) 'target': target!,
+      };
+}
+
 /// A route next hop that leads to an interconnect attachment resource.
 class NextHopInterconnectAttachment {
   /// Indicates whether site-to-site data transfer is allowed for this
@@ -6672,10 +6942,44 @@ class ProducerPscConfig {
 ///
 /// Used when Infrastructure is PSC.
 class PscConfig {
+  /// List of Projects, Folders, or Organizations from where the Producer
+  /// instance can be within.
+  ///
+  /// For example, a network administrator can provide both 'organizations/foo'
+  /// and 'projects/bar' as allowed_google_producers_resource_hierarchy_levels.
+  /// This allowlists this network to connect with any Producer instance within
+  /// the 'foo' organization or the 'bar' project. By default,
+  /// allowed_google_producers_resource_hierarchy_level is empty. The format for
+  /// each allowed_google_producers_resource_hierarchy_level is / where is one
+  /// of 'projects', 'folders', or 'organizations' and is either the ID or the
+  /// number of the resource type. Format for each
+  /// allowed_google_producers_resource_hierarchy_level value: 'projects/' or
+  /// 'folders/' or 'organizations/' Eg. \[projects/my-project-id, projects/567,
+  /// folders/891, organizations/123\]
+  ///
+  /// Optional.
+  core.List<core.String>? allowedGoogleProducersResourceHierarchyLevel;
+
   /// Max number of PSC connections for this policy.
   ///
   /// Optional.
   core.String? limit;
+
+  /// ProducerInstanceLocation is used to specify which authorization mechanism
+  /// to use to determine which projects the Producer instance can be within.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "PRODUCER_INSTANCE_LOCATION_UNSPECIFIED" : Producer instance location is
+  /// not specified. When this option is chosen, then the PSC connections
+  /// created by this ServiceConnectionPolicy must be within the same project as
+  /// the Producer instance. This is the default ProducerInstanceLocation value.
+  /// To allow for PSC connections from this network to other networks, use the
+  /// CUSTOM_RESOURCE_HIERARCHY_LEVELS option.
+  /// - "CUSTOM_RESOURCE_HIERARCHY_LEVELS" : Producer instance must be within
+  /// one of the values provided in
+  /// allowed_google_producers_resource_hierarchy_level.
+  core.String? producerInstanceLocation;
 
   /// The resource paths of subnetworks to use for IP address management.
   ///
@@ -6684,20 +6988,34 @@ class PscConfig {
   core.List<core.String>? subnetworks;
 
   PscConfig({
+    this.allowedGoogleProducersResourceHierarchyLevel,
     this.limit,
+    this.producerInstanceLocation,
     this.subnetworks,
   });
 
   PscConfig.fromJson(core.Map json_)
       : this(
+          allowedGoogleProducersResourceHierarchyLevel:
+              (json_['allowedGoogleProducersResourceHierarchyLevel']
+                      as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           limit: json_['limit'] as core.String?,
+          producerInstanceLocation:
+              json_['producerInstanceLocation'] as core.String?,
           subnetworks: (json_['subnetworks'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allowedGoogleProducersResourceHierarchyLevel != null)
+          'allowedGoogleProducersResourceHierarchyLevel':
+              allowedGoogleProducersResourceHierarchyLevel!,
         if (limit != null) 'limit': limit!,
+        if (producerInstanceLocation != null)
+          'producerInstanceLocation': producerInstanceLocation!,
         if (subnetworks != null) 'subnetworks': subnetworks!,
       };
 }
@@ -6714,6 +7032,8 @@ class PscConnection {
   core.String? consumerTargetProject;
 
   /// The most recent error during operating this connection.
+  ///
+  /// Deprecated, please use error_info instead.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -6733,15 +7053,36 @@ class PscConnection {
   /// internal.
   /// - "ERROR_CONSUMER_SIDE" : The error is due to the setup on consumer side.
   /// - "ERROR_PRODUCER_SIDE" : The error is due to the setup on producer side.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? errorType;
 
   /// The last Compute Engine operation to setup PSC connection.
   core.String? gceOperation;
 
+  /// The requested IP version for the PSC connection.
+  /// Possible string values are:
+  /// - "IP_VERSION_UNSPECIFIED" : Default value. We will use IPv4 or IPv6
+  /// depending on the IP version of first available subnetwork.
+  /// - "IPV4" : Will use IPv4 only.
+  /// - "IPV6" : Will use IPv6 only.
+  core.String? ipVersion;
+
+  /// Use producer_instance_metadata instead.
+  ///
   /// An immutable identifier for the producer instance.
   ///
-  /// Immutable.
+  /// Immutable. Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? producerInstanceId;
+
+  /// An immutable map for the producer instance metadata.
+  ///
+  /// Immutable.
+  core.Map<core.String, core.String>? producerInstanceMetadata;
 
   /// The PSC connection id of the PSC forwarding rule.
   core.String? pscConnectionId;
@@ -6752,14 +7093,28 @@ class PscConnection {
   /// Output only.
   core.String? selectedSubnetwork;
 
+  /// The service class associated with this PSC Connection.
+  ///
+  /// The value is derived from the SCPolicy and matches the service class name
+  /// provided by the customer.
+  ///
+  /// Output only.
+  core.String? serviceClass;
+
   /// State of the PSC Connection
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : An invalid state as the default case.
-  /// - "ACTIVE" : The connection is fully established and ready to use.
+  /// - "ACTIVE" : The connection has been created successfully. However, for
+  /// the up-to-date connection status, please use the created forwarding rule's
+  /// "PscConnectionStatus" as the source of truth.
   /// - "FAILED" : The connection is not functional since some resources on the
   /// connection fail to be created.
   /// - "CREATING" : The connection is being created.
   /// - "DELETING" : The connection is being deleted.
+  /// - "CREATE_REPAIRING" : The connection is being repaired to complete
+  /// creation.
+  /// - "DELETE_REPAIRING" : The connection is being repaired to complete
+  /// deletion.
   core.String? state;
 
   PscConnection({
@@ -6770,9 +7125,12 @@ class PscConnection {
     this.errorInfo,
     this.errorType,
     this.gceOperation,
+    this.ipVersion,
     this.producerInstanceId,
+    this.producerInstanceMetadata,
     this.pscConnectionId,
     this.selectedSubnetwork,
+    this.serviceClass,
     this.state,
   });
 
@@ -6792,9 +7150,19 @@ class PscConnection {
               : null,
           errorType: json_['errorType'] as core.String?,
           gceOperation: json_['gceOperation'] as core.String?,
+          ipVersion: json_['ipVersion'] as core.String?,
           producerInstanceId: json_['producerInstanceId'] as core.String?,
+          producerInstanceMetadata: (json_['producerInstanceMetadata']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           pscConnectionId: json_['pscConnectionId'] as core.String?,
           selectedSubnetwork: json_['selectedSubnetwork'] as core.String?,
+          serviceClass: json_['serviceClass'] as core.String?,
           state: json_['state'] as core.String?,
         );
 
@@ -6808,11 +7176,15 @@ class PscConnection {
         if (errorInfo != null) 'errorInfo': errorInfo!,
         if (errorType != null) 'errorType': errorType!,
         if (gceOperation != null) 'gceOperation': gceOperation!,
+        if (ipVersion != null) 'ipVersion': ipVersion!,
         if (producerInstanceId != null)
           'producerInstanceId': producerInstanceId!,
+        if (producerInstanceMetadata != null)
+          'producerInstanceMetadata': producerInstanceMetadata!,
         if (pscConnectionId != null) 'pscConnectionId': pscConnectionId!,
         if (selectedSubnetwork != null)
           'selectedSubnetwork': selectedSubnetwork!,
+        if (serviceClass != null) 'serviceClass': serviceClass!,
         if (state != null) 'state': state!,
       };
 }
@@ -7595,7 +7967,7 @@ class ServiceConnectionMap {
 ///
 /// Next id: 12
 class ServiceConnectionPolicy {
-  /// Time when the ServiceConnectionMap was created.
+  /// Time when the ServiceConnectionPolicy was created.
   ///
   /// Output only.
   core.String? createTime;
@@ -7650,11 +8022,12 @@ class ServiceConnectionPolicy {
   ///
   /// The service class identifier is a unique, symbolic representation of a
   /// ServiceClass. It is provided by the Service Producer. Google services have
-  /// a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not.
-  /// For example, test-service-a3dfcx.
+  /// a prefix of gcp or google-cloud. For example, gcp-memorystore-redis or
+  /// google-cloud-sql. 3rd party services do not. For example,
+  /// test-service-a3dfcx.
   core.String? serviceClass;
 
-  /// Time when the ServiceConnectionMap was updated.
+  /// Time when the ServiceConnectionPolicy was updated.
   ///
   /// Output only.
   core.String? updateTime;
@@ -7879,6 +8252,11 @@ class Spoke {
   /// VLAN attachments that are associated with the spoke.
   LinkedInterconnectAttachments? linkedInterconnectAttachments;
 
+  /// The linked producer VPC that is associated with the spoke.
+  ///
+  /// Optional.
+  LinkedProducerVpcNetwork? linkedProducerVpcNetwork;
+
   /// Router appliance instances that are associated with the spoke.
   LinkedRouterApplianceInstances? linkedRouterApplianceInstances;
 
@@ -7914,6 +8292,8 @@ class Spoke {
   /// - "INTERCONNECT_ATTACHMENT" : Spokes associated with VLAN attachments.
   /// - "ROUTER_APPLIANCE" : Spokes associated with router appliance instances.
   /// - "VPC_NETWORK" : Spokes associated with VPC networks.
+  /// - "PRODUCER_VPC_NETWORK" : Spokes that are backed by a producer VPC
+  /// network.
   core.String? spokeType;
 
   /// The current lifecycle state of this spoke.
@@ -7953,6 +8333,7 @@ class Spoke {
     this.hub,
     this.labels,
     this.linkedInterconnectAttachments,
+    this.linkedProducerVpcNetwork,
     this.linkedRouterApplianceInstances,
     this.linkedVpcNetwork,
     this.linkedVpnTunnels,
@@ -7981,6 +8362,12 @@ class Spoke {
               json_.containsKey('linkedInterconnectAttachments')
                   ? LinkedInterconnectAttachments.fromJson(
                       json_['linkedInterconnectAttachments']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          linkedProducerVpcNetwork:
+              json_.containsKey('linkedProducerVpcNetwork')
+                  ? LinkedProducerVpcNetwork.fromJson(
+                      json_['linkedProducerVpcNetwork']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           linkedRouterApplianceInstances:
@@ -8016,6 +8403,8 @@ class Spoke {
         if (labels != null) 'labels': labels!,
         if (linkedInterconnectAttachments != null)
           'linkedInterconnectAttachments': linkedInterconnectAttachments!,
+        if (linkedProducerVpcNetwork != null)
+          'linkedProducerVpcNetwork': linkedProducerVpcNetwork!,
         if (linkedRouterApplianceInstances != null)
           'linkedRouterApplianceInstances': linkedRouterApplianceInstances!,
         if (linkedVpcNetwork != null) 'linkedVpcNetwork': linkedVpcNetwork!,
@@ -8183,6 +8572,8 @@ class SpokeTypeCount {
   /// - "INTERCONNECT_ATTACHMENT" : Spokes associated with VLAN attachments.
   /// - "ROUTER_APPLIANCE" : Spokes associated with router appliance instances.
   /// - "VPC_NETWORK" : Spokes associated with VPC networks.
+  /// - "PRODUCER_VPC_NETWORK" : Spokes that are backed by a producer VPC
+  /// network.
   core.String? spokeType;
 
   SpokeTypeCount({

@@ -453,6 +453,7 @@ api.V2Key buildV2Key() {
     o.keyString = 'foo';
     o.name = 'foo';
     o.restrictions = buildV2Restrictions();
+    o.serviceAccountEmail = 'foo';
     o.uid = 'foo';
     o.updateTime = 'foo';
   }
@@ -489,6 +490,10 @@ void checkV2Key(api.V2Key o) {
       unittest.equals('foo'),
     );
     checkV2Restrictions(o.restrictions!);
+    unittest.expect(
+      o.serviceAccountEmail!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.uid!,
       unittest.equals('foo'),

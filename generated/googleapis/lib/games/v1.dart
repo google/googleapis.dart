@@ -21,6 +21,7 @@
 ///
 /// Create an instance of [GamesApi] to access these resources:
 ///
+/// - [AccesstokensResource]
 /// - [AchievementDefinitionsResource]
 /// - [AchievementsResource]
 /// - [ApplicationsResource]
@@ -63,6 +64,7 @@ class GamesApi {
 
   final commons.ApiRequester _requester;
 
+  AccesstokensResource get accesstokens => AccesstokensResource(_requester);
   AchievementDefinitionsResource get achievementDefinitions =>
       AchievementDefinitionsResource(_requester);
   AchievementsResource get achievements => AchievementsResource(_requester);
@@ -82,6 +84,114 @@ class GamesApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+}
+
+class AccesstokensResource {
+  final commons.ApiRequester _requester;
+
+  AccesstokensResource(commons.ApiRequester client) : _requester = client;
+
+  /// Generates a Play Grouping API token for the PGS user identified by the
+  /// attached credential.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. App package name to generate the token for (e.g.
+  /// com.example.mygame).
+  ///
+  /// [persona] - Required. Persona to associate with the token. Persona is a
+  /// developer-provided stable identifier of the user. Must be
+  /// deterministically generated (e.g. as a one-way hash) from the user account
+  /// ID and user profile ID (if the app has the concept), according to the
+  /// developer's own user identity system.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GeneratePlayGroupingApiTokenResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GeneratePlayGroupingApiTokenResponse>
+      generatePlayGroupingApiToken({
+    core.String? packageName,
+    core.String? persona,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (packageName != null) 'packageName': [packageName],
+      if (persona != null) 'persona': [persona],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'games/v1/accesstokens/generatePlayGroupingApiToken';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GeneratePlayGroupingApiTokenResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Generates a Play Grouping API token for the PGS user identified by the
+  /// Recall session ID provided in the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. App package name to generate the token for (e.g.
+  /// com.example.mygame).
+  ///
+  /// [persona] - Required. Persona to associate with the token. Persona is a
+  /// developer-provided stable identifier of the user. Must be
+  /// deterministically generated (e.g. as a one-way hash) from the user account
+  /// ID and user profile ID (if the app has the concept), according to the
+  /// developer's own user identity system.
+  ///
+  /// [recallSessionId] - Required. Opaque server-generated string that encodes
+  /// all the necessary information to identify the PGS player / Google user and
+  /// application. See
+  /// https://developer.android.com/games/pgs/recall/recall-setup on how to
+  /// integrate with Recall and get session ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GenerateRecallPlayGroupingApiTokenResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GenerateRecallPlayGroupingApiTokenResponse>
+      generateRecallPlayGroupingApiToken({
+    core.String? packageName,
+    core.String? persona,
+    core.String? recallSessionId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (packageName != null) 'packageName': [packageName],
+      if (persona != null) 'persona': [persona],
+      if (recallSessionId != null) 'recallSessionId': [recallSessionId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'games/v1/accesstokens/generateRecallPlayGroupingApiToken';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GenerateRecallPlayGroupingApiTokenResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class AchievementDefinitionsResource {
@@ -3060,25 +3170,25 @@ class GamePlayerToken {
   core.String? applicationId;
 
   /// Recall token data.
-  core.List<RecallToken>? token;
+  RecallToken? recallToken;
 
   GamePlayerToken({
     this.applicationId,
-    this.token,
+    this.recallToken,
   });
 
   GamePlayerToken.fromJson(core.Map json_)
       : this(
           applicationId: json_['applicationId'] as core.String?,
-          token: (json_['token'] as core.List?)
-              ?.map((value) => RecallToken.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
+          recallToken: json_.containsKey('recallToken')
+              ? RecallToken.fromJson(
+                  json_['recallToken'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (applicationId != null) 'applicationId': applicationId!,
-        if (token != null) 'token': token!,
+        if (recallToken != null) 'recallToken': recallToken!,
       };
 }
 
@@ -3139,6 +3249,50 @@ class GamesAchievementSetStepsAtLeast {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (steps != null) 'steps': steps!,
+      };
+}
+
+/// Response for the GeneratePlayGroupingApiToken RPC.
+class GeneratePlayGroupingApiTokenResponse {
+  /// Token for accessing the Play Grouping API.
+  PlayGroupingApiToken? token;
+
+  GeneratePlayGroupingApiTokenResponse({
+    this.token,
+  });
+
+  GeneratePlayGroupingApiTokenResponse.fromJson(core.Map json_)
+      : this(
+          token: json_.containsKey('token')
+              ? PlayGroupingApiToken.fromJson(
+                  json_['token'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (token != null) 'token': token!,
+      };
+}
+
+/// Response for the GenerateRecallPlayGroupingApiToken RPC.
+class GenerateRecallPlayGroupingApiTokenResponse {
+  /// Token for accessing the Play Grouping API.
+  PlayGroupingApiToken? token;
+
+  GenerateRecallPlayGroupingApiTokenResponse({
+    this.token,
+  });
+
+  GenerateRecallPlayGroupingApiTokenResponse.fromJson(core.Map json_)
+      : this(
+          token: json_.containsKey('token')
+              ? PlayGroupingApiToken.fromJson(
+                  json_['token'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (token != null) 'token': token!,
       };
 }
 
@@ -3888,6 +4042,25 @@ class MetagameConfig {
         if (currentVersion != null) 'currentVersion': currentVersion!,
         if (kind != null) 'kind': kind!,
         if (playerLevels != null) 'playerLevels': playerLevels!,
+      };
+}
+
+/// Token data returned from GeneratePlayGroupingApiToken RPC.
+class PlayGroupingApiToken {
+  /// Value of the token.
+  core.String? tokenValue;
+
+  PlayGroupingApiToken({
+    this.tokenValue,
+  });
+
+  PlayGroupingApiToken.fromJson(core.Map json_)
+      : this(
+          tokenValue: json_['tokenValue'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tokenValue != null) 'tokenValue': tokenValue!,
       };
 }
 
@@ -4810,22 +4983,22 @@ class RetrieveDeveloperGamesLastPlayerTokenResponse {
   ///
   /// It can be unset if there is no recall token associated with the requested
   /// principal.
-  RecallToken? token;
+  GamePlayerToken? gamePlayerToken;
 
   RetrieveDeveloperGamesLastPlayerTokenResponse({
-    this.token,
+    this.gamePlayerToken,
   });
 
   RetrieveDeveloperGamesLastPlayerTokenResponse.fromJson(core.Map json_)
       : this(
-          token: json_.containsKey('token')
-              ? RecallToken.fromJson(
-                  json_['token'] as core.Map<core.String, core.dynamic>)
+          gamePlayerToken: json_.containsKey('gamePlayerToken')
+              ? GamePlayerToken.fromJson(json_['gamePlayerToken']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (token != null) 'token': token!,
+        if (gamePlayerToken != null) 'gamePlayerToken': gamePlayerToken!,
       };
 }
 
@@ -4835,24 +5008,22 @@ class RetrieveGamesPlayerTokensResponse {
   ///
   /// If the player does not have recall tokens for an application, that
   /// application is not included in the response.
-  core.List<GamePlayerToken>? applicationRecallTokens;
+  core.List<GamePlayerToken>? gamePlayerTokens;
 
   RetrieveGamesPlayerTokensResponse({
-    this.applicationRecallTokens,
+    this.gamePlayerTokens,
   });
 
   RetrieveGamesPlayerTokensResponse.fromJson(core.Map json_)
       : this(
-          applicationRecallTokens:
-              (json_['applicationRecallTokens'] as core.List?)
-                  ?.map((value) => GamePlayerToken.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
+          gamePlayerTokens: (json_['gamePlayerTokens'] as core.List?)
+              ?.map((value) => GamePlayerToken.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (applicationRecallTokens != null)
-          'applicationRecallTokens': applicationRecallTokens!,
+        if (gamePlayerTokens != null) 'gamePlayerTokens': gamePlayerTokens!,
       };
 }
 

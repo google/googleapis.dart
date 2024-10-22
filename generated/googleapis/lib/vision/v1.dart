@@ -3903,6 +3903,10 @@ class KeyValue {
 }
 
 /// A face-specific landmark (for example, a face feature).
+///
+/// Landmark positions may fall outside the bounds of the image if the face is
+/// near one or more edges of the image. Therefore it is NOT guaranteed that `0
+/// <= x < width` or `0 <= y < height`.
 class Landmark {
   /// Face landmark position.
   Position? position;
@@ -5100,7 +5104,7 @@ class SafeSearchAnnotation {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// A single symbol representation.
 class Symbol {

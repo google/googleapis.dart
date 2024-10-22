@@ -708,7 +708,9 @@ class BucketsResource {
 
   BucketsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Permanently deletes an empty bucket.
+  /// Deletes an empty bucket.
+  ///
+  /// Deletions are permanent unless soft delete is enabled on the bucket.
   ///
   /// Request parameters:
   ///
@@ -763,6 +765,9 @@ class BucketsResource {
   ///
   /// [bucket] - Name of a bucket.
   ///
+  /// [generation] - If present, specifies the generation of the bucket. This is
+  /// required if softDeleted is true.
+  ///
   /// [ifMetagenerationMatch] - Makes the return of the bucket metadata
   /// conditional on whether the bucket's current metageneration matches the
   /// given value.
@@ -775,6 +780,10 @@ class BucketsResource {
   /// Possible string values are:
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
+  ///
+  /// [softDeleted] - If true, return the soft-deleted version of this bucket.
+  /// The default is false. For more information, see
+  /// [Soft Delete](https://cloud.google.com/storage/docs/soft-delete).
   ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
@@ -791,18 +800,22 @@ class BucketsResource {
   /// this method will complete with the same error.
   async.Future<Bucket> get(
     core.String bucket, {
+    core.String? generation,
     core.String? ifMetagenerationMatch,
     core.String? ifMetagenerationNotMatch,
     core.String? projection,
+    core.bool? softDeleted,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (generation != null) 'generation': [generation],
       if (ifMetagenerationMatch != null)
         'ifMetagenerationMatch': [ifMetagenerationMatch],
       if (ifMetagenerationNotMatch != null)
         'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
       if (projection != null) 'projection': [projection],
+      if (softDeleted != null) 'softDeleted': ['${softDeleted}'],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1017,6 +1030,10 @@ class BucketsResource {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
   ///
+  /// [softDeleted] - If true, only soft-deleted bucket versions will be
+  /// returned. The default is false. For more information, see
+  /// [Soft Delete](https://cloud.google.com/storage/docs/soft-delete).
+  ///
   /// [userProject] - The project to be billed for this request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1035,6 +1052,7 @@ class BucketsResource {
     core.String? pageToken,
     core.String? prefix,
     core.String? projection,
+    core.bool? softDeleted,
     core.String? userProject,
     core.String? $fields,
   }) async {
@@ -1044,6 +1062,7 @@ class BucketsResource {
       if (pageToken != null) 'pageToken': [pageToken],
       if (prefix != null) 'prefix': [prefix],
       if (projection != null) 'projection': [projection],
+      if (softDeleted != null) 'softDeleted': ['${softDeleted}'],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1202,6 +1221,88 @@ class BucketsResource {
       queryParams: queryParams_,
     );
     return Bucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Initiates a long-running Relocate Bucket operation on the specified
+  /// bucket.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket to be moved.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> relocate(
+    RelocateBucketRequest request,
+    core.String bucket, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' + commons.escapeVariable('$bucket') + '/relocate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Restores a soft-deleted bucket.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of a bucket.
+  ///
+  /// [generation] - Generation of a bucket.
+  ///
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> restore(
+    core.String bucket,
+    core.String generation, {
+    core.String? userProject,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'generation': [generation],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' + commons.escapeVariable('$bucket') + '/restore';
+
+    await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
   }
 
   /// Updates an IAM policy for the specified bucket.
@@ -3362,8 +3463,15 @@ class ObjectsResource {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
+  /// [restoreToken] - Restore token used to differentiate soft-deleted objects
+  /// with the same name and generation. Only applicable for hierarchical
+  /// namespace buckets and if softDeleted is set to true. This parameter is
+  /// optional, and is only required in the rare case when there are multiple
+  /// soft-deleted objects with the same name and generation.
+  ///
   /// [softDeleted] - If true, only soft-deleted object versions will be listed.
-  /// The default is false. For more information, see Soft Delete.
+  /// The default is false. For more information, see
+  /// [Soft Delete](https://cloud.google.com/storage/docs/soft-delete).
   ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
@@ -3395,6 +3503,7 @@ class ObjectsResource {
     core.String? ifMetagenerationMatch,
     core.String? ifMetagenerationNotMatch,
     core.String? projection,
+    core.String? restoreToken,
     core.bool? softDeleted,
     core.String? userProject,
     core.String? $fields,
@@ -3410,6 +3519,7 @@ class ObjectsResource {
       if (ifMetagenerationNotMatch != null)
         'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
       if (projection != null) 'projection': [projection],
+      if (restoreToken != null) 'restoreToken': [restoreToken],
       if (softDeleted != null) 'softDeleted': ['${softDeleted}'],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
@@ -3666,7 +3776,8 @@ class ObjectsResource {
   /// - "noAcl" : Omit the owner, acl property.
   ///
   /// [softDeleted] - If true, only soft-deleted object versions will be listed.
-  /// The default is false. For more information, see Soft Delete.
+  /// The default is false. For more information, see
+  /// [Soft Delete](https://cloud.google.com/storage/docs/soft-delete).
   ///
   /// [startOffset] - Filter results to objects whose names are
   /// lexicographically equal to or after startOffset. If endOffset is also set,
@@ -3677,7 +3788,8 @@ class ObjectsResource {
   /// Requester Pays buckets.
   ///
   /// [versions] - If true, lists all versions of an object as distinct results.
-  /// The default is false. For more information, see Object Versioning.
+  /// The default is false. For more information, see
+  /// [Object Versioning](https://cloud.google.com/storage/docs/object-versioning).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3856,7 +3968,8 @@ class ObjectsResource {
   /// [bucket] - Name of the bucket in which the object resides.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
   ///
   /// [generation] - Selects a specific revision of this object.
   ///
@@ -3883,6 +3996,12 @@ class ObjectsResource {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
+  /// [restoreToken] - Restore token used to differentiate sof-deleted objects
+  /// with the same name and generation. Only applicable for hierarchical
+  /// namespace buckets. This parameter is optional, and is only required in the
+  /// rare case when there are multiple soft-deleted objects with the same name
+  /// and generation.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -3906,6 +4025,7 @@ class ObjectsResource {
     core.String? ifMetagenerationMatch,
     core.String? ifMetagenerationNotMatch,
     core.String? projection,
+    core.String? restoreToken,
     core.String? userProject,
     core.String? $fields,
   }) async {
@@ -3920,6 +4040,7 @@ class ObjectsResource {
       if (ifMetagenerationNotMatch != null)
         'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
       if (projection != null) 'projection': [projection],
+      if (restoreToken != null) 'restoreToken': [restoreToken],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -4398,7 +4519,8 @@ class ObjectsResource {
   /// Requester Pays buckets.
   ///
   /// [versions] - If true, lists all versions of an object as distinct results.
-  /// The default is false. For more information, see Object Versioning.
+  /// The default is false. For more information, see
+  /// [Object Versioning](https://cloud.google.com/storage/docs/object-versioning).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4457,6 +4579,55 @@ class OperationsResource {
   final commons.ApiRequester _requester;
 
   OperationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Starts asynchronous advancement of the relocate bucket operation in the
+  /// case of required write downtime, to allow it to lock the bucket at the
+  /// source location, and proceed with the bucket location swap.
+  ///
+  /// The server makes a best effort to advance the relocate bucket operation,
+  /// but success is not guaranteed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket to advance the relocate for.
+  ///
+  /// [operationId] - ID of the operation resource.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> advanceRelocateBucket(
+    AdvanceRelocateBucketOperationRequest request,
+    core.String bucket,
+    core.String operationId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' +
+        commons.escapeVariable('$bucket') +
+        '/operations/' +
+        commons.escapeVariable('$operationId') +
+        '/advanceRelocateBucket';
+
+    await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -4805,7 +4976,9 @@ class ProjectsHmacKeysResource {
 
   /// Updates the state of an HMAC key.
   ///
-  /// See the HMAC Key resource descriptor for valid states.
+  /// See the
+  /// [HMAC Key resource descriptor](https://cloud.google.com/storage/docs/json_api/v1/projects/hmacKeys/update#request-body)
+  /// for valid states.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4902,6 +5075,38 @@ class ProjectsServiceAccountResource {
     return ServiceAccount.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+}
+
+/// An AdvanceRelocateBucketOperation request.
+class AdvanceRelocateBucketOperationRequest {
+  /// Specifies the time when the relocation will revert to the sync stage if
+  /// the relocation hasn't succeeded.
+  core.DateTime? expireTime;
+
+  /// Specifies the duration after which the relocation will revert to the sync
+  /// stage if the relocation hasn't succeeded.
+  ///
+  /// Optional, if not supplied, a default value of 12h will be used.
+  core.String? ttl;
+
+  AdvanceRelocateBucketOperationRequest({
+    this.expireTime,
+    this.ttl,
+  });
+
+  AdvanceRelocateBucketOperationRequest.fromJson(core.Map json_)
+      : this(
+          expireTime: json_.containsKey('expireTime')
+              ? core.DateTime.parse(json_['expireTime'] as core.String)
+              : null,
+          ttl: json_['ttl'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (expireTime != null)
+          'expireTime': expireTime!.toUtc().toIso8601String(),
+        if (ttl != null) 'ttl': ttl!,
+      };
 }
 
 /// An Anywhere Cache instance.
@@ -5340,6 +5545,105 @@ class BucketIamConfiguration {
       };
 }
 
+/// The public network source of the bucket's IP filter.
+class BucketIpFilterPublicNetworkSource {
+  /// The list of public IPv4, IPv6 cidr ranges that are allowed to access the
+  /// bucket.
+  core.List<core.String>? allowedIpCidrRanges;
+
+  BucketIpFilterPublicNetworkSource({
+    this.allowedIpCidrRanges,
+  });
+
+  BucketIpFilterPublicNetworkSource.fromJson(core.Map json_)
+      : this(
+          allowedIpCidrRanges: (json_['allowedIpCidrRanges'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowedIpCidrRanges != null)
+          'allowedIpCidrRanges': allowedIpCidrRanges!,
+      };
+}
+
+class BucketIpFilterVpcNetworkSources {
+  /// The list of IPv4, IPv6 cidr ranges subnetworks that are allowed to access
+  /// the bucket.
+  core.List<core.String>? allowedIpCidrRanges;
+
+  /// Name of the network.
+  ///
+  /// Format: projects/{PROJECT_ID}/global/networks/{NETWORK_NAME}
+  core.String? network;
+
+  BucketIpFilterVpcNetworkSources({
+    this.allowedIpCidrRanges,
+    this.network,
+  });
+
+  BucketIpFilterVpcNetworkSources.fromJson(core.Map json_)
+      : this(
+          allowedIpCidrRanges: (json_['allowedIpCidrRanges'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          network: json_['network'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowedIpCidrRanges != null)
+          'allowedIpCidrRanges': allowedIpCidrRanges!,
+        if (network != null) 'network': network!,
+      };
+}
+
+/// The bucket's IP filter configuration.
+///
+/// Specifies the network sources that are allowed to access the operations on
+/// the bucket, as well as its underlying objects. Only enforced when the mode
+/// is set to 'Enabled'.
+class BucketIpFilter {
+  /// The mode of the IP filter.
+  ///
+  /// Valid values are 'Enabled' and 'Disabled'.
+  core.String? mode;
+
+  /// The public network source of the bucket's IP filter.
+  BucketIpFilterPublicNetworkSource? publicNetworkSource;
+
+  /// The list of [VPC network](https://cloud.google.com/vpc/docs/vpc) sources
+  /// of the bucket's IP filter.
+  core.List<BucketIpFilterVpcNetworkSources>? vpcNetworkSources;
+
+  BucketIpFilter({
+    this.mode,
+    this.publicNetworkSource,
+    this.vpcNetworkSources,
+  });
+
+  BucketIpFilter.fromJson(core.Map json_)
+      : this(
+          mode: json_['mode'] as core.String?,
+          publicNetworkSource: json_.containsKey('publicNetworkSource')
+              ? BucketIpFilterPublicNetworkSource.fromJson(
+                  json_['publicNetworkSource']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          vpcNetworkSources: (json_['vpcNetworkSources'] as core.List?)
+              ?.map((value) => BucketIpFilterVpcNetworkSources.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mode != null) 'mode': mode!,
+        if (publicNetworkSource != null)
+          'publicNetworkSource': publicNetworkSource!,
+        if (vpcNetworkSources != null) 'vpcNetworkSources': vpcNetworkSources!,
+      };
+}
+
 /// The action to take.
 class BucketLifecycleRuleAction {
   /// Target storage class.
@@ -5558,7 +5862,8 @@ class BucketLifecycleRule {
 
 /// The bucket's lifecycle configuration.
 ///
-/// See lifecycle management for more information.
+/// See [Lifecycle Management](https://cloud.google.com/storage/docs/lifecycle)
+/// for more information.
 class BucketLifecycle {
   /// A lifecycle management rule, which is made of an action to take and the
   /// condition(s) under which the action will be taken.
@@ -5762,7 +6067,9 @@ class BucketVersioning {
 /// The bucket's website configuration, controlling how the service behaves when
 /// accessing bucket contents as a web site.
 ///
-/// See the Static Website Examples for more information.
+/// See the
+/// [Static Website Examples](https://cloud.google.com/storage/docs/static-website)
+/// for more information.
 class BucketWebsite {
   /// If the requested object path is missing, the service will ensure the path
   /// has a trailing '/', append this suffix, and attempt to retrieve the
@@ -5837,6 +6144,12 @@ class Bucket {
   /// HTTP 1.1 Entity tag for the bucket.
   core.String? etag;
 
+  /// The generation of this bucket.
+  core.String? generation;
+
+  /// The hard delete time of the bucket in RFC 3339 format.
+  core.DateTime? hardDeleteTime;
+
   /// The bucket's hierarchical namespace configuration.
   BucketHierarchicalNamespace? hierarchicalNamespace;
 
@@ -5848,6 +6161,13 @@ class Bucket {
   /// For buckets, the id and name properties are the same.
   core.String? id;
 
+  /// The bucket's IP filter configuration.
+  ///
+  /// Specifies the network sources that are allowed to access the operations on
+  /// the bucket, as well as its underlying objects. Only enforced when the mode
+  /// is set to 'Enabled'.
+  BucketIpFilter? ipFilter;
+
   /// The kind of item this is.
   ///
   /// For buckets, this is always storage#bucket.
@@ -5858,14 +6178,17 @@ class Bucket {
 
   /// The bucket's lifecycle configuration.
   ///
-  /// See lifecycle management for more information.
+  /// See
+  /// [Lifecycle Management](https://cloud.google.com/storage/docs/lifecycle)
+  /// for more information.
   BucketLifecycle? lifecycle;
 
   /// The location of the bucket.
   ///
   /// Object data for objects in the bucket resides in physical storage within
-  /// this region. Defaults to US. See the developer's guide for the
-  /// authoritative list.
+  /// this region. Defaults to US. See the
+  /// [Developer's Guide](https://cloud.google.com/storage/docs/locations) for
+  /// the authoritative list.
   core.String? location;
 
   /// The type of the bucket location.
@@ -5910,6 +6233,9 @@ class Bucket {
   core.String? rpo;
 
   /// Reserved for future use.
+  core.bool? satisfiesPZI;
+
+  /// Reserved for future use.
   core.bool? satisfiesPZS;
 
   /// The URI of this bucket.
@@ -5919,6 +6245,9 @@ class Bucket {
   /// soft-deleted objects will be retained, and cannot be permanently deleted.
   BucketSoftDeletePolicy? softDeletePolicy;
 
+  /// The soft delete time of the bucket in RFC 3339 format.
+  core.DateTime? softDeleteTime;
+
   /// The bucket's default storage class, used whenever no storageClass is
   /// specified for a newly-created object.
   ///
@@ -5926,7 +6255,8 @@ class Bucket {
   /// and the cost of storage. Values include MULTI_REGIONAL, REGIONAL,
   /// STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY.
   /// If this value is not specified when the bucket is created, it will default
-  /// to STANDARD. For more information, see storage classes.
+  /// to STANDARD. For more information, see
+  /// [Storage Classes](https://cloud.google.com/storage/docs/storage-classes).
   core.String? storageClass;
 
   /// The creation time of the bucket in RFC 3339 format.
@@ -5941,7 +6271,9 @@ class Bucket {
   /// The bucket's website configuration, controlling how the service behaves
   /// when accessing bucket contents as a web site.
   ///
-  /// See the Static Website Examples for more information.
+  /// See the
+  /// [Static Website Examples](https://cloud.google.com/storage/docs/static-website)
+  /// for more information.
   BucketWebsite? website;
 
   Bucket({
@@ -5954,9 +6286,12 @@ class Bucket {
     this.defaultObjectAcl,
     this.encryption,
     this.etag,
+    this.generation,
+    this.hardDeleteTime,
     this.hierarchicalNamespace,
     this.iamConfiguration,
     this.id,
+    this.ipFilter,
     this.kind,
     this.labels,
     this.lifecycle,
@@ -5970,9 +6305,11 @@ class Bucket {
     this.projectNumber,
     this.retentionPolicy,
     this.rpo,
+    this.satisfiesPZI,
     this.satisfiesPZS,
     this.selfLink,
     this.softDeletePolicy,
+    this.softDeleteTime,
     this.storageClass,
     this.timeCreated,
     this.updated,
@@ -6013,6 +6350,10 @@ class Bucket {
                   json_['encryption'] as core.Map<core.String, core.dynamic>)
               : null,
           etag: json_['etag'] as core.String?,
+          generation: json_['generation'] as core.String?,
+          hardDeleteTime: json_.containsKey('hardDeleteTime')
+              ? core.DateTime.parse(json_['hardDeleteTime'] as core.String)
+              : null,
           hierarchicalNamespace: json_.containsKey('hierarchicalNamespace')
               ? BucketHierarchicalNamespace.fromJson(
                   json_['hierarchicalNamespace']
@@ -6023,6 +6364,10 @@ class Bucket {
                   as core.Map<core.String, core.dynamic>)
               : null,
           id: json_['id'] as core.String?,
+          ipFilter: json_.containsKey('ipFilter')
+              ? BucketIpFilter.fromJson(
+                  json_['ipFilter'] as core.Map<core.String, core.dynamic>)
+              : null,
           kind: json_['kind'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
@@ -6057,11 +6402,15 @@ class Bucket {
                   as core.Map<core.String, core.dynamic>)
               : null,
           rpo: json_['rpo'] as core.String?,
+          satisfiesPZI: json_['satisfiesPZI'] as core.bool?,
           satisfiesPZS: json_['satisfiesPZS'] as core.bool?,
           selfLink: json_['selfLink'] as core.String?,
           softDeletePolicy: json_.containsKey('softDeletePolicy')
               ? BucketSoftDeletePolicy.fromJson(json_['softDeletePolicy']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          softDeleteTime: json_.containsKey('softDeleteTime')
+              ? core.DateTime.parse(json_['softDeleteTime'] as core.String)
               : null,
           storageClass: json_['storageClass'] as core.String?,
           timeCreated: json_.containsKey('timeCreated')
@@ -6092,10 +6441,14 @@ class Bucket {
         if (defaultObjectAcl != null) 'defaultObjectAcl': defaultObjectAcl!,
         if (encryption != null) 'encryption': encryption!,
         if (etag != null) 'etag': etag!,
+        if (generation != null) 'generation': generation!,
+        if (hardDeleteTime != null)
+          'hardDeleteTime': hardDeleteTime!.toUtc().toIso8601String(),
         if (hierarchicalNamespace != null)
           'hierarchicalNamespace': hierarchicalNamespace!,
         if (iamConfiguration != null) 'iamConfiguration': iamConfiguration!,
         if (id != null) 'id': id!,
+        if (ipFilter != null) 'ipFilter': ipFilter!,
         if (kind != null) 'kind': kind!,
         if (labels != null) 'labels': labels!,
         if (lifecycle != null) 'lifecycle': lifecycle!,
@@ -6109,9 +6462,12 @@ class Bucket {
         if (projectNumber != null) 'projectNumber': projectNumber!,
         if (retentionPolicy != null) 'retentionPolicy': retentionPolicy!,
         if (rpo != null) 'rpo': rpo!,
+        if (satisfiesPZI != null) 'satisfiesPZI': satisfiesPZI!,
         if (satisfiesPZS != null) 'satisfiesPZS': satisfiesPZS!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (softDeletePolicy != null) 'softDeletePolicy': softDeletePolicy!,
+        if (softDeleteTime != null)
+          'softDeleteTime': softDeleteTime!.toUtc().toIso8601String(),
         if (storageClass != null) 'storageClass': storageClass!,
         if (timeCreated != null)
           'timeCreated': timeCreated!.toUtc().toIso8601String(),
@@ -6873,6 +7229,11 @@ class Folders {
 
 /// The response message for storage.buckets.operations.list.
 class GoogleLongrunningListOperationsResponse {
+  /// The kind of item this is.
+  ///
+  /// For lists of operations, this is always storage#operations.
+  core.String? kind;
+
   /// The continuation token, used to page through large result sets.
   ///
   /// Provide this value in a subsequent request to return the next page of
@@ -6883,12 +7244,14 @@ class GoogleLongrunningListOperationsResponse {
   core.List<GoogleLongrunningOperation>? operations;
 
   GoogleLongrunningListOperationsResponse({
+    this.kind,
     this.nextPageToken,
     this.operations,
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
+          kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
           operations: (json_['operations'] as core.List?)
               ?.map((value) => GoogleLongrunningOperation.fromJson(
@@ -6897,6 +7260,7 @@ class GoogleLongrunningListOperationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null) 'operations': operations!,
       };
@@ -6913,6 +7277,11 @@ class GoogleLongrunningOperation {
 
   /// The error result of the operation in case of failure or cancellation.
   GoogleRpcStatus? error;
+
+  /// The kind of item this is.
+  ///
+  /// For operations, this is always storage#operation.
+  core.String? kind;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -6945,12 +7314,17 @@ class GoogleLongrunningOperation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
+  /// The link to this long running operation.
+  core.String? selfLink;
+
   GoogleLongrunningOperation({
     this.done,
     this.error,
+    this.kind,
     this.metadata,
     this.name,
     this.response,
+    this.selfLink,
   });
 
   GoogleLongrunningOperation.fromJson(core.Map json_)
@@ -6960,6 +7334,7 @@ class GoogleLongrunningOperation {
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
+          kind: json_['kind'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
@@ -6967,14 +7342,17 @@ class GoogleLongrunningOperation {
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
+          selfLink: json_['selfLink'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!,
+        if (kind != null) 'kind': kind!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
+        if (selfLink != null) 'selfLink': selfLink!,
       };
 }
 
@@ -7529,8 +7907,8 @@ class Object {
   /// CRC32c checksum, as described in RFC 4960, Appendix B; encoded using
   /// base64 in big-endian byte order.
   ///
-  /// For more information about using the CRC32c checksum, see Hashes and
-  /// ETags: Best Practices.
+  /// For more information about using the CRC32c checksum, see
+  /// [Data Validation and Change Detection](https://cloud.google.com/storage/docs/data-validation).
   core.String? crc32c;
 
   /// A timestamp in RFC 3339 format specified by the user for an object.
@@ -7587,8 +7965,8 @@ class Object {
 
   /// MD5 hash of the data; encoded using base64.
   ///
-  /// For more information about using the MD5 hash, see Hashes and ETags: Best
-  /// Practices.
+  /// For more information about using the MD5 hash, see
+  /// [Data Validation and Change Detection](https://cloud.google.com/storage/docs/data-validation).
   core.String? md5Hash;
 
   /// Media download link.
@@ -7613,6 +7991,13 @@ class Object {
   ///
   /// This will always be the uploader of the object.
   ObjectOwner? owner;
+
+  /// Restore token used to differentiate deleted objects with the same name and
+  /// generation.
+  ///
+  /// This field is only returned for deleted objects in hierarchical namespace
+  /// buckets.
+  core.String? restoreToken;
 
   /// A collection of object level retention parameters.
   ObjectRetention? retention;
@@ -7696,6 +8081,7 @@ class Object {
     this.metageneration,
     this.name,
     this.owner,
+    this.restoreToken,
     this.retention,
     this.retentionExpirationTime,
     this.selfLink,
@@ -7754,6 +8140,7 @@ class Object {
               ? ObjectOwner.fromJson(
                   json_['owner'] as core.Map<core.String, core.dynamic>)
               : null,
+          restoreToken: json_['restoreToken'] as core.String?,
           retention: json_.containsKey('retention')
               ? ObjectRetention.fromJson(
                   json_['retention'] as core.Map<core.String, core.dynamic>)
@@ -7813,6 +8200,7 @@ class Object {
         if (metageneration != null) 'metageneration': metageneration!,
         if (name != null) 'name': name!,
         if (owner != null) 'owner': owner!,
+        if (restoreToken != null) 'restoreToken': restoreToken!,
         if (retention != null) 'retention': retention!,
         if (retentionExpirationTime != null)
           'retentionExpirationTime':
@@ -8197,6 +8585,68 @@ class Policy {
         if (kind != null) 'kind': kind!,
         if (resourceId != null) 'resourceId': resourceId!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// The bucket's new custom placement configuration if relocating to a Custom
+/// Dual Region.
+class RelocateBucketRequestDestinationCustomPlacementConfig {
+  /// The list of regional locations in which data is placed.
+  core.List<core.String>? dataLocations;
+
+  RelocateBucketRequestDestinationCustomPlacementConfig({
+    this.dataLocations,
+  });
+
+  RelocateBucketRequestDestinationCustomPlacementConfig.fromJson(core.Map json_)
+      : this(
+          dataLocations: (json_['dataLocations'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataLocations != null) 'dataLocations': dataLocations!,
+      };
+}
+
+/// A Relocate Bucket request.
+class RelocateBucketRequest {
+  /// The bucket's new custom placement configuration if relocating to a Custom
+  /// Dual Region.
+  RelocateBucketRequestDestinationCustomPlacementConfig?
+      destinationCustomPlacementConfig;
+
+  /// The new location the bucket will be relocated to.
+  core.String? destinationLocation;
+
+  /// If true, validate the operation, but do not actually relocate the bucket.
+  core.bool? validateOnly;
+
+  RelocateBucketRequest({
+    this.destinationCustomPlacementConfig,
+    this.destinationLocation,
+    this.validateOnly,
+  });
+
+  RelocateBucketRequest.fromJson(core.Map json_)
+      : this(
+          destinationCustomPlacementConfig: json_
+                  .containsKey('destinationCustomPlacementConfig')
+              ? RelocateBucketRequestDestinationCustomPlacementConfig.fromJson(
+                  json_['destinationCustomPlacementConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          destinationLocation: json_['destinationLocation'] as core.String?,
+          validateOnly: json_['validateOnly'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destinationCustomPlacementConfig != null)
+          'destinationCustomPlacementConfig': destinationCustomPlacementConfig!,
+        if (destinationLocation != null)
+          'destinationLocation': destinationLocation!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
 

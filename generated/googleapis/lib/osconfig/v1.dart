@@ -2127,7 +2127,7 @@ class InventoryItem {
 
   /// The specific type of inventory, correlating to its specific details.
   /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Invalid. An type must be specified.
+  /// - "TYPE_UNSPECIFIED" : Invalid. A type must be specified.
   /// - "INSTALLED_PACKAGE" : This represents a package that is installed on the
   /// VM.
   /// - "AVAILABLE_PACKAGE" : This represents an update that is available for a
@@ -3549,7 +3549,7 @@ class OSPolicyResourceExecResourceExec {
   /// Path to an output file (that is created by this Exec) whose content will
   /// be recorded in OSPolicyResourceCompliance after a successful run. Absence
   /// or failure to read this file will result in this ExecResource being
-  /// non-compliant. Output file size is limited to 100K bytes.
+  /// non-compliant. Output file size is limited to 500K bytes.
   core.String? outputFilePath;
 
   /// An inline script.
@@ -3907,7 +3907,7 @@ class OSPolicyResourcePackageResource {
 ///
 /// - install: `apt-get update && apt-get -y install [name]` - remove: `apt-get
 /// -y remove [name]`
-typedef OSPolicyResourcePackageResourceAPT = $Shared02;
+typedef OSPolicyResourcePackageResourceAPT = $Shared03;
 
 /// A deb package file.
 ///
@@ -3948,7 +3948,7 @@ class OSPolicyResourcePackageResourceDeb {
 ///
 /// - install: `googet -noconfirm install package` - remove: `googet -noconfirm
 /// remove package`
-typedef OSPolicyResourcePackageResourceGooGet = $Shared02;
+typedef OSPolicyResourcePackageResourceGooGet = $Shared03;
 
 /// An MSI package.
 ///
@@ -4025,12 +4025,12 @@ class OSPolicyResourcePackageResourceRPM {
 /// A package managed by YUM.
 ///
 /// - install: `yum -y install package` - remove: `yum -y remove package`
-typedef OSPolicyResourcePackageResourceYUM = $Shared02;
+typedef OSPolicyResourcePackageResourceYUM = $Shared03;
 
 /// A package managed by Zypper.
 ///
 /// - install: `zypper -y install package` - remove: `zypper -y rm package`
-typedef OSPolicyResourcePackageResourceZypper = $Shared02;
+typedef OSPolicyResourcePackageResourceZypper = $Shared03;
 
 /// A resource that manages a package repository.
 class OSPolicyResourceRepositoryResource {
@@ -5312,14 +5312,14 @@ typedef ResumePatchDeploymentRequest = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Represents a time of day.
 ///
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-typedef TimeOfDay = $TimeOfDay;
+typedef TimeOfDay = $TimeOfDay00;
 
 /// Represents a time zone from the
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).

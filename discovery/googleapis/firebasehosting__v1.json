@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240611",
+    "revision": "20240319",
     "rootUrl": "https://firebasehosting.googleapis.com/",
     "servicePath": "",
     "title": "Firebase Hosting API",

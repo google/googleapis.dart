@@ -2061,9 +2061,13 @@ class CommonLanguageSettings {
   )
   core.String? referenceDocsUri;
 
+  /// Configuration for which RPCs should be generated in the GAPIC client.
+  SelectiveGapicGeneration? selectiveGapicGeneration;
+
   CommonLanguageSettings({
     this.destinations,
     this.referenceDocsUri,
+    this.selectiveGapicGeneration,
   });
 
   CommonLanguageSettings.fromJson(core.Map json_)
@@ -2072,11 +2076,19 @@ class CommonLanguageSettings {
               ?.map((value) => value as core.String)
               .toList(),
           referenceDocsUri: json_['referenceDocsUri'] as core.String?,
+          selectiveGapicGeneration:
+              json_.containsKey('selectiveGapicGeneration')
+                  ? SelectiveGapicGeneration.fromJson(
+                      json_['selectiveGapicGeneration']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destinations != null) 'destinations': destinations!,
         if (referenceDocsUri != null) 'referenceDocsUri': referenceDocsUri!,
+        if (selectiveGapicGeneration != null)
+          'selectiveGapicGeneration': selectiveGapicGeneration!,
       };
 }
 
@@ -2292,9 +2304,13 @@ class ContextRule {
   core.List<core.String>? allowedResponseExtensions;
 
   /// A list of full type names of provided contexts.
+  ///
+  /// It is used to support propagating HTTP headers and ETags from the response
+  /// extension.
   core.List<core.String>? provided;
 
-  /// A list of full type names of requested contexts.
+  /// A list of full type names of requested contexts, only the requested
+  /// context will be made available to the backend.
   core.List<core.String>? requested;
 
   /// Selects the methods to which this rule applies.
@@ -2845,6 +2861,34 @@ class EnumValue {
       };
 }
 
+/// Experimental features to be included during client library generation.
+///
+/// These fields will be deprecated once the feature graduates and is enabled by
+/// default.
+class ExperimentalFeatures {
+  /// Enables generation of asynchronous REST clients if `rest` transport is
+  /// enabled.
+  ///
+  /// By default, asynchronous REST clients will not be generated. This feature
+  /// will be enabled by default 1 month after launching the feature in preview
+  /// packages.
+  core.bool? restAsyncIoEnabled;
+
+  ExperimentalFeatures({
+    this.restAsyncIoEnabled,
+  });
+
+  ExperimentalFeatures.fromJson(core.Map json_)
+      : this(
+          restAsyncIoEnabled: json_['restAsyncIoEnabled'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (restAsyncIoEnabled != null)
+          'restAsyncIoEnabled': restAsyncIoEnabled!,
+      };
+}
+
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
 ///
@@ -3319,11 +3363,12 @@ class Http {
 /// effect as the proto annotation. This can be particularly useful if you have
 /// a proto that is reused in multiple services. Note that any transcoding
 /// specified in the service config will override any matching transcoding
-/// configuration in the proto. Example below selects a gRPC method and applies
-/// HttpRule to it. http: rules: - selector: example.v1.Messaging.GetMessage
-/// get: /v1/messages/{message_id}/{sub.subfield} Special notes When gRPC
-/// Transcoding is used to map a gRPC to JSON REST endpoints, the proto to JSON
-/// conversion must follow the
+/// configuration in the proto. The following example selects a gRPC method and
+/// applies an `HttpRule` to it: http: rules: - selector:
+/// example.v1.Messaging.GetMessage get:
+/// /v1/messages/{message_id}/{sub.subfield} Special notes When gRPC Transcoding
+/// is used to map a gRPC to JSON REST endpoints, the proto to JSON conversion
+/// must follow the
 /// [proto3 specification](https://developers.google.com/protocol-buffers/docs/proto3#json).
 /// While the single segment variable follows the semantics of
 /// [RFC 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.2 Simple String
@@ -4284,10 +4329,14 @@ class MetricDescriptorMetadata {
   /// with a higher granularity have a smaller sampling period.
   core.String? samplePeriod;
 
+  /// The scope of the timeseries data of the metric.
+  core.List<core.String>? timeSeriesResourceHierarchyLevel;
+
   MetricDescriptorMetadata({
     this.ingestDelay,
     this.launchStage,
     this.samplePeriod,
+    this.timeSeriesResourceHierarchyLevel,
   });
 
   MetricDescriptorMetadata.fromJson(core.Map json_)
@@ -4295,12 +4344,18 @@ class MetricDescriptorMetadata {
           ingestDelay: json_['ingestDelay'] as core.String?,
           launchStage: json_['launchStage'] as core.String?,
           samplePeriod: json_['samplePeriod'] as core.String?,
+          timeSeriesResourceHierarchyLevel:
+              (json_['timeSeriesResourceHierarchyLevel'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ingestDelay != null) 'ingestDelay': ingestDelay!,
         if (launchStage != null) 'launchStage': launchStage!,
         if (samplePeriod != null) 'samplePeriod': samplePeriod!,
+        if (timeSeriesResourceHierarchyLevel != null)
+          'timeSeriesResourceHierarchyLevel': timeSeriesResourceHierarchyLevel!,
       };
 }
 
@@ -4331,7 +4386,7 @@ typedef MetricRule = $MetricRule;
 /// mixin construct implies that all methods in `AccessControl` are also
 /// declared with same name and request/response types in `Storage`. A
 /// documentation generator or annotation processor will see the effective
-/// `Storage.GetAcl` method after inherting documentation and annotations as
+/// `Storage.GetAcl` method after inheriting documentation and annotations as
 /// follows: service Storage { // Get the underlying ACL object. rpc
 /// GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get =
 /// "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern
@@ -4977,8 +5032,12 @@ class PythonSettings {
   /// Some settings.
   CommonLanguageSettings? common;
 
+  /// Experimental features to be included during client library generation.
+  ExperimentalFeatures? experimentalFeatures;
+
   PythonSettings({
     this.common,
+    this.experimentalFeatures,
   });
 
   PythonSettings.fromJson(core.Map json_)
@@ -4987,10 +5046,16 @@ class PythonSettings {
               ? CommonLanguageSettings.fromJson(
                   json_['common'] as core.Map<core.String, core.dynamic>)
               : null,
+          experimentalFeatures: json_.containsKey('experimentalFeatures')
+              ? ExperimentalFeatures.fromJson(json_['experimentalFeatures']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (common != null) 'common': common!,
+        if (experimentalFeatures != null)
+          'experimentalFeatures': experimentalFeatures!,
       };
 }
 
@@ -5172,6 +5237,29 @@ class RubySettings {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (common != null) 'common': common!,
+      };
+}
+
+/// This message is used to configure the generation of a subset of the RPCs in
+/// a service for client libraries.
+class SelectiveGapicGeneration {
+  /// An allowlist of the fully qualified names of RPCs that should be included
+  /// on public client surfaces.
+  core.List<core.String>? methods;
+
+  SelectiveGapicGeneration({
+    this.methods,
+  });
+
+  SelectiveGapicGeneration.fromJson(core.Map json_)
+      : this(
+          methods: (json_['methods'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (methods != null) 'methods': methods!,
       };
 }
 
@@ -5555,7 +5643,7 @@ class SourceInfo {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Request message for SubmitConfigSource method.
 class SubmitConfigSourceRequest {

@@ -1495,7 +1495,10 @@ api.WebAppConfig buildWebAppConfig() {
     o.measurementId = 'foo';
     o.messagingSenderId = 'foo';
     o.projectId = 'foo';
+    o.projectNumber = 'foo';
+    o.realtimeDatabaseUrl = 'foo';
     o.storageBucket = 'foo';
+    o.version = 'foo';
   }
   buildCounterWebAppConfig--;
   return o;
@@ -1537,7 +1540,19 @@ void checkWebAppConfig(api.WebAppConfig o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.projectNumber!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.realtimeDatabaseUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.storageBucket!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
       unittest.equals('foo'),
     );
   }

@@ -457,6 +457,8 @@ class Connector {
   /// The range of internal addresses that follows RFC 4632 notation.
   ///
   /// Example: `10.132.0.0/28`.
+  ///
+  /// Optional.
   core.String? ipCidrRange;
 
   /// Machine type of VM Instance underlying connector.
@@ -475,6 +477,9 @@ class Connector {
   /// max-instances are provided, max-instances takes precedence over
   /// max-throughput. The use of `max-throughput` is discouraged in favor of
   /// `max-instances`.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? maxThroughput;
 
   /// Minimum value of instances in autoscaling group underlying the connector.
@@ -488,6 +493,9 @@ class Connector {
   /// min-instances are provided, min-instances takes precedence over
   /// min-throughput. The use of `min-throughput` is discouraged in favor of
   /// `min-instances`.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? minThroughput;
 
   /// The resource name in the format `projects / * /locations / * /connectors /
@@ -495,6 +503,8 @@ class Connector {
   core.String? name;
 
   /// Name of a VPC network.
+  ///
+  /// Optional.
   core.String? network;
 
   /// State of the VPC access connector.
@@ -510,6 +520,8 @@ class Connector {
   core.String? state;
 
   /// The subnet in which to house the VPC Access Connector.
+  ///
+  /// Optional.
   Subnet? subnet;
 
   Connector({
@@ -731,7 +743,7 @@ class Operation {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// The subnet in which to house the connector
 class Subnet {
@@ -740,12 +752,16 @@ class Subnet {
   /// E.g. if the full subnet selfLink is
   /// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName}
   /// the correct input for this field would be {subnetName}
+  ///
+  /// Optional.
   core.String? name;
 
   /// Project in which the subnet exists.
   ///
   /// If not set, this project is assumed to be the project for which the
   /// connector create request was issued.
+  ///
+  /// Optional.
   core.String? projectId;
 
   Subnet({

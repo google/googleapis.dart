@@ -432,6 +432,7 @@ api.CorpusQuery buildCorpusQuery() {
   final o = api.CorpusQuery();
   buildCounterCorpusQuery++;
   if (buildCounterCorpusQuery < 3) {
+    o.calendarQuery = buildHeldCalendarQuery();
     o.driveQuery = buildHeldDriveQuery();
     o.groupsQuery = buildHeldGroupsQuery();
     o.hangoutsChatQuery = buildHeldHangoutsChatQuery();
@@ -445,6 +446,7 @@ api.CorpusQuery buildCorpusQuery() {
 void checkCorpusQuery(api.CorpusQuery o) {
   buildCounterCorpusQuery++;
   if (buildCounterCorpusQuery < 3) {
+    checkHeldCalendarQuery(o.calendarQuery!);
     checkHeldDriveQuery(o.driveQuery!);
     checkHeldGroupsQuery(o.groupsQuery!);
     checkHeldHangoutsChatQuery(o.hangoutsChatQuery!);
@@ -805,6 +807,21 @@ void checkHeldAccount(api.HeldAccount o) {
     );
   }
   buildCounterHeldAccount--;
+}
+
+core.int buildCounterHeldCalendarQuery = 0;
+api.HeldCalendarQuery buildHeldCalendarQuery() {
+  final o = api.HeldCalendarQuery();
+  buildCounterHeldCalendarQuery++;
+  if (buildCounterHeldCalendarQuery < 3) {}
+  buildCounterHeldCalendarQuery--;
+  return o;
+}
+
+void checkHeldCalendarQuery(api.HeldCalendarQuery o) {
+  buildCounterHeldCalendarQuery++;
+  if (buildCounterHeldCalendarQuery < 3) {}
+  buildCounterHeldCalendarQuery--;
 }
 
 core.int buildCounterHeldDriveQuery = 0;
@@ -1304,6 +1321,7 @@ api.Matter buildMatter() {
     o.description = 'foo';
     o.matterId = 'foo';
     o.matterPermissions = buildUnnamed18();
+    o.matterRegion = 'foo';
     o.name = 'foo';
     o.state = 'foo';
   }
@@ -1323,6 +1341,10 @@ void checkMatter(api.Matter o) {
       unittest.equals('foo'),
     );
     checkUnnamed18(o.matterPermissions!);
+    unittest.expect(
+      o.matterRegion!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -2285,6 +2307,16 @@ void main() {
       final od = api.HeldAccount.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkHeldAccount(od);
+    });
+  });
+
+  unittest.group('obj-schema-HeldCalendarQuery', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildHeldCalendarQuery();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.HeldCalendarQuery.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkHeldCalendarQuery(od);
     });
   });
 

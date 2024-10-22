@@ -452,7 +452,7 @@ class Concentration {
   /// concentration unit.
   core.String? units;
 
-  /// Value of pollutant concentration.
+  /// Value of the pollutant concentration.
   core.double? value;
 
   Concentration({
@@ -1289,10 +1289,10 @@ class Pollutant {
   /// Additional information about the pollutant.
   AdditionalInfo? additionalInfo;
 
-  /// The pollutant's code name.
+  /// The pollutant's code name (for example, "so2").
   ///
-  /// For example: "so2". A list of all available codes could be found
-  /// \[here\](/maps/documentation/air-quality/pollutants#reported_pollutants).
+  /// For a list of supported pollutant codes, see \[Reported
+  /// pollutants\](/maps/documentation/air-quality/pollutants#reported_pollutants).
   core.String? code;
 
   /// The pollutant's concentration level measured by one of the standard air
@@ -1308,7 +1308,7 @@ class Pollutant {
   ///
   /// For chemical compounds, this is the IUPAC name. Example: "Sulfur Dioxide".
   /// For more information about the IUPAC names table, see
-  /// https://iupac.org/what-we-do/periodic-table-of-elements/
+  /// https://iupac.org/what-we-do/periodic-table-of-elements/.
   core.String? fullName;
 
   Pollutant({

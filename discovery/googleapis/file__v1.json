@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240523",
+    "revision": "20241008",
     "rootUrl": "https://file.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Filestore API",
@@ -506,7 +506,7 @@
                                             "type": "string"
                                         },
                                         "updateMask": {
-                                            "description": "Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields: * \"description\" * \"file_shares\" * \"labels\"",
+                                            "description": "Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields: * \"description\" * \"file_shares\" * \"labels\" * \"performance_config\" * \"deletion_protection_enabled\" * \"deletion_protection_reason\"",
                                             "format": "google-fieldmask",
                                             "location": "query",
                                             "type": "string"
@@ -515,6 +515,34 @@
                                     "path": "v1/{+name}",
                                     "request": {
                                         "$ref": "Instance"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "promoteReplica": {
+                                    "description": "Promote the standby instance (replica).",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:promoteReplica",
+                                    "httpMethod": "POST",
+                                    "id": "file.projects.locations.instances.promoteReplica",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:promoteReplica",
+                                    "request": {
+                                        "$ref": "PromoteReplicaRequest"
                                     },
                                     "response": {
                                         "$ref": "Operation"
@@ -905,6 +933,21 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "fileSystemProtocol": {
+                    "description": "Output only. The file system protocol of the source Filestore instance that this backup is created from.",
+                    "enum": [
+                        "FILE_PROTOCOL_UNSPECIFIED",
+                        "NFS_V3",
+                        "NFS_V4_1"
+                    ],
+                    "enumDescriptions": [
+                        "FILE_PROTOCOL_UNSPECIFIED serves a \"not set\" default value when a FileProtocol is a separate field in a message.",
+                        "NFS 3.0.",
+                        "NFS 4.1."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "kmsKey": {
                     "description": "Immutable. KMS key name used for data encryption.",
                     "type": "string"
@@ -992,6 +1035,13 @@
                     "format": "int64",
                     "readOnly": true,
                     "type": "string"
+                },
+                "tags": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Input only. Immutable. Tag key-value pairs are bound to this resource. For example: \"123/environment\": \"production\", \"123/costCenter\": \"marketing\"",
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -1087,6 +1137,18 @@
                 },
                 "sourceBackup": {
                     "description": "The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "FixedIOPS": {
+            "description": "Fixed IOPS (input/output operations per second) parameters.",
+            "id": "FixedIOPS",
+            "properties": {
+                "maxReadIops": {
+                    "description": "Required. Maximum raw read IOPS.",
+                    "format": "int64",
                     "type": "string"
                 }
             },
@@ -1367,14 +1429,39 @@
             },
             "type": "object"
         },
+        "IOPSPerTB": {
+            "description": "IOPS per TB. Filestore defines TB as 1024^4 bytes (TiB).",
+            "id": "IOPSPerTB",
+            "properties": {
+                "maxReadIopsPerTb": {
+                    "description": "Required. Maximum read IOPS per TiB.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Instance": {
             "description": "A Filestore instance.",
             "id": "Instance",
             "properties": {
+                "configurablePerformanceEnabled": {
+                    "description": "Output only. Indicates whether this instance's performance is configurable. If enabled, adjust it using the 'performance_config' field.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
                 "createTime": {
                     "description": "Output only. The time when the instance was created.",
                     "format": "google-datetime",
                     "readOnly": true,
+                    "type": "string"
+                },
+                "deletionProtectionEnabled": {
+                    "description": "Optional. Indicates whether the instance is protected against deletion.",
+                    "type": "boolean"
+                },
+                "deletionProtectionReason": {
+                    "description": "Optional. The reason for enabling deletion protection.",
                     "type": "string"
                 },
                 "description": {
@@ -1415,9 +1502,32 @@
                     },
                     "type": "array"
                 },
+                "performanceConfig": {
+                    "$ref": "PerformanceConfig",
+                    "description": "Optional. Used to configure performance."
+                },
+                "performanceLimits": {
+                    "$ref": "PerformanceLimits",
+                    "description": "Output only. Used for getting performance limits.",
+                    "readOnly": true
+                },
+                "protocol": {
+                    "description": "Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.",
+                    "enum": [
+                        "FILE_PROTOCOL_UNSPECIFIED",
+                        "NFS_V3",
+                        "NFS_V4_1"
+                    ],
+                    "enumDescriptions": [
+                        "FILE_PROTOCOL_UNSPECIFIED serves a \"not set\" default value when a FileProtocol is a separate field in a message.",
+                        "NFS 3.0.",
+                        "NFS 4.1."
+                    ],
+                    "type": "string"
+                },
                 "replication": {
                     "$ref": "Replication",
-                    "description": "Optional. Replicaition configuration."
+                    "description": "Optional. Replication configuration."
                 },
                 "satisfiesPzi": {
                     "description": "Output only. Reserved for future use.",
@@ -1442,7 +1552,8 @@
                         "SUSPENDED",
                         "SUSPENDING",
                         "RESUMING",
-                        "REVERTING"
+                        "REVERTING",
+                        "PROMOTING"
                     ],
                     "enumDescriptions": [
                         "State not set.",
@@ -1455,7 +1566,8 @@
                         "The instance is suspended. You can get further details from the `suspension_reasons` field of the `Instance` resource.",
                         "The instance is in the process of becoming suspended.",
                         "The instance is in the process of becoming active.",
-                        "The instance is reverting to a snapshot."
+                        "The instance is reverting to a snapshot.",
+                        "The replica instance is being promoted."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -1480,6 +1592,13 @@
                     },
                     "readOnly": true,
                     "type": "array"
+                },
+                "tags": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Input only. Immutable. Tag key-value pairs are bound to this resource. For example: \"123/environment\": \"production\", \"123/costCenter\": \"marketing\"",
+                    "type": "object"
                 },
                 "tier": {
                     "description": "The service tier of the instance.",
@@ -1896,6 +2015,58 @@
             },
             "type": "object"
         },
+        "PerformanceConfig": {
+            "description": "Used for setting the performance configuration. If the user doesn't specify PerformanceConfig, automatically provision the default performance settings as described in https://cloud.google.com/filestore/docs/performance. Larger instances will be linearly set to more IOPS. If the instance's capacity is increased or decreased, its performance will be automatically adjusted upwards or downwards accordingly (respectively).",
+            "id": "PerformanceConfig",
+            "properties": {
+                "fixedIops": {
+                    "$ref": "FixedIOPS",
+                    "description": "Choose a fixed provisioned IOPS value for the instance, which will remain constant regardless of instance capacity. Value must be a multiple of 1000. If the chosen value is outside the supported range for the instance's capacity during instance creation, instance creation will fail with an `InvalidArgument` error. Similarly, if an instance capacity update would result in a value outside the supported range, the update will fail with an `InvalidArgument` error."
+                },
+                "iopsPerTb": {
+                    "$ref": "IOPSPerTB",
+                    "description": "Provision IOPS dynamically based on the capacity of the instance. Provisioned read IOPS will be calculated by multiplying the capacity of the instance in TiB by the `iops_per_tb` value. For example, for a 2 TiB instance with an `iops_per_tb` value of 17000 the provisioned read IOPS will be 34000. If the calculated value is outside the supported range for the instance's capacity during instance creation, instance creation will fail with an `InvalidArgument` error. Similarly, if an instance capacity update would result in a value outside the supported range, the update will fail with an `InvalidArgument` error."
+                }
+            },
+            "type": "object"
+        },
+        "PerformanceLimits": {
+            "description": "The enforced performance limits, calculated from the instance's performance configuration.",
+            "id": "PerformanceLimits",
+            "properties": {
+                "maxReadIops": {
+                    "description": "Output only. The max read IOPS.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "maxReadThroughputBps": {
+                    "description": "Output only. The max read throughput in bytes per second.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "maxWriteIops": {
+                    "description": "Output only. The max write IOPS.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "maxWriteThroughputBps": {
+                    "description": "Output only. The max write throughput in bytes per second.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PromoteReplicaRequest": {
+            "description": "PromoteReplicaRequest promotes a Filestore standby instance (replica).",
+            "id": "PromoteReplicaRequest",
+            "properties": {},
+            "type": "object"
+        },
         "ReplicaConfig": {
             "description": "Replica configuration for the instance.",
             "id": "ReplicaConfig",
@@ -1953,7 +2124,7 @@
             "id": "Replication",
             "properties": {
                 "replicas": {
-                    "description": "Optional. Replicas configuration on the instance. For now, only a single replica config is supported.",
+                    "description": "Optional. Replication configuration for the replica instance associated with this instance. Only a single replica is supported.",
                     "items": {
                         "$ref": "ReplicaConfig"
                     },
@@ -1968,8 +2139,8 @@
                     ],
                     "enumDescriptions": [
                         "Role not set.",
-                        "The instance is a Active replication member, functions as the replication source instance.",
-                        "The instance is a Standby replication member, functions as the replication destination instance."
+                        "The instance is the `ACTIVE` replication member, functions as the replication source instance.",
+                        "The instance is the `STANDBY` replication member, functions as the replication destination instance."
                     ],
                     "type": "string"
                 }
@@ -2090,6 +2261,13 @@
                     ],
                     "readOnly": true,
                     "type": "string"
+                },
+                "tags": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Input only. Immutable. Tag key-value pairs are bound to this resource. For example: \"123/environment\": \"production\", \"123/costCenter\": \"marketing\"",
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -2126,22 +2304,22 @@
             "id": "TimeOfDay",
             "properties": {
                 "hours": {
-                    "description": "Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value \"24:00:00\" for scenarios like business closing time.",
+                    "description": "Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value \"24:00:00\" for scenarios like business closing time.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "minutes": {
-                    "description": "Minutes of hour of day. Must be from 0 to 59.",
+                    "description": "Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "nanos": {
-                    "description": "Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.",
+                    "description": "Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "seconds": {
-                    "description": "Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.",
+                    "description": "Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.",
                     "format": "int32",
                     "type": "integer"
                 }

@@ -856,7 +856,32 @@ class AnnotateTextResponse {
 }
 
 /// Represents a category returned from the text classifier.
-typedef ClassificationCategory = $ClassificationCategory;
+class ClassificationCategory {
+  /// The classifier's confidence of the category.
+  ///
+  /// Number represents how certain the classifier is that this category
+  /// represents the given text.
+  core.double? confidence;
+
+  /// The name of the category representing the document.
+  core.String? name;
+
+  ClassificationCategory({
+    this.confidence,
+    this.name,
+  });
+
+  ClassificationCategory.fromJson(core.Map json_)
+      : this(
+          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (confidence != null) 'confidence': confidence!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// Model options available for classification requests.
 class ClassificationModelOptions {

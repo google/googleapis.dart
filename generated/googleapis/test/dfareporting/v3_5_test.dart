@@ -173,8 +173,6 @@ api.CreativeAssetMetadata buildCreativeAssetMetadata() {
     o.id = 'foo';
     o.idDimensionValue = buildDimensionValue();
     o.kind = 'foo';
-    o.mediaRequestInfo = buildMediaRequestInfo();
-    o.mediaResponseInfo = buildMediaResponseInfo();
     o.richMedia = true;
     o.timerCustomEvents = buildUnnamed4();
     o.warnedValidationRules = buildUnnamed5();
@@ -200,8 +198,6 @@ void checkCreativeAssetMetadata(api.CreativeAssetMetadata o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkMediaRequestInfo(o.mediaRequestInfo!);
-    checkMediaResponseInfo(o.mediaResponseInfo!);
     unittest.expect(o.richMedia!, unittest.isTrue);
     checkUnnamed4(o.timerCustomEvents!);
     checkUnnamed5(o.warnedValidationRules!);
@@ -347,124 +343,6 @@ void checkDimensionValue(api.DimensionValue o) {
     );
   }
   buildCounterDimensionValue--;
-}
-
-core.int buildCounterMediaRequestInfo = 0;
-api.MediaRequestInfo buildMediaRequestInfo() {
-  final o = api.MediaRequestInfo();
-  buildCounterMediaRequestInfo++;
-  if (buildCounterMediaRequestInfo < 3) {
-    o.currentBytes = 'foo';
-    o.customData = 'foo';
-    o.diffObjectVersion = 'foo';
-    o.finalStatus = 42;
-    o.notificationType = 'foo';
-    o.requestId = 'foo';
-    o.requestReceivedParamsServingInfo = 'foo';
-    o.totalBytes = 'foo';
-    o.totalBytesIsEstimated = true;
-  }
-  buildCounterMediaRequestInfo--;
-  return o;
-}
-
-void checkMediaRequestInfo(api.MediaRequestInfo o) {
-  buildCounterMediaRequestInfo++;
-  if (buildCounterMediaRequestInfo < 3) {
-    unittest.expect(
-      o.currentBytes!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.customData!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.diffObjectVersion!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.finalStatus!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.notificationType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.requestId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.requestReceivedParamsServingInfo!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.totalBytes!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(o.totalBytesIsEstimated!, unittest.isTrue);
-  }
-  buildCounterMediaRequestInfo--;
-}
-
-core.int buildCounterMediaResponseInfo = 0;
-api.MediaResponseInfo buildMediaResponseInfo() {
-  final o = api.MediaResponseInfo();
-  buildCounterMediaResponseInfo++;
-  if (buildCounterMediaResponseInfo < 3) {
-    o.customData = 'foo';
-    o.dataStorageTransform = 'foo';
-    o.dynamicDropTarget = 'foo';
-    o.dynamicDropzone = 'foo';
-    o.requestClass = 'foo';
-    o.scottyAgentUserId = 'foo';
-    o.scottyCustomerLog = 'foo';
-    o.trafficClassField = 'foo';
-    o.verifyHashFromHeader = true;
-  }
-  buildCounterMediaResponseInfo--;
-  return o;
-}
-
-void checkMediaResponseInfo(api.MediaResponseInfo o) {
-  buildCounterMediaResponseInfo++;
-  if (buildCounterMediaResponseInfo < 3) {
-    unittest.expect(
-      o.customData!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dataStorageTransform!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dynamicDropTarget!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dynamicDropzone!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.requestClass!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.scottyAgentUserId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.scottyCustomerLog!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.trafficClassField!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(o.verifyHashFromHeader!, unittest.isTrue);
-  }
-  buildCounterMediaResponseInfo--;
 }
 
 core.int buildCounterOffsetPosition = 0;
@@ -632,26 +510,6 @@ void main() {
       final od = api.DimensionValue.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkDimensionValue(od);
-    });
-  });
-
-  unittest.group('obj-schema-MediaRequestInfo', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildMediaRequestInfo();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.MediaRequestInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkMediaRequestInfo(od);
-    });
-  });
-
-  unittest.group('obj-schema-MediaResponseInfo', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildMediaResponseInfo();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.MediaResponseInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkMediaResponseInfo(od);
     });
   });
 

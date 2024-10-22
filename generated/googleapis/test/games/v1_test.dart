@@ -1095,24 +1095,13 @@ void checkEventUpdateResponse(api.EventUpdateResponse o) {
   buildCounterEventUpdateResponse--;
 }
 
-core.List<api.RecallToken> buildUnnamed14() => [
-      buildRecallToken(),
-      buildRecallToken(),
-    ];
-
-void checkUnnamed14(core.List<api.RecallToken> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkRecallToken(o[0]);
-  checkRecallToken(o[1]);
-}
-
 core.int buildCounterGamePlayerToken = 0;
 api.GamePlayerToken buildGamePlayerToken() {
   final o = api.GamePlayerToken();
   buildCounterGamePlayerToken++;
   if (buildCounterGamePlayerToken < 3) {
     o.applicationId = 'foo';
-    o.token = buildUnnamed14();
+    o.recallToken = buildRecallToken();
   }
   buildCounterGamePlayerToken--;
   return o;
@@ -1125,7 +1114,7 @@ void checkGamePlayerToken(api.GamePlayerToken o) {
       o.applicationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed14(o.token!);
+    checkRecallToken(o.recallToken!);
   }
   buildCounterGamePlayerToken--;
 }
@@ -1190,12 +1179,54 @@ void checkGamesAchievementSetStepsAtLeast(
   buildCounterGamesAchievementSetStepsAtLeast--;
 }
 
-core.List<api.ApplicationPlayerId> buildUnnamed15() => [
+core.int buildCounterGeneratePlayGroupingApiTokenResponse = 0;
+api.GeneratePlayGroupingApiTokenResponse
+    buildGeneratePlayGroupingApiTokenResponse() {
+  final o = api.GeneratePlayGroupingApiTokenResponse();
+  buildCounterGeneratePlayGroupingApiTokenResponse++;
+  if (buildCounterGeneratePlayGroupingApiTokenResponse < 3) {
+    o.token = buildPlayGroupingApiToken();
+  }
+  buildCounterGeneratePlayGroupingApiTokenResponse--;
+  return o;
+}
+
+void checkGeneratePlayGroupingApiTokenResponse(
+    api.GeneratePlayGroupingApiTokenResponse o) {
+  buildCounterGeneratePlayGroupingApiTokenResponse++;
+  if (buildCounterGeneratePlayGroupingApiTokenResponse < 3) {
+    checkPlayGroupingApiToken(o.token!);
+  }
+  buildCounterGeneratePlayGroupingApiTokenResponse--;
+}
+
+core.int buildCounterGenerateRecallPlayGroupingApiTokenResponse = 0;
+api.GenerateRecallPlayGroupingApiTokenResponse
+    buildGenerateRecallPlayGroupingApiTokenResponse() {
+  final o = api.GenerateRecallPlayGroupingApiTokenResponse();
+  buildCounterGenerateRecallPlayGroupingApiTokenResponse++;
+  if (buildCounterGenerateRecallPlayGroupingApiTokenResponse < 3) {
+    o.token = buildPlayGroupingApiToken();
+  }
+  buildCounterGenerateRecallPlayGroupingApiTokenResponse--;
+  return o;
+}
+
+void checkGenerateRecallPlayGroupingApiTokenResponse(
+    api.GenerateRecallPlayGroupingApiTokenResponse o) {
+  buildCounterGenerateRecallPlayGroupingApiTokenResponse++;
+  if (buildCounterGenerateRecallPlayGroupingApiTokenResponse < 3) {
+    checkPlayGroupingApiToken(o.token!);
+  }
+  buildCounterGenerateRecallPlayGroupingApiTokenResponse--;
+}
+
+core.List<api.ApplicationPlayerId> buildUnnamed14() => [
       buildApplicationPlayerId(),
       buildApplicationPlayerId(),
     ];
 
-void checkUnnamed15(core.List<api.ApplicationPlayerId> o) {
+void checkUnnamed14(core.List<api.ApplicationPlayerId> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApplicationPlayerId(o[0]);
   checkApplicationPlayerId(o[1]);
@@ -1207,7 +1238,7 @@ api.GetMultipleApplicationPlayerIdsResponse
   final o = api.GetMultipleApplicationPlayerIdsResponse();
   buildCounterGetMultipleApplicationPlayerIdsResponse++;
   if (buildCounterGetMultipleApplicationPlayerIdsResponse < 3) {
-    o.playerIds = buildUnnamed15();
+    o.playerIds = buildUnnamed14();
   }
   buildCounterGetMultipleApplicationPlayerIdsResponse--;
   return o;
@@ -1217,7 +1248,7 @@ void checkGetMultipleApplicationPlayerIdsResponse(
     api.GetMultipleApplicationPlayerIdsResponse o) {
   buildCounterGetMultipleApplicationPlayerIdsResponse++;
   if (buildCounterGetMultipleApplicationPlayerIdsResponse < 3) {
-    checkUnnamed15(o.playerIds!);
+    checkUnnamed14(o.playerIds!);
   }
   buildCounterGetMultipleApplicationPlayerIdsResponse--;
 }
@@ -1514,12 +1545,12 @@ void checkLeaderboardEntry(api.LeaderboardEntry o) {
   buildCounterLeaderboardEntry--;
 }
 
-core.List<api.Leaderboard> buildUnnamed16() => [
+core.List<api.Leaderboard> buildUnnamed15() => [
       buildLeaderboard(),
       buildLeaderboard(),
     ];
 
-void checkUnnamed16(core.List<api.Leaderboard> o) {
+void checkUnnamed15(core.List<api.Leaderboard> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLeaderboard(o[0]);
   checkLeaderboard(o[1]);
@@ -1530,7 +1561,7 @@ api.LeaderboardListResponse buildLeaderboardListResponse() {
   final o = api.LeaderboardListResponse();
   buildCounterLeaderboardListResponse++;
   if (buildCounterLeaderboardListResponse < 3) {
-    o.items = buildUnnamed16();
+    o.items = buildUnnamed15();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -1541,7 +1572,7 @@ api.LeaderboardListResponse buildLeaderboardListResponse() {
 void checkLeaderboardListResponse(api.LeaderboardListResponse o) {
   buildCounterLeaderboardListResponse++;
   if (buildCounterLeaderboardListResponse < 3) {
-    checkUnnamed16(o.items!);
+    checkUnnamed15(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1596,12 +1627,12 @@ void checkLeaderboardScoreRank(api.LeaderboardScoreRank o) {
   buildCounterLeaderboardScoreRank--;
 }
 
-core.List<api.LeaderboardEntry> buildUnnamed17() => [
+core.List<api.LeaderboardEntry> buildUnnamed16() => [
       buildLeaderboardEntry(),
       buildLeaderboardEntry(),
     ];
 
-void checkUnnamed17(core.List<api.LeaderboardEntry> o) {
+void checkUnnamed16(core.List<api.LeaderboardEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLeaderboardEntry(o[0]);
   checkLeaderboardEntry(o[1]);
@@ -1612,7 +1643,7 @@ api.LeaderboardScores buildLeaderboardScores() {
   final o = api.LeaderboardScores();
   buildCounterLeaderboardScores++;
   if (buildCounterLeaderboardScores < 3) {
-    o.items = buildUnnamed17();
+    o.items = buildUnnamed16();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.numScores = 'foo';
@@ -1626,7 +1657,7 @@ api.LeaderboardScores buildLeaderboardScores() {
 void checkLeaderboardScores(api.LeaderboardScores o) {
   buildCounterLeaderboardScores++;
   if (buildCounterLeaderboardScores < 3) {
-    checkUnnamed17(o.items!);
+    checkUnnamed16(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1722,12 +1753,12 @@ void checkLinkPersonaResponse(api.LinkPersonaResponse o) {
   buildCounterLinkPersonaResponse--;
 }
 
-core.List<api.PlayerLevel> buildUnnamed18() => [
+core.List<api.PlayerLevel> buildUnnamed17() => [
       buildPlayerLevel(),
       buildPlayerLevel(),
     ];
 
-void checkUnnamed18(core.List<api.PlayerLevel> o) {
+void checkUnnamed17(core.List<api.PlayerLevel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayerLevel(o[0]);
   checkPlayerLevel(o[1]);
@@ -1740,7 +1771,7 @@ api.MetagameConfig buildMetagameConfig() {
   if (buildCounterMetagameConfig < 3) {
     o.currentVersion = 42;
     o.kind = 'foo';
-    o.playerLevels = buildUnnamed18();
+    o.playerLevels = buildUnnamed17();
   }
   buildCounterMetagameConfig--;
   return o;
@@ -1757,9 +1788,31 @@ void checkMetagameConfig(api.MetagameConfig o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed18(o.playerLevels!);
+    checkUnnamed17(o.playerLevels!);
   }
   buildCounterMetagameConfig--;
+}
+
+core.int buildCounterPlayGroupingApiToken = 0;
+api.PlayGroupingApiToken buildPlayGroupingApiToken() {
+  final o = api.PlayGroupingApiToken();
+  buildCounterPlayGroupingApiToken++;
+  if (buildCounterPlayGroupingApiToken < 3) {
+    o.tokenValue = 'foo';
+  }
+  buildCounterPlayGroupingApiToken--;
+  return o;
+}
+
+void checkPlayGroupingApiToken(api.PlayGroupingApiToken o) {
+  buildCounterPlayGroupingApiToken++;
+  if (buildCounterPlayGroupingApiToken < 3) {
+    unittest.expect(
+      o.tokenValue!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPlayGroupingApiToken--;
 }
 
 core.int buildCounterPlayerName = 0;
@@ -1914,12 +1967,12 @@ void checkPlayerAchievement(api.PlayerAchievement o) {
   buildCounterPlayerAchievement--;
 }
 
-core.List<api.PlayerAchievement> buildUnnamed19() => [
+core.List<api.PlayerAchievement> buildUnnamed18() => [
       buildPlayerAchievement(),
       buildPlayerAchievement(),
     ];
 
-void checkUnnamed19(core.List<api.PlayerAchievement> o) {
+void checkUnnamed18(core.List<api.PlayerAchievement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayerAchievement(o[0]);
   checkPlayerAchievement(o[1]);
@@ -1930,7 +1983,7 @@ api.PlayerAchievementListResponse buildPlayerAchievementListResponse() {
   final o = api.PlayerAchievementListResponse();
   buildCounterPlayerAchievementListResponse++;
   if (buildCounterPlayerAchievementListResponse < 3) {
-    o.items = buildUnnamed19();
+    o.items = buildUnnamed18();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -1941,7 +1994,7 @@ api.PlayerAchievementListResponse buildPlayerAchievementListResponse() {
 void checkPlayerAchievementListResponse(api.PlayerAchievementListResponse o) {
   buildCounterPlayerAchievementListResponse++;
   if (buildCounterPlayerAchievementListResponse < 3) {
-    checkUnnamed19(o.items!);
+    checkUnnamed18(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1996,12 +2049,12 @@ void checkPlayerEvent(api.PlayerEvent o) {
   buildCounterPlayerEvent--;
 }
 
-core.List<api.PlayerEvent> buildUnnamed20() => [
+core.List<api.PlayerEvent> buildUnnamed19() => [
       buildPlayerEvent(),
       buildPlayerEvent(),
     ];
 
-void checkUnnamed20(core.List<api.PlayerEvent> o) {
+void checkUnnamed19(core.List<api.PlayerEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayerEvent(o[0]);
   checkPlayerEvent(o[1]);
@@ -2012,7 +2065,7 @@ api.PlayerEventListResponse buildPlayerEventListResponse() {
   final o = api.PlayerEventListResponse();
   buildCounterPlayerEventListResponse++;
   if (buildCounterPlayerEventListResponse < 3) {
-    o.items = buildUnnamed20();
+    o.items = buildUnnamed19();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -2023,7 +2076,7 @@ api.PlayerEventListResponse buildPlayerEventListResponse() {
 void checkPlayerEventListResponse(api.PlayerEventListResponse o) {
   buildCounterPlayerEventListResponse++;
   if (buildCounterPlayerEventListResponse < 3) {
-    checkUnnamed20(o.items!);
+    checkUnnamed19(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2130,12 +2183,12 @@ void checkPlayerLeaderboardScore(api.PlayerLeaderboardScore o) {
   buildCounterPlayerLeaderboardScore--;
 }
 
-core.List<api.PlayerLeaderboardScore> buildUnnamed21() => [
+core.List<api.PlayerLeaderboardScore> buildUnnamed20() => [
       buildPlayerLeaderboardScore(),
       buildPlayerLeaderboardScore(),
     ];
 
-void checkUnnamed21(core.List<api.PlayerLeaderboardScore> o) {
+void checkUnnamed20(core.List<api.PlayerLeaderboardScore> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayerLeaderboardScore(o[0]);
   checkPlayerLeaderboardScore(o[1]);
@@ -2147,7 +2200,7 @@ api.PlayerLeaderboardScoreListResponse
   final o = api.PlayerLeaderboardScoreListResponse();
   buildCounterPlayerLeaderboardScoreListResponse++;
   if (buildCounterPlayerLeaderboardScoreListResponse < 3) {
-    o.items = buildUnnamed21();
+    o.items = buildUnnamed20();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.player = buildPlayer();
@@ -2160,7 +2213,7 @@ void checkPlayerLeaderboardScoreListResponse(
     api.PlayerLeaderboardScoreListResponse o) {
   buildCounterPlayerLeaderboardScoreListResponse++;
   if (buildCounterPlayerLeaderboardScoreListResponse < 3) {
-    checkUnnamed21(o.items!);
+    checkUnnamed20(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2211,12 +2264,12 @@ void checkPlayerLevel(api.PlayerLevel o) {
   buildCounterPlayerLevel--;
 }
 
-core.List<api.Player> buildUnnamed22() => [
+core.List<api.Player> buildUnnamed21() => [
       buildPlayer(),
       buildPlayer(),
     ];
 
-void checkUnnamed22(core.List<api.Player> o) {
+void checkUnnamed21(core.List<api.Player> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayer(o[0]);
   checkPlayer(o[1]);
@@ -2227,7 +2280,7 @@ api.PlayerListResponse buildPlayerListResponse() {
   final o = api.PlayerListResponse();
   buildCounterPlayerListResponse++;
   if (buildCounterPlayerListResponse < 3) {
-    o.items = buildUnnamed22();
+    o.items = buildUnnamed21();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -2238,7 +2291,7 @@ api.PlayerListResponse buildPlayerListResponse() {
 void checkPlayerListResponse(api.PlayerListResponse o) {
   buildCounterPlayerListResponse++;
   if (buildCounterPlayerListResponse < 3) {
-    checkUnnamed22(o.items!);
+    checkUnnamed21(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2293,12 +2346,12 @@ void checkPlayerScore(api.PlayerScore o) {
   buildCounterPlayerScore--;
 }
 
-core.List<api.PlayerScoreResponse> buildUnnamed23() => [
+core.List<api.PlayerScoreResponse> buildUnnamed22() => [
       buildPlayerScoreResponse(),
       buildPlayerScoreResponse(),
     ];
 
-void checkUnnamed23(core.List<api.PlayerScoreResponse> o) {
+void checkUnnamed22(core.List<api.PlayerScoreResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayerScoreResponse(o[0]);
   checkPlayerScoreResponse(o[1]);
@@ -2310,7 +2363,7 @@ api.PlayerScoreListResponse buildPlayerScoreListResponse() {
   buildCounterPlayerScoreListResponse++;
   if (buildCounterPlayerScoreListResponse < 3) {
     o.kind = 'foo';
-    o.submittedScores = buildUnnamed23();
+    o.submittedScores = buildUnnamed22();
   }
   buildCounterPlayerScoreListResponse--;
   return o;
@@ -2323,17 +2376,17 @@ void checkPlayerScoreListResponse(api.PlayerScoreListResponse o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed23(o.submittedScores!);
+    checkUnnamed22(o.submittedScores!);
   }
   buildCounterPlayerScoreListResponse--;
 }
 
-core.List<core.String> buildUnnamed24() => [
+core.List<core.String> buildUnnamed23() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed24(core.List<core.String> o) {
+void checkUnnamed23(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2345,12 +2398,12 @@ void checkUnnamed24(core.List<core.String> o) {
   );
 }
 
-core.List<api.PlayerScore> buildUnnamed25() => [
+core.List<api.PlayerScore> buildUnnamed24() => [
       buildPlayerScore(),
       buildPlayerScore(),
     ];
 
-void checkUnnamed25(core.List<api.PlayerScore> o) {
+void checkUnnamed24(core.List<api.PlayerScore> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayerScore(o[0]);
   checkPlayerScore(o[1]);
@@ -2361,12 +2414,12 @@ api.PlayerScoreResponse buildPlayerScoreResponse() {
   final o = api.PlayerScoreResponse();
   buildCounterPlayerScoreResponse++;
   if (buildCounterPlayerScoreResponse < 3) {
-    o.beatenScoreTimeSpans = buildUnnamed24();
+    o.beatenScoreTimeSpans = buildUnnamed23();
     o.formattedScore = 'foo';
     o.kind = 'foo';
     o.leaderboardId = 'foo';
     o.scoreTag = 'foo';
-    o.unbeatenScores = buildUnnamed25();
+    o.unbeatenScores = buildUnnamed24();
   }
   buildCounterPlayerScoreResponse--;
   return o;
@@ -2375,7 +2428,7 @@ api.PlayerScoreResponse buildPlayerScoreResponse() {
 void checkPlayerScoreResponse(api.PlayerScoreResponse o) {
   buildCounterPlayerScoreResponse++;
   if (buildCounterPlayerScoreResponse < 3) {
-    checkUnnamed24(o.beatenScoreTimeSpans!);
+    checkUnnamed23(o.beatenScoreTimeSpans!);
     unittest.expect(
       o.formattedScore!,
       unittest.equals('foo'),
@@ -2392,17 +2445,17 @@ void checkPlayerScoreResponse(api.PlayerScoreResponse o) {
       o.scoreTag!,
       unittest.equals('foo'),
     );
-    checkUnnamed25(o.unbeatenScores!);
+    checkUnnamed24(o.unbeatenScores!);
   }
   buildCounterPlayerScoreResponse--;
 }
 
-core.List<api.ScoreSubmission> buildUnnamed26() => [
+core.List<api.ScoreSubmission> buildUnnamed25() => [
       buildScoreSubmission(),
       buildScoreSubmission(),
     ];
 
-void checkUnnamed26(core.List<api.ScoreSubmission> o) {
+void checkUnnamed25(core.List<api.ScoreSubmission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkScoreSubmission(o[0]);
   checkScoreSubmission(o[1]);
@@ -2414,7 +2467,7 @@ api.PlayerScoreSubmissionList buildPlayerScoreSubmissionList() {
   buildCounterPlayerScoreSubmissionList++;
   if (buildCounterPlayerScoreSubmissionList < 3) {
     o.kind = 'foo';
-    o.scores = buildUnnamed26();
+    o.scores = buildUnnamed25();
   }
   buildCounterPlayerScoreSubmissionList--;
   return o;
@@ -2427,7 +2480,7 @@ void checkPlayerScoreSubmissionList(api.PlayerScoreSubmissionList o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed26(o.scores!);
+    checkUnnamed25(o.scores!);
   }
   buildCounterPlayerScoreSubmissionList--;
 }
@@ -2537,7 +2590,7 @@ api.RetrieveDeveloperGamesLastPlayerTokenResponse
   final o = api.RetrieveDeveloperGamesLastPlayerTokenResponse();
   buildCounterRetrieveDeveloperGamesLastPlayerTokenResponse++;
   if (buildCounterRetrieveDeveloperGamesLastPlayerTokenResponse < 3) {
-    o.token = buildRecallToken();
+    o.gamePlayerToken = buildGamePlayerToken();
   }
   buildCounterRetrieveDeveloperGamesLastPlayerTokenResponse--;
   return o;
@@ -2547,17 +2600,17 @@ void checkRetrieveDeveloperGamesLastPlayerTokenResponse(
     api.RetrieveDeveloperGamesLastPlayerTokenResponse o) {
   buildCounterRetrieveDeveloperGamesLastPlayerTokenResponse++;
   if (buildCounterRetrieveDeveloperGamesLastPlayerTokenResponse < 3) {
-    checkRecallToken(o.token!);
+    checkGamePlayerToken(o.gamePlayerToken!);
   }
   buildCounterRetrieveDeveloperGamesLastPlayerTokenResponse--;
 }
 
-core.List<api.GamePlayerToken> buildUnnamed27() => [
+core.List<api.GamePlayerToken> buildUnnamed26() => [
       buildGamePlayerToken(),
       buildGamePlayerToken(),
     ];
 
-void checkUnnamed27(core.List<api.GamePlayerToken> o) {
+void checkUnnamed26(core.List<api.GamePlayerToken> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGamePlayerToken(o[0]);
   checkGamePlayerToken(o[1]);
@@ -2568,7 +2621,7 @@ api.RetrieveGamesPlayerTokensResponse buildRetrieveGamesPlayerTokensResponse() {
   final o = api.RetrieveGamesPlayerTokensResponse();
   buildCounterRetrieveGamesPlayerTokensResponse++;
   if (buildCounterRetrieveGamesPlayerTokensResponse < 3) {
-    o.applicationRecallTokens = buildUnnamed27();
+    o.gamePlayerTokens = buildUnnamed26();
   }
   buildCounterRetrieveGamesPlayerTokensResponse--;
   return o;
@@ -2578,17 +2631,17 @@ void checkRetrieveGamesPlayerTokensResponse(
     api.RetrieveGamesPlayerTokensResponse o) {
   buildCounterRetrieveGamesPlayerTokensResponse++;
   if (buildCounterRetrieveGamesPlayerTokensResponse < 3) {
-    checkUnnamed27(o.applicationRecallTokens!);
+    checkUnnamed26(o.gamePlayerTokens!);
   }
   buildCounterRetrieveGamesPlayerTokensResponse--;
 }
 
-core.List<api.RecallToken> buildUnnamed28() => [
+core.List<api.RecallToken> buildUnnamed27() => [
       buildRecallToken(),
       buildRecallToken(),
     ];
 
-void checkUnnamed28(core.List<api.RecallToken> o) {
+void checkUnnamed27(core.List<api.RecallToken> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRecallToken(o[0]);
   checkRecallToken(o[1]);
@@ -2599,7 +2652,7 @@ api.RetrievePlayerTokensResponse buildRetrievePlayerTokensResponse() {
   final o = api.RetrievePlayerTokensResponse();
   buildCounterRetrievePlayerTokensResponse++;
   if (buildCounterRetrievePlayerTokensResponse < 3) {
-    o.tokens = buildUnnamed28();
+    o.tokens = buildUnnamed27();
   }
   buildCounterRetrievePlayerTokensResponse--;
   return o;
@@ -2608,7 +2661,7 @@ api.RetrievePlayerTokensResponse buildRetrievePlayerTokensResponse() {
 void checkRetrievePlayerTokensResponse(api.RetrievePlayerTokensResponse o) {
   buildCounterRetrievePlayerTokensResponse++;
   if (buildCounterRetrievePlayerTokensResponse < 3) {
-    checkUnnamed28(o.tokens!);
+    checkUnnamed27(o.tokens!);
   }
   buildCounterRetrievePlayerTokensResponse--;
 }
@@ -2825,12 +2878,12 @@ void checkSnapshotImage(api.SnapshotImage o) {
   buildCounterSnapshotImage--;
 }
 
-core.List<api.Snapshot> buildUnnamed29() => [
+core.List<api.Snapshot> buildUnnamed28() => [
       buildSnapshot(),
       buildSnapshot(),
     ];
 
-void checkUnnamed29(core.List<api.Snapshot> o) {
+void checkUnnamed28(core.List<api.Snapshot> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSnapshot(o[0]);
   checkSnapshot(o[1]);
@@ -2841,7 +2894,7 @@ api.SnapshotListResponse buildSnapshotListResponse() {
   final o = api.SnapshotListResponse();
   buildCounterSnapshotListResponse++;
   if (buildCounterSnapshotListResponse < 3) {
-    o.items = buildUnnamed29();
+    o.items = buildUnnamed28();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -2852,7 +2905,7 @@ api.SnapshotListResponse buildSnapshotListResponse() {
 void checkSnapshotListResponse(api.SnapshotListResponse o) {
   buildCounterSnapshotListResponse++;
   if (buildCounterSnapshotListResponse < 3) {
-    checkUnnamed29(o.items!);
+    checkUnnamed28(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2988,12 +3041,12 @@ void checkUnlinkPersonaResponse(api.UnlinkPersonaResponse o) {
   buildCounterUnlinkPersonaResponse--;
 }
 
-core.List<core.String> buildUnnamed30() => [
+core.List<core.String> buildUnnamed29() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed30(core.List<core.String> o) {
+void checkUnnamed29(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3005,12 +3058,12 @@ void checkUnnamed30(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed31() => [
+core.List<core.String> buildUnnamed30() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed31(core.List<core.String> o) {
+void checkUnnamed30(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3323,6 +3376,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GeneratePlayGroupingApiTokenResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGeneratePlayGroupingApiTokenResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GeneratePlayGroupingApiTokenResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGeneratePlayGroupingApiTokenResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-GenerateRecallPlayGroupingApiTokenResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGenerateRecallPlayGroupingApiTokenResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GenerateRecallPlayGroupingApiTokenResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGenerateRecallPlayGroupingApiTokenResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-GetMultipleApplicationPlayerIdsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGetMultipleApplicationPlayerIdsResponse();
@@ -3460,6 +3533,16 @@ void main() {
       final od = api.MetagameConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkMetagameConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-PlayGroupingApiToken', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPlayGroupingApiToken();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PlayGroupingApiToken.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPlayGroupingApiToken(od);
     });
   });
 
@@ -3771,6 +3854,145 @@ void main() {
       final od = api.UnlinkPersonaResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkUnlinkPersonaResponse(od);
+    });
+  });
+
+  unittest.group('resource-AccesstokensResource', () {
+    unittest.test('method--generatePlayGroupingApiToken', () async {
+      final mock = HttpServerMock();
+      final res = api.GamesApi(mock).accesstokens;
+      final arg_packageName = 'foo';
+      final arg_persona = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 50),
+          unittest.equals('games/v1/accesstokens/generatePlayGroupingApiToken'),
+        );
+        pathOffset += 50;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['packageName']!.first,
+          unittest.equals(arg_packageName),
+        );
+        unittest.expect(
+          queryMap['persona']!.first,
+          unittest.equals(arg_persona),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGeneratePlayGroupingApiTokenResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.generatePlayGroupingApiToken(
+          packageName: arg_packageName,
+          persona: arg_persona,
+          $fields: arg_$fields);
+      checkGeneratePlayGroupingApiTokenResponse(
+          response as api.GeneratePlayGroupingApiTokenResponse);
+    });
+
+    unittest.test('method--generateRecallPlayGroupingApiToken', () async {
+      final mock = HttpServerMock();
+      final res = api.GamesApi(mock).accesstokens;
+      final arg_packageName = 'foo';
+      final arg_persona = 'foo';
+      final arg_recallSessionId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 56),
+          unittest.equals(
+              'games/v1/accesstokens/generateRecallPlayGroupingApiToken'),
+        );
+        pathOffset += 56;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['packageName']!.first,
+          unittest.equals(arg_packageName),
+        );
+        unittest.expect(
+          queryMap['persona']!.first,
+          unittest.equals(arg_persona),
+        );
+        unittest.expect(
+          queryMap['recallSessionId']!.first,
+          unittest.equals(arg_recallSessionId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGenerateRecallPlayGroupingApiTokenResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.generateRecallPlayGroupingApiToken(
+          packageName: arg_packageName,
+          persona: arg_persona,
+          recallSessionId: arg_recallSessionId,
+          $fields: arg_$fields);
+      checkGenerateRecallPlayGroupingApiTokenResponse(
+          response as api.GenerateRecallPlayGroupingApiTokenResponse);
     });
   });
 
@@ -5085,7 +5307,7 @@ void main() {
     unittest.test('method--getMultipleApplicationPlayerIds', () async {
       final mock = HttpServerMock();
       final res = api.GamesApi(mock).players;
-      final arg_applicationIds = buildUnnamed30();
+      final arg_applicationIds = buildUnnamed29();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -5272,7 +5494,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.GamesApi(mock).recall;
       final arg_sessionId = 'foo';
-      final arg_applicationIds = buildUnnamed31();
+      final arg_applicationIds = buildUnnamed30();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;

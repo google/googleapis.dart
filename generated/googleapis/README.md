@@ -41,13 +41,6 @@ An API for setting attribute based access control to requests to Google Cloud se
 - [Original documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/)
 - [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/accesscontextmanager_v1/accesscontextmanager_v1-library.html)
 
-#### ACME DNS API - `acmedns/v1`
-
-Google Domains ACME DNS API that allows users to complete ACME DNS-01 challenges for a domain.
-
-- [Original documentation](https://developers.google.com/domains/acme-dns/)
-- [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/acmedns_v1/acmedns_v1-library.html)
-
 #### Address Validation API - `addressvalidation/v1`
 
 The Address Validation API allows developers to verify the accuracy of addresses. Given an address, it returns information about the correctness of the components of the parsed address, a geocode, and a verdict on the deliverability of the parsed address.
@@ -97,12 +90,10 @@ The AdSense Management API allows publishers to access their inventory and run e
 - [Original documentation](https://developers.google.com/adsense/management/)
 - [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/adsense_v2/adsense_v2-library.html)
 
-#### ![Logo](https://www.google.com/images/icons/product/adsense-16.png) AdSense Host API - `adsensehost/v4_1`
+#### AdSense Platform API - `adsenseplatform/v1`
 
-Generates performance reports, generates ad codes, and provides publisher management capabilities for AdSense Hosts.
-
-- [Original documentation](https://developers.google.com/adsense/host/)
-- [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/adsensehost_v4_1/adsensehost_v4_1-library.html)
+- [Original documentation](https://developers.google.com/adsense/platforms/)
+- [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/adsenseplatform_v1/adsenseplatform_v1-library.html)
 
 #### Advisory Notifications API - `advisorynotifications/v1`
 
@@ -440,13 +431,6 @@ The Cloud Channel API enables Google Cloud partners to have a single unified res
 - [Original documentation](https://cloud.google.com/channel)
 - [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/cloudchannel_v1/cloudchannel_v1-library.html)
 
-#### Cloud Commerce Partner Procurement API - `cloudcommerceprocurement/v1`
-
-Partner API for the Cloud Commerce Procurement Service.
-
-- [Original documentation](https://cloud.google.com/marketplace/docs/partners/)
-- [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/cloudcommerceprocurement_v1/cloudcommerceprocurement_v1-library.html)
-
 #### Cloud Controls Partner API - `cloudcontrolspartner/v1`
 
 Provides insights about your customers and their Assured Workloads based on your Sovereign Controls by Partners offering.
@@ -601,7 +585,7 @@ Enables users to create and manage connections to Google Cloud services and thir
 
 Builds and manages container-based applications, powered by the open source Kubernetes technology.
 
-- [Original documentation](https://cloud.google.com/container-engine/)
+- [Original documentation](https://cloud.google.com/kubernetes-engine/docs/)
 - [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/container_v1/container_v1-library.html)
 
 #### Container Analysis API - `containeranalysis/v1`
@@ -622,6 +606,13 @@ Manage your product listings and accounts for Google Shopping
 
 - [Original documentation](https://cloud.google.com/document-warehouse)
 - [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/contentwarehouse_v1/contentwarehouse_v1-library.html)
+
+#### CSS API - `css/v1`
+
+Programmatically manage your Comparison Shopping Service (CSS) account data at scale.
+
+- [Original documentation](https://developers.google.com/comparison-shopping-services/api/overview)
+- [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/css_v1/css_v1-library.html)
 
 #### Custom Search API - `customsearch/v1`
 
@@ -799,13 +790,6 @@ Enables management and configuration of domain names.
 - [Original documentation](https://cloud.google.com/domains/)
 - [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/domains_v1/domains_v1-library.html)
 
-#### Domains RDAP API - `domainsrdap/v1`
-
-Read-only public API that lets users search for information about domain names.
-
-- [Original documentation](https://developers.google.com/domains/rdap/)
-- [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/domainsrdap_v1/domainsrdap_v1-library.html)
-
 #### DoubleClick Bid Manager API - `doubleclickbidmanager/v2`
 
 DoubleClick Bid Manager API allows users to manage and create campaigns and reports.
@@ -907,13 +891,6 @@ Access custom machine learning models hosted via Firebase ML.
 - [Original documentation](https://firebase.google.com)
 - [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/firebaseml_v1/firebaseml_v1-library.html)
 
-#### Firebase Remote Config API - `firebaseremoteconfig/v1`
-
-The Firebase Remote Config API lets developers change the behavior and appearance of their apps without requiring users to download an app update. It is an alternative to, but can be used in tandem with, the Firebase console at https://console.firebase.google.com.
-
-- [Original documentation](https://firebase.google.com/docs/remote-config/use-config-rest)
-- [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/firebaseremoteconfig_v1/firebaseremoteconfig_v1-library.html)
-
 #### Firebase Rules API - `firebaserules/v1`
 
 Creates and manages rules that determine when a Firebase Rules-enabled service should permit a request. 
@@ -975,7 +952,12 @@ Backup for GKE is a managed Kubernetes workload backup and restore service for G
 - [Original documentation](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster)
 - [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/gkehub_v1/gkehub_v1-library.html)
 
-#### Anthos On-Prem API - `gkeonprem/v1`
+#### GKE Hub API - `gkehub/v2`
+
+- [Original documentation](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster)
+- [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/gkehub_v2/gkehub_v2-library.html)
+
+#### GDC Virtual API - `gkeonprem/v1`
 
 - [Original documentation](https://cloud.google.com/anthos/clusters/docs/on-prem/)
 - [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/gkeonprem_v1/gkeonprem_v1-library.html)
@@ -1180,6 +1162,13 @@ Public API for managing Manufacturer Center related data.
 - [Original documentation](https://developers.google.com/manufacturers/)
 - [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/manufacturers_v1/manufacturers_v1-library.html)
 
+#### Google Meet API - `meet/v2`
+
+Create and manage meetings in Google Meet.
+
+- [Original documentation](https://developers.google.com/meet/api)
+- [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/meet_v2/meet_v2-library.html)
+
 #### Cloud Memorystore for Memcached API - `memcache/v1`
 
 Google Cloud Memorystore for Memcached API is used for creating and managing Memcached instances in GCP.
@@ -1264,6 +1253,13 @@ The My Business Verifications API provides an interface for taking verifications
 - [Original documentation](https://developers.google.com/my-business/)
 - [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/mybusinessverifications_v1/mybusinessverifications_v1-library.html)
 
+#### NetApp API - `netapp/v1`
+
+Google Cloud NetApp Volumes is a fully-managed, cloud-based data storage service that provides advanced data management capabilities and highly scalable performance with global availability.
+
+- [Original documentation](https://cloud.google.com/netapp/)
+- [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/netapp_v1/netapp_v1-library.html)
+
 #### Network Connectivity API - `networkconnectivity/v1`
 
 This API enables connectivity with and between Google Cloud resources.
@@ -1316,6 +1312,13 @@ A service to scan container images for vulnerabilities.
 - [Original documentation](https://cloud.google.com/container-analysis/docs/on-demand-scanning/)
 - [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/ondemandscanning_v1/ondemandscanning_v1-library.html)
 
+#### Oracle Database@Google Cloud API - `oracledatabase/v1`
+
+The Oracle Database@Google Cloud API provides a set of APIs to manage Oracle database services, such as Exadata and Autonomous Databases.
+
+- [Original documentation](https://cloud.google.com/oracle/database/docs)
+- [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/oracledatabase_v1/oracledatabase_v1-library.html)
+
 #### Organization Policy API - `orgpolicy/v2`
 
 The Organization Policy API allows users to configure governance rules on their Google Cloud resources across the resource hierarchy.
@@ -1355,13 +1358,6 @@ Provides access to information about profiles and contacts.
 
 - [Original documentation](https://developers.google.com/people/)
 - [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/people_v1/people_v1-library.html)
-
-#### Photos Library API - `photoslibrary/v1`
-
-Manage photos, videos, and albums in Google Photos 
-
-- [Original documentation](https://developers.google.com/photos/)
-- [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/photoslibrary_v1/photoslibrary_v1-library.html)
 
 #### Places API (New) - `places/v1`
 
@@ -1539,7 +1535,7 @@ Manages and executes Google Apps Script projects.
 
 The Search Console API provides access to both Search Console data (verified users only) and to public information on an URL basis (anyone)
 
-- [Original documentation](https://developers.google.com/webmaster-tools/search-console-api/)
+- [Original documentation](https://developers.google.com/webmaster-tools/about)
 - [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/searchconsole_v1/searchconsole_v1-library.html)
 
 #### Secret Manager API - `secretmanager/v1`
@@ -1640,13 +1636,6 @@ Solar API.
 - [Original documentation](https://developers.google.com/maps/documentation/solar)
 - [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/solar_v1/solar_v1-library.html)
 
-#### Cloud Source Repositories API - `sourcerepo/v1`
-
-Accesses source code repositories hosted by Google. Important: Cloud Source Repositories is scheduled for end of sales starting June 17, 2024. Customers who have enabled the API prior to this date will not be affected and can continue to use Cloud Source Repositories. Organizations or projects who have not previously enabled the API cannot use Cloud Source Repositories after this date. View Cloud Source Repositories documentation for more info. 
-
-- [Original documentation](https://cloud.google.com/source-repositories/docs)
-- [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/sourcerepo_v1/sourcerepo_v1-library.html)
-
 #### Cloud Spanner API - `spanner/v1`
 
 Cloud Spanner is a managed, mission-critical, globally consistent and scalable relational database service.
@@ -1660,13 +1649,6 @@ Converts audio to text by applying powerful neural network models.
 
 - [Original documentation](https://cloud.google.com/speech-to-text/docs/quickstart-protocol)
 - [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/speech_v1/speech_v1-library.html)
-
-#### Cloud Speech-to-Text API - `speech/v2`
-
-Converts audio to text by applying powerful neural network models.
-
-- [Original documentation](https://cloud.google.com/speech-to-text/docs/quickstart-protocol)
-- [Dart package details](https://pub.dev/documentation/googleapis/13.2.1-wip/speech_v2/speech_v2-library.html)
 
 #### ![Logo](https://www.google.com/images/icons/product/cloud_storage-16.png) Cloud Storage JSON API - `storage/v1`
 

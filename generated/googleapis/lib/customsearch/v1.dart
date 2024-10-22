@@ -85,6 +85,9 @@ class CseResource {
   /// months. * `y[number]`: requests results from the specified number of past
   /// years.
   ///
+  /// [enableAlternateSearchHandler] - Optional. Enables routing of Programmable
+  /// Search Engine requests to an alternate search handler.
+  ///
   /// [exactTerms] - Identifies a phrase that all documents in the search
   /// results must contain.
   ///
@@ -284,6 +287,7 @@ class CseResource {
     core.String? cr,
     core.String? cx,
     core.String? dateRestrict,
+    core.bool? enableAlternateSearchHandler,
     core.String? exactTerms,
     core.String? excludeTerms,
     core.String? fileType,
@@ -319,6 +323,8 @@ class CseResource {
       if (cr != null) 'cr': [cr],
       if (cx != null) 'cx': [cx],
       if (dateRestrict != null) 'dateRestrict': [dateRestrict],
+      if (enableAlternateSearchHandler != null)
+        'enableAlternateSearchHandler': ['${enableAlternateSearchHandler}'],
       if (exactTerms != null) 'exactTerms': [exactTerms],
       if (excludeTerms != null) 'excludeTerms': [excludeTerms],
       if (fileType != null) 'fileType': [fileType],
@@ -396,6 +402,9 @@ class CseSiterestrictResource {
   /// months. * `y[number]`: requests results from the specified number of past
   /// years.
   ///
+  /// [enableAlternateSearchHandler] - Optional. Enables routing of Programmable
+  /// Search Engine requests to an alternate search handler.
+  ///
   /// [exactTerms] - Identifies a phrase that all documents in the search
   /// results must contain.
   ///
@@ -595,6 +604,7 @@ class CseSiterestrictResource {
     core.String? cr,
     core.String? cx,
     core.String? dateRestrict,
+    core.bool? enableAlternateSearchHandler,
     core.String? exactTerms,
     core.String? excludeTerms,
     core.String? fileType,
@@ -630,6 +640,8 @@ class CseSiterestrictResource {
       if (cr != null) 'cr': [cr],
       if (cx != null) 'cx': [cx],
       if (dateRestrict != null) 'dateRestrict': [dateRestrict],
+      if (enableAlternateSearchHandler != null)
+        'enableAlternateSearchHandler': ['${enableAlternateSearchHandler}'],
       if (exactTerms != null) 'exactTerms': [exactTerms],
       if (excludeTerms != null) 'excludeTerms': [excludeTerms],
       if (fileType != null) 'fileType': [fileType],

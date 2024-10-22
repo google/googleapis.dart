@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240612",
+    "revision": "20230424",
     "rootUrl": "https://publicca.googleapis.com/",
     "servicePath": "",
     "title": "Public Certificate Authority API",

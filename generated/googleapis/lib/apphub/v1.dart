@@ -548,7 +548,7 @@ class ProjectsLocationsApplicationsResource {
   /// Request parameters:
   ///
   /// [name] - Identifier. The resource name of an Application. Format:
-  /// "projects/{host-project-id}/locations/{location}/applications/{application-id}"
+  /// `"projects/{host-project-id}/locations/{location}/applications/{application-id}"`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/applications/\[^/\]+$`.
   ///
@@ -930,7 +930,7 @@ class ProjectsLocationsApplicationsServicesResource {
   /// Request parameters:
   ///
   /// [name] - Identifier. The resource name of a Service. Format:
-  /// "projects/{host-project-id}/locations/{location}/applications/{application-id}/services/{service-id}"
+  /// `"projects/{host-project-id}/locations/{location}/applications/{application-id}/services/{service-id}"`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/applications/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -1214,7 +1214,7 @@ class ProjectsLocationsApplicationsWorkloadsResource {
   /// Request parameters:
   ///
   /// [name] - Identifier. The resource name of the Workload. Format:
-  /// "projects/{host-project-id}/locations/{location}/applications/{application-id}/workloads/{workload-id}"
+  /// `"projects/{host-project-id}/locations/{location}/applications/{application-id}/workloads/{workload-id}"`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/applications/\[^/\]+/workloads/\[^/\]+$`.
   ///
@@ -1974,7 +1974,7 @@ class ProjectsLocationsServiceProjectAttachmentsResource {
   }
 }
 
-/// Application defines the governance boundary for App Hub Entities that
+/// Application defines the governance boundary for App Hub entities that
 /// perform a logical end-to-end business function.
 ///
 /// App Hub supports application level IAM permission to align with governance
@@ -2007,7 +2007,7 @@ class Application {
   /// Identifier.
   ///
   /// The resource name of an Application. Format:
-  /// "projects/{host-project-id}/locations/{location}/applications/{application-id}"
+  /// `"projects/{host-project-id}/locations/{location}/applications/{application-id}"`
   core.String? name;
 
   /// Defines what data can be included into this Application.
@@ -2376,15 +2376,15 @@ typedef DetachServiceProjectAttachmentRequest = $Empty;
 /// Response for DetachServiceProjectAttachment.
 typedef DetachServiceProjectAttachmentResponse = $Empty;
 
-/// DiscoveredService is a network/api interface that exposes some functionality
-/// to clients for consumption over the network.
+/// DiscoveredService is a network or API interface that exposes some
+/// functionality to clients for consumption over the network.
 ///
 /// A discovered service can be registered to a App Hub service.
 class DiscoveredService {
   /// Identifier.
   ///
   /// The resource name of the discovered service. Format:
-  /// "projects/{host-project-id}/locations/{location}/discoveredServices/{uuid}""
+  /// `"projects/{host-project-id}/locations/{location}/discoveredServices/{uuid}"`
   core.String? name;
 
   /// Properties of an underlying compute resource that can comprise a Service.
@@ -2437,7 +2437,7 @@ class DiscoveredWorkload {
   /// Identifier.
   ///
   /// The resource name of the discovered workload. Format:
-  /// "projects/{host-project-id}/locations/{location}/discoveredWorkloads/{uuid}"
+  /// `"projects/{host-project-id}/locations/{location}/discoveredWorkloads/{uuid}"`
   core.String? name;
 
   /// Properties of an underlying compute resource represented by the Workload.
@@ -3084,6 +3084,7 @@ class Scope {
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Unspecified type.
   /// - "REGIONAL" : Regional type.
+  /// - "GLOBAL" : Global type.
   core.String? type;
 
   Scope({
@@ -3101,7 +3102,7 @@ class Scope {
 }
 
 /// Service is an App Hub data model that contains a discovered service, which
-/// represents a network/api interface that exposes some functionality to
+/// represents a network or API interface that exposes some functionality to
 /// clients for consumption over the network.
 class Service {
   /// Consumer provided attributes.
@@ -3136,7 +3137,7 @@ class Service {
   /// Identifier.
   ///
   /// The resource name of a Service. Format:
-  /// "projects/{host-project-id}/locations/{location}/applications/{application-id}/services/{service-id}"
+  /// `"projects/{host-project-id}/locations/{location}/applications/{application-id}/services/{service-id}"`
   core.String? name;
 
   /// Properties of an underlying compute resource that can comprise a Service.
@@ -3245,10 +3246,10 @@ class ServiceProjectAttachment {
   /// Identifier.
   ///
   /// The resource name of a ServiceProjectAttachment. Format:
-  /// "projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}."
+  /// `"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}."`
   core.String? name;
 
-  /// Service project name in the format: "projects/abc" or "projects/123".
+  /// Service project name in the format: `"projects/abc"` or `"projects/123"`.
   ///
   /// As input, project name with either project id or number are accepted. As
   /// output, this field will contain project number.
@@ -3342,8 +3343,9 @@ class ServiceProperties {
 
 /// Reference to an underlying networking resource that can comprise a Service.
 class ServiceReference {
-  /// The underlying resource URI (For example, URI of Forwarding Rule, URL Map,
-  /// and Backend Service).
+  /// The underlying resource URI.
+  ///
+  /// For example, URI of Forwarding Rule, URL Map, and Backend Service.
   ///
   /// Output only.
   core.String? uri;
@@ -3404,7 +3406,7 @@ class SetIamPolicyRequest {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
@@ -3449,7 +3451,7 @@ class Workload {
   /// Identifier.
   ///
   /// The resource name of the Workload. Format:
-  /// "projects/{host-project-id}/locations/{location}/applications/{application-id}/workloads/{workload-id}"
+  /// `"projects/{host-project-id}/locations/{location}/applications/{application-id}/workloads/{workload-id}"`
   core.String? name;
 
   /// Workload state.
@@ -3548,19 +3550,19 @@ class WorkloadProperties {
   /// The service project identifier that the underlying cloud resource resides
   /// in.
   ///
-  /// Empty for non cloud resources.
+  /// Empty for non-cloud resources.
   ///
   /// Output only.
   core.String? gcpProject;
 
-  /// The location that the underlying compute resource resides in (e.g
+  /// The location that the underlying compute resource resides in (for example,
   /// us-west1).
   ///
   /// Output only.
   core.String? location;
 
   /// The location that the underlying compute resource resides in if it is
-  /// zonal (e.g us-west1-a).
+  /// zonal (for example, us-west1-a).
   ///
   /// Output only.
   core.String? zone;

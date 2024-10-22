@@ -386,6 +386,7 @@ api.AndroidModel buildAndroidModel() {
     o.form = 'foo';
     o.formFactor = 'foo';
     o.id = 'foo';
+    o.labInfo = buildLabInfo();
     o.lowFpsVideoRecording = true;
     o.manufacturer = 'foo';
     o.name = 'foo';
@@ -425,6 +426,7 @@ void checkAndroidModel(api.AndroidModel o) {
       o.id!,
       unittest.equals('foo'),
     );
+    checkLabInfo(o.labInfo!);
     unittest.expect(o.lowFpsVideoRecording!, unittest.isTrue);
     unittest.expect(
       o.manufacturer!,
@@ -1987,6 +1989,28 @@ void checkIosXcTest(api.IosXcTest o) {
     checkFileReference(o.xctestrun!);
   }
   buildCounterIosXcTest--;
+}
+
+core.int buildCounterLabInfo = 0;
+api.LabInfo buildLabInfo() {
+  final o = api.LabInfo();
+  buildCounterLabInfo++;
+  if (buildCounterLabInfo < 3) {
+    o.name = 'foo';
+  }
+  buildCounterLabInfo--;
+  return o;
+}
+
+void checkLabInfo(api.LabInfo o) {
+  buildCounterLabInfo++;
+  if (buildCounterLabInfo < 3) {
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterLabInfo--;
 }
 
 core.int buildCounterLauncherActivityIntent = 0;
@@ -3796,6 +3820,16 @@ void main() {
       final od =
           api.IosXcTest.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkIosXcTest(od);
+    });
+  });
+
+  unittest.group('obj-schema-LabInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLabInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.LabInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkLabInfo(od);
     });
   });
 

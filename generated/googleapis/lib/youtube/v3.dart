@@ -53,6 +53,8 @@
 /// - [WatermarksResource]
 /// - [YoutubeResource]
 ///   - [YoutubeV3Resource]
+///     - [YoutubeV3LiveChatResource]
+///       - [YoutubeV3LiveChatMessagesResource]
 library;
 
 import 'dart:async' as async;
@@ -2566,13 +2568,15 @@ class LiveChatMessagesResource {
   /// returned.
   ///
   /// [part] - The *part* parameter specifies the liveChatComment resource parts
-  /// that the API response will include. Supported values are id and snippet.
+  /// that the API response will include. Supported values are id, snippet, and
+  /// authorDetails.
   ///
   /// [hl] - Specifies the localization language in which the system messages
   /// should be returned.
   ///
   /// [maxResults] - The *maxResults* parameter specifies the maximum number of
-  /// items that should be returned in the result set.
+  /// items that should be returned in the result set. Not used in the streaming
+  /// RPC.
   /// Value must be between "200" and "2000".
   ///
   /// [pageToken] - The *pageToken* parameter identifies a specific page in the
@@ -5796,6 +5800,9 @@ class YoutubeResource {
 class YoutubeV3Resource {
   final commons.ApiRequester _requester;
 
+  YoutubeV3LiveChatResource get liveChat =>
+      YoutubeV3LiveChatResource(_requester);
+
   YoutubeV3Resource(commons.ApiRequester client) : _requester = client;
 
   /// Updates an existing resource.
@@ -5839,6 +5846,89 @@ class YoutubeV3Resource {
       queryParams: queryParams_,
     );
     return CommentThread.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class YoutubeV3LiveChatResource {
+  final commons.ApiRequester _requester;
+
+  YoutubeV3LiveChatMessagesResource get messages =>
+      YoutubeV3LiveChatMessagesResource(_requester);
+
+  YoutubeV3LiveChatResource(commons.ApiRequester client) : _requester = client;
+}
+
+class YoutubeV3LiveChatMessagesResource {
+  final commons.ApiRequester _requester;
+
+  YoutubeV3LiveChatMessagesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Allows a user to load live chat through a server-streamed RPC.
+  ///
+  /// Request parameters:
+  ///
+  /// [hl] - Specifies the localization language in which the system messages
+  /// should be returned.
+  ///
+  /// [liveChatId] - The id of the live chat for which comments should be
+  /// returned.
+  ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set. Not used in the streaming
+  /// RPC.
+  /// Value must be between "200" and "2000".
+  ///
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
+  /// result set that should be returned. In an API response, the nextPageToken
+  /// property identify other pages that could be retrieved.
+  ///
+  /// [part] - The *part* parameter specifies the liveChatComment resource parts
+  /// that the API response will include. Supported values are id, snippet, and
+  /// authorDetails.
+  ///
+  /// [profileImageSize] - Specifies the size of the profile image that should
+  /// be returned for each user.
+  /// Value must be between "16" and "720".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LiveChatMessageListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LiveChatMessageListResponse> stream({
+    core.String? hl,
+    core.String? liveChatId,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.List<core.String>? part,
+    core.int? profileImageSize,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (hl != null) 'hl': [hl],
+      if (liveChatId != null) 'liveChatId': [liveChatId],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (part != null) 'part': part,
+      if (profileImageSize != null) 'profileImageSize': ['${profileImageSize}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'youtube/v3/liveChat/messages/stream';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return LiveChatMessageListResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -14398,6 +14488,12 @@ class PlaylistSnippet {
 }
 
 class PlaylistStatus {
+  /// The playlist's podcast status.
+  /// Possible string values are:
+  /// - "enabled"
+  /// - "disabled"
+  core.String? podcastStatus;
+
   /// The playlist's privacy status.
   /// Possible string values are:
   /// - "public"
@@ -14406,15 +14502,18 @@ class PlaylistStatus {
   core.String? privacyStatus;
 
   PlaylistStatus({
+    this.podcastStatus,
     this.privacyStatus,
   });
 
   PlaylistStatus.fromJson(core.Map json_)
       : this(
+          podcastStatus: json_['podcastStatus'] as core.String?,
           privacyStatus: json_['privacyStatus'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (podcastStatus != null) 'podcastStatus': podcastStatus!,
         if (privacyStatus != null) 'privacyStatus': privacyStatus!,
       };
 }
@@ -14921,9 +15020,6 @@ class SubscriptionSnippet {
   /// The ID that YouTube uses to uniquely identify the subscriber's channel.
   core.String? channelId;
 
-  /// Channel title for the channel that the subscription belongs to.
-  core.String? channelTitle;
-
   /// The subscription's details.
   core.String? description;
 
@@ -14946,7 +15042,6 @@ class SubscriptionSnippet {
 
   SubscriptionSnippet({
     this.channelId,
-    this.channelTitle,
     this.description,
     this.publishedAt,
     this.resourceId,
@@ -14957,7 +15052,6 @@ class SubscriptionSnippet {
   SubscriptionSnippet.fromJson(core.Map json_)
       : this(
           channelId: json_['channelId'] as core.String?,
-          channelTitle: json_['channelTitle'] as core.String?,
           description: json_['description'] as core.String?,
           publishedAt: json_.containsKey('publishedAt')
               ? core.DateTime.parse(json_['publishedAt'] as core.String)
@@ -14975,7 +15069,6 @@ class SubscriptionSnippet {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
-        if (channelTitle != null) 'channelTitle': channelTitle!,
         if (description != null) 'description': description!,
         if (publishedAt != null)
           'publishedAt': publishedAt!.toUtc().toIso8601String(),
@@ -15642,6 +15735,7 @@ class Video {
   /// The monetizationDetails object encapsulates information about the
   /// monetization status of the video.
   VideoMonetizationDetails? monetizationDetails;
+  VideoPaidProductPlacementDetails? paidProductPlacementDetails;
 
   /// The player object contains information that you would use to play the
   /// video in an embedded player.
@@ -15712,6 +15806,7 @@ class Video {
     this.liveStreamingDetails,
     this.localizations,
     this.monetizationDetails,
+    this.paidProductPlacementDetails,
     this.player,
     this.processingDetails,
     this.projectDetails,
@@ -15757,6 +15852,12 @@ class Video {
               ? VideoMonetizationDetails.fromJson(json_['monetizationDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          paidProductPlacementDetails:
+              json_.containsKey('paidProductPlacementDetails')
+                  ? VideoPaidProductPlacementDetails.fromJson(
+                      json_['paidProductPlacementDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           player: json_.containsKey('player')
               ? VideoPlayer.fromJson(
                   json_['player'] as core.Map<core.String, core.dynamic>)
@@ -15807,6 +15908,8 @@ class Video {
         if (localizations != null) 'localizations': localizations!,
         if (monetizationDetails != null)
           'monetizationDetails': monetizationDetails!,
+        if (paidProductPlacementDetails != null)
+          'paidProductPlacementDetails': paidProductPlacementDetails!,
         if (player != null) 'player': player!,
         if (processingDetails != null) 'processingDetails': processingDetails!,
         if (projectDetails != null) 'projectDetails': projectDetails!,
@@ -16859,6 +16962,32 @@ class VideoMonetizationDetails {
       };
 }
 
+/// Details about paid content, such as paid product placement, sponsorships or
+/// endorsement, contained in a YouTube video and a method to inform viewers of
+/// paid promotion.
+///
+/// This data can only be retrieved by the video owner.
+class VideoPaidProductPlacementDetails {
+  /// This boolean represents whether the video contains Paid Product Placement,
+  /// Studio equivalent: https://screenshot.googleplex.com/4Me79DE6AfT2ktp.png
+  core.bool? hasPaidProductPlacement;
+
+  VideoPaidProductPlacementDetails({
+    this.hasPaidProductPlacement,
+  });
+
+  VideoPaidProductPlacementDetails.fromJson(core.Map json_)
+      : this(
+          hasPaidProductPlacement:
+              json_['hasPaidProductPlacement'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hasPaidProductPlacement != null)
+          'hasPaidProductPlacement': hasPaidProductPlacement!,
+      };
+}
+
 /// Player to be used for a video playback.
 class VideoPlayer {
   core.String? embedHeight;
@@ -17305,7 +17434,7 @@ class VideoStatistics {
 
 /// Basic details about a video category, such as its localized title.
 ///
-/// Next Id: 18
+/// Next Id: 19
 class VideoStatus {
   /// This value indicates if the video can be embedded on another website.
   ///

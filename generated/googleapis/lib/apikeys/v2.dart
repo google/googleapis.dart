@@ -598,7 +598,7 @@ class Operation {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Identifier of an Android application for key use.
 class V2AndroidApplication {
@@ -672,8 +672,8 @@ class V2ApiTarget {
   ///
   /// It should be the canonical service name, for example:
   /// `translate.googleapis.com`. You can use \[`gcloud services
-  /// list`\](/sdk/gcloud/reference/services/list) to get a list of services
-  /// that are enabled in the project.
+  /// list`\](https://cloud.google.com/sdk/gcloud/reference/services/list) to
+  /// get a list of services that are enabled in the project.
   core.String? service;
 
   V2ApiTarget({
@@ -811,6 +811,13 @@ class V2Key {
   /// Key restrictions.
   V2Restrictions? restrictions;
 
+  /// The email address of
+  /// [the service account](https://cloud.google.com/iam/docs/service-accounts)
+  /// the key is bound to.
+  ///
+  /// Optional.
+  core.String? serviceAccountEmail;
+
   /// Unique id in UUID4 format.
   ///
   /// Output only.
@@ -830,6 +837,7 @@ class V2Key {
     this.keyString,
     this.name,
     this.restrictions,
+    this.serviceAccountEmail,
     this.uid,
     this.updateTime,
   });
@@ -854,6 +862,7 @@ class V2Key {
               ? V2Restrictions.fromJson(
                   json_['restrictions'] as core.Map<core.String, core.dynamic>)
               : null,
+          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -867,6 +876,8 @@ class V2Key {
         if (keyString != null) 'keyString': keyString!,
         if (name != null) 'name': name!,
         if (restrictions != null) 'restrictions': restrictions!,
+        if (serviceAccountEmail != null)
+          'serviceAccountEmail': serviceAccountEmail!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
       };

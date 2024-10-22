@@ -1172,6 +1172,8 @@ class GoogleCloudEssentialcontactsV1Contact {
   ///
   /// A contact is considered valid if it is the correct recipient for
   /// notifications for a particular resource.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "VALIDATION_STATE_UNSPECIFIED" : The validation state is unknown or
   /// unspecified.

@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240604",
+    "revision": "20220322",
     "rootUrl": "https://keep.googleapis.com/",
     "servicePath": "",
     "title": "Google Keep API",

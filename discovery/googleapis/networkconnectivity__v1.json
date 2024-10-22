@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240529",
+    "revision": "20241009",
     "rootUrl": "https://networkconnectivity.googleapis.com/",
     "servicePath": "",
     "title": "Network Connectivity API",
@@ -2931,17 +2931,43 @@
             "description": "Allow the producer to specify which consumers can connect to it.",
             "id": "ConsumerPscConfig",
             "properties": {
+                "consumerInstanceProject": {
+                    "description": "Required. The project ID or project number of the consumer project. This project is the one that the consumer uses to interact with the producer instance. From the perspective of a consumer who's created a producer instance, this is the project of the producer instance. Format: 'projects/' Eg. 'projects/consumer-project' or 'projects/1234'",
+                    "type": "string"
+                },
                 "disableGlobalAccess": {
                     "description": "This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.",
                     "type": "boolean"
+                },
+                "ipVersion": {
+                    "description": "The requested IP version for the PSC connection.",
+                    "enum": [
+                        "IP_VERSION_UNSPECIFIED",
+                        "IPV4",
+                        "IPV6"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. We will use IPv4 or IPv6 depending on the IP version of first available subnetwork.",
+                        "Will use IPv4 only.",
+                        "Will use IPv6 only."
+                    ],
+                    "type": "string"
                 },
                 "network": {
                     "description": "The resource path of the consumer network where PSC connections are allowed to be created in. Note, this network does not need be in the ConsumerPscConfig.project in the case of SharedVPC. Example: projects/{projectNumOrId}/global/networks/{networkId}.",
                     "type": "string"
                 },
                 "producerInstanceId": {
-                    "description": "Immutable. An immutable identifier for the producer instance.",
+                    "deprecated": true,
+                    "description": "Immutable. Deprecated. Use producer_instance_metadata instead. An immutable identifier for the producer instance.",
                     "type": "string"
+                },
+                "producerInstanceMetadata": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Immutable. An immutable map for the producer instance metadata.",
+                    "type": "object"
                 },
                 "project": {
                     "description": "The consumer project where PSC connections are allowed to be created in.",
@@ -2961,13 +2987,15 @@
                         "STATE_UNSPECIFIED",
                         "VALID",
                         "CONNECTION_POLICY_MISSING",
-                        "POLICY_LIMIT_REACHED"
+                        "POLICY_LIMIT_REACHED",
+                        "CONSUMER_INSTANCE_PROJECT_NOT_ALLOWLISTED"
                     ],
                     "enumDescriptions": [
                         "Default state, when Connection Map is created initially.",
                         "Set when policy and map configuration is valid, and their matching can lead to allowing creation of PSC Connections subject to other constraints like connections limit.",
                         "No Service Connection Policy found for this network and Service Class",
-                        "Service Connection Policy limit reached for this network and Service Class"
+                        "Service Connection Policy limit reached for this network and Service Class",
+                        "The consumer instance project is not in AllowedGoogleProducersResourceHierarchyLevels of the matching ServiceConnectionPolicy."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -2990,6 +3018,7 @@
                     "readOnly": true
                 },
                 "errorType": {
+                    "deprecated": true,
                     "description": "The error type indicates whether the error is consumer facing, producer facing or system internal.",
                     "enum": [
                         "CONNECTION_ERROR_TYPE_UNSPECIFIED",
@@ -3017,13 +3046,35 @@
                     "description": "The IP literal allocated on the consumer network for the PSC forwarding rule that is created to connect to the producer service attachment in this service connection map.",
                     "type": "string"
                 },
+                "ipVersion": {
+                    "description": "The requested IP version for the PSC connection.",
+                    "enum": [
+                        "IP_VERSION_UNSPECIFIED",
+                        "IPV4",
+                        "IPV6"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. We will use IPv4 or IPv6 depending on the IP version of first available subnetwork.",
+                        "Will use IPv4 only.",
+                        "Will use IPv6 only."
+                    ],
+                    "type": "string"
+                },
                 "network": {
                     "description": "The consumer network whose PSC forwarding rule is connected to the service attachments in this service connection map. Note that the network could be on a different project (shared VPC).",
                     "type": "string"
                 },
                 "producerInstanceId": {
-                    "description": "Immutable. An immutable identifier for the producer instance.",
+                    "deprecated": true,
+                    "description": "Immutable. Deprecated. Use producer_instance_metadata instead. An immutable identifier for the producer instance.",
                     "type": "string"
+                },
+                "producerInstanceMetadata": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Immutable. An immutable map for the producer instance metadata.",
+                    "type": "object"
                 },
                 "project": {
                     "description": "The consumer project whose PSC forwarding rule is connected to the service attachments in this service connection map.",
@@ -3049,14 +3100,18 @@
                         "ACTIVE",
                         "FAILED",
                         "CREATING",
-                        "DELETING"
+                        "DELETING",
+                        "CREATE_REPAIRING",
+                        "DELETE_REPAIRING"
                     ],
                     "enumDescriptions": [
                         "An invalid state as the default case.",
-                        "The connection is fully established and ready to use.",
+                        "The connection has been created successfully. However, for the up-to-date connection status, please use the service attachment's \"ConnectedEndpoint.status\" as the source of truth.",
                         "The connection is not functional since some resources on the connection fail to be created.",
                         "The connection is being created.",
-                        "The connection is being deleted."
+                        "The connection is being deleted.",
+                        "The connection is being repaired to complete creation.",
+                        "The connection is being repaired to complete deletion."
                     ],
                     "type": "string"
                 }
@@ -3447,7 +3502,7 @@
                     "type": "string"
                 },
                 "ipCidrRange": {
-                    "description": "The IP range that this internal range defines.",
+                    "description": "The IP range that this internal range defines. NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF. NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.",
                     "type": "string"
                 },
                 "labels": {
@@ -3456,6 +3511,10 @@
                     },
                     "description": "User-defined labels.",
                     "type": "object"
+                },
+                "migration": {
+                    "$ref": "Migration",
+                    "description": "Optional. Must be present if usage is set to FOR_MIGRATION. This field is for internal use."
                 },
                 "name": {
                     "description": "Immutable. The name of an internal range. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names",
@@ -3499,7 +3558,7 @@
                     "type": "string"
                 },
                 "prefixLength": {
-                    "description": "An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.",
+                    "description": "An alternate to ip_cidr_range. Can be set when trying to create an IPv4 reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size. NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as a redundant parameter.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -3520,12 +3579,14 @@
                     "enum": [
                         "USAGE_UNSPECIFIED",
                         "FOR_VPC",
-                        "EXTERNAL_TO_VPC"
+                        "EXTERNAL_TO_VPC",
+                        "FOR_MIGRATION"
                     ],
                     "enumDescriptions": [
                         "Unspecified usage is allowed in calls which identify the resource by other fields and do not need Usage set to complete. These are, i.e.: GetInternalRange and DeleteInternalRange. Usage needs to be specified explicitly in CreateInternalRange or UpdateInternalRange calls.",
                         "A VPC resource can use the reserved CIDR block by associating it with the internal range resource if usage is set to FOR_VPC.",
-                        "Ranges created with EXTERNAL_TO_VPC cannot be associated with VPC resources and are meant to block out address ranges for various use cases, like for example, usage on-prem, with dynamic route announcements via interconnect."
+                        "Ranges created with EXTERNAL_TO_VPC cannot be associated with VPC resources and are meant to block out address ranges for various use cases, like for example, usage on-prem, with dynamic route announcements via interconnect.",
+                        "Ranges created FOR_MIGRATION can be used to lock a CIDR range between a source and target subnet. If usage is set to FOR_MIGRATION, the peering value has to be set to FOR_SELF or default to FOR_SELF when unset. This value is for internal use."
                     ],
                     "type": "string"
                 },
@@ -3544,6 +3605,13 @@
             "description": "A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.",
             "id": "LinkedInterconnectAttachments",
             "properties": {
+                "includeImportRanges": {
+                    "description": "Optional. IP ranges allowed to be included during import from hub (does not control transit connectivity). The only allowed value for now is \"ALL_IPV4_RANGES\".",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "siteToSiteDataTransfer": {
                     "description": "A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).",
                     "type": "boolean"
@@ -3563,10 +3631,49 @@
             },
             "type": "object"
         },
+        "LinkedProducerVpcNetwork": {
+            "description": "Next ID: 7",
+            "id": "LinkedProducerVpcNetwork",
+            "properties": {
+                "excludeExportRanges": {
+                    "description": "Optional. IP ranges encompassing the subnets to be excluded from peering.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "network": {
+                    "description": "Immutable. The URI of the Service Consumer VPC that the Producer VPC is peered with.",
+                    "type": "string"
+                },
+                "peering": {
+                    "description": "Immutable. The name of the VPC peering between the Service Consumer VPC and the Producer VPC (defined in the Tenant project) which is added to the NCC hub. This peering must be in ACTIVE state.",
+                    "type": "string"
+                },
+                "producerNetwork": {
+                    "description": "Output only. The URI of the Producer VPC.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "serviceConsumerVpcSpoke": {
+                    "description": "Output only. The Service Consumer Network spoke.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "LinkedRouterApplianceInstances": {
             "description": "A collection of router appliance instances. If you configure multiple router appliance instances to receive data from the same set of sites outside of Google Cloud, we recommend that you associate those instances with the same spoke.",
             "id": "LinkedRouterApplianceInstances",
             "properties": {
+                "includeImportRanges": {
+                    "description": "Optional. IP ranges allowed to be included during import from hub (does not control transit connectivity). The only allowed value for now is \"ALL_IPV4_RANGES\".",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "instances": {
                     "description": "The list of router appliance instances.",
                     "items": {
@@ -3604,6 +3711,14 @@
                     },
                     "type": "array"
                 },
+                "producerVpcSpokes": {
+                    "description": "Output only. The list of Producer VPC spokes that this VPC spoke is a service consumer VPC spoke for. These producer VPCs are connected through VPC peering to this spoke's backing VPC network.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
                 "uri": {
                     "description": "Required. The URI of the VPC network resource.",
                     "type": "string"
@@ -3615,6 +3730,13 @@
             "description": "A collection of Cloud VPN tunnel resources. These resources should be redundant HA VPN tunnels that all advertise the same prefixes to Google Cloud. Alternatively, in a passive/active configuration, all tunnels should be capable of advertising the same prefixes.",
             "id": "LinkedVpnTunnels",
             "properties": {
+                "includeImportRanges": {
+                    "description": "Optional. IP ranges allowed to be included during import from hub (does not control transit connectivity). The only allowed value for now is \"ALL_IPV4_RANGES\".",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "siteToSiteDataTransfer": {
                     "description": "A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).",
                     "type": "boolean"
@@ -4035,6 +4157,21 @@
             },
             "type": "object"
         },
+        "Migration": {
+            "description": "Specification for migration with source and target resource names.",
+            "id": "Migration",
+            "properties": {
+                "source": {
+                    "description": "Immutable. Resource path as an URI of the source resource, for example a subnet. The project for the source resource should match the project for the InternalRange. An example: /projects/{project}/regions/{region}/subnetworks/{subnet}",
+                    "type": "string"
+                },
+                "target": {
+                    "description": "Immutable. Resource path of the target resource. The target project can be different, as in the cases when migrating to peer networks. The resource For example: /projects/{project}/regions/{region}/subnetworks/{subnet}",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "NextHopInterconnectAttachment": {
             "description": "A route next hop that leads to an interconnect attachment resource.",
             "id": "NextHopInterconnectAttachment",
@@ -4281,9 +4418,28 @@
             "description": "Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.",
             "id": "PscConfig",
             "properties": {
+                "allowedGoogleProducersResourceHierarchyLevel": {
+                    "description": "Optional. List of Projects, Folders, or Organizations from where the Producer instance can be within. For example, a network administrator can provide both 'organizations/foo' and 'projects/bar' as allowed_google_producers_resource_hierarchy_levels. This allowlists this network to connect with any Producer instance within the 'foo' organization or the 'bar' project. By default, allowed_google_producers_resource_hierarchy_level is empty. The format for each allowed_google_producers_resource_hierarchy_level is / where is one of 'projects', 'folders', or 'organizations' and is either the ID or the number of the resource type. Format for each allowed_google_producers_resource_hierarchy_level value: 'projects/' or 'folders/' or 'organizations/' Eg. [projects/my-project-id, projects/567, folders/891, organizations/123]",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "limit": {
                     "description": "Optional. Max number of PSC connections for this policy.",
                     "format": "int64",
+                    "type": "string"
+                },
+                "producerInstanceLocation": {
+                    "description": "Required. ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects the Producer instance can be within.",
+                    "enum": [
+                        "PRODUCER_INSTANCE_LOCATION_UNSPECIFIED",
+                        "CUSTOM_RESOURCE_HIERARCHY_LEVELS"
+                    ],
+                    "enumDescriptions": [
+                        "Producer instance location is not specified. When this option is chosen, then the PSC connections created by this ServiceConnectionPolicy must be within the same project as the Producer instance. This is the default ProducerInstanceLocation value. To allow for PSC connections from this network to other networks, use the CUSTOM_RESOURCE_HIERARCHY_LEVELS option.",
+                        "Producer instance must be within one of the values provided in allowed_google_producers_resource_hierarchy_level."
+                    ],
                     "type": "string"
                 },
                 "subnetworks": {
@@ -4315,7 +4471,7 @@
                 "error": {
                     "$ref": "GoogleRpcStatus",
                     "deprecated": true,
-                    "description": "The most recent error during operating this connection."
+                    "description": "The most recent error during operating this connection. Deprecated, please use error_info instead."
                 },
                 "errorInfo": {
                     "$ref": "GoogleRpcErrorInfo",
@@ -4323,6 +4479,7 @@
                     "readOnly": true
                 },
                 "errorType": {
+                    "deprecated": true,
                     "description": "The error type indicates whether the error is consumer facing, producer facing or system internal.",
                     "enum": [
                         "CONNECTION_ERROR_TYPE_UNSPECIFIED",
@@ -4342,9 +4499,31 @@
                     "description": "The last Compute Engine operation to setup PSC connection.",
                     "type": "string"
                 },
-                "producerInstanceId": {
-                    "description": "Immutable. An immutable identifier for the producer instance.",
+                "ipVersion": {
+                    "description": "The requested IP version for the PSC connection.",
+                    "enum": [
+                        "IP_VERSION_UNSPECIFIED",
+                        "IPV4",
+                        "IPV6"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. We will use IPv4 or IPv6 depending on the IP version of first available subnetwork.",
+                        "Will use IPv4 only.",
+                        "Will use IPv6 only."
+                    ],
                     "type": "string"
+                },
+                "producerInstanceId": {
+                    "deprecated": true,
+                    "description": "Immutable. Deprecated. Use producer_instance_metadata instead. An immutable identifier for the producer instance.",
+                    "type": "string"
+                },
+                "producerInstanceMetadata": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Immutable. An immutable map for the producer instance metadata.",
+                    "type": "object"
                 },
                 "pscConnectionId": {
                     "description": "The PSC connection id of the PSC forwarding rule.",
@@ -4355,6 +4534,11 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "serviceClass": {
+                    "description": "Output only. [Output only] The service class associated with this PSC Connection. The value is derived from the SCPolicy and matches the service class name provided by the customer.",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "state": {
                     "description": "State of the PSC Connection",
                     "enum": [
@@ -4362,14 +4546,18 @@
                         "ACTIVE",
                         "FAILED",
                         "CREATING",
-                        "DELETING"
+                        "DELETING",
+                        "CREATE_REPAIRING",
+                        "DELETE_REPAIRING"
                     ],
                     "enumDescriptions": [
                         "An invalid state as the default case.",
-                        "The connection is fully established and ready to use.",
+                        "The connection has been created successfully. However, for the up-to-date connection status, please use the created forwarding rule's \"PscConnectionStatus\" as the source of truth.",
                         "The connection is not functional since some resources on the connection fail to be created.",
                         "The connection is being created.",
-                        "The connection is being deleted."
+                        "The connection is being deleted.",
+                        "The connection is being repaired to complete creation.",
+                        "The connection is being repaired to complete deletion."
                     ],
                     "type": "string"
                 }
@@ -4830,7 +5018,7 @@
             "id": "ServiceConnectionPolicy",
             "properties": {
                 "createTime": {
-                    "description": "Output only. Time when the ServiceConnectionMap was created.",
+                    "description": "Output only. Time when the ServiceConnectionPolicy was created.",
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
@@ -4884,11 +5072,11 @@
                     "type": "array"
                 },
                 "serviceClass": {
-                    "description": "The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass. It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.",
+                    "description": "The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass. It is provided by the Service Producer. Google services have a prefix of gcp or google-cloud. For example, gcp-memorystore-redis or google-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.",
                     "type": "string"
                 },
                 "updateTime": {
-                    "description": "Output only. Time when the ServiceConnectionMap was updated.",
+                    "description": "Output only. Time when the ServiceConnectionPolicy was updated.",
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
@@ -4998,6 +5186,10 @@
                     "$ref": "LinkedInterconnectAttachments",
                     "description": "VLAN attachments that are associated with the spoke."
                 },
+                "linkedProducerVpcNetwork": {
+                    "$ref": "LinkedProducerVpcNetwork",
+                    "description": "Optional. The linked producer VPC that is associated with the spoke."
+                },
                 "linkedRouterApplianceInstances": {
                     "$ref": "LinkedRouterApplianceInstances",
                     "description": "Router appliance instances that are associated with the spoke."
@@ -5029,14 +5221,16 @@
                         "VPN_TUNNEL",
                         "INTERCONNECT_ATTACHMENT",
                         "ROUTER_APPLIANCE",
-                        "VPC_NETWORK"
+                        "VPC_NETWORK",
+                        "PRODUCER_VPC_NETWORK"
                     ],
                     "enumDescriptions": [
                         "Unspecified spoke type.",
                         "Spokes associated with VPN tunnels.",
                         "Spokes associated with VLAN attachments.",
                         "Spokes associated with router appliance instances.",
-                        "Spokes associated with VPC networks."
+                        "Spokes associated with VPC networks.",
+                        "Spokes that are backed by a producer VPC network."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -5202,14 +5396,16 @@
                         "VPN_TUNNEL",
                         "INTERCONNECT_ATTACHMENT",
                         "ROUTER_APPLIANCE",
-                        "VPC_NETWORK"
+                        "VPC_NETWORK",
+                        "PRODUCER_VPC_NETWORK"
                     ],
                     "enumDescriptions": [
                         "Unspecified spoke type.",
                         "Spokes associated with VPN tunnels.",
                         "Spokes associated with VLAN attachments.",
                         "Spokes associated with router appliance instances.",
-                        "Spokes associated with VPC networks."
+                        "Spokes associated with VPC networks.",
+                        "Spokes that are backed by a producer VPC network."
                     ],
                     "readOnly": true,
                     "type": "string"

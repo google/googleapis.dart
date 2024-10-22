@@ -1476,6 +1476,16 @@ class Instance {
   /// Only set if CMEK has been enabled on the instance.
   EncryptionConfig? encryptionConfig;
 
+  /// Whether FIPS is enabled on the Looker instance.
+  ///
+  /// Optional.
+  core.bool? fipsEnabled;
+
+  /// Whether Gemini feature is enabled on the Looker instance or not.
+  ///
+  /// Optional.
+  core.bool? geminiEnabled;
+
   /// Private Ingress IP (IPv4).
   ///
   /// Output only.
@@ -1533,6 +1543,20 @@ class Instance {
   /// Whether private IP is enabled on the Looker instance.
   core.bool? privateIpEnabled;
 
+  /// PSC configuration.
+  ///
+  /// Used when `psc_enabled` is true.
+  ///
+  /// Optional.
+  PscConfig? pscConfig;
+
+  /// Whether to use Private Service Connect (PSC) for private IP connectivity.
+  ///
+  /// If true, neither `public_ip_enabled` nor `private_ip_enabled` can be true.
+  ///
+  /// Optional.
+  core.bool? pscEnabled;
+
   /// Whether public IP is enabled on the Looker instance.
   core.bool? publicIpEnabled;
 
@@ -1573,6 +1597,8 @@ class Instance {
     this.denyMaintenancePeriod,
     this.egressPublicIp,
     this.encryptionConfig,
+    this.fipsEnabled,
+    this.geminiEnabled,
     this.ingressPrivateIp,
     this.ingressPublicIp,
     this.lastDenyMaintenancePeriod,
@@ -1585,6 +1611,8 @@ class Instance {
     this.oauthConfig,
     this.platformEdition,
     this.privateIpEnabled,
+    this.pscConfig,
+    this.pscEnabled,
     this.publicIpEnabled,
     this.reservedRange,
     this.state,
@@ -1613,6 +1641,8 @@ class Instance {
               ? EncryptionConfig.fromJson(json_['encryptionConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          fipsEnabled: json_['fipsEnabled'] as core.bool?,
+          geminiEnabled: json_['geminiEnabled'] as core.bool?,
           ingressPrivateIp: json_['ingressPrivateIp'] as core.String?,
           ingressPublicIp: json_['ingressPublicIp'] as core.String?,
           lastDenyMaintenancePeriod:
@@ -1640,6 +1670,11 @@ class Instance {
               : null,
           platformEdition: json_['platformEdition'] as core.String?,
           privateIpEnabled: json_['privateIpEnabled'] as core.bool?,
+          pscConfig: json_.containsKey('pscConfig')
+              ? PscConfig.fromJson(
+                  json_['pscConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pscEnabled: json_['pscEnabled'] as core.bool?,
           publicIpEnabled: json_['publicIpEnabled'] as core.bool?,
           reservedRange: json_['reservedRange'] as core.String?,
           state: json_['state'] as core.String?,
@@ -1659,6 +1694,8 @@ class Instance {
           'denyMaintenancePeriod': denyMaintenancePeriod!,
         if (egressPublicIp != null) 'egressPublicIp': egressPublicIp!,
         if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
+        if (fipsEnabled != null) 'fipsEnabled': fipsEnabled!,
+        if (geminiEnabled != null) 'geminiEnabled': geminiEnabled!,
         if (ingressPrivateIp != null) 'ingressPrivateIp': ingressPrivateIp!,
         if (ingressPublicIp != null) 'ingressPublicIp': ingressPublicIp!,
         if (lastDenyMaintenancePeriod != null)
@@ -1674,6 +1711,8 @@ class Instance {
         if (oauthConfig != null) 'oauthConfig': oauthConfig!,
         if (platformEdition != null) 'platformEdition': platformEdition!,
         if (privateIpEnabled != null) 'privateIpEnabled': privateIpEnabled!,
+        if (pscConfig != null) 'pscConfig': pscConfig!,
+        if (pscEnabled != null) 'pscEnabled': pscEnabled!,
         if (publicIpEnabled != null) 'publicIpEnabled': publicIpEnabled!,
         if (reservedRange != null) 'reservedRange': reservedRange!,
         if (state != null) 'state': state!,
@@ -2071,8 +2110,109 @@ class Policy {
       };
 }
 
+/// Information for Private Service Connect (PSC) setup for a Looker instance.
+class PscConfig {
+  /// List of VPCs that are allowed ingress into looker.
+  ///
+  /// Format: projects/{project}/global/networks/{network}
+  ///
+  /// Optional.
+  core.List<core.String>? allowedVpcs;
+
+  /// URI of the Looker service attachment.
+  ///
+  /// Output only.
+  core.String? lookerServiceAttachmentUri;
+
+  /// List of egress service attachment configurations.
+  ///
+  /// Optional.
+  core.List<ServiceAttachment>? serviceAttachments;
+
+  PscConfig({
+    this.allowedVpcs,
+    this.lookerServiceAttachmentUri,
+    this.serviceAttachments,
+  });
+
+  PscConfig.fromJson(core.Map json_)
+      : this(
+          allowedVpcs: (json_['allowedVpcs'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          lookerServiceAttachmentUri:
+              json_['lookerServiceAttachmentUri'] as core.String?,
+          serviceAttachments: (json_['serviceAttachments'] as core.List?)
+              ?.map((value) => ServiceAttachment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowedVpcs != null) 'allowedVpcs': allowedVpcs!,
+        if (lookerServiceAttachmentUri != null)
+          'lookerServiceAttachmentUri': lookerServiceAttachmentUri!,
+        if (serviceAttachments != null)
+          'serviceAttachments': serviceAttachments!,
+      };
+}
+
 /// Request options for restarting an instance.
 typedef RestartInstanceRequest = $Empty;
+
+/// Service attachment configuration.
+class ServiceAttachment {
+  /// Connection status.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Connection status is unspecified.
+  /// - "ACCEPTED" : Connection is established and functioning normally.
+  /// - "PENDING" : Connection is not established (Looker tenant project hasn't
+  /// been allowlisted).
+  /// - "REJECTED" : Connection is not established (Looker tenant project is
+  /// explicitly in reject list).
+  /// - "NEEDS_ATTENTION" : Issue with target service attachment, e.g. NAT
+  /// subnet is exhausted.
+  /// - "CLOSED" : Target service attachment does not exist. This status is a
+  /// terminal state.
+  core.String? connectionStatus;
+
+  /// Fully qualified domain name that will be used in the private DNS record
+  /// created for the service attachment.
+  ///
+  /// Required.
+  core.String? localFqdn;
+
+  /// URI of the service attachment to connect to.
+  ///
+  /// Format:
+  /// projects/{project}/regions/{region}/serviceAttachments/{service_attachment}
+  ///
+  /// Required.
+  core.String? targetServiceAttachmentUri;
+
+  ServiceAttachment({
+    this.connectionStatus,
+    this.localFqdn,
+    this.targetServiceAttachmentUri,
+  });
+
+  ServiceAttachment.fromJson(core.Map json_)
+      : this(
+          connectionStatus: json_['connectionStatus'] as core.String?,
+          localFqdn: json_['localFqdn'] as core.String?,
+          targetServiceAttachmentUri:
+              json_['targetServiceAttachmentUri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectionStatus != null) 'connectionStatus': connectionStatus!,
+        if (localFqdn != null) 'localFqdn': localFqdn!,
+        if (targetServiceAttachmentUri != null)
+          'targetServiceAttachmentUri': targetServiceAttachmentUri!,
+      };
+}
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
@@ -2116,7 +2256,7 @@ class SetIamPolicyRequest {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
@@ -2129,7 +2269,7 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-typedef TimeOfDay = $TimeOfDay;
+typedef TimeOfDay = $TimeOfDay01;
 
 /// Metadata about users for a Looker instance.
 class UserMetadata {

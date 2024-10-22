@@ -3837,7 +3837,7 @@ class GoogleLongrunningOperation {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef GoogleRpcStatus = $Status;
+typedef GoogleRpcStatus = $Status00;
 
 /// This is a direct map to the Kubernetes GroupKind type
 /// [GroupKind](https://godoc.org/k8s.io/apimachinery/pkg/runtime/schema#GroupKind)
@@ -3846,7 +3846,7 @@ class GroupKind {
   /// API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io",
   /// "storage.k8s.io", etc.
   ///
-  /// Note: use empty string for core API group
+  /// Note: use empty string for core API group.
   ///
   /// Optional.
   core.String? resourceGroup;
@@ -4213,9 +4213,9 @@ class NamespacedNames {
       };
 }
 
-/// A list of Kubernetes Namespaces
+/// A list of Kubernetes Namespaces.
 class Namespaces {
-  /// A list of Kubernetes Namespaces
+  /// A list of Kubernetes Namespaces.
   ///
   /// Optional.
   core.List<core.String>? namespaces;
@@ -4535,8 +4535,8 @@ class Restore {
   /// Filters resources for `Restore`.
   ///
   /// If not specified, the scope of the restore will remain the same as defined
-  /// in the `RestorePlan`. If this is specified, and no resources are matched
-  /// by the `inclusion_filters` or everyting is excluded by the
+  /// in the `RestorePlan`. If this is specified and no resources are matched by
+  /// the `inclusion_filters` or everyting is excluded by the
   /// `exclusion_filters`, nothing will be restored. This filter can only be
   /// specified if the value of namespaced_resource_restore_mode is set to
   /// `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT` or
@@ -4592,6 +4592,8 @@ class Restore {
   /// workloads may not yet be operational.
   /// - "FAILED" : The restore operation has failed.
   /// - "DELETING" : This Restore resource is in the process of being deleted.
+  /// - "VALIDATING" : The Kubernetes resources created by this Restore are
+  /// being validated.
   core.String? state;
 
   /// Human-readable description of why the Restore is in its current state.
@@ -5447,7 +5449,7 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-typedef TimeOfDay = $TimeOfDay;
+typedef TimeOfDay = $TimeOfDay00;
 
 /// A transformation rule to be applied against Kubernetes resources as they are
 /// selected for restoration from a Backup.

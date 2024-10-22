@@ -17,7 +17,7 @@
 /// Builds and manages container-based applications, powered by the open source
 /// Kubernetes technology.
 ///
-/// For more information, see <https://cloud.google.com/container-engine/>
+/// For more information, see <https://cloud.google.com/kubernetes-engine/docs/>
 ///
 /// Create an instance of [ContainerApi] to access these resources:
 ///
@@ -3674,18 +3674,23 @@ class AdditionalNodeNetworkConfig {
 /// AdditionalPodNetworkConfig is the configuration for additional pod networks
 /// within the NodeNetworkConfig message
 class AdditionalPodNetworkConfig {
-  /// The maximum number of pods per node which use this pod network
+  /// The maximum number of pods per node which use this pod network.
   MaxPodsConstraint? maxPodsPerNode;
 
+  /// The name of the network attachment for pods to communicate to; cannot be
+  /// specified along with subnetwork or secondary_pod_range.
+  core.String? networkAttachment;
+
   /// The name of the secondary range on the subnet which provides IP address
-  /// for this pod range
+  /// for this pod range.
   core.String? secondaryPodRange;
 
-  /// Name of the subnetwork where the additional pod network belongs
+  /// Name of the subnetwork where the additional pod network belongs.
   core.String? subnetwork;
 
   AdditionalPodNetworkConfig({
     this.maxPodsPerNode,
+    this.networkAttachment,
     this.secondaryPodRange,
     this.subnetwork,
   });
@@ -3696,12 +3701,14 @@ class AdditionalPodNetworkConfig {
               ? MaxPodsConstraint.fromJson(json_['maxPodsPerNode']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          networkAttachment: json_['networkAttachment'] as core.String?,
           secondaryPodRange: json_['secondaryPodRange'] as core.String?,
           subnetwork: json_['subnetwork'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxPodsPerNode != null) 'maxPodsPerNode': maxPodsPerNode!,
+        if (networkAttachment != null) 'networkAttachment': networkAttachment!,
         if (secondaryPodRange != null) 'secondaryPodRange': secondaryPodRange!,
         if (subnetwork != null) 'subnetwork': subnetwork!,
       };
@@ -3793,6 +3800,11 @@ class AddonsConfig {
   /// does not track whether network policy is enabled for the nodes.
   NetworkPolicyConfig? networkPolicyConfig;
 
+  /// Configuration for Ray Operator addon.
+  ///
+  /// Optional.
+  RayOperatorConfig? rayOperatorConfig;
+
   /// Configuration for the StatefulHA add-on.
   ///
   /// Optional.
@@ -3810,6 +3822,7 @@ class AddonsConfig {
     this.httpLoadBalancing,
     this.kubernetesDashboard,
     this.networkPolicyConfig,
+    this.rayOperatorConfig,
     this.statefulHaConfig,
   });
 
@@ -3865,6 +3878,10 @@ class AddonsConfig {
               ? NetworkPolicyConfig.fromJson(json_['networkPolicyConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          rayOperatorConfig: json_.containsKey('rayOperatorConfig')
+              ? RayOperatorConfig.fromJson(json_['rayOperatorConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           statefulHaConfig: json_.containsKey('statefulHaConfig')
               ? StatefulHAConfig.fromJson(json_['statefulHaConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -3891,6 +3908,7 @@ class AddonsConfig {
           'kubernetesDashboard': kubernetesDashboard!,
         if (networkPolicyConfig != null)
           'networkPolicyConfig': networkPolicyConfig!,
+        if (rayOperatorConfig != null) 'rayOperatorConfig': rayOperatorConfig!,
         if (statefulHaConfig != null) 'statefulHaConfig': statefulHaConfig!,
       };
 }
@@ -4658,6 +4676,9 @@ class Cluster {
   /// `10.0.0.0/8`.
   core.String? clusterIpv4Cidr;
 
+  /// Enable/Disable Compliance Posture features for the cluster.
+  CompliancePostureConfig? compliancePostureConfig;
+
   /// Which conditions caused the current cluster state.
   core.List<StatusCondition>? conditions;
 
@@ -4665,6 +4686,9 @@ class Cluster {
   ///
   /// All the nodes in the cluster will be Confidential VM once enabled.
   ConfidentialNodes? confidentialNodes;
+
+  /// Configuration for all cluster's control plane endpoints.
+  ControlPlaneEndpointsConfig? controlPlaneEndpointsConfig;
 
   /// Configuration for the fine-grained cost management feature.
   CostManagementConfig? costManagementConfig;
@@ -4794,7 +4818,7 @@ class Cluster {
 
   /// Use node_pools.instance_group_urls.
   ///
-  /// Deprecated.
+  /// Output only. Deprecated.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -4855,6 +4879,13 @@ class Cluster {
   MasterAuth? masterAuth;
 
   /// The configuration options for master authorized networks feature.
+  ///
+  /// Deprecated: Use
+  /// ControlPlaneEndpointsConfig.IPEndpointsConfig.authorized_networks_config
+  /// instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   MasterAuthorizedNetworksConfig? masterAuthorizedNetworksConfig;
 
   /// Configuration for issuance of mTLS keys and certificates to Kubernetes
@@ -4947,6 +4978,10 @@ class Cluster {
   /// Configuration for private cluster.
   PrivateClusterConfig? privateClusterConfig;
 
+  /// RBACBindingConfig allows user to restrict ClusterRoleBindings an
+  /// RoleBindings that can be created.
+  RBACBindingConfig? rbacBindingConfig;
+
   /// Release channel configuration.
   ///
   /// If left unspecified on cluster creation and a version is specified, the
@@ -4975,6 +5010,9 @@ class Cluster {
   ///
   /// Output only.
   core.bool? satisfiesPzs;
+
+  /// Secret CSI driver configuration.
+  SecretManagerConfig? secretManagerConfig;
 
   /// Enable/Disable Security Posture API features for the cluster.
   SecurityPostureConfig? securityPostureConfig;
@@ -5040,6 +5078,9 @@ class Cluster {
   /// Output only.
   core.String? tpuIpv4CidrBlock;
 
+  /// The Custom keys configuration for the cluster.
+  UserManagedKeysConfig? userManagedKeysConfig;
+
   /// Cluster-level Vertical Pod Autoscaling configuration.
   VerticalPodAutoscaling? verticalPodAutoscaling;
 
@@ -5066,8 +5107,10 @@ class Cluster {
     this.autoscaling,
     this.binaryAuthorization,
     this.clusterIpv4Cidr,
+    this.compliancePostureConfig,
     this.conditions,
     this.confidentialNodes,
+    this.controlPlaneEndpointsConfig,
     this.costManagementConfig,
     this.createTime,
     this.currentMasterVersion,
@@ -5114,11 +5157,13 @@ class Cluster {
     this.notificationConfig,
     this.parentProductConfig,
     this.privateClusterConfig,
+    this.rbacBindingConfig,
     this.releaseChannel,
     this.resourceLabels,
     this.resourceUsageExportConfig,
     this.satisfiesPzi,
     this.satisfiesPzs,
+    this.secretManagerConfig,
     this.securityPostureConfig,
     this.selfLink,
     this.servicesIpv4Cidr,
@@ -5127,6 +5172,7 @@ class Cluster {
     this.statusMessage,
     this.subnetwork,
     this.tpuIpv4CidrBlock,
+    this.userManagedKeysConfig,
     this.verticalPodAutoscaling,
     this.workloadIdentityConfig,
     this.zone,
@@ -5157,6 +5203,11 @@ class Cluster {
                   as core.Map<core.String, core.dynamic>)
               : null,
           clusterIpv4Cidr: json_['clusterIpv4Cidr'] as core.String?,
+          compliancePostureConfig: json_.containsKey('compliancePostureConfig')
+              ? CompliancePostureConfig.fromJson(
+                  json_['compliancePostureConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           conditions: (json_['conditions'] as core.List?)
               ?.map((value) => StatusCondition.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -5165,6 +5216,12 @@ class Cluster {
               ? ConfidentialNodes.fromJson(json_['confidentialNodes']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          controlPlaneEndpointsConfig:
+              json_.containsKey('controlPlaneEndpointsConfig')
+                  ? ControlPlaneEndpointsConfig.fromJson(
+                      json_['controlPlaneEndpointsConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           costManagementConfig: json_.containsKey('costManagementConfig')
               ? CostManagementConfig.fromJson(json_['costManagementConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -5290,6 +5347,10 @@ class Cluster {
               ? PrivateClusterConfig.fromJson(json_['privateClusterConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          rbacBindingConfig: json_.containsKey('rbacBindingConfig')
+              ? RBACBindingConfig.fromJson(json_['rbacBindingConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           releaseChannel: json_.containsKey('releaseChannel')
               ? ReleaseChannel.fromJson(json_['releaseChannel']
                   as core.Map<core.String, core.dynamic>)
@@ -5310,6 +5371,10 @@ class Cluster {
                   : null,
           satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
           satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+          secretManagerConfig: json_.containsKey('secretManagerConfig')
+              ? SecretManagerConfig.fromJson(json_['secretManagerConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           securityPostureConfig: json_.containsKey('securityPostureConfig')
               ? SecurityPostureConfig.fromJson(json_['securityPostureConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -5324,6 +5389,10 @@ class Cluster {
           statusMessage: json_['statusMessage'] as core.String?,
           subnetwork: json_['subnetwork'] as core.String?,
           tpuIpv4CidrBlock: json_['tpuIpv4CidrBlock'] as core.String?,
+          userManagedKeysConfig: json_.containsKey('userManagedKeysConfig')
+              ? UserManagedKeysConfig.fromJson(json_['userManagedKeysConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           verticalPodAutoscaling: json_.containsKey('verticalPodAutoscaling')
               ? VerticalPodAutoscaling.fromJson(json_['verticalPodAutoscaling']
                   as core.Map<core.String, core.dynamic>)
@@ -5344,8 +5413,12 @@ class Cluster {
         if (binaryAuthorization != null)
           'binaryAuthorization': binaryAuthorization!,
         if (clusterIpv4Cidr != null) 'clusterIpv4Cidr': clusterIpv4Cidr!,
+        if (compliancePostureConfig != null)
+          'compliancePostureConfig': compliancePostureConfig!,
         if (conditions != null) 'conditions': conditions!,
         if (confidentialNodes != null) 'confidentialNodes': confidentialNodes!,
+        if (controlPlaneEndpointsConfig != null)
+          'controlPlaneEndpointsConfig': controlPlaneEndpointsConfig!,
         if (costManagementConfig != null)
           'costManagementConfig': costManagementConfig!,
         if (createTime != null) 'createTime': createTime!,
@@ -5406,12 +5479,15 @@ class Cluster {
           'parentProductConfig': parentProductConfig!,
         if (privateClusterConfig != null)
           'privateClusterConfig': privateClusterConfig!,
+        if (rbacBindingConfig != null) 'rbacBindingConfig': rbacBindingConfig!,
         if (releaseChannel != null) 'releaseChannel': releaseChannel!,
         if (resourceLabels != null) 'resourceLabels': resourceLabels!,
         if (resourceUsageExportConfig != null)
           'resourceUsageExportConfig': resourceUsageExportConfig!,
         if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+        if (secretManagerConfig != null)
+          'secretManagerConfig': secretManagerConfig!,
         if (securityPostureConfig != null)
           'securityPostureConfig': securityPostureConfig!,
         if (selfLink != null) 'selfLink': selfLink!,
@@ -5421,6 +5497,8 @@ class Cluster {
         if (statusMessage != null) 'statusMessage': statusMessage!,
         if (subnetwork != null) 'subnetwork': subnetwork!,
         if (tpuIpv4CidrBlock != null) 'tpuIpv4CidrBlock': tpuIpv4CidrBlock!,
+        if (userManagedKeysConfig != null)
+          'userManagedKeysConfig': userManagedKeysConfig!,
         if (verticalPodAutoscaling != null)
           'verticalPodAutoscaling': verticalPodAutoscaling!,
         if (workloadIdentityConfig != null)
@@ -5547,8 +5625,14 @@ class ClusterUpdate {
   /// Cluster-level autoscaling configuration.
   ClusterAutoscaling? desiredClusterAutoscaling;
 
+  /// Enable/Disable Compliance Posture features for the cluster.
+  CompliancePostureConfig? desiredCompliancePostureConfig;
+
   /// The desired containerd config for the cluster.
   ContainerdConfig? desiredContainerdConfig;
+
+  /// Control plane endpoints configuration.
+  ControlPlaneEndpointsConfig? desiredControlPlaneEndpointsConfig;
 
   /// The desired configuration for the fine-grained cost management feature.
   CostManagementConfig? desiredCostManagementConfig;
@@ -5566,6 +5650,10 @@ class ClusterUpdate {
   /// for more.
   core.String? desiredDatapathProvider;
 
+  /// Override the default setting of whether future created nodes have private
+  /// IP addresses only, namely NetworkConfig.default_enable_private_nodes
+  core.bool? desiredDefaultEnablePrivateNodes;
+
   /// The desired status of whether to disable default sNAT for this cluster.
   DefaultSnatStatus? desiredDefaultSnatStatus;
 
@@ -5582,6 +5670,15 @@ class ClusterUpdate {
   core.bool? desiredEnableMultiNetworking;
 
   /// Enable/Disable private endpoint for the cluster's master.
+  ///
+  /// Deprecated: Use
+  /// desired_control_plane_endpoints_config.ip_endpoints_config.enable_public_endpoint
+  /// instead. Note that the value of enable_public_endpoint is reversed: if
+  /// enable_private_endpoint is false, then enable_public_endpoint will be
+  /// true.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? desiredEnablePrivateEndpoint;
 
   /// The desired fleet configuration for the cluster.
@@ -5643,6 +5740,13 @@ class ClusterUpdate {
   core.String? desiredLoggingService;
 
   /// The desired configuration options for master authorized networks feature.
+  ///
+  /// Deprecated: Use
+  /// desired_control_plane_endpoints_config.ip_endpoints_config.authorized_networks_config
+  /// instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   MasterAuthorizedNetworksConfig? desiredMasterAuthorizedNetworksConfig;
 
   /// The Kubernetes version to change the master to.
@@ -5728,7 +5832,12 @@ class ClusterUpdate {
   ///
   /// master_global_access_config is the only field that can be changed via this
   /// field. See also ClusterUpdate.desired_enable_private_endpoint for
-  /// modifying other fields within PrivateClusterConfig.
+  /// modifying other fields within PrivateClusterConfig. Deprecated: Use
+  /// desired_control_plane_endpoints_config.ip_endpoints_config.global_access
+  /// instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   PrivateClusterConfig? desiredPrivateClusterConfig;
 
   /// The desired state of IPv6 connectivity to Google Services.
@@ -5743,11 +5852,18 @@ class ClusterUpdate {
   /// to and from Google Services
   core.String? desiredPrivateIpv6GoogleAccess;
 
+  /// RBACBindingConfig allows user to restrict ClusterRoleBindings an
+  /// RoleBindings that can be created.
+  RBACBindingConfig? desiredRbacBindingConfig;
+
   /// The desired release channel configuration.
   ReleaseChannel? desiredReleaseChannel;
 
   /// The desired configuration for exporting resource usage.
   ResourceUsageExportConfig? desiredResourceUsageExportConfig;
+
+  /// Enable/Disable Secret Manager Config.
+  SecretManagerConfig? desiredSecretManagerConfig;
 
   /// Enable/Disable Security Posture API features for the cluster.
   SecurityPostureConfig? desiredSecurityPostureConfig;
@@ -5792,6 +5908,9 @@ class ClusterUpdate {
   /// 'additional_pod_ranges_config' argument.
   AdditionalPodRangesConfig? removedAdditionalPodRangesConfig;
 
+  /// The Custom keys configuration for the cluster.
+  UserManagedKeysConfig? userManagedKeysConfig;
+
   ClusterUpdate({
     this.additionalPodRangesConfig,
     this.desiredAddonsConfig,
@@ -5799,10 +5918,13 @@ class ClusterUpdate {
     this.desiredAutopilotWorkloadPolicyConfig,
     this.desiredBinaryAuthorization,
     this.desiredClusterAutoscaling,
+    this.desiredCompliancePostureConfig,
     this.desiredContainerdConfig,
+    this.desiredControlPlaneEndpointsConfig,
     this.desiredCostManagementConfig,
     this.desiredDatabaseEncryption,
     this.desiredDatapathProvider,
+    this.desiredDefaultEnablePrivateNodes,
     this.desiredDefaultSnatStatus,
     this.desiredDnsConfig,
     this.desiredEnableCiliumClusterwideNetworkPolicy,
@@ -5839,8 +5961,10 @@ class ClusterUpdate {
     this.desiredParentProductConfig,
     this.desiredPrivateClusterConfig,
     this.desiredPrivateIpv6GoogleAccess,
+    this.desiredRbacBindingConfig,
     this.desiredReleaseChannel,
     this.desiredResourceUsageExportConfig,
+    this.desiredSecretManagerConfig,
     this.desiredSecurityPostureConfig,
     this.desiredServiceExternalIpsConfig,
     this.desiredShieldedNodes,
@@ -5850,6 +5974,7 @@ class ClusterUpdate {
     this.enableK8sBetaApis,
     this.etag,
     this.removedAdditionalPodRangesConfig,
+    this.userManagedKeysConfig,
   });
 
   ClusterUpdate.fromJson(core.Map json_)
@@ -5886,10 +6011,22 @@ class ClusterUpdate {
               ? ClusterAutoscaling.fromJson(json_['desiredClusterAutoscaling']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          desiredCompliancePostureConfig:
+              json_.containsKey('desiredCompliancePostureConfig')
+                  ? CompliancePostureConfig.fromJson(
+                      json_['desiredCompliancePostureConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           desiredContainerdConfig: json_.containsKey('desiredContainerdConfig')
               ? ContainerdConfig.fromJson(json_['desiredContainerdConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          desiredControlPlaneEndpointsConfig:
+              json_.containsKey('desiredControlPlaneEndpointsConfig')
+                  ? ControlPlaneEndpointsConfig.fromJson(
+                      json_['desiredControlPlaneEndpointsConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           desiredCostManagementConfig:
               json_.containsKey('desiredCostManagementConfig')
                   ? CostManagementConfig.fromJson(
@@ -5903,6 +6040,8 @@ class ClusterUpdate {
               : null,
           desiredDatapathProvider:
               json_['desiredDatapathProvider'] as core.String?,
+          desiredDefaultEnablePrivateNodes:
+              json_['desiredDefaultEnablePrivateNodes'] as core.bool?,
           desiredDefaultSnatStatus:
               json_.containsKey('desiredDefaultSnatStatus')
                   ? DefaultSnatStatus.fromJson(json_['desiredDefaultSnatStatus']
@@ -6043,6 +6182,11 @@ class ClusterUpdate {
                   : null,
           desiredPrivateIpv6GoogleAccess:
               json_['desiredPrivateIpv6GoogleAccess'] as core.String?,
+          desiredRbacBindingConfig:
+              json_.containsKey('desiredRbacBindingConfig')
+                  ? RBACBindingConfig.fromJson(json_['desiredRbacBindingConfig']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
           desiredReleaseChannel: json_.containsKey('desiredReleaseChannel')
               ? ReleaseChannel.fromJson(json_['desiredReleaseChannel']
                   as core.Map<core.String, core.dynamic>)
@@ -6053,6 +6197,11 @@ class ClusterUpdate {
                       json_['desiredResourceUsageExportConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          desiredSecretManagerConfig: json_
+                  .containsKey('desiredSecretManagerConfig')
+              ? SecretManagerConfig.fromJson(json_['desiredSecretManagerConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           desiredSecurityPostureConfig:
               json_.containsKey('desiredSecurityPostureConfig')
                   ? SecurityPostureConfig.fromJson(
@@ -6093,6 +6242,10 @@ class ClusterUpdate {
                       json_['removedAdditionalPodRangesConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          userManagedKeysConfig: json_.containsKey('userManagedKeysConfig')
+              ? UserManagedKeysConfig.fromJson(json_['userManagedKeysConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6109,14 +6262,21 @@ class ClusterUpdate {
           'desiredBinaryAuthorization': desiredBinaryAuthorization!,
         if (desiredClusterAutoscaling != null)
           'desiredClusterAutoscaling': desiredClusterAutoscaling!,
+        if (desiredCompliancePostureConfig != null)
+          'desiredCompliancePostureConfig': desiredCompliancePostureConfig!,
         if (desiredContainerdConfig != null)
           'desiredContainerdConfig': desiredContainerdConfig!,
+        if (desiredControlPlaneEndpointsConfig != null)
+          'desiredControlPlaneEndpointsConfig':
+              desiredControlPlaneEndpointsConfig!,
         if (desiredCostManagementConfig != null)
           'desiredCostManagementConfig': desiredCostManagementConfig!,
         if (desiredDatabaseEncryption != null)
           'desiredDatabaseEncryption': desiredDatabaseEncryption!,
         if (desiredDatapathProvider != null)
           'desiredDatapathProvider': desiredDatapathProvider!,
+        if (desiredDefaultEnablePrivateNodes != null)
+          'desiredDefaultEnablePrivateNodes': desiredDefaultEnablePrivateNodes!,
         if (desiredDefaultSnatStatus != null)
           'desiredDefaultSnatStatus': desiredDefaultSnatStatus!,
         if (desiredDnsConfig != null) 'desiredDnsConfig': desiredDnsConfig!,
@@ -6188,10 +6348,14 @@ class ClusterUpdate {
           'desiredPrivateClusterConfig': desiredPrivateClusterConfig!,
         if (desiredPrivateIpv6GoogleAccess != null)
           'desiredPrivateIpv6GoogleAccess': desiredPrivateIpv6GoogleAccess!,
+        if (desiredRbacBindingConfig != null)
+          'desiredRbacBindingConfig': desiredRbacBindingConfig!,
         if (desiredReleaseChannel != null)
           'desiredReleaseChannel': desiredReleaseChannel!,
         if (desiredResourceUsageExportConfig != null)
           'desiredResourceUsageExportConfig': desiredResourceUsageExportConfig!,
+        if (desiredSecretManagerConfig != null)
+          'desiredSecretManagerConfig': desiredSecretManagerConfig!,
         if (desiredSecurityPostureConfig != null)
           'desiredSecurityPostureConfig': desiredSecurityPostureConfig!,
         if (desiredServiceExternalIpsConfig != null)
@@ -6207,6 +6371,8 @@ class ClusterUpdate {
         if (etag != null) 'etag': etag!,
         if (removedAdditionalPodRangesConfig != null)
           'removedAdditionalPodRangesConfig': removedAdditionalPodRangesConfig!,
+        if (userManagedKeysConfig != null)
+          'userManagedKeysConfig': userManagedKeysConfig!,
       };
 }
 
@@ -6277,6 +6443,43 @@ class CompleteIPRotationRequest {
 /// CompleteNodePoolUpgradeRequest sets the name of target node pool to complete
 /// upgrade.
 typedef CompleteNodePoolUpgradeRequest = $Empty;
+
+/// CompliancePostureConfig defines the settings needed to enable/disable
+/// features for the Compliance Posture.
+class CompliancePostureConfig {
+  /// List of enabled compliance standards.
+  core.List<ComplianceStandard>? complianceStandards;
+
+  /// Defines the enablement mode for Compliance Posture.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Default value not specified.
+  /// - "DISABLED" : Disables Compliance Posture features on the cluster.
+  /// - "ENABLED" : Enables Compliance Posture features on the cluster.
+  core.String? mode;
+
+  CompliancePostureConfig({
+    this.complianceStandards,
+    this.mode,
+  });
+
+  CompliancePostureConfig.fromJson(core.Map json_)
+      : this(
+          complianceStandards: (json_['complianceStandards'] as core.List?)
+              ?.map((value) => ComplianceStandard.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          mode: json_['mode'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (complianceStandards != null)
+          'complianceStandards': complianceStandards!,
+        if (mode != null) 'mode': mode!,
+      };
+}
+
+/// Defines the details of a compliance standard.
+typedef ComplianceStandard = $ComplianceStandard;
 
 /// ConfidentialNodes is configuration for the confidential nodes feature, which
 /// makes nodes run on confidential VMs.
@@ -6362,6 +6565,37 @@ class ContainerdConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (privateRegistryAccessConfig != null)
           'privateRegistryAccessConfig': privateRegistryAccessConfig!,
+      };
+}
+
+/// Configuration for all of the cluster's control plane endpoints.
+class ControlPlaneEndpointsConfig {
+  /// DNS endpoint configuration.
+  DNSEndpointConfig? dnsEndpointConfig;
+
+  /// IP endpoints configuration.
+  IPEndpointsConfig? ipEndpointsConfig;
+
+  ControlPlaneEndpointsConfig({
+    this.dnsEndpointConfig,
+    this.ipEndpointsConfig,
+  });
+
+  ControlPlaneEndpointsConfig.fromJson(core.Map json_)
+      : this(
+          dnsEndpointConfig: json_.containsKey('dnsEndpointConfig')
+              ? DNSEndpointConfig.fromJson(json_['dnsEndpointConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          ipEndpointsConfig: json_.containsKey('ipEndpointsConfig')
+              ? IPEndpointsConfig.fromJson(json_['ipEndpointsConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dnsEndpointConfig != null) 'dnsEndpointConfig': dnsEndpointConfig!,
+        if (ipEndpointsConfig != null) 'ipEndpointsConfig': ipEndpointsConfig!,
       };
 }
 
@@ -6573,6 +6807,41 @@ class DNSConfig {
       };
 }
 
+/// Describes the configuration of a DNS endpoint.
+class DNSEndpointConfig {
+  /// Controls whether user traffic is allowed over this endpoint.
+  ///
+  /// Note that GCP-managed services may still use the endpoint even if this is
+  /// false.
+  core.bool? allowExternalTraffic;
+
+  /// The cluster's DNS endpoint configuration.
+  ///
+  /// A DNS format address. This is accessible from the public internet. Ex:
+  /// uid.us-central1.gke.goog. Always present, but the behavior may change
+  /// according to the value of DNSEndpointConfig.allow_external_traffic.
+  ///
+  /// Output only.
+  core.String? endpoint;
+
+  DNSEndpointConfig({
+    this.allowExternalTraffic,
+    this.endpoint,
+  });
+
+  DNSEndpointConfig.fromJson(core.Map json_)
+      : this(
+          allowExternalTraffic: json_['allowExternalTraffic'] as core.bool?,
+          endpoint: json_['endpoint'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowExternalTraffic != null)
+          'allowExternalTraffic': allowExternalTraffic!,
+        if (endpoint != null) 'endpoint': endpoint!,
+      };
+}
+
 /// Time window specified for daily maintenance operations.
 class DailyMaintenanceWindow {
   /// Duration of the time window, automatically chosen to be smallest possible
@@ -6736,7 +7005,7 @@ typedef Empty = $Empty;
 
 /// EnterpriseConfig is the cluster enterprise configuration.
 class EnterpriseConfig {
-  /// cluster_tier specifies the premium tier of the cluster.
+  /// cluster_tier indicates the effective tier of the cluster.
   ///
   /// Output only.
   /// Possible string values are:
@@ -6967,8 +7236,8 @@ class GatewayAPIConfig {
   /// Possible string values are:
   /// - "CHANNEL_UNSPECIFIED" : Default value.
   /// - "CHANNEL_DISABLED" : Gateway API support is disabled
-  /// - "CHANNEL_EXPERIMENTAL" : Gateway API support is enabled, experimental
-  /// CRDs are installed
+  /// - "CHANNEL_EXPERIMENTAL" : Deprecated: use CHANNEL_STANDARD instead.
+  /// Gateway API support is enabled, experimental CRDs are installed
   /// - "CHANNEL_STANDARD" : Gateway API support is enabled, standard CRDs are
   /// installed
   core.String? channel;
@@ -7066,8 +7335,8 @@ class GcsFuseCsiDriverConfig {
 
 /// GetJSONWebKeysResponse is a valid JSON Web Key Set as specififed in rfc 7517
 class GetJSONWebKeysResponse {
-  /// OnePlatform automatically extracts this field and uses it to set the HTTP
-  /// Cache-Control header.
+  /// For HTTP requests, this field is automatically extracted into the
+  /// Cache-Control HTTP header.
   HttpCacheControlResponseHeader? cacheHeader;
 
   /// The public component of the keys used by the cluster to sign token
@@ -7101,8 +7370,8 @@ class GetJSONWebKeysResponse {
 ///
 /// See the OpenID Connect Discovery 1.0 specification for details.
 class GetOpenIDConfigResponse {
-  /// OnePlatform automatically extracts this field and uses it to set the HTTP
-  /// Cache-Control header.
+  /// For HTTP requests, this field is automatically extracted into the
+  /// Cache-Control HTTP header.
   HttpCacheControlResponseHeader? cacheHeader;
 
   /// Supported claims.
@@ -7578,6 +7847,94 @@ class IPAllocationPolicy {
         if (tpuIpv4CidrBlock != null) 'tpuIpv4CidrBlock': tpuIpv4CidrBlock!,
         if (useIpAliases != null) 'useIpAliases': useIpAliases!,
         if (useRoutes != null) 'useRoutes': useRoutes!,
+      };
+}
+
+/// IP endpoints configuration.
+class IPEndpointsConfig {
+  /// Configuration of authorized networks.
+  ///
+  /// If enabled, restricts access to the control plane based on source IP. It
+  /// is invalid to specify both Cluster.masterAuthorizedNetworksConfig and this
+  /// field at the same time.
+  MasterAuthorizedNetworksConfig? authorizedNetworksConfig;
+
+  /// Controls whether the control plane allows access through a public IP.
+  ///
+  /// It is invalid to specify both PrivateClusterConfig.enablePrivateEndpoint
+  /// and this field at the same time.
+  core.bool? enablePublicEndpoint;
+
+  /// Controls whether to allow direct IP access.
+  core.bool? enabled;
+
+  /// Controls whether the control plane's private endpoint is accessible from
+  /// sources in other regions.
+  ///
+  /// It is invalid to specify both
+  /// PrivateClusterMasterGlobalAccessConfig.enabled and this field at the same
+  /// time.
+  core.bool? globalAccess;
+
+  /// The internal IP address of this cluster's control plane.
+  ///
+  /// Only populated if enabled.
+  ///
+  /// Output only.
+  core.String? privateEndpoint;
+
+  /// Subnet to provision the master's private endpoint during cluster creation.
+  ///
+  /// Specified in projects / * /regions / * /subnetworks / * format. It is
+  /// invalid to specify both PrivateClusterConfig.privateEndpointSubnetwork and
+  /// this field at the same time.
+  core.String? privateEndpointSubnetwork;
+
+  /// The external IP address of this cluster's control plane.
+  ///
+  /// Only populated if enabled.
+  ///
+  /// Output only.
+  core.String? publicEndpoint;
+
+  IPEndpointsConfig({
+    this.authorizedNetworksConfig,
+    this.enablePublicEndpoint,
+    this.enabled,
+    this.globalAccess,
+    this.privateEndpoint,
+    this.privateEndpointSubnetwork,
+    this.publicEndpoint,
+  });
+
+  IPEndpointsConfig.fromJson(core.Map json_)
+      : this(
+          authorizedNetworksConfig:
+              json_.containsKey('authorizedNetworksConfig')
+                  ? MasterAuthorizedNetworksConfig.fromJson(
+                      json_['authorizedNetworksConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          enablePublicEndpoint: json_['enablePublicEndpoint'] as core.bool?,
+          enabled: json_['enabled'] as core.bool?,
+          globalAccess: json_['globalAccess'] as core.bool?,
+          privateEndpoint: json_['privateEndpoint'] as core.String?,
+          privateEndpointSubnetwork:
+              json_['privateEndpointSubnetwork'] as core.String?,
+          publicEndpoint: json_['publicEndpoint'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authorizedNetworksConfig != null)
+          'authorizedNetworksConfig': authorizedNetworksConfig!,
+        if (enablePublicEndpoint != null)
+          'enablePublicEndpoint': enablePublicEndpoint!,
+        if (enabled != null) 'enabled': enabled!,
+        if (globalAccess != null) 'globalAccess': globalAccess!,
+        if (privateEndpoint != null) 'privateEndpoint': privateEndpoint!,
+        if (privateEndpointSubnetwork != null)
+          'privateEndpointSubnetwork': privateEndpointSubnetwork!,
+        if (publicEndpoint != null) 'publicEndpoint': publicEndpoint!,
       };
 }
 
@@ -8173,6 +8530,8 @@ class MasterAuth {
   /// Base64-encoded public certificate used by clients to authenticate to the
   /// cluster endpoint.
   ///
+  /// Issued only if client_certificate_config is set.
+  ///
   /// Output only.
   core.String? clientCertificate;
 
@@ -8272,10 +8631,14 @@ class MasterAuthorizedNetworksConfig {
   /// addresses.
   core.bool? gcpPublicCidrsAccessEnabled;
 
+  /// Whether master authorized networks is enforced on private endpoint or not.
+  core.bool? privateEndpointEnforcementEnabled;
+
   MasterAuthorizedNetworksConfig({
     this.cidrBlocks,
     this.enabled,
     this.gcpPublicCidrsAccessEnabled,
+    this.privateEndpointEnforcementEnabled,
   });
 
   MasterAuthorizedNetworksConfig.fromJson(core.Map json_)
@@ -8287,6 +8650,8 @@ class MasterAuthorizedNetworksConfig {
           enabled: json_['enabled'] as core.bool?,
           gcpPublicCidrsAccessEnabled:
               json_['gcpPublicCidrsAccessEnabled'] as core.bool?,
+          privateEndpointEnforcementEnabled:
+              json_['privateEndpointEnforcementEnabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8294,6 +8659,9 @@ class MasterAuthorizedNetworksConfig {
         if (enabled != null) 'enabled': enabled!,
         if (gcpPublicCidrsAccessEnabled != null)
           'gcpPublicCidrsAccessEnabled': gcpPublicCidrsAccessEnabled!,
+        if (privateEndpointEnforcementEnabled != null)
+          'privateEndpointEnforcementEnabled':
+              privateEndpointEnforcementEnabled!,
       };
 }
 
@@ -8463,6 +8831,13 @@ class NetworkConfig {
   /// for more.
   core.String? datapathProvider;
 
+  /// Controls whether by default nodes have private IP addresses only.
+  ///
+  /// It is invalid to specify both PrivateClusterConfig.enablePrivateNodes and
+  /// this field at the same time. To update the default setting, use
+  /// ClusterUpdate.desired_default_enable_private_nodes
+  core.bool? defaultEnablePrivateNodes;
+
   /// Whether the cluster disables default in-node sNAT rules.
   ///
   /// In-node sNAT rules will be disabled when default_snat_status is disabled.
@@ -8547,6 +8922,7 @@ class NetworkConfig {
 
   NetworkConfig({
     this.datapathProvider,
+    this.defaultEnablePrivateNodes,
     this.defaultSnatStatus,
     this.dnsConfig,
     this.enableCiliumClusterwideNetworkPolicy,
@@ -8566,6 +8942,8 @@ class NetworkConfig {
   NetworkConfig.fromJson(core.Map json_)
       : this(
           datapathProvider: json_['datapathProvider'] as core.String?,
+          defaultEnablePrivateNodes:
+              json_['defaultEnablePrivateNodes'] as core.bool?,
           defaultSnatStatus: json_.containsKey('defaultSnatStatus')
               ? DefaultSnatStatus.fromJson(json_['defaultSnatStatus']
                   as core.Map<core.String, core.dynamic>)
@@ -8608,6 +8986,8 @@ class NetworkConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (datapathProvider != null) 'datapathProvider': datapathProvider!,
+        if (defaultEnablePrivateNodes != null)
+          'defaultEnablePrivateNodes': defaultEnablePrivateNodes!,
         if (defaultSnatStatus != null) 'defaultSnatStatus': defaultSnatStatus!,
         if (dnsConfig != null) 'dnsConfig': dnsConfig!,
         if (enableCiliumClusterwideNetworkPolicy != null)
@@ -8813,6 +9193,22 @@ class NodeConfig {
   /// 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
   core.String? diskType;
 
+  /// effective_cgroup_mode is the cgroup mode actually used by the node pool.
+  ///
+  /// It is determined by the cgroup mode specified in the LinuxNodeConfig or
+  /// the default cgroup mode based on the cluster creation version.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "EFFECTIVE_CGROUP_MODE_UNSPECIFIED" : EFFECTIVE_CGROUP_MODE_UNSPECIFIED
+  /// means the cgroup configuration for the node pool is unspecified, i.e. the
+  /// node pool is a Windows node pool.
+  /// - "EFFECTIVE_CGROUP_MODE_V1" : CGROUP_MODE_V1 means the node pool is
+  /// configured to use cgroupv1 for the cgroup configuration.
+  /// - "EFFECTIVE_CGROUP_MODE_V2" : CGROUP_MODE_V2 means the node pool is
+  /// configured to use cgroupv2 for the cgroup configuration.
+  core.String? effectiveCgroupMode;
+
   /// Reserved for future use.
   ///
   /// Optional.
@@ -8967,6 +9363,9 @@ class NodeConfig {
   /// preemptible flag.
   core.bool? spot;
 
+  /// List of Storage Pools where boot disks are provisioned.
+  core.List<core.String>? storagePools;
+
   /// The list of instance tags applied to all nodes.
   ///
   /// Tags are used to identify valid sources or targets for network firewalls
@@ -8994,6 +9393,7 @@ class NodeConfig {
     this.containerdConfig,
     this.diskSizeGb,
     this.diskType,
+    this.effectiveCgroupMode,
     this.enableConfidentialStorage,
     this.ephemeralStorageLocalSsdConfig,
     this.fastSocket,
@@ -9022,6 +9422,7 @@ class NodeConfig {
     this.shieldedInstanceConfig,
     this.soleTenantConfig,
     this.spot,
+    this.storagePools,
     this.tags,
     this.taints,
     this.windowsNodeConfig,
@@ -9050,6 +9451,7 @@ class NodeConfig {
               : null,
           diskSizeGb: json_['diskSizeGb'] as core.int?,
           diskType: json_['diskType'] as core.String?,
+          effectiveCgroupMode: json_['effectiveCgroupMode'] as core.String?,
           enableConfidentialStorage:
               json_['enableConfidentialStorage'] as core.bool?,
           ephemeralStorageLocalSsdConfig:
@@ -9150,6 +9552,9 @@ class NodeConfig {
                   as core.Map<core.String, core.dynamic>)
               : null,
           spot: json_['spot'] as core.bool?,
+          storagePools: (json_['storagePools'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           tags: (json_['tags'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -9176,6 +9581,8 @@ class NodeConfig {
         if (containerdConfig != null) 'containerdConfig': containerdConfig!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (diskType != null) 'diskType': diskType!,
+        if (effectiveCgroupMode != null)
+          'effectiveCgroupMode': effectiveCgroupMode!,
         if (enableConfidentialStorage != null)
           'enableConfidentialStorage': enableConfidentialStorage!,
         if (ephemeralStorageLocalSsdConfig != null)
@@ -9212,6 +9619,7 @@ class NodeConfig {
           'shieldedInstanceConfig': shieldedInstanceConfig!,
         if (soleTenantConfig != null) 'soleTenantConfig': soleTenantConfig!,
         if (spot != null) 'spot': spot!,
+        if (storagePools != null) 'storagePools': storagePools!,
         if (tags != null) 'tags': tags!,
         if (taints != null) 'taints': taints!,
         if (windowsNodeConfig != null) 'windowsNodeConfig': windowsNodeConfig!,
@@ -9415,7 +9823,7 @@ class NodeNetworkConfig {
   /// Whether nodes have internal IP addresses only.
   ///
   /// If enable_private_nodes is not specified, then the value is derived from
-  /// cluster.privateClusterConfig.enablePrivateNodes
+  /// Cluster.NetworkConfig.default_enable_private_nodes
   core.bool? enablePrivateNodes;
 
   /// Network bandwidth tier configuration.
@@ -10036,6 +10444,8 @@ class Operation {
   core.List<StatusCondition>? clusterConditions;
 
   /// Detailed operation progress, if available.
+  ///
+  /// Output only.
   core.String? detail;
 
   /// The time the operation completed, in
@@ -10057,6 +10467,8 @@ class Operation {
   core.String? location;
 
   /// The server-assigned ID for the operation.
+  ///
+  /// Output only.
   core.String? name;
 
   /// Which conditions caused the current node pool state.
@@ -10068,6 +10480,8 @@ class Operation {
   core.List<StatusCondition>? nodepoolConditions;
 
   /// The operation type.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Not set.
   /// - "CREATE_CLUSTER" : The cluster is being created. The cluster should be
@@ -10152,6 +10566,8 @@ class Operation {
   ///
   /// Example:
   /// `https://container.googleapis.com/v1alpha1/projects/123/locations/us-central1/operations/operation-123`.
+  ///
+  /// Output only.
   core.String? selfLink;
 
   /// The time the operation started, in
@@ -10161,6 +10577,8 @@ class Operation {
   core.String? startTime;
 
   /// The current status of the operation.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATUS_UNSPECIFIED" : Not set.
   /// - "PENDING" : The operation has been created.
@@ -10188,6 +10606,8 @@ class Operation {
   /// ##
   /// `https://container.googleapis.com/v1/projects/123/zones/us-central1-c/clusters/my-cluster/nodePools/my-np`
   /// `https://container.googleapis.com/v1/projects/123/zones/us-central1-c/clusters/my-cluster/nodePools/my-np/node/my-node`
+  ///
+  /// Output only.
   core.String? targetLink;
 
   /// The name of the Google Compute Engine
@@ -10195,6 +10615,8 @@ class Operation {
   /// operation is taking place.
   ///
   /// This field is deprecated, use location instead.
+  ///
+  /// Output only.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -10460,15 +10882,35 @@ class PodCIDROverprovisionConfig {
 /// Configuration options for private clusters.
 class PrivateClusterConfig {
   /// Whether the master's internal IP address is used as the cluster endpoint.
+  ///
+  /// Deprecated: Use
+  /// ControlPlaneEndpointsConfig.IPEndpointsConfig.enable_public_endpoint
+  /// instead. Note that the value of enable_public_endpoint is reversed: if
+  /// enable_private_endpoint is false, then enable_public_endpoint will be
+  /// true.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? enablePrivateEndpoint;
 
   /// Whether nodes have internal IP addresses only.
   ///
   /// If enabled, all nodes are given only RFC 1918 private addresses and
-  /// communicate with the master via private networking.
+  /// communicate with the master via private networking. Deprecated: Use
+  /// NetworkConfig.default_enable_private_nodes instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? enablePrivateNodes;
 
   /// Controls master global access settings.
+  ///
+  /// Deprecated: Use
+  /// ControlPlaneEndpointsConfig.IPEndpointsConfig.enable_global_access
+  /// instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   PrivateClusterMasterGlobalAccessConfig? masterGlobalAccessConfig;
 
   /// The IP range in CIDR notation to use for the hosted master network.
@@ -10485,17 +10927,35 @@ class PrivateClusterConfig {
 
   /// The internal IP address of this cluster's master endpoint.
   ///
+  /// Deprecated: Use
+  /// ControlPlaneEndpointsConfig.IPEndpointsConfig.private_endpoint instead.
+  ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? privateEndpoint;
 
   /// Subnet to provision the master's private endpoint during cluster creation.
   ///
-  /// Specified in projects / * /regions / * /subnetworks / *  format.
+  /// Specified in projects / * /regions / * /subnetworks / * format.
+  /// Deprecated: Use
+  /// ControlPlaneEndpointsConfig.IPEndpointsConfig.private_endpoint_subnetwork
+  /// instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? privateEndpointSubnetwork;
 
   /// The external IP address of this cluster's master endpoint.
   ///
+  /// Deprecated:Use
+  /// ControlPlaneEndpointsConfig.IPEndpointsConfig.public_endpoint instead.
+  ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? publicEndpoint;
 
   PrivateClusterConfig({
@@ -10654,6 +11114,40 @@ class QueuedProvisioning {
       };
 }
 
+/// RBACBindingConfig allows user to restrict ClusterRoleBindings an
+/// RoleBindings that can be created.
+class RBACBindingConfig {
+  /// Setting this to true will allow any ClusterRoleBinding and RoleBinding
+  /// with subjects system:authenticated.
+  core.bool? enableInsecureBindingSystemAuthenticated;
+
+  /// Setting this to true will allow any ClusterRoleBinding and RoleBinding
+  /// with subjets system:anonymous or system:unauthenticated.
+  core.bool? enableInsecureBindingSystemUnauthenticated;
+
+  RBACBindingConfig({
+    this.enableInsecureBindingSystemAuthenticated,
+    this.enableInsecureBindingSystemUnauthenticated,
+  });
+
+  RBACBindingConfig.fromJson(core.Map json_)
+      : this(
+          enableInsecureBindingSystemAuthenticated:
+              json_['enableInsecureBindingSystemAuthenticated'] as core.bool?,
+          enableInsecureBindingSystemUnauthenticated:
+              json_['enableInsecureBindingSystemUnauthenticated'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableInsecureBindingSystemAuthenticated != null)
+          'enableInsecureBindingSystemAuthenticated':
+              enableInsecureBindingSystemAuthenticated!,
+        if (enableInsecureBindingSystemUnauthenticated != null)
+          'enableInsecureBindingSystemUnauthenticated':
+              enableInsecureBindingSystemUnauthenticated!,
+      };
+}
+
 /// RangeInfo contains the range name and the range utilization by this cluster.
 class RangeInfo {
   /// Name of a range.
@@ -10680,6 +11174,91 @@ class RangeInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (rangeName != null) 'rangeName': rangeName!,
         if (utilization != null) 'utilization': utilization!,
+      };
+}
+
+/// RayClusterLoggingConfig specifies configuration of Ray logging.
+class RayClusterLoggingConfig {
+  /// Enable log collection for Ray clusters.
+  core.bool? enabled;
+
+  RayClusterLoggingConfig({
+    this.enabled,
+  });
+
+  RayClusterLoggingConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_['enabled'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
+/// RayClusterMonitoringConfig specifies monitoring configuration for Ray
+/// clusters.
+class RayClusterMonitoringConfig {
+  /// Enable metrics collection for Ray clusters.
+  core.bool? enabled;
+
+  RayClusterMonitoringConfig({
+    this.enabled,
+  });
+
+  RayClusterMonitoringConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_['enabled'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
+/// Configuration options for the Ray Operator add-on.
+class RayOperatorConfig {
+  /// Whether the Ray Operator addon is enabled for this cluster.
+  core.bool? enabled;
+
+  /// Logging configuration for Ray clusters.
+  ///
+  /// Optional.
+  RayClusterLoggingConfig? rayClusterLoggingConfig;
+
+  /// Monitoring configuration for Ray clusters.
+  ///
+  /// Optional.
+  RayClusterMonitoringConfig? rayClusterMonitoringConfig;
+
+  RayOperatorConfig({
+    this.enabled,
+    this.rayClusterLoggingConfig,
+    this.rayClusterMonitoringConfig,
+  });
+
+  RayOperatorConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_['enabled'] as core.bool?,
+          rayClusterLoggingConfig: json_.containsKey('rayClusterLoggingConfig')
+              ? RayClusterLoggingConfig.fromJson(
+                  json_['rayClusterLoggingConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          rayClusterMonitoringConfig:
+              json_.containsKey('rayClusterMonitoringConfig')
+                  ? RayClusterMonitoringConfig.fromJson(
+                      json_['rayClusterMonitoringConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (rayClusterLoggingConfig != null)
+          'rayClusterLoggingConfig': rayClusterLoggingConfig!,
+        if (rayClusterMonitoringConfig != null)
+          'rayClusterMonitoringConfig': rayClusterMonitoringConfig!,
       };
 }
 
@@ -10746,6 +11325,9 @@ class ReleaseChannel {
   /// to take advantage of new features.
   /// - "STABLE" : Clusters subscribed to STABLE receive versions that are known
   /// to be stable and reliable in production.
+  /// - "EXTENDED" : Clusters subscribed to EXTENDED receive extended support
+  /// and availability for versions which are known to be stable and reliable in
+  /// production.
   core.String? channel;
 
   ReleaseChannel({
@@ -10776,6 +11358,9 @@ class ReleaseChannelConfig {
   /// to take advantage of new features.
   /// - "STABLE" : Clusters subscribed to STABLE receive versions that are known
   /// to be stable and reliable in production.
+  /// - "EXTENDED" : Clusters subscribed to EXTENDED receive extended support
+  /// and availability for versions which are known to be stable and reliable in
+  /// production.
   core.String? channel;
 
   /// The default version for newly created clusters on the channel.
@@ -11114,6 +11699,25 @@ class SecondaryBootDisk {
 /// SecondaryBootDiskUpdateStrategy is a placeholder which will be extended in
 /// the future to define different options for updating secondary boot disks.
 typedef SecondaryBootDiskUpdateStrategy = $Empty;
+
+/// SecretManagerConfig is config for secret manager enablement.
+class SecretManagerConfig {
+  /// Enable/Disable Secret Manager Config.
+  core.bool? enabled;
+
+  SecretManagerConfig({
+    this.enabled,
+  });
+
+  SecretManagerConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_['enabled'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
 
 /// SecurityPostureConfig defines the flags needed to enable/disable features
 /// for the Security Posture API.
@@ -12380,7 +12984,7 @@ class StatefulHAConfig {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// StatusCondition describes why a cluster or a node pool has a certain status
 /// (e.g., ERROR or DEGRADED).
@@ -12886,6 +13490,11 @@ class UpdateNodePoolRequest {
   /// Existing tags will be replaced with new values.
   ResourceManagerTags? resourceManagerTags;
 
+  /// List of Storage Pools where boot disks are provisioned.
+  ///
+  /// Existing Storage Pools will be replaced with storage-pools.
+  core.List<core.String>? storagePools;
+
   /// The desired network tags to be applied to all nodes in the node pool.
   ///
   /// If this field is not present, the tags will not be changed. Otherwise, the
@@ -12945,6 +13554,7 @@ class UpdateNodePoolRequest {
     this.queuedProvisioning,
     this.resourceLabels,
     this.resourceManagerTags,
+    this.storagePools,
     this.tags,
     this.taints,
     this.upgradeSettings,
@@ -13024,6 +13634,9 @@ class UpdateNodePoolRequest {
               ? ResourceManagerTags.fromJson(json_['resourceManagerTags']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          storagePools: (json_['storagePools'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           tags: json_.containsKey('tags')
               ? NetworkTags.fromJson(
                   json_['tags'] as core.Map<core.String, core.dynamic>)
@@ -13075,6 +13688,7 @@ class UpdateNodePoolRequest {
         if (resourceLabels != null) 'resourceLabels': resourceLabels!,
         if (resourceManagerTags != null)
           'resourceManagerTags': resourceManagerTags!,
+        if (storagePools != null) 'storagePools': storagePools!,
         if (tags != null) 'tags': tags!,
         if (taints != null) 'taints': taints!,
         if (upgradeSettings != null) 'upgradeSettings': upgradeSettings!,
@@ -13264,6 +13878,94 @@ class UsableSubnetworkSecondaryRange {
         if (ipCidrRange != null) 'ipCidrRange': ipCidrRange!,
         if (rangeName != null) 'rangeName': rangeName!,
         if (status != null) 'status': status!,
+      };
+}
+
+/// UserManagedKeysConfig holds the resource address to Keys which are used for
+/// signing certs and token that are used for communication within cluster.
+class UserManagedKeysConfig {
+  /// The Certificate Authority Service caPool to use for the aggregation CA in
+  /// this cluster.
+  core.String? aggregationCa;
+
+  /// The Certificate Authority Service caPool to use for the cluster CA in this
+  /// cluster.
+  core.String? clusterCa;
+
+  /// The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control
+  /// plane nodes.
+  core.String? controlPlaneDiskEncryptionKey;
+
+  /// Resource path of the Certificate Authority Service caPool to use for the
+  /// etcd API CA in this cluster.
+  core.String? etcdApiCa;
+
+  /// Resource path of the Certificate Authority Service caPool to use for the
+  /// etcd peer CA in this cluster.
+  core.String? etcdPeerCa;
+
+  /// Resource path of the Cloud KMS cryptoKey to use for encryption of internal
+  /// etcd backups.
+  core.String? gkeopsEtcdBackupEncryptionKey;
+
+  /// The Cloud KMS cryptoKeyVersions to use for signing service account JWTs
+  /// issued by this cluster.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{cryptoKey}/cryptoKeyVersions/{cryptoKeyVersion}`
+  core.List<core.String>? serviceAccountSigningKeys;
+
+  /// The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs
+  /// issued by this cluster.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{cryptoKey}/cryptoKeyVersions/{cryptoKeyVersion}`
+  core.List<core.String>? serviceAccountVerificationKeys;
+
+  UserManagedKeysConfig({
+    this.aggregationCa,
+    this.clusterCa,
+    this.controlPlaneDiskEncryptionKey,
+    this.etcdApiCa,
+    this.etcdPeerCa,
+    this.gkeopsEtcdBackupEncryptionKey,
+    this.serviceAccountSigningKeys,
+    this.serviceAccountVerificationKeys,
+  });
+
+  UserManagedKeysConfig.fromJson(core.Map json_)
+      : this(
+          aggregationCa: json_['aggregationCa'] as core.String?,
+          clusterCa: json_['clusterCa'] as core.String?,
+          controlPlaneDiskEncryptionKey:
+              json_['controlPlaneDiskEncryptionKey'] as core.String?,
+          etcdApiCa: json_['etcdApiCa'] as core.String?,
+          etcdPeerCa: json_['etcdPeerCa'] as core.String?,
+          gkeopsEtcdBackupEncryptionKey:
+              json_['gkeopsEtcdBackupEncryptionKey'] as core.String?,
+          serviceAccountSigningKeys:
+              (json_['serviceAccountSigningKeys'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+          serviceAccountVerificationKeys:
+              (json_['serviceAccountVerificationKeys'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregationCa != null) 'aggregationCa': aggregationCa!,
+        if (clusterCa != null) 'clusterCa': clusterCa!,
+        if (controlPlaneDiskEncryptionKey != null)
+          'controlPlaneDiskEncryptionKey': controlPlaneDiskEncryptionKey!,
+        if (etcdApiCa != null) 'etcdApiCa': etcdApiCa!,
+        if (etcdPeerCa != null) 'etcdPeerCa': etcdPeerCa!,
+        if (gkeopsEtcdBackupEncryptionKey != null)
+          'gkeopsEtcdBackupEncryptionKey': gkeopsEtcdBackupEncryptionKey!,
+        if (serviceAccountSigningKeys != null)
+          'serviceAccountSigningKeys': serviceAccountSigningKeys!,
+        if (serviceAccountVerificationKeys != null)
+          'serviceAccountVerificationKeys': serviceAccountVerificationKeys!,
       };
 }
 

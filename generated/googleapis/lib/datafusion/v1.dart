@@ -139,9 +139,6 @@ class ProjectsLocationsResource {
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
-  /// [includeUnrevealedLocations] - If true, the returned list will include
-  /// locations which are not yet revealed.
-  ///
   /// [pageSize] - The maximum number of results to return. If not set, the
   /// service selects a default.
   ///
@@ -161,15 +158,12 @@ class ProjectsLocationsResource {
   async.Future<ListLocationsResponse> list(
     core.String name, {
     core.String? filter,
-    core.bool? includeUnrevealedLocations,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
-      if (includeUnrevealedLocations != null)
-        'includeUnrevealedLocations': ['${includeUnrevealedLocations}'],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -1020,21 +1014,22 @@ class ProjectsLocationsVersionsResource {
 
 /// Identifies Data Fusion accelerators for an instance.
 class Accelerator {
-  /// The type of an accelator for a CDF instance.
+  /// The type of an accelator for a Cloud Data Fusion instance.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "ACCELERATOR_TYPE_UNSPECIFIED" : Default value, if unspecified.
-  /// - "CDC" : Change Data Capture accelerator for CDF.
-  /// - "HEALTHCARE" : Cloud Healthcare accelerator for CDF. This accelerator is
-  /// to enable Cloud Healthcare specific CDF plugins developed by Healthcare
-  /// team.
+  /// - "CDC" : Change Data Capture accelerator for Cloud Data Fusion.
+  /// - "HEALTHCARE" : Reserved for internal use.
   /// - "CCAI_INSIGHTS" : Contact Center AI Insights This accelerator is used to
   /// enable import and export pipelines custom built to streamline CCAI
   /// Insights processing.
-  /// - "CLOUDSEARCH" : Cloud search accelerator for CDF. This accelerator is to
-  /// enable Cloud search specific CDF plugins developed by Cloudsearch team.
+  /// - "CLOUDSEARCH" : Reserved for internal use.
   core.String? acceleratorType;
 
   /// The state of the accelerator.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Default value, do not use.
   /// - "ENABLED" : Indicates that the accelerator is enabled and available to
@@ -1190,7 +1185,11 @@ class Binding {
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -1440,6 +1439,11 @@ class Instance {
   /// The character '=' is not allowed to be used within the labels.
   core.Map<core.String, core.String>? labels;
 
+  /// Configure the maintenance policy for this instance.
+  ///
+  /// Optional.
+  MaintenancePolicy? maintenancePolicy;
+
   /// The name of this instance is in the form of
   /// projects/{project}/locations/{location}/instances/{instance}.
   ///
@@ -1455,7 +1459,7 @@ class Instance {
   /// instance.
   core.Map<core.String, core.String>? options;
 
-  /// P4 service account for the customer project.
+  /// Service agent for the customer project.
   ///
   /// Output only.
   core.String? p4ServiceAccount;
@@ -1574,6 +1578,7 @@ class Instance {
     this.eventPublishConfig,
     this.gcsBucket,
     this.labels,
+    this.maintenancePolicy,
     this.name,
     this.networkConfig,
     this.options,
@@ -1636,6 +1641,10 @@ class Instance {
               value as core.String,
             ),
           ),
+          maintenancePolicy: json_.containsKey('maintenancePolicy')
+              ? MaintenancePolicy.fromJson(json_['maintenancePolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_['name'] as core.String?,
           networkConfig: json_.containsKey('networkConfig')
               ? NetworkConfig.fromJson(
@@ -1690,6 +1699,7 @@ class Instance {
           'eventPublishConfig': eventPublishConfig!,
         if (gcsBucket != null) 'gcsBucket': gcsBucket!,
         if (labels != null) 'labels': labels!,
+        if (maintenancePolicy != null) 'maintenancePolicy': maintenancePolicy!,
         if (name != null) 'name': name!,
         if (networkConfig != null) 'networkConfig': networkConfig!,
         if (options != null) 'options': options!,
@@ -1866,6 +1876,68 @@ class ListOperationsResponse {
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
+/// Maintenance policy of the instance.
+class MaintenancePolicy {
+  /// The maintenance exclusion window of the instance.
+  ///
+  /// Optional.
+  TimeWindow? maintenanceExclusionWindow;
+
+  /// The maintenance window of the instance.
+  ///
+  /// Optional.
+  MaintenanceWindow? maintenanceWindow;
+
+  MaintenancePolicy({
+    this.maintenanceExclusionWindow,
+    this.maintenanceWindow,
+  });
+
+  MaintenancePolicy.fromJson(core.Map json_)
+      : this(
+          maintenanceExclusionWindow:
+              json_.containsKey('maintenanceExclusionWindow')
+                  ? TimeWindow.fromJson(json_['maintenanceExclusionWindow']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          maintenanceWindow: json_.containsKey('maintenanceWindow')
+              ? MaintenanceWindow.fromJson(json_['maintenanceWindow']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maintenanceExclusionWindow != null)
+          'maintenanceExclusionWindow': maintenanceExclusionWindow!,
+        if (maintenanceWindow != null) 'maintenanceWindow': maintenanceWindow!,
+      };
+}
+
+/// Maintenance window of the instance.
+class MaintenanceWindow {
+  /// The recurring time window of the maintenance window.
+  ///
+  /// Required.
+  RecurringTimeWindow? recurringTimeWindow;
+
+  MaintenanceWindow({
+    this.recurringTimeWindow,
+  });
+
+  MaintenanceWindow.fromJson(core.Map json_)
+      : this(
+          recurringTimeWindow: json_.containsKey('recurringTimeWindow')
+              ? RecurringTimeWindow.fromJson(json_['recurringTimeWindow']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (recurringTimeWindow != null)
+          'recurringTimeWindow': recurringTimeWindow!,
+      };
+}
+
 /// Network configuration for a Data Fusion instance.
 ///
 /// These configurations are used for peering with the customer network.
@@ -1905,9 +1977,8 @@ class NetworkConfig {
   /// Name of the network in the customer project with which the Tenant Project
   /// will be peered for executing pipelines.
   ///
-  /// This is required only when using connection type VPC peering. In case of
-  /// shared VPC where the network resides in another host project the network
-  /// should specified in the form of
+  /// In case of shared VPC where the network resides in another host project
+  /// the network should specified in the form of
   /// projects/{host-project-id}/global/networks/{network}. This is only
   /// required for connectivity type VPC_PEERING.
   ///
@@ -2201,6 +2272,50 @@ class PrivateServiceConnectConfig {
       };
 }
 
+/// Represents an arbitrary window of time that recurs.
+class RecurringTimeWindow {
+  /// An RRULE with format
+  /// \[RFC-5545\](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+  /// this window reccurs.
+  ///
+  /// They go on for the span of time between the start and end time. The only
+  /// supported FREQ value is "WEEKLY". To have something repeat every weekday,
+  /// use: "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR". This specifies how frequently the
+  /// window starts. To have a 9 am - 5 pm UTC-4 window every weekday, use
+  /// something like: ``` start time = 2019-01-01T09:00:00-0400 end time =
+  /// 2019-01-01T17:00:00-0400 recurrence = FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR ```
+  ///
+  /// Required.
+  core.String? recurrence;
+
+  /// The window representing the start and end time of recurrences.
+  ///
+  /// This field ignores the date components of the provided timestamps. Only
+  /// the time of day and duration between start and end time are relevant.
+  ///
+  /// Required.
+  TimeWindow? window;
+
+  RecurringTimeWindow({
+    this.recurrence,
+    this.window,
+  });
+
+  RecurringTimeWindow.fromJson(core.Map json_)
+      : this(
+          recurrence: json_['recurrence'] as core.String?,
+          window: json_.containsKey('window')
+              ? TimeWindow.fromJson(
+                  json_['window'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (recurrence != null) 'recurrence': recurrence!,
+        if (window != null) 'window': window!,
+      };
+}
+
 /// Request message for restarting a Data Fusion instance.
 typedef RestartInstanceRequest = $Empty;
 
@@ -2246,13 +2361,49 @@ class SetIamPolicyRequest {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// Represents an arbitrary window of time.
+class TimeWindow {
+  /// The end time of the time window provided in
+  /// [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format.
+  ///
+  /// The end time should take place after the start time. Example:
+  /// "2024-01-02T12:04:06-06:00"
+  ///
+  /// Required.
+  core.String? endTime;
+
+  /// The start time of the time window provided in
+  /// [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format.
+  ///
+  /// Example: "2024-01-01T12:04:06-04:00"
+  ///
+  /// Required.
+  core.String? startTime;
+
+  TimeWindow({
+    this.endTime,
+    this.startTime,
+  });
+
+  TimeWindow.fromJson(core.Map json_)
+      : this(
+          endTime: json_['endTime'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
 
 /// The Data Fusion version.
 ///

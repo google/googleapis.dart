@@ -1063,7 +1063,42 @@ class AgentMetadata {
 }
 
 /// Script runnable representation on the agent side.
-typedef AgentScript = $Script;
+class AgentScript {
+  /// Script file path on the host VM.
+  ///
+  /// To specify an interpreter, please add a `#!`(also known as
+  /// [shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix))) as the first
+  /// line of the file.(For example, to execute the script using bash,
+  /// `#!/bin/bash` should be the first line of the file. To execute the script
+  /// using`Python3`, `#!/usr/bin/env python3` should be the first line of the
+  /// file.) Otherwise, the file will by default be executed by `/bin/sh`.
+  core.String? path;
+
+  /// Shell script text.
+  ///
+  /// To specify an interpreter, please add a `#!\n` at the beginning of the
+  /// text.(For example, to execute the script using bash, `#!/bin/bash\n`
+  /// should be added. To execute the script using`Python3`, `#!/usr/bin/env
+  /// python3\n` should be added.) Otherwise, the script will by default be
+  /// executed by `/bin/sh`.
+  core.String? text;
+
+  AgentScript({
+    this.path,
+    this.text,
+  });
+
+  AgentScript.fromJson(core.Map json_)
+      : this(
+          path: json_['path'] as core.String?,
+          text: json_['text'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (path != null) 'path': path!,
+        if (text != null) 'text': text!,
+      };
+}
 
 /// TODO(b/182501497) The message needs to be redefined when the Agent API
 /// server updates data in storage per the backend design.
@@ -1189,6 +1224,33 @@ class AgentTaskInfo {
       };
 }
 
+/// AgentTaskLoggingOption contains the options for the logging of the task.
+class AgentTaskLoggingOption {
+  /// Labels to be added to the log entry.
+  ///
+  /// Now only cloud logging is supported.
+  core.Map<core.String, core.String>? labels;
+
+  AgentTaskLoggingOption({
+    this.labels,
+  });
+
+  AgentTaskLoggingOption.fromJson(core.Map json_)
+      : this(
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (labels != null) 'labels': labels!,
+      };
+}
+
 /// AgentTaskRunnable is the Runnable representation between Agent and CLH
 /// communication.
 class AgentTaskRunnable {
@@ -1273,6 +1335,9 @@ class AgentTaskSpec {
   /// Environment variables to set before running the Task.
   AgentEnvironment? environment;
 
+  /// Logging option for the task.
+  AgentTaskLoggingOption? loggingOption;
+
   /// Maximum duration the task should run before being automatically retried
   /// (if enabled) or automatically failed.
   ///
@@ -1295,6 +1360,7 @@ class AgentTaskSpec {
 
   AgentTaskSpec({
     this.environment,
+    this.loggingOption,
     this.maxRunDuration,
     this.runnables,
     this.userAccount,
@@ -1305,6 +1371,10 @@ class AgentTaskSpec {
           environment: json_.containsKey('environment')
               ? AgentEnvironment.fromJson(
                   json_['environment'] as core.Map<core.String, core.dynamic>)
+              : null,
+          loggingOption: json_.containsKey('loggingOption')
+              ? AgentTaskLoggingOption.fromJson(
+                  json_['loggingOption'] as core.Map<core.String, core.dynamic>)
               : null,
           maxRunDuration: json_['maxRunDuration'] as core.String?,
           runnables: (json_['runnables'] as core.List?)
@@ -1319,6 +1389,7 @@ class AgentTaskSpec {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (environment != null) 'environment': environment!,
+        if (loggingOption != null) 'loggingOption': loggingOption!,
         if (maxRunDuration != null) 'maxRunDuration': maxRunDuration!,
         if (runnables != null) 'runnables': runnables!,
         if (userAccount != null) 'userAccount': userAccount!,
@@ -1392,13 +1463,15 @@ class AllocationPolicy {
   /// Only instances\[0\] is supported now.
   core.List<InstancePolicyOrTemplate>? instances;
 
-  /// Labels applied to all VM instances and other resources created by
-  /// AllocationPolicy.
+  /// Custom labels to apply to the job and all the Compute Engine resources
+  /// that both are created by this allocation policy and support labels.
   ///
-  /// Labels could be user provided or system generated. You can assign up to 64
-  /// labels.
-  /// [Google Compute Engine label restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-  /// apply. Label names that start with "goog-" or "google-" are reserved.
+  /// Use labels to group and describe the resources they are applied to. Batch
+  /// automatically applies predefined labels and supports multiple `labels`
+  /// fields for each job, which each let you apply custom labels to various
+  /// resources. Label names that start with "goog-" or "google-" are reserved
+  /// for predefined labels. For more information about labels with Batch, see
+  /// [Organize resources using labels](https://cloud.google.com/batch/docs/organize-resources-using-labels).
   core.Map<core.String, core.String>? labels;
 
   /// Location where compute resources should be allocated for the Job.
@@ -1527,7 +1600,8 @@ class AttachedDisk {
       };
 }
 
-/// Barrier runnable blocks until all tasks in a taskgroup reach it.
+/// A barrier runnable automatically blocks the execution of subsequent
+/// runnables until all the tasks in the task group reach the barrier.
 class Barrier {
   /// Barriers are identified by their index in runnable list.
   ///
@@ -1653,11 +1727,11 @@ class Container {
   /// `container.options` field.
   core.bool? blockExternalNetwork;
 
-  /// Overrides the `CMD` specified in the container.
+  /// Required for some container images.
   ///
-  /// If there is an ENTRYPOINT (either in the container image or with the
-  /// entrypoint field below) then commands are appended as arguments to the
-  /// ENTRYPOINT.
+  /// Overrides the `CMD` specified in the container. If there is an
+  /// `ENTRYPOINT` (either in the container image or with the `entrypoint` field
+  /// below) then these commands are appended as arguments to the `ENTRYPOINT`.
   core.List<core.String>? commands;
 
   /// If set to true, this container runnable uses Image streaming.
@@ -1676,14 +1750,21 @@ class Container {
   /// Optional.
   core.bool? enableImageStreaming;
 
+  /// Required for some container images.
+  ///
   /// Overrides the `ENTRYPOINT` specified in the container.
   core.String? entrypoint;
 
   /// The URI to pull the container image from.
+  ///
+  /// Required.
   core.String? imageUri;
 
-  /// Arbitrary additional options to include in the "docker run" command when
-  /// running this container, e.g. "--network host".
+  /// Required for some container images.
+  ///
+  /// Arbitrary additional options to include in the `docker run` command when
+  /// running this container—for example, `--network host`. For the `--volume`
+  /// option, use the `volumes` field for the container.
   core.String? options;
 
   /// Required if the container image is from a private Docker registry.
@@ -1714,16 +1795,16 @@ class Container {
   core.String? username;
 
   /// Volumes to mount (bind mount) from the host machine files or directories
-  /// into the container, formatted to match docker run's --volume option, e.g.
-  /// /foo:/bar, or /foo:/bar:ro If the `TaskSpec.Volumes` field is specified
-  /// but this field is not, Batch will mount each volume from the host machine
-  /// to the container with the same mount path by default.
+  /// into the container, formatted to match `--volume` option for the `docker
+  /// run` command—for example, `/foo:/bar` or `/foo:/bar:ro`.
   ///
-  /// In this case, the default mount option for containers will be read-only
-  /// (ro) for existing persistent disks and read-write (rw) for other volume
-  /// types, regardless of the original mount options specified in
-  /// `TaskSpec.Volumes`. If you need different mount settings, you can
-  /// explicitly configure them in this field.
+  /// If the `TaskSpec.Volumes` field is specified but this field is not, Batch
+  /// will mount each volume from the host machine to the container with the
+  /// same mount path by default. In this case, the default mount option for
+  /// containers will be read-only (`ro`) for existing persistent disks and
+  /// read-write (`rw`) for other volume types, regardless of the original mount
+  /// options specified in `TaskSpec.Volumes`. If you need different mount
+  /// settings, you can explicitly configure them in this field.
   core.List<core.String>? volumes;
 
   Container({
@@ -1791,10 +1872,9 @@ class Disk {
   /// Specify the image version:
   /// projects/{project}/global/images/{image_version} You can also use Batch
   /// customized image in short names. The following image values are supported
-  /// for a boot disk: * `batch-debian`: use Batch Debian images. *
-  /// `batch-centos`: use Batch CentOS images. * `batch-cos`: use Batch
-  /// Container-Optimized images. * `batch-hpc-centos`: use Batch HPC CentOS
-  /// images. * `batch-hpc-rocky`: use Batch HPC Rocky Linux images.
+  /// for a boot disk: * `batch-debian`: use Batch Debian images. * `batch-cos`:
+  /// use Batch Container-Optimized images. * `batch-hpc-rocky`: use Batch HPC
+  /// Rocky Linux images.
   core.String? image;
 
   /// Disk size in GB.
@@ -1821,7 +1901,9 @@ class Disk {
   /// Disk type as shown in `gcloud compute disk-types list`.
   ///
   /// For example, local SSD uses type "local-ssd". Persistent disks and boot
-  /// disks use "pd-balanced", "pd-extreme", "pd-ssd" or "pd-standard".
+  /// disks use "pd-balanced", "pd-extreme", "pd-ssd" or "pd-standard". If not
+  /// specified, "pd-standard" will be used as the default type for non-boot
+  /// disks, "pd-balanced" will be used as the default type for boot disks.
   core.String? type;
 
   Disk({
@@ -1971,9 +2053,10 @@ class InstancePolicy {
   /// supported.
   core.String? provisioningModel;
 
-  /// If specified, VMs will consume only the specified reservation.
-  ///
   /// If not specified (default), VMs will consume any applicable reservation.
+  ///
+  /// If "NO_RESERVATION" is specified, VMs will not consume any reservation.
+  /// Otherwise, if specified, VMs will consume only the specified reservation.
   ///
   /// Optional.
   core.String? reservation;
@@ -2025,6 +2108,23 @@ class InstancePolicy {
 /// If undefined, Batch picks the type of VM to use and doesn't include optional
 /// VM resources such as GPUs and extra disks.
 class InstancePolicyOrTemplate {
+  /// Set this field to `true` if you want Batch to block project-level SSH keys
+  /// from accessing this job's VMs.
+  ///
+  /// Alternatively, you can configure the job to specify a VM instance template
+  /// that blocks project-level SSH keys. In either case, Batch blocks
+  /// project-level SSH keys while creating the VMs for this job. Batch allows
+  /// project-level SSH keys for a job's VMs only if all the following are true:
+  /// + This field is undefined or set to `false`. + The job's VM instance
+  /// template (if any) doesn't block project-level SSH keys. Notably, you can
+  /// override this behavior by manually updating a VM to block or allow
+  /// project-level SSH keys. For more information about blocking project-level
+  /// SSH keys, see the Compute Engine documentation:
+  /// https://cloud.google.com/compute/docs/connect/restrict-ssh-keys#block-keys
+  ///
+  /// Optional.
+  core.bool? blockProjectSshKeys;
+
   /// Set this field true if you want Batch to help fetch drivers from a third
   /// party location and install them for GPUs specified in
   /// `policy.accelerators` or `instance_template` on your behalf.
@@ -2036,24 +2136,36 @@ class InstancePolicyOrTemplate {
   /// https://github.com/GoogleCloudPlatform/compute-gpu-installation/blob/main/linux/install_gpu_driver.py.
   core.bool? installGpuDrivers;
 
+  /// Set this field true if you want Batch to install Ops Agent on your behalf.
+  ///
+  /// Default is false.
+  ///
+  /// Optional.
+  core.bool? installOpsAgent;
+
   /// Name of an instance template used to create VMs.
   ///
-  /// Named the field as 'instance_template' instead of 'template' to avoid c++
-  /// keyword conflict.
+  /// Named the field as 'instance_template' instead of 'template' to avoid C++
+  /// keyword conflict. Batch only supports global instance templates. You can
+  /// specify the global instance template as a full or partial URL.
   core.String? instanceTemplate;
 
   /// InstancePolicy.
   InstancePolicy? policy;
 
   InstancePolicyOrTemplate({
+    this.blockProjectSshKeys,
     this.installGpuDrivers,
+    this.installOpsAgent,
     this.instanceTemplate,
     this.policy,
   });
 
   InstancePolicyOrTemplate.fromJson(core.Map json_)
       : this(
+          blockProjectSshKeys: json_['blockProjectSshKeys'] as core.bool?,
           installGpuDrivers: json_['installGpuDrivers'] as core.bool?,
+          installOpsAgent: json_['installOpsAgent'] as core.bool?,
           instanceTemplate: json_['instanceTemplate'] as core.String?,
           policy: json_.containsKey('policy')
               ? InstancePolicy.fromJson(
@@ -2062,7 +2174,10 @@ class InstancePolicyOrTemplate {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (blockProjectSshKeys != null)
+          'blockProjectSshKeys': blockProjectSshKeys!,
         if (installGpuDrivers != null) 'installGpuDrivers': installGpuDrivers!,
+        if (installOpsAgent != null) 'installOpsAgent': installOpsAgent!,
         if (instanceTemplate != null) 'instanceTemplate': instanceTemplate!,
         if (policy != null) 'policy': policy!,
       };
@@ -2127,13 +2242,16 @@ class Job {
   /// Output only.
   core.String? createTime;
 
-  /// Labels for the Job.
+  /// Custom labels to apply to the job and any Cloud Logging
+  /// [LogEntry](https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry)
+  /// that it generates.
   ///
-  /// Labels could be user provided or system generated. For example, "labels":
-  /// { "department": "finance", "environment": "test" } You can assign up to 64
-  /// labels.
-  /// [Google Compute Engine label restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-  /// apply. Label names that start with "goog-" or "google-" are reserved.
+  /// Use labels to group and describe the resources they are applied to. Batch
+  /// automatically applies predefined labels and supports multiple `labels`
+  /// fields for each job, which each let you apply custom labels to various
+  /// resources. Label names that start with "goog-" or "google-" are reserved
+  /// for predefined labels. For more information about labels with Batch, see
+  /// [Organize resources using labels](https://cloud.google.com/batch/docs/organize-resources-using-labels).
   core.Map<core.String, core.String>? labels;
 
   /// Log preservation policy for the Job.
@@ -2252,12 +2370,16 @@ class JobNotification {
   /// Without this field, no message will be sent.
   Message? message;
 
-  /// The Pub/Sub topic where notifications like the job state changes will be
-  /// published.
+  /// The Pub/Sub topic where notifications for the job, like state changes,
+  /// will be published.
   ///
-  /// The topic must exist in the same project as the job and billings will be
-  /// charged to this project. If not specified, no Pub/Sub messages will be
-  /// sent. Topic format: `projects/{project}/topics/{topic}`.
+  /// If undefined, no Pub/Sub notifications are sent for this job. Specify the
+  /// topic using the following format: `projects/{project}/topics/{topic}`.
+  /// Notably, if you want to specify a Pub/Sub topic that is in a different
+  /// project than the job, your administrator must grant your project's Batch
+  /// service agent permission to publish to that topic. For more information
+  /// about configuring Pub/Sub notifications for a job, see
+  /// https://cloud.google.com/batch/docs/enable-notifications.
   core.String? pubsubTopic;
 
   JobNotification({
@@ -2965,11 +3087,18 @@ class Runnable {
   /// further Runnables will execute, not even always_run Runnables.
   core.bool? alwaysRun;
 
-  /// This flag allows a Runnable to continue running in the background while
-  /// the Task executes subsequent Runnables.
+  /// Normally, a runnable that doesn't exit causes its task to fail.
   ///
-  /// This is useful to provide services to other Runnables (or to provide
-  /// debugging support tools like SSH servers).
+  /// However, you can set this field to `true` to configure a background
+  /// runnable. Background runnables are allowed continue running in the
+  /// background while the task executes subsequent runnables. For example,
+  /// background runnables are useful for providing services to other runnables
+  /// or providing debugging-support tools like SSH servers. Specifically,
+  /// background runnables are killed automatically (if they have not already
+  /// exited) a short time after all foreground runnables have completed. Even
+  /// though this is likely to result in a non-zero exit status for the
+  /// background runnable, these automatic kills are not treated as task
+  /// failures.
   core.bool? background;
 
   /// Barrier runnable.
@@ -2991,9 +3120,11 @@ class Runnable {
   /// whole Task or TaskGroup).
   Environment? environment;
 
-  /// Normally, a non-zero exit status causes the Task to fail.
+  /// Normally, a runnable that returns a non-zero exit status fails and causes
+  /// the task to fail.
   ///
-  /// This flag allows execution of other Runnables to continue instead.
+  /// However, you can set this field to `true` to allow the task to continue
+  /// executing its other runnables even if this runnable fails.
   core.bool? ignoreExitStatus;
 
   /// Labels for this Runnable.
@@ -3065,7 +3196,45 @@ class Runnable {
 }
 
 /// Script runnable.
-typedef Script = $Script;
+class Script {
+  /// The path to a script file that is accessible from the host VM(s).
+  ///
+  /// Unless the script file supports the default `#!/bin/sh` shell interpreter,
+  /// you must specify an interpreter by including a
+  /// [shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix) as the first
+  /// line of the file. For example, to execute the script using bash, include
+  /// `#!/bin/bash` as the first line of the file. Alternatively, to execute the
+  /// script using Python3, include `#!/usr/bin/env python3` as the first line
+  /// of the file.
+  core.String? path;
+
+  /// The text for a script.
+  ///
+  /// Unless the script text supports the default `#!/bin/sh` shell interpreter,
+  /// you must specify an interpreter by including a
+  /// [shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix) at the
+  /// beginning of the text. For example, to execute the script using bash,
+  /// include `#!/bin/bash\n` at the beginning of the text. Alternatively, to
+  /// execute the script using Python3, include `#!/usr/bin/env python3\n` at
+  /// the beginning of the text.
+  core.String? text;
+
+  Script({
+    this.path,
+    this.text,
+  });
+
+  Script.fromJson(core.Map json_)
+      : this(
+          path: json_['path'] as core.String?,
+          text: json_['text'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (path != null) 'path': path!,
+        if (text != null) 'text': text!,
+      };
+}
 
 /// Carries information about a Google Cloud service account.
 class ServiceAccount {
@@ -3101,9 +3270,9 @@ class ServiceAccount {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
-/// Status event
+/// Status event.
 class StatusEvent {
   /// Description of the event.
   core.String? description;
@@ -3111,10 +3280,15 @@ class StatusEvent {
   /// The time this event occurred.
   core.String? eventTime;
 
-  /// Task Execution
+  /// Task Execution.
+  ///
+  /// This field is only defined for task-level status events where the task
+  /// fails.
   TaskExecution? taskExecution;
 
-  /// Task State
+  /// Task State.
+  ///
+  /// This field is only defined for task-level status events.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unknown state.
   /// - "PENDING" : The Task is created and waiting for resources.
@@ -3418,16 +3592,17 @@ class TaskSpec {
   /// https://cloud.google.com/batch/quotas#max-job-duration.
   core.String? maxRunDuration;
 
-  /// The sequence of scripts or containers to run for this Task.
+  /// The sequence of one or more runnables (executable scripts, executable
+  /// containers, and/or barriers) for each task in this task group to run.
   ///
-  /// Each Task using this TaskSpec executes its list of runnables in order. The
-  /// Task succeeds if all of its runnables either exit with a zero status or
-  /// any that exit with a non-zero status have the ignore_exit_status flag.
-  /// Background runnables are killed automatically (if they have not already
-  /// exited) a short time after all foreground runnables have completed. Even
-  /// though this is likely to result in a non-zero exit status for the
-  /// background runnable, these automatic kills are not treated as Task
-  /// failures.
+  /// Each task runs this list of runnables in order. For a task to succeed, all
+  /// of its script and container runnables each must meet at least one of the
+  /// following conditions: + The runnable exited with a zero status. + The
+  /// runnable didn't finish, but you enabled its `background` subfield. + The
+  /// runnable exited with a non-zero status, but you enabled its
+  /// `ignore_exit_status` subfield.
+  ///
+  /// Required.
   core.List<Runnable>? runnables;
 
   /// Volumes to mount before running Tasks using this TaskSpec.
@@ -3490,9 +3665,9 @@ class TaskSpec {
       };
 }
 
-/// Status of a task
+/// Status of a task.
 class TaskStatus {
-  /// Task state
+  /// Task state.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unknown state.
   /// - "PENDING" : The Task is created and waiting for resources.
@@ -3538,16 +3713,17 @@ class Volume {
   /// A Google Cloud Storage (GCS) volume.
   GCS? gcs;
 
-  /// For Google Cloud Storage (GCS), mount options are the options supported by
-  /// the gcsfuse tool (https://github.com/GoogleCloudPlatform/gcsfuse).
+  /// Mount options vary based on the type of storage volume: * For a Cloud
+  /// Storage bucket, all the mount options provided by the \[`gcsfuse`
+  /// tool\](https://cloud.google.com/storage/docs/gcsfuse-cli) are supported.
   ///
-  /// For existing persistent disks, mount options provided by the mount command
-  /// (https://man7.org/linux/man-pages/man8/mount.8.html) except writing are
-  /// supported. This is due to restrictions of multi-writer mode
-  /// (https://cloud.google.com/compute/docs/disks/sharing-disks-between-vms).
-  /// For other attached disks and Network File System (NFS), mount options are
-  /// these supported by the mount command
-  /// (https://man7.org/linux/man-pages/man8/mount.8.html).
+  /// * For an existing persistent disk, all mount options provided by the
+  /// \[`mount` command\](https://man7.org/linux/man-pages/man8/mount.8.html)
+  /// except writing are supported. This is due to restrictions of
+  /// \[multi-writer
+  /// mode\](https://cloud.google.com/compute/docs/disks/sharing-disks-between-vms).
+  /// * For any other disk or a Network File System (NFS), all the mount options
+  /// provided by the `mount` command are supported.
   core.List<core.String>? mountOptions;
 
   /// The mount path for the volume, e.g. /mnt/disks/share.

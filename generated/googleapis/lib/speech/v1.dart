@@ -761,7 +761,23 @@ class ABNFGrammar {
 }
 
 /// An item of the class.
-typedef ClassItem = $ClassItem;
+class ClassItem {
+  /// The class item's value.
+  core.String? value;
+
+  ClassItem({
+    this.value,
+  });
+
+  ClassItem.fromJson(core.Map json_)
+      : this(
+          value: json_['value'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
+      };
+}
 
 /// Message sent by the client for the `CreateCustomClass` method.
 class CreateCustomClassRequest {
@@ -1008,7 +1024,39 @@ class CustomClass {
 typedef Empty = $Empty;
 
 /// A single replacement configuration.
-typedef Entry = $Entry;
+class Entry {
+  /// Whether the search is case sensitive.
+  core.bool? caseSensitive;
+
+  /// What to replace with.
+  ///
+  /// Max length is 100 characters.
+  core.String? replace;
+
+  /// What to replace.
+  ///
+  /// Max length is 100 characters.
+  core.String? search;
+
+  Entry({
+    this.caseSensitive,
+    this.replace,
+    this.search,
+  });
+
+  Entry.fromJson(core.Map json_)
+      : this(
+          caseSensitive: json_['caseSensitive'] as core.bool?,
+          replace: json_['replace'] as core.String?,
+          search: json_['search'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
+        if (replace != null) 'replace': replace!,
+        if (search != null) 'search': search!,
+      };
+}
 
 /// Message returned to the client by the `ListCustomClasses` method.
 class ListCustomClassesResponse {
@@ -1629,6 +1677,8 @@ class RecognitionConfig {
   /// - "WEBM_OPUS" : Opus encoded audio frames in WebM container
   /// ([WebM](https://www.webmproject.org/docs/container/)). `sample_rate_hertz`
   /// must be one of 8000, 12000, 16000, 24000, or 48000.
+  /// - "ALAW" : 8-bit samples that compand 13-bit audio samples using G.711
+  /// PCMU/a-law.
   core.String? encoding;
 
   /// The language of the supplied audio as a
@@ -2328,7 +2378,7 @@ class SpeechRecognitionResult {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Transcription normalization configuration.
 ///

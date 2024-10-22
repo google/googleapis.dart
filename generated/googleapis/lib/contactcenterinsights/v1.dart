@@ -21,13 +21,31 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsAnalysisRulesResource]
+///     - [ProjectsLocationsAuthorizedViewSetResource]
+///       - [ProjectsLocationsAuthorizedViewSetAuthorizedViewResource]
+///       - [ProjectsLocationsAuthorizedViewSetAuthorizedViewsResource]
+/// - [ProjectsLocationsAuthorizedViewSetAuthorizedViewsConversationsResource]
+/// -
+/// [ProjectsLocationsAuthorizedViewSetAuthorizedViewsConversationsFeedbackLabelsResource]
+///     - [ProjectsLocationsAuthorizedViewSetsResource]
+///       - [ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource]
+/// - [ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResource]
+/// -
+/// [ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAnalysesResource]
+/// - [ProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsResource]
 ///     - [ProjectsLocationsConversationsResource]
 ///       - [ProjectsLocationsConversationsAnalysesResource]
+///       - [ProjectsLocationsConversationsFeedbackLabelsResource]
+///     - [ProjectsLocationsEncryptionSpecResource]
 ///     - [ProjectsLocationsInsightsdataResource]
 ///     - [ProjectsLocationsIssueModelsResource]
 ///       - [ProjectsLocationsIssueModelsIssuesResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsPhraseMatchersResource]
+///     - [ProjectsLocationsQaScorecardsResource]
+///       - [ProjectsLocationsQaScorecardsRevisionsResource]
+///         - [ProjectsLocationsQaScorecardsRevisionsQaQuestionsResource]
 ///     - [ProjectsLocationsViewsResource]
 library;
 
@@ -73,8 +91,16 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsAnalysisRulesResource get analysisRules =>
+      ProjectsLocationsAnalysisRulesResource(_requester);
+  ProjectsLocationsAuthorizedViewSetResource get authorizedViewSet =>
+      ProjectsLocationsAuthorizedViewSetResource(_requester);
+  ProjectsLocationsAuthorizedViewSetsResource get authorizedViewSets =>
+      ProjectsLocationsAuthorizedViewSetsResource(_requester);
   ProjectsLocationsConversationsResource get conversations =>
       ProjectsLocationsConversationsResource(_requester);
+  ProjectsLocationsEncryptionSpecResource get encryptionSpec =>
+      ProjectsLocationsEncryptionSpecResource(_requester);
   ProjectsLocationsInsightsdataResource get insightsdata =>
       ProjectsLocationsInsightsdataResource(_requester);
   ProjectsLocationsIssueModelsResource get issueModels =>
@@ -83,10 +109,134 @@ class ProjectsLocationsResource {
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsPhraseMatchersResource get phraseMatchers =>
       ProjectsLocationsPhraseMatchersResource(_requester);
+  ProjectsLocationsQaScorecardsResource get qaScorecards =>
+      ProjectsLocationsQaScorecardsResource(_requester);
   ProjectsLocationsViewsResource get views =>
       ProjectsLocationsViewsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Download feedback labels in bulk.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource for new feedback labels.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> bulkDownloadFeedbackLabels(
+    GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + ':bulkDownloadFeedbackLabels';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Upload feedback labels in bulk.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource for new feedback labels.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> bulkUploadFeedbackLabels(
+    GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + ':bulkUploadFeedbackLabels';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets location-level encryption key specification.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the encryption spec resource to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/encryptionSpec$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1EncryptionSpec].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1EncryptionSpec>
+      getEncryptionSpec(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1EncryptionSpec.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Gets project-level settings.
   ///
@@ -121,6 +271,111 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1Settings.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List all feedback labels by project number.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of all feedback labels per
+  /// project.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter to reduce results to a specific subset in
+  /// the entire project. Supports disjunctions (OR) and conjunctions (AND).
+  /// Supported fields: * `issue_model_id` * `qa_question_id` *
+  /// `min_create_time` * `max_create_time` * `min_update_time` *
+  /// `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING
+  ///
+  /// [pageSize] - Optional. The maximum number of feedback labels to return in
+  /// the response. A valid page size ranges from 0 to 100,000 inclusive. If the
+  /// page size is zero or unspecified, a default page size of 100 will be
+  /// chosen. Note that a call might return fewer results than the requested
+  /// page size.
+  ///
+  /// [pageToken] - Optional. The value returned by the last
+  /// `ListAllFeedbackLabelsResponse`. This value indicates that this is a
+  /// continuation of a prior `ListAllFeedbackLabels` call and that the system
+  /// should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse>
+      listAllFeedbackLabels(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + ':listAllFeedbackLabels';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Query metrics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [location] - Required. The location of the data.
+  /// "projects/{project}/locations/{location}"
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> queryMetrics(
+    GoogleCloudContactcenterinsightsV1QueryMetricsRequest request,
+    core.String location, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$location') + ':queryMetrics';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -171,11 +426,1490 @@ class ProjectsLocationsResource {
   }
 }
 
+class ProjectsLocationsAnalysisRulesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAnalysisRulesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a analysis rule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the analysis rule. Required.
+  /// The location to create a analysis rule for. Format: `projects//locations/`
+  /// or `projects//locations/`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1AnalysisRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1AnalysisRule> create(
+    GoogleCloudContactcenterinsightsV1AnalysisRule request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/analysisRules';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1AnalysisRule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a analysis rule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the analysis rule to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/analysisRules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a analysis rule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the AnalysisRule to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/analysisRules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1AnalysisRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1AnalysisRule> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1AnalysisRule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists analysis rules.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the analysis rules.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of analysis rule to return in
+  /// the response. If this value is zero, the service will select a default
+  /// size. A call may return fewer objects than requested. A non-empty
+  /// `next_page_token` in the response indicates that more data is available.
+  ///
+  /// [pageToken] - Optional. The value returned by the last
+  /// `ListAnalysisRulesResponse`; indicates that this is a continuation of a
+  /// prior `ListAnalysisRules` call and the system should return the next page
+  /// of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse>
+      list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/analysisRules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a analysis rule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the analysis rule. Format:
+  /// projects/{project}/locations/{location}/analysisRules/{analysis_rule}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/analysisRules/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to be updated. If the
+  /// update_mask is not provided, the update will be applied to all fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1AnalysisRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1AnalysisRule> patch(
+    GoogleCloudContactcenterinsightsV1AnalysisRule request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1AnalysisRule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAuthorizedViewSetResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAuthorizedViewSetAuthorizedViewResource get authorizedView =>
+      ProjectsLocationsAuthorizedViewSetAuthorizedViewResource(_requester);
+  ProjectsLocationsAuthorizedViewSetAuthorizedViewsResource
+      get authorizedViews =>
+          ProjectsLocationsAuthorizedViewSetAuthorizedViewsResource(_requester);
+
+  ProjectsLocationsAuthorizedViewSetResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsAuthorizedViewSetAuthorizedViewResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAuthorizedViewSetAuthorizedViewResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets conversation statistics.
+  ///
+  /// Request parameters:
+  ///
+  /// [location] - Required. The location of the conversations.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSet/\[^/\]+/authorizedView/\[^/\]+$`.
+  ///
+  /// [filter] - A filter to reduce results to a specific subset. This field is
+  /// useful for getting statistics about conversations with specific
+  /// properties.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudContactcenterinsightsV1CalculateStatsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1CalculateStatsResponse>
+      calculateStats(
+    core.String location, {
+    core.String? filter,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$location') + ':calculateStats';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1CalculateStatsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Query metrics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [location] - Required. The location of the data.
+  /// "projects/{project}/locations/{location}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSet/\[^/\]+/authorizedView/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> queryMetrics(
+    GoogleCloudContactcenterinsightsV1QueryMetricsRequest request,
+    core.String location, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$location') + ':queryMetrics';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAuthorizedViewSetAuthorizedViewsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAuthorizedViewSetAuthorizedViewsConversationsResource
+      get conversations =>
+          ProjectsLocationsAuthorizedViewSetAuthorizedViewsConversationsResource(
+              _requester);
+
+  ProjectsLocationsAuthorizedViewSetAuthorizedViewsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsAuthorizedViewSetAuthorizedViewsConversationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAuthorizedViewSetAuthorizedViewsConversationsFeedbackLabelsResource
+      get feedbackLabels =>
+          ProjectsLocationsAuthorizedViewSetAuthorizedViewsConversationsFeedbackLabelsResource(
+              _requester);
+
+  ProjectsLocationsAuthorizedViewSetAuthorizedViewsConversationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsAuthorizedViewSetAuthorizedViewsConversationsFeedbackLabelsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAuthorizedViewSetAuthorizedViewsConversationsFeedbackLabelsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Create feedback label.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the feedback label.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSet/\[^/\]+/authorizedViews/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [feedbackLabelId] - Optional. The ID of the feedback label to create. If
+  /// one is not specified it will be generated by the server.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1FeedbackLabel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1FeedbackLabel> create(
+    GoogleCloudContactcenterinsightsV1FeedbackLabel request,
+    core.String parent, {
+    core.String? feedbackLabelId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (feedbackLabelId != null) 'feedbackLabelId': [feedbackLabelId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/feedbackLabels';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete feedback label.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the feedback label to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSet/\[^/\]+/authorizedViews/\[^/\]+/conversations/\[^/\]+/feedbackLabels/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get feedback label.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the feedback label to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSet/\[^/\]+/authorizedViews/\[^/\]+/conversations/\[^/\]+/feedbackLabels/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1FeedbackLabel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1FeedbackLabel> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List feedback labels.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the feedback labels.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSet/\[^/\]+/authorizedViews/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter to reduce results to a specific subset.
+  /// Supports disjunctions (OR) and conjunctions (AND). Automatically sorts by
+  /// conversation ID. To sort by all feedback labels in a project see
+  /// ListAllFeedbackLabels. Supported fields: * `issue_model_id` *
+  /// `qa_question_id` * `qa_scorecard_id` * `min_create_time` *
+  /// `max_create_time` * `min_update_time` * `max_update_time` *
+  /// `feedback_label_type`: QUALITY_AI, TOPIC_MODELING
+  ///
+  /// [pageSize] - Optional. The maximum number of feedback labels to return in
+  /// the response. A valid page size ranges from 0 to 100,000 inclusive. If the
+  /// page size is zero or unspecified, a default page size of 100 will be
+  /// chosen. Note that a call might return fewer results than the requested
+  /// page size.
+  ///
+  /// [pageToken] - Optional. The value returned by the last
+  /// `ListFeedbackLabelsResponse`. This value indicates that this is a
+  /// continuation of a prior `ListFeedbackLabels` call and that the system
+  /// should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse>
+      list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/feedbackLabels';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update feedback label.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Resource name of the FeedbackLabel. Format:
+  /// projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSet/\[^/\]+/authorizedViews/\[^/\]+/conversations/\[^/\]+/feedbackLabels/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1FeedbackLabel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1FeedbackLabel> patch(
+    GoogleCloudContactcenterinsightsV1FeedbackLabel request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAuthorizedViewSetsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource
+      get authorizedViews =>
+          ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource(
+              _requester);
+
+  ProjectsLocationsAuthorizedViewSetsResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResource
+      get conversations =>
+          ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResource(
+              _requester);
+  ProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsResource
+      get operations =>
+          ProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsResource(
+              _requester);
+
+  ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSets/\[^/\]+/authorizedViews/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSets/\[^/\]+/authorizedViews/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSets/\[^/\]+/authorizedViews/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAnalysesResource
+      get analyses =>
+          ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAnalysesResource(
+              _requester);
+
+  ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a conversation.
+  ///
+  /// Note that this method does not support audio transcription or redaction.
+  /// Use `conversations.upload` instead.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the conversation.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSets/\[^/\]+/authorizedViews/\[^/\]+$`.
+  ///
+  /// [conversationId] - A unique ID for the new conversation. This ID will
+  /// become the final component of the conversation's resource name. If no ID
+  /// is specified, a server-generated ID will be used. This value should be
+  /// 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`.
+  /// Valid characters are `a-z-`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1Conversation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1Conversation> create(
+    GoogleCloudContactcenterinsightsV1Conversation request,
+    core.String parent, {
+    core.String? conversationId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (conversationId != null) 'conversationId': [conversationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/conversations';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1Conversation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a conversation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the conversation to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSets/\[^/\]+/authorizedViews/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [force] - If set to true, all of this conversation's analyses will also be
+  /// deleted. Otherwise, the request will only succeed if the conversation has
+  /// no analyses.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.bool? force,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a conversation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the conversation to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSets/\[^/\]+/authorizedViews/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [view] - The level of details of the conversation. Default is `FULL`.
+  /// Possible string values are:
+  /// - "CONVERSATION_VIEW_UNSPECIFIED" : The conversation view is not
+  /// specified. * Defaults to `FULL` in `GetConversationRequest`. * Defaults to
+  /// `BASIC` in `ListConversationsRequest`.
+  /// - "FULL" : Populates all fields in the conversation.
+  /// - "BASIC" : Populates all fields in the conversation except the
+  /// transcript.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1Conversation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1Conversation> get(
+    core.String name, {
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1Conversation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists conversations.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the conversation.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSets/\[^/\]+/authorizedViews/\[^/\]+$`.
+  ///
+  /// [filter] - A filter to reduce results to a specific subset. Useful for
+  /// querying conversations with specific properties.
+  ///
+  /// [orderBy] - Optional. The attribute by which to order conversations in the
+  /// response. If empty, conversations will be ordered by descending creation
+  /// time. Supported values are one of the following: * create_time *
+  /// customer_satisfaction_rating * duration * latest_analysis * start_time *
+  /// turn_count The default sort order is ascending. To specify order, append
+  /// `asc` or `desc` (`create_time desc`). For more details, see
+  /// [Google AIPs Ordering](https://google.aip.dev/132#ordering).
+  ///
+  /// [pageSize] - The maximum number of conversations to return in the
+  /// response. A valid page size ranges from 0 to 100,000 inclusive. If the
+  /// page size is zero or unspecified, a default page size of 100 will be
+  /// chosen. Note that a call might return fewer results than the requested
+  /// page size.
+  ///
+  /// [pageToken] - The value returned by the last `ListConversationsResponse`.
+  /// This value indicates that this is a continuation of a prior
+  /// `ListConversations` call and that the system should return the next page
+  /// of data.
+  ///
+  /// [view] - The level of details of the conversation. Default is `BASIC`.
+  /// Possible string values are:
+  /// - "CONVERSATION_VIEW_UNSPECIFIED" : The conversation view is not
+  /// specified. * Defaults to `FULL` in `GetConversationRequest`. * Defaults to
+  /// `BASIC` in `ListConversationsRequest`.
+  /// - "FULL" : Populates all fields in the conversation.
+  /// - "BASIC" : Populates all fields in the conversation except the
+  /// transcript.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudContactcenterinsightsV1ListConversationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1ListConversationsResponse>
+      list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/conversations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1ListConversationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a conversation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. The resource name of the conversation. Format:
+  /// projects/{project}/locations/{location}/conversations/{conversation}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSets/\[^/\]+/authorizedViews/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated. All possible fields can
+  /// be updated by passing `*`, or a subset of the following updateable fields
+  /// can be provided: * `agent_id` * `language_code` * `labels` * `metadata` *
+  /// `quality_metadata` * `call_metadata` * `start_time` * `expire_time` or
+  /// `ttl` * `data_source.gcs_source.audio_uri` or
+  /// `data_source.dialogflow_source.audio_uri`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1Conversation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1Conversation> patch(
+    GoogleCloudContactcenterinsightsV1Conversation request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1Conversation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Create a long-running conversation upload operation.
+  ///
+  /// This method differs from `CreateConversation` by allowing audio
+  /// transcription and optional DLP redaction.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the conversation.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSets/\[^/\]+/authorizedViews/\[^/\]+$`.
+  ///
+  /// [conversationId] - Optional. A unique ID for the new conversation. This ID
+  /// will become the final component of the conversation's resource name. If no
+  /// ID is specified, a server-generated ID will be used. This value should be
+  /// 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`.
+  /// Valid characters are `a-z-`
+  ///
+  /// [redactionConfig_deidentifyTemplate] - The fully-qualified DLP deidentify
+  /// template resource name. Format:
+  /// `projects/{project}/deidentifyTemplates/{template}`
+  ///
+  /// [redactionConfig_inspectTemplate] - The fully-qualified DLP inspect
+  /// template resource name. Format:
+  /// `projects/{project}/locations/{location}/inspectTemplates/{template}`
+  ///
+  /// [speechConfig_speechRecognizer] - The fully-qualified Speech Recognizer
+  /// resource name. Format:
+  /// `projects/{project_id}/locations/{location}/recognizer/{recognizer}`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> upload(
+    GoogleCloudContactcenterinsightsV1Conversation request,
+    core.String parent, {
+    core.String? conversationId,
+    core.String? redactionConfig_deidentifyTemplate,
+    core.String? redactionConfig_inspectTemplate,
+    core.String? speechConfig_speechRecognizer,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (conversationId != null) 'conversationId': [conversationId],
+      if (redactionConfig_deidentifyTemplate != null)
+        'redactionConfig.deidentifyTemplate': [
+          redactionConfig_deidentifyTemplate
+        ],
+      if (redactionConfig_inspectTemplate != null)
+        'redactionConfig.inspectTemplate': [redactionConfig_inspectTemplate],
+      if (speechConfig_speechRecognizer != null)
+        'speechConfig.speechRecognizer': [speechConfig_speechRecognizer],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/conversations:upload';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAnalysesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAnalysesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an analysis.
+  ///
+  /// The long running operation is done when the analysis has completed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the analysis.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSets/\[^/\]+/authorizedViews/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudContactcenterinsightsV1Analysis request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/analyses';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an analysis.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the analysis to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSets/\[^/\]+/authorizedViews/\[^/\]+/conversations/\[^/\]+/analyses/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an analysis.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the analysis to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSets/\[^/\]+/authorizedViews/\[^/\]+/conversations/\[^/\]+/analyses/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1Analysis].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1Analysis> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1Analysis.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists analyses.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the analyses.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSets/\[^/\]+/authorizedViews/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [filter] - A filter to reduce results to a specific subset. Useful for
+  /// querying conversations with specific properties.
+  ///
+  /// [pageSize] - The maximum number of analyses to return in the response. If
+  /// this value is zero, the service will select a default size. A call might
+  /// return fewer objects than requested. A non-empty `next_page_token` in the
+  /// response indicates that more data is available.
+  ///
+  /// [pageToken] - The value returned by the last `ListAnalysesResponse`;
+  /// indicates that this is a continuation of a prior `ListAnalyses` call and
+  /// the system should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1ListAnalysesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1ListAnalysesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/analyses';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1ListAnalysesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSets/\[^/\]+/authorizedViews/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> cancel(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSets/\[^/\]+/authorizedViews/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSets/\[^/\]+/authorizedViews/\[^/\]+$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsConversationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsConversationsAnalysesResource get analyses =>
       ProjectsLocationsConversationsAnalysesResource(_requester);
+  ProjectsLocationsConversationsFeedbackLabelsResource get feedbackLabels =>
+      ProjectsLocationsConversationsFeedbackLabelsResource(_requester);
 
   ProjectsLocationsConversationsResource(commons.ApiRequester client)
       : _requester = client;
@@ -313,8 +2047,8 @@ class ProjectsLocationsConversationsResource {
 
   /// Creates a conversation.
   ///
-  /// Does not support audio transcription or DLP redaction. Use
-  /// `conversations.upload` instead.
+  /// Note that this method does not support audio transcription or redaction.
+  /// Use `conversations.upload` instead.
   ///
   /// [request] - The metadata request object.
   ///
@@ -339,9 +2073,6 @@ class ProjectsLocationsConversationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
   async.Future<GoogleCloudContactcenterinsightsV1Conversation> create(
     GoogleCloudContactcenterinsightsV1Conversation request,
     core.String parent, {
@@ -519,9 +2250,10 @@ class ProjectsLocationsConversationsResource {
   /// [Google AIPs Ordering](https://google.aip.dev/132#ordering).
   ///
   /// [pageSize] - The maximum number of conversations to return in the
-  /// response. A valid page size ranges from 0 to 1,000 inclusive. If the page
-  /// size is zero or unspecified, a default page size of 100 will be chosen.
-  /// Note that a call might return fewer results than the requested page size.
+  /// response. A valid page size ranges from 0 to 100,000 inclusive. If the
+  /// page size is zero or unspecified, a default page size of 100 will be
+  /// chosen. Note that a call might return fewer results than the requested
+  /// page size.
   ///
   /// [pageToken] - The value returned by the last `ListConversationsResponse`.
   /// This value indicates that this is a continuation of a prior
@@ -852,6 +2584,301 @@ class ProjectsLocationsConversationsAnalysesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1ListAnalysesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsConversationsFeedbackLabelsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsConversationsFeedbackLabelsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Create feedback label.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the feedback label.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [feedbackLabelId] - Optional. The ID of the feedback label to create. If
+  /// one is not specified it will be generated by the server.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1FeedbackLabel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1FeedbackLabel> create(
+    GoogleCloudContactcenterinsightsV1FeedbackLabel request,
+    core.String parent, {
+    core.String? feedbackLabelId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (feedbackLabelId != null) 'feedbackLabelId': [feedbackLabelId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/feedbackLabels';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete feedback label.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the feedback label to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+/feedbackLabels/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get feedback label.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the feedback label to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+/feedbackLabels/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1FeedbackLabel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1FeedbackLabel> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List feedback labels.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the feedback labels.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter to reduce results to a specific subset.
+  /// Supports disjunctions (OR) and conjunctions (AND). Automatically sorts by
+  /// conversation ID. To sort by all feedback labels in a project see
+  /// ListAllFeedbackLabels. Supported fields: * `issue_model_id` *
+  /// `qa_question_id` * `qa_scorecard_id` * `min_create_time` *
+  /// `max_create_time` * `min_update_time` * `max_update_time` *
+  /// `feedback_label_type`: QUALITY_AI, TOPIC_MODELING
+  ///
+  /// [pageSize] - Optional. The maximum number of feedback labels to return in
+  /// the response. A valid page size ranges from 0 to 100,000 inclusive. If the
+  /// page size is zero or unspecified, a default page size of 100 will be
+  /// chosen. Note that a call might return fewer results than the requested
+  /// page size.
+  ///
+  /// [pageToken] - Optional. The value returned by the last
+  /// `ListFeedbackLabelsResponse`. This value indicates that this is a
+  /// continuation of a prior `ListFeedbackLabels` call and that the system
+  /// should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse>
+      list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/feedbackLabels';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update feedback label.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Resource name of the FeedbackLabel. Format:
+  /// projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+/feedbackLabels/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1FeedbackLabel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1FeedbackLabel> patch(
+    GoogleCloudContactcenterinsightsV1FeedbackLabel request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsEncryptionSpecResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsEncryptionSpecResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Initializes a location-level encryption key specification.
+  ///
+  /// An error will result if the location has resources already created before
+  /// the initialization. After the encryption specification is initialized at a
+  /// location, it is immutable and all newly created resources under the
+  /// location will be encrypted with the existing specification.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. The resource name of the encryption key specification
+  /// resource. Format: projects/{project}/locations/{location}/encryptionSpec
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/encryptionSpec$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> initialize(
+    GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':initialize';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1865,6 +3892,809 @@ class ProjectsLocationsPhraseMatchersResource {
   }
 }
 
+class ProjectsLocationsQaScorecardsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsQaScorecardsRevisionsResource get revisions =>
+      ProjectsLocationsQaScorecardsRevisionsResource(_requester);
+
+  ProjectsLocationsQaScorecardsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Create a QaScorecard.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the QaScorecard.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [qaScorecardId] - Optional. A unique ID for the new QaScorecard. This ID
+  /// will become the final component of the QaScorecard's resource name. If no
+  /// ID is specified, a server-generated ID will be used. This value should be
+  /// 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`.
+  /// Valid characters are `a-z-`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1QaScorecard].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1QaScorecard> create(
+    GoogleCloudContactcenterinsightsV1QaScorecard request,
+    core.String parent, {
+    core.String? qaScorecardId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (qaScorecardId != null) 'qaScorecardId': [qaScorecardId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/qaScorecards';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1QaScorecard.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a QaScorecard.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the QaScorecard to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/qaScorecards/\[^/\]+$`.
+  ///
+  /// [force] - Optional. If set to true, all of this QaScorecard's child
+  /// resources will also be deleted. Otherwise, the request will only succeed
+  /// if it has none.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.bool? force,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a QaScorecard.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the QaScorecard to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/qaScorecards/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1QaScorecard].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1QaScorecard> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1QaScorecard.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists QaScorecards.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the scorecards.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of scorecards to return in the
+  /// response. If the value is zero, the service will select a default size. A
+  /// call might return fewer objects than requested. A non-empty
+  /// `next_page_token` in the response indicates that more data is available.
+  ///
+  /// [pageToken] - Optional. The value returned by the last
+  /// `ListQaScorecardsResponse`. This value indicates that this is a
+  /// continuation of a prior `ListQaScorecards` call and that the system should
+  /// return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/qaScorecards';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a QaScorecard.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The scorecard name. Format:
+  /// projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/qaScorecards/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated. All possible
+  /// fields can be updated by passing `*`, or a subset of the following
+  /// updateable fields can be provided: * `description` * `display_name`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1QaScorecard].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1QaScorecard> patch(
+    GoogleCloudContactcenterinsightsV1QaScorecard request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1QaScorecard.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsQaScorecardsRevisionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsQaScorecardsRevisionsQaQuestionsResource get qaQuestions =>
+      ProjectsLocationsQaScorecardsRevisionsQaQuestionsResource(_requester);
+
+  ProjectsLocationsQaScorecardsRevisionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a QaScorecardRevision.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the QaScorecardRevision.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/qaScorecards/\[^/\]+$`.
+  ///
+  /// [qaScorecardRevisionId] - Optional. A unique ID for the new
+  /// QaScorecardRevision. This ID will become the final component of the
+  /// QaScorecardRevision's resource name. If no ID is specified, a
+  /// server-generated ID will be used. This value should be 4-64 characters and
+  /// must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters
+  /// are `a-z-`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1QaScorecardRevision].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1QaScorecardRevision> create(
+    GoogleCloudContactcenterinsightsV1QaScorecardRevision request,
+    core.String parent, {
+    core.String? qaScorecardRevisionId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (qaScorecardRevisionId != null)
+        'qaScorecardRevisionId': [qaScorecardRevisionId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/revisions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1QaScorecardRevision.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a QaScorecardRevision.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the QaScorecardRevision to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/qaScorecards/\[^/\]+/revisions/\[^/\]+$`.
+  ///
+  /// [force] - Optional. If set to true, all of this QaScorecardRevision's
+  /// child resources will also be deleted. Otherwise, the request will only
+  /// succeed if it has none.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.bool? force,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deploy a QaScorecardRevision.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the QaScorecardRevision to deploy.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/qaScorecards/\[^/\]+/revisions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1QaScorecardRevision].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1QaScorecardRevision> deploy(
+    GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':deploy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1QaScorecardRevision.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a QaScorecardRevision.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the QaScorecardRevision to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/qaScorecards/\[^/\]+/revisions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1QaScorecardRevision].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1QaScorecardRevision> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1QaScorecardRevision.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all revisions under the parent QaScorecard.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the scorecard revisions. To
+  /// list all revisions of all scorecards, substitute the QaScorecard ID with a
+  /// '-' character.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/qaScorecards/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter to reduce results to a specific subset.
+  /// Useful for querying scorecard revisions with specific properties.
+  ///
+  /// [pageSize] - Optional. The maximum number of scorecard revisions to return
+  /// in the response. If the value is zero, the service will select a default
+  /// size. A call might return fewer objects than requested. A non-empty
+  /// `next_page_token` in the response indicates that more data is available.
+  ///
+  /// [pageToken] - Optional. The value returned by the last
+  /// `ListQaScorecardRevisionsResponse`. This value indicates that this is a
+  /// continuation of a prior `ListQaScorecardRevisions` call and that the
+  /// system should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+      GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/revisions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Fine tune one or more QaModels.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource for new fine tuning job instance.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/qaScorecards/\[^/\]+/revisions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> tuneQaScorecardRevision(
+    GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + ':tuneQaScorecardRevision';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Undeploy a QaScorecardRevision.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the QaScorecardRevision to undeploy.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/qaScorecards/\[^/\]+/revisions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1QaScorecardRevision].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1QaScorecardRevision> undeploy(
+    GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest
+        request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':undeploy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1QaScorecardRevision.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsQaScorecardsRevisionsQaQuestionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsQaScorecardsRevisionsQaQuestionsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Create a QaQuestion.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the QaQuestion.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/qaScorecards/\[^/\]+/revisions/\[^/\]+$`.
+  ///
+  /// [qaQuestionId] - Optional. A unique ID for the new question. This ID will
+  /// become the final component of the question's resource name. If no ID is
+  /// specified, a server-generated ID will be used. This value should be 4-64
+  /// characters and must match the regular expression `^[a-z0-9-]{4,64}$`.
+  /// Valid characters are `a-z-`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1QaQuestion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1QaQuestion> create(
+    GoogleCloudContactcenterinsightsV1QaQuestion request,
+    core.String parent, {
+    core.String? qaQuestionId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (qaQuestionId != null) 'qaQuestionId': [qaQuestionId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/qaQuestions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1QaQuestion.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a QaQuestion.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the QaQuestion to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/qaScorecards/\[^/\]+/revisions/\[^/\]+/qaQuestions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a QaQuestion.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the QaQuestion to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/qaScorecards/\[^/\]+/revisions/\[^/\]+/qaQuestions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1QaQuestion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1QaQuestion> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1QaQuestion.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists QaQuestions.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the questions.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/qaScorecards/\[^/\]+/revisions/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of questions to return in the
+  /// response. If the value is zero, the service will select a default size. A
+  /// call might return fewer objects than requested. A non-empty
+  /// `next_page_token` in the response indicates that more data is available.
+  ///
+  /// [pageToken] - Optional. The value returned by the last
+  /// `ListQaQuestionsResponse`. This value indicates that this is a
+  /// continuation of a prior `ListQaQuestions` call and that the system should
+  /// return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/qaQuestions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a QaQuestion.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the question. Format:
+  /// projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}/revisions/{revision}/qaQuestions/{qa_question}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/qaScorecards/\[^/\]+/revisions/\[^/\]+/qaQuestions/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated. All possible
+  /// fields can be updated by passing `*`, or a subset of the following
+  /// updateable fields can be provided: * `abbreviation` * `answer_choices` *
+  /// `answer_instructions` * `order` * `question_body` * `tags`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1QaQuestion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1QaQuestion> patch(
+    GoogleCloudContactcenterinsightsV1QaQuestion request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1QaQuestion.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsViewsResource {
   final commons.ApiRequester _requester;
 
@@ -2199,6 +5029,10 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata {
   core.Map<core.String, GoogleCloudContactcenterinsightsV1PhraseMatchData>?
       phraseMatchers;
 
+  /// Results of scoring QaScorecards.
+  core.List<GoogleCloudContactcenterinsightsV1QaScorecardResult>?
+      qaScorecardResults;
+
   /// Overall conversation-level sentiment for each channel of the call.
   core.List<GoogleCloudContactcenterinsightsV1ConversationLevelSentiment>?
       sentiments;
@@ -2212,6 +5046,7 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata {
     this.intents,
     this.issueModelResult,
     this.phraseMatchers,
+    this.qaScorecardResults,
     this.sentiments,
     this.silence,
   });
@@ -2254,6 +5089,11 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata {
                   value as core.Map<core.String, core.dynamic>),
             ),
           ),
+          qaScorecardResults: (json_['qaScorecardResults'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1QaScorecardResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
           sentiments: (json_['sentiments'] as core.List?)
               ?.map((value) =>
                   GoogleCloudContactcenterinsightsV1ConversationLevelSentiment
@@ -2272,8 +5112,103 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata {
         if (intents != null) 'intents': intents!,
         if (issueModelResult != null) 'issueModelResult': issueModelResult!,
         if (phraseMatchers != null) 'phraseMatchers': phraseMatchers!,
+        if (qaScorecardResults != null)
+          'qaScorecardResults': qaScorecardResults!,
         if (sentiments != null) 'sentiments': sentiments!,
         if (silence != null) 'silence': silence!,
+      };
+}
+
+/// The CCAI Insights project wide analysis rule.
+///
+/// This rule will be applied to all conversations that match the filter defined
+/// in the rule. For a conversation matches the filter, the annotators specified
+/// in the rule will be run. If a conversation matches multiple rules, a union
+/// of all the annotators will be run. One project can have multiple analysis
+/// rules.
+class GoogleCloudContactcenterinsightsV1AnalysisRule {
+  /// If true, apply this rule to conversations.
+  ///
+  /// Otherwise, this rule is inactive and saved as a draft.
+  core.bool? active;
+
+  /// Percentage of conversations that we should apply this analysis setting
+  /// automatically, between \[0, 1\].
+  ///
+  /// For example, 0.1 means 10%. Conversations are sampled in a determenestic
+  /// way. The original runtime_percentage & upload percentage will be replaced
+  /// by defining filters on the conversation.
+  core.double? analysisPercentage;
+
+  /// Selector of annotators to run and the phrase matchers to use for
+  /// conversations that matches the conversation_filter.
+  ///
+  /// If not specified, NO annotators will be run.
+  GoogleCloudContactcenterinsightsV1AnnotatorSelector? annotatorSelector;
+
+  /// Filter for the conversations that should apply this analysis rule.
+  ///
+  /// An empty filter means this analysis rule applies to all conversations.
+  core.String? conversationFilter;
+
+  /// The time at which this analysis rule was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Display Name of the analysis rule.
+  core.String? displayName;
+
+  /// Identifier.
+  ///
+  /// The resource name of the analysis rule. Format:
+  /// projects/{project}/locations/{location}/analysisRules/{analysis_rule}
+  core.String? name;
+
+  /// The most recent time at which this analysis rule was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudContactcenterinsightsV1AnalysisRule({
+    this.active,
+    this.analysisPercentage,
+    this.annotatorSelector,
+    this.conversationFilter,
+    this.createTime,
+    this.displayName,
+    this.name,
+    this.updateTime,
+  });
+
+  GoogleCloudContactcenterinsightsV1AnalysisRule.fromJson(core.Map json_)
+      : this(
+          active: json_['active'] as core.bool?,
+          analysisPercentage:
+              (json_['analysisPercentage'] as core.num?)?.toDouble(),
+          annotatorSelector: json_.containsKey('annotatorSelector')
+              ? GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromJson(
+                  json_['annotatorSelector']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          conversationFilter: json_['conversationFilter'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (active != null) 'active': active!,
+        if (analysisPercentage != null)
+          'analysisPercentage': analysisPercentage!,
+        if (annotatorSelector != null) 'annotatorSelector': annotatorSelector!,
+        if (conversationFilter != null)
+          'conversationFilter': conversationFilter!,
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -2327,6 +5262,9 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
   /// projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
   core.List<core.String>? phraseMatchers;
 
+  /// Configuration for the QA annotator.
+  GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig? qaConfig;
+
   /// Whether to run the entity annotator.
   core.bool? runEntityAnnotator;
 
@@ -2344,6 +5282,9 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
   /// Whether to run the active phrase matcher annotator(s).
   core.bool? runPhraseMatcherAnnotator;
 
+  /// Whether to run the QA annotator.
+  core.bool? runQaAnnotator;
+
   /// Whether to run the sentiment annotator.
   core.bool? runSentimentAnnotator;
 
@@ -2360,11 +5301,13 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
   GoogleCloudContactcenterinsightsV1AnnotatorSelector({
     this.issueModels,
     this.phraseMatchers,
+    this.qaConfig,
     this.runEntityAnnotator,
     this.runIntentAnnotator,
     this.runInterruptionAnnotator,
     this.runIssueModelAnnotator,
     this.runPhraseMatcherAnnotator,
+    this.runQaAnnotator,
     this.runSentimentAnnotator,
     this.runSilenceAnnotator,
     this.runSummarizationAnnotator,
@@ -2379,6 +5322,11 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
           phraseMatchers: (json_['phraseMatchers'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          qaConfig: json_.containsKey('qaConfig')
+              ? GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig
+                  .fromJson(
+                      json_['qaConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           runEntityAnnotator: json_['runEntityAnnotator'] as core.bool?,
           runIntentAnnotator: json_['runIntentAnnotator'] as core.bool?,
           runInterruptionAnnotator:
@@ -2386,6 +5334,7 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
           runIssueModelAnnotator: json_['runIssueModelAnnotator'] as core.bool?,
           runPhraseMatcherAnnotator:
               json_['runPhraseMatcherAnnotator'] as core.bool?,
+          runQaAnnotator: json_['runQaAnnotator'] as core.bool?,
           runSentimentAnnotator: json_['runSentimentAnnotator'] as core.bool?,
           runSilenceAnnotator: json_['runSilenceAnnotator'] as core.bool?,
           runSummarizationAnnotator:
@@ -2400,6 +5349,7 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
   core.Map<core.String, core.dynamic> toJson() => {
         if (issueModels != null) 'issueModels': issueModels!,
         if (phraseMatchers != null) 'phraseMatchers': phraseMatchers!,
+        if (qaConfig != null) 'qaConfig': qaConfig!,
         if (runEntityAnnotator != null)
           'runEntityAnnotator': runEntityAnnotator!,
         if (runIntentAnnotator != null)
@@ -2410,6 +5360,7 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
           'runIssueModelAnnotator': runIssueModelAnnotator!,
         if (runPhraseMatcherAnnotator != null)
           'runPhraseMatcherAnnotator': runPhraseMatcherAnnotator!,
+        if (runQaAnnotator != null) 'runQaAnnotator': runQaAnnotator!,
         if (runSentimentAnnotator != null)
           'runSentimentAnnotator': runSentimentAnnotator!,
         if (runSilenceAnnotator != null)
@@ -2418,6 +5369,54 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
           'runSummarizationAnnotator': runSummarizationAnnotator!,
         if (summarizationConfig != null)
           'summarizationConfig': summarizationConfig!,
+      };
+}
+
+/// Configuration for the QA feature.
+class GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig {
+  /// A manual list of scorecards to score.
+  GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList?
+      scorecardList;
+
+  GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig({
+    this.scorecardList,
+  });
+
+  GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig.fromJson(
+      core.Map json_)
+      : this(
+          scorecardList: json_.containsKey('scorecardList')
+              ? GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList
+                  .fromJson(json_['scorecardList']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scorecardList != null) 'scorecardList': scorecardList!,
+      };
+}
+
+/// Container for a list of scorecards.
+class GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList {
+  /// List of QaScorecardRevisions.
+  core.List<core.String>? qaScorecardRevisions;
+
+  GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList({
+    this.qaScorecardRevisions,
+  });
+
+  GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList.fromJson(
+      core.Map json_)
+      : this(
+          qaScorecardRevisions: (json_['qaScorecardRevisions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (qaScorecardRevisions != null)
+          'qaScorecardRevisions': qaScorecardRevisions!,
       };
 }
 
@@ -2653,6 +5652,250 @@ class GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest {
         if (force != null) 'force': force!,
         if (maxDeleteCount != null) 'maxDeleteCount': maxDeleteCount!,
         if (parent != null) 'parent': parent!,
+      };
+}
+
+/// Request for the BulkDownloadFeedbackLabel endpoint.
+class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest {
+  /// Filter parent conversations to download feedback labels for.
+  ///
+  /// When specified, the feedback labels will be downloaded for the
+  /// conversations that match the filter. If `template_qa_scorecard_id` is set,
+  /// all the conversations that match the filter will be paired with the
+  /// questions under the scorecard for labeling.
+  ///
+  /// Optional.
+  core.String? conversationFilter;
+
+  /// The type of feedback labels that will be downloaded.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "FEEDBACK_LABEL_TYPE_UNSPECIFIED" : Unspecified format
+  /// - "QUALITY_AI" : Downloaded file will contain all Quality AI labels from
+  /// the latest scorecard revision.
+  /// - "TOPIC_MODELING" : Downloaded file will contain only Topic Modeling
+  /// labels.
+  core.String? feedbackLabelType;
+
+  /// A filter to reduce results to a specific subset.
+  ///
+  /// Supports disjunctions (OR) and conjunctions (AND). Supported fields: *
+  /// `issue_model_id` * `qa_question_id` * `qa_scorecard_id` *
+  /// `min_create_time` * `max_create_time` * `min_update_time` *
+  /// `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING
+  ///
+  /// Optional.
+  core.String? filter;
+
+  /// A cloud storage bucket destination.
+  GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination?
+      gcsDestination;
+
+  /// Limits the maximum number of feedback labels that will be downloaded.
+  ///
+  /// The first `N` feedback labels will be downloaded.
+  ///
+  /// Optional.
+  core.int? maxDownloadCount;
+
+  /// The parent resource for new feedback labels.
+  ///
+  /// Required.
+  core.String? parent;
+
+  /// If set, a template for labeling conversations and scorecard questions will
+  /// be created from the conversation_filter and the questions under the
+  /// scorecard(s).
+  ///
+  /// The feedback label `filter` will be ignored.
+  ///
+  /// Optional.
+  core.List<core.String>? templateQaScorecardId;
+
+  GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest({
+    this.conversationFilter,
+    this.feedbackLabelType,
+    this.filter,
+    this.gcsDestination,
+    this.maxDownloadCount,
+    this.parent,
+    this.templateQaScorecardId,
+  });
+
+  GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest.fromJson(
+      core.Map json_)
+      : this(
+          conversationFilter: json_['conversationFilter'] as core.String?,
+          feedbackLabelType: json_['feedbackLabelType'] as core.String?,
+          filter: json_['filter'] as core.String?,
+          gcsDestination: json_.containsKey('gcsDestination')
+              ? GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination
+                  .fromJson(json_['gcsDestination']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          maxDownloadCount: json_['maxDownloadCount'] as core.int?,
+          parent: json_['parent'] as core.String?,
+          templateQaScorecardId: (json_['templateQaScorecardId'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversationFilter != null)
+          'conversationFilter': conversationFilter!,
+        if (feedbackLabelType != null) 'feedbackLabelType': feedbackLabelType!,
+        if (filter != null) 'filter': filter!,
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
+        if (maxDownloadCount != null) 'maxDownloadCount': maxDownloadCount!,
+        if (parent != null) 'parent': parent!,
+        if (templateQaScorecardId != null)
+          'templateQaScorecardId': templateQaScorecardId!,
+      };
+}
+
+/// Google Cloud Storage Object details to write the feedback labels to.
+class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination {
+  /// Add whitespace to the JSON file.
+  ///
+  /// Makes easier to read, but increases file size. Only applicable for JSON
+  /// format.
+  ///
+  /// Optional.
+  core.bool? addWhitespace;
+
+  /// Always print fields with no presence.
+  ///
+  /// This is useful for printing fields that are not set, like implicit 0 value
+  /// or empty lists/maps. Only applicable for JSON format.
+  ///
+  /// Optional.
+  core.bool? alwaysPrintEmptyFields;
+
+  /// File format in which the labels will be exported.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "FORMAT_UNSPECIFIED" : Unspecified format.
+  /// - "CSV" : CSV format. 1,000 labels are stored per CSV file by default.
+  /// - "JSON" : JSON format. 1 label stored per JSON file by default.
+  core.String? format;
+
+  /// The Google Cloud Storage URI to write the feedback labels to.
+  ///
+  /// The file name will be used as a prefix for the files written to the bucket
+  /// if the output needs to be split across multiple files, otherwise it will
+  /// be used as is. The file extension will be appended to the file name based
+  /// on the format selected. E.g. `gs://bucket_name/object_uri_prefix`
+  ///
+  /// Required.
+  core.String? objectUri;
+
+  /// The number of records per file.
+  ///
+  /// Applicable for either format.
+  ///
+  /// Optional.
+  core.String? recordsPerFileCount;
+
+  GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination({
+    this.addWhitespace,
+    this.alwaysPrintEmptyFields,
+    this.format,
+    this.objectUri,
+    this.recordsPerFileCount,
+  });
+
+  GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination.fromJson(
+      core.Map json_)
+      : this(
+          addWhitespace: json_['addWhitespace'] as core.bool?,
+          alwaysPrintEmptyFields: json_['alwaysPrintEmptyFields'] as core.bool?,
+          format: json_['format'] as core.String?,
+          objectUri: json_['objectUri'] as core.String?,
+          recordsPerFileCount: json_['recordsPerFileCount'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (addWhitespace != null) 'addWhitespace': addWhitespace!,
+        if (alwaysPrintEmptyFields != null)
+          'alwaysPrintEmptyFields': alwaysPrintEmptyFields!,
+        if (format != null) 'format': format!,
+        if (objectUri != null) 'objectUri': objectUri!,
+        if (recordsPerFileCount != null)
+          'recordsPerFileCount': recordsPerFileCount!,
+      };
+}
+
+/// The request for bulk uploading feedback labels.
+class GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest {
+  /// A cloud storage bucket source.
+  GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource?
+      gcsSource;
+
+  /// If set, upload will not happen and the labels will be validated.
+  ///
+  /// If not set, then default behavior will be to upload the labels after
+  /// validation is complete.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest({
+    this.gcsSource,
+    this.validateOnly,
+  });
+
+  GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest.fromJson(
+      core.Map json_)
+      : this(
+          gcsSource: json_.containsKey('gcsSource')
+              ? GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource
+                  .fromJson(
+                      json_['gcsSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+          validateOnly: json_['validateOnly'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcsSource != null) 'gcsSource': gcsSource!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
+      };
+}
+
+/// Google Cloud Storage Object details to get the feedback label file from.
+class GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource {
+  /// File format which will be ingested.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "FORMAT_UNSPECIFIED" : Unspecified format.
+  /// - "CSV" : CSV format.
+  /// - "JSON" : JSON format.
+  core.String? format;
+
+  /// The Google Cloud Storage URI of the file to import.
+  ///
+  /// Format: `gs://bucket_name/object_name`
+  ///
+  /// Required.
+  core.String? objectUri;
+
+  GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource({
+    this.format,
+    this.objectUri,
+  });
+
+  GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource.fromJson(
+      core.Map json_)
+      : this(
+          format: json_['format'] as core.String?,
+          objectUri: json_['objectUri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (format != null) 'format': format!,
+        if (objectUri != null) 'objectUri': objectUri!,
       };
 }
 
@@ -3047,6 +6290,13 @@ class GoogleCloudContactcenterinsightsV1Conversation {
   /// - "CHAT" : The format for conversations that took place over chat.
   core.String? medium;
 
+  /// Input only.
+  ///
+  /// JSON metadata encoded as a string. This field is primarily used by
+  /// Insights integrations with various telphony systems and must be in one of
+  /// Insight's supported formats.
+  core.String? metadataJson;
+
   /// The resource name of the conversation.
   ///
   /// Format:
@@ -3106,6 +6356,7 @@ class GoogleCloudContactcenterinsightsV1Conversation {
     this.latestAnalysis,
     this.latestSummary,
     this.medium,
+    this.metadataJson,
     this.name,
     this.obfuscatedUserId,
     this.qualityMetadata,
@@ -3161,6 +6412,7 @@ class GoogleCloudContactcenterinsightsV1Conversation {
                       as core.Map<core.String, core.dynamic>)
               : null,
           medium: json_['medium'] as core.String?,
+          metadataJson: json_['metadataJson'] as core.String?,
           name: json_['name'] as core.String?,
           obfuscatedUserId: json_['obfuscatedUserId'] as core.String?,
           qualityMetadata: json_.containsKey('qualityMetadata')
@@ -3197,6 +6449,7 @@ class GoogleCloudContactcenterinsightsV1Conversation {
         if (latestAnalysis != null) 'latestAnalysis': latestAnalysis!,
         if (latestSummary != null) 'latestSummary': latestSummary!,
         if (medium != null) 'medium': medium!,
+        if (metadataJson != null) 'metadataJson': metadataJson!,
         if (name != null) 'name': name!,
         if (obfuscatedUserId != null) 'obfuscatedUserId': obfuscatedUserId!,
         if (qualityMetadata != null) 'qualityMetadata': qualityMetadata!,
@@ -3764,6 +7017,10 @@ class GoogleCloudContactcenterinsightsV1DeployIssueModelRequest {
       };
 }
 
+/// The request to deploy a QaScorecardRevision
+typedef GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest
+    = $Empty;
+
 /// The data for a Dialogflow intent.
 ///
 /// Represents a detected intent in the conversation, e.g. MAKES_PROMISE.
@@ -3846,6 +7103,298 @@ class GoogleCloudContactcenterinsightsV1DialogflowSource {
         if (audioUri != null) 'audioUri': audioUri!,
         if (dialogflowConversation != null)
           'dialogflowConversation': dialogflowConversation!,
+      };
+}
+
+/// A dimension determines the grouping key for the query.
+///
+/// In SQL terms, these would be part of both the "SELECT" and "GROUP BY"
+/// clauses.
+class GoogleCloudContactcenterinsightsV1Dimension {
+  /// Metadata about the agent dimension.
+  ///
+  /// Output only.
+  GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata?
+      agentDimensionMetadata;
+
+  /// The key of the dimension.
+  /// Possible string values are:
+  /// - "DIMENSION_KEY_UNSPECIFIED" : The key of the dimension is unspecified.
+  /// - "ISSUE" : The dimension is keyed by issues.
+  /// - "AGENT" : The dimension is keyed by agents.
+  /// - "AGENT_TEAM" : The dimension is keyed by agent teams.
+  /// - "QA_QUESTION_ID" : The dimension is keyed by QaQuestionIds. Note that:
+  /// We only group by the QuestionId and not the revision-id of the scorecard
+  /// this question is a part of. This allows for showing stats for the same
+  /// question across different scorecard revisions.
+  /// - "QA_QUESTION_ANSWER_VALUE" : The dimension is keyed by
+  /// QaQuestionIds-Answer value pairs. Note that: We only group by the
+  /// QuestionId and not the revision-id of the scorecard this question is a
+  /// part of. This allows for showing distribution of answers per question
+  /// across different scorecard revisions.
+  /// - "CONVERSATION_PROFILE_ID" : The dimension is keyed by the conversation
+  /// profile ID.
+  core.String? dimensionKey;
+
+  /// Metadata about the issue dimension.
+  ///
+  /// Output only.
+  GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata?
+      issueDimensionMetadata;
+
+  /// Metadata about the QA question-answer dimension.
+  ///
+  /// Output only.
+  GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata?
+      qaQuestionAnswerDimensionMetadata;
+
+  /// Metadata about the QA question dimension.
+  ///
+  /// Output only.
+  GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata?
+      qaQuestionDimensionMetadata;
+
+  GoogleCloudContactcenterinsightsV1Dimension({
+    this.agentDimensionMetadata,
+    this.dimensionKey,
+    this.issueDimensionMetadata,
+    this.qaQuestionAnswerDimensionMetadata,
+    this.qaQuestionDimensionMetadata,
+  });
+
+  GoogleCloudContactcenterinsightsV1Dimension.fromJson(core.Map json_)
+      : this(
+          agentDimensionMetadata: json_.containsKey('agentDimensionMetadata')
+              ? GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata
+                  .fromJson(json_['agentDimensionMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          dimensionKey: json_['dimensionKey'] as core.String?,
+          issueDimensionMetadata: json_.containsKey('issueDimensionMetadata')
+              ? GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata
+                  .fromJson(json_['issueDimensionMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          qaQuestionAnswerDimensionMetadata: json_
+                  .containsKey('qaQuestionAnswerDimensionMetadata')
+              ? GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata
+                  .fromJson(json_['qaQuestionAnswerDimensionMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          qaQuestionDimensionMetadata: json_
+                  .containsKey('qaQuestionDimensionMetadata')
+              ? GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata
+                  .fromJson(json_['qaQuestionDimensionMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentDimensionMetadata != null)
+          'agentDimensionMetadata': agentDimensionMetadata!,
+        if (dimensionKey != null) 'dimensionKey': dimensionKey!,
+        if (issueDimensionMetadata != null)
+          'issueDimensionMetadata': issueDimensionMetadata!,
+        if (qaQuestionAnswerDimensionMetadata != null)
+          'qaQuestionAnswerDimensionMetadata':
+              qaQuestionAnswerDimensionMetadata!,
+        if (qaQuestionDimensionMetadata != null)
+          'qaQuestionDimensionMetadata': qaQuestionDimensionMetadata!,
+      };
+}
+
+/// Metadata about the agent dimension.
+class GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata {
+  /// The agent's name
+  ///
+  /// Optional.
+  core.String? agentDisplayName;
+
+  /// A user-specified string representing the agent.
+  ///
+  /// Optional.
+  core.String? agentId;
+
+  /// A user-specified string representing the agent's team.
+  ///
+  /// Optional.
+  core.String? agentTeam;
+
+  GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata({
+    this.agentDisplayName,
+    this.agentId,
+    this.agentTeam,
+  });
+
+  GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata.fromJson(
+      core.Map json_)
+      : this(
+          agentDisplayName: json_['agentDisplayName'] as core.String?,
+          agentId: json_['agentId'] as core.String?,
+          agentTeam: json_['agentTeam'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentDisplayName != null) 'agentDisplayName': agentDisplayName!,
+        if (agentId != null) 'agentId': agentId!,
+        if (agentTeam != null) 'agentTeam': agentTeam!,
+      };
+}
+
+/// Metadata about the issue dimension.
+class GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata {
+  /// The issue display name.
+  core.String? issueDisplayName;
+
+  /// The issue ID.
+  core.String? issueId;
+
+  /// The parent issue model ID.
+  core.String? issueModelId;
+
+  GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata({
+    this.issueDisplayName,
+    this.issueId,
+    this.issueModelId,
+  });
+
+  GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata.fromJson(
+      core.Map json_)
+      : this(
+          issueDisplayName: json_['issueDisplayName'] as core.String?,
+          issueId: json_['issueId'] as core.String?,
+          issueModelId: json_['issueModelId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (issueDisplayName != null) 'issueDisplayName': issueDisplayName!,
+        if (issueId != null) 'issueId': issueId!,
+        if (issueModelId != null) 'issueModelId': issueModelId!,
+      };
+}
+
+/// Metadata about the QA question-answer dimension.
+///
+/// This is useful for showing the answer distribution for questions for a given
+/// scorecard.
+class GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata {
+  /// The full body of the question.
+  ///
+  /// Optional.
+  core.String? answerValue;
+
+  /// The QA question ID.
+  ///
+  /// Optional.
+  core.String? qaQuestionId;
+
+  /// The QA scorecard ID.
+  ///
+  /// Optional.
+  core.String? qaScorecardId;
+
+  /// The full body of the question.
+  ///
+  /// Optional.
+  core.String? questionBody;
+
+  GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata({
+    this.answerValue,
+    this.qaQuestionId,
+    this.qaScorecardId,
+    this.questionBody,
+  });
+
+  GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata.fromJson(
+      core.Map json_)
+      : this(
+          answerValue: json_['answerValue'] as core.String?,
+          qaQuestionId: json_['qaQuestionId'] as core.String?,
+          qaScorecardId: json_['qaScorecardId'] as core.String?,
+          questionBody: json_['questionBody'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answerValue != null) 'answerValue': answerValue!,
+        if (qaQuestionId != null) 'qaQuestionId': qaQuestionId!,
+        if (qaScorecardId != null) 'qaScorecardId': qaScorecardId!,
+        if (questionBody != null) 'questionBody': questionBody!,
+      };
+}
+
+/// Metadata about the QA question dimension.
+class GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata {
+  /// The QA question ID.
+  ///
+  /// Optional.
+  core.String? qaQuestionId;
+
+  /// The QA scorecard ID.
+  ///
+  /// Optional.
+  core.String? qaScorecardId;
+
+  /// The full body of the question.
+  ///
+  /// Optional.
+  core.String? questionBody;
+
+  GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata({
+    this.qaQuestionId,
+    this.qaScorecardId,
+    this.questionBody,
+  });
+
+  GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata.fromJson(
+      core.Map json_)
+      : this(
+          qaQuestionId: json_['qaQuestionId'] as core.String?,
+          qaScorecardId: json_['qaScorecardId'] as core.String?,
+          questionBody: json_['questionBody'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (qaQuestionId != null) 'qaQuestionId': qaQuestionId!,
+        if (qaScorecardId != null) 'qaScorecardId': qaScorecardId!,
+        if (questionBody != null) 'questionBody': questionBody!,
+      };
+}
+
+/// A customer-managed encryption key specification that can be applied to all
+/// created resources (e.g. `Conversation`).
+class GoogleCloudContactcenterinsightsV1EncryptionSpec {
+  /// The name of customer-managed encryption key that is used to secure a
+  /// resource and its sub-resources.
+  ///
+  /// If empty, the resource is secured by our default encryption key. Only the
+  /// key in the same location as this resource is allowed to be used for
+  /// encryption. Format:
+  /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}`
+  ///
+  /// Required.
+  core.String? kmsKey;
+
+  /// The resource name of the encryption key specification resource.
+  ///
+  /// Format: projects/{project}/locations/{location}/encryptionSpec
+  ///
+  /// Immutable.
+  core.String? name;
+
+  GoogleCloudContactcenterinsightsV1EncryptionSpec({
+    this.kmsKey,
+    this.name,
+  });
+
+  GoogleCloudContactcenterinsightsV1EncryptionSpec.fromJson(core.Map json_)
+      : this(
+          kmsKey: json_['kmsKey'] as core.String?,
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kmsKey != null) 'kmsKey': kmsKey!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -4146,7 +7695,7 @@ class GoogleCloudContactcenterinsightsV1ExportIssueModelRequest {
 
 /// Google Cloud Storage Object URI to save the issue model to.
 typedef GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination
-    = $Shared08;
+    = $Shared09;
 
 /// Agent Assist frequently-asked-question answer data.
 class GoogleCloudContactcenterinsightsV1FaqAnswerData {
@@ -4209,6 +7758,67 @@ class GoogleCloudContactcenterinsightsV1FaqAnswerData {
         if (queryRecord != null) 'queryRecord': queryRecord!,
         if (question != null) 'question': question!,
         if (source != null) 'source': source!,
+      };
+}
+
+/// Represents a conversation, resource, and label provided by the user.
+class GoogleCloudContactcenterinsightsV1FeedbackLabel {
+  /// Create time of the label.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// String label.
+  core.String? label;
+
+  /// Resource name of the resource to be labeled.
+  core.String? labeledResource;
+
+  /// Resource name of the FeedbackLabel.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label}
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// QaAnswer label.
+  GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue? qaAnswerLabel;
+
+  /// Update time of the label.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudContactcenterinsightsV1FeedbackLabel({
+    this.createTime,
+    this.label,
+    this.labeledResource,
+    this.name,
+    this.qaAnswerLabel,
+    this.updateTime,
+  });
+
+  GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          label: json_['label'] as core.String?,
+          labeledResource: json_['labeledResource'] as core.String?,
+          name: json_['name'] as core.String?,
+          qaAnswerLabel: json_.containsKey('qaAnswerLabel')
+              ? GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue.fromJson(
+                  json_['qaAnswerLabel'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (label != null) 'label': label!,
+        if (labeledResource != null) 'labeledResource': labeledResource!,
+        if (name != null) 'name': name!,
+        if (qaAnswerLabel != null) 'qaAnswerLabel': qaAnswerLabel!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -4289,7 +7899,7 @@ class GoogleCloudContactcenterinsightsV1ImportIssueModelRequest {
 
 /// Google Cloud Storage Object URI to get the issue model file from.
 typedef GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource
-    = $Shared08;
+    = $Shared09;
 
 /// The request to ingest conversations.
 class GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
@@ -4532,6 +8142,37 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObje
       };
 }
 
+/// The request to initialize a location-level encryption specification.
+class GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest {
+  /// The encryption spec used for CMEK encryption.
+  ///
+  /// It is required that the kms key is in the same region as the endpoint. The
+  /// same key will be used for all provisioned resources, if encryption is
+  /// available. If the `kms_key_name` field is left empty, no encryption will
+  /// be enforced.
+  ///
+  /// Required.
+  GoogleCloudContactcenterinsightsV1EncryptionSpec? encryptionSpec;
+
+  GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest({
+    this.encryptionSpec,
+  });
+
+  GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest.fromJson(
+      core.Map json_)
+      : this(
+          encryptionSpec: json_.containsKey('encryptionSpec')
+              ? GoogleCloudContactcenterinsightsV1EncryptionSpec.fromJson(
+                  json_['encryptionSpec']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (encryptionSpec != null) 'encryptionSpec': encryptionSpec!,
+      };
+}
+
 /// The data for an intent.
 ///
 /// Represents a detected intent in the conversation, for example MAKES_PROMISE.
@@ -4594,6 +8235,9 @@ class GoogleCloudContactcenterinsightsV1Issue {
   /// Output only.
   core.String? createTime;
 
+  /// Representative description of the issue.
+  core.String? displayDescription;
+
   /// The representative name for the issue.
   core.String? displayName;
 
@@ -4618,6 +8262,7 @@ class GoogleCloudContactcenterinsightsV1Issue {
 
   GoogleCloudContactcenterinsightsV1Issue({
     this.createTime,
+    this.displayDescription,
     this.displayName,
     this.name,
     this.sampleUtterances,
@@ -4627,6 +8272,7 @@ class GoogleCloudContactcenterinsightsV1Issue {
   GoogleCloudContactcenterinsightsV1Issue.fromJson(core.Map json_)
       : this(
           createTime: json_['createTime'] as core.String?,
+          displayDescription: json_['displayDescription'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           name: json_['name'] as core.String?,
           sampleUtterances: (json_['sampleUtterances'] as core.List?)
@@ -4637,6 +8283,8 @@ class GoogleCloudContactcenterinsightsV1Issue {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (displayDescription != null)
+          'displayDescription': displayDescription!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (sampleUtterances != null) 'sampleUtterances': sampleUtterances!,
@@ -4979,6 +8627,38 @@ class GoogleCloudContactcenterinsightsV1IssueModelResult {
       };
 }
 
+/// The response for listing all feedback labels.
+class GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse {
+  /// The feedback labels that match the request.
+  core.List<GoogleCloudContactcenterinsightsV1FeedbackLabel>? feedbackLabels;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse({
+    this.feedbackLabels,
+    this.nextPageToken,
+  });
+
+  GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse.fromJson(
+      core.Map json_)
+      : this(
+          feedbackLabels: (json_['feedbackLabels'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (feedbackLabels != null) 'feedbackLabels': feedbackLabels!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// The response to list analyses.
 class GoogleCloudContactcenterinsightsV1ListAnalysesResponse {
   /// The analyses that match the request.
@@ -5007,6 +8687,38 @@ class GoogleCloudContactcenterinsightsV1ListAnalysesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (analyses != null) 'analyses': analyses!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The response of listing views.
+class GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse {
+  /// The analysis_rule that match the request.
+  core.List<GoogleCloudContactcenterinsightsV1AnalysisRule>? analysisRules;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse({
+    this.analysisRules,
+    this.nextPageToken,
+  });
+
+  GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse.fromJson(
+      core.Map json_)
+      : this(
+          analysisRules: (json_['analysisRules'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1AnalysisRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (analysisRules != null) 'analysisRules': analysisRules!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -5040,6 +8752,36 @@ class GoogleCloudContactcenterinsightsV1ListConversationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conversations != null) 'conversations': conversations!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The response for listing feedback labels.
+class GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse {
+  /// The feedback labels that match the request.
+  core.List<GoogleCloudContactcenterinsightsV1FeedbackLabel>? feedbackLabels;
+
+  /// The next page token.
+  core.String? nextPageToken;
+
+  GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse({
+    this.feedbackLabels,
+    this.nextPageToken,
+  });
+
+  GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse.fromJson(
+      core.Map json_)
+      : this(
+          feedbackLabels: (json_['feedbackLabels'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (feedbackLabels != null) 'feedbackLabels': feedbackLabels!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -5119,6 +8861,104 @@ class GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (phraseMatchers != null) 'phraseMatchers': phraseMatchers!,
+      };
+}
+
+/// The response from a ListQaQuestions request.
+class GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The QaQuestions under the parent.
+  core.List<GoogleCloudContactcenterinsightsV1QaQuestion>? qaQuestions;
+
+  GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse({
+    this.nextPageToken,
+    this.qaQuestions,
+  });
+
+  GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse.fromJson(
+      core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          qaQuestions: (json_['qaQuestions'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1QaQuestion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (qaQuestions != null) 'qaQuestions': qaQuestions!,
+      };
+}
+
+/// The response from a ListQaScorecardRevisions request.
+class GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The QaScorecards under the parent.
+  core.List<GoogleCloudContactcenterinsightsV1QaScorecardRevision>?
+      qaScorecardRevisions;
+
+  GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse({
+    this.nextPageToken,
+    this.qaScorecardRevisions,
+  });
+
+  GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse.fromJson(
+      core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          qaScorecardRevisions: (json_['qaScorecardRevisions'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1QaScorecardRevision
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (qaScorecardRevisions != null)
+          'qaScorecardRevisions': qaScorecardRevisions!,
+      };
+}
+
+/// The response from a ListQaScorecards request.
+class GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The QaScorecards under the parent.
+  core.List<GoogleCloudContactcenterinsightsV1QaScorecard>? qaScorecards;
+
+  GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse({
+    this.nextPageToken,
+    this.qaScorecards,
+  });
+
+  GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse.fromJson(
+      core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          qaScorecards: (json_['qaScorecards'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1QaScorecard.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (qaScorecards != null) 'qaScorecards': qaScorecards!,
       };
 }
 
@@ -5402,6 +9242,808 @@ class GoogleCloudContactcenterinsightsV1PhraseMatcher {
       };
 }
 
+/// An answer to a QaQuestion.
+class GoogleCloudContactcenterinsightsV1QaAnswer {
+  /// List of all individual answers given to the question.
+  core.List<GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource>?
+      answerSources;
+
+  /// The main answer value, incorporating any manual edits if they exist.
+  GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue? answerValue;
+
+  /// The conversation the answer applies to.
+  core.String? conversation;
+
+  /// The maximum potential score of the question.
+  ///
+  /// If the question was answered using `na_value`, this field will be zero.
+  core.double? potentialScore;
+
+  /// The QaQuestion answered by this answer.
+  core.String? qaQuestion;
+
+  /// Question text.
+  ///
+  /// E.g., "Did the agent greet the customer?"
+  core.String? questionBody;
+
+  /// User-defined list of arbitrary tags.
+  ///
+  /// Matches the value from QaScorecard.ScorecardQuestion.tags. Used for
+  /// grouping/organization and for weighting the score of each answer.
+  core.List<core.String>? tags;
+
+  GoogleCloudContactcenterinsightsV1QaAnswer({
+    this.answerSources,
+    this.answerValue,
+    this.conversation,
+    this.potentialScore,
+    this.qaQuestion,
+    this.questionBody,
+    this.tags,
+  });
+
+  GoogleCloudContactcenterinsightsV1QaAnswer.fromJson(core.Map json_)
+      : this(
+          answerSources: (json_['answerSources'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          answerValue: json_.containsKey('answerValue')
+              ? GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue.fromJson(
+                  json_['answerValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          conversation: json_['conversation'] as core.String?,
+          potentialScore: (json_['potentialScore'] as core.num?)?.toDouble(),
+          qaQuestion: json_['qaQuestion'] as core.String?,
+          questionBody: json_['questionBody'] as core.String?,
+          tags: (json_['tags'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answerSources != null) 'answerSources': answerSources!,
+        if (answerValue != null) 'answerValue': answerValue!,
+        if (conversation != null) 'conversation': conversation!,
+        if (potentialScore != null) 'potentialScore': potentialScore!,
+        if (qaQuestion != null) 'qaQuestion': qaQuestion!,
+        if (questionBody != null) 'questionBody': questionBody!,
+        if (tags != null) 'tags': tags!,
+      };
+}
+
+/// A question may have multiple answers from varying sources, one of which
+/// becomes the "main" answer above.
+///
+/// AnswerSource represents each individual answer.
+class GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource {
+  /// The answer value from this source.
+  GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue? answerValue;
+
+  /// What created the answer.
+  /// Possible string values are:
+  /// - "SOURCE_TYPE_UNSPECIFIED" : Source type is unspecified.
+  /// - "SYSTEM_GENERATED" : Answer was system-generated; created during an
+  /// Insights analysis.
+  /// - "MANUAL_EDIT" : Answer was created by a human via manual edit.
+  core.String? sourceType;
+
+  GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource({
+    this.answerValue,
+    this.sourceType,
+  });
+
+  GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource.fromJson(
+      core.Map json_)
+      : this(
+          answerValue: json_.containsKey('answerValue')
+              ? GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue.fromJson(
+                  json_['answerValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sourceType: json_['sourceType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answerValue != null) 'answerValue': answerValue!,
+        if (sourceType != null) 'sourceType': sourceType!,
+      };
+}
+
+/// Message for holding the value of the answer.
+///
+/// QaQuestion.AnswerChoice defines the possible answer values for a question.
+class GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue {
+  /// Boolean value.
+  core.bool? boolValue;
+
+  /// A short string used as an identifier.
+  ///
+  /// Matches the value used in QaQuestion.AnswerChoice.key.
+  core.String? key;
+
+  /// A value of "Not Applicable (N/A)".
+  core.bool? naValue;
+
+  /// Numerical value.
+  core.double? numValue;
+
+  /// Numerical score of the answer.
+  core.double? score;
+
+  /// String value.
+  core.String? strValue;
+
+  GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue({
+    this.boolValue,
+    this.key,
+    this.naValue,
+    this.numValue,
+    this.score,
+    this.strValue,
+  });
+
+  GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue.fromJson(core.Map json_)
+      : this(
+          boolValue: json_['boolValue'] as core.bool?,
+          key: json_['key'] as core.String?,
+          naValue: json_['naValue'] as core.bool?,
+          numValue: (json_['numValue'] as core.num?)?.toDouble(),
+          score: (json_['score'] as core.num?)?.toDouble(),
+          strValue: json_['strValue'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
+        if (key != null) 'key': key!,
+        if (naValue != null) 'naValue': naValue!,
+        if (numValue != null) 'numValue': numValue!,
+        if (score != null) 'score': score!,
+        if (strValue != null) 'strValue': strValue!,
+      };
+}
+
+/// A single question to be scored by the Insights QA feature.
+class GoogleCloudContactcenterinsightsV1QaQuestion {
+  /// Short, descriptive string, used in the UI where it's not practical to
+  /// display the full question body.
+  ///
+  /// E.g., "Greeting".
+  core.String? abbreviation;
+
+  /// A list of valid answers to the question, which the LLM must choose from.
+  core.List<GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice>?
+      answerChoices;
+
+  /// Instructions describing how to determine the answer.
+  core.String? answerInstructions;
+
+  /// The time at which this question was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Metrics of the underlying tuned LLM over a holdout/test set while fine
+  /// tuning the underlying LLM for the given question.
+  ///
+  /// This field will only be populated if and only if the question is part of a
+  /// scorecard revision that has been tuned.
+  GoogleCloudContactcenterinsightsV1QaQuestionMetrics? metrics;
+
+  /// Identifier.
+  ///
+  /// The resource name of the question. Format:
+  /// projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}/revisions/{revision}/qaQuestions/{qa_question}
+  core.String? name;
+
+  /// Defines the order of the question within its parent scorecard revision.
+  core.int? order;
+
+  /// Question text.
+  ///
+  /// E.g., "Did the agent greet the customer?"
+  core.String? questionBody;
+
+  /// User-defined list of arbitrary tags for the question.
+  ///
+  /// Used for grouping/organization and for weighting the score of each
+  /// question.
+  core.List<core.String>? tags;
+
+  /// Metadata about the tuning operation for the question.This field will only
+  /// be populated if and only if the question is part of a scorecard revision
+  /// that has been tuned.
+  GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata? tuningMetadata;
+
+  /// The most recent time at which the question was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudContactcenterinsightsV1QaQuestion({
+    this.abbreviation,
+    this.answerChoices,
+    this.answerInstructions,
+    this.createTime,
+    this.metrics,
+    this.name,
+    this.order,
+    this.questionBody,
+    this.tags,
+    this.tuningMetadata,
+    this.updateTime,
+  });
+
+  GoogleCloudContactcenterinsightsV1QaQuestion.fromJson(core.Map json_)
+      : this(
+          abbreviation: json_['abbreviation'] as core.String?,
+          answerChoices: (json_['answerChoices'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          answerInstructions: json_['answerInstructions'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          metrics: json_.containsKey('metrics')
+              ? GoogleCloudContactcenterinsightsV1QaQuestionMetrics.fromJson(
+                  json_['metrics'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_['name'] as core.String?,
+          order: json_['order'] as core.int?,
+          questionBody: json_['questionBody'] as core.String?,
+          tags: (json_['tags'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          tuningMetadata: json_.containsKey('tuningMetadata')
+              ? GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata
+                  .fromJson(json_['tuningMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (abbreviation != null) 'abbreviation': abbreviation!,
+        if (answerChoices != null) 'answerChoices': answerChoices!,
+        if (answerInstructions != null)
+          'answerInstructions': answerInstructions!,
+        if (createTime != null) 'createTime': createTime!,
+        if (metrics != null) 'metrics': metrics!,
+        if (name != null) 'name': name!,
+        if (order != null) 'order': order!,
+        if (questionBody != null) 'questionBody': questionBody!,
+        if (tags != null) 'tags': tags!,
+        if (tuningMetadata != null) 'tuningMetadata': tuningMetadata!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Message representing a possible answer to the question.
+class GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice {
+  /// Boolean value.
+  core.bool? boolValue;
+
+  /// A short string used as an identifier.
+  core.String? key;
+
+  /// A value of "Not Applicable (N/A)".
+  ///
+  /// If provided, this field may only be set to `true`. If a question receives
+  /// this answer, it will be excluded from any score calculations.
+  core.bool? naValue;
+
+  /// Numerical value.
+  core.double? numValue;
+
+  /// Numerical score of the answer, used for generating the overall score of a
+  /// QaScorecardResult.
+  ///
+  /// If the answer uses na_value, this field is unused.
+  core.double? score;
+
+  /// String value.
+  core.String? strValue;
+
+  GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice({
+    this.boolValue,
+    this.key,
+    this.naValue,
+    this.numValue,
+    this.score,
+    this.strValue,
+  });
+
+  GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice.fromJson(
+      core.Map json_)
+      : this(
+          boolValue: json_['boolValue'] as core.bool?,
+          key: json_['key'] as core.String?,
+          naValue: json_['naValue'] as core.bool?,
+          numValue: (json_['numValue'] as core.num?)?.toDouble(),
+          score: (json_['score'] as core.num?)?.toDouble(),
+          strValue: json_['strValue'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
+        if (key != null) 'key': key!,
+        if (naValue != null) 'naValue': naValue!,
+        if (numValue != null) 'numValue': numValue!,
+        if (score != null) 'score': score!,
+        if (strValue != null) 'strValue': strValue!,
+      };
+}
+
+/// A wrapper representing metrics calculated against a test-set on a LLM that
+/// was fine tuned for this question.
+class GoogleCloudContactcenterinsightsV1QaQuestionMetrics {
+  /// Accuracy of the model.
+  ///
+  /// Measures the percentage of correct answers the model gave on the test set.
+  ///
+  /// Output only.
+  core.double? accuracy;
+
+  GoogleCloudContactcenterinsightsV1QaQuestionMetrics({
+    this.accuracy,
+  });
+
+  GoogleCloudContactcenterinsightsV1QaQuestionMetrics.fromJson(core.Map json_)
+      : this(
+          accuracy: (json_['accuracy'] as core.num?)?.toDouble(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accuracy != null) 'accuracy': accuracy!,
+      };
+}
+
+/// Metadata about the tuning operation for the question.
+///
+/// Will only be set if a scorecard containing this question has been tuned.
+class GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata {
+  /// A list of any applicable data validation warnings about the question's
+  /// feedback labels.
+  core.List<core.String>? datasetValidationWarnings;
+
+  /// Total number of valid labels provided for the question at the time of
+  /// tuining.
+  core.String? totalValidLabelCount;
+
+  /// Error status of the tuning operation for the question.
+  ///
+  /// Will only be set if the tuning operation failed.
+  core.String? tuningError;
+
+  GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata({
+    this.datasetValidationWarnings,
+    this.totalValidLabelCount,
+    this.tuningError,
+  });
+
+  GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata.fromJson(
+      core.Map json_)
+      : this(
+          datasetValidationWarnings:
+              (json_['datasetValidationWarnings'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+          totalValidLabelCount: json_['totalValidLabelCount'] as core.String?,
+          tuningError: json_['tuningError'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (datasetValidationWarnings != null)
+          'datasetValidationWarnings': datasetValidationWarnings!,
+        if (totalValidLabelCount != null)
+          'totalValidLabelCount': totalValidLabelCount!,
+        if (tuningError != null) 'tuningError': tuningError!,
+      };
+}
+
+/// A QaScorecard represents a collection of questions to be scored during
+/// analysis.
+class GoogleCloudContactcenterinsightsV1QaScorecard {
+  /// The time at which this scorecard was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A text description explaining the intent of the scorecard.
+  core.String? description;
+
+  /// The user-specified display name of the scorecard.
+  core.String? displayName;
+
+  /// Identifier.
+  ///
+  /// The scorecard name. Format:
+  /// projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}
+  core.String? name;
+
+  /// The most recent time at which the scorecard was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudContactcenterinsightsV1QaScorecard({
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.name,
+    this.updateTime,
+  });
+
+  GoogleCloudContactcenterinsightsV1QaScorecard.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// The results of scoring a single conversation against a QaScorecard.
+///
+/// Contains a collection of QaAnswers and aggregate score.
+class GoogleCloudContactcenterinsightsV1QaScorecardResult {
+  /// ID of the agent that handled the conversation.
+  core.String? agentId;
+
+  /// The conversation scored by this result.
+  core.String? conversation;
+
+  /// The timestamp that the revision was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Identifier.
+  ///
+  /// The name of the scorecard result. Format:
+  /// projects/{project}/locations/{location}/qaScorecardResults/{qa_scorecard_result}
+  core.String? name;
+
+  /// The normalized score, which is the score divided by the potential score.
+  ///
+  /// Any manual edits are included if they exist.
+  core.double? normalizedScore;
+
+  /// The maximum potential overall score of the scorecard.
+  ///
+  /// Any questions answered using `na_value` are excluded from this
+  /// calculation.
+  core.double? potentialScore;
+
+  /// Set of QaAnswers represented in the result.
+  core.List<GoogleCloudContactcenterinsightsV1QaAnswer>? qaAnswers;
+
+  /// The QaScorecardRevision scored by this result.
+  core.String? qaScorecardRevision;
+
+  /// Collection of tags and their scores.
+  core.List<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>?
+      qaTagResults;
+
+  /// The overall numerical score of the result, incorporating any manual edits
+  /// if they exist.
+  core.double? score;
+
+  /// List of all individual score sets.
+  core.List<GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource>?
+      scoreSources;
+
+  GoogleCloudContactcenterinsightsV1QaScorecardResult({
+    this.agentId,
+    this.conversation,
+    this.createTime,
+    this.name,
+    this.normalizedScore,
+    this.potentialScore,
+    this.qaAnswers,
+    this.qaScorecardRevision,
+    this.qaTagResults,
+    this.score,
+    this.scoreSources,
+  });
+
+  GoogleCloudContactcenterinsightsV1QaScorecardResult.fromJson(core.Map json_)
+      : this(
+          agentId: json_['agentId'] as core.String?,
+          conversation: json_['conversation'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          normalizedScore: (json_['normalizedScore'] as core.num?)?.toDouble(),
+          potentialScore: (json_['potentialScore'] as core.num?)?.toDouble(),
+          qaAnswers: (json_['qaAnswers'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1QaAnswer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          qaScorecardRevision: json_['qaScorecardRevision'] as core.String?,
+          qaTagResults: (json_['qaTagResults'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          score: (json_['score'] as core.num?)?.toDouble(),
+          scoreSources: (json_['scoreSources'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentId != null) 'agentId': agentId!,
+        if (conversation != null) 'conversation': conversation!,
+        if (createTime != null) 'createTime': createTime!,
+        if (name != null) 'name': name!,
+        if (normalizedScore != null) 'normalizedScore': normalizedScore!,
+        if (potentialScore != null) 'potentialScore': potentialScore!,
+        if (qaAnswers != null) 'qaAnswers': qaAnswers!,
+        if (qaScorecardRevision != null)
+          'qaScorecardRevision': qaScorecardRevision!,
+        if (qaTagResults != null) 'qaTagResults': qaTagResults!,
+        if (score != null) 'score': score!,
+        if (scoreSources != null) 'scoreSources': scoreSources!,
+      };
+}
+
+/// Tags and their corresponding results.
+class GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult {
+  /// The normalized score the tag applies to.
+  core.double? normalizedScore;
+
+  /// The potential score the tag applies to.
+  core.double? potentialScore;
+
+  /// The score the tag applies to.
+  core.double? score;
+
+  /// The tag the score applies to.
+  core.String? tag;
+
+  GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult({
+    this.normalizedScore,
+    this.potentialScore,
+    this.score,
+    this.tag,
+  });
+
+  GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult.fromJson(
+      core.Map json_)
+      : this(
+          normalizedScore: (json_['normalizedScore'] as core.num?)?.toDouble(),
+          potentialScore: (json_['potentialScore'] as core.num?)?.toDouble(),
+          score: (json_['score'] as core.num?)?.toDouble(),
+          tag: json_['tag'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (normalizedScore != null) 'normalizedScore': normalizedScore!,
+        if (potentialScore != null) 'potentialScore': potentialScore!,
+        if (score != null) 'score': score!,
+        if (tag != null) 'tag': tag!,
+      };
+}
+
+/// A scorecard result may have multiple sets of scores from varying sources,
+/// one of which becomes the "main" answer above.
+///
+/// A ScoreSource represents each individual set of scores.
+class GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource {
+  /// The normalized score, which is the score divided by the potential score.
+  core.double? normalizedScore;
+
+  /// The maximum potential overall score of the scorecard.
+  ///
+  /// Any questions answered using `na_value` are excluded from this
+  /// calculation.
+  core.double? potentialScore;
+
+  /// Collection of tags and their scores.
+  core.List<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>?
+      qaTagResults;
+
+  /// The overall numerical score of the result.
+  core.double? score;
+
+  /// What created the score.
+  /// Possible string values are:
+  /// - "SOURCE_TYPE_UNSPECIFIED" : Source type is unspecified.
+  /// - "SYSTEM_GENERATED_ONLY" : Score is derived only from system-generated
+  /// answers.
+  /// - "INCLUDES_MANUAL_EDITS" : Score is derived from both system-generated
+  /// answers, and includes any manual edits if they exist.
+  core.String? sourceType;
+
+  GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource({
+    this.normalizedScore,
+    this.potentialScore,
+    this.qaTagResults,
+    this.score,
+    this.sourceType,
+  });
+
+  GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource.fromJson(
+      core.Map json_)
+      : this(
+          normalizedScore: (json_['normalizedScore'] as core.num?)?.toDouble(),
+          potentialScore: (json_['potentialScore'] as core.num?)?.toDouble(),
+          qaTagResults: (json_['qaTagResults'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          score: (json_['score'] as core.num?)?.toDouble(),
+          sourceType: json_['sourceType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (normalizedScore != null) 'normalizedScore': normalizedScore!,
+        if (potentialScore != null) 'potentialScore': potentialScore!,
+        if (qaTagResults != null) 'qaTagResults': qaTagResults!,
+        if (score != null) 'score': score!,
+        if (sourceType != null) 'sourceType': sourceType!,
+      };
+}
+
+/// A revision of a QaScorecard.
+///
+/// Modifying published scorecard fields would invalidate existing scorecard
+/// results — the questions may have changed, or the score weighting will make
+/// existing scores impossible to understand. So changes must create a new
+/// revision, rather than modifying the existing resource.
+class GoogleCloudContactcenterinsightsV1QaScorecardRevision {
+  /// Alternative IDs for this revision of the scorecard, e.g., `latest`.
+  ///
+  /// Output only.
+  core.List<core.String>? alternateIds;
+
+  /// The timestamp that the revision was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Identifier.
+  ///
+  /// The name of the scorecard revision. Format:
+  /// projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}/revisions/{revision}
+  core.String? name;
+
+  /// The snapshot of the scorecard at the time of this revision's creation.
+  GoogleCloudContactcenterinsightsV1QaScorecard? snapshot;
+
+  /// State of the scorecard revision, indicating whether it's ready to be used
+  /// in analysis.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified.
+  /// - "EDITABLE" : The scorecard revision can be edited.
+  /// - "TRAINING" : Scorecard model training is in progress.
+  /// - "TRAINING_FAILED" : Scorecard revision model training failed.
+  /// - "READY" : The revision can be used in analysis.
+  /// - "DELETING" : Scorecard is being deleted.
+  /// - "TRAINING_CANCELLED" : Scorecard model training was explicitly cancelled
+  /// by the user.
+  core.String? state;
+
+  GoogleCloudContactcenterinsightsV1QaScorecardRevision({
+    this.alternateIds,
+    this.createTime,
+    this.name,
+    this.snapshot,
+    this.state,
+  });
+
+  GoogleCloudContactcenterinsightsV1QaScorecardRevision.fromJson(core.Map json_)
+      : this(
+          alternateIds: (json_['alternateIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          createTime: json_['createTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          snapshot: json_.containsKey('snapshot')
+              ? GoogleCloudContactcenterinsightsV1QaScorecard.fromJson(
+                  json_['snapshot'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alternateIds != null) 'alternateIds': alternateIds!,
+        if (createTime != null) 'createTime': createTime!,
+        if (name != null) 'name': name!,
+        if (snapshot != null) 'snapshot': snapshot!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// The request for querying metrics.
+class GoogleCloudContactcenterinsightsV1QueryMetricsRequest {
+  /// The dimensions that determine the grouping key for the query.
+  ///
+  /// Defaults to no dimension if this field is unspecified. If a dimension is
+  /// specified, its key must also be specified. Each dimension's key must be
+  /// unique. If a time granularity is also specified, metric values in the
+  /// dimension will be bucketed by this granularity. Up to one dimension is
+  /// supported for now.
+  core.List<GoogleCloudContactcenterinsightsV1Dimension>? dimensions;
+
+  /// Filter to select a subset of conversations to compute the metrics.
+  ///
+  /// Must specify a window of the conversation create time to compute the
+  /// metrics. The returned metrics will be from the range \[DATE(starting
+  /// create time), DATE(ending create time)).
+  ///
+  /// Required.
+  core.String? filter;
+
+  /// Measures to return.
+  ///
+  /// Defaults to all measures if this field is unspecified. A valid mask should
+  /// traverse from the `measure` field from the response. For example, a path
+  /// from a measure mask to get the conversation count is
+  /// "conversation_measure.count".
+  core.String? measureMask;
+
+  /// The time granularity of each data point in the time series.
+  ///
+  /// Defaults to NONE if this field is unspecified.
+  /// Possible string values are:
+  /// - "TIME_GRANULARITY_UNSPECIFIED" : The time granularity is unspecified and
+  /// will default to NONE.
+  /// - "NONE" : No time granularity. The response won't contain a time series.
+  /// This is the default value if no time granularity is specified.
+  /// - "DAILY" : Data points in the time series will aggregate at a daily
+  /// granularity. 1 day means \[midnight to midnight).
+  /// - "HOURLY" : Data points in the time series will aggregate at a daily
+  /// granularity. 1 HOUR means \[01:00 to 02:00).
+  /// - "PER_MINUTE" : Data points in the time series will aggregate at a daily
+  /// granularity. PER_MINUTE means \[01:00 to 01:01).
+  /// - "PER_5_MINUTES" : Data points in the time series will aggregate at a 1
+  /// minute granularity. PER_5_MINUTES means \[01:00 to 01:05).
+  core.String? timeGranularity;
+
+  GoogleCloudContactcenterinsightsV1QueryMetricsRequest({
+    this.dimensions,
+    this.filter,
+    this.measureMask,
+    this.timeGranularity,
+  });
+
+  GoogleCloudContactcenterinsightsV1QueryMetricsRequest.fromJson(core.Map json_)
+      : this(
+          dimensions: (json_['dimensions'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudContactcenterinsightsV1Dimension.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          filter: json_['filter'] as core.String?,
+          measureMask: json_['measureMask'] as core.String?,
+          timeGranularity: json_['timeGranularity'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (filter != null) 'filter': filter!,
+        if (measureMask != null) 'measureMask': measureMask!,
+        if (timeGranularity != null) 'timeGranularity': timeGranularity!,
+      };
+}
+
 /// DLP resources used for redaction while ingesting conversations.
 ///
 /// DLP settings are applied to conversations ingested from the
@@ -5586,9 +10228,18 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput {
   /// search results.
   core.String? query;
 
+  /// Query source for the answer.
+  /// Possible string values are:
+  /// - "QUERY_SOURCE_UNSPECIFIED" : Unknown query source.
+  /// - "AGENT_QUERY" : The query is from agents.
+  /// - "SUGGESTED_QUERY" : The query is a query from previous suggestions, e.g.
+  /// from a preceding SuggestKnowledgeAssist response.
+  core.String? querySource;
+
   GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput({
     this.generatorName,
     this.query,
+    this.querySource,
   });
 
   GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput.fromJson(
@@ -5596,11 +10247,13 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput {
       : this(
           generatorName: json_['generatorName'] as core.String?,
           query: json_['query'] as core.String?,
+          querySource: json_['querySource'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (generatorName != null) 'generatorName': generatorName!,
         if (query != null) 'query': query!,
+        if (querySource != null) 'querySource': querySource!,
       };
 }
 
@@ -5940,6 +10593,45 @@ class GoogleCloudContactcenterinsightsV1SpeechConfig {
       };
 }
 
+/// Request for TuneQaScorecardRevision endpoint.
+class GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest {
+  /// Filter for selecting the feedback labels that needs to be used for
+  /// training.
+  ///
+  /// This filter can be used to limit the feedback labels used for tuning to a
+  /// feedback labels created or updated for a specific time-window etc.
+  ///
+  /// Required.
+  core.String? filter;
+
+  /// Run in validate only mode, no fine tuning will actually run.
+  ///
+  /// Data quality validations like training data distributions will run. Even
+  /// when set to false, the data quality validations will still run but once
+  /// the validations complete we will proceed with the fine tune, if
+  /// applicable.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest({
+    this.filter,
+    this.validateOnly,
+  });
+
+  GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest.fromJson(
+      core.Map json_)
+      : this(
+          filter: json_['filter'] as core.String?,
+          validateOnly: json_['validateOnly'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (filter != null) 'filter': filter!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
+      };
+}
+
 /// The request to undeploy an issue model.
 class GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest {
   /// The issue model to undeploy.
@@ -5961,6 +10653,10 @@ class GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest {
         if (name != null) 'name': name!,
       };
 }
+
+/// The request to undeploy a QaScorecardRevision
+typedef GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest
+    = $Empty;
 
 /// Request to upload a conversation.
 class GoogleCloudContactcenterinsightsV1UploadConversationRequest {
@@ -6086,6 +10782,322 @@ class GoogleCloudContactcenterinsightsV1View {
       };
 }
 
+/// Specifies the audit configuration for a service.
+///
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging. An AuditConfig must have one
+/// or more AuditLogConfigs. If there are AuditConfigs for both `allServices`
+/// and a specific service, the union of the two AuditConfigs is used for that
+/// service: the log_types specified in each AuditConfig are enabled, and the
+/// exempted_members in each AuditLogConfig are exempted. Example Policy with
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
+class GoogleIamV1AuditConfig {
+  /// The configuration for logging of each type of permission.
+  core.List<GoogleIamV1AuditLogConfig>? auditLogConfigs;
+
+  /// Specifies a service that will be enabled for audit logging.
+  ///
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
+  core.String? service;
+
+  GoogleIamV1AuditConfig({
+    this.auditLogConfigs,
+    this.service,
+  });
+
+  GoogleIamV1AuditConfig.fromJson(core.Map json_)
+      : this(
+          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+              ?.map((value) => GoogleIamV1AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          service: json_['service'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
+        if (service != null) 'service': service!,
+      };
+}
+
+/// Provides the configuration for logging a type of permissions.
+///
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// exempting jose@example.com from DATA_READ logging.
+typedef GoogleIamV1AuditLogConfig = $AuditLogConfig;
+
+/// Associates `members`, or principals, with a `role`.
+class GoogleIamV1Binding {
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the principals in this
+  /// binding. To learn which resources support conditions in their IAM
+  /// policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  GoogleTypeExpr? condition;
+
+  /// Specifies the principals requesting access for a Google Cloud resource.
+  ///
+  /// `members` can have the following values: * `allUsers`: A special
+  /// identifier that represents anyone who is on the internet; with or without
+  /// a Google account. * `allAuthenticatedUsers`: A special identifier that
+  /// represents anyone who is authenticated with a Google account or a service
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
+  /// `group:{emailid}`: An email address that represents a Google group. For
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
+  /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
+  /// the service account is undeleted, this value reverts to
+  /// `serviceAccount:{emailid}` and the undeleted service account retains the
+  /// role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email
+  /// address (plus unique identifier) representing a Google group that has been
+  /// recently deleted. For example,
+  /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
+  /// this value reverts to `group:{emailid}` and the recovered group retains
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+  core.List<core.String>? members;
+
+  /// Role that is assigned to the list of `members`, or principals.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
+  core.String? role;
+
+  GoogleIamV1Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
+
+  GoogleIamV1Binding.fromJson(core.Map json_)
+      : this(
+          condition: json_.containsKey('condition')
+              ? GoogleTypeExpr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          role: json_['role'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (condition != null) 'condition': condition!,
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
+      };
+}
+
+/// An Identity and Access Management (IAM) policy, which specifies access
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members`, or principals, to a single `role`. Principals can be user
+/// accounts, service accounts, Google groups, and domains (such as G Suite). A
+/// `role` is a named list of permissions; each `role` can be an IAM predefined
+/// role or a user-created custom role. For some types of Google Cloud
+/// resources, a `binding` can also specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both. To learn which resources support conditions
+/// in their IAM policies, see the
+/// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
+/// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "description": "Does not grant access after Sep 2020", "expression":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
+class GoogleIamV1Policy {
+  /// Specifies cloud audit logging configuration for this policy.
+  core.List<GoogleIamV1AuditConfig>? auditConfigs;
+
+  /// Associates a list of `members`, or principals, with a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// principal. The `bindings` in a `Policy` can refer to up to 1,500
+  /// principals; up to 250 of these principals can be Google groups. Each
+  /// occurrence of a principal counts towards these limits. For example, if the
+  /// `bindings` grant 50 different roles to `user:alice@example.com`, and not
+  /// to any other principal, then you can add another 1,450 principals to the
+  /// `bindings` in the `Policy`.
+  core.List<GoogleIamV1Binding>? bindings;
+
+  /// `etag` is used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
+  /// read-modify-write cycle to perform policy updates in order to avoid race
+  /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
+  /// systems are expected to put that etag in the request to `setIamPolicy` to
+  /// ensure that their change will be applied to the same version of the
+  /// policy. **Important:** If you use IAM Conditions, you must include the
+  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
+  /// then IAM allows you to overwrite a version `3` policy with a version `1`
+  /// policy, and all of the conditions in the version `3` policy are lost.
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
+
+  set etagAsBytes(core.List<core.int> bytes_) {
+    etag =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  core.int? version;
+
+  GoogleIamV1Policy({
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.version,
+  });
+
+  GoogleIamV1Policy.fromJson(core.Map json_)
+      : this(
+          auditConfigs: (json_['auditConfigs'] as core.List?)
+              ?.map((value) => GoogleIamV1AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => GoogleIamV1Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+        if (bindings != null) 'bindings': bindings!,
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// Request message for `SetIamPolicy` method.
+class GoogleIamV1SetIamPolicyRequest {
+  /// REQUIRED: The complete policy to be applied to the `resource`.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Google Cloud services (such as Projects) might
+  /// reject them.
+  GoogleIamV1Policy? policy;
+
+  /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
+  ///
+  /// Only the fields in the mask will be modified. If no mask is provided, the
+  /// following default mask is used: `paths: "bindings, etag"`
+  core.String? updateMask;
+
+  GoogleIamV1SetIamPolicyRequest({
+    this.policy,
+    this.updateMask,
+  });
+
+  GoogleIamV1SetIamPolicyRequest.fromJson(core.Map json_)
+      : this(
+          policy: json_.containsKey('policy')
+              ? GoogleIamV1Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_['updateMask'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (policy != null) 'policy': policy!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// Request message for `TestIamPermissions` method.
+typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest00;
+
+/// Response message for `TestIamPermissions` method.
+typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;
+
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
   /// The standard List next-page token.
@@ -6205,4 +11217,24 @@ typedef GoogleProtobufEmpty = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef GoogleRpcStatus = $Status;
+typedef GoogleRpcStatus = $Status00;
+
+/// Represents a textual expression in the Common Expression Language (CEL)
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
+/// title: "Summary size limit" description: "Determines if a summary is less
+/// than 100 chars" expression: "document.summary.size() \< 100" Example
+/// (Equality): title: "Requestor is owner" description: "Determines if
+/// requestor is the document owner" expression: "document.owner ==
+/// request.auth.claims.email" Example (Logic): title: "Public documents"
+/// description: "Determine whether the document should be publicly visible"
+/// expression: "document.type != 'private' && document.type != 'internal'"
+/// Example (Data Manipulation): title: "Notification string" description:
+/// "Create a notification string with a timestamp." expression: "'New message
+/// received at ' + string(document.create_time)" The exact variables and
+/// functions that may be referenced within an expression are determined by the
+/// service that evaluates it. See the service documentation for additional
+/// information.
+typedef GoogleTypeExpr = $Expr;

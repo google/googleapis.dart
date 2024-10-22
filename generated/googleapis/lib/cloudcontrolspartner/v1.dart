@@ -406,6 +406,9 @@ class OrganizationsLocationsCustomersWorkloadsResource {
   }
 }
 
+@core.Deprecated(
+  'Not supported. Member documentation may have more information.',
+)
 class OrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsResource {
   final commons.ApiRequester _requester;
 
@@ -413,7 +416,8 @@ class OrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsResource {
       commons.ApiRequester client)
       : _requester = client;
 
-  /// Lists access requests associated with a workload
+  /// Deprecated: Only returns access approval requests directly associated with
+  /// an assured workload folder.
   ///
   /// Request parameters:
   ///
@@ -444,6 +448,9 @@ class OrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<ListAccessApprovalRequestsResponse> list(
     core.String parent, {
     core.String? filter,
@@ -725,14 +732,18 @@ typedef Console = $Console;
 /// Contains metadata around a Cloud Controls Partner Customer
 class Customer {
   /// Container for customer onboarding steps
+  ///
+  /// Output only.
   CustomerOnboardingState? customerOnboardingState;
 
-  /// The customer organization's display name.
+  /// Display name for the customer
   ///
-  /// E.g. "google.com".
+  /// Required.
   core.String? displayName;
 
   /// Indicates whether a customer is fully onboarded
+  ///
+  /// Output only.
   core.bool? isOnboarded;
 
   /// Identifier.

@@ -139,6 +139,9 @@ class ProjectsLocationsDataPoliciesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataPolicies/\[^/\]+$`.
   ///
+  /// [force] - Optional. If true, the data policy will be deleted even when it
+  /// is referenced by one or more table columns.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -151,9 +154,11 @@ class ProjectsLocationsDataPoliciesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
+    core.bool? force,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -318,6 +323,10 @@ class ProjectsLocationsDataPoliciesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataPolicies/\[^/\]+$`.
   ///
+  /// [allowMissing] - Optional. If set to true, and the data policy is not
+  /// found, a new data policy will be created. In this situation, update_mask
+  /// is ignored.
+  ///
   /// [updateMask] - The update mask applies to the resource. For the
   /// `FieldMask` definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
@@ -337,11 +346,13 @@ class ProjectsLocationsDataPoliciesResource {
   async.Future<DataPolicy> patch(
     DataPolicy request,
     core.String name, {
+    core.bool? allowMissing,
     core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };

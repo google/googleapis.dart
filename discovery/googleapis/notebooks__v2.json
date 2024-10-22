@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240604",
+    "revision": "20240918",
     "rootUrl": "https://notebooks.googleapis.com/",
     "servicePath": "",
     "title": "Notebooks API",
@@ -546,6 +546,34 @@
                                     "path": "v2/{+notebookInstance}:resizeDisk",
                                     "request": {
                                         "$ref": "ResizeDiskRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "restore": {
+                                    "description": "RestoreInstance restores an Instance from a BackupSource.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:restore",
+                                    "httpMethod": "POST",
+                                    "id": "notebooks.projects.locations.instances.restore",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}:restore",
+                                    "request": {
+                                        "$ref": "RestoreInstanceRequest"
                                     },
                                     "response": {
                                         "$ref": "Operation"
@@ -1308,6 +1336,10 @@
                     "description": "Optional. Custom metadata to apply to this instance.",
                     "type": "object"
                 },
+                "minCpuPlatform": {
+                    "description": "Optional. The minimum CPU platform to use for this instance. The list of valid values can be found in https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones",
+                    "type": "string"
+                },
                 "networkInterfaces": {
                     "description": "Optional. The network interfaces for the VM. Supports only one interface.",
                     "items": {
@@ -1327,7 +1359,7 @@
                     "description": "Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm)."
                 },
                 "tags": {
-                    "description": "Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).",
+                    "description": "Optional. The Compute Engine network tags to add to runtime (see [Add network tags](https://cloud.google.com/vpc/docs/add-remove-network-tags)).",
                     "items": {
                         "type": "string"
                     },
@@ -1766,6 +1798,17 @@
             },
             "type": "object"
         },
+        "RestoreInstanceRequest": {
+            "description": "Request for restoring the notebook instance from a BackupSource.",
+            "id": "RestoreInstanceRequest",
+            "properties": {
+                "snapshot": {
+                    "$ref": "Snapshot",
+                    "description": "Snapshot to be used for restore."
+                }
+            },
+            "type": "object"
+        },
         "RollbackInstanceRequest": {
             "description": "Request for rollbacking a notebook instance",
             "id": "RollbackInstanceRequest",
@@ -1827,6 +1870,21 @@
                 "enableVtpm": {
                     "description": "Optional. Defines whether the VM instance has the vTPM enabled. Enabled by default.",
                     "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "Snapshot": {
+            "description": "Snapshot represents the snapshot of the data disk used to restore the Workbench Instance from. Refers to: compute/v1/projects/{project_id}/global/snapshots/{snapshot_id}",
+            "id": "Snapshot",
+            "properties": {
+                "projectId": {
+                    "description": "Required. The project ID of the snapshot.",
+                    "type": "string"
+                },
+                "snapshotId": {
+                    "description": "Required. The ID of the snapshot.",
+                    "type": "string"
                 }
             },
             "type": "object"

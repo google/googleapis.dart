@@ -732,6 +732,9 @@ class ProjectsPlatformsPoliciesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/platforms/\[^/\]+/policies/\[^/\]+$`.
   ///
+  /// [etag] - Optional. Used to prevent deleting the policy when another
+  /// request has updated it since it was retrieved.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -744,9 +747,11 @@ class ProjectsPlatformsPoliciesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
+    core.String? etag,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2512,6 +2517,12 @@ class PlatformPolicy {
   /// Optional.
   core.String? description;
 
+  /// Used to prevent updating the policy when another request has updated it
+  /// since it was retrieved.
+  ///
+  /// Optional.
+  core.String? etag;
+
   /// GKE platform-specific policy.
   ///
   /// Optional.
@@ -2530,6 +2541,7 @@ class PlatformPolicy {
 
   PlatformPolicy({
     this.description,
+    this.etag,
     this.gkePolicy,
     this.name,
     this.updateTime,
@@ -2538,6 +2550,7 @@ class PlatformPolicy {
   PlatformPolicy.fromJson(core.Map json_)
       : this(
           description: json_['description'] as core.String?,
+          etag: json_['etag'] as core.String?,
           gkePolicy: json_.containsKey('gkePolicy')
               ? GkePolicy.fromJson(
                   json_['gkePolicy'] as core.Map<core.String, core.dynamic>)
@@ -2548,6 +2561,7 @@ class PlatformPolicy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
         if (gkePolicy != null) 'gkePolicy': gkePolicy!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,

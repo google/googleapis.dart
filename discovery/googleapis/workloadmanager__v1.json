@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240501",
+    "revision": "20241009",
     "rootUrl": "https://workloadmanager.googleapis.com/",
     "servicePath": "",
     "title": "Workload Manager API",
@@ -291,7 +291,7 @@
                                     ],
                                     "parameters": {
                                         "filter": {
-                                            "description": "Filtering results",
+                                            "description": "Filter to be applied when listing the evaluation results.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -465,7 +465,7 @@
                                         "results": {
                                             "methods": {
                                                 "list": {
-                                                    "description": "List the running result of a single Execution.",
+                                                    "description": "Lists the result of a single evaluation.",
                                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/evaluations/{evaluationsId}/executions/{executionsId}/results",
                                                     "httpMethod": "GET",
                                                     "id": "workloadmanager.projects.locations.evaluations.executions.results.list",
@@ -777,10 +777,32 @@
         }
     },
     "schemas": {
+        "AgentCommand": {
+            "description": "* An AgentCommand specifies a one-time executable program for the agent to run.",
+            "id": "AgentCommand",
+            "properties": {
+                "command": {
+                    "description": "command is the name of the agent one-time executable that will be invoked.",
+                    "type": "string"
+                },
+                "parameters": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "parameters is a map of key/value pairs that can be used to specify additional one-time executable settings.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "AssetLocation": {
             "description": "Provides the mapping of a cloud asset to a direct physical location or to a proxy that defines the location on its behalf.",
             "id": "AssetLocation",
             "properties": {
+                "ccfeRmsPath": {
+                    "description": "Spanner path of the CCFE RMS database. It is only applicable for CCFE tenants that use CCFE RMS for storing resource metadata.",
+                    "type": "string"
+                },
                 "expected": {
                     "$ref": "IsolationExpectations",
                     "description": "Defines the customer expectation around ZI/ZS for this asset and ZI/ZS state of the region at the time of asset creation."
@@ -863,6 +885,21 @@
                         "$ref": "CloudAsset"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Command": {
+            "description": "* Command specifies the type of command to execute.",
+            "id": "Command",
+            "properties": {
+                "agentCommand": {
+                    "$ref": "AgentCommand",
+                    "description": "AgentCommand specifies a one-time executable program for the agent to run."
+                },
+                "shellCommand": {
+                    "$ref": "ShellCommand",
+                    "description": "ShellCommand is invoked via the agent's command line executor."
                 }
             },
             "type": "object"
@@ -994,6 +1031,14 @@
                     "description": "The name of execution resource. The format is projects/{project}/locations/{location}/evaluations/{evaluation}/executions/{execution}",
                     "type": "string"
                 },
+                "ruleResults": {
+                    "description": "Output only. execution result summary per rule",
+                    "items": {
+                        "$ref": "RuleExecutionResult"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
                 "runType": {
                     "description": "type represent whether the execution executed directly by user or scheduled according evaluation.schedule field.",
                     "enum": [
@@ -1038,28 +1083,49 @@
             "description": "Message describing the result of an execution",
             "id": "ExecutionResult",
             "properties": {
+                "commands": {
+                    "description": "The commands to remediate the violation.",
+                    "items": {
+                        "$ref": "Command"
+                    },
+                    "type": "array"
+                },
                 "documentationUrl": {
-                    "description": "the document url of the rule",
+                    "description": "The URL for the documentation of the rule.",
                     "type": "string"
                 },
                 "resource": {
                     "$ref": "Resource",
-                    "description": "the violate resource"
+                    "description": "The resource that violates the rule."
                 },
                 "rule": {
-                    "description": "the rule which violate in execution",
+                    "description": "The rule that is violated in an evaluation.",
                     "type": "string"
                 },
                 "severity": {
-                    "description": "severity of violation",
+                    "description": "The severity of violation.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Execution result type of the scanned resource",
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "TYPE_PASSED",
+                        "TYPE_VIOLATED"
+                    ],
+                    "enumDescriptions": [
+                        "Unknown state",
+                        "resource successfully passed the rule",
+                        "resource violated the rule"
+                    ],
                     "type": "string"
                 },
                 "violationDetails": {
                     "$ref": "ViolationDetails",
-                    "description": "the details of violation in result"
+                    "description": "The details of violation in an evaluation result."
                 },
                 "violationMessage": {
-                    "description": "the violation message of an execution",
+                    "description": "The violation message of an execution.",
                     "type": "string"
                 }
             },
@@ -1069,8 +1135,12 @@
             "description": "Message for external data sources",
             "id": "ExternalDataSources",
             "properties": {
+                "assetType": {
+                    "description": "Required. The asset type of the external data source this can be one of go/cai-asset-types to override the default asset type or it can be a custom type defined by the user custom type must match the asset type in the rule",
+                    "type": "string"
+                },
                 "name": {
-                    "description": "Required. Name of external data source. The name will be used inside the rego/sql to refer the external data",
+                    "description": "Optional. Name of external data source. The name will be used inside the rego/sql to refer the external data",
                     "type": "string"
                 },
                 "type": {
@@ -1149,6 +1219,10 @@
         "IsolationExpectations": {
             "id": "IsolationExpectations",
             "properties": {
+                "requirementOverride": {
+                    "$ref": "RequirementOverride",
+                    "description": "Explicit overrides for ZI and ZS requirements to be used for resources that should be excluded from ZI/ZS verification logic."
+                },
                 "ziOrgPolicy": {
                     "enum": [
                         "ZI_UNSPECIFIED",
@@ -1490,6 +1564,9 @@
                 "gcpProjectProxy": {
                     "$ref": "TenantProjectProxy"
                 },
+                "placerLocation": {
+                    "$ref": "PlacerLocation"
+                },
                 "spannerLocation": {
                     "$ref": "SpannerLocation"
                 }
@@ -1575,6 +1652,17 @@
             },
             "type": "object"
         },
+        "PlacerLocation": {
+            "description": "Message describing that the location of the customer resource is tied to placer allocations",
+            "id": "PlacerLocation",
+            "properties": {
+                "placerConfig": {
+                    "description": "Directory with a config related to it in placer (e.g. \"/placer/prod/home/my-root/my-dir\")",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "RegionalMigDistributionPolicy": {
             "description": "To be used for specifying the intended distribution of regional compute.googleapis.com/InstanceGroupManager instances",
             "id": "RegionalMigDistributionPolicy",
@@ -1594,20 +1682,58 @@
             },
             "type": "object"
         },
+        "RequirementOverride": {
+            "id": "RequirementOverride",
+            "properties": {
+                "ziOverride": {
+                    "enum": [
+                        "ZI_UNSPECIFIED",
+                        "ZI_UNKNOWN",
+                        "ZI_NOT_REQUIRED",
+                        "ZI_PREFERRED",
+                        "ZI_REQUIRED"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "To be used if tracking is not available",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "zsOverride": {
+                    "enum": [
+                        "ZS_UNSPECIFIED",
+                        "ZS_UNKNOWN",
+                        "ZS_NOT_REQUIRED",
+                        "ZS_REQUIRED"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "To be used if tracking is not available",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Resource": {
             "description": "Message represent resource in execution result",
             "id": "Resource",
             "properties": {
                 "name": {
-                    "description": "the name of the resource",
+                    "description": "The name of the resource.",
                     "type": "string"
                 },
                 "serviceAccount": {
-                    "description": "the service account accosiate with resource",
+                    "description": "The service account associated with the resource.",
                     "type": "string"
                 },
                 "type": {
-                    "description": "the type of reresource",
+                    "description": "The type of resource.",
                     "type": "string"
                 }
             },
@@ -1731,6 +1857,48 @@
             },
             "type": "object"
         },
+        "RuleExecutionResult": {
+            "description": "Message for execution result summary per rule",
+            "id": "RuleExecutionResult",
+            "properties": {
+                "message": {
+                    "description": "Execution message, if any",
+                    "type": "string"
+                },
+                "resultCount": {
+                    "description": "Number of violations",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "rule": {
+                    "description": "rule name",
+                    "type": "string"
+                },
+                "scannedResourceCount": {
+                    "description": "Number of total scanned resources",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Output only. The execution status",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "STATE_SUCCESS",
+                        "STATE_FAILURE",
+                        "STATE_SKIPPED"
+                    ],
+                    "enumDescriptions": [
+                        "Unknown state",
+                        "execution completed successfully",
+                        "execution completed with failures",
+                        "execution was not executed"
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "RunEvaluationRequest": {
             "description": "Message for creating a Execution",
             "id": "RunEvaluationRequest",
@@ -1810,6 +1978,13 @@
                     "description": "Required. Pantheon Project in which the resources reside.",
                     "type": "string"
                 },
+                "replicationSites": {
+                    "description": "Optional. A list of replication sites used in Disaster Recovery (DR) configurations.",
+                    "items": {
+                        "$ref": "SapDiscoveryComponent"
+                    },
+                    "type": "array"
+                },
                 "resources": {
                     "description": "Optional. The resources in a component.",
                     "items": {
@@ -1843,7 +2018,8 @@
             "id": "SapDiscoveryComponentApplicationProperties",
             "properties": {
                 "abap": {
-                    "description": "Optional. Indicates whether this is a Java or ABAP Netweaver instance. true means it is ABAP, false means it is Java.",
+                    "deprecated": true,
+                    "description": "Optional. Deprecated: ApplicationType now tells you whether this is ABAP or Java.",
                     "type": "boolean"
                 },
                 "appInstanceNumber": {
@@ -1854,11 +2030,15 @@
                     "description": "Required. Type of the application. Netweaver, etc.",
                     "enum": [
                         "APPLICATION_TYPE_UNSPECIFIED",
-                        "NETWEAVER"
+                        "NETWEAVER",
+                        "NETWEAVER_ABAP",
+                        "NETWEAVER_JAVA"
                     ],
                     "enumDescriptions": [
                         "Unspecified application type",
-                        "SAP Netweaver"
+                        "SAP Netweaver",
+                        "SAP Netweaver ABAP",
+                        "SAP Netweaver Java"
                     ],
                     "type": "string"
                 },
@@ -2045,6 +2225,7 @@
                     "type": "array"
                 },
                 "instanceNumber": {
+                    "deprecated": true,
                     "description": "Optional. The VM's instance number.",
                     "format": "int64",
                     "type": "string"
@@ -2056,16 +2237,42 @@
                         "INSTANCE_ROLE_ASCS",
                         "INSTANCE_ROLE_ERS",
                         "INSTANCE_ROLE_APP_SERVER",
-                        "INSTANCE_ROLE_DATABASE"
+                        "INSTANCE_ROLE_DATABASE",
+                        "INSTANCE_ROLE_ASCS_ERS",
+                        "INSTANCE_ROLE_ASCS_APP_SERVER",
+                        "INSTANCE_ROLE_ASCS_DATABASE",
+                        "INSTANCE_ROLE_ERS_APP_SERVER",
+                        "INSTANCE_ROLE_ERS_DATABASE",
+                        "INSTANCE_ROLE_APP_SERVER_DATABASE",
+                        "INSTANCE_ROLE_ASCS_ERS_APP_SERVER",
+                        "INSTANCE_ROLE_ASCS_ERS_DATABASE",
+                        "INSTANCE_ROLE_ASCS_APP_SERVER_DATABASE",
+                        "INSTANCE_ROLE_ERS_APP_SERVER_DATABASE",
+                        "INSTANCE_ROLE_ASCS_ERS_APP_SERVER_DATABASE"
                     ],
                     "enumDescriptions": [
                         "Unspecified instance role.",
                         "Application central services.",
                         "Enqueue replication server.",
                         "Application server.",
-                        "Database node."
+                        "Database node.",
+                        "Combinations of roles. Application central services and enqueue replication server.",
+                        "Application central services and application server.",
+                        "Application central services and database.",
+                        "Enqueue replication server and application server.",
+                        "Enqueue replication server and database.",
+                        "Application server and database.",
+                        "Application central services, enqueue replication server and application server.",
+                        "Application central services, enqueue replication server and database.",
+                        "Application central services, application server and database.",
+                        "Enqueue replication server, application server and database.",
+                        "Application central services, enqueue replication server, application server and database."
                     ],
                     "type": "string"
+                },
+                "isDrSite": {
+                    "description": "Optional. Instance is part of a DR site.",
+                    "type": "boolean"
                 },
                 "virtualHostname": {
                     "description": "Optional. A virtual hostname of the instance if it has one.",
@@ -2227,10 +2434,38 @@
             },
             "type": "object"
         },
+        "ShellCommand": {
+            "description": "* A ShellCommand is invoked via the agent's command line executor",
+            "id": "ShellCommand",
+            "properties": {
+                "args": {
+                    "description": "args is a string of arguments to be passed to the command.",
+                    "type": "string"
+                },
+                "command": {
+                    "description": "command is the name of the command to be executed.",
+                    "type": "string"
+                },
+                "timeoutSeconds": {
+                    "description": "Optional. If not specified, the default timeout is 60 seconds.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "SpannerLocation": {
             "id": "SpannerLocation",
             "properties": {
+                "backupName": {
+                    "description": "Set of backups used by the resource with name in the same format as what is available at http://table/spanner_automon.backup_metadata",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "dbName": {
+                    "description": "Set of databases used by the resource in format /span//",
                     "items": {
                         "type": "string"
                     },
@@ -2367,22 +2602,22 @@
             "type": "object"
         },
         "ViolationDetails": {
-            "description": "Message describing the violdation in execution result",
+            "description": "Message describing the violation in an evaluation result.",
             "id": "ViolationDetails",
             "properties": {
                 "asset": {
-                    "description": "the name of asset",
+                    "description": "The name of the asset.",
                     "type": "string"
                 },
                 "observed": {
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "observed",
+                    "description": "Details of the violation.",
                     "type": "object"
                 },
                 "serviceAccount": {
-                    "description": "the service account associate with resource",
+                    "description": "The service account associated with the resource.",
                     "type": "string"
                 }
             },

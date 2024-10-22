@@ -3,10 +3,10 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/chrome.management.policy": {
-                    "description": "See, edit, create or delete policies applied to Chrome OS and Chrome Browsers managed within your organization"
+                    "description": "See, edit, create or delete policies applied to ChromeOS and Chrome Browsers managed within your organization"
                 },
                 "https://www.googleapis.com/auth/chrome.management.policy.readonly": {
-                    "description": "See policies applied to Chrome OS and Chrome Browsers managed within your organization"
+                    "description": "See policies applied to ChromeOS and Chrome Browsers managed within your organization"
                 }
             }
         }
@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240611",
+    "revision": "20241004",
     "rootUrl": "https://chromepolicy.googleapis.com/",
     "servicePath": "",
     "title": "Chrome Policy API",
@@ -968,7 +968,7 @@
                     "type": "string"
                 },
                 "scheduledToDeprecatePolicies": {
-                    "description": "Corresponding to deprecated_in_favor_of, the fully qualified namespace(s) of the old policies that will be deprecated because of introduction of this policy. This field should not be manually set but will be set and exposed through PolicyAPI automatically.",
+                    "description": "Corresponding to deprecated_in_favor_of, the fully qualified namespace(s) of the old policies that will be deprecated because of introduction of this policy.",
                     "items": {
                         "type": "string"
                     },

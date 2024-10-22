@@ -10012,26 +10012,27 @@ class TimeInterval {
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
 class TimeOfDay {
-  /// Hours of day in 24 hour format.
+  /// Hours of a day in 24 hour format.
   ///
-  /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
-  /// for scenarios like business closing time.
+  /// Must be greater than or equal to 0 and typically must be less than or
+  /// equal to 23. An API may choose to allow the value "24:00:00" for scenarios
+  /// like business closing time.
   core.int? hours;
 
-  /// Minutes of hour of day.
+  /// Minutes of an hour.
   ///
-  /// Must be from 0 to 59.
+  /// Must be greater than or equal to 0 and less than or equal to 59.
   core.int? minutes;
 
-  /// Fractions of seconds in nanoseconds.
+  /// Fractions of seconds, in nanoseconds.
   ///
-  /// Must be from 0 to 999,999,999.
+  /// Must be greater than or equal to 0 and less than or equal to 999,999,999.
   core.int? nanos;
 
-  /// Seconds of minutes of the time.
+  /// Seconds of a minute.
   ///
-  /// Must normally be from 0 to 59. An API may allow the value 60 if it allows
-  /// leap-seconds.
+  /// Must be greater than or equal to 0 and typically must be less than or
+  /// equal to 59. An API may allow the value 60 if it allows leap-seconds.
   core.int? seconds;
 
   TimeOfDay({

@@ -93,6 +93,54 @@ class ProjectsDatabasesResource {
 
   ProjectsDatabasesResource(commons.ApiRequester client) : _requester = client;
 
+  /// Bulk deletes a subset of documents from Google Cloud Firestore.
+  ///
+  /// Documents created or updated after the underlying system starts to process
+  /// the request will not be deleted. The bulk delete occurs in the background
+  /// and its progress can be monitored and managed via the Operation resource
+  /// that is created. For more details on bulk delete behavior, refer to:
+  /// https://cloud.google.com/firestore/docs/manage-data/bulk-delete
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Database to operate. Should be of the form:
+  /// `projects/{project_id}/databases/{database_id}`.
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> bulkDeleteDocuments(
+    GoogleFirestoreAdminV1BulkDeleteDocumentsRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':bulkDeleteDocuments';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Create a database.
   ///
   /// [request] - The metadata request object.
@@ -106,7 +154,7 @@ class ProjectsDatabasesResource {
   /// the final component of the database's resource name. This value should be
   /// 4-63 characters. Valid characters are /a-z-/ with first character a letter
   /// and the last a letter or a number. Must not be UUID-like
-  /// /\[0-9a-f\]{8}(-\[0-9a-f\]{4}){3}-\[0-9a-f\]{12}/. "(default)" database id
+  /// /\[0-9a-f\]{8}(-\[0-9a-f\]{4}){3}-\[0-9a-f\]{12}/. "(default)" database ID
   /// is also valid.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -809,21 +857,20 @@ class ProjectsDatabasesCollectionGroupsFieldsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. A field name of the form
+  /// [name] - Required. A field name of the form:
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`
-  /// A field path may be a simple field name, e.g. `address` or a path to
-  /// fields within map_value , e.g. `address.city`, or a special field path.
+  /// A field path can be a simple field name, e.g. `address` or a path to
+  /// fields within `map_value` , e.g. `address.city`, or a special field path.
   /// The only valid special field is `*`, which represents any field. Field
-  /// paths may be quoted using ` (backtick). The only character that needs to
+  /// paths can be quoted using `` ` `` (backtick). The only character that must
   /// be escaped within a quoted field path is the backtick character itself,
   /// escaped using a backslash. Special characters in field paths that must be
-  /// quoted include: `*`, `.`, ``` (backtick), `[`, `]`, as well as any ascii
-  /// symbolic characters. Examples: (Note: Comments here are written in
-  /// markdown syntax, so there is an additional layer of backticks to represent
-  /// a code block) `\`address.city\`` represents a field named `address.city`,
-  /// not the map key `city` in the field `address`. `\`*\`` represents a field
-  /// named `*`, not any field. A special `Field` contains the default indexing
-  /// settings for all fields. This field's resource name is:
+  /// quoted include: `*`, `.`, `` ` `` (backtick), `[`, `]`, as well as any
+  /// ascii symbolic characters. Examples: `` `address.city` `` represents a
+  /// field named `address.city`, not the map key `city` in the field `address`.
+  /// `` `*` `` represents a field named `*`, not any field. A special `Field`
+  /// contains the default indexing settings for all fields. This field's
+  /// resource name is:
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields
   /// / * ` Indexes defined on this `Field` will be applied to all fields which
   /// do not have their own `Field` index configuration.
@@ -2313,6 +2360,14 @@ class ProjectsLocationsBackupsResource {
   /// backups from a single location or from all locations.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [filter] - An expression that filters the list of returned backups. A
+  /// filter expression consists of a field name, a comparison operator, and a
+  /// value for filtering. The value must be a string, a number, or a boolean.
+  /// The comparison operator must be one of: `<`, `>`, `<=`, `>=`, `!=`, `=`,
+  /// or `:`. Colon `:` is the contains operator. Filter rules are not case
+  /// sensitive. The following fields in the Backup are eligible for filtering:
+  /// * `database_uid` (supports `=` only)
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2325,9 +2380,11 @@ class ProjectsLocationsBackupsResource {
   /// this method will complete with the same error.
   async.Future<GoogleFirestoreAdminV1ListBackupsResponse> list(
     core.String parent, {
+    core.String? filter,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3363,6 +3420,10 @@ class Filter {
 }
 
 /// Nearest Neighbors search config.
+///
+/// The ordering provided by FindNearest supersedes the order_by stage. If
+/// multiple documents have the same vector distance, the returned document
+/// order is not guaranteed to be stable between queries.
 class FindNearest {
   /// The distance measure to use, required.
   ///
@@ -3371,18 +3432,40 @@ class FindNearest {
   /// - "DISTANCE_MEASURE_UNSPECIFIED" : Should not be set.
   /// - "EUCLIDEAN" : Measures the EUCLIDEAN distance between the vectors. See
   /// [Euclidean](https://en.wikipedia.org/wiki/Euclidean_distance) to learn
-  /// more
-  /// - "COSINE" : Compares vectors based on the angle between them, which
-  /// allows you to measure similarity that isn't based on the vectors
-  /// magnitude. We recommend using DOT_PRODUCT with unit normalized vectors
-  /// instead of COSINE distance, which is mathematically equivalent with better
-  /// performance. See
+  /// more. The resulting distance decreases the more similar two vectors are.
+  /// - "COSINE" : COSINE distance compares vectors based on the angle between
+  /// them, which allows you to measure similarity that isn't based on the
+  /// vectors magnitude. We recommend using DOT_PRODUCT with unit normalized
+  /// vectors instead of COSINE distance, which is mathematically equivalent
+  /// with better performance. See
   /// [Cosine Similarity](https://en.wikipedia.org/wiki/Cosine_similarity) to
-  /// learn more.
+  /// learn more about COSINE similarity and COSINE distance. The resulting
+  /// COSINE distance decreases the more similar two vectors are.
   /// - "DOT_PRODUCT" : Similar to cosine but is affected by the magnitude of
   /// the vectors. See [Dot Product](https://en.wikipedia.org/wiki/Dot_product)
-  /// to learn more.
+  /// to learn more. The resulting distance increases the more similar two
+  /// vectors are.
   core.String? distanceMeasure;
+
+  /// Optional name of the field to output the result of the vector distance
+  /// calculation.
+  ///
+  /// Must conform to document field name limitations.
+  ///
+  /// Optional.
+  core.String? distanceResultField;
+
+  /// Option to specify a threshold for which no less similar documents will be
+  /// returned.
+  ///
+  /// The behavior of the specified `distance_measure` will affect the meaning
+  /// of the distance threshold. Since DOT_PRODUCT distances increase when the
+  /// vectors are more similar, the comparison is inverted. For EUCLIDEAN,
+  /// COSINE: WHERE distance \<= distance_threshold For DOT_PRODUCT: WHERE
+  /// distance \>= distance_threshold
+  ///
+  /// Optional.
+  core.double? distanceThreshold;
 
   /// The number of nearest neighbors to return.
   ///
@@ -3408,6 +3491,8 @@ class FindNearest {
 
   FindNearest({
     this.distanceMeasure,
+    this.distanceResultField,
+    this.distanceThreshold,
     this.limit,
     this.queryVector,
     this.vectorField,
@@ -3416,6 +3501,9 @@ class FindNearest {
   FindNearest.fromJson(core.Map json_)
       : this(
           distanceMeasure: json_['distanceMeasure'] as core.String?,
+          distanceResultField: json_['distanceResultField'] as core.String?,
+          distanceThreshold:
+              (json_['distanceThreshold'] as core.num?)?.toDouble(),
           limit: json_['limit'] as core.int?,
           queryVector: json_.containsKey('queryVector')
               ? Value.fromJson(
@@ -3429,6 +3517,9 @@ class FindNearest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (distanceMeasure != null) 'distanceMeasure': distanceMeasure!,
+        if (distanceResultField != null)
+          'distanceResultField': distanceResultField!,
+        if (distanceThreshold != null) 'distanceThreshold': distanceThreshold!,
         if (limit != null) 'limit': limit!,
         if (queryVector != null) 'queryVector': queryVector!,
         if (vectorField != null) 'vectorField': vectorField!,
@@ -3552,6 +3643,8 @@ class GoogleFirestoreAdminV1BackupSchedule {
 
   /// At what relative time in the future, compared to its creation time, the
   /// backup should be deleted, e.g. keep backups for 7 days.
+  ///
+  /// The maximum supported retention period is 14 weeks.
   core.String? retention;
 
   /// The timestamp at which this backup schedule was most recently updated.
@@ -3598,6 +3691,74 @@ class GoogleFirestoreAdminV1BackupSchedule {
         if (retention != null) 'retention': retention!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (weeklyRecurrence != null) 'weeklyRecurrence': weeklyRecurrence!,
+      };
+}
+
+/// Information about a backup that was used to restore a database.
+class GoogleFirestoreAdminV1BackupSource {
+  /// The resource name of the backup that was used to restore this database.
+  ///
+  /// Format: `projects/{project}/locations/{location}/backups/{backup}`.
+  core.String? backup;
+
+  GoogleFirestoreAdminV1BackupSource({
+    this.backup,
+  });
+
+  GoogleFirestoreAdminV1BackupSource.fromJson(core.Map json_)
+      : this(
+          backup: json_['backup'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backup != null) 'backup': backup!,
+      };
+}
+
+/// The request for FirestoreAdmin.BulkDeleteDocuments.
+///
+/// When both collection_ids and namespace_ids are set, only documents
+/// satisfying both conditions will be deleted. Requests with namespace_ids and
+/// collection_ids both empty will be rejected. Please use
+/// FirestoreAdmin.DeleteDatabase instead.
+class GoogleFirestoreAdminV1BulkDeleteDocumentsRequest {
+  /// IDs of the collection groups to delete.
+  ///
+  /// Unspecified means all collection groups. Each collection group in this
+  /// list must be unique.
+  ///
+  /// Optional.
+  core.List<core.String>? collectionIds;
+
+  /// Namespaces to delete.
+  ///
+  /// An empty list means all namespaces. This is the recommended usage for
+  /// databases that don't use namespaces. An empty string element represents
+  /// the default namespace. This should be used if the database has data in
+  /// non-default namespaces, but doesn't want to delete from them. Each
+  /// namespace in this list must be unique.
+  ///
+  /// Optional.
+  core.List<core.String>? namespaceIds;
+
+  GoogleFirestoreAdminV1BulkDeleteDocumentsRequest({
+    this.collectionIds,
+    this.namespaceIds,
+  });
+
+  GoogleFirestoreAdminV1BulkDeleteDocumentsRequest.fromJson(core.Map json_)
+      : this(
+          collectionIds: (json_['collectionIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          namespaceIds: (json_['namespaceIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (collectionIds != null) 'collectionIds': collectionIds!,
+        if (namespaceIds != null) 'namespaceIds': namespaceIds!,
       };
 }
 
@@ -3648,32 +3809,40 @@ class GoogleFirestoreAdminV1CmekConfig {
       };
 }
 
-/// Represents a recurring schedule that runs every day.
-///
-/// The time zone is UTC.
-class GoogleFirestoreAdminV1DailyRecurrence {
-  /// Time of the day.
+/// The configuration options for using CMEK (Customer Managed Encryption Key)
+/// encryption.
+class GoogleFirestoreAdminV1CustomerManagedEncryptionOptions {
+  /// Only keys in the same location as the database are allowed to be used for
+  /// encryption.
   ///
-  /// The first run scheduled will be either on the same day if schedule
-  /// creation time precedes time_of_day or the next day otherwise.
-  TimeOfDay? time;
+  /// For Firestore's nam5 multi-region, this corresponds to Cloud KMS
+  /// multi-region us. For Firestore's eur3 multi-region, this corresponds to
+  /// Cloud KMS multi-region europe. See
+  /// https://cloud.google.com/kms/docs/locations. The expected format is
+  /// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+  ///
+  /// Required.
+  core.String? kmsKeyName;
 
-  GoogleFirestoreAdminV1DailyRecurrence({
-    this.time,
+  GoogleFirestoreAdminV1CustomerManagedEncryptionOptions({
+    this.kmsKeyName,
   });
 
-  GoogleFirestoreAdminV1DailyRecurrence.fromJson(core.Map json_)
+  GoogleFirestoreAdminV1CustomerManagedEncryptionOptions.fromJson(
+      core.Map json_)
       : this(
-          time: json_.containsKey('time')
-              ? TimeOfDay.fromJson(
-                  json_['time'] as core.Map<core.String, core.dynamic>)
-              : null,
+          kmsKeyName: json_['kmsKeyName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (time != null) 'time': time!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
       };
 }
+
+/// Represents a recurring schedule that runs every day.
+///
+/// The time zone is UTC.
+typedef GoogleFirestoreAdminV1DailyRecurrence = $Empty;
 
 /// A Cloud Firestore Database.
 class GoogleFirestoreAdminV1Database {
@@ -3749,8 +3918,8 @@ class GoogleFirestoreAdminV1Database {
 
   /// The key_prefix for this database.
   ///
-  /// This key_prefix is used, in combination with the project id ("~") to
-  /// construct the application id that is returned from the Cloud Datastore
+  /// This key_prefix is used, in combination with the project ID ("~") to
+  /// construct the application ID that is returned from the Cloud Datastore
   /// APIs in Google App Engine first generation runtimes. This value may be
   /// empty in which case the appid to use for URL-encoded keys is the
   /// project_id (eg: foo instead of v~foo).
@@ -3788,13 +3957,17 @@ class GoogleFirestoreAdminV1Database {
   /// Output only.
   core.String? previousId;
 
+  /// Information about the provenance of this database.
+  ///
+  /// Output only.
+  GoogleFirestoreAdminV1SourceInfo? sourceInfo;
+
   /// The type of the database.
   ///
   /// See https://cloud.google.com/datastore/docs/firestore-or-datastore for
   /// information about how to choose.
   /// Possible string values are:
-  /// - "DATABASE_TYPE_UNSPECIFIED" : The default value. This value is used if
-  /// the database type is omitted.
+  /// - "DATABASE_TYPE_UNSPECIFIED" : Not used.
   /// - "FIRESTORE_NATIVE" : Firestore Native Mode
   /// - "DATASTORE_MODE" : Firestore in Datastore Mode.
   core.String? type;
@@ -3837,6 +4010,7 @@ class GoogleFirestoreAdminV1Database {
     this.name,
     this.pointInTimeRecoveryEnablement,
     this.previousId,
+    this.sourceInfo,
     this.type,
     this.uid,
     this.updateTime,
@@ -3863,6 +4037,10 @@ class GoogleFirestoreAdminV1Database {
           pointInTimeRecoveryEnablement:
               json_['pointInTimeRecoveryEnablement'] as core.String?,
           previousId: json_['previousId'] as core.String?,
+          sourceInfo: json_.containsKey('sourceInfo')
+              ? GoogleFirestoreAdminV1SourceInfo.fromJson(
+                  json_['sourceInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
           type: json_['type'] as core.String?,
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -3888,6 +4066,7 @@ class GoogleFirestoreAdminV1Database {
         if (pointInTimeRecoveryEnablement != null)
           'pointInTimeRecoveryEnablement': pointInTimeRecoveryEnablement!,
         if (previousId != null) 'previousId': previousId!,
+        if (sourceInfo != null) 'sourceInfo': sourceInfo!,
         if (type != null) 'type': type!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -3896,42 +4075,62 @@ class GoogleFirestoreAdminV1Database {
       };
 }
 
-/// A consistent snapshot of a database at a specific point in time.
-class GoogleFirestoreAdminV1DatabaseSnapshot {
-  /// A name of the form `projects/{project_id}/databases/{database_id}`
-  ///
-  /// Required.
-  core.String? database;
+/// Encryption configuration for a new database being created from another
+/// source.
+///
+/// The source could be a Backup .
+class GoogleFirestoreAdminV1EncryptionConfig {
+  /// Use Customer Managed Encryption Keys (CMEK) for encryption.
+  GoogleFirestoreAdminV1CustomerManagedEncryptionOptions?
+      customerManagedEncryption;
 
-  /// The timestamp at which the database snapshot is taken.
-  ///
-  /// The requested timestamp must be a whole minute within the PITR window.
-  ///
-  /// Required.
-  core.String? snapshotTime;
+  /// Use Google default encryption.
+  GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions? googleDefaultEncryption;
 
-  GoogleFirestoreAdminV1DatabaseSnapshot({
-    this.database,
-    this.snapshotTime,
+  /// The database will use the same encryption configuration as the source.
+  GoogleFirestoreAdminV1SourceEncryptionOptions? useSourceEncryption;
+
+  GoogleFirestoreAdminV1EncryptionConfig({
+    this.customerManagedEncryption,
+    this.googleDefaultEncryption,
+    this.useSourceEncryption,
   });
 
-  GoogleFirestoreAdminV1DatabaseSnapshot.fromJson(core.Map json_)
+  GoogleFirestoreAdminV1EncryptionConfig.fromJson(core.Map json_)
       : this(
-          database: json_['database'] as core.String?,
-          snapshotTime: json_['snapshotTime'] as core.String?,
+          customerManagedEncryption: json_
+                  .containsKey('customerManagedEncryption')
+              ? GoogleFirestoreAdminV1CustomerManagedEncryptionOptions.fromJson(
+                  json_['customerManagedEncryption']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          googleDefaultEncryption: json_.containsKey('googleDefaultEncryption')
+              ? GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions.fromJson(
+                  json_['googleDefaultEncryption']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          useSourceEncryption: json_.containsKey('useSourceEncryption')
+              ? GoogleFirestoreAdminV1SourceEncryptionOptions.fromJson(
+                  json_['useSourceEncryption']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (database != null) 'database': database!,
-        if (snapshotTime != null) 'snapshotTime': snapshotTime!,
+        if (customerManagedEncryption != null)
+          'customerManagedEncryption': customerManagedEncryption!,
+        if (googleDefaultEncryption != null)
+          'googleDefaultEncryption': googleDefaultEncryption!,
+        if (useSourceEncryption != null)
+          'useSourceEncryption': useSourceEncryption!,
       };
 }
 
 /// The request for FirestoreAdmin.ExportDocuments.
 class GoogleFirestoreAdminV1ExportDocumentsRequest {
-  /// Which collection ids to export.
+  /// Which collection IDs to export.
   ///
-  /// Unspecified means all collections. Each collection id in this list must be
+  /// Unspecified means all collections. Each collection ID in this list must be
   /// unique.
   core.List<core.String>? collectionIds;
 
@@ -3995,7 +4194,7 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
 /// Represents a single field in the database.
 ///
 /// Fields are grouped by their "Collection Group", which represent all
-/// collections in the database with the same id.
+/// collections in the database with the same ID.
 class GoogleFirestoreAdminV1Field {
   /// The index configuration for this field.
   ///
@@ -4004,22 +4203,21 @@ class GoogleFirestoreAdminV1Field {
   /// an index config with an empty list of indexes.
   GoogleFirestoreAdminV1IndexConfig? indexConfig;
 
-  /// A field name of the form
+  /// A field name of the form:
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`
-  /// A field path may be a simple field name, e.g. `address` or a path to
-  /// fields within map_value , e.g. `address.city`, or a special field path.
+  /// A field path can be a simple field name, e.g. `address` or a path to
+  /// fields within `map_value` , e.g. `address.city`, or a special field path.
   ///
   /// The only valid special field is `*`, which represents any field. Field
-  /// paths may be quoted using ` (backtick). The only character that needs to
+  /// paths can be quoted using `` ` `` (backtick). The only character that must
   /// be escaped within a quoted field path is the backtick character itself,
   /// escaped using a backslash. Special characters in field paths that must be
-  /// quoted include: `*`, `.`, ``` (backtick), `[`, `]`, as well as any ascii
-  /// symbolic characters. Examples: (Note: Comments here are written in
-  /// markdown syntax, so there is an additional layer of backticks to represent
-  /// a code block) `\`address.city\`` represents a field named `address.city`,
-  /// not the map key `city` in the field `address`. `\`*\`` represents a field
-  /// named `*`, not any field. A special `Field` contains the default indexing
-  /// settings for all fields. This field's resource name is:
+  /// quoted include: `*`, `.`, `` ` `` (backtick), `[`, `]`, as well as any
+  /// ascii symbolic characters. Examples: `` `address.city` `` represents a
+  /// field named `address.city`, not the map key `city` in the field `address`.
+  /// `` `*` `` represents a field named `*`, not any field. A special `Field`
+  /// contains the default indexing settings for all fields. This field's
+  /// resource name is:
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields
   /// / * ` Indexes defined on this `Field` will be applied to all fields which
   /// do not have their own `Field` index configuration.
@@ -4063,12 +4261,15 @@ class GoogleFirestoreAdminV1Field {
 /// exhaustive search.
 typedef GoogleFirestoreAdminV1FlatIndex = $Empty;
 
+/// The configuration options for using Google default encryption.
+typedef GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions = $Empty;
+
 /// The request for FirestoreAdmin.ImportDocuments.
 class GoogleFirestoreAdminV1ImportDocumentsRequest {
-  /// Which collection ids to import.
+  /// Which collection IDs to import.
   ///
   /// Unspecified means all collections included in the import. Each collection
-  /// id in this list must be unique.
+  /// ID in this list must be unique.
   core.List<core.String>? collectionIds;
 
   /// Location of the exported files.
@@ -4144,20 +4345,20 @@ class GoogleFirestoreAdminV1Index {
 
   /// Indexes with a collection query scope specified allow queries against a
   /// collection that is the child of a specific document, specified at query
-  /// time, and that has the same collection id.
+  /// time, and that has the same collection ID.
   ///
   /// Indexes with a collection group query scope specified allow queries
   /// against all collections descended from a specific document, specified at
-  /// query time, and that have the same collection id as this index.
+  /// query time, and that have the same collection ID as this index.
   /// Possible string values are:
   /// - "QUERY_SCOPE_UNSPECIFIED" : The query scope is unspecified. Not a valid
   /// option.
   /// - "COLLECTION" : Indexes with a collection query scope specified allow
   /// queries against a collection that is the child of a specific document,
-  /// specified at query time, and that has the collection id specified by the
+  /// specified at query time, and that has the collection ID specified by the
   /// index.
   /// - "COLLECTION_GROUP" : Indexes with a collection group query scope
-  /// specified allow queries against all collections that has the collection id
+  /// specified allow queries against all collections that has the collection ID
   /// specified by the index.
   /// - "COLLECTION_RECURSIVE" : Include all the collections's ancestor in the
   /// index. Only available for Datastore Mode databases.
@@ -4482,41 +4683,46 @@ class GoogleFirestoreAdminV1ListIndexesResponse {
 class GoogleFirestoreAdminV1RestoreDatabaseRequest {
   /// Backup to restore from.
   ///
-  /// Must be from the same project as the parent. Format is:
+  /// Must be from the same project as the parent. The restored database will be
+  /// created in the same location as the source backup. Format is:
   /// `projects/{project_id}/locations/{location}/backups/{backup}`
+  ///
+  /// Required.
   core.String? backup;
 
   /// The ID to use for the database, which will become the final component of
   /// the database's resource name.
   ///
-  /// This database id must not be associated with an existing database. This
+  /// This database ID must not be associated with an existing database. This
   /// value should be 4-63 characters. Valid characters are /a-z-/ with first
   /// character a letter and the last a letter or a number. Must not be
   /// UUID-like /\[0-9a-f\]{8}(-\[0-9a-f\]{4}){3}-\[0-9a-f\]{12}/. "(default)"
-  /// database id is also valid.
+  /// database ID is also valid.
   ///
   /// Required.
   core.String? databaseId;
 
-  /// Database snapshot to restore from.
+  /// Encryption configuration for the restored database.
   ///
-  /// The source database must exist and have enabled PITR. The restored
-  /// database will be created in the same location as the source database.
-  GoogleFirestoreAdminV1DatabaseSnapshot? databaseSnapshot;
+  /// If this field is not specified, the restored database will use the same
+  /// encryption configuration as the backup, namely use_source_encryption.
+  ///
+  /// Optional.
+  GoogleFirestoreAdminV1EncryptionConfig? encryptionConfig;
 
   GoogleFirestoreAdminV1RestoreDatabaseRequest({
     this.backup,
     this.databaseId,
-    this.databaseSnapshot,
+    this.encryptionConfig,
   });
 
   GoogleFirestoreAdminV1RestoreDatabaseRequest.fromJson(core.Map json_)
       : this(
           backup: json_['backup'] as core.String?,
           databaseId: json_['databaseId'] as core.String?,
-          databaseSnapshot: json_.containsKey('databaseSnapshot')
-              ? GoogleFirestoreAdminV1DatabaseSnapshot.fromJson(
-                  json_['databaseSnapshot']
+          encryptionConfig: json_.containsKey('encryptionConfig')
+              ? GoogleFirestoreAdminV1EncryptionConfig.fromJson(
+                  json_['encryptionConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -4524,7 +4730,43 @@ class GoogleFirestoreAdminV1RestoreDatabaseRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (backup != null) 'backup': backup!,
         if (databaseId != null) 'databaseId': databaseId!,
-        if (databaseSnapshot != null) 'databaseSnapshot': databaseSnapshot!,
+        if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
+      };
+}
+
+/// The configuration options for using the same encryption method as the
+/// source.
+typedef GoogleFirestoreAdminV1SourceEncryptionOptions = $Empty;
+
+/// Information about the provenance of this database.
+class GoogleFirestoreAdminV1SourceInfo {
+  /// If set, this database was restored from the specified backup (or a
+  /// snapshot thereof).
+  GoogleFirestoreAdminV1BackupSource? backup;
+
+  /// The associated long-running operation.
+  ///
+  /// This field may not be set after the operation has completed. Format:
+  /// `projects/{project}/databases/{database}/operations/{operation}`.
+  core.String? operation;
+
+  GoogleFirestoreAdminV1SourceInfo({
+    this.backup,
+    this.operation,
+  });
+
+  GoogleFirestoreAdminV1SourceInfo.fromJson(core.Map json_)
+      : this(
+          backup: json_.containsKey('backup')
+              ? GoogleFirestoreAdminV1BackupSource.fromJson(
+                  json_['backup'] as core.Map<core.String, core.dynamic>)
+              : null,
+          operation: json_['operation'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backup != null) 'backup': backup!,
+        if (operation != null) 'operation': operation!,
       };
 }
 
@@ -4657,29 +4899,17 @@ class GoogleFirestoreAdminV1WeeklyRecurrence {
   /// - "SUNDAY" : Sunday
   core.String? day;
 
-  /// Time of the day.
-  ///
-  /// If day is today, the first run will happen today if schedule creation time
-  /// precedes time_of_day, and the next week otherwise.
-  TimeOfDay? time;
-
   GoogleFirestoreAdminV1WeeklyRecurrence({
     this.day,
-    this.time,
   });
 
   GoogleFirestoreAdminV1WeeklyRecurrence.fromJson(core.Map json_)
       : this(
           day: json_['day'] as core.String?,
-          time: json_.containsKey('time')
-              ? TimeOfDay.fromJson(
-                  json_['time'] as core.Map<core.String, core.dynamic>)
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
-        if (time != null) 'time': time!,
       };
 }
 
@@ -5545,7 +5775,7 @@ typedef RunQueryResponse = core.List<RunQueryResponseElement>;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Firestore query for running an aggregation over a StructuredQuery.
 class StructuredAggregationQuery {
@@ -5758,13 +5988,6 @@ class Sum {
         if (field != null) 'field': field!,
       };
 }
-
-/// Represents a time of day.
-///
-/// The date and time zone are either not significant or are specified
-/// elsewhere. An API may choose to allow leap seconds. Related types are
-/// google.type.Date and `google.protobuf.Timestamp`.
-typedef TimeOfDay = $TimeOfDay;
 
 /// Options for creating a new transaction.
 class TransactionOptions {

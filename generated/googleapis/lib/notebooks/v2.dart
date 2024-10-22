@@ -712,6 +712,48 @@ class ProjectsLocationsInstancesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// RestoreInstance restores an Instance from a BackupSource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> restore(
+    RestoreInstanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':restore';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Rollbacks a notebook instance to the previous version.
   ///
   /// [request] - The metadata request object.
@@ -1908,6 +1950,14 @@ class GceSetup {
   /// Optional.
   core.Map<core.String, core.String>? metadata;
 
+  /// The minimum CPU platform to use for this instance.
+  ///
+  /// The list of valid values can be found in
+  /// https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones
+  ///
+  /// Optional.
+  core.String? minCpuPlatform;
+
   /// The network interfaces for the VM.
   ///
   /// Supports only one interface.
@@ -1929,8 +1979,8 @@ class GceSetup {
   /// Optional.
   ShieldedInstanceConfig? shieldedInstanceConfig;
 
-  /// The Compute Engine tags to add to runtime (see
-  /// [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+  /// The Compute Engine network tags to add to runtime (see
+  /// [Add network tags](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
   ///
   /// Optional.
   core.List<core.String>? tags;
@@ -1950,6 +2000,7 @@ class GceSetup {
     this.gpuDriverConfig,
     this.machineType,
     this.metadata,
+    this.minCpuPlatform,
     this.networkInterfaces,
     this.serviceAccounts,
     this.shieldedInstanceConfig,
@@ -1989,6 +2040,7 @@ class GceSetup {
               value as core.String,
             ),
           ),
+          minCpuPlatform: json_['minCpuPlatform'] as core.String?,
           networkInterfaces: (json_['networkInterfaces'] as core.List?)
               ?.map((value) => NetworkInterface.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -2022,6 +2074,7 @@ class GceSetup {
         if (gpuDriverConfig != null) 'gpuDriverConfig': gpuDriverConfig!,
         if (machineType != null) 'machineType': machineType!,
         if (metadata != null) 'metadata': metadata!,
+        if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform!,
         if (networkInterfaces != null) 'networkInterfaces': networkInterfaces!,
         if (serviceAccounts != null) 'serviceAccounts': serviceAccounts!,
         if (shieldedInstanceConfig != null)
@@ -2691,6 +2744,28 @@ class ResizeDiskRequest {
       };
 }
 
+/// Request for restoring the notebook instance from a BackupSource.
+class RestoreInstanceRequest {
+  /// Snapshot to be used for restore.
+  Snapshot? snapshot;
+
+  RestoreInstanceRequest({
+    this.snapshot,
+  });
+
+  RestoreInstanceRequest.fromJson(core.Map json_)
+      : this(
+          snapshot: json_.containsKey('snapshot')
+              ? Snapshot.fromJson(
+                  json_['snapshot'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (snapshot != null) 'snapshot': snapshot!,
+      };
+}
+
 /// Request for rollbacking a notebook instance
 class RollbackInstanceRequest {
   /// Revision Id
@@ -2835,6 +2910,38 @@ class ShieldedInstanceConfig {
       };
 }
 
+/// Snapshot represents the snapshot of the data disk used to restore the
+/// Workbench Instance from.
+///
+/// Refers to: compute/v1/projects/{project_id}/global/snapshots/{snapshot_id}
+class Snapshot {
+  /// The project ID of the snapshot.
+  ///
+  /// Required.
+  core.String? projectId;
+
+  /// The ID of the snapshot.
+  ///
+  /// Required.
+  core.String? snapshotId;
+
+  Snapshot({
+    this.projectId,
+    this.snapshotId,
+  });
+
+  Snapshot.fromJson(core.Map json_)
+      : this(
+          projectId: json_['projectId'] as core.String?,
+          snapshotId: json_['snapshotId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (projectId != null) 'projectId': projectId!,
+        if (snapshotId != null) 'snapshotId': snapshotId!,
+      };
+}
+
 /// Request for starting a notebook instance
 typedef StartInstanceRequest = $Empty;
 
@@ -2845,7 +2952,7 @@ typedef StartInstanceRequest = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Request for stopping a notebook instance
 typedef StopInstanceRequest = $Empty;
@@ -2989,7 +3096,7 @@ class UpgradeHistoryEntry {
 typedef UpgradeInstanceRequest = $Empty;
 
 /// Request for upgrading a notebook instance from within the VM
-typedef UpgradeInstanceSystemRequest = $Request09;
+typedef UpgradeInstanceSystemRequest = $Request11;
 
 /// Definition of a custom Compute Engine virtual machine image for starting a
 /// notebook instance with the environment installed directly on the VM.

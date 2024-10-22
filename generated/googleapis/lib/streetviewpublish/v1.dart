@@ -2063,7 +2063,7 @@ class ProcessingFailureDetails {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Request to update the metadata of a Photo.
 ///

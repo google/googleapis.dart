@@ -1196,6 +1196,7 @@ class Node {
   /// - "HIDING" : TPU node is currently hiding.
   /// - "HIDDEN" : TPU node has been hidden.
   /// - "UNHIDING" : TPU node is currently unhiding.
+  /// - "UNKNOWN" : TPU node has unknown state after a failed repair.
   core.String? state;
 
   /// The Symptoms that have occurred to the TPU Node.
@@ -1431,7 +1432,7 @@ typedef StartNodeRequest = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Request for StopNode.
 typedef StopNodeRequest = $Empty;

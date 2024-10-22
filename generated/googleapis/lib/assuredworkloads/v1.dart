@@ -1575,36 +1575,30 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// - "FEDRAMP_MODERATE" : FedRAMP Moderate data protection controls
   /// - "US_REGIONAL_ACCESS" : Assured Workloads For US Regions data protection
   /// controls
-  /// - "REGIONAL_CONTROLS_PREMIUM_US" : Assured Workloads For US Regions data
-  /// protection controls
   /// - "HIPAA" : Health Insurance Portability and Accountability Act controls
   /// - "HITRUST" : Health Information Trust Alliance controls
   /// - "EU_REGIONS_AND_SUPPORT" : Assured Workloads For EU Regions and Support
   /// controls
-  /// - "REGIONAL_CONTROLS_PREMIUM_EU" : Assured Workloads For EU Regions and
-  /// Support controls
   /// - "CA_REGIONS_AND_SUPPORT" : Assured Workloads For Canada Regions and
   /// Support controls
-  /// - "REGIONAL_CONTROLS_PREMIUM_CA" : Assured Workloads For Canada Regions
-  /// and Support controls
   /// - "ITAR" : International Traffic in Arms Regulations
   /// - "AU_REGIONS_AND_US_SUPPORT" : Assured Workloads for Australia Regions
   /// and Support controls
-  /// - "REGIONAL_CONTROLS_PREMIUM_AU" : Assured Workloads for Australia Regions
-  /// and Support controls
   /// - "ASSURED_WORKLOADS_FOR_PARTNERS" : Assured Workloads for Partners;
   /// - "ISR_REGIONS" : Assured Workloads for Israel Regions
-  /// - "REGIONAL_CONTROLS_PREMIUM_ISR" : Assured Workloads for Israel
   /// - "ISR_REGIONS_AND_SUPPORT" : Assured Workloads for Israel Regions
   /// - "CA_PROTECTED_B" : Assured Workloads for Canada Protected B regime
   /// - "IL5" : Information protection as per DoD IL5 requirements.
   /// - "IL2" : Information protection as per DoD IL2 requirements.
   /// - "JP_REGIONS_AND_SUPPORT" : Assured Workloads for Japan Regions
-  /// - "REGIONAL_CONTROLS_PREMIUM_JP" : Assured Workloads for Japan Regions
-  /// - "KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS" : KSA R5 Controls.
-  /// - "REGIONAL_CONTROLS" : Assured Workloads for Regional Controls/Free
-  /// Regions
-  /// - "FREE_REGIONS" : Assured Workloads for Regional Controls/Free Regions
+  /// - "KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS" : Assured Workloads
+  /// Sovereign Controls KSA
+  /// - "REGIONAL_CONTROLS" : Assured Workloads for Regional Controls
+  /// - "HEALTHCARE_AND_LIFE_SCIENCES_CONTROLS" : Healthcare and Life Science
+  /// Controls
+  /// - "HEALTHCARE_AND_LIFE_SCIENCES_CONTROLS_US_SUPPORT" : Healthcare and Life
+  /// Science Controls with US Support
+  /// - "IRS_1075" : Internal Revenue Service 1075 controls
   core.String? complianceRegime;
 
   /// Count of active Violations in the Workload.
@@ -1701,12 +1695,26 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// - "SOVEREIGN_CONTROLS_BY_SIA_MINSAIT" : Enum representing SIA_MINSAIT
   /// (Indra) partner.
   /// - "SOVEREIGN_CONTROLS_BY_PSN" : Enum representing PSN (TIM) partner.
+  /// - "SOVEREIGN_CONTROLS_BY_CNTXT" : Enum representing CNTXT (Kingdom of
+  /// Saudi Arabia) partner.
+  /// - "SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM" : Enum representing CNTXT (Kingdom
+  /// of Saudi Arabia) partner offering without EKM.
   core.String? partner;
 
   /// Permissions granted to the AW Partner SA account for the customer workload
   ///
   /// Optional.
   GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions? partnerPermissions;
+
+  /// Billing account necessary for purchasing services from Sovereign Partners.
+  ///
+  /// This field is required for creating SIA/PSN/CNTXT partner workloads. The
+  /// caller should have 'billing.resourceAssociations.create' IAM permission on
+  /// this billing-account. The format of this string is
+  /// billingAccounts/AAAAAA-BBBBBB-CCCCCC
+  ///
+  /// Optional.
+  core.String? partnerServicesBillingAccount;
 
   /// Input only.
   ///
@@ -1760,6 +1768,11 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// Optional.
   core.bool? violationNotificationsEnabled;
 
+  /// Options to be set for the given created workload.
+  ///
+  /// Optional.
+  GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions? workloadOptions;
+
   GoogleCloudAssuredworkloadsV1Workload({
     this.billingAccount,
     this.complianceRegime,
@@ -1776,12 +1789,14 @@ class GoogleCloudAssuredworkloadsV1Workload {
     this.name,
     this.partner,
     this.partnerPermissions,
+    this.partnerServicesBillingAccount,
     this.provisionedResourcesParent,
     this.resourceMonitoringEnabled,
     this.resourceSettings,
     this.resources,
     this.saaEnrollmentResponse,
     this.violationNotificationsEnabled,
+    this.workloadOptions,
   });
 
   GoogleCloudAssuredworkloadsV1Workload.fromJson(core.Map json_)
@@ -1826,6 +1841,8 @@ class GoogleCloudAssuredworkloadsV1Workload {
                   .fromJson(json_['partnerPermissions']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          partnerServicesBillingAccount:
+              json_['partnerServicesBillingAccount'] as core.String?,
           provisionedResourcesParent:
               json_['provisionedResourcesParent'] as core.String?,
           resourceMonitoringEnabled:
@@ -1847,6 +1864,11 @@ class GoogleCloudAssuredworkloadsV1Workload {
               : null,
           violationNotificationsEnabled:
               json_['violationNotificationsEnabled'] as core.bool?,
+          workloadOptions: json_.containsKey('workloadOptions')
+              ? GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions.fromJson(
+                  json_['workloadOptions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1870,6 +1892,8 @@ class GoogleCloudAssuredworkloadsV1Workload {
         if (partner != null) 'partner': partner!,
         if (partnerPermissions != null)
           'partnerPermissions': partnerPermissions!,
+        if (partnerServicesBillingAccount != null)
+          'partnerServicesBillingAccount': partnerServicesBillingAccount!,
         if (provisionedResourcesParent != null)
           'provisionedResourcesParent': provisionedResourcesParent!,
         if (resourceMonitoringEnabled != null)
@@ -1880,6 +1904,7 @@ class GoogleCloudAssuredworkloadsV1Workload {
           'saaEnrollmentResponse': saaEnrollmentResponse!,
         if (violationNotificationsEnabled != null)
           'violationNotificationsEnabled': violationNotificationsEnabled!,
+        if (workloadOptions != null) 'workloadOptions': workloadOptions!,
       };
 }
 
@@ -2027,6 +2052,11 @@ class GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
 
 /// Permissions granted to the AW Partner SA account for the customer workload
 class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions {
+  /// Allow partner to view support case details for an AXT log
+  ///
+  /// Optional.
+  core.bool? accessTransparencyLogsSupportCaseViewer;
+
   /// Allow partner to view violation alerts.
   ///
   /// Optional.
@@ -2041,6 +2071,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions {
   core.bool? serviceAccessApprover;
 
   GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions({
+    this.accessTransparencyLogsSupportCaseViewer,
     this.assuredWorkloadsMonitoring,
     this.dataLogsViewer,
     this.serviceAccessApprover,
@@ -2049,6 +2080,8 @@ class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions {
   GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions.fromJson(
       core.Map json_)
       : this(
+          accessTransparencyLogsSupportCaseViewer:
+              json_['accessTransparencyLogsSupportCaseViewer'] as core.bool?,
           assuredWorkloadsMonitoring:
               json_['assuredWorkloadsMonitoring'] as core.bool?,
           dataLogsViewer: json_['dataLogsViewer'] as core.bool?,
@@ -2056,6 +2089,9 @@ class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (accessTransparencyLogsSupportCaseViewer != null)
+          'accessTransparencyLogsSupportCaseViewer':
+              accessTransparencyLogsSupportCaseViewer!,
         if (assuredWorkloadsMonitoring != null)
           'assuredWorkloadsMonitoring': assuredWorkloadsMonitoring!,
         if (dataLogsViewer != null) 'dataLogsViewer': dataLogsViewer!,
@@ -2180,6 +2216,31 @@ class GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse {
       };
 }
 
+/// Options to be set for the given created workload.
+class GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions {
+  /// Specifies type of KAJ Enrollment if provided.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "KAJ_ENROLLMENT_TYPE_UNSPECIFIED" : KAJ Enrollment type is unspecified
+  /// - "KEY_ACCESS_TRANSPARENCY_OFF" : KAT sets External, Hardware, and
+  /// Software key feature logging only to TRUE. (no enforcement)
+  core.String? kajEnrollmentType;
+
+  GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions({
+    this.kajEnrollmentType,
+  });
+
+  GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions.fromJson(core.Map json_)
+      : this(
+          kajEnrollmentType: json_['kajEnrollmentType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kajEnrollmentType != null) 'kajEnrollmentType': kajEnrollmentType!,
+      };
+}
+
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
   /// The standard List next-page token.
@@ -2299,4 +2360,4 @@ typedef GoogleProtobufEmpty = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef GoogleRpcStatus = $Status;
+typedef GoogleRpcStatus = $Status00;

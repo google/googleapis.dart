@@ -161,7 +161,7 @@ class AccountsResource {
   ///
   /// Request parameters:
   ///
-  /// [account] - Required. Resource name of the account.
+  /// [account] - Optional. Resource name of the account.
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of service accounts to return.
@@ -334,7 +334,7 @@ class AccountsResource {
   ///
   /// Request parameters:
   ///
-  /// [account] - Required. Resource name of the account.
+  /// [account] - Optional. Resource name of the account.
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -389,7 +389,7 @@ class AccountsResource {
   ///
   /// Request parameters:
   ///
-  /// [account] - Required. Resource name of the account.
+  /// [account] - Optional. Resource name of the account.
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4268,24 +4268,34 @@ class GoogleCloudChannelV1ChannelPartnerRepricingConfig {
 
 /// Request message for CloudChannelService.CheckCloudIdentityAccountsExist.
 class GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest {
-  /// Domain to fetch for Cloud Identity account customers, including domained
-  /// and domainless.
+  /// Domain to fetch for Cloud Identity account customers, including domain and
+  /// team customers.
+  ///
+  /// For team customers, please use the domain for their emails.
   ///
   /// Required.
   core.String? domain;
 
+  /// Primary admin email to fetch for Cloud Identity account team customer.
+  ///
+  /// Optional.
+  core.String? primaryAdminEmail;
+
   GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest({
     this.domain,
+    this.primaryAdminEmail,
   });
 
   GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest.fromJson(
       core.Map json_)
       : this(
           domain: json_['domain'] as core.String?,
+          primaryAdminEmail: json_['primaryAdminEmail'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (domain != null) 'domain': domain!,
+        if (primaryAdminEmail != null) 'primaryAdminEmail': primaryAdminEmail!,
       };
 }
 
@@ -4318,6 +4328,10 @@ class GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse {
 /// Entity representing a Cloud Identity account that may be associated with a
 /// Channel Services API partner.
 class GoogleCloudChannelV1CloudIdentityCustomerAccount {
+  /// If existing = true, and is 2-tier customer, the channel partner of the
+  /// customer.
+  core.String? channelPartnerCloudIdentityId;
+
   /// If existing = true, the Cloud Identity ID of the customer.
   core.String? customerCloudIdentityId;
 
@@ -4328,6 +4342,14 @@ class GoogleCloudChannelV1CloudIdentityCustomerAccount {
   /// accounts/{account_id}/customers/{customer_id}
   core.String? customerName;
 
+  /// If existing = true, the type of the customer.
+  /// Possible string values are:
+  /// - "CUSTOMER_TYPE_UNSPECIFIED" : Not used.
+  /// - "DOMAIN" : Domain-owning customer which needs domain verification to use
+  /// services.
+  /// - "TEAM" : Team customer which needs email verification to use services.
+  core.String? customerType;
+
   /// Returns true if a Cloud Identity account exists for a specific domain.
   core.bool? existing;
 
@@ -4336,25 +4358,33 @@ class GoogleCloudChannelV1CloudIdentityCustomerAccount {
   core.bool? owned;
 
   GoogleCloudChannelV1CloudIdentityCustomerAccount({
+    this.channelPartnerCloudIdentityId,
     this.customerCloudIdentityId,
     this.customerName,
+    this.customerType,
     this.existing,
     this.owned,
   });
 
   GoogleCloudChannelV1CloudIdentityCustomerAccount.fromJson(core.Map json_)
       : this(
+          channelPartnerCloudIdentityId:
+              json_['channelPartnerCloudIdentityId'] as core.String?,
           customerCloudIdentityId:
               json_['customerCloudIdentityId'] as core.String?,
           customerName: json_['customerName'] as core.String?,
+          customerType: json_['customerType'] as core.String?,
           existing: json_['existing'] as core.bool?,
           owned: json_['owned'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (channelPartnerCloudIdentityId != null)
+          'channelPartnerCloudIdentityId': channelPartnerCloudIdentityId!,
         if (customerCloudIdentityId != null)
           'customerCloudIdentityId': customerCloudIdentityId!,
         if (customerName != null) 'customerName': customerName!,
+        if (customerType != null) 'customerType': customerType!,
         if (existing != null) 'existing': existing!,
         if (owned != null) 'owned': owned!,
       };
@@ -5512,6 +5542,11 @@ class GoogleCloudChannelV1ImportCustomerRequest {
   /// Required.
   core.bool? overwriteIfExists;
 
+  /// Customer's primary admin email.
+  ///
+  /// Required.
+  core.String? primaryAdminEmail;
+
   GoogleCloudChannelV1ImportCustomerRequest({
     this.authToken,
     this.channelPartnerId,
@@ -5519,6 +5554,7 @@ class GoogleCloudChannelV1ImportCustomerRequest {
     this.customer,
     this.domain,
     this.overwriteIfExists,
+    this.primaryAdminEmail,
   });
 
   GoogleCloudChannelV1ImportCustomerRequest.fromJson(core.Map json_)
@@ -5529,6 +5565,7 @@ class GoogleCloudChannelV1ImportCustomerRequest {
           customer: json_['customer'] as core.String?,
           domain: json_['domain'] as core.String?,
           overwriteIfExists: json_['overwriteIfExists'] as core.bool?,
+          primaryAdminEmail: json_['primaryAdminEmail'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5538,6 +5575,7 @@ class GoogleCloudChannelV1ImportCustomerRequest {
         if (customer != null) 'customer': customer!,
         if (domain != null) 'domain': domain!,
         if (overwriteIfExists != null) 'overwriteIfExists': overwriteIfExists!,
+        if (primaryAdminEmail != null) 'primaryAdminEmail': primaryAdminEmail!,
       };
 }
 
@@ -8149,7 +8187,7 @@ typedef GoogleProtobufEmpty = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef GoogleRpcStatus = $Status;
+typedef GoogleRpcStatus = $Status00;
 
 /// Represents a whole or partial calendar date, such as a birthday.
 ///

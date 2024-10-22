@@ -14,6 +14,9 @@
                 "https://www.googleapis.com/auth/maps-platform.places.details": {
                     "description": "Private Service: https://www.googleapis.com/auth/maps-platform.places.details"
                 },
+                "https://www.googleapis.com/auth/maps-platform.places.getphotomedia": {
+                    "description": "Private Service: https://www.googleapis.com/auth/maps-platform.places.getphotomedia"
+                },
                 "https://www.googleapis.com/auth/maps-platform.places.nearbysearch": {
                     "description": "Private Service: https://www.googleapis.com/auth/maps-platform.places.nearbysearch"
                 },
@@ -40,7 +43,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240611",
+    "revision": "20241015",
     "rootUrl": "https://places.googleapis.com/",
     "servicePath": "",
     "title": "Places API (New)",
@@ -272,7 +275,8 @@
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform",
-                                "https://www.googleapis.com/auth/maps-platform.places"
+                                "https://www.googleapis.com/auth/maps-platform.places",
+                                "https://www.googleapis.com/auth/maps-platform.places.getphotomedia"
                             ]
                         }
                     }
@@ -292,6 +296,120 @@
                 "low": {
                     "$ref": "GoogleTypeLatLng",
                     "description": "Required. The low point of the viewport."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleMapsPlacesV1AddressDescriptor": {
+            "description": "A relational description of a location. Includes a ranked set of nearby landmarks and precise containing areas and their relationship to the target location.",
+            "id": "GoogleMapsPlacesV1AddressDescriptor",
+            "properties": {
+                "areas": {
+                    "description": "A ranked list of containing or adjacent areas. The most recognizable and precise areas are ranked first.",
+                    "items": {
+                        "$ref": "GoogleMapsPlacesV1AddressDescriptorArea"
+                    },
+                    "type": "array"
+                },
+                "landmarks": {
+                    "description": "A ranked list of nearby landmarks. The most recognizable and nearby landmarks are ranked first.",
+                    "items": {
+                        "$ref": "GoogleMapsPlacesV1AddressDescriptorLandmark"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleMapsPlacesV1AddressDescriptorArea": {
+            "description": "Area information and the area's relationship with the target location. Areas includes precise sublocality, neighborhoods, and large compounds that are useful for describing a location.",
+            "id": "GoogleMapsPlacesV1AddressDescriptorArea",
+            "properties": {
+                "containment": {
+                    "description": "Defines the spatial relationship between the target location and the area.",
+                    "enum": [
+                        "CONTAINMENT_UNSPECIFIED",
+                        "WITHIN",
+                        "OUTSKIRTS",
+                        "NEAR"
+                    ],
+                    "enumDescriptions": [
+                        "The containment is unspecified.",
+                        "The target location is within the area region, close to the center.",
+                        "The target location is within the area region, close to the edge.",
+                        "The target location is outside the area region, but close by."
+                    ],
+                    "type": "string"
+                },
+                "displayName": {
+                    "$ref": "GoogleTypeLocalizedText",
+                    "description": "The area's display name."
+                },
+                "name": {
+                    "description": "The area's resource name.",
+                    "type": "string"
+                },
+                "placeId": {
+                    "description": "The area's place id.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleMapsPlacesV1AddressDescriptorLandmark": {
+            "description": "Basic landmark information and the landmark's relationship with the target location. Landmarks are prominent places that can be used to describe a location.",
+            "id": "GoogleMapsPlacesV1AddressDescriptorLandmark",
+            "properties": {
+                "displayName": {
+                    "$ref": "GoogleTypeLocalizedText",
+                    "description": "The landmark's display name."
+                },
+                "name": {
+                    "description": "The landmark's resource name.",
+                    "type": "string"
+                },
+                "placeId": {
+                    "description": "The landmark's place id.",
+                    "type": "string"
+                },
+                "spatialRelationship": {
+                    "description": "Defines the spatial relationship between the target location and the landmark.",
+                    "enum": [
+                        "NEAR",
+                        "WITHIN",
+                        "BESIDE",
+                        "ACROSS_THE_ROAD",
+                        "DOWN_THE_ROAD",
+                        "AROUND_THE_CORNER",
+                        "BEHIND"
+                    ],
+                    "enumDescriptions": [
+                        "This is the default relationship when nothing more specific below applies.",
+                        "The landmark has a spatial geometry and the target is within its bounds.",
+                        "The target is directly adjacent to the landmark.",
+                        "The target is directly opposite the landmark on the other side of the road.",
+                        "On the same route as the landmark but not besides or across.",
+                        "Not on the same route as the landmark but a single turn away.",
+                        "Close to the landmark's structure but further away from its street entrances."
+                    ],
+                    "type": "string"
+                },
+                "straightLineDistanceMeters": {
+                    "description": "The straight line distance in meters between the target location and the landmark.",
+                    "format": "float",
+                    "type": "number"
+                },
+                "travelDistanceMeters": {
+                    "description": "The travel distance in meters along the road network if known. This does not take into account the mode of transportation (walking/driving).",
+                    "format": "float",
+                    "type": "number"
+                },
+                "types": {
+                    "description": "A set of type tags for this landmark. For a complete list of possible values, see https://developers.google.com/maps/documentation/places/web-service/place-types.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -888,6 +1006,10 @@
                     },
                     "type": "array"
                 },
+                "addressDescriptor": {
+                    "$ref": "GoogleMapsPlacesV1AddressDescriptor",
+                    "description": "The address descriptor of the place. Address descriptors include additional information that help describe a location using landmarks and areas. See address descriptor regional coverage in https://developers.google.com/maps/documentation/geocoding/address-descriptors/coverage."
+                },
                 "adrFormatAddress": {
                     "description": "The place's address in adr microformat: http://microformats.org/wiki/adr.",
                     "type": "string"
@@ -1178,7 +1300,7 @@
                 },
                 "viewport": {
                     "$ref": "GoogleGeoTypeViewport",
-                    "description": "A viewport suitable for displaying the place on an average-sized map."
+                    "description": "A viewport suitable for displaying the place on an average-sized map. This viewport should not be used as the physical boundary or the service area of the business."
                 },
                 "websiteUri": {
                     "description": "The authoritative website for this place, e.g. a business' homepage. Note that for places that are part of a chain (e.g. an IKEA store), this will usually be the website for the individual store, not the overall chain.",
@@ -1289,7 +1411,7 @@
             "id": "GoogleMapsPlacesV1PlaceOpeningHours",
             "properties": {
                 "openNow": {
-                    "description": "Is this place open right now? Always present unless we lack time-of-day or timezone data for these opening hours.",
+                    "description": "Whether the opening hours period is currently active. For regular opening hours and current opening hours, this field means whether the place is open. For secondary opening hours and current secondary opening hours, this field means whether the secondary hours of this place is active.",
                     "type": "boolean"
                 },
                 "periods": {
@@ -1496,6 +1618,17 @@
             },
             "type": "object"
         },
+        "GoogleMapsPlacesV1Polyline": {
+            "description": "A route polyline. Only supports an [encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm), which can be passed as a string and includes compression with minimal lossiness. This is the Routes API default output.",
+            "id": "GoogleMapsPlacesV1Polyline",
+            "properties": {
+                "encodedPolyline": {
+                    "description": "An [encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm), as returned by the [Routes API by default](https://developers.google.com/maps/documentation/routes/reference/rest/v2/TopLevel/computeRoutes#polylineencoding). See the [encoder](https://developers.google.com/maps/documentation/utilities/polylineutility) and [decoder](https://developers.google.com/maps/documentation/routes/polylinedecoder) tools.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleMapsPlacesV1References": {
             "description": "Experimental: See https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more details. Reference that the generative content is related to.",
             "id": "GoogleMapsPlacesV1References",
@@ -1550,6 +1683,109 @@
                 "text": {
                     "$ref": "GoogleTypeLocalizedText",
                     "description": "The localized text of the review."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleMapsPlacesV1RouteModifiers": {
+            "description": "Encapsulates a set of optional conditions to satisfy when calculating the routes.",
+            "id": "GoogleMapsPlacesV1RouteModifiers",
+            "properties": {
+                "avoidFerries": {
+                    "description": "Optional. When set to true, avoids ferries where reasonable, giving preference to routes not containing ferries. Applies only to the `DRIVE` and `TWO_WHEELER` `TravelMode`.",
+                    "type": "boolean"
+                },
+                "avoidHighways": {
+                    "description": "Optional. When set to true, avoids highways where reasonable, giving preference to routes not containing highways. Applies only to the `DRIVE` and `TWO_WHEELER` `TravelMode`.",
+                    "type": "boolean"
+                },
+                "avoidIndoor": {
+                    "description": "Optional. When set to true, avoids navigating indoors where reasonable, giving preference to routes not containing indoor navigation. Applies only to the `WALK` `TravelMode`.",
+                    "type": "boolean"
+                },
+                "avoidTolls": {
+                    "description": "Optional. When set to true, avoids toll roads where reasonable, giving preference to routes not containing toll roads. Applies only to the `DRIVE` and `TWO_WHEELER` `TravelMode`.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleMapsPlacesV1RoutingParameters": {
+            "description": "Parameters to configure the routing calculations to the places in the response, both along a route (where result ranking will be influenced) and for calculating travel times on results.",
+            "id": "GoogleMapsPlacesV1RoutingParameters",
+            "properties": {
+                "origin": {
+                    "$ref": "GoogleTypeLatLng",
+                    "description": "Optional. An explicit routing origin that overrides the origin defined in the polyline. By default, the polyline origin is used."
+                },
+                "routeModifiers": {
+                    "$ref": "GoogleMapsPlacesV1RouteModifiers",
+                    "description": "Optional. The route modifiers."
+                },
+                "routingPreference": {
+                    "description": "Optional. Specifies how to compute the routing summaries. The server attempts to use the selected routing preference to compute the route. The traffic aware routing preference is only available for the `DRIVE` or `TWO_WHEELER` `travelMode`.",
+                    "enum": [
+                        "ROUTING_PREFERENCE_UNSPECIFIED",
+                        "TRAFFIC_UNAWARE",
+                        "TRAFFIC_AWARE",
+                        "TRAFFIC_AWARE_OPTIMAL"
+                    ],
+                    "enumDescriptions": [
+                        "No routing preference specified. Default to `TRAFFIC_UNAWARE`.",
+                        "Computes routes without taking live traffic conditions into consideration. Suitable when traffic conditions don't matter or are not applicable. Using this value produces the lowest latency. Note: For `TravelMode` `DRIVE` and `TWO_WHEELER`, the route and duration chosen are based on road network and average time-independent traffic conditions, not current road conditions. Consequently, routes may include roads that are temporarily closed. Results for a given request may vary over time due to changes in the road network, updated average traffic conditions, and the distributed nature of the service. Results may also vary between nearly-equivalent routes at any time or frequency.",
+                        "Calculates routes taking live traffic conditions into consideration. In contrast to `TRAFFIC_AWARE_OPTIMAL`, some optimizations are applied to significantly reduce latency.",
+                        "Calculates the routes taking live traffic conditions into consideration, without applying most performance optimizations. Using this value produces the highest latency."
+                    ],
+                    "type": "string"
+                },
+                "travelMode": {
+                    "description": "Optional. The travel mode.",
+                    "enum": [
+                        "TRAVEL_MODE_UNSPECIFIED",
+                        "DRIVE",
+                        "BICYCLE",
+                        "WALK",
+                        "TWO_WHEELER"
+                    ],
+                    "enumDescriptions": [
+                        "No travel mode specified. Defaults to `DRIVE`.",
+                        "Travel by passenger car.",
+                        "Travel by bicycle. Not supported with `search_along_route_parameters`.",
+                        "Travel by walking. Not supported with `search_along_route_parameters`.",
+                        "Motorized two wheeled vehicles of all kinds such as scooters and motorcycles. Note that this is distinct from the `BICYCLE` travel mode which covers human-powered transport. Not supported with `search_along_route_parameters`. Only supported in those countries listed at [Countries and regions supported for two-wheeled vehicles](https://developers.google.com/maps/documentation/routes/coverage-two-wheeled)."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleMapsPlacesV1RoutingSummary": {
+            "description": "The duration and distance from the routing origin to a place in the response, and a second leg from that place to the destination, if requested. **Note:** Adding `routingSummaries` in the field mask without also including either the `routingParameters.origin` parameter or the `searchAlongRouteParameters.polyline.encodedPolyline` parameter in the request causes an error.",
+            "id": "GoogleMapsPlacesV1RoutingSummary",
+            "properties": {
+                "legs": {
+                    "description": "The legs of the trip. When you calculate travel duration and distance from a set origin, `legs` contains a single leg containing the duration and distance from the origin to the destination. When you do a search along route, `legs` contains two legs: one from the origin to place, and one from the place to the destination.",
+                    "items": {
+                        "$ref": "GoogleMapsPlacesV1RoutingSummaryLeg"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleMapsPlacesV1RoutingSummaryLeg": {
+            "description": "A leg is a single portion of a journey from one location to another.",
+            "id": "GoogleMapsPlacesV1RoutingSummaryLeg",
+            "properties": {
+                "distanceMeters": {
+                    "description": "The distance of this leg of the trip.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "duration": {
+                    "description": "The time it takes to complete this leg of the trip.",
+                    "format": "google-duration",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1616,6 +1852,10 @@
                 "regionCode": {
                     "description": "The Unicode country/region code (CLDR) of the location where the request is coming from. This parameter is used to display the place details, like region-specific place name, if available. The parameter can affect results based on applicable law. For more information, see https://www.unicode.org/cldr/charts/latest/supplemental/territory_language_information.html. Note that 3-digit region codes are not currently supported.",
                     "type": "string"
+                },
+                "routingParameters": {
+                    "$ref": "GoogleMapsPlacesV1RoutingParameters",
+                    "description": "Optional. Parameters that affect the routing to the search results."
                 }
             },
             "type": "object"
@@ -1639,6 +1879,13 @@
                     "description": "A list of places that meets user's requirements like places types, number of places and specific location restriction.",
                     "items": {
                         "$ref": "GoogleMapsPlacesV1Place"
+                    },
+                    "type": "array"
+                },
+                "routingSummaries": {
+                    "description": "A list of routing summaries where each entry associates to the corresponding place in the same index in the `places` field. If the routing summary is not available for one of the places, it will contain an empty entry. This list should have as many entries as the list of places if requested.",
+                    "items": {
+                        "$ref": "GoogleMapsPlacesV1RoutingSummary"
                     },
                     "type": "array"
                 }
@@ -1734,6 +1981,14 @@
                     "description": "The Unicode country/region code (CLDR) of the location where the request is coming from. This parameter is used to display the place details, like region-specific place name, if available. The parameter can affect results based on applicable law. For more information, see https://www.unicode.org/cldr/charts/latest/supplemental/territory_language_information.html. Note that 3-digit region codes are not currently supported.",
                     "type": "string"
                 },
+                "routingParameters": {
+                    "$ref": "GoogleMapsPlacesV1RoutingParameters",
+                    "description": "Optional. Additional parameters for routing to results."
+                },
+                "searchAlongRouteParameters": {
+                    "$ref": "GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters",
+                    "description": "Optional. Additional parameters proto for searching along a route."
+                },
                 "strictTypeFiltering": {
                     "description": "Used to set strict type filtering for included_type. If set to true, only results of the same type will be returned. Default to false.",
                     "type": "boolean"
@@ -1814,12 +2069,23 @@
             },
             "type": "object"
         },
+        "GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters": {
+            "description": "Specifies a precalculated polyline from the [Routes API](https://developers.google.com/maps/documentation/routes) defining the route to search. Searching along a route is similar to using the `locationBias` or `locationRestriction` request option to bias the search results. However, while the `locationBias` and `locationRestriction` options let you specify a region to bias the search results, this option lets you bias the results along a trip route. Results are not guaranteed to be along the route provided, but rather are ranked within the search area defined by the polyline and, optionally, by the `locationBias` or `locationRestriction` based on minimal detour times from origin to destination. The results might be along an alternate route, especially if the provided polyline does not define an optimal route from origin to destination.",
+            "id": "GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters",
+            "properties": {
+                "polyline": {
+                    "$ref": "GoogleMapsPlacesV1Polyline",
+                    "description": "Required. The route polyline."
+                }
+            },
+            "type": "object"
+        },
         "GoogleMapsPlacesV1SearchTextResponse": {
             "description": "Response proto for SearchText. ",
             "id": "GoogleMapsPlacesV1SearchTextResponse",
             "properties": {
                 "contextualContents": {
-                    "description": "Experimental: See https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more details. A list of contextual contents where each entry associates to the corresponding place in the same index in the places field. The contents that are relevant to the `text_query` in the request are preferred. If the contextual content is not available for one of the places, it will return non-contextual content. It will be empty only when the content is unavailable for this place. This list should have as many entries as the list of places if requested.",
+                    "description": "Experimental: See https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more details. A list of contextual contents where each entry associates to the corresponding place in the same index in the places field. The contents that are relevant to the `text_query` in the request are preferred. If the contextual content is not available for one of the places, it will return non-contextual content. It will be empty only when the content is unavailable for this place. This list will have as many entries as the list of places if requested.",
                     "items": {
                         "$ref": "GoogleMapsPlacesV1ContextualContent"
                     },
@@ -1833,6 +2099,13 @@
                     "description": "A list of places that meet the user's text search criteria.",
                     "items": {
                         "$ref": "GoogleMapsPlacesV1Place"
+                    },
+                    "type": "array"
+                },
+                "routingSummaries": {
+                    "description": "A list of routing summaries where each entry associates to the corresponding place in the same index in the `places` field. If the routing summary is not available for one of the places, it will contain an empty entry. This list will have as many entries as the list of places if requested.",
+                    "items": {
+                        "$ref": "GoogleMapsPlacesV1RoutingSummary"
                     },
                     "type": "array"
                 }

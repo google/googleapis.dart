@@ -17,32 +17,44 @@
                 "https://www.googleapis.com/auth/chat.admin.spaces.readonly": {
                     "description": "View display name, description, and other metadata for all Google Chat conversations owned by your organization"
                 },
+                "https://www.googleapis.com/auth/chat.app.delete": {
+                    "description": "On their own behalf, apps in Google Chat can delete conversations and spaces and remove access to associated files"
+                },
+                "https://www.googleapis.com/auth/chat.app.memberships": {
+                    "description": "On their own behalf, apps in Google Chat can see, add, update, and remove members from conversations and spaces"
+                },
+                "https://www.googleapis.com/auth/chat.app.spaces": {
+                    "description": "On their own behalf, apps in Google Chat can create conversations and spaces and see or update their metadata (including history settings and access settings)"
+                },
+                "https://www.googleapis.com/auth/chat.app.spaces.create": {
+                    "description": "On their own behalf, apps in Google Chat can create conversations and spaces"
+                },
                 "https://www.googleapis.com/auth/chat.bot": {
                     "description": "Private Service: https://www.googleapis.com/auth/chat.bot"
                 },
                 "https://www.googleapis.com/auth/chat.delete": {
-                    "description": "Delete conversations and spaces & remove access to associated files in Google Chat"
+                    "description": "Delete conversations and spaces and remove access to associated files in Google Chat"
                 },
                 "https://www.googleapis.com/auth/chat.import": {
                     "description": "Import spaces, messages, and memberships into Google Chat."
                 },
                 "https://www.googleapis.com/auth/chat.memberships": {
-                    "description": "View, add, update, and remove members from conversations in Google Chat"
+                    "description": "See, add, update, and remove members from conversations and spaces in Google Chat"
                 },
                 "https://www.googleapis.com/auth/chat.memberships.app": {
-                    "description": "Add and remove itself from conversations in Google Chat"
+                    "description": "Add and remove itself from conversations and spaces in Google Chat"
                 },
                 "https://www.googleapis.com/auth/chat.memberships.readonly": {
                     "description": "View members in Google Chat conversations."
                 },
                 "https://www.googleapis.com/auth/chat.messages": {
-                    "description": "View, compose, send, update, and delete messages, and add, view, and delete reactions to messages."
+                    "description": "See, compose, send, update, and delete messages and their associated attachments, and add, see, and delete reactions to messages."
                 },
                 "https://www.googleapis.com/auth/chat.messages.create": {
                     "description": "Compose and send messages in Google Chat"
                 },
                 "https://www.googleapis.com/auth/chat.messages.reactions": {
-                    "description": "View, add, and delete reactions to messages in Google Chat"
+                    "description": "See, add, and delete reactions to messages in Google Chat"
                 },
                 "https://www.googleapis.com/auth/chat.messages.reactions.create": {
                     "description": "Add reactions to messages in Google Chat"
@@ -51,13 +63,13 @@
                     "description": "View reactions to messages in Google Chat"
                 },
                 "https://www.googleapis.com/auth/chat.messages.readonly": {
-                    "description": "View messages and reactions in Google Chat"
+                    "description": "See messages and their associated reactions and attachments in Google Chat"
                 },
                 "https://www.googleapis.com/auth/chat.spaces": {
-                    "description": "Create conversations and spaces and see or edit metadata (including history settings and access settings) in Google Chat"
+                    "description": "Create conversations and spaces and see or update metadata (including history settings and access settings) in Google Chat"
                 },
                 "https://www.googleapis.com/auth/chat.spaces.create": {
-                    "description": "Create new conversations in Google Chat"
+                    "description": "Create new conversations and spaces in Google Chat"
                 },
                 "https://www.googleapis.com/auth/chat.spaces.readonly": {
                     "description": "View chat and spaces in Google Chat"
@@ -88,7 +100,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240604",
+    "revision": "20241008",
     "rootUrl": "https://chat.googleapis.com/",
     "servicePath": "",
     "title": "Google Chat API",
@@ -254,7 +266,7 @@
         "spaces": {
             "methods": {
                 "completeImport": {
-                    "description": "Completes the [import process](https://developers.google.com/workspace/chat/import-data) for the specified space and makes it visible to users. Requires app authentication and domain-wide delegation. For more information, see [Authorize Google Chat apps to import data](https://developers.google.com/workspace/chat/authorize-import).",
+                    "description": "Completes the [import process](https://developers.google.com/workspace/chat/import-data) for the specified space and makes it visible to users. Requires [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and domain-wide delegation. For more information, see [Authorize Google Chat apps to import data](https://developers.google.com/workspace/chat/authorize-import).",
                     "flatPath": "v1/spaces/{spacesId}:completeImport",
                     "httpMethod": "POST",
                     "id": "chat.spaces.completeImport",
@@ -282,7 +294,7 @@
                     ]
                 },
                 "create": {
-                    "description": "Creates a named space. Spaces grouped by topics aren't supported. For an example, see [Create a space](https://developers.google.com/workspace/chat/create-spaces). If you receive the error message `ALREADY_EXISTS` when creating a space, try a different `displayName`. An existing space within the Google Workspace organization might already use this display name. Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).",
+                    "description": "Creates a space with no members. Can be used to create a named space. Spaces grouped by topics aren't supported. For an example, see [Create a space](https://developers.google.com/workspace/chat/create-spaces). If you receive the error message `ALREADY_EXISTS` when creating a space, try a different `displayName`. An existing space within the Google Workspace organization might already use this display name. If you're a member of the [Developer Preview program](https://developers.google.com/workspace/preview), you can create a group chat in import mode using `spaceType.GROUP_CHAT`. Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer Preview](https://developers.google.com/workspace/preview) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) When authenticating as an app, the `space.customer` field must be set in the request.",
                     "flatPath": "v1/spaces",
                     "httpMethod": "POST",
                     "id": "chat.spaces.create",
@@ -302,13 +314,15 @@
                         "$ref": "Space"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/chat.app.spaces",
+                        "https://www.googleapis.com/auth/chat.app.spaces.create",
                         "https://www.googleapis.com/auth/chat.import",
                         "https://www.googleapis.com/auth/chat.spaces",
                         "https://www.googleapis.com/auth/chat.spaces.create"
                     ]
                 },
                 "delete": {
-                    "description": "Deletes a named space. Always performs a cascading delete, which means that the space's child resources—like messages posted in the space and memberships in the space—are also deleted. For an example, see [Delete a space](https://developers.google.com/workspace/chat/delete-spaces). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) from a user who has permission to delete the space.",
+                    "description": "Deletes a named space. Always performs a cascading delete, which means that the space's child resources—like messages posted in the space and memberships in the space—are also deleted. For an example, see [Delete a space](https://developers.google.com/workspace/chat/delete-spaces). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer Preview](https://developers.google.com/workspace/preview) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) You can authenticate and authorize this method with administrator privileges by setting the `use_admin_access` field in the request.",
                     "flatPath": "v1/spaces/{spacesId}",
                     "httpMethod": "DELETE",
                     "id": "chat.spaces.delete",
@@ -322,6 +336,11 @@
                             "pattern": "^spaces/[^/]+$",
                             "required": true,
                             "type": "string"
+                        },
+                        "useAdminAccess": {
+                            "description": "When `true`, the method runs using the user's Google Workspace administrator privileges. The calling user must be a Google Workspace administrator with the [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.delete` [OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "v1/{+name}",
@@ -330,12 +349,13 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/chat.admin.delete",
+                        "https://www.googleapis.com/auth/chat.app.delete",
                         "https://www.googleapis.com/auth/chat.delete",
                         "https://www.googleapis.com/auth/chat.import"
                     ]
                 },
                 "findDirectMessage": {
-                    "description": "Returns the existing direct message with the specified user. If no direct message space is found, returns a `404 NOT_FOUND` error. For an example, see [Find a direct message](/chat/api/guides/v1/spaces/find-direct-message). With [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), returns the direct message space between the specified user and the authenticated user. With [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app), returns the direct message space between the specified user and the calling Chat app. Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) or [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).",
+                    "description": "Returns the existing direct message with the specified user. If no direct message space is found, returns a `404 NOT_FOUND` error. For an example, see [Find a direct message](/chat/api/guides/v1/spaces/find-direct-message). With [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app), returns the direct message space between the specified user and the calling Chat app. With [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), returns the direct message space between the specified user and the authenticated user. // Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)",
                     "flatPath": "v1/spaces:findDirectMessage",
                     "httpMethod": "GET",
                     "id": "chat.spaces.findDirectMessage",
@@ -358,7 +378,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Returns details about a space. For an example, see [Get details about a space](https://developers.google.com/workspace/chat/get-spaces). Requires [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).",
+                    "description": "Returns details about a space. For an example, see [Get details about a space](https://developers.google.com/workspace/chat/get-spaces). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) You can authenticate and authorize this method with administrator privileges by setting the `use_admin_access` field in the request.",
                     "flatPath": "v1/spaces/{spacesId}",
                     "httpMethod": "GET",
                     "id": "chat.spaces.get",
@@ -372,6 +392,11 @@
                             "pattern": "^spaces/[^/]+$",
                             "required": true,
                             "type": "string"
+                        },
+                        "useAdminAccess": {
+                            "description": "When `true`, the method runs using the user's Google Workspace administrator privileges. The calling user must be a Google Workspace administrator with the [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.spaces` or `chat.admin.spaces.readonly` [OAuth 2.0 scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "v1/{+name}",
@@ -381,13 +406,14 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/chat.admin.spaces",
                         "https://www.googleapis.com/auth/chat.admin.spaces.readonly",
+                        "https://www.googleapis.com/auth/chat.app.spaces",
                         "https://www.googleapis.com/auth/chat.bot",
                         "https://www.googleapis.com/auth/chat.spaces",
                         "https://www.googleapis.com/auth/chat.spaces.readonly"
                     ]
                 },
                 "list": {
-                    "description": "Lists spaces the caller is a member of. Group chats and DMs aren't listed until the first message is sent. For an example, see [List spaces](https://developers.google.com/workspace/chat/list-spaces). Requires [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). Lists spaces visible to the caller or authenticated user. Group chats and DMs aren't listed until the first message is sent. To list all named spaces by Google Workspace organization, use the [`spaces.search()`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/search) method using Workspace administrator privileges instead.",
+                    "description": "Lists spaces the caller is a member of. Group chats and DMs aren't listed until the first message is sent. For an example, see [List spaces](https://developers.google.com/workspace/chat/list-spaces). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) To list all named spaces by Google Workspace organization, use the [`spaces.search()`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/search) method using Workspace administrator privileges instead.",
                     "flatPath": "v1/spaces",
                     "httpMethod": "GET",
                     "id": "chat.spaces.list",
@@ -421,7 +447,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Updates a space. For an example, see [Update a space](https://developers.google.com/workspace/chat/update-spaces). If you're updating the `displayName` field and receive the error message `ALREADY_EXISTS`, try a different display name.. An existing space within the Google Workspace organization might already use this display name. Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).",
+                    "description": "Updates a space. For an example, see [Update a space](https://developers.google.com/workspace/chat/update-spaces). If you're updating the `displayName` field and receive the error message `ALREADY_EXISTS`, try a different display name.. An existing space within the Google Workspace organization might already use this display name. Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer Preview](https://developers.google.com/workspace/preview) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) You can authenticate and authorize this method with administrator privileges by setting the `use_admin_access` field in the request.",
                     "flatPath": "v1/spaces/{spacesId}",
                     "httpMethod": "PATCH",
                     "id": "chat.spaces.patch",
@@ -430,17 +456,22 @@
                     ],
                     "parameters": {
                         "name": {
-                            "description": "Resource name of the space. Format: `spaces/{space}`",
+                            "description": "Resource name of the space. Format: `spaces/{space}` Where `{space}` represents the system-assigned ID for the space. You can obtain the space ID by calling the [`spaces.list()`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/list) method or from the space URL. For example, if the space URL is `https://mail.google.com/mail/u/0/#chat/space/AAAAAAAAA`, the space ID is `AAAAAAAAA`.",
                             "location": "path",
                             "pattern": "^spaces/[^/]+$",
                             "required": true,
                             "type": "string"
                         },
                         "updateMask": {
-                            "description": "Required. The updated field paths, comma separated if there are multiple. Currently supported field paths: - `display_name` (Only supports changing the display name of a space with the `SPACE` type, or when also including the `space_type` mask to change a `GROUP_CHAT` space type to `SPACE`. Trying to update the display name of a `GROUP_CHAT` or a `DIRECT_MESSAGE` space results in an invalid argument error. If you receive the error message `ALREADY_EXISTS` when updating the `displayName`, try a different `displayName`. An existing space within the Google Workspace organization might already use this display name.) - `space_type` (Only supports changing a `GROUP_CHAT` space type to `SPACE`. Include `display_name` together with `space_type` in the update mask and ensure that the specified space has a non-empty display name and the `SPACE` space type. Including the `space_type` mask and the `SPACE` type in the specified space when updating the display name is optional if the existing space already has the `SPACE` type. Trying to update the space type in other ways results in an invalid argument error). - `space_details` - `space_history_state` (Supports [turning history on or off for the space](https://support.google.com/chat/answer/7664687) if [the organization allows users to change their history setting](https://support.google.com/a/answer/7664184). Warning: mutually exclusive with all other field paths.) - Developer Preview: `access_settings.audience` (Supports changing the [access setting](https://support.google.com/chat/answer/11971020) of a space. If no audience is specified in the access setting, the space's access setting is updated to restricted. Warning: mutually exclusive with all other field paths.)",
+                            "description": "Required. The updated field paths, comma separated if there are multiple. You can update the following fields for a space: `space_details`: Updates the space's description. Supports up to 150 characters. `display_name`: Only supports updating the display name for spaces where `spaceType` field is `SPACE`. If you receive the error message `ALREADY_EXISTS`, try a different value. An existing space within the Google Workspace organization might already use this display name. `space_type`: Only supports changing a `GROUP_CHAT` space type to `SPACE`. Include `display_name` together with `space_type` in the update mask and ensure that the specified space has a non-empty display name and the `SPACE` space type. Including the `space_type` mask and the `SPACE` type in the specified space when updating the display name is optional if the existing space already has the `SPACE` type. Trying to update the space type in other ways results in an invalid argument error. `space_type` is not supported with `useAdminAccess`. `space_history_state`: Updates [space history settings](https://support.google.com/chat/answer/7664687) by turning history on or off for the space. Only supported if history settings are enabled for the Google Workspace organization. To update the space history state, you must omit all other field masks in your request. `space_history_state` is not supported with `useAdminAccess`. `access_settings.audience`: Updates the [access setting](https://support.google.com/chat/answer/11971020) of who can discover the space, join the space, and preview the messages in named space where `spaceType` field is `SPACE`. If the existing space has a target audience, you can remove the audience and restrict space access by omitting a value for this field mask. To update access settings for a space, the authenticating user must be a space manager and omit all other field masks in your request. You can't update this field if the space is in [import mode](https://developers.google.com/workspace/chat/import-data-overview). To learn more, see [Make a space discoverable to specific users](https://developers.google.com/workspace/chat/space-target-audience). `access_settings.audience` is not supported with `useAdminAccess`. `permission_settings`: Supports changing the [permission settings](https://support.google.com/chat/answer/13340792) of a space. When updating permission settings, you can only specify `permissionSettings` field masks; you cannot update other field masks at the same time. `permissionSettings` is not supported with `useAdminAccess`. The supported field masks include: - `permission_settings.manageMembersAndGroups` - `permission_settings.modifySpaceDetails` - `permission_settings.toggleHistory` - `permission_settings.useAtMentionAll` - `permission_settings.manageApps` - `permission_settings.manageWebhooks` - `permission_settings.replyMessages`",
                             "format": "google-fieldmask",
                             "location": "query",
                             "type": "string"
+                        },
+                        "useAdminAccess": {
+                            "description": "When `true`, the method runs using the user's Google Workspace administrator privileges. The calling user must be a Google Workspace administrator with the [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.spaces` [OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes). Some `FieldMask` values are not supported using admin access. For details, see the description of `update_mask`.",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "v1/{+name}",
@@ -452,12 +483,56 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/chat.admin.spaces",
+                        "https://www.googleapis.com/auth/chat.app.spaces",
                         "https://www.googleapis.com/auth/chat.import",
                         "https://www.googleapis.com/auth/chat.spaces"
                     ]
                 },
+                "search": {
+                    "description": "Returns a list of spaces in a Google Workspace organization based on an administrator's search. Requires [user authentication with administrator privileges](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user#admin-privileges). In the request, set `use_admin_access` to `true`.",
+                    "flatPath": "v1/spaces:search",
+                    "httpMethod": "GET",
+                    "id": "chat.spaces.search",
+                    "parameterOrder": [],
+                    "parameters": {
+                        "orderBy": {
+                            "description": "Optional. How the list of spaces is ordered. Supported attributes to order by are: - `membership_count.joined_direct_human_user_count` — Denotes the count of human users that have directly joined a space. - `last_active_time` — Denotes the time when last eligible item is added to any topic of this space. - `create_time` — Denotes the time of the space creation. Valid ordering operation values are: - `ASC` for ascending. Default value. - `DESC` for descending. The supported syntax are: - `membership_count.joined_direct_human_user_count DESC` - `membership_count.joined_direct_human_user_count ASC` - `last_active_time DESC` - `last_active_time ASC` - `create_time DESC` - `create_time ASC`",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageSize": {
+                            "description": "The maximum number of spaces to return. The service may return fewer than this value. If unspecified, at most 100 spaces are returned. The maximum value is 1000. If you use a value more than 1000, it's automatically changed to 1000.",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "A token, received from the previous search spaces call. Provide this parameter to retrieve the subsequent page. When paginating, all other parameters provided should match the call that provided the page token. Passing different values to the other parameters might lead to unexpected results.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "query": {
+                            "description": "Required. A search query. You can search by using the following parameters: - `create_time` - `customer` - `display_name` - `external_user_allowed` - `last_active_time` - `space_history_state` - `space_type` `create_time` and `last_active_time` accept a timestamp in [RFC-3339](https://www.rfc-editor.org/rfc/rfc3339) format and the supported comparison operators are: `=`, `<`, `>`, `<=`, `>=`. `customer` is required and is used to indicate which customer to fetch spaces from. `customers/my_customer` is the only supported value. `display_name` only accepts the `HAS` (`:`) operator. The text to match is first tokenized into tokens and each token is prefix-matched case-insensitively and independently as a substring anywhere in the space's `display_name`. For example, `Fun Eve` matches `Fun event` or `The evening was fun`, but not `notFun event` or `even`. `external_user_allowed` accepts either `true` or `false`. `space_history_state` only accepts values from the [`historyState`] (https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces#Space.HistoryState) field of a `space` resource. `space_type` is required and the only valid value is `SPACE`. Across different fields, only `AND` operators are supported. A valid example is `space_type = \"SPACE\" AND display_name:\"Hello\"` and an invalid example is `space_type = \"SPACE\" OR display_name:\"Hello\"`. Among the same field, `space_type` doesn't support `AND` or `OR` operators. `display_name`, 'space_history_state', and 'external_user_allowed' only support `OR` operators. `last_active_time` and `create_time` support both `AND` and `OR` operators. `AND` can only be used to represent an interval, such as `last_active_time < \"2022-01-01T00:00:00+00:00\" AND last_active_time > \"2023-01-01T00:00:00+00:00\"`. The following example queries are valid: ``` customer = \"customers/my_customer\" AND space_type = \"SPACE\" customer = \"customers/my_customer\" AND space_type = \"SPACE\" AND display_name:\"Hello World\" customer = \"customers/my_customer\" AND space_type = \"SPACE\" AND (last_active_time < \"2020-01-01T00:00:00+00:00\" OR last_active_time > \"2022-01-01T00:00:00+00:00\") customer = \"customers/my_customer\" AND space_type = \"SPACE\" AND (display_name:\"Hello World\" OR display_name:\"Fun event\") AND (last_active_time > \"2020-01-01T00:00:00+00:00\" AND last_active_time < \"2022-01-01T00:00:00+00:00\") customer = \"customers/my_customer\" AND space_type = \"SPACE\" AND (create_time > \"2019-01-01T00:00:00+00:00\" AND create_time < \"2020-01-01T00:00:00+00:00\") AND (external_user_allowed = \"true\") AND (space_history_state = \"HISTORY_ON\" OR space_history_state = \"HISTORY_OFF\") ```",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "useAdminAccess": {
+                            "description": "When `true`, the method runs using the user's Google Workspace administrator privileges. The calling user must be a Google Workspace administrator with the [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245). Requires either the `chat.admin.spaces.readonly` or `chat.admin.spaces` [OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes). This method currently only supports admin access, thus only `true` is accepted for this field.",
+                            "location": "query",
+                            "type": "boolean"
+                        }
+                    },
+                    "path": "v1/spaces:search",
+                    "response": {
+                        "$ref": "SearchSpacesResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/chat.admin.spaces",
+                        "https://www.googleapis.com/auth/chat.admin.spaces.readonly"
+                    ]
+                },
                 "setup": {
-                    "description": "Creates a space and adds specified users to it. The calling user is automatically added to the space, and shouldn't be specified as a membership in the request. For an example, see [Set up a space with initial members](https://developers.google.com/workspace/chat/set-up-spaces). To specify the human members to add, add memberships with the appropriate `membership.member.name`. To add a human user, use `users/{user}`, where `{user}` can be the email address for the user. For users in the same Workspace organization `{user}` can also be the `id` for the person from the People API, or the `id` for the user in the Directory API. For example, if the People API Person profile ID for `user@example.com` is `123456789`, you can add the user to the space by setting the `membership.member.name` to `users/user@example.com` or `users/123456789`. For a named space or group chat, if the caller blocks, or is blocked by some members, or doesn't have permission to add some members, then those members aren't added to the created space. To create a direct message (DM) between the calling user and another human user, specify exactly one membership to represent the human user. If one user blocks the other, the request fails and the DM isn't created. To create a DM between the calling user and the calling app, set `Space.singleUserBotDm` to `true` and don't specify any memberships. You can only use this method to set up a DM with the calling app. To add the calling app as a member of a space or an existing DM between two human users, see [Invite or add a user or app to a space](https://developers.google.com/workspace/chat/create-members). If a DM already exists between two users, even when one user blocks the other at the time a request is made, then the existing DM is returned. Spaces with threaded replies aren't supported. If you receive the error message `ALREADY_EXISTS` when setting up a space, try a different `displayName`. An existing space within the Google Workspace organization might already use this display name. Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).",
+                    "description": "Creates a space and adds specified users to it. The calling user is automatically added to the space, and shouldn't be specified as a membership in the request. For an example, see [Set up a space with initial members](https://developers.google.com/workspace/chat/set-up-spaces). To specify the human members to add, add memberships with the appropriate `membership.member.name`. To add a human user, use `users/{user}`, where `{user}` can be the email address for the user. For users in the same Workspace organization `{user}` can also be the `id` for the person from the People API, or the `id` for the user in the Directory API. For example, if the People API Person profile ID for `user@example.com` is `123456789`, you can add the user to the space by setting the `membership.member.name` to `users/user@example.com` or `users/123456789`. To specify the Google groups to add, add memberships with the appropriate `membership.group_member.name`. To add or invite a Google group, use `groups/{group}`, where `{group}` is the `id` for the group from the Cloud Identity Groups API. For example, you can use [Cloud Identity Groups lookup API](https://cloud.google.com/identity/docs/reference/rest/v1/groups/lookup) to retrieve the ID `123456789` for group email `group@example.com`, then you can add the group to the space by setting the `membership.group_member.name` to `groups/123456789`. Group email is not supported, and Google groups can only be added as members in named spaces. For a named space or group chat, if the caller blocks, or is blocked by some members, or doesn't have permission to add some members, then those members aren't added to the created space. To create a direct message (DM) between the calling user and another human user, specify exactly one membership to represent the human user. If one user blocks the other, the request fails and the DM isn't created. To create a DM between the calling user and the calling app, set `Space.singleUserBotDm` to `true` and don't specify any memberships. You can only use this method to set up a DM with the calling app. To add the calling app as a member of a space or an existing DM between two human users, see [Invite or add a user or app to a space](https://developers.google.com/workspace/chat/create-members). If a DM already exists between two users, even when one user blocks the other at the time a request is made, then the existing DM is returned. Spaces with threaded replies aren't supported. If you receive the error message `ALREADY_EXISTS` when setting up a space, try a different `displayName`. An existing space within the Google Workspace organization might already use this display name. Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).",
                     "flatPath": "v1/spaces:setup",
                     "httpMethod": "POST",
                     "id": "chat.spaces.setup",
@@ -480,7 +555,7 @@
                 "members": {
                     "methods": {
                         "create": {
-                            "description": "Creates a human membership or app membership for the calling app. Creating memberships for other apps isn't supported. For an example, see [Invite or add a user or a Google Chat app to a space](https://developers.google.com/workspace/chat/create-members). When creating a membership, if the specified member has their auto-accept policy turned off, then they're invited, and must accept the space invitation before joining. Otherwise, creating a membership adds the member directly to the specified space. Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). To specify the member to add, set the `membership.member.name` for the human or app member. - To add the calling app to a space or a direct message between two human users, use `users/app`. Unable to add other apps to the space. - To add a human user, use `users/{user}`, where `{user}` can be the email address for the user. For users in the same Workspace organization `{user}` can also be the `id` for the person from the People API, or the `id` for the user in the Directory API. For example, if the People API Person profile ID for `user@example.com` is `123456789`, you can add the user to the space by setting the `membership.member.name` to `users/user@example.com` or `users/123456789`.",
+                            "description": "Creates a membership for the calling Chat app, a user, or a Google Group. Creating memberships for other Chat apps isn't supported. When creating a membership, if the specified member has their auto-accept policy turned off, then they're invited, and must accept the space invitation before joining. Otherwise, creating a membership adds the member directly to the specified space. Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer Preview](https://developers.google.com/workspace/preview) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) You can authenticate and authorize this method with administrator privileges by setting the `use_admin_access` field in the request. For example usage, see: - [Invite or add a user to a space](https://developers.google.com/workspace/chat/create-members#create-user-membership). - [Invite or add a Google Group to a space](https://developers.google.com/workspace/chat/create-members#create-group-membership). - [Add the Chat app to a space](https://developers.google.com/workspace/chat/create-members#create-membership-calling-api).",
                             "flatPath": "v1/spaces/{spacesId}/members",
                             "httpMethod": "POST",
                             "id": "chat.spaces.members.create",
@@ -494,6 +569,11 @@
                                     "pattern": "^spaces/[^/]+$",
                                     "required": true,
                                     "type": "string"
+                                },
+                                "useAdminAccess": {
+                                    "description": "When `true`, the method runs using the user's Google Workspace administrator privileges. The calling user must be a Google Workspace administrator with the [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.memberships` [OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes). Creating app memberships or creating memberships for users outside the administrator's Google Workspace organization isn't supported using admin access.",
+                                    "location": "query",
+                                    "type": "boolean"
                                 }
                             },
                             "path": "v1/{+parent}/members",
@@ -505,13 +585,14 @@
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/chat.admin.memberships",
+                                "https://www.googleapis.com/auth/chat.app.memberships",
                                 "https://www.googleapis.com/auth/chat.import",
                                 "https://www.googleapis.com/auth/chat.memberships",
                                 "https://www.googleapis.com/auth/chat.memberships.app"
                             ]
                         },
                         "delete": {
-                            "description": "Deletes a membership. For an example, see [Remove a user or a Google Chat app from a space](https://developers.google.com/workspace/chat/delete-members). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).",
+                            "description": "Deletes a membership. For an example, see [Remove a user or a Google Chat app from a space](https://developers.google.com/workspace/chat/delete-members). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer Preview](https://developers.google.com/workspace/preview) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) You can authenticate and authorize this method with administrator privileges by setting the `use_admin_access` field in the request.",
                             "flatPath": "v1/spaces/{spacesId}/members/{membersId}",
                             "httpMethod": "DELETE",
                             "id": "chat.spaces.members.delete",
@@ -525,6 +606,11 @@
                                     "pattern": "^spaces/[^/]+/members/[^/]+$",
                                     "required": true,
                                     "type": "string"
+                                },
+                                "useAdminAccess": {
+                                    "description": "When `true`, the method runs using the user's Google Workspace administrator privileges. The calling user must be a Google Workspace administrator with the [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.memberships` [OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes). Deleting app memberships in a space isn't supported using admin access.",
+                                    "location": "query",
+                                    "type": "boolean"
                                 }
                             },
                             "path": "v1/{+name}",
@@ -533,13 +619,14 @@
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/chat.admin.memberships",
+                                "https://www.googleapis.com/auth/chat.app.memberships",
                                 "https://www.googleapis.com/auth/chat.import",
                                 "https://www.googleapis.com/auth/chat.memberships",
                                 "https://www.googleapis.com/auth/chat.memberships.app"
                             ]
                         },
                         "get": {
-                            "description": "Returns details about a membership. For an example, see [Get details about a user's or Google Chat app's membership](https://developers.google.com/workspace/chat/get-members). Requires [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).",
+                            "description": "Returns details about a membership. For an example, see [Get details about a user's or Google Chat app's membership](https://developers.google.com/workspace/chat/get-members). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) You can authenticate and authorize this method with administrator privileges by setting the `use_admin_access` field in the request.",
                             "flatPath": "v1/spaces/{spacesId}/members/{membersId}",
                             "httpMethod": "GET",
                             "id": "chat.spaces.members.get",
@@ -548,11 +635,16 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. Resource name of the membership to retrieve. To get the app's own membership [by using user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), you can optionally use `spaces/{space}/members/app`. Format: `spaces/{space}/members/{member}` or `spaces/{space}/members/app` When [authenticated as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), you can use the user's email as an alias for `{member}`. For example, `spaces/{space}/members/example@gmail.com` where `example@gmail.com` is the email of the Google Chat user.",
+                                    "description": "Required. Resource name of the membership to retrieve. To get the app's own membership [by using user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), you can optionally use `spaces/{space}/members/app`. Format: `spaces/{space}/members/{member}` or `spaces/{space}/members/app` You can use the user's email as an alias for `{member}`. For example, `spaces/{space}/members/example@gmail.com` where `example@gmail.com` is the email of the Google Chat user.",
                                     "location": "path",
                                     "pattern": "^spaces/[^/]+/members/[^/]+$",
                                     "required": true,
                                     "type": "string"
+                                },
+                                "useAdminAccess": {
+                                    "description": "When `true`, the method runs using the user's Google Workspace administrator privileges. The calling user must be a Google Workspace administrator with the [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.memberships` or `chat.admin.memberships.readonly` [OAuth 2.0 scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes). Getting app memberships in a space isn't supported when using admin access.",
+                                    "location": "query",
+                                    "type": "boolean"
                                 }
                             },
                             "path": "v1/{+name}",
@@ -568,7 +660,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists memberships in a space. For an example, see [List users and Google Chat apps in a space](https://developers.google.com/workspace/chat/list-members). Listing memberships with [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) lists memberships in spaces that the Chat app has access to, but excludes Chat app memberships, including its own. Listing memberships with [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) lists memberships in spaces that the authenticated user has access to. Requires [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).",
+                            "description": "Lists memberships in a space. For an example, see [List users and Google Chat apps in a space](https://developers.google.com/workspace/chat/list-members). Listing memberships with [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) lists memberships in spaces that the Chat app has access to, but excludes Chat app memberships, including its own. Listing memberships with [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) lists memberships in spaces that the authenticated user has access to. Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) You can authenticate and authorize this method with administrator privileges by setting the `use_admin_access` field in the request.",
                             "flatPath": "v1/spaces/{spacesId}/members",
                             "httpMethod": "GET",
                             "id": "chat.spaces.members.list",
@@ -577,7 +669,7 @@
                             ],
                             "parameters": {
                                 "filter": {
-                                    "description": "Optional. A query filter. You can filter memberships by a member's role ([`role`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.members#membershiprole)) and type ([`member.type`](https://developers.google.com/workspace/chat/api/reference/rest/v1/User#type)). To filter by role, set `role` to `ROLE_MEMBER` or `ROLE_MANAGER`. To filter by type, set `member.type` to `HUMAN` or `BOT`. Developer Preview: You can also filter for `member.type` using the `!=` operator. To filter by both role and type, use the `AND` operator. To filter by either role or type, use the `OR` operator. Either `member.type = \"HUMAN\"` or `member.type != \"BOT\"` is required when `use_admin_access` is set to true. Other member type filters will be rejected. For example, the following queries are valid: ``` role = \"ROLE_MANAGER\" OR role = \"ROLE_MEMBER\" member.type = \"HUMAN\" AND role = \"ROLE_MANAGER\" member.type != \"BOT\" ``` The following queries are invalid: ``` member.type = \"HUMAN\" AND member.type = \"BOT\" role = \"ROLE_MANAGER\" AND role = \"ROLE_MEMBER\" ``` Invalid queries are rejected by the server with an `INVALID_ARGUMENT` error.",
+                                    "description": "Optional. A query filter. You can filter memberships by a member's role ([`role`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.members#membershiprole)) and type ([`member.type`](https://developers.google.com/workspace/chat/api/reference/rest/v1/User#type)). To filter by role, set `role` to `ROLE_MEMBER` or `ROLE_MANAGER`. To filter by type, set `member.type` to `HUMAN` or `BOT`. You can also filter for `member.type` using the `!=` operator. To filter by both role and type, use the `AND` operator. To filter by either role or type, use the `OR` operator. Either `member.type = \"HUMAN\"` or `member.type != \"BOT\"` is required when `use_admin_access` is set to true. Other member type filters will be rejected. For example, the following queries are valid: ``` role = \"ROLE_MANAGER\" OR role = \"ROLE_MEMBER\" member.type = \"HUMAN\" AND role = \"ROLE_MANAGER\" member.type != \"BOT\" ``` The following queries are invalid: ``` member.type = \"HUMAN\" AND member.type = \"BOT\" role = \"ROLE_MANAGER\" AND role = \"ROLE_MEMBER\" ``` Invalid queries are rejected by the server with an `INVALID_ARGUMENT` error.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -608,6 +700,11 @@
                                     "description": "Optional. When `true`, also returns memberships associated with invited members, in addition to other types of memberships. If a filter is set, invited memberships that don't match the filter criteria aren't returned. Currently requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).",
                                     "location": "query",
                                     "type": "boolean"
+                                },
+                                "useAdminAccess": {
+                                    "description": "When `true`, the method runs using the user's Google Workspace administrator privileges. The calling user must be a Google Workspace administrator with the [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245). Requires either the `chat.admin.memberships.readonly` or `chat.admin.memberships` [OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes). Listing app memberships in a space isn't supported when using admin access.",
+                                    "location": "query",
+                                    "type": "boolean"
                                 }
                             },
                             "path": "v1/{+parent}/members",
@@ -624,7 +721,7 @@
                             ]
                         },
                         "patch": {
-                            "description": "Updates a membership. For an example, see [Update a user's membership in a space](https://developers.google.com/workspace/chat/update-members). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).",
+                            "description": "Updates a membership. For an example, see [Update a user's membership in a space](https://developers.google.com/workspace/chat/update-members). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer Preview](https://developers.google.com/workspace/preview) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) You can authenticate and authorize this method with administrator privileges by setting the `use_admin_access` field in the request.",
                             "flatPath": "v1/spaces/{spacesId}/members/{membersId}",
                             "httpMethod": "PATCH",
                             "id": "chat.spaces.members.patch",
@@ -644,6 +741,11 @@
                                     "format": "google-fieldmask",
                                     "location": "query",
                                     "type": "string"
+                                },
+                                "useAdminAccess": {
+                                    "description": "When `true`, the method runs using the user's Google Workspace administrator privileges. The calling user must be a Google Workspace administrator with the [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.memberships` [OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).",
+                                    "location": "query",
+                                    "type": "boolean"
                                 }
                             },
                             "path": "v1/{+name}",
@@ -655,6 +757,7 @@
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/chat.admin.memberships",
+                                "https://www.googleapis.com/auth/chat.app.memberships",
                                 "https://www.googleapis.com/auth/chat.import",
                                 "https://www.googleapis.com/auth/chat.memberships"
                             ]
@@ -664,7 +767,7 @@
                 "messages": {
                     "methods": {
                         "create": {
-                            "description": "Creates a message in a Google Chat space. The maximum message size, including text and cards, is 32,000 bytes. For an example, see [Send a message](https://developers.google.com/workspace/chat/create-messages). Calling this method requires [authentication](https://developers.google.com/workspace/chat/authenticate-authorize) and supports the following authentication types: - For text messages, user authentication or app authentication are supported. - For card messages, only app authentication is supported. (Only Chat apps can create card messages.)",
+                            "description": "Creates a message in a Google Chat space. For an example, see [Send a message](https://developers.google.com/workspace/chat/create-messages). The `create()` method requires either [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) or [app authentication](https://developers.google.com/workspace/chat/authorize-import). Chat attributes the message sender differently depending on the type of authentication that you use in your request. The following image shows how Chat attributes a message when you use app authentication. Chat displays the Chat app as the message sender. The content of the message can contain text (`text`), cards (`cardsV2`), and accessory widgets (`accessoryWidgets`). ![Message sent with app authentication](https://developers.google.com/workspace/chat/images/message-app-auth.svg) The following image shows how Chat attributes a message when you use user authentication. Chat displays the user as the message sender and attributes the Chat app to the message by displaying its name. The content of message can only contain text (`text`). ![Message sent with user authentication](https://developers.google.com/workspace/chat/images/message-user-auth.svg) The maximum message size, including the message contents, is 32,000 bytes.",
                             "flatPath": "v1/spaces/{spacesId}/messages",
                             "httpMethod": "POST",
                             "id": "chat.spaces.messages.create",
@@ -726,7 +829,7 @@
                             ]
                         },
                         "delete": {
-                            "description": "Deletes a message. For an example, see [Delete a message](https://developers.google.com/workspace/chat/delete-messages). Requires [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). When using app authentication, requests can only delete messages created by the calling Chat app.",
+                            "description": "Deletes a message. For an example, see [Delete a message](https://developers.google.com/workspace/chat/delete-messages). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) When using app authentication, requests can only delete messages created by the calling Chat app.",
                             "flatPath": "v1/spaces/{spacesId}/messages/{messagesId}",
                             "httpMethod": "DELETE",
                             "id": "chat.spaces.messages.delete",
@@ -758,7 +861,7 @@
                             ]
                         },
                         "get": {
-                            "description": "Returns details about a message. For an example, see [Get details about a message](https://developers.google.com/workspace/chat/get-messages). Requires [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). Note: Might return a message from a blocked member or space.",
+                            "description": "Returns details about a message. For an example, see [Get details about a message](https://developers.google.com/workspace/chat/get-messages). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) Note: Might return a message from a blocked member or space.",
                             "flatPath": "v1/spaces/{spacesId}/messages/{messagesId}",
                             "httpMethod": "GET",
                             "id": "chat.spaces.messages.get",
@@ -785,7 +888,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists messages in a space that the caller is a member of, including messages from blocked members and spaces. For an example, see [List messages](/chat/api/guides/v1/messages/list). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).",
+                            "description": "Lists messages in a space that the caller is a member of, including messages from blocked members and spaces. If you list messages from a space with no messages, the response is an empty object. When using a REST/HTTP interface, the response contains an empty JSON object, `{}`. For an example, see [List messages](https://developers.google.com/workspace/chat/api/guides/v1/messages/list). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).",
                             "flatPath": "v1/spaces/{spacesId}/messages",
                             "httpMethod": "GET",
                             "id": "chat.spaces.messages.list",
@@ -838,7 +941,7 @@
                             ]
                         },
                         "patch": {
-                            "description": "Updates a message. There's a difference between the `patch` and `update` methods. The `patch` method uses a `patch` request while the `update` method uses a `put` request. We recommend using the `patch` method. For an example, see [Update a message](https://developers.google.com/workspace/chat/update-messages). Requires [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). When using app authentication, requests can only update messages created by the calling Chat app.",
+                            "description": "Updates a message. There's a difference between the `patch` and `update` methods. The `patch` method uses a `patch` request while the `update` method uses a `put` request. We recommend using the `patch` method. For an example, see [Update a message](https://developers.google.com/workspace/chat/update-messages). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) When using app authentication, requests can only update messages created by the calling Chat app.",
                             "flatPath": "v1/spaces/{spacesId}/messages/{messagesId}",
                             "httpMethod": "PATCH",
                             "id": "chat.spaces.messages.patch",
@@ -879,7 +982,7 @@
                             ]
                         },
                         "update": {
-                            "description": "Updates a message. There's a difference between the `patch` and `update` methods. The `patch` method uses a `patch` request while the `update` method uses a `put` request. We recommend using the `patch` method. For an example, see [Update a message](https://developers.google.com/workspace/chat/update-messages). Requires [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). When using app authentication, requests can only update messages created by the calling Chat app.",
+                            "description": "Updates a message. There's a difference between the `patch` and `update` methods. The `patch` method uses a `patch` request while the `update` method uses a `put` request. We recommend using the `patch` method. For an example, see [Update a message](https://developers.google.com/workspace/chat/update-messages). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) When using app authentication, requests can only update messages created by the calling Chat app.",
                             "flatPath": "v1/spaces/{spacesId}/messages/{messagesId}",
                             "httpMethod": "PUT",
                             "id": "chat.spaces.messages.update",
@@ -1061,7 +1164,7 @@
                 "spaceEvents": {
                     "methods": {
                         "get": {
-                            "description": "Returns an event from a Google Chat space. The [event payload](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.spaceEvents#SpaceEvent.FIELDS.oneof_payload) contains the most recent version of the resource that changed. For example, if you request an event about a new message but the message was later updated, the server returns the updated `Message` resource in the event payload. Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). To get an event, the authenticated user must be a member of the space. For an example, see [Get details about an event from a Google Chat space](https://developers.google.com/workspace/chat/get-space-event).",
+                            "description": "Returns an event from a Google Chat space. The [event payload](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.spaceEvents#SpaceEvent.FIELDS.oneof_payload) contains the most recent version of the resource that changed. For example, if you request an event about a new message but the message was later updated, the server returns the updated `Message` resource in the event payload. Note: The `permissionSettings` field is not returned in the Space object of the Space event data for this request. Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). To get an event, the authenticated user must be a member of the space. For an example, see [Get details about an event from a Google Chat space](https://developers.google.com/workspace/chat/get-space-event).",
                             "flatPath": "v1/spaces/{spacesId}/spaceEvents/{spaceEventsId}",
                             "httpMethod": "GET",
                             "id": "chat.spaces.spaceEvents.get",
@@ -1246,6 +1349,32 @@
         }
     },
     "schemas": {
+        "AccessSettings": {
+            "description": "Represents the [access setting](https://support.google.com/chat/answer/11971020) of the space.",
+            "id": "AccessSettings",
+            "properties": {
+                "accessState": {
+                    "description": "Output only. Indicates the access state of the space.",
+                    "enum": [
+                        "ACCESS_STATE_UNSPECIFIED",
+                        "PRIVATE",
+                        "DISCOVERABLE"
+                    ],
+                    "enumDescriptions": [
+                        "Access state is unknown or not supported in this API.",
+                        "Only users or Google Groups that have been individually added or invited by other users or Google Workspace administrators can discover and access the space.",
+                        "A space manager has granted a target audience access to the space. Users or Google Groups that have been individually added or invited to the space can also discover and access the space. To learn more, see [Make a space discoverable to specific users](https://developers.google.com/workspace/chat/space-target-audience). Creating discoverable spaces requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "audience": {
+                    "description": "Optional. The resource name of the [target audience](https://support.google.com/a/answer/9934697) who can discover the space, join the space, and preview the messages in the space. If unset, only users or Google Groups who have been individually invited or added to the space can access it. For details, see [Make a space discoverable to a target audience](https://developers.google.com/workspace/chat/space-target-audience). Format: `audiences/{audience}` To use the default target audience for the Google Workspace organization, set to `audiences/default`. Reading the target audience supports: - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [administrator approval](https://support.google.com/a?p=chat-app-auth) with the `chat.app.spaces` scope in [Developer Preview](https://developers.google.com/workspace/preview). This field is not populated when using the `chat.bot` scope with [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). Setting the target audience requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "AccessoryWidget": {
             "description": "One or more interactive widgets that appear at the bottom of a message. For details, see [Add interactive widgets at the bottom of a message](https://developers.google.com/workspace/chat/create-messages#add-accessory-widgets).",
             "id": "AccessoryWidget",
@@ -1629,6 +1758,25 @@
             },
             "type": "object"
         },
+        "ChatSpaceLinkData": {
+            "description": "Data for Chat space links.",
+            "id": "ChatSpaceLinkData",
+            "properties": {
+                "message": {
+                    "description": "The message of the linked Chat space resource. Format: `spaces/{space}/messages/{message}`",
+                    "type": "string"
+                },
+                "space": {
+                    "description": "The space of the linked Chat space resource. Format: `spaces/{space}`",
+                    "type": "string"
+                },
+                "thread": {
+                    "description": "The thread of the linked Chat space resource. Format: `spaces/{space}/threads/{thread}`",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Color": {
             "description": "Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(''); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(''); }; // ...",
             "id": "Color",
@@ -1693,7 +1841,7 @@
                         "The add-on launches from Google Sheets.",
                         "The add-on launches from Google Slides.",
                         "The add-on launches from Google Drawings.",
-                        "A Google Chat app."
+                        "A Google Chat app. Not used for Google Workspace Add-ons."
                     ],
                     "type": "string"
                 },
@@ -1826,7 +1974,7 @@
             "type": "object"
         },
         "DeprecatedEvent": {
-            "description": "A Google Chat app interaction event. To learn about interaction events, see [Receive and respond to interactions with your Google Chat app](https://developers.google.com/workspace/chat/api/guides/message-formats). To learn about event types and for example event payloads, see [Types of Google Chat app interaction events](https://developers.google.com/workspace/chat/events). In addition to receiving events from user interactions, Chat apps can receive events about changes to spaces, such as when a new member is added to a space. To learn about space events, see [Work with events from Google Chat](https://developers.google.com/workspace/chat/events-overview).",
+            "description": "A Google Chat app interaction event that represents and contains data about a user's interaction with a Chat app. To configure your Chat app to receive interaction events, see [Receive and respond to user interactions](https://developers.google.com/workspace/chat/receive-respond-interactions). In addition to receiving events from user interactions, Chat apps can receive events about changes to spaces, such as when a new member is added to a space. To learn about space events, see [Work with events from Google Chat](https://developers.google.com/workspace/chat/events-overview).",
             "id": "DeprecatedEvent",
             "properties": {
                 "action": {
@@ -1838,7 +1986,7 @@
                     "description": "Represents information about the user's client, such as locale, host app, and platform. For Chat apps, `CommonEventObject` includes information submitted by users interacting with [dialogs](https://developers.google.com/workspace/chat/dialogs), like data entered on a card."
                 },
                 "configCompleteRedirectUrl": {
-                    "description": "The URL the Chat app should redirect the user to after they have completed an authorization or configuration flow outside of Google Chat. For more information, see [Connect a Chat app with other services & tools](https://developers.google.com/workspace/chat/connect-web-services-tools).",
+                    "description": "For `MESSAGE` interaction events, the URL that users must be redirected to after they complete an authorization or configuration flow outside of Google Chat. For more information, see [Connect a Chat app with other services and tools](https://developers.google.com/workspace/chat/connect-web-services-tools).",
                     "type": "string"
                 },
                 "dialogEventType": {
@@ -1868,11 +2016,11 @@
                 },
                 "message": {
                     "$ref": "Message",
-                    "description": "The message that triggered the interaction event, if applicable."
+                    "description": "For `ADDED_TO_SPACE`, `CARD_CLICKED`, and `MESSAGE` interaction events, the message that triggered the interaction event, if applicable."
                 },
                 "space": {
                     "$ref": "Space",
-                    "description": "The space in which the interaction event occurred."
+                    "description": "The space in which the user interacted with the Chat app."
                 },
                 "threadKey": {
                     "description": "The Chat app-defined key for the thread related to the interaction event. See [`spaces.messages.thread.threadKey`](/chat/api/reference/rest/v1/spaces.messages#Thread.FIELDS.thread_key) for more information.",
@@ -1883,7 +2031,7 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "The type of interaction event. For details, see [Types of Google Chat app interaction events](https://developers.google.com/workspace/chat/events).",
+                    "description": "The [type](/workspace/chat/api/reference/rest/v1/EventType) of user interaction with the Chat app, such as `MESSAGE` or `ADDED_TO_SPACE`.",
                     "enum": [
                         "UNSPECIFIED",
                         "MESSAGE",
@@ -1894,17 +2042,17 @@
                     ],
                     "enumDescriptions": [
                         "Default value for the enum. DO NOT USE.",
-                        "A user sends the Chat app a message, or invokes the Chat app in a space.",
-                        "A user adds the Chat app to a space, or a Google Workspace administrator installs the Chat app in direct message spaces for users in their organization.",
-                        "A user removes the Chat app from a space.",
-                        "A user clicks an interactive element of a card or dialog from a Chat app, such as a button. If a user interacts with a dialog, the `CARD_CLICKED` interaction event's `isDialogEvent` field is set to `true` and includes a [`DialogEventType`](https://developers.google.com/workspace/chat/api/reference/rest/v1/DialogEventType).",
+                        "A user sends the Chat app a message, or invokes the Chat app in a space, such as any of the following examples: * Any message in a direct message (DM) space with the Chat app. * A message in a multi-person space where a person @mentions the Chat app, or uses one of its slash commands. * If you've configured link previews for your Chat app, a user posts a message that contains a link that matches the configured URL pattern.",
+                        "A user adds the Chat app to a space, or a Google Workspace administrator installs the Chat app in direct message spaces for users in their organization. Chat apps typically respond to this interaction event by posting a welcome message in the space. When administrators install Chat apps, the `space.adminInstalled` field is set to `true` and users can't uninstall them. To learn about Chat apps installed by administrators, see Google Workspace Admin Help's documentation, [Install Marketplace apps in your domain](https://support.google.com/a/answer/172482).",
+                        "A user removes the Chat app from a space, or a Google Workspace administrator uninstalls the Chat app for a user in their organization. Chat apps can't respond with messages to this event, because they have already been removed. When administrators uninstall Chat apps, the `space.adminInstalled` field is set to `false`. If a user installed the Chat app before the administrator, the Chat app remains installed for the user and the Chat app doesn't receive a `REMOVED_FROM_SPACE` interaction event.",
+                        "A user clicks an interactive element of a card or dialog from a Chat app, such as a button. To receive an interaction event, the button must trigger another interaction with the Chat app. For example, a Chat app doesn't receive a `CARD_CLICKED` interaction event if a user clicks a button that opens a link to a website, but receives interaction events in the following examples: * The user clicks a `Send feedback` button on a card, which opens a dialog for the user to input information. * The user clicks a `Submit` button after inputting information into a card or dialog. If a user clicks a button to open, submit, or cancel a dialog, the `CARD_CLICKED` interaction event's `isDialogEvent` field is set to `true` and includes a [`DialogEventType`](https://developers.google.com/workspace/chat/api/reference/rest/v1/DialogEventType).",
                         "A user updates a widget in a card message or dialog."
                     ],
                     "type": "string"
                 },
                 "user": {
                     "$ref": "User",
-                    "description": "The user that triggered the interaction event."
+                    "description": "The user that interacted with the Chat app."
                 }
             },
             "type": "object"
@@ -2089,7 +2237,7 @@
                 },
                 "strokeColor": {
                     "$ref": "Color",
-                    "description": "The colors to use when the type is `BORDER_TYPE_STROKE`."
+                    "description": "The colors to use when the type is `BORDER_TYPE_STROKE`. To set the stroke color, specify a value for the `red`, `green`, and `blue` fields. The value must be a float number between 0 and 1 based on the RGB color value, where `0` (0/255) represents the absence of color and `1` (255/255) represents the maximum intensity of the color. For example, the following sets the color to red at its maximum intensity: ``` \"color\": { \"red\": 1, \"green\": 0, \"blue\": 0, } ``` The `alpha` field is unavailable for stroke color. If specified, this field is ignored."
                 },
                 "type": {
                     "description": "The border type.",
@@ -2118,7 +2266,7 @@
                 },
                 "color": {
                     "$ref": "Color",
-                    "description": "If set, the button is filled with a solid background color and the font color changes to maintain contrast with the background color. For example, setting a blue background likely results in white text. If unset, the image background is white and the font color is blue. For red, green, and blue, the value of each field is a `float` number that you can express in either of two ways: as a number between 0 and 255 divided by 255 (153/255), or as a value between 0 and 1 (0.6). 0 represents the absence of a color and 1 or 255/255 represent the full presence of that color on the RGB scale. Optionally set `alpha`, which sets a level of transparency using this equation: ``` pixel color = alpha * (this color) + (1.0 - alpha) * (background color) ``` For `alpha`, a value of `1` corresponds with a solid color, and a value of `0` corresponds with a completely transparent color. For example, the following color represents a half transparent red: ``` \"color\": { \"red\": 1, \"green\": 0, \"blue\": 0, \"alpha\": 0.5 } ```"
+                    "description": "Optional. The color of the button. If set, the button `type` is set to `FILLED` and the color of `text` and `icon` fields are set to a contrasting color for readability. For example, if the button color is set to blue, any text or icons in the button are set to white. To set the button color, specify a value for the `red`, `green`, and `blue` fields. The value must be a float number between 0 and 1 based on the RGB color value, where `0` (0/255) represents the absence of color and `1` (255/255) represents the maximum intensity of the color. For example, the following sets the color to red at its maximum intensity: ``` \"color\": { \"red\": 1, \"green\": 0, \"blue\": 0, } ``` The `alpha` field is unavailable for button color. If specified, this field is ignored."
                 },
                 "disabled": {
                     "description": "If `true`, the button is displayed in an inactive state and doesn't respond to user actions.",
@@ -2126,7 +2274,7 @@
                 },
                 "icon": {
                     "$ref": "GoogleAppsCardV1Icon",
-                    "description": "The icon image. If both `icon` and `text` are set, then the icon appears before the text."
+                    "description": "An icon displayed inside the button. If both `icon` and `text` are set, then the icon appears before the text."
                 },
                 "onClick": {
                     "$ref": "GoogleAppsCardV1OnClick",
@@ -2195,7 +2343,7 @@
                     "description": "When displaying contextual content, the peek card header acts as a placeholder so that the user can navigate forward between the homepage cards and the contextual cards. [Google Workspace Add-ons](https://developers.google.com/workspace/add-ons):"
                 },
                 "sectionDividerStyle": {
-                    "description": "The divider style between sections.",
+                    "description": "The divider style between the header, sections and footer.",
                     "enum": [
                         "DIVIDER_STYLE_UNSPECIFIED",
                         "SOLID_DIVIDER",
@@ -2203,8 +2351,8 @@
                     ],
                     "enumDescriptions": [
                         "Don't use. Unspecified.",
-                        "Default option. Render a solid divider between sections.",
-                        "If set, no divider is rendered between sections."
+                        "Default option. Render a solid divider.",
+                        "If set, no divider is rendered. This style completely removes the divider from the layout. The result is equivalent to not adding a divider at all."
                     ],
                     "type": "string"
                 },
@@ -2284,7 +2432,7 @@
             "type": "object"
         },
         "GoogleAppsCardV1Column": {
-            "description": "A column. [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend): Columns for Google Workspace Add-ons are in Developer Preview.",
+            "description": "A column. [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend)",
             "id": "GoogleAppsCardV1Column",
             "properties": {
                 "horizontalAlignment": {
@@ -2344,7 +2492,7 @@
             "type": "object"
         },
         "GoogleAppsCardV1Columns": {
-            "description": "The `Columns` widget displays up to 2 columns in a card or dialog. You can add widgets to each column; the widgets appear in the order that they are specified. For an example in Google Chat apps, see [Display cards and dialogs in columns](https://developers.google.com/workspace/chat/format-structure-card-dialog#display_cards_and_dialogs_in_columns). The height of each column is determined by the taller column. For example, if the first column is taller than the second column, both columns have the height of the first column. Because each column can contain a different number of widgets, you can't define rows or align widgets between the columns. Columns are displayed side-by-side. You can customize the width of each column using the `HorizontalSizeStyle` field. If the user's screen width is too narrow, the second column wraps below the first: * On web, the second column wraps if the screen width is less than or equal to 480 pixels. * On iOS devices, the second column wraps if the screen width is less than or equal to 300 pt. * On Android devices, the second column wraps if the screen width is less than or equal to 320 dp. To include more than 2 columns, or to use rows, use the `Grid` widget. [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend): Columns for Google Workspace Add-ons are in Developer Preview.",
+            "description": "The `Columns` widget displays up to 2 columns in a card or dialog. You can add widgets to each column; the widgets appear in the order that they are specified. For an example in Google Chat apps, see [Display cards and dialogs in columns](https://developers.google.com/workspace/chat/format-structure-card-dialog#display_cards_and_dialogs_in_columns). The height of each column is determined by the taller column. For example, if the first column is taller than the second column, both columns have the height of the first column. Because each column can contain a different number of widgets, you can't define rows or align widgets between the columns. Columns are displayed side-by-side. You can customize the width of each column using the `HorizontalSizeStyle` field. If the user's screen width is too narrow, the second column wraps below the first: * On web, the second column wraps if the screen width is less than or equal to 480 pixels. * On iOS devices, the second column wraps if the screen width is less than or equal to 300 pt. * On Android devices, the second column wraps if the screen width is less than or equal to 320 dp. To include more than two columns, or to use rows, use the `Grid` widget. [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend): The add-on UIs that support columns include: * The dialog displayed when users open the add-on from an email draft. * The dialog displayed when users open the add-on from the **Add attachment** menu in a Google Calendar event.",
             "id": "GoogleAppsCardV1Columns",
             "properties": {
                 "columnItems": {
@@ -2720,19 +2868,17 @@
                     "description": "A data source shared by all Google Workspace applications, such as users in a Google Workspace organization.",
                     "enum": [
                         "UNKNOWN",
-                        "USER",
-                        "DRIVE"
+                        "USER"
                     ],
                     "enumDescriptions": [
                         "Default value. Don't use.",
-                        "Google Workspace users. The user can only view and select users from their Google Workspace organization.",
-                        "Represents a data source from Google Drive OnePick."
+                        "Google Workspace users. The user can only view and select users from their Google Workspace organization."
                     ],
                     "type": "string"
                 },
                 "hostAppDataSource": {
                     "$ref": "HostAppDataSourceMarkup",
-                    "description": "A data source that's unique to a Google Workspace host application, such spaces in Google Chat."
+                    "description": "A data source that's unique to a Google Workspace host application, such spaces in Google Chat. This field supports the Google API Client Libraries but isn't available in the Cloud Client Libraries. To learn more, see [Install the client libraries](https://developers.google.com/workspace/chat/libraries)."
                 }
             },
             "type": "object"
@@ -2794,7 +2940,7 @@
                     "type": "integer"
                 },
                 "name": {
-                    "description": "The name that identifies the selection input in a form input event. For details about working with form inputs, see [Receive form data](https://developers.google.com/workspace/chat/read-form-data).",
+                    "description": "Required. The name that identifies the selection input in a form input event. For details about working with form inputs, see [Receive form data](https://developers.google.com/workspace/chat/read-form-data).",
                     "type": "string"
                 },
                 "onChangeAction": {
@@ -2819,7 +2965,7 @@
                         "A set of radio buttons. Users can select one radio button.",
                         "A set of switches. Users can turn on one or more switches.",
                         "A dropdown menu. Users can select one item from the menu.",
-                        "A multiselect menu for static or dynamic data. From the menu bar, users select one or more items. Users can also input values to populate dynamic data. For example, users can start typing the name of a Google Chat space and the widget autosuggests the space. To populate items for a multiselect menu, you can use one of the following types of data sources: * Static data: Items are specified as `SelectionItem` objects in the widget. Up to 100 items. * Google Workspace data: Items are populated using data from Google Workspace, such as Google Workspace users or Google Chat spaces. * External data: Items are populated from an external data source outside of Google Workspace. For examples of how to implement multiselect menus, see [Add a multiselect menu](https://developers.google.com/workspace/chat/design-interactive-card-dialog#multiselect-menu). [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend): Multiselect for Google Workspace Add-ons are in Developer Preview."
+                        "A multiselect menu for static or dynamic data. From the menu bar, users select one or more items. Users can also input values to populate dynamic data. For example, users can start typing the name of a Google Chat space and the widget autosuggests the space. To populate items for a multiselect menu, you can use one of the following types of data sources: * Static data: Items are specified as `SelectionItem` objects in the widget. Up to 100 items. * Google Workspace data: Items are populated using data from Google Workspace, such as Google Workspace users or Google Chat spaces. * External data: Items are populated from an external data source outside of Google Workspace. For examples of how to implement multiselect menus, see [Add a multiselect menu](https://developers.google.com/workspace/chat/design-interactive-card-dialog#multiselect-menu). [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):"
                     ],
                     "type": "string"
                 }
@@ -2983,7 +3129,7 @@
             "properties": {
                 "buttonList": {
                     "$ref": "GoogleAppsCardV1ButtonList",
-                    "description": "A list of buttons. For example, the following JSON creates two buttons. The first is a blue text button and the second is an image button that opens a link: ``` \"buttonList\": { \"buttons\": [ { \"text\": \"Edit\", \"color\": { \"red\": 0, \"green\": 0, \"blue\": 1, \"alpha\": 1 }, \"disabled\": true, }, { \"icon\": { \"knownIcon\": \"INVITE\", \"altText\": \"check calendar\" }, \"onClick\": { \"openLink\": { \"url\": \"https://example.com/calendar\" } } } ] } ```"
+                    "description": "A list of buttons. For example, the following JSON creates two buttons. The first is a blue text button and the second is an image button that opens a link: ``` \"buttonList\": { \"buttons\": [ { \"text\": \"Edit\", \"color\": { \"red\": 0, \"green\": 0, \"blue\": 1, }, \"disabled\": true, }, { \"icon\": { \"knownIcon\": \"INVITE\", \"altText\": \"check calendar\" }, \"onClick\": { \"openLink\": { \"url\": \"https://example.com/calendar\" } } } ] } ```"
                 },
                 "columns": {
                     "$ref": "GoogleAppsCardV1Columns",
@@ -3041,7 +3187,7 @@
             "type": "object"
         },
         "GoogleAppsCardV1Widgets": {
-            "description": "The supported widgets that you can include in a column. [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend): Columns for Google Workspace Add-ons are in Developer Preview.",
+            "description": "The supported widgets that you can include in a column. [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend)",
             "id": "GoogleAppsCardV1Widgets",
             "properties": {
                 "buttonList": {
@@ -3397,7 +3543,7 @@
                     "type": "string"
                 },
                 "spaceEvents": {
-                    "description": "Results are returned in chronological order (oldest event first).",
+                    "description": "Results are returned in chronological order (oldest event first). Note: The `permissionSettings` field is not returned in the Space object for list requests.",
                     "items": {
                         "$ref": "SpaceEvent"
                     },
@@ -3415,7 +3561,7 @@
                     "type": "string"
                 },
                 "spaces": {
-                    "description": "List of spaces in the requested (or first) page.",
+                    "description": "List of spaces in the requested (or first) page. Note: The `permissionSettings` field is not returned in the Space object for list requests.",
                     "items": {
                         "$ref": "Space"
                     },
@@ -3463,7 +3609,7 @@
                 },
                 "groupMember": {
                     "$ref": "Group",
-                    "description": "The Google Group the membership corresponds to. Only supports read operations. Other operations, like creating or updating a membership, aren't currently supported."
+                    "description": "The Google Group the membership corresponds to. Reading or mutating memberships for Google Groups requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)."
                 },
                 "member": {
                     "$ref": "User",
@@ -3545,6 +3691,23 @@
                         "$ref": "MembershipUpdatedEventData"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "MembershipCount": {
+            "description": "Represents the count of memberships of a space, grouped into categories.",
+            "id": "MembershipCount",
+            "properties": {
+                "joinedDirectHumanUserCount": {
+                    "description": "Count of human users that have directly joined the space, not counting users joined by having membership in a joined group.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "joinedGroupCount": {
+                    "description": "Count of all groups that have directly joined the space.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -3634,7 +3797,7 @@
                     "type": "array"
                 },
                 "cardsV2": {
-                    "description": "An array of [cards](https://developers.google.com/workspace/chat/api/reference/rest/v1/cards). Only Chat apps can create cards. If your Chat app [authenticates as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), the messages can't contain cards. To learn about cards and how to create them, see [Send card messages](https://developers.google.com/workspace/chat/create-messages#create). [Card builder](https://addons.gsuite.google.com/uikit/builder)",
+                    "description": "An array of [cards](https://developers.google.com/workspace/chat/api/reference/rest/v1/cards). Only Chat apps can create cards. If your Chat app [authenticates as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), the messages can't contain cards. To learn how to create a message that contains cards, see [Send a message](https://developers.google.com/workspace/chat/create-messages). [Card builder](https://addons.gsuite.google.com/uikit/builder)",
                     "items": {
                         "$ref": "CardWithId"
                     },
@@ -3694,7 +3857,7 @@
                 },
                 "privateMessageViewer": {
                     "$ref": "User",
-                    "description": "Immutable. Input for creating a message, otherwise output only. The user that can view the message. When set, the message is private and only visible to the specified user and the Chat app. Link previews and attachments aren't supported for private messages. Only Chat apps can send private messages. If your Chat app [authenticates as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) to send a message, the message can't be private and must omit this field. For details, see [Send private messages to Google Chat users](https://developers.google.com/workspace/chat/private-messages)."
+                    "description": "Immutable. Input for creating a message, otherwise output only. The user that can view the message. When set, the message is private and only visible to the specified user and the Chat app. To include this field in your request, you must call the Chat API using [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and omit the following: * [Attachments](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.messages.attachments) * [Accessory widgets](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.messages#Message.AccessoryWidget) For details, see [Send a message privately](https://developers.google.com/workspace/chat/create-messages#private)."
                 },
                 "quotedMessageMetadata": {
                     "$ref": "QuotedMessageMetadata",
@@ -3716,7 +3879,7 @@
                     "description": "If your Chat app [authenticates as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), the output populates the [space](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces) `name`."
                 },
                 "text": {
-                    "description": "Plain-text body of the message. The first link to an image, video, or web page generates a [preview chip](https://developers.google.com/workspace/chat/preview-links). You can also [@mention a Google Chat user](https://developers.google.com/workspace/chat/format-messages#messages-@mention), or everyone in the space. To learn about creating text messages, see [Send a text message](https://developers.google.com/workspace/chat/create-messages#create-text-messages).",
+                    "description": "Plain-text body of the message. The first link to an image, video, or web page generates a [preview chip](https://developers.google.com/workspace/chat/preview-links). You can also [@mention a Google Chat user](https://developers.google.com/workspace/chat/format-messages#messages-@mention), or everyone in the space. To learn about creating text messages, see [Send a message](https://developers.google.com/workspace/chat/create-messages).",
                     "type": "string"
                 },
                 "thread": {
@@ -3832,6 +3995,61 @@
             },
             "type": "object"
         },
+        "PermissionSetting": {
+            "description": "Represents a space permission setting.",
+            "id": "PermissionSetting",
+            "properties": {
+                "managersAllowed": {
+                    "description": "Whether spaces managers have this permission.",
+                    "type": "boolean"
+                },
+                "membersAllowed": {
+                    "description": "Whether non-manager members have this permission.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "PermissionSettings": {
+            "description": "[Permission settings](https://support.google.com/chat/answer/13340792) that you can specify when updating an existing named space. To set permission settings when creating a space, specify the `PredefinedPermissionSettings` field in your request.",
+            "id": "PermissionSettings",
+            "properties": {
+                "manageApps": {
+                    "$ref": "PermissionSetting",
+                    "description": "Setting for managing apps in a space."
+                },
+                "manageMembersAndGroups": {
+                    "$ref": "PermissionSetting",
+                    "description": "Setting for managing members and groups in a space."
+                },
+                "manageWebhooks": {
+                    "$ref": "PermissionSetting",
+                    "description": "Setting for managing webhooks in a space."
+                },
+                "modifySpaceDetails": {
+                    "$ref": "PermissionSetting",
+                    "description": "Setting for updating space name, avatar, description and guidelines."
+                },
+                "postMessages": {
+                    "$ref": "PermissionSetting",
+                    "description": "Output only. Setting for posting messages in a space.",
+                    "readOnly": true
+                },
+                "replyMessages": {
+                    "$ref": "PermissionSetting",
+                    "description": "Setting for replying to messages in a space."
+                },
+                "toggleHistory": {
+                    "$ref": "PermissionSetting",
+                    "description": "Setting for toggling space history on and off."
+                },
+                "useAtMentionAll": {
+                    "$ref": "PermissionSetting",
+                    "description": "Setting for using @all in a space."
+                }
+            },
+            "type": "object"
+        },
         "QuotedMessageMetadata": {
             "description": "Information about a quoted message.",
             "id": "QuotedMessageMetadata",
@@ -3924,6 +4142,10 @@
             "description": "A rich link to a resource.",
             "id": "RichLinkMetadata",
             "properties": {
+                "chatSpaceLinkData": {
+                    "$ref": "ChatSpaceLinkData",
+                    "description": "Data for a chat space link."
+                },
                 "driveLinkData": {
                     "$ref": "DriveLinkData",
                     "description": "Data for a drive link."
@@ -3932,17 +4154,42 @@
                     "description": "The rich link type.",
                     "enum": [
                         "RICH_LINK_TYPE_UNSPECIFIED",
-                        "DRIVE_FILE"
+                        "DRIVE_FILE",
+                        "CHAT_SPACE"
                     ],
                     "enumDescriptions": [
                         "Default value for the enum. Don't use.",
-                        "A Google Drive rich link type."
+                        "A Google Drive rich link type.",
+                        "A Chat space rich link type. For example, a space smart chip."
                     ],
                     "type": "string"
                 },
                 "uri": {
                     "description": "The URI of this link.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SearchSpacesResponse": {
+            "description": "Response with a list of spaces corresponding to the search spaces request.",
+            "id": "SearchSpacesResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "A token that can be used to retrieve the next page. If this field is empty, there are no subsequent pages.",
+                    "type": "string"
+                },
+                "spaces": {
+                    "description": "A page of the requested spaces.",
+                    "items": {
+                        "$ref": "Space"
+                    },
+                    "type": "array"
+                },
+                "totalSize": {
+                    "description": "The total number of spaces that match the query, across all pages. If the result is over 10,000 spaces, this value is an estimate.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -3984,7 +4231,7 @@
             "id": "SetUpSpaceRequest",
             "properties": {
                 "memberships": {
-                    "description": "Optional. The Google Chat users to invite to join the space. Omit the calling user, as they are added automatically. The set currently allows up to 20 memberships (in addition to the caller). For human membership, the `Membership.member` field must contain a `user` with `name` populated (format: `users/{user}`) and `type` set to `User.Type.HUMAN`. You can only add human users when setting up a space (adding Chat apps is only supported for direct message setup with the calling app). You can also add members using the user's email as an alias for {user}. For example, the `user.name` can be `users/example@gmail.com`. To invite Gmail users or users from external Google Workspace domains, user's email must be used for `{user}`. Optional when setting `Space.spaceType` to `SPACE`. Required when setting `Space.spaceType` to `GROUP_CHAT`, along with at least two memberships. Required when setting `Space.spaceType` to `DIRECT_MESSAGE` with a human user, along with exactly one membership. Must be empty when creating a 1:1 conversation between a human and the calling Chat app (when setting `Space.spaceType` to `DIRECT_MESSAGE` and `Space.singleUserBotDm` to `true`).",
+                    "description": "Optional. The Google Chat users or groups to invite to join the space. Omit the calling user, as they are added automatically. The set currently allows up to 20 memberships (in addition to the caller). For human membership, the `Membership.member` field must contain a `user` with `name` populated (format: `users/{user}`) and `type` set to `User.Type.HUMAN`. You can only add human users when setting up a space (adding Chat apps is only supported for direct message setup with the calling app). You can also add members using the user's email as an alias for {user}. For example, the `user.name` can be `users/example@gmail.com`. To invite Gmail users or users from external Google Workspace domains, user's email must be used for `{user}`. For Google group membership, the `Membership.group_member` field must contain a `group` with `name` populated (format `groups/{group}`). You can only add Google groups when setting `Space.spaceType` to `SPACE`. Optional when setting `Space.spaceType` to `SPACE`. Required when setting `Space.spaceType` to `GROUP_CHAT`, along with at least two memberships. Required when setting `Space.spaceType` to `DIRECT_MESSAGE` with a human user, along with exactly one membership. Must be empty when creating a 1:1 conversation between a human and the calling Chat app (when setting `Space.spaceType` to `DIRECT_MESSAGE` and `Space.singleUserBotDm` to `true`).",
                     "items": {
                         "$ref": "Membership"
                     },
@@ -4055,6 +4302,10 @@
             "description": "A space in Google Chat. Spaces are conversations between two or more users or 1:1 messages between a user and a Chat app.",
             "id": "Space",
             "properties": {
+                "accessSettings": {
+                    "$ref": "AccessSettings",
+                    "description": "Optional. Specifies the [access setting](https://support.google.com/chat/answer/11971020) of the space. Only populated when the `space_type` is `SPACE`."
+                },
                 "adminInstalled": {
                     "description": "Output only. For direct message (DM) spaces with a Chat app, whether the space was created by a Google Workspace administrator. Administrators can install and set up a direct message with a Chat app on behalf of users in their organization. To support admin install, your Chat app must feature direct messaging.",
                     "readOnly": true,
@@ -4066,19 +4317,48 @@
                     "type": "string"
                 },
                 "displayName": {
-                    "description": "The space's display name. Required when [creating a space](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/create). If you receive the error message `ALREADY_EXISTS` when creating a space or updating the `displayName`, try a different `displayName`. An existing space within the Google Workspace organization might already use this display name. For direct messages, this field might be empty. Supports up to 128 characters.",
+                    "description": "The space's display name. Required when [creating a space](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/create) with a `spaceType` of `SPACE`. If you receive the error message `ALREADY_EXISTS` when creating a space or updating the `displayName`, try a different `displayName`. An existing space within the Google Workspace organization might already use this display name. For direct messages, this field might be empty. Supports up to 128 characters.",
                     "type": "string"
                 },
                 "externalUserAllowed": {
-                    "description": "Immutable. Whether this space permits any Google Chat user as a member. Input when creating a space in a Google Workspace organization. Omit this field when creating spaces in the following conditions: * The authenticated user uses a consumer account (unmanaged user account). By default, a space created by a consumer account permits any Google Chat user. * The space is used to [import data to Google Chat] (https://developers.google.com/chat/api/guides/import-data-overview) because import mode spaces must only permit members from the same Google Workspace organization. However, as part of the [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview), import mode spaces can permit any Google Chat user so this field can then be set for import mode spaces. For existing spaces, this field is output only.",
+                    "description": "Immutable. Whether this space permits any Google Chat user as a member. Input when creating a space in a Google Workspace organization. Omit this field when creating spaces in the following conditions: * The authenticated user uses a consumer account (unmanaged user account). By default, a space created by a consumer account permits any Google Chat user. For existing spaces, this field is output only.",
                     "type": "boolean"
                 },
                 "importMode": {
-                    "description": "Optional. Whether this space is created in `Import Mode` as part of a data migration into Google Workspace. While spaces are being imported, they aren't visible to users until the import is complete.",
+                    "description": "Optional. Whether this space is created in `Import Mode` as part of a data migration into Google Workspace. While spaces are being imported, they aren't visible to users until the import is complete. Creating a space in `Import Mode`requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).",
                     "type": "boolean"
                 },
+                "lastActiveTime": {
+                    "description": "Output only. Timestamp of the last message in the space.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "membershipCount": {
+                    "$ref": "MembershipCount",
+                    "description": "Output only. The count of joined memberships grouped by member type. Populated when the `space_type` is `SPACE`, `DIRECT_MESSAGE` or `GROUP_CHAT`.",
+                    "readOnly": true
+                },
                 "name": {
-                    "description": "Resource name of the space. Format: `spaces/{space}`",
+                    "description": "Resource name of the space. Format: `spaces/{space}` Where `{space}` represents the system-assigned ID for the space. You can obtain the space ID by calling the [`spaces.list()`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/list) method or from the space URL. For example, if the space URL is `https://mail.google.com/mail/u/0/#chat/space/AAAAAAAAA`, the space ID is `AAAAAAAAA`.",
+                    "type": "string"
+                },
+                "permissionSettings": {
+                    "$ref": "PermissionSettings",
+                    "description": "Optional. Space permission settings for existing spaces. Input for updating exact space permission settings, where existing permission settings are replaced. Output lists current permission settings."
+                },
+                "predefinedPermissionSettings": {
+                    "description": "Optional. Input only. Predefined space permission settings, input only when creating a space. If the field is not set, a collaboration space is created. After you create the space, settings are populated in the `PermissionSettings` field.",
+                    "enum": [
+                        "PREDEFINED_PERMISSION_SETTINGS_UNSPECIFIED",
+                        "COLLABORATION_SPACE",
+                        "ANNOUNCEMENT_SPACE"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified. Don't use.",
+                        "Setting to make the space a collaboration space where all members can post messages.",
+                        "Setting to make the space an announcement space where only space managers can post messages."
+                    ],
                     "type": "string"
                 },
                 "singleUserBotDm": {
@@ -4134,6 +4414,11 @@
                         "Group conversations between 3 or more people. A `GROUP_CHAT` can include Chat apps.",
                         "1:1 messages between two humans or a human and a Chat app."
                     ],
+                    "type": "string"
+                },
+                "spaceUri": {
+                    "description": "Output only. The URI for a user to access the space.",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "threaded": {
@@ -4391,7 +4676,7 @@
             "id": "Thread",
             "properties": {
                 "name": {
-                    "description": "Output only. Resource name of the thread. Example: `spaces/{space}/threads/{thread}`",
+                    "description": "Resource name of the thread. Example: `spaces/{space}/threads/{thread}`",
                     "type": "string"
                 },
                 "threadKey": {

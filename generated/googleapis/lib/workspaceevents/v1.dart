@@ -44,7 +44,8 @@ class WorkspaceEventsApi {
   /// Private Service: https://www.googleapis.com/auth/chat.bot
   static const chatBotScope = 'https://www.googleapis.com/auth/chat.bot';
 
-  /// View, add, update, and remove members from conversations in Google Chat
+  /// See, add, update, and remove members from conversations and spaces in
+  /// Google Chat
   static const chatMembershipsScope =
       'https://www.googleapis.com/auth/chat.memberships';
 
@@ -52,12 +53,12 @@ class WorkspaceEventsApi {
   static const chatMembershipsReadonlyScope =
       'https://www.googleapis.com/auth/chat.memberships.readonly';
 
-  /// View, compose, send, update, and delete messages, and add, view, and
-  /// delete reactions to messages.
+  /// See, compose, send, update, and delete messages and their associated
+  /// attachments, and add, see, and delete reactions to messages.
   static const chatMessagesScope =
       'https://www.googleapis.com/auth/chat.messages';
 
-  /// View, add, and delete reactions to messages in Google Chat
+  /// See, add, and delete reactions to messages in Google Chat
   static const chatMessagesReactionsScope =
       'https://www.googleapis.com/auth/chat.messages.reactions';
 
@@ -65,11 +66,11 @@ class WorkspaceEventsApi {
   static const chatMessagesReactionsReadonlyScope =
       'https://www.googleapis.com/auth/chat.messages.reactions.readonly';
 
-  /// View messages and reactions in Google Chat
+  /// See messages and their associated reactions and attachments in Google Chat
   static const chatMessagesReadonlyScope =
       'https://www.googleapis.com/auth/chat.messages.readonly';
 
-  /// Create conversations and spaces and see or edit metadata (including
+  /// Create conversations and spaces and see or update metadata (including
   /// history settings and access settings) in Google Chat
   static const chatSpacesScope = 'https://www.googleapis.com/auth/chat.spaces';
 
@@ -368,16 +369,17 @@ class SubscriptionsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Optional. Immutable. Identifier. Resource name of the
-  /// subscription. Format: `subscriptions/{subscription}`
+  /// [name] - Identifier. Resource name of the subscription. Format:
+  /// `subscriptions/{subscription}`
   /// Value must have pattern `^subscriptions/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. The field to update. If omitted, updates any
   /// fields included in the request. You can update one of the following fields
   /// in a subscription: * `expire_time`: The timestamp when the subscription
   /// expires. * `ttl`: The time-to-live (TTL) or duration of the subscription.
-  /// To fully replace the subscription (the equivalent of `PUT`), use `*`. Any
-  /// omitted fields are updated with empty values.
+  /// * `event_types`: The list of event types to receive about the target
+  /// resource. To fully replace the subscription (the equivalent of `PUT`), use
+  /// `*`. Any omitted fields are updated with empty values.
   ///
   /// [validateOnly] - Optional. If set to `true`, validates and previews the
   /// request, but doesn't update the subscription.
@@ -652,7 +654,7 @@ typedef ReactivateSubscriptionRequest = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// [Developer Preview](https://developers.google.com/workspace/preview).
 ///
@@ -695,7 +697,7 @@ class Subscription {
   /// an event type that doesn't exist for the target resource, the request
   /// returns an HTTP `400 Bad Request` status code.
   ///
-  /// Required. Immutable.
+  /// Required.
   core.List<core.String>? eventTypes;
 
   /// Non-empty default.
@@ -707,8 +709,6 @@ class Subscription {
   /// Identifier.
   ///
   /// Resource name of the subscription. Format: `subscriptions/{subscription}`
-  ///
-  /// Optional. Immutable.
   core.String? name;
 
   /// The endpoint where the subscription delivers events, such as a Pub/Sub

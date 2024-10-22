@@ -389,12 +389,24 @@ void checkUnnamed2(core.List<api.DynamicLinkEventStat> o) {
   checkDynamicLinkEventStat(o[1]);
 }
 
+core.List<api.DynamicLinkWarning> buildUnnamed3() => [
+      buildDynamicLinkWarning(),
+      buildDynamicLinkWarning(),
+    ];
+
+void checkUnnamed3(core.List<api.DynamicLinkWarning> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDynamicLinkWarning(o[0]);
+  checkDynamicLinkWarning(o[1]);
+}
+
 core.int buildCounterDynamicLinkStats = 0;
 api.DynamicLinkStats buildDynamicLinkStats() {
   final o = api.DynamicLinkStats();
   buildCounterDynamicLinkStats++;
   if (buildCounterDynamicLinkStats < 3) {
     o.linkEventStats = buildUnnamed2();
+    o.warnings = buildUnnamed3();
   }
   buildCounterDynamicLinkStats--;
   return o;
@@ -404,6 +416,7 @@ void checkDynamicLinkStats(api.DynamicLinkStats o) {
   buildCounterDynamicLinkStats++;
   if (buildCounterDynamicLinkStats < 3) {
     checkUnnamed2(o.linkEventStats!);
+    checkUnnamed3(o.warnings!);
   }
   buildCounterDynamicLinkStats--;
 }
@@ -624,6 +637,17 @@ void checkGetIosReopenAttributionRequest(api.GetIosReopenAttributionRequest o) {
   buildCounterGetIosReopenAttributionRequest--;
 }
 
+core.List<api.DynamicLinkWarning> buildUnnamed4() => [
+      buildDynamicLinkWarning(),
+      buildDynamicLinkWarning(),
+    ];
+
+void checkUnnamed4(core.List<api.DynamicLinkWarning> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDynamicLinkWarning(o[0]);
+  checkDynamicLinkWarning(o[1]);
+}
+
 core.int buildCounterGetIosReopenAttributionResponse = 0;
 api.GetIosReopenAttributionResponse buildGetIosReopenAttributionResponse() {
   final o = api.GetIosReopenAttributionResponse();
@@ -638,6 +662,7 @@ api.GetIosReopenAttributionResponse buildGetIosReopenAttributionResponse() {
     o.utmMedium = 'foo';
     o.utmSource = 'foo';
     o.utmTerm = 'foo';
+    o.warning = buildUnnamed4();
   }
   buildCounterGetIosReopenAttributionResponse--;
   return o;
@@ -683,6 +708,7 @@ void checkGetIosReopenAttributionResponse(
       o.utmTerm!,
       unittest.equals('foo'),
     );
+    checkUnnamed4(o.warning!);
   }
   buildCounterGetIosReopenAttributionResponse--;
 }
@@ -823,12 +849,12 @@ void checkIosInfo(api.IosInfo o) {
   buildCounterIosInfo--;
 }
 
-core.List<core.String> buildUnnamed3() => [
+core.List<core.String> buildUnnamed5() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3(core.List<core.String> o) {
+void checkUnnamed5(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -846,7 +872,7 @@ api.ManagedShortLink buildManagedShortLink() {
   buildCounterManagedShortLink++;
   if (buildCounterManagedShortLink < 3) {
     o.creationTime = 'foo';
-    o.flaggedAttribute = buildUnnamed3();
+    o.flaggedAttribute = buildUnnamed5();
     o.info = buildDynamicLinkInfo();
     o.link = 'foo';
     o.linkName = 'foo';
@@ -863,7 +889,7 @@ void checkManagedShortLink(api.ManagedShortLink o) {
       o.creationTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed3(o.flaggedAttribute!);
+    checkUnnamed5(o.flaggedAttribute!);
     checkDynamicLinkInfo(o.info!);
     unittest.expect(
       o.link!,

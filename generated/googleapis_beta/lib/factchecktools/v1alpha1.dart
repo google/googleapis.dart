@@ -37,9 +37,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class FactCheckToolsApi {
-  /// See your primary Google Account email address
-  static const userinfoEmailScope =
-      'https://www.googleapis.com/auth/userinfo.email';
+  /// Read, create, update, and delete your ClaimReview data.
+  static const factchecktoolsScope =
+      'https://www.googleapis.com/auth/factchecktools';
 
   final commons.ApiRequester _requester;
 

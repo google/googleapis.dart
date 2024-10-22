@@ -1913,6 +1913,11 @@ class CloudStorageSink {
 
 /// Service-specific options for holds.
 class CorpusQuery {
+  /// Service-specific options for Calendar holds.
+  ///
+  /// If set, **CorpusType** must be **CALENDAR**.
+  HeldCalendarQuery? calendarQuery;
+
   /// Service-specific options for Drive holds.
   ///
   /// If set, **CorpusType** must be **DRIVE**.
@@ -1939,6 +1944,7 @@ class CorpusQuery {
   HeldVoiceQuery? voiceQuery;
 
   CorpusQuery({
+    this.calendarQuery,
     this.driveQuery,
     this.groupsQuery,
     this.hangoutsChatQuery,
@@ -1948,6 +1954,10 @@ class CorpusQuery {
 
   CorpusQuery.fromJson(core.Map json_)
       : this(
+          calendarQuery: json_.containsKey('calendarQuery')
+              ? HeldCalendarQuery.fromJson(
+                  json_['calendarQuery'] as core.Map<core.String, core.dynamic>)
+              : null,
           driveQuery: json_.containsKey('driveQuery')
               ? HeldDriveQuery.fromJson(
                   json_['driveQuery'] as core.Map<core.String, core.dynamic>)
@@ -1971,6 +1981,7 @@ class CorpusQuery {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (calendarQuery != null) 'calendarQuery': calendarQuery!,
         if (driveQuery != null) 'driveQuery': driveQuery!,
         if (groupsQuery != null) 'groupsQuery': groupsQuery!,
         if (hangoutsChatQuery != null) 'hangoutsChatQuery': hangoutsChatQuery!,
@@ -2452,6 +2463,9 @@ class HeldAccount {
       };
 }
 
+/// Options for Calendar holds.
+typedef HeldCalendarQuery = $Empty;
+
 /// Options for Drive holds.
 class HeldDriveQuery {
   /// To include files in shared drives in the hold, set to **true**.
@@ -2928,6 +2942,17 @@ class Matter {
   /// permissions a matter can have.
   core.List<MatterPermission>? matterPermissions;
 
+  /// The requested data region for the matter.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MATTER_REGION_UNSPECIFIED" : The region is unspecified. Defaults to
+  /// ANY.
+  /// - "ANY" : Any region.
+  /// - "US" : United States region.
+  /// - "EUROPE" : Europe region.
+  core.String? matterRegion;
+
   /// The name of the matter.
   core.String? name;
 
@@ -2943,6 +2968,7 @@ class Matter {
     this.description,
     this.matterId,
     this.matterPermissions,
+    this.matterRegion,
     this.name,
     this.state,
   });
@@ -2955,6 +2981,7 @@ class Matter {
               ?.map((value) => MatterPermission.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          matterRegion: json_['matterRegion'] as core.String?,
           name: json_['name'] as core.String?,
           state: json_['state'] as core.String?,
         );
@@ -2963,6 +2990,7 @@ class Matter {
         if (description != null) 'description': description!,
         if (matterId != null) 'matterId': matterId!,
         if (matterPermissions != null) 'matterPermissions': matterPermissions!,
+        if (matterRegion != null) 'matterRegion': matterRegion!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
       };
@@ -3536,7 +3564,7 @@ class SitesUrlInfo {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Team Drives to search
 class TeamDriveInfo {

@@ -36,7 +36,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240523",
+    "revision": "20240927",
     "rootUrl": "https://www.googleapis.com/",
     "servicePath": "calendar/v3/",
     "title": "Calendar API",
@@ -1095,6 +1095,7 @@
                         "eventTypes": {
                             "description": "Event types to return. Optional. This parameter can be repeated multiple times to return events of different types. If unset, returns all event types.",
                             "enum": [
+                                "birthday",
                                 "default",
                                 "focusTime",
                                 "fromGmail",
@@ -1102,6 +1103,7 @@
                                 "workingLocation"
                             ],
                             "enumDescriptions": [
+                                "Special all-day events with an annual recurrence.",
                                 "Regular events.",
                                 "Focus time events.",
                                 "Events from Gmail.",
@@ -1224,7 +1226,7 @@
                     "supportsSubscription": true
                 },
                 "move": {
-                    "description": "Moves an event to another calendar, i.e. changes an event's organizer. Note that only default events can be moved; outOfOffice, focusTime, workingLocation and fromGmail events cannot be moved.",
+                    "description": "Moves an event to another calendar, i.e. changes an event's organizer. Note that only default events can be moved; birthday, focusTime, fromGmail, outOfOffice and workingLocation events cannot be moved.",
                     "httpMethod": "POST",
                     "id": "calendar.events.move",
                     "parameterOrder": [
@@ -1512,6 +1514,7 @@
                         "eventTypes": {
                             "description": "Event types to return. Optional. This parameter can be repeated multiple times to return events of different types. If unset, returns all event types.",
                             "enum": [
+                                "birthday",
                                 "default",
                                 "focusTime",
                                 "fromGmail",
@@ -1519,6 +1522,7 @@
                                 "workingLocation"
                             ],
                             "enumDescriptions": [
+                                "Special all-day events with an annual recurrence.",
                                 "Regular events.",
                                 "Focus time events.",
                                 "Events from Gmail.",
@@ -2423,7 +2427,7 @@
                 },
                 "eventType": {
                     "default": "default",
-                    "description": "Specific type of the event. This cannot be modified after the event is created. Possible values are:  \n- \"default\" - A regular event or not further specified. \n- \"outOfOffice\" - An out-of-office event. \n- \"focusTime\" - A focus-time event. \n- \"workingLocation\" - A working location event. \n- \"fromGmail\" - An event from Gmail. This type of event cannot be created.",
+                    "description": "Specific type of the event. This cannot be modified after the event is created. Possible values are:  \n- \"birthday\" - A special all-day event with an annual recurrence. \n- \"default\" - A regular event or not further specified. \n- \"focusTime\" - A focus-time event. \n- \"fromGmail\" - An event from Gmail. This type of event cannot be created. \n- \"outOfOffice\" - An out-of-office event. \n- \"workingLocation\" - A working location event.",
                     "type": "string"
                 },
                 "extendedProperties": {
@@ -2594,7 +2598,7 @@
                     "type": "string"
                 },
                 "reminders": {
-                    "description": "Information about the event's reminders for the authenticated user.",
+                    "description": "Information about the event's reminders for the authenticated user. Note that changing reminders does not also change the updated property of the enclosing event.",
                     "properties": {
                         "overrides": {
                             "description": "If the event doesn't use the default reminders, this lists the reminders specific to the event, or, if not set, indicates that no reminders are set for this event. The maximum number of override reminders is 5.",
@@ -2654,7 +2658,7 @@
                     "type": "string"
                 },
                 "updated": {
-                    "description": "Last modification time of the event (as a RFC3339 timestamp). Read-only.",
+                    "description": "Last modification time of the main event data (as a RFC3339 timestamp). Updating event reminders will not cause this to change. Read-only.",
                     "format": "date-time",
                     "type": "string"
                 },
@@ -2736,7 +2740,7 @@
                     "type": "boolean"
                 },
                 "responseStatus": {
-                    "description": "The attendee's response status. Possible values are:  \n- \"needsAction\" - The attendee has not responded to the invitation (recommended for new events). \n- \"declined\" - The attendee has declined the invitation. \n- \"tentative\" - The attendee has tentatively accepted the invitation. \n- \"accepted\" - The attendee has accepted the invitation.  Warning: If you add an event using the values declined, tentative, or accepted, attendees with the \"Add invitations to my calendar\" setting set to \"When I respond to invitation in email\" won't see an event on their calendar unless they choose to change their invitation response in the event invitation email.",
+                    "description": "The attendee's response status. Possible values are:  \n- \"needsAction\" - The attendee has not responded to the invitation (recommended for new events). \n- \"declined\" - The attendee has declined the invitation. \n- \"tentative\" - The attendee has tentatively accepted the invitation. \n- \"accepted\" - The attendee has accepted the invitation.  Warning: If you add an event using the values declined, tentative, or accepted, attendees with the \"Add invitations to my calendar\" setting set to \"When I respond to invitation in email\" or \"Only if the sender is known\" might have their response reset to needsAction and won't see an event in their calendar unless they change their response in the event invitation email. Furthermore, if more than 200 guests are invited to the event, response status is not propagated to the guests.",
                     "type": "string"
                 },
                 "self": {

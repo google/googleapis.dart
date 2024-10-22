@@ -597,6 +597,7 @@ api.GceSetup buildGceSetup() {
     o.gpuDriverConfig = buildGPUDriverConfig();
     o.machineType = 'foo';
     o.metadata = buildUnnamed5();
+    o.minCpuPlatform = 'foo';
     o.networkInterfaces = buildUnnamed6();
     o.serviceAccounts = buildUnnamed7();
     o.shieldedInstanceConfig = buildShieldedInstanceConfig();
@@ -622,6 +623,10 @@ void checkGceSetup(api.GceSetup o) {
       unittest.equals('foo'),
     );
     checkUnnamed5(o.metadata!);
+    unittest.expect(
+      o.minCpuPlatform!,
+      unittest.equals('foo'),
+    );
     checkUnnamed6(o.networkInterfaces!);
     checkUnnamed7(o.serviceAccounts!);
     checkShieldedInstanceConfig(o.shieldedInstanceConfig!);
@@ -1286,6 +1291,25 @@ void checkResizeDiskRequest(api.ResizeDiskRequest o) {
   buildCounterResizeDiskRequest--;
 }
 
+core.int buildCounterRestoreInstanceRequest = 0;
+api.RestoreInstanceRequest buildRestoreInstanceRequest() {
+  final o = api.RestoreInstanceRequest();
+  buildCounterRestoreInstanceRequest++;
+  if (buildCounterRestoreInstanceRequest < 3) {
+    o.snapshot = buildSnapshot();
+  }
+  buildCounterRestoreInstanceRequest--;
+  return o;
+}
+
+void checkRestoreInstanceRequest(api.RestoreInstanceRequest o) {
+  buildCounterRestoreInstanceRequest++;
+  if (buildCounterRestoreInstanceRequest < 3) {
+    checkSnapshot(o.snapshot!);
+  }
+  buildCounterRestoreInstanceRequest--;
+}
+
 core.int buildCounterRollbackInstanceRequest = 0;
 api.RollbackInstanceRequest buildRollbackInstanceRequest() {
   final o = api.RollbackInstanceRequest();
@@ -1394,6 +1418,33 @@ void checkShieldedInstanceConfig(api.ShieldedInstanceConfig o) {
     unittest.expect(o.enableVtpm!, unittest.isTrue);
   }
   buildCounterShieldedInstanceConfig--;
+}
+
+core.int buildCounterSnapshot = 0;
+api.Snapshot buildSnapshot() {
+  final o = api.Snapshot();
+  buildCounterSnapshot++;
+  if (buildCounterSnapshot < 3) {
+    o.projectId = 'foo';
+    o.snapshotId = 'foo';
+  }
+  buildCounterSnapshot--;
+  return o;
+}
+
+void checkSnapshot(api.Snapshot o) {
+  buildCounterSnapshot++;
+  if (buildCounterSnapshot < 3) {
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.snapshotId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSnapshot--;
 }
 
 core.int buildCounterStartInstanceRequest = 0;
@@ -2060,6 +2111,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RestoreInstanceRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRestoreInstanceRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RestoreInstanceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRestoreInstanceRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-RollbackInstanceRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildRollbackInstanceRequest();
@@ -2097,6 +2158,16 @@ void main() {
       final od = api.ShieldedInstanceConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkShieldedInstanceConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-Snapshot', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSnapshot();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Snapshot.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkSnapshot(od);
     });
   });
 
@@ -3048,6 +3119,64 @@ void main() {
       }), true);
       final response = await res.resizeDisk(arg_request, arg_notebookInstance,
           $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--restore', () async {
+      final mock = HttpServerMock();
+      final res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
+      final arg_request = buildRestoreInstanceRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.RestoreInstanceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRestoreInstanceRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.restore(arg_request, arg_name, $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 

@@ -1649,6 +1649,9 @@ class ApprovalRequest {
   /// The time at which approval was requested.
   core.String? requestTime;
 
+  /// This field contains the augmented information of the request.
+  AugmentedInfo? requestedAugmentedInfo;
+
   /// The requested access duration.
   core.String? requestedDuration;
 
@@ -1681,6 +1684,7 @@ class ApprovalRequest {
     this.dismiss,
     this.name,
     this.requestTime,
+    this.requestedAugmentedInfo,
     this.requestedDuration,
     this.requestedExpiration,
     this.requestedLocations,
@@ -1701,6 +1705,10 @@ class ApprovalRequest {
               : null,
           name: json_['name'] as core.String?,
           requestTime: json_['requestTime'] as core.String?,
+          requestedAugmentedInfo: json_.containsKey('requestedAugmentedInfo')
+              ? AugmentedInfo.fromJson(json_['requestedAugmentedInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           requestedDuration: json_['requestedDuration'] as core.String?,
           requestedExpiration: json_['requestedExpiration'] as core.String?,
           requestedLocations: json_.containsKey('requestedLocations')
@@ -1724,6 +1732,8 @@ class ApprovalRequest {
         if (dismiss != null) 'dismiss': dismiss!,
         if (name != null) 'name': name!,
         if (requestTime != null) 'requestTime': requestTime!,
+        if (requestedAugmentedInfo != null)
+          'requestedAugmentedInfo': requestedAugmentedInfo!,
         if (requestedDuration != null) 'requestedDuration': requestedDuration!,
         if (requestedExpiration != null)
           'requestedExpiration': requestedExpiration!,
@@ -1799,6 +1809,26 @@ class ApproveDecision {
         if (expireTime != null) 'expireTime': expireTime!,
         if (invalidateTime != null) 'invalidateTime': invalidateTime!,
         if (signatureInfo != null) 'signatureInfo': signatureInfo!,
+      };
+}
+
+/// This field contains the augmented information of the request.
+class AugmentedInfo {
+  /// For command-line tools, the full command-line exactly as entered by the
+  /// actor without adding any additional characters (such as quotation marks).
+  core.String? command;
+
+  AugmentedInfo({
+    this.command,
+  });
+
+  AugmentedInfo.fromJson(core.Map json_)
+      : this(
+          command: json_['command'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (command != null) 'command': command!,
       };
 }
 

@@ -2623,7 +2623,7 @@ class ProjectsServicesResource {
   /// `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
   /// `firestore.googleapis.com` (Cloud Firestore) *
   /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity
-  /// Platform)
+  /// Platform) * `oauth2.googleapis.com` (Google Identity for iOS)
   /// Value must have pattern `^projects/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [updateMask] - Required. A comma-separated list of names of fields in the
@@ -3022,24 +3022,30 @@ class GoogleFirebaseAppcheckV1betaAppAttestConfig {
       };
 }
 
-/// Encapsulates an *App Check token*, which are used to access Firebase
-/// services protected by App Check.
+/// Encapsulates an *App Check token*, which are used to access backend services
+/// protected by App Check.
 class GoogleFirebaseAppcheckV1betaAppCheckToken {
-  /// An App Check token.
+  /// The App Check token.
   ///
   /// App Check tokens are signed [JWTs](https://tools.ietf.org/html/rfc7519)
-  /// containing claims that identify the attested app and Firebase project.
-  /// This token is used to access Firebase services protected by App Check.
+  /// containing claims that identify the attested app and GCP project. This
+  /// token is used to access Google services protected by App Check. These
+  /// tokens can also be
+  /// [verified by your own custom backends](https://firebase.google.com/docs/app-check/custom-resource-backend)
+  /// using the Firebase Admin SDK or third-party libraries.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   core.String? attestationToken;
 
-  /// An App Check token.
+  /// The App Check token.
   ///
   /// App Check tokens are signed [JWTs](https://tools.ietf.org/html/rfc7519)
-  /// containing claims that identify the attested app and Firebase project.
-  /// This token is used to access Firebase services protected by App Check.
+  /// containing claims that identify the attested app and GCP project. This
+  /// token is used to access Google services protected by App Check. These
+  /// tokens can also be
+  /// [verified by your own custom backends](https://firebase.google.com/docs/app-check/custom-resource-backend)
+  /// using the Firebase Admin SDK or third-party libraries.
   core.String? token;
 
   /// The duration from the time this token is minted until its expiration.
@@ -4442,7 +4448,7 @@ class GoogleFirebaseAppcheckV1betaRecaptchaV3Config {
       };
 }
 
-/// App Check enforcement policy for a specific resource of a Firebase service
+/// App Check enforcement policy for a specific resource of a Google service
 /// supported by App Check.
 ///
 /// Note that this policy will override the service-level configuration.
@@ -4508,14 +4514,13 @@ class GoogleFirebaseAppcheckV1betaResourcePolicy {
   core.String? name;
 
   /// Service specific name of the resource object to which this policy applies,
-  /// in the format: *
+  /// in the format: * **iOS OAuth clients** (Google Identity for iOS):
   /// `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauth_client_id}`
-  /// (Google Identity for iOS) Note that the resource must belong to the
-  /// service specified in the `name` and be from the same project as this
-  /// policy, but the resource is allowed to be missing at the time of creation
-  /// of this policy; in that case, we make a best-effort attempt at respecting
-  /// this policy, but it may not have any effect until the resource is fully
-  /// created.
+  /// Note that the resource must belong to the service specified in the `name`
+  /// and be from the same project as this policy, but the resource is allowed
+  /// to be missing at the time of creation of this policy; in that case, we
+  /// make a best-effort attempt at respecting this policy, but it may not have
+  /// any effect until the resource is fully created.
   ///
   /// Required.
   core.String? targetResource;
@@ -4648,7 +4653,7 @@ class GoogleFirebaseAppcheckV1betaService {
   /// `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
   /// `firestore.googleapis.com` (Cloud Firestore) *
   /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity
-  /// Platform)
+  /// Platform) * `oauth2.googleapis.com` (Google Identity for iOS)
   ///
   /// Required.
   core.String? name;

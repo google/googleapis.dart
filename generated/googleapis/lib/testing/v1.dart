@@ -949,6 +949,11 @@ class AndroidModel {
   /// Use this for invoking the TestExecutionService.
   core.String? id;
 
+  /// Lab info of this device.
+  ///
+  /// Output only.
+  LabInfo? labInfo;
+
   /// True if and only if tests with this model are recorded by stitching
   /// together screenshots.
   ///
@@ -1003,6 +1008,7 @@ class AndroidModel {
     this.form,
     this.formFactor,
     this.id,
+    this.labInfo,
     this.lowFpsVideoRecording,
     this.manufacturer,
     this.name,
@@ -1023,6 +1029,10 @@ class AndroidModel {
           form: json_['form'] as core.String?,
           formFactor: json_['formFactor'] as core.String?,
           id: json_['id'] as core.String?,
+          labInfo: json_.containsKey('labInfo')
+              ? LabInfo.fromJson(
+                  json_['labInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
           lowFpsVideoRecording: json_['lowFpsVideoRecording'] as core.bool?,
           manufacturer: json_['manufacturer'] as core.String?,
           name: json_['name'] as core.String?,
@@ -1051,6 +1061,7 @@ class AndroidModel {
         if (form != null) 'form': form!,
         if (formFactor != null) 'formFactor': formFactor!,
         if (id != null) 'id': id!,
+        if (labInfo != null) 'labInfo': labInfo!,
         if (lowFpsVideoRecording != null)
           'lowFpsVideoRecording': lowFpsVideoRecording!,
         if (manufacturer != null) 'manufacturer': manufacturer!,
@@ -2740,6 +2751,27 @@ class IosXcTest {
         if (testsZip != null) 'testsZip': testsZip!,
         if (xcodeVersion != null) 'xcodeVersion': xcodeVersion!,
         if (xctestrun != null) 'xctestrun': xctestrun!,
+      };
+}
+
+/// Lab specific information for a device.
+class LabInfo {
+  /// Lab name where the device is hosted.
+  ///
+  /// If empty, the device is hosted in a Google owned lab.
+  core.String? name;
+
+  LabInfo({
+    this.name,
+  });
+
+  LabInfo.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 

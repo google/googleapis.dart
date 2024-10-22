@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240609",
+    "revision": "20241003",
     "rootUrl": "https://integrations.googleapis.com/",
     "servicePath": "",
     "title": "Application Integration API",
@@ -1194,6 +1194,34 @@
                             "resources": {
                                 "executions": {
                                     "methods": {
+                                        "cancel": {
+                                            "description": "Cancellation of an execution and associated sub-executions. This will not cancel an IN_PROCESS or completed(SUCCESSFUL, FAILED or CANCELLED) executions.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/executions/{executionsId}:cancel",
+                                            "httpMethod": "POST",
+                                            "id": "integrations.projects.locations.integrations.executions.cancel",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "description": "Required. The execution resource name. Format: projects/{gcp_project_id}/locations/{location}/products/{product}/integrations/{integration_id}/executions/{execution_id}",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/integrations/[^/]+/executions/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+name}:cancel",
+                                            "request": {
+                                                "$ref": "GoogleCloudIntegrationsV1alphaCancelExecutionRequest"
+                                            },
+                                            "response": {
+                                                "$ref": "GoogleCloudIntegrationsV1alphaCancelExecutionResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
                                         "download": {
                                             "description": "Download the execution.",
                                             "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/executions/{executionsId}:download",
@@ -1326,7 +1354,7 @@
                                                     "type": "string"
                                                 },
                                                 "orderBy": {
-                                                    "description": "Optional. The results would be returned in order you specified here. Currently supporting \"last_modified_time\" and \"create_time\".",
+                                                    "description": "Optional. The results would be returned in order you specified here. Currently supporting \"create_time\".",
                                                     "location": "query",
                                                     "type": "string"
                                                 },
@@ -1349,7 +1377,7 @@
                                                     "type": "string"
                                                 },
                                                 "readMask": {
-                                                    "description": "Optional. View mask for the response data. If set, only the field specified will be returned as part of the result. If not set, all fields in event execution info will be filled and returned.",
+                                                    "description": "Optional. View mask for the response data. If set, only the field specified will be returned as part of the result. If not set, all fields in Execution will be filled and returned. Supported fields: trigger_id execution_method create_time update_time execution_details execution_details.state execution_details.execution_snapshots execution_details.attempt_stats execution_details.event_execution_snapshots_size request_parameters cloud_logging_details snapshot_number replay_info",
                                                     "format": "google-fieldmask",
                                                     "location": "query",
                                                     "type": "string"
@@ -1380,7 +1408,7 @@
                                             ]
                                         },
                                         "replay": {
-                                            "description": "Re-execute an existing execution, with same request parameters and execution strategy",
+                                            "description": "Re-execute an existing execution, with same request parameters and execution strategy.",
                                             "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/executions/{executionsId}:replay",
                                             "httpMethod": "POST",
                                             "id": "integrations.projects.locations.integrations.executions.replay",
@@ -1389,7 +1417,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Required. The execution resource name. Format: projects/{gcp_project_id}/locations/{location}/integrations/{integration}/executions/{execution_id}",
+                                                    "description": "Required. Next ID: 3 The execution resource name. Format: projects/{gcp_project_id}/locations/{location}/integrations/{integration}/executions/{execution_id}",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/integrations/[^/]+/executions/[^/]+$",
                                                     "required": true,
@@ -1725,7 +1753,7 @@
                                                     "type": "string"
                                                 },
                                                 "orderBy": {
-                                                    "description": "The results would be returned in order you specified here. Currently supported sort keys are: Descending sort order for \"last_modified_time\", \"created_time\", \"snapshot_number\" Ascending sort order for \"name\".",
+                                                    "description": "The results would be returned in order you specified here. Currently supported sort keys are: Descending sort order for \"last\\_modified\\_time\", \"created\\_time\", and \"snapshot\\_number\". Ascending sort order for `name`.",
                                                     "location": "query",
                                                     "type": "string"
                                                 },
@@ -1741,7 +1769,7 @@
                                                     "type": "string"
                                                 },
                                                 "parent": {
-                                                    "description": "Required. The parent resource where this version will be created. Format: projects/{project}/locations/{location}/integrations/{integration} Specifically, when parent equals: 1. projects//locations//integrations/, Meaning: \"List versions (with filter) for a particular integration\". 2. projects//locations//integrations/- Meaning: \"List versions (with filter) for a client within a particular region\". 3. projects//locations/-/integrations/- Meaning: \"List versions (with filter) for a client\".",
+                                                    "description": "Required. The parent resource where this version will be created. Format: projects/{project}/locations/{location}/integrations/{integration} Specifically, when parent equals: 1. projects//locations//integrations/, Meaning: \"List versions (with filter) for a particular integration\". 2. projects//locations//integrations/- Meaning: \"List versions (with filter) for a client within a particular region\".",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/integrations/[^/]+$",
                                                     "required": true,
@@ -1873,6 +1901,363 @@
                                             "scopes": [
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
+                                        }
+                                    },
+                                    "resources": {
+                                        "testCases": {
+                                            "methods": {
+                                                "create": {
+                                                    "description": "Creates a new test case",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}/testCases",
+                                                    "httpMethod": "POST",
+                                                    "id": "integrations.projects.locations.integrations.versions.testCases.create",
+                                                    "parameterOrder": [
+                                                        "parent"
+                                                    ],
+                                                    "parameters": {
+                                                        "parent": {
+                                                            "description": "Required. The parent resource where this test case will be created. Format: projects/{project}/locations/{location}/integrations/{integration}/versions/{integration_version}",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/[^/]+/integrations/[^/]+/versions/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "testCaseId": {
+                                                            "description": "Required. Required",
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v1/{+parent}/testCases",
+                                                    "request": {
+                                                        "$ref": "GoogleCloudIntegrationsV1alphaTestCase"
+                                                    },
+                                                    "response": {
+                                                        "$ref": "GoogleCloudIntegrationsV1alphaTestCase"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                },
+                                                "delete": {
+                                                    "description": "Deletes a test case",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}/testCases/{testCasesId}",
+                                                    "httpMethod": "DELETE",
+                                                    "id": "integrations.projects.locations.integrations.versions.testCases.delete",
+                                                    "parameterOrder": [
+                                                        "name"
+                                                    ],
+                                                    "parameters": {
+                                                        "name": {
+                                                            "description": "Required. ID for the test case to be deleted",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/[^/]+/integrations/[^/]+/versions/[^/]+/testCases/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v1/{+name}",
+                                                    "response": {
+                                                        "$ref": "GoogleProtobufEmpty"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                },
+                                                "download": {
+                                                    "description": "Downloads a test case. Retrieves the `TestCase` for a given `test_case_id` and returns the response as a string.",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}/testCases/{testCasesId}:download",
+                                                    "httpMethod": "GET",
+                                                    "id": "integrations.projects.locations.integrations.versions.testCases.download",
+                                                    "parameterOrder": [
+                                                        "name"
+                                                    ],
+                                                    "parameters": {
+                                                        "fileFormat": {
+                                                            "description": "File format for download request.",
+                                                            "enum": [
+                                                                "FILE_FORMAT_UNSPECIFIED",
+                                                                "JSON",
+                                                                "YAML"
+                                                            ],
+                                                            "enumDescriptions": [
+                                                                "Unspecified file format",
+                                                                "JSON File Format",
+                                                                "YAML File Format"
+                                                            ],
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        },
+                                                        "name": {
+                                                            "description": "Required. The test case to download. Format: projects/{project}/locations/{location}/integrations/{integration}/versions/{integration_version}/testCases/{test_case_id}",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/[^/]+/integrations/[^/]+/versions/[^/]+/testCases/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v1/{+name}:download",
+                                                    "response": {
+                                                        "$ref": "GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                },
+                                                "executeTest": {
+                                                    "description": "Executes functional test",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}/testCases/{testCasesId}:executeTest",
+                                                    "httpMethod": "POST",
+                                                    "id": "integrations.projects.locations.integrations.versions.testCases.executeTest",
+                                                    "parameterOrder": [
+                                                        "testCaseName"
+                                                    ],
+                                                    "parameters": {
+                                                        "testCaseName": {
+                                                            "description": "Required. Test case resource name",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/[^/]+/integrations/[^/]+/versions/[^/]+/testCases/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v1/{+testCaseName}:executeTest",
+                                                    "request": {
+                                                        "$ref": "GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest"
+                                                    },
+                                                    "response": {
+                                                        "$ref": "GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                },
+                                                "get": {
+                                                    "description": "Get a test case",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}/testCases/{testCasesId}",
+                                                    "httpMethod": "GET",
+                                                    "id": "integrations.projects.locations.integrations.versions.testCases.get",
+                                                    "parameterOrder": [
+                                                        "name"
+                                                    ],
+                                                    "parameters": {
+                                                        "name": {
+                                                            "description": "Required. The ID of the test case to retrieve",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/[^/]+/integrations/[^/]+/versions/[^/]+/testCases/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v1/{+name}",
+                                                    "response": {
+                                                        "$ref": "GoogleCloudIntegrationsV1alphaTestCase"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                },
+                                                "list": {
+                                                    "description": "Lists all the test cases that satisfy the filters.",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}/testCases",
+                                                    "httpMethod": "GET",
+                                                    "id": "integrations.projects.locations.integrations.versions.testCases.list",
+                                                    "parameterOrder": [
+                                                        "parent"
+                                                    ],
+                                                    "parameters": {
+                                                        "filter": {
+                                                            "description": "Optional. Standard filter field. Filtering as supported in https://developers.google.com/authorized-buyers/apis/guides/list-filters.",
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        },
+                                                        "orderBy": {
+                                                            "description": "Optional. The results would be returned in order specified here. Currently supported sort keys are: Descending sort order for \"last_modified_time\", \"created_time\". Ascending sort order for \"name\".",
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        },
+                                                        "pageSize": {
+                                                            "description": "Optional. The maximum number of test cases to return. The service may return fewer than this value. If unspecified, at most 100 test cases will be returned.",
+                                                            "format": "int32",
+                                                            "location": "query",
+                                                            "type": "integer"
+                                                        },
+                                                        "pageToken": {
+                                                            "description": "Optional. A page token, received from a previous `ListTestCases` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTestCases` must match the call that provided the page token.",
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        },
+                                                        "parent": {
+                                                            "description": "Required. The parent resource where this TestCase was created.",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/[^/]+/integrations/[^/]+/versions/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "readMask": {
+                                                            "description": "Optional. The mask which specifies fields that need to be returned in the TestCases's response.",
+                                                            "format": "google-fieldmask",
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v1/{+parent}/testCases",
+                                                    "response": {
+                                                        "$ref": "GoogleCloudIntegrationsV1alphaListTestCasesResponse"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                },
+                                                "listExecutions": {
+                                                    "description": "Lists the results of all functional test executions. The response includes the same information as the [execution log](https://cloud.google.com/application-integration/docs/viewing-logs) in the Integration UI.",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}/testCases/{testCasesId}:executions",
+                                                    "httpMethod": "GET",
+                                                    "id": "integrations.projects.locations.integrations.versions.testCases.listExecutions",
+                                                    "parameterOrder": [
+                                                        "parent"
+                                                    ],
+                                                    "parameters": {
+                                                        "filter": {
+                                                            "description": "Optional. Standard filter field, we support filtering on following fields: test_case_id: the ID of the test case. CreateTimestamp: the execution created time. event_execution_state: the state of the executions. execution_id: the id of the execution. trigger_id: the id of the trigger. parameter_type: the type of the parameters involved in the execution. All fields support for EQUALS, in additional: CreateTimestamp support for LESS_THAN, GREATER_THAN ParameterType support for HAS For example: \"parameter_type\" HAS \\\"string\\\" Also supports operators like AND, OR, NOT For example, trigger_id=\\\"id1\\\" AND test_case_id=\\\"testCaseId\\\"",
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        },
+                                                        "orderBy": {
+                                                            "description": "Optional. The results would be returned in order you specified here. Currently supporting \"last_modified_time\" and \"create_time\".",
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        },
+                                                        "pageSize": {
+                                                            "description": "Optional. The size of entries in the response.",
+                                                            "format": "int32",
+                                                            "location": "query",
+                                                            "type": "integer"
+                                                        },
+                                                        "pageToken": {
+                                                            "description": "Optional. The token returned in the previous response.",
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        },
+                                                        "parent": {
+                                                            "description": "Required. The parent resource name of the test case execution.",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/[^/]+/integrations/[^/]+/versions/[^/]+/testCases/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "readMask": {
+                                                            "description": "Optional. View mask for the response data. If set, only the field specified will be returned as part of the result. If not set, all fields in event execution info will be filled and returned.",
+                                                            "format": "google-fieldmask",
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        },
+                                                        "truncateParams": {
+                                                            "deprecated": true,
+                                                            "description": "Optional. If true, the service will truncate the params to only keep the first 1000 characters of string params and empty the executions in order to make response smaller. Only works for UI and when the params fields are not filtered out.",
+                                                            "location": "query",
+                                                            "type": "boolean"
+                                                        }
+                                                    },
+                                                    "path": "v1/{+parent}:executions",
+                                                    "response": {
+                                                        "$ref": "GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                },
+                                                "patch": {
+                                                    "description": "Updates a test case",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}/testCases/{testCasesId}",
+                                                    "httpMethod": "PATCH",
+                                                    "id": "integrations.projects.locations.integrations.versions.testCases.patch",
+                                                    "parameterOrder": [
+                                                        "name"
+                                                    ],
+                                                    "parameters": {
+                                                        "name": {
+                                                            "description": "Output only. Auto-generated primary key.",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/[^/]+/integrations/[^/]+/versions/[^/]+/testCases/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "updateMask": {
+                                                            "description": "Optional. Field mask specifying the fields in the above integration that have been modified and need to be updated.",
+                                                            "format": "google-fieldmask",
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v1/{+name}",
+                                                    "request": {
+                                                        "$ref": "GoogleCloudIntegrationsV1alphaTestCase"
+                                                    },
+                                                    "response": {
+                                                        "$ref": "GoogleCloudIntegrationsV1alphaTestCase"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                },
+                                                "takeoverEditLock": {
+                                                    "description": "Clear the lock fields and assign them to current user",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}/testCases/{testCasesId}:takeoverEditLock",
+                                                    "httpMethod": "POST",
+                                                    "id": "integrations.projects.locations.integrations.versions.testCases.takeoverEditLock",
+                                                    "parameterOrder": [
+                                                        "name"
+                                                    ],
+                                                    "parameters": {
+                                                        "name": {
+                                                            "description": "Required. The ID of test case to takeover edit lock. Format: projects/{project}/locations/{location}/integrations/{integration}/versions/{integration_version}/testCases/{test_case_id}",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/[^/]+/integrations/[^/]+/versions/[^/]+/testCases/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v1/{+name}:takeoverEditLock",
+                                                    "request": {
+                                                        "$ref": "GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest"
+                                                    },
+                                                    "response": {
+                                                        "$ref": "GoogleCloudIntegrationsV1alphaTestCase"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                },
+                                                "upload": {
+                                                    "description": "Uploads a test case. The content can be a previously downloaded test case. Performs the same function as CreateTestCase, but accepts input in a string format, which holds the complete representation of the TestCase content.",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}/testCases:upload",
+                                                    "httpMethod": "POST",
+                                                    "id": "integrations.projects.locations.integrations.versions.testCases.upload",
+                                                    "parameterOrder": [
+                                                        "parent"
+                                                    ],
+                                                    "parameters": {
+                                                        "parent": {
+                                                            "description": "Required. The test case to upload. Format: projects/{project}/locations/{location}/integrations/{integration}/versions/{integration_version}",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/[^/]+/integrations/[^/]+/versions/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v1/{+parent}/testCases:upload",
+                                                    "request": {
+                                                        "$ref": "GoogleCloudIntegrationsV1alphaUploadTestCaseRequest"
+                                                    },
+                                                    "response": {
+                                                        "$ref": "GoogleCloudIntegrationsV1alphaUploadTestCaseResponse"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -2404,34 +2789,6 @@
                                     "resources": {
                                         "executions": {
                                             "methods": {
-                                                "cancel": {
-                                                    "description": "Cancellation of an execution",
-                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}/executions/{executionsId}:cancel",
-                                                    "httpMethod": "POST",
-                                                    "id": "integrations.projects.locations.products.integrations.executions.cancel",
-                                                    "parameterOrder": [
-                                                        "name"
-                                                    ],
-                                                    "parameters": {
-                                                        "name": {
-                                                            "description": "Required. The execution resource name. Format: projects/{gcp_project_id}/locations/{location}/products/{product}/integrations/{integration_id}/executions/{execution_id}",
-                                                            "location": "path",
-                                                            "pattern": "^projects/[^/]+/locations/[^/]+/products/[^/]+/integrations/[^/]+/executions/[^/]+$",
-                                                            "required": true,
-                                                            "type": "string"
-                                                        }
-                                                    },
-                                                    "path": "v1/{+name}:cancel",
-                                                    "request": {
-                                                        "$ref": "GoogleCloudIntegrationsV1alphaCancelExecutionRequest"
-                                                    },
-                                                    "response": {
-                                                        "$ref": "GoogleCloudIntegrationsV1alphaCancelExecutionResponse"
-                                                    },
-                                                    "scopes": [
-                                                        "https://www.googleapis.com/auth/cloud-platform"
-                                                    ]
-                                                },
                                                 "download": {
                                                     "description": "Download the execution.",
                                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}/executions/{executionsId}:download",
@@ -2564,7 +2921,7 @@
                                                             "type": "string"
                                                         },
                                                         "orderBy": {
-                                                            "description": "Optional. The results would be returned in order you specified here. Currently supporting \"last_modified_time\" and \"create_time\".",
+                                                            "description": "Optional. The results would be returned in order you specified here. Currently supporting \"create_time\".",
                                                             "location": "query",
                                                             "type": "string"
                                                         },
@@ -2587,7 +2944,7 @@
                                                             "type": "string"
                                                         },
                                                         "readMask": {
-                                                            "description": "Optional. View mask for the response data. If set, only the field specified will be returned as part of the result. If not set, all fields in event execution info will be filled and returned.",
+                                                            "description": "Optional. View mask for the response data. If set, only the field specified will be returned as part of the result. If not set, all fields in Execution will be filled and returned. Supported fields: trigger_id execution_method create_time update_time execution_details execution_details.state execution_details.execution_snapshots execution_details.attempt_stats execution_details.event_execution_snapshots_size request_parameters cloud_logging_details snapshot_number replay_info",
                                                             "format": "google-fieldmask",
                                                             "location": "query",
                                                             "type": "string"
@@ -2894,7 +3251,7 @@
                                                             "type": "string"
                                                         },
                                                         "orderBy": {
-                                                            "description": "The results would be returned in order you specified here. Currently supported sort keys are: Descending sort order for \"last_modified_time\", \"created_time\", \"snapshot_number\" Ascending sort order for \"name\".",
+                                                            "description": "The results would be returned in order you specified here. Currently supported sort keys are: Descending sort order for \"last\\_modified\\_time\", \"created\\_time\", and \"snapshot\\_number\". Ascending sort order for `name`.",
                                                             "location": "query",
                                                             "type": "string"
                                                         },
@@ -2910,7 +3267,7 @@
                                                             "type": "string"
                                                         },
                                                         "parent": {
-                                                            "description": "Required. The parent resource where this version will be created. Format: projects/{project}/locations/{location}/integrations/{integration} Specifically, when parent equals: 1. projects//locations//integrations/, Meaning: \"List versions (with filter) for a particular integration\". 2. projects//locations//integrations/- Meaning: \"List versions (with filter) for a client within a particular region\". 3. projects//locations/-/integrations/- Meaning: \"List versions (with filter) for a client\".",
+                                                            "description": "Required. The parent resource where this version will be created. Format: projects/{project}/locations/{location}/integrations/{integration} Specifically, when parent equals: 1. projects//locations//integrations/, Meaning: \"List versions (with filter) for a particular integration\". 2. projects//locations//integrations/- Meaning: \"List versions (with filter) for a client within a particular region\".",
                                                             "location": "path",
                                                             "pattern": "^projects/[^/]+/locations/[^/]+/products/[^/]+/integrations/[^/]+$",
                                                             "required": true,
@@ -3732,6 +4089,406 @@
                                     }
                                 }
                             }
+                        },
+                        "templates": {
+                            "methods": {
+                                "create": {
+                                    "description": "Creates a new template",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates",
+                                    "httpMethod": "POST",
+                                    "id": "integrations.projects.locations.templates.create",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. \"projects/{project}/locations/{location}\" format.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/templates",
+                                    "request": {
+                                        "$ref": "GoogleCloudIntegrationsV1alphaTemplate"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleCloudIntegrationsV1alphaTemplate"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "delete": {
+                                    "description": "Deletes a template",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}",
+                                    "httpMethod": "DELETE",
+                                    "id": "integrations.projects.locations.templates.delete",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The name that is associated with the Template.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/templates/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "response": {
+                                        "$ref": "GoogleProtobufEmpty"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "download": {
+                                    "description": "Downloads a template. Retrieves the `Template` and returns the response as a string.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}:download",
+                                    "httpMethod": "GET",
+                                    "id": "integrations.projects.locations.templates.download",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "fileFormat": {
+                                            "description": "Required. File format for download request.",
+                                            "enum": [
+                                                "FILE_FORMAT_UNSPECIFIED",
+                                                "JSON",
+                                                "YAML"
+                                            ],
+                                            "enumDescriptions": [
+                                                "Unspecified file format",
+                                                "JSON File Format",
+                                                "YAML File Format"
+                                            ],
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "description": "Required. The template to download. Format: projects/{project}/locations/{location}/template/{template_id}",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/templates/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:download",
+                                    "response": {
+                                        "$ref": "GoogleCloudIntegrationsV1alphaDownloadTemplateResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "get": {
+                                    "description": "Get a template in the specified project.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}",
+                                    "httpMethod": "GET",
+                                    "id": "integrations.projects.locations.templates.get",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The template to retrieve. Format: projects/{project}/locations/{location}/templates/{template}",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/templates/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "response": {
+                                        "$ref": "GoogleCloudIntegrationsV1alphaTemplate"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "import": {
+                                    "description": "Import the template to an existing integration. This api would keep track of usage_count and last_used_time. PERMISSION_DENIED would be thrown if template is not accessible by client.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}:import",
+                                    "httpMethod": "POST",
+                                    "id": "integrations.projects.locations.templates.import",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The name that is associated with the Template.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/templates/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:import",
+                                    "request": {
+                                        "$ref": "GoogleCloudIntegrationsV1alphaImportTemplateRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleCloudIntegrationsV1alphaImportTemplateResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "list": {
+                                    "description": "Lists all templates matching the filter.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates",
+                                    "httpMethod": "GET",
+                                    "id": "integrations.projects.locations.templates.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "filter": {
+                                            "description": "Optional. Standard filter field to filter templates. client_id filter won't be supported and will restrict to templates belonging to the current client only. Return all templates of the current client if the filter is empty. Also supports operators like AND, OR, NOT For example, \"status=\\\"ACTIVE\\\"",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "orderBy": {
+                                            "description": "Optional. The results would be returned in the order you specified here.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "description": "Optional. The size of the response entries. If unspecified, defaults to 100. The maximum value is 1000; values above 1000 will be coerced to 1000.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "description": "Optional. The token returned in the previous response.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "description": "Required. The client, which owns this collection of Templates.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "readMask": {
+                                            "description": "Optional. The mask which specifies fields that need to be returned in the template's response.",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/templates",
+                                    "response": {
+                                        "$ref": "GoogleCloudIntegrationsV1alphaListTemplatesResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "patch": {
+                                    "description": "Updates the template by given id.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}",
+                                    "httpMethod": "PATCH",
+                                    "id": "integrations.projects.locations.templates.patch",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Identifier. Resource name of the template.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/templates/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "updateMask": {
+                                            "description": "Required. Field mask specifying the fields in the above template that have been modified and must be updated.",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "request": {
+                                        "$ref": "GoogleCloudIntegrationsV1alphaTemplate"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleCloudIntegrationsV1alphaTemplate"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "search": {
+                                    "description": "Search templates based on user query and filters. This api would query the templates and return a list of templates based on the user filter.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates:search",
+                                    "httpMethod": "GET",
+                                    "id": "integrations.projects.locations.templates.search",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "filter": {
+                                            "description": "Optional. Standard filter field to filter templates. client_id filter won't be supported and will restrict to templates belonging to the current client only. Return all templates of the current client if the filter is empty. Also supports operators like AND, OR, NOT For example, \"status=\\\"ACTIVE\\\"",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "orderBy": {
+                                            "description": "Optional. The results would be returned in the order you specified here.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "description": "Optional. The size of the response entries. If unspecified, defaults to 100. The maximum value is 1000; values above 1000 will be coerced to 1000.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "description": "Optional. The token returned in the previous response.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "description": "Required. The client, which owns this collection of Templates.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "readMask": {
+                                            "description": "Optional. The mask which specifies fields that need to be returned in the template's response.",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/templates:search",
+                                    "response": {
+                                        "$ref": "GoogleCloudIntegrationsV1alphaSearchTemplatesResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "share": {
+                                    "description": "Share a template with other clients. Only the template owner can share the templates with other projects. PERMISSION_DENIED would be thrown if the request is not from the owner.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}:share",
+                                    "httpMethod": "POST",
+                                    "id": "integrations.projects.locations.templates.share",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The name that is associated with the Template.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/templates/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:share",
+                                    "request": {
+                                        "$ref": "GoogleCloudIntegrationsV1alphaShareTemplateRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleProtobufEmpty"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "unshare": {
+                                    "description": "Unshare a template from given clients. Owner of the template can unshare template with clients. Shared client can only unshare the template from itself. PERMISSION_DENIED would be thrown if request is not from owner or for unsharing itself.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}:unshare",
+                                    "httpMethod": "POST",
+                                    "id": "integrations.projects.locations.templates.unshare",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The name that is associated with the Template.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/templates/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:unshare",
+                                    "request": {
+                                        "$ref": "GoogleCloudIntegrationsV1alphaUnshareTemplateRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleProtobufEmpty"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "upload": {
+                                    "description": "Uploads a template. The content can be a previously downloaded template. Performs the same function as CreateTemplate, but accepts input in a string format, which holds the complete representation of the Template content.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates:upload",
+                                    "httpMethod": "POST",
+                                    "id": "integrations.projects.locations.templates.upload",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. The template to upload. Format: projects/{project}/locations/{location}",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/templates:upload",
+                                    "request": {
+                                        "$ref": "GoogleCloudIntegrationsV1alphaUploadTemplateRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleCloudIntegrationsV1alphaUploadTemplateResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "use": {
+                                    "description": "Use the template to create integration. This api would keep track of usage_count and last_used_time. PERMISSION_DENIED would be thrown if template is not accessible by client.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}:use",
+                                    "httpMethod": "POST",
+                                    "id": "integrations.projects.locations.templates.use",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The name that is associated with the Template.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/templates/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:use",
+                                    "request": {
+                                        "$ref": "GoogleCloudIntegrationsV1alphaUseTemplateRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleCloudIntegrationsV1alphaUseTemplateResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
                         }
                     }
                 }
@@ -4470,6 +5227,10 @@
                     "description": "Connector version Format: projects/{project}/locations/{location}/providers/{provider}/connectors/{connector}/versions/{version}",
                     "type": "string"
                 },
+                "host": {
+                    "description": "The name of the Hostname of the Service Directory service with TLS if used.",
+                    "type": "string"
+                },
                 "serviceName": {
                     "description": "Service name Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}",
                     "type": "string"
@@ -4711,9 +5472,13 @@
             "type": "object"
         },
         "EnterpriseCrmEventbusProtoEventExecutionDetails": {
-            "description": "Contains the details of the execution info of this event: this includes the tasks execution details plus the event execution statistics. Next available id: 11",
+            "description": "Contains the details of the execution info of this event: this includes the tasks execution details plus the event execution statistics. Next available id: 12",
             "id": "EnterpriseCrmEventbusProtoEventExecutionDetails",
             "properties": {
+                "cancelReason": {
+                    "description": "If the execution is manually canceled, this field will contain the reason for cancellation.",
+                    "type": "string"
+                },
                 "eventAttemptStats": {
                     "items": {
                         "$ref": "EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats"
@@ -4941,6 +5706,10 @@
             "description": "Represents external traffic type and id.",
             "id": "EnterpriseCrmEventbusProtoExternalTraffic",
             "properties": {
+                "enableInternalIp": {
+                    "description": "Indicates the client enables internal IP feature, this is applicable for internal clients only.",
+                    "type": "boolean"
+                },
                 "gcpProjectId": {
                     "description": "User’s GCP project id the traffic is referring to.",
                     "type": "string"
@@ -4958,7 +5727,6 @@
                     "type": "boolean"
                 },
                 "source": {
-                    "description": "LINT.ThenChange(//depot/google3/enterprise/crm/eventbus/proto/product.proto:product, //depot/google3/java/com/google/enterprise/crm/integrationplatform/api/utils/ConverterUtils.java:source_to_product)",
                     "enum": [
                         "SOURCE_UNSPECIFIED",
                         "APIGEE",
@@ -5154,8 +5922,7 @@
                     "$ref": "EnterpriseCrmEventbusProtoIntFunction"
                 },
                 "jsonFunction": {
-                    "$ref": "EnterpriseCrmEventbusProtoJsonFunction",
-                    "description": "LINT.ThenChange(//depot/google3/alkali/apps/integrationplatform/client/workflow_editor/utils/transform_function.ts)"
+                    "$ref": "EnterpriseCrmEventbusProtoJsonFunction"
                 },
                 "protoArrayFunction": {
                     "$ref": "EnterpriseCrmEventbusProtoProtoArrayFunction"
@@ -5344,7 +6111,7 @@
                         "",
                         "",
                         "",
-                        "next id: 24"
+                        ""
                     ],
                     "type": "string"
                 }
@@ -5358,10 +6125,6 @@
                 "logFieldName": {
                     "description": "The name of corresponding logging field of the event property. If omitted, assumes the same name as the event property key.",
                     "type": "string"
-                },
-                "sanitizeOptions": {
-                    "$ref": "EnterpriseCrmLoggingGwsSanitizeOptions",
-                    "description": "Contains the scrubbing options, such as whether to scrub, obfuscate, etc."
                 },
                 "seedPeriod": {
                     "enum": [
@@ -5392,10 +6155,6 @@
                         "Hash computations include the param name."
                     ],
                     "type": "string"
-                },
-                "shorteningLimits": {
-                    "$ref": "EnterpriseCrmLoggingGwsFieldLimits",
-                    "description": "Contains the field limits for shortening, such as max string length and max array length."
                 }
             },
             "type": "object"
@@ -6547,7 +7306,7 @@
                         "",
                         "Internal IP tasks that should not be available in the UI.",
                         "Tasks that are relevant to cloud systems teams and typically",
-                        "include connecting to Vector salesforce, CRM Hub Spanner etc. Task entities that derive from a custom task template.",
+                        "Task entities that derive from a custom task template.",
                         "Category to show task recommendations"
                     ],
                     "type": "string"
@@ -7133,9 +7892,13 @@
             "type": "object"
         },
         "EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails": {
-            "description": "Contains the details of the execution info of this event: this includes the tasks execution details plus the event execution statistics. Next available id: 11",
+            "description": "Contains the details of the execution info of this event: this includes the tasks execution details plus the event execution statistics. Next available id: 12",
             "id": "EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails",
             "properties": {
+                "cancelReason": {
+                    "description": "If the execution is manually canceled, this field will contain the reason for cancellation.",
+                    "type": "string"
+                },
                 "eventAttemptStats": {
                     "items": {
                         "$ref": "EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats"
@@ -7205,7 +7968,7 @@
             "type": "object"
         },
         "EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo": {
-            "description": "Contains all the execution details for a workflow instance. Next available id: 26",
+            "description": "Contains all the execution details for a workflow instance. Next available id: 27",
             "id": "EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo",
             "properties": {
                 "clientId": {
@@ -7243,6 +8006,10 @@
                 "executionTraceInfo": {
                     "$ref": "EnterpriseCrmEventbusProtoExecutionTraceInfo",
                     "description": "Execution trace info to aggregate parent-child executions."
+                },
+                "integrationVersionUserLabel": {
+                    "description": "User-defined label that annotates the executed integration version.",
+                    "type": "string"
                 },
                 "lastModifiedTime": {
                     "description": "Auto-generated.",
@@ -8069,7 +8836,7 @@
             "type": "object"
         },
         "EnterpriseCrmFrontendsEventbusProtoTriggerConfig": {
-            "description": "Configuration detail of a trigger. Next available id: 20",
+            "description": "Configuration detail of a trigger. Next available id: 22",
             "id": "EnterpriseCrmFrontendsEventbusProtoTriggerConfig",
             "properties": {
                 "alertConfig": {
@@ -8097,6 +8864,13 @@
                     "description": "Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task",
                     "type": "string"
                 },
+                "inputVariables": {
+                    "description": "Optional. List of input variables for the api trigger.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "label": {
                     "description": "The user created label for a particular trigger.",
                     "type": "string"
@@ -8114,6 +8888,13 @@
                         "Execute the first task that satisfies the associated condition."
                     ],
                     "type": "string"
+                },
+                "outputVariables": {
+                    "description": "Optional. List of output variables for the api trigger.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "pauseWorkflowExecutions": {
                     "description": "Optional. If set to true, any upcoming requests for this trigger config will be paused and the executions will be resumed later when the flag is reset. The workflow to which this trigger config belongs has to be in ACTIVE status for the executions to be paused or resumed.",
@@ -8330,144 +9111,6 @@
             },
             "type": "object"
         },
-        "EnterpriseCrmLoggingGwsFieldLimits": {
-            "description": "Describes string and array limits when writing to logs. When a limit is exceeded the *shortener_type* describes how to shorten the field. next_id: 6",
-            "id": "EnterpriseCrmLoggingGwsFieldLimits",
-            "properties": {
-                "logAction": {
-                    "enum": [
-                        "LOG_ACTION_UNSPECIFIED",
-                        "DONT_LOG",
-                        "LOG"
-                    ],
-                    "enumDescriptions": [
-                        "",
-                        "",
-                        ""
-                    ],
-                    "type": "string"
-                },
-                "logType": {
-                    "description": "To which type(s) of logs the limits apply.",
-                    "items": {
-                        "enum": [
-                            "LOG_TYPE_UNSPECIFIED",
-                            "GWS",
-                            "GTS",
-                            "ALL"
-                        ],
-                        "enumDescriptions": [
-                            "",
-                            "Limits apply when log detail records are written to GWS.",
-                            "Limits apply when log detail records are written to GTS (e.g., RecordIO files).",
-                            "Limits apply to *all* output log types."
-                        ],
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "maxArraySize": {
-                    "description": "maximum array size. If the array exceds this size, the field (list) is truncated.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "maxStringLength": {
-                    "description": "maximum string length. If the field exceeds this amount the field is shortened.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "shortenerType": {
-                    "enum": [
-                        "SHORTENER_TYPE_UNSPECIFIED",
-                        "SHORTEN",
-                        "HASH",
-                        "SHORTEN_WITH_HASH",
-                        "SHORTEN_EMAIL",
-                        "SHORTEN_EMAIL_WITH_HASH",
-                        "SHORTEN_DOMAIN"
-                    ],
-                    "enumDescriptions": [
-                        "",
-                        "String is shortened to max_string_length.",
-                        "String is replaced by its hex-string hash.",
-                        "String is replaced by a combination of string shortening and a hex-string hash.",
-                        "String shortening for email addresses. Shortening may be done on the user and/or domain portion of the email address.",
-                        "String is replaced by a combination of string shortening and a hex-string hash for an email address.",
-                        "Shortens a domain name (e.g., as part of an email address or URL)."
-                    ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "EnterpriseCrmLoggingGwsSanitizeOptions": {
-            "description": "Identifies whether a field contains, or may contain, PII or sensitive data, and how to sanitize the field if it does. If a field's privacy type cannot be determined then it is sanitized (e.g., scrubbed). The specific sanitizer implementation is determined by run-time configuration and environment options (e.g., prod vs. qa). next_id: 5",
-            "id": "EnterpriseCrmLoggingGwsSanitizeOptions",
-            "properties": {
-                "isAlreadySanitized": {
-                    "description": "If true, the value has already been sanitized and needs no further sanitization. For instance, a D3 customer id is already an obfuscated entity and *might not* need further sanitization.",
-                    "type": "boolean"
-                },
-                "logType": {
-                    "description": "To which type(s) of logs the sanitize options apply.",
-                    "items": {
-                        "enum": [
-                            "LOG_TYPE_UNSPECIFIED",
-                            "GWS",
-                            "GTS",
-                            "ALL"
-                        ],
-                        "enumDescriptions": [
-                            "",
-                            "Limits apply when log detail records are written to GWS.",
-                            "Limits apply when log detail records are written to GTS (e.g., RecordIO files).",
-                            "Limits apply to *all* output log types."
-                        ],
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "privacy": {
-                    "enum": [
-                        "PRIVACY_TYPE_UNSPECIFIED",
-                        "NOT_PII",
-                        "PII",
-                        "SPII",
-                        "UNSURE"
-                    ],
-                    "enumDescriptions": [
-                        "",
-                        "Field does *NOT* contain PII or sensitive data.",
-                        "Field contains PII.",
-                        "Field contains Sensitive PII.",
-                        "Unsure if field contains PII."
-                    ],
-                    "type": "string"
-                },
-                "sanitizeType": {
-                    "enum": [
-                        "SANITIZE_TYPE_UNSPECIFIED",
-                        "SCRUB",
-                        "ANONYMIZE",
-                        "ANONYMIZE_LIMITED_REPEATABLE",
-                        "OBFUSCATE",
-                        "ENCRYPT",
-                        "DO_NOT_SANITIZE"
-                    ],
-                    "enumDescriptions": [
-                        "",
-                        "Replace value with a scrubbed value (usu. a constant).",
-                        "Transform a value so that it cannot be tracked across events. However, a given value, is transformed to the same value *within* an event. E.g., \"foo.com\" is transformed to \"0xabcdef\" for event 1001, and to \"0xfedcba\" for event 1002.",
-                        "Transform values as with ANONYMIZER, but the same transformation is repeated for a limited time (e.g., 1 day).",
-                        "The value is transformed using a well-defined obfuscator (e.g., D3_CUSTOMER_ID).",
-                        "The value is encrypted.",
-                        "No sanitization is required."
-                    ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "GoogleCloudConnectorsV1AuthConfig": {
             "description": "AuthConfig defines details of a authentication type.",
             "id": "GoogleCloudConnectorsV1AuthConfig",
@@ -8492,7 +9135,8 @@
                         "OAUTH2_CLIENT_CREDENTIALS",
                         "SSH_PUBLIC_KEY",
                         "OAUTH2_AUTH_CODE_FLOW",
-                        "GOOGLE_AUTHENTICATION"
+                        "GOOGLE_AUTHENTICATION",
+                        "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED"
                     ],
                     "enumDescriptions": [
                         "Authentication type not specified.",
@@ -8501,13 +9145,18 @@
                         "Oauth 2.0 Client Credentials Grant Authentication",
                         "SSH Public Key Authentication",
                         "Oauth 2.0 Authorization Code Flow",
-                        "Google authentication"
+                        "Google authentication",
+                        "Oauth 2.0 Authorization Code Flow with Google Provided OAuth Client"
                     ],
                     "type": "string"
                 },
                 "oauth2AuthCodeFlow": {
                     "$ref": "GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow",
                     "description": "Oauth2AuthCodeFlow."
+                },
+                "oauth2AuthCodeFlowGoogleManaged": {
+                    "$ref": "GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged",
+                    "description": "Oauth2AuthCodeFlowGoogleManaged."
                 },
                 "oauth2ClientCredentials": {
                     "$ref": "GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials",
@@ -8562,6 +9211,28 @@
                 },
                 "scopes": {
                     "description": "Scopes the connection will request when the user performs the auth code flow.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged": {
+            "description": "Parameters to support Oauth 2.0 Auth Code Grant Authentication using Google Provided OAuth Client. See https://tools.ietf.org/html/rfc6749#section-1.3.1 for more details.",
+            "id": "GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged",
+            "properties": {
+                "authCode": {
+                    "description": "Optional. Authorization code to be exchanged for access and refresh tokens.",
+                    "type": "string"
+                },
+                "redirectUri": {
+                    "description": "Optional. Redirect URI to be provided during the auth code exchange.",
+                    "type": "string"
+                },
+                "scopes": {
+                    "description": "Required. Scopes the connection will request when the user performs the auth code flow.",
                     "items": {
                         "type": "string"
                     },
@@ -8715,9 +9386,17 @@
             "description": "Connection represents an instance of connector.",
             "id": "GoogleCloudConnectorsV1Connection",
             "properties": {
+                "asyncOperationsEnabled": {
+                    "description": "Optional. Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.",
+                    "type": "boolean"
+                },
                 "authConfig": {
                     "$ref": "GoogleCloudConnectorsV1AuthConfig",
                     "description": "Optional. Configuration for establishing the connection's authentication with an external system."
+                },
+                "authOverrideEnabled": {
+                    "description": "Optional. Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.",
+                    "type": "boolean"
                 },
                 "billingConfig": {
                     "$ref": "GoogleCloudConnectorsV1BillingConfig",
@@ -8810,6 +9489,11 @@
                     "description": "Output only. Eventing Runtime Data.",
                     "readOnly": true
                 },
+                "host": {
+                    "description": "Output only. The name of the Hostname of the Service Directory service with TLS.",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "imageLocation": {
                     "description": "Output only. GCR location where the runtime image is stored. formatted like: gcr.io/{bucketName}/{imageName}",
                     "readOnly": true,
@@ -8880,6 +9564,11 @@
                 "suspended": {
                     "description": "Optional. Suspended indicates if a user has suspended a connection or not.",
                     "type": "boolean"
+                },
+                "tlsServiceDirectory": {
+                    "description": "Output only. The name of the Service Directory service with TLS.",
+                    "readOnly": true,
+                    "type": "string"
                 },
                 "updateTime": {
                     "description": "Output only. Updated time.",
@@ -8953,6 +9642,25 @@
                     ],
                     "type": "string"
                 },
+                "deploymentModelMigrationState": {
+                    "description": "Output only. Status of the deployment model migration.",
+                    "enum": [
+                        "DEPLOYMENT_MODEL_MIGRATION_STATE_UNSPECIFIED",
+                        "IN_PROGRESS",
+                        "COMPLETED",
+                        "ROLLEDBACK",
+                        "ROLLBACK_IN_PROGRESS"
+                    ],
+                    "enumDescriptions": [
+                        "Deployment model migration state is not specified.",
+                        "Deployment model migration is in progress.",
+                        "Deployment model migration is completed.",
+                        "Deployment model migration rolledback.",
+                        "Deployment model migration rollback in progress."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "hpaConfig": {
                     "$ref": "GoogleCloudConnectorsV1HPAConfig",
                     "description": "Output only. HPA autoscaling config.",
@@ -8963,6 +9671,12 @@
                     "format": "int64",
                     "readOnly": true,
                     "type": "string"
+                },
+                "maxInstanceRequestConcurrency": {
+                    "description": "Output only. Max instance request concurrency.",
+                    "format": "int32",
+                    "readOnly": true,
+                    "type": "integer"
                 },
                 "ratelimitThreshold": {
                     "description": "Output only. Max QPS supported by the connector version before throttling of requests.",
@@ -8982,6 +9696,21 @@
                 },
                 "sharedDeployment": {
                     "description": "Output only. The name of shared connector deployment.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "tlsMigrationState": {
+                    "description": "Output only. Status of the TLS migration.",
+                    "enum": [
+                        "TLS_MIGRATION_STATE_UNSPECIFIED",
+                        "TLS_MIGRATION_NOT_STARTED",
+                        "TLS_MIGRATION_COMPLETED"
+                    ],
+                    "enumDescriptions": [
+                        "TLS migration state is not specified.",
+                        "TLS migration is in progress.",
+                        "TLS migration is completed."
+                    ],
                     "readOnly": true,
                     "type": "string"
                 }
@@ -9449,6 +10178,87 @@
             },
             "type": "object"
         },
+        "GoogleCloudIntegrationsV1alphaAssertion": {
+            "description": "An assertion which will check for a condition over task execution status or an expression for task output variables Next available id: 5",
+            "id": "GoogleCloudIntegrationsV1alphaAssertion",
+            "properties": {
+                "assertionStrategy": {
+                    "description": "The type of assertion to perform.",
+                    "enum": [
+                        "ASSERTION_STRATEGY_UNSPECIFIED",
+                        "ASSERT_SUCCESSFUL_EXECUTION",
+                        "ASSERT_FAILED_EXECUTION",
+                        "ASSERT_NO_EXECUTION",
+                        "ASSERT_EQUALS",
+                        "ASSERT_NOT_EQUALS",
+                        "ASSERT_CONTAINS",
+                        "ASSERT_CONDITION"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified Assertion strategy",
+                        "Test a successful execution",
+                        "Test a failed execution",
+                        "Test that the task was never executed",
+                        "Test the parameter selected is equal to the expected value",
+                        "Test the parameter selected is not equal to the expected value",
+                        "Test the parameter selected contains the configured value",
+                        "Test a specific condition"
+                    ],
+                    "type": "string"
+                },
+                "condition": {
+                    "description": "Optional. Standard filter expression for ASSERT_CONDITION to succeed",
+                    "type": "string"
+                },
+                "parameter": {
+                    "$ref": "GoogleCloudIntegrationsV1alphaEventParameter",
+                    "description": "Optional. Key-value pair for ASSERT_EQUALS, ASSERT_NOT_EQUALS, ASSERT_CONTAINS to succeed"
+                },
+                "retryCount": {
+                    "description": "Number of times given task should be retried in case of ASSERT_FAILED_EXECUTION",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudIntegrationsV1alphaAssertionResult": {
+            "description": "The result of an assertion.",
+            "id": "GoogleCloudIntegrationsV1alphaAssertionResult",
+            "properties": {
+                "assertion": {
+                    "$ref": "GoogleCloudIntegrationsV1alphaAssertion",
+                    "description": "Assertion that was run."
+                },
+                "failureMessage": {
+                    "description": "Details of the assertion failure",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Status of assertion to signify if the assertion succeeded or failed",
+                    "enum": [
+                        "ASSERTION_STATUS_UNSPECIFIED",
+                        "SUCCEEDED",
+                        "FAILED"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified assertion status",
+                        "Assertion succeeded",
+                        "Assertion failed"
+                    ],
+                    "type": "string"
+                },
+                "taskName": {
+                    "description": "Task name of task where the assertion was run.",
+                    "type": "string"
+                },
+                "taskNumber": {
+                    "description": "Task number of task where the assertion was run.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudIntegrationsV1alphaAttemptStats": {
             "description": "Status for the execution attempt.",
             "id": "GoogleCloudIntegrationsV1alphaAttemptStats",
@@ -9640,7 +10450,12 @@
         "GoogleCloudIntegrationsV1alphaCancelExecutionRequest": {
             "description": "Request for cancelling an execution.",
             "id": "GoogleCloudIntegrationsV1alphaCancelExecutionRequest",
-            "properties": {},
+            "properties": {
+                "cancelReason": {
+                    "description": "Required. Reason for cancelling the execution. This is provided by the client requesting the cancellation, and is not used by the Platform.",
+                    "type": "string"
+                }
+            },
             "type": "object"
         },
         "GoogleCloudIntegrationsV1alphaCancelExecutionResponse": {
@@ -9648,7 +10463,7 @@
             "id": "GoogleCloudIntegrationsV1alphaCancelExecutionResponse",
             "properties": {
                 "isCanceled": {
-                    "description": "True if cancellation performed successfully",
+                    "description": "True if cancellation performed successfully.",
                     "type": "boolean"
                 }
             },
@@ -9673,7 +10488,7 @@
                     "type": "string"
                 },
                 "credentialId": {
-                    "description": "Immutable. Credential id that will be used to register with trawler INTERNAL_ONLY",
+                    "description": "Immutable. Credential id that will be used to register with trawler",
                     "type": "string"
                 },
                 "description": {
@@ -9777,6 +10592,10 @@
                 "description": {
                     "description": "Description of what the client is used for",
                     "type": "string"
+                },
+                "enableInternalIp": {
+                    "description": "Optional. Indicates the client enables internal IP feature, this is applicable for internal clients only.",
+                    "type": "boolean"
                 },
                 "enableVariableMasking": {
                     "description": "Optional. True if variable masking feature should be turned on for this region",
@@ -10133,6 +10952,28 @@
             },
             "type": "object"
         },
+        "GoogleCloudIntegrationsV1alphaDownloadTemplateResponse": {
+            "description": "Response for DownloadTemplate.",
+            "id": "GoogleCloudIntegrationsV1alphaDownloadTemplateResponse",
+            "properties": {
+                "content": {
+                    "description": "String representation of the template.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse": {
+            "description": "Response for DownloadTestCase.",
+            "id": "GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse",
+            "properties": {
+                "content": {
+                    "description": "String representation of the test case.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse": {
             "description": "Response containing all provisioned regions for Connector Platform.",
             "id": "GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse",
@@ -10291,6 +11132,60 @@
             },
             "type": "object"
         },
+        "GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest": {
+            "description": "The request for executing a functional test.",
+            "id": "GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest",
+            "properties": {
+                "inputParameters": {
+                    "additionalProperties": {
+                        "$ref": "GoogleCloudIntegrationsV1alphaValueType"
+                    },
+                    "description": "Optional. Input parameters used by test case execution.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse": {
+            "description": "The response for executing a functional test.",
+            "id": "GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse",
+            "properties": {
+                "assertionResults": {
+                    "description": "Results of each assertions ran during execution of test case.",
+                    "items": {
+                        "$ref": "GoogleCloudIntegrationsV1alphaAssertionResult"
+                    },
+                    "type": "array"
+                },
+                "executionId": {
+                    "description": "The id of the execution corresponding to this run of integration.",
+                    "type": "string"
+                },
+                "outputParameters": {
+                    "additionalProperties": {
+                        "description": "Properties of the object.",
+                        "type": "any"
+                    },
+                    "description": "OUTPUT parameters in format of Map. Where Key is the name of the parameter. Note: Name of the system generated parameters are wrapped by backtick(`) to distinguish them from the user defined parameters.",
+                    "type": "object"
+                },
+                "testExecutionState": {
+                    "description": "State of the test case execution",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "PASSED",
+                        "FAILED"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified state",
+                        "Test case execution passed",
+                        "Test case execution failed"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudIntegrationsV1alphaExecution": {
             "description": "The Execution resource contains detailed information of an individual integration execution.",
             "id": "GoogleCloudIntegrationsV1alphaExecution",
@@ -10384,12 +11279,11 @@
                     "additionalProperties": {
                         "$ref": "GoogleCloudIntegrationsV1alphaValueType"
                     },
-                    "description": "Event parameters returned as part of the response.",
+                    "description": "Event parameters returned as part of the response. In the case of error, the `ErrorInfo` field is returned in the following format: { \"ErrorInfo\": { \"message\": String, \"code\": Number } } ",
                     "type": "object"
                 },
                 "responseParams": {
                     "deprecated": true,
-                    "description": "Event parameters come out as part of the response.",
                     "items": {
                         "$ref": "EnterpriseCrmFrontendsEventbusProtoParameterEntry"
                     },
@@ -10673,6 +11567,46 @@
             },
             "type": "object"
         },
+        "GoogleCloudIntegrationsV1alphaImportTemplateRequest": {
+            "description": "Request to Import template",
+            "id": "GoogleCloudIntegrationsV1alphaImportTemplateRequest",
+            "properties": {
+                "integration": {
+                    "description": "Required. Name of the integration where template needs to be imported.",
+                    "type": "string"
+                },
+                "integrationRegion": {
+                    "description": "Required. The region of the Integration to be created.",
+                    "type": "string"
+                },
+                "subIntegrations": {
+                    "additionalProperties": {
+                        "$ref": "GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails"
+                    },
+                    "description": "Optional. Sub Integration which would be created via templates.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudIntegrationsV1alphaImportTemplateResponse": {
+            "description": "Response for import template",
+            "id": "GoogleCloudIntegrationsV1alphaImportTemplateResponse",
+            "properties": {
+                "integrationVersion": {
+                    "$ref": "GoogleCloudIntegrationsV1alphaIntegrationVersion",
+                    "description": "IntegrationVersion after the import."
+                },
+                "subIntegrationVersions": {
+                    "description": "Sub integration versions which are imported.",
+                    "items": {
+                        "$ref": "GoogleCloudIntegrationsV1alphaIntegrationVersion"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudIntegrationsV1alphaIntParameterArray": {
             "description": "This message only contains a field of integer array.",
             "id": "GoogleCloudIntegrationsV1alphaIntParameterArray",
@@ -10863,7 +11797,13 @@
                         "BOOLEAN_ARRAY",
                         "JSON_VALUE",
                         "PROTO_VALUE",
-                        "PROTO_ARRAY"
+                        "PROTO_ARRAY",
+                        "NON_SERIALIZABLE_OBJECT",
+                        "PROTO_ENUM",
+                        "SERIALIZED_OBJECT_VALUE",
+                        "PROTO_ENUM_ARRAY",
+                        "BYTES",
+                        "BYTES_ARRAY"
                     ],
                     "enumDescriptions": [
                         "Unspecified.",
@@ -10877,13 +11817,23 @@
                         "Boolean Array.",
                         "Json.",
                         "Proto Value (Internal use only).",
-                        "Proto Array (Internal use only)."
+                        "Proto Array (Internal use only).",
+                        "// Non-serializable object (Internal use only).",
+                        "Proto Enum (Internal use only).",
+                        "Serialized object (Internal use only).",
+                        "Proto Enum Array (Internal use only).",
+                        "BYTES data types are not allowed for top-level params. They're only meant to support protobufs with BYTES (sub)fields.",
+                        "BYTES_ARRAY data types are not allowed for top-level params. They're only meant to support protobufs with BYTES (sub)fields."
                     ],
                     "type": "string"
                 },
                 "defaultValue": {
                     "$ref": "GoogleCloudIntegrationsV1alphaValueType",
                     "description": "Default values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object."
+                },
+                "description": {
+                    "description": "Optional. Description of the parameter.",
+                    "type": "string"
                 },
                 "displayName": {
                     "description": "The name (without prefix) to be displayed in the UI for this parameter. E.g. if the key is \"foo.bar.myName\", then the name would be \"myName\".",
@@ -11135,6 +12085,21 @@
                 },
                 "userLabel": {
                     "description": "Optional. A user-defined label that annotates an integration version. Typically, this is only set when the integration version is created.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate": {
+            "description": "Define the template of IntegrationVersion.",
+            "id": "GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate",
+            "properties": {
+                "integrationVersion": {
+                    "$ref": "GoogleCloudIntegrationsV1alphaIntegrationVersion",
+                    "description": "Required. Templatized version of integration."
+                },
+                "key": {
+                    "description": "Required. Unique Key of the IntegrationVersion.",
                     "type": "string"
                 }
             },
@@ -11417,6 +12382,97 @@
             },
             "type": "object"
         },
+        "GoogleCloudIntegrationsV1alphaListTemplatesResponse": {
+            "description": "Response for a request to list templates",
+            "id": "GoogleCloudIntegrationsV1alphaListTemplatesResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "The token used to retrieve the next page results.",
+                    "type": "string"
+                },
+                "templates": {
+                    "description": "List of templates retrieved.",
+                    "items": {
+                        "$ref": "GoogleCloudIntegrationsV1alphaTemplate"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse": {
+            "description": "The response for listing the functional test execution data.",
+            "id": "GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse",
+            "properties": {
+                "executions": {
+                    "description": "The detailed information of requested executions",
+                    "items": {
+                        "$ref": "GoogleCloudIntegrationsV1alphaExecution"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "The token used to retrieve the next page results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudIntegrationsV1alphaListTestCasesResponse": {
+            "description": "Response for ListTestCases",
+            "id": "GoogleCloudIntegrationsV1alphaListTestCasesResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+                    "type": "string"
+                },
+                "testCases": {
+                    "description": "The test cases corresponding to the specified filter",
+                    "items": {
+                        "$ref": "GoogleCloudIntegrationsV1alphaTestCase"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudIntegrationsV1alphaMockConfig": {
+            "description": "The configuration for mocking of a task during test execution Next available id: 4",
+            "id": "GoogleCloudIntegrationsV1alphaMockConfig",
+            "properties": {
+                "failedExecutions": {
+                    "description": "Optional. Number of times the given task should fail for failure mock strategy",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "mockStrategy": {
+                    "description": "Mockstrategy defines how the particular task should be mocked during test execution",
+                    "enum": [
+                        "MOCK_STRATEGY_UNSPECIFIED",
+                        "NO_MOCK_STRATEGY",
+                        "SPECIFIC_MOCK_STRATEGY",
+                        "FAILURE_MOCK_STRATEGY",
+                        "SKIP_MOCK_STRATEGY"
+                    ],
+                    "enumDescriptions": [
+                        "This should never be used to annotate a field",
+                        "Execute actual task",
+                        "Don't execute actual task, instead use the values specified by user for output of the task",
+                        "Don't execute actual task, instead return task failure",
+                        "Don't execute actual task, instead mark it as successful"
+                    ],
+                    "type": "string"
+                },
+                "parameters": {
+                    "description": "Optional. List of key-value pairs for specific mock strategy",
+                    "items": {
+                        "$ref": "GoogleCloudIntegrationsV1alphaEventParameter"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudIntegrationsV1alphaNextTask": {
             "description": "The task that is next in line to be executed, if the condition specified evaluated to true.",
             "id": "GoogleCloudIntegrationsV1alphaNextTask",
@@ -11658,7 +12714,13 @@
                         "BOOLEAN_ARRAY",
                         "JSON_VALUE",
                         "PROTO_VALUE",
-                        "PROTO_ARRAY"
+                        "PROTO_ARRAY",
+                        "NON_SERIALIZABLE_OBJECT",
+                        "PROTO_ENUM",
+                        "SERIALIZED_OBJECT_VALUE",
+                        "PROTO_ENUM_ARRAY",
+                        "BYTES",
+                        "BYTES_ARRAY"
                     ],
                     "enumDescriptions": [
                         "Unspecified.",
@@ -11672,7 +12734,13 @@
                         "Boolean Array.",
                         "Json.",
                         "Proto Value (Internal use only).",
-                        "Proto Array (Internal use only)."
+                        "Proto Array (Internal use only).",
+                        "// Non-serializable object (Internal use only).",
+                        "Proto Enum (Internal use only).",
+                        "Serialized object (Internal use only).",
+                        "Proto Enum Array (Internal use only).",
+                        "BYTES data types are not allowed for top-level params. They're only meant to support protobufs with BYTES (sub)fields.",
+                        "BYTES_ARRAY data types are not allowed for top-level params. They're only meant to support protobufs with BYTES (sub)fields."
                     ],
                     "type": "string"
                 },
@@ -11690,7 +12758,13 @@
                         "BOOLEAN_ARRAY",
                         "JSON_VALUE",
                         "PROTO_VALUE",
-                        "PROTO_ARRAY"
+                        "PROTO_ARRAY",
+                        "NON_SERIALIZABLE_OBJECT",
+                        "PROTO_ENUM",
+                        "SERIALIZED_OBJECT_VALUE",
+                        "PROTO_ENUM_ARRAY",
+                        "BYTES",
+                        "BYTES_ARRAY"
                     ],
                     "enumDescriptions": [
                         "Unspecified.",
@@ -11704,7 +12778,13 @@
                         "Boolean Array.",
                         "Json.",
                         "Proto Value (Internal use only).",
-                        "Proto Array (Internal use only)."
+                        "Proto Array (Internal use only).",
+                        "// Non-serializable object (Internal use only).",
+                        "Proto Enum (Internal use only).",
+                        "Serialized object (Internal use only).",
+                        "Proto Enum Array (Internal use only).",
+                        "BYTES data types are not allowed for top-level params. They're only meant to support protobufs with BYTES (sub)fields.",
+                        "BYTES_ARRAY data types are not allowed for top-level params. They're only meant to support protobufs with BYTES (sub)fields."
                     ],
                     "type": "string"
                 }
@@ -11852,22 +12932,22 @@
             "type": "object"
         },
         "GoogleCloudIntegrationsV1alphaReplayExecutionRequest": {
-            "description": "Request for replaying an execution Next ID: 3",
+            "description": "Request for replaying an execution.",
             "id": "GoogleCloudIntegrationsV1alphaReplayExecutionRequest",
             "properties": {
                 "replayReason": {
-                    "description": "Optional. The user provided reason for replaying the execution.",
+                    "description": "Required. The user provided reason for replaying the execution.",
                     "type": "string"
                 }
             },
             "type": "object"
         },
         "GoogleCloudIntegrationsV1alphaReplayExecutionResponse": {
-            "description": "Response for replaying an execution Next ID: 4",
+            "description": "Response for replaying an execution.",
             "id": "GoogleCloudIntegrationsV1alphaReplayExecutionResponse",
             "properties": {
                 "executionId": {
-                    "description": "The id of the execution corresponding to this run of integration.",
+                    "description": "Next ID: 4 The id of the execution corresponding to this run of the integration.",
                     "type": "string"
                 },
                 "outputParameters": {
@@ -11875,11 +12955,11 @@
                         "description": "Properties of the object.",
                         "type": "any"
                     },
-                    "description": "OUTPUT parameters in format of Map. Where Key is the name of the parameter. The parameters would only be present in case of synchrounous execution Note: Name of the system generated parameters are wrapped by backtick(`) to distinguish them from the user defined parameters.",
+                    "description": "OUTPUT parameters in format of Map. Where Key is the name of the parameter. The parameters would only be present in case of synchrounous execution. Note: Name of the system generated parameters are wrapped by backtick(`) to distinguish them from the user defined parameters.",
                     "type": "object"
                 },
                 "replayedExecutionId": {
-                    "description": "The execution id which is replayed",
+                    "description": "The execution id which is replayed.",
                     "type": "string"
                 }
             },
@@ -11992,6 +13072,24 @@
                     "description": "The execution info id for the executed integrations.",
                     "items": {
                         "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudIntegrationsV1alphaSearchTemplatesResponse": {
+            "description": "Response for a request to search templates",
+            "id": "GoogleCloudIntegrationsV1alphaSearchTemplatesResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "The token used to retrieve the next page results.",
+                    "type": "string"
+                },
+                "templates": {
+                    "description": "List of templates retrieved.",
+                    "items": {
+                        "$ref": "GoogleCloudIntegrationsV1alphaTemplate"
                     },
                     "type": "array"
                 }
@@ -12135,6 +13233,20 @@
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudIntegrationsV1alphaShareTemplateRequest": {
+            "description": "Request to Share template",
+            "id": "GoogleCloudIntegrationsV1alphaShareTemplateRequest",
+            "properties": {
+                "resourceNames": {
+                    "description": "Optional. Project name resources to share the template. The project names is expected in resource format Ex: projects/{project-number} or organization/{org-id}",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -12337,6 +13449,12 @@
             },
             "type": "object"
         },
+        "GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest": {
+            "description": "Request for TakeoverTestCaseEditLock.",
+            "id": "GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest",
+            "properties": {},
+            "type": "object"
+        },
         "GoogleCloudIntegrationsV1alphaTaskConfig": {
             "description": "The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task.",
             "id": "GoogleCloudIntegrationsV1alphaTaskConfig",
@@ -12516,6 +13634,268 @@
             },
             "type": "object"
         },
+        "GoogleCloudIntegrationsV1alphaTemplate": {
+            "description": "Defines the template for Application Integration",
+            "id": "GoogleCloudIntegrationsV1alphaTemplate",
+            "properties": {
+                "author": {
+                    "description": "Optional. Creator of the template.",
+                    "type": "string"
+                },
+                "categories": {
+                    "description": "Required. Categories associated with the Template. The categories listed below will be utilized for the Template listing.",
+                    "items": {
+                        "enum": [
+                            "CATEGORY_UNSPECIFIED",
+                            "AI_MACHINE_LEARNING",
+                            "BUSINESS_INTELLIGENCE",
+                            "COLLABORATION",
+                            "CUSTOMER_SERVICE",
+                            "DATABASES",
+                            "DEVOPS_IT",
+                            "CONTENT_AND_FILES",
+                            "FINANCE_AND_ACCOUNTING",
+                            "HUMAN_RESOURCES",
+                            "OPERATIONS",
+                            "PRODUCT_PROJECT_MANAGEMENT",
+                            "PRODUCTIVITY",
+                            "SALES_AND_MARKETING",
+                            "UNIVERSAL_CONNECTORS",
+                            "UTILITY",
+                            "OTHERS"
+                        ],
+                        "enumDescriptions": [
+                            "Category is unspecified",
+                            "AI_MACHINE_LEARNING",
+                            "BUSINESS_INTELLIGENCE",
+                            "COLLABORATION",
+                            "CUSTOMER_SERVICE",
+                            "DATAABASES",
+                            "DEVOPS_IT",
+                            "CONTENT_AND_FILES",
+                            "FINANCE_AND_ACCOUNTING",
+                            "HUMAN_RESOURCES",
+                            "OPERATIONS",
+                            "PRODUCT_PROJECT_MANAGEMENT",
+                            "PRODUCTIVITY",
+                            "SALES_AND_MARKETING",
+                            "UNIVERSAL_CONNECTORS",
+                            "UTILITY",
+                            "OTHERS"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "components": {
+                    "description": "Optional. Components being used in the template. This could be used to categorize and filter.",
+                    "items": {
+                        "$ref": "GoogleCloudIntegrationsV1alphaTemplateComponent"
+                    },
+                    "type": "array"
+                },
+                "createTime": {
+                    "description": "Output only. Auto-generated.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Optional. Description of the template. The length should not be more than 255 characters",
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "Required. The name of the template",
+                    "type": "string"
+                },
+                "docLink": {
+                    "description": "Optional. Link to template documentation.",
+                    "type": "string"
+                },
+                "lastUsedTime": {
+                    "description": "Optional. Time the template was last used.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Identifier. Resource name of the template.",
+                    "type": "string"
+                },
+                "sharedWith": {
+                    "description": "Required. Resource names with which the template is shared for example ProjectNumber/Ord id",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "tags": {
+                    "description": "Required. Tags which are used to identify templates. These tags could be for business use case, connectors etc.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "templateBundle": {
+                    "$ref": "GoogleCloudIntegrationsV1alphaTemplateBundle",
+                    "description": "Required. Bundle which is part of the templates. The template entities in the bundle would be converted to an actual entity."
+                },
+                "updateTime": {
+                    "description": "Output only. Auto-generated",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "usageCount": {
+                    "description": "Optional. Number of template usages.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "usageInfo": {
+                    "description": "Optional. Information on how to use the template. This should contain detailed information about usage of the template.",
+                    "type": "string"
+                },
+                "visibility": {
+                    "description": "Required. Visibility of the template.",
+                    "enum": [
+                        "VISIBILITY_UNSPECIFIED",
+                        "PRIVATE",
+                        "SHARED",
+                        "PUBLIC"
+                    ],
+                    "enumDescriptions": [
+                        "Visibility is unspecified",
+                        "Visibility is private",
+                        "Visibility is shared",
+                        "Visibility is public"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudIntegrationsV1alphaTemplateBundle": {
+            "description": "Define the bundle of the template.",
+            "id": "GoogleCloudIntegrationsV1alphaTemplateBundle",
+            "properties": {
+                "integrationVersionTemplate": {
+                    "$ref": "GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate",
+                    "description": "Required. Main integration templates of the template bundle."
+                },
+                "subIntegrationVersionTemplates": {
+                    "description": "Optional. Sub integration templates which would be added along with main integration.",
+                    "items": {
+                        "$ref": "GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudIntegrationsV1alphaTemplateComponent": {
+            "description": "Define the components that are present in a template.",
+            "id": "GoogleCloudIntegrationsV1alphaTemplateComponent",
+            "properties": {
+                "name": {
+                    "description": "Optional. Name of the component.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Optional. Type of the component.",
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "TRIGGER",
+                        "TASK",
+                        "CONNECTOR"
+                    ],
+                    "enumDescriptions": [
+                        "Component type is unspecified",
+                        "Trigger component",
+                        "Task component",
+                        "Connector component"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudIntegrationsV1alphaTestCase": {
+            "description": "Defines the functional test case for Application Integration. Next available id: 15",
+            "id": "GoogleCloudIntegrationsV1alphaTestCase",
+            "properties": {
+                "createTime": {
+                    "description": "Auto-generated.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "creatorEmail": {
+                    "description": "Optional. The creator's email address. Generated based on the End User Credentials/LOAS role of the user making the call.",
+                    "type": "string"
+                },
+                "databasePersistencePolicy": {
+                    "description": "Optional. Various policies for how to persist the test execution info including execution info, execution export info, execution metadata index and execution param index..",
+                    "enum": [
+                        "DATABASE_PERSISTENCE_POLICY_UNSPECIFIED",
+                        "DATABASE_PERSISTENCE_DISABLED",
+                        "DATABASE_PERSISTENCE_ASYNC"
+                    ],
+                    "enumDescriptions": [
+                        "Enables persistence for all execution data.",
+                        "Disables persistence for all execution data.",
+                        "Asynchronously persist all execution data."
+                    ],
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Optional. Description of the test case.",
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "Required. The display name of test case.",
+                    "type": "string"
+                },
+                "lastModifierEmail": {
+                    "description": "The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.",
+                    "type": "string"
+                },
+                "lockHolderEmail": {
+                    "description": "Optional. The edit lock holder's email address. Generated based on the End User Credentials/LOAS role of the user making the call.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Output only. Auto-generated primary key.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "testInputParameters": {
+                    "description": "Optional. Parameters that are expected to be passed to the test case when the test case is triggered. This gives the user the ability to provide default values. This should include all the output variables of the trigger as input variables.",
+                    "items": {
+                        "$ref": "GoogleCloudIntegrationsV1alphaIntegrationParameter"
+                    },
+                    "type": "array"
+                },
+                "testTaskConfigs": {
+                    "description": "Optional. However, the test case doesn't mock or assert anything without test_task_configs.",
+                    "items": {
+                        "$ref": "GoogleCloudIntegrationsV1alphaTestTaskConfig"
+                    },
+                    "type": "array"
+                },
+                "triggerConfig": {
+                    "$ref": "GoogleCloudIntegrationsV1alphaTriggerConfig",
+                    "description": "Optional. Auto-generated."
+                },
+                "triggerId": {
+                    "description": "Required. This defines the trigger ID in workflow which is considered to be executed as starting point of the test case",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Auto-generated.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudIntegrationsV1alphaTestIntegrationsRequest": {
             "description": "The request for testing an integration.",
             "id": "GoogleCloudIntegrationsV1alphaTestIntegrationsRequest",
@@ -12599,6 +13979,36 @@
             },
             "type": "object"
         },
+        "GoogleCloudIntegrationsV1alphaTestTaskConfig": {
+            "description": "The task mock configuration details and assertions for functional tests. Next available id: 6",
+            "id": "GoogleCloudIntegrationsV1alphaTestTaskConfig",
+            "properties": {
+                "assertions": {
+                    "description": "Optional. List of conditions or expressions which should be evaluated to true unless there is a bug/problem in the integration. These are evaluated one the task execution is completed as per the mock strategy in test case",
+                    "items": {
+                        "$ref": "GoogleCloudIntegrationsV1alphaAssertion"
+                    },
+                    "type": "array"
+                },
+                "mockConfig": {
+                    "$ref": "GoogleCloudIntegrationsV1alphaMockConfig",
+                    "description": "Optional. Defines how to mock the given task during test execution"
+                },
+                "task": {
+                    "description": "Required. This defines in the test case, the task name in integration which will be mocked by this test task config",
+                    "type": "string"
+                },
+                "taskConfig": {
+                    "$ref": "GoogleCloudIntegrationsV1alphaTaskConfig",
+                    "description": "Optional. Auto-generated."
+                },
+                "taskNumber": {
+                    "description": "Required. This defines in the test case, the task in integration which will be mocked by this test task config",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudIntegrationsV1alphaTriggerConfig": {
             "description": "Configuration detail of a trigger.",
             "id": "GoogleCloudIntegrationsV1alphaTriggerConfig",
@@ -12622,6 +14032,13 @@
                     "description": "Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task",
                     "type": "string"
                 },
+                "inputVariables": {
+                    "description": "Optional. List of input variables for the api trigger.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "label": {
                     "description": "Optional. The user created label for a particular trigger.",
                     "type": "string"
@@ -12639,6 +14056,13 @@
                         "Execute the first task that satisfies the associated condition."
                     ],
                     "type": "string"
+                },
+                "outputVariables": {
+                    "description": "Optional. List of output variables for the api trigger.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "position": {
                     "$ref": "GoogleCloudIntegrationsV1alphaCoordinate",
@@ -12663,7 +14087,7 @@
                     "type": "string"
                 },
                 "triggerId": {
-                    "description": "Optional. The backend trigger ID.",
+                    "description": "Optional. Auto-generated trigger ID. The ID is based on the properties that you define in the trigger config. For example, for an API trigger, the trigger ID follows the format: api_trigger/TRIGGER_NAME Where trigger config has properties with value {\"Trigger name\": TRIGGER_NAME}",
                     "type": "string"
                 },
                 "triggerNumber": {
@@ -12681,7 +14105,8 @@
                         "SFDC_CDC_CHANNEL",
                         "CLOUD_SCHEDULER",
                         "INTEGRATION_CONNECTOR_TRIGGER",
-                        "PRIVATE_TRIGGER"
+                        "PRIVATE_TRIGGER",
+                        "CLOUD_PUBSUB"
                     ],
                     "enumDescriptions": [
                         "Unknown.",
@@ -12692,7 +14117,8 @@
                         "SFDC Channel Trigger for CDC.",
                         "Trigger by Cloud Scheduler job.",
                         "Trigger by Connector Event",
-                        "Trigger for private workflow"
+                        "Trigger for private workflow",
+                        "Trigger by cloud pub/sub for internal ip"
                     ],
                     "type": "string"
                 }
@@ -12705,12 +14131,26 @@
             "properties": {},
             "type": "object"
         },
+        "GoogleCloudIntegrationsV1alphaUnshareTemplateRequest": {
+            "description": "Request to Unshare template",
+            "id": "GoogleCloudIntegrationsV1alphaUnshareTemplateRequest",
+            "properties": {
+                "resourceNames": {
+                    "description": "Optional. Project name resources to unshare the template. The project names is expected in resource format Ex: projects/{project-number}",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest": {
             "description": "Request for UploadIntegrationVersion.",
             "id": "GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest",
             "properties": {
                 "content": {
-                    "description": "The textproto of the integration_version.",
+                    "description": "The textproto of the IntegrationVersion.",
                     "type": "string"
                 },
                 "fileFormat": {
@@ -12737,6 +14177,133 @@
                 "integrationVersion": {
                     "$ref": "GoogleCloudIntegrationsV1alphaIntegrationVersion",
                     "description": "The uploaded integration."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudIntegrationsV1alphaUploadTemplateRequest": {
+            "description": "Request for UploadTemplate.",
+            "id": "GoogleCloudIntegrationsV1alphaUploadTemplateRequest",
+            "properties": {
+                "content": {
+                    "description": "Required. The textproto of the template.",
+                    "type": "string"
+                },
+                "fileFormat": {
+                    "description": "Required. File format for upload request.",
+                    "enum": [
+                        "FILE_FORMAT_UNSPECIFIED",
+                        "JSON",
+                        "YAML"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified file format",
+                        "JSON File Format",
+                        "YAML File Format"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudIntegrationsV1alphaUploadTemplateResponse": {
+            "description": "Response for UploadTemplate.",
+            "id": "GoogleCloudIntegrationsV1alphaUploadTemplateResponse",
+            "properties": {
+                "template": {
+                    "$ref": "GoogleCloudIntegrationsV1alphaTemplate",
+                    "description": "The uploaded Template"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudIntegrationsV1alphaUploadTestCaseRequest": {
+            "description": "Request for UploadTestCase.",
+            "id": "GoogleCloudIntegrationsV1alphaUploadTestCaseRequest",
+            "properties": {
+                "content": {
+                    "description": "The textproto of the test case.",
+                    "type": "string"
+                },
+                "fileFormat": {
+                    "description": "File format for upload request.",
+                    "enum": [
+                        "FILE_FORMAT_UNSPECIFIED",
+                        "JSON",
+                        "YAML"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified file format",
+                        "JSON File Format",
+                        "YAML File Format"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudIntegrationsV1alphaUploadTestCaseResponse": {
+            "description": "Response for UploadTestCase.",
+            "id": "GoogleCloudIntegrationsV1alphaUploadTestCaseResponse",
+            "properties": {
+                "testCase": {
+                    "$ref": "GoogleCloudIntegrationsV1alphaTestCase",
+                    "description": "The uploaded TestCase"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudIntegrationsV1alphaUseTemplateRequest": {
+            "description": "Request to Use template",
+            "id": "GoogleCloudIntegrationsV1alphaUseTemplateRequest",
+            "properties": {
+                "integrationDetails": {
+                    "$ref": "GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails",
+                    "description": "Required. Integration details which would be created via templates."
+                },
+                "integrationRegion": {
+                    "description": "Required. The region of the Integration to be created.",
+                    "type": "string"
+                },
+                "subIntegrations": {
+                    "additionalProperties": {
+                        "$ref": "GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails"
+                    },
+                    "description": "Optional. Sub Integration which would be created via templates.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails": {
+            "description": "Sub Integration which would be created via templates.",
+            "id": "GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails",
+            "properties": {
+                "integration": {
+                    "description": "Required. Name of the sub integration which would be created via templates.",
+                    "type": "string"
+                },
+                "integrationDescription": {
+                    "description": "Optional. Description of the sub integration which would be created via templates.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudIntegrationsV1alphaUseTemplateResponse": {
+            "description": "Response for use template",
+            "id": "GoogleCloudIntegrationsV1alphaUseTemplateResponse",
+            "properties": {
+                "integrationVersion": {
+                    "$ref": "GoogleCloudIntegrationsV1alphaIntegrationVersion",
+                    "description": "IntegrationVersion which is created."
+                },
+                "subIntegrationVersions": {
+                    "description": "Sub integration versions which are created.",
+                    "items": {
+                        "$ref": "GoogleCloudIntegrationsV1alphaIntegrationVersion"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"

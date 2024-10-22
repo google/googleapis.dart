@@ -451,6 +451,7 @@ api.GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest
   if (buildCounterGoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest <
       3) {
     o.domain = 'foo';
+    o.primaryAdminEmail = 'foo';
   }
   buildCounterGoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest--;
   return o;
@@ -463,6 +464,10 @@ void checkGoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest(
       3) {
     unittest.expect(
       o.domain!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.primaryAdminEmail!,
       unittest.equals('foo'),
     );
   }
@@ -512,8 +517,10 @@ api.GoogleCloudChannelV1CloudIdentityCustomerAccount
   final o = api.GoogleCloudChannelV1CloudIdentityCustomerAccount();
   buildCounterGoogleCloudChannelV1CloudIdentityCustomerAccount++;
   if (buildCounterGoogleCloudChannelV1CloudIdentityCustomerAccount < 3) {
+    o.channelPartnerCloudIdentityId = 'foo';
     o.customerCloudIdentityId = 'foo';
     o.customerName = 'foo';
+    o.customerType = 'foo';
     o.existing = true;
     o.owned = true;
   }
@@ -526,11 +533,19 @@ void checkGoogleCloudChannelV1CloudIdentityCustomerAccount(
   buildCounterGoogleCloudChannelV1CloudIdentityCustomerAccount++;
   if (buildCounterGoogleCloudChannelV1CloudIdentityCustomerAccount < 3) {
     unittest.expect(
+      o.channelPartnerCloudIdentityId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.customerCloudIdentityId!,
       unittest.equals('foo'),
     );
     unittest.expect(
       o.customerName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.customerType!,
       unittest.equals('foo'),
     );
     unittest.expect(o.existing!, unittest.isTrue);
@@ -1290,6 +1305,7 @@ api.GoogleCloudChannelV1ImportCustomerRequest
     o.customer = 'foo';
     o.domain = 'foo';
     o.overwriteIfExists = true;
+    o.primaryAdminEmail = 'foo';
   }
   buildCounterGoogleCloudChannelV1ImportCustomerRequest--;
   return o;
@@ -1320,6 +1336,10 @@ void checkGoogleCloudChannelV1ImportCustomerRequest(
       unittest.equals('foo'),
     );
     unittest.expect(o.overwriteIfExists!, unittest.isTrue);
+    unittest.expect(
+      o.primaryAdminEmail!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudChannelV1ImportCustomerRequest--;
 }

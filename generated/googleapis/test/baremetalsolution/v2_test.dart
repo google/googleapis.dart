@@ -1612,6 +1612,7 @@ api.NetworkConfig buildNetworkConfig() {
     o.userNote = 'foo';
     o.vlanAttachments = buildUnnamed35();
     o.vlanSameProject = true;
+    o.vrf = 'foo';
   }
   buildCounterNetworkConfig--;
   return o;
@@ -1655,6 +1656,10 @@ void checkNetworkConfig(api.NetworkConfig o) {
     );
     checkUnnamed35(o.vlanAttachments!);
     unittest.expect(o.vlanSameProject!, unittest.isTrue);
+    unittest.expect(
+      o.vrf!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterNetworkConfig--;
 }

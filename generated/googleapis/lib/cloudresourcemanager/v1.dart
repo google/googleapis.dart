@@ -2282,7 +2282,7 @@ typedef Lien = $Lien;
 
 /// The request sent to the `ListAvailableOrgPolicyConstraints` method on the
 /// project, folder, or organization.
-typedef ListAvailableOrgPolicyConstraintsRequest = $Request05;
+typedef ListAvailableOrgPolicyConstraintsRequest = $Request07;
 
 /// The response returned from the `ListAvailableOrgPolicyConstraints` method.
 ///
@@ -2381,7 +2381,7 @@ class ListLiensResponse {
 }
 
 /// The request sent to the ListOrgPolicies method.
-typedef ListOrgPoliciesRequest = $Request05;
+typedef ListOrgPoliciesRequest = $Request07;
 
 /// The response returned from the `ListOrgPolicies` method.
 ///
@@ -3171,7 +3171,7 @@ class SetOrgPolicyRequest {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;

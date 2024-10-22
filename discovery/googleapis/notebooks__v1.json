@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240604",
+    "revision": "20240918",
     "rootUrl": "https://notebooks.googleapis.com/",
     "servicePath": "",
     "title": "Notebooks API",
@@ -2037,6 +2037,8 @@
                         "NVIDIA_TESLA_T4_VWS",
                         "NVIDIA_TESLA_P100_VWS",
                         "NVIDIA_TESLA_P4_VWS",
+                        "NVIDIA_H100_80GB",
+                        "NVIDIA_H100_MEGA_80GB",
                         "TPU_V2",
                         "TPU_V3"
                     ],
@@ -2053,6 +2055,8 @@
                         "Accelerator type is NVIDIA Tesla T4 Virtual Workstations.",
                         "Accelerator type is NVIDIA Tesla P100 Virtual Workstations.",
                         "Accelerator type is NVIDIA Tesla P4 Virtual Workstations.",
+                        "Accelerator type is NVIDIA H100 80GB.",
+                        "Accelerator type is NVIDIA H100 Mega 80GB.",
                         "(Coming soon) Accelerator type is TPU V2.",
                         "(Coming soon) Accelerator type is TPU V3."
                     ],
@@ -2820,7 +2824,7 @@
                     "type": "string"
                 },
                 "tags": {
-                    "description": "Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).",
+                    "description": "Optional. The Compute Engine network tags to add to runtime (see [Add network tags](https://cloud.google.com/vpc/docs/add-remove-network-tags)).",
                     "items": {
                         "type": "string"
                     },
@@ -4060,6 +4064,8 @@
                         "NVIDIA_TESLA_T4_VWS",
                         "NVIDIA_TESLA_P100_VWS",
                         "NVIDIA_TESLA_P4_VWS",
+                        "NVIDIA_H100_80GB",
+                        "NVIDIA_H100_MEGA_80GB",
                         "TPU_V2",
                         "TPU_V3"
                     ],
@@ -4076,6 +4082,8 @@
                         "Accelerator type is NVIDIA Tesla T4 Virtual Workstations.",
                         "Accelerator type is NVIDIA Tesla P100 Virtual Workstations.",
                         "Accelerator type is NVIDIA Tesla P4 Virtual Workstations.",
+                        "Accelerator type is NVIDIA H100 80GB.",
+                        "Accelerator type is NVIDIA H100 Mega 80GB.",
                         "(Coming soon) Accelerator type is TPU V2.",
                         "(Coming soon) Accelerator type is TPU V3."
                     ],
@@ -4555,7 +4563,7 @@
                     "type": "string"
                 },
                 "tags": {
-                    "description": "Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).",
+                    "description": "Optional. The Compute Engine network tags to add to runtime (see [Add network tags](https://cloud.google.com/vpc/docs/add-remove-network-tags)).",
                     "items": {
                         "type": "string"
                     },

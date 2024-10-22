@@ -26,6 +26,35 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAdvanceRelocateBucketOperationRequest = 0;
+api.AdvanceRelocateBucketOperationRequest
+    buildAdvanceRelocateBucketOperationRequest() {
+  final o = api.AdvanceRelocateBucketOperationRequest();
+  buildCounterAdvanceRelocateBucketOperationRequest++;
+  if (buildCounterAdvanceRelocateBucketOperationRequest < 3) {
+    o.expireTime = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.ttl = 'foo';
+  }
+  buildCounterAdvanceRelocateBucketOperationRequest--;
+  return o;
+}
+
+void checkAdvanceRelocateBucketOperationRequest(
+    api.AdvanceRelocateBucketOperationRequest o) {
+  buildCounterAdvanceRelocateBucketOperationRequest++;
+  if (buildCounterAdvanceRelocateBucketOperationRequest < 3) {
+    unittest.expect(
+      o.expireTime!,
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
+    );
+    unittest.expect(
+      o.ttl!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAdvanceRelocateBucketOperationRequest--;
+}
+
 core.int buildCounterAnywhereCache = 0;
 api.AnywhereCache buildAnywhereCache() {
   final o = api.AnywhereCache();
@@ -463,12 +492,128 @@ void checkBucketIamConfiguration(api.BucketIamConfiguration o) {
   buildCounterBucketIamConfiguration--;
 }
 
-core.Map<core.String, core.String> buildUnnamed8() => {
+core.List<core.String> buildUnnamed8() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed8(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterBucketIpFilterPublicNetworkSource = 0;
+api.BucketIpFilterPublicNetworkSource buildBucketIpFilterPublicNetworkSource() {
+  final o = api.BucketIpFilterPublicNetworkSource();
+  buildCounterBucketIpFilterPublicNetworkSource++;
+  if (buildCounterBucketIpFilterPublicNetworkSource < 3) {
+    o.allowedIpCidrRanges = buildUnnamed8();
+  }
+  buildCounterBucketIpFilterPublicNetworkSource--;
+  return o;
+}
+
+void checkBucketIpFilterPublicNetworkSource(
+    api.BucketIpFilterPublicNetworkSource o) {
+  buildCounterBucketIpFilterPublicNetworkSource++;
+  if (buildCounterBucketIpFilterPublicNetworkSource < 3) {
+    checkUnnamed8(o.allowedIpCidrRanges!);
+  }
+  buildCounterBucketIpFilterPublicNetworkSource--;
+}
+
+core.List<core.String> buildUnnamed9() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed9(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterBucketIpFilterVpcNetworkSources = 0;
+api.BucketIpFilterVpcNetworkSources buildBucketIpFilterVpcNetworkSources() {
+  final o = api.BucketIpFilterVpcNetworkSources();
+  buildCounterBucketIpFilterVpcNetworkSources++;
+  if (buildCounterBucketIpFilterVpcNetworkSources < 3) {
+    o.allowedIpCidrRanges = buildUnnamed9();
+    o.network = 'foo';
+  }
+  buildCounterBucketIpFilterVpcNetworkSources--;
+  return o;
+}
+
+void checkBucketIpFilterVpcNetworkSources(
+    api.BucketIpFilterVpcNetworkSources o) {
+  buildCounterBucketIpFilterVpcNetworkSources++;
+  if (buildCounterBucketIpFilterVpcNetworkSources < 3) {
+    checkUnnamed9(o.allowedIpCidrRanges!);
+    unittest.expect(
+      o.network!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBucketIpFilterVpcNetworkSources--;
+}
+
+core.List<api.BucketIpFilterVpcNetworkSources> buildUnnamed10() => [
+      buildBucketIpFilterVpcNetworkSources(),
+      buildBucketIpFilterVpcNetworkSources(),
+    ];
+
+void checkUnnamed10(core.List<api.BucketIpFilterVpcNetworkSources> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkBucketIpFilterVpcNetworkSources(o[0]);
+  checkBucketIpFilterVpcNetworkSources(o[1]);
+}
+
+core.int buildCounterBucketIpFilter = 0;
+api.BucketIpFilter buildBucketIpFilter() {
+  final o = api.BucketIpFilter();
+  buildCounterBucketIpFilter++;
+  if (buildCounterBucketIpFilter < 3) {
+    o.mode = 'foo';
+    o.publicNetworkSource = buildBucketIpFilterPublicNetworkSource();
+    o.vpcNetworkSources = buildUnnamed10();
+  }
+  buildCounterBucketIpFilter--;
+  return o;
+}
+
+void checkBucketIpFilter(api.BucketIpFilter o) {
+  buildCounterBucketIpFilter++;
+  if (buildCounterBucketIpFilter < 3) {
+    unittest.expect(
+      o.mode!,
+      unittest.equals('foo'),
+    );
+    checkBucketIpFilterPublicNetworkSource(o.publicNetworkSource!);
+    checkUnnamed10(o.vpcNetworkSources!);
+  }
+  buildCounterBucketIpFilter--;
+}
+
+core.Map<core.String, core.String> buildUnnamed11() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed8(core.Map<core.String, core.String> o) {
+void checkUnnamed11(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -507,12 +652,12 @@ void checkBucketLifecycleRuleAction(api.BucketLifecycleRuleAction o) {
   buildCounterBucketLifecycleRuleAction--;
 }
 
-core.List<core.String> buildUnnamed9() => [
+core.List<core.String> buildUnnamed12() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed9(core.List<core.String> o) {
+void checkUnnamed12(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -524,12 +669,12 @@ void checkUnnamed9(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed10() => [
+core.List<core.String> buildUnnamed13() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed10(core.List<core.String> o) {
+void checkUnnamed13(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -541,12 +686,12 @@ void checkUnnamed10(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed11() => [
+core.List<core.String> buildUnnamed14() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed11(core.List<core.String> o) {
+void checkUnnamed14(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -570,9 +715,9 @@ api.BucketLifecycleRuleCondition buildBucketLifecycleRuleCondition() {
     o.daysSinceNoncurrentTime = 42;
     o.isLive = true;
     o.matchesPattern = 'foo';
-    o.matchesPrefix = buildUnnamed9();
-    o.matchesStorageClass = buildUnnamed10();
-    o.matchesSuffix = buildUnnamed11();
+    o.matchesPrefix = buildUnnamed12();
+    o.matchesStorageClass = buildUnnamed13();
+    o.matchesSuffix = buildUnnamed14();
     o.noncurrentTimeBefore = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.numNewerVersions = 42;
   }
@@ -608,9 +753,9 @@ void checkBucketLifecycleRuleCondition(api.BucketLifecycleRuleCondition o) {
       o.matchesPattern!,
       unittest.equals('foo'),
     );
-    checkUnnamed9(o.matchesPrefix!);
-    checkUnnamed10(o.matchesStorageClass!);
-    checkUnnamed11(o.matchesSuffix!);
+    checkUnnamed12(o.matchesPrefix!);
+    checkUnnamed13(o.matchesStorageClass!);
+    checkUnnamed14(o.matchesSuffix!);
     unittest.expect(
       o.noncurrentTimeBefore!,
       unittest.equals(core.DateTime.parse('2002-02-27T00:00:00')),
@@ -644,12 +789,12 @@ void checkBucketLifecycleRule(api.BucketLifecycleRule o) {
   buildCounterBucketLifecycleRule--;
 }
 
-core.List<api.BucketLifecycleRule> buildUnnamed12() => [
+core.List<api.BucketLifecycleRule> buildUnnamed15() => [
       buildBucketLifecycleRule(),
       buildBucketLifecycleRule(),
     ];
 
-void checkUnnamed12(core.List<api.BucketLifecycleRule> o) {
+void checkUnnamed15(core.List<api.BucketLifecycleRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucketLifecycleRule(o[0]);
   checkBucketLifecycleRule(o[1]);
@@ -660,7 +805,7 @@ api.BucketLifecycle buildBucketLifecycle() {
   final o = api.BucketLifecycle();
   buildCounterBucketLifecycle++;
   if (buildCounterBucketLifecycle < 3) {
-    o.rule = buildUnnamed12();
+    o.rule = buildUnnamed15();
   }
   buildCounterBucketLifecycle--;
   return o;
@@ -669,7 +814,7 @@ api.BucketLifecycle buildBucketLifecycle() {
 void checkBucketLifecycle(api.BucketLifecycle o) {
   buildCounterBucketLifecycle++;
   if (buildCounterBucketLifecycle < 3) {
-    checkUnnamed12(o.rule!);
+    checkUnnamed15(o.rule!);
   }
   buildCounterBucketLifecycle--;
 }
@@ -866,11 +1011,14 @@ api.Bucket buildBucket() {
     o.defaultObjectAcl = buildUnnamed7();
     o.encryption = buildBucketEncryption();
     o.etag = 'foo';
+    o.generation = 'foo';
+    o.hardDeleteTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.hierarchicalNamespace = buildBucketHierarchicalNamespace();
     o.iamConfiguration = buildBucketIamConfiguration();
     o.id = 'foo';
+    o.ipFilter = buildBucketIpFilter();
     o.kind = 'foo';
-    o.labels = buildUnnamed8();
+    o.labels = buildUnnamed11();
     o.lifecycle = buildBucketLifecycle();
     o.location = 'foo';
     o.locationType = 'foo';
@@ -882,9 +1030,11 @@ api.Bucket buildBucket() {
     o.projectNumber = 'foo';
     o.retentionPolicy = buildBucketRetentionPolicy();
     o.rpo = 'foo';
+    o.satisfiesPZI = true;
     o.satisfiesPZS = true;
     o.selfLink = 'foo';
     o.softDeletePolicy = buildBucketSoftDeletePolicy();
+    o.softDeleteTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.storageClass = 'foo';
     o.timeCreated = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.updated = core.DateTime.parse('2002-02-27T14:01:02Z');
@@ -910,17 +1060,26 @@ void checkBucket(api.Bucket o) {
       o.etag!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.generation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.hardDeleteTime!,
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
+    );
     checkBucketHierarchicalNamespace(o.hierarchicalNamespace!);
     checkBucketIamConfiguration(o.iamConfiguration!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
     );
+    checkBucketIpFilter(o.ipFilter!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed8(o.labels!);
+    checkUnnamed11(o.labels!);
     checkBucketLifecycle(o.lifecycle!);
     unittest.expect(
       o.location!,
@@ -950,12 +1109,17 @@ void checkBucket(api.Bucket o) {
       o.rpo!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPZI!, unittest.isTrue);
     unittest.expect(o.satisfiesPZS!, unittest.isTrue);
     unittest.expect(
       o.selfLink!,
       unittest.equals('foo'),
     );
     checkBucketSoftDeletePolicy(o.softDeletePolicy!);
+    unittest.expect(
+      o.softDeleteTime!,
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
+    );
     unittest.expect(
       o.storageClass!,
       unittest.equals('foo'),
@@ -1070,12 +1234,12 @@ void checkBucketAccessControl(api.BucketAccessControl o) {
   buildCounterBucketAccessControl--;
 }
 
-core.List<api.BucketAccessControl> buildUnnamed13() => [
+core.List<api.BucketAccessControl> buildUnnamed16() => [
       buildBucketAccessControl(),
       buildBucketAccessControl(),
     ];
 
-void checkUnnamed13(core.List<api.BucketAccessControl> o) {
+void checkUnnamed16(core.List<api.BucketAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucketAccessControl(o[0]);
   checkBucketAccessControl(o[1]);
@@ -1086,7 +1250,7 @@ api.BucketAccessControls buildBucketAccessControls() {
   final o = api.BucketAccessControls();
   buildCounterBucketAccessControls++;
   if (buildCounterBucketAccessControls < 3) {
-    o.items = buildUnnamed13();
+    o.items = buildUnnamed16();
     o.kind = 'foo';
   }
   buildCounterBucketAccessControls--;
@@ -1096,7 +1260,7 @@ api.BucketAccessControls buildBucketAccessControls() {
 void checkBucketAccessControls(api.BucketAccessControls o) {
   buildCounterBucketAccessControls++;
   if (buildCounterBucketAccessControls < 3) {
-    checkUnnamed13(o.items!);
+    checkUnnamed16(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1105,12 +1269,12 @@ void checkBucketAccessControls(api.BucketAccessControls o) {
   buildCounterBucketAccessControls--;
 }
 
-core.List<core.String> buildUnnamed14() => [
+core.List<core.String> buildUnnamed17() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed14(core.List<core.String> o) {
+void checkUnnamed17(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1128,7 +1292,7 @@ api.BucketStorageLayoutCustomPlacementConfig
   final o = api.BucketStorageLayoutCustomPlacementConfig();
   buildCounterBucketStorageLayoutCustomPlacementConfig++;
   if (buildCounterBucketStorageLayoutCustomPlacementConfig < 3) {
-    o.dataLocations = buildUnnamed14();
+    o.dataLocations = buildUnnamed17();
   }
   buildCounterBucketStorageLayoutCustomPlacementConfig--;
   return o;
@@ -1138,7 +1302,7 @@ void checkBucketStorageLayoutCustomPlacementConfig(
     api.BucketStorageLayoutCustomPlacementConfig o) {
   buildCounterBucketStorageLayoutCustomPlacementConfig++;
   if (buildCounterBucketStorageLayoutCustomPlacementConfig < 3) {
-    checkUnnamed14(o.dataLocations!);
+    checkUnnamed17(o.dataLocations!);
   }
   buildCounterBucketStorageLayoutCustomPlacementConfig--;
 }
@@ -1205,12 +1369,12 @@ void checkBucketStorageLayout(api.BucketStorageLayout o) {
   buildCounterBucketStorageLayout--;
 }
 
-core.List<api.Bucket> buildUnnamed15() => [
+core.List<api.Bucket> buildUnnamed18() => [
       buildBucket(),
       buildBucket(),
     ];
 
-void checkUnnamed15(core.List<api.Bucket> o) {
+void checkUnnamed18(core.List<api.Bucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucket(o[0]);
   checkBucket(o[1]);
@@ -1221,7 +1385,7 @@ api.Buckets buildBuckets() {
   final o = api.Buckets();
   buildCounterBuckets++;
   if (buildCounterBuckets < 3) {
-    o.items = buildUnnamed15();
+    o.items = buildUnnamed18();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -1232,7 +1396,7 @@ api.Buckets buildBuckets() {
 void checkBuckets(api.Buckets o) {
   buildCounterBuckets++;
   if (buildCounterBuckets < 3) {
-    checkUnnamed15(o.items!);
+    checkUnnamed18(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1245,12 +1409,12 @@ void checkBuckets(api.Buckets o) {
   buildCounterBuckets--;
 }
 
-core.List<core.String> buildUnnamed16() => [
+core.List<core.String> buildUnnamed19() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed16(core.List<core.String> o) {
+void checkUnnamed19(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1269,7 +1433,7 @@ api.BulkRestoreObjectsRequest buildBulkRestoreObjectsRequest() {
   if (buildCounterBulkRestoreObjectsRequest < 3) {
     o.allowOverwrite = true;
     o.copySourceAcl = true;
-    o.matchGlobs = buildUnnamed16();
+    o.matchGlobs = buildUnnamed19();
     o.softDeletedAfterTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.softDeletedBeforeTime = core.DateTime.parse('2002-02-27T14:01:02Z');
   }
@@ -1282,7 +1446,7 @@ void checkBulkRestoreObjectsRequest(api.BulkRestoreObjectsRequest o) {
   if (buildCounterBulkRestoreObjectsRequest < 3) {
     unittest.expect(o.allowOverwrite!, unittest.isTrue);
     unittest.expect(o.copySourceAcl!, unittest.isTrue);
-    checkUnnamed16(o.matchGlobs!);
+    checkUnnamed19(o.matchGlobs!);
     unittest.expect(
       o.softDeletedAfterTime!,
       unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
@@ -1295,12 +1459,12 @@ void checkBulkRestoreObjectsRequest(api.BulkRestoreObjectsRequest o) {
   buildCounterBulkRestoreObjectsRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed17() => {
+core.Map<core.String, core.String> buildUnnamed20() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed17(core.Map<core.String, core.String> o) {
+void checkUnnamed20(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1321,7 +1485,7 @@ api.Channel buildChannel() {
     o.expiration = 'foo';
     o.id = 'foo';
     o.kind = 'foo';
-    o.params = buildUnnamed17();
+    o.params = buildUnnamed20();
     o.payload = true;
     o.resourceId = 'foo';
     o.resourceUri = 'foo';
@@ -1351,7 +1515,7 @@ void checkChannel(api.Channel o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed17(o.params!);
+    checkUnnamed20(o.params!);
     unittest.expect(o.payload!, unittest.isTrue);
     unittest.expect(
       o.resourceId!,
@@ -1427,12 +1591,12 @@ void checkComposeRequestSourceObjects(api.ComposeRequestSourceObjects o) {
   buildCounterComposeRequestSourceObjects--;
 }
 
-core.List<api.ComposeRequestSourceObjects> buildUnnamed18() => [
+core.List<api.ComposeRequestSourceObjects> buildUnnamed21() => [
       buildComposeRequestSourceObjects(),
       buildComposeRequestSourceObjects(),
     ];
 
-void checkUnnamed18(core.List<api.ComposeRequestSourceObjects> o) {
+void checkUnnamed21(core.List<api.ComposeRequestSourceObjects> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComposeRequestSourceObjects(o[0]);
   checkComposeRequestSourceObjects(o[1]);
@@ -1445,7 +1609,7 @@ api.ComposeRequest buildComposeRequest() {
   if (buildCounterComposeRequest < 3) {
     o.destination = buildObject();
     o.kind = 'foo';
-    o.sourceObjects = buildUnnamed18();
+    o.sourceObjects = buildUnnamed21();
   }
   buildCounterComposeRequest--;
   return o;
@@ -1459,7 +1623,7 @@ void checkComposeRequest(api.ComposeRequest o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed18(o.sourceObjects!);
+    checkUnnamed21(o.sourceObjects!);
   }
   buildCounterComposeRequest--;
 }
@@ -1582,12 +1746,12 @@ void checkFolder(api.Folder o) {
   buildCounterFolder--;
 }
 
-core.List<api.Folder> buildUnnamed19() => [
+core.List<api.Folder> buildUnnamed22() => [
       buildFolder(),
       buildFolder(),
     ];
 
-void checkUnnamed19(core.List<api.Folder> o) {
+void checkUnnamed22(core.List<api.Folder> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFolder(o[0]);
   checkFolder(o[1]);
@@ -1598,7 +1762,7 @@ api.Folders buildFolders() {
   final o = api.Folders();
   buildCounterFolders++;
   if (buildCounterFolders < 3) {
-    o.items = buildUnnamed19();
+    o.items = buildUnnamed22();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -1609,7 +1773,7 @@ api.Folders buildFolders() {
 void checkFolders(api.Folders o) {
   buildCounterFolders++;
   if (buildCounterFolders < 3) {
-    checkUnnamed19(o.items!);
+    checkUnnamed22(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1622,12 +1786,12 @@ void checkFolders(api.Folders o) {
   buildCounterFolders--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed20() => [
+core.List<api.GoogleLongrunningOperation> buildUnnamed23() => [
       buildGoogleLongrunningOperation(),
       buildGoogleLongrunningOperation(),
     ];
 
-void checkUnnamed20(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed23(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -1639,8 +1803,9 @@ api.GoogleLongrunningListOperationsResponse
   final o = api.GoogleLongrunningListOperationsResponse();
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
+    o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed20();
+    o.operations = buildUnnamed23();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -1651,15 +1816,19 @@ void checkGoogleLongrunningListOperationsResponse(
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed20(o.operations!);
+    checkUnnamed23(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed21() => {
+core.Map<core.String, core.Object?> buildUnnamed24() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1672,7 +1841,7 @@ core.Map<core.String, core.Object?> buildUnnamed21() => {
       },
     };
 
-void checkUnnamed21(core.Map<core.String, core.Object?> o) {
+void checkUnnamed24(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -1704,7 +1873,7 @@ void checkUnnamed21(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed22() => {
+core.Map<core.String, core.Object?> buildUnnamed25() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1717,7 +1886,7 @@ core.Map<core.String, core.Object?> buildUnnamed22() => {
       },
     };
 
-void checkUnnamed22(core.Map<core.String, core.Object?> o) {
+void checkUnnamed25(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -1756,9 +1925,11 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed21();
+    o.kind = 'foo';
+    o.metadata = buildUnnamed24();
     o.name = 'foo';
-    o.response = buildUnnamed22();
+    o.response = buildUnnamed25();
+    o.selfLink = 'foo';
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -1769,17 +1940,25 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed21(o.metadata!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed24(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed22(o.response!);
+    checkUnnamed25(o.response!);
+    unittest.expect(
+      o.selfLink!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleLongrunningOperation--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed23() => {
+core.Map<core.String, core.Object?> buildUnnamed26() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1792,7 +1971,7 @@ core.Map<core.String, core.Object?> buildUnnamed23() => {
       },
     };
 
-void checkUnnamed23(core.Map<core.String, core.Object?> o) {
+void checkUnnamed26(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1824,15 +2003,15 @@ void checkUnnamed23(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed24() => [
-      buildUnnamed23(),
-      buildUnnamed23(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed27() => [
+      buildUnnamed26(),
+      buildUnnamed26(),
     ];
 
-void checkUnnamed24(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed27(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed23(o[0]);
-  checkUnnamed23(o[1]);
+  checkUnnamed26(o[0]);
+  checkUnnamed26(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -1841,7 +2020,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed24();
+    o.details = buildUnnamed27();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -1855,7 +2034,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed24(o.details!);
+    checkUnnamed27(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1960,12 +2139,12 @@ void checkHmacKeyMetadata(api.HmacKeyMetadata o) {
   buildCounterHmacKeyMetadata--;
 }
 
-core.List<api.HmacKeyMetadata> buildUnnamed25() => [
+core.List<api.HmacKeyMetadata> buildUnnamed28() => [
       buildHmacKeyMetadata(),
       buildHmacKeyMetadata(),
     ];
 
-void checkUnnamed25(core.List<api.HmacKeyMetadata> o) {
+void checkUnnamed28(core.List<api.HmacKeyMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHmacKeyMetadata(o[0]);
   checkHmacKeyMetadata(o[1]);
@@ -1976,7 +2155,7 @@ api.HmacKeysMetadata buildHmacKeysMetadata() {
   final o = api.HmacKeysMetadata();
   buildCounterHmacKeysMetadata++;
   if (buildCounterHmacKeysMetadata < 3) {
-    o.items = buildUnnamed25();
+    o.items = buildUnnamed28();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -1987,7 +2166,7 @@ api.HmacKeysMetadata buildHmacKeysMetadata() {
 void checkHmacKeysMetadata(api.HmacKeysMetadata o) {
   buildCounterHmacKeysMetadata++;
   if (buildCounterHmacKeysMetadata < 3) {
-    checkUnnamed25(o.items!);
+    checkUnnamed28(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2057,12 +2236,12 @@ void checkManagedFolder(api.ManagedFolder o) {
   buildCounterManagedFolder--;
 }
 
-core.List<api.ManagedFolder> buildUnnamed26() => [
+core.List<api.ManagedFolder> buildUnnamed29() => [
       buildManagedFolder(),
       buildManagedFolder(),
     ];
 
-void checkUnnamed26(core.List<api.ManagedFolder> o) {
+void checkUnnamed29(core.List<api.ManagedFolder> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedFolder(o[0]);
   checkManagedFolder(o[1]);
@@ -2073,7 +2252,7 @@ api.ManagedFolders buildManagedFolders() {
   final o = api.ManagedFolders();
   buildCounterManagedFolders++;
   if (buildCounterManagedFolders < 3) {
-    o.items = buildUnnamed26();
+    o.items = buildUnnamed29();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -2084,7 +2263,7 @@ api.ManagedFolders buildManagedFolders() {
 void checkManagedFolders(api.ManagedFolders o) {
   buildCounterManagedFolders++;
   if (buildCounterManagedFolders < 3) {
-    checkUnnamed26(o.items!);
+    checkUnnamed29(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2097,12 +2276,12 @@ void checkManagedFolders(api.ManagedFolders o) {
   buildCounterManagedFolders--;
 }
 
-core.Map<core.String, core.String> buildUnnamed27() => {
+core.Map<core.String, core.String> buildUnnamed30() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed27(core.Map<core.String, core.String> o) {
+void checkUnnamed30(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2114,12 +2293,12 @@ void checkUnnamed27(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed28() => [
+core.List<core.String> buildUnnamed31() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed28(core.List<core.String> o) {
+void checkUnnamed31(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2136,9 +2315,9 @@ api.Notification buildNotification() {
   final o = api.Notification();
   buildCounterNotification++;
   if (buildCounterNotification < 3) {
-    o.customAttributes = buildUnnamed27();
+    o.customAttributes = buildUnnamed30();
     o.etag = 'foo';
-    o.eventTypes = buildUnnamed28();
+    o.eventTypes = buildUnnamed31();
     o.id = 'foo';
     o.kind = 'foo';
     o.objectNamePrefix = 'foo';
@@ -2153,12 +2332,12 @@ api.Notification buildNotification() {
 void checkNotification(api.Notification o) {
   buildCounterNotification++;
   if (buildCounterNotification < 3) {
-    checkUnnamed27(o.customAttributes!);
+    checkUnnamed30(o.customAttributes!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed28(o.eventTypes!);
+    checkUnnamed31(o.eventTypes!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -2187,12 +2366,12 @@ void checkNotification(api.Notification o) {
   buildCounterNotification--;
 }
 
-core.List<api.Notification> buildUnnamed29() => [
+core.List<api.Notification> buildUnnamed32() => [
       buildNotification(),
       buildNotification(),
     ];
 
-void checkUnnamed29(core.List<api.Notification> o) {
+void checkUnnamed32(core.List<api.Notification> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNotification(o[0]);
   checkNotification(o[1]);
@@ -2203,7 +2382,7 @@ api.Notifications buildNotifications() {
   final o = api.Notifications();
   buildCounterNotifications++;
   if (buildCounterNotifications < 3) {
-    o.items = buildUnnamed29();
+    o.items = buildUnnamed32();
     o.kind = 'foo';
   }
   buildCounterNotifications--;
@@ -2213,7 +2392,7 @@ api.Notifications buildNotifications() {
 void checkNotifications(api.Notifications o) {
   buildCounterNotifications++;
   if (buildCounterNotifications < 3) {
-    checkUnnamed29(o.items!);
+    checkUnnamed32(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2222,12 +2401,12 @@ void checkNotifications(api.Notifications o) {
   buildCounterNotifications--;
 }
 
-core.List<api.ObjectAccessControl> buildUnnamed30() => [
+core.List<api.ObjectAccessControl> buildUnnamed33() => [
       buildObjectAccessControl(),
       buildObjectAccessControl(),
     ];
 
-void checkUnnamed30(core.List<api.ObjectAccessControl> o) {
+void checkUnnamed33(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObjectAccessControl(o[0]);
   checkObjectAccessControl(o[1]);
@@ -2260,12 +2439,12 @@ void checkObjectCustomerEncryption(api.ObjectCustomerEncryption o) {
   buildCounterObjectCustomerEncryption--;
 }
 
-core.Map<core.String, core.String> buildUnnamed31() => {
+core.Map<core.String, core.String> buildUnnamed34() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed31(core.Map<core.String, core.String> o) {
+void checkUnnamed34(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2336,7 +2515,7 @@ api.Object buildObject() {
   final o = api.Object();
   buildCounterObject++;
   if (buildCounterObject < 3) {
-    o.acl = buildUnnamed30();
+    o.acl = buildUnnamed33();
     o.bucket = 'foo';
     o.cacheControl = 'foo';
     o.componentCount = 42;
@@ -2356,10 +2535,11 @@ api.Object buildObject() {
     o.kmsKeyName = 'foo';
     o.md5Hash = 'foo';
     o.mediaLink = 'foo';
-    o.metadata = buildUnnamed31();
+    o.metadata = buildUnnamed34();
     o.metageneration = 'foo';
     o.name = 'foo';
     o.owner = buildObjectOwner();
+    o.restoreToken = 'foo';
     o.retention = buildObjectRetention();
     o.retentionExpirationTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.selfLink = 'foo';
@@ -2379,7 +2559,7 @@ api.Object buildObject() {
 void checkObject(api.Object o) {
   buildCounterObject++;
   if (buildCounterObject < 3) {
-    checkUnnamed30(o.acl!);
+    checkUnnamed33(o.acl!);
     unittest.expect(
       o.bucket!,
       unittest.equals('foo'),
@@ -2450,7 +2630,7 @@ void checkObject(api.Object o) {
       o.mediaLink!,
       unittest.equals('foo'),
     );
-    checkUnnamed31(o.metadata!);
+    checkUnnamed34(o.metadata!);
     unittest.expect(
       o.metageneration!,
       unittest.equals('foo'),
@@ -2460,6 +2640,10 @@ void checkObject(api.Object o) {
       unittest.equals('foo'),
     );
     checkObjectOwner(o.owner!);
+    unittest.expect(
+      o.restoreToken!,
+      unittest.equals('foo'),
+    );
     checkObjectRetention(o.retention!);
     unittest.expect(
       o.retentionExpirationTime!,
@@ -2608,12 +2792,12 @@ void checkObjectAccessControl(api.ObjectAccessControl o) {
   buildCounterObjectAccessControl--;
 }
 
-core.List<api.ObjectAccessControl> buildUnnamed32() => [
+core.List<api.ObjectAccessControl> buildUnnamed35() => [
       buildObjectAccessControl(),
       buildObjectAccessControl(),
     ];
 
-void checkUnnamed32(core.List<api.ObjectAccessControl> o) {
+void checkUnnamed35(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObjectAccessControl(o[0]);
   checkObjectAccessControl(o[1]);
@@ -2624,7 +2808,7 @@ api.ObjectAccessControls buildObjectAccessControls() {
   final o = api.ObjectAccessControls();
   buildCounterObjectAccessControls++;
   if (buildCounterObjectAccessControls < 3) {
-    o.items = buildUnnamed32();
+    o.items = buildUnnamed35();
     o.kind = 'foo';
   }
   buildCounterObjectAccessControls--;
@@ -2634,7 +2818,7 @@ api.ObjectAccessControls buildObjectAccessControls() {
 void checkObjectAccessControls(api.ObjectAccessControls o) {
   buildCounterObjectAccessControls++;
   if (buildCounterObjectAccessControls < 3) {
-    checkUnnamed32(o.items!);
+    checkUnnamed35(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2643,23 +2827,23 @@ void checkObjectAccessControls(api.ObjectAccessControls o) {
   buildCounterObjectAccessControls--;
 }
 
-core.List<api.Object> buildUnnamed33() => [
+core.List<api.Object> buildUnnamed36() => [
       buildObject(),
       buildObject(),
     ];
 
-void checkUnnamed33(core.List<api.Object> o) {
+void checkUnnamed36(core.List<api.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObject(o[0]);
   checkObject(o[1]);
 }
 
-core.List<core.String> buildUnnamed34() => [
+core.List<core.String> buildUnnamed37() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed34(core.List<core.String> o) {
+void checkUnnamed37(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2676,10 +2860,10 @@ api.Objects buildObjects() {
   final o = api.Objects();
   buildCounterObjects++;
   if (buildCounterObjects < 3) {
-    o.items = buildUnnamed33();
+    o.items = buildUnnamed36();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.prefixes = buildUnnamed34();
+    o.prefixes = buildUnnamed37();
   }
   buildCounterObjects--;
   return o;
@@ -2688,7 +2872,7 @@ api.Objects buildObjects() {
 void checkObjects(api.Objects o) {
   buildCounterObjects++;
   if (buildCounterObjects < 3) {
-    checkUnnamed33(o.items!);
+    checkUnnamed36(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2697,17 +2881,17 @@ void checkObjects(api.Objects o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed34(o.prefixes!);
+    checkUnnamed37(o.prefixes!);
   }
   buildCounterObjects--;
 }
 
-core.List<core.String> buildUnnamed35() => [
+core.List<core.String> buildUnnamed38() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed35(core.List<core.String> o) {
+void checkUnnamed38(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2725,7 +2909,7 @@ api.PolicyBindings buildPolicyBindings() {
   buildCounterPolicyBindings++;
   if (buildCounterPolicyBindings < 3) {
     o.condition = buildExpr();
-    o.members = buildUnnamed35();
+    o.members = buildUnnamed38();
     o.role = 'foo';
   }
   buildCounterPolicyBindings--;
@@ -2736,7 +2920,7 @@ void checkPolicyBindings(api.PolicyBindings o) {
   buildCounterPolicyBindings++;
   if (buildCounterPolicyBindings < 3) {
     checkExpr(o.condition!);
-    checkUnnamed35(o.members!);
+    checkUnnamed38(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -2745,12 +2929,12 @@ void checkPolicyBindings(api.PolicyBindings o) {
   buildCounterPolicyBindings--;
 }
 
-core.List<api.PolicyBindings> buildUnnamed36() => [
+core.List<api.PolicyBindings> buildUnnamed39() => [
       buildPolicyBindings(),
       buildPolicyBindings(),
     ];
 
-void checkUnnamed36(core.List<api.PolicyBindings> o) {
+void checkUnnamed39(core.List<api.PolicyBindings> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPolicyBindings(o[0]);
   checkPolicyBindings(o[1]);
@@ -2761,7 +2945,7 @@ api.Policy buildPolicy() {
   final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed36();
+    o.bindings = buildUnnamed39();
     o.etag = 'foo';
     o.kind = 'foo';
     o.resourceId = 'foo';
@@ -2774,7 +2958,7 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed36(o.bindings!);
+    checkUnnamed39(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -2793,6 +2977,72 @@ void checkPolicy(api.Policy o) {
     );
   }
   buildCounterPolicy--;
+}
+
+core.List<core.String> buildUnnamed40() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed40(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterRelocateBucketRequestDestinationCustomPlacementConfig = 0;
+api.RelocateBucketRequestDestinationCustomPlacementConfig
+    buildRelocateBucketRequestDestinationCustomPlacementConfig() {
+  final o = api.RelocateBucketRequestDestinationCustomPlacementConfig();
+  buildCounterRelocateBucketRequestDestinationCustomPlacementConfig++;
+  if (buildCounterRelocateBucketRequestDestinationCustomPlacementConfig < 3) {
+    o.dataLocations = buildUnnamed40();
+  }
+  buildCounterRelocateBucketRequestDestinationCustomPlacementConfig--;
+  return o;
+}
+
+void checkRelocateBucketRequestDestinationCustomPlacementConfig(
+    api.RelocateBucketRequestDestinationCustomPlacementConfig o) {
+  buildCounterRelocateBucketRequestDestinationCustomPlacementConfig++;
+  if (buildCounterRelocateBucketRequestDestinationCustomPlacementConfig < 3) {
+    checkUnnamed40(o.dataLocations!);
+  }
+  buildCounterRelocateBucketRequestDestinationCustomPlacementConfig--;
+}
+
+core.int buildCounterRelocateBucketRequest = 0;
+api.RelocateBucketRequest buildRelocateBucketRequest() {
+  final o = api.RelocateBucketRequest();
+  buildCounterRelocateBucketRequest++;
+  if (buildCounterRelocateBucketRequest < 3) {
+    o.destinationCustomPlacementConfig =
+        buildRelocateBucketRequestDestinationCustomPlacementConfig();
+    o.destinationLocation = 'foo';
+    o.validateOnly = true;
+  }
+  buildCounterRelocateBucketRequest--;
+  return o;
+}
+
+void checkRelocateBucketRequest(api.RelocateBucketRequest o) {
+  buildCounterRelocateBucketRequest++;
+  if (buildCounterRelocateBucketRequest < 3) {
+    checkRelocateBucketRequestDestinationCustomPlacementConfig(
+        o.destinationCustomPlacementConfig!);
+    unittest.expect(
+      o.destinationLocation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.validateOnly!, unittest.isTrue);
+  }
+  buildCounterRelocateBucketRequest--;
 }
 
 core.int buildCounterRewriteResponse = 0;
@@ -2863,12 +3113,12 @@ void checkServiceAccount(api.ServiceAccount o) {
   buildCounterServiceAccount--;
 }
 
-core.List<core.String> buildUnnamed37() => [
+core.List<core.String> buildUnnamed41() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed37(core.List<core.String> o) {
+void checkUnnamed41(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2886,7 +3136,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
     o.kind = 'foo';
-    o.permissions = buildUnnamed37();
+    o.permissions = buildUnnamed41();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -2899,17 +3149,17 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed37(o.permissions!);
+    checkUnnamed41(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
 
-core.List<core.String> buildUnnamed38() => [
+core.List<core.String> buildUnnamed42() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed38(core.List<core.String> o) {
+void checkUnnamed42(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2921,12 +3171,12 @@ void checkUnnamed38(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed39() => [
+core.List<core.String> buildUnnamed43() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed39(core.List<core.String> o) {
+void checkUnnamed43(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2938,12 +3188,12 @@ void checkUnnamed39(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed40() => [
+core.List<core.String> buildUnnamed44() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed40(core.List<core.String> o) {
+void checkUnnamed44(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2956,6 +3206,16 @@ void checkUnnamed40(core.List<core.String> o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AdvanceRelocateBucketOperationRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAdvanceRelocateBucketOperationRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AdvanceRelocateBucketOperationRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAdvanceRelocateBucketOperationRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-AnywhereCache', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAnywhereCache();
@@ -3064,6 +3324,36 @@ void main() {
       final od = api.BucketIamConfiguration.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkBucketIamConfiguration(od);
+    });
+  });
+
+  unittest.group('obj-schema-BucketIpFilterPublicNetworkSource', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBucketIpFilterPublicNetworkSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BucketIpFilterPublicNetworkSource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBucketIpFilterPublicNetworkSource(od);
+    });
+  });
+
+  unittest.group('obj-schema-BucketIpFilterVpcNetworkSources', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBucketIpFilterVpcNetworkSources();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BucketIpFilterVpcNetworkSources.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBucketIpFilterVpcNetworkSources(od);
+    });
+  });
+
+  unittest.group('obj-schema-BucketIpFilter', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBucketIpFilter();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BucketIpFilter.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBucketIpFilter(od);
     });
   });
 
@@ -3545,6 +3835,28 @@ void main() {
       final od =
           api.Policy.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPolicy(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-RelocateBucketRequestDestinationCustomPlacementConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRelocateBucketRequestDestinationCustomPlacementConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.RelocateBucketRequestDestinationCustomPlacementConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkRelocateBucketRequestDestinationCustomPlacementConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-RelocateBucketRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRelocateBucketRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RelocateBucketRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRelocateBucketRequest(od);
     });
   });
 
@@ -4746,9 +5058,11 @@ void main() {
       final mock = HttpServerMock();
       final res = api.StorageApi(mock).buckets;
       final arg_bucket = 'foo';
+      final arg_generation = 'foo';
       final arg_ifMetagenerationMatch = 'foo';
       final arg_ifMetagenerationNotMatch = 'foo';
       final arg_projection = 'foo';
+      final arg_softDeleted = true;
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4794,6 +5108,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['generation']!.first,
+          unittest.equals(arg_generation),
+        );
+        unittest.expect(
           queryMap['ifMetagenerationMatch']!.first,
           unittest.equals(arg_ifMetagenerationMatch),
         );
@@ -4804,6 +5122,10 @@ void main() {
         unittest.expect(
           queryMap['projection']!.first,
           unittest.equals(arg_projection),
+        );
+        unittest.expect(
+          queryMap['softDeleted']!.first,
+          unittest.equals('$arg_softDeleted'),
         );
         unittest.expect(
           queryMap['userProject']!.first,
@@ -4821,9 +5143,11 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_bucket,
+          generation: arg_generation,
           ifMetagenerationMatch: arg_ifMetagenerationMatch,
           ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
           projection: arg_projection,
+          softDeleted: arg_softDeleted,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkBucket(response as api.Bucket);
@@ -5092,6 +5416,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_prefix = 'foo';
       final arg_projection = 'foo';
+      final arg_softDeleted = true;
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5151,6 +5476,10 @@ void main() {
           unittest.equals(arg_projection),
         );
         unittest.expect(
+          queryMap['softDeleted']!.first,
+          unittest.equals('$arg_softDeleted'),
+        );
+        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -5170,6 +5499,7 @@ void main() {
           pageToken: arg_pageToken,
           prefix: arg_prefix,
           projection: arg_projection,
+          softDeleted: arg_softDeleted,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkBuckets(response as api.Buckets);
@@ -5361,6 +5691,163 @@ void main() {
       checkBucket(response as api.Bucket);
     });
 
+    unittest.test('method--relocate', () async {
+      final mock = HttpServerMock();
+      final res = api.StorageApi(mock).buckets;
+      final arg_request = buildRelocateBucketRequest();
+      final arg_bucket = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.RelocateBucketRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRelocateBucketRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('storage/v1/'),
+        );
+        pathOffset += 11;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals('b/'),
+        );
+        pathOffset += 2;
+        index = path.indexOf('/relocate', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals('/relocate'),
+        );
+        pathOffset += 9;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.relocate(arg_request, arg_bucket, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
+    });
+
+    unittest.test('method--restore', () async {
+      final mock = HttpServerMock();
+      final res = api.StorageApi(mock).buckets;
+      final arg_bucket = 'foo';
+      final arg_generation = 'foo';
+      final arg_userProject = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('storage/v1/'),
+        );
+        pathOffset += 11;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals('b/'),
+        );
+        pathOffset += 2;
+        index = path.indexOf('/restore', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals('/restore'),
+        );
+        pathOffset += 8;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['generation']!.first,
+          unittest.equals(arg_generation),
+        );
+        unittest.expect(
+          queryMap['userProject']!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = '';
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      await res.restore(arg_bucket, arg_generation,
+          userProject: arg_userProject, $fields: arg_$fields);
+    });
+
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
       final res = api.StorageApi(mock).buckets;
@@ -5446,7 +5933,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.StorageApi(mock).buckets;
       final arg_bucket = 'foo';
-      final arg_permissions = buildUnnamed38();
+      final arg_permissions = buildUnnamed42();
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7230,7 +7717,7 @@ void main() {
       final res = api.StorageApi(mock).managedFolders;
       final arg_bucket = 'foo';
       final arg_managedFolder = 'foo';
-      final arg_permissions = buildUnnamed39();
+      final arg_permissions = buildUnnamed43();
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8801,6 +9288,7 @@ void main() {
       final arg_ifMetagenerationMatch = 'foo';
       final arg_ifMetagenerationNotMatch = 'foo';
       final arg_projection = 'foo';
+      final arg_restoreToken = 'foo';
       final arg_softDeleted = true;
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
@@ -8885,6 +9373,10 @@ void main() {
           unittest.equals(arg_projection),
         );
         unittest.expect(
+          queryMap['restoreToken']!.first,
+          unittest.equals(arg_restoreToken),
+        );
+        unittest.expect(
           queryMap['softDeleted']!.first,
           unittest.equals('$arg_softDeleted'),
         );
@@ -8910,6 +9402,7 @@ void main() {
           ifMetagenerationMatch: arg_ifMetagenerationMatch,
           ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
           projection: arg_projection,
+          restoreToken: arg_restoreToken,
           softDeleted: arg_softDeleted,
           userProject: arg_userProject,
           $fields: arg_$fields);
@@ -9451,6 +9944,7 @@ void main() {
       final arg_ifMetagenerationMatch = 'foo';
       final arg_ifMetagenerationNotMatch = 'foo';
       final arg_projection = 'foo';
+      final arg_restoreToken = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9546,6 +10040,10 @@ void main() {
           unittest.equals(arg_projection),
         );
         unittest.expect(
+          queryMap['restoreToken']!.first,
+          unittest.equals(arg_restoreToken),
+        );
+        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -9567,6 +10065,7 @@ void main() {
           ifMetagenerationMatch: arg_ifMetagenerationMatch,
           ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
           projection: arg_projection,
+          restoreToken: arg_restoreToken,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkObject(response as api.Object);
@@ -9885,7 +10384,7 @@ void main() {
       final res = api.StorageApi(mock).objects;
       final arg_bucket = 'foo';
       final arg_object = 'foo';
-      final arg_permissions = buildUnnamed40();
+      final arg_permissions = buildUnnamed44();
       final arg_generation = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
@@ -10260,6 +10759,96 @@ void main() {
   });
 
   unittest.group('resource-OperationsResource', () {
+    unittest.test('method--advanceRelocateBucket', () async {
+      final mock = HttpServerMock();
+      final res = api.StorageApi(mock).operations;
+      final arg_request = buildAdvanceRelocateBucketOperationRequest();
+      final arg_bucket = 'foo';
+      final arg_operationId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.AdvanceRelocateBucketOperationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAdvanceRelocateBucketOperationRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('storage/v1/'),
+        );
+        pathOffset += 11;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals('b/'),
+        );
+        pathOffset += 2;
+        index = path.indexOf('/operations/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('/operations/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf('/advanceRelocateBucket', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_operationId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 22),
+          unittest.equals('/advanceRelocateBucket'),
+        );
+        pathOffset += 22;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = '';
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      await res.advanceRelocateBucket(arg_request, arg_bucket, arg_operationId,
+          $fields: arg_$fields);
+    });
+
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
       final res = api.StorageApi(mock).operations;

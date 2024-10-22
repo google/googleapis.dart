@@ -62,10 +62,6 @@ class DataflowApi {
   /// View and manage your Google Compute Engine resources
   static const computeScope = 'https://www.googleapis.com/auth/compute';
 
-  /// View your Google Compute Engine resources
-  static const computeReadonlyScope =
-      'https://www.googleapis.com/auth/compute.readonly';
-
   final commons.ApiRequester _requester;
 
   ProjectsResource get projects => ProjectsResource(_requester);
@@ -2297,7 +2293,11 @@ class ProjectsLocationsTemplatesResource {
   /// Creates a Cloud Dataflow job from a template.
   ///
   /// Do not enter confidential information when you supply string values using
-  /// the API.
+  /// the API. To create a job, we recommend using
+  /// `projects.locations.templates.create` with a
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// Using `projects.templates.create` is not recommended, because your job
+  /// will always start in `us-central1`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2347,6 +2347,12 @@ class ProjectsLocationsTemplatesResource {
   }
 
   /// Get the template associated with a template.
+  ///
+  /// To get the template, we recommend using `projects.locations.templates.get`
+  /// with a
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// Using `projects.templates.get` is not recommended, because only templates
+  /// that are running in `us-central1` are retrieved.
   ///
   /// Request parameters:
   ///
@@ -2403,7 +2409,13 @@ class ProjectsLocationsTemplatesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Launch a template.
+  /// Launches a template.
+  ///
+  /// To launch a template, we recommend using
+  /// `projects.locations.templates.launch` with a
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// Using `projects.templates.launch` is not recommended, because jobs
+  /// launched from the template will always start in `us-central1`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2580,7 +2592,11 @@ class ProjectsTemplatesResource {
   /// Creates a Cloud Dataflow job from a template.
   ///
   /// Do not enter confidential information when you supply string values using
-  /// the API.
+  /// the API. To create a job, we recommend using
+  /// `projects.locations.templates.create` with a
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// Using `projects.templates.create` is not recommended, because your job
+  /// will always start in `us-central1`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2622,6 +2638,12 @@ class ProjectsTemplatesResource {
   }
 
   /// Get the template associated with a template.
+  ///
+  /// To get the template, we recommend using `projects.locations.templates.get`
+  /// with a
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// Using `projects.templates.get` is not recommended, because only templates
+  /// that are running in `us-central1` are retrieved.
   ///
   /// Request parameters:
   ///
@@ -2677,7 +2699,13 @@ class ProjectsTemplatesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Launch a template.
+  /// Launches a template.
+  ///
+  /// To launch a template, we recommend using
+  /// `projects.locations.templates.launch` with a
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// Using `projects.templates.launch` is not recommended, because jobs
+  /// launched from the template will always start in `us-central1`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4062,6 +4090,8 @@ class DebugOptions {
 
   /// When true, enables the logging of the literal hot key to the user's Cloud
   /// Logging.
+  ///
+  /// Optional.
   core.bool? enableHotKeyLogging;
 
   DebugOptions({
@@ -4391,9 +4421,13 @@ class Environment {
   ///
   /// The supported resource type is: Google BigQuery:
   /// bigquery.googleapis.com/{dataset}
+  ///
+  /// Optional.
   core.String? dataset;
 
   /// Any debugging options to be supplied to the job.
+  ///
+  /// Optional.
   DebugOptions? debugOptions;
 
   /// The list of experiments to enable.
@@ -4404,6 +4438,8 @@ class Environment {
   core.List<core.String>? experiments;
 
   /// Which Flexible Resource Scheduling mode to run in.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "FLEXRS_UNSPECIFIED" : Run in the default mode.
   /// - "FLEXRS_SPEED_OPTIMIZED" : Optimize for lower execution time.
@@ -4429,6 +4465,8 @@ class Environment {
   /// Identity to run virtual machines as.
   ///
   /// Defaults to the default account.
+  ///
+  /// Optional.
   core.String? serviceAccountEmail;
 
   /// If set, contains the Cloud KMS key identifier used to encrypt data at
@@ -4436,6 +4474,8 @@ class Environment {
   ///
   /// Format:
   /// projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+  ///
+  /// Optional.
   core.String? serviceKmsKeyName;
 
   /// The list of service options to enable.
@@ -4517,6 +4557,8 @@ class Environment {
   ///
   /// Mutually exclusive with worker_zone. If neither worker_region nor
   /// worker_zone is specified, default to the control plane's region.
+  ///
+  /// Optional.
   core.String? workerRegion;
 
   /// The Compute Engine zone
@@ -4526,6 +4568,8 @@ class Environment {
   /// Mutually exclusive with worker_region. If neither worker_region nor
   /// worker_zone is specified, a zone in the control plane's region is chosen
   /// based on available capacity.
+  ///
+  /// Optional.
   core.String? workerZone;
 
   Environment({
@@ -4864,8 +4908,6 @@ class FlattenInstruction {
 }
 
 /// The environment values to be set at runtime for flex template.
-///
-/// LINT.IfChange
 class FlexTemplateRuntimeEnvironment {
   /// Additional experiment flags for the job.
   core.List<core.String>? additionalExperiments;
@@ -5718,6 +5760,8 @@ class Job {
   /// The
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
+  ///
+  /// Optional.
   core.String? location;
 
   /// The user-specified Dataflow job name.
@@ -5832,6 +5876,11 @@ class Job {
   /// is set in any requests.
   core.bool? satisfiesPzs;
 
+  /// Resources used by the Dataflow Service to run the job.
+  ///
+  /// Output only.
+  ServiceResources? serviceResources;
+
   /// This field may be mutated by the Cloud Dataflow service; callers cannot
   /// mutate it.
   core.List<ExecutionStageState>? stageStates;
@@ -5866,6 +5915,8 @@ class Job {
 
   /// The map of transform name prefixes of the job to be replaced to the
   /// corresponding name prefixes of the new job.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? transformNameMapping;
 
   /// The type of Dataflow job.
@@ -5900,6 +5951,7 @@ class Job {
     this.runtimeUpdatableParams,
     this.satisfiesPzi,
     this.satisfiesPzs,
+    this.serviceResources,
     this.stageStates,
     this.startTime,
     this.steps,
@@ -5952,6 +6004,10 @@ class Job {
               : null,
           satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
           satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+          serviceResources: json_.containsKey('serviceResources')
+              ? ServiceResources.fromJson(json_['serviceResources']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           stageStates: (json_['stageStates'] as core.List?)
               ?.map((value) => ExecutionStageState.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -6000,6 +6056,7 @@ class Job {
           'runtimeUpdatableParams': runtimeUpdatableParams!,
         if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+        if (serviceResources != null) 'serviceResources': serviceResources!,
         if (stageStates != null) 'stageStates': stageStates!,
         if (startTime != null) 'startTime': startTime!,
         if (steps != null) 'steps': steps!,
@@ -6649,6 +6706,11 @@ class LeaseWorkItemRequest {
   /// that contains the WorkItem's job.
   core.String? location;
 
+  /// The project number of the project this worker belongs to.
+  ///
+  /// Optional.
+  core.String? projectNumber;
+
   /// The initial lease period.
   core.String? requestedLeaseDuration;
 
@@ -6673,6 +6735,7 @@ class LeaseWorkItemRequest {
   LeaseWorkItemRequest({
     this.currentWorkerTime,
     this.location,
+    this.projectNumber,
     this.requestedLeaseDuration,
     this.unifiedWorkerRequest,
     this.workItemTypes,
@@ -6684,6 +6747,7 @@ class LeaseWorkItemRequest {
       : this(
           currentWorkerTime: json_['currentWorkerTime'] as core.String?,
           location: json_['location'] as core.String?,
+          projectNumber: json_['projectNumber'] as core.String?,
           requestedLeaseDuration:
               json_['requestedLeaseDuration'] as core.String?,
           unifiedWorkerRequest: json_.containsKey('unifiedWorkerRequest')
@@ -6702,6 +6766,7 @@ class LeaseWorkItemRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (currentWorkerTime != null) 'currentWorkerTime': currentWorkerTime!,
         if (location != null) 'location': location!,
+        if (projectNumber != null) 'projectNumber': projectNumber!,
         if (requestedLeaseDuration != null)
           'requestedLeaseDuration': requestedLeaseDuration!,
         if (unifiedWorkerRequest != null)
@@ -8263,6 +8328,11 @@ class ReportWorkItemStatusRequest {
   /// that contains the WorkItem's job.
   core.String? location;
 
+  /// The project number of the project which owns the WorkItem's job.
+  ///
+  /// Optional.
+  core.String? projectNumber;
+
   /// Untranslated bag-of-bytes WorkProgressUpdateRequest from UnifiedWorker.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -8284,6 +8354,7 @@ class ReportWorkItemStatusRequest {
   ReportWorkItemStatusRequest({
     this.currentWorkerTime,
     this.location,
+    this.projectNumber,
     this.unifiedWorkerRequest,
     this.workItemStatuses,
     this.workerId,
@@ -8293,6 +8364,7 @@ class ReportWorkItemStatusRequest {
       : this(
           currentWorkerTime: json_['currentWorkerTime'] as core.String?,
           location: json_['location'] as core.String?,
+          projectNumber: json_['projectNumber'] as core.String?,
           unifiedWorkerRequest: json_.containsKey('unifiedWorkerRequest')
               ? json_['unifiedWorkerRequest']
                   as core.Map<core.String, core.dynamic>
@@ -8307,6 +8379,7 @@ class ReportWorkItemStatusRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (currentWorkerTime != null) 'currentWorkerTime': currentWorkerTime!,
         if (location != null) 'location': location!,
+        if (projectNumber != null) 'projectNumber': projectNumber!,
         if (unifiedWorkerRequest != null)
           'unifiedWorkerRequest': unifiedWorkerRequest!,
         if (workItemStatuses != null) 'workItemStatuses': workItemStatuses!,
@@ -8438,8 +8511,6 @@ class ResourceUtilizationReport {
 typedef ResourceUtilizationReportResponse = $Empty;
 
 /// The environment values to set at runtime.
-///
-/// LINT.IfChange
 class RuntimeEnvironment {
   /// Additional experiment flags for the job, specified with the
   /// `--experiments` option.
@@ -9142,6 +9213,31 @@ class SeqMapTaskOutputInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (sink != null) 'sink': sink!,
         if (tag != null) 'tag': tag!,
+      };
+}
+
+/// Resources used by the Dataflow Service to run the job.
+class ServiceResources {
+  /// List of Cloud Zones being used by the Dataflow Service for this job.
+  ///
+  /// Example: us-central1-c
+  ///
+  /// Output only.
+  core.List<core.String>? zones;
+
+  ServiceResources({
+    this.zones,
+  });
+
+  ServiceResources.fromJson(core.Map json_)
+      : this(
+          zones: (json_['zones'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (zones != null) 'zones': zones!,
       };
 }
 
@@ -10517,6 +10613,28 @@ class StreamingConfigTask {
   /// Map from user step names to state families.
   core.Map<core.String, core.String>? userStepToStateFamilyNameMap;
 
+  /// Binary encoded proto to control runtime behavior of the java runner v1
+  /// user worker.
+  core.String? userWorkerRunnerV1Settings;
+  core.List<core.int> get userWorkerRunnerV1SettingsAsBytes =>
+      convert.base64.decode(userWorkerRunnerV1Settings!);
+
+  set userWorkerRunnerV1SettingsAsBytes(core.List<core.int> bytes_) {
+    userWorkerRunnerV1Settings =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Binary encoded proto to control runtime behavior of the runner v2 user
+  /// worker.
+  core.String? userWorkerRunnerV2Settings;
+  core.List<core.int> get userWorkerRunnerV2SettingsAsBytes =>
+      convert.base64.decode(userWorkerRunnerV2Settings!);
+
+  set userWorkerRunnerV2SettingsAsBytes(core.List<core.int> bytes_) {
+    userWorkerRunnerV2Settings =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
   /// If present, the worker must use this endpoint to communicate with Windmill
   /// Service dispatchers, otherwise the worker must continue to use whatever
   /// endpoint it had been using.
@@ -10535,6 +10653,8 @@ class StreamingConfigTask {
     this.operationalLimits,
     this.streamingComputationConfigs,
     this.userStepToStateFamilyNameMap,
+    this.userWorkerRunnerV1Settings,
+    this.userWorkerRunnerV2Settings,
     this.windmillServiceEndpoint,
     this.windmillServicePort,
   });
@@ -10564,6 +10684,10 @@ class StreamingConfigTask {
               value as core.String,
             ),
           ),
+          userWorkerRunnerV1Settings:
+              json_['userWorkerRunnerV1Settings'] as core.String?,
+          userWorkerRunnerV2Settings:
+              json_['userWorkerRunnerV2Settings'] as core.String?,
           windmillServiceEndpoint:
               json_['windmillServiceEndpoint'] as core.String?,
           windmillServicePort: json_['windmillServicePort'] as core.String?,
@@ -10581,6 +10705,10 @@ class StreamingConfigTask {
           'streamingComputationConfigs': streamingComputationConfigs!,
         if (userStepToStateFamilyNameMap != null)
           'userStepToStateFamilyNameMap': userStepToStateFamilyNameMap!,
+        if (userWorkerRunnerV1Settings != null)
+          'userWorkerRunnerV1Settings': userWorkerRunnerV1Settings!,
+        if (userWorkerRunnerV2Settings != null)
+          'userWorkerRunnerV2Settings': userWorkerRunnerV2Settings!,
         if (windmillServiceEndpoint != null)
           'windmillServiceEndpoint': windmillServiceEndpoint!,
         if (windmillServicePort != null)

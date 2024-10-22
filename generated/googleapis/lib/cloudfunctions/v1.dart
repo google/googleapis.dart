@@ -1014,7 +1014,8 @@ class CloudFunction {
 
   /// A service account the user provides for use with Cloud Build.
   ///
-  /// Optional.
+  /// The format of this field is
+  /// `projects/{projectId}/serviceAccounts/{serviceAccountEmail}`.
   core.String? buildServiceAccount;
 
   /// Name of the Cloud Build Custom Worker Pool that should be used to build
@@ -2152,7 +2153,8 @@ class SourceRepository {
   /// `master` moveable alias. To refer to a specific fixed alias (tag):
   /// `https://source.developers.google.com/projects / * /repos / *
   /// /fixed-aliases / * /paths / * ` You may omit `paths / * ` if you want to
-  /// use the main directory.
+  /// use the main directory. The function response may add an empty `/paths/`
+  /// to the URL.
   core.String? url;
 
   SourceRepository({
@@ -2179,7 +2181,7 @@ class SourceRepository {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;

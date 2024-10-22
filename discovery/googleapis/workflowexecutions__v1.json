@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240528",
+    "revision": "20241001",
     "rootUrl": "https://workflowexecutions.googleapis.com/",
     "servicePath": "",
     "title": "Workflow Executions API",
@@ -203,6 +203,34 @@
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
+                                        "deleteExecutionHistory": {
+                                            "description": "Deletes all step entries for an execution.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions/{executionsId}:deleteExecutionHistory",
+                                            "httpMethod": "POST",
+                                            "id": "workflowexecutions.projects.locations.workflows.executions.deleteExecutionHistory",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "description": "Required. Name of the execution for which step entries should be deleted. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/workflows/[^/]+/executions/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+name}:deleteExecutionHistory",
+                                            "request": {
+                                                "$ref": "DeleteExecutionHistoryRequest"
+                                            },
+                                            "response": {
+                                                "$ref": "Empty"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
                                         "exportData": {
                                             "description": "Returns all metadata stored about an execution, excluding most data that is already accessible using other API methods.",
                                             "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions/{executionsId}:exportData",
@@ -278,7 +306,7 @@
                                             ],
                                             "parameters": {
                                                 "filter": {
-                                                    "description": "Optional. Filters applied to the `[Executions.ListExecutions]` results. The following fields are supported for filtering: `executionId`, `state`, `createTime`, `startTime`, `endTime`, `duration`, `workflowRevisionId`, `stepName`, and `label`. For details, see AIP-160. For more information, see Filter executions. For example, if you are using the Google APIs Explorer: `state=\"SUCCEEDED\"` or `startTime>\"2023-08-01\" AND state=\"FAILED\"`",
+                                                    "description": "Optional. Filters applied to the `[Executions.ListExecutions]` results. The following fields are supported for filtering: `executionId`, `state`, `createTime`, `startTime`, `endTime`, `duration`, `workflowRevisionId`, `stepName`, `label`, and `disableConcurrencyQuotaOverflowBuffering`. For details, see AIP-160. For more information, see Filter executions. For example, if you are using the Google APIs Explorer: `state=\"SUCCEEDED\"` or `startTime>\"2023-08-01\" AND state=\"FAILED\"`",
                                                     "location": "query",
                                                     "type": "string"
                                                 },
@@ -388,6 +416,22 @@
                                                             "pattern": "^projects/[^/]+/locations/[^/]+/workflows/[^/]+/executions/[^/]+/stepEntries/[^/]+$",
                                                             "required": true,
                                                             "type": "string"
+                                                        },
+                                                        "view": {
+                                                            "deprecated": true,
+                                                            "description": "Deprecated field.",
+                                                            "enum": [
+                                                                "EXECUTION_ENTRY_VIEW_UNSPECIFIED",
+                                                                "EXECUTION_ENTRY_VIEW_BASIC",
+                                                                "EXECUTION_ENTRY_VIEW_DETAILED"
+                                                            ],
+                                                            "enumDescriptions": [
+                                                                "The default/unset value.",
+                                                                "Include basic information in the step entries. All fields in StepEntry are returned except for variable_data.",
+                                                                "Include all data."
+                                                            ],
+                                                            "location": "query",
+                                                            "type": "string"
                                                         }
                                                     },
                                                     "path": "v1/{+name}",
@@ -408,7 +452,7 @@
                                                     ],
                                                     "parameters": {
                                                         "filter": {
-                                                            "description": "Optional. Filters applied to the `[StepEntries.ListStepEntries]` results. The following fields are supported for filtering: `entryId`, `createTime`, `updateTime`, `routine`, `step`, `stepType`, `state`. For details, see AIP-160. For example, if you are using the Google APIs Explorer: `state=\"SUCCEEDED\"` or `createTime>\"2023-08-01\" AND state=\"FAILED\"`",
+                                                            "description": "Optional. Filters applied to the `[StepEntries.ListStepEntries]` results. The following fields are supported for filtering: `entryId`, `createTime`, `updateTime`, `routine`, `step`, `stepType`, `parent`, `state`. For details, see AIP-160. For example, if you are using the Google APIs Explorer: `state=\"SUCCEEDED\"` or `createTime>\"2023-08-01\" AND state=\"FAILED\"`",
                                                             "location": "query",
                                                             "type": "string"
                                                         },
@@ -429,7 +473,7 @@
                                                             "type": "string"
                                                         },
                                                         "parent": {
-                                                            "description": "Required. Name of the workflow execution to list entries for. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}/stepEntries/",
+                                                            "description": "Required. Name of the workflow execution to list entries for. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}",
                                                             "location": "path",
                                                             "pattern": "^projects/[^/]+/locations/[^/]+/workflows/[^/]+/executions/[^/]+$",
                                                             "required": true,
@@ -440,6 +484,22 @@
                                                             "format": "int32",
                                                             "location": "query",
                                                             "type": "integer"
+                                                        },
+                                                        "view": {
+                                                            "deprecated": true,
+                                                            "description": "Deprecated field.",
+                                                            "enum": [
+                                                                "EXECUTION_ENTRY_VIEW_UNSPECIFIED",
+                                                                "EXECUTION_ENTRY_VIEW_BASIC",
+                                                                "EXECUTION_ENTRY_VIEW_DETAILED"
+                                                            ],
+                                                            "enumDescriptions": [
+                                                                "The default/unset value.",
+                                                                "Include basic information in the step entries. All fields in StepEntry are returned except for variable_data.",
+                                                                "Include all data."
+                                                            ],
+                                                            "location": "query",
+                                                            "type": "string"
                                                         }
                                                     },
                                                     "path": "v1/{+parent}/stepEntries",
@@ -496,6 +556,18 @@
         "CancelExecutionRequest": {
             "description": "Request for the CancelExecution method.",
             "id": "CancelExecutionRequest",
+            "properties": {},
+            "type": "object"
+        },
+        "DeleteExecutionHistoryRequest": {
+            "description": "Request for the DeleteExecutionHistory method.",
+            "id": "DeleteExecutionHistoryRequest",
+            "properties": {},
+            "type": "object"
+        },
+        "Empty": {
+            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+            "id": "Empty",
             "properties": {},
             "type": "object"
         },
@@ -580,6 +652,20 @@
                     "description": "Output only. The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.",
                     "readOnly": true
                 },
+                "executionHistoryLevel": {
+                    "description": "Optional. Describes the level of the execution history feature to apply to this execution. If not specified, the level of the execution history feature will be determined by its workflow's execution history level. If the value is different from its workflow's value, it will override the workflow's execution history level for this exeuction.",
+                    "enum": [
+                        "EXECUTION_HISTORY_LEVEL_UNSPECIFIED",
+                        "EXECUTION_HISTORY_BASIC",
+                        "EXECUTION_HISTORY_DETAILED"
+                    ],
+                    "enumDescriptions": [
+                        "The default/unset value.",
+                        "Enable execution history basic feature for this execution.",
+                        "Enable execution history detailed feature for this execution."
+                    ],
+                    "type": "string"
+                },
                 "labels": {
                     "additionalProperties": {
                         "type": "string"
@@ -598,7 +684,7 @@
                     "type": "string"
                 },
                 "startTime": {
-                    "description": "Output only. Marks the beginning of execution.",
+                    "description": "Output only. Marks the beginning of execution. Note that this will be the same as `createTime` for executions that start immediately.",
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
@@ -925,13 +1011,15 @@
                         "STATE_UNSPECIFIED",
                         "STATE_IN_PROGRESS",
                         "STATE_SUCCEEDED",
-                        "STATE_FAILED"
+                        "STATE_FAILED",
+                        "STATE_CANCELLED"
                     ],
                     "enumDescriptions": [
                         "Invalid state.",
                         "The step entry is in progress.",
                         "The step entry finished successfully.",
-                        "The step entry failed with an error."
+                        "The step entry failed with an error.",
+                        "The step entry is cancelled."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -1000,6 +1088,11 @@
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
+                },
+                "variableData": {
+                    "$ref": "VariableData",
+                    "description": "Output only. The VariableData associated to this step.",
+                    "readOnly": true
                 }
             },
             "type": "object"
@@ -1014,7 +1107,7 @@
                     "type": "string"
                 },
                 "progressNumber": {
-                    "description": "Progress number represents the current state of the current progress. eg: A step entry represents the 4th iteration in a progress of PROGRESS_TYPE_FOR.",
+                    "description": "Progress number represents the current state of the current progress. eg: A step entry represents the 4th iteration in a progress of PROGRESS_TYPE_FOR. Note: This field is only populated when an iteration exists and the starting value is 1.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -1065,6 +1158,20 @@
                 "subscription": {
                     "description": "Required. The subscription of the Pub/Sub push notification. Format: projects/{project}/subscriptions/{sub}",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "VariableData": {
+            "description": "VariableData contains the variable data for this step.",
+            "id": "VariableData",
+            "properties": {
+                "variables": {
+                    "additionalProperties": {
+                        "type": "any"
+                    },
+                    "description": "Variables that are associated with this step.",
+                    "type": "object"
                 }
             },
             "type": "object"

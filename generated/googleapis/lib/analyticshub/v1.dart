@@ -536,7 +536,7 @@ class ProjectsLocationsDataExchangesResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Creates a Subscription to a Data Exchange.
+  /// Creates a Subscription to a Data Clean Room.
   ///
   /// This is a long-running operation as it will create one or more linked
   /// datasets.
@@ -1407,6 +1407,10 @@ class ProjectsLocationsSubscriptionsResource {
   }
 }
 
+/// Information about an associated Analytics Hub subscription
+/// (https://cloud.google.com/bigquery/docs/analytics-hub-manage-subscriptions).
+typedef AnalyticsHubSubscriptionInfo = $AnalyticsHubSubscriptionInfo;
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -1462,6 +1466,14 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
+/// Configuration for writing message data in Avro format.
+///
+/// Message payloads and metadata will be written to files as an Avro binary.
+typedef AvroConfig = $AvroConfig;
+
+/// Configuration for a BigQuery subscription.
+typedef BigQueryConfig = $BigQueryConfig;
+
 /// A reference to a shared dataset.
 ///
 /// It is an existing BigQuery dataset with a collection of objects such as
@@ -1481,10 +1493,9 @@ class BigQueryDatasetSource {
   /// Optional.
   RestrictedExportPolicy? restrictedExportPolicy;
 
-  /// Resources in this dataset that are selectively shared.
+  /// Resource in this dataset that is selectively shared.
   ///
-  /// If this field is empty, then the entire dataset (all resources) are
-  /// shared. This field is only valid for data clean room exchanges.
+  /// This field is required for data clean room exchanges.
   ///
   /// Optional.
   core.List<SelectedResource>? selectedResources;
@@ -1621,6 +1632,161 @@ class Binding {
       };
 }
 
+/// Configuration for a Cloud Storage subscription.
+class CloudStorageConfig {
+  /// If set, message data will be written to Cloud Storage in Avro format.
+  ///
+  /// Optional.
+  AvroConfig? avroConfig;
+
+  /// User-provided name for the Cloud Storage bucket.
+  ///
+  /// The bucket must be created by the user. The bucket name must be without
+  /// any prefix like "gs://". See the
+  /// [bucket naming requirements](https://cloud.google.com/storage/docs/buckets#naming).
+  ///
+  /// Required.
+  core.String? bucket;
+
+  /// User-provided format string specifying how to represent datetimes in Cloud
+  /// Storage filenames.
+  ///
+  /// See the
+  /// [datetime format guidance](https://cloud.google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+  ///
+  /// Optional.
+  core.String? filenameDatetimeFormat;
+
+  /// User-provided prefix for Cloud Storage filename.
+  ///
+  /// See the
+  /// [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+  ///
+  /// Optional.
+  core.String? filenamePrefix;
+
+  /// User-provided suffix for Cloud Storage filename.
+  ///
+  /// See the
+  /// [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+  /// Must not end in "/".
+  ///
+  /// Optional.
+  core.String? filenameSuffix;
+
+  /// The maximum bytes that can be written to a Cloud Storage file before a new
+  /// file is created.
+  ///
+  /// Min 1 KB, max 10 GiB. The max_bytes limit may be exceeded in cases where
+  /// messages are larger than the limit.
+  ///
+  /// Optional.
+  core.String? maxBytes;
+
+  /// The maximum duration that can elapse before a new Cloud Storage file is
+  /// created.
+  ///
+  /// Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the
+  /// subscription's acknowledgement deadline.
+  ///
+  /// Optional.
+  core.String? maxDuration;
+
+  /// The maximum number of messages that can be written to a Cloud Storage file
+  /// before a new file is created.
+  ///
+  /// Min 1000 messages.
+  ///
+  /// Optional.
+  core.String? maxMessages;
+
+  /// The service account to use to write to Cloud Storage.
+  ///
+  /// The subscription creator or updater that specifies this field must have
+  /// `iam.serviceAccounts.actAs` permission on the service account. If not
+  /// specified, the Pub/Sub
+  /// [service agent](https://cloud.google.com/iam/docs/service-agents),
+  /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+  ///
+  /// Optional.
+  core.String? serviceAccountEmail;
+
+  /// An output-only field that indicates whether or not the subscription can
+  /// receive messages.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ACTIVE" : The subscription can actively send messages to Cloud Storage.
+  /// - "PERMISSION_DENIED" : Cannot write to the Cloud Storage bucket because
+  /// of permission denied errors.
+  /// - "NOT_FOUND" : Cannot write to the Cloud Storage bucket because it does
+  /// not exist.
+  /// - "IN_TRANSIT_LOCATION_RESTRICTION" : Cannot write to the destination
+  /// because enforce_in_transit is set to true and the destination locations
+  /// are not in the allowed regions.
+  /// - "SCHEMA_MISMATCH" : Cannot write to the Cloud Storage bucket due to an
+  /// incompatibility between the topic schema and subscription settings.
+  core.String? state;
+
+  /// If set, message data will be written to Cloud Storage in text format.
+  ///
+  /// Optional.
+  TextConfig? textConfig;
+
+  CloudStorageConfig({
+    this.avroConfig,
+    this.bucket,
+    this.filenameDatetimeFormat,
+    this.filenamePrefix,
+    this.filenameSuffix,
+    this.maxBytes,
+    this.maxDuration,
+    this.maxMessages,
+    this.serviceAccountEmail,
+    this.state,
+    this.textConfig,
+  });
+
+  CloudStorageConfig.fromJson(core.Map json_)
+      : this(
+          avroConfig: json_.containsKey('avroConfig')
+              ? AvroConfig.fromJson(
+                  json_['avroConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          bucket: json_['bucket'] as core.String?,
+          filenameDatetimeFormat:
+              json_['filenameDatetimeFormat'] as core.String?,
+          filenamePrefix: json_['filenamePrefix'] as core.String?,
+          filenameSuffix: json_['filenameSuffix'] as core.String?,
+          maxBytes: json_['maxBytes'] as core.String?,
+          maxDuration: json_['maxDuration'] as core.String?,
+          maxMessages: json_['maxMessages'] as core.String?,
+          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
+          state: json_['state'] as core.String?,
+          textConfig: json_.containsKey('textConfig')
+              ? TextConfig.fromJson(
+                  json_['textConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (avroConfig != null) 'avroConfig': avroConfig!,
+        if (bucket != null) 'bucket': bucket!,
+        if (filenameDatetimeFormat != null)
+          'filenameDatetimeFormat': filenameDatetimeFormat!,
+        if (filenamePrefix != null) 'filenamePrefix': filenamePrefix!,
+        if (filenameSuffix != null) 'filenameSuffix': filenameSuffix!,
+        if (maxBytes != null) 'maxBytes': maxBytes!,
+        if (maxDuration != null) 'maxDuration': maxDuration!,
+        if (maxMessages != null) 'maxMessages': maxMessages!,
+        if (serviceAccountEmail != null)
+          'serviceAccountEmail': serviceAccountEmail!,
+        if (state != null) 'state': state!,
+        if (textConfig != null) 'textConfig': textConfig!,
+      };
+}
+
 /// A data exchange is a container that lets you share data.
 ///
 /// Along with the descriptive information about the data exchange, it contains
@@ -1635,6 +1801,22 @@ class DataExchange {
   ///
   /// Optional.
   core.String? description;
+
+  /// Type of discovery on the discovery page for all the listings under this
+  /// exchange.
+  ///
+  /// Updating this field also updates (overwrites) the discovery_type field for
+  /// all the listings under this exchange.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DISCOVERY_TYPE_UNSPECIFIED" : Unspecified. Defaults to
+  /// DISCOVERY_TYPE_PRIVATE.
+  /// - "DISCOVERY_TYPE_PRIVATE" : The Data exchange/listing can be discovered
+  /// in the 'Private' results list.
+  /// - "DISCOVERY_TYPE_PUBLIC" : The Data exchange/listing can be discovered in
+  /// the 'Public' results list.
+  core.String? discoveryType;
 
   /// Human-readable display name of the data exchange.
   ///
@@ -1693,6 +1875,7 @@ class DataExchange {
 
   DataExchange({
     this.description,
+    this.discoveryType,
     this.displayName,
     this.documentation,
     this.icon,
@@ -1705,6 +1888,7 @@ class DataExchange {
   DataExchange.fromJson(core.Map json_)
       : this(
           description: json_['description'] as core.String?,
+          discoveryType: json_['discoveryType'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           documentation: json_['documentation'] as core.String?,
           icon: json_['icon'] as core.String?,
@@ -1721,6 +1905,7 @@ class DataExchange {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
+        if (discoveryType != null) 'discoveryType': discoveryType!,
         if (displayName != null) 'displayName': displayName!,
         if (documentation != null) 'documentation': documentation!,
         if (icon != null) 'icon': icon!,
@@ -1808,6 +1993,13 @@ class DcrExchangeConfig {
               singleSelectedResourceSharingRestriction!,
       };
 }
+
+/// Dead lettering is done on a best effort basis.
+///
+/// The same message might be dead lettered multiple times. If validation on any
+/// of the fields fails at subscription creation/updation, the create/update
+/// subscription request will fail.
+typedef DeadLetterPolicy = $DeadLetterPolicy;
 
 /// Default Analytics Hub data exchange, used for secured data sharing.
 typedef DefaultExchangeConfig = $Empty;
@@ -1914,6 +2106,31 @@ class DestinationDatasetReference {
       };
 }
 
+/// Defines the destination Pub/Sub subscription.
+class DestinationPubSubSubscription {
+  /// Destination Pub/Sub subscription resource.
+  ///
+  /// Required.
+  GooglePubsubV1Subscription? pubsubSubscription;
+
+  DestinationPubSubSubscription({
+    this.pubsubSubscription,
+  });
+
+  DestinationPubSubSubscription.fromJson(core.Map json_)
+      : this(
+          pubsubSubscription: json_.containsKey('pubsubSubscription')
+              ? GooglePubsubV1Subscription.fromJson(json_['pubsubSubscription']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pubsubSubscription != null)
+          'pubsubSubscription': pubsubSubscription!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -1921,6 +2138,10 @@ class DestinationDatasetReference {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// A policy that specifies the conditions for resource expiration (i.e.,
+/// automatic resource deletion).
+typedef ExpirationPolicy = $ExpirationPolicy;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -1968,6 +2189,299 @@ class GetIamPolicyRequest {
 /// Encapsulates settings provided to GetIamPolicy.
 typedef GetPolicyOptions = $GetPolicyOptions00;
 
+/// A subscription resource.
+///
+/// If none of `push_config`, `bigquery_config`, or `cloud_storage_config` is
+/// set, then the subscriber will pull and ack messages using API methods. At
+/// most one of these fields may be set.
+class GooglePubsubV1Subscription {
+  /// The approximate amount of time (on a best-effort basis) Pub/Sub waits for
+  /// the subscriber to acknowledge receipt before resending the message.
+  ///
+  /// In the interval after the message is delivered and before it is
+  /// acknowledged, it is considered to be _outstanding_. During that time
+  /// period, the message will not be redelivered (on a best-effort basis). For
+  /// pull subscriptions, this value is used as the initial value for the ack
+  /// deadline. To override this value for a given message, call
+  /// `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming
+  /// pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if
+  /// using streaming pull. The minimum custom deadline you can specify is 10
+  /// seconds. The maximum custom deadline you can specify is 600 seconds (10
+  /// minutes). If this parameter is 0, a default value of 10 seconds is used.
+  /// For push delivery, this value is also used to set the request timeout for
+  /// the call to the push endpoint. If the subscriber never acknowledges the
+  /// message, the Pub/Sub system will eventually redeliver the message.
+  ///
+  /// Optional.
+  core.int? ackDeadlineSeconds;
+
+  /// Information about the associated Analytics Hub subscription.
+  ///
+  /// Only set if the subscritpion is created by Analytics Hub.
+  ///
+  /// Output only.
+  AnalyticsHubSubscriptionInfo? analyticsHubSubscriptionInfo;
+
+  /// If delivery to BigQuery is used with this subscription, this field is used
+  /// to configure it.
+  ///
+  /// Optional.
+  BigQueryConfig? bigqueryConfig;
+
+  /// If delivery to Google Cloud Storage is used with this subscription, this
+  /// field is used to configure it.
+  ///
+  /// Optional.
+  CloudStorageConfig? cloudStorageConfig;
+
+  /// A policy that specifies the conditions for dead lettering messages in this
+  /// subscription.
+  ///
+  /// If dead_letter_policy is not set, dead lettering is disabled. The Pub/Sub
+  /// service account associated with this subscriptions's parent project (i.e.,
+  /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+  /// permission to Acknowledge() messages on this subscription.
+  ///
+  /// Optional.
+  DeadLetterPolicy? deadLetterPolicy;
+
+  /// Indicates whether the subscription is detached from its topic.
+  ///
+  /// Detached subscriptions don't receive messages from their topic and don't
+  /// retain any backlog. `Pull` and `StreamingPull` requests will return
+  /// FAILED_PRECONDITION. If the subscription is a push subscription, pushes to
+  /// the endpoint will not be made.
+  ///
+  /// Optional.
+  core.bool? detached;
+
+  /// If true, Pub/Sub provides the following guarantees for the delivery of a
+  /// message with a given value of `message_id` on this subscription: * The
+  /// message sent to a subscriber is guaranteed not to be resent before the
+  /// message's acknowledgement deadline expires.
+  ///
+  /// * An acknowledged message will not be resent to a subscriber. Note that
+  /// subscribers may still receive multiple copies of a message when
+  /// `enable_exactly_once_delivery` is true if the message was published
+  /// multiple times by a publisher client. These copies are considered distinct
+  /// by Pub/Sub and have distinct `message_id` values.
+  ///
+  /// Optional.
+  core.bool? enableExactlyOnceDelivery;
+
+  /// If true, messages published with the same `ordering_key` in
+  /// `PubsubMessage` will be delivered to the subscribers in the order in which
+  /// they are received by the Pub/Sub system.
+  ///
+  /// Otherwise, they may be delivered in any order.
+  ///
+  /// Optional.
+  core.bool? enableMessageOrdering;
+
+  /// A policy that specifies the conditions for this subscription's expiration.
+  ///
+  /// A subscription is considered active as long as any connected subscriber is
+  /// successfully consuming messages from the subscription or is issuing
+  /// operations on the subscription. If `expiration_policy` is not set, a
+  /// *default policy* with `ttl` of 31 days will be used. The minimum allowed
+  /// value for `expiration_policy.ttl` is 1 day. If `expiration_policy` is set,
+  /// but `expiration_policy.ttl` is not set, the subscription never expires.
+  ///
+  /// Optional.
+  ExpirationPolicy? expirationPolicy;
+
+  /// An expression written in the Pub/Sub
+  /// [filter language](https://cloud.google.com/pubsub/docs/filtering).
+  ///
+  /// If non-empty, then only `PubsubMessage`s whose `attributes` field matches
+  /// the filter are delivered on this subscription. If empty, then no messages
+  /// are filtered out.
+  ///
+  /// Optional.
+  core.String? filter;
+
+  /// See
+  /// [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// How long to retain unacknowledged messages in the subscription's backlog,
+  /// from the moment a message is published.
+  ///
+  /// If `retain_acked_messages` is true, then this also configures the
+  /// retention of acknowledged messages, and thus configures how far back in
+  /// time a `Seek` can be done. Defaults to 7 days. Cannot be more than 31 days
+  /// or less than 10 minutes.
+  ///
+  /// Optional.
+  core.String? messageRetentionDuration;
+
+  /// Name of the subscription.
+  ///
+  /// Format is `projects/{project}/subscriptions/{sub}`.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// If push delivery is used with this subscription, this field is used to
+  /// configure it.
+  ///
+  /// Optional.
+  PushConfig? pushConfig;
+
+  /// Indicates whether to retain acknowledged messages.
+  ///
+  /// If true, then messages are not expunged from the subscription's backlog,
+  /// even if they are acknowledged, until they fall out of the
+  /// `message_retention_duration` window. This must be true if you would like
+  /// to \[`Seek` to a
+  /// timestamp\](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time)
+  /// in the past to replay previously-acknowledged messages.
+  ///
+  /// Optional.
+  core.bool? retainAckedMessages;
+
+  /// A policy that specifies how Pub/Sub retries message delivery for this
+  /// subscription.
+  ///
+  /// If not set, the default retry policy is applied. This generally implies
+  /// that messages will be retried as soon as possible for healthy subscribers.
+  /// RetryPolicy will be triggered on NACKs or acknowledgement deadline
+  /// exceeded events for a given message.
+  ///
+  /// Optional.
+  RetryPolicy? retryPolicy;
+
+  /// An output-only field indicating whether or not the subscription can
+  /// receive messages.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ACTIVE" : The subscription can actively receive messages
+  /// - "RESOURCE_ERROR" : The subscription cannot receive messages because of
+  /// an error with the resource to which it pushes messages. See the more
+  /// detailed error state in the corresponding configuration.
+  core.String? state;
+
+  /// Indicates the minimum duration for which a message is retained after it is
+  /// published to the subscription's topic.
+  ///
+  /// If this field is set, messages published to the subscription's topic in
+  /// the last `topic_message_retention_duration` are always available to
+  /// subscribers. See the `message_retention_duration` field in `Topic`. This
+  /// field is set only in responses from the server; it is ignored if it is set
+  /// in any requests.
+  ///
+  /// Output only.
+  core.String? topicMessageRetentionDuration;
+
+  GooglePubsubV1Subscription({
+    this.ackDeadlineSeconds,
+    this.analyticsHubSubscriptionInfo,
+    this.bigqueryConfig,
+    this.cloudStorageConfig,
+    this.deadLetterPolicy,
+    this.detached,
+    this.enableExactlyOnceDelivery,
+    this.enableMessageOrdering,
+    this.expirationPolicy,
+    this.filter,
+    this.labels,
+    this.messageRetentionDuration,
+    this.name,
+    this.pushConfig,
+    this.retainAckedMessages,
+    this.retryPolicy,
+    this.state,
+    this.topicMessageRetentionDuration,
+  });
+
+  GooglePubsubV1Subscription.fromJson(core.Map json_)
+      : this(
+          ackDeadlineSeconds: json_['ackDeadlineSeconds'] as core.int?,
+          analyticsHubSubscriptionInfo:
+              json_.containsKey('analyticsHubSubscriptionInfo')
+                  ? AnalyticsHubSubscriptionInfo.fromJson(
+                      json_['analyticsHubSubscriptionInfo']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          bigqueryConfig: json_.containsKey('bigqueryConfig')
+              ? BigQueryConfig.fromJson(json_['bigqueryConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          cloudStorageConfig: json_.containsKey('cloudStorageConfig')
+              ? CloudStorageConfig.fromJson(json_['cloudStorageConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          deadLetterPolicy: json_.containsKey('deadLetterPolicy')
+              ? DeadLetterPolicy.fromJson(json_['deadLetterPolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          detached: json_['detached'] as core.bool?,
+          enableExactlyOnceDelivery:
+              json_['enableExactlyOnceDelivery'] as core.bool?,
+          enableMessageOrdering: json_['enableMessageOrdering'] as core.bool?,
+          expirationPolicy: json_.containsKey('expirationPolicy')
+              ? ExpirationPolicy.fromJson(json_['expirationPolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          filter: json_['filter'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          messageRetentionDuration:
+              json_['messageRetentionDuration'] as core.String?,
+          name: json_['name'] as core.String?,
+          pushConfig: json_.containsKey('pushConfig')
+              ? PushConfig.fromJson(
+                  json_['pushConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          retainAckedMessages: json_['retainAckedMessages'] as core.bool?,
+          retryPolicy: json_.containsKey('retryPolicy')
+              ? RetryPolicy.fromJson(
+                  json_['retryPolicy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state: json_['state'] as core.String?,
+          topicMessageRetentionDuration:
+              json_['topicMessageRetentionDuration'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ackDeadlineSeconds != null)
+          'ackDeadlineSeconds': ackDeadlineSeconds!,
+        if (analyticsHubSubscriptionInfo != null)
+          'analyticsHubSubscriptionInfo': analyticsHubSubscriptionInfo!,
+        if (bigqueryConfig != null) 'bigqueryConfig': bigqueryConfig!,
+        if (cloudStorageConfig != null)
+          'cloudStorageConfig': cloudStorageConfig!,
+        if (deadLetterPolicy != null) 'deadLetterPolicy': deadLetterPolicy!,
+        if (detached != null) 'detached': detached!,
+        if (enableExactlyOnceDelivery != null)
+          'enableExactlyOnceDelivery': enableExactlyOnceDelivery!,
+        if (enableMessageOrdering != null)
+          'enableMessageOrdering': enableMessageOrdering!,
+        if (expirationPolicy != null) 'expirationPolicy': expirationPolicy!,
+        if (filter != null) 'filter': filter!,
+        if (labels != null) 'labels': labels!,
+        if (messageRetentionDuration != null)
+          'messageRetentionDuration': messageRetentionDuration!,
+        if (name != null) 'name': name!,
+        if (pushConfig != null) 'pushConfig': pushConfig!,
+        if (retainAckedMessages != null)
+          'retainAckedMessages': retainAckedMessages!,
+        if (retryPolicy != null) 'retryPolicy': retryPolicy!,
+        if (state != null) 'state': state!,
+        if (topicMessageRetentionDuration != null)
+          'topicMessageRetentionDuration': topicMessageRetentionDuration!,
+      };
+}
+
 /// Reference to a linked resource tracked by this Subscription.
 class LinkedResource {
   /// Name of the linked dataset, e.g.
@@ -1976,17 +2490,36 @@ class LinkedResource {
   /// Output only.
   core.String? linkedDataset;
 
+  /// Name of the Pub/Sub subscription, e.g.
+  /// projects/subscriberproject/subscriptions/subscriptions/sub_id
+  ///
+  /// Output only.
+  core.String? linkedPubsubSubscription;
+
+  /// Listing for which linked resource is created.
+  ///
+  /// Output only.
+  core.String? listing;
+
   LinkedResource({
     this.linkedDataset,
+    this.linkedPubsubSubscription,
+    this.listing,
   });
 
   LinkedResource.fromJson(core.Map json_)
       : this(
           linkedDataset: json_['linkedDataset'] as core.String?,
+          linkedPubsubSubscription:
+              json_['linkedPubsubSubscription'] as core.String?,
+          listing: json_['listing'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (linkedDataset != null) 'linkedDataset': linkedDataset!,
+        if (linkedPubsubSubscription != null)
+          'linkedPubsubSubscription': linkedPubsubSubscription!,
+        if (listing != null) 'listing': listing!,
       };
 }
 
@@ -2166,6 +2699,18 @@ class Listing {
   /// Optional.
   core.String? description;
 
+  /// Type of discovery of the listing on the discovery page.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DISCOVERY_TYPE_UNSPECIFIED" : Unspecified. Defaults to
+  /// DISCOVERY_TYPE_PRIVATE.
+  /// - "DISCOVERY_TYPE_PRIVATE" : The Data exchange/listing can be discovered
+  /// in the 'Private' results list.
+  /// - "DISCOVERY_TYPE_PUBLIC" : The Data exchange/listing can be discovered in
+  /// the 'Public' results list.
+  core.String? discoveryType;
+
   /// Human-readable display name of the listing.
   ///
   /// The display name must contain only Unicode letters, numbers (0-9),
@@ -2216,6 +2761,11 @@ class Listing {
   /// Optional.
   Publisher? publisher;
 
+  /// Pub/Sub topic source.
+  ///
+  /// Required.
+  PubSubTopicSource? pubsubTopic;
+
   /// Email or URL of the request access of the listing.
   ///
   /// Subscribers can use this reference to request access. Max Length: 1000
@@ -2223,6 +2773,15 @@ class Listing {
   ///
   /// Optional.
   core.String? requestAccess;
+
+  /// Listing shared asset type.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SHARED_RESOURCE_TYPE_UNSPECIFIED" : Not specified.
+  /// - "BIGQUERY_DATASET" : BigQuery Dataset Asset.
+  /// - "PUBSUB_TOPIC" : Pub/Sub Topic Asset.
+  core.String? resourceType;
 
   /// If set, restricted export configuration will be propagated and enforced on
   /// the linked dataset.
@@ -2244,13 +2803,16 @@ class Listing {
     this.categories,
     this.dataProvider,
     this.description,
+    this.discoveryType,
     this.displayName,
     this.documentation,
     this.icon,
     this.name,
     this.primaryContact,
     this.publisher,
+    this.pubsubTopic,
     this.requestAccess,
+    this.resourceType,
     this.restrictedExportConfig,
     this.state,
   });
@@ -2269,6 +2831,7 @@ class Listing {
                   json_['dataProvider'] as core.Map<core.String, core.dynamic>)
               : null,
           description: json_['description'] as core.String?,
+          discoveryType: json_['discoveryType'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           documentation: json_['documentation'] as core.String?,
           icon: json_['icon'] as core.String?,
@@ -2278,7 +2841,12 @@ class Listing {
               ? Publisher.fromJson(
                   json_['publisher'] as core.Map<core.String, core.dynamic>)
               : null,
+          pubsubTopic: json_.containsKey('pubsubTopic')
+              ? PubSubTopicSource.fromJson(
+                  json_['pubsubTopic'] as core.Map<core.String, core.dynamic>)
+              : null,
           requestAccess: json_['requestAccess'] as core.String?,
+          resourceType: json_['resourceType'] as core.String?,
           restrictedExportConfig: json_.containsKey('restrictedExportConfig')
               ? RestrictedExportConfig.fromJson(json_['restrictedExportConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -2291,18 +2859,28 @@ class Listing {
         if (categories != null) 'categories': categories!,
         if (dataProvider != null) 'dataProvider': dataProvider!,
         if (description != null) 'description': description!,
+        if (discoveryType != null) 'discoveryType': discoveryType!,
         if (displayName != null) 'displayName': displayName!,
         if (documentation != null) 'documentation': documentation!,
         if (icon != null) 'icon': icon!,
         if (name != null) 'name': name!,
         if (primaryContact != null) 'primaryContact': primaryContact!,
         if (publisher != null) 'publisher': publisher!,
+        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
         if (requestAccess != null) 'requestAccess': requestAccess!,
+        if (resourceType != null) 'resourceType': resourceType!,
         if (restrictedExportConfig != null)
           'restrictedExportConfig': restrictedExportConfig!,
         if (state != null) 'state': state!,
       };
 }
+
+/// Sets the `data` field as the HTTP body for delivery.
+typedef NoWrapper = $NoWrapper;
+
+/// Contains information needed for generating an
+/// [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
+typedef OidcToken = $OidcToken;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -2495,6 +3073,43 @@ class Policy {
       };
 }
 
+/// Pub/Sub topic source.
+class PubSubTopicSource {
+  /// Region hint on where the data might be published.
+  ///
+  /// Data affinity regions are modifiable. See go/regions for full listing of
+  /// possible Cloud regions.
+  ///
+  /// Optional.
+  core.List<core.String>? dataAffinityRegions;
+
+  /// Resource name of the Pub/Sub topic source for this listing.
+  ///
+  /// e.g. projects/myproject/topics/topicId
+  ///
+  /// Required.
+  core.String? topic;
+
+  PubSubTopicSource({
+    this.dataAffinityRegions,
+    this.topic,
+  });
+
+  PubSubTopicSource.fromJson(core.Map json_)
+      : this(
+          dataAffinityRegions: (json_['dataAffinityRegions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          topic: json_['topic'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataAffinityRegions != null)
+          'dataAffinityRegions': dataAffinityRegions!,
+        if (topic != null) 'topic': topic!,
+      };
+}
+
 /// Contains details of the listing publisher.
 class Publisher {
   /// Name of the listing publisher.
@@ -2523,6 +3138,100 @@ class Publisher {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (primaryContact != null) 'primaryContact': primaryContact!,
+      };
+}
+
+/// The payload to the push endpoint is in the form of the JSON representation
+/// of a PubsubMessage
+/// (https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage).
+typedef PubsubWrapper = $Empty;
+
+/// Configuration for a push delivery endpoint.
+class PushConfig {
+  /// Endpoint configuration attributes that can be used to control different
+  /// aspects of the message delivery.
+  ///
+  /// The only currently supported attribute is `x-goog-version`, which you can
+  /// use to change the format of the pushed message. This attribute indicates
+  /// the version of the data expected by the endpoint. This controls the shape
+  /// of the pushed message (i.e., its fields and metadata). If not present
+  /// during the `CreateSubscription` call, it will default to the version of
+  /// the Pub/Sub API used to make such call. If not present in a
+  /// `ModifyPushConfig` call, its value will not be changed. `GetSubscription`
+  /// calls will always return a valid version, even if the subscription was
+  /// created without this attribute. The only supported values for the
+  /// `x-goog-version` attribute are: * `v1beta1`: uses the push format defined
+  /// in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format
+  /// defined in the v1 Pub/Sub API. For example: `attributes {
+  /// "x-goog-version": "v1" }`
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? attributes;
+
+  /// When set, the payload to the push endpoint is not wrapped.
+  ///
+  /// Optional.
+  NoWrapper? noWrapper;
+
+  /// If specified, Pub/Sub will generate and attach an OIDC JWT token as an
+  /// `Authorization` header in the HTTP request for every pushed message.
+  ///
+  /// Optional.
+  OidcToken? oidcToken;
+
+  /// When set, the payload to the push endpoint is in the form of the JSON
+  /// representation of a PubsubMessage
+  /// (https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage).
+  ///
+  /// Optional.
+  PubsubWrapper? pubsubWrapper;
+
+  /// A URL locating the endpoint to which messages should be pushed.
+  ///
+  /// For example, a Webhook endpoint might use `https://example.com/push`.
+  ///
+  /// Optional.
+  core.String? pushEndpoint;
+
+  PushConfig({
+    this.attributes,
+    this.noWrapper,
+    this.oidcToken,
+    this.pubsubWrapper,
+    this.pushEndpoint,
+  });
+
+  PushConfig.fromJson(core.Map json_)
+      : this(
+          attributes:
+              (json_['attributes'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          noWrapper: json_.containsKey('noWrapper')
+              ? NoWrapper.fromJson(
+                  json_['noWrapper'] as core.Map<core.String, core.dynamic>)
+              : null,
+          oidcToken: json_.containsKey('oidcToken')
+              ? OidcToken.fromJson(
+                  json_['oidcToken'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pubsubWrapper: json_.containsKey('pubsubWrapper')
+              ? PubsubWrapper.fromJson(
+                  json_['pubsubWrapper'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pushEndpoint: json_['pushEndpoint'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributes != null) 'attributes': attributes!,
+        if (noWrapper != null) 'noWrapper': noWrapper!,
+        if (oidcToken != null) 'oidcToken': oidcToken!,
+        if (pubsubWrapper != null) 'pubsubWrapper': pubsubWrapper!,
+        if (pushEndpoint != null) 'pushEndpoint': pushEndpoint!,
       };
 }
 
@@ -2615,13 +3324,25 @@ class RestrictedExportPolicy {
       };
 }
 
+/// A policy that specifies how Pub/Sub retries message delivery.
+///
+/// Retry delay will be exponential based on provided minimum and maximum
+/// backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. RetryPolicy
+/// will be triggered on NACKs or acknowledgement deadline exceeded events for a
+/// given message. Retry Policy is implemented on a best effort basis. At times,
+/// the delay between consecutive deliveries may not match the configuration.
+/// That is, delay can be more or less than configured backoff.
+typedef RetryPolicy = $RetryPolicy;
+
 /// Message for revoking a subscription.
 typedef RevokeSubscriptionRequest = $Empty;
 
 /// Message for response when you revoke a subscription.
+///
+/// Empty for now.
 typedef RevokeSubscriptionResponse = $Empty;
 
-/// Resource in this dataset that are selectively shared.
+/// Resource in this dataset that is selectively shared.
 class SelectedResource {
   /// Format: For table:
   /// `projects/{projectId}/datasets/{datasetId}/tables/{tableId}`
@@ -2721,7 +3442,7 @@ class SharingEnvironmentConfig {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Message for subscribing to a Data Exchange.
 class SubscribeDataExchangeRequest {
@@ -2769,8 +3490,16 @@ class SubscribeListingRequest {
   /// BigQuery destination dataset to create for the subscriber.
   DestinationDataset? destinationDataset;
 
+  /// Input only.
+  ///
+  /// Destination Pub/Sub subscription to create for the subscriber.
+  ///
+  /// Required.
+  DestinationPubSubSubscription? destinationPubsubSubscription;
+
   SubscribeListingRequest({
     this.destinationDataset,
+    this.destinationPubsubSubscription,
   });
 
   SubscribeListingRequest.fromJson(core.Map json_)
@@ -2779,11 +3508,19 @@ class SubscribeListingRequest {
               ? DestinationDataset.fromJson(json_['destinationDataset']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          destinationPubsubSubscription:
+              json_.containsKey('destinationPubsubSubscription')
+                  ? DestinationPubSubSubscription.fromJson(
+                      json_['destinationPubsubSubscription']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destinationDataset != null)
           'destinationDataset': destinationDataset!,
+        if (destinationPubsubSubscription != null)
+          'destinationPubsubSubscription': destinationPubsubSubscription!,
       };
 }
 
@@ -2842,6 +3579,13 @@ class Subscription {
   /// Output only.
   core.Map<core.String, LinkedResource>? linkedDatasetMap;
 
+  /// Linked resources created in the subscription.
+  ///
+  /// Only contains values if state = STATE_ACTIVE.
+  ///
+  /// Output only.
+  core.List<LinkedResource>? linkedResources;
+
   /// Resource name of the source Listing.
   ///
   /// e.g. projects/123/locations/US/dataExchanges/456/listings/789
@@ -2866,6 +3610,15 @@ class Subscription {
   /// Output only.
   core.String? organizationId;
 
+  /// Listing shared asset type.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SHARED_RESOURCE_TYPE_UNSPECIFIED" : Not specified.
+  /// - "BIGQUERY_DATASET" : BigQuery Dataset Asset.
+  /// - "PUBSUB_TOPIC" : Pub/Sub Topic Asset.
+  core.String? resourceType;
+
   /// Current state of the subscription.
   ///
   /// Output only.
@@ -2889,10 +3642,12 @@ class Subscription {
     this.dataExchange,
     this.lastModifyTime,
     this.linkedDatasetMap,
+    this.linkedResources,
     this.listing,
     this.name,
     this.organizationDisplayName,
     this.organizationId,
+    this.resourceType,
     this.state,
     this.subscriberContact,
   });
@@ -2911,11 +3666,16 @@ class Subscription {
                   value as core.Map<core.String, core.dynamic>),
             ),
           ),
+          linkedResources: (json_['linkedResources'] as core.List?)
+              ?.map((value) => LinkedResource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           listing: json_['listing'] as core.String?,
           name: json_['name'] as core.String?,
           organizationDisplayName:
               json_['organizationDisplayName'] as core.String?,
           organizationId: json_['organizationId'] as core.String?,
+          resourceType: json_['resourceType'] as core.String?,
           state: json_['state'] as core.String?,
           subscriberContact: json_['subscriberContact'] as core.String?,
         );
@@ -2925,11 +3685,13 @@ class Subscription {
         if (dataExchange != null) 'dataExchange': dataExchange!,
         if (lastModifyTime != null) 'lastModifyTime': lastModifyTime!,
         if (linkedDatasetMap != null) 'linkedDatasetMap': linkedDatasetMap!,
+        if (linkedResources != null) 'linkedResources': linkedResources!,
         if (listing != null) 'listing': listing!,
         if (name != null) 'name': name!,
         if (organizationDisplayName != null)
           'organizationDisplayName': organizationDisplayName!,
         if (organizationId != null) 'organizationId': organizationId!,
+        if (resourceType != null) 'resourceType': resourceType!,
         if (state != null) 'state': state!,
         if (subscriberContact != null) 'subscriberContact': subscriberContact!,
       };
@@ -2940,3 +3702,9 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// Configuration for writing message data in text format.
+///
+/// Message payloads will be written to files as raw text, separated by a
+/// newline.
+typedef TextConfig = $Empty;

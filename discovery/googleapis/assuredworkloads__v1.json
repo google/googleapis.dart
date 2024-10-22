@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240606",
+    "revision": "20241007",
     "rootUrl": "https://assuredworkloads.googleapis.com/",
     "servicePath": "",
     "title": "Assured Workloads API",
@@ -685,28 +685,24 @@
                         "FEDRAMP_HIGH",
                         "FEDRAMP_MODERATE",
                         "US_REGIONAL_ACCESS",
-                        "REGIONAL_CONTROLS_PREMIUM_US",
                         "HIPAA",
                         "HITRUST",
                         "EU_REGIONS_AND_SUPPORT",
-                        "REGIONAL_CONTROLS_PREMIUM_EU",
                         "CA_REGIONS_AND_SUPPORT",
-                        "REGIONAL_CONTROLS_PREMIUM_CA",
                         "ITAR",
                         "AU_REGIONS_AND_US_SUPPORT",
-                        "REGIONAL_CONTROLS_PREMIUM_AU",
                         "ASSURED_WORKLOADS_FOR_PARTNERS",
                         "ISR_REGIONS",
-                        "REGIONAL_CONTROLS_PREMIUM_ISR",
                         "ISR_REGIONS_AND_SUPPORT",
                         "CA_PROTECTED_B",
                         "IL5",
                         "IL2",
                         "JP_REGIONS_AND_SUPPORT",
-                        "REGIONAL_CONTROLS_PREMIUM_JP",
                         "KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS",
                         "REGIONAL_CONTROLS",
-                        "FREE_REGIONS"
+                        "HEALTHCARE_AND_LIFE_SCIENCES_CONTROLS",
+                        "HEALTHCARE_AND_LIFE_SCIENCES_CONTROLS_US_SUPPORT",
+                        "IRS_1075"
                     ],
                     "enumDescriptions": [
                         "Unknown compliance regime.",
@@ -715,28 +711,24 @@
                         "FedRAMP High data protection controls",
                         "FedRAMP Moderate data protection controls",
                         "Assured Workloads For US Regions data protection controls",
-                        "Assured Workloads For US Regions data protection controls",
                         "Health Insurance Portability and Accountability Act controls",
                         "Health Information Trust Alliance controls",
                         "Assured Workloads For EU Regions and Support controls",
-                        "Assured Workloads For EU Regions and Support controls",
-                        "Assured Workloads For Canada Regions and Support controls",
                         "Assured Workloads For Canada Regions and Support controls",
                         "International Traffic in Arms Regulations",
                         "Assured Workloads for Australia Regions and Support controls",
-                        "Assured Workloads for Australia Regions and Support controls",
                         "Assured Workloads for Partners;",
                         "Assured Workloads for Israel Regions",
-                        "Assured Workloads for Israel",
                         "Assured Workloads for Israel Regions",
                         "Assured Workloads for Canada Protected B regime",
                         "Information protection as per DoD IL5 requirements.",
                         "Information protection as per DoD IL2 requirements.",
                         "Assured Workloads for Japan Regions",
-                        "Assured Workloads for Japan Regions",
-                        "KSA R5 Controls.",
-                        "Assured Workloads for Regional Controls/Free Regions",
-                        "Assured Workloads for Regional Controls/Free Regions"
+                        "Assured Workloads Sovereign Controls KSA",
+                        "Assured Workloads for Regional Controls",
+                        "Healthcare and Life Science Controls",
+                        "Healthcare and Life Science Controls with US Support",
+                        "Internal Revenue Service 1075 controls"
                     ],
                     "type": "string"
                 },
@@ -1182,28 +1174,24 @@
                         "FEDRAMP_HIGH",
                         "FEDRAMP_MODERATE",
                         "US_REGIONAL_ACCESS",
-                        "REGIONAL_CONTROLS_PREMIUM_US",
                         "HIPAA",
                         "HITRUST",
                         "EU_REGIONS_AND_SUPPORT",
-                        "REGIONAL_CONTROLS_PREMIUM_EU",
                         "CA_REGIONS_AND_SUPPORT",
-                        "REGIONAL_CONTROLS_PREMIUM_CA",
                         "ITAR",
                         "AU_REGIONS_AND_US_SUPPORT",
-                        "REGIONAL_CONTROLS_PREMIUM_AU",
                         "ASSURED_WORKLOADS_FOR_PARTNERS",
                         "ISR_REGIONS",
-                        "REGIONAL_CONTROLS_PREMIUM_ISR",
                         "ISR_REGIONS_AND_SUPPORT",
                         "CA_PROTECTED_B",
                         "IL5",
                         "IL2",
                         "JP_REGIONS_AND_SUPPORT",
-                        "REGIONAL_CONTROLS_PREMIUM_JP",
                         "KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS",
                         "REGIONAL_CONTROLS",
-                        "FREE_REGIONS"
+                        "HEALTHCARE_AND_LIFE_SCIENCES_CONTROLS",
+                        "HEALTHCARE_AND_LIFE_SCIENCES_CONTROLS_US_SUPPORT",
+                        "IRS_1075"
                     ],
                     "enumDescriptions": [
                         "Unknown compliance regime.",
@@ -1212,28 +1200,24 @@
                         "FedRAMP High data protection controls",
                         "FedRAMP Moderate data protection controls",
                         "Assured Workloads For US Regions data protection controls",
-                        "Assured Workloads For US Regions data protection controls",
                         "Health Insurance Portability and Accountability Act controls",
                         "Health Information Trust Alliance controls",
                         "Assured Workloads For EU Regions and Support controls",
-                        "Assured Workloads For EU Regions and Support controls",
-                        "Assured Workloads For Canada Regions and Support controls",
                         "Assured Workloads For Canada Regions and Support controls",
                         "International Traffic in Arms Regulations",
                         "Assured Workloads for Australia Regions and Support controls",
-                        "Assured Workloads for Australia Regions and Support controls",
                         "Assured Workloads for Partners;",
                         "Assured Workloads for Israel Regions",
-                        "Assured Workloads for Israel",
                         "Assured Workloads for Israel Regions",
                         "Assured Workloads for Canada Protected B regime",
                         "Information protection as per DoD IL5 requirements.",
                         "Information protection as per DoD IL2 requirements.",
                         "Assured Workloads for Japan Regions",
-                        "Assured Workloads for Japan Regions",
-                        "KSA R5 Controls.",
-                        "Assured Workloads for Regional Controls/Free Regions",
-                        "Assured Workloads for Regional Controls/Free Regions"
+                        "Assured Workloads Sovereign Controls KSA",
+                        "Assured Workloads for Regional Controls",
+                        "Healthcare and Life Science Controls",
+                        "Healthcare and Life Science Controls with US Support",
+                        "Internal Revenue Service 1075 controls"
                     ],
                     "type": "string"
                 },
@@ -1311,20 +1295,28 @@
                         "LOCAL_CONTROLS_BY_S3NS",
                         "SOVEREIGN_CONTROLS_BY_T_SYSTEMS",
                         "SOVEREIGN_CONTROLS_BY_SIA_MINSAIT",
-                        "SOVEREIGN_CONTROLS_BY_PSN"
+                        "SOVEREIGN_CONTROLS_BY_PSN",
+                        "SOVEREIGN_CONTROLS_BY_CNTXT",
+                        "SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM"
                     ],
                     "enumDescriptions": [
                         "",
                         "Enum representing S3NS (Thales) partner.",
                         "Enum representing T_SYSTEM (TSI) partner.",
                         "Enum representing SIA_MINSAIT (Indra) partner.",
-                        "Enum representing PSN (TIM) partner."
+                        "Enum representing PSN (TIM) partner.",
+                        "Enum representing CNTXT (Kingdom of Saudi Arabia) partner.",
+                        "Enum representing CNTXT (Kingdom of Saudi Arabia) partner offering without EKM."
                     ],
                     "type": "string"
                 },
                 "partnerPermissions": {
                     "$ref": "GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions",
                     "description": "Optional. Permissions granted to the AW Partner SA account for the customer workload"
+                },
+                "partnerServicesBillingAccount": {
+                    "description": "Optional. Billing account necessary for purchasing services from Sovereign Partners. This field is required for creating SIA/PSN/CNTXT partner workloads. The caller should have 'billing.resourceAssociations.create' IAM permission on this billing-account. The format of this string is billingAccounts/AAAAAA-BBBBBB-CCCCCC",
+                    "type": "string"
                 },
                 "provisionedResourcesParent": {
                     "description": "Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}",
@@ -1358,6 +1350,10 @@
                 "violationNotificationsEnabled": {
                     "description": "Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.",
                     "type": "boolean"
+                },
+                "workloadOptions": {
+                    "$ref": "GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions",
+                    "description": "Optional. Options to be set for the given created workload."
                 }
             },
             "type": "object"
@@ -1470,6 +1466,10 @@
             "description": "Permissions granted to the AW Partner SA account for the customer workload",
             "id": "GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions",
             "properties": {
+                "accessTransparencyLogsSupportCaseViewer": {
+                    "description": "Optional. Allow partner to view support case details for an AXT log",
+                    "type": "boolean"
+                },
                 "assuredWorkloadsMonitoring": {
                     "description": "Optional. Allow partner to view violation alerts.",
                     "type": "boolean"
@@ -1598,6 +1598,25 @@
                         "Unspecified.",
                         "SAA enrollment pending.",
                         "SAA enrollment comopleted."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions": {
+            "description": "Options to be set for the given created workload.",
+            "id": "GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions",
+            "properties": {
+                "kajEnrollmentType": {
+                    "description": "Optional. Specifies type of KAJ Enrollment if provided.",
+                    "enum": [
+                        "KAJ_ENROLLMENT_TYPE_UNSPECIFIED",
+                        "KEY_ACCESS_TRANSPARENCY_OFF"
+                    ],
+                    "enumDescriptions": [
+                        "KAJ Enrollment type is unspecified",
+                        "KAT sets External, Hardware, and Software key feature logging only to TRUE. (no enforcement)"
                     ],
                     "type": "string"
                 }

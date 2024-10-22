@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240524",
+    "revision": "20240809",
     "rootUrl": "https://manufacturers.googleapis.com/",
     "servicePath": "",
     "title": "Manufacturer Center API",
@@ -515,6 +515,13 @@
                     },
                     "type": "array"
                 },
+                "intendedCountry": {
+                    "description": "Optional. List of countries to show this product in. Countries provided in this attribute will override any of the countries configured at feed level. The values should be: the [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) of the countries in which this item will be shown.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "itemGroupId": {
                     "description": "The item group id of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#itemgroupid.",
                     "type": "string"
@@ -699,9 +706,33 @@
             "description": "The destination status.",
             "id": "DestinationStatus",
             "properties": {
+                "approvedCountries": {
+                    "description": "Output only. List of country codes (ISO 3166-1 alpha-2) where the offer is approved.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
                 "destination": {
                     "description": "The name of the destination.",
                     "type": "string"
+                },
+                "disapprovedCountries": {
+                    "description": "Output only. List of country codes (ISO 3166-1 alpha-2) where the offer is disapproved.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
+                "pendingCountries": {
+                    "description": "Output only. List of country codes (ISO 3166-1 alpha-2) where the offer is pending approval.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
                 },
                 "status": {
                     "description": "The status of the destination.",
@@ -894,6 +925,14 @@
             "description": "Product issue.",
             "id": "Issue",
             "properties": {
+                "applicableCountries": {
+                    "description": "Output only. List of country codes (ISO 3166-1 alpha-2) where issue applies to the manufacturer product.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
                 "attribute": {
                     "description": "If present, the attribute that triggered the issue. For more information about attributes, see https://support.google.com/manufacturers/answer/6124116.",
                     "type": "string"
@@ -1217,6 +1256,10 @@
                         "$ref": "DestinationStatus"
                     },
                     "type": "array"
+                },
+                "feedLabel": {
+                    "description": "Optional. The feed label for the product.",
+                    "type": "string"
                 },
                 "issues": {
                     "description": "A server-generated list of issues associated with the product.",

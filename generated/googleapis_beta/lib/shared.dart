@@ -1488,9 +1488,9 @@ class $Property {
   /// Immutable.
   /// Possible string values are:
   /// - "PROPERTY_TYPE_UNSPECIFIED" : Unknown or unspecified property type
-  /// - "PROPERTY_TYPE_ORDINARY" : Ordinary GA4 property
-  /// - "PROPERTY_TYPE_SUBPROPERTY" : GA4 subproperty
-  /// - "PROPERTY_TYPE_ROLLUP" : GA4 rollup property
+  /// - "PROPERTY_TYPE_ORDINARY" : Ordinary Google Analytics property
+  /// - "PROPERTY_TYPE_SUBPROPERTY" : Google Analytics subproperty
+  /// - "PROPERTY_TYPE_ROLLUP" : Google Analytics rollup property
   core.String? propertyType;
 
   /// The Google Analytics service level that applies to this property.
@@ -1590,9 +1590,9 @@ class $PropertySummary {
   /// The property's property type.
   /// Possible string values are:
   /// - "PROPERTY_TYPE_UNSPECIFIED" : Unknown or unspecified property type
-  /// - "PROPERTY_TYPE_ORDINARY" : Ordinary GA4 property
-  /// - "PROPERTY_TYPE_SUBPROPERTY" : GA4 subproperty
-  /// - "PROPERTY_TYPE_ROLLUP" : GA4 rollup property
+  /// - "PROPERTY_TYPE_ORDINARY" : Ordinary Google Analytics property
+  /// - "PROPERTY_TYPE_SUBPROPERTY" : Google Analytics subproperty
+  /// - "PROPERTY_TYPE_ROLLUP" : Google Analytics rollup property
   core.String? propertyType;
 
   $PropertySummary({
@@ -1666,35 +1666,6 @@ class $QuotaStatus {
   core.Map<core.String, core.dynamic> toJson() => {
         if (consumed != null) 'consumed': consumed!,
         if (remaining != null) 'remaining': remaining!,
-      };
-}
-
-/// Used by:
-///
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest
-/// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaReorderEventEditRulesRequest
-class $ReorderEventEditRulesRequest {
-  /// EventEditRule resource names for the specified data stream, in the needed
-  /// processing order.
-  ///
-  /// All EventEditRules for the stream must be present in the list.
-  ///
-  /// Required.
-  core.List<core.String>? eventEditRules;
-
-  $ReorderEventEditRulesRequest({
-    this.eventEditRules,
-  });
-
-  $ReorderEventEditRulesRequest.fromJson(core.Map json_)
-      : this(
-          eventEditRules: (json_['eventEditRules'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (eventEditRules != null) 'eventEditRules': eventEditRules!,
       };
 }
 
@@ -1887,6 +1858,7 @@ class $SasPortalDeviceAirInterface {
   /// - "CW"
   /// - "REDLINE"
   /// - "TARANA_WIRELESS"
+  /// - "FAROS"
   core.String? radioTechnology;
 
   /// This field is related to the `radioTechnology` and provides the air
@@ -2644,6 +2616,32 @@ class $SasPortalValidateInstallerRequest {
         if (encodedSecret != null) 'encodedSecret': encodedSecret!,
         if (installerId != null) 'installerId': installerId!,
         if (secret != null) 'secret': secret!,
+      };
+}
+
+/// Used by:
+///
+/// - gkehub:v2alpha : ConfigManagementPolicyControllerMonitoring
+/// - gkehub:v2alpha : PolicyControllerMonitoringConfig
+class $Shared {
+  /// Specifies the list of backends Policy Controller will export to.
+  ///
+  /// An empty list would effectively disable metrics export.
+  core.List<core.String>? backends;
+
+  $Shared({
+    this.backends,
+  });
+
+  $Shared.fromJson(core.Map json_)
+      : this(
+          backends: (json_['backends'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backends != null) 'backends': backends!,
       };
 }
 

@@ -619,9 +619,9 @@ class ProjectsLocationsNetworkPeeringsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name of the network peering.
-  /// NetworkPeering is a global resource and location can only be global.
-  /// Resource names are scheme-less URIs that follow the conventions in
+  /// [name] - Output only. Identifier. The resource name of the network
+  /// peering. NetworkPeering is a global resource and location can only be
+  /// global. Resource names are scheme-less URIs that follow the conventions in
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/global/networkPeerings/my-peering`
   /// Value must have pattern
@@ -1086,8 +1086,8 @@ class ProjectsLocationsNetworkPoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name of this network policy. Resource
-  /// names are schemeless URIs that follow the conventions in
+  /// [name] - Output only. Identifier. The resource name of this network
+  /// policy. Resource names are schemeless URIs that follow the conventions in
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/us-central1/networkPolicies/my-network-policy`
   /// Value must have pattern
@@ -2118,8 +2118,8 @@ class ProjectsLocationsPrivateCloudsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name of this private cloud. Resource
-  /// names are schemeless URIs that follow the conventions in
+  /// [name] - Output only. Identifier. The resource name of this private cloud.
+  /// Resource names are schemeless URIs that follow the conventions in
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
   /// Value must have pattern
@@ -2513,8 +2513,8 @@ class ProjectsLocationsPrivateCloudsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name of this DNS profile. Resource
-  /// names are schemeless URIs that follow the conventions in
+  /// [name] - Output only. Identifier. The resource name of this DNS profile.
+  /// Resource names are schemeless URIs that follow the conventions in
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/dnsForwarding`
   /// Value must have pattern
@@ -2880,8 +2880,8 @@ class ProjectsLocationsPrivateCloudsClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name of this cluster. Resource names
-  /// are schemeless URIs that follow the conventions in
+  /// [name] - Output only. Identifier. The resource name of this cluster.
+  /// Resource names are schemeless URIs that follow the conventions in
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster`
   /// Value must have pattern
@@ -3401,8 +3401,8 @@ class ProjectsLocationsPrivateCloudsExternalAddressesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name of this external IP address.
-  /// Resource names are schemeless URIs that follow the conventions in
+  /// [name] - Output only. Identifier. The resource name of this external IP
+  /// address. Resource names are schemeless URIs that follow the conventions in
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/externalAddresses/my-address`
   /// Value must have pattern
@@ -4600,8 +4600,8 @@ class ProjectsLocationsPrivateCloudsSubnetsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name of this subnet. Resource names are
-  /// schemeless URIs that follow the conventions in
+  /// [name] - Output only. Identifier. The resource name of this subnet.
+  /// Resource names are schemeless URIs that follow the conventions in
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/subnets/my-subnet`
   /// Value must have pattern
@@ -5315,8 +5315,8 @@ class ProjectsLocationsVmwareEngineNetworksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name of the VMware Engine network.
-  /// Resource names are schemeless URIs that follow the conventions in
+  /// [name] - Output only. Identifier. The resource name of the VMware Engine
+  /// network. Resource names are schemeless URIs that follow the conventions in
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/global/vmwareEngineNetworks/my-network`
   /// Value must have pattern
@@ -5433,6 +5433,166 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
+/// Autoscaling policy describes the behavior of the autoscaling with respect to
+/// the resource utilization.
+///
+/// The scale-out operation is initiated if the utilization exceeds ANY of the
+/// respective thresholds. The scale-in operation is initiated if the
+/// utilization is below ALL of the respective thresholds.
+class AutoscalingPolicy {
+  /// Utilization thresholds pertaining to amount of consumed memory.
+  ///
+  /// Optional.
+  Thresholds? consumedMemoryThresholds;
+
+  /// Utilization thresholds pertaining to CPU utilization.
+  ///
+  /// Optional.
+  Thresholds? cpuThresholds;
+
+  /// Utilization thresholds pertaining to amount of granted memory.
+  ///
+  /// Optional.
+  Thresholds? grantedMemoryThresholds;
+
+  /// The canonical identifier of the node type to add or remove.
+  ///
+  /// Corresponds to the `NodeType`.
+  ///
+  /// Required.
+  core.String? nodeTypeId;
+
+  /// Number of nodes to add to a cluster during a scale-out operation.
+  ///
+  /// Must be divisible by 2 for stretched clusters. During a scale-in operation
+  /// only one node (or 2 for stretched clusters) are removed in a single
+  /// iteration.
+  ///
+  /// Required.
+  core.int? scaleOutSize;
+
+  /// Utilization thresholds pertaining to amount of consumed storage.
+  ///
+  /// Optional.
+  Thresholds? storageThresholds;
+
+  AutoscalingPolicy({
+    this.consumedMemoryThresholds,
+    this.cpuThresholds,
+    this.grantedMemoryThresholds,
+    this.nodeTypeId,
+    this.scaleOutSize,
+    this.storageThresholds,
+  });
+
+  AutoscalingPolicy.fromJson(core.Map json_)
+      : this(
+          consumedMemoryThresholds:
+              json_.containsKey('consumedMemoryThresholds')
+                  ? Thresholds.fromJson(json_['consumedMemoryThresholds']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          cpuThresholds: json_.containsKey('cpuThresholds')
+              ? Thresholds.fromJson(
+                  json_['cpuThresholds'] as core.Map<core.String, core.dynamic>)
+              : null,
+          grantedMemoryThresholds: json_.containsKey('grantedMemoryThresholds')
+              ? Thresholds.fromJson(json_['grantedMemoryThresholds']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          nodeTypeId: json_['nodeTypeId'] as core.String?,
+          scaleOutSize: json_['scaleOutSize'] as core.int?,
+          storageThresholds: json_.containsKey('storageThresholds')
+              ? Thresholds.fromJson(json_['storageThresholds']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (consumedMemoryThresholds != null)
+          'consumedMemoryThresholds': consumedMemoryThresholds!,
+        if (cpuThresholds != null) 'cpuThresholds': cpuThresholds!,
+        if (grantedMemoryThresholds != null)
+          'grantedMemoryThresholds': grantedMemoryThresholds!,
+        if (nodeTypeId != null) 'nodeTypeId': nodeTypeId!,
+        if (scaleOutSize != null) 'scaleOutSize': scaleOutSize!,
+        if (storageThresholds != null) 'storageThresholds': storageThresholds!,
+      };
+}
+
+/// Autoscaling settings define the rules used by VMware Engine to automatically
+/// scale-out and scale-in the clusters in a private cloud.
+class AutoscalingSettings {
+  /// The map with autoscaling policies applied to the cluster.
+  ///
+  /// The key is the identifier of the policy. It must meet the following
+  /// requirements: * Only contains 1-63 alphanumeric characters and hyphens *
+  /// Begins with an alphabetical character * Ends with a non-hyphen character *
+  /// Not formatted as a UUID * Complies with
+  /// [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+  /// Currently there map must contain only one element that describes the
+  /// autoscaling policy for compute nodes.
+  ///
+  /// Required.
+  core.Map<core.String, AutoscalingPolicy>? autoscalingPolicies;
+
+  /// The minimum duration between consecutive autoscale operations.
+  ///
+  /// It starts once addition or removal of nodes is fully completed. Defaults
+  /// to 30 minutes if not specified. Cool down period must be in whole minutes
+  /// (for example, 30, 31, 50, 180 minutes).
+  ///
+  /// Optional.
+  core.String? coolDownPeriod;
+
+  /// Maximum number of nodes of any type in a cluster.
+  ///
+  /// If not specified the default limits apply.
+  ///
+  /// Optional.
+  core.int? maxClusterNodeCount;
+
+  /// Minimum number of nodes of any type in a cluster.
+  ///
+  /// If not specified the default limits apply.
+  ///
+  /// Optional.
+  core.int? minClusterNodeCount;
+
+  AutoscalingSettings({
+    this.autoscalingPolicies,
+    this.coolDownPeriod,
+    this.maxClusterNodeCount,
+    this.minClusterNodeCount,
+  });
+
+  AutoscalingSettings.fromJson(core.Map json_)
+      : this(
+          autoscalingPolicies: (json_['autoscalingPolicies']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              AutoscalingPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          coolDownPeriod: json_['coolDownPeriod'] as core.String?,
+          maxClusterNodeCount: json_['maxClusterNodeCount'] as core.int?,
+          minClusterNodeCount: json_['minClusterNodeCount'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoscalingPolicies != null)
+          'autoscalingPolicies': autoscalingPolicies!,
+        if (coolDownPeriod != null) 'coolDownPeriod': coolDownPeriod!,
+        if (maxClusterNodeCount != null)
+          'maxClusterNodeCount': maxClusterNodeCount!,
+        if (minClusterNodeCount != null)
+          'minClusterNodeCount': minClusterNodeCount!,
+      };
+}
+
 /// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
@@ -5540,6 +5700,11 @@ class Binding {
 
 /// A cluster in a private cloud.
 class Cluster {
+  /// Configuration of the autoscaling applied to this cluster.
+  ///
+  /// Optional.
+  AutoscalingSettings? autoscalingSettings;
+
   /// Creation time of this resource.
   ///
   /// Output only.
@@ -5553,9 +5718,10 @@ class Cluster {
   /// Output only.
   core.bool? management;
 
-  /// The resource name of this cluster.
+  /// Identifier.
   ///
-  /// Resource names are schemeless URIs that follow the conventions in
+  /// The resource name of this cluster. Resource names are schemeless URIs that
+  /// follow the conventions in
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster`
   ///
@@ -5601,6 +5767,7 @@ class Cluster {
   core.String? updateTime;
 
   Cluster({
+    this.autoscalingSettings,
     this.createTime,
     this.management,
     this.name,
@@ -5613,6 +5780,10 @@ class Cluster {
 
   Cluster.fromJson(core.Map json_)
       : this(
+          autoscalingSettings: json_.containsKey('autoscalingSettings')
+              ? AutoscalingSettings.fromJson(json_['autoscalingSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           createTime: json_['createTime'] as core.String?,
           management: json_['management'] as core.bool?,
           name: json_['name'] as core.String?,
@@ -5635,6 +5806,8 @@ class Cluster {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (autoscalingSettings != null)
+          'autoscalingSettings': autoscalingSettings!,
         if (createTime != null) 'createTime': createTime!,
         if (management != null) 'management': management!,
         if (name != null) 'name': name!,
@@ -5729,9 +5902,10 @@ class DnsForwarding {
   /// Required.
   core.List<ForwardingRule>? forwardingRules;
 
-  /// The resource name of this DNS profile.
+  /// Identifier.
   ///
-  /// Resource names are schemeless URIs that follow the conventions in
+  /// The resource name of this DNS profile. Resource names are schemeless URIs
+  /// that follow the conventions in
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/dnsForwarding`
   ///
@@ -5976,9 +6150,10 @@ class ExternalAddress {
   /// The internal IP address of a workload VM.
   core.String? internalIp;
 
-  /// The resource name of this external IP address.
+  /// Identifier.
   ///
-  /// Resource names are schemeless URIs that follow the conventions in
+  /// The resource name of this external IP address. Resource names are
+  /// schemeless URIs that follow the conventions in
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/externalAddresses/my-address`
   ///
@@ -7350,10 +7525,11 @@ class NetworkPeering {
   /// Optional.
   core.bool? importCustomRoutesWithPublicIp;
 
-  /// The resource name of the network peering.
+  /// Identifier.
   ///
-  /// NetworkPeering is a global resource and location can only be global.
-  /// Resource names are scheme-less URIs that follow the conventions in
+  /// The resource name of the network peering. NetworkPeering is a global
+  /// resource and location can only be global. Resource names are scheme-less
+  /// URIs that follow the conventions in
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/global/networkPeerings/my-peering`
   ///
@@ -7550,9 +7726,10 @@ class NetworkPolicy {
   /// Network service that allows VMware workloads to access the internet.
   NetworkService? internetAccess;
 
-  /// The resource name of this network policy.
+  /// Identifier.
   ///
-  /// Resource names are schemeless URIs that follow the conventions in
+  /// The resource name of this network policy. Resource names are schemeless
+  /// URIs that follow the conventions in
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/us-central1/networkPolicies/my-network-policy`
   ///
@@ -8260,9 +8437,10 @@ class PrivateCloud {
   /// Required.
   ManagementCluster? managementCluster;
 
-  /// The resource name of this private cloud.
+  /// Identifier.
   ///
-  /// Resource names are schemeless URIs that follow the conventions in
+  /// The resource name of this private cloud. Resource names are schemeless
+  /// URIs that follow the conventions in
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
   ///
@@ -8775,7 +8953,7 @@ class SetIamPolicyRequest {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Configuration of a stretched cluster.
 class StretchedClusterConfig {
@@ -8828,9 +9006,10 @@ class Subnet {
   /// The IP address range of the subnet in CIDR format '10.0.0.0/24'.
   core.String? ipCidrRange;
 
-  /// The resource name of this subnet.
+  /// Identifier.
   ///
-  /// Resource names are schemeless URIs that follow the conventions in
+  /// The resource name of this subnet. Resource names are schemeless URIs that
+  /// follow the conventions in
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/subnets/my-subnet`
   ///
@@ -8900,6 +9079,36 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
 
+/// Thresholds define the utilization of resources triggering scale-out and
+/// scale-in operations.
+class Thresholds {
+  /// The utilization triggering the scale-in operation in percent.
+  ///
+  /// Required.
+  core.int? scaleIn;
+
+  /// The utilization triggering the scale-out operation in percent.
+  ///
+  /// Required.
+  core.int? scaleOut;
+
+  Thresholds({
+    this.scaleIn,
+    this.scaleOut,
+  });
+
+  Thresholds.fromJson(core.Map json_)
+      : this(
+          scaleIn: json_['scaleIn'] as core.int?,
+          scaleOut: json_['scaleOut'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scaleIn != null) 'scaleIn': scaleIn!,
+        if (scaleOut != null) 'scaleOut': scaleOut!,
+      };
+}
+
 /// Request message for VmwareEngine.UndeletePrivateCloud
 class UndeletePrivateCloudRequest {
   /// The request ID must be a valid UUID with the exception that zero UUID is
@@ -8943,9 +9152,10 @@ class VmwareEngineNetwork {
   /// request.
   core.String? etag;
 
-  /// The resource name of the VMware Engine network.
+  /// Identifier.
   ///
-  /// Resource names are schemeless URIs that follow the conventions in
+  /// The resource name of the VMware Engine network. Resource names are
+  /// schemeless URIs that follow the conventions in
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/global/vmwareEngineNetworks/my-network`
   ///

@@ -82,6 +82,8 @@
 /// - [SubaccountsResource]
 /// - [TargetableRemarketingListsResource]
 /// - [TargetingTemplatesResource]
+/// - [TvCampaignDetailsResource]
+/// - [TvCampaignSummariesResource]
 /// - [UserProfilesResource]
 /// - [UserRolePermissionGroupsResource]
 /// - [UserRolePermissionsResource]
@@ -218,6 +220,10 @@ class DfareportingApi {
       TargetableRemarketingListsResource(_requester);
   TargetingTemplatesResource get targetingTemplates =>
       TargetingTemplatesResource(_requester);
+  TvCampaignDetailsResource get tvCampaignDetails =>
+      TvCampaignDetailsResource(_requester);
+  TvCampaignSummariesResource get tvCampaignSummaries =>
+      TvCampaignSummariesResource(_requester);
   UserProfilesResource get userProfiles => UserProfilesResource(_requester);
   UserRolePermissionGroupsResource get userRolePermissionGroups =>
       UserRolePermissionGroupsResource(_requester);
@@ -638,7 +644,7 @@ class AccountUserProfilesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an existing user role.
+  /// Updates an existing account user profile.
   ///
   /// This method supports patch semantics.
   ///
@@ -1195,7 +1201,7 @@ class AdsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an existing event tag.
+  /// Updates an existing ad.
   ///
   /// This method supports patch semantics.
   ///
@@ -1833,7 +1839,7 @@ class AdvertiserLandingPagesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an existing advertiser.
+  /// Updates an existing landing page.
   ///
   /// This method supports patch semantics.
   ///
@@ -2919,7 +2925,7 @@ class CampaignsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an existing creative.
+  /// Updates an existing campaign.
   ///
   /// This method supports patch semantics.
   ///
@@ -6264,7 +6270,7 @@ class FloodlightActivitiesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an existing event tag.
+  /// Updates an existing floodlight activity.
   ///
   /// This method supports patch semantics.
   ///
@@ -6550,7 +6556,7 @@ class FloodlightActivityGroupsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an existing event tag.
+  /// Updates an existing floodlight activity group.
   ///
   /// This method supports patch semantics.
   ///
@@ -6735,7 +6741,7 @@ class FloodlightConfigurationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an existing event tag.
+  /// Updates an existing floodlight configuration.
   ///
   /// This method supports patch semantics.
   ///
@@ -8990,7 +8996,7 @@ class RemarketingListSharesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an existing RemarketingListShare.
+  /// Updates an existing remarketing list share.
   ///
   /// This method supports patch semantics.
   ///
@@ -9261,7 +9267,7 @@ class RemarketingListsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an existing RemarketingList.
+  /// Updates an existing remarketing list.
   ///
   /// This method supports patch semantics.
   ///
@@ -10952,6 +10958,113 @@ class TargetingTemplatesResource {
   }
 }
 
+class TvCampaignDetailsResource {
+  final commons.ApiRequester _requester;
+
+  TvCampaignDetailsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets one TvCampaignDetail by ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [profileId] - Required. User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [id] - Required. TV Campaign ID.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [accountId] - Required. Account ID associated with this request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TvCampaignDetail].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TvCampaignDetail> get(
+    core.String profileId,
+    core.String id, {
+    core.String? accountId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (accountId != null) 'accountId': [accountId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'userprofiles/' +
+        core.Uri.encodeFull('$profileId') +
+        '/tvCampaignDetails/' +
+        core.Uri.encodeFull('$id');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return TvCampaignDetail.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class TvCampaignSummariesResource {
+  final commons.ApiRequester _requester;
+
+  TvCampaignSummariesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Retrieves a list of TV campaign summaries.
+  ///
+  /// Request parameters:
+  ///
+  /// [profileId] - Required. User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [accountId] - Required. Account ID associated with this request.
+  ///
+  /// [name] - Required. Search string to filter the list of TV campaign
+  /// summaries. Matches any substring. Required field.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TvCampaignSummariesListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TvCampaignSummariesListResponse> list(
+    core.String profileId, {
+    core.String? accountId,
+    core.String? name,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (accountId != null) 'accountId': [accountId],
+      if (name != null) 'name': [name],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'userprofiles/' +
+        core.Uri.encodeFull('$profileId') +
+        '/tvCampaignSummaries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return TvCampaignSummariesListResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class UserProfilesResource {
   final commons.ApiRequester _requester;
 
@@ -12027,7 +12140,7 @@ class AccountUserProfile {
 
   /// Email of the user profile.
   ///
-  /// The email addresss must be linked to a Google Account. This field is
+  /// The email address must be linked to a Google Account. This field is
   /// required on insertion and is read-only after insertion.
   core.String? email;
 
@@ -14239,6 +14352,98 @@ class CampaignsListResponse {
       };
 }
 
+/// Contains additional information about cart data.
+///
+/// This field may only be used when calling batchinsert; it is not supported by
+/// batchupdate.
+class CartData {
+  /// Data of the items purchased.
+  core.List<CartDataItem>? items;
+
+  /// The feed labels associated with the feed where your items are uploaded.
+  ///
+  /// For more information, please refer to ​​
+  /// https://support.google.com/merchants/answer/12453549. This is a required
+  /// field.
+  core.String? merchantFeedLabel;
+
+  /// The language associated with the feed where your items are uploaded.
+  ///
+  /// Use ISO 639-1 language codes. This field is needed only when item IDs are
+  /// not unique across multiple Merchant Center feeds.
+  core.String? merchantFeedLanguage;
+
+  /// The Merchant Center ID where the items are uploaded.
+  ///
+  /// This is a required field.
+  core.String? merchantId;
+
+  CartData({
+    this.items,
+    this.merchantFeedLabel,
+    this.merchantFeedLanguage,
+    this.merchantId,
+  });
+
+  CartData.fromJson(core.Map json_)
+      : this(
+          items: (json_['items'] as core.List?)
+              ?.map((value) => CartDataItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          merchantFeedLabel: json_['merchantFeedLabel'] as core.String?,
+          merchantFeedLanguage: json_['merchantFeedLanguage'] as core.String?,
+          merchantId: json_['merchantId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (items != null) 'items': items!,
+        if (merchantFeedLabel != null) 'merchantFeedLabel': merchantFeedLabel!,
+        if (merchantFeedLanguage != null)
+          'merchantFeedLanguage': merchantFeedLanguage!,
+        if (merchantId != null) 'merchantId': merchantId!,
+      };
+}
+
+/// Contains data of the items purchased.
+class CartDataItem {
+  /// The shopping id of the item.
+  ///
+  /// Must be equal to the Merchant Center product identifier. This is a
+  /// required field.
+  core.String? itemId;
+
+  /// Number of items sold.
+  ///
+  /// This is a required field.
+  core.int? quantity;
+
+  /// Unit price excluding tax, shipping, and any transaction level discounts.
+  ///
+  /// Interpreted in CM360 Floodlight config parent advertiser's currency code.
+  /// This is a required field.
+  core.double? unitPrice;
+
+  CartDataItem({
+    this.itemId,
+    this.quantity,
+    this.unitPrice,
+  });
+
+  CartDataItem.fromJson(core.Map json_)
+      : this(
+          itemId: json_['itemId'] as core.String?,
+          quantity: json_['quantity'] as core.int?,
+          unitPrice: (json_['unitPrice'] as core.num?)?.toDouble(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (itemId != null) 'itemId': itemId!,
+        if (quantity != null) 'quantity': quantity!,
+        if (unitPrice != null) 'unitPrice': unitPrice!,
+      };
+}
+
 /// Describes a change that a user has made to a resource.
 class ChangeLog {
   /// Account ID of the modified object.
@@ -14377,83 +14582,6 @@ class ChangeLogsListResponse {
         if (changeLogs != null) 'changeLogs': changeLogs!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
-}
-
-/// Represents a DfaReporting channel grouping.
-class ChannelGrouping {
-  /// ChannelGrouping fallback name.
-  core.String? fallbackName;
-
-  /// The kind of resource this is, in this case dfareporting#channelGrouping.
-  core.String? kind;
-
-  /// ChannelGrouping name.
-  core.String? name;
-
-  /// The rules contained within this channel grouping.
-  core.List<ChannelGroupingRule>? rules;
-
-  ChannelGrouping({
-    this.fallbackName,
-    this.kind,
-    this.name,
-    this.rules,
-  });
-
-  ChannelGrouping.fromJson(core.Map json_)
-      : this(
-          fallbackName: json_['fallbackName'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          name: json_['name'] as core.String?,
-          rules: (json_['rules'] as core.List?)
-              ?.map((value) => ChannelGroupingRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (fallbackName != null) 'fallbackName': fallbackName!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-        if (rules != null) 'rules': rules!,
-      };
-}
-
-/// Represents a DfaReporting channel grouping rule.
-class ChannelGroupingRule {
-  /// The disjunctive match statements contained within this rule.
-  core.List<DisjunctiveMatchStatement>? disjunctiveMatchStatements;
-
-  /// The kind of resource this is, in this case
-  /// dfareporting#channelGroupingRule.
-  core.String? kind;
-
-  /// Rule name.
-  core.String? name;
-
-  ChannelGroupingRule({
-    this.disjunctiveMatchStatements,
-    this.kind,
-    this.name,
-  });
-
-  ChannelGroupingRule.fromJson(core.Map json_)
-      : this(
-          disjunctiveMatchStatements:
-              (json_['disjunctiveMatchStatements'] as core.List?)
-                  ?.map((value) => DisjunctiveMatchStatement.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          kind: json_['kind'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (disjunctiveMatchStatements != null)
-          'disjunctiveMatchStatements': disjunctiveMatchStatements!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
       };
 }
 
@@ -14759,6 +14887,8 @@ class CompanionSetting {
 }
 
 /// Represents a response to the queryCompatibleFields method.
+///
+/// Next ID: 10
 class CompatibleFields {
   /// Contains items that are compatible to be selected for a report of type
   /// "CROSS_DIMENSION_REACH".
@@ -14766,19 +14896,15 @@ class CompatibleFields {
       crossDimensionReachReportCompatibleFields;
 
   /// Contains items that are compatible to be selected for a report of type
+  /// "CROSS_MEDIA_REACH".
+  CrossMediaReachReportCompatibleFields? crossMediaReachReportCompatibleFields;
+
+  /// Contains items that are compatible to be selected for a report of type
   /// "FLOODLIGHT".
   FloodlightReportCompatibleFields? floodlightReportCompatibleFields;
 
   /// The kind of resource this is, in this case dfareporting#compatibleFields.
   core.String? kind;
-
-  /// Contains items that are compatible to be selected for a report of type
-  /// "PATH_ATTRIBUTION".
-  PathReportCompatibleFields? pathAttributionReportCompatibleFields;
-
-  /// Contains items that are compatible to be selected for a report of type
-  /// "PATH".
-  PathReportCompatibleFields? pathReportCompatibleFields;
 
   /// Contains items that are compatible to be selected for a report of type
   /// "PATH_TO_CONVERSION".
@@ -14795,10 +14921,9 @@ class CompatibleFields {
 
   CompatibleFields({
     this.crossDimensionReachReportCompatibleFields,
+    this.crossMediaReachReportCompatibleFields,
     this.floodlightReportCompatibleFields,
     this.kind,
-    this.pathAttributionReportCompatibleFields,
-    this.pathReportCompatibleFields,
     this.pathToConversionReportCompatibleFields,
     this.reachReportCompatibleFields,
     this.reportCompatibleFields,
@@ -14812,6 +14937,12 @@ class CompatibleFields {
                       json_['crossDimensionReachReportCompatibleFields']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          crossMediaReachReportCompatibleFields:
+              json_.containsKey('crossMediaReachReportCompatibleFields')
+                  ? CrossMediaReachReportCompatibleFields.fromJson(
+                      json_['crossMediaReachReportCompatibleFields']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           floodlightReportCompatibleFields:
               json_.containsKey('floodlightReportCompatibleFields')
                   ? FloodlightReportCompatibleFields.fromJson(
@@ -14819,18 +14950,6 @@ class CompatibleFields {
                           as core.Map<core.String, core.dynamic>)
                   : null,
           kind: json_['kind'] as core.String?,
-          pathAttributionReportCompatibleFields:
-              json_.containsKey('pathAttributionReportCompatibleFields')
-                  ? PathReportCompatibleFields.fromJson(
-                      json_['pathAttributionReportCompatibleFields']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          pathReportCompatibleFields:
-              json_.containsKey('pathReportCompatibleFields')
-                  ? PathReportCompatibleFields.fromJson(
-                      json_['pathReportCompatibleFields']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
           pathToConversionReportCompatibleFields:
               json_.containsKey('pathToConversionReportCompatibleFields')
                   ? PathToConversionReportCompatibleFields.fromJson(
@@ -14853,14 +14972,12 @@ class CompatibleFields {
         if (crossDimensionReachReportCompatibleFields != null)
           'crossDimensionReachReportCompatibleFields':
               crossDimensionReachReportCompatibleFields!,
+        if (crossMediaReachReportCompatibleFields != null)
+          'crossMediaReachReportCompatibleFields':
+              crossMediaReachReportCompatibleFields!,
         if (floodlightReportCompatibleFields != null)
           'floodlightReportCompatibleFields': floodlightReportCompatibleFields!,
         if (kind != null) 'kind': kind!,
-        if (pathAttributionReportCompatibleFields != null)
-          'pathAttributionReportCompatibleFields':
-              pathAttributionReportCompatibleFields!,
-        if (pathReportCompatibleFields != null)
-          'pathReportCompatibleFields': pathReportCompatibleFields!,
         if (pathToConversionReportCompatibleFields != null)
           'pathToConversionReportCompatibleFields':
               pathToConversionReportCompatibleFields!,
@@ -15027,14 +15144,14 @@ class Conversion {
   /// - "DENIED" : Denied.
   core.String? adUserDataConsent;
 
+  /// The cart data associated with this conversion.
+  CartData? cartData;
+
   /// Whether this particular request may come from a user under the age of 13,
   /// under COPPA compliance.
   core.bool? childDirectedTreatment;
 
   /// Custom floodlight variables.
-  ///
-  /// This field may only be used when calling batchinsert; it is not supported
-  /// by batchupdate.
   core.List<CustomFloodlightVariable>? customVariables;
 
   /// The display click ID.
@@ -15156,6 +15273,7 @@ class Conversion {
 
   Conversion({
     this.adUserDataConsent,
+    this.cartData,
     this.childDirectedTreatment,
     this.customVariables,
     this.dclid,
@@ -15181,6 +15299,10 @@ class Conversion {
   Conversion.fromJson(core.Map json_)
       : this(
           adUserDataConsent: json_['adUserDataConsent'] as core.String?,
+          cartData: json_.containsKey('cartData')
+              ? CartData.fromJson(
+                  json_['cartData'] as core.Map<core.String, core.dynamic>)
+              : null,
           childDirectedTreatment: json_['childDirectedTreatment'] as core.bool?,
           customVariables: (json_['customVariables'] as core.List?)
               ?.map((value) => CustomFloodlightVariable.fromJson(
@@ -15215,6 +15337,7 @@ class Conversion {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adUserDataConsent != null) 'adUserDataConsent': adUserDataConsent!,
+        if (cartData != null) 'cartData': cartData!,
         if (childDirectedTreatment != null)
           'childDirectedTreatment': childDirectedTreatment!,
         if (customVariables != null) 'customVariables': customVariables!,
@@ -18003,6 +18126,57 @@ class CrossDimensionReachReportCompatibleFields {
       };
 }
 
+/// Represents fields that are compatible to be selected for a report of type
+/// "CROSS_MEDIA_REACH".
+class CrossMediaReachReportCompatibleFields {
+  /// Dimensions which are compatible to be selected in the "dimensionFilters"
+  /// section of the report.
+  core.List<Dimension>? dimensionFilters;
+
+  /// Dimensions which are compatible to be selected in the "dimensions" section
+  /// of the report.
+  core.List<Dimension>? dimensions;
+
+  /// The kind of resource this is, in this case
+  /// dfareporting#crossMediaReachReportCompatibleFields.
+  core.String? kind;
+
+  /// Metrics which are compatible to be selected in the "metricNames" section
+  /// of the report.
+  core.List<Metric>? metrics;
+
+  CrossMediaReachReportCompatibleFields({
+    this.dimensionFilters,
+    this.dimensions,
+    this.kind,
+    this.metrics,
+  });
+
+  CrossMediaReachReportCompatibleFields.fromJson(core.Map json_)
+      : this(
+          dimensionFilters: (json_['dimensionFilters'] as core.List?)
+              ?.map((value) => Dimension.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          dimensions: (json_['dimensions'] as core.List?)
+              ?.map((value) => Dimension.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          kind: json_['kind'] as core.String?,
+          metrics: (json_['metrics'] as core.List?)
+              ?.map((value) =>
+                  Metric.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dimensionFilters != null) 'dimensionFilters': dimensionFilters!,
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (kind != null) 'kind': kind!,
+        if (metrics != null) 'metrics': metrics!,
+      };
+}
+
 /// A custom floodlight variable.
 ///
 /// This field may only be used when calling batchinsert; it is not supported by
@@ -18015,7 +18189,7 @@ class CustomFloodlightVariable {
 
   /// The type of custom floodlight variable to supply a value for.
   ///
-  /// These map to the "u\[1-20\]=" in the tags.
+  /// These map to the "u\[1-100\]=" in the tags.
   /// Possible string values are:
   /// - "U1"
   /// - "U2"
@@ -18761,6 +18935,21 @@ class DirectorySite {
   /// Name of this directory site.
   core.String? name;
 
+  /// Default publisher specification ID of video placements under this
+  /// directory site.
+  ///
+  /// Possible values are: * `1`, Hulu * `2`, NBC * `3`, CBS * `4`, CBS Desktop
+  /// * `5`, Discovery * `6`, VEVO HD * `7`, VEVO Vertical * `8`, Fox * `9`, CW
+  /// Network * `10`, Disney * `11`, IGN * `12`, NFL.com * `13`, Turner
+  /// Broadcasting * `14`, Tubi on Fox * `15`, Hearst Corporation * `16`, Twitch
+  /// Desktop * `17`, ABC * `18`, Univision * `19`, MLB.com * `20`, MLB.com
+  /// Mobile * `21`, MLB.com OTT * `22`, Polsat * `23`, TVN * `24`, Mediaset *
+  /// `25`, Antena 3 * `26`, Mediamond * `27`, Sky Italia * `28`, Tubi on CBS *
+  /// `29`, Spotify * `30`, Paramount * `31`, Max
+  ///
+  /// Output only.
+  core.String? publisherSpecificationId;
+
   /// Directory site settings.
   DirectorySiteSettings? settings;
 
@@ -18774,6 +18963,7 @@ class DirectorySite {
     this.interstitialTagFormats,
     this.kind,
     this.name,
+    this.publisherSpecificationId,
     this.settings,
     this.url,
   });
@@ -18794,6 +18984,8 @@ class DirectorySite {
                   .toList(),
           kind: json_['kind'] as core.String?,
           name: json_['name'] as core.String?,
+          publisherSpecificationId:
+              json_['publisherSpecificationId'] as core.String?,
           settings: json_.containsKey('settings')
               ? DirectorySiteSettings.fromJson(
                   json_['settings'] as core.Map<core.String, core.dynamic>)
@@ -18809,6 +19001,8 @@ class DirectorySite {
           'interstitialTagFormats': interstitialTagFormats!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
+        if (publisherSpecificationId != null)
+          'publisherSpecificationId': publisherSpecificationId!,
         if (settings != null) 'settings': settings!,
         if (url != null) 'url': url!,
       };
@@ -18891,36 +19085,6 @@ class DirectorySitesListResponse {
         if (directorySites != null) 'directorySites': directorySites!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
-}
-
-/// Represents a Disjunctive Match Statement resource, which is a conjunction
-/// (and) of disjunctive (or) boolean statements.
-class DisjunctiveMatchStatement {
-  /// The event filters contained within this disjunctive match statement.
-  core.List<EventFilter>? eventFilters;
-
-  /// The kind of resource this is, in this case
-  /// dfareporting#disjunctiveMatchStatement.
-  core.String? kind;
-
-  DisjunctiveMatchStatement({
-    this.eventFilters,
-    this.kind,
-  });
-
-  DisjunctiveMatchStatement.fromJson(core.Map json_)
-      : this(
-          eventFilters: (json_['eventFilters'] as core.List?)
-              ?.map((value) => EventFilter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (eventFilters != null) 'eventFilters': eventFilters!,
-        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -19069,43 +19233,6 @@ class EncryptionInfo {
           'encryptionEntityType': encryptionEntityType!,
         if (encryptionSource != null) 'encryptionSource': encryptionSource!,
         if (kind != null) 'kind': kind!,
-      };
-}
-
-/// Represents a DfaReporting event filter.
-class EventFilter {
-  /// The dimension filter contained within this EventFilter.
-  PathReportDimensionValue? dimensionFilter;
-
-  /// The kind of resource this is, in this case dfareporting#eventFilter.
-  core.String? kind;
-
-  /// Filter on a custom variable.
-  UvarFilter? uvarFilter;
-
-  EventFilter({
-    this.dimensionFilter,
-    this.kind,
-    this.uvarFilter,
-  });
-
-  EventFilter.fromJson(core.Map json_)
-      : this(
-          dimensionFilter: json_.containsKey('dimensionFilter')
-              ? PathReportDimensionValue.fromJson(json_['dimensionFilter']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          kind: json_['kind'] as core.String?,
-          uvarFilter: json_.containsKey('uvarFilter')
-              ? UvarFilter.fromJson(
-                  json_['uvarFilter'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionFilter != null) 'dimensionFilter': dimensionFilter!,
-        if (kind != null) 'kind': kind!,
-        if (uvarFilter != null) 'uvarFilter': uvarFilter!,
       };
 }
 
@@ -19574,14 +19701,14 @@ class Flight {
 class FloodlightActivitiesGenerateTagResponse {
   /// Generated tag for this Floodlight activity.
   ///
-  /// For global site tags, this is the event snippet.
+  /// For Google tags, this is the event snippet.
   core.String? floodlightActivityTag;
 
-  /// The global snippet section of a global site tag.
+  /// The global snippet section of a Google tag.
   ///
-  /// The global site tag sets new cookies on your domain, which will store a
-  /// unique identifier for a user or the ad click that brought the user to your
-  /// site. Learn more.
+  /// The Google tag sets new cookies on your domain, which will store a unique
+  /// identifier for a user or the ad click that brought the user to your site.
+  /// Learn more.
   core.String? globalSiteTagGlobalSnippet;
 
   /// Identifies what kind of resource this is.
@@ -21477,6 +21604,7 @@ class MeasurementPartnerAdvertiserLink {
   /// - "MEASUREMENT_PARTNER_LINK_OPT_OUT_PENDING" : Link opt-out pending sync.
   /// - "MEASUREMENT_PARTNER_LINK_WRAPPING_PENDING" : Link wrap answer pending.
   /// - "MEASUREMENT_PARTNER_MODE_CHANGE_PENDING" : Mode change pending.
+  /// - "MEASUREMENT_PARTNER_UNLINK_PENDING" : Partner unlink pending.
   core.String? linkStatus;
 
   /// Measurement partner used for tag wrapping.
@@ -21522,6 +21650,7 @@ class MeasurementPartnerCampaignLink {
   /// - "MEASUREMENT_PARTNER_LINK_OPT_OUT_PENDING" : Link opt-out pending sync.
   /// - "MEASUREMENT_PARTNER_LINK_WRAPPING_PENDING" : Link wrap answer pending.
   /// - "MEASUREMENT_PARTNER_MODE_CHANGE_PENDING" : Mode change pending.
+  /// - "MEASUREMENT_PARTNER_UNLINK_PENDING" : Partner unlink pending.
   core.String? linkStatus;
 
   /// Measurement partner used for tag wrapping.
@@ -21568,6 +21697,7 @@ class MeasurementPartnerWrappingData {
   /// - "MEASUREMENT_PARTNER_LINK_OPT_OUT_PENDING" : Link opt-out pending sync.
   /// - "MEASUREMENT_PARTNER_LINK_WRAPPING_PENDING" : Link wrap answer pending.
   /// - "MEASUREMENT_PARTNER_MODE_CHANGE_PENDING" : Mode change pending.
+  /// - "MEASUREMENT_PARTNER_UNLINK_PENDING" : Partner unlink pending.
   core.String? linkStatus;
 
   /// Measurement partner used for wrapping the placement.
@@ -22583,169 +22713,6 @@ class OrdersListResponse {
       };
 }
 
-/// Represents a DfaReporting path filter.
-class PathFilter {
-  /// Event filters in path report.
-  core.List<EventFilter>? eventFilters;
-
-  /// The kind of resource this is, in this case dfareporting#pathFilter.
-  core.String? kind;
-
-  /// Determines how the 'value' field is matched when filtering.
-  ///
-  /// If not specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is
-  /// allowed as a placeholder for variable length character sequences, and it
-  /// can be escaped with a backslash. Note, only paid search dimensions
-  /// ('dfa:paidSearch*') allow a matchType other than EXACT.
-  /// Possible string values are:
-  /// - "PATH_MATCH_POSITION_UNSPECIFIED"
-  /// - "ANY"
-  /// - "FIRST"
-  /// - "LAST"
-  core.String? pathMatchPosition;
-
-  PathFilter({
-    this.eventFilters,
-    this.kind,
-    this.pathMatchPosition,
-  });
-
-  PathFilter.fromJson(core.Map json_)
-      : this(
-          eventFilters: (json_['eventFilters'] as core.List?)
-              ?.map((value) => EventFilter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          pathMatchPosition: json_['pathMatchPosition'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (eventFilters != null) 'eventFilters': eventFilters!,
-        if (kind != null) 'kind': kind!,
-        if (pathMatchPosition != null) 'pathMatchPosition': pathMatchPosition!,
-      };
-}
-
-/// Represents fields that are compatible to be selected for a report of type
-/// "PATH".
-class PathReportCompatibleFields {
-  /// Dimensions which are compatible to be selected in the "channelGroupings"
-  /// section of the report.
-  core.List<Dimension>? channelGroupings;
-
-  /// Dimensions which are compatible to be selected in the "dimensions" section
-  /// of the report.
-  core.List<Dimension>? dimensions;
-
-  /// The kind of resource this is, in this case
-  /// dfareporting#pathReportCompatibleFields.
-  core.String? kind;
-
-  /// Metrics which are compatible to be selected in the "metricNames" section
-  /// of the report.
-  core.List<Metric>? metrics;
-
-  /// Dimensions which are compatible to be selected in the "pathFilters"
-  /// section of the report.
-  core.List<Dimension>? pathFilters;
-
-  PathReportCompatibleFields({
-    this.channelGroupings,
-    this.dimensions,
-    this.kind,
-    this.metrics,
-    this.pathFilters,
-  });
-
-  PathReportCompatibleFields.fromJson(core.Map json_)
-      : this(
-          channelGroupings: (json_['channelGroupings'] as core.List?)
-              ?.map((value) => Dimension.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          dimensions: (json_['dimensions'] as core.List?)
-              ?.map((value) => Dimension.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          metrics: (json_['metrics'] as core.List?)
-              ?.map((value) =>
-                  Metric.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          pathFilters: (json_['pathFilters'] as core.List?)
-              ?.map((value) => Dimension.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (channelGroupings != null) 'channelGroupings': channelGroupings!,
-        if (dimensions != null) 'dimensions': dimensions!,
-        if (kind != null) 'kind': kind!,
-        if (metrics != null) 'metrics': metrics!,
-        if (pathFilters != null) 'pathFilters': pathFilters!,
-      };
-}
-
-/// Represents a PathReportDimensionValue resource.
-class PathReportDimensionValue {
-  /// The name of the dimension.
-  core.String? dimensionName;
-
-  /// The possible ID's associated with the value if available.
-  core.List<core.String>? ids;
-
-  /// The kind of resource this is, in this case
-  /// dfareporting#pathReportDimensionValue.
-  core.String? kind;
-
-  /// Determines how the 'value' field is matched when filtering.
-  ///
-  /// If not specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is
-  /// allowed as a placeholder for variable length character sequences, and it
-  /// can be escaped with a backslash. Note, only paid search dimensions
-  /// ('dfa:paidSearch*') allow a matchType other than EXACT.
-  /// Possible string values are:
-  /// - "EXACT"
-  /// - "BEGINS_WITH"
-  /// - "CONTAINS"
-  /// - "WILDCARD_EXPRESSION"
-  core.String? matchType;
-
-  /// The possible values of the dimension.
-  core.List<core.String>? values;
-
-  PathReportDimensionValue({
-    this.dimensionName,
-    this.ids,
-    this.kind,
-    this.matchType,
-    this.values,
-  });
-
-  PathReportDimensionValue.fromJson(core.Map json_)
-      : this(
-          dimensionName: json_['dimensionName'] as core.String?,
-          ids: (json_['ids'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          matchType: json_['matchType'] as core.String?,
-          values: (json_['values'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionName != null) 'dimensionName': dimensionName!,
-        if (ids != null) 'ids': ids!,
-        if (kind != null) 'kind': kind!,
-        if (matchType != null) 'matchType': matchType!,
-        if (values != null) 'values': values!,
-      };
-}
-
 /// Represents fields that are compatible to be selected for a report of type
 /// "PATH_TO_CONVERSION".
 class PathToConversionReportCompatibleFields {
@@ -22834,6 +22801,20 @@ class Placement {
   /// When true, ad blocking is disabled for this placement. When false, the
   /// campaign and site settings take effect.
   core.bool? adBlockingOptOut;
+
+  /// Ad serving platform ID to identify the ad serving platform used by the
+  /// placement.
+  ///
+  /// Measurement partners can use this field to add ad-server specific macros.
+  /// Possible values are: * `1`, Adelphic * `2`, Adform * `3`, Adobe * `4`,
+  /// Amobee * `5`, Basis (Centro) * `6`, Beeswax * `7`, Amazon * `8`, DV360
+  /// (DBM) * `9`, Innovid * `10`, MediaMath * `11`, Roku OneView DSP * `12`,
+  /// TabMo Hawk * `13`, The Trade Desk * `14`, Xandr Invest DSP * `15`, Yahoo
+  /// DSP * `16`, Zeta Global * `17`, Scaleout * `18`, Bidtellect * `19`,
+  /// Unicorn * `20`, Teads * `21`, Quantcast * `22`, Cognitiv
+  ///
+  /// Optional.
+  core.String? adServingPlatformId;
 
   /// Additional sizes associated with this placement.
   ///
@@ -22999,6 +22980,14 @@ class Placement {
   /// This is a read-only, auto-generated field.
   DimensionValue? siteIdDimensionValue;
 
+  /// Whether the ads in the placement are served by another platform and CM is
+  /// only used for tracking or they are served by CM.
+  ///
+  /// A false value indicates the ad is served by CM.
+  ///
+  /// Optional.
+  core.bool? siteServed;
+
   /// Size associated with this placement.
   ///
   /// When inserting or updating a placement, only the size ID field is used.
@@ -23084,6 +23073,7 @@ class Placement {
     this.accountId,
     this.activeStatus,
     this.adBlockingOptOut,
+    this.adServingPlatformId,
     this.additionalSizes,
     this.advertiserId,
     this.advertiserIdDimensionValue,
@@ -23115,6 +23105,7 @@ class Placement {
     this.publisherUpdateInfo,
     this.siteId,
     this.siteIdDimensionValue,
+    this.siteServed,
     this.size,
     this.sslRequired,
     this.status,
@@ -23132,6 +23123,7 @@ class Placement {
           accountId: json_['accountId'] as core.String?,
           activeStatus: json_['activeStatus'] as core.String?,
           adBlockingOptOut: json_['adBlockingOptOut'] as core.bool?,
+          adServingPlatformId: json_['adServingPlatformId'] as core.String?,
           additionalSizes: (json_['additionalSizes'] as core.List?)
               ?.map((value) =>
                   Size.fromJson(value as core.Map<core.String, core.dynamic>))
@@ -23212,6 +23204,7 @@ class Placement {
               ? DimensionValue.fromJson(json_['siteIdDimensionValue']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          siteServed: json_['siteServed'] as core.bool?,
           size: json_.containsKey('size')
               ? Size.fromJson(
                   json_['size'] as core.Map<core.String, core.dynamic>)
@@ -23239,6 +23232,8 @@ class Placement {
         if (accountId != null) 'accountId': accountId!,
         if (activeStatus != null) 'activeStatus': activeStatus!,
         if (adBlockingOptOut != null) 'adBlockingOptOut': adBlockingOptOut!,
+        if (adServingPlatformId != null)
+          'adServingPlatformId': adServingPlatformId!,
         if (additionalSizes != null) 'additionalSizes': additionalSizes!,
         if (advertiserId != null) 'advertiserId': advertiserId!,
         if (advertiserIdDimensionValue != null)
@@ -23280,6 +23275,7 @@ class Placement {
         if (siteId != null) 'siteId': siteId!,
         if (siteIdDimensionValue != null)
           'siteIdDimensionValue': siteIdDimensionValue!,
+        if (siteServed != null) 'siteServed': siteServed!,
         if (size != null) 'size': size!,
         if (sslRequired != null) 'sslRequired': sslRequired!,
         if (status != null) 'status': status!,
@@ -25101,6 +25097,67 @@ class ReportCrossDimensionReachCriteria {
       };
 }
 
+/// The report criteria for a report of type "CROSS_MEDIA_REACH".
+///
+/// Optional.
+class ReportCrossMediaReachCriteria {
+  /// The date range this report should be run for.
+  ///
+  /// Required.
+  DateRange? dateRange;
+
+  /// The list of filters on which dimensions are filtered.
+  ///
+  /// Filters for different dimensions are ANDed, filters for the same dimension
+  /// are grouped together and ORed.
+  ///
+  /// Required.
+  core.List<DimensionValue>? dimensionFilters;
+
+  /// The list of dimensions the report should include.
+  ///
+  /// Required.
+  core.List<SortedDimension>? dimensions;
+
+  /// The list of names of metrics the report should include.
+  ///
+  /// Required.
+  core.List<core.String>? metricNames;
+
+  ReportCrossMediaReachCriteria({
+    this.dateRange,
+    this.dimensionFilters,
+    this.dimensions,
+    this.metricNames,
+  });
+
+  ReportCrossMediaReachCriteria.fromJson(core.Map json_)
+      : this(
+          dateRange: json_.containsKey('dateRange')
+              ? DateRange.fromJson(
+                  json_['dateRange'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dimensionFilters: (json_['dimensionFilters'] as core.List?)
+              ?.map((value) => DimensionValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          dimensions: (json_['dimensions'] as core.List?)
+              ?.map((value) => SortedDimension.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          metricNames: (json_['metricNames'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dateRange != null) 'dateRange': dateRange!,
+        if (dimensionFilters != null) 'dimensionFilters': dimensionFilters!,
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (metricNames != null) 'metricNames': metricNames!,
+      };
+}
+
 /// The report's email delivery settings.
 class ReportDelivery {
   /// Whether the report should be emailed to the report owner.
@@ -25273,166 +25330,6 @@ class ReportFloodlightCriteria {
           'floodlightConfigId': floodlightConfigId!,
         if (metricNames != null) 'metricNames': metricNames!,
         if (reportProperties != null) 'reportProperties': reportProperties!,
-      };
-}
-
-/// The report criteria for a report of type "PATH_ATTRIBUTION".
-class ReportPathAttributionCriteria {
-  /// The list of 'dfa:activity' values to filter on.
-  core.List<DimensionValue>? activityFilters;
-
-  /// Channel Grouping.
-  ChannelGrouping? customChannelGrouping;
-
-  /// The date range this report should be run for.
-  DateRange? dateRange;
-
-  /// The list of dimensions the report should include.
-  core.List<SortedDimension>? dimensions;
-
-  /// The floodlight ID for which to show data in this report.
-  ///
-  /// All advertisers associated with that ID will automatically be added. The
-  /// dimension of the value needs to be 'dfa:floodlightConfigId'.
-  DimensionValue? floodlightConfigId;
-
-  /// The list of names of metrics the report should include.
-  core.List<core.String>? metricNames;
-
-  /// Path Filters.
-  core.List<PathFilter>? pathFilters;
-
-  ReportPathAttributionCriteria({
-    this.activityFilters,
-    this.customChannelGrouping,
-    this.dateRange,
-    this.dimensions,
-    this.floodlightConfigId,
-    this.metricNames,
-    this.pathFilters,
-  });
-
-  ReportPathAttributionCriteria.fromJson(core.Map json_)
-      : this(
-          activityFilters: (json_['activityFilters'] as core.List?)
-              ?.map((value) => DimensionValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          customChannelGrouping: json_.containsKey('customChannelGrouping')
-              ? ChannelGrouping.fromJson(json_['customChannelGrouping']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          dateRange: json_.containsKey('dateRange')
-              ? DateRange.fromJson(
-                  json_['dateRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-          dimensions: (json_['dimensions'] as core.List?)
-              ?.map((value) => SortedDimension.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          floodlightConfigId: json_.containsKey('floodlightConfigId')
-              ? DimensionValue.fromJson(json_['floodlightConfigId']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          metricNames: (json_['metricNames'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          pathFilters: (json_['pathFilters'] as core.List?)
-              ?.map((value) => PathFilter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (activityFilters != null) 'activityFilters': activityFilters!,
-        if (customChannelGrouping != null)
-          'customChannelGrouping': customChannelGrouping!,
-        if (dateRange != null) 'dateRange': dateRange!,
-        if (dimensions != null) 'dimensions': dimensions!,
-        if (floodlightConfigId != null)
-          'floodlightConfigId': floodlightConfigId!,
-        if (metricNames != null) 'metricNames': metricNames!,
-        if (pathFilters != null) 'pathFilters': pathFilters!,
-      };
-}
-
-/// The report criteria for a report of type "PATH".
-class ReportPathCriteria {
-  /// The list of 'dfa:activity' values to filter on.
-  core.List<DimensionValue>? activityFilters;
-
-  /// Channel Grouping.
-  ChannelGrouping? customChannelGrouping;
-
-  /// The date range this report should be run for.
-  DateRange? dateRange;
-
-  /// The list of dimensions the report should include.
-  core.List<SortedDimension>? dimensions;
-
-  /// The floodlight ID for which to show data in this report.
-  ///
-  /// All advertisers associated with that ID will automatically be added. The
-  /// dimension of the value needs to be 'dfa:floodlightConfigId'.
-  DimensionValue? floodlightConfigId;
-
-  /// The list of names of metrics the report should include.
-  core.List<core.String>? metricNames;
-
-  /// Path Filters.
-  core.List<PathFilter>? pathFilters;
-
-  ReportPathCriteria({
-    this.activityFilters,
-    this.customChannelGrouping,
-    this.dateRange,
-    this.dimensions,
-    this.floodlightConfigId,
-    this.metricNames,
-    this.pathFilters,
-  });
-
-  ReportPathCriteria.fromJson(core.Map json_)
-      : this(
-          activityFilters: (json_['activityFilters'] as core.List?)
-              ?.map((value) => DimensionValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          customChannelGrouping: json_.containsKey('customChannelGrouping')
-              ? ChannelGrouping.fromJson(json_['customChannelGrouping']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          dateRange: json_.containsKey('dateRange')
-              ? DateRange.fromJson(
-                  json_['dateRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-          dimensions: (json_['dimensions'] as core.List?)
-              ?.map((value) => SortedDimension.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          floodlightConfigId: json_.containsKey('floodlightConfigId')
-              ? DimensionValue.fromJson(json_['floodlightConfigId']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          metricNames: (json_['metricNames'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          pathFilters: (json_['pathFilters'] as core.List?)
-              ?.map((value) => PathFilter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (activityFilters != null) 'activityFilters': activityFilters!,
-        if (customChannelGrouping != null)
-          'customChannelGrouping': customChannelGrouping!,
-        if (dateRange != null) 'dateRange': dateRange!,
-        if (dimensions != null) 'dimensions': dimensions!,
-        if (floodlightConfigId != null)
-          'floodlightConfigId': floodlightConfigId!,
-        if (metricNames != null) 'metricNames': metricNames!,
-        if (pathFilters != null) 'pathFilters': pathFilters!,
       };
 }
 
@@ -25840,6 +25737,11 @@ class Report {
   /// The report criteria for a report of type "CROSS_DIMENSION_REACH".
   ReportCrossDimensionReachCriteria? crossDimensionReachCriteria;
 
+  /// The report criteria for a report of type "CROSS_MEDIA_REACH".
+  ///
+  /// Optional.
+  ReportCrossMediaReachCriteria? crossMediaReachCriteria;
+
   /// The report's email delivery settings.
   ReportDelivery? delivery;
 
@@ -25878,12 +25780,6 @@ class Report {
   /// The user profile id of the owner of this report.
   core.String? ownerProfileId;
 
-  /// The report criteria for a report of type "PATH_ATTRIBUTION".
-  ReportPathAttributionCriteria? pathAttributionCriteria;
-
-  /// The report criteria for a report of type "PATH".
-  ReportPathCriteria? pathCriteria;
-
   /// The report criteria for a report of type "PATH_TO_CONVERSION".
   ReportPathToConversionCriteria? pathToConversionCriteria;
 
@@ -25906,14 +25802,14 @@ class Report {
   /// - "PATH_TO_CONVERSION"
   /// - "CROSS_DIMENSION_REACH"
   /// - "FLOODLIGHT"
-  /// - "PATH"
-  /// - "PATH_ATTRIBUTION"
+  /// - "CROSS_MEDIA_REACH"
   core.String? type;
 
   Report({
     this.accountId,
     this.criteria,
     this.crossDimensionReachCriteria,
+    this.crossMediaReachCriteria,
     this.delivery,
     this.etag,
     this.fileName,
@@ -25924,8 +25820,6 @@ class Report {
     this.lastModifiedTime,
     this.name,
     this.ownerProfileId,
-    this.pathAttributionCriteria,
-    this.pathCriteria,
     this.pathToConversionCriteria,
     this.reachCriteria,
     this.schedule,
@@ -25946,6 +25840,11 @@ class Report {
                       json_['crossDimensionReachCriteria']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          crossMediaReachCriteria: json_.containsKey('crossMediaReachCriteria')
+              ? ReportCrossMediaReachCriteria.fromJson(
+                  json_['crossMediaReachCriteria']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           delivery: json_.containsKey('delivery')
               ? ReportDelivery.fromJson(
                   json_['delivery'] as core.Map<core.String, core.dynamic>)
@@ -25962,15 +25861,6 @@ class Report {
           lastModifiedTime: json_['lastModifiedTime'] as core.String?,
           name: json_['name'] as core.String?,
           ownerProfileId: json_['ownerProfileId'] as core.String?,
-          pathAttributionCriteria: json_.containsKey('pathAttributionCriteria')
-              ? ReportPathAttributionCriteria.fromJson(
-                  json_['pathAttributionCriteria']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          pathCriteria: json_.containsKey('pathCriteria')
-              ? ReportPathCriteria.fromJson(
-                  json_['pathCriteria'] as core.Map<core.String, core.dynamic>)
-              : null,
           pathToConversionCriteria:
               json_.containsKey('pathToConversionCriteria')
                   ? ReportPathToConversionCriteria.fromJson(
@@ -25994,6 +25884,8 @@ class Report {
         if (criteria != null) 'criteria': criteria!,
         if (crossDimensionReachCriteria != null)
           'crossDimensionReachCriteria': crossDimensionReachCriteria!,
+        if (crossMediaReachCriteria != null)
+          'crossMediaReachCriteria': crossMediaReachCriteria!,
         if (delivery != null) 'delivery': delivery!,
         if (etag != null) 'etag': etag!,
         if (fileName != null) 'fileName': fileName!,
@@ -26005,9 +25897,6 @@ class Report {
         if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
         if (name != null) 'name': name!,
         if (ownerProfileId != null) 'ownerProfileId': ownerProfileId!,
-        if (pathAttributionCriteria != null)
-          'pathAttributionCriteria': pathAttributionCriteria!,
-        if (pathCriteria != null) 'pathCriteria': pathCriteria!,
         if (pathToConversionCriteria != null)
           'pathToConversionCriteria': pathToConversionCriteria!,
         if (reachCriteria != null) 'reachCriteria': reachCriteria!,
@@ -26270,6 +26159,21 @@ class Site {
   /// This is a read-only field that can be left blank.
   core.String? accountId;
 
+  /// Ad serving platform ID to identify the ad serving platform used by the
+  /// site.
+  ///
+  /// Measurement partners can use this field to add ad-server specific macros.
+  /// If set, this value acts as the default during placement creation. Possible
+  /// values are: * `1`, Adelphic * `2`, Adform * `3`, Adobe * `4`, Amobee *
+  /// `5`, Basis (Centro) * `6`, Beeswax * `7`, Amazon * `8`, DV360 (DBM) * `9`,
+  /// Innovid * `10`, MediaMath * `11`, Roku OneView DSP * `12`, TabMo Hawk *
+  /// `13`, The Trade Desk * `14`, Xandr Invest DSP * `15`, Yahoo DSP * `16`,
+  /// Zeta Global * `17`, Scaleout * `18`, Bidtellect * `19`, Unicorn * `20`,
+  /// Teads * `21`, Quantcast * `22`, Cognitiv
+  ///
+  /// Optional.
+  core.String? adServingPlatformId;
+
   /// Whether this site is approved.
   core.bool? approved;
 
@@ -26330,6 +26234,7 @@ class Site {
 
   Site({
     this.accountId,
+    this.adServingPlatformId,
     this.approved,
     this.directorySiteId,
     this.directorySiteIdDimensionValue,
@@ -26347,6 +26252,7 @@ class Site {
   Site.fromJson(core.Map json_)
       : this(
           accountId: json_['accountId'] as core.String?,
+          adServingPlatformId: json_['adServingPlatformId'] as core.String?,
           approved: json_['approved'] as core.bool?,
           directorySiteId: json_['directorySiteId'] as core.String?,
           directorySiteIdDimensionValue: json_
@@ -26379,6 +26285,8 @@ class Site {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
+        if (adServingPlatformId != null)
+          'adServingPlatformId': adServingPlatformId!,
         if (approved != null) 'approved': approved!,
         if (directorySiteId != null) 'directorySiteId': directorySiteId!,
         if (directorySiteIdDimensionValue != null)
@@ -26704,7 +26612,14 @@ class SiteVideoSettings {
   /// requirements and automatically populate transcode settings.
   ///
   /// If publisher specification ID is specified, it will take precedence over
-  /// transcode settings.
+  /// transcode settings. Possible values are: * `1`, Hulu * `2`, NBC * `3`, CBS
+  /// * `4`, CBS Desktop * `5`, Discovery * `6`, VEVO HD * `7`, VEVO Vertical *
+  /// `8`, Fox * `9`, CW Network * `10`, Disney * `11`, IGN * `12`, NFL.com *
+  /// `13`, Turner Broadcasting * `14`, Tubi on Fox * `15`, Hearst Corporation *
+  /// `16`, Twitch Desktop * `17`, ABC * `18`, Univision * `19`, MLB.com * `20`,
+  /// MLB.com Mobile * `21`, MLB.com OTT * `22`, Polsat * `23`, TVN * `24`,
+  /// Mediaset * `25`, Antena 3 * `26`, Mediamond * `27`, Sky Italia * `28`,
+  /// Tubi on CBS * `29`, Spotify * `30`, Paramount * `31`, Max
   core.String? publisherSpecificationId;
 
   /// Settings for the skippability of video creatives served to this site.
@@ -27758,6 +27673,195 @@ class TranscodeSetting {
       };
 }
 
+/// TvCampaignDetail contains data from a TV campaign for specific start dates
+/// and date windows.
+class TvCampaignDetail {
+  /// ID of this TV campaign.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#tvCampaignSummary".
+  core.String? kind;
+
+  /// The timepoints of the TV campaign.
+  core.List<TvCampaignTimepoint>? timepoints;
+
+  TvCampaignDetail({
+    this.id,
+    this.kind,
+    this.timepoints,
+  });
+
+  TvCampaignDetail.fromJson(core.Map json_)
+      : this(
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          timepoints: (json_['timepoints'] as core.List?)
+              ?.map((value) => TvCampaignTimepoint.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (timepoints != null) 'timepoints': timepoints!,
+      };
+}
+
+/// Response message for TvCampaignSummariesService.List.
+class TvCampaignSummariesListResponse {
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#tvCampaignSummariesListResponse".
+  core.String? kind;
+
+  /// List of TV campaign summaries.
+  core.List<TvCampaignSummary>? tvCampaignSummaries;
+
+  TvCampaignSummariesListResponse({
+    this.kind,
+    this.tvCampaignSummaries,
+  });
+
+  TvCampaignSummariesListResponse.fromJson(core.Map json_)
+      : this(
+          kind: json_['kind'] as core.String?,
+          tvCampaignSummaries: (json_['tvCampaignSummaries'] as core.List?)
+              ?.map((value) => TvCampaignSummary.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (tvCampaignSummaries != null)
+          'tvCampaignSummaries': tvCampaignSummaries!,
+      };
+}
+
+/// TvCampaignSummary contains aggregate data from a TV campaign.
+class TvCampaignSummary {
+  /// The end date of the TV campaign, inclusive.
+  ///
+  /// A string of the format: "yyyy-MM-dd".
+  core.String? endDate;
+
+  /// GRP of this TV campaign.
+  core.String? grp;
+
+  /// ID of this TV campaign.
+  core.String? id;
+
+  /// Impressions across the entire TV campaign.
+  core.String? impressions;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#tvCampaignSummary".
+  core.String? kind;
+
+  /// Identifier.
+  ///
+  /// Name of this TV campaign.
+  core.String? name;
+
+  /// Spend across the entire TV campaign.
+  core.double? spend;
+
+  /// The start date of the TV campaign, inclusive.
+  ///
+  /// A string of the format: "yyyy-MM-dd".
+  core.String? startDate;
+
+  /// "CampaignComponentType" of this TV campaign.
+  /// Possible string values are:
+  /// - "CAMPAIGN_COMPONENT_TYPE_UNSPECIFIED" : Required to exist; do not use.
+  /// - "COMPANY" : Company.
+  /// - "BRAND" : Brand.
+  /// - "PRODUCT" : Product.
+  /// - "CAMPAIGN" : Campaign.
+  core.String? type;
+
+  TvCampaignSummary({
+    this.endDate,
+    this.grp,
+    this.id,
+    this.impressions,
+    this.kind,
+    this.name,
+    this.spend,
+    this.startDate,
+    this.type,
+  });
+
+  TvCampaignSummary.fromJson(core.Map json_)
+      : this(
+          endDate: json_['endDate'] as core.String?,
+          grp: json_['grp'] as core.String?,
+          id: json_['id'] as core.String?,
+          impressions: json_['impressions'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          name: json_['name'] as core.String?,
+          spend: (json_['spend'] as core.num?)?.toDouble(),
+          startDate: json_['startDate'] as core.String?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endDate != null) 'endDate': endDate!,
+        if (grp != null) 'grp': grp!,
+        if (id != null) 'id': id!,
+        if (impressions != null) 'impressions': impressions!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (spend != null) 'spend': spend!,
+        if (startDate != null) 'startDate': startDate!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// A single data point for TvCampaignDetail, which holds information about the
+/// TV campaign for a specific start date and date window.
+class TvCampaignTimepoint {
+  /// The date window of the timepoint.
+  /// Possible string values are:
+  /// - "WEEKS_UNSPECIFIED" : Default value, should never be set.
+  /// - "WEEKS_ONE" : One week.
+  /// - "WEEKS_FOUR" : Four weeks.
+  /// - "WEEKS_EIGHT" : Eight weeks.
+  /// - "WEEKS_TWELVE" : Twelve weeks.
+  core.String? dateWindow;
+
+  /// The spend within the time range of the timepoint.
+  core.double? spend;
+
+  /// The start date of the timepoint.
+  ///
+  /// A string in the format of "yyyy-MM-dd".
+  core.String? startDate;
+
+  TvCampaignTimepoint({
+    this.dateWindow,
+    this.spend,
+    this.startDate,
+  });
+
+  TvCampaignTimepoint.fromJson(core.Map json_)
+      : this(
+          dateWindow: json_['dateWindow'] as core.String?,
+          spend: (json_['spend'] as core.num?)?.toDouble(),
+          startDate: json_['startDate'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dateWindow != null) 'dateWindow': dateWindow!,
+        if (spend != null) 'spend': spend!,
+        if (startDate != null) 'startDate': startDate!,
+      };
+}
+
 /// A Universal Ad ID as per the VAST 4.0 spec.
 ///
 /// Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO
@@ -28347,55 +28451,6 @@ class UserRolesListResponse {
       };
 }
 
-/// Defines the filtering on a single uvar.
-class UvarFilter {
-  /// Return rows which don't match this filter.
-  core.bool? complement;
-
-  /// Custom variable index the filter is applied to.
-  core.String? index;
-
-  /// The kind of resource this is, in this case dfareporting#uvarFilter.
-  core.String? kind;
-
-  /// Indicates how the filter should be matched to the values.
-  /// Possible string values are:
-  /// - "UNSPECIFIED"
-  /// - "EXACT"
-  /// - "CONTAINS"
-  core.String? match;
-
-  /// Values to filter on.
-  core.List<core.String>? values;
-
-  UvarFilter({
-    this.complement,
-    this.index,
-    this.kind,
-    this.match,
-    this.values,
-  });
-
-  UvarFilter.fromJson(core.Map json_)
-      : this(
-          complement: json_['complement'] as core.bool?,
-          index: json_['index'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          match: json_['match'] as core.String?,
-          values: (json_['values'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (complement != null) 'complement': complement!,
-        if (index != null) 'index': index!,
-        if (kind != null) 'kind': kind!,
-        if (match != null) 'match': match!,
-        if (values != null) 'values': values!,
-      };
-}
-
 /// Contains information about supported video formats.
 class VideoFormat {
   /// File type of the video format.
@@ -28545,6 +28600,15 @@ class VideoSettings {
   core.String? orientation;
 
   /// Publisher specification ID of a video placement.
+  ///
+  /// Possible values are: * `1`, Hulu * `2`, NBC * `3`, CBS * `4`, CBS Desktop
+  /// * `5`, Discovery * `6`, VEVO HD * `7`, VEVO Vertical * `8`, Fox * `9`, CW
+  /// Network * `10`, Disney * `11`, IGN * `12`, NFL.com * `13`, Turner
+  /// Broadcasting * `14`, Tubi on Fox * `15`, Hearst Corporation * `16`, Twitch
+  /// Desktop * `17`, ABC * `18`, Univision * `19`, MLB.com * `20`, MLB.com
+  /// Mobile * `21`, MLB.com OTT * `22`, Polsat * `23`, TVN * `24`, Mediaset *
+  /// `25`, Antena 3 * `26`, Mediamond * `27`, Sky Italia * `28`, Tubi on CBS *
+  /// `29`, Spotify * `30`, Paramount * `31`, Max
   core.String? publisherSpecificationId;
 
   /// Settings for the skippability of video creatives served to this placement.

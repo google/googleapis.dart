@@ -619,7 +619,43 @@ class AnnotateTextResponse {
 }
 
 /// Represents a category returned from the text classifier.
-typedef ClassificationCategory = $ClassificationCategory;
+class ClassificationCategory {
+  /// The classifier's confidence of the category.
+  ///
+  /// Number represents how certain the classifier is that this category
+  /// represents the given text.
+  core.double? confidence;
+
+  /// The name of the category representing the document.
+  core.String? name;
+
+  /// The classifier's severity of the category.
+  ///
+  /// This is only present when the ModerateTextRequest.ModelVersion is set to
+  /// MODEL_VERSION_2, and the corresponding category has a severity score.
+  ///
+  /// Optional.
+  core.double? severity;
+
+  ClassificationCategory({
+    this.confidence,
+    this.name,
+    this.severity,
+  });
+
+  ClassificationCategory.fromJson(core.Map json_)
+      : this(
+          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          name: json_['name'] as core.String?,
+          severity: (json_['severity'] as core.num?)?.toDouble(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (confidence != null) 'confidence': confidence!,
+        if (name != null) 'name': name!,
+        if (severity != null) 'severity': severity!,
+      };
+}
 
 /// The document classification request message.
 class ClassifyTextRequest {
@@ -902,8 +938,22 @@ class ModerateTextRequest {
   /// Required.
   Document? document;
 
+  /// The model version to use for ModerateText.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MODEL_VERSION_UNSPECIFIED" : The default model version.
+  /// - "MODEL_VERSION_1" : Use the v1 model, this model is used by default when
+  /// not provided. The v1 model only returns probability (confidence) score for
+  /// each category.
+  /// - "MODEL_VERSION_2" : Use the v2 model. The v2 model only returns
+  /// probability (confidence) score for each category, and returns severity
+  /// score for a subset of the categories.
+  core.String? modelVersion;
+
   ModerateTextRequest({
     this.document,
+    this.modelVersion,
   });
 
   ModerateTextRequest.fromJson(core.Map json_)
@@ -912,10 +962,12 @@ class ModerateTextRequest {
               ? Document.fromJson(
                   json_['document'] as core.Map<core.String, core.dynamic>)
               : null,
+          modelVersion: json_['modelVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (document != null) 'document': document!,
+        if (modelVersion != null) 'modelVersion': modelVersion!,
       };
 }
 

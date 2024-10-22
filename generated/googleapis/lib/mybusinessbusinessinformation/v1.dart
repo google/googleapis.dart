@@ -2858,7 +2858,7 @@ class StructuredServiceItem {
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-typedef TimeOfDay = $TimeOfDay;
+typedef TimeOfDay = $TimeOfDay00;
 
 /// Represents a span of time that the business is open, starting on the
 /// specified open day/time and closing on the specified close day/time.

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240611",
+    "revision": "20230802",
     "rootUrl": "https://firebaseml.googleapis.com/",
     "servicePath": "",
     "title": "Firebase ML API",

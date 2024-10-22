@@ -2911,11 +2911,20 @@ class GoogleCloudRecommenderV1Impact {
   /// Use with CategoryType.COST
   GoogleCloudRecommenderV1CostProjection? costProjection;
 
+  /// If populated, the impact contains multiple components.
+  ///
+  /// In this case, the top-level impact contains aggregated values and each
+  /// component contains per-service details.
+  core.List<GoogleCloudRecommenderV1Impact>? impactComponents;
+
   /// Use with CategoryType.RELIABILITY
   GoogleCloudRecommenderV1ReliabilityProjection? reliabilityProjection;
 
   /// Use with CategoryType.SECURITY
   GoogleCloudRecommenderV1SecurityProjection? securityProjection;
+
+  /// The service that this impact is associated with.
+  core.String? service;
 
   /// Use with CategoryType.SUSTAINABILITY
   GoogleCloudRecommenderV1SustainabilityProjection? sustainabilityProjection;
@@ -2923,8 +2932,10 @@ class GoogleCloudRecommenderV1Impact {
   GoogleCloudRecommenderV1Impact({
     this.category,
     this.costProjection,
+    this.impactComponents,
     this.reliabilityProjection,
     this.securityProjection,
+    this.service,
     this.sustainabilityProjection,
   });
 
@@ -2936,6 +2947,10 @@ class GoogleCloudRecommenderV1Impact {
                   json_['costProjection']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          impactComponents: (json_['impactComponents'] as core.List?)
+              ?.map((value) => GoogleCloudRecommenderV1Impact.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           reliabilityProjection: json_.containsKey('reliabilityProjection')
               ? GoogleCloudRecommenderV1ReliabilityProjection.fromJson(
                   json_['reliabilityProjection']
@@ -2946,6 +2961,7 @@ class GoogleCloudRecommenderV1Impact {
                   json_['securityProjection']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          service: json_['service'] as core.String?,
           sustainabilityProjection:
               json_.containsKey('sustainabilityProjection')
                   ? GoogleCloudRecommenderV1SustainabilityProjection.fromJson(
@@ -2957,10 +2973,12 @@ class GoogleCloudRecommenderV1Impact {
   core.Map<core.String, core.dynamic> toJson() => {
         if (category != null) 'category': category!,
         if (costProjection != null) 'costProjection': costProjection!,
+        if (impactComponents != null) 'impactComponents': impactComponents!,
         if (reliabilityProjection != null)
           'reliabilityProjection': reliabilityProjection!,
         if (securityProjection != null)
           'securityProjection': securityProjection!,
+        if (service != null) 'service': service!,
         if (sustainabilityProjection != null)
           'sustainabilityProjection': sustainabilityProjection!,
       };

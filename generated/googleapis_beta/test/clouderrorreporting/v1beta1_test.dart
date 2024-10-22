@@ -563,6 +563,23 @@ void checkUnnamed6(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed7() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed7(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 void main() {
   unittest.group('obj-schema-DeleteEventsResponse', () {
     unittest.test('to-json--from-json', () async {
@@ -1101,6 +1118,392 @@ void main() {
     unittest.test('method--update', () async {
       final mock = HttpServerMock();
       final res = api.ClouderrorreportingApi(mock).projects.groups;
+      final arg_request = buildErrorGroup();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ErrorGroup.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkErrorGroup(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals('v1beta1/'),
+        );
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildErrorGroup());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkErrorGroup(response as api.ErrorGroup);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsResource', () {
+    unittest.test('method--deleteEvents', () async {
+      final mock = HttpServerMock();
+      final res = api.ClouderrorreportingApi(mock).projects.locations;
+      final arg_projectName = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals('v1beta1/'),
+        );
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildDeleteEventsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.deleteEvents(arg_projectName, $fields: arg_$fields);
+      checkDeleteEventsResponse(response as api.DeleteEventsResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsEventsResource', () {
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.ClouderrorreportingApi(mock).projects.locations.events;
+      final arg_projectName = 'foo';
+      final arg_groupId = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_serviceFilter_resourceType = 'foo';
+      final arg_serviceFilter_service = 'foo';
+      final arg_serviceFilter_version = 'foo';
+      final arg_timeRange_period = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals('v1beta1/'),
+        );
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['groupId']!.first,
+          unittest.equals(arg_groupId),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['serviceFilter.resourceType']!.first,
+          unittest.equals(arg_serviceFilter_resourceType),
+        );
+        unittest.expect(
+          queryMap['serviceFilter.service']!.first,
+          unittest.equals(arg_serviceFilter_service),
+        );
+        unittest.expect(
+          queryMap['serviceFilter.version']!.first,
+          unittest.equals(arg_serviceFilter_version),
+        );
+        unittest.expect(
+          queryMap['timeRange.period']!.first,
+          unittest.equals(arg_timeRange_period),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListEventsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_projectName,
+          groupId: arg_groupId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          serviceFilter_resourceType: arg_serviceFilter_resourceType,
+          serviceFilter_service: arg_serviceFilter_service,
+          serviceFilter_version: arg_serviceFilter_version,
+          timeRange_period: arg_timeRange_period,
+          $fields: arg_$fields);
+      checkListEventsResponse(response as api.ListEventsResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsGroupStatsResource', () {
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.ClouderrorreportingApi(mock).projects.locations.groupStats;
+      final arg_projectName = 'foo';
+      final arg_alignment = 'foo';
+      final arg_alignmentTime = 'foo';
+      final arg_groupId = buildUnnamed7();
+      final arg_order = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_serviceFilter_resourceType = 'foo';
+      final arg_serviceFilter_service = 'foo';
+      final arg_serviceFilter_version = 'foo';
+      final arg_timeRange_period = 'foo';
+      final arg_timedCountDuration = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals('v1beta1/'),
+        );
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['alignment']!.first,
+          unittest.equals(arg_alignment),
+        );
+        unittest.expect(
+          queryMap['alignmentTime']!.first,
+          unittest.equals(arg_alignmentTime),
+        );
+        unittest.expect(
+          queryMap['groupId']!,
+          unittest.equals(arg_groupId),
+        );
+        unittest.expect(
+          queryMap['order']!.first,
+          unittest.equals(arg_order),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['serviceFilter.resourceType']!.first,
+          unittest.equals(arg_serviceFilter_resourceType),
+        );
+        unittest.expect(
+          queryMap['serviceFilter.service']!.first,
+          unittest.equals(arg_serviceFilter_service),
+        );
+        unittest.expect(
+          queryMap['serviceFilter.version']!.first,
+          unittest.equals(arg_serviceFilter_version),
+        );
+        unittest.expect(
+          queryMap['timeRange.period']!.first,
+          unittest.equals(arg_timeRange_period),
+        );
+        unittest.expect(
+          queryMap['timedCountDuration']!.first,
+          unittest.equals(arg_timedCountDuration),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListGroupStatsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_projectName,
+          alignment: arg_alignment,
+          alignmentTime: arg_alignmentTime,
+          groupId: arg_groupId,
+          order: arg_order,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          serviceFilter_resourceType: arg_serviceFilter_resourceType,
+          serviceFilter_service: arg_serviceFilter_service,
+          serviceFilter_version: arg_serviceFilter_version,
+          timeRange_period: arg_timeRange_period,
+          timedCountDuration: arg_timedCountDuration,
+          $fields: arg_$fields);
+      checkListGroupStatsResponse(response as api.ListGroupStatsResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsGroupsResource', () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.ClouderrorreportingApi(mock).projects.locations.groups;
+      final arg_groupName = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals('v1beta1/'),
+        );
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildErrorGroup());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_groupName, $fields: arg_$fields);
+      checkErrorGroup(response as api.ErrorGroup);
+    });
+
+    unittest.test('method--update', () async {
+      final mock = HttpServerMock();
+      final res = api.ClouderrorreportingApi(mock).projects.locations.groups;
       final arg_request = buildErrorGroup();
       final arg_name = 'foo';
       final arg_$fields = 'foo';

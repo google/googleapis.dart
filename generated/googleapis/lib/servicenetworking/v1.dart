@@ -1810,6 +1810,19 @@ class AddSubnetworkRequest {
   /// Optional.
   core.List<SecondaryIpRangeSpec>? secondaryIpRangeSpecs;
 
+  /// Skips validating if the requested_address is in use by SN VPC’s peering
+  /// group.
+  ///
+  /// Compute Engine will still perform this check and fail the request if the
+  /// requested_address is in use. Note that Compute Engine does not check for
+  /// the existence of dynamic routes when performing this check. Caller of this
+  /// API should make sure that there are no dynamic routes overlapping with the
+  /// requested_address/prefix_length IP address range otherwise the created
+  /// subnet could cause misrouting.
+  ///
+  /// Optional.
+  core.bool? skipRequestedAddressValidation;
+
   /// A name for the new subnet.
   ///
   /// For information about the naming requirements, see
@@ -1851,6 +1864,7 @@ class AddSubnetworkRequest {
     this.requestedRanges,
     this.role,
     this.secondaryIpRangeSpecs,
+    this.skipRequestedAddressValidation,
     this.subnetwork,
     this.subnetworkUsers,
     this.useCustomComputeIdempotencyWindow,
@@ -1884,6 +1898,8 @@ class AddSubnetworkRequest {
               ?.map((value) => SecondaryIpRangeSpec.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          skipRequestedAddressValidation:
+              json_['skipRequestedAddressValidation'] as core.bool?,
           subnetwork: json_['subnetwork'] as core.String?,
           subnetworkUsers: (json_['subnetworkUsers'] as core.List?)
               ?.map((value) => value as core.String)
@@ -1916,6 +1932,8 @@ class AddSubnetworkRequest {
         if (role != null) 'role': role!,
         if (secondaryIpRangeSpecs != null)
           'secondaryIpRangeSpecs': secondaryIpRangeSpecs!,
+        if (skipRequestedAddressValidation != null)
+          'skipRequestedAddressValidation': skipRequestedAddressValidation!,
         if (subnetwork != null) 'subnetwork': subnetwork!,
         if (subnetworkUsers != null) 'subnetworkUsers': subnetworkUsers!,
         if (useCustomComputeIdempotencyWindow != null)
@@ -2659,9 +2677,11 @@ class PolicyBinding {
   /// must be one of the following: - 'roles/container.hostServiceAgentUser'
   /// applied on the shared VPC host project - 'roles/compute.securityAdmin'
   /// applied on the shared VPC host project - 'roles/compute.networkAdmin'
-  /// applied on the shared VPC host project - 'roles/compute.xpnAdmin' applied
-  /// on the shared VPC host project - 'roles/dns.admin' applied on the shared
-  /// VPC host project - 'roles/logging.admin' applied on the shared VPC host
+  /// applied on the shared VPC host project - 'roles/tpu.xpnAgent' applied on
+  /// the shared VPC host project - 'roles/dns.admin' applied on the shared VPC
+  /// host project - 'roles/logging.admin' applied on the shared VPC host
+  /// project - 'roles/monitoring.viewer' applied on the shared VPC host project
+  /// - 'roles/servicemanagement.quotaViewer' applied on the shared VPC host
   /// project
   ///
   /// Required.
@@ -2971,7 +2991,7 @@ class SecondaryIpRangeSpec {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Represents a subnet that was created or discovered by a private access
 /// management service.

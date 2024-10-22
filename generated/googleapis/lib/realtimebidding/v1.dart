@@ -2811,6 +2811,26 @@ class CreativeServingDecision {
   /// filtered before the auction.
   core.List<core.String>? detectedAttributes;
 
+  /// IDs of the detected categories, if any.
+  ///
+  /// The taxonomy in which the categories are expressed is specified by the
+  /// detected_categories_taxonomy field. Can be used to filter the response of
+  /// the creatives.list method.
+  ///
+  /// Output only.
+  core.List<core.String>? detectedCategories;
+
+  /// The taxonomy in which the detected_categories field is expressed.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "AD_CATEGORY_TAXONOMY_UNSPECIFIED" : Default value that should never be
+  /// used.
+  /// - "IAB_CONTENT_1_0" : IAB Content Taxonomy 1.0. See
+  /// https://github.com/InteractiveAdvertisingBureau/Taxonomies/blob/main/Content%20Taxonomies/Content%20Taxonomy%201.0.tsv
+  /// for more details.
+  core.String? detectedCategoriesTaxonomy;
+
   /// The set of detected destination URLs for the creative.
   ///
   /// Can be used to filter the response of the creatives.list method.
@@ -2882,6 +2902,8 @@ class CreativeServingDecision {
     this.dealsPolicyCompliance,
     this.detectedAdvertisers,
     this.detectedAttributes,
+    this.detectedCategories,
+    this.detectedCategoriesTaxonomy,
     this.detectedClickThroughUrls,
     this.detectedDomains,
     this.detectedLanguages,
@@ -2915,6 +2937,11 @@ class CreativeServingDecision {
           detectedAttributes: (json_['detectedAttributes'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          detectedCategories: (json_['detectedCategories'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          detectedCategoriesTaxonomy:
+              json_['detectedCategoriesTaxonomy'] as core.String?,
           detectedClickThroughUrls:
               (json_['detectedClickThroughUrls'] as core.List?)
                   ?.map((value) => value as core.String)
@@ -2963,6 +2990,10 @@ class CreativeServingDecision {
           'detectedAdvertisers': detectedAdvertisers!,
         if (detectedAttributes != null)
           'detectedAttributes': detectedAttributes!,
+        if (detectedCategories != null)
+          'detectedCategories': detectedCategories!,
+        if (detectedCategoriesTaxonomy != null)
+          'detectedCategoriesTaxonomy': detectedCategoriesTaxonomy!,
         if (detectedClickThroughUrls != null)
           'detectedClickThroughUrls': detectedClickThroughUrls!,
         if (detectedDomains != null) 'detectedDomains': detectedDomains!,
@@ -4754,11 +4785,14 @@ class VideoContent {
   VideoMetadata? videoMetadata;
 
   /// The URL to fetch a video ad.
+  ///
+  /// The URL should return an XML response that conforms to the VAST 2.0, 3.0
+  /// or 4.x standard.
   core.String? videoUrl;
 
   /// The contents of a VAST document for a video ad.
   ///
-  /// This document should conform to the VAST 2.0 or 3.0 standard.
+  /// This document should conform to the VAST 2.0, 3.0, or 4.x standard.
   core.String? videoVastXml;
 
   VideoContent({

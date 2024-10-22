@@ -3690,7 +3690,7 @@ class Statefile {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// TerraformBlueprint describes the source of a Terraform root module which
 /// describes the resources and configs to be deployed.
@@ -3699,13 +3699,9 @@ class TerraformBlueprint {
   ///
   /// Format: `gs://{bucket}/{object}` URI may also specify an object version
   /// for zipped objects. Format: `gs://{bucket}/{object}#{version}`
-  ///
-  /// Required.
   core.String? gcsSource;
 
   /// URI of a public Git repo.
-  ///
-  /// Required.
   GitSource? gitSource;
 
   /// Input variable values for the Terraform blueprint.

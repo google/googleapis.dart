@@ -632,13 +632,15 @@ class ProjectsLocationsTransferConfigsResource {
   /// match - the request will fail.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [authorizationCode] - Optional OAuth2 authorization code to use with this
-  /// transfer configuration. This is required only if
-  /// `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are
-  /// needed, as indicated by `CheckValidCreds`. In order to obtain
-  /// authorization_code, make a request to the following URL:
+  /// [authorizationCode] - Deprecated: Authorization code was required when
+  /// `transferConfig.dataSourceId` is 'youtube_channel' but it is no longer
+  /// used in any data sources. Use `version_info` instead. Optional OAuth2
+  /// authorization code to use with this transfer configuration. This is
+  /// required only if `transferConfig.dataSourceId` is 'youtube_channel' and
+  /// new credentials are needed, as indicated by `CheckValidCreds`. In order to
+  /// obtain authorization_code, make a request to the following URL:
   /// https://bigquery.cloud.google.com/datatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code&client_id=client_id&scope=data_source_scopes
-  /// * The client_id is the OAuth client_id of the a data source as returned by
+  /// * The client_id is the OAuth client_id of the data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to create the transfer config.
@@ -651,12 +653,13 @@ class ProjectsLocationsTransferConfigsResource {
   /// the latest list of data sources, read about
   /// [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
   ///
-  /// [versionInfo] - Optional version info. This is required only if
-  /// `transferConfig.dataSourceId` is not 'youtube_channel' and new credentials
-  /// are needed, as indicated by `CheckValidCreds`. In order to obtain version
-  /// info, make a request to the following URL:
+  /// [versionInfo] - Optional version info. This parameter replaces
+  /// `authorization_code` which is no longer used in any data sources. This is
+  /// required only if `transferConfig.dataSourceId` is 'youtube_channel' *or*
+  /// new credentials are needed, as indicated by `CheckValidCreds`. In order to
+  /// obtain version info, make a request to the following URL:
   /// https://bigquery.cloud.google.com/datatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info&client_id=client_id&scope=data_source_scopes
-  /// * The client_id is the OAuth client_id of the a data source as returned by
+  /// * The client_id is the OAuth client_id of the data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to create the transfer config.
@@ -851,13 +854,15 @@ class ProjectsLocationsTransferConfigsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
-  /// [authorizationCode] - Optional OAuth2 authorization code to use with this
-  /// transfer configuration. This is required only if
-  /// `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are
-  /// needed, as indicated by `CheckValidCreds`. In order to obtain
-  /// authorization_code, make a request to the following URL:
+  /// [authorizationCode] - Deprecated: Authorization code was required when
+  /// `transferConfig.dataSourceId` is 'youtube_channel' but it is no longer
+  /// used in any data sources. Use `version_info` instead. Optional OAuth2
+  /// authorization code to use with this transfer configuration. This is
+  /// required only if `transferConfig.dataSourceId` is 'youtube_channel' and
+  /// new credentials are needed, as indicated by `CheckValidCreds`. In order to
+  /// obtain authorization_code, make a request to the following URL:
   /// https://bigquery.cloud.google.com/datatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code&client_id=client_id&scope=data_source_scopes
-  /// * The client_id is the OAuth client_id of the a data source as returned by
+  /// * The client_id is the OAuth client_id of the data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to update the transfer config.
@@ -873,12 +878,13 @@ class ProjectsLocationsTransferConfigsResource {
   /// [updateMask] - Required. Required list of fields to be updated in this
   /// request.
   ///
-  /// [versionInfo] - Optional version info. This is required only if
-  /// `transferConfig.dataSourceId` is not 'youtube_channel' and new credentials
-  /// are needed, as indicated by `CheckValidCreds`. In order to obtain version
-  /// info, make a request to the following URL:
+  /// [versionInfo] - Optional version info. This parameter replaces
+  /// `authorization_code` which is no longer used in any data sources. This is
+  /// required only if `transferConfig.dataSourceId` is 'youtube_channel' *or*
+  /// new credentials are needed, as indicated by `CheckValidCreds`. In order to
+  /// obtain version info, make a request to the following URL:
   /// https://bigquery.cloud.google.com/datatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info&client_id=client_id&scope=data_source_scopes
-  /// * The client_id is the OAuth client_id of the a data source as returned by
+  /// * The client_id is the OAuth client_id of the data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to update the transfer config.
@@ -1264,13 +1270,15 @@ class ProjectsTransferConfigsResource {
   /// match - the request will fail.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [authorizationCode] - Optional OAuth2 authorization code to use with this
-  /// transfer configuration. This is required only if
-  /// `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are
-  /// needed, as indicated by `CheckValidCreds`. In order to obtain
-  /// authorization_code, make a request to the following URL:
+  /// [authorizationCode] - Deprecated: Authorization code was required when
+  /// `transferConfig.dataSourceId` is 'youtube_channel' but it is no longer
+  /// used in any data sources. Use `version_info` instead. Optional OAuth2
+  /// authorization code to use with this transfer configuration. This is
+  /// required only if `transferConfig.dataSourceId` is 'youtube_channel' and
+  /// new credentials are needed, as indicated by `CheckValidCreds`. In order to
+  /// obtain authorization_code, make a request to the following URL:
   /// https://bigquery.cloud.google.com/datatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code&client_id=client_id&scope=data_source_scopes
-  /// * The client_id is the OAuth client_id of the a data source as returned by
+  /// * The client_id is the OAuth client_id of the data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to create the transfer config.
@@ -1283,12 +1291,13 @@ class ProjectsTransferConfigsResource {
   /// the latest list of data sources, read about
   /// [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
   ///
-  /// [versionInfo] - Optional version info. This is required only if
-  /// `transferConfig.dataSourceId` is not 'youtube_channel' and new credentials
-  /// are needed, as indicated by `CheckValidCreds`. In order to obtain version
-  /// info, make a request to the following URL:
+  /// [versionInfo] - Optional version info. This parameter replaces
+  /// `authorization_code` which is no longer used in any data sources. This is
+  /// required only if `transferConfig.dataSourceId` is 'youtube_channel' *or*
+  /// new credentials are needed, as indicated by `CheckValidCreds`. In order to
+  /// obtain version info, make a request to the following URL:
   /// https://bigquery.cloud.google.com/datatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info&client_id=client_id&scope=data_source_scopes
-  /// * The client_id is the OAuth client_id of the a data source as returned by
+  /// * The client_id is the OAuth client_id of the data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to create the transfer config.
@@ -1480,13 +1489,15 @@ class ProjectsTransferConfigsResource {
   /// ignored when creating a transfer config.
   /// Value must have pattern `^projects/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
-  /// [authorizationCode] - Optional OAuth2 authorization code to use with this
-  /// transfer configuration. This is required only if
-  /// `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are
-  /// needed, as indicated by `CheckValidCreds`. In order to obtain
-  /// authorization_code, make a request to the following URL:
+  /// [authorizationCode] - Deprecated: Authorization code was required when
+  /// `transferConfig.dataSourceId` is 'youtube_channel' but it is no longer
+  /// used in any data sources. Use `version_info` instead. Optional OAuth2
+  /// authorization code to use with this transfer configuration. This is
+  /// required only if `transferConfig.dataSourceId` is 'youtube_channel' and
+  /// new credentials are needed, as indicated by `CheckValidCreds`. In order to
+  /// obtain authorization_code, make a request to the following URL:
   /// https://bigquery.cloud.google.com/datatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code&client_id=client_id&scope=data_source_scopes
-  /// * The client_id is the OAuth client_id of the a data source as returned by
+  /// * The client_id is the OAuth client_id of the data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to update the transfer config.
@@ -1502,12 +1513,13 @@ class ProjectsTransferConfigsResource {
   /// [updateMask] - Required. Required list of fields to be updated in this
   /// request.
   ///
-  /// [versionInfo] - Optional version info. This is required only if
-  /// `transferConfig.dataSourceId` is not 'youtube_channel' and new credentials
-  /// are needed, as indicated by `CheckValidCreds`. In order to obtain version
-  /// info, make a request to the following URL:
+  /// [versionInfo] - Optional version info. This parameter replaces
+  /// `authorization_code` which is no longer used in any data sources. This is
+  /// required only if `transferConfig.dataSourceId` is 'youtube_channel' *or*
+  /// new credentials are needed, as indicated by `CheckValidCreds`. In order to
+  /// obtain version info, make a request to the following URL:
   /// https://bigquery.cloud.google.com/datatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info&client_id=client_id&scope=data_source_scopes
-  /// * The client_id is the OAuth client_id of the a data source as returned by
+  /// * The client_id is the OAuth client_id of the data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to update the transfer config.
@@ -2286,6 +2298,29 @@ class EnrollDataSourcesRequest {
       };
 }
 
+/// Options customizing EventDriven transfers schedule.
+class EventDrivenSchedule {
+  /// Pub/Sub subscription name used to receive events.
+  ///
+  /// Only Google Cloud Storage data source support this option. Format:
+  /// projects/{project}/subscriptions/{subscription}
+  core.String? pubsubSubscription;
+
+  EventDrivenSchedule({
+    this.pubsubSubscription,
+  });
+
+  EventDrivenSchedule.fromJson(core.Map json_)
+      : this(
+          pubsubSubscription: json_['pubsubSubscription'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pubsubSubscription != null)
+          'pubsubSubscription': pubsubSubscription!,
+      };
+}
+
 /// Returns list of supported data sources and their metadata.
 class ListDataSourcesResponse {
   /// List of supported data sources and their transfer settings.
@@ -2459,6 +2494,9 @@ class ListTransferRunsResponse {
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
+/// Options customizing manual transfers schedule.
+typedef ManualSchedule = $Empty;
+
 /// Options customizing the data transfer schedule.
 class ScheduleOptions {
   /// If true, automatic scheduling of data transfer runs for this configuration
@@ -2502,6 +2540,59 @@ class ScheduleOptions {
           'disableAutoScheduling': disableAutoScheduling!,
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// V2 options customizing different types of data transfer schedule.
+///
+/// This field supports existing time-based and manual transfer schedule. Also
+/// supports Event-Driven transfer schedule. ScheduleOptionsV2 cannot be used
+/// together with ScheduleOptions/Schedule.
+class ScheduleOptionsV2 {
+  /// Event driven transfer schedule options.
+  ///
+  /// If set, the transfer will be scheduled upon events arrial.
+  EventDrivenSchedule? eventDrivenSchedule;
+
+  /// Manual transfer schedule.
+  ///
+  /// If set, the transfer run will not be auto-scheduled by the system, unless
+  /// the client invokes StartManualTransferRuns. This is equivalent to
+  /// disable_auto_scheduling = true.
+  ManualSchedule? manualSchedule;
+
+  /// Time based transfer schedule options.
+  ///
+  /// This is the default schedule option.
+  TimeBasedSchedule? timeBasedSchedule;
+
+  ScheduleOptionsV2({
+    this.eventDrivenSchedule,
+    this.manualSchedule,
+    this.timeBasedSchedule,
+  });
+
+  ScheduleOptionsV2.fromJson(core.Map json_)
+      : this(
+          eventDrivenSchedule: json_.containsKey('eventDrivenSchedule')
+              ? EventDrivenSchedule.fromJson(json_['eventDrivenSchedule']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          manualSchedule: json_.containsKey('manualSchedule')
+              ? ManualSchedule.fromJson(json_['manualSchedule']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          timeBasedSchedule: json_.containsKey('timeBasedSchedule')
+              ? TimeBasedSchedule.fromJson(json_['timeBasedSchedule']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventDrivenSchedule != null)
+          'eventDrivenSchedule': eventDrivenSchedule!,
+        if (manualSchedule != null) 'manualSchedule': manualSchedule!,
+        if (timeBasedSchedule != null) 'timeBasedSchedule': timeBasedSchedule!,
       };
 }
 
@@ -2626,7 +2717,56 @@ class StartManualTransferRunsResponse {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
+
+/// Options customizing the time based transfer schedule.
+///
+/// Options are migrated from the original ScheduleOptions message.
+class TimeBasedSchedule {
+  /// Defines time to stop scheduling transfer runs.
+  ///
+  /// A transfer run cannot be scheduled at or after the end time. The end time
+  /// can be changed at any moment.
+  core.String? endTime;
+
+  /// Data transfer schedule.
+  ///
+  /// If the data source does not support a custom schedule, this should be
+  /// empty. If it is empty, the default value for the data source will be used.
+  /// The specified times are in UTC. Examples of valid format: `1st,3rd monday
+  /// of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of
+  /// quarter 00:00`. See more explanation about the format here:
+  /// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+  /// NOTE: The minimum interval time between recurring transfers depends on the
+  /// data source; refer to the documentation for your data source.
+  core.String? schedule;
+
+  /// Specifies time to start scheduling transfer runs.
+  ///
+  /// The first run will be scheduled at or after the start time according to a
+  /// recurrence pattern defined in the schedule string. The start time can be
+  /// changed at any moment.
+  core.String? startTime;
+
+  TimeBasedSchedule({
+    this.endTime,
+    this.schedule,
+    this.startTime,
+  });
+
+  TimeBasedSchedule.fromJson(core.Map json_)
+      : this(
+          endTime: json_['endTime'] as core.String?,
+          schedule: json_['schedule'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (schedule != null) 'schedule': schedule!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
 
 /// A specification for a time range, this will request transfer runs with
 /// run_time between start_time (inclusive) and end_time (exclusive).
@@ -2714,6 +2854,12 @@ class TransferConfig {
   /// project default keys if it is absent.
   EncryptionConfiguration? encryptionConfiguration;
 
+  /// Error code with detailed information about reason of the latest config
+  /// failure.
+  ///
+  /// Output only.
+  Status? error;
+
   /// Identifier.
   ///
   /// The resource name of the transfer config. Transfer config names have the
@@ -2770,6 +2916,12 @@ class TransferConfig {
   /// Options customizing the data transfer schedule.
   ScheduleOptions? scheduleOptions;
 
+  /// Options customizing different types of data transfer schedule.
+  ///
+  /// This field replaces "schedule" and "schedule_options" fields.
+  /// ScheduleOptionsV2 cannot be used together with ScheduleOptions/Schedule.
+  ScheduleOptionsV2? scheduleOptionsV2;
+
   /// State of the most recently updated transfer run.
   ///
   /// Output only.
@@ -2804,6 +2956,7 @@ class TransferConfig {
     this.displayName,
     this.emailPreferences,
     this.encryptionConfiguration,
+    this.error,
     this.name,
     this.nextRunTime,
     this.notificationPubsubTopic,
@@ -2811,6 +2964,7 @@ class TransferConfig {
     this.params,
     this.schedule,
     this.scheduleOptions,
+    this.scheduleOptionsV2,
     this.state,
     this.updateTime,
     this.userId,
@@ -2833,6 +2987,10 @@ class TransferConfig {
                   json_['encryptionConfiguration']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          error: json_.containsKey('error')
+              ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_['name'] as core.String?,
           nextRunTime: json_['nextRunTime'] as core.String?,
           notificationPubsubTopic:
@@ -2847,6 +3005,10 @@ class TransferConfig {
           schedule: json_['schedule'] as core.String?,
           scheduleOptions: json_.containsKey('scheduleOptions')
               ? ScheduleOptions.fromJson(json_['scheduleOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          scheduleOptionsV2: json_.containsKey('scheduleOptionsV2')
+              ? ScheduleOptionsV2.fromJson(json_['scheduleOptionsV2']
                   as core.Map<core.String, core.dynamic>)
               : null,
           state: json_['state'] as core.String?,
@@ -2866,6 +3028,7 @@ class TransferConfig {
         if (emailPreferences != null) 'emailPreferences': emailPreferences!,
         if (encryptionConfiguration != null)
           'encryptionConfiguration': encryptionConfiguration!,
+        if (error != null) 'error': error!,
         if (name != null) 'name': name!,
         if (nextRunTime != null) 'nextRunTime': nextRunTime!,
         if (notificationPubsubTopic != null)
@@ -2874,6 +3037,7 @@ class TransferConfig {
         if (params != null) 'params': params!,
         if (schedule != null) 'schedule': schedule!,
         if (scheduleOptions != null) 'scheduleOptions': scheduleOptions!,
+        if (scheduleOptionsV2 != null) 'scheduleOptionsV2': scheduleOptionsV2!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (userId != null) 'userId': userId!,

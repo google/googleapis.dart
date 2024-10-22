@@ -15,7 +15,7 @@ import 'src/utils.dart';
 Future<List<RestDescription>> downloadDiscoveryDocuments(
   String outputDir,
 ) async {
-  final apis = await const FetchCore.service().fetchDiscoveryDocuments();
+  final apis = await const FetchCore.github().fetchDiscoveryDocuments();
   writeDiscoveryDocuments(outputDir, apis);
   return apis;
 }

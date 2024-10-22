@@ -2337,43 +2337,20 @@ class AcknowledgeRequest {
       };
 }
 
+/// Information about an associated Analytics Hub subscription
+/// (https://cloud.google.com/bigquery/docs/analytics-hub-manage-subscriptions).
+typedef AnalyticsHubSubscriptionInfo = $AnalyticsHubSubscriptionInfo;
+
 /// Configuration for writing message data in Avro format.
 ///
 /// Message payloads and metadata will be written to files as an Avro binary.
-class AvroConfig {
-  /// When true, the output Cloud Storage file will be serialized using the
-  /// topic schema, if it exists.
-  ///
-  /// Optional.
-  core.bool? useTopicSchema;
+typedef AvroConfig = $AvroConfig;
 
-  /// When true, write the subscription name, message_id, publish_time,
-  /// attributes, and ordering_key as additional fields in the output.
-  ///
-  /// The subscription name, message_id, and publish_time fields are put in
-  /// their own fields while all other message properties other than data (for
-  /// example, an ordering_key, if present) are added as entries in the
-  /// attributes map.
-  ///
-  /// Optional.
-  core.bool? writeMetadata;
-
-  AvroConfig({
-    this.useTopicSchema,
-    this.writeMetadata,
-  });
-
-  AvroConfig.fromJson(core.Map json_)
-      : this(
-          useTopicSchema: json_['useTopicSchema'] as core.bool?,
-          writeMetadata: json_['writeMetadata'] as core.bool?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (useTopicSchema != null) 'useTopicSchema': useTopicSchema!,
-        if (writeMetadata != null) 'writeMetadata': writeMetadata!,
-      };
-}
+/// Configuration for reading Cloud Storage data in Avro binary format.
+///
+/// The bytes of each object will be set to the `data` field of a Pub/Sub
+/// message.
+typedef AvroFormat = $Empty;
 
 /// Ingestion settings for Amazon Kinesis Data Streams.
 class AwsKinesis {
@@ -2457,116 +2434,7 @@ class AwsKinesis {
 }
 
 /// Configuration for a BigQuery subscription.
-class BigQueryConfig {
-  /// When true and use_topic_schema is true, any fields that are a part of the
-  /// topic schema that are not part of the BigQuery table schema are dropped
-  /// when writing to BigQuery.
-  ///
-  /// Otherwise, the schemas must be kept in sync and any messages with extra
-  /// fields are not written and remain in the subscription's backlog.
-  ///
-  /// Optional.
-  core.bool? dropUnknownFields;
-
-  /// The service account to use to write to BigQuery.
-  ///
-  /// The subscription creator or updater that specifies this field must have
-  /// `iam.serviceAccounts.actAs` permission on the service account. If not
-  /// specified, the Pub/Sub
-  /// [service agent](https://cloud.google.com/iam/docs/service-agents),
-  /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
-  ///
-  /// Optional.
-  core.String? serviceAccountEmail;
-
-  /// An output-only field that indicates whether or not the subscription can
-  /// receive messages.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
-  /// - "ACTIVE" : The subscription can actively send messages to BigQuery
-  /// - "PERMISSION_DENIED" : Cannot write to the BigQuery table because of
-  /// permission denied errors. This can happen if - Pub/Sub SA has not been
-  /// granted the
-  /// [appropriate BigQuery IAM permissions](https://cloud.google.com/pubsub/docs/create-subscription#assign_bigquery_service_account)
-  /// - bigquery.googleapis.com API is not enabled for the project
-  /// ([instructions](https://cloud.google.com/service-usage/docs/enable-disable))
-  /// - "NOT_FOUND" : Cannot write to the BigQuery table because it does not
-  /// exist.
-  /// - "SCHEMA_MISMATCH" : Cannot write to the BigQuery table due to a schema
-  /// mismatch.
-  /// - "IN_TRANSIT_LOCATION_RESTRICTION" : Cannot write to the destination
-  /// because enforce_in_transit is set to true and the destination locations
-  /// are not in the allowed regions.
-  core.String? state;
-
-  /// The name of the table to which to write data, of the form
-  /// {projectId}.{datasetId}.{tableId}
-  ///
-  /// Optional.
-  core.String? table;
-
-  /// When true, use the BigQuery table's schema as the columns to write to in
-  /// BigQuery.
-  ///
-  /// `use_table_schema` and `use_topic_schema` cannot be enabled at the same
-  /// time.
-  ///
-  /// Optional.
-  core.bool? useTableSchema;
-
-  /// When true, use the topic's schema as the columns to write to in BigQuery,
-  /// if it exists.
-  ///
-  /// `use_topic_schema` and `use_table_schema` cannot be enabled at the same
-  /// time.
-  ///
-  /// Optional.
-  core.bool? useTopicSchema;
-
-  /// When true, write the subscription name, message_id, publish_time,
-  /// attributes, and ordering_key to additional columns in the table.
-  ///
-  /// The subscription name, message_id, and publish_time fields are put in
-  /// their own columns while all other message properties (other than data) are
-  /// written to a JSON object in the attributes column.
-  ///
-  /// Optional.
-  core.bool? writeMetadata;
-
-  BigQueryConfig({
-    this.dropUnknownFields,
-    this.serviceAccountEmail,
-    this.state,
-    this.table,
-    this.useTableSchema,
-    this.useTopicSchema,
-    this.writeMetadata,
-  });
-
-  BigQueryConfig.fromJson(core.Map json_)
-      : this(
-          dropUnknownFields: json_['dropUnknownFields'] as core.bool?,
-          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
-          state: json_['state'] as core.String?,
-          table: json_['table'] as core.String?,
-          useTableSchema: json_['useTableSchema'] as core.bool?,
-          useTopicSchema: json_['useTopicSchema'] as core.bool?,
-          writeMetadata: json_['writeMetadata'] as core.bool?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dropUnknownFields != null) 'dropUnknownFields': dropUnknownFields!,
-        if (serviceAccountEmail != null)
-          'serviceAccountEmail': serviceAccountEmail!,
-        if (state != null) 'state': state!,
-        if (table != null) 'table': table!,
-        if (useTableSchema != null) 'useTableSchema': useTableSchema!,
-        if (useTopicSchema != null) 'useTopicSchema': useTopicSchema!,
-        if (writeMetadata != null) 'writeMetadata': writeMetadata!,
-      };
-}
+typedef BigQueryConfig = $BigQueryConfig;
 
 /// Associates `members`, or principals, with a `role`.
 class Binding {
@@ -2673,6 +2541,111 @@ class Binding {
       };
 }
 
+/// Ingestion settings for Cloud Storage.
+class CloudStorage {
+  /// Data from Cloud Storage will be interpreted in Avro format.
+  ///
+  /// Optional.
+  AvroFormat? avroFormat;
+
+  /// Cloud Storage bucket.
+  ///
+  /// The bucket name must be without any prefix like "gs://". See the
+  /// [bucket naming requirements](https://cloud.google.com/storage/docs/buckets#naming).
+  ///
+  /// Optional.
+  core.String? bucket;
+
+  /// Glob pattern used to match objects that will be ingested.
+  ///
+  /// If unset, all objects will be ingested. See the
+  /// [supported patterns](https://cloud.google.com/storage/docs/json_api/v1/objects/list#list-objects-and-prefixes-using-glob).
+  ///
+  /// Optional.
+  core.String? matchGlob;
+
+  /// Only objects with a larger or equal creation timestamp will be ingested.
+  ///
+  /// Optional.
+  core.String? minimumObjectCreateTime;
+
+  /// It will be assumed data from Cloud Storage was written via
+  /// [Cloud Storage subscriptions](https://cloud.google.com/pubsub/docs/cloudstorage).
+  ///
+  /// Optional.
+  PubSubAvroFormat? pubsubAvroFormat;
+
+  /// An output-only field that indicates the state of the Cloud Storage
+  /// ingestion source.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ACTIVE" : Ingestion is active.
+  /// - "CLOUD_STORAGE_PERMISSION_DENIED" : Permission denied encountered while
+  /// calling the Cloud Storage API. This can happen if the Pub/Sub SA has not
+  /// been granted the
+  /// [appropriate permissions](https://cloud.google.com/storage/docs/access-control/iam-permissions):
+  /// - storage.objects.list: to list the objects in a bucket. -
+  /// storage.objects.get: to read the objects in a bucket. -
+  /// storage.buckets.get: to verify the bucket exists.
+  /// - "PUBLISH_PERMISSION_DENIED" : Permission denied encountered while
+  /// publishing to the topic. This can happen if the Pub/Sub SA has not been
+  /// granted the
+  /// [appropriate publish permissions](https://cloud.google.com/pubsub/docs/access-control#pubsub.publisher)
+  /// - "BUCKET_NOT_FOUND" : The provided Cloud Storage bucket doesn't exist.
+  /// - "TOO_MANY_OBJECTS" : The Cloud Storage bucket has too many objects,
+  /// ingestion will be paused.
+  core.String? state;
+
+  /// Data from Cloud Storage will be interpreted as text.
+  ///
+  /// Optional.
+  TextFormat? textFormat;
+
+  CloudStorage({
+    this.avroFormat,
+    this.bucket,
+    this.matchGlob,
+    this.minimumObjectCreateTime,
+    this.pubsubAvroFormat,
+    this.state,
+    this.textFormat,
+  });
+
+  CloudStorage.fromJson(core.Map json_)
+      : this(
+          avroFormat: json_.containsKey('avroFormat')
+              ? AvroFormat.fromJson(
+                  json_['avroFormat'] as core.Map<core.String, core.dynamic>)
+              : null,
+          bucket: json_['bucket'] as core.String?,
+          matchGlob: json_['matchGlob'] as core.String?,
+          minimumObjectCreateTime:
+              json_['minimumObjectCreateTime'] as core.String?,
+          pubsubAvroFormat: json_.containsKey('pubsubAvroFormat')
+              ? PubSubAvroFormat.fromJson(json_['pubsubAvroFormat']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          state: json_['state'] as core.String?,
+          textFormat: json_.containsKey('textFormat')
+              ? TextFormat.fromJson(
+                  json_['textFormat'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (avroFormat != null) 'avroFormat': avroFormat!,
+        if (bucket != null) 'bucket': bucket!,
+        if (matchGlob != null) 'matchGlob': matchGlob!,
+        if (minimumObjectCreateTime != null)
+          'minimumObjectCreateTime': minimumObjectCreateTime!,
+        if (pubsubAvroFormat != null) 'pubsubAvroFormat': pubsubAvroFormat!,
+        if (state != null) 'state': state!,
+        if (textFormat != null) 'textFormat': textFormat!,
+      };
+}
+
 /// Configuration for a Cloud Storage subscription.
 class CloudStorageConfig {
   /// If set, message data will be written to Cloud Storage in Avro format.
@@ -2733,6 +2706,14 @@ class CloudStorageConfig {
   /// Optional.
   core.String? maxDuration;
 
+  /// The maximum number of messages that can be written to a Cloud Storage file
+  /// before a new file is created.
+  ///
+  /// Min 1000 messages.
+  ///
+  /// Optional.
+  core.String? maxMessages;
+
   /// The service account to use to write to Cloud Storage.
   ///
   /// The subscription creator or updater that specifies this field must have
@@ -2775,6 +2756,7 @@ class CloudStorageConfig {
     this.filenameSuffix,
     this.maxBytes,
     this.maxDuration,
+    this.maxMessages,
     this.serviceAccountEmail,
     this.state,
     this.textConfig,
@@ -2793,6 +2775,7 @@ class CloudStorageConfig {
           filenameSuffix: json_['filenameSuffix'] as core.String?,
           maxBytes: json_['maxBytes'] as core.String?,
           maxDuration: json_['maxDuration'] as core.String?,
+          maxMessages: json_['maxMessages'] as core.String?,
           serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
           state: json_['state'] as core.String?,
           textConfig: json_.containsKey('textConfig')
@@ -2810,6 +2793,7 @@ class CloudStorageConfig {
         if (filenameSuffix != null) 'filenameSuffix': filenameSuffix!,
         if (maxBytes != null) 'maxBytes': maxBytes!,
         if (maxDuration != null) 'maxDuration': maxDuration!,
+        if (maxMessages != null) 'maxMessages': maxMessages!,
         if (serviceAccountEmail != null)
           'serviceAccountEmail': serviceAccountEmail!,
         if (state != null) 'state': state!,
@@ -2890,49 +2874,7 @@ class CreateSnapshotRequest {
 /// The same message might be dead lettered multiple times. If validation on any
 /// of the fields fails at subscription creation/updation, the create/update
 /// subscription request will fail.
-class DeadLetterPolicy {
-  /// The name of the topic to which dead letter messages should be published.
-  ///
-  /// Format is `projects/{project}/topics/{topic}`.The Pub/Sub service account
-  /// associated with the enclosing subscription's parent project (i.e.,
-  /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
-  /// permission to Publish() to this topic. The operation will fail if the
-  /// topic does not exist. Users should ensure that there is a subscription
-  /// attached to this topic since messages published to a topic with no
-  /// subscriptions are lost.
-  ///
-  /// Optional.
-  core.String? deadLetterTopic;
-
-  /// The maximum number of delivery attempts for any message.
-  ///
-  /// The value must be between 5 and 100. The number of delivery attempts is
-  /// defined as 1 + (the sum of number of NACKs and number of times the
-  /// acknowledgement deadline has been exceeded for the message). A NACK is any
-  /// call to ModifyAckDeadline with a 0 deadline. Note that client libraries
-  /// may automatically extend ack_deadlines. This field will be honored on a
-  /// best effort basis. If this parameter is 0, a default value of 5 is used.
-  ///
-  /// Optional.
-  core.int? maxDeliveryAttempts;
-
-  DeadLetterPolicy({
-    this.deadLetterTopic,
-    this.maxDeliveryAttempts,
-  });
-
-  DeadLetterPolicy.fromJson(core.Map json_)
-      : this(
-          deadLetterTopic: json_['deadLetterTopic'] as core.String?,
-          maxDeliveryAttempts: json_['maxDeliveryAttempts'] as core.int?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (deadLetterTopic != null) 'deadLetterTopic': deadLetterTopic!,
-        if (maxDeliveryAttempts != null)
-          'maxDeliveryAttempts': maxDeliveryAttempts!,
-      };
-}
+typedef DeadLetterPolicy = $DeadLetterPolicy;
 
 /// Response for the DetachSubscription method.
 ///
@@ -2949,31 +2891,7 @@ typedef Empty = $Empty;
 
 /// A policy that specifies the conditions for resource expiration (i.e.,
 /// automatic resource deletion).
-class ExpirationPolicy {
-  /// Specifies the "time-to-live" duration for an associated resource.
-  ///
-  /// The resource expires if it is not active for a period of `ttl`. The
-  /// definition of "activity" depends on the type of the associated resource.
-  /// The minimum and maximum allowed values for `ttl` depend on the type of the
-  /// associated resource, as well. If `ttl` is not set, the associated resource
-  /// never expires.
-  ///
-  /// Optional.
-  core.String? ttl;
-
-  ExpirationPolicy({
-    this.ttl,
-  });
-
-  ExpirationPolicy.fromJson(core.Map json_)
-      : this(
-          ttl: json_['ttl'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (ttl != null) 'ttl': ttl!,
-      };
-}
+typedef ExpirationPolicy = $ExpirationPolicy;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -3002,8 +2920,22 @@ class IngestionDataSourceSettings {
   /// Optional.
   AwsKinesis? awsKinesis;
 
+  /// Cloud Storage.
+  ///
+  /// Optional.
+  CloudStorage? cloudStorage;
+
+  /// Platform Logs settings.
+  ///
+  /// If unset, no Platform Logs will be generated.
+  ///
+  /// Optional.
+  PlatformLogsSettings? platformLogsSettings;
+
   IngestionDataSourceSettings({
     this.awsKinesis,
+    this.cloudStorage,
+    this.platformLogsSettings,
   });
 
   IngestionDataSourceSettings.fromJson(core.Map json_)
@@ -3012,10 +2944,21 @@ class IngestionDataSourceSettings {
               ? AwsKinesis.fromJson(
                   json_['awsKinesis'] as core.Map<core.String, core.dynamic>)
               : null,
+          cloudStorage: json_.containsKey('cloudStorage')
+              ? CloudStorage.fromJson(
+                  json_['cloudStorage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          platformLogsSettings: json_.containsKey('platformLogsSettings')
+              ? PlatformLogsSettings.fromJson(json_['platformLogsSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (awsKinesis != null) 'awsKinesis': awsKinesis!,
+        if (cloudStorage != null) 'cloudStorage': cloudStorage!,
+        if (platformLogsSettings != null)
+          'platformLogsSettings': platformLogsSettings!,
       };
 }
 
@@ -3359,68 +3302,38 @@ class ModifyPushConfigRequest {
 }
 
 /// Sets the `data` field as the HTTP body for delivery.
-class NoWrapper {
-  /// When true, writes the Pub/Sub message metadata to `x-goog-pubsub-:`
-  /// headers of the HTTP request.
-  ///
-  /// Writes the Pub/Sub message attributes to `:` headers of the HTTP request.
-  ///
-  /// Optional.
-  core.bool? writeMetadata;
-
-  NoWrapper({
-    this.writeMetadata,
-  });
-
-  NoWrapper.fromJson(core.Map json_)
-      : this(
-          writeMetadata: json_['writeMetadata'] as core.bool?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (writeMetadata != null) 'writeMetadata': writeMetadata!,
-      };
-}
+typedef NoWrapper = $NoWrapper;
 
 /// Contains information needed for generating an
 /// [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
-class OidcToken {
-  /// Audience to be used when generating OIDC token.
-  ///
-  /// The audience claim identifies the recipients that the JWT is intended for.
-  /// The audience value is a single case-sensitive string. Having multiple
-  /// values (array) for the audience field is not supported. More info about
-  /// the OIDC JWT token audience here:
-  /// https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified,
-  /// the Push endpoint URL will be used.
+typedef OidcToken = $OidcToken;
+
+/// Settings for Platform Logs produced by Pub/Sub.
+class PlatformLogsSettings {
+  /// The minimum severity level of Platform Logs that will be written.
   ///
   /// Optional.
-  core.String? audience;
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Default value. Logs level is unspecified. Logs
+  /// will be disabled.
+  /// - "DISABLED" : Logs will be disabled.
+  /// - "DEBUG" : Debug logs and higher-severity logs will be written.
+  /// - "INFO" : Info logs and higher-severity logs will be written.
+  /// - "WARNING" : Warning logs and higher-severity logs will be written.
+  /// - "ERROR" : Only error logs will be written.
+  core.String? severity;
 
-  /// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
-  /// used for generating the OIDC token.
-  ///
-  /// For more information on setting up authentication, see
-  /// [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
-  ///
-  /// Optional.
-  core.String? serviceAccountEmail;
-
-  OidcToken({
-    this.audience,
-    this.serviceAccountEmail,
+  PlatformLogsSettings({
+    this.severity,
   });
 
-  OidcToken.fromJson(core.Map json_)
+  PlatformLogsSettings.fromJson(core.Map json_)
       : this(
-          audience: json_['audience'] as core.String?,
-          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
+          severity: json_['severity'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audience != null) 'audience': audience!,
-        if (serviceAccountEmail != null)
-          'serviceAccountEmail': serviceAccountEmail!,
+        if (severity != null) 'severity': severity!,
       };
 }
 
@@ -3529,6 +3442,13 @@ class Policy {
         if (version != null) 'version': version!,
       };
 }
+
+/// Configuration for reading Cloud Storage data written via
+/// [Cloud Storage subscriptions](https://cloud.google.com/pubsub/docs/cloudstorage).
+///
+/// The data and attributes fields of the originally exported Pub/Sub message
+/// will be restored when publishing.
+typedef PubSubAvroFormat = $Empty;
 
 /// Request for the Publish method.
 class PublishRequest {
@@ -3816,37 +3736,7 @@ class ReceivedMessage {
 /// given message. Retry Policy is implemented on a best effort basis. At times,
 /// the delay between consecutive deliveries may not match the configuration.
 /// That is, delay can be more or less than configured backoff.
-class RetryPolicy {
-  /// The maximum delay between consecutive deliveries of a given message.
-  ///
-  /// Value should be between 0 and 600 seconds. Defaults to 600 seconds.
-  ///
-  /// Optional.
-  core.String? maximumBackoff;
-
-  /// The minimum delay between consecutive deliveries of a given message.
-  ///
-  /// Value should be between 0 and 600 seconds. Defaults to 10 seconds.
-  ///
-  /// Optional.
-  core.String? minimumBackoff;
-
-  RetryPolicy({
-    this.maximumBackoff,
-    this.minimumBackoff,
-  });
-
-  RetryPolicy.fromJson(core.Map json_)
-      : this(
-          maximumBackoff: json_['maximumBackoff'] as core.String?,
-          minimumBackoff: json_['minimumBackoff'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (maximumBackoff != null) 'maximumBackoff': maximumBackoff!,
-        if (minimumBackoff != null) 'minimumBackoff': minimumBackoff!,
-      };
-}
+typedef RetryPolicy = $RetryPolicy;
 
 /// Request for the `RollbackSchema` method.
 class RollbackSchemaRequest {
@@ -4156,6 +4046,13 @@ class Subscription {
   /// Optional.
   core.int? ackDeadlineSeconds;
 
+  /// Information about the associated Analytics Hub subscription.
+  ///
+  /// Only set if the subscritpion is created by Analytics Hub.
+  ///
+  /// Output only.
+  AnalyticsHubSubscriptionInfo? analyticsHubSubscriptionInfo;
+
   /// If delivery to BigQuery is used with this subscription, this field is used
   /// to configure it.
   ///
@@ -4245,7 +4142,7 @@ class Subscription {
   ///
   /// If `retain_acked_messages` is true, then this also configures the
   /// retention of acknowledged messages, and thus configures how far back in
-  /// time a `Seek` can be done. Defaults to 7 days. Cannot be more than 7 days
+  /// time a `Seek` can be done. Defaults to 7 days. Cannot be more than 31 days
   /// or less than 10 minutes.
   ///
   /// Optional.
@@ -4326,6 +4223,7 @@ class Subscription {
 
   Subscription({
     this.ackDeadlineSeconds,
+    this.analyticsHubSubscriptionInfo,
     this.bigqueryConfig,
     this.cloudStorageConfig,
     this.deadLetterPolicy,
@@ -4348,6 +4246,12 @@ class Subscription {
   Subscription.fromJson(core.Map json_)
       : this(
           ackDeadlineSeconds: json_['ackDeadlineSeconds'] as core.int?,
+          analyticsHubSubscriptionInfo:
+              json_.containsKey('analyticsHubSubscriptionInfo')
+                  ? AnalyticsHubSubscriptionInfo.fromJson(
+                      json_['analyticsHubSubscriptionInfo']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           bigqueryConfig: json_.containsKey('bigqueryConfig')
               ? BigQueryConfig.fromJson(json_['bigqueryConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -4397,6 +4301,8 @@ class Subscription {
   core.Map<core.String, core.dynamic> toJson() => {
         if (ackDeadlineSeconds != null)
           'ackDeadlineSeconds': ackDeadlineSeconds!,
+        if (analyticsHubSubscriptionInfo != null)
+          'analyticsHubSubscriptionInfo': analyticsHubSubscriptionInfo!,
         if (bigqueryConfig != null) 'bigqueryConfig': bigqueryConfig!,
         if (cloudStorageConfig != null)
           'cloudStorageConfig': cloudStorageConfig!,
@@ -4434,6 +4340,30 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 /// Message payloads will be written to files as raw text, separated by a
 /// newline.
 typedef TextConfig = $Empty;
+
+/// Configuration for reading Cloud Storage data in text format.
+///
+/// Each line of text as specified by the delimiter will be set to the `data`
+/// field of a Pub/Sub message.
+class TextFormat {
+  /// When unset, '\n' is used.
+  ///
+  /// Optional.
+  core.String? delimiter;
+
+  TextFormat({
+    this.delimiter,
+  });
+
+  TextFormat.fromJson(core.Map json_)
+      : this(
+          delimiter: json_['delimiter'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (delimiter != null) 'delimiter': delimiter!,
+      };
+}
 
 /// A topic resource.
 class Topic {

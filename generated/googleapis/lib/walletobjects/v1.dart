@@ -6429,6 +6429,9 @@ class EventTicketClass {
   LocalizedString? localizedIssuerName;
 
   /// Note: This field is currently not supported to trigger geo notifications.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<LatLongPoint>? locations;
 
   /// The logo image of the ticket.
@@ -6463,6 +6466,20 @@ class EventTicketClass {
   /// Deprecated.
   /// - "oneUserOneDevice" : Legacy alias for `ONE_USER_ONE_DEVICE`. Deprecated.
   core.String? multipleDevicesAndHoldersAllowedStatus;
+
+  /// Whether or not field updates to this class should trigger notifications.
+  ///
+  /// When set to NOTIFY, we will attempt to trigger a field update notification
+  /// to users. These notifications will only be sent to users if the field is
+  /// part of an allowlist. If not specified, no notification will be triggered.
+  /// This setting is ephemeral and needs to be set with each PATCH or UPDATE
+  /// request, otherwise a notification will not be triggered.
+  /// Possible string values are:
+  /// - "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" : Default behavior is no
+  /// notifications sent.
+  /// - "NOTIFY_ON_UPDATE" : This value will result in a notification being
+  /// sent, if the updated fields are part of an allowlist.
+  core.String? notifyPreference;
 
   /// Identifies which redemption issuers can redeem the pass over Smart Tap.
   ///
@@ -6557,6 +6574,12 @@ class EventTicketClass {
   /// from the class.
   core.List<TextModuleData>? textModulesData;
 
+  /// Optional value added module data.
+  ///
+  /// Maximum of ten on the class. For a pass only ten will be displayed,
+  /// prioritizing those from the object.
+  core.List<ValueAddedModuleData>? valueAddedModuleData;
+
   /// Event venue details.
   EventVenue? venue;
 
@@ -6622,6 +6645,7 @@ class EventTicketClass {
     this.logo,
     this.messages,
     this.multipleDevicesAndHoldersAllowedStatus,
+    this.notifyPreference,
     this.redemptionIssuers,
     this.review,
     this.reviewStatus,
@@ -6630,6 +6654,7 @@ class EventTicketClass {
     this.sectionLabel,
     this.securityAnimation,
     this.textModulesData,
+    this.valueAddedModuleData,
     this.venue,
     this.version,
     this.viewUnlockRequirement,
@@ -6733,6 +6758,7 @@ class EventTicketClass {
               .toList(),
           multipleDevicesAndHoldersAllowedStatus:
               json_['multipleDevicesAndHoldersAllowedStatus'] as core.String?,
+          notifyPreference: json_['notifyPreference'] as core.String?,
           redemptionIssuers: (json_['redemptionIssuers'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -6750,6 +6776,10 @@ class EventTicketClass {
               : null,
           textModulesData: (json_['textModulesData'] as core.List?)
               ?.map((value) => TextModuleData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+              ?.map((value) => ValueAddedModuleData.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           venue: json_.containsKey('venue')
@@ -6808,6 +6838,7 @@ class EventTicketClass {
         if (multipleDevicesAndHoldersAllowedStatus != null)
           'multipleDevicesAndHoldersAllowedStatus':
               multipleDevicesAndHoldersAllowedStatus!,
+        if (notifyPreference != null) 'notifyPreference': notifyPreference!,
         if (redemptionIssuers != null) 'redemptionIssuers': redemptionIssuers!,
         if (review != null) 'review': review!,
         if (reviewStatus != null) 'reviewStatus': reviewStatus!,
@@ -6816,6 +6847,8 @@ class EventTicketClass {
         if (sectionLabel != null) 'sectionLabel': sectionLabel!,
         if (securityAnimation != null) 'securityAnimation': securityAnimation!,
         if (textModulesData != null) 'textModulesData': textModulesData!,
+        if (valueAddedModuleData != null)
+          'valueAddedModuleData': valueAddedModuleData!,
         if (venue != null) 'venue': venue!,
         if (version != null) 'version': version!,
         if (viewUnlockRequirement != null)
@@ -6972,6 +7005,22 @@ class EventTicketObject {
   )
   core.String? kind;
 
+  /// linked_object_ids are a list of other objects such as event ticket,
+  /// loyalty, offer, generic, giftcard, transit and boarding pass that should
+  /// be automatically attached to this event ticket object.
+  ///
+  /// If a user had saved this event ticket, then these linked_object_ids would
+  /// be automatically pushed to the user's wallet (unless they turned off the
+  /// setting to receive such linked passes). Make sure that objects present in
+  /// linked_object_ids are already inserted - if not, calls would fail. Once
+  /// linked, the linked objects cannot be unlinked. You cannot link objects
+  /// belonging to another issuer. There is a limit to the number of objects
+  /// that can be linked to a single object. After the limit is reached, new
+  /// linked objects in the call will be ignored silently. Object IDs should
+  /// follow the format issuer ID. identifier where the former is issued by
+  /// Google and the latter is chosen by you.
+  core.List<core.String>? linkedObjectIds;
+
   /// A list of offer objects linked to this event ticket.
   ///
   /// The offer objects must already exist. Offer object IDs should follow the
@@ -6985,6 +7034,9 @@ class EventTicketObject {
   LinksModuleData? linksModuleData;
 
   /// Note: This field is currently not supported to trigger geo notifications.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<LatLongPoint>? locations;
 
   /// An array of messages displayed in the app.
@@ -6992,6 +7044,21 @@ class EventTicketObject {
   /// All users of this object will receive its associated messages. The maximum
   /// number of these fields is 10.
   core.List<Message>? messages;
+
+  /// Whether or not field updates to this object should trigger notifications.
+  ///
+  /// When set to NOTIFY, we will attempt to trigger a field update notification
+  /// to users. These notifications will only be sent to users if the field is
+  /// part of an allowlist. If set to DO_NOT_NOTIFY or
+  /// NOTIFICATION_SETTINGS_UNSPECIFIED, no notification will be triggered. This
+  /// setting is ephemeral and needs to be set with each PATCH or UPDATE
+  /// request, otherwise a notification will not be triggered.
+  /// Possible string values are:
+  /// - "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" : Default behavior is no
+  /// notifications sent.
+  /// - "NOTIFY_ON_UPDATE" : This value will result in a notification being
+  /// sent, if the updated fields are part of an allowlist.
+  core.String? notifyPreference;
 
   /// Pass constraints for the object.
   ///
@@ -7006,6 +7073,14 @@ class EventTicketObject {
 
   /// The rotating barcode type and value.
   RotatingBarcode? rotatingBarcode;
+
+  /// Restrictions on the object that needs to be verified before the user tries
+  /// to save the pass.
+  ///
+  /// Note that this restrictions will only be applied during save time. If the
+  /// restrictions changed after a user saves the pass, the new restrictions
+  /// will not be applied to an already saved pass.
+  SaveRestrictions? saveRestrictions;
 
   /// Seating details for this ticket.
   EventSeat? seatInfo;
@@ -7065,6 +7140,11 @@ class EventTicketObject {
   /// passed.
   TimeInterval? validTimeInterval;
 
+  /// Optional value added module data.
+  ///
+  /// Maximum of ten on the object.
+  core.List<ValueAddedModuleData>? valueAddedModuleData;
+
   /// Deprecated
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
@@ -7087,13 +7167,16 @@ class EventTicketObject {
     this.imageModulesData,
     this.infoModuleData,
     this.kind,
+    this.linkedObjectIds,
     this.linkedOfferIds,
     this.linksModuleData,
     this.locations,
     this.messages,
+    this.notifyPreference,
     this.passConstraints,
     this.reservationInfo,
     this.rotatingBarcode,
+    this.saveRestrictions,
     this.seatInfo,
     this.smartTapRedemptionValue,
     this.state,
@@ -7102,6 +7185,7 @@ class EventTicketObject {
     this.ticketNumber,
     this.ticketType,
     this.validTimeInterval,
+    this.valueAddedModuleData,
     this.version,
   });
 
@@ -7147,6 +7231,9 @@ class EventTicketObject {
                   as core.Map<core.String, core.dynamic>)
               : null,
           kind: json_['kind'] as core.String?,
+          linkedObjectIds: (json_['linkedObjectIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           linkedOfferIds: (json_['linkedOfferIds'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -7162,6 +7249,7 @@ class EventTicketObject {
               ?.map((value) => Message.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          notifyPreference: json_['notifyPreference'] as core.String?,
           passConstraints: json_.containsKey('passConstraints')
               ? PassConstraints.fromJson(json_['passConstraints']
                   as core.Map<core.String, core.dynamic>)
@@ -7172,6 +7260,10 @@ class EventTicketObject {
               : null,
           rotatingBarcode: json_.containsKey('rotatingBarcode')
               ? RotatingBarcode.fromJson(json_['rotatingBarcode']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          saveRestrictions: json_.containsKey('saveRestrictions')
+              ? SaveRestrictions.fromJson(json_['saveRestrictions']
                   as core.Map<core.String, core.dynamic>)
               : null,
           seatInfo: json_.containsKey('seatInfo')
@@ -7195,6 +7287,10 @@ class EventTicketObject {
               ? TimeInterval.fromJson(json_['validTimeInterval']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+              ?.map((value) => ValueAddedModuleData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           version: json_['version'] as core.String?,
         );
 
@@ -7216,13 +7312,16 @@ class EventTicketObject {
         if (imageModulesData != null) 'imageModulesData': imageModulesData!,
         if (infoModuleData != null) 'infoModuleData': infoModuleData!,
         if (kind != null) 'kind': kind!,
+        if (linkedObjectIds != null) 'linkedObjectIds': linkedObjectIds!,
         if (linkedOfferIds != null) 'linkedOfferIds': linkedOfferIds!,
         if (linksModuleData != null) 'linksModuleData': linksModuleData!,
         if (locations != null) 'locations': locations!,
         if (messages != null) 'messages': messages!,
+        if (notifyPreference != null) 'notifyPreference': notifyPreference!,
         if (passConstraints != null) 'passConstraints': passConstraints!,
         if (reservationInfo != null) 'reservationInfo': reservationInfo!,
         if (rotatingBarcode != null) 'rotatingBarcode': rotatingBarcode!,
+        if (saveRestrictions != null) 'saveRestrictions': saveRestrictions!,
         if (seatInfo != null) 'seatInfo': seatInfo!,
         if (smartTapRedemptionValue != null)
           'smartTapRedemptionValue': smartTapRedemptionValue!,
@@ -7232,6 +7331,8 @@ class EventTicketObject {
         if (ticketNumber != null) 'ticketNumber': ticketNumber!,
         if (ticketType != null) 'ticketType': ticketType!,
         if (validTimeInterval != null) 'validTimeInterval': validTimeInterval!,
+        if (valueAddedModuleData != null)
+          'valueAddedModuleData': valueAddedModuleData!,
         if (version != null) 'version': version!,
       };
 }
@@ -7712,8 +7813,7 @@ class FlightClass {
   /// be specified up to millisecond precision. eg: `2027-03-05T06:30:00` This
   /// should be the local date/time at the airport (not a UTC time). Google will
   /// reject the request if UTC offset is provided. Time zones will be
-  /// calculated by Google based on departure airport. If this is not set,
-  /// Google will set it based on data from other sources.
+  /// calculated by Google based on departure airport.
   core.String? localBoardingDateTime;
 
   /// The estimated time the aircraft plans to reach the destination gate (not
@@ -7727,8 +7827,7 @@ class FlightClass {
   /// to millisecond precision. eg: `2027-03-05T06:30:00` This should be the
   /// local date/time at the airport (not a UTC time). Google will reject the
   /// request if UTC offset is provided. Time zones will be calculated by Google
-  /// based on arrival airport. If this is not set, Google will set it based on
-  /// data from other sources.
+  /// based on arrival airport.
   core.String? localEstimatedOrActualArrivalDateTime;
 
   /// The estimated time the aircraft plans to pull from the gate or the actual
@@ -7743,8 +7842,7 @@ class FlightClass {
   /// `2027-03-05T06:30:00` This should be the local date/time at the airport
   /// (not a UTC time). Google will reject the request if UTC offset is
   /// provided. Time zones will be calculated by Google based on departure
-  /// airport. If this is not set, Google will set it based on data from other
-  /// sources.
+  /// airport.
   core.String? localEstimatedOrActualDepartureDateTime;
 
   /// The gate closing time as it would be printed on the boarding pass.
@@ -7767,8 +7865,7 @@ class FlightClass {
   /// millisecond precision. eg: `2027-03-05T06:30:00` This should be the local
   /// date/time at the airport (not a UTC time). Google will reject the request
   /// if UTC offset is provided. Time zones will be calculated by Google based
-  /// on arrival airport. If this is not set, Google will set it based on data
-  /// from other sources.
+  /// on arrival airport.
   core.String? localScheduledArrivalDateTime;
 
   /// The scheduled date and time when the aircraft is expected to depart the
@@ -7793,6 +7890,9 @@ class FlightClass {
   LocalizedString? localizedIssuerName;
 
   /// Note: This field is currently not supported to trigger geo notifications.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<LatLongPoint>? locations;
 
   /// An array of messages displayed in the app.
@@ -7822,6 +7922,20 @@ class FlightClass {
   /// Deprecated.
   /// - "oneUserOneDevice" : Legacy alias for `ONE_USER_ONE_DEVICE`. Deprecated.
   core.String? multipleDevicesAndHoldersAllowedStatus;
+
+  /// Whether or not field updates to this class should trigger notifications.
+  ///
+  /// When set to NOTIFY, we will attempt to trigger a field update notification
+  /// to users. These notifications will only be sent to users if the field is
+  /// part of an allowlist. If not specified, no notification will be triggered.
+  /// This setting is ephemeral and needs to be set with each PATCH or UPDATE
+  /// request, otherwise a notification will not be triggered.
+  /// Possible string values are:
+  /// - "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" : Default behavior is no
+  /// notifications sent.
+  /// - "NOTIFY_ON_UPDATE" : This value will result in a notification being
+  /// sent, if the updated fields are part of an allowlist.
+  core.String? notifyPreference;
 
   /// Origin airport.
   ///
@@ -7876,6 +7990,12 @@ class FlightClass {
   /// The maximum number of these fields displayed is 10 from the object and 10
   /// from the class.
   core.List<TextModuleData>? textModulesData;
+
+  /// Optional value added module data.
+  ///
+  /// Maximum of ten on the class. For a pass only ten will be displayed,
+  /// prioritizing those from the object.
+  core.List<ValueAddedModuleData>? valueAddedModuleData;
 
   /// Deprecated
   @core.Deprecated(
@@ -7932,12 +8052,14 @@ class FlightClass {
     this.locations,
     this.messages,
     this.multipleDevicesAndHoldersAllowedStatus,
+    this.notifyPreference,
     this.origin,
     this.redemptionIssuers,
     this.review,
     this.reviewStatus,
     this.securityAnimation,
     this.textModulesData,
+    this.valueAddedModuleData,
     this.version,
     this.viewUnlockRequirement,
     this.wordMark,
@@ -8026,6 +8148,7 @@ class FlightClass {
               .toList(),
           multipleDevicesAndHoldersAllowedStatus:
               json_['multipleDevicesAndHoldersAllowedStatus'] as core.String?,
+          notifyPreference: json_['notifyPreference'] as core.String?,
           origin: json_.containsKey('origin')
               ? AirportInfo.fromJson(
                   json_['origin'] as core.Map<core.String, core.dynamic>)
@@ -8044,6 +8167,10 @@ class FlightClass {
               : null,
           textModulesData: (json_['textModulesData'] as core.List?)
               ?.map((value) => TextModuleData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+              ?.map((value) => ValueAddedModuleData.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           version: json_['version'] as core.String?,
@@ -8099,12 +8226,15 @@ class FlightClass {
         if (multipleDevicesAndHoldersAllowedStatus != null)
           'multipleDevicesAndHoldersAllowedStatus':
               multipleDevicesAndHoldersAllowedStatus!,
+        if (notifyPreference != null) 'notifyPreference': notifyPreference!,
         if (origin != null) 'origin': origin!,
         if (redemptionIssuers != null) 'redemptionIssuers': redemptionIssuers!,
         if (review != null) 'review': review!,
         if (reviewStatus != null) 'reviewStatus': reviewStatus!,
         if (securityAnimation != null) 'securityAnimation': securityAnimation!,
         if (textModulesData != null) 'textModulesData': textModulesData!,
+        if (valueAddedModuleData != null)
+          'valueAddedModuleData': valueAddedModuleData!,
         if (version != null) 'version': version!,
         if (viewUnlockRequirement != null)
           'viewUnlockRequirement': viewUnlockRequirement!,
@@ -8331,12 +8461,31 @@ class FlightObject {
   )
   core.String? kind;
 
+  /// linked_object_ids are a list of other objects such as event ticket,
+  /// loyalty, offer, generic, giftcard, transit and boarding pass that should
+  /// be automatically attached to this flight object.
+  ///
+  /// If a user had saved this boarding pass, then these linked_object_ids would
+  /// be automatically pushed to the user's wallet (unless they turned off the
+  /// setting to receive such linked passes). Make sure that objects present in
+  /// linked_object_ids are already inserted - if not, calls would fail. Once
+  /// linked, the linked objects cannot be unlinked. You cannot link objects
+  /// belonging to another issuer. There is a limit to the number of objects
+  /// that can be linked to a single object. After the limit is reached, new
+  /// linked objects in the call will be ignored silently. Object IDs should
+  /// follow the format issuer ID. identifier where the former is issued by
+  /// Google and the latter is chosen by you.
+  core.List<core.String>? linkedObjectIds;
+
   /// Links module data.
   ///
   /// If links module data is also defined on the class, both will be displayed.
   LinksModuleData? linksModuleData;
 
   /// Note: This field is currently not supported to trigger geo notifications.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<LatLongPoint>? locations;
 
   /// An array of messages displayed in the app.
@@ -8344,6 +8493,21 @@ class FlightObject {
   /// All users of this object will receive its associated messages. The maximum
   /// number of these fields is 10.
   core.List<Message>? messages;
+
+  /// Whether or not field updates to this object should trigger notifications.
+  ///
+  /// When set to NOTIFY, we will attempt to trigger a field update notification
+  /// to users. These notifications will only be sent to users if the field is
+  /// part of an allowlist. If set to DO_NOT_NOTIFY or
+  /// NOTIFICATION_SETTINGS_UNSPECIFIED, no notification will be triggered. This
+  /// setting is ephemeral and needs to be set with each PATCH or UPDATE
+  /// request, otherwise a notification will not be triggered.
+  /// Possible string values are:
+  /// - "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" : Default behavior is no
+  /// notifications sent.
+  /// - "NOTIFY_ON_UPDATE" : This value will result in a notification being
+  /// sent, if the updated fields are part of an allowlist.
+  core.String? notifyPreference;
 
   /// Pass constraints for the object.
   ///
@@ -8364,6 +8528,14 @@ class FlightObject {
 
   /// The rotating barcode type and value.
   RotatingBarcode? rotatingBarcode;
+
+  /// Restrictions on the object that needs to be verified before the user tries
+  /// to save the pass.
+  ///
+  /// Note that this restrictions will only be applied during save time. If the
+  /// restrictions changed after a user saves the pass, the new restrictions
+  /// will not be applied to an already saved pass.
+  SaveRestrictions? saveRestrictions;
 
   /// An image for the security program that applies to the passenger.
   Image? securityProgramLogo;
@@ -8407,6 +8579,11 @@ class FlightObject {
   /// passed.
   TimeInterval? validTimeInterval;
 
+  /// Optional value added module data.
+  ///
+  /// Maximum of ten on the object.
+  core.List<ValueAddedModuleData>? valueAddedModuleData;
+
   /// Deprecated
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
@@ -8429,18 +8606,22 @@ class FlightObject {
     this.imageModulesData,
     this.infoModuleData,
     this.kind,
+    this.linkedObjectIds,
     this.linksModuleData,
     this.locations,
     this.messages,
+    this.notifyPreference,
     this.passConstraints,
     this.passengerName,
     this.reservationInfo,
     this.rotatingBarcode,
+    this.saveRestrictions,
     this.securityProgramLogo,
     this.smartTapRedemptionValue,
     this.state,
     this.textModulesData,
     this.validTimeInterval,
+    this.valueAddedModuleData,
     this.version,
   });
 
@@ -8486,6 +8667,9 @@ class FlightObject {
                   as core.Map<core.String, core.dynamic>)
               : null,
           kind: json_['kind'] as core.String?,
+          linkedObjectIds: (json_['linkedObjectIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           linksModuleData: json_.containsKey('linksModuleData')
               ? LinksModuleData.fromJson(json_['linksModuleData']
                   as core.Map<core.String, core.dynamic>)
@@ -8498,6 +8682,7 @@ class FlightObject {
               ?.map((value) => Message.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          notifyPreference: json_['notifyPreference'] as core.String?,
           passConstraints: json_.containsKey('passConstraints')
               ? PassConstraints.fromJson(json_['passConstraints']
                   as core.Map<core.String, core.dynamic>)
@@ -8509,6 +8694,10 @@ class FlightObject {
               : null,
           rotatingBarcode: json_.containsKey('rotatingBarcode')
               ? RotatingBarcode.fromJson(json_['rotatingBarcode']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          saveRestrictions: json_.containsKey('saveRestrictions')
+              ? SaveRestrictions.fromJson(json_['saveRestrictions']
                   as core.Map<core.String, core.dynamic>)
               : null,
           securityProgramLogo: json_.containsKey('securityProgramLogo')
@@ -8526,6 +8715,10 @@ class FlightObject {
               ? TimeInterval.fromJson(json_['validTimeInterval']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+              ?.map((value) => ValueAddedModuleData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           version: json_['version'] as core.String?,
         );
 
@@ -8548,13 +8741,16 @@ class FlightObject {
         if (imageModulesData != null) 'imageModulesData': imageModulesData!,
         if (infoModuleData != null) 'infoModuleData': infoModuleData!,
         if (kind != null) 'kind': kind!,
+        if (linkedObjectIds != null) 'linkedObjectIds': linkedObjectIds!,
         if (linksModuleData != null) 'linksModuleData': linksModuleData!,
         if (locations != null) 'locations': locations!,
         if (messages != null) 'messages': messages!,
+        if (notifyPreference != null) 'notifyPreference': notifyPreference!,
         if (passConstraints != null) 'passConstraints': passConstraints!,
         if (passengerName != null) 'passengerName': passengerName!,
         if (reservationInfo != null) 'reservationInfo': reservationInfo!,
         if (rotatingBarcode != null) 'rotatingBarcode': rotatingBarcode!,
+        if (saveRestrictions != null) 'saveRestrictions': saveRestrictions!,
         if (securityProgramLogo != null)
           'securityProgramLogo': securityProgramLogo!,
         if (smartTapRedemptionValue != null)
@@ -8562,6 +8758,8 @@ class FlightObject {
         if (state != null) 'state': state!,
         if (textModulesData != null) 'textModulesData': textModulesData!,
         if (validTimeInterval != null) 'validTimeInterval': validTimeInterval!,
+        if (valueAddedModuleData != null)
+          'valueAddedModuleData': valueAddedModuleData!,
         if (version != null) 'version': version!,
       };
 }
@@ -8759,6 +8957,12 @@ class GenericClass {
   /// and 10 from object.
   core.List<TextModuleData>? textModulesData;
 
+  /// Optional value added module data.
+  ///
+  /// Maximum of ten on the class. For a pass only ten will be displayed,
+  /// prioritizing those from the object.
+  core.List<ValueAddedModuleData>? valueAddedModuleData;
+
   /// View Unlock Requirement options for the generic pass.
   /// Possible string values are:
   /// - "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED" : Default value, same as
@@ -8784,6 +8988,7 @@ class GenericClass {
     this.redemptionIssuers,
     this.securityAnimation,
     this.textModulesData,
+    this.valueAddedModuleData,
     this.viewUnlockRequirement,
   });
 
@@ -8828,6 +9033,10 @@ class GenericClass {
               ?.map((value) => TextModuleData.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+              ?.map((value) => ValueAddedModuleData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           viewUnlockRequirement: json_['viewUnlockRequirement'] as core.String?,
         );
 
@@ -8846,6 +9055,8 @@ class GenericClass {
         if (redemptionIssuers != null) 'redemptionIssuers': redemptionIssuers!,
         if (securityAnimation != null) 'securityAnimation': securityAnimation!,
         if (textModulesData != null) 'textModulesData': textModulesData!,
+        if (valueAddedModuleData != null)
+          'valueAddedModuleData': valueAddedModuleData!,
         if (viewUnlockRequirement != null)
           'viewUnlockRequirement': viewUnlockRequirement!,
       };
@@ -9002,6 +9213,22 @@ class GenericObject {
   /// rendered when both set.
   core.List<ImageModuleData>? imageModulesData;
 
+  /// linked_object_ids are a list of other objects such as event ticket,
+  /// loyalty, offer, generic, giftcard, transit and boarding pass that should
+  /// be automatically attached to this generic object.
+  ///
+  /// If a user had saved this generic card, then these linked_object_ids would
+  /// be automatically pushed to the user's wallet (unless they turned off the
+  /// setting to receive such linked passes). Make sure that objects present in
+  /// linked_object_ids are already inserted - if not, calls would fail. Once
+  /// linked, the linked objects cannot be unlinked. You cannot link objects
+  /// belonging to another issuer. There is a limit to the number of objects
+  /// that can be linked to a single object. After the limit is reached, new
+  /// linked objects in the call will be ignored silently. Object IDs should
+  /// follow the format issuer ID. identifier where the former is issued by
+  /// Google and the latter is chosen by you.
+  core.List<core.String>? linkedObjectIds;
+
   /// Links module data.
   ///
   /// If `linksModuleData` is also defined on the class, both will be displayed.
@@ -9016,6 +9243,12 @@ class GenericObject {
   /// `cardTitle` would be shown as logo.
   Image? logo;
 
+  /// An array of messages displayed in the app.
+  ///
+  /// All users of this object will receive its associated messages. The maximum
+  /// number of these fields is 10.
+  core.List<Message>? messages;
+
   /// The notification settings that are enabled for this object.
   Notifications? notifications;
 
@@ -9026,6 +9259,14 @@ class GenericObject {
 
   /// The rotating barcode settings/details.
   RotatingBarcode? rotatingBarcode;
+
+  /// Restrictions on the object that needs to be verified before the user tries
+  /// to save the pass.
+  ///
+  /// Note that this restrictions will only be applied during save time. If the
+  /// restrictions changed after a user saves the pass, the new restrictions
+  /// will not be applied to an already saved pass.
+  SaveRestrictions? saveRestrictions;
 
   /// The value that will be transmitted to a Smart Tap certified terminal over
   /// NFC for this object.
@@ -9070,6 +9311,11 @@ class GenericObject {
   /// which will affect the rendering on user's devices.
   TimeInterval? validTimeInterval;
 
+  /// Optional value added module data.
+  ///
+  /// Maximum of ten on the object.
+  core.List<ValueAddedModuleData>? valueAddedModuleData;
+
   /// The wide logo of the pass.
   ///
   /// When provided, this will be used in place of the logo in the top left of
@@ -9089,16 +9335,20 @@ class GenericObject {
     this.hexBackgroundColor,
     this.id,
     this.imageModulesData,
+    this.linkedObjectIds,
     this.linksModuleData,
     this.logo,
+    this.messages,
     this.notifications,
     this.passConstraints,
     this.rotatingBarcode,
+    this.saveRestrictions,
     this.smartTapRedemptionValue,
     this.state,
     this.subheader,
     this.textModulesData,
     this.validTimeInterval,
+    this.valueAddedModuleData,
     this.wideLogo,
   });
 
@@ -9137,6 +9387,9 @@ class GenericObject {
               ?.map((value) => ImageModuleData.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          linkedObjectIds: (json_['linkedObjectIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           linksModuleData: json_.containsKey('linksModuleData')
               ? LinksModuleData.fromJson(json_['linksModuleData']
                   as core.Map<core.String, core.dynamic>)
@@ -9145,6 +9398,10 @@ class GenericObject {
               ? Image.fromJson(
                   json_['logo'] as core.Map<core.String, core.dynamic>)
               : null,
+          messages: (json_['messages'] as core.List?)
+              ?.map((value) => Message.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           notifications: json_.containsKey('notifications')
               ? Notifications.fromJson(
                   json_['notifications'] as core.Map<core.String, core.dynamic>)
@@ -9155,6 +9412,10 @@ class GenericObject {
               : null,
           rotatingBarcode: json_.containsKey('rotatingBarcode')
               ? RotatingBarcode.fromJson(json_['rotatingBarcode']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          saveRestrictions: json_.containsKey('saveRestrictions')
+              ? SaveRestrictions.fromJson(json_['saveRestrictions']
                   as core.Map<core.String, core.dynamic>)
               : null,
           smartTapRedemptionValue:
@@ -9172,6 +9433,10 @@ class GenericObject {
               ? TimeInterval.fromJson(json_['validTimeInterval']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+              ?.map((value) => ValueAddedModuleData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           wideLogo: json_.containsKey('wideLogo')
               ? Image.fromJson(
                   json_['wideLogo'] as core.Map<core.String, core.dynamic>)
@@ -9192,17 +9457,22 @@ class GenericObject {
           'hexBackgroundColor': hexBackgroundColor!,
         if (id != null) 'id': id!,
         if (imageModulesData != null) 'imageModulesData': imageModulesData!,
+        if (linkedObjectIds != null) 'linkedObjectIds': linkedObjectIds!,
         if (linksModuleData != null) 'linksModuleData': linksModuleData!,
         if (logo != null) 'logo': logo!,
+        if (messages != null) 'messages': messages!,
         if (notifications != null) 'notifications': notifications!,
         if (passConstraints != null) 'passConstraints': passConstraints!,
         if (rotatingBarcode != null) 'rotatingBarcode': rotatingBarcode!,
+        if (saveRestrictions != null) 'saveRestrictions': saveRestrictions!,
         if (smartTapRedemptionValue != null)
           'smartTapRedemptionValue': smartTapRedemptionValue!,
         if (state != null) 'state': state!,
         if (subheader != null) 'subheader': subheader!,
         if (textModulesData != null) 'textModulesData': textModulesData!,
         if (validTimeInterval != null) 'validTimeInterval': validTimeInterval!,
+        if (valueAddedModuleData != null)
+          'valueAddedModuleData': valueAddedModuleData!,
         if (wideLogo != null) 'wideLogo': wideLogo!,
       };
 }
@@ -9405,6 +9675,9 @@ class GiftCardClass {
   LocalizedString? localizedPinLabel;
 
   /// Note: This field is currently not supported to trigger geo notifications.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<LatLongPoint>? locations;
 
   /// Merchant name, such as "Adam's Apparel".
@@ -9440,6 +9713,20 @@ class GiftCardClass {
   /// Deprecated.
   /// - "oneUserOneDevice" : Legacy alias for `ONE_USER_ONE_DEVICE`. Deprecated.
   core.String? multipleDevicesAndHoldersAllowedStatus;
+
+  /// Whether or not field updates to this class should trigger notifications.
+  ///
+  /// When set to NOTIFY, we will attempt to trigger a field update notification
+  /// to users. These notifications will only be sent to users if the field is
+  /// part of an allowlist. If not specified, no notification will be triggered.
+  /// This setting is ephemeral and needs to be set with each PATCH or UPDATE
+  /// request, otherwise a notification will not be triggered.
+  /// Possible string values are:
+  /// - "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" : Default behavior is no
+  /// notifications sent.
+  /// - "NOTIFY_ON_UPDATE" : This value will result in a notification being
+  /// sent, if the updated fields are part of an allowlist.
+  core.String? notifyPreference;
 
   /// The label to display for the PIN, such as "4-digit PIN".
   core.String? pinLabel;
@@ -9497,6 +9784,12 @@ class GiftCardClass {
   /// The maximum number of these fields displayed is 10 from the object and 10
   /// from the class.
   core.List<TextModuleData>? textModulesData;
+
+  /// Optional value added module data.
+  ///
+  /// Maximum of ten on the class. For a pass only ten will be displayed,
+  /// prioritizing those from the object.
+  core.List<ValueAddedModuleData>? valueAddedModuleData;
 
   /// Deprecated
   @core.Deprecated(
@@ -9556,6 +9849,7 @@ class GiftCardClass {
     this.merchantName,
     this.messages,
     this.multipleDevicesAndHoldersAllowedStatus,
+    this.notifyPreference,
     this.pinLabel,
     this.programLogo,
     this.redemptionIssuers,
@@ -9563,6 +9857,7 @@ class GiftCardClass {
     this.reviewStatus,
     this.securityAnimation,
     this.textModulesData,
+    this.valueAddedModuleData,
     this.version,
     this.viewUnlockRequirement,
     this.wideProgramLogo,
@@ -9647,6 +9942,7 @@ class GiftCardClass {
               .toList(),
           multipleDevicesAndHoldersAllowedStatus:
               json_['multipleDevicesAndHoldersAllowedStatus'] as core.String?,
+          notifyPreference: json_['notifyPreference'] as core.String?,
           pinLabel: json_['pinLabel'] as core.String?,
           programLogo: json_.containsKey('programLogo')
               ? Image.fromJson(
@@ -9666,6 +9962,10 @@ class GiftCardClass {
               : null,
           textModulesData: (json_['textModulesData'] as core.List?)
               ?.map((value) => TextModuleData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+              ?.map((value) => ValueAddedModuleData.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           version: json_['version'] as core.String?,
@@ -9717,6 +10017,7 @@ class GiftCardClass {
         if (multipleDevicesAndHoldersAllowedStatus != null)
           'multipleDevicesAndHoldersAllowedStatus':
               multipleDevicesAndHoldersAllowedStatus!,
+        if (notifyPreference != null) 'notifyPreference': notifyPreference!,
         if (pinLabel != null) 'pinLabel': pinLabel!,
         if (programLogo != null) 'programLogo': programLogo!,
         if (redemptionIssuers != null) 'redemptionIssuers': redemptionIssuers!,
@@ -9724,6 +10025,8 @@ class GiftCardClass {
         if (reviewStatus != null) 'reviewStatus': reviewStatus!,
         if (securityAnimation != null) 'securityAnimation': securityAnimation!,
         if (textModulesData != null) 'textModulesData': textModulesData!,
+        if (valueAddedModuleData != null)
+          'valueAddedModuleData': valueAddedModuleData!,
         if (version != null) 'version': version!,
         if (viewUnlockRequirement != null)
           'viewUnlockRequirement': viewUnlockRequirement!,
@@ -9883,12 +10186,31 @@ class GiftCardObject {
   )
   core.String? kind;
 
+  /// linked_object_ids are a list of other objects such as event ticket,
+  /// loyalty, offer, generic, giftcard, transit and boarding pass that should
+  /// be automatically attached to this giftcard object.
+  ///
+  /// If a user had saved this gift card, then these linked_object_ids would be
+  /// automatically pushed to the user's wallet (unless they turned off the
+  /// setting to receive such linked passes). Make sure that objects present in
+  /// linked_object_ids are already inserted - if not, calls would fail. Once
+  /// linked, the linked objects cannot be unlinked. You cannot link objects
+  /// belonging to another issuer. There is a limit to the number of objects
+  /// that can be linked to a single object. After the limit is reached, new
+  /// linked objects in the call will be ignored silently. Object IDs should
+  /// follow the format issuer ID. identifier where the former is issued by
+  /// Google and the latter is chosen by you.
+  core.List<core.String>? linkedObjectIds;
+
   /// Links module data.
   ///
   /// If links module data is also defined on the class, both will be displayed.
   LinksModuleData? linksModuleData;
 
   /// Note: This field is currently not supported to trigger geo notifications.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<LatLongPoint>? locations;
 
   /// An array of messages displayed in the app.
@@ -9896,6 +10218,21 @@ class GiftCardObject {
   /// All users of this object will receive its associated messages. The maximum
   /// number of these fields is 10.
   core.List<Message>? messages;
+
+  /// Whether or not field updates to this object should trigger notifications.
+  ///
+  /// When set to NOTIFY, we will attempt to trigger a field update notification
+  /// to users. These notifications will only be sent to users if the field is
+  /// part of an allowlist. If set to DO_NOT_NOTIFY or
+  /// NOTIFICATION_SETTINGS_UNSPECIFIED, no notification will be triggered. This
+  /// setting is ephemeral and needs to be set with each PATCH or UPDATE
+  /// request, otherwise a notification will not be triggered.
+  /// Possible string values are:
+  /// - "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" : Default behavior is no
+  /// notifications sent.
+  /// - "NOTIFY_ON_UPDATE" : This value will result in a notification being
+  /// sent, if the updated fields are part of an allowlist.
+  core.String? notifyPreference;
 
   /// Pass constraints for the object.
   ///
@@ -9907,6 +10244,14 @@ class GiftCardObject {
 
   /// The rotating barcode type and value.
   RotatingBarcode? rotatingBarcode;
+
+  /// Restrictions on the object that needs to be verified before the user tries
+  /// to save the pass.
+  ///
+  /// Note that this restrictions will only be applied during save time. If the
+  /// restrictions changed after a user saves the pass, the new restrictions
+  /// will not be applied to an already saved pass.
+  SaveRestrictions? saveRestrictions;
 
   /// The value that will be transmitted to a Smart Tap certified terminal over
   /// NFC for this object.
@@ -9947,6 +10292,11 @@ class GiftCardObject {
   /// passed.
   TimeInterval? validTimeInterval;
 
+  /// Optional value added module data.
+  ///
+  /// Maximum of ten on the object.
+  core.List<ValueAddedModuleData>? valueAddedModuleData;
+
   /// Deprecated
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
@@ -9971,16 +10321,20 @@ class GiftCardObject {
     this.imageModulesData,
     this.infoModuleData,
     this.kind,
+    this.linkedObjectIds,
     this.linksModuleData,
     this.locations,
     this.messages,
+    this.notifyPreference,
     this.passConstraints,
     this.pin,
     this.rotatingBarcode,
+    this.saveRestrictions,
     this.smartTapRedemptionValue,
     this.state,
     this.textModulesData,
     this.validTimeInterval,
+    this.valueAddedModuleData,
     this.version,
   });
 
@@ -10031,6 +10385,9 @@ class GiftCardObject {
                   as core.Map<core.String, core.dynamic>)
               : null,
           kind: json_['kind'] as core.String?,
+          linkedObjectIds: (json_['linkedObjectIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           linksModuleData: json_.containsKey('linksModuleData')
               ? LinksModuleData.fromJson(json_['linksModuleData']
                   as core.Map<core.String, core.dynamic>)
@@ -10043,6 +10400,7 @@ class GiftCardObject {
               ?.map((value) => Message.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          notifyPreference: json_['notifyPreference'] as core.String?,
           passConstraints: json_.containsKey('passConstraints')
               ? PassConstraints.fromJson(json_['passConstraints']
                   as core.Map<core.String, core.dynamic>)
@@ -10050,6 +10408,10 @@ class GiftCardObject {
           pin: json_['pin'] as core.String?,
           rotatingBarcode: json_.containsKey('rotatingBarcode')
               ? RotatingBarcode.fromJson(json_['rotatingBarcode']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          saveRestrictions: json_.containsKey('saveRestrictions')
+              ? SaveRestrictions.fromJson(json_['saveRestrictions']
                   as core.Map<core.String, core.dynamic>)
               : null,
           smartTapRedemptionValue:
@@ -10063,6 +10425,10 @@ class GiftCardObject {
               ? TimeInterval.fromJson(json_['validTimeInterval']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+              ?.map((value) => ValueAddedModuleData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           version: json_['version'] as core.String?,
         );
 
@@ -10085,17 +10451,22 @@ class GiftCardObject {
         if (imageModulesData != null) 'imageModulesData': imageModulesData!,
         if (infoModuleData != null) 'infoModuleData': infoModuleData!,
         if (kind != null) 'kind': kind!,
+        if (linkedObjectIds != null) 'linkedObjectIds': linkedObjectIds!,
         if (linksModuleData != null) 'linksModuleData': linksModuleData!,
         if (locations != null) 'locations': locations!,
         if (messages != null) 'messages': messages!,
+        if (notifyPreference != null) 'notifyPreference': notifyPreference!,
         if (passConstraints != null) 'passConstraints': passConstraints!,
         if (pin != null) 'pin': pin!,
         if (rotatingBarcode != null) 'rotatingBarcode': rotatingBarcode!,
+        if (saveRestrictions != null) 'saveRestrictions': saveRestrictions!,
         if (smartTapRedemptionValue != null)
           'smartTapRedemptionValue': smartTapRedemptionValue!,
         if (state != null) 'state': state!,
         if (textModulesData != null) 'textModulesData': textModulesData!,
         if (validTimeInterval != null) 'validTimeInterval': validTimeInterval!,
+        if (valueAddedModuleData != null)
+          'valueAddedModuleData': valueAddedModuleData!,
         if (version != null) 'version': version!,
       };
 }
@@ -10950,6 +11321,9 @@ class LoyaltyClass {
   LocalizedString? localizedSecondaryRewardsTierLabel;
 
   /// Note: This field is currently not supported to trigger geo notifications.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<LatLongPoint>? locations;
 
   /// An array of messages displayed in the app.
@@ -10979,6 +11353,20 @@ class LoyaltyClass {
   /// Deprecated.
   /// - "oneUserOneDevice" : Legacy alias for `ONE_USER_ONE_DEVICE`. Deprecated.
   core.String? multipleDevicesAndHoldersAllowedStatus;
+
+  /// Whether or not field updates to this class should trigger notifications.
+  ///
+  /// When set to NOTIFY, we will attempt to trigger a field update notification
+  /// to users. These notifications will only be sent to users if the field is
+  /// part of an allowlist. If not specified, no notification will be triggered.
+  /// This setting is ephemeral and needs to be set with each PATCH or UPDATE
+  /// request, otherwise a notification will not be triggered.
+  /// Possible string values are:
+  /// - "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" : Default behavior is no
+  /// notifications sent.
+  /// - "NOTIFY_ON_UPDATE" : This value will result in a notification being
+  /// sent, if the updated fields are part of an allowlist.
+  core.String? notifyPreference;
 
   /// The logo of the loyalty program or company.
   ///
@@ -11059,6 +11447,12 @@ class LoyaltyClass {
   /// from the class.
   core.List<TextModuleData>? textModulesData;
 
+  /// Optional value added module data.
+  ///
+  /// Maximum of ten on the class. For a pass only ten will be displayed,
+  /// prioritizing those from the object.
+  core.List<ValueAddedModuleData>? valueAddedModuleData;
+
   /// Deprecated
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
@@ -11119,6 +11513,7 @@ class LoyaltyClass {
     this.locations,
     this.messages,
     this.multipleDevicesAndHoldersAllowedStatus,
+    this.notifyPreference,
     this.programLogo,
     this.programName,
     this.redemptionIssuers,
@@ -11130,6 +11525,7 @@ class LoyaltyClass {
     this.secondaryRewardsTierLabel,
     this.securityAnimation,
     this.textModulesData,
+    this.valueAddedModuleData,
     this.version,
     this.viewUnlockRequirement,
     this.wideProgramLogo,
@@ -11231,6 +11627,7 @@ class LoyaltyClass {
               .toList(),
           multipleDevicesAndHoldersAllowedStatus:
               json_['multipleDevicesAndHoldersAllowedStatus'] as core.String?,
+          notifyPreference: json_['notifyPreference'] as core.String?,
           programLogo: json_.containsKey('programLogo')
               ? Image.fromJson(
                   json_['programLogo'] as core.Map<core.String, core.dynamic>)
@@ -11255,6 +11652,10 @@ class LoyaltyClass {
               : null,
           textModulesData: (json_['textModulesData'] as core.List?)
               ?.map((value) => TextModuleData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+              ?.map((value) => ValueAddedModuleData.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           version: json_['version'] as core.String?,
@@ -11313,6 +11714,7 @@ class LoyaltyClass {
         if (multipleDevicesAndHoldersAllowedStatus != null)
           'multipleDevicesAndHoldersAllowedStatus':
               multipleDevicesAndHoldersAllowedStatus!,
+        if (notifyPreference != null) 'notifyPreference': notifyPreference!,
         if (programLogo != null) 'programLogo': programLogo!,
         if (programName != null) 'programName': programName!,
         if (redemptionIssuers != null) 'redemptionIssuers': redemptionIssuers!,
@@ -11326,6 +11728,8 @@ class LoyaltyClass {
           'secondaryRewardsTierLabel': secondaryRewardsTierLabel!,
         if (securityAnimation != null) 'securityAnimation': securityAnimation!,
         if (textModulesData != null) 'textModulesData': textModulesData!,
+        if (valueAddedModuleData != null)
+          'valueAddedModuleData': valueAddedModuleData!,
         if (version != null) 'version': version!,
         if (viewUnlockRequirement != null)
           'viewUnlockRequirement': viewUnlockRequirement!,
@@ -11478,6 +11882,22 @@ class LoyaltyObject {
   )
   core.String? kind;
 
+  /// linked_object_ids are a list of other objects such as event ticket,
+  /// loyalty, offer, generic, giftcard, transit and boarding pass that should
+  /// be automatically attached to this loyalty object.
+  ///
+  /// If a user had saved this loyalty card, then these linked_object_ids would
+  /// be automatically pushed to the user's wallet (unless they turned off the
+  /// setting to receive such linked passes). Make sure that objects present in
+  /// linked_object_ids are already inserted - if not, calls would fail. Once
+  /// linked, the linked objects cannot be unlinked. You cannot link objects
+  /// belonging to another issuer. There is a limit to the number of objects
+  /// that can be linked to a single object. After the limit is reached, new
+  /// linked objects in the call will be ignored silently. Object IDs should
+  /// follow the format issuer ID. identifier where the former is issued by
+  /// Google and the latter is chosen by you.
+  core.List<core.String>? linkedObjectIds;
+
   /// A list of offer objects linked to this loyalty card.
   ///
   /// The offer objects must already exist. Offer object IDs should follow the
@@ -11491,6 +11911,9 @@ class LoyaltyObject {
   LinksModuleData? linksModuleData;
 
   /// Note: This field is currently not supported to trigger geo notifications.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<LatLongPoint>? locations;
 
   /// The loyalty reward points label, balance, and type.
@@ -11502,6 +11925,21 @@ class LoyaltyObject {
   /// number of these fields is 10.
   core.List<Message>? messages;
 
+  /// Whether or not field updates to this object should trigger notifications.
+  ///
+  /// When set to NOTIFY, we will attempt to trigger a field update notification
+  /// to users. These notifications will only be sent to users if the field is
+  /// part of an allowlist. If set to DO_NOT_NOTIFY or
+  /// NOTIFICATION_SETTINGS_UNSPECIFIED, no notification will be triggered. This
+  /// setting is ephemeral and needs to be set with each PATCH or UPDATE
+  /// request, otherwise a notification will not be triggered.
+  /// Possible string values are:
+  /// - "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" : Default behavior is no
+  /// notifications sent.
+  /// - "NOTIFY_ON_UPDATE" : This value will result in a notification being
+  /// sent, if the updated fields are part of an allowlist.
+  core.String? notifyPreference;
+
   /// Pass constraints for the object.
   ///
   /// Includes limiting NFC and screenshot behaviors.
@@ -11509,6 +11947,14 @@ class LoyaltyObject {
 
   /// The rotating barcode type and value.
   RotatingBarcode? rotatingBarcode;
+
+  /// Restrictions on the object that needs to be verified before the user tries
+  /// to save the pass.
+  ///
+  /// Note that this restrictions will only be applied during save time. If the
+  /// restrictions changed after a user saves the pass, the new restrictions
+  /// will not be applied to an already saved pass.
+  SaveRestrictions? saveRestrictions;
 
   /// The secondary loyalty reward points label, balance, and type.
   ///
@@ -11556,6 +12002,11 @@ class LoyaltyObject {
   /// passed.
   TimeInterval? validTimeInterval;
 
+  /// Optional value added module data.
+  ///
+  /// Maximum of ten on the object.
+  core.List<ValueAddedModuleData>? valueAddedModuleData;
+
   /// Deprecated
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
@@ -11578,18 +12029,22 @@ class LoyaltyObject {
     this.imageModulesData,
     this.infoModuleData,
     this.kind,
+    this.linkedObjectIds,
     this.linkedOfferIds,
     this.linksModuleData,
     this.locations,
     this.loyaltyPoints,
     this.messages,
+    this.notifyPreference,
     this.passConstraints,
     this.rotatingBarcode,
+    this.saveRestrictions,
     this.secondaryLoyaltyPoints,
     this.smartTapRedemptionValue,
     this.state,
     this.textModulesData,
     this.validTimeInterval,
+    this.valueAddedModuleData,
     this.version,
   });
 
@@ -11632,6 +12087,9 @@ class LoyaltyObject {
                   as core.Map<core.String, core.dynamic>)
               : null,
           kind: json_['kind'] as core.String?,
+          linkedObjectIds: (json_['linkedObjectIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           linkedOfferIds: (json_['linkedOfferIds'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -11651,12 +12109,17 @@ class LoyaltyObject {
               ?.map((value) => Message.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          notifyPreference: json_['notifyPreference'] as core.String?,
           passConstraints: json_.containsKey('passConstraints')
               ? PassConstraints.fromJson(json_['passConstraints']
                   as core.Map<core.String, core.dynamic>)
               : null,
           rotatingBarcode: json_.containsKey('rotatingBarcode')
               ? RotatingBarcode.fromJson(json_['rotatingBarcode']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          saveRestrictions: json_.containsKey('saveRestrictions')
+              ? SaveRestrictions.fromJson(json_['saveRestrictions']
                   as core.Map<core.String, core.dynamic>)
               : null,
           secondaryLoyaltyPoints: json_.containsKey('secondaryLoyaltyPoints')
@@ -11674,6 +12137,10 @@ class LoyaltyObject {
               ? TimeInterval.fromJson(json_['validTimeInterval']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+              ?.map((value) => ValueAddedModuleData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           version: json_['version'] as core.String?,
         );
 
@@ -11694,13 +12161,16 @@ class LoyaltyObject {
         if (imageModulesData != null) 'imageModulesData': imageModulesData!,
         if (infoModuleData != null) 'infoModuleData': infoModuleData!,
         if (kind != null) 'kind': kind!,
+        if (linkedObjectIds != null) 'linkedObjectIds': linkedObjectIds!,
         if (linkedOfferIds != null) 'linkedOfferIds': linkedOfferIds!,
         if (linksModuleData != null) 'linksModuleData': linksModuleData!,
         if (locations != null) 'locations': locations!,
         if (loyaltyPoints != null) 'loyaltyPoints': loyaltyPoints!,
         if (messages != null) 'messages': messages!,
+        if (notifyPreference != null) 'notifyPreference': notifyPreference!,
         if (passConstraints != null) 'passConstraints': passConstraints!,
         if (rotatingBarcode != null) 'rotatingBarcode': rotatingBarcode!,
+        if (saveRestrictions != null) 'saveRestrictions': saveRestrictions!,
         if (secondaryLoyaltyPoints != null)
           'secondaryLoyaltyPoints': secondaryLoyaltyPoints!,
         if (smartTapRedemptionValue != null)
@@ -11708,6 +12178,8 @@ class LoyaltyObject {
         if (state != null) 'state': state!,
         if (textModulesData != null) 'textModulesData': textModulesData!,
         if (validTimeInterval != null) 'validTimeInterval': validTimeInterval!,
+        if (valueAddedModuleData != null)
+          'valueAddedModuleData': valueAddedModuleData!,
         if (version != null) 'version': version!,
       };
 }
@@ -12222,7 +12694,122 @@ class Media {
 }
 
 /// Extra information added to operations that support Scotty media requests.
-typedef MediaRequestInfo = $MediaRequestInfo;
+class MediaRequestInfo {
+  /// The number of current bytes uploaded or downloaded.
+  core.String? currentBytes;
+
+  /// Data to be copied to backend requests.
+  ///
+  /// Custom data is returned to Scotty in the agent_state field, which Scotty
+  /// will then provide in subsequent upload notifications.
+  core.String? customData;
+
+  /// Set if the http request info is diff encoded.
+  ///
+  /// The value of this field is the version number of the base revision. This
+  /// is corresponding to Apiary's mediaDiffObjectVersion
+  /// (//depot/google3/java/com/google/api/server/media/variable/DiffObjectVersionVariable.java).
+  /// See go/esf-scotty-diff-upload for more information.
+  core.String? diffObjectVersion;
+
+  /// The existence of the final_status field indicates that this is the last
+  /// call to the agent for this request_id.
+  ///
+  /// http://google3/uploader/agent/scotty_agent.proto?l=737&rcl=347601929
+  core.int? finalStatus;
+
+  /// The type of notification received from Scotty.
+  /// Possible string values are:
+  /// - "START" : Such requests signals the start of a request containing media
+  /// upload. Only the media field(s) in the inserted/updated resource are set.
+  /// The response should either return an error or succeed. On success,
+  /// responses don't need to contain anything.
+  /// - "PROGRESS" : Such requests signals that the upload has progressed and
+  /// that the backend might want to access the media file specified in relevant
+  /// fields in the resource. Only the media field(s) in the inserted/updated
+  /// resource are set. The response should either return an error or succeed.
+  /// On success, responses don't need to contain anything.
+  /// - "END" : Such requests signals the end of a request containing media
+  /// upload. END should be handled just like normal Insert/Upload requests,
+  /// that is, they should process the request and return a complete resource in
+  /// the response. Pointers to media data (a GFS path usually) appear in the
+  /// relevant fields in the inserted/updated resource. See gdata.Media in
+  /// data.proto.
+  /// - "RESPONSE_SENT" : Such requests occur after an END and signal that the
+  /// response has been sent back to the client. RESPONSE_SENT is only sent to
+  /// the backend if it is configured to receive them. The response does not
+  /// need to contain anything.
+  /// - "ERROR" : Such requests indicate that an error occurred while processing
+  /// the request. ERROR is only sent to the backend if it is configured to
+  /// receive them. It is not guaranteed that all errors will result in this
+  /// notification to the backend, even if the backend requests them. Since
+  /// these requests are just for informational purposes, the response does not
+  /// need to contain anything.
+  core.String? notificationType;
+
+  /// The Scotty request ID.
+  core.String? requestId;
+
+  /// The partition of the Scotty server handling this request.
+  ///
+  /// type is uploader_service.RequestReceivedParamsServingInfo
+  /// LINT.IfChange(request_received_params_serving_info_annotations)
+  /// LINT.ThenChange()
+  core.String? requestReceivedParamsServingInfo;
+  core.List<core.int> get requestReceivedParamsServingInfoAsBytes =>
+      convert.base64.decode(requestReceivedParamsServingInfo!);
+
+  set requestReceivedParamsServingInfoAsBytes(core.List<core.int> bytes_) {
+    requestReceivedParamsServingInfo =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The total size of the file.
+  core.String? totalBytes;
+
+  /// Whether the total bytes field contains an estimated data.
+  core.bool? totalBytesIsEstimated;
+
+  MediaRequestInfo({
+    this.currentBytes,
+    this.customData,
+    this.diffObjectVersion,
+    this.finalStatus,
+    this.notificationType,
+    this.requestId,
+    this.requestReceivedParamsServingInfo,
+    this.totalBytes,
+    this.totalBytesIsEstimated,
+  });
+
+  MediaRequestInfo.fromJson(core.Map json_)
+      : this(
+          currentBytes: json_['currentBytes'] as core.String?,
+          customData: json_['customData'] as core.String?,
+          diffObjectVersion: json_['diffObjectVersion'] as core.String?,
+          finalStatus: json_['finalStatus'] as core.int?,
+          notificationType: json_['notificationType'] as core.String?,
+          requestId: json_['requestId'] as core.String?,
+          requestReceivedParamsServingInfo:
+              json_['requestReceivedParamsServingInfo'] as core.String?,
+          totalBytes: json_['totalBytes'] as core.String?,
+          totalBytesIsEstimated: json_['totalBytesIsEstimated'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (currentBytes != null) 'currentBytes': currentBytes!,
+        if (customData != null) 'customData': customData!,
+        if (diffObjectVersion != null) 'diffObjectVersion': diffObjectVersion!,
+        if (finalStatus != null) 'finalStatus': finalStatus!,
+        if (notificationType != null) 'notificationType': notificationType!,
+        if (requestId != null) 'requestId': requestId!,
+        if (requestReceivedParamsServingInfo != null)
+          'requestReceivedParamsServingInfo': requestReceivedParamsServingInfo!,
+        if (totalBytes != null) 'totalBytes': totalBytes!,
+        if (totalBytesIsEstimated != null)
+          'totalBytesIsEstimated': totalBytesIsEstimated!,
+      };
+}
 
 /// A message that will be displayed with a Valuable
 class Message {
@@ -12370,6 +12957,32 @@ class ModifyLinkedOfferObjectsRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (linkedOfferObjectIds != null)
           'linkedOfferObjectIds': linkedOfferObjectIds!,
+      };
+}
+
+/// Constraints that all must be met for the module to be shown.
+class ModuleViewConstraints {
+  /// The period of time that the module will be displayed to users.
+  ///
+  /// Can define both a `startTime` and `endTime`. The module is displayed
+  /// immediately after insertion unless a `startTime` is set. The module is
+  /// displayed indefinitely if `endTime` is not set.
+  TimeInterval? displayInterval;
+
+  ModuleViewConstraints({
+    this.displayInterval,
+  });
+
+  ModuleViewConstraints.fromJson(core.Map json_)
+      : this(
+          displayInterval: json_.containsKey('displayInterval')
+              ? TimeInterval.fromJson(json_['displayInterval']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayInterval != null) 'displayInterval': displayInterval!,
       };
 }
 
@@ -12602,6 +13215,9 @@ class OfferClass {
   LocalizedString? localizedTitle;
 
   /// Note: This field is currently not supported to trigger geo notifications.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<LatLongPoint>? locations;
 
   /// An array of messages displayed in the app.
@@ -12631,6 +13247,20 @@ class OfferClass {
   /// Deprecated.
   /// - "oneUserOneDevice" : Legacy alias for `ONE_USER_ONE_DEVICE`. Deprecated.
   core.String? multipleDevicesAndHoldersAllowedStatus;
+
+  /// Whether or not field updates to this class should trigger notifications.
+  ///
+  /// When set to NOTIFY, we will attempt to trigger a field update notification
+  /// to users. These notifications will only be sent to users if the field is
+  /// part of an allowlist. If not specified, no notification will be triggered.
+  /// This setting is ephemeral and needs to be set with each PATCH or UPDATE
+  /// request, otherwise a notification will not be triggered.
+  /// Possible string values are:
+  /// - "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" : Default behavior is no
+  /// notifications sent.
+  /// - "NOTIFY_ON_UPDATE" : This value will result in a notification being
+  /// sent, if the updated fields are part of an allowlist.
+  core.String? notifyPreference;
 
   /// The offer provider (either the aggregator name or merchant name).
   ///
@@ -12724,6 +13354,12 @@ class OfferClass {
   /// This image is displayed in both the details and list views of the app.
   Image? titleImage;
 
+  /// Optional value added module data.
+  ///
+  /// Maximum of ten on the class. For a pass only ten will be displayed,
+  /// prioritizing those from the object.
+  core.List<ValueAddedModuleData>? valueAddedModuleData;
+
   /// Deprecated
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
@@ -12782,6 +13418,7 @@ class OfferClass {
     this.locations,
     this.messages,
     this.multipleDevicesAndHoldersAllowedStatus,
+    this.notifyPreference,
     this.provider,
     this.redemptionChannel,
     this.redemptionIssuers,
@@ -12792,6 +13429,7 @@ class OfferClass {
     this.textModulesData,
     this.title,
     this.titleImage,
+    this.valueAddedModuleData,
     this.version,
     this.viewUnlockRequirement,
     this.wideTitleImage,
@@ -12880,6 +13518,7 @@ class OfferClass {
               .toList(),
           multipleDevicesAndHoldersAllowedStatus:
               json_['multipleDevicesAndHoldersAllowedStatus'] as core.String?,
+          notifyPreference: json_['notifyPreference'] as core.String?,
           provider: json_['provider'] as core.String?,
           redemptionChannel: json_['redemptionChannel'] as core.String?,
           redemptionIssuers: (json_['redemptionIssuers'] as core.List?)
@@ -12904,6 +13543,10 @@ class OfferClass {
               ? Image.fromJson(
                   json_['titleImage'] as core.Map<core.String, core.dynamic>)
               : null,
+          valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+              ?.map((value) => ValueAddedModuleData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           version: json_['version'] as core.String?,
           viewUnlockRequirement: json_['viewUnlockRequirement'] as core.String?,
           wideTitleImage: json_.containsKey('wideTitleImage')
@@ -12951,6 +13594,7 @@ class OfferClass {
         if (multipleDevicesAndHoldersAllowedStatus != null)
           'multipleDevicesAndHoldersAllowedStatus':
               multipleDevicesAndHoldersAllowedStatus!,
+        if (notifyPreference != null) 'notifyPreference': notifyPreference!,
         if (provider != null) 'provider': provider!,
         if (redemptionChannel != null) 'redemptionChannel': redemptionChannel!,
         if (redemptionIssuers != null) 'redemptionIssuers': redemptionIssuers!,
@@ -12961,6 +13605,8 @@ class OfferClass {
         if (textModulesData != null) 'textModulesData': textModulesData!,
         if (title != null) 'title': title!,
         if (titleImage != null) 'titleImage': titleImage!,
+        if (valueAddedModuleData != null)
+          'valueAddedModuleData': valueAddedModuleData!,
         if (version != null) 'version': version!,
         if (viewUnlockRequirement != null)
           'viewUnlockRequirement': viewUnlockRequirement!,
@@ -13103,6 +13749,22 @@ class OfferObject {
   )
   core.String? kind;
 
+  /// linked_object_ids are a list of other objects such as event ticket,
+  /// loyalty, offer, generic, giftcard, transit and boarding pass that should
+  /// be automatically attached to this offer object.
+  ///
+  /// If a user had saved this offer, then these linked_object_ids would be
+  /// automatically pushed to the user's wallet (unless they turned off the
+  /// setting to receive such linked passes). Make sure that objects present in
+  /// linked_object_ids are already inserted - if not, calls would fail. Once
+  /// linked, the linked objects cannot be unlinked. You cannot link objects
+  /// belonging to another issuer. There is a limit to the number of objects
+  /// that can be linked to a single object. After the limit is reached, new
+  /// linked objects in the call will be ignored silently. Object IDs should
+  /// follow the format issuer ID.identifier where the former is issued by
+  /// Google and the latter is chosen by you.
+  core.List<core.String>? linkedObjectIds;
+
   /// Links module data.
   ///
   /// If links module data is also defined on the class, both will be displayed.
@@ -13117,6 +13779,21 @@ class OfferObject {
   /// number of these fields is 10.
   core.List<Message>? messages;
 
+  /// Whether or not field updates to this object should trigger notifications.
+  ///
+  /// When set to NOTIFY, we will attempt to trigger a field update notification
+  /// to users. These notifications will only be sent to users if the field is
+  /// part of an allowlist. If set to DO_NOT_NOTIFY or
+  /// NOTIFICATION_SETTINGS_UNSPECIFIED, no notification will be triggered. This
+  /// setting is ephemeral and needs to be set with each PATCH or UPDATE
+  /// request, otherwise a notification will not be triggered.
+  /// Possible string values are:
+  /// - "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" : Default behavior is no
+  /// notifications sent.
+  /// - "NOTIFY_ON_UPDATE" : This value will result in a notification being
+  /// sent, if the updated fields are part of an allowlist.
+  core.String? notifyPreference;
+
   /// Pass constraints for the object.
   ///
   /// Includes limiting NFC and screenshot behaviors.
@@ -13124,6 +13801,14 @@ class OfferObject {
 
   /// The rotating barcode type and value.
   RotatingBarcode? rotatingBarcode;
+
+  /// Restrictions on the object that needs to be verified before the user tries
+  /// to save the pass.
+  ///
+  /// Note that this restrictions will only be applied during save time. If the
+  /// restrictions changed after a user saves the pass, the new restrictions
+  /// will not be applied to an already saved pass.
+  SaveRestrictions? saveRestrictions;
 
   /// The value that will be transmitted to a Smart Tap certified terminal over
   /// NFC for this object.
@@ -13164,6 +13849,11 @@ class OfferObject {
   /// passed.
   TimeInterval? validTimeInterval;
 
+  /// Optional value added module data.
+  ///
+  /// Maximum of ten on the object.
+  core.List<ValueAddedModuleData>? valueAddedModuleData;
+
   /// Deprecated
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
@@ -13184,15 +13874,19 @@ class OfferObject {
     this.imageModulesData,
     this.infoModuleData,
     this.kind,
+    this.linkedObjectIds,
     this.linksModuleData,
     this.locations,
     this.messages,
+    this.notifyPreference,
     this.passConstraints,
     this.rotatingBarcode,
+    this.saveRestrictions,
     this.smartTapRedemptionValue,
     this.state,
     this.textModulesData,
     this.validTimeInterval,
+    this.valueAddedModuleData,
     this.version,
   });
 
@@ -13233,6 +13927,9 @@ class OfferObject {
                   as core.Map<core.String, core.dynamic>)
               : null,
           kind: json_['kind'] as core.String?,
+          linkedObjectIds: (json_['linkedObjectIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           linksModuleData: json_.containsKey('linksModuleData')
               ? LinksModuleData.fromJson(json_['linksModuleData']
                   as core.Map<core.String, core.dynamic>)
@@ -13245,12 +13942,17 @@ class OfferObject {
               ?.map((value) => Message.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          notifyPreference: json_['notifyPreference'] as core.String?,
           passConstraints: json_.containsKey('passConstraints')
               ? PassConstraints.fromJson(json_['passConstraints']
                   as core.Map<core.String, core.dynamic>)
               : null,
           rotatingBarcode: json_.containsKey('rotatingBarcode')
               ? RotatingBarcode.fromJson(json_['rotatingBarcode']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          saveRestrictions: json_.containsKey('saveRestrictions')
+              ? SaveRestrictions.fromJson(json_['saveRestrictions']
                   as core.Map<core.String, core.dynamic>)
               : null,
           smartTapRedemptionValue:
@@ -13264,6 +13966,10 @@ class OfferObject {
               ? TimeInterval.fromJson(json_['validTimeInterval']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+              ?.map((value) => ValueAddedModuleData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           version: json_['version'] as core.String?,
         );
 
@@ -13282,16 +13988,21 @@ class OfferObject {
         if (imageModulesData != null) 'imageModulesData': imageModulesData!,
         if (infoModuleData != null) 'infoModuleData': infoModuleData!,
         if (kind != null) 'kind': kind!,
+        if (linkedObjectIds != null) 'linkedObjectIds': linkedObjectIds!,
         if (linksModuleData != null) 'linksModuleData': linksModuleData!,
         if (locations != null) 'locations': locations!,
         if (messages != null) 'messages': messages!,
+        if (notifyPreference != null) 'notifyPreference': notifyPreference!,
         if (passConstraints != null) 'passConstraints': passConstraints!,
         if (rotatingBarcode != null) 'rotatingBarcode': rotatingBarcode!,
+        if (saveRestrictions != null) 'saveRestrictions': saveRestrictions!,
         if (smartTapRedemptionValue != null)
           'smartTapRedemptionValue': smartTapRedemptionValue!,
         if (state != null) 'state': state!,
         if (textModulesData != null) 'textModulesData': textModulesData!,
         if (validTimeInterval != null) 'validTimeInterval': validTimeInterval!,
+        if (valueAddedModuleData != null)
+          'valueAddedModuleData': valueAddedModuleData!,
         if (version != null) 'version': version!,
       };
 }
@@ -13591,17 +14302,46 @@ class ReservationInfo {
 }
 
 class Resources {
+  /// A list of event ticket classes.
   core.List<EventTicketClass>? eventTicketClasses;
+
+  /// A list of event ticket objects.
   core.List<EventTicketObject>? eventTicketObjects;
+
+  /// A list of flight classes.
   core.List<FlightClass>? flightClasses;
+
+  /// A list of flight objects.
   core.List<FlightObject>? flightObjects;
+
+  /// A list of generic classes.
+  core.List<GenericClass>? genericClasses;
+
+  /// A list of generic objects.
+  core.List<GenericObject>? genericObjects;
+
+  /// A list of gift card classes.
   core.List<GiftCardClass>? giftCardClasses;
+
+  /// A list of gift card objects.
   core.List<GiftCardObject>? giftCardObjects;
+
+  /// A list of loyalty classes.
   core.List<LoyaltyClass>? loyaltyClasses;
+
+  /// A list of loyalty objects.
   core.List<LoyaltyObject>? loyaltyObjects;
+
+  /// A list of offer classes.
   core.List<OfferClass>? offerClasses;
+
+  /// A list of offer objects.
   core.List<OfferObject>? offerObjects;
+
+  /// A list of transit classes.
   core.List<TransitClass>? transitClasses;
+
+  /// A list of transit objects.
   core.List<TransitObject>? transitObjects;
 
   Resources({
@@ -13609,6 +14349,8 @@ class Resources {
     this.eventTicketObjects,
     this.flightClasses,
     this.flightObjects,
+    this.genericClasses,
+    this.genericObjects,
     this.giftCardClasses,
     this.giftCardObjects,
     this.loyaltyClasses,
@@ -13635,6 +14377,14 @@ class Resources {
               .toList(),
           flightObjects: (json_['flightObjects'] as core.List?)
               ?.map((value) => FlightObject.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          genericClasses: (json_['genericClasses'] as core.List?)
+              ?.map((value) => GenericClass.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          genericObjects: (json_['genericObjects'] as core.List?)
+              ?.map((value) => GenericObject.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           giftCardClasses: (json_['giftCardClasses'] as core.List?)
@@ -13678,6 +14428,8 @@ class Resources {
           'eventTicketObjects': eventTicketObjects!,
         if (flightClasses != null) 'flightClasses': flightClasses!,
         if (flightObjects != null) 'flightObjects': flightObjects!,
+        if (genericClasses != null) 'genericClasses': genericClasses!,
+        if (genericObjects != null) 'genericObjects': genericObjects!,
         if (giftCardClasses != null) 'giftCardClasses': giftCardClasses!,
         if (giftCardObjects != null) 'giftCardObjects': giftCardObjects!,
         if (loyaltyClasses != null) 'loyaltyClasses': loyaltyClasses!,
@@ -13967,6 +14719,44 @@ class RotatingBarcodeValues {
       };
 }
 
+/// Defines restrictions on the object that will be verified during save.
+///
+/// Note: this is an advanced feature, please contact Google for implementation
+/// support.
+class SaveRestrictions {
+  /// Restrict the save of the referencing object to the given email address
+  /// only.
+  ///
+  /// This is the hex output of SHA256 sum of the email address, all lowercase
+  /// and without any notations like "." or "+", except "@". For example, for
+  /// example@example.com, this value will be
+  /// 31c5543c1734d25c7206f5fd591525d0295bec6fe84ff82f946a34fe970a1e66 and for
+  /// Example@example.com, this value will be
+  /// bc34f262c93ad7122763684ccea6f07fb7f5d8a2d11e60ce15a6f43fe70ce632 If email
+  /// address of the logged-in user who tries to save this pass does not match
+  /// with the defined value here, users won't be allowed to save this pass.
+  /// They will instead be prompted with an error to contact the issuer. This
+  /// information should be gathered from the user with an explicit consent via
+  /// Sign in with Google integration
+  /// https://developers.google.com/identity/authentication. Please contact with
+  /// support before using Save Restrictions.
+  core.String? restrictToEmailSha256;
+
+  SaveRestrictions({
+    this.restrictToEmailSha256,
+  });
+
+  SaveRestrictions.fromJson(core.Map json_)
+      : this(
+          restrictToEmailSha256: json_['restrictToEmailSha256'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (restrictToEmailSha256 != null)
+          'restrictToEmailSha256': restrictToEmailSha256!,
+      };
+}
+
 class SecurityAnimation {
   /// Type of animation.
   /// Possible string values are:
@@ -14160,7 +14950,11 @@ class TextModuleData {
 
   /// The ID associated with a text module.
   ///
-  /// This field is here to enable ease of management of text modules.
+  /// This field is here to enable ease of management of text modules and
+  /// referencing them in template overrides. The ID should only include
+  /// alphanumeric characters, '_', or '-'. It can not include dots, as dots are
+  /// used to separate fields within FieldReference.fieldPaths in template
+  /// overrides.
   core.String? id;
 
   /// Translated strings for the body.
@@ -14784,6 +15578,9 @@ class TransitClass {
   LocalizedString? localizedIssuerName;
 
   /// Note: This field is currently not supported to trigger geo notifications.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<LatLongPoint>? locations;
 
   /// The logo image of the ticket.
@@ -14820,6 +15617,21 @@ class TransitClass {
   /// Deprecated.
   /// - "oneUserOneDevice" : Legacy alias for `ONE_USER_ONE_DEVICE`. Deprecated.
   core.String? multipleDevicesAndHoldersAllowedStatus;
+
+  /// Whether or not field updates to this class should trigger notifications.
+  ///
+  /// When set to NOTIFY, we will attempt to trigger a field update notification
+  /// to users. These notifications will only be sent to users if the field is
+  /// part of an allowlist. If set to DO_NOT_NOTIFY or
+  /// NOTIFICATION_SETTINGS_UNSPECIFIED, no notification will be triggered. This
+  /// setting is ephemeral and needs to be set with each PATCH or UPDATE
+  /// request, otherwise a notification will not be triggered.
+  /// Possible string values are:
+  /// - "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" : Default behavior is no
+  /// notifications sent.
+  /// - "NOTIFY_ON_UPDATE" : This value will result in a notification being
+  /// sent, if the updated fields are part of an allowlist.
+  core.String? notifyPreference;
 
   /// Identifies which redemption issuers can redeem the pass over Smart Tap.
   ///
@@ -14889,6 +15701,12 @@ class TransitClass {
   /// - "OTHER"
   /// - "other" : Legacy alias for `OTHER`. Deprecated.
   core.String? transitType;
+
+  /// Optional value added module data.
+  ///
+  /// Maximum of ten on the class. For a pass only ten will be displayed,
+  /// prioritizing those from the object.
+  core.List<ValueAddedModuleData>? valueAddedModuleData;
 
   /// Deprecated
   @core.Deprecated(
@@ -14965,6 +15783,7 @@ class TransitClass {
     this.logo,
     this.messages,
     this.multipleDevicesAndHoldersAllowedStatus,
+    this.notifyPreference,
     this.redemptionIssuers,
     this.review,
     this.reviewStatus,
@@ -14972,6 +15791,7 @@ class TransitClass {
     this.textModulesData,
     this.transitOperatorName,
     this.transitType,
+    this.valueAddedModuleData,
     this.version,
     this.viewUnlockRequirement,
     this.watermark,
@@ -15134,6 +15954,7 @@ class TransitClass {
               .toList(),
           multipleDevicesAndHoldersAllowedStatus:
               json_['multipleDevicesAndHoldersAllowedStatus'] as core.String?,
+          notifyPreference: json_['notifyPreference'] as core.String?,
           redemptionIssuers: (json_['redemptionIssuers'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -15155,6 +15976,10 @@ class TransitClass {
                   as core.Map<core.String, core.dynamic>)
               : null,
           transitType: json_['transitType'] as core.String?,
+          valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+              ?.map((value) => ValueAddedModuleData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           version: json_['version'] as core.String?,
           viewUnlockRequirement: json_['viewUnlockRequirement'] as core.String?,
           watermark: json_.containsKey('watermark')
@@ -15236,6 +16061,7 @@ class TransitClass {
         if (multipleDevicesAndHoldersAllowedStatus != null)
           'multipleDevicesAndHoldersAllowedStatus':
               multipleDevicesAndHoldersAllowedStatus!,
+        if (notifyPreference != null) 'notifyPreference': notifyPreference!,
         if (redemptionIssuers != null) 'redemptionIssuers': redemptionIssuers!,
         if (review != null) 'review': review!,
         if (reviewStatus != null) 'reviewStatus': reviewStatus!,
@@ -15244,6 +16070,8 @@ class TransitClass {
         if (transitOperatorName != null)
           'transitOperatorName': transitOperatorName!,
         if (transitType != null) 'transitType': transitType!,
+        if (valueAddedModuleData != null)
+          'valueAddedModuleData': valueAddedModuleData!,
         if (version != null) 'version': version!,
         if (viewUnlockRequirement != null)
           'viewUnlockRequirement': viewUnlockRequirement!,
@@ -15419,12 +16247,31 @@ class TransitObject {
   /// Deprecated.
   InfoModuleData? infoModuleData;
 
+  /// linked_object_ids are a list of other objects such as event ticket,
+  /// loyalty, offer, generic, giftcard, transit and boarding pass that should
+  /// be automatically attached to this transit object.
+  ///
+  /// If a user had saved this transit card, then these linked_object_ids would
+  /// be automatically pushed to the user's wallet (unless they turned off the
+  /// setting to receive such linked passes). Make sure that objects present in
+  /// linked_object_ids are already inserted - if not, calls would fail. Once
+  /// linked, the linked objects cannot be unlinked. You cannot link objects
+  /// belonging to another issuer. There is a limit to the number of objects
+  /// that can be linked to a single object. After the limit is reached, new
+  /// linked objects in the call will be ignored silently. Object IDs should
+  /// follow the format issuer ID. identifier where the former is issued by
+  /// Google and the latter is chosen by you.
+  core.List<core.String>? linkedObjectIds;
+
   /// Links module data.
   ///
   /// If links module data is also defined on the class, both will be displayed.
   LinksModuleData? linksModuleData;
 
   /// Note: This field is currently not supported to trigger geo notifications.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<LatLongPoint>? locations;
 
   /// An array of messages displayed in the app.
@@ -15432,6 +16279,21 @@ class TransitObject {
   /// All users of this object will receive its associated messages. The maximum
   /// number of these fields is 10.
   core.List<Message>? messages;
+
+  /// Whether or not field updates to this object should trigger notifications.
+  ///
+  /// When set to NOTIFY, we will attempt to trigger a field update notification
+  /// to users. These notifications will only be sent to users if the field is
+  /// part of an allowlist. If set to DO_NOT_NOTIFY or
+  /// NOTIFICATION_SETTINGS_UNSPECIFIED, no notification will be triggered. This
+  /// setting is ephemeral and needs to be set with each PATCH or UPDATE
+  /// request, otherwise a notification will not be triggered.
+  /// Possible string values are:
+  /// - "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" : Default behavior is no
+  /// notifications sent.
+  /// - "NOTIFY_ON_UPDATE" : This value will result in a notification being
+  /// sent, if the updated fields are part of an allowlist.
+  core.String? notifyPreference;
 
   /// Pass constraints for the object.
   ///
@@ -15459,6 +16321,14 @@ class TransitObject {
 
   /// The rotating barcode type and value.
   RotatingBarcode? rotatingBarcode;
+
+  /// Restrictions on the object that needs to be verified before the user tries
+  /// to save the pass.
+  ///
+  /// Note that this restrictions will only be applied during save time. If the
+  /// restrictions changed after a user saves the pass, the new restrictions
+  /// will not be applied to an already saved pass.
+  SaveRestrictions? saveRestrictions;
 
   /// The value that will be transmitted to a Smart Tap certified terminal over
   /// NFC for this object.
@@ -15558,6 +16428,11 @@ class TransitObject {
   /// passed.
   TimeInterval? validTimeInterval;
 
+  /// Optional value added module data.
+  ///
+  /// Maximum of ten on the object.
+  core.List<ValueAddedModuleData>? valueAddedModuleData;
+
   /// Deprecated
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
@@ -15583,14 +16458,17 @@ class TransitObject {
     this.id,
     this.imageModulesData,
     this.infoModuleData,
+    this.linkedObjectIds,
     this.linksModuleData,
     this.locations,
     this.messages,
+    this.notifyPreference,
     this.passConstraints,
     this.passengerNames,
     this.passengerType,
     this.purchaseDetails,
     this.rotatingBarcode,
+    this.saveRestrictions,
     this.smartTapRedemptionValue,
     this.state,
     this.textModulesData,
@@ -15602,6 +16480,7 @@ class TransitObject {
     this.tripId,
     this.tripType,
     this.validTimeInterval,
+    this.valueAddedModuleData,
     this.version,
   });
 
@@ -15660,6 +16539,9 @@ class TransitObject {
               ? InfoModuleData.fromJson(json_['infoModuleData']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          linkedObjectIds: (json_['linkedObjectIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           linksModuleData: json_.containsKey('linksModuleData')
               ? LinksModuleData.fromJson(json_['linksModuleData']
                   as core.Map<core.String, core.dynamic>)
@@ -15672,6 +16554,7 @@ class TransitObject {
               ?.map((value) => Message.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          notifyPreference: json_['notifyPreference'] as core.String?,
           passConstraints: json_.containsKey('passConstraints')
               ? PassConstraints.fromJson(json_['passConstraints']
                   as core.Map<core.String, core.dynamic>)
@@ -15684,6 +16567,10 @@ class TransitObject {
               : null,
           rotatingBarcode: json_.containsKey('rotatingBarcode')
               ? RotatingBarcode.fromJson(json_['rotatingBarcode']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          saveRestrictions: json_.containsKey('saveRestrictions')
+              ? SaveRestrictions.fromJson(json_['saveRestrictions']
                   as core.Map<core.String, core.dynamic>)
               : null,
           smartTapRedemptionValue:
@@ -15713,6 +16600,10 @@ class TransitObject {
               ? TimeInterval.fromJson(json_['validTimeInterval']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          valueAddedModuleData: (json_['valueAddedModuleData'] as core.List?)
+              ?.map((value) => ValueAddedModuleData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           version: json_['version'] as core.String?,
         );
 
@@ -15740,14 +16631,17 @@ class TransitObject {
         if (id != null) 'id': id!,
         if (imageModulesData != null) 'imageModulesData': imageModulesData!,
         if (infoModuleData != null) 'infoModuleData': infoModuleData!,
+        if (linkedObjectIds != null) 'linkedObjectIds': linkedObjectIds!,
         if (linksModuleData != null) 'linksModuleData': linksModuleData!,
         if (locations != null) 'locations': locations!,
         if (messages != null) 'messages': messages!,
+        if (notifyPreference != null) 'notifyPreference': notifyPreference!,
         if (passConstraints != null) 'passConstraints': passConstraints!,
         if (passengerNames != null) 'passengerNames': passengerNames!,
         if (passengerType != null) 'passengerType': passengerType!,
         if (purchaseDetails != null) 'purchaseDetails': purchaseDetails!,
         if (rotatingBarcode != null) 'rotatingBarcode': rotatingBarcode!,
+        if (saveRestrictions != null) 'saveRestrictions': saveRestrictions!,
         if (smartTapRedemptionValue != null)
           'smartTapRedemptionValue': smartTapRedemptionValue!,
         if (state != null) 'state': state!,
@@ -15761,6 +16655,8 @@ class TransitObject {
         if (tripId != null) 'tripId': tripId!,
         if (tripType != null) 'tripType': tripType!,
         if (validTimeInterval != null) 'validTimeInterval': validTimeInterval!,
+        if (valueAddedModuleData != null)
+          'valueAddedModuleData': valueAddedModuleData!,
         if (version != null) 'version': version!,
       };
 }
@@ -15969,5 +16865,81 @@ class Uri {
         if (localizedDescription != null)
           'localizedDescription': localizedDescription!,
         if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Data for Value Added module.
+///
+/// Required fields are header and uri.
+class ValueAddedModuleData {
+  /// Body to be displayed on the module.
+  ///
+  /// Character limit is 50 and longer strings will be truncated.
+  LocalizedString? body;
+
+  /// Header to be displayed on the module.
+  ///
+  /// Character limit is 60 and longer strings will be truncated.
+  LocalizedString? header;
+
+  /// Image to be displayed on the module.
+  ///
+  /// Recommended image ratio is 1:1. Images will be resized to fit this ratio.
+  Image? image;
+
+  /// The index for sorting the modules.
+  ///
+  /// Modules with a lower sort index are shown before modules with a higher
+  /// sort index. If unspecified, the sort index is assumed to be INT_MAX. For
+  /// two modules with the same index, the sorting behavior is undefined.
+  core.int? sortIndex;
+
+  /// URI that the module leads to on click.
+  ///
+  /// This can be a web link or a deep link as mentioned in
+  /// https://developer.android.com/training/app-links/deep-linking.
+  core.String? uri;
+
+  /// Constraints that all must be met for the module to be shown.
+  ModuleViewConstraints? viewConstraints;
+
+  ValueAddedModuleData({
+    this.body,
+    this.header,
+    this.image,
+    this.sortIndex,
+    this.uri,
+    this.viewConstraints,
+  });
+
+  ValueAddedModuleData.fromJson(core.Map json_)
+      : this(
+          body: json_.containsKey('body')
+              ? LocalizedString.fromJson(
+                  json_['body'] as core.Map<core.String, core.dynamic>)
+              : null,
+          header: json_.containsKey('header')
+              ? LocalizedString.fromJson(
+                  json_['header'] as core.Map<core.String, core.dynamic>)
+              : null,
+          image: json_.containsKey('image')
+              ? Image.fromJson(
+                  json_['image'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sortIndex: json_['sortIndex'] as core.int?,
+          uri: json_['uri'] as core.String?,
+          viewConstraints: json_.containsKey('viewConstraints')
+              ? ModuleViewConstraints.fromJson(json_['viewConstraints']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (body != null) 'body': body!,
+        if (header != null) 'header': header!,
+        if (image != null) 'image': image!,
+        if (sortIndex != null) 'sortIndex': sortIndex!,
+        if (uri != null) 'uri': uri!,
+        if (viewConstraints != null) 'viewConstraints': viewConstraints!,
       };
 }

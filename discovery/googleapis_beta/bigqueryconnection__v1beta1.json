@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240526",
+    "revision": "20240124",
     "rootUrl": "https://bigqueryconnection.googleapis.com/",
     "servicePath": "",
     "title": "BigQuery Connection API",

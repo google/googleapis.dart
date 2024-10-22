@@ -33,6 +33,7 @@
 ///       - [ProjectsInstancesBackupsOperationsResource]
 ///     - [ProjectsInstancesDatabaseOperationsResource]
 ///     - [ProjectsInstancesDatabasesResource]
+///       - [ProjectsInstancesDatabasesBackupSchedulesResource]
 ///       - [ProjectsInstancesDatabasesDatabaseRolesResource]
 ///       - [ProjectsInstancesDatabasesOperationsResource]
 ///       - [ProjectsInstancesDatabasesSessionsResource]
@@ -103,10 +104,10 @@ class ProjectsInstanceConfigOperationsResource {
   ProjectsInstanceConfigOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Lists the user-managed instance config long-running operations in the
-  /// given project.
+  /// Lists the user-managed instance configuration long-running operations in
+  /// the given project.
   ///
-  /// An instance config operation has a name of the form
+  /// An instance configuration operation has a name of the form
   /// `projects//instanceConfigs//operations/`. The long-running operation
   /// metadata field type `metadata.type_url` describes the type of the
   /// metadata. Operations returned include those that have
@@ -116,8 +117,8 @@ class ProjectsInstanceConfigOperationsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project of the instance config operations. Values
-  /// are of the form `projects/`.
+  /// [parent] - Required. The project of the instance configuration operations.
+  /// Values are of the form `projects/`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - An expression that filters the list of returned operations. A
@@ -143,7 +144,7 @@ class ProjectsInstanceConfigOperationsResource {
   /// AND` \ `(metadata.instance_config.name:custom-config) AND` \
   /// `(metadata.progress.start_time < \"2021-03-28T14:50:00Z\") AND` \
   /// `(error:*)` - Return operations where: * The operation's metadata type is
-  /// CreateInstanceConfigMetadata. * The instance config name contains
+  /// CreateInstanceConfigMetadata. * The instance configuration name contains
   /// "custom-config". * The operation started before 2021-03-28T14:50:00Z. *
   /// The operation resulted in an error.
   ///
@@ -202,33 +203,33 @@ class ProjectsInstanceConfigsResource {
   ProjectsInstanceConfigsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates an instance config and begins preparing it to be used.
+  /// Creates an instance configuration and begins preparing it to be used.
   ///
   /// The returned long-running operation can be used to track the progress of
-  /// preparing the new instance config. The instance config name is assigned by
-  /// the caller. If the named instance config already exists,
-  /// `CreateInstanceConfig` returns `ALREADY_EXISTS`. Immediately after the
-  /// request returns: * The instance config is readable via the API, with all
-  /// requested attributes. The instance config's reconciling field is set to
-  /// true. Its state is `CREATING`. While the operation is pending: *
-  /// Cancelling the operation renders the instance config immediately
-  /// unreadable via the API. * Except for deleting the creating resource, all
-  /// other attempts to modify the instance config are rejected. Upon completion
-  /// of the returned operation: * Instances can be created using the instance
-  /// configuration. * The instance config's reconciling field becomes false.
-  /// Its state becomes `READY`. The returned long-running operation will have a
-  /// name of the format `/operations/` and can be used to track creation of the
-  /// instance config. The metadata field type is CreateInstanceConfigMetadata.
-  /// The response field type is InstanceConfig, if successful. Authorization
-  /// requires `spanner.instanceConfigs.create` permission on the resource
-  /// parent.
+  /// preparing the new instance configuration. The instance configuration name
+  /// is assigned by the caller. If the named instance configuration already
+  /// exists, `CreateInstanceConfig` returns `ALREADY_EXISTS`. Immediately after
+  /// the request returns: * The instance configuration is readable via the API,
+  /// with all requested attributes. The instance configuration's reconciling
+  /// field is set to true. Its state is `CREATING`. While the operation is
+  /// pending: * Cancelling the operation renders the instance configuration
+  /// immediately unreadable via the API. * Except for deleting the creating
+  /// resource, all other attempts to modify the instance configuration are
+  /// rejected. Upon completion of the returned operation: * Instances can be
+  /// created using the instance configuration. * The instance configuration's
+  /// reconciling field becomes false. Its state becomes `READY`. The returned
+  /// long-running operation will have a name of the format `/operations/` and
+  /// can be used to track creation of the instance configuration. The metadata
+  /// field type is CreateInstanceConfigMetadata. The response field type is
+  /// InstanceConfig, if successful. Authorization requires
+  /// `spanner.instanceConfigs.create` permission on the resource parent.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the project in which to create the
-  /// instance config. Values are of the form `projects/`.
+  /// instance configuration. Values are of the form `projects/`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -262,11 +263,11 @@ class ProjectsInstanceConfigsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes the instance config.
+  /// Deletes the instance configuration.
   ///
   /// Deletion is only allowed when no instances are using the configuration. If
-  /// any instances are using the config, returns `FAILED_PRECONDITION`. Only
-  /// user managed configurations can be deleted. Authorization requires
+  /// any instances are using the configuration, returns `FAILED_PRECONDITION`.
+  /// Only user-managed configurations can be deleted. Authorization requires
   /// `spanner.instanceConfigs.delete` permission on the resource name.
   ///
   /// Request parameters:
@@ -276,11 +277,11 @@ class ProjectsInstanceConfigsResource {
   /// Value must have pattern `^projects/\[^/\]+/instanceConfigs/\[^/\]+$`.
   ///
   /// [etag] - Used for optimistic concurrency control as a way to help prevent
-  /// simultaneous deletes of an instance config from overwriting each other. If
-  /// not empty, the API only deletes the instance config when the etag provided
-  /// matches the current status of the requested instance config. Otherwise,
-  /// deletes the instance config without checking the current status of the
-  /// requested instance config.
+  /// simultaneous deletes of an instance configuration from overwriting each
+  /// other. If not empty, the API only deletes the instance configuration when
+  /// the etag provided matches the current status of the requested instance
+  /// configuration. Otherwise, deletes the instance configuration without
+  /// checking the current status of the requested instance configuration.
   ///
   /// [validateOnly] - An option to validate, but not actually execute, a
   /// request, and provide the same response.
@@ -356,6 +357,9 @@ class ProjectsInstanceConfigsResource {
 
   /// Lists the supported instance configurations for a given project.
   ///
+  /// Returns both Google-managed configurations and user-managed
+  /// configurations.
+  ///
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the project for which a list of supported
@@ -402,23 +406,24 @@ class ProjectsInstanceConfigsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an instance config.
+  /// Updates an instance configuration.
   ///
   /// The returned long-running operation can be used to track the progress of
-  /// updating the instance. If the named instance config does not exist,
-  /// returns `NOT_FOUND`. Only user managed configurations can be updated.
-  /// Immediately after the request returns: * The instance config's reconciling
-  /// field is set to true. While the operation is pending: * Cancelling the
-  /// operation sets its metadata's cancel_time. The operation is guaranteed to
-  /// succeed at undoing all changes, after which point it terminates with a
-  /// `CANCELLED` status. * All other attempts to modify the instance config are
-  /// rejected. * Reading the instance config via the API continues to give the
-  /// pre-request values. Upon completion of the returned operation: * Creating
-  /// instances using the instance configuration uses the new values. * The
-  /// instance config's new values are readable via the API. * The instance
-  /// config's reconciling field becomes false. The returned long-running
-  /// operation will have a name of the format `/operations/` and can be used to
-  /// track the instance config modification. The metadata field type is
+  /// updating the instance. If the named instance configuration does not exist,
+  /// returns `NOT_FOUND`. Only user-managed configurations can be updated.
+  /// Immediately after the request returns: * The instance configuration's
+  /// reconciling field is set to true. While the operation is pending: *
+  /// Cancelling the operation sets its metadata's cancel_time. The operation is
+  /// guaranteed to succeed at undoing all changes, after which point it
+  /// terminates with a `CANCELLED` status. * All other attempts to modify the
+  /// instance configuration are rejected. * Reading the instance configuration
+  /// via the API continues to give the pre-request values. Upon completion of
+  /// the returned operation: * Creating instances using the instance
+  /// configuration uses the new values. * The new values of the instance
+  /// configuration are readable via the API. * The instance configuration's
+  /// reconciling field becomes false. The returned long-running operation will
+  /// have a name of the format `/operations/` and can be used to track the
+  /// instance configuration modification. The metadata field type is
   /// UpdateInstanceConfigMetadata. The response field type is InstanceConfig,
   /// if successful. Authorization requires `spanner.instanceConfigs.update`
   /// permission on the resource name.
@@ -428,7 +433,8 @@ class ProjectsInstanceConfigsResource {
   /// Request parameters:
   ///
   /// [name] - A unique identifier for the instance configuration. Values are of
-  /// the form `projects//instanceConfigs/a-z*`.
+  /// the form `projects//instanceConfigs/a-z*`. User instance configuration
+  /// must start with `custom-`.
   /// Value must have pattern `^projects/\[^/\]+/instanceConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1113,37 +1119,38 @@ class ProjectsInstancesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Moves the instance to the target instance config.
+  /// Moves an instance to the target instance configuration.
   ///
-  /// The returned long-running operation can be used to track the progress of
+  /// You can use the returned long-running operation to track the progress of
   /// moving the instance. `MoveInstance` returns `FAILED_PRECONDITION` if the
-  /// instance meets any of the following criteria: * Has an ongoing move to a
-  /// different instance config * Has backups * Has an ongoing update * Is under
-  /// free trial * Contains any CMEK-enabled databases While the operation is
-  /// pending: * All other attempts to modify the instance, including changes to
-  /// its compute capacity, are rejected. * The following database and backup
-  /// admin operations are rejected: * DatabaseAdmin.CreateDatabase, *
-  /// DatabaseAdmin.UpdateDatabaseDdl (Disabled if default_leader is specified
-  /// in the request.) * DatabaseAdmin.RestoreDatabase *
-  /// DatabaseAdmin.CreateBackup * DatabaseAdmin.CopyBackup * Both the source
-  /// and target instance configs are subject to hourly compute and storage
-  /// charges. * The instance may experience higher read-write latencies and a
-  /// higher transaction abort rate. However, moving an instance does not cause
-  /// any downtime. The returned long-running operation will have a name of the
-  /// format `/operations/` and can be used to track the move instance
-  /// operation. The metadata field type is MoveInstanceMetadata. The response
-  /// field type is Instance, if successful. Cancelling the operation sets its
-  /// metadata's cancel_time. Cancellation is not immediate since it involves
-  /// moving any data previously moved to target instance config back to the
-  /// original instance config. The same operation can be used to track the
+  /// instance meets any of the following criteria: * Is undergoing a move to a
+  /// different instance configuration * Has backups * Has an ongoing update *
+  /// Contains any CMEK-enabled databases * Is a free trial instance While the
+  /// operation is pending: * All other attempts to modify the instance,
+  /// including changes to its compute capacity, are rejected. * The following
+  /// database and backup admin operations are rejected: *
+  /// `DatabaseAdmin.CreateDatabase` * `DatabaseAdmin.UpdateDatabaseDdl`
+  /// (disabled if default_leader is specified in the request.) *
+  /// `DatabaseAdmin.RestoreDatabase` * `DatabaseAdmin.CreateBackup` *
+  /// `DatabaseAdmin.CopyBackup` * Both the source and target instance
+  /// configurations are subject to hourly compute and storage charges. * The
+  /// instance might experience higher read-write latencies and a higher
+  /// transaction abort rate. However, moving an instance doesn't cause any
+  /// downtime. The returned long-running operation has a name of the format
+  /// `/operations/` and can be used to track the move instance operation. The
+  /// metadata field type is MoveInstanceMetadata. The response field type is
+  /// Instance, if successful. Cancelling the operation sets its metadata's
+  /// cancel_time. Cancellation is not immediate because it involves moving any
+  /// data previously moved to the target instance configuration back to the
+  /// original instance configuration. You can use this operation to track the
   /// progress of the cancellation. Upon successful completion of the
-  /// cancellation, the operation terminates with CANCELLED status. Upon
-  /// completion(if not cancelled) of the returned operation: * Instance would
-  /// be successfully moved to the target instance config. * You are billed for
-  /// compute and storage in target instance config. Authorization requires
-  /// `spanner.instances.update` permission on the resource instance. For more
-  /// details, please see
-  /// [documentation](https://cloud.google.com/spanner/docs/move-instance).
+  /// cancellation, the operation terminates with `CANCELLED` status. If not
+  /// cancelled, upon completion of the returned operation: * The instance
+  /// successfully moves to the target instance configuration. * You are billed
+  /// for compute and storage in target instance configuration. Authorization
+  /// requires the `spanner.instances.update` permission on the resource
+  /// instance. For more details, see
+  /// [Move an instance](https://cloud.google.com/spanner/docs/move-instance).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1754,18 +1761,20 @@ class ProjectsInstancesBackupsResource {
   /// * `name` * `database` * `state` * `create_time` (and values are of the
   /// format YYYY-MM-DDTHH:MM:SSZ) * `expire_time` (and values are of the format
   /// YYYY-MM-DDTHH:MM:SSZ) * `version_time` (and values are of the format
-  /// YYYY-MM-DDTHH:MM:SSZ) * `size_bytes` You can combine multiple expressions
-  /// by enclosing each expression in parentheses. By default, expressions are
-  /// combined with AND logic, but you can specify AND, OR, and NOT logic
-  /// explicitly. Here are a few examples: * `name:Howl` - The backup's name
-  /// contains the string "howl". * `database:prod` - The database's name
-  /// contains the string "prod". * `state:CREATING` - The backup is pending
-  /// creation. * `state:READY` - The backup is fully created and ready for use.
-  /// * `(name:howl) AND (create_time < \"2018-03-28T14:50:00Z\")` - The backup
-  /// name contains the string "howl" and `create_time` of the backup is before
-  /// 2018-03-28T14:50:00Z. * `expire_time < \"2018-03-28T14:50:00Z\"` - The
-  /// backup `expire_time` is before 2018-03-28T14:50:00Z. * `size_bytes >
-  /// 10000000000` - The backup's size is greater than 10GB
+  /// YYYY-MM-DDTHH:MM:SSZ) * `size_bytes` * `backup_schedules` You can combine
+  /// multiple expressions by enclosing each expression in parentheses. By
+  /// default, expressions are combined with AND logic, but you can specify AND,
+  /// OR, and NOT logic explicitly. Here are a few examples: * `name:Howl` - The
+  /// backup's name contains the string "howl". * `database:prod` - The
+  /// database's name contains the string "prod". * `state:CREATING` - The
+  /// backup is pending creation. * `state:READY` - The backup is fully created
+  /// and ready for use. * `(name:howl) AND (create_time <
+  /// \"2018-03-28T14:50:00Z\")` - The backup name contains the string "howl"
+  /// and `create_time` of the backup is before 2018-03-28T14:50:00Z. *
+  /// `expire_time < \"2018-03-28T14:50:00Z\"` - The backup `expire_time` is
+  /// before 2018-03-28T14:50:00Z. * `size_bytes > 10000000000` - The backup's
+  /// size is greater than 10GB * `backup_schedules:daily` - The backup is
+  /// created from a schedule with "daily" in its name.
   ///
   /// [pageSize] - Number of backups to be returned in the response. If 0 or
   /// less, defaults to the server's maximum allowed page size.
@@ -2244,6 +2253,8 @@ class ProjectsInstancesDatabaseOperationsResource {
 class ProjectsInstancesDatabasesResource {
   final commons.ApiRequester _requester;
 
+  ProjectsInstancesDatabasesBackupSchedulesResource get backupSchedules =>
+      ProjectsInstancesDatabasesBackupSchedulesResource(_requester);
   ProjectsInstancesDatabasesDatabaseRolesResource get databaseRoles =>
       ProjectsInstancesDatabasesDatabaseRolesResource(_requester);
   ProjectsInstancesDatabasesOperationsResource get operations =>
@@ -2254,14 +2265,14 @@ class ProjectsInstancesDatabasesResource {
   ProjectsInstancesDatabasesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// ChangeQuorum is strictly restricted to databases that use dual region
+  /// `ChangeQuorum` is strictly restricted to databases that use dual-region
   /// instance configurations.
   ///
-  /// Initiates a background operation to change quorum a database from
-  /// dual-region mode to single-region mode and vice versa. The returned
-  /// long-running operation will have a name of the format
+  /// Initiates a background operation to change the quorum of a database from
+  /// dual-region mode to single-region mode or vice versa. The returned
+  /// long-running operation has a name of the format
   /// `projects//instances//databases//operations/` and can be used to track
-  /// execution of the ChangeQuorum. The metadata field type is
+  /// execution of the `ChangeQuorum`. The metadata field type is
   /// ChangeQuorumMetadata. Authorization requires
   /// `spanner.databases.changequorum` permission on the resource database.
   ///
@@ -2269,8 +2280,8 @@ class ProjectsInstancesDatabasesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the database in which to apply the
-  /// ChangeQuorum. Values are of the form `projects//instances//databases/`.
+  /// [name] - Required. Name of the database in which to apply `ChangeQuorum`.
+  /// Values are of the form `projects//instances//databases/`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/instances/\[^/\]+/databases/\[^/\]+$`.
   ///
@@ -2305,7 +2316,7 @@ class ProjectsInstancesDatabasesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Creates a new Cloud Spanner database and starts to prepare it for serving.
+  /// Creates a new Spanner database and starts to prepare it for serving.
   ///
   /// The returned long-running operation will have a name of the format
   /// `/operations/` and can be used to track preparation of the database. The
@@ -2894,6 +2905,392 @@ class ProjectsInstancesDatabasesResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsInstancesDatabasesBackupSchedulesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsInstancesDatabasesBackupSchedulesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new backup schedule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the database that this backup schedule
+  /// applies to.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [backupScheduleId] - Required. The Id to use for the backup schedule. The
+  /// `backup_schedule_id` appended to `parent` forms the full backup schedule
+  /// name of the form `projects//instances//databases//backupSchedules/`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BackupSchedule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BackupSchedule> create(
+    BackupSchedule request,
+    core.String parent, {
+    core.String? backupScheduleId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (backupScheduleId != null) 'backupScheduleId': [backupScheduleId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/backupSchedules';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BackupSchedule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a backup schedule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the schedule to delete. Values are of the
+  /// form `projects//instances//databases//backupSchedules/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/databases/\[^/\]+/backupSchedules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets backup schedule for the input schedule name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the schedule to retrieve. Values are of the
+  /// form `projects//instances//databases//backupSchedules/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/databases/\[^/\]+/backupSchedules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BackupSchedule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BackupSchedule> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BackupSchedule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the access control policy for a database or backup resource.
+  ///
+  /// Returns an empty policy if a database or backup exists but does not have a
+  /// policy set. Authorization requires `spanner.databases.getIamPolicy`
+  /// permission on resource. For backups, authorization requires
+  /// `spanner.backups.getIamPolicy` permission on resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The Cloud Spanner resource for which the policy is
+  /// being retrieved. The format is `projects//instances/` for instance
+  /// resources and `projects//instances//databases/` for database resources.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/databases/\[^/\]+/backupSchedules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    GetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all the backup schedules for the database.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Database is the parent resource whose backup
+  /// schedules should be listed. Values are of the form
+  /// projects//instances//databases/
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Number of backup schedules to be returned in the
+  /// response. If 0 or less, defaults to the server's maximum allowed page
+  /// size.
+  ///
+  /// [pageToken] - Optional. If non-empty, `page_token` should contain a
+  /// next_page_token from a previous ListBackupSchedulesResponse to the same
+  /// `parent`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBackupSchedulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBackupSchedulesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/backupSchedules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBackupSchedulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a backup schedule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Output only for the CreateBackupSchedule operation.
+  /// Required for the UpdateBackupSchedule operation. A globally unique
+  /// identifier for the backup schedule which cannot be changed. Values are of
+  /// the form `projects//instances//databases//backupSchedules/a-z*[a-z0-9]`
+  /// The final segment of the name must be between 2 and 60 characters in
+  /// length.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/databases/\[^/\]+/backupSchedules/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. A mask specifying which fields in the
+  /// BackupSchedule resource should be updated. This mask is relative to the
+  /// BackupSchedule resource, not to the request message. The field mask must
+  /// always be specified; this prevents any future fields from being erased
+  /// accidentally.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BackupSchedule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BackupSchedule> patch(
+    BackupSchedule request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BackupSchedule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on a database or backup resource.
+  ///
+  /// Replaces any existing policy. Authorization requires
+  /// `spanner.databases.setIamPolicy` permission on resource. For backups,
+  /// authorization requires `spanner.backups.setIamPolicy` permission on
+  /// resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The Cloud Spanner resource for which the policy is
+  /// being set. The format is `projects//instances/` for instance resources and
+  /// `projects//instances//databases/` for databases resources.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/databases/\[^/\]+/backupSchedules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that the caller has on the specified database or
+  /// backup resource.
+  ///
+  /// Attempting this RPC on a non-existent Cloud Spanner database will result
+  /// in a NOT_FOUND error if the user has `spanner.databases.list` permission
+  /// on the containing Cloud Spanner instance. Otherwise returns an empty set
+  /// of permissions. Calling this method on a backup that does not exist will
+  /// result in a NOT_FOUND error if the user has `spanner.backups.list`
+  /// permission on the containing instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The Cloud Spanner resource for which permissions
+  /// are being tested. The format is `projects//instances/` for instance
+  /// resources and `projects//instances//databases/` for database resources.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/databases/\[^/\]+/backupSchedules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4809,8 +5206,59 @@ class ScansResource {
   }
 }
 
-/// Autoscaling config for an instance.
+/// AsymmetricAutoscalingOption specifies the scaling of replicas identified by
+/// the given selection.
+class AsymmetricAutoscalingOption {
+  /// Overrides applied to the top-level autoscaling configuration for the
+  /// selected replicas.
+  ///
+  /// Optional.
+  AutoscalingConfigOverrides? overrides;
+
+  /// Selects the replicas to which this AsymmetricAutoscalingOption applies.
+  ///
+  /// Only read-only replicas are supported.
+  ///
+  /// Required.
+  InstanceReplicaSelection? replicaSelection;
+
+  AsymmetricAutoscalingOption({
+    this.overrides,
+    this.replicaSelection,
+  });
+
+  AsymmetricAutoscalingOption.fromJson(core.Map json_)
+      : this(
+          overrides: json_.containsKey('overrides')
+              ? AutoscalingConfigOverrides.fromJson(
+                  json_['overrides'] as core.Map<core.String, core.dynamic>)
+              : null,
+          replicaSelection: json_.containsKey('replicaSelection')
+              ? InstanceReplicaSelection.fromJson(json_['replicaSelection']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (overrides != null) 'overrides': overrides!,
+        if (replicaSelection != null) 'replicaSelection': replicaSelection!,
+      };
+}
+
+/// Autoscaling configuration for an instance.
 class AutoscalingConfig {
+  /// Optional asymmetric autoscaling options.
+  ///
+  /// Replicas matching the replica selection criteria will be autoscaled
+  /// independently from other replicas. The autoscaler will scale the replicas
+  /// based on the utilization of replicas identified by the replica selection.
+  /// Replica selections should not overlap with each other. Other replicas
+  /// (those do not match any replica selection) will be autoscaled together and
+  /// will have the same compute capacity allocated to them.
+  ///
+  /// Optional.
+  core.List<AsymmetricAutoscalingOption>? asymmetricAutoscalingOptions;
+
   /// Autoscaling limits for an instance.
   ///
   /// Required.
@@ -4822,12 +5270,18 @@ class AutoscalingConfig {
   AutoscalingTargets? autoscalingTargets;
 
   AutoscalingConfig({
+    this.asymmetricAutoscalingOptions,
     this.autoscalingLimits,
     this.autoscalingTargets,
   });
 
   AutoscalingConfig.fromJson(core.Map json_)
       : this(
+          asymmetricAutoscalingOptions:
+              (json_['asymmetricAutoscalingOptions'] as core.List?)
+                  ?.map((value) => AsymmetricAutoscalingOption.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
           autoscalingLimits: json_.containsKey('autoscalingLimits')
               ? AutoscalingLimits.fromJson(json_['autoscalingLimits']
                   as core.Map<core.String, core.dynamic>)
@@ -4839,9 +5293,54 @@ class AutoscalingConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (asymmetricAutoscalingOptions != null)
+          'asymmetricAutoscalingOptions': asymmetricAutoscalingOptions!,
         if (autoscalingLimits != null) 'autoscalingLimits': autoscalingLimits!,
         if (autoscalingTargets != null)
           'autoscalingTargets': autoscalingTargets!,
+      };
+}
+
+/// Overrides the top-level autoscaling configuration for the replicas
+/// identified by `replica_selection`.
+///
+/// All fields in this message are optional. Any unspecified fields will use the
+/// corresponding values from the top-level autoscaling configuration.
+class AutoscalingConfigOverrides {
+  /// If specified, overrides the min/max limit in the top-level autoscaling
+  /// configuration for the selected replicas.
+  ///
+  /// Optional.
+  AutoscalingLimits? autoscalingLimits;
+
+  /// If specified, overrides the autoscaling target
+  /// high_priority_cpu_utilization_percent in the top-level autoscaling
+  /// configuration for the selected replicas.
+  ///
+  /// Optional.
+  core.int? autoscalingTargetHighPriorityCpuUtilizationPercent;
+
+  AutoscalingConfigOverrides({
+    this.autoscalingLimits,
+    this.autoscalingTargetHighPriorityCpuUtilizationPercent,
+  });
+
+  AutoscalingConfigOverrides.fromJson(core.Map json_)
+      : this(
+          autoscalingLimits: json_.containsKey('autoscalingLimits')
+              ? AutoscalingLimits.fromJson(json_['autoscalingLimits']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          autoscalingTargetHighPriorityCpuUtilizationPercent:
+              json_['autoscalingTargetHighPriorityCpuUtilizationPercent']
+                  as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoscalingLimits != null) 'autoscalingLimits': autoscalingLimits!,
+        if (autoscalingTargetHighPriorityCpuUtilizationPercent != null)
+          'autoscalingTargetHighPriorityCpuUtilizationPercent':
+              autoscalingTargetHighPriorityCpuUtilizationPercent!,
       };
 }
 
@@ -4942,6 +5441,19 @@ class AutoscalingTargets {
 
 /// A backup of a Cloud Spanner database.
 class Backup {
+  /// List of backup schedule URIs that are associated with creating this
+  /// backup.
+  ///
+  /// This is only applicable for scheduled backups, and is empty for on-demand
+  /// backups. To optimize for storage, whenever possible, multiple schedules
+  /// are collapsed together to create one backup. In such cases, this field
+  /// captures the list of all backup schedule URIs that are associated with
+  /// creating this backup. If collapsing is not done, then this field captures
+  /// the single backup schedule URI associated with creating this backup.
+  ///
+  /// Output only.
+  core.List<core.String>? backupSchedules;
+
   /// The time the CreateBackup request is received.
   ///
   /// If the request does not specify `version_time`, the `version_time` of the
@@ -4984,6 +5496,18 @@ class Backup {
   /// Output only.
   core.List<EncryptionInfo>? encryptionInformation;
 
+  /// For a backup in an incremental backup chain, this is the storage space
+  /// needed to keep the data that has changed since the previous backup.
+  ///
+  /// For all other backups, this is always the size of the backup. This value
+  /// may change if backups on the same chain get deleted or expired. This field
+  /// can be used to calculate the total storage space used by a set of backups.
+  /// For example, the total space used by all backups of a database can be
+  /// computed by summing up this field.
+  ///
+  /// Output only.
+  core.String? exclusiveSizeBytes;
+
   /// Required for the CreateBackup operation.
   ///
   /// The expiration time of the backup, with microseconds granularity that must
@@ -4992,6 +5516,27 @@ class Backup {
   /// eligible to be automatically deleted by Cloud Spanner to free the
   /// resources used by the backup.
   core.String? expireTime;
+
+  /// The number of bytes that will be freed by deleting this backup.
+  ///
+  /// This value will be zero if, for example, this backup is part of an
+  /// incremental backup chain and younger backups in the chain require that we
+  /// keep its data. For backups not in an incremental backup chain, this is
+  /// always the size of the backup. This value may change if backups on the
+  /// same chain get created, deleted or expired.
+  ///
+  /// Output only.
+  core.String? freeableSizeBytes;
+
+  /// Populated only for backups in an incremental backup chain.
+  ///
+  /// Backups share the same chain id if and only if they belong to the same
+  /// incremental backup chain. Use this field to determine which backups are
+  /// part of the same incremental backup chain. The ordering of backups in the
+  /// chain can be determined by ordering the backup `version_time`.
+  ///
+  /// Output only.
+  core.String? incrementalBackupChainId;
 
   /// The max allowed expiration time of the backup, with microseconds
   /// granularity.
@@ -5014,6 +5559,17 @@ class Backup {
   /// containing the backup, identified by the prefix of the backup name of the
   /// form `projects//instances/`.
   core.String? name;
+
+  /// Data deleted at a time older than this is guaranteed not to be retained in
+  /// order to support this backup.
+  ///
+  /// For a backup in an incremental backup chain, this is the version time of
+  /// the oldest backup that exists or ever existed in the chain. For all other
+  /// backups, this is the version time of the backup. This field can be used to
+  /// understand what data is being retained by the backup system.
+  ///
+  /// Output only.
+  core.String? oldestVersionTime;
 
   /// The names of the destination backups being created by copying this source
   /// backup.
@@ -5040,6 +5596,9 @@ class Backup {
 
   /// Size of the backup in bytes.
   ///
+  /// For a backup in an incremental backup chain, this is the sum of the
+  /// `exclusive_size_bytes` of itself and all older backups in the chain.
+  ///
   /// Output only.
   core.String? sizeBytes;
 
@@ -5061,14 +5620,19 @@ class Backup {
   core.String? versionTime;
 
   Backup({
+    this.backupSchedules,
     this.createTime,
     this.database,
     this.databaseDialect,
     this.encryptionInfo,
     this.encryptionInformation,
+    this.exclusiveSizeBytes,
     this.expireTime,
+    this.freeableSizeBytes,
+    this.incrementalBackupChainId,
     this.maxExpireTime,
     this.name,
+    this.oldestVersionTime,
     this.referencingBackups,
     this.referencingDatabases,
     this.sizeBytes,
@@ -5078,6 +5642,9 @@ class Backup {
 
   Backup.fromJson(core.Map json_)
       : this(
+          backupSchedules: (json_['backupSchedules'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           createTime: json_['createTime'] as core.String?,
           database: json_['database'] as core.String?,
           databaseDialect: json_['databaseDialect'] as core.String?,
@@ -5089,9 +5656,14 @@ class Backup {
               ?.map((value) => EncryptionInfo.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          exclusiveSizeBytes: json_['exclusiveSizeBytes'] as core.String?,
           expireTime: json_['expireTime'] as core.String?,
+          freeableSizeBytes: json_['freeableSizeBytes'] as core.String?,
+          incrementalBackupChainId:
+              json_['incrementalBackupChainId'] as core.String?,
           maxExpireTime: json_['maxExpireTime'] as core.String?,
           name: json_['name'] as core.String?,
+          oldestVersionTime: json_['oldestVersionTime'] as core.String?,
           referencingBackups: (json_['referencingBackups'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -5104,15 +5676,22 @@ class Backup {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (backupSchedules != null) 'backupSchedules': backupSchedules!,
         if (createTime != null) 'createTime': createTime!,
         if (database != null) 'database': database!,
         if (databaseDialect != null) 'databaseDialect': databaseDialect!,
         if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
         if (encryptionInformation != null)
           'encryptionInformation': encryptionInformation!,
+        if (exclusiveSizeBytes != null)
+          'exclusiveSizeBytes': exclusiveSizeBytes!,
         if (expireTime != null) 'expireTime': expireTime!,
+        if (freeableSizeBytes != null) 'freeableSizeBytes': freeableSizeBytes!,
+        if (incrementalBackupChainId != null)
+          'incrementalBackupChainId': incrementalBackupChainId!,
         if (maxExpireTime != null) 'maxExpireTime': maxExpireTime!,
         if (name != null) 'name': name!,
+        if (oldestVersionTime != null) 'oldestVersionTime': oldestVersionTime!,
         if (referencingBackups != null)
           'referencingBackups': referencingBackups!,
         if (referencingDatabases != null)
@@ -5161,6 +5740,124 @@ class BackupInfo {
         if (createTime != null) 'createTime': createTime!,
         if (sourceDatabase != null) 'sourceDatabase': sourceDatabase!,
         if (versionTime != null) 'versionTime': versionTime!,
+      };
+}
+
+/// BackupSchedule expresses the automated backup creation specification for a
+/// Spanner database.
+///
+/// Next ID: 10
+class BackupSchedule {
+  /// The encryption configuration that will be used to encrypt the backup.
+  ///
+  /// If this field is not specified, the backup will use the same encryption
+  /// configuration as the database.
+  ///
+  /// Optional.
+  CreateBackupEncryptionConfig? encryptionConfig;
+
+  /// The schedule creates only full backups.
+  FullBackupSpec? fullBackupSpec;
+
+  /// The schedule creates incremental backup chains.
+  IncrementalBackupSpec? incrementalBackupSpec;
+
+  /// Identifier.
+  ///
+  /// Output only for the CreateBackupSchedule operation. Required for the
+  /// UpdateBackupSchedule operation. A globally unique identifier for the
+  /// backup schedule which cannot be changed. Values are of the form
+  /// `projects//instances//databases//backupSchedules/a-z*[a-z0-9]` The final
+  /// segment of the name must be between 2 and 60 characters in length.
+  core.String? name;
+
+  /// The retention duration of a backup that must be at least 6 hours and at
+  /// most 366 days.
+  ///
+  /// The backup is eligible to be automatically deleted once the retention
+  /// period has elapsed.
+  ///
+  /// Optional.
+  core.String? retentionDuration;
+
+  /// The schedule specification based on which the backup creations are
+  /// triggered.
+  ///
+  /// Optional.
+  BackupScheduleSpec? spec;
+
+  /// The timestamp at which the schedule was last updated.
+  ///
+  /// If the schedule has never been updated, this field contains the timestamp
+  /// when the schedule was first created.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  BackupSchedule({
+    this.encryptionConfig,
+    this.fullBackupSpec,
+    this.incrementalBackupSpec,
+    this.name,
+    this.retentionDuration,
+    this.spec,
+    this.updateTime,
+  });
+
+  BackupSchedule.fromJson(core.Map json_)
+      : this(
+          encryptionConfig: json_.containsKey('encryptionConfig')
+              ? CreateBackupEncryptionConfig.fromJson(json_['encryptionConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          fullBackupSpec: json_.containsKey('fullBackupSpec')
+              ? FullBackupSpec.fromJson(json_['fullBackupSpec']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          incrementalBackupSpec: json_.containsKey('incrementalBackupSpec')
+              ? IncrementalBackupSpec.fromJson(json_['incrementalBackupSpec']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_['name'] as core.String?,
+          retentionDuration: json_['retentionDuration'] as core.String?,
+          spec: json_.containsKey('spec')
+              ? BackupScheduleSpec.fromJson(
+                  json_['spec'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
+        if (fullBackupSpec != null) 'fullBackupSpec': fullBackupSpec!,
+        if (incrementalBackupSpec != null)
+          'incrementalBackupSpec': incrementalBackupSpec!,
+        if (name != null) 'name': name!,
+        if (retentionDuration != null) 'retentionDuration': retentionDuration!,
+        if (spec != null) 'spec': spec!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Defines specifications of the backup schedule.
+class BackupScheduleSpec {
+  /// Cron style schedule specification.
+  CrontabSpec? cronSpec;
+
+  BackupScheduleSpec({
+    this.cronSpec,
+  });
+
+  BackupScheduleSpec.fromJson(core.Map json_)
+      : this(
+          cronSpec: json_.containsKey('cronSpec')
+              ? CrontabSpec.fromJson(
+                  json_['cronSpec'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cronSpec != null) 'cronSpec': cronSpec!,
       };
 }
 
@@ -5462,25 +6159,25 @@ class Binding {
 
 /// The request for ChangeQuorum.
 class ChangeQuorumRequest {
-  /// The etag is the hash of the QuorumInfo.
+  /// The etag is the hash of the `QuorumInfo`.
   ///
-  /// The ChangeQuorum operation will only be performed if the etag matches that
-  /// of the QuorumInfo in the current database resource. Otherwise the API will
-  /// return an `ABORTED` error. The etag is used for optimistic concurrency
+  /// The `ChangeQuorum` operation is only performed if the etag matches that of
+  /// the `QuorumInfo` in the current database resource. Otherwise the API
+  /// returns an `ABORTED` error. The etag is used for optimistic concurrency
   /// control as a way to help prevent simultaneous change quorum requests that
   /// could create a race condition.
   ///
   /// Optional.
   core.String? etag;
 
-  /// Name of the database in which to apply the ChangeQuorum.
+  /// Name of the database in which to apply `ChangeQuorum`.
   ///
   /// Values are of the form `projects//instances//databases/`.
   ///
   /// Required.
   core.String? name;
 
-  /// The type of this Quorum.
+  /// The type of this quorum.
   ///
   /// Required.
   QuorumType? quorumType;
@@ -5875,6 +6572,70 @@ class CopyBackupRequest {
       };
 }
 
+/// Encryption configuration for the backup to create.
+class CreateBackupEncryptionConfig {
+  /// The encryption type of the backup.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ENCRYPTION_TYPE_UNSPECIFIED" : Unspecified. Do not use.
+  /// - "USE_DATABASE_ENCRYPTION" : Use the same encryption configuration as the
+  /// database. This is the default option when encryption_config is empty. For
+  /// example, if the database is using `Customer_Managed_Encryption`, the
+  /// backup will be using the same Cloud KMS key as the database.
+  /// - "GOOGLE_DEFAULT_ENCRYPTION" : Use Google default encryption.
+  /// - "CUSTOMER_MANAGED_ENCRYPTION" : Use customer managed encryption. If
+  /// specified, `kms_key_name` must contain a valid Cloud KMS key.
+  core.String? encryptionType;
+
+  /// The Cloud KMS key that will be used to protect the backup.
+  ///
+  /// This field should be set only when encryption_type is
+  /// `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
+  /// `projects//locations//keyRings//cryptoKeys/`.
+  ///
+  /// Optional.
+  core.String? kmsKeyName;
+
+  /// Specifies the KMS configuration for the one or more keys used to protect
+  /// the backup.
+  ///
+  /// Values are of the form `projects//locations//keyRings//cryptoKeys/`. The
+  /// keys referenced by kms_key_names must fully cover all regions of the
+  /// backup's instance configuration. Some examples: * For single region
+  /// instance configs, specify a single regional location KMS key. * For
+  /// multi-regional instance configs of type GOOGLE_MANAGED, either specify a
+  /// multi-regional location KMS key or multiple regional location KMS keys
+  /// that cover all regions in the instance config. * For an instance config of
+  /// type USER_MANAGED, please specify only regional location KMS keys to cover
+  /// each region in the instance config. Multi-regional location KMS keys are
+  /// not supported for USER_MANAGED instance configs.
+  ///
+  /// Optional.
+  core.List<core.String>? kmsKeyNames;
+
+  CreateBackupEncryptionConfig({
+    this.encryptionType,
+    this.kmsKeyName,
+    this.kmsKeyNames,
+  });
+
+  CreateBackupEncryptionConfig.fromJson(core.Map json_)
+      : this(
+          encryptionType: json_['encryptionType'] as core.String?,
+          kmsKeyName: json_['kmsKeyName'] as core.String?,
+          kmsKeyNames: (json_['kmsKeyNames'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (encryptionType != null) 'encryptionType': encryptionType!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (kmsKeyNames != null) 'kmsKeyNames': kmsKeyNames!,
+      };
+}
+
 /// The request for CreateDatabase.
 class CreateDatabaseRequest {
   /// A \`CREATE DATABASE\` statement, which specifies the ID of the new
@@ -5915,15 +6676,16 @@ class CreateDatabaseRequest {
   /// Optional.
   core.List<core.String>? extraStatements;
 
-  /// Proto descriptors used by CREATE/ALTER PROTO BUNDLE statements in
-  /// 'extra_statements' above.
+  /// Proto descriptors used by `CREATE/ALTER PROTO BUNDLE` statements in
+  /// 'extra_statements'.
   ///
   /// Contains a protobuf-serialized
-  /// [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto).
-  /// To generate it, [install](https://grpc.io/docs/protoc-installation/) and
-  /// run `protoc` with --include_imports and --descriptor_set_out. For example,
-  /// to generate for moon/shot/app.proto, run ``` $protoc
-  /// --proto_path=/app_path --proto_path=/lib_path \ --include_imports \
+  /// \[`google.protobuf.FileDescriptorSet`\](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto)
+  /// descriptor set. To generate it,
+  /// [install](https://grpc.io/docs/protoc-installation/) and run `protoc` with
+  /// --include_imports and --descriptor_set_out. For example, to generate for
+  /// moon/shot/app.proto, run ``` $protoc --proto_path=/app_path
+  /// --proto_path=/lib_path \ --include_imports \
   /// --descriptor_set_out=descriptors.data \ moon/shot/app.proto ``` For more
   /// details, see protobuffer
   /// [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description).
@@ -5971,20 +6733,20 @@ class CreateDatabaseRequest {
 
 /// The request for CreateInstanceConfigRequest.
 class CreateInstanceConfigRequest {
-  /// The InstanceConfig proto of the configuration to create.
+  /// The `InstanceConfig` proto of the configuration to create.
   ///
-  /// instance_config.name must be `/instanceConfigs/`.
-  /// instance_config.base_config must be a Google managed configuration name,
+  /// `instance_config.name` must be `/instanceConfigs/`.
+  /// `instance_config.base_config` must be a Google-managed configuration name,
   /// e.g. /instanceConfigs/us-east1, /instanceConfigs/nam3.
   ///
   /// Required.
   InstanceConfig? instanceConfig;
 
-  /// The ID of the instance config to create.
+  /// The ID of the instance configuration to create.
   ///
   /// Valid identifiers are of the form `custom-[-a-z0-9]*[a-z0-9]` and must be
   /// between 2 and 64 characters in length. The `custom-` prefix is required to
-  /// avoid name conflicts with Google managed configurations.
+  /// avoid name conflicts with Google-managed configurations.
   ///
   /// Required.
   core.String? instanceConfigId;
@@ -6116,6 +6878,63 @@ class CreateSessionRequest {
       };
 }
 
+/// CrontabSpec can be used to specify the version time and frequency at which
+/// the backup should be created.
+class CrontabSpec {
+  /// Schedule backups will contain an externally consistent copy of the
+  /// database at the version time specified in `schedule_spec.cron_spec`.
+  ///
+  /// However, Spanner may not initiate the creation of the scheduled backups at
+  /// that version time. Spanner will initiate the creation of scheduled backups
+  /// within the time window bounded by the version_time specified in
+  /// `schedule_spec.cron_spec` and version_time + `creation_window`.
+  ///
+  /// Output only.
+  core.String? creationWindow;
+
+  /// Textual representation of the crontab.
+  ///
+  /// User can customize the backup frequency and the backup version time using
+  /// the cron expression. The version time must be in UTC timzeone. The backup
+  /// will contain an externally consistent copy of the database at the version
+  /// time. Allowed frequencies are 12 hour, 1 day, 1 week and 1 month. Examples
+  /// of valid cron specifications: * `0 2/12 * * * ` : every 12 hours at (2,
+  /// 14) hours past midnight in UTC. * `0 2,14 * * * ` : every 12 hours at
+  /// (2,14) hours past midnight in UTC. * `0 2 * * * ` : once a day at 2 past
+  /// midnight in UTC. * `0 2 * * 0 ` : once a week every Sunday at 2 past
+  /// midnight in UTC. * `0 2 8 * * ` : once a month on 8th day at 2 past
+  /// midnight in UTC.
+  ///
+  /// Required.
+  core.String? text;
+
+  /// The time zone of the times in `CrontabSpec.text`.
+  ///
+  /// Currently only UTC is supported.
+  ///
+  /// Output only.
+  core.String? timeZone;
+
+  CrontabSpec({
+    this.creationWindow,
+    this.text,
+    this.timeZone,
+  });
+
+  CrontabSpec.fromJson(core.Map json_)
+      : this(
+          creationWindow: json_['creationWindow'] as core.String?,
+          text: json_['text'] as core.String?,
+          timeZone: json_['timeZone'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (creationWindow != null) 'creationWindow': creationWindow!,
+        if (text != null) 'text': text!,
+        if (timeZone != null) 'timeZone': timeZone!,
+      };
+}
+
 /// A Cloud Spanner database.
 class Database {
   /// If exists, the time at which the database creation started.
@@ -6156,6 +6975,8 @@ class Database {
   ///
   /// Defaults to false, if not set. For more details, please see how to
   /// [prevent accidental database deletion](https://cloud.google.com/spanner/docs/prevent-database-deletion).
+  ///
+  /// Optional.
   core.bool? enableDropProtection;
 
   /// For databases that are using customer managed encryption, this field
@@ -6189,7 +7010,7 @@ class Database {
   /// Required.
   core.String? name;
 
-  /// Applicable only for databases that use dual region instance
+  /// Applicable only for databases that use dual-region instance
   /// configurations.
   ///
   /// Contains information about the quorum.
@@ -6820,8 +7641,14 @@ class ExecuteSqlRequest {
   /// - "NORMAL" : The default mode. Only the statement results are returned.
   /// - "PLAN" : This mode returns only the query plan, without any results or
   /// execution statistics information.
-  /// - "PROFILE" : This mode returns both the query plan and the execution
-  /// statistics along with the results.
+  /// - "PROFILE" : This mode returns the query plan, overall execution
+  /// statistics, operator level execution statistics along with the results.
+  /// This has a performance overhead compared to the other modes. It is not
+  /// recommended to use this mode for production traffic.
+  /// - "WITH_STATS" : This mode returns the overall (but not operator-level)
+  /// execution statistics along with the results.
+  /// - "WITH_PLAN_AND_STATS" : This mode returns the query plan, overall (but
+  /// not operator-level) execution statistics along with the results.
   core.String? queryMode;
 
   /// Query optimizer configuration to use for the given query.
@@ -7048,6 +7875,12 @@ class FreeInstanceMetadata {
       };
 }
 
+/// The specification for full backups.
+///
+/// A full backup stores the entire contents of the database at a given version
+/// time.
+typedef FullBackupSpec = $Empty;
+
 /// The response for GetDatabaseDdl.
 class GetDatabaseDdlResponse {
   /// Proto descriptors stored in the database.
@@ -7147,6 +7980,15 @@ class IncludeReplicas {
         if (replicaSelections != null) 'replicaSelections': replicaSelections!,
       };
 }
+
+/// The specification for incremental backup chains.
+///
+/// An incremental backup stores the delta of changes between a previous backup
+/// and the database contents at a given version time. An incremental backup
+/// chain consists of a full backup and zero or more successive incremental
+/// backups. The first backup created for an incremental backup chain is always
+/// a full backup.
+typedef IncrementalBackupSpec = $Empty;
 
 /// Recommendation to add new indexes to run queries more efficiently.
 class IndexAdvice {
@@ -7274,6 +8116,16 @@ class Instance {
   /// Required.
   core.String? displayName;
 
+  /// The `Edition` of the current instance.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EDITION_UNSPECIFIED" : Edition not specified.
+  /// - "STANDARD" : Standard edition.
+  /// - "ENTERPRISE" : Enterprise edition.
+  /// - "ENTERPRISE_PLUS" : Enterprise Plus edition.
+  core.String? edition;
+
   /// This field is not populated.
   ///
   /// Deprecated.
@@ -7325,28 +8177,42 @@ class Instance {
 
   /// The number of nodes allocated to this instance.
   ///
-  /// At most one of either node_count or processing_units should be present in
-  /// the message. Users can set the node_count field to specify the target
-  /// number of nodes allocated to the instance. If autoscaling is enabled,
-  /// node_count is treated as an OUTPUT_ONLY field and reflects the current
-  /// number of nodes allocated to the instance. This may be zero in API
-  /// responses for instances that are not yet in state `READY`. See
-  /// [the documentation](https://cloud.google.com/spanner/docs/compute-capacity)
-  /// for more information about nodes and processing units.
+  /// At most, one of either `node_count` or `processing_units` should be
+  /// present in the message. Users can set the `node_count` field to specify
+  /// the target number of nodes allocated to the instance. If autoscaling is
+  /// enabled, `node_count` is treated as an `OUTPUT_ONLY` field and reflects
+  /// the current number of nodes allocated to the instance. This might be zero
+  /// in API responses for instances that are not yet in the `READY` state. If
+  /// the instance has varying node count across replicas (achieved by setting
+  /// asymmetric_autoscaling_options in autoscaling config), the node_count here
+  /// is the maximum node count across all replicas. For more information, see
+  /// [Compute capacity, nodes, and processing units](https://cloud.google.com/spanner/docs/compute-capacity).
   core.int? nodeCount;
 
   /// The number of processing units allocated to this instance.
   ///
-  /// At most one of processing_units or node_count should be present in the
-  /// message. Users can set the processing_units field to specify the target
-  /// number of processing units allocated to the instance. If autoscaling is
-  /// enabled, processing_units is treated as an OUTPUT_ONLY field and reflects
-  /// the current number of processing units allocated to the instance. This may
-  /// be zero in API responses for instances that are not yet in state `READY`.
-  /// See
-  /// [the documentation](https://cloud.google.com/spanner/docs/compute-capacity)
-  /// for more information about nodes and processing units.
+  /// At most, one of either `processing_units` or `node_count` should be
+  /// present in the message. Users can set the `processing_units` field to
+  /// specify the target number of processing units allocated to the instance.
+  /// If autoscaling is enabled, `processing_units` is treated as an
+  /// `OUTPUT_ONLY` field and reflects the current number of processing units
+  /// allocated to the instance. This might be zero in API responses for
+  /// instances that are not yet in the `READY` state. If the instance has
+  /// varying processing units per replica (achieved by setting
+  /// asymmetric_autoscaling_options in autoscaling config), the
+  /// processing_units here is the maximum processing units across all replicas.
+  /// For more information, see
+  /// [Compute capacity, nodes and processing units](https://cloud.google.com/spanner/docs/compute-capacity).
   core.int? processingUnits;
+
+  /// Lists the compute capacity per ReplicaSelection.
+  ///
+  /// A replica selection identifies a set of replicas with common properties.
+  /// Replicas identified by a ReplicaSelection are scaled with the same compute
+  /// capacity.
+  ///
+  /// Output only.
+  core.List<ReplicaComputeCapacity>? replicaComputeCapacity;
 
   /// The current instance state.
   ///
@@ -7372,6 +8238,7 @@ class Instance {
     this.config,
     this.createTime,
     this.displayName,
+    this.edition,
     this.endpointUris,
     this.freeInstanceMetadata,
     this.instanceType,
@@ -7379,6 +8246,7 @@ class Instance {
     this.name,
     this.nodeCount,
     this.processingUnits,
+    this.replicaComputeCapacity,
     this.state,
     this.updateTime,
   });
@@ -7392,6 +8260,7 @@ class Instance {
           config: json_['config'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
+          edition: json_['edition'] as core.String?,
           endpointUris: (json_['endpointUris'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -7410,6 +8279,11 @@ class Instance {
           name: json_['name'] as core.String?,
           nodeCount: json_['nodeCount'] as core.int?,
           processingUnits: json_['processingUnits'] as core.int?,
+          replicaComputeCapacity:
+              (json_['replicaComputeCapacity'] as core.List?)
+                  ?.map((value) => ReplicaComputeCapacity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
           state: json_['state'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -7419,6 +8293,7 @@ class Instance {
         if (config != null) 'config': config!,
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
+        if (edition != null) 'edition': edition!,
         if (endpointUris != null) 'endpointUris': endpointUris!,
         if (freeInstanceMetadata != null)
           'freeInstanceMetadata': freeInstanceMetadata!,
@@ -7427,6 +8302,8 @@ class Instance {
         if (name != null) 'name': name!,
         if (nodeCount != null) 'nodeCount': nodeCount!,
         if (processingUnits != null) 'processingUnits': processingUnits!,
+        if (replicaComputeCapacity != null)
+          'replicaComputeCapacity': replicaComputeCapacity!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -7440,51 +8317,53 @@ class InstanceConfig {
   /// Base configuration name, e.g. projects//instanceConfigs/nam3, based on
   /// which this configuration is created.
   ///
-  /// Only set for user managed configurations. `base_config` must refer to a
-  /// configuration of type GOOGLE_MANAGED in the same project as this
+  /// Only set for user-managed configurations. `base_config` must refer to a
+  /// configuration of type `GOOGLE_MANAGED` in the same project as this
   /// configuration.
   core.String? baseConfig;
 
-  /// Whether this instance config is a Google or User Managed Configuration.
+  /// Whether this instance configuration is a Google-managed or user-managed
+  /// configuration.
   ///
   /// Output only.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Unspecified.
-  /// - "GOOGLE_MANAGED" : Google managed configuration.
-  /// - "USER_MANAGED" : User managed configuration.
+  /// - "GOOGLE_MANAGED" : Google-managed configuration.
+  /// - "USER_MANAGED" : User-managed configuration.
   core.String? configType;
 
   /// The name of this instance configuration as it appears in UIs.
   core.String? displayName;
 
   /// etag is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a instance config from overwriting each other.
+  /// simultaneous updates of a instance configuration from overwriting each
+  /// other.
   ///
   /// It is strongly suggested that systems make use of the etag in the
-  /// read-modify-write cycle to perform instance config updates in order to
-  /// avoid race conditions: An etag is returned in the response which contains
-  /// instance configs, and systems are expected to put that etag in the request
-  /// to update instance config to ensure that their change will be applied to
-  /// the same version of the instance config. If no etag is provided in the
-  /// call to update instance config, then the existing instance config is
-  /// overwritten blindly.
+  /// read-modify-write cycle to perform instance configuration updates in order
+  /// to avoid race conditions: An etag is returned in the response which
+  /// contains instance configurations, and systems are expected to put that
+  /// etag in the request to update instance configuration to ensure that their
+  /// change is applied to the same version of the instance configuration. If no
+  /// etag is provided in the call to update the instance configuration, then
+  /// the existing instance configuration is overwritten blindly.
   core.String? etag;
 
   /// Describes whether free instances are available to be created in this
-  /// instance config.
+  /// instance configuration.
   ///
   /// Output only.
   /// Possible string values are:
   /// - "FREE_INSTANCE_AVAILABILITY_UNSPECIFIED" : Not specified.
   /// - "AVAILABLE" : Indicates that free instances are available to be created
-  /// in this instance config.
+  /// in this instance configuration.
   /// - "UNSUPPORTED" : Indicates that free instances are not supported in this
-  /// instance config.
+  /// instance configuration.
   /// - "DISABLED" : Indicates that free instances are currently not available
-  /// to be created in this instance config.
+  /// to be created in this instance configuration.
   /// - "QUOTA_EXCEEDED" : Indicates that additional free instances cannot be
-  /// created in this instance config because the project has reached its limit
-  /// of free instances.
+  /// created in this instance configuration because the project has reached its
+  /// limit of free instances.
   core.String? freeInstanceAvailability;
 
   /// Cloud Labels are a flexible and lightweight mechanism for organizing cloud
@@ -7514,13 +8393,14 @@ class InstanceConfig {
 
   /// A unique identifier for the instance configuration.
   ///
-  /// Values are of the form `projects//instanceConfigs/a-z*`.
+  /// Values are of the form `projects//instanceConfigs/a-z*`. User instance
+  /// configuration must start with `custom-`.
   core.String? name;
 
-  /// The available optional replicas to choose from for user managed
+  /// The available optional replicas to choose from for user-managed
   /// configurations.
   ///
-  /// Populated for Google managed configurations.
+  /// Populated for Google-managed configurations.
   ///
   /// Output only.
   core.List<ReplicaInfo>? optionalReplicas;
@@ -7529,39 +8409,43 @@ class InstanceConfig {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "QUORUM_TYPE_UNSPECIFIED" : Not specified.
-  /// - "REGION" : An instance configuration tagged with REGION quorum type
+  /// - "QUORUM_TYPE_UNSPECIFIED" : Quorum type not specified.
+  /// - "REGION" : An instance configuration tagged with `REGION` quorum type
   /// forms a write quorum in a single region.
-  /// - "DUAL_REGION" : An instance configuration tagged with DUAL_REGION quorum
-  /// type forms a write quorums with exactly two read-write regions in a
-  /// multi-region configuration. This instance configurations requires
-  /// reconfiguration in the event of regional failures.
-  /// - "MULTI_REGION" : An instance configuration tagged with MULTI_REGION
-  /// quorum type forms a write quorums from replicas are spread across more
-  /// than one region in a multi-region configuration.
+  /// - "DUAL_REGION" : An instance configuration tagged with the `DUAL_REGION`
+  /// quorum type forms a write quorum with exactly two read-write regions in a
+  /// multi-region configuration. This instance configuration requires failover
+  /// in the event of regional failures.
+  /// - "MULTI_REGION" : An instance configuration tagged with the
+  /// `MULTI_REGION` quorum type forms a write quorum from replicas that are
+  /// spread across more than one region in a multi-region configuration.
   core.String? quorumType;
 
-  /// If true, the instance config is being created or updated.
+  /// If true, the instance configuration is being created or updated.
   ///
-  /// If false, there are no ongoing operations for the instance config.
+  /// If false, there are no ongoing operations for the instance configuration.
   ///
   /// Output only.
   core.bool? reconciling;
 
   /// The geographic placement of nodes in this instance configuration and their
   /// replication properties.
+  ///
+  /// To create user-managed configurations, input `replicas` must include all
+  /// replicas in `replicas` of the `base_config` and include one or more
+  /// replicas in the `optional_replicas` of the `base_config`.
   core.List<ReplicaInfo>? replicas;
 
-  /// The current instance config state.
+  /// The current instance configuration state.
   ///
-  /// Applicable only for USER_MANAGED configs.
+  /// Applicable only for `USER_MANAGED` configurations.
   ///
   /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Not specified.
-  /// - "CREATING" : The instance config is still being created.
-  /// - "READY" : The instance config is fully created and ready to be used to
-  /// create instances.
+  /// - "CREATING" : The instance configuration is still being created.
+  /// - "READY" : The instance configuration is fully created and ready to be
+  /// used to create instances.
   core.String? state;
 
   /// The storage limit in bytes per processing unit.
@@ -7689,24 +8573,30 @@ class InstancePartition {
 
   /// The number of nodes allocated to this instance partition.
   ///
-  /// Users can set the node_count field to specify the target number of nodes
+  /// Users can set the `node_count` field to specify the target number of nodes
   /// allocated to the instance partition. This may be zero in API responses for
   /// instance partitions that are not yet in state `READY`.
   core.int? nodeCount;
 
   /// The number of processing units allocated to this instance partition.
   ///
-  /// Users can set the processing_units field to specify the target number of
-  /// processing units allocated to the instance partition. This may be zero in
-  /// API responses for instance partitions that are not yet in state `READY`.
+  /// Users can set the `processing_units` field to specify the target number of
+  /// processing units allocated to the instance partition. This might be zero
+  /// in API responses for instance partitions that are not yet in the `READY`
+  /// state.
   core.int? processingUnits;
 
-  /// The names of the backups that reference this instance partition.
+  /// Deprecated: This field is not populated.
   ///
-  /// Referencing backups should share the parent instance. The existence of any
-  /// referencing backup prevents the instance partition from being deleted.
+  /// Output only. The names of the backups that reference this instance
+  /// partition. Referencing backups should share the parent instance. The
+  /// existence of any referencing backup prevents the instance partition from
+  /// being deleted.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? referencingBackups;
 
   /// The names of the databases that reference this instance partition.
@@ -7782,6 +8672,27 @@ class InstancePartition {
           'referencingDatabases': referencingDatabases!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// ReplicaSelection identifies replicas with common properties.
+class InstanceReplicaSelection {
+  /// Name of the location of the replicas (e.g., "us-central1").
+  ///
+  /// Required.
+  core.String? location;
+
+  InstanceReplicaSelection({
+    this.location,
+  });
+
+  InstanceReplicaSelection.fromJson(core.Map json_)
+      : this(
+          location: json_['location'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (location != null) 'location': location!,
       };
 }
 
@@ -8088,6 +8999,35 @@ class ListBackupOperationsResponse {
       };
 }
 
+/// The response for ListBackupSchedules.
+class ListBackupSchedulesResponse {
+  /// The list of backup schedules for a database.
+  core.List<BackupSchedule>? backupSchedules;
+
+  /// `next_page_token` can be sent in a subsequent ListBackupSchedules call to
+  /// fetch more of the schedules.
+  core.String? nextPageToken;
+
+  ListBackupSchedulesResponse({
+    this.backupSchedules,
+    this.nextPageToken,
+  });
+
+  ListBackupSchedulesResponse.fromJson(core.Map json_)
+      : this(
+          backupSchedules: (json_['backupSchedules'] as core.List?)
+              ?.map((value) => BackupSchedule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupSchedules != null) 'backupSchedules': backupSchedules!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// The response for ListBackups.
 class ListBackupsResponse {
   /// The list of matching backups.
@@ -8217,11 +9157,11 @@ class ListInstanceConfigOperationsResponse {
   /// call to fetch more of the matching metadata.
   core.String? nextPageToken;
 
-  /// The list of matching instance config long-running operations.
+  /// The list of matching instance configuration long-running operations.
   ///
-  /// Each operation's name will be prefixed by the instance config's name. The
-  /// operation's metadata field type `metadata.type_url` describes the type of
-  /// the metadata.
+  /// Each operation's name will be prefixed by the name of the instance
+  /// configuration. The operation's metadata field type `metadata.type_url`
+  /// describes the type of the metadata.
   core.List<Operation>? operations;
 
   ListInstanceConfigOperationsResponse({
@@ -8709,7 +9649,7 @@ class MetricMatrixRow {
 
 /// The request for MoveInstance.
 class MoveInstanceRequest {
-  /// The target instance config for the instance to move.
+  /// The target instance configuration where to move the instance.
   ///
   /// Values are of the form `projects//instanceConfigs/`.
   ///
@@ -8727,6 +9667,45 @@ class MoveInstanceRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (targetConfig != null) 'targetConfig': targetConfig!,
+      };
+}
+
+/// When a read-write transaction is executed on a multiplexed session, this
+/// precommit token is sent back to the client as a part of the \[Transaction\]
+/// message in the BeginTransaction response and also as a part of the
+/// \[ResultSet\] and \[PartialResultSet\] responses.
+class MultiplexedSessionPrecommitToken {
+  /// Opaque precommit token.
+  core.String? precommitToken;
+  core.List<core.int> get precommitTokenAsBytes =>
+      convert.base64.decode(precommitToken!);
+
+  set precommitTokenAsBytes(core.List<core.int> bytes_) {
+    precommitToken =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// An incrementing seq number is generated on every precommit token that is
+  /// returned.
+  ///
+  /// Clients should remember the precommit token with the highest sequence
+  /// number from the current transaction attempt.
+  core.int? seqNum;
+
+  MultiplexedSessionPrecommitToken({
+    this.precommitToken,
+    this.seqNum,
+  });
+
+  MultiplexedSessionPrecommitToken.fromJson(core.Map json_)
+      : this(
+          precommitToken: json_['precommitToken'] as core.String?,
+          seqNum: json_['seqNum'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (precommitToken != null) 'precommitToken': precommitToken!,
+        if (seqNum != null) 'seqNum': seqNum!,
       };
 }
 
@@ -9128,15 +10107,15 @@ class PartitionQueryRequest {
 
   /// The query request to generate partitions for.
   ///
-  /// The request will fail if the query is not root partitionable. For a query
-  /// to be root partitionable, it needs to satisfy a few conditions. For
-  /// example, if the query execution plan contains a distributed union
-  /// operator, then it must be the first operator in the plan. For more
-  /// information about other conditions, see
+  /// The request fails if the query is not root partitionable. For a query to
+  /// be root partitionable, it needs to satisfy a few conditions. For example,
+  /// if the query execution plan contains a distributed union operator, then it
+  /// must be the first operator in the plan. For more information about other
+  /// conditions, see
   /// [Read data in parallel](https://cloud.google.com/spanner/docs/reads#read_data_in_parallel).
-  /// The query request must not contain DML commands, such as INSERT, UPDATE,
-  /// or DELETE. Use ExecuteStreamingSql with a PartitionedDml transaction for
-  /// large, partition-friendly DML operations.
+  /// The query request must not contain DML commands, such as `INSERT`,
+  /// `UPDATE`, or `DELETE`. Use `ExecuteStreamingSql` with a PartitionedDml
+  /// transaction for large, partition-friendly DML operations.
   ///
   /// Required.
   core.String? sql;
@@ -9663,22 +10642,22 @@ class QueryPlan {
       };
 }
 
-/// Information about the dual region quorum.
+/// Information about the dual-region quorum.
 class QuorumInfo {
   /// The etag is used for optimistic concurrency control as a way to help
-  /// prevent simultaneous ChangeQuorum requests that could create a race
+  /// prevent simultaneous `ChangeQuorum` requests that might create a race
   /// condition.
   ///
   /// Output only.
   core.String? etag;
 
-  /// Whether this ChangeQuorum is a Google or User initiated.
+  /// Whether this `ChangeQuorum` is Google or User initiated.
   ///
   /// Output only.
   /// Possible string values are:
   /// - "INITIATOR_UNSPECIFIED" : Unspecified.
-  /// - "GOOGLE" : ChangeQuorum initiated by Google.
-  /// - "USER" : ChangeQuorum initiated by User.
+  /// - "GOOGLE" : `ChangeQuorum` initiated by Google.
+  /// - "USER" : `ChangeQuorum` initiated by User.
   core.String? initiator;
 
   /// The type of this quorum.
@@ -9721,12 +10700,12 @@ class QuorumInfo {
 
 /// Information about the database quorum type.
 ///
-/// this applies only for dual region instance configs.
+/// This only applies to dual-region instance configs.
 class QuorumType {
-  /// Dual region quorum type.
+  /// Dual-region quorum type.
   DualRegionQuorum? dualRegion;
 
-  /// Single region quorum type.
+  /// Single-region quorum type.
   SingleRegionQuorum? singleRegion;
 
   QuorumType({
@@ -9877,6 +10856,64 @@ class ReadRequest {
   /// if `partition_token` is set.
   core.String? limit;
 
+  /// Lock Hint for the request, it can only be used with read-write
+  /// transactions.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "LOCK_HINT_UNSPECIFIED" : Default value. LOCK_HINT_UNSPECIFIED is
+  /// equivalent to LOCK_HINT_SHARED.
+  /// - "LOCK_HINT_SHARED" : Acquire shared locks. By default when you perform a
+  /// read as part of a read-write transaction, Spanner acquires shared read
+  /// locks, which allows other reads to still access the data until your
+  /// transaction is ready to commit. When your transaction is committing and
+  /// writes are being applied, the transaction attempts to upgrade to an
+  /// exclusive lock for any data you are writing. For more information about
+  /// locks, see
+  /// [Lock modes](https://cloud.google.com/spanner/docs/introspection/lock-statistics#explain-lock-modes).
+  /// - "LOCK_HINT_EXCLUSIVE" : Acquire exclusive locks. Requesting exclusive
+  /// locks is beneficial if you observe high write contention, which means you
+  /// notice that multiple transactions are concurrently trying to read and
+  /// write to the same data, resulting in a large number of aborts. This
+  /// problem occurs when two transactions initially acquire shared locks and
+  /// then both try to upgrade to exclusive locks at the same time. In this
+  /// situation both transactions are waiting for the other to give up their
+  /// lock, resulting in a deadlocked situation. Spanner is able to detect this
+  /// occurring and force one of the transactions to abort. However, this is a
+  /// slow and expensive operation and results in lower performance. In this
+  /// case it makes sense to acquire exclusive locks at the start of the
+  /// transaction because then when multiple transactions try to act on the same
+  /// data, they automatically get serialized. Each transaction waits its turn
+  /// to acquire the lock and avoids getting into deadlock situations. Because
+  /// the exclusive lock hint is just a hint, it should not be considered
+  /// equivalent to a mutex. In other words, you should not use Spanner
+  /// exclusive locks as a mutual exclusion mechanism for the execution of code
+  /// outside of Spanner. **Note:** Request exclusive locks judiciously because
+  /// they block others from reading that data for the entire transaction,
+  /// rather than just when the writes are being performed. Unless you observe
+  /// high write contention, you should use the default of shared read locks so
+  /// you don't prematurely block other clients from reading the data that
+  /// you're writing to.
+  core.String? lockHint;
+
+  /// Order for the returned rows.
+  ///
+  /// By default, Spanner will return result rows in primary key order except
+  /// for PartitionRead requests. For applications that do not require rows to
+  /// be returned in primary key (`ORDER_BY_PRIMARY_KEY`) order, setting
+  /// `ORDER_BY_NO_ORDER` option allows Spanner to optimize row retrieval,
+  /// resulting in lower latencies in certain cases (e.g. bulk point lookups).
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ORDER_BY_UNSPECIFIED" : Default value. ORDER_BY_UNSPECIFIED is
+  /// equivalent to ORDER_BY_PRIMARY_KEY.
+  /// - "ORDER_BY_PRIMARY_KEY" : Read rows are returned in primary key order. In
+  /// the event that this option is used in conjunction with the
+  /// `partition_token` field, the API will return an `INVALID_ARGUMENT` error.
+  /// - "ORDER_BY_NO_ORDER" : Read rows are returned in any order.
+  core.String? orderBy;
+
   /// If present, results will be restricted to the specified partition
   /// previously created using PartitionRead().
   ///
@@ -9929,6 +10966,8 @@ class ReadRequest {
     this.index,
     this.keySet,
     this.limit,
+    this.lockHint,
+    this.orderBy,
     this.partitionToken,
     this.requestOptions,
     this.resumeToken,
@@ -9952,6 +10991,8 @@ class ReadRequest {
                   json_['keySet'] as core.Map<core.String, core.dynamic>)
               : null,
           limit: json_['limit'] as core.String?,
+          lockHint: json_['lockHint'] as core.String?,
+          orderBy: json_['orderBy'] as core.String?,
           partitionToken: json_['partitionToken'] as core.String?,
           requestOptions: json_.containsKey('requestOptions')
               ? RequestOptions.fromJson(json_['requestOptions']
@@ -9973,6 +11014,8 @@ class ReadRequest {
         if (index != null) 'index': index!,
         if (keySet != null) 'keySet': keySet!,
         if (limit != null) 'limit': limit!,
+        if (lockHint != null) 'lockHint': lockHint!,
+        if (orderBy != null) 'orderBy': orderBy!,
         if (partitionToken != null) 'partitionToken': partitionToken!,
         if (requestOptions != null) 'requestOptions': requestOptions!,
         if (resumeToken != null) 'resumeToken': resumeToken!,
@@ -10008,6 +11051,51 @@ class ReadWrite {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (readLockMode != null) 'readLockMode': readLockMode!,
+      };
+}
+
+/// ReplicaComputeCapacity describes the amount of server resources that are
+/// allocated to each replica identified by the replica selection.
+class ReplicaComputeCapacity {
+  /// The number of nodes allocated to each replica.
+  ///
+  /// This may be zero in API responses for instances that are not yet in state
+  /// `READY`.
+  core.int? nodeCount;
+
+  /// The number of processing units allocated to each replica.
+  ///
+  /// This may be zero in API responses for instances that are not yet in state
+  /// `READY`.
+  core.int? processingUnits;
+
+  /// Identifies replicas by specified properties.
+  ///
+  /// All replicas in the selection have the same amount of compute capacity.
+  ///
+  /// Required.
+  InstanceReplicaSelection? replicaSelection;
+
+  ReplicaComputeCapacity({
+    this.nodeCount,
+    this.processingUnits,
+    this.replicaSelection,
+  });
+
+  ReplicaComputeCapacity.fromJson(core.Map json_)
+      : this(
+          nodeCount: json_['nodeCount'] as core.int?,
+          processingUnits: json_['processingUnits'] as core.int?,
+          replicaSelection: json_.containsKey('replicaSelection')
+              ? InstanceReplicaSelection.fromJson(json_['replicaSelection']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nodeCount != null) 'nodeCount': nodeCount!,
+        if (processingUnits != null) 'processingUnits': processingUnits!,
+        if (replicaSelection != null) 'replicaSelection': replicaSelection!,
       };
 }
 
@@ -10182,17 +11270,17 @@ class RestoreDatabaseEncryptionConfig {
   /// Specifies the KMS configuration for the one or more keys used to encrypt
   /// the database.
   ///
-  /// Values are of the form `projects//locations//keyRings//cryptoKeys/`. The
+  /// Values have the form `projects//locations//keyRings//cryptoKeys/`. The
   /// keys referenced by kms_key_names must fully cover all regions of the
   /// database instance configuration. Some examples: * For single region
-  /// database instance configs, specify a single regional location KMS key. *
-  /// For multi-regional database instance configs of type GOOGLE_MANAGED,
-  /// either specify a multi-regional location KMS key or multiple regional
-  /// location KMS keys that cover all regions in the instance config. * For a
-  /// database instance config of type USER_MANAGED, please specify only
-  /// regional location KMS keys to cover each region in the instance config.
-  /// Multi-regional location KMS keys are not supported for USER_MANAGED
-  /// instance configs.
+  /// database instance configurations, specify a single regional location KMS
+  /// key. * For multi-regional database instance configurations of type
+  /// `GOOGLE_MANAGED`, either specify a multi-regional location KMS key or
+  /// multiple regional location KMS keys that cover all regions in the instance
+  /// configuration. * For a database instance configuration of type
+  /// `USER_MANAGED`, please specify only regional location KMS keys to cover
+  /// each region in the instance configuration. Multi-regional location KMS
+  /// keys are not supported for USER_MANAGED instance configurations.
   ///
   /// Optional.
   core.List<core.String>? kmsKeyNames;
@@ -10615,11 +11703,11 @@ class Session {
 
   /// If true, specifies a multiplexed session.
   ///
-  /// A multiplexed session may be used for multiple, concurrent read-only
-  /// operations but can not be used for read-write transactions, partitioned
-  /// reads, or partitioned queries. Multiplexed sessions can be created via
-  /// CreateSession but not via BatchCreateSessions. Multiplexed sessions may
-  /// not be deleted nor listed.
+  /// Use a multiplexed session for multiple, concurrent read-only operations.
+  /// Don't use them for read-write transactions, partitioned reads, or
+  /// partitioned queries. Use CreateSession to create multiplexed sessions.
+  /// Don't use BatchCreateSessions to create a multiplexed session. You can't
+  /// delete or list multiplexed sessions.
   ///
   /// Optional.
   core.bool? multiplexed;
@@ -10737,11 +11825,10 @@ class ShortRepresentation {
 class SingleRegionQuorum {
   /// The location of the serving region, e.g. "us-central1".
   ///
-  /// The location must be one of the regions within the dual region instance
+  /// The location must be one of the regions within the dual-region instance
   /// configuration of your database. The list of valid locations is available
-  /// via \[GetInstanceConfig\[InstanceAdmin.GetInstanceConfig\] API. This
-  /// should only be used if you plan to change quorum in single-region quorum
-  /// type.
+  /// using the GetInstanceConfig API. This should only be used if you plan to
+  /// change quorum to the single-region quorum type.
   ///
   /// Required.
   core.String? servingLocation;
@@ -10826,7 +11913,7 @@ class Statement {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// `StructType` defines the fields of a STRUCT type.
 class StructType {
@@ -10898,6 +11985,14 @@ class Transaction {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// A precommit token will be included in the response of a BeginTransaction
+  /// request if the read-write transaction is on a multiplexed session and a
+  /// mutation_key was specified in the BeginTransaction.
+  ///
+  /// The precommit token with the highest sequence number from this transaction
+  /// attempt should be passed to the Commit request for this transaction.
+  MultiplexedSessionPrecommitToken? precommitToken;
+
   /// For snapshot read-only transactions, the read timestamp chosen for the
   /// transaction.
   ///
@@ -10909,17 +12004,24 @@ class Transaction {
 
   Transaction({
     this.id,
+    this.precommitToken,
     this.readTimestamp,
   });
 
   Transaction.fromJson(core.Map json_)
       : this(
           id: json_['id'] as core.String?,
+          precommitToken: json_.containsKey('precommitToken')
+              ? MultiplexedSessionPrecommitToken.fromJson(
+                  json_['precommitToken']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           readTimestamp: json_['readTimestamp'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
+        if (precommitToken != null) 'precommitToken': precommitToken!,
         if (readTimestamp != null) 'readTimestamp': readTimestamp!,
       };
 }
@@ -11294,6 +12396,10 @@ class Type {
   /// - "PROTO" : Encoded as a base64-encoded `string`, as described in RFC
   /// 4648, section 4.
   /// - "ENUM" : Encoded as `string`, in decimal format.
+  /// - "INTERVAL" : Encoded as `string`, in `ISO8601` duration format -
+  /// `P[n]Y[n]M[n]DT[n]H[n]M[n[.fraction]]S` where `n` is an integer. For
+  /// example, `P1Y2M3DT4H5M6.5S` represents time duration of 1 year, 2 months,
+  /// 3 days, 4 hours, 5 minutes, and 6.5 seconds.
   core.String? code;
 
   /// If code == PROTO or code == ENUM, then `proto_type_fqn` is the fully
@@ -11438,8 +12544,8 @@ class UpdateDatabaseDdlRequest {
 
 /// The request for UpdateInstanceConfigRequest.
 class UpdateInstanceConfigRequest {
-  /// The user instance config to update, which must always include the instance
-  /// config name.
+  /// The user instance configuration to update, which must always include the
+  /// instance configuration name.
   ///
   /// Otherwise, only fields mentioned in update_mask need be included. To
   /// prevent conflicts of concurrent updates, etag can be used.

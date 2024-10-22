@@ -1768,7 +1768,9 @@ class FilesResource {
   /// [fileId] - The ID for the file in question.
   ///
   /// [acknowledgeAbuse] - Whether the user is acknowledging the risk of
-  /// downloading known malware or other abusive files.
+  /// downloading known malware or other abusive files. This is only applicable
+  /// when the `alt` parameter is set to `media` and the user is the owner of
+  /// the file or an organizer of the shared drive in which the file resides.
   ///
   /// [includeLabels] - A comma-separated list of IDs of labels to include in
   /// the `labelInfo` part of the response.
@@ -2036,14 +2038,22 @@ class FilesResource {
   /// empty result pages are possible even before the end of the files list has
   /// been reached.
   ///
-  /// [orderBy] - A comma-separated list of sort keys. Valid keys are
-  /// `createdDate`, `folder`, `lastViewedByMeDate`, `modifiedByMeDate`,
-  /// `modifiedDate`, `quotaBytesUsed`, `recency`, `sharedWithMeDate`,
-  /// `starred`, `title`, and `title_natural`. Each key sorts ascending by
-  /// default, but may be reversed with the `desc` modifier. Example usage:
-  /// ?orderBy=folder,modifiedDate desc,title. Please note that there is a
-  /// current limitation for users with approximately one million files in which
-  /// the requested sort order is ignored.
+  /// [orderBy] - A comma-separated list of sort keys. Valid keys are: *
+  /// `createdDate`: When the file was created. * `folder`: The folder ID. This
+  /// field is sorted using alphabetical ordering. * `lastViewedByMeDate`: The
+  /// last time the file was viewed by the user. * `modifiedByMeDate`: The last
+  /// time the file was modified by the user. * `modifiedDate`: The last time
+  /// the file was modified by anyone. * `quotaBytesUsed`: The number of storage
+  /// quota bytes used by the file. * `recency`: The most recent timestamp from
+  /// the file's date-time fields. * `sharedWithMeDate`: When the file was
+  /// shared with the user, if applicable. * `starred`: Whether the user has
+  /// starred the file. * `title`: The title of the file. This field is sorted
+  /// using alphabetical ordering, so 1, 12, 2, 22. * `title_natural`: The title
+  /// of the file. This field is sorted using natural sort ordering, so 1, 2,
+  /// 12, 22. Each key sorts ascending by default, but can be reversed with the
+  /// 'desc' modifier. Example usage: `?orderBy=folder,modifiedDate desc,title`.
+  /// Note that there's a current limitation for users with approximately one
+  /// million files in which the requested sort order is ignored.
   ///
   /// [pageToken] - Page token for files.
   ///
@@ -2730,7 +2740,9 @@ class FilesResource {
   /// [fileId] - The ID for the file in question.
   ///
   /// [acknowledgeAbuse] - Whether the user is acknowledging the risk of
-  /// downloading known malware or other abusive files.
+  /// downloading known malware or other abusive files. This is only applicable
+  /// when the `alt` parameter is set to `media` and the user is the owner of
+  /// the file or an organizer of the shared drive in which the file resides.
   ///
   /// [includeLabels] - A comma-separated list of IDs of labels to include in
   /// the `labelInfo` part of the response.
@@ -7389,9 +7401,12 @@ class FileLinkShareMetadata {
 /// Shortcut file details.
 ///
 /// Only populated for shortcut files, which have the mimeType field set to
-/// `application/vnd.google-apps.shortcut`.
+/// `application/vnd.google-apps.shortcut`. Can only be set on `files.insert`
+/// requests.
 class FileShortcutDetails {
   /// The ID of the file that this shortcut points to.
+  ///
+  /// Can only be set on `files.insert` requests.
   core.String? targetId;
 
   /// The MIME type of the file that this shortcut points to.
@@ -7718,6 +7733,9 @@ class File {
 
   /// The last user to modify this file.
   ///
+  /// This field is only populated when the last modification was performed by a
+  /// signed-in user.
+  ///
   /// Output only.
   User? lastModifyingUser;
 
@@ -7799,12 +7817,13 @@ class File {
   /// Output only.
   core.List<User>? owners;
 
-  /// Collection of parent folders which contain this file.
+  /// The ID of the parent folder containing the file.
   ///
-  /// If not specified as part of an insert request, the file will be placed
-  /// directly in the user's My Drive folder. If not specified as part of a copy
-  /// request, the file will inherit any discoverable parents of the source
-  /// file. Update requests can also use the `addParents` and `removeParents`
+  /// A file can only have one parent folder; specifying multiple parents isn't
+  /// supported. If not specified as part of an insert request, the file is
+  /// placed directly in the user's My Drive folder. If not specified as part of
+  /// a copy request, the file inherits any discoverable parent of the source
+  /// file. Update requests must use the `addParents` and `removeParents`
   /// parameters to modify the parents list.
   core.List<ParentReference>? parents;
 
@@ -7881,7 +7900,8 @@ class File {
   /// Shortcut file details.
   ///
   /// Only populated for shortcut files, which have the mimeType field set to
-  /// `application/vnd.google-apps.shortcut`.
+  /// `application/vnd.google-apps.shortcut`. Can only be set on `files.insert`
+  /// requests.
   FileShortcutDetails? shortcutDetails;
 
   /// The list of spaces which contain the file.
@@ -7906,10 +7926,12 @@ class File {
 
   /// A short-lived link to the file's thumbnail, if available.
   ///
-  /// Typically lasts on the order of hours. Only populated when the requesting
-  /// app can access the file's content. If the file isn't shared publicly, the
-  /// URL returned in `Files.thumbnailLink` must be fetched using a credentialed
-  /// request.
+  /// Typically lasts on the order of hours. Not intended for direct usage on
+  /// web applications due to \[Cross-Origin Resource Sharing
+  /// (CORS)\](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS), consider
+  /// using a proxy server. Only populated when the requesting app can access
+  /// the file's content. If the file isn't shared publicly, the URL returned in
+  /// `Files.thumbnailLink` must be fetched using a credentialed request.
   ///
   /// Output only.
   core.String? thumbnailLink;
@@ -8815,8 +8837,9 @@ class ParentList {
 
 /// A reference to a file's parent.
 ///
-/// Some resource methods (such as `parents.get`) require a `parentId`. Use the
-/// `parents.list` method to retrieve the ID for a parent.
+/// A file can only have one parent folder; specifying multiple parents isn't
+/// supported. Some resource methods (such as `parents.get`) require a
+/// `parentId`. Use the `parents.list` method to retrieve the ID for a parent.
 class ParentReference {
   /// The ID of the parent.
   core.String? id;
@@ -9449,6 +9472,9 @@ class Revision {
   core.String? kind;
 
   /// The last user to modify this revision.
+  ///
+  /// This field is only populated when the last modification was performed by a
+  /// signed-in user.
   ///
   /// Output only.
   User? lastModifyingUser;
