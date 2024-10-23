@@ -1751,11 +1751,14 @@ api.GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest
   buildCounterGoogleCloudIdentitytoolkitV1SendVerificationCodeRequest++;
   if (buildCounterGoogleCloudIdentitytoolkitV1SendVerificationCodeRequest < 3) {
     o.autoRetrievalInfo = buildGoogleCloudIdentitytoolkitV1AutoRetrievalInfo();
+    o.captchaResponse = 'foo';
+    o.clientType = 'foo';
     o.iosReceipt = 'foo';
     o.iosSecret = 'foo';
     o.phoneNumber = 'foo';
     o.playIntegrityToken = 'foo';
     o.recaptchaToken = 'foo';
+    o.recaptchaVersion = 'foo';
     o.safetyNetToken = 'foo';
     o.tenantId = 'foo';
   }
@@ -1768,6 +1771,14 @@ void checkGoogleCloudIdentitytoolkitV1SendVerificationCodeRequest(
   buildCounterGoogleCloudIdentitytoolkitV1SendVerificationCodeRequest++;
   if (buildCounterGoogleCloudIdentitytoolkitV1SendVerificationCodeRequest < 3) {
     checkGoogleCloudIdentitytoolkitV1AutoRetrievalInfo(o.autoRetrievalInfo!);
+    unittest.expect(
+      o.captchaResponse!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.clientType!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.iosReceipt!,
       unittest.equals('foo'),
@@ -1786,6 +1797,10 @@ void checkGoogleCloudIdentitytoolkitV1SendVerificationCodeRequest(
     );
     unittest.expect(
       o.recaptchaToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.recaptchaVersion!,
       unittest.equals('foo'),
     );
     unittest.expect(

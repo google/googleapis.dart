@@ -3800,6 +3800,9 @@ class AddonsConfig {
   /// does not track whether network policy is enabled for the nodes.
   NetworkPolicyConfig? networkPolicyConfig;
 
+  /// Configuration for the Cloud Storage Parallelstore CSI driver.
+  ParallelstoreCsiDriverConfig? parallelstoreCsiDriverConfig;
+
   /// Configuration for Ray Operator addon.
   ///
   /// Optional.
@@ -3822,6 +3825,7 @@ class AddonsConfig {
     this.httpLoadBalancing,
     this.kubernetesDashboard,
     this.networkPolicyConfig,
+    this.parallelstoreCsiDriverConfig,
     this.rayOperatorConfig,
     this.statefulHaConfig,
   });
@@ -3878,6 +3882,12 @@ class AddonsConfig {
               ? NetworkPolicyConfig.fromJson(json_['networkPolicyConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          parallelstoreCsiDriverConfig:
+              json_.containsKey('parallelstoreCsiDriverConfig')
+                  ? ParallelstoreCsiDriverConfig.fromJson(
+                      json_['parallelstoreCsiDriverConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           rayOperatorConfig: json_.containsKey('rayOperatorConfig')
               ? RayOperatorConfig.fromJson(json_['rayOperatorConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -3908,6 +3918,8 @@ class AddonsConfig {
           'kubernetesDashboard': kubernetesDashboard!,
         if (networkPolicyConfig != null)
           'networkPolicyConfig': networkPolicyConfig!,
+        if (parallelstoreCsiDriverConfig != null)
+          'parallelstoreCsiDriverConfig': parallelstoreCsiDriverConfig!,
         if (rayOperatorConfig != null) 'rayOperatorConfig': rayOperatorConfig!,
         if (statefulHaConfig != null) 'statefulHaConfig': statefulHaConfig!,
       };
@@ -10779,6 +10791,26 @@ class OperationProgress {
       };
 }
 
+/// Configuration for the Cloud Storage Parallelstore CSI driver.
+class ParallelstoreCsiDriverConfig {
+  /// Whether the Cloud Storage Parallelstore CSI driver is enabled for this
+  /// cluster.
+  core.bool? enabled;
+
+  ParallelstoreCsiDriverConfig({
+    this.enabled,
+  });
+
+  ParallelstoreCsiDriverConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_['enabled'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
 /// ParentProductConfig is the configuration of the parent product of the
 /// cluster.
 ///
@@ -11366,12 +11398,16 @@ class ReleaseChannelConfig {
   /// The default version for newly created clusters on the channel.
   core.String? defaultVersion;
 
+  /// The auto upgrade target version for clusters on the channel.
+  core.String? upgradeTargetVersion;
+
   /// List of valid versions for the channel.
   core.List<core.String>? validVersions;
 
   ReleaseChannelConfig({
     this.channel,
     this.defaultVersion,
+    this.upgradeTargetVersion,
     this.validVersions,
   });
 
@@ -11379,6 +11415,7 @@ class ReleaseChannelConfig {
       : this(
           channel: json_['channel'] as core.String?,
           defaultVersion: json_['defaultVersion'] as core.String?,
+          upgradeTargetVersion: json_['upgradeTargetVersion'] as core.String?,
           validVersions: (json_['validVersions'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -11387,6 +11424,8 @@ class ReleaseChannelConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (channel != null) 'channel': channel!,
         if (defaultVersion != null) 'defaultVersion': defaultVersion!,
+        if (upgradeTargetVersion != null)
+          'upgradeTargetVersion': upgradeTargetVersion!,
         if (validVersions != null) 'validVersions': validVersions!,
       };
 }

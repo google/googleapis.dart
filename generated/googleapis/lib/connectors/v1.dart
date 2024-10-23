@@ -1461,6 +1461,9 @@ class ProjectsLocationsConnectionsRuntimeActionSchemasResource {
   ///
   /// [pageToken] - Page token.
   ///
+  /// [schemaAsString] - Optional. Flag to indicate if schema should be returned
+  /// as string or not
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1476,12 +1479,14 @@ class ProjectsLocationsConnectionsRuntimeActionSchemasResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? schemaAsString,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (schemaAsString != null) 'schemaAsString': ['${schemaAsString}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4888,6 +4893,9 @@ class ConnectorInfraConfig {
   /// The window used for ratelimiting runtime requests to connections.
   core.String? connectionRatelimitWindowSeconds;
 
+  /// Indicate whether connector versioning is enabled.
+  core.bool? connectorVersioningEnabled;
+
   /// Indicate whether connector is deployed on GKE/CloudRun
   /// Possible string values are:
   /// - "DEPLOYMENT_MODEL_UNSPECIFIED" : Deployment model is not specified.
@@ -4929,6 +4937,7 @@ class ConnectorInfraConfig {
   ConnectorInfraConfig({
     this.alwaysAllocateCpu,
     this.connectionRatelimitWindowSeconds,
+    this.connectorVersioningEnabled,
     this.deploymentModel,
     this.hpaConfig,
     this.internalclientRatelimitThreshold,
@@ -4947,6 +4956,8 @@ class ConnectorInfraConfig {
           alwaysAllocateCpu: json_['alwaysAllocateCpu'] as core.bool?,
           connectionRatelimitWindowSeconds:
               json_['connectionRatelimitWindowSeconds'] as core.String?,
+          connectorVersioningEnabled:
+              json_['connectorVersioningEnabled'] as core.bool?,
           deploymentModel: json_['deploymentModel'] as core.String?,
           hpaConfig: json_.containsKey('hpaConfig')
               ? HPAConfig.fromJson(
@@ -4975,6 +4986,8 @@ class ConnectorInfraConfig {
         if (alwaysAllocateCpu != null) 'alwaysAllocateCpu': alwaysAllocateCpu!,
         if (connectionRatelimitWindowSeconds != null)
           'connectionRatelimitWindowSeconds': connectionRatelimitWindowSeconds!,
+        if (connectorVersioningEnabled != null)
+          'connectorVersioningEnabled': connectorVersioningEnabled!,
         if (deploymentModel != null) 'deploymentModel': deploymentModel!,
         if (hpaConfig != null) 'hpaConfig': hpaConfig!,
         if (internalclientRatelimitThreshold != null)
@@ -8911,6 +8924,11 @@ class RuntimeActionSchema {
   /// Output only.
   core.List<InputParameter>? inputParameters;
 
+  /// Input schema as string.
+  ///
+  /// Output only.
+  core.String? inputSchemaAsString;
+
   /// JsonSchema representation of this action's result metadata
   ///
   /// Output only.
@@ -8921,14 +8939,21 @@ class RuntimeActionSchema {
   /// Output only.
   core.List<ResultMetadata>? resultMetadata;
 
+  /// Result schema as string.
+  ///
+  /// Output only.
+  core.String? resultSchemaAsString;
+
   RuntimeActionSchema({
     this.action,
     this.description,
     this.displayName,
     this.inputJsonSchema,
     this.inputParameters,
+    this.inputSchemaAsString,
     this.resultJsonSchema,
     this.resultMetadata,
+    this.resultSchemaAsString,
   });
 
   RuntimeActionSchema.fromJson(core.Map json_)
@@ -8944,6 +8969,7 @@ class RuntimeActionSchema {
               ?.map((value) => InputParameter.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          inputSchemaAsString: json_['inputSchemaAsString'] as core.String?,
           resultJsonSchema: json_.containsKey('resultJsonSchema')
               ? JsonSchema.fromJson(json_['resultJsonSchema']
                   as core.Map<core.String, core.dynamic>)
@@ -8952,6 +8978,7 @@ class RuntimeActionSchema {
               ?.map((value) => ResultMetadata.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          resultSchemaAsString: json_['resultSchemaAsString'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8960,8 +8987,12 @@ class RuntimeActionSchema {
         if (displayName != null) 'displayName': displayName!,
         if (inputJsonSchema != null) 'inputJsonSchema': inputJsonSchema!,
         if (inputParameters != null) 'inputParameters': inputParameters!,
+        if (inputSchemaAsString != null)
+          'inputSchemaAsString': inputSchemaAsString!,
         if (resultJsonSchema != null) 'resultJsonSchema': resultJsonSchema!,
         if (resultMetadata != null) 'resultMetadata': resultMetadata!,
+        if (resultSchemaAsString != null)
+          'resultSchemaAsString': resultSchemaAsString!,
       };
 }
 

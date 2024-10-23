@@ -6031,6 +6031,10 @@ class Policy {
   /// be updated.
   MaintenanceWindow? maintenanceWindow;
 
+  /// An identifier for the policy that will be passed with the app install
+  /// feedback sent from the Play Store.
+  core.String? policyId;
+
   /// The availability granted to the device for the specified products.
   ///
   /// "all" gives the device access to all products, regardless of approval
@@ -6059,6 +6063,7 @@ class Policy {
     this.autoUpdatePolicy,
     this.deviceReportPolicy,
     this.maintenanceWindow,
+    this.policyId,
     this.productAvailabilityPolicy,
     this.productPolicy,
   });
@@ -6071,6 +6076,7 @@ class Policy {
               ? MaintenanceWindow.fromJson(json_['maintenanceWindow']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          policyId: json_['policyId'] as core.String?,
           productAvailabilityPolicy:
               json_['productAvailabilityPolicy'] as core.String?,
           productPolicy: (json_['productPolicy'] as core.List?)
@@ -6084,6 +6090,7 @@ class Policy {
         if (deviceReportPolicy != null)
           'deviceReportPolicy': deviceReportPolicy!,
         if (maintenanceWindow != null) 'maintenanceWindow': maintenanceWindow!,
+        if (policyId != null) 'policyId': policyId!,
         if (productAvailabilityPolicy != null)
           'productAvailabilityPolicy': productAvailabilityPolicy!,
         if (productPolicy != null) 'productPolicy': productPolicy!,

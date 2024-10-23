@@ -1019,6 +1019,7 @@ api.ConnectorInfraConfig buildConnectorInfraConfig() {
   if (buildCounterConnectorInfraConfig < 3) {
     o.alwaysAllocateCpu = true;
     o.connectionRatelimitWindowSeconds = 'foo';
+    o.connectorVersioningEnabled = true;
     o.deploymentModel = 'foo';
     o.hpaConfig = buildHPAConfig();
     o.internalclientRatelimitThreshold = 'foo';
@@ -1043,6 +1044,7 @@ void checkConnectorInfraConfig(api.ConnectorInfraConfig o) {
       o.connectionRatelimitWindowSeconds!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.connectorVersioningEnabled!, unittest.isTrue);
     unittest.expect(
       o.deploymentModel!,
       unittest.equals('foo'),
@@ -4928,8 +4930,10 @@ api.RuntimeActionSchema buildRuntimeActionSchema() {
     o.displayName = 'foo';
     o.inputJsonSchema = buildJsonSchema();
     o.inputParameters = buildUnnamed90();
+    o.inputSchemaAsString = 'foo';
     o.resultJsonSchema = buildJsonSchema();
     o.resultMetadata = buildUnnamed91();
+    o.resultSchemaAsString = 'foo';
   }
   buildCounterRuntimeActionSchema--;
   return o;
@@ -4952,8 +4956,16 @@ void checkRuntimeActionSchema(api.RuntimeActionSchema o) {
     );
     checkJsonSchema(o.inputJsonSchema!);
     checkUnnamed90(o.inputParameters!);
+    unittest.expect(
+      o.inputSchemaAsString!,
+      unittest.equals('foo'),
+    );
     checkJsonSchema(o.resultJsonSchema!);
     checkUnnamed91(o.resultMetadata!);
+    unittest.expect(
+      o.resultSchemaAsString!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterRuntimeActionSchema--;
 }
@@ -8829,6 +8841,7 @@ void main() {
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
+      final arg_schemaAsString = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -8875,6 +8888,10 @@ void main() {
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
+          queryMap['schemaAsString']!.first,
+          unittest.equals('$arg_schemaAsString'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -8890,6 +8907,7 @@ void main() {
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
+          schemaAsString: arg_schemaAsString,
           $fields: arg_$fields);
       checkListRuntimeActionSchemasResponse(
           response as api.ListRuntimeActionSchemasResponse);

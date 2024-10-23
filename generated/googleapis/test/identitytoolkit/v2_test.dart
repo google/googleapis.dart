@@ -1514,6 +1514,21 @@ void checkUnnamed16(
   checkGoogleCloudIdentitytoolkitAdminV2RecaptchaKey(o[1]);
 }
 
+core.List<api.GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule>
+    buildUnnamed17() => [
+          buildGoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule(),
+          buildGoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule(),
+        ];
+
+void checkUnnamed17(
+    core.List<
+            api.GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule>
+        o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule(o[0]);
+  checkGoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule(o[1]);
+}
+
 core.int buildCounterGoogleCloudIdentitytoolkitAdminV2RecaptchaConfig = 0;
 api.GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig
     buildGoogleCloudIdentitytoolkitAdminV2RecaptchaConfig() {
@@ -1522,7 +1537,9 @@ api.GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig
   if (buildCounterGoogleCloudIdentitytoolkitAdminV2RecaptchaConfig < 3) {
     o.emailPasswordEnforcementState = 'foo';
     o.managedRules = buildUnnamed15();
+    o.phoneEnforcementState = 'foo';
     o.recaptchaKeys = buildUnnamed16();
+    o.tollFraudManagedRules = buildUnnamed17();
     o.useAccountDefender = true;
   }
   buildCounterGoogleCloudIdentitytoolkitAdminV2RecaptchaConfig--;
@@ -1538,7 +1555,12 @@ void checkGoogleCloudIdentitytoolkitAdminV2RecaptchaConfig(
       unittest.equals('foo'),
     );
     checkUnnamed15(o.managedRules!);
+    unittest.expect(
+      o.phoneEnforcementState!,
+      unittest.equals('foo'),
+    );
     checkUnnamed16(o.recaptchaKeys!);
+    checkUnnamed17(o.tollFraudManagedRules!);
     unittest.expect(o.useAccountDefender!, unittest.isTrue);
   }
   buildCounterGoogleCloudIdentitytoolkitAdminV2RecaptchaConfig--;
@@ -1600,6 +1622,40 @@ void checkGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule(
     );
   }
   buildCounterGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule--;
+}
+
+core.int
+    buildCounterGoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule =
+    0;
+api.GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule
+    buildGoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule() {
+  final o =
+      api.GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule();
+  buildCounterGoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule++;
+  if (buildCounterGoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule <
+      3) {
+    o.action = 'foo';
+    o.startScore = 42.0;
+  }
+  buildCounterGoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule--;
+  return o;
+}
+
+void checkGoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule(
+    api.GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule o) {
+  buildCounterGoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule++;
+  if (buildCounterGoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule <
+      3) {
+    unittest.expect(
+      o.action!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startScore!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterGoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule--;
 }
 
 core.int buildCounterGoogleCloudIdentitytoolkitAdminV2RequestLogging = 0;
@@ -1852,12 +1908,12 @@ void checkGoogleCloudIdentitytoolkitAdminV2SpCertificate(
 }
 
 core.List<api.GoogleCloudIdentitytoolkitAdminV2SpCertificate>
-    buildUnnamed17() => [
+    buildUnnamed18() => [
           buildGoogleCloudIdentitytoolkitAdminV2SpCertificate(),
           buildGoogleCloudIdentitytoolkitAdminV2SpCertificate(),
         ];
 
-void checkUnnamed17(
+void checkUnnamed18(
     core.List<api.GoogleCloudIdentitytoolkitAdminV2SpCertificate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIdentitytoolkitAdminV2SpCertificate(o[0]);
@@ -1871,7 +1927,7 @@ api.GoogleCloudIdentitytoolkitAdminV2SpConfig
   buildCounterGoogleCloudIdentitytoolkitAdminV2SpConfig++;
   if (buildCounterGoogleCloudIdentitytoolkitAdminV2SpConfig < 3) {
     o.callbackUri = 'foo';
-    o.spCertificates = buildUnnamed17();
+    o.spCertificates = buildUnnamed18();
     o.spEntityId = 'foo';
   }
   buildCounterGoogleCloudIdentitytoolkitAdminV2SpConfig--;
@@ -1886,7 +1942,7 @@ void checkGoogleCloudIdentitytoolkitAdminV2SpConfig(
       o.callbackUri!,
       unittest.equals('foo'),
     );
-    checkUnnamed17(o.spCertificates!);
+    checkUnnamed18(o.spCertificates!);
     unittest.expect(
       o.spEntityId!,
       unittest.equals('foo'),
@@ -1929,12 +1985,12 @@ void checkGoogleCloudIdentitytoolkitAdminV2TemporaryQuota(
   buildCounterGoogleCloudIdentitytoolkitAdminV2TemporaryQuota--;
 }
 
-core.Map<core.String, core.String> buildUnnamed18() => {
+core.Map<core.String, core.String> buildUnnamed19() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed18(core.Map<core.String, core.String> o) {
+void checkUnnamed19(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1970,7 +2026,7 @@ api.GoogleCloudIdentitytoolkitAdminV2Tenant
         buildGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig();
     o.recaptchaConfig = buildGoogleCloudIdentitytoolkitAdminV2RecaptchaConfig();
     o.smsRegionConfig = buildGoogleCloudIdentitytoolkitAdminV2SmsRegionConfig();
-    o.testPhoneNumbers = buildUnnamed18();
+    o.testPhoneNumbers = buildUnnamed19();
   }
   buildCounterGoogleCloudIdentitytoolkitAdminV2Tenant--;
   return o;
@@ -2004,7 +2060,7 @@ void checkGoogleCloudIdentitytoolkitAdminV2Tenant(
         o.passwordPolicyConfig!);
     checkGoogleCloudIdentitytoolkitAdminV2RecaptchaConfig(o.recaptchaConfig!);
     checkGoogleCloudIdentitytoolkitAdminV2SmsRegionConfig(o.smsRegionConfig!);
-    checkUnnamed18(o.testPhoneNumbers!);
+    checkUnnamed19(o.testPhoneNumbers!);
   }
   buildCounterGoogleCloudIdentitytoolkitAdminV2Tenant--;
 }
@@ -2440,12 +2496,12 @@ void checkGoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo(
   buildCounterGoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo--;
 }
 
-core.List<core.String> buildUnnamed19() => [
+core.List<core.String> buildUnnamed20() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed19(core.List<core.String> o) {
+void checkUnnamed20(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2463,7 +2519,7 @@ api.GoogleCloudIdentitytoolkitV2PasswordPolicy
   final o = api.GoogleCloudIdentitytoolkitV2PasswordPolicy();
   buildCounterGoogleCloudIdentitytoolkitV2PasswordPolicy++;
   if (buildCounterGoogleCloudIdentitytoolkitV2PasswordPolicy < 3) {
-    o.allowedNonAlphanumericCharacters = buildUnnamed19();
+    o.allowedNonAlphanumericCharacters = buildUnnamed20();
     o.customStrengthOptions =
         buildGoogleCloudIdentitytoolkitV2CustomStrengthOptions();
     o.enforcementState = 'foo';
@@ -2478,7 +2534,7 @@ void checkGoogleCloudIdentitytoolkitV2PasswordPolicy(
     api.GoogleCloudIdentitytoolkitV2PasswordPolicy o) {
   buildCounterGoogleCloudIdentitytoolkitV2PasswordPolicy++;
   if (buildCounterGoogleCloudIdentitytoolkitV2PasswordPolicy < 3) {
-    checkUnnamed19(o.allowedNonAlphanumericCharacters!);
+    checkUnnamed20(o.allowedNonAlphanumericCharacters!);
     checkGoogleCloudIdentitytoolkitV2CustomStrengthOptions(
         o.customStrengthOptions!);
     unittest.expect(
@@ -2495,12 +2551,12 @@ void checkGoogleCloudIdentitytoolkitV2PasswordPolicy(
 }
 
 core.List<api.GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState>
-    buildUnnamed20() => [
+    buildUnnamed21() => [
           buildGoogleCloudIdentitytoolkitV2RecaptchaEnforcementState(),
           buildGoogleCloudIdentitytoolkitV2RecaptchaEnforcementState(),
         ];
 
-void checkUnnamed20(
+void checkUnnamed21(
     core.List<api.GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIdentitytoolkitV2RecaptchaEnforcementState(o[0]);
@@ -2513,7 +2569,7 @@ api.GoogleCloudIdentitytoolkitV2RecaptchaConfig
   final o = api.GoogleCloudIdentitytoolkitV2RecaptchaConfig();
   buildCounterGoogleCloudIdentitytoolkitV2RecaptchaConfig++;
   if (buildCounterGoogleCloudIdentitytoolkitV2RecaptchaConfig < 3) {
-    o.recaptchaEnforcementState = buildUnnamed20();
+    o.recaptchaEnforcementState = buildUnnamed21();
     o.recaptchaKey = 'foo';
   }
   buildCounterGoogleCloudIdentitytoolkitV2RecaptchaConfig--;
@@ -2524,7 +2580,7 @@ void checkGoogleCloudIdentitytoolkitV2RecaptchaConfig(
     api.GoogleCloudIdentitytoolkitV2RecaptchaConfig o) {
   buildCounterGoogleCloudIdentitytoolkitV2RecaptchaConfig++;
   if (buildCounterGoogleCloudIdentitytoolkitV2RecaptchaConfig < 3) {
-    checkUnnamed20(o.recaptchaEnforcementState!);
+    checkUnnamed21(o.recaptchaEnforcementState!);
     unittest.expect(
       o.recaptchaKey!,
       unittest.equals('foo'),
@@ -2699,11 +2755,14 @@ api.GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo
   buildCounterGoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo++;
   if (buildCounterGoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo < 3) {
     o.autoRetrievalInfo = buildGoogleCloudIdentitytoolkitV2AutoRetrievalInfo();
+    o.captchaResponse = 'foo';
+    o.clientType = 'foo';
     o.iosReceipt = 'foo';
     o.iosSecret = 'foo';
     o.phoneNumber = 'foo';
     o.playIntegrityToken = 'foo';
     o.recaptchaToken = 'foo';
+    o.recaptchaVersion = 'foo';
     o.safetyNetToken = 'foo';
   }
   buildCounterGoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo--;
@@ -2715,6 +2774,14 @@ void checkGoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo(
   buildCounterGoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo++;
   if (buildCounterGoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo < 3) {
     checkGoogleCloudIdentitytoolkitV2AutoRetrievalInfo(o.autoRetrievalInfo!);
+    unittest.expect(
+      o.captchaResponse!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.clientType!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.iosReceipt!,
       unittest.equals('foo'),
@@ -2733,6 +2800,10 @@ void checkGoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo(
     );
     unittest.expect(
       o.recaptchaToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.recaptchaVersion!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2966,12 +3037,12 @@ void checkGoogleCloudIdentitytoolkitV2WithdrawMfaResponse(
   buildCounterGoogleCloudIdentitytoolkitV2WithdrawMfaResponse--;
 }
 
-core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed21() => [
+core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed22() => [
       buildGoogleIamV1AuditLogConfig(),
       buildGoogleIamV1AuditLogConfig(),
     ];
 
-void checkUnnamed21(core.List<api.GoogleIamV1AuditLogConfig> o) {
+void checkUnnamed22(core.List<api.GoogleIamV1AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditLogConfig(o[0]);
   checkGoogleIamV1AuditLogConfig(o[1]);
@@ -2982,7 +3053,7 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
   final o = api.GoogleIamV1AuditConfig();
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed21();
+    o.auditLogConfigs = buildUnnamed22();
     o.service = 'foo';
   }
   buildCounterGoogleIamV1AuditConfig--;
@@ -2992,54 +3063,13 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
 void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    checkUnnamed21(o.auditLogConfigs!);
+    checkUnnamed22(o.auditLogConfigs!);
     unittest.expect(
       o.service!,
       unittest.equals('foo'),
     );
   }
   buildCounterGoogleIamV1AuditConfig--;
-}
-
-core.List<core.String> buildUnnamed22() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed22(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterGoogleIamV1AuditLogConfig = 0;
-api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
-  final o = api.GoogleIamV1AuditLogConfig();
-  buildCounterGoogleIamV1AuditLogConfig++;
-  if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed22();
-    o.logType = 'foo';
-  }
-  buildCounterGoogleIamV1AuditLogConfig--;
-  return o;
-}
-
-void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
-  buildCounterGoogleIamV1AuditLogConfig++;
-  if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    checkUnnamed22(o.exemptedMembers!);
-    unittest.expect(
-      o.logType!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleIamV1AuditLogConfig--;
 }
 
 core.List<core.String> buildUnnamed23() => [
@@ -3059,13 +3089,54 @@ void checkUnnamed23(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterGoogleIamV1AuditLogConfig = 0;
+api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
+  final o = api.GoogleIamV1AuditLogConfig();
+  buildCounterGoogleIamV1AuditLogConfig++;
+  if (buildCounterGoogleIamV1AuditLogConfig < 3) {
+    o.exemptedMembers = buildUnnamed23();
+    o.logType = 'foo';
+  }
+  buildCounterGoogleIamV1AuditLogConfig--;
+  return o;
+}
+
+void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
+  buildCounterGoogleIamV1AuditLogConfig++;
+  if (buildCounterGoogleIamV1AuditLogConfig < 3) {
+    checkUnnamed23(o.exemptedMembers!);
+    unittest.expect(
+      o.logType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleIamV1AuditLogConfig--;
+}
+
+core.List<core.String> buildUnnamed24() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed24(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterGoogleIamV1Binding = 0;
 api.GoogleIamV1Binding buildGoogleIamV1Binding() {
   final o = api.GoogleIamV1Binding();
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     o.condition = buildGoogleTypeExpr();
-    o.members = buildUnnamed23();
+    o.members = buildUnnamed24();
     o.role = 'foo';
   }
   buildCounterGoogleIamV1Binding--;
@@ -3076,7 +3147,7 @@ void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     checkGoogleTypeExpr(o.condition!);
-    checkUnnamed23(o.members!);
+    checkUnnamed24(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -3126,23 +3197,23 @@ void checkGoogleIamV1GetPolicyOptions(api.GoogleIamV1GetPolicyOptions o) {
   buildCounterGoogleIamV1GetPolicyOptions--;
 }
 
-core.List<api.GoogleIamV1AuditConfig> buildUnnamed24() => [
+core.List<api.GoogleIamV1AuditConfig> buildUnnamed25() => [
       buildGoogleIamV1AuditConfig(),
       buildGoogleIamV1AuditConfig(),
     ];
 
-void checkUnnamed24(core.List<api.GoogleIamV1AuditConfig> o) {
+void checkUnnamed25(core.List<api.GoogleIamV1AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditConfig(o[0]);
   checkGoogleIamV1AuditConfig(o[1]);
 }
 
-core.List<api.GoogleIamV1Binding> buildUnnamed25() => [
+core.List<api.GoogleIamV1Binding> buildUnnamed26() => [
       buildGoogleIamV1Binding(),
       buildGoogleIamV1Binding(),
     ];
 
-void checkUnnamed25(core.List<api.GoogleIamV1Binding> o) {
+void checkUnnamed26(core.List<api.GoogleIamV1Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1Binding(o[0]);
   checkGoogleIamV1Binding(o[1]);
@@ -3153,8 +3224,8 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
   final o = api.GoogleIamV1Policy();
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    o.auditConfigs = buildUnnamed24();
-    o.bindings = buildUnnamed25();
+    o.auditConfigs = buildUnnamed25();
+    o.bindings = buildUnnamed26();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -3165,8 +3236,8 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
 void checkGoogleIamV1Policy(api.GoogleIamV1Policy o) {
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    checkUnnamed24(o.auditConfigs!);
-    checkUnnamed25(o.bindings!);
+    checkUnnamed25(o.auditConfigs!);
+    checkUnnamed26(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -3203,44 +3274,6 @@ void checkGoogleIamV1SetIamPolicyRequest(api.GoogleIamV1SetIamPolicyRequest o) {
   buildCounterGoogleIamV1SetIamPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed26() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed26(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterGoogleIamV1TestIamPermissionsRequest = 0;
-api.GoogleIamV1TestIamPermissionsRequest
-    buildGoogleIamV1TestIamPermissionsRequest() {
-  final o = api.GoogleIamV1TestIamPermissionsRequest();
-  buildCounterGoogleIamV1TestIamPermissionsRequest++;
-  if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed26();
-  }
-  buildCounterGoogleIamV1TestIamPermissionsRequest--;
-  return o;
-}
-
-void checkGoogleIamV1TestIamPermissionsRequest(
-    api.GoogleIamV1TestIamPermissionsRequest o) {
-  buildCounterGoogleIamV1TestIamPermissionsRequest++;
-  if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    checkUnnamed26(o.permissions!);
-  }
-  buildCounterGoogleIamV1TestIamPermissionsRequest--;
-}
-
 core.List<core.String> buildUnnamed27() => [
       'foo',
       'foo',
@@ -3258,13 +3291,51 @@ void checkUnnamed27(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterGoogleIamV1TestIamPermissionsRequest = 0;
+api.GoogleIamV1TestIamPermissionsRequest
+    buildGoogleIamV1TestIamPermissionsRequest() {
+  final o = api.GoogleIamV1TestIamPermissionsRequest();
+  buildCounterGoogleIamV1TestIamPermissionsRequest++;
+  if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
+    o.permissions = buildUnnamed27();
+  }
+  buildCounterGoogleIamV1TestIamPermissionsRequest--;
+  return o;
+}
+
+void checkGoogleIamV1TestIamPermissionsRequest(
+    api.GoogleIamV1TestIamPermissionsRequest o) {
+  buildCounterGoogleIamV1TestIamPermissionsRequest++;
+  if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
+    checkUnnamed27(o.permissions!);
+  }
+  buildCounterGoogleIamV1TestIamPermissionsRequest--;
+}
+
+core.List<core.String> buildUnnamed28() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed28(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterGoogleIamV1TestIamPermissionsResponse = 0;
 api.GoogleIamV1TestIamPermissionsResponse
     buildGoogleIamV1TestIamPermissionsResponse() {
   final o = api.GoogleIamV1TestIamPermissionsResponse();
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed27();
+    o.permissions = buildUnnamed28();
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
   return o;
@@ -3274,7 +3345,7 @@ void checkGoogleIamV1TestIamPermissionsResponse(
     api.GoogleIamV1TestIamPermissionsResponse o) {
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    checkUnnamed27(o.permissions!);
+    checkUnnamed28(o.permissions!);
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
 }
@@ -3857,6 +3928,20 @@ void main() {
           api.GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule(od);
     });
   });
 

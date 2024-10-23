@@ -7103,8 +7103,6 @@ class Permission {
   core.String? customRolesSupportLevel;
 
   /// A brief description of what this Permission is used for.
-  ///
-  /// This permission can ONLY be used in predefined roles.
   core.String? description;
 
   /// The name of this Permission.

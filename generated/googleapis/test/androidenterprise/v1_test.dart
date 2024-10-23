@@ -2006,6 +2006,7 @@ api.Policy buildPolicy() {
     o.autoUpdatePolicy = 'foo';
     o.deviceReportPolicy = 'foo';
     o.maintenanceWindow = buildMaintenanceWindow();
+    o.policyId = 'foo';
     o.productAvailabilityPolicy = 'foo';
     o.productPolicy = buildUnnamed28();
   }
@@ -2025,6 +2026,10 @@ void checkPolicy(api.Policy o) {
       unittest.equals('foo'),
     );
     checkMaintenanceWindow(o.maintenanceWindow!);
+    unittest.expect(
+      o.policyId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.productAvailabilityPolicy!,
       unittest.equals('foo'),

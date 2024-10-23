@@ -11019,43 +11019,6 @@ class BulkMuteFindingsRequest {
       };
 }
 
-/// YAML-based rule that uses CEL, which supports the declaration of variables
-/// and a filtering predicate.
-///
-/// A vulnerable resource is emitted if the evaluation is false. Given: 1) the
-/// resource types as: - resource_types: "compute.googleapis.com/Instance" -
-/// resource_types: "compute.googleapis.com/Firewall" 2) the CEL policy spec as:
-/// name: bad_instance resource_filters: - name: instance resource_type:
-/// compute.googleapis.com/Instance filter: \> instance.status == 'RUNNING' &&
-/// 'public' in instance.tags.items - name: firewall resource_type:
-/// compute.googleapis.com/Firewall filter: \> firewall.direction == 'INGRESS'
-/// && !firewall.disabled && firewall.allowed.exists(rule,
-/// rule.IPProtocol.upperAscii() in \['TCP', 'ALL'\] && rule.ports.exists(port,
-/// network.portsInRange(port, '11-256'))) rule: match: - predicate: \>
-/// instance.networkInterfaces.exists(net, firewall.network == net.network)
-/// output: \> {'message': 'Compute instance with publicly accessible ports',
-/// 'instance': instance.name} Users are able to join resource types together
-/// using the exact format as Kubernetes Validating Admission policies.
-class CelPolicySpec {
-  /// The CEL policy to evaluate to produce findings.
-  ///
-  /// A finding is generated when the policy validation evaluates to false.
-  core.String? spec;
-
-  CelPolicySpec({
-    this.spec,
-  });
-
-  CelPolicySpec.fromJson(core.Map json_)
-      : this(
-          spec: json_['spec'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (spec != null) 'spec': spec!,
-      };
-}
-
 /// Fields related to Google Cloud Armor findings.
 class CloudArmor {
   /// Information about potential Layer 7 DDoS attacks identified by
@@ -13298,9 +13261,6 @@ class GoogleCloudSecuritycenterV1Binding {
 /// Use the custom module configuration to create custom detectors that generate
 /// custom findings for resources that you specify.
 class GoogleCloudSecuritycenterV1CustomConfig {
-  /// The CEL policy spec attached to the custom module.
-  CelPolicySpec? celPolicy;
-
   /// Custom output properties.
   GoogleCloudSecuritycenterV1CustomOutputSpec? customOutput;
 
@@ -13340,7 +13300,6 @@ class GoogleCloudSecuritycenterV1CustomConfig {
   core.String? severity;
 
   GoogleCloudSecuritycenterV1CustomConfig({
-    this.celPolicy,
     this.customOutput,
     this.description,
     this.predicate,
@@ -13351,10 +13310,6 @@ class GoogleCloudSecuritycenterV1CustomConfig {
 
   GoogleCloudSecuritycenterV1CustomConfig.fromJson(core.Map json_)
       : this(
-          celPolicy: json_.containsKey('celPolicy')
-              ? CelPolicySpec.fromJson(
-                  json_['celPolicy'] as core.Map<core.String, core.dynamic>)
-              : null,
           customOutput: json_.containsKey('customOutput')
               ? GoogleCloudSecuritycenterV1CustomOutputSpec.fromJson(
                   json_['customOutput'] as core.Map<core.String, core.dynamic>)
@@ -13374,7 +13329,6 @@ class GoogleCloudSecuritycenterV1CustomConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (celPolicy != null) 'celPolicy': celPolicy!,
         if (customOutput != null) 'customOutput': customOutput!,
         if (description != null) 'description': description!,
         if (predicate != null) 'predicate': predicate!,
@@ -17018,7 +16972,9 @@ class ServiceAccountDelegationInfo {
 class SetFindingStateRequest {
   /// The time at which the updated state takes effect.
   ///
-  /// Required.
+  /// If unset, defaults to the request time.
+  ///
+  /// Optional.
   core.String? startTime;
 
   /// The desired State of the finding.

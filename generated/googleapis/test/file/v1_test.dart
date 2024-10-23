@@ -225,6 +225,7 @@ api.FixedIOPS buildFixedIOPS() {
   final o = api.FixedIOPS();
   buildCounterFixedIOPS++;
   if (buildCounterFixedIOPS < 3) {
+    o.maxIops = 'foo';
     o.maxReadIops = 'foo';
   }
   buildCounterFixedIOPS--;
@@ -234,6 +235,10 @@ api.FixedIOPS buildFixedIOPS() {
 void checkFixedIOPS(api.FixedIOPS o) {
   buildCounterFixedIOPS++;
   if (buildCounterFixedIOPS < 3) {
+    unittest.expect(
+      o.maxIops!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.maxReadIops!,
       unittest.equals('foo'),
@@ -247,6 +252,7 @@ api.IOPSPerTB buildIOPSPerTB() {
   final o = api.IOPSPerTB();
   buildCounterIOPSPerTB++;
   if (buildCounterIOPSPerTB < 3) {
+    o.maxIopsPerTb = 'foo';
     o.maxReadIopsPerTb = 'foo';
   }
   buildCounterIOPSPerTB--;
@@ -256,6 +262,10 @@ api.IOPSPerTB buildIOPSPerTB() {
 void checkIOPSPerTB(api.IOPSPerTB o) {
   buildCounterIOPSPerTB++;
   if (buildCounterIOPSPerTB < 3) {
+    unittest.expect(
+      o.maxIopsPerTb!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.maxReadIopsPerTb!,
       unittest.equals('foo'),

@@ -43,7 +43,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241010",
+    "revision": "20241022",
     "rootUrl": "https://youtube.googleapis.com/",
     "servicePath": "",
     "title": "YouTube Data API v3",
@@ -8119,7 +8119,7 @@
             "type": "object"
         },
         "InvideoBranding": {
-            "description": "LINT.IfChange Describes an invideo branding.",
+            "description": "Describes an invideo branding.",
             "id": "InvideoBranding",
             "properties": {
                 "imageBytes": {
@@ -8133,6 +8133,7 @@
                 },
                 "position": {
                     "$ref": "InvideoPosition",
+                    "deprecated": true,
                     "description": "The spatial position within the video where the branding watermark will be displayed."
                 },
                 "targetChannelId": {
@@ -10824,6 +10825,10 @@
         "TestItem": {
             "id": "TestItem",
             "properties": {
+                "etag": {
+                    "description": "Etag for the resource. See https://en.wikipedia.org/wiki/HTTP_ETag.",
+                    "type": "string"
+                },
                 "featuredPart": {
                     "type": "boolean"
                 },

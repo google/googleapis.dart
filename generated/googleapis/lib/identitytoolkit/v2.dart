@@ -3962,8 +3962,28 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
   core.List<GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule>?
       managedRules;
 
+  /// The reCAPTCHA config for phone provider, containing the enforcement
+  /// status.
+  ///
+  /// The phone provider contains all related user flows protected by reCAPTCHA.
+  /// Possible string values are:
+  /// - "RECAPTCHA_PROVIDER_ENFORCEMENT_STATE_UNSPECIFIED" : Enforcement state
+  /// has not been set.
+  /// - "OFF" : Unenforced.
+  /// - "AUDIT" : reCAPTCHA assessment is created, result is not used to
+  /// enforce.
+  /// - "ENFORCE" : reCAPTCHA assessment is created, result is used to enforce.
+  core.String? phoneEnforcementState;
+
   /// The reCAPTCHA keys.
   core.List<GoogleCloudIdentitytoolkitAdminV2RecaptchaKey>? recaptchaKeys;
+
+  /// The managed rules for toll fraud provider, containing the enforcement
+  /// status.
+  ///
+  /// The toll fraud provider contains all SMS related user flows.
+  core.List<GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule>?
+      tollFraudManagedRules;
 
   /// Whether to use the account defender for reCAPTCHA assessment.
   ///
@@ -3973,7 +3993,9 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
   GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig({
     this.emailPasswordEnforcementState,
     this.managedRules,
+    this.phoneEnforcementState,
     this.recaptchaKeys,
+    this.tollFraudManagedRules,
     this.useAccountDefender,
   });
 
@@ -3986,10 +4008,16 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
                   GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule
                       .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
+          phoneEnforcementState: json_['phoneEnforcementState'] as core.String?,
           recaptchaKeys: (json_['recaptchaKeys'] as core.List?)
               ?.map((value) =>
                   GoogleCloudIdentitytoolkitAdminV2RecaptchaKey.fromJson(
                       value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          tollFraudManagedRules: (json_['tollFraudManagedRules'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           useAccountDefender: json_['useAccountDefender'] as core.bool?,
         );
@@ -3998,7 +4026,11 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
         if (emailPasswordEnforcementState != null)
           'emailPasswordEnforcementState': emailPasswordEnforcementState!,
         if (managedRules != null) 'managedRules': managedRules!,
+        if (phoneEnforcementState != null)
+          'phoneEnforcementState': phoneEnforcementState!,
         if (recaptchaKeys != null) 'recaptchaKeys': recaptchaKeys!,
+        if (tollFraudManagedRules != null)
+          'tollFraudManagedRules': tollFraudManagedRules!,
         if (useAccountDefender != null)
           'useAccountDefender': useAccountDefender!,
       };
@@ -4073,6 +4105,43 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule {
   core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
         if (endScore != null) 'endScore': endScore!,
+      };
+}
+
+/// The config for a reCAPTCHA toll fraud assessment managed rule.
+///
+/// Models a single interval \[start_score, end_score\]. The start_score is
+/// maximum_allowed_score. End score is 1.0.
+class GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule {
+  /// The action taken if the reCAPTCHA score of a request is within the
+  /// interval \[start_score, end_score\].
+  /// Possible string values are:
+  /// - "RECAPTCHA_ACTION_UNSPECIFIED" : The reCAPTCHA action is not specified.
+  /// - "BLOCK" : The reCAPTCHA-protected request will be blocked.
+  core.String? action;
+
+  /// The start score (inclusive) for an action.
+  ///
+  /// A score of 0.0 indicates the safest request (likely legitimate), whereas
+  /// 1.0 indicates the riskiest request (likely toll fraud). See
+  /// https://cloud.google.com/recaptcha-enterprise/docs/sms-fraud-detection#create-assessment-sms.
+  core.double? startScore;
+
+  GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule({
+    this.action,
+    this.startScore,
+  });
+
+  GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule.fromJson(
+      core.Map json_)
+      : this(
+          action: json_['action'] as core.String?,
+          startScore: (json_['startScore'] as core.num?)?.toDouble(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (startScore != null) 'startScore': startScore!,
       };
 }
 
@@ -5192,6 +5261,7 @@ class GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState {
   /// Possible string values are:
   /// - "RECAPTCHA_PROVIDER_UNSPECIFIED" : reCAPTCHA provider not specified
   /// - "EMAIL_PASSWORD_PROVIDER" : Email password provider
+  /// - "PHONE_PROVIDER" : Phone auth provider
   core.String? provider;
 
   GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState({
@@ -5389,6 +5459,22 @@ class GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo {
   /// Used by Google Play Services to identify the app for auto-retrieval.
   GoogleCloudIdentitytoolkitV2AutoRetrievalInfo? autoRetrievalInfo;
 
+  /// The reCAPTCHA Enterprise token provided by the reCAPTCHA client-side
+  /// integration.
+  ///
+  /// Required when reCAPTCHA enterprise is enabled.
+  core.String? captchaResponse;
+
+  /// The client type, web, android or ios.
+  ///
+  /// Required when reCAPTCHA Enterprise is enabled.
+  /// Possible string values are:
+  /// - "CLIENT_TYPE_UNSPECIFIED" : Client type is not specified.
+  /// - "CLIENT_TYPE_WEB" : Client type is web.
+  /// - "CLIENT_TYPE_ANDROID" : Client type is android.
+  /// - "CLIENT_TYPE_IOS" : Client type is ios.
+  core.String? clientType;
+
   /// iOS only.
   ///
   /// Receipt of successful app token validation with APNS.
@@ -5417,6 +5503,13 @@ class GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo {
   /// Recaptcha solution.
   core.String? recaptchaToken;
 
+  /// The reCAPTCHA version of the reCAPTCHA token in the captcha_response.
+  /// Possible string values are:
+  /// - "RECAPTCHA_VERSION_UNSPECIFIED" : The reCAPTCHA version is not
+  /// specified.
+  /// - "RECAPTCHA_ENTERPRISE" : The reCAPTCHA enterprise.
+  core.String? recaptchaVersion;
+
   /// Android only.
   ///
   /// Used to assert application identity in place of a recaptcha token. A
@@ -5427,11 +5520,14 @@ class GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo {
 
   GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo({
     this.autoRetrievalInfo,
+    this.captchaResponse,
+    this.clientType,
     this.iosReceipt,
     this.iosSecret,
     this.phoneNumber,
     this.playIntegrityToken,
     this.recaptchaToken,
+    this.recaptchaVersion,
     this.safetyNetToken,
   });
 
@@ -5442,22 +5538,28 @@ class GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo {
                   json_['autoRetrievalInfo']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          captchaResponse: json_['captchaResponse'] as core.String?,
+          clientType: json_['clientType'] as core.String?,
           iosReceipt: json_['iosReceipt'] as core.String?,
           iosSecret: json_['iosSecret'] as core.String?,
           phoneNumber: json_['phoneNumber'] as core.String?,
           playIntegrityToken: json_['playIntegrityToken'] as core.String?,
           recaptchaToken: json_['recaptchaToken'] as core.String?,
+          recaptchaVersion: json_['recaptchaVersion'] as core.String?,
           safetyNetToken: json_['safetyNetToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoRetrievalInfo != null) 'autoRetrievalInfo': autoRetrievalInfo!,
+        if (captchaResponse != null) 'captchaResponse': captchaResponse!,
+        if (clientType != null) 'clientType': clientType!,
         if (iosReceipt != null) 'iosReceipt': iosReceipt!,
         if (iosSecret != null) 'iosSecret': iosSecret!,
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
         if (playIntegrityToken != null)
           'playIntegrityToken': playIntegrityToken!,
         if (recaptchaToken != null) 'recaptchaToken': recaptchaToken!,
+        if (recaptchaVersion != null) 'recaptchaVersion': recaptchaVersion!,
         if (safetyNetToken != null) 'safetyNetToken': safetyNetToken!,
       };
 }

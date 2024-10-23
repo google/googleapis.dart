@@ -49,7 +49,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240529",
+    "revision": "20241016",
     "rootUrl": "https://cloudsearch.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Search API",
@@ -7332,7 +7332,7 @@
             "type": "object"
         },
         "SearchRequest": {
-            "description": "The search API request.",
+            "description": "The search API request. NEXT ID: 17",
             "id": "SearchRequest",
             "properties": {
                 "contextAttributes": {
@@ -7385,7 +7385,7 @@
             "type": "object"
         },
         "SearchResponse": {
-            "description": "The search API response.",
+            "description": "The search API response. NEXT ID: 17",
             "id": "SearchResponse",
             "properties": {
                 "debugInfo": {

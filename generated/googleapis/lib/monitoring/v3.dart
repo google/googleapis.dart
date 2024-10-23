@@ -2360,8 +2360,8 @@ class ProjectsNotificationChannelsResource {
   ///
   /// [force] - If true, the notification channel will be deleted regardless of
   /// its use in alert policies (the policies will be updated to remove the
-  /// channel). If false, channels that are still referenced by an existing
-  /// alerting policy will fail to be deleted in a delete operation.
+  /// channel). If false, this operation will fail if the notification channel
+  /// is referenced by existing alerting policies.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

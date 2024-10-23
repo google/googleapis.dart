@@ -1,6 +1,23 @@
-## 13.2.1-wip
+## 14.0.0-wip
 
 - Require Dart 3.5 or later.
+
+### APIs
+
+- `acmedns` - removed.
+- `adsensehost` - removed.
+- `adsenseplatform` - new!
+- `cloudcommerceprocurement` - removed.
+- `css` - new!
+- `domainsrdap` - removed.
+- `firebaseremoteconfig` - removed.
+- `gkehub` - added `v2`.
+- `meet` - new!
+- `netapp` - new!
+- `oracledatabase` - new!
+- `photoslibrary` - removed.
+- `sourcerepo` - removed.
+- `speech` - removed `v2`.
 
 ## 13.2.0
 

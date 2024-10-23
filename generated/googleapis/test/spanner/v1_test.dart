@@ -555,6 +555,7 @@ api.BeginTransactionRequest buildBeginTransactionRequest() {
   final o = api.BeginTransactionRequest();
   buildCounterBeginTransactionRequest++;
   if (buildCounterBeginTransactionRequest < 3) {
+    o.mutationKey = buildMutation();
     o.options = buildTransactionOptions();
     o.requestOptions = buildRequestOptions();
   }
@@ -565,6 +566,7 @@ api.BeginTransactionRequest buildBeginTransactionRequest() {
 void checkBeginTransactionRequest(api.BeginTransactionRequest o) {
   buildCounterBeginTransactionRequest++;
   if (buildCounterBeginTransactionRequest < 3) {
+    checkMutation(o.mutationKey!);
     checkTransactionOptions(o.options!);
     checkRequestOptions(o.requestOptions!);
   }
@@ -693,6 +695,7 @@ api.CommitRequest buildCommitRequest() {
   if (buildCounterCommitRequest < 3) {
     o.maxCommitDelay = 'foo';
     o.mutations = buildUnnamed9();
+    o.precommitToken = buildMultiplexedSessionPrecommitToken();
     o.requestOptions = buildRequestOptions();
     o.returnCommitStats = true;
     o.singleUseTransaction = buildTransactionOptions();
@@ -710,6 +713,7 @@ void checkCommitRequest(api.CommitRequest o) {
       unittest.equals('foo'),
     );
     checkUnnamed9(o.mutations!);
+    checkMultiplexedSessionPrecommitToken(o.precommitToken!);
     checkRequestOptions(o.requestOptions!);
     unittest.expect(o.returnCommitStats!, unittest.isTrue);
     checkTransactionOptions(o.singleUseTransaction!);
@@ -728,6 +732,7 @@ api.CommitResponse buildCommitResponse() {
   if (buildCounterCommitResponse < 3) {
     o.commitStats = buildCommitStats();
     o.commitTimestamp = 'foo';
+    o.precommitToken = buildMultiplexedSessionPrecommitToken();
   }
   buildCounterCommitResponse--;
   return o;
@@ -741,6 +746,7 @@ void checkCommitResponse(api.CommitResponse o) {
       o.commitTimestamp!,
       unittest.equals('foo'),
     );
+    checkMultiplexedSessionPrecommitToken(o.precommitToken!);
   }
   buildCounterCommitResponse--;
 }
@@ -1483,6 +1489,7 @@ api.ExecuteBatchDmlResponse buildExecuteBatchDmlResponse() {
   final o = api.ExecuteBatchDmlResponse();
   buildCounterExecuteBatchDmlResponse++;
   if (buildCounterExecuteBatchDmlResponse < 3) {
+    o.precommitToken = buildMultiplexedSessionPrecommitToken();
     o.resultSets = buildUnnamed17();
     o.status = buildStatus();
   }
@@ -1493,6 +1500,7 @@ api.ExecuteBatchDmlResponse buildExecuteBatchDmlResponse() {
 void checkExecuteBatchDmlResponse(api.ExecuteBatchDmlResponse o) {
   buildCounterExecuteBatchDmlResponse++;
   if (buildCounterExecuteBatchDmlResponse < 3) {
+    checkMultiplexedSessionPrecommitToken(o.precommitToken!);
     checkUnnamed17(o.resultSets!);
     checkStatus(o.status!);
   }
@@ -3729,6 +3737,7 @@ api.PartialResultSet buildPartialResultSet() {
   if (buildCounterPartialResultSet < 3) {
     o.chunkedValue = true;
     o.metadata = buildResultSetMetadata();
+    o.precommitToken = buildMultiplexedSessionPrecommitToken();
     o.resumeToken = 'foo';
     o.stats = buildResultSetStats();
     o.values = buildUnnamed68();
@@ -3742,6 +3751,7 @@ void checkPartialResultSet(api.PartialResultSet o) {
   if (buildCounterPartialResultSet < 3) {
     unittest.expect(o.chunkedValue!, unittest.isTrue);
     checkResultSetMetadata(o.metadata!);
+    checkMultiplexedSessionPrecommitToken(o.precommitToken!);
     unittest.expect(
       o.resumeToken!,
       unittest.equals('foo'),
@@ -4477,6 +4487,7 @@ api.ReadWrite buildReadWrite() {
   final o = api.ReadWrite();
   buildCounterReadWrite++;
   if (buildCounterReadWrite < 3) {
+    o.multiplexedSessionPreviousTransactionId = 'foo';
     o.readLockMode = 'foo';
   }
   buildCounterReadWrite--;
@@ -4486,6 +4497,10 @@ api.ReadWrite buildReadWrite() {
 void checkReadWrite(api.ReadWrite o) {
   buildCounterReadWrite++;
   if (buildCounterReadWrite < 3) {
+    unittest.expect(
+      o.multiplexedSessionPreviousTransactionId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.readLockMode!,
       unittest.equals('foo'),
@@ -4773,6 +4788,7 @@ api.ResultSet buildResultSet() {
   buildCounterResultSet++;
   if (buildCounterResultSet < 3) {
     o.metadata = buildResultSetMetadata();
+    o.precommitToken = buildMultiplexedSessionPrecommitToken();
     o.rows = buildUnnamed82();
     o.stats = buildResultSetStats();
   }
@@ -4784,6 +4800,7 @@ void checkResultSet(api.ResultSet o) {
   buildCounterResultSet++;
   if (buildCounterResultSet < 3) {
     checkResultSetMetadata(o.metadata!);
+    checkMultiplexedSessionPrecommitToken(o.precommitToken!);
     checkUnnamed82(o.rows!);
     checkResultSetStats(o.stats!);
   }

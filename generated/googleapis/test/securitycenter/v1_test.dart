@@ -1212,28 +1212,6 @@ void checkBulkMuteFindingsRequest(api.BulkMuteFindingsRequest o) {
   buildCounterBulkMuteFindingsRequest--;
 }
 
-core.int buildCounterCelPolicySpec = 0;
-api.CelPolicySpec buildCelPolicySpec() {
-  final o = api.CelPolicySpec();
-  buildCounterCelPolicySpec++;
-  if (buildCounterCelPolicySpec < 3) {
-    o.spec = 'foo';
-  }
-  buildCounterCelPolicySpec--;
-  return o;
-}
-
-void checkCelPolicySpec(api.CelPolicySpec o) {
-  buildCounterCelPolicySpec++;
-  if (buildCounterCelPolicySpec < 3) {
-    unittest.expect(
-      o.spec!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterCelPolicySpec--;
-}
-
 core.int buildCounterCloudArmor = 0;
 api.CloudArmor buildCloudArmor() {
   final o = api.CloudArmor();
@@ -2975,7 +2953,6 @@ api.GoogleCloudSecuritycenterV1CustomConfig
   final o = api.GoogleCloudSecuritycenterV1CustomConfig();
   buildCounterGoogleCloudSecuritycenterV1CustomConfig++;
   if (buildCounterGoogleCloudSecuritycenterV1CustomConfig < 3) {
-    o.celPolicy = buildCelPolicySpec();
     o.customOutput = buildGoogleCloudSecuritycenterV1CustomOutputSpec();
     o.description = 'foo';
     o.predicate = buildExpr();
@@ -2991,7 +2968,6 @@ void checkGoogleCloudSecuritycenterV1CustomConfig(
     api.GoogleCloudSecuritycenterV1CustomConfig o) {
   buildCounterGoogleCloudSecuritycenterV1CustomConfig++;
   if (buildCounterGoogleCloudSecuritycenterV1CustomConfig < 3) {
-    checkCelPolicySpec(o.celPolicy!);
     checkGoogleCloudSecuritycenterV1CustomOutputSpec(o.customOutput!);
     unittest.expect(
       o.description!,
@@ -7274,16 +7250,6 @@ void main() {
       final od = api.BulkMuteFindingsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkBulkMuteFindingsRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-CelPolicySpec', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildCelPolicySpec();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.CelPolicySpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkCelPolicySpec(od);
     });
   });
 
