@@ -1650,6 +1650,7 @@ api.DatasetAccess buildDatasetAccess() {
   final o = api.DatasetAccess();
   buildCounterDatasetAccess++;
   if (buildCounterDatasetAccess < 3) {
+    o.condition = buildExpr();
     o.dataset = buildDatasetAccessEntry();
     o.domain = 'foo';
     o.groupByEmail = 'foo';
@@ -1667,6 +1668,7 @@ api.DatasetAccess buildDatasetAccess() {
 void checkDatasetAccess(api.DatasetAccess o) {
   buildCounterDatasetAccess++;
   if (buildCounterDatasetAccess < 3) {
+    checkExpr(o.condition!);
     checkDatasetAccessEntry(o.dataset!);
     unittest.expect(
       o.domain!,
@@ -12664,6 +12666,7 @@ void main() {
       final res = api.BigqueryApi(mock).datasets;
       final arg_projectId = 'foo';
       final arg_datasetId = 'foo';
+      final arg_accessPolicyVersion = 42;
       final arg_datasetView = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12704,6 +12707,10 @@ void main() {
           }
         }
         unittest.expect(
+          core.int.parse(queryMap['accessPolicyVersion']!.first),
+          unittest.equals(arg_accessPolicyVersion),
+        );
+        unittest.expect(
           queryMap['datasetView']!.first,
           unittest.equals(arg_datasetView),
         );
@@ -12719,7 +12726,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_projectId, arg_datasetId,
-          datasetView: arg_datasetView, $fields: arg_$fields);
+          accessPolicyVersion: arg_accessPolicyVersion,
+          datasetView: arg_datasetView,
+          $fields: arg_$fields);
       checkDataset(response as api.Dataset);
     });
 
@@ -12728,6 +12737,7 @@ void main() {
       final res = api.BigqueryApi(mock).datasets;
       final arg_request = buildDataset();
       final arg_projectId = 'foo';
+      final arg_accessPolicyVersion = 42;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj =
@@ -12771,6 +12781,10 @@ void main() {
           }
         }
         unittest.expect(
+          core.int.parse(queryMap['accessPolicyVersion']!.first),
+          unittest.equals(arg_accessPolicyVersion),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -12781,8 +12795,8 @@ void main() {
         final resp = convert.json.encode(buildDataset());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response =
-          await res.insert(arg_request, arg_projectId, $fields: arg_$fields);
+      final response = await res.insert(arg_request, arg_projectId,
+          accessPolicyVersion: arg_accessPolicyVersion, $fields: arg_$fields);
       checkDataset(response as api.Dataset);
     });
 
@@ -12874,6 +12888,7 @@ void main() {
       final arg_request = buildDataset();
       final arg_projectId = 'foo';
       final arg_datasetId = 'foo';
+      final arg_accessPolicyVersion = 42;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj =
@@ -12917,6 +12932,10 @@ void main() {
           }
         }
         unittest.expect(
+          core.int.parse(queryMap['accessPolicyVersion']!.first),
+          unittest.equals(arg_accessPolicyVersion),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -12929,7 +12948,7 @@ void main() {
       }), true);
       final response = await res.patch(
           arg_request, arg_projectId, arg_datasetId,
-          $fields: arg_$fields);
+          accessPolicyVersion: arg_accessPolicyVersion, $fields: arg_$fields);
       checkDataset(response as api.Dataset);
     });
 
@@ -13004,6 +13023,7 @@ void main() {
       final arg_request = buildDataset();
       final arg_projectId = 'foo';
       final arg_datasetId = 'foo';
+      final arg_accessPolicyVersion = 42;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj =
@@ -13047,6 +13067,10 @@ void main() {
           }
         }
         unittest.expect(
+          core.int.parse(queryMap['accessPolicyVersion']!.first),
+          unittest.equals(arg_accessPolicyVersion),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -13059,7 +13083,7 @@ void main() {
       }), true);
       final response = await res.update(
           arg_request, arg_projectId, arg_datasetId,
-          $fields: arg_$fields);
+          accessPolicyVersion: arg_accessPolicyVersion, $fields: arg_$fields);
       checkDataset(response as api.Dataset);
     });
   });

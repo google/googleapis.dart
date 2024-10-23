@@ -4181,6 +4181,26 @@ class GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest {
   /// Used by Google Play Services to identify the app for auto-retrieval.
   GoogleCloudIdentitytoolkitV1AutoRetrievalInfo? autoRetrievalInfo;
 
+  /// The reCAPTCHA Enterprise token provided by the reCAPTCHA client-side
+  /// integration.
+  ///
+  /// Required when reCAPTCHA enterprise is enabled.
+  ///
+  /// Optional.
+  core.String? captchaResponse;
+
+  /// The client type, web, android or ios.
+  ///
+  /// Required when reCAPTCHA Enterprise is enabled.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CLIENT_TYPE_UNSPECIFIED" : Client type is not specified.
+  /// - "CLIENT_TYPE_WEB" : Client type is web.
+  /// - "CLIENT_TYPE_ANDROID" : Client type is android.
+  /// - "CLIENT_TYPE_IOS" : Client type is ios.
+  core.String? clientType;
+
   /// Receipt of successful iOS app token validation.
   ///
   /// At least one of (`ios_receipt` and `ios_secret`), `recaptcha_token`, or
@@ -4221,6 +4241,15 @@ class GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest {
   /// will be generated on user completion of the recaptcha challenge.
   core.String? recaptchaToken;
 
+  /// The reCAPTCHA version of the reCAPTCHA token in the captcha_response.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RECAPTCHA_VERSION_UNSPECIFIED" : The reCAPTCHA version is not
+  /// specified.
+  /// - "RECAPTCHA_ENTERPRISE" : The reCAPTCHA enterprise.
+  core.String? recaptchaVersion;
+
   /// Android only.
   ///
   /// Used to assert application identity in place of a recaptcha token. At
@@ -4237,11 +4266,14 @@ class GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest {
 
   GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest({
     this.autoRetrievalInfo,
+    this.captchaResponse,
+    this.clientType,
     this.iosReceipt,
     this.iosSecret,
     this.phoneNumber,
     this.playIntegrityToken,
     this.recaptchaToken,
+    this.recaptchaVersion,
     this.safetyNetToken,
     this.tenantId,
   });
@@ -4254,23 +4286,29 @@ class GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest {
                   json_['autoRetrievalInfo']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          captchaResponse: json_['captchaResponse'] as core.String?,
+          clientType: json_['clientType'] as core.String?,
           iosReceipt: json_['iosReceipt'] as core.String?,
           iosSecret: json_['iosSecret'] as core.String?,
           phoneNumber: json_['phoneNumber'] as core.String?,
           playIntegrityToken: json_['playIntegrityToken'] as core.String?,
           recaptchaToken: json_['recaptchaToken'] as core.String?,
+          recaptchaVersion: json_['recaptchaVersion'] as core.String?,
           safetyNetToken: json_['safetyNetToken'] as core.String?,
           tenantId: json_['tenantId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoRetrievalInfo != null) 'autoRetrievalInfo': autoRetrievalInfo!,
+        if (captchaResponse != null) 'captchaResponse': captchaResponse!,
+        if (clientType != null) 'clientType': clientType!,
         if (iosReceipt != null) 'iosReceipt': iosReceipt!,
         if (iosSecret != null) 'iosSecret': iosSecret!,
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
         if (playIntegrityToken != null)
           'playIntegrityToken': playIntegrityToken!,
         if (recaptchaToken != null) 'recaptchaToken': recaptchaToken!,
+        if (recaptchaVersion != null) 'recaptchaVersion': recaptchaVersion!,
         if (safetyNetToken != null) 'safetyNetToken': safetyNetToken!,
         if (tenantId != null) 'tenantId': tenantId!,
       };

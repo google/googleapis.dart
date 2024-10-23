@@ -1545,7 +1545,197 @@ class GoogleCloudOrgpolicyV2Constraint {
 /// For example, a constraint `constraints/compute.disableSerialPortAccess`. If
 /// it is enforced on a VM instance, serial port connections will not be opened
 /// to that instance.
-typedef GoogleCloudOrgpolicyV2ConstraintBooleanConstraint = $Empty;
+class GoogleCloudOrgpolicyV2ConstraintBooleanConstraint {
+  /// Custom constraint definition.
+  ///
+  /// This is set only for Managed Constraints
+  GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition?
+      customConstraintDefinition;
+
+  GoogleCloudOrgpolicyV2ConstraintBooleanConstraint({
+    this.customConstraintDefinition,
+  });
+
+  GoogleCloudOrgpolicyV2ConstraintBooleanConstraint.fromJson(core.Map json_)
+      : this(
+          customConstraintDefinition:
+              json_.containsKey('customConstraintDefinition')
+                  ? GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition
+                      .fromJson(json_['customConstraintDefinition']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customConstraintDefinition != null)
+          'customConstraintDefinition': customConstraintDefinition!,
+      };
+}
+
+/// Currently used for Managed Constraints.
+///
+/// This represents a subset of fields missing from Constraint proto that are
+/// required to describe CustomConstraint
+class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition {
+  /// Allow or deny type.
+  /// Possible string values are:
+  /// - "ACTION_TYPE_UNSPECIFIED" : Unspecified. Results in an error.
+  /// - "ALLOW" : Allowed action type.
+  /// - "DENY" : Deny action type.
+  core.String? actionType;
+
+  /// Org policy condition/expression.
+  ///
+  /// For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")`
+  /// or, `resource.management.auto_upgrade == true` The max length of the
+  /// condition is 1000 characters.
+  core.String? condition;
+
+  /// All the operations being applied for this constraint.
+  core.List<core.String>? methodTypes;
+
+  /// Stores Structure of parameters used by Constraint condition.
+  ///
+  /// Key of map represents name of the parameter.
+  core.Map<core.String,
+          GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter>?
+      parameters;
+
+  /// The resource instance type on which this policy applies.
+  ///
+  /// Format will be of the form : `/` Example: *
+  /// `compute.googleapis.com/Instance`.
+  core.List<core.String>? resourceTypes;
+
+  GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition({
+    this.actionType,
+    this.condition,
+    this.methodTypes,
+    this.parameters,
+    this.resourceTypes,
+  });
+
+  GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition.fromJson(
+      core.Map json_)
+      : this(
+          actionType: json_['actionType'] as core.String?,
+          condition: json_['condition'] as core.String?,
+          methodTypes: (json_['methodTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          parameters:
+              (json_['parameters'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter
+                  .fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          resourceTypes: (json_['resourceTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actionType != null) 'actionType': actionType!,
+        if (condition != null) 'condition': condition!,
+        if (methodTypes != null) 'methodTypes': methodTypes!,
+        if (parameters != null) 'parameters': parameters!,
+        if (resourceTypes != null) 'resourceTypes': resourceTypes!,
+      };
+}
+
+/// Defines a parameter structure.
+class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter {
+  /// Sets the value of the parameter in an assignment if no value is given.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? defaultValue;
+
+  /// Determines the parameter’s value structure.
+  ///
+  /// For example, LIST can be specified by defining type : LIST, and item type
+  /// as : STRING.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified. Results in an error.
+  /// - "LIST" : List parameter type.
+  /// - "STRING" : String parameter type.
+  /// - "BOOLEAN" : Boolean parameter type.
+  core.String? item;
+
+  /// Defines subproperties primarily used by the UI to display user-friendly
+  /// information.
+  GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata?
+      metadata;
+
+  /// Type of the parameter.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified. Results in an error.
+  /// - "LIST" : List parameter type.
+  /// - "STRING" : String parameter type.
+  /// - "BOOLEAN" : Boolean parameter type.
+  core.String? type;
+
+  /// Provides a CEL expression to specify the acceptable parameter values
+  /// during assignment.
+  ///
+  /// For example, parameterName in ("parameterValue1", "parameterValue2")
+  core.String? validValuesExpr;
+
+  GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter({
+    this.defaultValue,
+    this.item,
+    this.metadata,
+    this.type,
+    this.validValuesExpr,
+  });
+
+  GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter.fromJson(
+      core.Map json_)
+      : this(
+          defaultValue: json_['defaultValue'],
+          item: json_['item'] as core.String?,
+          metadata: json_.containsKey('metadata')
+              ? GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata
+                  .fromJson(
+                      json_['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: json_['type'] as core.String?,
+          validValuesExpr: json_['validValuesExpr'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultValue != null) 'defaultValue': defaultValue!,
+        if (item != null) 'item': item!,
+        if (metadata != null) 'metadata': metadata!,
+        if (type != null) 'type': type!,
+        if (validValuesExpr != null) 'validValuesExpr': validValuesExpr!,
+      };
+}
+
+/// Defines Medata structure.
+class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata {
+  /// Detailed description of what this `parameter` is and use of it.
+  ///
+  /// Mutable.
+  core.String? description;
+
+  GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata({
+    this.description,
+  });
+
+  GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata.fromJson(
+      core.Map json_)
+      : this(
+          description: json_['description'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+      };
+}
 
 /// A constraint that allows or disallows a list of string values, which are
 /// configured by an Organization Policy administrator with a policy.

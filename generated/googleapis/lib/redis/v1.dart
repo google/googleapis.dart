@@ -1301,6 +1301,11 @@ class Cluster {
   /// - "AUTH_MODE_DISABLED" : Authorization disabled mode
   core.String? authorizationMode;
 
+  /// A list of cluster enpoints.
+  ///
+  /// Optional.
+  core.List<ClusterEndpoint>? clusterEndpoints;
+
   /// The timestamp associated with the cluster creation request.
   ///
   /// Output only.
@@ -1372,7 +1377,7 @@ class Cluster {
   ///
   /// Currently, only one PscConfig is supported.
   ///
-  /// Required.
+  /// Optional.
   core.List<PscConfig>? pscConfigs;
 
   /// The list of PSC connections that are auto-created through service
@@ -1380,6 +1385,11 @@ class Cluster {
   ///
   /// Output only.
   core.List<PscConnection>? pscConnections;
+
+  /// Service attachment details to configure Psc connections
+  ///
+  /// Output only.
+  core.List<PscServiceAttachment>? pscServiceAttachments;
 
   /// Key/Value pairs of customer overrides for mutable Redis Configs
   ///
@@ -1445,6 +1455,7 @@ class Cluster {
 
   Cluster({
     this.authorizationMode,
+    this.clusterEndpoints,
     this.createTime,
     this.crossClusterReplicationConfig,
     this.deletionProtectionEnabled,
@@ -1457,6 +1468,7 @@ class Cluster {
     this.preciseSizeGb,
     this.pscConfigs,
     this.pscConnections,
+    this.pscServiceAttachments,
     this.redisConfigs,
     this.replicaCount,
     this.shardCount,
@@ -1471,6 +1483,10 @@ class Cluster {
   Cluster.fromJson(core.Map json_)
       : this(
           authorizationMode: json_['authorizationMode'] as core.String?,
+          clusterEndpoints: (json_['clusterEndpoints'] as core.List?)
+              ?.map((value) => ClusterEndpoint.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           createTime: json_['createTime'] as core.String?,
           crossClusterReplicationConfig:
               json_.containsKey('crossClusterReplicationConfig')
@@ -1507,6 +1523,10 @@ class Cluster {
               ?.map((value) => PscConnection.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          pscServiceAttachments: (json_['pscServiceAttachments'] as core.List?)
+              ?.map((value) => PscServiceAttachment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           redisConfigs:
               (json_['redisConfigs'] as core.Map<core.String, core.dynamic>?)
                   ?.map(
@@ -1533,6 +1553,7 @@ class Cluster {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authorizationMode != null) 'authorizationMode': authorizationMode!,
+        if (clusterEndpoints != null) 'clusterEndpoints': clusterEndpoints!,
         if (createTime != null) 'createTime': createTime!,
         if (crossClusterReplicationConfig != null)
           'crossClusterReplicationConfig': crossClusterReplicationConfig!,
@@ -1549,6 +1570,8 @@ class Cluster {
         if (preciseSizeGb != null) 'preciseSizeGb': preciseSizeGb!,
         if (pscConfigs != null) 'pscConfigs': pscConfigs!,
         if (pscConnections != null) 'pscConnections': pscConnections!,
+        if (pscServiceAttachments != null)
+          'pscServiceAttachments': pscServiceAttachments!,
         if (redisConfigs != null) 'redisConfigs': redisConfigs!,
         if (replicaCount != null) 'replicaCount': replicaCount!,
         if (shardCount != null) 'shardCount': shardCount!,
@@ -1560,6 +1583,35 @@ class Cluster {
         if (uid != null) 'uid': uid!,
         if (zoneDistributionConfig != null)
           'zoneDistributionConfig': zoneDistributionConfig!,
+      };
+}
+
+/// ClusterEndpoint consists of PSC connections that are created as a group in
+/// each VPC network for accessing the cluster.
+///
+/// In each group, there shall be one connection for each service attachment in
+/// the cluster.
+class ClusterEndpoint {
+  /// A group of PSC connections.
+  ///
+  /// They are created in the same VPC network, one for each service attachment
+  /// in the cluster.
+  core.List<ConnectionDetail>? connections;
+
+  ClusterEndpoint({
+    this.connections,
+  });
+
+  ClusterEndpoint.fromJson(core.Map json_)
+      : this(
+          connections: (json_['connections'] as core.List?)
+              ?.map((value) => ConnectionDetail.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connections != null) 'connections': connections!,
       };
 }
 
@@ -1725,6 +1777,29 @@ class ClusterWeeklyMaintenanceWindow {
   core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
         if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// Detailed information of each PSC connection.
+class ConnectionDetail {
+  /// Detailed information of a PSC connection that is created by the customer
+  /// who owns the cluster.
+  PscConnection? pscConnection;
+
+  ConnectionDetail({
+    this.pscConnection,
+  });
+
+  ConnectionDetail.fromJson(core.Map json_)
+      : this(
+          pscConnection: json_.containsKey('pscConnection')
+              ? PscConnection.fromJson(
+                  json_['pscConnection'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pscConnection != null) 'pscConnection': pscConnection!,
       };
 }
 
@@ -3112,6 +3187,19 @@ class PscConnection {
   /// Required.
   core.String? address;
 
+  /// Type of the PSC connection.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CONNECTION_TYPE_UNSPECIFIED" : Cluster endpoint Type is not set
+  /// - "CONNECTION_TYPE_DISCOVERY" : Cluster endpoint that will be used as for
+  /// cluster topology discovery.
+  /// - "CONNECTION_TYPE_PRIMARY" : Cluster endpoint that will be used as
+  /// primary endpoint to access primary.
+  /// - "CONNECTION_TYPE_READER" : Cluster endpoint that will be used as reader
+  /// endpoint to access replicas.
+  core.String? connectionType;
+
   /// The URI of the consumer side forwarding rule.
   ///
   /// Example:
@@ -3138,6 +3226,20 @@ class PscConnection {
   /// Required.
   core.String? pscConnectionId;
 
+  /// The status of the PSC connection.
+  ///
+  /// Please note that this value is updated periodically. To get the latest
+  /// status of a PSC connection, follow
+  /// https://cloud.google.com/vpc/docs/configure-private-service-connect-services#endpoint-details.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PSC_CONNECTION_STATUS_UNSPECIFIED" : PSC connection status is not
+  /// specified.
+  /// - "PSC_CONNECTION_STATUS_ACTIVE" : The connection is active
+  /// - "PSC_CONNECTION_STATUS_NOT_FOUND" : Connection not found
+  core.String? pscConnectionStatus;
+
   /// The service attachment which is the target of the PSC connection, in the
   /// form of
   /// projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
@@ -3147,29 +3249,75 @@ class PscConnection {
 
   PscConnection({
     this.address,
+    this.connectionType,
     this.forwardingRule,
     this.network,
     this.projectId,
     this.pscConnectionId,
+    this.pscConnectionStatus,
     this.serviceAttachment,
   });
 
   PscConnection.fromJson(core.Map json_)
       : this(
           address: json_['address'] as core.String?,
+          connectionType: json_['connectionType'] as core.String?,
           forwardingRule: json_['forwardingRule'] as core.String?,
           network: json_['network'] as core.String?,
           projectId: json_['projectId'] as core.String?,
           pscConnectionId: json_['pscConnectionId'] as core.String?,
+          pscConnectionStatus: json_['pscConnectionStatus'] as core.String?,
           serviceAttachment: json_['serviceAttachment'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!,
+        if (connectionType != null) 'connectionType': connectionType!,
         if (forwardingRule != null) 'forwardingRule': forwardingRule!,
         if (network != null) 'network': network!,
         if (projectId != null) 'projectId': projectId!,
         if (pscConnectionId != null) 'pscConnectionId': pscConnectionId!,
+        if (pscConnectionStatus != null)
+          'pscConnectionStatus': pscConnectionStatus!,
+        if (serviceAttachment != null) 'serviceAttachment': serviceAttachment!,
+      };
+}
+
+/// Configuration of a service attachment of the cluster, for creating PSC
+/// connections.
+class PscServiceAttachment {
+  /// Type of a PSC connection targeting this service attachment.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CONNECTION_TYPE_UNSPECIFIED" : Cluster endpoint Type is not set
+  /// - "CONNECTION_TYPE_DISCOVERY" : Cluster endpoint that will be used as for
+  /// cluster topology discovery.
+  /// - "CONNECTION_TYPE_PRIMARY" : Cluster endpoint that will be used as
+  /// primary endpoint to access primary.
+  /// - "CONNECTION_TYPE_READER" : Cluster endpoint that will be used as reader
+  /// endpoint to access replicas.
+  core.String? connectionType;
+
+  /// Service attachment URI which your self-created PscConnection should use as
+  /// target
+  ///
+  /// Output only.
+  core.String? serviceAttachment;
+
+  PscServiceAttachment({
+    this.connectionType,
+    this.serviceAttachment,
+  });
+
+  PscServiceAttachment.fromJson(core.Map json_)
+      : this(
+          connectionType: json_['connectionType'] as core.String?,
+          serviceAttachment: json_['serviceAttachment'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectionType != null) 'connectionType': connectionType!,
         if (serviceAttachment != null) 'serviceAttachment': serviceAttachment!,
       };
 }

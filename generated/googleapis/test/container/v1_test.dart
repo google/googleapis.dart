@@ -189,6 +189,7 @@ api.AddonsConfig buildAddonsConfig() {
     o.httpLoadBalancing = buildHttpLoadBalancing();
     o.kubernetesDashboard = buildKubernetesDashboard();
     o.networkPolicyConfig = buildNetworkPolicyConfig();
+    o.parallelstoreCsiDriverConfig = buildParallelstoreCsiDriverConfig();
     o.rayOperatorConfig = buildRayOperatorConfig();
     o.statefulHaConfig = buildStatefulHAConfig();
   }
@@ -210,6 +211,7 @@ void checkAddonsConfig(api.AddonsConfig o) {
     checkHttpLoadBalancing(o.httpLoadBalancing!);
     checkKubernetesDashboard(o.kubernetesDashboard!);
     checkNetworkPolicyConfig(o.networkPolicyConfig!);
+    checkParallelstoreCsiDriverConfig(o.parallelstoreCsiDriverConfig!);
     checkRayOperatorConfig(o.rayOperatorConfig!);
     checkStatefulHAConfig(o.statefulHaConfig!);
   }
@@ -4617,6 +4619,25 @@ void checkOperationProgress(api.OperationProgress o) {
   buildCounterOperationProgress--;
 }
 
+core.int buildCounterParallelstoreCsiDriverConfig = 0;
+api.ParallelstoreCsiDriverConfig buildParallelstoreCsiDriverConfig() {
+  final o = api.ParallelstoreCsiDriverConfig();
+  buildCounterParallelstoreCsiDriverConfig++;
+  if (buildCounterParallelstoreCsiDriverConfig < 3) {
+    o.enabled = true;
+  }
+  buildCounterParallelstoreCsiDriverConfig--;
+  return o;
+}
+
+void checkParallelstoreCsiDriverConfig(api.ParallelstoreCsiDriverConfig o) {
+  buildCounterParallelstoreCsiDriverConfig++;
+  if (buildCounterParallelstoreCsiDriverConfig < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+  }
+  buildCounterParallelstoreCsiDriverConfig--;
+}
+
 core.Map<core.String, core.String> buildUnnamed60() => {
       'x': 'foo',
       'y': 'foo',
@@ -5036,6 +5057,7 @@ api.ReleaseChannelConfig buildReleaseChannelConfig() {
   if (buildCounterReleaseChannelConfig < 3) {
     o.channel = 'foo';
     o.defaultVersion = 'foo';
+    o.upgradeTargetVersion = 'foo';
     o.validVersions = buildUnnamed62();
   }
   buildCounterReleaseChannelConfig--;
@@ -5051,6 +5073,10 @@ void checkReleaseChannelConfig(api.ReleaseChannelConfig o) {
     );
     unittest.expect(
       o.defaultVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.upgradeTargetVersion!,
       unittest.equals('foo'),
     );
     checkUnnamed62(o.validVersions!);
@@ -8104,6 +8130,16 @@ void main() {
       final od = api.OperationProgress.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkOperationProgress(od);
+    });
+  });
+
+  unittest.group('obj-schema-ParallelstoreCsiDriverConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildParallelstoreCsiDriverConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ParallelstoreCsiDriverConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkParallelstoreCsiDriverConfig(od);
     });
   });
 

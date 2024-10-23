@@ -1970,7 +1970,7 @@ class ConversionsourcesResource {
   /// [conversionSourceId] - Required. The ID of the conversion source to be
   /// updated.
   ///
-  /// [updateMask] - Required. List of fields being updated.
+  /// [updateMask] - Optional. List of fields being updated.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

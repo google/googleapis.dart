@@ -1479,21 +1479,34 @@ class FileShareConfig {
 
 /// Fixed IOPS (input/output operations per second) parameters.
 class FixedIOPS {
-  /// Maximum raw read IOPS.
+  /// Maximum IOPS.
   ///
   /// Required.
+  core.String? maxIops;
+
+  /// Deprecated: `max_iops` should be used instead of this parameter.
+  ///
+  /// Maximum raw read IOPS.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? maxReadIops;
 
   FixedIOPS({
+    this.maxIops,
     this.maxReadIops,
   });
 
   FixedIOPS.fromJson(core.Map json_)
       : this(
+          maxIops: json_['maxIops'] as core.String?,
           maxReadIops: json_['maxReadIops'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (maxIops != null) 'maxIops': maxIops!,
         if (maxReadIops != null) 'maxReadIops': maxReadIops!,
       };
 }
@@ -1502,21 +1515,34 @@ class FixedIOPS {
 ///
 /// Filestore defines TB as 1024^4 bytes (TiB).
 class IOPSPerTB {
-  /// Maximum read IOPS per TiB.
+  /// Maximum IOPS per TiB.
   ///
   /// Required.
+  core.String? maxIopsPerTb;
+
+  /// Deprecated: `max_iops_per_tb` should be used instead of this parameter.
+  ///
+  /// Maximum read IOPS per TiB.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? maxReadIopsPerTb;
 
   IOPSPerTB({
+    this.maxIopsPerTb,
     this.maxReadIopsPerTb,
   });
 
   IOPSPerTB.fromJson(core.Map json_)
       : this(
+          maxIopsPerTb: json_['maxIopsPerTb'] as core.String?,
           maxReadIopsPerTb: json_['maxReadIopsPerTb'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (maxIopsPerTb != null) 'maxIopsPerTb': maxIopsPerTb!,
         if (maxReadIopsPerTb != null) 'maxReadIopsPerTb': maxReadIopsPerTb!,
       };
 }

@@ -1698,7 +1698,9 @@ class ProjectsInstancesBackupsResource {
   /// Returns an empty policy if a database or backup exists but does not have a
   /// policy set. Authorization requires `spanner.databases.getIamPolicy`
   /// permission on resource. For backups, authorization requires
-  /// `spanner.backups.getIamPolicy` permission on resource.
+  /// `spanner.backups.getIamPolicy` permission on resource. For backup
+  /// schedules, authorization requires `spanner.backupSchedules.getIamPolicy`
+  /// permission on resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1879,7 +1881,8 @@ class ProjectsInstancesBackupsResource {
   /// Replaces any existing policy. Authorization requires
   /// `spanner.databases.setIamPolicy` permission on resource. For backups,
   /// authorization requires `spanner.backups.setIamPolicy` permission on
-  /// resource.
+  /// resource. For backup schedules, authorization requires
+  /// `spanner.backupSchedules.setIamPolicy` permission on resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1930,7 +1933,9 @@ class ProjectsInstancesBackupsResource {
   /// on the containing Cloud Spanner instance. Otherwise returns an empty set
   /// of permissions. Calling this method on a backup that does not exist will
   /// result in a NOT_FOUND error if the user has `spanner.backups.list`
-  /// permission on the containing instance.
+  /// permission on the containing instance. Calling this method on a backup
+  /// schedule that does not exist will result in a NOT_FOUND error if the user
+  /// has `spanner.backupSchedules.list` permission on the containing database.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2486,7 +2491,9 @@ class ProjectsInstancesDatabasesResource {
   /// Returns an empty policy if a database or backup exists but does not have a
   /// policy set. Authorization requires `spanner.databases.getIamPolicy`
   /// permission on resource. For backups, authorization requires
-  /// `spanner.backups.getIamPolicy` permission on resource.
+  /// `spanner.backups.getIamPolicy` permission on resource. For backup
+  /// schedules, authorization requires `spanner.backupSchedules.getIamPolicy`
+  /// permission on resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2764,7 +2771,8 @@ class ProjectsInstancesDatabasesResource {
   /// Replaces any existing policy. Authorization requires
   /// `spanner.databases.setIamPolicy` permission on resource. For backups,
   /// authorization requires `spanner.backups.setIamPolicy` permission on
-  /// resource.
+  /// resource. For backup schedules, authorization requires
+  /// `spanner.backupSchedules.setIamPolicy` permission on resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2815,7 +2823,9 @@ class ProjectsInstancesDatabasesResource {
   /// on the containing Cloud Spanner instance. Otherwise returns an empty set
   /// of permissions. Calling this method on a backup that does not exist will
   /// result in a NOT_FOUND error if the user has `spanner.backups.list`
-  /// permission on the containing instance.
+  /// permission on the containing instance. Calling this method on a backup
+  /// schedule that does not exist will result in a NOT_FOUND error if the user
+  /// has `spanner.backupSchedules.list` permission on the containing database.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3043,7 +3053,9 @@ class ProjectsInstancesDatabasesBackupSchedulesResource {
   /// Returns an empty policy if a database or backup exists but does not have a
   /// policy set. Authorization requires `spanner.databases.getIamPolicy`
   /// permission on resource. For backups, authorization requires
-  /// `spanner.backups.getIamPolicy` permission on resource.
+  /// `spanner.backups.getIamPolicy` permission on resource. For backup
+  /// schedules, authorization requires `spanner.backupSchedules.getIamPolicy`
+  /// permission on resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3197,7 +3209,8 @@ class ProjectsInstancesDatabasesBackupSchedulesResource {
   /// Replaces any existing policy. Authorization requires
   /// `spanner.databases.setIamPolicy` permission on resource. For backups,
   /// authorization requires `spanner.backups.setIamPolicy` permission on
-  /// resource.
+  /// resource. For backup schedules, authorization requires
+  /// `spanner.backupSchedules.setIamPolicy` permission on resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3248,7 +3261,9 @@ class ProjectsInstancesDatabasesBackupSchedulesResource {
   /// on the containing Cloud Spanner instance. Otherwise returns an empty set
   /// of permissions. Calling this method on a backup that does not exist will
   /// result in a NOT_FOUND error if the user has `spanner.backups.list`
-  /// permission on the containing instance.
+  /// permission on the containing instance. Calling this method on a backup
+  /// schedule that does not exist will result in a NOT_FOUND error if the user
+  /// has `spanner.backupSchedules.list` permission on the containing database.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3356,7 +3371,9 @@ class ProjectsInstancesDatabasesDatabaseRolesResource {
   /// on the containing Cloud Spanner instance. Otherwise returns an empty set
   /// of permissions. Calling this method on a backup that does not exist will
   /// result in a NOT_FOUND error if the user has `spanner.backups.list`
-  /// permission on the containing instance.
+  /// permission on the containing instance. Calling this method on a backup
+  /// schedule that does not exist will result in a NOT_FOUND error if the user
+  /// has `spanner.backupSchedules.list` permission on the containing database.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6016,6 +6033,15 @@ class BatchWriteResponse {
 
 /// The request for BeginTransaction.
 class BeginTransactionRequest {
+  /// Required for read-write transactions on a multiplexed session that commit
+  /// mutations but do not perform any reads or queries.
+  ///
+  /// Clients should randomly select one of the mutations from the mutation set
+  /// and send it as a part of this request.
+  ///
+  /// Optional.
+  Mutation? mutationKey;
+
   /// Options for the new transaction.
   ///
   /// Required.
@@ -6030,12 +6056,17 @@ class BeginTransactionRequest {
   RequestOptions? requestOptions;
 
   BeginTransactionRequest({
+    this.mutationKey,
     this.options,
     this.requestOptions,
   });
 
   BeginTransactionRequest.fromJson(core.Map json_)
       : this(
+          mutationKey: json_.containsKey('mutationKey')
+              ? Mutation.fromJson(
+                  json_['mutationKey'] as core.Map<core.String, core.dynamic>)
+              : null,
           options: json_.containsKey('options')
               ? TransactionOptions.fromJson(
                   json_['options'] as core.Map<core.String, core.dynamic>)
@@ -6047,6 +6078,7 @@ class BeginTransactionRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (mutationKey != null) 'mutationKey': mutationKey!,
         if (options != null) 'options': options!,
         if (requestOptions != null) 'requestOptions': requestOptions!,
       };
@@ -6266,6 +6298,15 @@ class CommitRequest {
   /// list.
   core.List<Mutation>? mutations;
 
+  /// If the read-write transaction was executed on a multiplexed session, the
+  /// precommit token with the highest sequence number received in this
+  /// transaction attempt, should be included here.
+  ///
+  /// Failing to do so will result in a FailedPrecondition error.
+  ///
+  /// Optional.
+  MultiplexedSessionPrecommitToken? precommitToken;
+
   /// Common options for this request.
   RequestOptions? requestOptions;
 
@@ -6298,6 +6339,7 @@ class CommitRequest {
   CommitRequest({
     this.maxCommitDelay,
     this.mutations,
+    this.precommitToken,
     this.requestOptions,
     this.returnCommitStats,
     this.singleUseTransaction,
@@ -6311,6 +6353,11 @@ class CommitRequest {
               ?.map((value) => Mutation.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          precommitToken: json_.containsKey('precommitToken')
+              ? MultiplexedSessionPrecommitToken.fromJson(
+                  json_['precommitToken']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           requestOptions: json_.containsKey('requestOptions')
               ? RequestOptions.fromJson(json_['requestOptions']
                   as core.Map<core.String, core.dynamic>)
@@ -6326,6 +6373,7 @@ class CommitRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxCommitDelay != null) 'maxCommitDelay': maxCommitDelay!,
         if (mutations != null) 'mutations': mutations!,
+        if (precommitToken != null) 'precommitToken': precommitToken!,
         if (requestOptions != null) 'requestOptions': requestOptions!,
         if (returnCommitStats != null) 'returnCommitStats': returnCommitStats!,
         if (singleUseTransaction != null)
@@ -6345,9 +6393,15 @@ class CommitResponse {
   /// The Cloud Spanner timestamp at which the transaction committed.
   core.String? commitTimestamp;
 
+  /// If specified, transaction has not committed yet.
+  ///
+  /// Clients must retry the commit with the new precommit token.
+  MultiplexedSessionPrecommitToken? precommitToken;
+
   CommitResponse({
     this.commitStats,
     this.commitTimestamp,
+    this.precommitToken,
   });
 
   CommitResponse.fromJson(core.Map json_)
@@ -6357,11 +6411,17 @@ class CommitResponse {
                   json_['commitStats'] as core.Map<core.String, core.dynamic>)
               : null,
           commitTimestamp: json_['commitTimestamp'] as core.String?,
+          precommitToken: json_.containsKey('precommitToken')
+              ? MultiplexedSessionPrecommitToken.fromJson(
+                  json_['precommitToken']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commitStats != null) 'commitStats': commitStats!,
         if (commitTimestamp != null) 'commitTimestamp': commitTimestamp!,
+        if (precommitToken != null) 'precommitToken': precommitToken!,
       };
 }
 
@@ -7545,6 +7605,15 @@ class ExecuteBatchDmlRequest {
 /// the third statement failed, and the fourth and fifth statements were not
 /// executed.
 class ExecuteBatchDmlResponse {
+  /// A precommit token will be included if the read-write transaction is on a
+  /// multiplexed session.
+  ///
+  /// The precommit token with the highest sequence number from this transaction
+  /// attempt should be passed to the Commit request for this transaction.
+  ///
+  /// Optional.
+  MultiplexedSessionPrecommitToken? precommitToken;
+
   /// One ResultSet for each statement in the request that ran successfully, in
   /// the same order as the statements in the request.
   ///
@@ -7559,12 +7628,18 @@ class ExecuteBatchDmlResponse {
   Status? status;
 
   ExecuteBatchDmlResponse({
+    this.precommitToken,
     this.resultSets,
     this.status,
   });
 
   ExecuteBatchDmlResponse.fromJson(core.Map json_)
       : this(
+          precommitToken: json_.containsKey('precommitToken')
+              ? MultiplexedSessionPrecommitToken.fromJson(
+                  json_['precommitToken']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           resultSets: (json_['resultSets'] as core.List?)
               ?.map((value) => ResultSet.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -7576,6 +7651,7 @@ class ExecuteBatchDmlResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (precommitToken != null) 'precommitToken': precommitToken!,
         if (resultSets != null) 'resultSets': resultSets!,
         if (status != null) 'status': status!,
       };
@@ -9910,6 +9986,15 @@ class PartialResultSet {
   /// Only present in the first response.
   ResultSetMetadata? metadata;
 
+  /// A precommit token will be included if the read-write transaction is on a
+  /// multiplexed session.
+  ///
+  /// The precommit token with the highest sequence number from this transaction
+  /// attempt should be passed to the Commit request for this transaction.
+  ///
+  /// Optional.
+  MultiplexedSessionPrecommitToken? precommitToken;
+
   /// Streaming calls might be interrupted for a variety of reasons, such as TCP
   /// connection loss.
   ///
@@ -9981,6 +10066,7 @@ class PartialResultSet {
   PartialResultSet({
     this.chunkedValue,
     this.metadata,
+    this.precommitToken,
     this.resumeToken,
     this.stats,
     this.values,
@@ -9992,6 +10078,11 @@ class PartialResultSet {
           metadata: json_.containsKey('metadata')
               ? ResultSetMetadata.fromJson(
                   json_['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          precommitToken: json_.containsKey('precommitToken')
+              ? MultiplexedSessionPrecommitToken.fromJson(
+                  json_['precommitToken']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           resumeToken: json_['resumeToken'] as core.String?,
           stats: json_.containsKey('stats')
@@ -10005,6 +10096,7 @@ class PartialResultSet {
   core.Map<core.String, core.dynamic> toJson() => {
         if (chunkedValue != null) 'chunkedValue': chunkedValue!,
         if (metadata != null) 'metadata': metadata!,
+        if (precommitToken != null) 'precommitToken': precommitToken!,
         if (resumeToken != null) 'resumeToken': resumeToken!,
         if (stats != null) 'stats': stats!,
         if (values != null) 'values': values!,
@@ -11028,6 +11120,21 @@ class ReadRequest {
 ///
 /// Currently this transaction type has no options.
 class ReadWrite {
+  /// Clients should pass the transaction ID of the previous transaction attempt
+  /// that was aborted if this transaction is being executed on a multiplexed
+  /// session.
+  ///
+  /// Optional.
+  core.String? multiplexedSessionPreviousTransactionId;
+  core.List<core.int> get multiplexedSessionPreviousTransactionIdAsBytes =>
+      convert.base64.decode(multiplexedSessionPreviousTransactionId!);
+
+  set multiplexedSessionPreviousTransactionIdAsBytes(
+      core.List<core.int> bytes_) {
+    multiplexedSessionPreviousTransactionId =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
   /// Read lock mode for the transaction.
   /// Possible string values are:
   /// - "READ_LOCK_MODE_UNSPECIFIED" : Default value. If the value is not
@@ -11041,15 +11148,21 @@ class ReadWrite {
   core.String? readLockMode;
 
   ReadWrite({
+    this.multiplexedSessionPreviousTransactionId,
     this.readLockMode,
   });
 
   ReadWrite.fromJson(core.Map json_)
       : this(
+          multiplexedSessionPreviousTransactionId:
+              json_['multiplexedSessionPreviousTransactionId'] as core.String?,
           readLockMode: json_['readLockMode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (multiplexedSessionPreviousTransactionId != null)
+          'multiplexedSessionPreviousTransactionId':
+              multiplexedSessionPreviousTransactionId!,
         if (readLockMode != null) 'readLockMode': readLockMode!,
       };
 }
@@ -11395,6 +11508,15 @@ class ResultSet {
   /// Metadata about the result set, such as row type information.
   ResultSetMetadata? metadata;
 
+  /// A precommit token will be included if the read-write transaction is on a
+  /// multiplexed session.
+  ///
+  /// The precommit token with the highest sequence number from this transaction
+  /// attempt should be passed to the Commit request for this transaction.
+  ///
+  /// Optional.
+  MultiplexedSessionPrecommitToken? precommitToken;
+
   /// Each element in `rows` is a row whose format is defined by
   /// metadata.row_type.
   ///
@@ -11417,6 +11539,7 @@ class ResultSet {
 
   ResultSet({
     this.metadata,
+    this.precommitToken,
     this.rows,
     this.stats,
   });
@@ -11426,6 +11549,11 @@ class ResultSet {
           metadata: json_.containsKey('metadata')
               ? ResultSetMetadata.fromJson(
                   json_['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          precommitToken: json_.containsKey('precommitToken')
+              ? MultiplexedSessionPrecommitToken.fromJson(
+                  json_['precommitToken']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           rows: (json_['rows'] as core.List?)
               ?.map((value) => value as core.List)
@@ -11438,6 +11566,7 @@ class ResultSet {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!,
+        if (precommitToken != null) 'precommitToken': precommitToken!,
         if (rows != null) 'rows': rows!,
         if (stats != null) 'stats': stats!,
       };

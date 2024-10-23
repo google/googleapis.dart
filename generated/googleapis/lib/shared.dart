@@ -7142,7 +7142,6 @@ class $EgressSource {
 /// - ondemandscanning:v1 : Empty
 /// - oracledatabase:v1 : CancelOperationRequest
 /// - oracledatabase:v1 : Empty
-/// - orgpolicy:v2 : GoogleCloudOrgpolicyV2ConstraintBooleanConstraint
 /// - orgpolicy:v2 : GoogleProtobufEmpty
 /// - osconfig:v1 : CancelOperationRequest
 /// - osconfig:v1 : CancelPatchJobRequest

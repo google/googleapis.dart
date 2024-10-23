@@ -8013,6 +8013,8 @@ class SearchQualityMetadata {
 }
 
 /// The search API request.
+///
+/// NEXT ID: 17
 class SearchRequest {
   /// Context attributes for the request which will be used to adjust ranking of
   /// search results.
@@ -8113,6 +8115,8 @@ class SearchRequest {
 }
 
 /// The search API response.
+///
+/// NEXT ID: 17
 class SearchResponse {
   /// Debugging information about the response.
   ResponseDebugInfo? debugInfo;

@@ -6493,6 +6493,7 @@ api.TestItem buildTestItem() {
   final o = api.TestItem();
   buildCounterTestItem++;
   if (buildCounterTestItem < 3) {
+    o.etag = 'foo';
     o.featuredPart = true;
     o.gaia = 'foo';
     o.id = 'foo';
@@ -6505,6 +6506,10 @@ api.TestItem buildTestItem() {
 void checkTestItem(api.TestItem o) {
   buildCounterTestItem++;
   if (buildCounterTestItem < 3) {
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.featuredPart!, unittest.isTrue);
     unittest.expect(
       o.gaia!,

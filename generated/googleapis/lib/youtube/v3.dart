@@ -10797,7 +10797,7 @@ class IngestionInfo {
       };
 }
 
-/// LINT.IfChange Describes an invideo branding.
+/// Describes an invideo branding.
 class InvideoBranding {
   /// The bytes the uploaded image.
   ///
@@ -10818,6 +10818,9 @@ class InvideoBranding {
 
   /// The spatial position within the video where the branding watermark will be
   /// displayed.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   InvideoPosition? position;
 
   /// The channel to which this branding links.
@@ -15366,12 +15369,17 @@ class SuperStickerMetadata {
 }
 
 class TestItem {
+  /// Etag for the resource.
+  ///
+  /// See https://en.wikipedia.org/wiki/HTTP_ETag.
+  core.String? etag;
   core.bool? featuredPart;
   core.String? gaia;
   core.String? id;
   TestItemTestItemSnippet? snippet;
 
   TestItem({
+    this.etag,
     this.featuredPart,
     this.gaia,
     this.id,
@@ -15380,6 +15388,7 @@ class TestItem {
 
   TestItem.fromJson(core.Map json_)
       : this(
+          etag: json_['etag'] as core.String?,
           featuredPart: json_['featuredPart'] as core.bool?,
           gaia: json_['gaia'] as core.String?,
           id: json_['id'] as core.String?,
@@ -15390,6 +15399,7 @@ class TestItem {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (featuredPart != null) 'featuredPart': featuredPart!,
         if (gaia != null) 'gaia': gaia!,
         if (id != null) 'id': id!,

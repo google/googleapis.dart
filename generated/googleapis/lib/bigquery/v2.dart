@@ -168,6 +168,22 @@ class DatasetsResource {
   /// [datasetId] - Required. Dataset ID of the requested dataset
   /// Value must have pattern `^\[^/\]+$`.
   ///
+  /// [accessPolicyVersion] - Optional. The version of the access policy schema
+  /// to fetch. Valid values are 0, 1, and 3. Requests specifying an invalid
+  /// value will be rejected. Requests for conditional access policy binding in
+  /// datasets must specify version 3. Dataset with no conditional role bindings
+  /// in access policy may specify any valid value or leave the field unset.
+  /// This field will be maped to
+  /// [IAM Policy version](https://cloud.google.com/iam/docs/policies#versions)
+  /// and will be used to fetch policy from IAM. If unset or if 0 or 1 value is
+  /// used for dataset with conditional bindings, access entry with condition
+  /// will have role string appended by 'withcond' string followed by a hash
+  /// value. For example : { "access": \[ { "role":
+  /// "roles/bigquery.dataViewer_with_conditionalbinding_7a34awqsda",
+  /// "userByEmail": "user@example.com", } \] } Please refer
+  /// https://cloud.google.com/iam/docs/troubleshooting-withcond for more
+  /// details.
+  ///
   /// [datasetView] - Optional. Specifies the view that determines which dataset
   /// information is returned. By default, metadata and ACL information are
   /// returned.
@@ -193,10 +209,13 @@ class DatasetsResource {
   async.Future<Dataset> get(
     core.String projectId,
     core.String datasetId, {
+    core.int? accessPolicyVersion,
     core.String? datasetView,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (accessPolicyVersion != null)
+        'accessPolicyVersion': ['${accessPolicyVersion}'],
       if (datasetView != null) 'datasetView': [datasetView],
       if ($fields != null) 'fields': [$fields],
     };
@@ -223,6 +242,19 @@ class DatasetsResource {
   /// [projectId] - Required. Project ID of the new dataset
   /// Value must have pattern `^\[^/\]+$`.
   ///
+  /// [accessPolicyVersion] - Optional. The version of the provided access
+  /// policy schema. Valid values are 0, 1, and 3. Requests specifying an
+  /// invalid value will be rejected. This version refers to the schema version
+  /// of the access policy and not the version of access policy. This field's
+  /// value can be equal or more than the access policy schema provided in the
+  /// request. For example, * Requests with conditional access policy binding in
+  /// datasets must specify version 3. * But dataset with no conditional role
+  /// bindings in access policy may specify any valid value or leave the field
+  /// unset. If unset or if 0 or 1 value is used for dataset with conditional
+  /// bindings, request will be rejected. This field will be maped to IAM Policy
+  /// version (https://cloud.google.com/iam/docs/policies#versions) and will be
+  /// used to set policy in IAM.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -236,10 +268,13 @@ class DatasetsResource {
   async.Future<Dataset> insert(
     Dataset request,
     core.String projectId, {
+    core.int? accessPolicyVersion,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (accessPolicyVersion != null)
+        'accessPolicyVersion': ['${accessPolicyVersion}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -331,6 +366,22 @@ class DatasetsResource {
   /// [datasetId] - Required. Dataset ID of the dataset being updated
   /// Value must have pattern `^\[^/\]+$`.
   ///
+  /// [accessPolicyVersion] - Optional. The version of the provided access
+  /// policy schema. Valid values are 0, 1, and 3. Requests specifying an
+  /// invalid value will be rejected. This version refers to the schema version
+  /// of the access policy and not the version of access policy. This field's
+  /// value can be equal or more than the access policy schema provided in the
+  /// request. For example, * Operations updating conditional access policy
+  /// binding in datasets must specify version 3. Some of the operations are : -
+  /// Adding a new access policy entry with condition. - Removing an access
+  /// policy entry with condition. - Updating an access policy entry with
+  /// condition. * But dataset with no conditional role bindings in access
+  /// policy may specify any valid value or leave the field unset. If unset or
+  /// if 0 or 1 value is used for dataset with conditional bindings, request
+  /// will be rejected. This field will be maped to IAM Policy version
+  /// (https://cloud.google.com/iam/docs/policies#versions) and will be used to
+  /// set policy in IAM.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -345,10 +396,13 @@ class DatasetsResource {
     Dataset request,
     core.String projectId,
     core.String datasetId, {
+    core.int? accessPolicyVersion,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (accessPolicyVersion != null)
+        'accessPolicyVersion': ['${accessPolicyVersion}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -433,6 +487,22 @@ class DatasetsResource {
   /// [datasetId] - Required. Dataset ID of the dataset being updated
   /// Value must have pattern `^\[^/\]+$`.
   ///
+  /// [accessPolicyVersion] - Optional. The version of the provided access
+  /// policy schema. Valid values are 0, 1, and 3. Requests specifying an
+  /// invalid value will be rejected. This version refers to the schema version
+  /// of the access policy and not the version of access policy. This field's
+  /// value can be equal or more than the access policy schema provided in the
+  /// request. For example, * Operations updating conditional access policy
+  /// binding in datasets must specify version 3. Some of the operations are : -
+  /// Adding a new access policy entry with condition. - Removing an access
+  /// policy entry with condition. - Updating an access policy entry with
+  /// condition. * But dataset with no conditional role bindings in access
+  /// policy may specify any valid value or leave the field unset. If unset or
+  /// if 0 or 1 value is used for dataset with conditional bindings, request
+  /// will be rejected. This field will be maped to IAM Policy version
+  /// (https://cloud.google.com/iam/docs/policies#versions) and will be used to
+  /// set policy in IAM.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -447,10 +517,13 @@ class DatasetsResource {
     Dataset request,
     core.String projectId,
     core.String datasetId, {
+    core.int? accessPolicyVersion,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (accessPolicyVersion != null)
+        'accessPolicyVersion': ['${accessPolicyVersion}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4430,6 +4503,14 @@ class DataSplitResult {
 
 /// An object that defines dataset access for an entity.
 class DatasetAccess {
+  /// condition for the binding.
+  ///
+  /// If CEL expression in this field is true, this access binding will be
+  /// considered
+  ///
+  /// Optional.
+  Expr? condition;
+
   /// \[Pick one\] A grant authorizing all resources of a particular type in a
   /// particular dataset access to this dataset.
   ///
@@ -4497,6 +4578,7 @@ class DatasetAccess {
   TableReference? view;
 
   DatasetAccess({
+    this.condition,
     this.dataset,
     this.domain,
     this.groupByEmail,
@@ -4510,6 +4592,10 @@ class DatasetAccess {
 
   DatasetAccess.fromJson(core.Map json_)
       : this(
+          condition: json_.containsKey('condition')
+              ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
           dataset: json_.containsKey('dataset')
               ? DatasetAccessEntry.fromJson(
                   json_['dataset'] as core.Map<core.String, core.dynamic>)
@@ -4531,6 +4617,7 @@ class DatasetAccess {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (condition != null) 'condition': condition!,
         if (dataset != null) 'dataset': dataset!,
         if (domain != null) 'domain': domain!,
         if (groupByEmail != null) 'groupByEmail': groupByEmail!,
