@@ -10,7 +10,10 @@ import 'package:path/path.dart';
 final _cleanRegEx = RegExp(r'[^\w$]');
 String _cleanName(String name) => name.replaceAll(_cleanRegEx, '_');
 
-final _formatter = DartFormatter(lineEnding: '\n', pageWidth: 80);
+final _formatter = DartFormatter(
+    languageVersion: DartFormatter.latestLanguageVersion,
+    lineEnding: '\n',
+    pageWidth: 80);
 
 String formatSource(String source) => _formatter.format(source);
 
