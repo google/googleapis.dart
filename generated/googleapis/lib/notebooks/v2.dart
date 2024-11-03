@@ -1676,7 +1676,7 @@ class DiagnoseInstanceRequest {
   /// Required.
   DiagnosticConfig? diagnosticConfig;
 
-  /// Maxmium amount of time in minutes before the operation times out.
+  /// Maximum amount of time in minutes before the operation times out.
   ///
   /// Optional.
   core.int? timeoutMinutes;

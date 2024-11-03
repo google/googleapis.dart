@@ -5225,6 +5225,60 @@ class FloatingPointMean {
       };
 }
 
+/// Information about the GPU usage on the worker.
+class GPUUsage {
+  /// Timestamp of the measurement.
+  ///
+  /// Required.
+  core.String? timestamp;
+
+  /// Utilization info about the GPU.
+  ///
+  /// Required.
+  GPUUtilization? utilization;
+
+  GPUUsage({
+    this.timestamp,
+    this.utilization,
+  });
+
+  GPUUsage.fromJson(core.Map json_)
+      : this(
+          timestamp: json_['timestamp'] as core.String?,
+          utilization: json_.containsKey('utilization')
+              ? GPUUtilization.fromJson(
+                  json_['utilization'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (timestamp != null) 'timestamp': timestamp!,
+        if (utilization != null) 'utilization': utilization!,
+      };
+}
+
+/// Utilization details about the GPU.
+class GPUUtilization {
+  /// GPU utilization rate of any kernel over the last sample period in the
+  /// range of \[0, 1\].
+  ///
+  /// Required.
+  core.double? rate;
+
+  GPUUtilization({
+    this.rate,
+  });
+
+  GPUUtilization.fromJson(core.Map json_)
+      : this(
+          rate: (json_['rate'] as core.num?)?.toDouble(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rate != null) 'rate': rate!,
+      };
+}
+
 /// Request to get updated debug configuration for component.
 class GetDebugConfigRequest {
   /// The internal component id for which debug configuration is requested.
@@ -8470,12 +8524,18 @@ class ResourceUtilizationReport {
   /// CPU utilization samples.
   core.List<CPUTime>? cpuTime;
 
+  /// GPU usage samples.
+  ///
+  /// Optional.
+  core.List<GPUUsage>? gpuUsage;
+
   /// Memory utilization samples.
   core.List<MemInfo>? memoryInfo;
 
   ResourceUtilizationReport({
     this.containers,
     this.cpuTime,
+    this.gpuUsage,
     this.memoryInfo,
   });
 
@@ -8494,6 +8554,10 @@ class ResourceUtilizationReport {
               ?.map((value) => CPUTime.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          gpuUsage: (json_['gpuUsage'] as core.List?)
+              ?.map((value) => GPUUsage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           memoryInfo: (json_['memoryInfo'] as core.List?)
               ?.map((value) => MemInfo.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -8503,6 +8567,7 @@ class ResourceUtilizationReport {
   core.Map<core.String, core.dynamic> toJson() => {
         if (containers != null) 'containers': containers!,
         if (cpuTime != null) 'cpuTime': cpuTime!,
+        if (gpuUsage != null) 'gpuUsage': gpuUsage!,
         if (memoryInfo != null) 'memoryInfo': memoryInfo!,
       };
 }

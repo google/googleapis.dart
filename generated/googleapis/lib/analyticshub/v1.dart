@@ -3453,6 +3453,11 @@ class SubscribeDataExchangeRequest {
   /// Required.
   core.String? destination;
 
+  /// BigQuery destination dataset to create for the subscriber.
+  ///
+  /// Optional.
+  DestinationDataset? destinationDataset;
+
   /// Email of the subscriber.
   core.String? subscriberContact;
 
@@ -3465,6 +3470,7 @@ class SubscribeDataExchangeRequest {
 
   SubscribeDataExchangeRequest({
     this.destination,
+    this.destinationDataset,
     this.subscriberContact,
     this.subscription,
   });
@@ -3472,12 +3478,18 @@ class SubscribeDataExchangeRequest {
   SubscribeDataExchangeRequest.fromJson(core.Map json_)
       : this(
           destination: json_['destination'] as core.String?,
+          destinationDataset: json_.containsKey('destinationDataset')
+              ? DestinationDataset.fromJson(json_['destinationDataset']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           subscriberContact: json_['subscriberContact'] as core.String?,
           subscription: json_['subscription'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destination != null) 'destination': destination!,
+        if (destinationDataset != null)
+          'destinationDataset': destinationDataset!,
         if (subscriberContact != null) 'subscriberContact': subscriberContact!,
         if (subscription != null) 'subscription': subscription!,
       };

@@ -5693,6 +5693,9 @@ class ClusterUpdate {
   )
   core.bool? desiredEnablePrivateEndpoint;
 
+  /// The desired enterprise configuration for the cluster.
+  DesiredEnterpriseConfig? desiredEnterpriseConfig;
+
   /// The desired fleet configuration for the cluster.
   Fleet? desiredFleet;
 
@@ -5943,6 +5946,7 @@ class ClusterUpdate {
     this.desiredEnableFqdnNetworkPolicy,
     this.desiredEnableMultiNetworking,
     this.desiredEnablePrivateEndpoint,
+    this.desiredEnterpriseConfig,
     this.desiredFleet,
     this.desiredGatewayApiConfig,
     this.desiredGcfsConfig,
@@ -6072,6 +6076,11 @@ class ClusterUpdate {
               json_['desiredEnableMultiNetworking'] as core.bool?,
           desiredEnablePrivateEndpoint:
               json_['desiredEnablePrivateEndpoint'] as core.bool?,
+          desiredEnterpriseConfig: json_.containsKey('desiredEnterpriseConfig')
+              ? DesiredEnterpriseConfig.fromJson(
+                  json_['desiredEnterpriseConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           desiredFleet: json_.containsKey('desiredFleet')
               ? Fleet.fromJson(
                   json_['desiredFleet'] as core.Map<core.String, core.dynamic>)
@@ -6301,6 +6310,8 @@ class ClusterUpdate {
           'desiredEnableMultiNetworking': desiredEnableMultiNetworking!,
         if (desiredEnablePrivateEndpoint != null)
           'desiredEnablePrivateEndpoint': desiredEnablePrivateEndpoint!,
+        if (desiredEnterpriseConfig != null)
+          'desiredEnterpriseConfig': desiredEnterpriseConfig!,
         if (desiredFleet != null) 'desiredFleet': desiredFleet!,
         if (desiredGatewayApiConfig != null)
           'desiredGatewayApiConfig': desiredGatewayApiConfig!,
@@ -6988,6 +6999,30 @@ class DefaultSnatStatus {
       };
 }
 
+/// DesiredEnterpriseConfig is a wrapper used for updating enterprise_config.
+class DesiredEnterpriseConfig {
+  /// desired_tier specifies the desired tier of the cluster.
+  /// Possible string values are:
+  /// - "CLUSTER_TIER_UNSPECIFIED" : CLUSTER_TIER_UNSPECIFIED is when
+  /// cluster_tier is not set.
+  /// - "STANDARD" : STANDARD indicates a standard GKE cluster.
+  /// - "ENTERPRISE" : ENTERPRISE indicates a GKE Enterprise cluster.
+  core.String? desiredTier;
+
+  DesiredEnterpriseConfig({
+    this.desiredTier,
+  });
+
+  DesiredEnterpriseConfig.fromJson(core.Map json_)
+      : this(
+          desiredTier: json_['desiredTier'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (desiredTier != null) 'desiredTier': desiredTier!,
+      };
+}
+
 /// Configuration for NodeLocal DNSCache
 class DnsCacheConfig {
   /// Whether NodeLocal DNSCache is enabled for this cluster.
@@ -7027,17 +7062,28 @@ class EnterpriseConfig {
   /// - "ENTERPRISE" : ENTERPRISE indicates a GKE Enterprise cluster.
   core.String? clusterTier;
 
+  /// desired_tier specifies the desired tier of the cluster.
+  /// Possible string values are:
+  /// - "CLUSTER_TIER_UNSPECIFIED" : CLUSTER_TIER_UNSPECIFIED is when
+  /// cluster_tier is not set.
+  /// - "STANDARD" : STANDARD indicates a standard GKE cluster.
+  /// - "ENTERPRISE" : ENTERPRISE indicates a GKE Enterprise cluster.
+  core.String? desiredTier;
+
   EnterpriseConfig({
     this.clusterTier,
+    this.desiredTier,
   });
 
   EnterpriseConfig.fromJson(core.Map json_)
       : this(
           clusterTier: json_['clusterTier'] as core.String?,
+          desiredTier: json_['desiredTier'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterTier != null) 'clusterTier': clusterTier!,
+        if (desiredTier != null) 'desiredTier': desiredTier!,
       };
 }
 

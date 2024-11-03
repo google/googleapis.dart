@@ -1268,6 +1268,7 @@ api.ClusterUpdate buildClusterUpdate() {
     o.desiredEnableFqdnNetworkPolicy = true;
     o.desiredEnableMultiNetworking = true;
     o.desiredEnablePrivateEndpoint = true;
+    o.desiredEnterpriseConfig = buildDesiredEnterpriseConfig();
     o.desiredFleet = buildFleet();
     o.desiredGatewayApiConfig = buildGatewayAPIConfig();
     o.desiredGcfsConfig = buildGcfsConfig();
@@ -1344,6 +1345,7 @@ void checkClusterUpdate(api.ClusterUpdate o) {
     unittest.expect(o.desiredEnableFqdnNetworkPolicy!, unittest.isTrue);
     unittest.expect(o.desiredEnableMultiNetworking!, unittest.isTrue);
     unittest.expect(o.desiredEnablePrivateEndpoint!, unittest.isTrue);
+    checkDesiredEnterpriseConfig(o.desiredEnterpriseConfig!);
     checkFleet(o.desiredFleet!);
     checkGatewayAPIConfig(o.desiredGatewayApiConfig!);
     checkGcfsConfig(o.desiredGcfsConfig!);
@@ -1892,6 +1894,28 @@ void checkDefaultSnatStatus(api.DefaultSnatStatus o) {
   buildCounterDefaultSnatStatus--;
 }
 
+core.int buildCounterDesiredEnterpriseConfig = 0;
+api.DesiredEnterpriseConfig buildDesiredEnterpriseConfig() {
+  final o = api.DesiredEnterpriseConfig();
+  buildCounterDesiredEnterpriseConfig++;
+  if (buildCounterDesiredEnterpriseConfig < 3) {
+    o.desiredTier = 'foo';
+  }
+  buildCounterDesiredEnterpriseConfig--;
+  return o;
+}
+
+void checkDesiredEnterpriseConfig(api.DesiredEnterpriseConfig o) {
+  buildCounterDesiredEnterpriseConfig++;
+  if (buildCounterDesiredEnterpriseConfig < 3) {
+    unittest.expect(
+      o.desiredTier!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDesiredEnterpriseConfig--;
+}
+
 core.int buildCounterDnsCacheConfig = 0;
 api.DnsCacheConfig buildDnsCacheConfig() {
   final o = api.DnsCacheConfig();
@@ -1932,6 +1956,7 @@ api.EnterpriseConfig buildEnterpriseConfig() {
   buildCounterEnterpriseConfig++;
   if (buildCounterEnterpriseConfig < 3) {
     o.clusterTier = 'foo';
+    o.desiredTier = 'foo';
   }
   buildCounterEnterpriseConfig--;
   return o;
@@ -1942,6 +1967,10 @@ void checkEnterpriseConfig(api.EnterpriseConfig o) {
   if (buildCounterEnterpriseConfig < 3) {
     unittest.expect(
       o.clusterTier!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.desiredTier!,
       unittest.equals('foo'),
     );
   }
@@ -7391,6 +7420,16 @@ void main() {
       final od = api.DefaultSnatStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkDefaultSnatStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-DesiredEnterpriseConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDesiredEnterpriseConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DesiredEnterpriseConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDesiredEnterpriseConfig(od);
     });
   });
 

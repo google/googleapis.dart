@@ -2803,6 +2803,7 @@ api.PrivatePoolV1Config buildPrivatePoolV1Config() {
   buildCounterPrivatePoolV1Config++;
   if (buildCounterPrivatePoolV1Config < 3) {
     o.networkConfig = buildNetworkConfig();
+    o.privateServiceConnect = buildPrivateServiceConnect();
     o.workerConfig = buildWorkerConfig();
   }
   buildCounterPrivatePoolV1Config--;
@@ -2813,9 +2814,36 @@ void checkPrivatePoolV1Config(api.PrivatePoolV1Config o) {
   buildCounterPrivatePoolV1Config++;
   if (buildCounterPrivatePoolV1Config < 3) {
     checkNetworkConfig(o.networkConfig!);
+    checkPrivateServiceConnect(o.privateServiceConnect!);
     checkWorkerConfig(o.workerConfig!);
   }
   buildCounterPrivatePoolV1Config--;
+}
+
+core.int buildCounterPrivateServiceConnect = 0;
+api.PrivateServiceConnect buildPrivateServiceConnect() {
+  final o = api.PrivateServiceConnect();
+  buildCounterPrivateServiceConnect++;
+  if (buildCounterPrivateServiceConnect < 3) {
+    o.networkAttachment = 'foo';
+    o.publicIpAddressDisabled = true;
+    o.routeAllTraffic = true;
+  }
+  buildCounterPrivateServiceConnect--;
+  return o;
+}
+
+void checkPrivateServiceConnect(api.PrivateServiceConnect o) {
+  buildCounterPrivateServiceConnect++;
+  if (buildCounterPrivateServiceConnect < 3) {
+    unittest.expect(
+      o.networkAttachment!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.publicIpAddressDisabled!, unittest.isTrue);
+    unittest.expect(o.routeAllTraffic!, unittest.isTrue);
+  }
+  buildCounterPrivateServiceConnect--;
 }
 
 core.int buildCounterPubsubConfig = 0;
@@ -4549,6 +4577,16 @@ void main() {
       final od = api.PrivatePoolV1Config.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkPrivatePoolV1Config(od);
+    });
+  });
+
+  unittest.group('obj-schema-PrivateServiceConnect', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPrivateServiceConnect();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PrivateServiceConnect.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPrivateServiceConnect(od);
     });
   });
 

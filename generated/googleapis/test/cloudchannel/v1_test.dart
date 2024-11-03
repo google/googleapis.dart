@@ -2701,6 +2701,8 @@ api.GoogleCloudChannelV1RegisterSubscriberRequest
   final o = api.GoogleCloudChannelV1RegisterSubscriberRequest();
   buildCounterGoogleCloudChannelV1RegisterSubscriberRequest++;
   if (buildCounterGoogleCloudChannelV1RegisterSubscriberRequest < 3) {
+    o.account = 'foo';
+    o.integrator = 'foo';
     o.serviceAccount = 'foo';
   }
   buildCounterGoogleCloudChannelV1RegisterSubscriberRequest--;
@@ -2711,6 +2713,14 @@ void checkGoogleCloudChannelV1RegisterSubscriberRequest(
     api.GoogleCloudChannelV1RegisterSubscriberRequest o) {
   buildCounterGoogleCloudChannelV1RegisterSubscriberRequest++;
   if (buildCounterGoogleCloudChannelV1RegisterSubscriberRequest < 3) {
+    unittest.expect(
+      o.account!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.integrator!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.serviceAccount!,
       unittest.equals('foo'),
@@ -3455,6 +3465,8 @@ api.GoogleCloudChannelV1UnregisterSubscriberRequest
   final o = api.GoogleCloudChannelV1UnregisterSubscriberRequest();
   buildCounterGoogleCloudChannelV1UnregisterSubscriberRequest++;
   if (buildCounterGoogleCloudChannelV1UnregisterSubscriberRequest < 3) {
+    o.account = 'foo';
+    o.integrator = 'foo';
     o.serviceAccount = 'foo';
   }
   buildCounterGoogleCloudChannelV1UnregisterSubscriberRequest--;
@@ -3465,6 +3477,14 @@ void checkGoogleCloudChannelV1UnregisterSubscriberRequest(
     api.GoogleCloudChannelV1UnregisterSubscriberRequest o) {
   buildCounterGoogleCloudChannelV1UnregisterSubscriberRequest++;
   if (buildCounterGoogleCloudChannelV1UnregisterSubscriberRequest < 3) {
+    unittest.expect(
+      o.account!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.integrator!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.serviceAccount!,
       unittest.equals('foo'),
@@ -5380,6 +5400,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.CloudchannelApi(mock).accounts;
       final arg_account = 'foo';
+      final arg_integrator = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -5416,6 +5437,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['integrator']!.first,
+          unittest.equals(arg_integrator),
+        );
+        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -5436,6 +5461,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.listSubscribers(arg_account,
+          integrator: arg_integrator,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           $fields: arg_$fields);
@@ -8889,6 +8915,204 @@ void main() {
           $fields: arg_$fields);
       checkGoogleCloudChannelV1ListSkuGroupBillableSkusResponse(
           response as api.GoogleCloudChannelV1ListSkuGroupBillableSkusResponse);
+    });
+  });
+
+  unittest.group('resource-IntegratorsResource', () {
+    unittest.test('method--listSubscribers', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudchannelApi(mock).integrators;
+      final arg_integrator = 'foo';
+      final arg_account = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['account']!.first,
+          unittest.equals(arg_account),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleCloudChannelV1ListSubscribersResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.listSubscribers(arg_integrator,
+          account: arg_account,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudChannelV1ListSubscribersResponse(
+          response as api.GoogleCloudChannelV1ListSubscribersResponse);
+    });
+
+    unittest.test('method--registerSubscriber', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudchannelApi(mock).integrators;
+      final arg_request = buildGoogleCloudChannelV1RegisterSubscriberRequest();
+      final arg_integrator = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleCloudChannelV1RegisterSubscriberRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudChannelV1RegisterSubscriberRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleCloudChannelV1RegisterSubscriberResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.registerSubscriber(arg_request, arg_integrator,
+          $fields: arg_$fields);
+      checkGoogleCloudChannelV1RegisterSubscriberResponse(
+          response as api.GoogleCloudChannelV1RegisterSubscriberResponse);
+    });
+
+    unittest.test('method--unregisterSubscriber', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudchannelApi(mock).integrators;
+      final arg_request =
+          buildGoogleCloudChannelV1UnregisterSubscriberRequest();
+      final arg_integrator = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GoogleCloudChannelV1UnregisterSubscriberRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudChannelV1UnregisterSubscriberRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleCloudChannelV1UnregisterSubscriberResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.unregisterSubscriber(
+          arg_request, arg_integrator,
+          $fields: arg_$fields);
+      checkGoogleCloudChannelV1UnregisterSubscriberResponse(
+          response as api.GoogleCloudChannelV1UnregisterSubscriberResponse);
     });
   });
 

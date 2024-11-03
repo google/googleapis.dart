@@ -3174,22 +3174,32 @@ class GoogleCloudRunV2GCSVolumeSource {
   /// Cloud Storage Bucket name.
   core.String? bucket;
 
+  /// A list of additional flags to pass to the gcsfuse CLI.
+  ///
+  /// Options should be specified without the leading "--".
+  core.List<core.String>? mountOptions;
+
   /// If true, the volume will be mounted as read only for all mounts.
   core.bool? readOnly;
 
   GoogleCloudRunV2GCSVolumeSource({
     this.bucket,
+    this.mountOptions,
     this.readOnly,
   });
 
   GoogleCloudRunV2GCSVolumeSource.fromJson(core.Map json_)
       : this(
           bucket: json_['bucket'] as core.String?,
+          mountOptions: (json_['mountOptions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           readOnly: json_['readOnly'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bucket != null) 'bucket': bucket!,
+        if (mountOptions != null) 'mountOptions': mountOptions!,
         if (readOnly != null) 'readOnly': readOnly!,
       };
 }

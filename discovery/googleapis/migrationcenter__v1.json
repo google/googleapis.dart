@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241001",
+    "revision": "20241014",
     "rootUrl": "https://migrationcenter.googleapis.com/",
     "servicePath": "",
     "title": "Migration Center API",
@@ -2865,7 +2865,7 @@
                         "PERSISTENT_DISK_TYPE_SSD"
                     ],
                     "enumDescriptions": [
-                        "Unspecified (default value). Selecting this value allows the system to use any disk type according to reported usage. This a good value to start with.",
+                        "Unspecified. Fallback to default value based on context.",
                         "Standard HDD Persistent Disk.",
                         "Balanced Persistent Disk.",
                         "SSD Persistent Disk."
@@ -2935,7 +2935,7 @@
                         "PERSISTENT_DISK_TYPE_SSD"
                     ],
                     "enumDescriptions": [
-                        "Unspecified (default value). Selecting this value allows the system to use any disk type according to reported usage. This a good value to start with.",
+                        "Unspecified. Fallback to default value based on context.",
                         "Standard HDD Persistent Disk.",
                         "Balanced Persistent Disk.",
                         "SSD Persistent Disk."
@@ -5352,7 +5352,7 @@
                             "PERSISTENT_DISK_TYPE_SSD"
                         ],
                         "enumDescriptions": [
-                            "Unspecified (default value). Selecting this value allows the system to use any disk type according to reported usage. This a good value to start with.",
+                            "Unspecified. Fallback to default value based on context.",
                             "Standard HDD Persistent Disk.",
                             "Balanced Persistent Disk.",
                             "SSD Persistent Disk."

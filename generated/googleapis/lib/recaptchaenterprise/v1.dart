@@ -3104,7 +3104,7 @@ class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership {
       };
 }
 
-/// The removeIpOverride request message.
+/// The RemoveIpOverride request message.
 class GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest {
   /// IP override to be removed from the key.
   ///
@@ -3192,7 +3192,7 @@ class GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse {
 
 /// Risk analysis result for an event.
 class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
-  /// Challenge information for SCORE_AND_CHALLENGE keys
+  /// Challenge information for SCORE_AND_CHALLENGE and INVISIBLE keys
   ///
   /// Output only.
   /// Possible string values are:

@@ -867,6 +867,8 @@ class AbortInfo {
   /// - "PERMISSION_DENIED_NO_NEG_ENDPOINT_CONFIGS" : Aborted because user lacks
   /// permission to access Network endpoint group endpoint configs required to
   /// run the test.
+  /// - "PERMISSION_DENIED_NO_CLOUD_ROUTER_CONFIGS" : Aborted because user lacks
+  /// permission to access Cloud Router configs required to run the test.
   /// - "NO_SOURCE_LOCATION" : Aborted because no valid source or destination
   /// endpoint is derived from the input test request.
   /// - "INVALID_ARGUMENT" : Aborted because the source or destination endpoint
@@ -1907,8 +1909,15 @@ class Endpoint {
   /// - "PSC" : Forwarding Rule is a Private Service Connect endpoint.
   core.String? forwardingRuleTarget;
 
+  /// DNS endpoint of
+  /// [Google Kubernetes Engine cluster control plane](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
+  ///
+  /// Requires gke_master_cluster to be set, can't be used simultaneoulsly with
+  /// ip_address.
+  core.String? fqdn;
+
   /// A cluster URI for
-  /// [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
+  /// [Google Kubernetes Engine cluster control plane](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
   core.String? gkeMasterCluster;
 
   /// A Compute Engine instance URI.
@@ -1988,6 +1997,7 @@ class Endpoint {
     this.cloudSqlInstance,
     this.forwardingRule,
     this.forwardingRuleTarget,
+    this.fqdn,
     this.gkeMasterCluster,
     this.instance,
     this.ipAddress,
@@ -2018,6 +2028,7 @@ class Endpoint {
           cloudSqlInstance: json_['cloudSqlInstance'] as core.String?,
           forwardingRule: json_['forwardingRule'] as core.String?,
           forwardingRuleTarget: json_['forwardingRuleTarget'] as core.String?,
+          fqdn: json_['fqdn'] as core.String?,
           gkeMasterCluster: json_['gkeMasterCluster'] as core.String?,
           instance: json_['instance'] as core.String?,
           ipAddress: json_['ipAddress'] as core.String?,
@@ -2039,6 +2050,7 @@ class Endpoint {
         if (forwardingRule != null) 'forwardingRule': forwardingRule!,
         if (forwardingRuleTarget != null)
           'forwardingRuleTarget': forwardingRuleTarget!,
+        if (fqdn != null) 'fqdn': fqdn!,
         if (gkeMasterCluster != null) 'gkeMasterCluster': gkeMasterCluster!,
         if (instance != null) 'instance': instance!,
         if (ipAddress != null) 'ipAddress': ipAddress!,

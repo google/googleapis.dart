@@ -334,6 +334,7 @@ api.ConfigManagementConfigSync buildConfigManagementConfigSync() {
     o.oci = buildConfigManagementOciConfig();
     o.preventDrift = true;
     o.sourceFormat = 'foo';
+    o.stopSyncing = true;
   }
   buildCounterConfigManagementConfigSync--;
   return o;
@@ -355,6 +356,7 @@ void checkConfigManagementConfigSync(api.ConfigManagementConfigSync o) {
       o.sourceFormat!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.stopSyncing!, unittest.isTrue);
   }
   buildCounterConfigManagementConfigSync--;
 }
@@ -463,6 +465,7 @@ api.ConfigManagementConfigSyncState buildConfigManagementConfigSyncState() {
   buildCounterConfigManagementConfigSyncState++;
   if (buildCounterConfigManagementConfigSyncState < 3) {
     o.clusterLevelStopSyncingState = 'foo';
+    o.crCount = 42;
     o.deploymentState = buildConfigManagementConfigSyncDeploymentState();
     o.errors = buildUnnamed1();
     o.reposyncCrd = 'foo';
@@ -482,6 +485,10 @@ void checkConfigManagementConfigSyncState(
     unittest.expect(
       o.clusterLevelStopSyncingState!,
       unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.crCount!,
+      unittest.equals(42),
     );
     checkConfigManagementConfigSyncDeploymentState(o.deploymentState!);
     checkUnnamed1(o.errors!);

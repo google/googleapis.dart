@@ -161,6 +161,7 @@ api.AccessSettings buildAccessSettings() {
   if (buildCounterAccessSettings < 3) {
     o.accessLevels = buildUnnamed1();
     o.reauthSettings = buildReauthSettings();
+    o.sessionSettings = buildSessionSettings();
   }
   buildCounterAccessSettings--;
   return o;
@@ -171,6 +172,7 @@ void checkAccessSettings(api.AccessSettings o) {
   if (buildCounterAccessSettings < 3) {
     checkUnnamed1(o.accessLevels!);
     checkReauthSettings(o.reauthSettings!);
+    checkSessionSettings(o.sessionSettings!);
   }
   buildCounterAccessSettings--;
 }
@@ -996,6 +998,7 @@ api.GcpUserAccessBinding buildGcpUserAccessBinding() {
     o.reauthSettings = buildReauthSettings();
     o.restrictedClientApplications = buildUnnamed23();
     o.scopedAccessSettings = buildUnnamed24();
+    o.sessionSettings = buildSessionSettings();
   }
   buildCounterGcpUserAccessBinding--;
   return o;
@@ -1017,6 +1020,7 @@ void checkGcpUserAccessBinding(api.GcpUserAccessBinding o) {
     checkReauthSettings(o.reauthSettings!);
     checkUnnamed23(o.restrictedClientApplications!);
     checkUnnamed24(o.scopedAccessSettings!);
+    checkSessionSettings(o.sessionSettings!);
   }
   buildCounterGcpUserAccessBinding--;
 }
@@ -1964,6 +1968,42 @@ void checkServicePerimeterConfig(api.ServicePerimeterConfig o) {
   buildCounterServicePerimeterConfig--;
 }
 
+core.int buildCounterSessionSettings = 0;
+api.SessionSettings buildSessionSettings() {
+  final o = api.SessionSettings();
+  buildCounterSessionSettings++;
+  if (buildCounterSessionSettings < 3) {
+    o.maxInactivity = 'foo';
+    o.sessionLength = 'foo';
+    o.sessionLengthEnabled = true;
+    o.sessionReauthMethod = 'foo';
+    o.useOidcMaxAge = true;
+  }
+  buildCounterSessionSettings--;
+  return o;
+}
+
+void checkSessionSettings(api.SessionSettings o) {
+  buildCounterSessionSettings++;
+  if (buildCounterSessionSettings < 3) {
+    unittest.expect(
+      o.maxInactivity!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sessionLength!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.sessionLengthEnabled!, unittest.isTrue);
+    unittest.expect(
+      o.sessionReauthMethod!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.useOidcMaxAge!, unittest.isTrue);
+  }
+  buildCounterSessionSettings--;
+}
+
 core.int buildCounterSetIamPolicyRequest = 0;
 api.SetIamPolicyRequest buildSetIamPolicyRequest() {
   final o = api.SetIamPolicyRequest();
@@ -2765,6 +2805,16 @@ void main() {
       final od = api.ServicePerimeterConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkServicePerimeterConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-SessionSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSessionSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SessionSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSessionSettings(od);
     });
   });
 

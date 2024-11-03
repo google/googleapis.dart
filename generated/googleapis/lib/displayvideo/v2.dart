@@ -12802,9 +12802,9 @@ typedef ActiveViewVideoViewabilityMetricConfig
 /// Additional URLs related to the ad, including beacons.
 typedef AdUrl = $AdUrl;
 
-/// Details of Adloox settings.
+/// Details of Adloox brand safety settings.
 class Adloox {
-  /// Adloox's brand safety settings.
+  /// Adloox categories to exclude.
   core.List<core.String>? excludedAdlooxCategories;
 
   Adloox({
@@ -12841,7 +12841,7 @@ class Advertiser {
 
   /// Billing related settings of the advertiser.
   ///
-  /// Optional. Required.
+  /// Required.
   AdvertiserBillingConfig? billingConfig;
 
   /// Creative related settings of the advertiser.
@@ -18624,6 +18624,7 @@ class GuaranteedOrder {
   /// - "EXCHANGE_ADMOST_GBID" : AdMost.
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
   /// - "EXCHANGE_NETFLIX" : Netflix.
+  /// - "EXCHANGE_TUBI" : Tubi.
   core.String? exchange;
 
   /// The unique identifier of the guaranteed order.
@@ -19406,6 +19407,7 @@ class InventorySource {
   /// - "EXCHANGE_ADMOST_GBID" : AdMost.
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
   /// - "EXCHANGE_NETFLIX" : Netflix.
+  /// - "EXCHANGE_TUBI" : Tubi.
   core.String? exchange;
 
   /// The ID of the guaranteed order that this inventory source belongs to.

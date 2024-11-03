@@ -6507,6 +6507,73 @@ class GoogleCloudRetailV2OutputConfigGcsDestination {
 /// Request for pausing training of a model.
 typedef GoogleCloudRetailV2PauseModelRequest = $Empty;
 
+/// Metadata for pinning to be returned in the response.
+///
+/// This is used for distinguishing between applied vs dropped pins.
+class GoogleCloudRetailV2PinControlMetadata {
+  /// Map of all matched pins, keyed by pin position.
+  core.Map<core.String, GoogleCloudRetailV2PinControlMetadataProductPins>?
+      allMatchedPins;
+
+  /// Map of pins that were dropped due to overlap with other matching pins,
+  /// keyed by pin position.
+  core.Map<core.String, GoogleCloudRetailV2PinControlMetadataProductPins>?
+      droppedPins;
+
+  GoogleCloudRetailV2PinControlMetadata({
+    this.allMatchedPins,
+    this.droppedPins,
+  });
+
+  GoogleCloudRetailV2PinControlMetadata.fromJson(core.Map json_)
+      : this(
+          allMatchedPins:
+              (json_['allMatchedPins'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudRetailV2PinControlMetadataProductPins.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          droppedPins:
+              (json_['droppedPins'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudRetailV2PinControlMetadataProductPins.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allMatchedPins != null) 'allMatchedPins': allMatchedPins!,
+        if (droppedPins != null) 'droppedPins': droppedPins!,
+      };
+}
+
+/// List of product ids which have associated pins.
+class GoogleCloudRetailV2PinControlMetadataProductPins {
+  /// List of product ids which have associated pins.
+  core.List<core.String>? productId;
+
+  GoogleCloudRetailV2PinControlMetadataProductPins({
+    this.productId,
+  });
+
+  GoogleCloudRetailV2PinControlMetadataProductPins.fromJson(core.Map json_)
+      : this(
+          productId: (json_['productId'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (productId != null) 'productId': productId!,
+      };
+}
+
 /// Request message for Predict method.
 class GoogleCloudRetailV2PredictRequest {
   /// Filter for restricting prediction results with a length limit of 5,000
@@ -9594,6 +9661,14 @@ class GoogleCloudRetailV2SearchResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
+  /// Metadata for pin controls which were applicable to the request.
+  ///
+  /// This contains two map fields, one for all matched pins and one for pins
+  /// which were matched but not applied. The two maps are keyed by pin
+  /// position, and the values are the product ids which were matched to that
+  /// pin.
+  GoogleCloudRetailV2PinControlMetadata? pinControlMetadata;
+
   /// Query expansion information for the returned results.
   GoogleCloudRetailV2SearchResponseQueryExpansionInfo? queryExpansionInfo;
 
@@ -9627,6 +9702,7 @@ class GoogleCloudRetailV2SearchResponse {
     this.facets,
     this.invalidConditionBoostSpecs,
     this.nextPageToken,
+    this.pinControlMetadata,
     this.queryExpansionInfo,
     this.redirectUri,
     this.results,
@@ -9662,6 +9738,11 @@ class GoogleCloudRetailV2SearchResponse {
                       .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
+          pinControlMetadata: json_.containsKey('pinControlMetadata')
+              ? GoogleCloudRetailV2PinControlMetadata.fromJson(
+                  json_['pinControlMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           queryExpansionInfo: json_.containsKey('queryExpansionInfo')
               ? GoogleCloudRetailV2SearchResponseQueryExpansionInfo.fromJson(
                   json_['queryExpansionInfo']
@@ -9692,6 +9773,8 @@ class GoogleCloudRetailV2SearchResponse {
         if (invalidConditionBoostSpecs != null)
           'invalidConditionBoostSpecs': invalidConditionBoostSpecs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (pinControlMetadata != null)
+          'pinControlMetadata': pinControlMetadata!,
         if (queryExpansionInfo != null)
           'queryExpansionInfo': queryExpansionInfo!,
         if (redirectUri != null) 'redirectUri': redirectUri!,

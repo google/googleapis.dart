@@ -13004,79 +13004,89 @@ class AdGroupAssignedTargetingOption {
 /// Additional URLs related to the ad, including beacons.
 typedef AdUrl = $AdUrl;
 
-/// Details of Adloox settings.
+/// Details of Adloox brand safety settings.
 class Adloox {
-  /// Adult explicit sexual content.
+  /// Adult and Explicit Sexual Content
+  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
+  /// exclude.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk level option.
+  /// it doesn't specify any GARM risk exclusion option.
   /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
   /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
-  /// and Floor).
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
+  /// high and floor).
   core.String? adultExplicitSexualContent;
 
-  /// Arms ammunition content.
+  /// Arms and Ammunition Content
+  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
+  /// exclude.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk level option.
+  /// it doesn't specify any GARM risk exclusion option.
   /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
   /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
-  /// and Floor).
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
+  /// high and floor).
   core.String? armsAmmunitionContent;
 
-  /// Crime harmful acts to individuals society human rights violations content.
+  /// Crime and Harmful Acts Content
+  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
+  /// exclude.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk level option.
+  /// it doesn't specify any GARM risk exclusion option.
   /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
   /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
-  /// and Floor).
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
+  /// high and floor).
   core.String? crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent;
 
-  /// Death injury military conflict content.
+  /// Death, Injury, or Military Conflict Content
+  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
+  /// exclude.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk level option.
+  /// it doesn't specify any GARM risk exclusion option.
   /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
   /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
-  /// and Floor).
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
+  /// high and floor).
   core.String? deathInjuryMilitaryConflictContent;
 
-  /// Debated sensitive social issue content.
+  /// Debated Sensitive Social Issue Content
+  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
+  /// exclude.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk level option.
+  /// it doesn't specify any GARM risk exclusion option.
   /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
   /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
-  /// and Floor).
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
+  /// high and floor).
   core.String? debatedSensitiveSocialIssueContent;
 
-  /// Display IAB viewability.
+  /// IAB viewability threshold for display ads.
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "DISPLAY_IAB_VIEWABILITY_UNSPECIFIED" : This enum is only a placeholder
-  /// and it doesn't specify any display viewability options.
+  /// - "DISPLAY_IAB_VIEWABILITY_UNSPECIFIED" : Default value when not specified
+  /// or is unknown in this version.
   /// - "DISPLAY_IAB_VIEWABILITY_10" : 10%+ in view (IAB display viewability
   /// standard).
   /// - "DISPLAY_IAB_VIEWABILITY_20" : 20%+ in view (IAB display viewability
@@ -13089,111 +13099,124 @@ class Adloox {
   /// standard).
   core.String? displayIabViewability;
 
-  /// Adloox's brand safety settings.
+  /// Adloox categories to exclude.
   core.List<core.String>? excludedAdlooxCategories;
 
-  /// Adloox's fraud IVT MFA settings.
+  /// Adloox's fraud IVT MFA categories to exclude.
   ///
   /// Optional.
   core.List<core.String>? excludedFraudIvtMfaCategories;
 
-  /// Hate speech acts of aggression content.
+  /// Hate Speech and Acts of Aggression Content
+  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
+  /// exclude.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk level option.
+  /// it doesn't specify any GARM risk exclusion option.
   /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
   /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
-  /// and Floor).
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
+  /// high and floor).
   core.String? hateSpeechActsAggressionContent;
 
-  /// Illegal drugs tobacco ecigarettes vaping alcohol content.
+  /// Illegal Drugs/Alcohol Content
+  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
+  /// exclude.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk level option.
+  /// it doesn't specify any GARM risk exclusion option.
   /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
   /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
-  /// and Floor).
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
+  /// high and floor).
   core.String? illegalDrugsTobaccoEcigarettesVapingAlcoholContent;
 
-  /// Misinformation content.
+  /// Misinformation Content
+  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
+  /// exclude.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk level option.
+  /// it doesn't specify any GARM risk exclusion option.
   /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
   /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
-  /// and Floor).
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
+  /// high and floor).
   core.String? misinformationContent;
 
-  /// Obscenity profanity content.
+  /// Obscenity and Profanity Content
+  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
+  /// exclude.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk level option.
+  /// it doesn't specify any GARM risk exclusion option.
   /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
   /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
-  /// and Floor).
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
+  /// high and floor).
   core.String? obscenityProfanityContent;
 
-  /// Online piracy content.
+  /// Online Piracy Content
+  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
+  /// exclude.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk level option.
+  /// it doesn't specify any GARM risk exclusion option.
   /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
   /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
-  /// and Floor).
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
+  /// high and floor).
   core.String? onlinePiracyContent;
 
-  /// Spam harmful content.
+  /// Spam or Harmful Content
+  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
+  /// exclude.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk level option.
+  /// it doesn't specify any GARM risk exclusion option.
   /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
   /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
-  /// and Floor).
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
+  /// high and floor).
   core.String? spamHarmfulContent;
 
-  /// Terrorism content.
+  /// Terrorism Content [GARM](https://wfanet.org/leadership/garm/about-garm)
+  /// risk ranges to exclude.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk level option.
+  /// it doesn't specify any GARM risk exclusion option.
   /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
   /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude high, medium, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude All Level of Risk (Low, Medium, High
-  /// and Floor).
+  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
+  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
+  /// high and floor).
   core.String? terrorismContent;
 
-  /// Video IAB viewability.
+  /// IAB viewability threshold for video ads.
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "VIDEO_IAB_VIEWABILITY_UNSPECIFIED" : This enum is only a placeholder
-  /// and it doesn't specify any video viewability options.
+  /// - "VIDEO_IAB_VIEWABILITY_UNSPECIFIED" : Default value when not specified
+  /// or is unknown in this version.
   /// - "VIDEO_IAB_VIEWABILITY_10" : 10%+ in view (IAB video viewability
   /// standard).
   /// - "VIDEO_IAB_VIEWABILITY_20" : 20%+ in view (IAB video viewability
@@ -13316,7 +13339,7 @@ class Advertiser {
 
   /// Billing related settings of the advertiser.
   ///
-  /// Optional. Required.
+  /// Required.
   AdvertiserBillingConfig? billingConfig;
 
   /// Creative related settings of the advertiser.
@@ -19263,6 +19286,7 @@ class GuaranteedOrder {
   /// - "EXCHANGE_ADMOST_GBID" : AdMost.
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
   /// - "EXCHANGE_NETFLIX" : Netflix.
+  /// - "EXCHANGE_TUBI" : Tubi.
   core.String? exchange;
 
   /// The unique identifier of the guaranteed order.
@@ -20083,6 +20107,7 @@ class InventorySource {
   /// - "EXCHANGE_ADMOST_GBID" : AdMost.
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
   /// - "EXCHANGE_NETFLIX" : Netflix.
+  /// - "EXCHANGE_TUBI" : Tubi.
   core.String? exchange;
 
   /// The ID of the guaranteed order that this inventory source belongs to.

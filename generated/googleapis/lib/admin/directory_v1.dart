@@ -7260,6 +7260,35 @@ class Buildings {
       };
 }
 
+/// Represents a data capacity with some amount of current usage in bytes.
+class ByteUsage {
+  /// The total capacity value, in bytes.
+  ///
+  /// Output only.
+  core.String? capacityBytes;
+
+  /// The current usage value, in bytes.
+  ///
+  /// Output only.
+  core.String? usedBytes;
+
+  ByteUsage({
+    this.capacityBytes,
+    this.usedBytes,
+  });
+
+  ByteUsage.fromJson(core.Map json_)
+      : this(
+          capacityBytes: json_['capacityBytes'] as core.String?,
+          usedBytes: json_['usedBytes'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (capacityBytes != null) 'capacityBytes': capacityBytes!,
+        if (usedBytes != null) 'usedBytes': usedBytes!,
+      };
+}
+
 /// Public API: Resources.calendars
 class CalendarResource {
   /// Unique ID for the building a resource is located in.
@@ -8147,6 +8176,11 @@ class ChromeOsDevice {
   /// - "kioskUpgrade" : The device has an annual Kiosk Upgrade.
   core.String? deviceLicenseType;
 
+  /// How much disk space the device has available and is currently using.
+  ///
+  /// Output only.
+  ByteUsage? diskSpaceUsage;
+
   /// Reports of disk space and other info about mounted/connected volumes.
   core.List<ChromeOsDeviceDiskVolumeReports>? diskVolumeReports;
 
@@ -8340,6 +8374,7 @@ class ChromeOsDevice {
     this.deviceFiles,
     this.deviceId,
     this.deviceLicenseType,
+    this.diskSpaceUsage,
     this.diskVolumeReports,
     this.dockMacAddress,
     this.etag,
@@ -8410,6 +8445,10 @@ class ChromeOsDevice {
               .toList(),
           deviceId: json_['deviceId'] as core.String?,
           deviceLicenseType: json_['deviceLicenseType'] as core.String?,
+          diskSpaceUsage: json_.containsKey('diskSpaceUsage')
+              ? ByteUsage.fromJson(json_['diskSpaceUsage']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           diskVolumeReports: (json_['diskVolumeReports'] as core.List?)
               ?.map((value) => ChromeOsDeviceDiskVolumeReports.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -8497,6 +8536,7 @@ class ChromeOsDevice {
         if (deviceFiles != null) 'deviceFiles': deviceFiles!,
         if (deviceId != null) 'deviceId': deviceId!,
         if (deviceLicenseType != null) 'deviceLicenseType': deviceLicenseType!,
+        if (diskSpaceUsage != null) 'diskSpaceUsage': diskSpaceUsage!,
         if (diskVolumeReports != null) 'diskVolumeReports': diskVolumeReports!,
         if (dockMacAddress != null) 'dockMacAddress': dockMacAddress!,
         if (etag != null) 'etag': etag!,

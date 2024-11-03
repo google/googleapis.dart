@@ -163,6 +163,42 @@ class ProjectsServiceAccountsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Returns the trust boundary info for a given service account.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of service account.
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ServiceAccountAllowedLocations].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ServiceAccountAllowedLocations> getAllowedLocations(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/allowedLocations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ServiceAccountAllowedLocations.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Signs a blob using a service account's system-managed private key.
   ///
   /// [request] - The metadata request object.
@@ -400,6 +436,39 @@ class GenerateIdTokenResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (token != null) 'token': token!,
+      };
+}
+
+/// Represents a list of allowed locations for given service account.
+class ServiceAccountAllowedLocations {
+  /// The hex encoded bitmap of the trust boundary locations
+  ///
+  /// Output only.
+  core.String? encodedLocations;
+
+  /// The human readable trust boundary locations.
+  ///
+  /// For example, \["us-central1", "europe-west1"\]
+  ///
+  /// Output only.
+  core.List<core.String>? locations;
+
+  ServiceAccountAllowedLocations({
+    this.encodedLocations,
+    this.locations,
+  });
+
+  ServiceAccountAllowedLocations.fromJson(core.Map json_)
+      : this(
+          encodedLocations: json_['encodedLocations'] as core.String?,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (encodedLocations != null) 'encodedLocations': encodedLocations!,
+        if (locations != null) 'locations': locations!,
       };
 }
 

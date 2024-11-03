@@ -10963,7 +10963,7 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
   /// List of input variables for the api trigger.
   ///
   /// Optional.
-  core.List<core.String>? inputVariables;
+  EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables? inputVariables;
 
   /// The user created label for a particular trigger.
   core.String? label;
@@ -10980,7 +10980,7 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
   /// List of output variables for the api trigger.
   ///
   /// Optional.
-  core.List<core.String>? outputVariables;
+  EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables? outputVariables;
 
   /// If set to true, any upcoming requests for this trigger config will be
   /// paused and the executions will be resumed later when the flag is reset.
@@ -11094,15 +11094,19 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
               ?.map((value) => value as core.String)
               .toList(),
           errorCatcherId: json_['errorCatcherId'] as core.String?,
-          inputVariables: (json_['inputVariables'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
+          inputVariables: json_.containsKey('inputVariables')
+              ? EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables
+                  .fromJson(json_['inputVariables']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           label: json_['label'] as core.String?,
           nextTasksExecutionPolicy:
               json_['nextTasksExecutionPolicy'] as core.String?,
-          outputVariables: (json_['outputVariables'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
+          outputVariables: json_.containsKey('outputVariables')
+              ? EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables
+                  .fromJson(json_['outputVariables']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           pauseWorkflowExecutions:
               json_['pauseWorkflowExecutions'] as core.bool?,
           position: json_.containsKey('position')
@@ -11156,6 +11160,10 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
         if (triggerType != null) 'triggerType': triggerType!,
       };
 }
+
+/// Variables names mapped to api trigger.
+typedef EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables
+    = $TriggerConfigVariables;
 
 class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry {
   /// Metadata information about the parameters.
@@ -19108,7 +19116,7 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
   /// List of input variables for the api trigger.
   ///
   /// Optional.
-  core.List<core.String>? inputVariables;
+  GoogleCloudIntegrationsV1alphaTriggerConfigVariables? inputVariables;
 
   /// The user created label for a particular trigger.
   ///
@@ -19129,7 +19137,7 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
   /// List of output variables for the api trigger.
   ///
   /// Optional.
-  core.List<core.String>? outputVariables;
+  GoogleCloudIntegrationsV1alphaTriggerConfigVariables? outputVariables;
 
   /// Informs the front-end application where to draw this error catcher config
   /// on the UI.
@@ -19229,15 +19237,19 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
               : null,
           description: json_['description'] as core.String?,
           errorCatcherId: json_['errorCatcherId'] as core.String?,
-          inputVariables: (json_['inputVariables'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
+          inputVariables: json_.containsKey('inputVariables')
+              ? GoogleCloudIntegrationsV1alphaTriggerConfigVariables.fromJson(
+                  json_['inputVariables']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           label: json_['label'] as core.String?,
           nextTasksExecutionPolicy:
               json_['nextTasksExecutionPolicy'] as core.String?,
-          outputVariables: (json_['outputVariables'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
+          outputVariables: json_.containsKey('outputVariables')
+              ? GoogleCloudIntegrationsV1alphaTriggerConfigVariables.fromJson(
+                  json_['outputVariables']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           position: json_.containsKey('position')
               ? GoogleCloudIntegrationsV1alphaCoordinate.fromJson(
                   json_['position'] as core.Map<core.String, core.dynamic>)
@@ -19280,6 +19292,10 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
         if (triggerType != null) 'triggerType': triggerType!,
       };
 }
+
+/// Variables names mapped to api trigger.
+typedef GoogleCloudIntegrationsV1alphaTriggerConfigVariables
+    = $TriggerConfigVariables;
 
 /// Request for UnpublishIntegrationVersion.
 typedef GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest

@@ -77,7 +77,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241017",
+    "revision": "20241023",
     "rootUrl": "https://developerconnect.googleapis.com/",
     "servicePath": "",
     "title": "Developer Connect API",
@@ -812,10 +812,7 @@
                                             },
                                             "response": {
                                                 "$ref": "Empty"
-                                            },
-                                            "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
-                                            ]
+                                            }
                                         },
                                         "processGitLabWebhook": {
                                             "description": "ProcessGitLabWebhook is called by the GitLab.com for notifying events.",

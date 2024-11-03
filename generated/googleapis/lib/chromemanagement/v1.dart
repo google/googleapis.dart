@@ -780,11 +780,11 @@ class CustomersReportsResource {
   /// syntax. Note: OR operations are not supported in this filter. Supported
   /// filter fields: * app_name * app_type * install_type *
   /// number_of_permissions * total_install_count * latest_profile_active_date *
-  /// permission_name * app_id * manifest_versions
+  /// permission_name * app_id * manifest_versions * risk_score
   ///
   /// [orderBy] - Field used to order results. Supported order by fields: *
   /// app_name * app_type * install_type * number_of_permissions *
-  /// total_install_count * app_id * manifest_versions
+  /// total_install_count * app_id * manifest_versions * risk_score
   ///
   /// [orgUnitId] - The ID of the organizational unit.
   ///
@@ -4162,6 +4162,11 @@ class GoogleChromeManagementV1InstalledApp {
   /// Output only.
   core.List<core.String>? permissions;
 
+  /// If available, the risk assessment data about this extension.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1RiskAssessmentData? riskAssessment;
+
   GoogleChromeManagementV1InstalledApp({
     this.appId,
     this.appInstallType,
@@ -4174,6 +4179,7 @@ class GoogleChromeManagementV1InstalledApp {
     this.homepageUri,
     this.osUserCount,
     this.permissions,
+    this.riskAssessment,
   });
 
   GoogleChromeManagementV1InstalledApp.fromJson(core.Map json_)
@@ -4191,6 +4197,11 @@ class GoogleChromeManagementV1InstalledApp {
           permissions: (json_['permissions'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          riskAssessment: json_.containsKey('riskAssessment')
+              ? GoogleChromeManagementV1RiskAssessmentData.fromJson(
+                  json_['riskAssessment']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4206,6 +4217,7 @@ class GoogleChromeManagementV1InstalledApp {
         if (homepageUri != null) 'homepageUri': homepageUri!,
         if (osUserCount != null) 'osUserCount': osUserCount!,
         if (permissions != null) 'permissions': permissions!,
+        if (riskAssessment != null) 'riskAssessment': riskAssessment!,
       };
 }
 
@@ -5091,6 +5103,122 @@ class GoogleChromeManagementV1PrinterReport {
         if (printerId != null) 'printerId': printerId!,
         if (printerModel != null) 'printerModel': printerModel!,
         if (userCount != null) 'userCount': userCount!,
+      };
+}
+
+/// Risk assessment for a Chrome extension.
+class GoogleChromeManagementV1RiskAssessment {
+  /// Risk assessment for the extension.
+  ///
+  /// Currently, this is a numerical value, and its interpretation is specific
+  /// to each risk assessment provider.
+  core.String? assessment;
+
+  /// A URL that a user can navigate to for more information about the risk
+  /// assessment.
+  core.String? detailsUrl;
+
+  /// The version of the extension that this assessment applies to.
+  core.String? version;
+
+  GoogleChromeManagementV1RiskAssessment({
+    this.assessment,
+    this.detailsUrl,
+    this.version,
+  });
+
+  GoogleChromeManagementV1RiskAssessment.fromJson(core.Map json_)
+      : this(
+          assessment: json_['assessment'] as core.String?,
+          detailsUrl: json_['detailsUrl'] as core.String?,
+          version: json_['version'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assessment != null) 'assessment': assessment!,
+        if (detailsUrl != null) 'detailsUrl': detailsUrl!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// Risk assessment data about an extension/app.
+class GoogleChromeManagementV1RiskAssessmentData {
+  /// Individual risk assessments.
+  core.List<GoogleChromeManagementV1RiskAssessmentEntry>? entries;
+
+  /// Overall assessed risk level across all entries.
+  ///
+  /// This will be the highest risk level from all entries.
+  /// Possible string values are:
+  /// - "RISK_LEVEL_UNSPECIFIED" : Risk level not specified.
+  /// - "RISK_LEVEL_LOW" : Extension that represents a low risk.
+  /// - "RISK_LEVEL_MEDIUM" : Extension that represents a medium risk.
+  /// - "RISK_LEVEL_HIGH" : Extension that represents a high risk.
+  core.String? overallRiskLevel;
+
+  GoogleChromeManagementV1RiskAssessmentData({
+    this.entries,
+    this.overallRiskLevel,
+  });
+
+  GoogleChromeManagementV1RiskAssessmentData.fromJson(core.Map json_)
+      : this(
+          entries: (json_['entries'] as core.List?)
+              ?.map((value) =>
+                  GoogleChromeManagementV1RiskAssessmentEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          overallRiskLevel: json_['overallRiskLevel'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (entries != null) 'entries': entries!,
+        if (overallRiskLevel != null) 'overallRiskLevel': overallRiskLevel!,
+      };
+}
+
+/// One risk assessment entry.
+class GoogleChromeManagementV1RiskAssessmentEntry {
+  /// The risk assessment provider from which this entry comes from.
+  /// Possible string values are:
+  /// - "RISK_ASSESSMENT_PROVIDER_UNSPECIFIED" : Default value when no provider
+  /// is specified.
+  /// - "RISK_ASSESSMENT_PROVIDER_CRXCAVATOR" : CRXcavator.
+  /// - "RISK_ASSESSMENT_PROVIDER_SPIN_AI" : Spin.Ai.
+  core.String? provider;
+
+  /// The details of the provider's risk assessment.
+  GoogleChromeManagementV1RiskAssessment? riskAssessment;
+
+  /// The bucketed risk level for the risk assessment.
+  /// Possible string values are:
+  /// - "RISK_LEVEL_UNSPECIFIED" : Risk level not specified.
+  /// - "RISK_LEVEL_LOW" : Extension that represents a low risk.
+  /// - "RISK_LEVEL_MEDIUM" : Extension that represents a medium risk.
+  /// - "RISK_LEVEL_HIGH" : Extension that represents a high risk.
+  core.String? riskLevel;
+
+  GoogleChromeManagementV1RiskAssessmentEntry({
+    this.provider,
+    this.riskAssessment,
+    this.riskLevel,
+  });
+
+  GoogleChromeManagementV1RiskAssessmentEntry.fromJson(core.Map json_)
+      : this(
+          provider: json_['provider'] as core.String?,
+          riskAssessment: json_.containsKey('riskAssessment')
+              ? GoogleChromeManagementV1RiskAssessment.fromJson(
+                  json_['riskAssessment']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          riskLevel: json_['riskLevel'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (provider != null) 'provider': provider!,
+        if (riskAssessment != null) 'riskAssessment': riskAssessment!,
+        if (riskLevel != null) 'riskLevel': riskLevel!,
       };
 }
 

@@ -3945,8 +3945,8 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
   /// The reCAPTCHA config for email/password provider, containing the
   /// enforcement status.
   ///
-  /// The email/password provider contains all related user flows protected by
-  /// reCAPTCHA.
+  /// The email/password provider contains all email related user flows
+  /// protected by reCAPTCHA.
   /// Possible string values are:
   /// - "RECAPTCHA_PROVIDER_ENFORCEMENT_STATE_UNSPECIFIED" : Enforcement state
   /// has not been set.
@@ -3965,7 +3965,8 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
   /// The reCAPTCHA config for phone provider, containing the enforcement
   /// status.
   ///
-  /// The phone provider contains all related user flows protected by reCAPTCHA.
+  /// The phone provider contains all SMS related user flows protected by
+  /// reCAPTCHA.
   /// Possible string values are:
   /// - "RECAPTCHA_PROVIDER_ENFORCEMENT_STATE_UNSPECIFIED" : Enforcement state
   /// has not been set.
@@ -3978,10 +3979,12 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
   /// The reCAPTCHA keys.
   core.List<GoogleCloudIdentitytoolkitAdminV2RecaptchaKey>? recaptchaKeys;
 
-  /// The managed rules for toll fraud provider, containing the enforcement
-  /// status.
+  /// The managed rules for the authentication action based on reCAPTCHA toll
+  /// fraud risk scores.
   ///
-  /// The toll fraud provider contains all SMS related user flows.
+  /// Toll fraud managed rules will only take effect when the
+  /// phone_enforcement_state is AUDIT or ENFORCE and
+  /// use_sms_toll_fraud_protection is true.
   core.List<GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule>?
       tollFraudManagedRules;
 
@@ -3990,6 +3993,17 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
   /// Defaults to `false`.
   core.bool? useAccountDefender;
 
+  /// Whether to use the rCE bot score for reCAPTCHA phone provider.
+  ///
+  /// Can only be true when the phone_enforcement_state is AUDIT or ENFORCE.
+  core.bool? useSmsBotScore;
+
+  /// Whether to use the rCE sms toll fraud protection risk score for reCAPTCHA
+  /// phone provider.
+  ///
+  /// Can only be true when the phone_enforcement_state is AUDIT or ENFORCE.
+  core.bool? useSmsTollFraudProtection;
+
   GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig({
     this.emailPasswordEnforcementState,
     this.managedRules,
@@ -3997,6 +4011,8 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
     this.recaptchaKeys,
     this.tollFraudManagedRules,
     this.useAccountDefender,
+    this.useSmsBotScore,
+    this.useSmsTollFraudProtection,
   });
 
   GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig.fromJson(core.Map json_)
@@ -4020,6 +4036,9 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
                       .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           useAccountDefender: json_['useAccountDefender'] as core.bool?,
+          useSmsBotScore: json_['useSmsBotScore'] as core.bool?,
+          useSmsTollFraudProtection:
+              json_['useSmsTollFraudProtection'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4033,6 +4052,9 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
           'tollFraudManagedRules': tollFraudManagedRules!,
         if (useAccountDefender != null)
           'useAccountDefender': useAccountDefender!,
+        if (useSmsBotScore != null) 'useSmsBotScore': useSmsBotScore!,
+        if (useSmsTollFraudProtection != null)
+          'useSmsTollFraudProtection': useSmsTollFraudProtection!,
       };
 }
 
@@ -4110,8 +4132,9 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule {
 
 /// The config for a reCAPTCHA toll fraud assessment managed rule.
 ///
-/// Models a single interval \[start_score, end_score\]. The start_score is
-/// maximum_allowed_score. End score is 1.0.
+/// Models a single interval \[start_score, end_score\]. The end_score is
+/// implicit. It is either the closest smaller end_score (if one is available)
+/// or 0. Intervals in aggregate span \[0, 1\] without overlapping.
 class GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule {
   /// The action taken if the reCAPTCHA score of a request is within the
   /// interval \[start_score, end_score\].
@@ -4122,8 +4145,10 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule {
 
   /// The start score (inclusive) for an action.
   ///
-  /// A score of 0.0 indicates the safest request (likely legitimate), whereas
-  /// 1.0 indicates the riskiest request (likely toll fraud). See
+  /// Must be a value between 0.0 and 1.0, at 11 discrete values; e.g. 0, 0.1,
+  /// 0.2, 0.3, ... 0.9, 1.0. A score of 0.0 indicates the safest request
+  /// (likely legitimate), whereas 1.0 indicates the riskiest request (likely
+  /// toll fraud). See
   /// https://cloud.google.com/recaptcha-enterprise/docs/sms-fraud-detection#create-assessment-sms.
   core.double? startScore;
 
@@ -5223,9 +5248,18 @@ class GoogleCloudIdentitytoolkitV2RecaptchaConfig {
   /// or ENFORCE on at least one of the reCAPTCHA providers.
   core.String? recaptchaKey;
 
+  /// Whether to use the rCE bot score for reCAPTCHA phone provider.
+  core.bool? useSmsBotScore;
+
+  /// Whether to use the rCE sms toll fraud protection risk score for reCAPTCHA
+  /// phone provider.
+  core.bool? useSmsTollFraudProtection;
+
   GoogleCloudIdentitytoolkitV2RecaptchaConfig({
     this.recaptchaEnforcementState,
     this.recaptchaKey,
+    this.useSmsBotScore,
+    this.useSmsTollFraudProtection,
   });
 
   GoogleCloudIdentitytoolkitV2RecaptchaConfig.fromJson(core.Map json_)
@@ -5237,12 +5271,18 @@ class GoogleCloudIdentitytoolkitV2RecaptchaConfig {
                       .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           recaptchaKey: json_['recaptchaKey'] as core.String?,
+          useSmsBotScore: json_['useSmsBotScore'] as core.bool?,
+          useSmsTollFraudProtection:
+              json_['useSmsTollFraudProtection'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (recaptchaEnforcementState != null)
           'recaptchaEnforcementState': recaptchaEnforcementState!,
         if (recaptchaKey != null) 'recaptchaKey': recaptchaKey!,
+        if (useSmsBotScore != null) 'useSmsBotScore': useSmsBotScore!,
+        if (useSmsTollFraudProtection != null)
+          'useSmsTollFraudProtection': useSmsTollFraudProtection!,
       };
 }
 
@@ -5504,6 +5544,8 @@ class GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo {
   core.String? recaptchaToken;
 
   /// The reCAPTCHA version of the reCAPTCHA token in the captcha_response.
+  ///
+  /// Required when reCAPTCHA Enterprise is enabled.
   /// Possible string values are:
   /// - "RECAPTCHA_VERSION_UNSPECIFIED" : The reCAPTCHA version is not
   /// specified.

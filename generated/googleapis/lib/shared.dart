@@ -334,7 +334,7 @@ class $AddressPool {
 class $AdvertiserBillingConfig {
   /// The ID of a billing profile assigned to the advertiser.
   ///
-  /// Optional.
+  /// Required.
   core.String? billingProfileId;
 
   $AdvertiserBillingConfig({
@@ -1909,6 +1909,44 @@ class $BooleanPolicy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enforced != null) 'enforced': enforced!,
+      };
+}
+
+/// Used by:
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint
+class $BoostSpecConditionBoostSpecBoostControlSpecControlPoint {
+  /// Can be one of: 1.
+  ///
+  /// The numerical field value. 2. The duration spec for freshness: The value
+  /// must be formatted as an XSD `dayTimeDuration` value (a restricted subset
+  /// of an ISO 8601 duration value). The pattern for this is: `nDnM]`.
+  ///
+  /// Optional.
+  core.String? attributeValue;
+
+  /// The value between -1 to 1 by which to boost the score if the
+  /// attribute_value evaluates to the value specified above.
+  ///
+  /// Optional.
+  core.double? boostAmount;
+
+  $BoostSpecConditionBoostSpecBoostControlSpecControlPoint({
+    this.attributeValue,
+    this.boostAmount,
+  });
+
+  $BoostSpecConditionBoostSpecBoostControlSpecControlPoint.fromJson(
+      core.Map json_)
+      : this(
+          attributeValue: json_['attributeValue'] as core.String?,
+          boostAmount: (json_['boostAmount'] as core.num?)?.toDouble(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributeValue != null) 'attributeValue': attributeValue!,
+        if (boostAmount != null) 'boostAmount': boostAmount!,
       };
 }
 
@@ -6568,12 +6606,12 @@ class $EgressSource {
 /// - aiplatform:v1 : GoogleCloudAiplatformV1ListOptimalTrialsRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1PauseModelDeploymentMonitoringJobRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1PauseScheduleRequest
-/// - aiplatform:v1 : GoogleCloudAiplatformV1PscInterfaceConfig
 /// - aiplatform:v1 : GoogleCloudAiplatformV1RebootPersistentResourceRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1RemoveContextChildrenResponse
 /// - aiplatform:v1 : GoogleCloudAiplatformV1RemoveDatapointsResponse
 /// - aiplatform:v1 : GoogleCloudAiplatformV1ResumeModelDeploymentMonitoringJobRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1StartNotebookRuntimeRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1StopNotebookRuntimeRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1StopTrialRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1SyncFeatureViewRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1ToolCallValidSpec
@@ -6741,6 +6779,7 @@ class $EgressSource {
 /// - cloudbuild:v2 : FetchReadWriteTokenRequest
 /// - cloudchannel:v1 : GoogleLongrunningCancelOperationRequest
 /// - cloudchannel:v1 : GoogleProtobufEmpty
+/// - cloudcontrolspartner:v1 : Empty
 /// - clouddeploy:v1 : AbandonReleaseRequest
 /// - clouddeploy:v1 : AbandonReleaseResponse
 /// - clouddeploy:v1 : AdvanceChildRolloutJob
@@ -6889,12 +6928,16 @@ class $EgressSource {
 /// - datastream:v1 : AvroFileFormat
 /// - datastream:v1 : BackfillNoneStrategy
 /// - datastream:v1 : BigQueryProfile
+/// - datastream:v1 : BinaryLogPosition
 /// - datastream:v1 : CancelOperationRequest
 /// - datastream:v1 : DropLargeObjects
 /// - datastream:v1 : Empty
+/// - datastream:v1 : Gtid
+/// - datastream:v1 : LogMiner
 /// - datastream:v1 : Merge
 /// - datastream:v1 : MostRecentStartPosition
 /// - datastream:v1 : NextAvailableStartPosition
+/// - datastream:v1 : OracleAsmLogFileAccess
 /// - datastream:v1 : SqlServerChangeTables
 /// - datastream:v1 : SqlServerTransactionLogs
 /// - datastream:v1 : StartBackfillJobRequest
@@ -6978,6 +7021,7 @@ class $EgressSource {
 /// - drivelabels:v2 : GoogleProtobufEmpty
 /// - essentialcontacts:v1 : GoogleProtobufEmpty
 /// - eventarc:v1 : Empty
+/// - eventarc:v1 : GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat
 /// - eventarc:v1 : GoogleLongrunningCancelOperationRequest
 /// - file:v1 : CancelOperationRequest
 /// - file:v1 : Empty
@@ -7882,6 +7926,7 @@ class $ExchangeAssignedTargetingOptionDetails {
   /// - "EXCHANGE_ADMOST_GBID" : AdMost.
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
   /// - "EXCHANGE_NETFLIX" : Netflix.
+  /// - "EXCHANGE_TUBI" : Tubi.
   core.String? exchange;
 
   $ExchangeAssignedTargetingOptionDetails({
@@ -7990,6 +8035,7 @@ class $ExchangeConfigEnabledExchange {
   /// - "EXCHANGE_ADMOST_GBID" : AdMost.
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
   /// - "EXCHANGE_NETFLIX" : Netflix.
+  /// - "EXCHANGE_TUBI" : Tubi.
   core.String? exchange;
 
   /// Agency ID of Google Ad Manager.
@@ -8130,6 +8176,7 @@ class $ExchangeReviewStatus {
   /// - "EXCHANGE_ADMOST_GBID" : AdMost.
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
   /// - "EXCHANGE_NETFLIX" : Netflix.
+  /// - "EXCHANGE_TUBI" : Tubi.
   core.String? exchange;
 
   /// Status of the exchange review.
@@ -8252,6 +8299,7 @@ class $ExchangeTargetingOptionDetails {
   /// - "EXCHANGE_ADMOST_GBID" : AdMost.
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
   /// - "EXCHANGE_NETFLIX" : Netflix.
+  /// - "EXCHANGE_TUBI" : Tubi.
   core.String? exchange;
 
   $ExchangeTargetingOptionDetails({
@@ -9053,6 +9101,30 @@ class $FixedBidStrategy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bidAmountMicros != null) 'bidAmountMicros': bidAmountMicros!,
+      };
+}
+
+/// Used by:
+///
+/// - eventarc:v1 : GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat
+/// - eventarc:v1 : GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat
+class $Format {
+  /// The entire schema definition is stored in this field.
+  ///
+  /// Optional.
+  core.String? schemaDefinition;
+
+  $Format({
+    this.schemaDefinition,
+  });
+
+  $Format.fromJson(core.Map json_)
+      : this(
+          schemaDefinition: json_['schemaDefinition'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (schemaDefinition != null) 'schemaDefinition': schemaDefinition!,
       };
 }
 
@@ -13791,6 +13863,40 @@ class $LogConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
         if (level != null) 'level': level!,
+      };
+}
+
+/// Used by:
+///
+/// - datamigration:v1 : LogFileDirectories
+/// - datastream:v1 : LogFileDirectories
+class $LogFileDirectories {
+  /// Oracle directory for archived logs.
+  ///
+  /// Required.
+  core.String? archivedLogDirectory;
+
+  /// Oracle directory for online logs.
+  ///
+  /// Required.
+  core.String? onlineLogDirectory;
+
+  $LogFileDirectories({
+    this.archivedLogDirectory,
+    this.onlineLogDirectory,
+  });
+
+  $LogFileDirectories.fromJson(core.Map json_)
+      : this(
+          archivedLogDirectory: json_['archivedLogDirectory'] as core.String?,
+          onlineLogDirectory: json_['onlineLogDirectory'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (archivedLogDirectory != null)
+          'archivedLogDirectory': archivedLogDirectory!,
+        if (onlineLogDirectory != null)
+          'onlineLogDirectory': onlineLogDirectory!,
       };
 }
 
@@ -19492,9 +19598,51 @@ class $Shared10 {
 
 /// Used by:
 ///
+/// - datacatalog:v1 : GoogleCloudDatacatalogV1MigrationConfig
+/// - datacatalog:v1 : GoogleCloudDatacatalogV1SetConfigRequest
+class $Shared11 {
+  /// Opt-in status for the UI switch to Dataplex.
+  /// Possible string values are:
+  /// - "CATALOG_UI_EXPERIENCE_UNSPECIFIED" : Default value. The default UI is
+  /// Dataplex.
+  /// - "CATALOG_UI_EXPERIENCE_ENABLED" : The UI is Dataplex.
+  /// - "CATALOG_UI_EXPERIENCE_DISABLED" : The UI is Data Catalog.
+  core.String? catalogUiExperience;
+
+  /// Opt-in status for the migration of Tag Templates to Dataplex.
+  /// Possible string values are:
+  /// - "TAG_TEMPLATE_MIGRATION_UNSPECIFIED" : Default value. Migration of Tag
+  /// Templates from Data Catalog to Dataplex is not performed.
+  /// - "TAG_TEMPLATE_MIGRATION_ENABLED" : Migration of Tag Templates from Data
+  /// Catalog to Dataplex is enabled.
+  /// - "TAG_TEMPLATE_MIGRATION_DISABLED" : Migration of Tag Templates from Data
+  /// Catalog to Dataplex is disabled.
+  core.String? tagTemplateMigration;
+
+  $Shared11({
+    this.catalogUiExperience,
+    this.tagTemplateMigration,
+  });
+
+  $Shared11.fromJson(core.Map json_)
+      : this(
+          catalogUiExperience: json_['catalogUiExperience'] as core.String?,
+          tagTemplateMigration: json_['tagTemplateMigration'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (catalogUiExperience != null)
+          'catalogUiExperience': catalogUiExperience!,
+        if (tagTemplateMigration != null)
+          'tagTemplateMigration': tagTemplateMigration!,
+      };
+}
+
+/// Used by:
+///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2Sentiment
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3SentimentAnalysisResult
-class $Shared11 {
+class $Shared12 {
   /// A non-negative number in the \[0, +inf) range, which represents the
   /// absolute magnitude of sentiment, regardless of score (positive or
   /// negative).
@@ -19504,12 +19652,12 @@ class $Shared11 {
   /// sentiment).
   core.double? score;
 
-  $Shared11({
+  $Shared12({
     this.magnitude,
     this.score,
   });
 
-  $Shared11.fromJson(core.Map json_)
+  $Shared12.fromJson(core.Map json_)
       : this(
           magnitude: (json_['magnitude'] as core.num?)?.toDouble(),
           score: (json_['score'] as core.num?)?.toDouble(),
@@ -19525,7 +19673,7 @@ class $Shared11 {
 ///
 /// - osconfig:v1 : OSPolicyAssignmentInstanceFilterInventory
 /// - osconfig:v1 : OSPolicyInventoryFilter
-class $Shared12 {
+class $Shared13 {
   /// The OS short name
   ///
   /// Required.
@@ -19539,12 +19687,12 @@ class $Shared12 {
   /// versions.
   core.String? osVersion;
 
-  $Shared12({
+  $Shared13({
     this.osShortName,
     this.osVersion,
   });
 
-  $Shared12.fromJson(core.Map json_)
+  $Shared13.fromJson(core.Map json_)
       : this(
           osShortName: json_['osShortName'] as core.String?,
           osVersion: json_['osVersion'] as core.String?,
@@ -19560,7 +19708,7 @@ class $Shared12 {
 ///
 /// - vmwareengine:v1 : Nsx
 /// - vmwareengine:v1 : Vcenter
-class $Shared13 {
+class $Shared14 {
   /// Fully qualified domain name of the appliance.
   core.String? fqdn;
 
@@ -19580,14 +19728,14 @@ class $Shared13 {
   /// Version of the appliance.
   core.String? version;
 
-  $Shared13({
+  $Shared14({
     this.fqdn,
     this.internalIp,
     this.state,
     this.version,
   });
 
-  $Shared13.fromJson(core.Map json_)
+  $Shared14.fromJson(core.Map json_)
       : this(
           fqdn: json_['fqdn'] as core.String?,
           internalIp: json_['internalIp'] as core.String?,
@@ -19607,14 +19755,14 @@ class $Shared13 {
 ///
 /// - youtube:v3 : CommentSnippetAuthorChannelId
 /// - youtube:v3 : LanguageTag
-class $Shared14 {
+class $Shared15 {
   core.String? value;
 
-  $Shared14({
+  $Shared15({
     this.value,
   });
 
-  $Shared14.fromJson(core.Map json_)
+  $Shared15.fromJson(core.Map json_)
       : this(
           value: json_['value'] as core.String?,
         );
@@ -21035,6 +21183,7 @@ class $ThirdPartyVendorConfig {
 /// - clouddeploy:v1 : TimeOfDay
 /// - dlp:v2 : GoogleTypeTimeOfDay
 /// - gkebackup:v1 : TimeOfDay
+/// - looker:v1 : TimeOfDay
 /// - memcache:v1 : TimeOfDay
 /// - monitoring:v3 : TimeOfDay
 /// - mybusinessbusinessinformation:v1 : TimeOfDay
@@ -21095,7 +21244,6 @@ class $TimeOfDay00 {
 ///
 /// - jobs:v3 : TimeOfDay
 /// - jobs:v4 : TimeOfDay
-/// - looker:v1 : TimeOfDay
 class $TimeOfDay01 {
   /// Hours of day in 24 hour format.
   ///
@@ -21428,6 +21576,32 @@ class $TrackingFloodlightActivityConfig {
           'postClickLookbackWindowDays': postClickLookbackWindowDays!,
         if (postViewLookbackWindowDays != null)
           'postViewLookbackWindowDays': postViewLookbackWindowDays!,
+      };
+}
+
+/// Used by:
+///
+/// - integrations:v1 : EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables
+/// - integrations:v1 : GoogleCloudIntegrationsV1alphaTriggerConfigVariables
+class $TriggerConfigVariables {
+  /// List of variable names.
+  ///
+  /// Optional.
+  core.List<core.String>? names;
+
+  $TriggerConfigVariables({
+    this.names,
+  });
+
+  $TriggerConfigVariables.fromJson(core.Map json_)
+      : this(
+          names: (json_['names'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (names != null) 'names': names!,
       };
 }
 

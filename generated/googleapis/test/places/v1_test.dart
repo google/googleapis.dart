@@ -1100,6 +1100,8 @@ api.GoogleMapsPlacesV1Photo buildGoogleMapsPlacesV1Photo() {
   buildCounterGoogleMapsPlacesV1Photo++;
   if (buildCounterGoogleMapsPlacesV1Photo < 3) {
     o.authorAttributions = buildUnnamed14();
+    o.flagContentUri = 'foo';
+    o.googleMapsUri = 'foo';
     o.heightPx = 42;
     o.name = 'foo';
     o.widthPx = 42;
@@ -1112,6 +1114,14 @@ void checkGoogleMapsPlacesV1Photo(api.GoogleMapsPlacesV1Photo o) {
   buildCounterGoogleMapsPlacesV1Photo++;
   if (buildCounterGoogleMapsPlacesV1Photo < 3) {
     checkUnnamed14(o.authorAttributions!);
+    unittest.expect(
+      o.flagContentUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.googleMapsUri!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.heightPx!,
       unittest.equals(42),
@@ -1276,6 +1286,7 @@ api.GoogleMapsPlacesV1Place buildGoogleMapsPlacesV1Place() {
     o.goodForChildren = true;
     o.goodForGroups = true;
     o.goodForWatchingSports = true;
+    o.googleMapsLinks = buildGoogleMapsPlacesV1PlaceGoogleMapsLinks();
     o.googleMapsUri = 'foo';
     o.iconBackgroundColor = 'foo';
     o.iconMaskBaseUri = 'foo';
@@ -1357,6 +1368,7 @@ void checkGoogleMapsPlacesV1Place(api.GoogleMapsPlacesV1Place o) {
     unittest.expect(o.goodForChildren!, unittest.isTrue);
     unittest.expect(o.goodForGroups!, unittest.isTrue);
     unittest.expect(o.goodForWatchingSports!, unittest.isTrue);
+    checkGoogleMapsPlacesV1PlaceGoogleMapsLinks(o.googleMapsLinks!);
     unittest.expect(
       o.googleMapsUri!,
       unittest.equals('foo'),
@@ -1543,6 +1555,7 @@ api.GoogleMapsPlacesV1PlaceAreaSummary
   buildCounterGoogleMapsPlacesV1PlaceAreaSummary++;
   if (buildCounterGoogleMapsPlacesV1PlaceAreaSummary < 3) {
     o.contentBlocks = buildUnnamed24();
+    o.flagContentUri = 'foo';
   }
   buildCounterGoogleMapsPlacesV1PlaceAreaSummary--;
   return o;
@@ -1553,6 +1566,10 @@ void checkGoogleMapsPlacesV1PlaceAreaSummary(
   buildCounterGoogleMapsPlacesV1PlaceAreaSummary++;
   if (buildCounterGoogleMapsPlacesV1PlaceAreaSummary < 3) {
     checkUnnamed24(o.contentBlocks!);
+    unittest.expect(
+      o.flagContentUri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleMapsPlacesV1PlaceAreaSummary--;
 }
@@ -1593,7 +1610,9 @@ api.GoogleMapsPlacesV1PlaceGenerativeSummary
   buildCounterGoogleMapsPlacesV1PlaceGenerativeSummary++;
   if (buildCounterGoogleMapsPlacesV1PlaceGenerativeSummary < 3) {
     o.description = buildGoogleTypeLocalizedText();
+    o.descriptionFlagContentUri = 'foo';
     o.overview = buildGoogleTypeLocalizedText();
+    o.overviewFlagContentUri = 'foo';
     o.references = buildGoogleMapsPlacesV1References();
   }
   buildCounterGoogleMapsPlacesV1PlaceGenerativeSummary--;
@@ -1605,10 +1624,62 @@ void checkGoogleMapsPlacesV1PlaceGenerativeSummary(
   buildCounterGoogleMapsPlacesV1PlaceGenerativeSummary++;
   if (buildCounterGoogleMapsPlacesV1PlaceGenerativeSummary < 3) {
     checkGoogleTypeLocalizedText(o.description!);
+    unittest.expect(
+      o.descriptionFlagContentUri!,
+      unittest.equals('foo'),
+    );
     checkGoogleTypeLocalizedText(o.overview!);
+    unittest.expect(
+      o.overviewFlagContentUri!,
+      unittest.equals('foo'),
+    );
     checkGoogleMapsPlacesV1References(o.references!);
   }
   buildCounterGoogleMapsPlacesV1PlaceGenerativeSummary--;
+}
+
+core.int buildCounterGoogleMapsPlacesV1PlaceGoogleMapsLinks = 0;
+api.GoogleMapsPlacesV1PlaceGoogleMapsLinks
+    buildGoogleMapsPlacesV1PlaceGoogleMapsLinks() {
+  final o = api.GoogleMapsPlacesV1PlaceGoogleMapsLinks();
+  buildCounterGoogleMapsPlacesV1PlaceGoogleMapsLinks++;
+  if (buildCounterGoogleMapsPlacesV1PlaceGoogleMapsLinks < 3) {
+    o.directionsUri = 'foo';
+    o.photosUri = 'foo';
+    o.placeUri = 'foo';
+    o.reviewsUri = 'foo';
+    o.writeAReviewUri = 'foo';
+  }
+  buildCounterGoogleMapsPlacesV1PlaceGoogleMapsLinks--;
+  return o;
+}
+
+void checkGoogleMapsPlacesV1PlaceGoogleMapsLinks(
+    api.GoogleMapsPlacesV1PlaceGoogleMapsLinks o) {
+  buildCounterGoogleMapsPlacesV1PlaceGoogleMapsLinks++;
+  if (buildCounterGoogleMapsPlacesV1PlaceGoogleMapsLinks < 3) {
+    unittest.expect(
+      o.directionsUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.photosUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.placeUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.reviewsUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.writeAReviewUri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleMapsPlacesV1PlaceGoogleMapsLinks--;
 }
 
 core.List<api.GoogleMapsPlacesV1PlaceOpeningHoursPeriod> buildUnnamed25() => [
@@ -1961,6 +2032,8 @@ api.GoogleMapsPlacesV1Review buildGoogleMapsPlacesV1Review() {
   buildCounterGoogleMapsPlacesV1Review++;
   if (buildCounterGoogleMapsPlacesV1Review < 3) {
     o.authorAttribution = buildGoogleMapsPlacesV1AuthorAttribution();
+    o.flagContentUri = 'foo';
+    o.googleMapsUri = 'foo';
     o.name = 'foo';
     o.originalText = buildGoogleTypeLocalizedText();
     o.publishTime = 'foo';
@@ -1976,6 +2049,14 @@ void checkGoogleMapsPlacesV1Review(api.GoogleMapsPlacesV1Review o) {
   buildCounterGoogleMapsPlacesV1Review++;
   if (buildCounterGoogleMapsPlacesV1Review < 3) {
     checkGoogleMapsPlacesV1AuthorAttribution(o.authorAttribution!);
+    unittest.expect(
+      o.flagContentUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.googleMapsUri!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -2073,6 +2154,7 @@ api.GoogleMapsPlacesV1RoutingSummary buildGoogleMapsPlacesV1RoutingSummary() {
   final o = api.GoogleMapsPlacesV1RoutingSummary();
   buildCounterGoogleMapsPlacesV1RoutingSummary++;
   if (buildCounterGoogleMapsPlacesV1RoutingSummary < 3) {
+    o.directionsUri = 'foo';
     o.legs = buildUnnamed30();
   }
   buildCounterGoogleMapsPlacesV1RoutingSummary--;
@@ -2083,6 +2165,10 @@ void checkGoogleMapsPlacesV1RoutingSummary(
     api.GoogleMapsPlacesV1RoutingSummary o) {
   buildCounterGoogleMapsPlacesV1RoutingSummary++;
   if (buildCounterGoogleMapsPlacesV1RoutingSummary < 3) {
+    unittest.expect(
+      o.directionsUri!,
+      unittest.equals('foo'),
+    );
     checkUnnamed30(o.legs!);
   }
   buildCounterGoogleMapsPlacesV1RoutingSummary--;
@@ -2563,6 +2649,7 @@ api.GoogleMapsPlacesV1SearchTextResponse
     o.nextPageToken = 'foo';
     o.places = buildUnnamed40();
     o.routingSummaries = buildUnnamed41();
+    o.searchUri = 'foo';
   }
   buildCounterGoogleMapsPlacesV1SearchTextResponse--;
   return o;
@@ -2579,6 +2666,10 @@ void checkGoogleMapsPlacesV1SearchTextResponse(
     );
     checkUnnamed40(o.places!);
     checkUnnamed41(o.routingSummaries!);
+    unittest.expect(
+      o.searchUri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleMapsPlacesV1SearchTextResponse--;
 }
@@ -3105,6 +3196,16 @@ void main() {
       final od = api.GoogleMapsPlacesV1PlaceGenerativeSummary.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleMapsPlacesV1PlaceGenerativeSummary(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleMapsPlacesV1PlaceGoogleMapsLinks', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleMapsPlacesV1PlaceGoogleMapsLinks();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleMapsPlacesV1PlaceGoogleMapsLinks.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleMapsPlacesV1PlaceGoogleMapsLinks(od);
     });
   });
 

@@ -43,10 +43,6 @@
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsSecurityGatewaysResource]
 ///       - [ProjectsLocationsSecurityGatewaysApplicationsResource]
-/// - [VResource]
-///   - [VProjectsResource]
-///     - [VProjectsLocationsResource]
-///       - [VProjectsLocationsSecurityGatewaysResource]
 library;
 
 import 'dart:async' as async;
@@ -77,7 +73,6 @@ class BeyondCorpApi {
 
   OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
-  VResource get v => VResource(_requester);
 
   BeyondCorpApi(http.Client client,
       {core.String rootUrl = 'https://beyondcorp.googleapis.com/',
@@ -3489,6 +3484,54 @@ class ProjectsLocationsSecurityGatewaysResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/securityGateways/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// This is a custom method to allow customers to create a peering connections
   /// between Google network and customer networks.
   ///
@@ -3852,87 +3895,6 @@ class ProjectsLocationsSecurityGatewaysApplicationsResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class VResource {
-  final commons.ApiRequester _requester;
-
-  VProjectsResource get projects => VProjectsResource(_requester);
-
-  VResource(commons.ApiRequester client) : _requester = client;
-}
-
-class VProjectsResource {
-  final commons.ApiRequester _requester;
-
-  VProjectsLocationsResource get locations =>
-      VProjectsLocationsResource(_requester);
-
-  VProjectsResource(commons.ApiRequester client) : _requester = client;
-}
-
-class VProjectsLocationsResource {
-  final commons.ApiRequester _requester;
-
-  VProjectsLocationsSecurityGatewaysResource get securityGateways =>
-      VProjectsLocationsSecurityGatewaysResource(_requester);
-
-  VProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
-}
-
-class VProjectsLocationsSecurityGatewaysResource {
-  final commons.ApiRequester _requester;
-
-  VProjectsLocationsSecurityGatewaysResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Sets the access control policy on the specified resource.
-  ///
-  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
-  /// and `PERMISSION_DENIED` errors.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/securityGateways/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleIamV1Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleIamV1Policy> setIamPolicy(
-    GoogleIamV1SetIamPolicyRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
     final response_ = await _requester.request(
       url_,

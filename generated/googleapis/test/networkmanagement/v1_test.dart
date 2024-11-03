@@ -662,6 +662,7 @@ api.Endpoint buildEndpoint() {
     o.cloudSqlInstance = 'foo';
     o.forwardingRule = 'foo';
     o.forwardingRuleTarget = 'foo';
+    o.fqdn = 'foo';
     o.gkeMasterCluster = 'foo';
     o.instance = 'foo';
     o.ipAddress = 'foo';
@@ -694,6 +695,10 @@ void checkEndpoint(api.Endpoint o) {
     );
     unittest.expect(
       o.forwardingRuleTarget!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fqdn!,
       unittest.equals('foo'),
     );
     unittest.expect(

@@ -6003,10 +6003,12 @@ class Policy {
   /// Recommended alternative: autoUpdateMode which is set per app, provides
   /// greater flexibility around update frequency. When autoUpdateMode is set to
   /// AUTO_UPDATE_POSTPONED or AUTO_UPDATE_HIGH_PRIORITY, autoUpdatePolicy has
-  /// no effect. "choiceToTheUser" allows the device's user to configure the app
-  /// update policy. "always" enables auto updates. "never" disables auto
-  /// updates. "wifiOnly" enables auto updates only when the device is connected
-  /// to wifi.
+  /// no effect. - choiceToTheUser allows the device's user to configure the app
+  /// update policy. - always enables auto updates. - never disables auto
+  /// updates. - wifiOnly enables auto updates only when the device is connected
+  /// to wifi. *Important:* Changes to app update policies don't affect updates
+  /// that are in progress. Any policy changes will apply to subsequent app
+  /// updates.
   /// Possible string values are:
   /// - "autoUpdatePolicyUnspecified" : The auto update policy is not set.
   /// - "choiceToTheUser" : The user can control auto-updates.

@@ -17823,6 +17823,13 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings?
       contextFilterSettings;
 
+  /// The number of recent messages to include in the context.
+  ///
+  /// Supported features: KNOWLEDGE_ASSIST.
+  ///
+  /// Optional.
+  core.int? contextSize;
+
   /// Query from Dialogflow agent.
   ///
   /// It is used by DIALOGFLOW_ASSIST.
@@ -17856,6 +17863,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig({
     this.confidenceThreshold,
     this.contextFilterSettings,
+    this.contextSize,
     this.dialogflowQuerySource,
     this.documentQuerySource,
     this.knowledgeBaseQuerySource,
@@ -17873,6 +17881,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
                   .fromJson(json_['contextFilterSettings']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          contextSize: json_['contextSize'] as core.int?,
           dialogflowQuerySource: json_.containsKey('dialogflowQuerySource')
               ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource
                   .fromJson(json_['dialogflowQuerySource']
@@ -17902,6 +17911,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
           'confidenceThreshold': confidenceThreshold!,
         if (contextFilterSettings != null)
           'contextFilterSettings': contextFilterSettings!,
+        if (contextSize != null) 'contextSize': contextSize!,
         if (dialogflowQuerySource != null)
           'dialogflowQuerySource': dialogflowQuerySource!,
         if (documentQuerySource != null)
@@ -18623,6 +18633,9 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   )
   core.List<core.String>? phraseHints;
 
+  /// A collection of phrase set resources to use for speech adaptation.
+  core.List<core.String>? phraseSets;
+
   /// Sample rate (in Hertz) of the audio content sent in the query.
   ///
   /// Refer to
@@ -18661,6 +18674,7 @@ class GoogleCloudDialogflowV2InputAudioConfig {
     this.modelVariant,
     this.optOutConformerModelMigration,
     this.phraseHints,
+    this.phraseSets,
     this.sampleRateHertz,
     this.singleUtterance,
     this.speechContexts,
@@ -18680,6 +18694,9 @@ class GoogleCloudDialogflowV2InputAudioConfig {
           optOutConformerModelMigration:
               json_['optOutConformerModelMigration'] as core.bool?,
           phraseHints: (json_['phraseHints'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          phraseSets: (json_['phraseSets'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           sampleRateHertz: json_['sampleRateHertz'] as core.int?,
@@ -18703,6 +18720,7 @@ class GoogleCloudDialogflowV2InputAudioConfig {
         if (optOutConformerModelMigration != null)
           'optOutConformerModelMigration': optOutConformerModelMigration!,
         if (phraseHints != null) 'phraseHints': phraseHints!,
+        if (phraseSets != null) 'phraseSets': phraseSets!,
         if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
         if (singleUtterance != null) 'singleUtterance': singleUtterance!,
         if (speechContexts != null) 'speechContexts': speechContexts!,
@@ -20702,6 +20720,12 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourc
 
 /// Snippet Source for a Generative Prediction.
 class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet {
+  /// Metadata of the document.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
   /// Text taken from that URI.
   core.String? text;
 
@@ -20712,6 +20736,7 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourc
   core.String? uri;
 
   GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet({
+    this.metadata,
     this.text,
     this.title,
     this.uri,
@@ -20720,12 +20745,16 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourc
   GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet.fromJson(
       core.Map json_)
       : this(
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
+              : null,
           text: json_['text'] as core.String?,
           title: json_['title'] as core.String?,
           uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (metadata != null) 'metadata': metadata!,
         if (text != null) 'text': text!,
         if (title != null) 'title': title!,
         if (uri != null) 'uri': uri!,
@@ -22344,6 +22373,12 @@ class GoogleCloudDialogflowV2SearchKnowledgeAnswer {
 
 /// The sources of the answers.
 class GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource {
+  /// Metadata associated with the article.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
   /// The relevant snippet of the article.
   core.String? snippet;
 
@@ -22354,6 +22389,7 @@ class GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource {
   core.String? uri;
 
   GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource({
+    this.metadata,
     this.snippet,
     this.title,
     this.uri,
@@ -22362,12 +22398,16 @@ class GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource {
   GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource.fromJson(
       core.Map json_)
       : this(
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
+              : null,
           snippet: json_['snippet'] as core.String?,
           title: json_['title'] as core.String?,
           uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (metadata != null) 'metadata': metadata!,
         if (snippet != null) 'snippet': snippet!,
         if (title != null) 'title': title!,
         if (uri != null) 'uri': uri!,
@@ -22391,6 +22431,26 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequest {
   /// Required.
   core.String? conversationProfile;
 
+  /// Information about the end-user to improve the relevance and accuracy of
+  /// generative answers.
+  ///
+  /// This will be interpreted and used by a language model, so, for good
+  /// results, the data should be self-descriptive, and in a simple structure.
+  /// Example: ```json { "subscription plan": "Business Premium Plus", "devices
+  /// owned": [ {"model": "Google Pixel 7"}, {"model": "Google Pixel Tablet"} ]
+  /// } ```
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? endUserMetadata;
+
+  /// Whether to search the query exactly without query rewrite.
+  ///
+  /// Optional.
+  core.bool? exactSearch;
+
   /// The name of the latest conversation message when the request is triggered.
   ///
   /// Format: `projects//locations//conversations//messages/`.
@@ -22409,6 +22469,21 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequest {
   /// Required.
   GoogleCloudDialogflowV2TextInput? query;
 
+  /// The source of the query in the request.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "QUERY_SOURCE_UNSPECIFIED" : Unknown query source.
+  /// - "AGENT_QUERY" : The query is from agents.
+  /// - "SUGGESTED_QUERY" : The query is a suggested query from
+  /// Participants.SuggestKnowledgeAssist.
+  core.String? querySource;
+
+  /// Configuration specific to search queries with data stores.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig? searchConfig;
+
   /// The ID of the search session.
   ///
   /// The session_id can be combined with Dialogflow V3 Agent ID retrieved from
@@ -22424,9 +22499,13 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequest {
   GoogleCloudDialogflowV2SearchKnowledgeRequest({
     this.conversation,
     this.conversationProfile,
+    this.endUserMetadata,
+    this.exactSearch,
     this.latestMessage,
     this.parent,
     this.query,
+    this.querySource,
+    this.searchConfig,
     this.sessionId,
   });
 
@@ -22434,11 +22513,21 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequest {
       : this(
           conversation: json_['conversation'] as core.String?,
           conversationProfile: json_['conversationProfile'] as core.String?,
+          endUserMetadata: json_.containsKey('endUserMetadata')
+              ? json_['endUserMetadata'] as core.Map<core.String, core.dynamic>
+              : null,
+          exactSearch: json_['exactSearch'] as core.bool?,
           latestMessage: json_['latestMessage'] as core.String?,
           parent: json_['parent'] as core.String?,
           query: json_.containsKey('query')
               ? GoogleCloudDialogflowV2TextInput.fromJson(
                   json_['query'] as core.Map<core.String, core.dynamic>)
+              : null,
+          querySource: json_['querySource'] as core.String?,
+          searchConfig: json_.containsKey('searchConfig')
+              ? GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig
+                  .fromJson(json_['searchConfig']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           sessionId: json_['sessionId'] as core.String?,
         );
@@ -22447,10 +22536,323 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequest {
         if (conversation != null) 'conversation': conversation!,
         if (conversationProfile != null)
           'conversationProfile': conversationProfile!,
+        if (endUserMetadata != null) 'endUserMetadata': endUserMetadata!,
+        if (exactSearch != null) 'exactSearch': exactSearch!,
         if (latestMessage != null) 'latestMessage': latestMessage!,
         if (parent != null) 'parent': parent!,
         if (query != null) 'query': query!,
+        if (querySource != null) 'querySource': querySource!,
+        if (searchConfig != null) 'searchConfig': searchConfig!,
         if (sessionId != null) 'sessionId': sessionId!,
+      };
+}
+
+/// Configuration specific to search queries with data stores.
+class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig {
+  /// Boost specifications for data stores.
+  ///
+  /// Optional.
+  core.List<
+          GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs>?
+      boostSpecs;
+
+  /// Filter specification for data store queries.
+  ///
+  /// Optional.
+  core.List<
+          GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs>?
+      filterSpecs;
+
+  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig({
+    this.boostSpecs,
+    this.filterSpecs,
+  });
+
+  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig.fromJson(
+      core.Map json_)
+      : this(
+          boostSpecs: (json_['boostSpecs'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          filterSpecs: (json_['filterSpecs'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (boostSpecs != null) 'boostSpecs': boostSpecs!,
+        if (filterSpecs != null) 'filterSpecs': filterSpecs!,
+      };
+}
+
+/// Boost specifications for data stores.
+class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs {
+  /// Data Stores where the boosting configuration is applied.
+  ///
+  /// The full names of the referenced data stores. Formats:
+  /// \`projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}\`
+  /// \`projects/{project}/locations/{location}/dataStores/{data_store}
+  ///
+  /// Optional.
+  core.List<core.String>? dataStores;
+
+  /// A list of boosting specifications.
+  ///
+  /// Optional.
+  core.List<
+          GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec>?
+      spec;
+
+  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs({
+    this.dataStores,
+    this.spec,
+  });
+
+  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs.fromJson(
+      core.Map json_)
+      : this(
+          dataStores: (json_['dataStores'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          spec: (json_['spec'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataStores != null) 'dataStores': dataStores!,
+        if (spec != null) 'spec': spec!,
+      };
+}
+
+/// Boost specification to boost certain documents.
+///
+/// A copy of google.cloud.discoveryengine.v1main.BoostSpec, field documentation
+/// is available at
+/// https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1alpha/BoostSpec
+class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec {
+  /// Condition boost specifications.
+  ///
+  /// If a document matches multiple conditions in the specifictions, boost
+  /// scores from these specifications are all applied and combined in a
+  /// non-linear way. Maximum number of specifications is 20.
+  ///
+  /// Optional.
+  core.List<
+          GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec>?
+      conditionBoostSpecs;
+
+  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec({
+    this.conditionBoostSpecs,
+  });
+
+  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec.fromJson(
+      core.Map json_)
+      : this(
+          conditionBoostSpecs: (json_['conditionBoostSpecs'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conditionBoostSpecs != null)
+          'conditionBoostSpecs': conditionBoostSpecs!,
+      };
+}
+
+/// Boost applies to documents which match a condition.
+class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec {
+  /// Strength of the condition boost, which should be in \[-1, 1\].
+  ///
+  /// Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the
+  /// document a big promotion. However, it does not necessarily mean that the
+  /// boosted document will be the top result at all times, nor that other
+  /// documents will be excluded. Results could still be shown even when none of
+  /// them matches the condition. And results that are significantly more
+  /// relevant to the search query can still trump your heavily favored but
+  /// irrelevant documents. Setting to -1.0 gives the document a big demotion.
+  /// However, results that are deeply relevant might still be shown. The
+  /// document will have an upstream battle to get a fairly high ranking, but it
+  /// is not blocked out completely. Setting to 0.0 means no boost applied. The
+  /// boosting condition is ignored.
+  ///
+  /// Optional.
+  core.double? boost;
+
+  /// Complex specification for custom ranking based on customer defined
+  /// attribute value.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec?
+      boostControlSpec;
+
+  /// An expression which specifies a boost condition.
+  ///
+  /// The syntax and supported fields are the same as a filter expression.
+  /// Examples: * To boost documents with document ID "doc_1" or "doc_2", and
+  /// color "Red" or "Blue": * (id: ANY("doc_1", "doc_2")) AND (color:
+  /// ANY("Red","Blue"))
+  ///
+  /// Optional.
+  core.String? condition;
+
+  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec({
+    this.boost,
+    this.boostControlSpec,
+    this.condition,
+  });
+
+  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec.fromJson(
+      core.Map json_)
+      : this(
+          boost: (json_['boost'] as core.num?)?.toDouble(),
+          boostControlSpec: json_.containsKey('boostControlSpec')
+              ? GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec
+                  .fromJson(json_['boostControlSpec']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          condition: json_['condition'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (boost != null) 'boost': boost!,
+        if (boostControlSpec != null) 'boostControlSpec': boostControlSpec!,
+        if (condition != null) 'condition': condition!,
+      };
+}
+
+/// Specification for custom ranking based on customer specified attribute
+/// value.
+///
+/// It provides more controls for customized ranking than the simple (condition,
+/// boost) combination above.
+class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec {
+  /// The attribute type to be used to determine the boost amount.
+  ///
+  /// The attribute value can be derived from the field value of the specified
+  /// field_name. In the case of numerical it is straightforward i.e.
+  /// attribute_value = numerical_field_value. In the case of freshness however,
+  /// attribute_value = (time.now() - datetime_field_value).
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ATTRIBUTE_TYPE_UNSPECIFIED" : Unspecified AttributeType.
+  /// - "NUMERICAL" : The value of the numerical field will be used to
+  /// dynamically update the boost amount. In this case, the attribute_value
+  /// (the x value) of the control point will be the actual value of the
+  /// numerical field for which the boost_amount is specified.
+  /// - "FRESHNESS" : For the freshness use case the attribute value will be the
+  /// duration between the current time and the date in the datetime field
+  /// specified. The value must be formatted as an XSD `dayTimeDuration` value
+  /// (a restricted subset of an ISO 8601 duration value). The pattern for this
+  /// is: `nDnM]`. E.g. `5D`, `3DT12H30M`, `T24H`.
+  core.String? attributeType;
+
+  /// The control points used to define the curve.
+  ///
+  /// The monotonic function (defined through the interpolation_type above)
+  /// passes through the control points listed here.
+  ///
+  /// Optional.
+  core.List<
+          GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint>?
+      controlPoints;
+
+  /// The name of the field whose value will be used to determine the boost
+  /// amount.
+  ///
+  /// Optional.
+  core.String? fieldName;
+
+  /// The interpolation type to be applied to connect the control points listed
+  /// below.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "INTERPOLATION_TYPE_UNSPECIFIED" : Interpolation type is unspecified. In
+  /// this case, it defaults to Linear.
+  /// - "LINEAR" : Piecewise linear interpolation will be applied.
+  core.String? interpolationType;
+
+  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec({
+    this.attributeType,
+    this.controlPoints,
+    this.fieldName,
+    this.interpolationType,
+  });
+
+  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec.fromJson(
+      core.Map json_)
+      : this(
+          attributeType: json_['attributeType'] as core.String?,
+          controlPoints: (json_['controlPoints'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          fieldName: json_['fieldName'] as core.String?,
+          interpolationType: json_['interpolationType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributeType != null) 'attributeType': attributeType!,
+        if (controlPoints != null) 'controlPoints': controlPoints!,
+        if (fieldName != null) 'fieldName': fieldName!,
+        if (interpolationType != null) 'interpolationType': interpolationType!,
+      };
+}
+
+/// The control points used to define the curve.
+///
+/// The curve defined through these control points can only be monotonically
+/// increasing or decreasing(constant values are acceptable).
+typedef GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint
+    = $BoostSpecConditionBoostSpecBoostControlSpecControlPoint;
+
+/// Filter specification for data store queries.
+class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs {
+  /// The data store where the filter configuration is applied.
+  ///
+  /// Full resource name of data store, such as
+  /// projects/{project}/locations/{location}/collections/{collectionId}/
+  /// dataStores/{dataStoreId}.
+  ///
+  /// Optional.
+  core.List<core.String>? dataStores;
+
+  /// The filter expression to be applied.
+  ///
+  /// Expression syntax is documented at
+  /// https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata#filter-expression-syntax
+  ///
+  /// Optional.
+  core.String? filter;
+
+  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs({
+    this.dataStores,
+    this.filter,
+  });
+
+  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs.fromJson(
+      core.Map json_)
+      : this(
+          dataStores: (json_['dataStores'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          filter: json_['filter'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataStores != null) 'dataStores': dataStores!,
+        if (filter != null) 'filter': filter!,
       };
 }
 
@@ -22490,7 +22892,7 @@ class GoogleCloudDialogflowV2SearchKnowledgeResponse {
 /// See:
 /// https://cloud.google.com/natural-language/docs/basics#interpreting_sentiment_analysis_values
 /// for how to interpret the result.
-typedef GoogleCloudDialogflowV2Sentiment = $Shared11;
+typedef GoogleCloudDialogflowV2Sentiment = $Shared12;
 
 /// Configures the types of sentiment analysis to perform.
 class GoogleCloudDialogflowV2SentimentAnalysisRequestConfig {
@@ -22914,6 +23316,9 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
   /// for model selection.
   core.String? model;
 
+  /// List of names of Cloud Speech phrase sets that are used for transcription.
+  core.List<core.String>? phraseSets;
+
   /// Sample rate (in Hertz) of the audio content sent in the query.
   ///
   /// Refer to
@@ -22958,6 +23363,7 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
     this.enableWordInfo,
     this.languageCode,
     this.model,
+    this.phraseSets,
     this.sampleRateHertz,
     this.speechModelVariant,
     this.useTimeoutBasedEndpointing,
@@ -22969,6 +23375,9 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
           enableWordInfo: json_['enableWordInfo'] as core.bool?,
           languageCode: json_['languageCode'] as core.String?,
           model: json_['model'] as core.String?,
+          phraseSets: (json_['phraseSets'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           sampleRateHertz: json_['sampleRateHertz'] as core.int?,
           speechModelVariant: json_['speechModelVariant'] as core.String?,
           useTimeoutBasedEndpointing:
@@ -22980,6 +23389,7 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
         if (enableWordInfo != null) 'enableWordInfo': enableWordInfo!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (model != null) 'model': model!,
+        if (phraseSets != null) 'phraseSets': phraseSets!,
         if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
         if (speechModelVariant != null)
           'speechModelVariant': speechModelVariant!,

@@ -1225,6 +1225,19 @@ class Assignment {
   /// E.g. `projects/myproject`, `folders/123`, or `organizations/456`.
   core.String? assignee;
 
+  /// This field controls if "Gemini in BigQuery"
+  /// (https://cloud.google.com/gemini/docs/bigquery/overview) features should
+  /// be enabled for this reservation assignment, which is not on by default.
+  ///
+  /// "Gemini in BigQuery" has a distinct compliance posture from BigQuery. If
+  /// this field is set to true, the assignment job type is QUERY, and the
+  /// parent reservation edition is ENTERPRISE_PLUS, then the assignment will
+  /// give the grantee project/organization access to "Gemini in BigQuery"
+  /// features.
+  ///
+  /// Optional.
+  core.bool? enableGeminiInBigquery;
+
   /// Which type of jobs will use the reservation.
   /// Possible string values are:
   /// - "JOB_TYPE_UNSPECIFIED" : Invalid type. Requests with this value will be
@@ -1264,6 +1277,7 @@ class Assignment {
 
   Assignment({
     this.assignee,
+    this.enableGeminiInBigquery,
     this.jobType,
     this.name,
     this.state,
@@ -1272,6 +1286,7 @@ class Assignment {
   Assignment.fromJson(core.Map json_)
       : this(
           assignee: json_['assignee'] as core.String?,
+          enableGeminiInBigquery: json_['enableGeminiInBigquery'] as core.bool?,
           jobType: json_['jobType'] as core.String?,
           name: json_['name'] as core.String?,
           state: json_['state'] as core.String?,
@@ -1279,6 +1294,8 @@ class Assignment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignee != null) 'assignee': assignee!,
+        if (enableGeminiInBigquery != null)
+          'enableGeminiInBigquery': enableGeminiInBigquery!,
         if (jobType != null) 'jobType': jobType!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
@@ -1289,7 +1306,10 @@ class Assignment {
 class Autoscale {
   /// The slot capacity added to this reservation when autoscale happens.
   ///
-  /// Will be between \[0, max_slots\].
+  /// Will be between \[0, max_slots\]. Note: after users reduce max_slots, it
+  /// may take a while before it can be propagated, so current_slots may stay in
+  /// the original value and could be larger than max_slots for that brief
+  /// period (less than one minute)
   ///
   /// Output only.
   core.String? currentSlots;
@@ -1759,6 +1779,14 @@ class Reservation {
   /// the slot capacity specified in the slot_capacity field at most.
   core.bool? ignoreIdleSlots;
 
+  /// The labels associated with this reservation.
+  ///
+  /// You can use these to organize and group your reservations. You can set
+  /// this property when inserting or updating a reservation.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
   /// Applicable only for reservations located within one of the BigQuery
   /// multi-regions (US or EU).
   ///
@@ -1841,6 +1869,7 @@ class Reservation {
     this.creationTime,
     this.edition,
     this.ignoreIdleSlots,
+    this.labels,
     this.multiRegionAuxiliary,
     this.name,
     this.originalPrimaryLocation,
@@ -1860,6 +1889,13 @@ class Reservation {
           creationTime: json_['creationTime'] as core.String?,
           edition: json_['edition'] as core.String?,
           ignoreIdleSlots: json_['ignoreIdleSlots'] as core.bool?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           multiRegionAuxiliary: json_['multiRegionAuxiliary'] as core.bool?,
           name: json_['name'] as core.String?,
           originalPrimaryLocation:
@@ -1876,6 +1912,7 @@ class Reservation {
         if (creationTime != null) 'creationTime': creationTime!,
         if (edition != null) 'edition': edition!,
         if (ignoreIdleSlots != null) 'ignoreIdleSlots': ignoreIdleSlots!,
+        if (labels != null) 'labels': labels!,
         if (multiRegionAuxiliary != null)
           'multiRegionAuxiliary': multiRegionAuxiliary!,
         if (name != null) 'name': name!,

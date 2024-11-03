@@ -191,6 +191,42 @@ void checkBigQueryProfile(api.BigQueryProfile o) {
   buildCounterBigQueryProfile--;
 }
 
+core.int buildCounterBinaryLogParser = 0;
+api.BinaryLogParser buildBinaryLogParser() {
+  final o = api.BinaryLogParser();
+  buildCounterBinaryLogParser++;
+  if (buildCounterBinaryLogParser < 3) {
+    o.logFileDirectories = buildLogFileDirectories();
+    o.oracleAsmLogFileAccess = buildOracleAsmLogFileAccess();
+  }
+  buildCounterBinaryLogParser--;
+  return o;
+}
+
+void checkBinaryLogParser(api.BinaryLogParser o) {
+  buildCounterBinaryLogParser++;
+  if (buildCounterBinaryLogParser < 3) {
+    checkLogFileDirectories(o.logFileDirectories!);
+    checkOracleAsmLogFileAccess(o.oracleAsmLogFileAccess!);
+  }
+  buildCounterBinaryLogParser--;
+}
+
+core.int buildCounterBinaryLogPosition = 0;
+api.BinaryLogPosition buildBinaryLogPosition() {
+  final o = api.BinaryLogPosition();
+  buildCounterBinaryLogPosition++;
+  if (buildCounterBinaryLogPosition < 3) {}
+  buildCounterBinaryLogPosition--;
+  return o;
+}
+
+void checkBinaryLogPosition(api.BinaryLogPosition o) {
+  buildCounterBinaryLogPosition++;
+  if (buildCounterBinaryLogPosition < 3) {}
+  buildCounterBinaryLogPosition--;
+}
+
 core.int buildCounterCancelOperationRequest = 0;
 api.CancelOperationRequest buildCancelOperationRequest() {
   final o = api.CancelOperationRequest();
@@ -659,6 +695,21 @@ void checkGcsProfile(api.GcsProfile o) {
   buildCounterGcsProfile--;
 }
 
+core.int buildCounterGtid = 0;
+api.Gtid buildGtid() {
+  final o = api.Gtid();
+  buildCounterGtid++;
+  if (buildCounterGtid < 3) {}
+  buildCounterGtid--;
+  return o;
+}
+
+void checkGtid(api.Gtid o) {
+  buildCounterGtid++;
+  if (buildCounterGtid < 3) {}
+  buildCounterGtid--;
+}
+
 core.int buildCounterJsonFileFormat = 0;
 api.JsonFileFormat buildJsonFileFormat() {
   final o = api.JsonFileFormat();
@@ -1105,6 +1156,48 @@ void checkLocation(api.Location o) {
   buildCounterLocation--;
 }
 
+core.int buildCounterLogFileDirectories = 0;
+api.LogFileDirectories buildLogFileDirectories() {
+  final o = api.LogFileDirectories();
+  buildCounterLogFileDirectories++;
+  if (buildCounterLogFileDirectories < 3) {
+    o.archivedLogDirectory = 'foo';
+    o.onlineLogDirectory = 'foo';
+  }
+  buildCounterLogFileDirectories--;
+  return o;
+}
+
+void checkLogFileDirectories(api.LogFileDirectories o) {
+  buildCounterLogFileDirectories++;
+  if (buildCounterLogFileDirectories < 3) {
+    unittest.expect(
+      o.archivedLogDirectory!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.onlineLogDirectory!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterLogFileDirectories--;
+}
+
+core.int buildCounterLogMiner = 0;
+api.LogMiner buildLogMiner() {
+  final o = api.LogMiner();
+  buildCounterLogMiner++;
+  if (buildCounterLogMiner < 3) {}
+  buildCounterLogMiner--;
+  return o;
+}
+
+void checkLogMiner(api.LogMiner o) {
+  buildCounterLogMiner++;
+  if (buildCounterLogMiner < 3) {}
+  buildCounterLogMiner--;
+}
+
 core.int buildCounterLookupStreamObjectRequest = 0;
 api.LookupStreamObjectRequest buildLookupStreamObjectRequest() {
   final o = api.LookupStreamObjectRequest();
@@ -1373,7 +1466,9 @@ api.MysqlSourceConfig buildMysqlSourceConfig() {
   final o = api.MysqlSourceConfig();
   buildCounterMysqlSourceConfig++;
   if (buildCounterMysqlSourceConfig < 3) {
+    o.binaryLogPosition = buildBinaryLogPosition();
     o.excludeObjects = buildMysqlRdbms();
+    o.gtid = buildGtid();
     o.includeObjects = buildMysqlRdbms();
     o.maxConcurrentBackfillTasks = 42;
     o.maxConcurrentCdcTasks = 42;
@@ -1385,7 +1480,9 @@ api.MysqlSourceConfig buildMysqlSourceConfig() {
 void checkMysqlSourceConfig(api.MysqlSourceConfig o) {
   buildCounterMysqlSourceConfig++;
   if (buildCounterMysqlSourceConfig < 3) {
+    checkBinaryLogPosition(o.binaryLogPosition!);
     checkMysqlRdbms(o.excludeObjects!);
+    checkGtid(o.gtid!);
     checkMysqlRdbms(o.includeObjects!);
     unittest.expect(
       o.maxConcurrentBackfillTasks!,
@@ -1607,6 +1704,84 @@ void checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
+core.Map<core.String, core.String> buildUnnamed22() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed22(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterOracleAsmConfig = 0;
+api.OracleAsmConfig buildOracleAsmConfig() {
+  final o = api.OracleAsmConfig();
+  buildCounterOracleAsmConfig++;
+  if (buildCounterOracleAsmConfig < 3) {
+    o.asmService = 'foo';
+    o.connectionAttributes = buildUnnamed22();
+    o.hostname = 'foo';
+    o.oracleSslConfig = buildOracleSslConfig();
+    o.password = 'foo';
+    o.port = 42;
+    o.username = 'foo';
+  }
+  buildCounterOracleAsmConfig--;
+  return o;
+}
+
+void checkOracleAsmConfig(api.OracleAsmConfig o) {
+  buildCounterOracleAsmConfig++;
+  if (buildCounterOracleAsmConfig < 3) {
+    unittest.expect(
+      o.asmService!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed22(o.connectionAttributes!);
+    unittest.expect(
+      o.hostname!,
+      unittest.equals('foo'),
+    );
+    checkOracleSslConfig(o.oracleSslConfig!);
+    unittest.expect(
+      o.password!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.port!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.username!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterOracleAsmConfig--;
+}
+
+core.int buildCounterOracleAsmLogFileAccess = 0;
+api.OracleAsmLogFileAccess buildOracleAsmLogFileAccess() {
+  final o = api.OracleAsmLogFileAccess();
+  buildCounterOracleAsmLogFileAccess++;
+  if (buildCounterOracleAsmLogFileAccess < 3) {}
+  buildCounterOracleAsmLogFileAccess--;
+  return o;
+}
+
+void checkOracleAsmLogFileAccess(api.OracleAsmLogFileAccess o) {
+  buildCounterOracleAsmLogFileAccess++;
+  if (buildCounterOracleAsmLogFileAccess < 3) {}
+  buildCounterOracleAsmLogFileAccess--;
+}
+
 core.int buildCounterOracleColumn = 0;
 api.OracleColumn buildOracleColumn() {
   final o = api.OracleColumn();
@@ -1690,12 +1865,12 @@ void checkOracleObjectIdentifier(api.OracleObjectIdentifier o) {
   buildCounterOracleObjectIdentifier--;
 }
 
-core.Map<core.String, core.String> buildUnnamed22() => {
+core.Map<core.String, core.String> buildUnnamed23() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed22(core.Map<core.String, core.String> o) {
+void checkUnnamed23(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1712,12 +1887,14 @@ api.OracleProfile buildOracleProfile() {
   final o = api.OracleProfile();
   buildCounterOracleProfile++;
   if (buildCounterOracleProfile < 3) {
-    o.connectionAttributes = buildUnnamed22();
+    o.connectionAttributes = buildUnnamed23();
     o.databaseService = 'foo';
     o.hostname = 'foo';
+    o.oracleAsmConfig = buildOracleAsmConfig();
     o.oracleSslConfig = buildOracleSslConfig();
     o.password = 'foo';
     o.port = 42;
+    o.secretManagerStoredPassword = 'foo';
     o.username = 'foo';
   }
   buildCounterOracleProfile--;
@@ -1727,7 +1904,7 @@ api.OracleProfile buildOracleProfile() {
 void checkOracleProfile(api.OracleProfile o) {
   buildCounterOracleProfile++;
   if (buildCounterOracleProfile < 3) {
-    checkUnnamed22(o.connectionAttributes!);
+    checkUnnamed23(o.connectionAttributes!);
     unittest.expect(
       o.databaseService!,
       unittest.equals('foo'),
@@ -1736,6 +1913,7 @@ void checkOracleProfile(api.OracleProfile o) {
       o.hostname!,
       unittest.equals('foo'),
     );
+    checkOracleAsmConfig(o.oracleAsmConfig!);
     checkOracleSslConfig(o.oracleSslConfig!);
     unittest.expect(
       o.password!,
@@ -1746,6 +1924,10 @@ void checkOracleProfile(api.OracleProfile o) {
       unittest.equals(42),
     );
     unittest.expect(
+      o.secretManagerStoredPassword!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.username!,
       unittest.equals('foo'),
     );
@@ -1753,12 +1935,12 @@ void checkOracleProfile(api.OracleProfile o) {
   buildCounterOracleProfile--;
 }
 
-core.List<api.OracleSchema> buildUnnamed23() => [
+core.List<api.OracleSchema> buildUnnamed24() => [
       buildOracleSchema(),
       buildOracleSchema(),
     ];
 
-void checkUnnamed23(core.List<api.OracleSchema> o) {
+void checkUnnamed24(core.List<api.OracleSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOracleSchema(o[0]);
   checkOracleSchema(o[1]);
@@ -1769,7 +1951,7 @@ api.OracleRdbms buildOracleRdbms() {
   final o = api.OracleRdbms();
   buildCounterOracleRdbms++;
   if (buildCounterOracleRdbms < 3) {
-    o.oracleSchemas = buildUnnamed23();
+    o.oracleSchemas = buildUnnamed24();
   }
   buildCounterOracleRdbms--;
   return o;
@@ -1778,17 +1960,17 @@ api.OracleRdbms buildOracleRdbms() {
 void checkOracleRdbms(api.OracleRdbms o) {
   buildCounterOracleRdbms++;
   if (buildCounterOracleRdbms < 3) {
-    checkUnnamed23(o.oracleSchemas!);
+    checkUnnamed24(o.oracleSchemas!);
   }
   buildCounterOracleRdbms--;
 }
 
-core.List<api.OracleTable> buildUnnamed24() => [
+core.List<api.OracleTable> buildUnnamed25() => [
       buildOracleTable(),
       buildOracleTable(),
     ];
 
-void checkUnnamed24(core.List<api.OracleTable> o) {
+void checkUnnamed25(core.List<api.OracleTable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOracleTable(o[0]);
   checkOracleTable(o[1]);
@@ -1799,7 +1981,7 @@ api.OracleSchema buildOracleSchema() {
   final o = api.OracleSchema();
   buildCounterOracleSchema++;
   if (buildCounterOracleSchema < 3) {
-    o.oracleTables = buildUnnamed24();
+    o.oracleTables = buildUnnamed25();
     o.schema = 'foo';
   }
   buildCounterOracleSchema--;
@@ -1809,7 +1991,7 @@ api.OracleSchema buildOracleSchema() {
 void checkOracleSchema(api.OracleSchema o) {
   buildCounterOracleSchema++;
   if (buildCounterOracleSchema < 3) {
-    checkUnnamed24(o.oracleTables!);
+    checkUnnamed25(o.oracleTables!);
     unittest.expect(
       o.schema!,
       unittest.equals('foo'),
@@ -1845,9 +2027,11 @@ api.OracleSourceConfig buildOracleSourceConfig() {
   final o = api.OracleSourceConfig();
   buildCounterOracleSourceConfig++;
   if (buildCounterOracleSourceConfig < 3) {
+    o.binaryLogParser = buildBinaryLogParser();
     o.dropLargeObjects = buildDropLargeObjects();
     o.excludeObjects = buildOracleRdbms();
     o.includeObjects = buildOracleRdbms();
+    o.logMiner = buildLogMiner();
     o.maxConcurrentBackfillTasks = 42;
     o.maxConcurrentCdcTasks = 42;
     o.streamLargeObjects = buildStreamLargeObjects();
@@ -1859,9 +2043,11 @@ api.OracleSourceConfig buildOracleSourceConfig() {
 void checkOracleSourceConfig(api.OracleSourceConfig o) {
   buildCounterOracleSourceConfig++;
   if (buildCounterOracleSourceConfig < 3) {
+    checkBinaryLogParser(o.binaryLogParser!);
     checkDropLargeObjects(o.dropLargeObjects!);
     checkOracleRdbms(o.excludeObjects!);
     checkOracleRdbms(o.includeObjects!);
+    checkLogMiner(o.logMiner!);
     unittest.expect(
       o.maxConcurrentBackfillTasks!,
       unittest.equals(42),
@@ -1899,12 +2085,12 @@ void checkOracleSslConfig(api.OracleSslConfig o) {
   buildCounterOracleSslConfig--;
 }
 
-core.List<api.OracleColumn> buildUnnamed25() => [
+core.List<api.OracleColumn> buildUnnamed26() => [
       buildOracleColumn(),
       buildOracleColumn(),
     ];
 
-void checkUnnamed25(core.List<api.OracleColumn> o) {
+void checkUnnamed26(core.List<api.OracleColumn> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOracleColumn(o[0]);
   checkOracleColumn(o[1]);
@@ -1915,7 +2101,7 @@ api.OracleTable buildOracleTable() {
   final o = api.OracleTable();
   buildCounterOracleTable++;
   if (buildCounterOracleTable < 3) {
-    o.oracleColumns = buildUnnamed25();
+    o.oracleColumns = buildUnnamed26();
     o.table = 'foo';
   }
   buildCounterOracleTable--;
@@ -1925,7 +2111,7 @@ api.OracleTable buildOracleTable() {
 void checkOracleTable(api.OracleTable o) {
   buildCounterOracleTable++;
   if (buildCounterOracleTable < 3) {
-    checkUnnamed25(o.oracleColumns!);
+    checkUnnamed26(o.oracleColumns!);
     unittest.expect(
       o.table!,
       unittest.equals('foo'),
@@ -2054,12 +2240,12 @@ void checkPostgresqlProfile(api.PostgresqlProfile o) {
   buildCounterPostgresqlProfile--;
 }
 
-core.List<api.PostgresqlSchema> buildUnnamed26() => [
+core.List<api.PostgresqlSchema> buildUnnamed27() => [
       buildPostgresqlSchema(),
       buildPostgresqlSchema(),
     ];
 
-void checkUnnamed26(core.List<api.PostgresqlSchema> o) {
+void checkUnnamed27(core.List<api.PostgresqlSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPostgresqlSchema(o[0]);
   checkPostgresqlSchema(o[1]);
@@ -2070,7 +2256,7 @@ api.PostgresqlRdbms buildPostgresqlRdbms() {
   final o = api.PostgresqlRdbms();
   buildCounterPostgresqlRdbms++;
   if (buildCounterPostgresqlRdbms < 3) {
-    o.postgresqlSchemas = buildUnnamed26();
+    o.postgresqlSchemas = buildUnnamed27();
   }
   buildCounterPostgresqlRdbms--;
   return o;
@@ -2079,17 +2265,17 @@ api.PostgresqlRdbms buildPostgresqlRdbms() {
 void checkPostgresqlRdbms(api.PostgresqlRdbms o) {
   buildCounterPostgresqlRdbms++;
   if (buildCounterPostgresqlRdbms < 3) {
-    checkUnnamed26(o.postgresqlSchemas!);
+    checkUnnamed27(o.postgresqlSchemas!);
   }
   buildCounterPostgresqlRdbms--;
 }
 
-core.List<api.PostgresqlTable> buildUnnamed27() => [
+core.List<api.PostgresqlTable> buildUnnamed28() => [
       buildPostgresqlTable(),
       buildPostgresqlTable(),
     ];
 
-void checkUnnamed27(core.List<api.PostgresqlTable> o) {
+void checkUnnamed28(core.List<api.PostgresqlTable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPostgresqlTable(o[0]);
   checkPostgresqlTable(o[1]);
@@ -2100,7 +2286,7 @@ api.PostgresqlSchema buildPostgresqlSchema() {
   final o = api.PostgresqlSchema();
   buildCounterPostgresqlSchema++;
   if (buildCounterPostgresqlSchema < 3) {
-    o.postgresqlTables = buildUnnamed27();
+    o.postgresqlTables = buildUnnamed28();
     o.schema = 'foo';
   }
   buildCounterPostgresqlSchema--;
@@ -2110,7 +2296,7 @@ api.PostgresqlSchema buildPostgresqlSchema() {
 void checkPostgresqlSchema(api.PostgresqlSchema o) {
   buildCounterPostgresqlSchema++;
   if (buildCounterPostgresqlSchema < 3) {
-    checkUnnamed27(o.postgresqlTables!);
+    checkUnnamed28(o.postgresqlTables!);
     unittest.expect(
       o.schema!,
       unittest.equals('foo'),
@@ -2155,12 +2341,12 @@ void checkPostgresqlSourceConfig(api.PostgresqlSourceConfig o) {
   buildCounterPostgresqlSourceConfig--;
 }
 
-core.List<api.PostgresqlColumn> buildUnnamed28() => [
+core.List<api.PostgresqlColumn> buildUnnamed29() => [
       buildPostgresqlColumn(),
       buildPostgresqlColumn(),
     ];
 
-void checkUnnamed28(core.List<api.PostgresqlColumn> o) {
+void checkUnnamed29(core.List<api.PostgresqlColumn> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPostgresqlColumn(o[0]);
   checkPostgresqlColumn(o[1]);
@@ -2171,7 +2357,7 @@ api.PostgresqlTable buildPostgresqlTable() {
   final o = api.PostgresqlTable();
   buildCounterPostgresqlTable++;
   if (buildCounterPostgresqlTable < 3) {
-    o.postgresqlColumns = buildUnnamed28();
+    o.postgresqlColumns = buildUnnamed29();
     o.table = 'foo';
   }
   buildCounterPostgresqlTable--;
@@ -2181,7 +2367,7 @@ api.PostgresqlTable buildPostgresqlTable() {
 void checkPostgresqlTable(api.PostgresqlTable o) {
   buildCounterPostgresqlTable++;
   if (buildCounterPostgresqlTable < 3) {
-    checkUnnamed28(o.postgresqlColumns!);
+    checkUnnamed29(o.postgresqlColumns!);
     unittest.expect(
       o.table!,
       unittest.equals('foo'),
@@ -2190,12 +2376,12 @@ void checkPostgresqlTable(api.PostgresqlTable o) {
   buildCounterPostgresqlTable--;
 }
 
-core.Map<core.String, core.String> buildUnnamed29() => {
+core.Map<core.String, core.String> buildUnnamed30() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed29(core.Map<core.String, core.String> o) {
+void checkUnnamed30(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2215,7 +2401,7 @@ api.PrivateConnection buildPrivateConnection() {
     o.createTime = 'foo';
     o.displayName = 'foo';
     o.error = buildError();
-    o.labels = buildUnnamed29();
+    o.labels = buildUnnamed30();
     o.name = 'foo';
     o.state = 'foo';
     o.updateTime = 'foo';
@@ -2237,7 +2423,7 @@ void checkPrivateConnection(api.PrivateConnection o) {
       unittest.equals('foo'),
     );
     checkError(o.error!);
-    checkUnnamed29(o.labels!);
+    checkUnnamed30(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -2277,12 +2463,12 @@ void checkPrivateConnectivity(api.PrivateConnectivity o) {
   buildCounterPrivateConnectivity--;
 }
 
-core.Map<core.String, core.String> buildUnnamed30() => {
+core.Map<core.String, core.String> buildUnnamed31() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed30(core.Map<core.String, core.String> o) {
+void checkUnnamed31(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2303,7 +2489,7 @@ api.Route buildRoute() {
     o.destinationAddress = 'foo';
     o.destinationPort = 42;
     o.displayName = 'foo';
-    o.labels = buildUnnamed30();
+    o.labels = buildUnnamed31();
     o.name = 'foo';
     o.updateTime = 'foo';
   }
@@ -2330,7 +2516,7 @@ void checkRoute(api.Route o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed30(o.labels!);
+    checkUnnamed31(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -2616,12 +2802,12 @@ void checkSqlServerProfile(api.SqlServerProfile o) {
   buildCounterSqlServerProfile--;
 }
 
-core.List<api.SqlServerSchema> buildUnnamed31() => [
+core.List<api.SqlServerSchema> buildUnnamed32() => [
       buildSqlServerSchema(),
       buildSqlServerSchema(),
     ];
 
-void checkUnnamed31(core.List<api.SqlServerSchema> o) {
+void checkUnnamed32(core.List<api.SqlServerSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSqlServerSchema(o[0]);
   checkSqlServerSchema(o[1]);
@@ -2632,7 +2818,7 @@ api.SqlServerRdbms buildSqlServerRdbms() {
   final o = api.SqlServerRdbms();
   buildCounterSqlServerRdbms++;
   if (buildCounterSqlServerRdbms < 3) {
-    o.schemas = buildUnnamed31();
+    o.schemas = buildUnnamed32();
   }
   buildCounterSqlServerRdbms--;
   return o;
@@ -2641,17 +2827,17 @@ api.SqlServerRdbms buildSqlServerRdbms() {
 void checkSqlServerRdbms(api.SqlServerRdbms o) {
   buildCounterSqlServerRdbms++;
   if (buildCounterSqlServerRdbms < 3) {
-    checkUnnamed31(o.schemas!);
+    checkUnnamed32(o.schemas!);
   }
   buildCounterSqlServerRdbms--;
 }
 
-core.List<api.SqlServerTable> buildUnnamed32() => [
+core.List<api.SqlServerTable> buildUnnamed33() => [
       buildSqlServerTable(),
       buildSqlServerTable(),
     ];
 
-void checkUnnamed32(core.List<api.SqlServerTable> o) {
+void checkUnnamed33(core.List<api.SqlServerTable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSqlServerTable(o[0]);
   checkSqlServerTable(o[1]);
@@ -2663,7 +2849,7 @@ api.SqlServerSchema buildSqlServerSchema() {
   buildCounterSqlServerSchema++;
   if (buildCounterSqlServerSchema < 3) {
     o.schema = 'foo';
-    o.tables = buildUnnamed32();
+    o.tables = buildUnnamed33();
   }
   buildCounterSqlServerSchema--;
   return o;
@@ -2676,7 +2862,7 @@ void checkSqlServerSchema(api.SqlServerSchema o) {
       o.schema!,
       unittest.equals('foo'),
     );
-    checkUnnamed32(o.tables!);
+    checkUnnamed33(o.tables!);
   }
   buildCounterSqlServerSchema--;
 }
@@ -2716,12 +2902,12 @@ void checkSqlServerSourceConfig(api.SqlServerSourceConfig o) {
   buildCounterSqlServerSourceConfig--;
 }
 
-core.List<api.SqlServerColumn> buildUnnamed33() => [
+core.List<api.SqlServerColumn> buildUnnamed34() => [
       buildSqlServerColumn(),
       buildSqlServerColumn(),
     ];
 
-void checkUnnamed33(core.List<api.SqlServerColumn> o) {
+void checkUnnamed34(core.List<api.SqlServerColumn> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSqlServerColumn(o[0]);
   checkSqlServerColumn(o[1]);
@@ -2732,7 +2918,7 @@ api.SqlServerTable buildSqlServerTable() {
   final o = api.SqlServerTable();
   buildCounterSqlServerTable++;
   if (buildCounterSqlServerTable < 3) {
-    o.columns = buildUnnamed33();
+    o.columns = buildUnnamed34();
     o.table = 'foo';
   }
   buildCounterSqlServerTable--;
@@ -2742,7 +2928,7 @@ api.SqlServerTable buildSqlServerTable() {
 void checkSqlServerTable(api.SqlServerTable o) {
   buildCounterSqlServerTable++;
   if (buildCounterSqlServerTable < 3) {
-    checkUnnamed33(o.columns!);
+    checkUnnamed34(o.columns!);
     unittest.expect(
       o.table!,
       unittest.equals('foo'),
@@ -2815,7 +3001,7 @@ void checkStaticServiceIpConnectivity(api.StaticServiceIpConnectivity o) {
   buildCounterStaticServiceIpConnectivity--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed34() => {
+core.Map<core.String, core.Object?> buildUnnamed35() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2828,7 +3014,7 @@ core.Map<core.String, core.Object?> buildUnnamed34() => {
       },
     };
 
-void checkUnnamed34(core.Map<core.String, core.Object?> o) {
+void checkUnnamed35(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -2860,15 +3046,15 @@ void checkUnnamed34(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed35() => [
-      buildUnnamed34(),
-      buildUnnamed34(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed36() => [
+      buildUnnamed35(),
+      buildUnnamed35(),
     ];
 
-void checkUnnamed35(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed36(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed34(o[0]);
-  checkUnnamed34(o[1]);
+  checkUnnamed35(o[0]);
+  checkUnnamed35(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -2877,7 +3063,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed35();
+    o.details = buildUnnamed36();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -2891,7 +3077,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed35(o.details!);
+    checkUnnamed36(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -2934,23 +3120,23 @@ void checkStopBackfillJobResponse(api.StopBackfillJobResponse o) {
   buildCounterStopBackfillJobResponse--;
 }
 
-core.List<api.Error> buildUnnamed36() => [
+core.List<api.Error> buildUnnamed37() => [
       buildError(),
       buildError(),
     ];
 
-void checkUnnamed36(core.List<api.Error> o) {
+void checkUnnamed37(core.List<api.Error> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkError(o[0]);
   checkError(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed37() => {
+core.Map<core.String, core.String> buildUnnamed38() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed37(core.Map<core.String, core.String> o) {
+void checkUnnamed38(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2973,8 +3159,8 @@ api.Stream buildStream() {
     o.customerManagedEncryptionKey = 'foo';
     o.destinationConfig = buildDestinationConfig();
     o.displayName = 'foo';
-    o.errors = buildUnnamed36();
-    o.labels = buildUnnamed37();
+    o.errors = buildUnnamed37();
+    o.labels = buildUnnamed38();
     o.lastRecoveryTime = 'foo';
     o.name = 'foo';
     o.sourceConfig = buildSourceConfig();
@@ -3003,8 +3189,8 @@ void checkStream(api.Stream o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed36(o.errors!);
-    checkUnnamed37(o.labels!);
+    checkUnnamed37(o.errors!);
+    checkUnnamed38(o.labels!);
     unittest.expect(
       o.lastRecoveryTime!,
       unittest.equals('foo'),
@@ -3041,12 +3227,12 @@ void checkStreamLargeObjects(api.StreamLargeObjects o) {
   buildCounterStreamLargeObjects--;
 }
 
-core.List<api.Error> buildUnnamed38() => [
+core.List<api.Error> buildUnnamed39() => [
       buildError(),
       buildError(),
     ];
 
-void checkUnnamed38(core.List<api.Error> o) {
+void checkUnnamed39(core.List<api.Error> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkError(o[0]);
   checkError(o[1]);
@@ -3060,7 +3246,7 @@ api.StreamObject buildStreamObject() {
     o.backfillJob = buildBackfillJob();
     o.createTime = 'foo';
     o.displayName = 'foo';
-    o.errors = buildUnnamed38();
+    o.errors = buildUnnamed39();
     o.name = 'foo';
     o.sourceObject = buildSourceObjectIdentifier();
     o.updateTime = 'foo';
@@ -3081,7 +3267,7 @@ void checkStreamObject(api.StreamObject o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed38(o.errors!);
+    checkUnnamed39(o.errors!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -3190,6 +3376,26 @@ void main() {
       final od = api.BigQueryProfile.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkBigQueryProfile(od);
+    });
+  });
+
+  unittest.group('obj-schema-BinaryLogParser', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBinaryLogParser();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BinaryLogParser.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBinaryLogParser(od);
+    });
+  });
+
+  unittest.group('obj-schema-BinaryLogPosition', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBinaryLogPosition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BinaryLogPosition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBinaryLogPosition(od);
     });
   });
 
@@ -3333,6 +3539,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Gtid', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGtid();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Gtid.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGtid(od);
+    });
+  });
+
   unittest.group('obj-schema-JsonFileFormat', () {
     unittest.test('to-json--from-json', () async {
       final o = buildJsonFileFormat();
@@ -3420,6 +3636,26 @@ void main() {
       final od =
           api.Location.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLocation(od);
+    });
+  });
+
+  unittest.group('obj-schema-LogFileDirectories', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLogFileDirectories();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LogFileDirectories.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkLogFileDirectories(od);
+    });
+  });
+
+  unittest.group('obj-schema-LogMiner', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLogMiner();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.LogMiner.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkLogMiner(od);
     });
   });
 
@@ -3560,6 +3796,26 @@ void main() {
       final od =
           api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOperation(od);
+    });
+  });
+
+  unittest.group('obj-schema-OracleAsmConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOracleAsmConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OracleAsmConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkOracleAsmConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-OracleAsmLogFileAccess', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOracleAsmLogFileAccess();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OracleAsmLogFileAccess.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkOracleAsmLogFileAccess(od);
     });
   });
 

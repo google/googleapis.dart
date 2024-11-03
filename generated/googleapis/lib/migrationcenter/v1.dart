@@ -4177,9 +4177,8 @@ class ComputeEnginePreferences {
   /// If unspecified (default), all types are considered, based on available
   /// usage data.
   /// Possible string values are:
-  /// - "PERSISTENT_DISK_TYPE_UNSPECIFIED" : Unspecified (default value).
-  /// Selecting this value allows the system to use any disk type according to
-  /// reported usage. This a good value to start with.
+  /// - "PERSISTENT_DISK_TYPE_UNSPECIFIED" : Unspecified. Fallback to default
+  /// value based on context.
   /// - "PERSISTENT_DISK_TYPE_STANDARD" : Standard HDD Persistent Disk.
   /// - "PERSISTENT_DISK_TYPE_BALANCED" : Balanced Persistent Disk.
   /// - "PERSISTENT_DISK_TYPE_SSD" : SSD Persistent Disk.
@@ -4283,9 +4282,8 @@ class ComputeStorageDescriptor {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "PERSISTENT_DISK_TYPE_UNSPECIFIED" : Unspecified (default value).
-  /// Selecting this value allows the system to use any disk type according to
-  /// reported usage. This a good value to start with.
+  /// - "PERSISTENT_DISK_TYPE_UNSPECIFIED" : Unspecified. Fallback to default
+  /// value based on context.
   /// - "PERSISTENT_DISK_TYPE_STANDARD" : Standard HDD Persistent Disk.
   /// - "PERSISTENT_DISK_TYPE_BALANCED" : Balanced Persistent Disk.
   /// - "PERSISTENT_DISK_TYPE_SSD" : SSD Persistent Disk.

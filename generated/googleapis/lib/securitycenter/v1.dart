@@ -14190,6 +14190,9 @@ class GroupFindingsRequest {
   /// only possible state_change is "UNUSED", which will be the state_change set
   /// for all findings present at read_time. If this field is set then
   /// `state_change` must be a specified field in `group_by`.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? compareDuration;
 
   /// Expression that defines the filter to apply across findings.
@@ -14245,6 +14248,9 @@ class GroupFindingsRequest {
   /// The filter is limited to findings existing at the supplied time and their
   /// values are those at that specific time. Absence of this field will default
   /// to the API's version of NOW.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? readTime;
 
   GroupFindingsRequest({
@@ -16975,6 +16981,9 @@ class SetFindingStateRequest {
   /// If unset, defaults to the request time.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? startTime;
 
   /// The desired State of the finding.

@@ -9257,6 +9257,10 @@ class GoogleCloudContactcenterinsightsV1QaAnswer {
   /// The maximum potential score of the question.
   ///
   /// If the question was answered using `na_value`, this field will be zero.
+  /// Deprecated: Use AnswerValue.potential_score instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.double? potentialScore;
 
   /// The QaQuestion answered by this answer.
@@ -9366,10 +9370,24 @@ class GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue {
   /// A value of "Not Applicable (N/A)".
   core.bool? naValue;
 
+  /// Normalized score of the questions.
+  ///
+  /// Calculated as score / potential_score iff potential_score != 0 else 0
+  ///
+  /// Output only.
+  core.double? normalizedScore;
+
   /// Numerical value.
   core.double? numValue;
 
+  /// The maximum potential score of the question.
+  ///
+  /// Output only.
+  core.double? potentialScore;
+
   /// Numerical score of the answer.
+  ///
+  /// Output only.
   core.double? score;
 
   /// String value.
@@ -9379,7 +9397,9 @@ class GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue {
     this.boolValue,
     this.key,
     this.naValue,
+    this.normalizedScore,
     this.numValue,
+    this.potentialScore,
     this.score,
     this.strValue,
   });
@@ -9389,7 +9409,9 @@ class GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue {
           boolValue: json_['boolValue'] as core.bool?,
           key: json_['key'] as core.String?,
           naValue: json_['naValue'] as core.bool?,
+          normalizedScore: (json_['normalizedScore'] as core.num?)?.toDouble(),
           numValue: (json_['numValue'] as core.num?)?.toDouble(),
+          potentialScore: (json_['potentialScore'] as core.num?)?.toDouble(),
           score: (json_['score'] as core.num?)?.toDouble(),
           strValue: json_['strValue'] as core.String?,
         );
@@ -9398,7 +9420,9 @@ class GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue {
         if (boolValue != null) 'boolValue': boolValue!,
         if (key != null) 'key': key!,
         if (naValue != null) 'naValue': naValue!,
+        if (normalizedScore != null) 'normalizedScore': normalizedScore!,
         if (numValue != null) 'numValue': numValue!,
+        if (potentialScore != null) 'potentialScore': potentialScore!,
         if (score != null) 'score': score!,
         if (strValue != null) 'strValue': strValue!,
       };

@@ -532,14 +532,18 @@ class GoogleMapsPlacesV1AddressDescriptorLandmark {
   /// street entrances.
   core.String? spatialRelationship;
 
-  /// The straight line distance in meters between the target location and the
-  /// landmark.
+  /// The straight line distance, in meters, between the center point of the
+  /// target and the center point of the landmark.
+  ///
+  /// In some situations, this value can be longer than
+  /// `travel_distance_meters`.
   core.double? straightLineDistanceMeters;
 
-  /// The travel distance in meters along the road network if known.
+  /// The travel distance, in meters, along the road network from the target to
+  /// the landmark, if known.
   ///
-  /// This does not take into account the mode of transportation
-  /// (walking/driving).
+  /// This value does not take into account the mode of transportation, such as
+  /// walking, driving, or biking.
   core.double? travelDistanceMeters;
 
   /// A set of type tags for this landmark.
@@ -1699,6 +1703,12 @@ class GoogleMapsPlacesV1Photo {
   /// This photo's authors.
   core.List<GoogleMapsPlacesV1AuthorAttribution>? authorAttributions;
 
+  /// A link where users can flag a problem with the photo.
+  core.String? flagContentUri;
+
+  /// A link to show the photo on Google Maps.
+  core.String? googleMapsUri;
+
   /// The maximum available height, in pixels.
   core.int? heightPx;
 
@@ -1714,6 +1724,8 @@ class GoogleMapsPlacesV1Photo {
 
   GoogleMapsPlacesV1Photo({
     this.authorAttributions,
+    this.flagContentUri,
+    this.googleMapsUri,
     this.heightPx,
     this.name,
     this.widthPx,
@@ -1725,6 +1737,8 @@ class GoogleMapsPlacesV1Photo {
               ?.map((value) => GoogleMapsPlacesV1AuthorAttribution.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          flagContentUri: json_['flagContentUri'] as core.String?,
+          googleMapsUri: json_['googleMapsUri'] as core.String?,
           heightPx: json_['heightPx'] as core.int?,
           name: json_['name'] as core.String?,
           widthPx: json_['widthPx'] as core.int?,
@@ -1733,6 +1747,8 @@ class GoogleMapsPlacesV1Photo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (authorAttributions != null)
           'authorAttributions': authorAttributions!,
+        if (flagContentUri != null) 'flagContentUri': flagContentUri!,
+        if (googleMapsUri != null) 'googleMapsUri': googleMapsUri!,
         if (heightPx != null) 'heightPx': heightPx!,
         if (name != null) 'name': name!,
         if (widthPx != null) 'widthPx': widthPx!,
@@ -1810,7 +1826,7 @@ class GoogleMapsPlacesV1Place {
   /// A set of data provider that must be shown with this result.
   core.List<GoogleMapsPlacesV1PlaceAttribution>? attributions;
 
-  /// The business status for the place.
+  ///
   /// Possible string values are:
   /// - "BUSINESS_STATUS_UNSPECIFIED" : Default value. This value is unused.
   /// - "OPERATIONAL" : The establishment is operational, not necessarily open
@@ -1886,6 +1902,9 @@ class GoogleMapsPlacesV1Place {
 
   /// Place is suitable for watching sports.
   core.bool? goodForWatchingSports;
+
+  /// Links to trigger different Google Maps actions.
+  GoogleMapsPlacesV1PlaceGoogleMapsLinks? googleMapsLinks;
 
   /// A URL providing more information about this place.
   core.String? googleMapsUri;
@@ -2086,6 +2105,7 @@ class GoogleMapsPlacesV1Place {
     this.goodForChildren,
     this.goodForGroups,
     this.goodForWatchingSports,
+    this.googleMapsLinks,
     this.googleMapsUri,
     this.iconBackgroundColor,
     this.iconMaskBaseUri,
@@ -2196,6 +2216,11 @@ class GoogleMapsPlacesV1Place {
           goodForChildren: json_['goodForChildren'] as core.bool?,
           goodForGroups: json_['goodForGroups'] as core.bool?,
           goodForWatchingSports: json_['goodForWatchingSports'] as core.bool?,
+          googleMapsLinks: json_.containsKey('googleMapsLinks')
+              ? GoogleMapsPlacesV1PlaceGoogleMapsLinks.fromJson(
+                  json_['googleMapsLinks']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           googleMapsUri: json_['googleMapsUri'] as core.String?,
           iconBackgroundColor: json_['iconBackgroundColor'] as core.String?,
           iconMaskBaseUri: json_['iconMaskBaseUri'] as core.String?,
@@ -2307,6 +2332,7 @@ class GoogleMapsPlacesV1Place {
         if (goodForGroups != null) 'goodForGroups': goodForGroups!,
         if (goodForWatchingSports != null)
           'goodForWatchingSports': goodForWatchingSports!,
+        if (googleMapsLinks != null) 'googleMapsLinks': googleMapsLinks!,
         if (googleMapsUri != null) 'googleMapsUri': googleMapsUri!,
         if (iconBackgroundColor != null)
           'iconBackgroundColor': iconBackgroundColor!,
@@ -2462,8 +2488,12 @@ class GoogleMapsPlacesV1PlaceAreaSummary {
   /// Each block has a separate topic about the area.
   core.List<GoogleMapsPlacesV1ContentBlock>? contentBlocks;
 
+  /// A link where users can flag a problem with the summary.
+  core.String? flagContentUri;
+
   GoogleMapsPlacesV1PlaceAreaSummary({
     this.contentBlocks,
+    this.flagContentUri,
   });
 
   GoogleMapsPlacesV1PlaceAreaSummary.fromJson(core.Map json_)
@@ -2472,10 +2502,12 @@ class GoogleMapsPlacesV1PlaceAreaSummary {
               ?.map((value) => GoogleMapsPlacesV1ContentBlock.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          flagContentUri: json_['flagContentUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentBlocks != null) 'contentBlocks': contentBlocks!,
+        if (flagContentUri != null) 'flagContentUri': flagContentUri!,
       };
 }
 
@@ -2513,15 +2545,23 @@ class GoogleMapsPlacesV1PlaceGenerativeSummary {
   /// The detailed description of the place.
   GoogleTypeLocalizedText? description;
 
+  /// A link where users can flag a problem with the description summary.
+  core.String? descriptionFlagContentUri;
+
   /// The overview of the place.
   GoogleTypeLocalizedText? overview;
+
+  /// A link where users can flag a problem with the overview summary.
+  core.String? overviewFlagContentUri;
 
   /// References that are used to generate the summary description.
   GoogleMapsPlacesV1References? references;
 
   GoogleMapsPlacesV1PlaceGenerativeSummary({
     this.description,
+    this.descriptionFlagContentUri,
     this.overview,
+    this.overviewFlagContentUri,
     this.references,
   });
 
@@ -2531,10 +2571,14 @@ class GoogleMapsPlacesV1PlaceGenerativeSummary {
               ? GoogleTypeLocalizedText.fromJson(
                   json_['description'] as core.Map<core.String, core.dynamic>)
               : null,
+          descriptionFlagContentUri:
+              json_['descriptionFlagContentUri'] as core.String?,
           overview: json_.containsKey('overview')
               ? GoogleTypeLocalizedText.fromJson(
                   json_['overview'] as core.Map<core.String, core.dynamic>)
               : null,
+          overviewFlagContentUri:
+              json_['overviewFlagContentUri'] as core.String?,
           references: json_.containsKey('references')
               ? GoogleMapsPlacesV1References.fromJson(
                   json_['references'] as core.Map<core.String, core.dynamic>)
@@ -2543,8 +2587,67 @@ class GoogleMapsPlacesV1PlaceGenerativeSummary {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
+        if (descriptionFlagContentUri != null)
+          'descriptionFlagContentUri': descriptionFlagContentUri!,
         if (overview != null) 'overview': overview!,
+        if (overviewFlagContentUri != null)
+          'overviewFlagContentUri': overviewFlagContentUri!,
         if (references != null) 'references': references!,
+      };
+}
+
+/// Links to trigger different Google Maps actions.
+class GoogleMapsPlacesV1PlaceGoogleMapsLinks {
+  /// A link to show the directions to the place.
+  ///
+  /// The link only populates the destination location and uses the default
+  /// travel mode `DRIVE`.
+  core.String? directionsUri;
+
+  /// A link to show photos of this place.
+  ///
+  /// This link is currently not supported on Google Maps Mobile and only works
+  /// on the web version of Google Maps.
+  core.String? photosUri;
+
+  /// A link to show this place.
+  core.String? placeUri;
+
+  /// A link to show reviews of this place.
+  ///
+  /// This link is currently not supported on Google Maps Mobile and only works
+  /// on the web version of Google Maps.
+  core.String? reviewsUri;
+
+  /// A link to write a review for this place.
+  ///
+  /// This link is currently not supported on Google Maps Mobile and only works
+  /// on the web version of Google Maps.
+  core.String? writeAReviewUri;
+
+  GoogleMapsPlacesV1PlaceGoogleMapsLinks({
+    this.directionsUri,
+    this.photosUri,
+    this.placeUri,
+    this.reviewsUri,
+    this.writeAReviewUri,
+  });
+
+  GoogleMapsPlacesV1PlaceGoogleMapsLinks.fromJson(core.Map json_)
+      : this(
+          directionsUri: json_['directionsUri'] as core.String?,
+          photosUri: json_['photosUri'] as core.String?,
+          placeUri: json_['placeUri'] as core.String?,
+          reviewsUri: json_['reviewsUri'] as core.String?,
+          writeAReviewUri: json_['writeAReviewUri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (directionsUri != null) 'directionsUri': directionsUri!,
+        if (photosUri != null) 'photosUri': photosUri!,
+        if (placeUri != null) 'placeUri': placeUri!,
+        if (reviewsUri != null) 'reviewsUri': reviewsUri!,
+        if (writeAReviewUri != null) 'writeAReviewUri': writeAReviewUri!,
       };
 }
 
@@ -2955,6 +3058,12 @@ class GoogleMapsPlacesV1Review {
   /// This review's author.
   GoogleMapsPlacesV1AuthorAttribution? authorAttribution;
 
+  /// A link where users can flag a problem with the review.
+  core.String? flagContentUri;
+
+  /// A link to show the review on Google Maps.
+  core.String? googleMapsUri;
+
   /// A reference representing this place review which may be used to look up
   /// this place review again (also called the API "resource" name:
   /// `places/{place_id}/reviews/{review}`).
@@ -2978,6 +3087,8 @@ class GoogleMapsPlacesV1Review {
 
   GoogleMapsPlacesV1Review({
     this.authorAttribution,
+    this.flagContentUri,
+    this.googleMapsUri,
     this.name,
     this.originalText,
     this.publishTime,
@@ -2993,6 +3104,8 @@ class GoogleMapsPlacesV1Review {
                   json_['authorAttribution']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          flagContentUri: json_['flagContentUri'] as core.String?,
+          googleMapsUri: json_['googleMapsUri'] as core.String?,
           name: json_['name'] as core.String?,
           originalText: json_.containsKey('originalText')
               ? GoogleTypeLocalizedText.fromJson(
@@ -3010,6 +3123,8 @@ class GoogleMapsPlacesV1Review {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authorAttribution != null) 'authorAttribution': authorAttribution!,
+        if (flagContentUri != null) 'flagContentUri': flagContentUri!,
+        if (googleMapsUri != null) 'googleMapsUri': googleMapsUri!,
         if (name != null) 'name': name!,
         if (originalText != null) 'originalText': originalText!,
         if (publishTime != null) 'publishTime': publishTime!,
@@ -3180,6 +3295,16 @@ class GoogleMapsPlacesV1RoutingParameters {
 /// `searchAlongRouteParameters.polyline.encodedPolyline` parameter in the
 /// request causes an error.
 class GoogleMapsPlacesV1RoutingSummary {
+  /// A link to show directions on Google Maps using the waypoints from the
+  /// given routing summary.
+  ///
+  /// The route generated by this link is not guaranteed to be the same as the
+  /// route used to generate the routing summary. The link uses information
+  /// provided in the request, from fields including `routingParameters` and
+  /// `searchAlongRouteParameters` when applicable, to generate the directions
+  /// link.
+  core.String? directionsUri;
+
   /// The legs of the trip.
   ///
   /// When you calculate travel duration and distance from a set origin, `legs`
@@ -3190,11 +3315,13 @@ class GoogleMapsPlacesV1RoutingSummary {
   core.List<GoogleMapsPlacesV1RoutingSummaryLeg>? legs;
 
   GoogleMapsPlacesV1RoutingSummary({
+    this.directionsUri,
     this.legs,
   });
 
   GoogleMapsPlacesV1RoutingSummary.fromJson(core.Map json_)
       : this(
+          directionsUri: json_['directionsUri'] as core.String?,
           legs: (json_['legs'] as core.List?)
               ?.map((value) => GoogleMapsPlacesV1RoutingSummaryLeg.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -3202,6 +3329,7 @@ class GoogleMapsPlacesV1RoutingSummary {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (directionsUri != null) 'directionsUri': directionsUri!,
         if (legs != null) 'legs': legs!,
       };
 }
@@ -3862,11 +3990,16 @@ class GoogleMapsPlacesV1SearchTextResponse {
   /// places if requested.
   core.List<GoogleMapsPlacesV1RoutingSummary>? routingSummaries;
 
+  /// A link allows the user to search with the same text query as specified in
+  /// the request on Google Maps.
+  core.String? searchUri;
+
   GoogleMapsPlacesV1SearchTextResponse({
     this.contextualContents,
     this.nextPageToken,
     this.places,
     this.routingSummaries,
+    this.searchUri,
   });
 
   GoogleMapsPlacesV1SearchTextResponse.fromJson(core.Map json_)
@@ -3884,6 +4017,7 @@ class GoogleMapsPlacesV1SearchTextResponse {
               ?.map((value) => GoogleMapsPlacesV1RoutingSummary.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          searchUri: json_['searchUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3892,6 +4026,7 @@ class GoogleMapsPlacesV1SearchTextResponse {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (places != null) 'places': places!,
         if (routingSummaries != null) 'routingSummaries': routingSummaries!,
+        if (searchUri != null) 'searchUri': searchUri!,
       };
 }
 

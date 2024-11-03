@@ -1035,9 +1035,9 @@ class SpacesMembersResource {
   /// the membership. Format: spaces/{space}
   /// Value must have pattern `^spaces/\[^/\]+$`.
   ///
-  /// [useAdminAccess] - When `true`, the method runs using the user's Google
-  /// Workspace administrator privileges. The calling user must be a Google
-  /// Workspace administrator with the
+  /// [useAdminAccess] - Optional. When `true`, the method runs using the user's
+  /// Google Workspace administrator privileges. The calling user must be a
+  /// Google Workspace administrator with the
   /// [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245).
   /// Requires the `chat.admin.memberships`
   /// [OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
@@ -1108,9 +1108,9 @@ class SpacesMembersResource {
   /// `spaces/{space}/members/app`.
   /// Value must have pattern `^spaces/\[^/\]+/members/\[^/\]+$`.
   ///
-  /// [useAdminAccess] - When `true`, the method runs using the user's Google
-  /// Workspace administrator privileges. The calling user must be a Google
-  /// Workspace administrator with the
+  /// [useAdminAccess] - Optional. When `true`, the method runs using the user's
+  /// Google Workspace administrator privileges. The calling user must be a
+  /// Google Workspace administrator with the
   /// [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245).
   /// Requires the `chat.admin.memberships`
   /// [OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
@@ -1172,9 +1172,9 @@ class SpacesMembersResource {
   /// the email of the Google Chat user.
   /// Value must have pattern `^spaces/\[^/\]+/members/\[^/\]+$`.
   ///
-  /// [useAdminAccess] - When `true`, the method runs using the user's Google
-  /// Workspace administrator privileges. The calling user must be a Google
-  /// Workspace administrator with the
+  /// [useAdminAccess] - Optional. When `true`, the method runs using the user's
+  /// Google Workspace administrator privileges. The calling user must be a
+  /// Google Workspace administrator with the
   /// [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245).
   /// Requires the `chat.admin.memberships` or `chat.admin.memberships.readonly`
   /// [OAuth 2.0 scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
@@ -1278,9 +1278,9 @@ class SpacesMembersResource {
   /// aren't returned. Currently requires
   /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
   ///
-  /// [useAdminAccess] - When `true`, the method runs using the user's Google
-  /// Workspace administrator privileges. The calling user must be a Google
-  /// Workspace administrator with the
+  /// [useAdminAccess] - Optional. When `true`, the method runs using the user's
+  /// Google Workspace administrator privileges. The calling user must be a
+  /// Google Workspace administrator with the
   /// [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245).
   /// Requires either the `chat.admin.memberships.readonly` or
   /// `chat.admin.memberships`
@@ -1348,17 +1348,17 @@ class SpacesMembersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the membership, assigned by the server. Format:
-  /// `spaces/{space}/members/{member}`
+  /// [name] - Identifier. Resource name of the membership, assigned by the
+  /// server. Format: `spaces/{space}/members/{member}`
   /// Value must have pattern `^spaces/\[^/\]+/members/\[^/\]+$`.
   ///
   /// [updateMask] - Required. The field paths to update. Separate multiple
   /// values with commas or use `*` to update all field paths. Currently
   /// supported field paths: - `role`
   ///
-  /// [useAdminAccess] - When `true`, the method runs using the user's Google
-  /// Workspace administrator privileges. The calling user must be a Google
-  /// Workspace administrator with the
+  /// [useAdminAccess] - Optional. When `true`, the method runs using the user's
+  /// Google Workspace administrator privileges. The calling user must be a
+  /// Google Workspace administrator with the
   /// [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245).
   /// Requires the `chat.admin.memberships`
   /// [OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
@@ -2217,11 +2217,11 @@ class SpacesSpaceEventsResource {
   /// service might return fewer than this value. Negative values return an
   /// `INVALID_ARGUMENT` error.
   ///
-  /// [pageToken] - A page token, received from a previous list space events
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to list space events must match the call that
-  /// provided the page token. Passing different values to the other parameters
-  /// might lead to unexpected results.
+  /// [pageToken] - Optional. A page token, received from a previous list space
+  /// events call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided to list space events must match
+  /// the call that provided the page token. Passing different values to the
+  /// other parameters might lead to unexpected results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3750,6 +3750,30 @@ class GoogleAppsCardV1Button {
   /// The text displayed inside the button.
   core.String? text;
 
+  /// The type of a button.
+  ///
+  /// If unset, button type defaults to `OUTLINED`. If the `color` field is set,
+  /// the button type is forced to `FILLED` and any value set for this field is
+  /// ignored. [Google Chat apps](https://developers.google.com/workspace/chat):
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Don't use. Unspecified.
+  /// - "OUTLINED" : Outlined buttons are medium-emphasis buttons. They usually
+  /// contain actions that are important, but aren’t the primary action in a
+  /// Chat app or an add-on.
+  /// - "FILLED" : A filled button has a container with a solid color. It has
+  /// the most visual impact and is recommended for the important and primary
+  /// action in a Chat app or an add-on.
+  /// - "FILLED_TONAL" : A filled tonal button is an alternative middle ground
+  /// between filled and outlined buttons. They’re useful in contexts where a
+  /// lower-priority button requires slightly more emphasis than an outline
+  /// button would give.
+  /// - "BORDERLESS" : A button does not have an invisible container in its
+  /// default state. It is often used for the lowest priority actions,
+  /// especially when presenting multiple options.
+  core.String? type;
+
   GoogleAppsCardV1Button({
     this.altText,
     this.color,
@@ -3757,6 +3781,7 @@ class GoogleAppsCardV1Button {
     this.icon,
     this.onClick,
     this.text,
+    this.type,
   });
 
   GoogleAppsCardV1Button.fromJson(core.Map json_)
@@ -3776,6 +3801,7 @@ class GoogleAppsCardV1Button {
                   json_['onClick'] as core.Map<core.String, core.dynamic>)
               : null,
           text: json_['text'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3785,6 +3811,7 @@ class GoogleAppsCardV1Button {
         if (icon != null) 'icon': icon!,
         if (onClick != null) 'onClick': onClick!,
         if (text != null) 'text': text!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -4107,6 +4134,178 @@ class GoogleAppsCardV1CardHeader {
         if (imageUrl != null) 'imageUrl': imageUrl!,
         if (subtitle != null) 'subtitle': subtitle!,
         if (title != null) 'title': title!,
+      };
+}
+
+/// A text, icon, or text and icon chip that users can click.
+///
+/// [Google Chat apps](https://developers.google.com/workspace/chat):
+class GoogleAppsCardV1Chip {
+  /// The alternative text that's used for accessibility.
+  ///
+  /// Set descriptive text that lets users know what the chip does. For example,
+  /// if a chip opens a hyperlink, write: "Opens a new browser tab and navigates
+  /// to the Google Chat developer documentation at
+  /// https://developers.google.com/workspace/chat".
+  core.String? altText;
+
+  /// Whether the chip is in an inactive state and ignores user actions.
+  ///
+  /// Defaults to `false`.
+  core.bool? disabled;
+
+  /// Whether the chip is in an active state and responds to user actions.
+  ///
+  /// Defaults to `true`. Deprecated. Use `disabled` instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.bool? enabled;
+
+  /// The icon image.
+  ///
+  /// If both `icon` and `text` are set, then the icon appears before the text.
+  GoogleAppsCardV1Icon? icon;
+
+  /// The text displayed inside the chip.
+  core.String? label;
+
+  /// The action to perform when a user clicks the chip, such as opening a
+  /// hyperlink or running a custom function.
+  ///
+  /// Optional.
+  GoogleAppsCardV1OnClick? onClick;
+
+  GoogleAppsCardV1Chip({
+    this.altText,
+    this.disabled,
+    this.enabled,
+    this.icon,
+    this.label,
+    this.onClick,
+  });
+
+  GoogleAppsCardV1Chip.fromJson(core.Map json_)
+      : this(
+          altText: json_['altText'] as core.String?,
+          disabled: json_['disabled'] as core.bool?,
+          enabled: json_['enabled'] as core.bool?,
+          icon: json_.containsKey('icon')
+              ? GoogleAppsCardV1Icon.fromJson(
+                  json_['icon'] as core.Map<core.String, core.dynamic>)
+              : null,
+          label: json_['label'] as core.String?,
+          onClick: json_.containsKey('onClick')
+              ? GoogleAppsCardV1OnClick.fromJson(
+                  json_['onClick'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (altText != null) 'altText': altText!,
+        if (disabled != null) 'disabled': disabled!,
+        if (enabled != null) 'enabled': enabled!,
+        if (icon != null) 'icon': icon!,
+        if (label != null) 'label': label!,
+        if (onClick != null) 'onClick': onClick!,
+      };
+}
+
+/// A list of chips layed out horizontally, which can either scroll horizontally
+/// or wrap to the next line.
+///
+/// [Google Chat apps](https://developers.google.com/workspace/chat):
+class GoogleAppsCardV1ChipList {
+  /// An array of chips.
+  core.List<GoogleAppsCardV1Chip>? chips;
+
+  /// Specified chip list layout.
+  /// Possible string values are:
+  /// - "LAYOUT_UNSPECIFIED" : Don't use. Unspecified.
+  /// - "WRAPPED" : Default value. The chip list wraps to the next line if there
+  /// isn't enough horizontal space.
+  /// - "HORIZONTAL_SCROLLABLE" : The chips scroll horizontally if they don't
+  /// fit in the available space.
+  core.String? layout;
+
+  GoogleAppsCardV1ChipList({
+    this.chips,
+    this.layout,
+  });
+
+  GoogleAppsCardV1ChipList.fromJson(core.Map json_)
+      : this(
+          chips: (json_['chips'] as core.List?)
+              ?.map((value) => GoogleAppsCardV1Chip.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          layout: json_['layout'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (chips != null) 'chips': chips!,
+        if (layout != null) 'layout': layout!,
+      };
+}
+
+/// Represent an expand and collapse control.
+///
+/// [Google Chat apps](https://developers.google.com/workspace/chat):
+class GoogleAppsCardV1CollapseControl {
+  /// Define a customizable button to collapse the section.
+  ///
+  /// Both expand_button and collapse_button field must be set. Only one field
+  /// set will not take into effect. If this field isn't set, the default button
+  /// is used.
+  ///
+  /// Optional.
+  GoogleAppsCardV1Button? collapseButton;
+
+  /// Define a customizable button to expand the section.
+  ///
+  /// Both expand_button and collapse_button field must be set. Only one field
+  /// set will not take into effect. If this field isn't set, the default button
+  /// is used.
+  ///
+  /// Optional.
+  GoogleAppsCardV1Button? expandButton;
+
+  /// The horizontal alignment of the expand and collapse button.
+  /// Possible string values are:
+  /// - "HORIZONTAL_ALIGNMENT_UNSPECIFIED" : Don't use. Unspecified.
+  /// - "START" : Default value. Aligns widgets to the start position of the
+  /// column. For left-to-right layouts, aligns to the left. For right-to-left
+  /// layouts, aligns to the right.
+  /// - "CENTER" : Aligns widgets to the center of the column.
+  /// - "END" : Aligns widgets to the end position of the column. For
+  /// left-to-right layouts, aligns widgets to the right. For right-to-left
+  /// layouts, aligns widgets to the left.
+  core.String? horizontalAlignment;
+
+  GoogleAppsCardV1CollapseControl({
+    this.collapseButton,
+    this.expandButton,
+    this.horizontalAlignment,
+  });
+
+  GoogleAppsCardV1CollapseControl.fromJson(core.Map json_)
+      : this(
+          collapseButton: json_.containsKey('collapseButton')
+              ? GoogleAppsCardV1Button.fromJson(json_['collapseButton']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          expandButton: json_.containsKey('expandButton')
+              ? GoogleAppsCardV1Button.fromJson(
+                  json_['expandButton'] as core.Map<core.String, core.dynamic>)
+              : null,
+          horizontalAlignment: json_['horizontalAlignment'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (collapseButton != null) 'collapseButton': collapseButton!,
+        if (expandButton != null) 'expandButton': expandButton!,
+        if (horizontalAlignment != null)
+          'horizontalAlignment': horizontalAlignment!,
       };
 }
 
@@ -4881,11 +5080,17 @@ class GoogleAppsCardV1OnClick {
   /// If specified, this `onClick` triggers an open link action.
   GoogleAppsCardV1OpenLink? openLink;
 
+  /// If specified, this `onClick` opens an overflow menu.
+  ///
+  /// [Google Chat apps](https://developers.google.com/workspace/chat):
+  GoogleAppsCardV1OverflowMenu? overflowMenu;
+
   GoogleAppsCardV1OnClick({
     this.action,
     this.card,
     this.openDynamicLinkAction,
     this.openLink,
+    this.overflowMenu,
   });
 
   GoogleAppsCardV1OnClick.fromJson(core.Map json_)
@@ -4906,6 +5111,10 @@ class GoogleAppsCardV1OnClick {
               ? GoogleAppsCardV1OpenLink.fromJson(
                   json_['openLink'] as core.Map<core.String, core.dynamic>)
               : null,
+          overflowMenu: json_.containsKey('overflowMenu')
+              ? GoogleAppsCardV1OverflowMenu.fromJson(
+                  json_['overflowMenu'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4914,6 +5123,7 @@ class GoogleAppsCardV1OnClick {
         if (openDynamicLinkAction != null)
           'openDynamicLinkAction': openDynamicLinkAction!,
         if (openLink != null) 'openLink': openLink!,
+        if (overflowMenu != null) 'overflowMenu': overflowMenu!,
       };
 }
 
@@ -4969,6 +5179,90 @@ class GoogleAppsCardV1OpenLink {
       };
 }
 
+/// A widget that presents a pop-up menu with one or more actions that users can
+/// invoke.
+///
+/// For example, showing non-primary actions in a card. You can use this widget
+/// when actions don't fit in the available space. To use, specify this widget
+/// in the `OnClick` action of widgets that support it. For example, in a
+/// `Button`. [Google Chat apps](https://developers.google.com/workspace/chat):
+class GoogleAppsCardV1OverflowMenu {
+  /// The list of menu options.
+  ///
+  /// Required.
+  core.List<GoogleAppsCardV1OverflowMenuItem>? items;
+
+  GoogleAppsCardV1OverflowMenu({
+    this.items,
+  });
+
+  GoogleAppsCardV1OverflowMenu.fromJson(core.Map json_)
+      : this(
+          items: (json_['items'] as core.List?)
+              ?.map((value) => GoogleAppsCardV1OverflowMenuItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (items != null) 'items': items!,
+      };
+}
+
+/// An option that users can invoke in an overflow menu.
+///
+/// [Google Chat apps](https://developers.google.com/workspace/chat):
+class GoogleAppsCardV1OverflowMenuItem {
+  /// Whether the menu option is disabled.
+  ///
+  /// Defaults to false.
+  core.bool? disabled;
+
+  /// The action invoked when a menu option is selected.
+  ///
+  /// This `OnClick` cannot contain an `OverflowMenu`, any specified
+  /// `OverflowMenu` is dropped and the menu item disabled.
+  ///
+  /// Required.
+  GoogleAppsCardV1OnClick? onClick;
+
+  /// The icon displayed in front of the text.
+  GoogleAppsCardV1Icon? startIcon;
+
+  /// The text that identifies or describes the item to users.
+  ///
+  /// Required.
+  core.String? text;
+
+  GoogleAppsCardV1OverflowMenuItem({
+    this.disabled,
+    this.onClick,
+    this.startIcon,
+    this.text,
+  });
+
+  GoogleAppsCardV1OverflowMenuItem.fromJson(core.Map json_)
+      : this(
+          disabled: json_['disabled'] as core.bool?,
+          onClick: json_.containsKey('onClick')
+              ? GoogleAppsCardV1OnClick.fromJson(
+                  json_['onClick'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startIcon: json_.containsKey('startIcon')
+              ? GoogleAppsCardV1Icon.fromJson(
+                  json_['startIcon'] as core.Map<core.String, core.dynamic>)
+              : null,
+          text: json_['text'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disabled != null) 'disabled': disabled!,
+        if (onClick != null) 'onClick': onClick!,
+        if (startIcon != null) 'startIcon': startIcon!,
+        if (text != null) 'text': text!,
+      };
+}
+
 /// For a `SelectionInput` widget that uses a multiselect menu, a data source
 /// from Google Workspace.
 ///
@@ -5017,6 +5311,15 @@ class GoogleAppsCardV1PlatformDataSource {
 /// \[Google Workspace Add-ons and Chat
 /// apps\](https://developers.google.com/workspace/extend):
 class GoogleAppsCardV1Section {
+  /// Define the expand and collapse button of the section.
+  ///
+  /// This button will be shown only if the section is collapsible. If this
+  /// field isn't set, the default button is used.
+  /// [Google Chat apps](https://developers.google.com/workspace/chat):
+  ///
+  /// Optional.
+  GoogleAppsCardV1CollapseControl? collapseControl;
+
   /// Indicates whether this section is collapsible.
   ///
   /// Collapsible sections hide some or all widgets, but users can expand the
@@ -5050,6 +5353,7 @@ class GoogleAppsCardV1Section {
   core.List<GoogleAppsCardV1Widget>? widgets;
 
   GoogleAppsCardV1Section({
+    this.collapseControl,
     this.collapsible,
     this.header,
     this.uncollapsibleWidgetsCount,
@@ -5058,6 +5362,11 @@ class GoogleAppsCardV1Section {
 
   GoogleAppsCardV1Section.fromJson(core.Map json_)
       : this(
+          collapseControl: json_.containsKey('collapseControl')
+              ? GoogleAppsCardV1CollapseControl.fromJson(
+                  json_['collapseControl']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           collapsible: json_['collapsible'] as core.bool?,
           header: json_['header'] as core.String?,
           uncollapsibleWidgetsCount:
@@ -5069,6 +5378,7 @@ class GoogleAppsCardV1Section {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (collapseControl != null) 'collapseControl': collapseControl!,
         if (collapsible != null) 'collapsible': collapsible!,
         if (header != null) 'header': header!,
         if (uncollapsibleWidgetsCount != null)
@@ -5557,19 +5867,32 @@ class GoogleAppsCardV1TextInput {
 /// \[Google Workspace Add-ons and Chat
 /// apps\](https://developers.google.com/workspace/extend):
 class GoogleAppsCardV1TextParagraph {
+  /// The maximum number of lines of text that are displayed in the widget.
+  ///
+  /// If the text exceeds the specified maximum number of lines, the excess
+  /// content is concealed behind a **show more** button. If the text is equal
+  /// or shorter than the specified maximum number of lines, a **show more**
+  /// button isn't displayed. The default value is 0, in which case all context
+  /// is displayed. Negative values are ignored.
+  /// [Google Chat apps](https://developers.google.com/workspace/chat):
+  core.int? maxLines;
+
   /// The text that's shown in the widget.
   core.String? text;
 
   GoogleAppsCardV1TextParagraph({
+    this.maxLines,
     this.text,
   });
 
   GoogleAppsCardV1TextParagraph.fromJson(core.Map json_)
       : this(
+          maxLines: json_['maxLines'] as core.int?,
           text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (maxLines != null) 'maxLines': maxLines!,
         if (text != null) 'text': text!,
       };
 }
@@ -5588,6 +5911,16 @@ class GoogleAppsCardV1Widget {
   /// "INVITE", "altText": "check calendar" }, "onClick": { "openLink": { "url":
   /// "https://example.com/calendar" } } } ] } ```
   GoogleAppsCardV1ButtonList? buttonList;
+
+  /// A list of chips.
+  ///
+  /// For example, the following JSON creates two chips. The first is a text
+  /// chip and the second is an icon chip that opens a link: ``` "chipList": {
+  /// "chips": [ { "text": "Edit", "disabled": true, }, { "icon": { "knownIcon":
+  /// "INVITE", "altText": "check calendar" }, "onClick": { "openLink": { "url":
+  /// "https://example.com/calendar" } } } ] } ```
+  /// [Google Chat apps](https://developers.google.com/workspace/chat):
+  GoogleAppsCardV1ChipList? chipList;
 
   /// Displays up to 2 columns.
   ///
@@ -5696,6 +6029,7 @@ class GoogleAppsCardV1Widget {
 
   GoogleAppsCardV1Widget({
     this.buttonList,
+    this.chipList,
     this.columns,
     this.dateTimePicker,
     this.decoratedText,
@@ -5713,6 +6047,10 @@ class GoogleAppsCardV1Widget {
           buttonList: json_.containsKey('buttonList')
               ? GoogleAppsCardV1ButtonList.fromJson(
                   json_['buttonList'] as core.Map<core.String, core.dynamic>)
+              : null,
+          chipList: json_.containsKey('chipList')
+              ? GoogleAppsCardV1ChipList.fromJson(
+                  json_['chipList'] as core.Map<core.String, core.dynamic>)
               : null,
           columns: json_.containsKey('columns')
               ? GoogleAppsCardV1Columns.fromJson(
@@ -5755,6 +6093,7 @@ class GoogleAppsCardV1Widget {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (buttonList != null) 'buttonList': buttonList!,
+        if (chipList != null) 'chipList': chipList!,
         if (columns != null) 'columns': columns!,
         if (dateTimePicker != null) 'dateTimePicker': dateTimePicker!,
         if (decoratedText != null) 'decoratedText': decoratedText!,
@@ -5777,6 +6116,11 @@ class GoogleAppsCardV1Widgets {
   /// ButtonList widget.
   GoogleAppsCardV1ButtonList? buttonList;
 
+  /// ChipList widget.
+  ///
+  /// [Google Chat apps](https://developers.google.com/workspace/chat):
+  GoogleAppsCardV1ChipList? chipList;
+
   /// DateTimePicker widget.
   GoogleAppsCardV1DateTimePicker? dateTimePicker;
 
@@ -5797,6 +6141,7 @@ class GoogleAppsCardV1Widgets {
 
   GoogleAppsCardV1Widgets({
     this.buttonList,
+    this.chipList,
     this.dateTimePicker,
     this.decoratedText,
     this.image,
@@ -5810,6 +6155,10 @@ class GoogleAppsCardV1Widgets {
           buttonList: json_.containsKey('buttonList')
               ? GoogleAppsCardV1ButtonList.fromJson(
                   json_['buttonList'] as core.Map<core.String, core.dynamic>)
+              : null,
+          chipList: json_.containsKey('chipList')
+              ? GoogleAppsCardV1ChipList.fromJson(
+                  json_['chipList'] as core.Map<core.String, core.dynamic>)
               : null,
           dateTimePicker: json_.containsKey('dateTimePicker')
               ? GoogleAppsCardV1DateTimePicker.fromJson(json_['dateTimePicker']
@@ -5839,6 +6188,7 @@ class GoogleAppsCardV1Widgets {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (buttonList != null) 'buttonList': buttonList!,
+        if (chipList != null) 'chipList': chipList!,
         if (dateTimePicker != null) 'dateTimePicker': dateTimePicker!,
         if (decoratedText != null) 'decoratedText': decoratedText!,
         if (image != null) 'image': image!,
@@ -6341,6 +6691,8 @@ class Membership {
   ///
   /// Reading or mutating memberships for Google Groups requires
   /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+  ///
+  /// Optional.
   Group? groupMember;
 
   /// The Google Chat user or app the membership corresponds to.
@@ -6350,11 +6702,14 @@ class Membership {
   /// the output populates the
   /// [user](https://developers.google.com/workspace/chat/api/reference/rest/v1/User)
   /// `name` and `type`.
+  ///
+  /// Optional.
   User? member;
 
-  /// Resource name of the membership, assigned by the server.
+  /// Identifier.
   ///
-  /// Format: `spaces/{space}/members/{member}`
+  /// Resource name of the membership, assigned by the server. Format:
+  /// `spaces/{space}/members/{member}`
   core.String? name;
 
   /// User's role within a Chat space, which determines their permitted actions

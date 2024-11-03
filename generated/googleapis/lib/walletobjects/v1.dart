@@ -9165,6 +9165,10 @@ class GenericObject {
   /// - "GENERIC_HOME_INSURANCE" : Home-insurance cards
   /// - "GENERIC_ENTRY_TICKET" : Entry tickets
   /// - "GENERIC_RECEIPT" : Receipts
+  /// - "GENERIC_LOYALTY_CARD" : Loyalty cards. Please note that it is advisable
+  /// to use a dedicated Loyalty card pass type instead of this generic type. A
+  /// dedicated loyalty card pass type offers more features and functionality
+  /// than a generic pass type.
   /// - "GENERIC_OTHER" : Other type
   core.String? genericType;
 

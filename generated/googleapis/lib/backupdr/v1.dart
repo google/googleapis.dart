@@ -3518,8 +3518,8 @@ class BackupPlan {
 
   /// The resource type to which the `BackupPlan` will be applied.
   ///
-  /// Examples include, "compute.googleapis.com/Instance" and
-  /// "storage.googleapis.com/Bucket".
+  /// Examples include, "compute.googleapis.com/Instance",
+  /// "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
   ///
   /// Required.
   core.String? resourceType;
@@ -3759,12 +3759,17 @@ class BackupVault {
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "ACCESS_RESTRICTION_UNSPECIFIED" : Access restriction not set.
+  /// - "ACCESS_RESTRICTION_UNSPECIFIED" : Access restriction not set. If user
+  /// does not provide any value or pass this value, it will be changed to
+  /// WITHIN_ORGANIZATION.
   /// - "WITHIN_PROJECT" : Access to or from resources outside your current
   /// project will be denied.
   /// - "WITHIN_ORGANIZATION" : Access to or from resources outside your current
   /// organization will be denied.
   /// - "UNRESTRICTED" : No access restriction.
+  /// - "WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA" : Access to or from resources
+  /// outside your current organization will be denied except for backup
+  /// appliance.
   core.String? accessRestriction;
 
   /// User annotations.
@@ -5857,9 +5862,10 @@ class ManagementServer {
 
   /// VPC networks to which the ManagementServer instance is connected.
   ///
-  /// For this version, only a single network is supported.
+  /// For this version, only a single network is supported. This field is
+  /// optional if MS is created without PSA
   ///
-  /// Required.
+  /// Optional.
   core.List<NetworkConfig>? networks;
 
   /// The OAuth 2.0 client id is required to make API calls to the BackupDR

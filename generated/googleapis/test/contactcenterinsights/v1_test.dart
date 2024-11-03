@@ -4116,7 +4116,9 @@ api.GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue
     o.boolValue = true;
     o.key = 'foo';
     o.naValue = true;
+    o.normalizedScore = 42.0;
     o.numValue = 42.0;
+    o.potentialScore = 42.0;
     o.score = 42.0;
     o.strValue = 'foo';
   }
@@ -4135,7 +4137,15 @@ void checkGoogleCloudContactcenterinsightsV1QaAnswerAnswerValue(
     );
     unittest.expect(o.naValue!, unittest.isTrue);
     unittest.expect(
+      o.normalizedScore!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
       o.numValue!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.potentialScore!,
       unittest.equals(42.0),
     );
     unittest.expect(

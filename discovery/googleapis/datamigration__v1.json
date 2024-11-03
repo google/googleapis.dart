@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241015",
+    "revision": "20241022",
     "rootUrl": "https://datamigration.googleapis.com/",
     "servicePath": "",
     "title": "Database Migration API",
@@ -6092,12 +6092,16 @@
                     "enum": [
                         "SSL_TYPE_UNSPECIFIED",
                         "SERVER_ONLY",
-                        "SERVER_CLIENT"
+                        "SERVER_CLIENT",
+                        "REQUIRED",
+                        "NONE"
                     ],
                     "enumDescriptions": [
                         "Unspecified.",
                         "Only 'ca_certificate' specified.",
-                        "Both server ('ca_certificate'), and client ('client_key', 'client_certificate') specified."
+                        "Both server ('ca_certificate'), and client ('client_key', 'client_certificate') specified.",
+                        "Mandates SSL encryption for all connections. This doesn’t require certificate verification.",
+                        "Connection is not encrypted."
                     ],
                     "type": "string"
                 }

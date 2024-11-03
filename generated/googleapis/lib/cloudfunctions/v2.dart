@@ -2883,7 +2883,9 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// Information related to: * A function's eligibility for 1st Gen to 2nd Gen
-/// migration * Current state of migration for function undergoing migration.
+/// migration and 2nd Gen to CRf detach.
+///
+/// * Current state of migration for function undergoing migration/detach.
 class UpgradeInfo {
   /// Describes the Build step of the function that builds a container to
   /// prepare for 2nd gen upgrade.
@@ -2921,6 +2923,8 @@ class UpgradeInfo {
   /// RollbackFunctionUpgradeTraffic API was un-successful.
   /// - "COMMIT_FUNCTION_UPGRADE_ERROR" : CommitFunctionUpgrade API was
   /// un-successful.
+  /// - "DETACH_IN_PROGRESS" : Function is requested to be detached from 2nd Gen
+  /// to CRf.
   core.String? upgradeState;
 
   UpgradeInfo({

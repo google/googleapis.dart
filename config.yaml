@@ -441,6 +441,7 @@ skipped_apis:
 - ondemandscanning:v1beta1
 - osconfig:v1alpha
 - osconfig:v1beta # v1 included
+- osconfig:v2beta
 - oslogin:v1alpha # v1 available
 - oslogin:v1beta # v1 available
 - playdeveloperreporting:v1alpha1

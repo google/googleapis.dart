@@ -1828,18 +1828,19 @@ class OrganizationsGcpUserAccessBindingsResource {
   /// [append] - Optional. This field controls whether or not certain repeated
   /// settings in the update request overwrite or append to existing settings on
   /// the binding. If true, then append. Otherwise overwrite. So far, only
-  /// scoped_access_settings supports appending. Global access_levels,
-  /// dry_run_access_levels, and reauth_settings are not compatible with append
-  /// functionality, and the request will return an error if append=true when
-  /// these settings are in the update_mask. The request will also return an
-  /// error if append=true when "scoped_access_settings" is not set in the
-  /// update_mask.
+  /// scoped_access_settings with reauth_settings supports appending. Global
+  /// access_levels, access_levels in scoped_access_settings,
+  /// dry_run_access_levels, reauth_settings, and session_settings are not
+  /// compatible with append functionality, and the request will return an error
+  /// if append=true when these settings are in the update_mask. The request
+  /// will also return an error if append=true when "scoped_access_settings" is
+  /// not set in the update_mask.
   ///
   /// [updateMask] - Required. Only the fields specified in this mask are
   /// updated. Because name and group_key cannot be changed, update_mask is
   /// required and may only contain the following fields: `access_levels`,
-  /// `dry_run_access_levels`, `reauth_settings`, `scoped_access_settings`.
-  /// update_mask { paths: "access_levels" }
+  /// `dry_run_access_levels`, `reauth_settings` `session_settings`,
+  /// `scoped_access_settings`. update_mask { paths: "access_levels" }
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2075,9 +2076,17 @@ class AccessSettings {
   /// Optional.
   ReauthSettings? reauthSettings;
 
+  /// Session settings applied to user access on a given AccessScope.
+  ///
+  /// Migrated from ReauthSettings
+  ///
+  /// Optional.
+  SessionSettings? sessionSettings;
+
   AccessSettings({
     this.accessLevels,
     this.reauthSettings,
+    this.sessionSettings,
   });
 
   AccessSettings.fromJson(core.Map json_)
@@ -2089,11 +2098,16 @@ class AccessSettings {
               ? ReauthSettings.fromJson(json_['reauthSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          sessionSettings: json_.containsKey('sessionSettings')
+              ? SessionSettings.fromJson(json_['sessionSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessLevels != null) 'accessLevels': accessLevels!,
         if (reauthSettings != null) 'reauthSettings': reauthSettings!,
+        if (sessionSettings != null) 'sessionSettings': sessionSettings!,
       };
 }
 
@@ -2995,6 +3009,13 @@ class GcpUserAccessBinding {
   /// Optional.
   core.List<ScopedAccessSettings>? scopedAccessSettings;
 
+  /// GCSL policy for the group key.
+  ///
+  /// Migrated from ReauthSettings
+  ///
+  /// Optional.
+  SessionSettings? sessionSettings;
+
   GcpUserAccessBinding({
     this.accessLevels,
     this.dryRunAccessLevels,
@@ -3003,6 +3024,7 @@ class GcpUserAccessBinding {
     this.reauthSettings,
     this.restrictedClientApplications,
     this.scopedAccessSettings,
+    this.sessionSettings,
   });
 
   GcpUserAccessBinding.fromJson(core.Map json_)
@@ -3028,6 +3050,10 @@ class GcpUserAccessBinding {
               ?.map((value) => ScopedAccessSettings.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          sessionSettings: json_.containsKey('sessionSettings')
+              ? SessionSettings.fromJson(json_['sessionSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3041,6 +3067,7 @@ class GcpUserAccessBinding {
           'restrictedClientApplications': restrictedClientApplications!,
         if (scopedAccessSettings != null)
           'scopedAccessSettings': scopedAccessSettings!,
+        if (sessionSettings != null) 'sessionSettings': sessionSettings!,
       };
 }
 
@@ -4043,6 +4070,88 @@ class ServicePerimeterConfig {
           'restrictedServices': restrictedServices!,
         if (vpcAccessibleServices != null)
           'vpcAccessibleServices': vpcAccessibleServices!,
+      };
+}
+
+/// Stores settings related to Google Cloud Session Length including session
+/// duration, the type of challenge (i.e. method) they should face when their
+/// session expires, and other related settings.
+class SessionSettings {
+  /// How long a user is allowed to take between actions before a new access
+  /// token must be issued.
+  ///
+  /// Presently only set for Cloud Apps.
+  ///
+  /// Optional.
+  core.String? maxInactivity;
+
+  /// The session length.
+  ///
+  /// Setting this field to zero is equal to disabling. Session. Also can set
+  /// infinite session by flipping the enabled bit to false below. If
+  /// use_oidc_max_age is true, for OIDC apps, the session length will be the
+  /// minimum of this field and OIDC max_age param.
+  ///
+  /// Optional.
+  core.String? sessionLength;
+
+  /// Big red button to turn off GCSL.
+  ///
+  /// When false, all fields set above will be disregarded and the session
+  /// length is basically infinite.
+  ///
+  /// Optional.
+  core.bool? sessionLengthEnabled;
+
+  /// Session method when users GCP session is up.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SESSION_REAUTH_METHOD_UNSPECIFIED" : If method undefined in API, we
+  /// will use LOGIN by default.
+  /// - "LOGIN" : The user will prompted to perform regular login. Users who are
+  /// enrolled for two-step verification and haven't chosen to "Remember this
+  /// computer" will be prompted for their second factor.
+  /// - "SECURITY_KEY" : The user will be prompted to autheticate using their
+  /// security key. If no security key has been configured, then we will
+  /// fallback to LOGIN.
+  /// - "PASSWORD" : The user will be prompted for their password.
+  core.String? sessionReauthMethod;
+
+  /// Only useful for OIDC apps.
+  ///
+  /// When false, the OIDC max_age param, if passed in the authentication
+  /// request will be ignored. When true, the re-auth period will be the minimum
+  /// of the session_length field and the max_age OIDC param.
+  ///
+  /// Optional.
+  core.bool? useOidcMaxAge;
+
+  SessionSettings({
+    this.maxInactivity,
+    this.sessionLength,
+    this.sessionLengthEnabled,
+    this.sessionReauthMethod,
+    this.useOidcMaxAge,
+  });
+
+  SessionSettings.fromJson(core.Map json_)
+      : this(
+          maxInactivity: json_['maxInactivity'] as core.String?,
+          sessionLength: json_['sessionLength'] as core.String?,
+          sessionLengthEnabled: json_['sessionLengthEnabled'] as core.bool?,
+          sessionReauthMethod: json_['sessionReauthMethod'] as core.String?,
+          useOidcMaxAge: json_['useOidcMaxAge'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxInactivity != null) 'maxInactivity': maxInactivity!,
+        if (sessionLength != null) 'sessionLength': sessionLength!,
+        if (sessionLengthEnabled != null)
+          'sessionLengthEnabled': sessionLengthEnabled!,
+        if (sessionReauthMethod != null)
+          'sessionReauthMethod': sessionReauthMethod!,
+        if (useOidcMaxAge != null) 'useOidcMaxAge': useOidcMaxAge!,
       };
 }
 

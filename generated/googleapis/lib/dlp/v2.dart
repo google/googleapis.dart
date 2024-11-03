@@ -108,7 +108,8 @@ class InfoTypesResource {
 
   InfoTypesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Returns a list of the sensitive information types that DLP API supports.
+  /// Returns a list of the sensitive information types that the DLP API
+  /// supports.
   ///
   /// See
   /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference
@@ -179,7 +180,8 @@ class LocationsInfoTypesResource {
 
   LocationsInfoTypesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Returns a list of the sensitive information types that DLP API supports.
+  /// Returns a list of the sensitive information types that the DLP API
+  /// supports.
   ///
   /// See
   /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference
@@ -8941,7 +8943,7 @@ class GooglePrivacyDlpV2BigQueryTable {
   /// Dataset ID of the table.
   core.String? datasetId;
 
-  /// The Google Cloud Platform project ID of the project containing the table.
+  /// The Google Cloud project ID of the project containing the table.
   ///
   /// If omitted, project ID is inferred from the API call.
   core.String? projectId;
@@ -9499,7 +9501,7 @@ class GooglePrivacyDlpV2CloudSqlProperties {
   /// - "DATABASE_ENGINE_POSTGRES" : Cloud SQL for PostgreSQL instance.
   core.String? databaseEngine;
 
-  /// DLP will limit its connections to max_connections.
+  /// The DLP API will limit its connections to max_connections.
   ///
   /// Must be 2 or greater.
   ///
@@ -10207,8 +10209,8 @@ class GooglePrivacyDlpV2Conditions {
       };
 }
 
-/// A data connection to allow DLP to profile data in locations that require
-/// additional configuration.
+/// A data connection to allow the DLP API to profile data in locations that
+/// require additional configuration.
 class GooglePrivacyDlpV2Connection {
   /// Connect to a Cloud SQL instance.
   GooglePrivacyDlpV2CloudSqlProperties? cloudSql;
@@ -10231,8 +10233,9 @@ class GooglePrivacyDlpV2Connection {
   /// Required.
   /// Possible string values are:
   /// - "CONNECTION_STATE_UNSPECIFIED" : Unused
-  /// - "MISSING_CREDENTIALS" : DLP automatically created this connection during
-  /// an initial scan, and it is awaiting full configuration by a user.
+  /// - "MISSING_CREDENTIALS" : The DLP API automatically created this
+  /// connection during an initial scan, and it is awaiting full configuration
+  /// by a user.
   /// - "AVAILABLE" : A configured connection that has not encountered any
   /// errors.
   /// - "ERROR" : A configured connection that encountered errors during its
@@ -11176,7 +11179,7 @@ class GooglePrivacyDlpV2DataProfileAction {
   /// analytics\](https://cloud.google.com/chronicle/docs/detection/usecase-dlp-high-risk-user-download).
   GooglePrivacyDlpV2PublishToChronicle? publishToChronicle;
 
-  /// Publishes findings to SCC for each data profile.
+  /// Publishes findings to Security Command Center for each data profile.
   GooglePrivacyDlpV2PublishToSecurityCommandCenter? publishToScc;
 
   /// Tags the profiled resources with the specified tag values.
@@ -11328,7 +11331,7 @@ class GooglePrivacyDlpV2DataProfileJobConfig {
   /// The project that will run the scan.
   ///
   /// The DLP service account that exists within this project must have access
-  /// to all resources that are profiled, and the Cloud DLP API must be enabled.
+  /// to all resources that are profiled, and the DLP API must be enabled.
   core.String? projectId;
 
   GooglePrivacyDlpV2DataProfileJobConfig({
@@ -17552,7 +17555,7 @@ class GooglePrivacyDlpV2OrgConfig {
   /// The project that will run the scan.
   ///
   /// The DLP service account that exists within this project must have access
-  /// to all resources that are profiled, and the Cloud DLP API must be enabled.
+  /// to all resources that are profiled, and the DLP API must be enabled.
   core.String? projectId;
 
   GooglePrivacyDlpV2OrgConfig({
@@ -18496,7 +18499,8 @@ class GooglePrivacyDlpV2PublishToPubSub {
       };
 }
 
-/// If set, a summary finding will be created/updated in SCC for each profile.
+/// If set, a summary finding will be created or updated in Security Command
+/// Center for each profile.
 typedef GooglePrivacyDlpV2PublishToSecurityCommandCenter = $Empty;
 
 /// Enable Stackdriver metric dlp.googleapis.com/finding_count.

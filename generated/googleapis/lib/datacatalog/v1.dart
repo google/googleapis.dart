@@ -23,6 +23,8 @@
 ///
 /// - [CatalogResource]
 /// - [EntriesResource]
+/// - [OrganizationsResource]
+///   - [OrganizationsLocationsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsEntryGroupsResource]
@@ -62,6 +64,7 @@ class DataCatalogApi {
 
   CatalogResource get catalog => CatalogResource(_requester);
   EntriesResource get entries => EntriesResource(_requester);
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   DataCatalogApi(http.Client client,
@@ -211,6 +214,145 @@ class EntriesResource {
   }
 }
 
+class OrganizationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsResource get locations =>
+      OrganizationsLocationsResource(_requester);
+
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class OrganizationsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Retrieves the configuration related to the migration from Data Catalog to
+  /// Dataplex for a specific organization, including all the projects under it
+  /// which have a separate configuration set.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The organization whose config is being retrieved.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDatacatalogV1OrganizationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDatacatalogV1OrganizationConfig> retrieveConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':retrieveConfig';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDatacatalogV1OrganizationConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the effective configuration related to the migration from Data
+  /// Catalog to Dataplex for a specific organization or project.
+  ///
+  /// If there is no specific configuration set for the resource, the setting is
+  /// checked hierarchicahlly through the ancestors of the resource, starting
+  /// from the resource itself.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource whose effective config is being retrieved.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDatacatalogV1MigrationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDatacatalogV1MigrationConfig> retrieveEffectiveConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':retrieveEffectiveConfig';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDatacatalogV1MigrationConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the configuration related to the migration to Dataplex for an
+  /// organization or project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The organization or project whose config is being
+  /// specified.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDatacatalogV1MigrationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDatacatalogV1MigrationConfig> setConfig(
+    GoogleCloudDatacatalogV1SetConfigRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':setConfig';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDatacatalogV1MigrationConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
@@ -233,6 +375,91 @@ class ProjectsLocationsResource {
       ProjectsLocationsTaxonomiesResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Retrieves the effective configuration related to the migration from Data
+  /// Catalog to Dataplex for a specific organization or project.
+  ///
+  /// If there is no specific configuration set for the resource, the setting is
+  /// checked hierarchicahlly through the ancestors of the resource, starting
+  /// from the resource itself.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource whose effective config is being retrieved.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDatacatalogV1MigrationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDatacatalogV1MigrationConfig> retrieveEffectiveConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':retrieveEffectiveConfig';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDatacatalogV1MigrationConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the configuration related to the migration to Dataplex for an
+  /// organization or project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The organization or project whose config is being
+  /// specified.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDatacatalogV1MigrationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDatacatalogV1MigrationConfig> setConfig(
+    GoogleCloudDatacatalogV1SetConfigRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':setConfig';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDatacatalogV1MigrationConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsEntryGroupsResource {
@@ -4966,11 +5193,22 @@ class GoogleCloudDatacatalogV1EntryGroup {
   /// specified in its name.
   core.String? name;
 
+  /// When set to \[true\], it means DataCatalog EntryGroup was transferred to
+  /// Dataplex Catalog Service.
+  ///
+  /// It makes EntryGroup and its Entries to be read-only in DataCatalog.
+  /// However, new Tags on EntryGroup and its Entries can be created. After
+  /// setting the flag to \[true\] it cannot be unset.
+  ///
+  /// Optional.
+  core.bool? transferredToDataplex;
+
   GoogleCloudDatacatalogV1EntryGroup({
     this.dataCatalogTimestamps,
     this.description,
     this.displayName,
     this.name,
+    this.transferredToDataplex,
   });
 
   GoogleCloudDatacatalogV1EntryGroup.fromJson(core.Map json_)
@@ -4983,6 +5221,7 @@ class GoogleCloudDatacatalogV1EntryGroup {
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           name: json_['name'] as core.String?,
+          transferredToDataplex: json_['transferredToDataplex'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4991,6 +5230,8 @@ class GoogleCloudDatacatalogV1EntryGroup {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
+        if (transferredToDataplex != null)
+          'transferredToDataplex': transferredToDataplex!,
       };
 }
 
@@ -5602,6 +5843,12 @@ class GoogleCloudDatacatalogV1LookerSystemSpec {
       };
 }
 
+/// The configuration related to the migration to Dataplex applied to an
+/// organization or project.
+///
+/// It is the response message for SetConfig and RetrieveEffectiveConfig.
+typedef GoogleCloudDatacatalogV1MigrationConfig = $Shared11;
+
 /// Specification that applies to a model.
 ///
 /// Valid only for entries with the `MODEL` type.
@@ -5672,6 +5919,38 @@ class GoogleCloudDatacatalogV1ModifyEntryOverviewRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (entryOverview != null) 'entryOverview': entryOverview!,
+      };
+}
+
+/// The configuration related to the migration from Data Catalog to Dataplex
+/// that has been applied to an organization and any projects under it.
+///
+/// It is the response message for RetrieveConfig.
+class GoogleCloudDatacatalogV1OrganizationConfig {
+  /// Map of organizations and project resource names and their configuration.
+  ///
+  /// The format for the map keys is `organizations/{organizationId}` or
+  /// `projects/{projectId}`.
+  core.Map<core.String, GoogleCloudDatacatalogV1MigrationConfig>? config;
+
+  GoogleCloudDatacatalogV1OrganizationConfig({
+    this.config,
+  });
+
+  GoogleCloudDatacatalogV1OrganizationConfig.fromJson(core.Map json_)
+      : this(
+          config:
+              (json_['config'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudDatacatalogV1MigrationConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (config != null) 'config': config!,
       };
 }
 
@@ -6644,6 +6923,9 @@ class GoogleCloudDatacatalogV1ServiceSpec {
       };
 }
 
+/// Request message for SetConfig.
+typedef GoogleCloudDatacatalogV1SetConfigRequest = $Shared11;
+
 /// Specification that applies to entries that are part `SQL_DATABASE` system
 /// (user_specified_type)
 class GoogleCloudDatacatalogV1SqlDatabaseSystemSpec {
@@ -6810,6 +7092,21 @@ class GoogleCloudDatacatalogV1Tag {
   /// dot (`.`). Example: `column.nested_column`.
   core.String? column;
 
+  /// Denotes the transfer status of the Tag Template.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DATAPLEX_TRANSFER_STATUS_UNSPECIFIED" : Default value. TagTemplate and
+  /// its tags are only visible and editable in DataCatalog.
+  /// - "MIGRATED" : TagTemplate and its tags are auto-copied to Dataplex
+  /// service. Visible in both services. Editable in DataCatalog, read-only in
+  /// Dataplex. Deprecated: Individual TagTemplate migration is deprecated in
+  /// favor of organization or project wide TagTemplate migration opt-in.
+  /// - "TRANSFERRED" : TagTemplate and its tags are auto-copied to Dataplex
+  /// service. Visible in both services. Editable in Dataplex, read-only in
+  /// DataCatalog.
+  core.String? dataplexTransferStatus;
+
   /// Maps the ID of a tag field to its value and additional information about
   /// that field.
   ///
@@ -6842,6 +7139,7 @@ class GoogleCloudDatacatalogV1Tag {
 
   GoogleCloudDatacatalogV1Tag({
     this.column,
+    this.dataplexTransferStatus,
     this.fields,
     this.name,
     this.template,
@@ -6851,6 +7149,8 @@ class GoogleCloudDatacatalogV1Tag {
   GoogleCloudDatacatalogV1Tag.fromJson(core.Map json_)
       : this(
           column: json_['column'] as core.String?,
+          dataplexTransferStatus:
+              json_['dataplexTransferStatus'] as core.String?,
           fields:
               (json_['fields'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -6866,6 +7166,8 @@ class GoogleCloudDatacatalogV1Tag {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (column != null) 'column': column!,
+        if (dataplexTransferStatus != null)
+          'dataplexTransferStatus': dataplexTransferStatus!,
         if (fields != null) 'fields': fields!,
         if (name != null) 'name': name!,
         if (template != null) 'template': template!,
@@ -6993,6 +7295,9 @@ class GoogleCloudDatacatalogV1TagTemplate {
   /// service. Visible in both services. Editable in DataCatalog, read-only in
   /// Dataplex. Deprecated: Individual TagTemplate migration is deprecated in
   /// favor of organization or project wide TagTemplate migration opt-in.
+  /// - "TRANSFERRED" : TagTemplate and its tags are auto-copied to Dataplex
+  /// service. Visible in both services. Editable in Dataplex, read-only in
+  /// DataCatalog.
   core.String? dataplexTransferStatus;
 
   /// Display name for this template.

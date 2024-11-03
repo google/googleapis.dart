@@ -6991,11 +6991,17 @@ class PrivatePoolV1Config {
   /// Network configuration for the pool.
   NetworkConfig? networkConfig;
 
+  /// Private Service Connect(PSC) Network configuration for the pool.
+  ///
+  /// Immutable.
+  PrivateServiceConnect? privateServiceConnect;
+
   /// Machine configuration for the workers in the pool.
   WorkerConfig? workerConfig;
 
   PrivatePoolV1Config({
     this.networkConfig,
+    this.privateServiceConnect,
     this.workerConfig,
   });
 
@@ -7005,6 +7011,10 @@ class PrivatePoolV1Config {
               ? NetworkConfig.fromJson(
                   json_['networkConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          privateServiceConnect: json_.containsKey('privateServiceConnect')
+              ? PrivateServiceConnect.fromJson(json_['privateServiceConnect']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           workerConfig: json_.containsKey('workerConfig')
               ? WorkerConfig.fromJson(
                   json_['workerConfig'] as core.Map<core.String, core.dynamic>)
@@ -7013,7 +7023,66 @@ class PrivatePoolV1Config {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (networkConfig != null) 'networkConfig': networkConfig!,
+        if (privateServiceConnect != null)
+          'privateServiceConnect': privateServiceConnect!,
         if (workerConfig != null) 'workerConfig': workerConfig!,
+      };
+}
+
+/// Defines the Private Service Connect network configuration for the pool.
+class PrivateServiceConnect {
+  /// The network attachment that the worker network interface is peered to.
+  ///
+  /// Must be in the format
+  /// `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`.
+  /// The region of network attachment must be the same as the worker pool. See
+  /// [Network Attachments](https://cloud.google.com/vpc/docs/about-network-attachments)
+  ///
+  /// Required. Immutable.
+  core.String? networkAttachment;
+
+  /// Disable public IP on the primary network interface.
+  ///
+  /// If true, workers are created without any public address, which prevents
+  /// network egress to public IPs unless a network proxy is configured. If
+  /// false, workers are created with a public address which allows for public
+  /// internet egress. The public address only applies to traffic through the
+  /// primary network interface. If `route_all_traffic` is set to true, all
+  /// traffic will go through the non-primary network interface, this boolean
+  /// has no effect.
+  ///
+  /// Required. Immutable.
+  core.bool? publicIpAddressDisabled;
+
+  /// Route all traffic through PSC interface.
+  ///
+  /// Enable this if you want full control of traffic in the private pool.
+  /// Configure Cloud NAT for the subnet of network attachment if you need to
+  /// access public Internet. If false, Only route private IPs, e.g. 10.0.0.0/8,
+  /// 172.16.0.0/12, and 192.168.0.0/16 through PSC interface.
+  ///
+  /// Immutable.
+  core.bool? routeAllTraffic;
+
+  PrivateServiceConnect({
+    this.networkAttachment,
+    this.publicIpAddressDisabled,
+    this.routeAllTraffic,
+  });
+
+  PrivateServiceConnect.fromJson(core.Map json_)
+      : this(
+          networkAttachment: json_['networkAttachment'] as core.String?,
+          publicIpAddressDisabled:
+              json_['publicIpAddressDisabled'] as core.bool?,
+          routeAllTraffic: json_['routeAllTraffic'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (networkAttachment != null) 'networkAttachment': networkAttachment!,
+        if (publicIpAddressDisabled != null)
+          'publicIpAddressDisabled': publicIpAddressDisabled!,
+        if (routeAllTraffic != null) 'routeAllTraffic': routeAllTraffic!,
       };
 }
 

@@ -8662,7 +8662,7 @@ class CommentSnippet {
 }
 
 /// The id of the author's YouTube channel, if any.
-typedef CommentSnippetAuthorChannelId = $Shared14;
+typedef CommentSnippetAuthorChannelId = $Shared15;
 
 /// A *comment thread* represents information that applies to a top level
 /// comment and all its replies.
@@ -10942,7 +10942,7 @@ class InvideoTiming {
       };
 }
 
-typedef LanguageTag = $Shared14;
+typedef LanguageTag = $Shared15;
 
 class LevelDetails {
   /// The name that should be used when referring to this level.
@@ -14068,8 +14068,7 @@ class PlaylistItemListResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "youtube#playlistItemListResponse". Etag of this
-  /// resource.
+  /// Value: the fixed string "youtube#playlistItemListResponse".
   core.String? kind;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -17446,6 +17445,9 @@ class VideoStatistics {
 ///
 /// Next Id: 19
 class VideoStatus {
+  /// Indicates if the video contains altered or synthetic media.
+  core.bool? containsSyntheticMedia;
+
   /// This value indicates if the video can be embedded on another website.
   ///
   /// @mutable youtube.videos.insert youtube.videos.update
@@ -17520,6 +17522,7 @@ class VideoStatus {
   core.String? uploadStatus;
 
   VideoStatus({
+    this.containsSyntheticMedia,
     this.embeddable,
     this.failureReason,
     this.license,
@@ -17534,6 +17537,7 @@ class VideoStatus {
 
   VideoStatus.fromJson(core.Map json_)
       : this(
+          containsSyntheticMedia: json_['containsSyntheticMedia'] as core.bool?,
           embeddable: json_['embeddable'] as core.bool?,
           failureReason: json_['failureReason'] as core.String?,
           license: json_['license'] as core.String?,
@@ -17550,6 +17554,8 @@ class VideoStatus {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (containsSyntheticMedia != null)
+          'containsSyntheticMedia': containsSyntheticMedia!,
         if (embeddable != null) 'embeddable': embeddable!,
         if (failureReason != null) 'failureReason': failureReason!,
         if (license != null) 'license': license!,

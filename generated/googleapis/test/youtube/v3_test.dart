@@ -8035,6 +8035,7 @@ api.VideoStatus buildVideoStatus() {
   final o = api.VideoStatus();
   buildCounterVideoStatus++;
   if (buildCounterVideoStatus < 3) {
+    o.containsSyntheticMedia = true;
     o.embeddable = true;
     o.failureReason = 'foo';
     o.license = 'foo';
@@ -8053,6 +8054,7 @@ api.VideoStatus buildVideoStatus() {
 void checkVideoStatus(api.VideoStatus o) {
   buildCounterVideoStatus++;
   if (buildCounterVideoStatus < 3) {
+    unittest.expect(o.containsSyntheticMedia!, unittest.isTrue);
     unittest.expect(o.embeddable!, unittest.isTrue);
     unittest.expect(
       o.failureReason!,

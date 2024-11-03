@@ -34,6 +34,7 @@
 ///   - [AccountsReportsResource]
 ///   - [AccountsSkuGroupsResource]
 ///     - [AccountsSkuGroupsBillableSkusResource]
+/// - [IntegratorsResource]
 /// - [OperationsResource]
 /// - [ProductsResource]
 ///   - [ProductsSkusResource]
@@ -66,6 +67,7 @@ class CloudchannelApi {
   final commons.ApiRequester _requester;
 
   AccountsResource get accounts => AccountsResource(_requester);
+  IntegratorsResource get integrators => IntegratorsResource(_requester);
   OperationsResource get operations => OperationsResource(_requester);
   ProductsResource get products => ProductsResource(_requester);
 
@@ -147,8 +149,8 @@ class AccountsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists service accounts with subscriber privileges on the Cloud Pub/Sub
-  /// topic created for this Channel Services account.
+  /// Lists service accounts with subscriber privileges on the Pub/Sub topic
+  /// created for this Channel Services account or integrator.
   ///
   /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
   /// request and the provided reseller account are different, or the
@@ -161,8 +163,12 @@ class AccountsResource {
   ///
   /// Request parameters:
   ///
-  /// [account] - Optional. Resource name of the account.
+  /// [account] - Optional. Resource name of the account. Required if integrator
+  /// is not provided. Otherwise, leave this field empty/unset.
   /// Value must have pattern `^accounts/\[^/\]+$`.
+  ///
+  /// [integrator] - Optional. Resource name of the integrator. Required if
+  /// account is not provided. Otherwise, leave this field empty/unset.
   ///
   /// [pageSize] - Optional. The maximum number of service accounts to return.
   /// The service may return fewer than this value. If unspecified, returns at
@@ -186,11 +192,13 @@ class AccountsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudChannelV1ListSubscribersResponse> listSubscribers(
     core.String account, {
+    core.String? integrator,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (integrator != null) 'integrator': [integrator],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -317,8 +325,8 @@ class AccountsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Registers a service account with subscriber privileges on the Cloud
-  /// Pub/Sub topic for this Channel Services account.
+  /// Registers a service account with subscriber privileges on the Pub/Sub
+  /// topic for this Channel Services account or integrator.
   ///
   /// After you create a subscriber, you get the events through SubscriberEvent
   /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
@@ -334,7 +342,8 @@ class AccountsResource {
   ///
   /// Request parameters:
   ///
-  /// [account] - Optional. Resource name of the account.
+  /// [account] - Optional. Resource name of the account. Required if integrator
+  /// is not provided. Otherwise, leave this field empty/unset.
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -369,8 +378,8 @@ class AccountsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Unregisters a service account with subscriber privileges on the Cloud
-  /// Pub/Sub topic created for this Channel Services account.
+  /// Unregisters a service account with subscriber privileges on the Pub/Sub
+  /// topic created for this Channel Services account or integrator.
   ///
   /// If there are no service accounts left with subscriber privileges, this
   /// deletes the topic. You can call ListSubscribers to check for these
@@ -389,7 +398,8 @@ class AccountsResource {
   ///
   /// Request parameters:
   ///
-  /// [account] - Optional. Resource name of the account.
+  /// [account] - Optional. Resource name of the account. Required if integrator
+  /// is not provided. Otherwise, leave this field empty/unset.
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3358,8 +3368,8 @@ class AccountsSkuGroupsResource {
   /// will be coerced to 1000.
   ///
   /// [pageToken] - Optional. A token identifying a page of results beyond the
-  /// first page. Obtained through ListSkuGroups.next_page_token of the previous
-  /// CloudChannelService.ListSkuGroups call.
+  /// first page. Obtained through ListSkuGroupsResponse.next_page_token of the
+  /// previous CloudChannelService.ListSkuGroups call.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3424,8 +3434,9 @@ class AccountsSkuGroupsBillableSkusResource {
   /// coerced to 100000.
   ///
   /// [pageToken] - Optional. A token identifying a page of results beyond the
-  /// first page. Obtained through ListSkuGroupBillableSkus.next_page_token of
-  /// the previous CloudChannelService.ListSkuGroupBillableSkus call.
+  /// first page. Obtained through
+  /// ListSkuGroupBillableSkusResponse.next_page_token of the previous
+  /// CloudChannelService.ListSkuGroupBillableSkus call.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3457,6 +3468,192 @@ class AccountsSkuGroupsBillableSkusResource {
       queryParams: queryParams_,
     );
     return GoogleCloudChannelV1ListSkuGroupBillableSkusResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class IntegratorsResource {
+  final commons.ApiRequester _requester;
+
+  IntegratorsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Lists service accounts with subscriber privileges on the Pub/Sub topic
+  /// created for this Channel Services account or integrator.
+  ///
+  /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
+  /// request and the provided reseller account are different, or the
+  /// impersonated user is not a super admin. * INVALID_ARGUMENT: Required
+  /// request parameters are missing or invalid. * NOT_FOUND: The topic resource
+  /// doesn't exist. * INTERNAL: Any non-user error related to a technical issue
+  /// in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user
+  /// error related to a technical issue in the backend. Contact Cloud Channel
+  /// support. Return value: A list of service email addresses.
+  ///
+  /// Request parameters:
+  ///
+  /// [integrator] - Optional. Resource name of the integrator. Required if
+  /// account is not provided. Otherwise, leave this field empty/unset.
+  /// Value must have pattern `^integrators/\[^/\]+$`.
+  ///
+  /// [account] - Optional. Resource name of the account. Required if integrator
+  /// is not provided. Otherwise, leave this field empty/unset.
+  ///
+  /// [pageSize] - Optional. The maximum number of service accounts to return.
+  /// The service may return fewer than this value. If unspecified, returns at
+  /// most 100 service accounts. The maximum value is 1000; the server will
+  /// coerce values above 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListSubscribers` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided to `ListSubscribers` must match
+  /// the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1ListSubscribersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1ListSubscribersResponse> listSubscribers(
+    core.String integrator, {
+    core.String? account,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (account != null) 'account': [account],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$integrator') + ':listSubscribers';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudChannelV1ListSubscribersResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Registers a service account with subscriber privileges on the Pub/Sub
+  /// topic for this Channel Services account or integrator.
+  ///
+  /// After you create a subscriber, you get the events through SubscriberEvent
+  /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
+  /// request and the provided reseller account are different, or the
+  /// impersonated user is not a super admin. * INVALID_ARGUMENT: Required
+  /// request parameters are missing or invalid. * INTERNAL: Any non-user error
+  /// related to a technical issue in the backend. Contact Cloud Channel
+  /// support. * UNKNOWN: Any non-user error related to a technical issue in the
+  /// backend. Contact Cloud Channel support. Return value: The topic name with
+  /// the registered service email address.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [integrator] - Optional. Resource name of the integrator. Required if
+  /// account is not provided. Otherwise, leave this field empty/unset.
+  /// Value must have pattern `^integrators/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1RegisterSubscriberResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1RegisterSubscriberResponse>
+      registerSubscriber(
+    GoogleCloudChannelV1RegisterSubscriberRequest request,
+    core.String integrator, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$integrator') + ':registerSubscriber';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudChannelV1RegisterSubscriberResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Unregisters a service account with subscriber privileges on the Pub/Sub
+  /// topic created for this Channel Services account or integrator.
+  ///
+  /// If there are no service accounts left with subscriber privileges, this
+  /// deletes the topic. You can call ListSubscribers to check for these
+  /// accounts. Possible error codes: * PERMISSION_DENIED: The reseller account
+  /// making the request and the provided reseller account are different, or the
+  /// impersonated user is not a super admin. * INVALID_ARGUMENT: Required
+  /// request parameters are missing or invalid. * NOT_FOUND: The topic resource
+  /// doesn't exist. * INTERNAL: Any non-user error related to a technical issue
+  /// in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user
+  /// error related to a technical issue in the backend. Contact Cloud Channel
+  /// support. Return value: The topic name that unregistered the service email
+  /// address. Returns a success response if the service email address wasn't
+  /// registered with the topic.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [integrator] - Optional. Resource name of the integrator. Required if
+  /// account is not provided. Otherwise, leave this field empty/unset.
+  /// Value must have pattern `^integrators/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1UnregisterSubscriberResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1UnregisterSubscriberResponse>
+      unregisterSubscriber(
+    GoogleCloudChannelV1UnregisterSubscriberRequest request,
+    core.String integrator, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$integrator') + ':unregisterSubscriber';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudChannelV1UnregisterSubscriberResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -4027,7 +4224,7 @@ class GoogleCloudChannelV1ChangeOfferRequest {
       };
 }
 
-/// Request message for CloudChannelService.ChangeParametersRequest.
+/// Request message for CloudChannelService.ChangeParameters.
 class GoogleCloudChannelV1ChangeParametersRequest {
   /// Entitlement parameters to update.
   ///
@@ -5919,7 +6116,7 @@ class GoogleCloudChannelV1ListSkuGroupBillableSkusResponse {
 
   /// A token to retrieve the next page of results.
   ///
-  /// Pass to ListSkuGroupBillableSkus.page_token to obtain that page.
+  /// Pass to ListSkuGroupBillableSkusRequest.page_token to obtain that page.
   core.String? nextPageToken;
 
   GoogleCloudChannelV1ListSkuGroupBillableSkusResponse({
@@ -5946,7 +6143,7 @@ class GoogleCloudChannelV1ListSkuGroupBillableSkusResponse {
 class GoogleCloudChannelV1ListSkuGroupsResponse {
   /// A token to retrieve the next page of results.
   ///
-  /// Pass to ListSkuGroups.page_token to obtain that page.
+  /// Pass to ListSkuGroupsRequest.page_token to obtain that page.
   core.String? nextPageToken;
 
   /// The list of SKU groups requested.
@@ -7039,21 +7236,43 @@ class GoogleCloudChannelV1QueryEligibleBillingAccountsResponse {
 
 /// Request Message for RegisterSubscriber.
 class GoogleCloudChannelV1RegisterSubscriberRequest {
+  /// Resource name of the account.
+  ///
+  /// Required if integrator is not provided. Otherwise, leave this field
+  /// empty/unset.
+  ///
+  /// Optional.
+  core.String? account;
+
+  /// Resource name of the integrator.
+  ///
+  /// Required if account is not provided. Otherwise, leave this field
+  /// empty/unset.
+  ///
+  /// Optional.
+  core.String? integrator;
+
   /// Service account that provides subscriber access to the registered topic.
   ///
   /// Required.
   core.String? serviceAccount;
 
   GoogleCloudChannelV1RegisterSubscriberRequest({
+    this.account,
+    this.integrator,
     this.serviceAccount,
   });
 
   GoogleCloudChannelV1RegisterSubscriberRequest.fromJson(core.Map json_)
       : this(
+          account: json_['account'] as core.String?,
+          integrator: json_['integrator'] as core.String?,
           serviceAccount: json_['serviceAccount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (account != null) 'account': account!,
+        if (integrator != null) 'integrator': integrator!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
       };
 }
@@ -7940,21 +8159,43 @@ class GoogleCloudChannelV1TrialSettings {
 
 /// Request Message for UnregisterSubscriber.
 class GoogleCloudChannelV1UnregisterSubscriberRequest {
+  /// Resource name of the account.
+  ///
+  /// Required if integrator is not provided. Otherwise, leave this field
+  /// empty/unset.
+  ///
+  /// Optional.
+  core.String? account;
+
+  /// Resource name of the integrator.
+  ///
+  /// Required if account is not provided. Otherwise, leave this field
+  /// empty/unset.
+  ///
+  /// Optional.
+  core.String? integrator;
+
   /// Service account to unregister from subscriber access to the topic.
   ///
   /// Required.
   core.String? serviceAccount;
 
   GoogleCloudChannelV1UnregisterSubscriberRequest({
+    this.account,
+    this.integrator,
     this.serviceAccount,
   });
 
   GoogleCloudChannelV1UnregisterSubscriberRequest.fromJson(core.Map json_)
       : this(
+          account: json_['account'] as core.String?,
+          integrator: json_['integrator'] as core.String?,
           serviceAccount: json_['serviceAccount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (account != null) 'account': account!,
+        if (integrator != null) 'integrator': integrator!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
       };
 }

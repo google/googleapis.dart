@@ -686,6 +686,47 @@ void checkFilter(api.Filter o) {
   buildCounterFilter--;
 }
 
+core.int buildCounterFindNearest = 0;
+api.FindNearest buildFindNearest() {
+  final o = api.FindNearest();
+  buildCounterFindNearest++;
+  if (buildCounterFindNearest < 3) {
+    o.distanceMeasure = 'foo';
+    o.distanceResultProperty = 'foo';
+    o.distanceThreshold = 42.0;
+    o.limit = 42;
+    o.queryVector = buildValue();
+    o.vectorProperty = buildPropertyReference();
+  }
+  buildCounterFindNearest--;
+  return o;
+}
+
+void checkFindNearest(api.FindNearest o) {
+  buildCounterFindNearest++;
+  if (buildCounterFindNearest < 3) {
+    unittest.expect(
+      o.distanceMeasure!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.distanceResultProperty!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.distanceThreshold!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.limit!,
+      unittest.equals(42),
+    );
+    checkValue(o.queryVector!);
+    checkPropertyReference(o.vectorProperty!);
+  }
+  buildCounterFindNearest--;
+}
+
 core.List<core.String> buildUnnamed11() => [
       'foo',
       'foo',
@@ -1830,6 +1871,7 @@ api.Query buildQuery() {
     o.distinctOn = buildUnnamed32();
     o.endCursor = 'foo';
     o.filter = buildFilter();
+    o.findNearest = buildFindNearest();
     o.kind = buildUnnamed33();
     o.limit = 42;
     o.offset = 42;
@@ -1850,6 +1892,7 @@ void checkQuery(api.Query o) {
       unittest.equals('foo'),
     );
     checkFilter(o.filter!);
+    checkFindNearest(o.findNearest!);
     checkUnnamed33(o.kind!);
     unittest.expect(
       o.limit!,
@@ -2622,6 +2665,16 @@ void main() {
       final od =
           api.Filter.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkFilter(od);
+    });
+  });
+
+  unittest.group('obj-schema-FindNearest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFindNearest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FindNearest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkFindNearest(od);
     });
   });
 

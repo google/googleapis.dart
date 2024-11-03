@@ -1718,6 +1718,7 @@ api.SubscribeDataExchangeRequest buildSubscribeDataExchangeRequest() {
   buildCounterSubscribeDataExchangeRequest++;
   if (buildCounterSubscribeDataExchangeRequest < 3) {
     o.destination = 'foo';
+    o.destinationDataset = buildDestinationDataset();
     o.subscriberContact = 'foo';
     o.subscription = 'foo';
   }
@@ -1732,6 +1733,7 @@ void checkSubscribeDataExchangeRequest(api.SubscribeDataExchangeRequest o) {
       o.destination!,
       unittest.equals('foo'),
     );
+    checkDestinationDataset(o.destinationDataset!);
     unittest.expect(
       o.subscriberContact!,
       unittest.equals('foo'),

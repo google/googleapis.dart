@@ -1567,15 +1567,16 @@ class ProjectsInstancesBackupsResource {
   /// [encryptionConfig_kmsKeyNames] - Optional. Specifies the KMS configuration
   /// for the one or more keys used to protect the backup. Values are of the
   /// form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by
-  /// kms_key_names must fully cover all regions of the backup's instance
-  /// configuration. Some examples: * For single region instance configs,
-  /// specify a single regional location KMS key. * For multi-regional instance
-  /// configs of type GOOGLE_MANAGED, either specify a multi-regional location
-  /// KMS key or multiple regional location KMS keys that cover all regions in
-  /// the instance config. * For an instance config of type USER_MANAGED, please
-  /// specify only regional location KMS keys to cover each region in the
-  /// instance config. Multi-regional location KMS keys are not supported for
-  /// USER_MANAGED instance configs.
+  /// `kms_key_names` must fully cover all regions of the backup's instance
+  /// configuration. Some examples: * For regional (single-region) instance
+  /// configurations, specify a regional location KMS key. * For multi-region
+  /// instance configurations of type `GOOGLE_MANAGED`, either specify a
+  /// multi-region location KMS key or multiple regional location KMS keys that
+  /// cover all regions in the instance configuration. * For an instance
+  /// configuration of type `USER_MANAGED`, specify only regional location KMS
+  /// keys to cover each region in the instance configuration. Multi-region
+  /// location KMS keys aren't supported for `USER_MANAGED` type instance
+  /// configurations.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2188,7 +2189,7 @@ class ProjectsInstancesDatabaseOperationsResource {
   /// value for filtering. The value must be a string, a number, or a boolean.
   /// The comparison operator must be one of: `<`, `>`, `<=`, `>=`, `!=`, `=`,
   /// or `:`. Colon `:` is the contains operator. Filter rules are not case
-  /// sensitive. The following fields in the Operation are eligible for
+  /// sensitive. The following fields in the operation are eligible for
   /// filtering: * `name` - The name of the long-running operation * `done` -
   /// False if the operation is in progress, else true. * `metadata.@type` - the
   /// type of metadata. For example, the type string for RestoreDatabaseMetadata
@@ -5505,9 +5506,9 @@ class Backup {
   /// or more KMS keys.
   ///
   /// The information includes all Cloud KMS key versions used to encrypt the
-  /// backup. The \`encryption_status' field inside of each \`EncryptionInfo\`
-  /// is not populated. At least one of the key versions must be available for
-  /// the backup to be restored. If a key version is revoked in the middle of a
+  /// backup. The `encryption_status` field inside of each `EncryptionInfo` is
+  /// not populated. At least one of the key versions must be available for the
+  /// backup to be restored. If a key version is revoked in the middle of a
   /// restore, the restore behavior is undefined.
   ///
   /// Output only.
@@ -6530,17 +6531,17 @@ class CopyBackupEncryptionConfig {
   /// Specifies the KMS configuration for the one or more keys used to protect
   /// the backup.
   ///
-  /// Values are of the form `projects//locations//keyRings//cryptoKeys/`. Kms
-  /// keys specified can be in any order. The keys referenced by kms_key_names
+  /// Values are of the form `projects//locations//keyRings//cryptoKeys/`. KMS
+  /// keys specified can be in any order. The keys referenced by `kms_key_names`
   /// must fully cover all regions of the backup's instance configuration. Some
-  /// examples: * For single region instance configs, specify a single regional
-  /// location KMS key. * For multi-regional instance configs of type
-  /// GOOGLE_MANAGED, either specify a multi-regional location KMS key or
+  /// examples: * For regional (single-region) instance configurations, specify
+  /// a regional location KMS key. * For multi-region instance configurations of
+  /// type `GOOGLE_MANAGED`, either specify a multi-region location KMS key or
   /// multiple regional location KMS keys that cover all regions in the instance
-  /// config. * For an instance config of type USER_MANAGED, please specify only
-  /// regional location KMS keys to cover each region in the instance config.
-  /// Multi-regional location KMS keys are not supported for USER_MANAGED
-  /// instance configs.
+  /// configuration. * For an instance configuration of type `USER_MANAGED`,
+  /// specify only regional location KMS keys to cover each region in the
+  /// instance configuration. Multi-region location KMS keys aren't supported
+  /// for `USER_MANAGED` type instance configurations.
   ///
   /// Optional.
   core.List<core.String>? kmsKeyNames;
@@ -6661,15 +6662,16 @@ class CreateBackupEncryptionConfig {
   /// the backup.
   ///
   /// Values are of the form `projects//locations//keyRings//cryptoKeys/`. The
-  /// keys referenced by kms_key_names must fully cover all regions of the
-  /// backup's instance configuration. Some examples: * For single region
-  /// instance configs, specify a single regional location KMS key. * For
-  /// multi-regional instance configs of type GOOGLE_MANAGED, either specify a
-  /// multi-regional location KMS key or multiple regional location KMS keys
-  /// that cover all regions in the instance config. * For an instance config of
-  /// type USER_MANAGED, please specify only regional location KMS keys to cover
-  /// each region in the instance config. Multi-regional location KMS keys are
-  /// not supported for USER_MANAGED instance configs.
+  /// keys referenced by `kms_key_names` must fully cover all regions of the
+  /// backup's instance configuration. Some examples: * For regional
+  /// (single-region) instance configurations, specify a regional location KMS
+  /// key. * For multi-region instance configurations of type `GOOGLE_MANAGED`,
+  /// either specify a multi-region location KMS key or multiple regional
+  /// location KMS keys that cover all regions in the instance configuration. *
+  /// For an instance configuration of type `USER_MANAGED`, specify only
+  /// regional location KMS keys to cover each region in the instance
+  /// configuration. Multi-region location KMS keys aren't supported for
+  /// `USER_MANAGED` type instance configurations.
   ///
   /// Optional.
   core.List<core.String>? kmsKeyNames;
@@ -7052,7 +7054,7 @@ class Database {
   /// contains the encryption information for the database, such as all Cloud
   /// KMS key versions that are in use.
   ///
-  /// The \`encryption_status' field inside of each \`EncryptionInfo\` is not
+  /// The `encryption_status` field inside of each `EncryptionInfo` is not
   /// populated. For databases that are using Google default or other types of
   /// encryption, this field is empty. This field is propagated lazily from the
   /// backend. There might be a delay from when a key version is being used and
@@ -7407,20 +7409,20 @@ class EncryptionConfig {
   /// Values are of the form `projects//locations//keyRings//cryptoKeys/`.
   core.String? kmsKeyName;
 
-  /// Specifies the KMS configuration for the one or more keys used to encrypt
-  /// the database.
+  /// Specifies the KMS configuration for one or more keys used to encrypt the
+  /// database.
   ///
   /// Values are of the form `projects//locations//keyRings//cryptoKeys/`. The
-  /// keys referenced by kms_key_names must fully cover all regions of the
-  /// database instance configuration. Some examples: * For single region
-  /// database instance configs, specify a single regional location KMS key. *
-  /// For multi-regional database instance configs of type GOOGLE_MANAGED,
-  /// either specify a multi-regional location KMS key or multiple regional
-  /// location KMS keys that cover all regions in the instance config. * For a
-  /// database instance config of type USER_MANAGED, please specify only
-  /// regional location KMS keys to cover each region in the instance config.
-  /// Multi-regional location KMS keys are not supported for USER_MANAGED
-  /// instance configs.
+  /// keys referenced by `kms_key_names` must fully cover all regions of the
+  /// database's instance configuration. Some examples: * For regional
+  /// (single-region) instance configurations, specify a regional location KMS
+  /// key. * For multi-region instance configurations of type `GOOGLE_MANAGED`,
+  /// either specify a multi-region location KMS key or multiple regional
+  /// location KMS keys that cover all regions in the instance configuration. *
+  /// For an instance configuration of type `USER_MANAGED`, specify only
+  /// regional location KMS keys to cover each region in the instance
+  /// configuration. Multi-region location KMS keys aren't supported for
+  /// `USER_MANAGED` type instance configurations.
   core.List<core.String>? kmsKeyNames;
 
   EncryptionConfig({
@@ -8185,6 +8187,27 @@ class Instance {
   /// Output only.
   core.String? createTime;
 
+  /// Controls the default backup behavior for new databases within the
+  /// instance.
+  ///
+  /// Note that `AUTOMATIC` is not permitted for free instances, as backups and
+  /// backup schedules are not allowed for free instances. In the `GetInstance`
+  /// or `ListInstances` response, if the value of default_backup_schedule_type
+  /// is unset or NONE, no default backup schedule will be created for new
+  /// databases within the instance.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DEFAULT_BACKUP_SCHEDULE_TYPE_UNSPECIFIED" : Not specified.
+  /// - "NONE" : No default backup schedule will be created automatically on
+  /// creation of a database within the instance.
+  /// - "AUTOMATIC" : A default backup schedule will be created automatically on
+  /// creation of a database within the instance. The default backup schedule
+  /// creates a full backup every 24 hours and retains the backup for a period
+  /// of 7 days. Once created, the default backup schedule can be edited/deleted
+  /// similar to any other backup schedule.
+  core.String? defaultBackupScheduleType;
+
   /// The descriptive name for this instance as it appears in UIs.
   ///
   /// Must be unique per project and between 4 and 30 characters in length.
@@ -8258,10 +8281,8 @@ class Instance {
   /// the target number of nodes allocated to the instance. If autoscaling is
   /// enabled, `node_count` is treated as an `OUTPUT_ONLY` field and reflects
   /// the current number of nodes allocated to the instance. This might be zero
-  /// in API responses for instances that are not yet in the `READY` state. If
-  /// the instance has varying node count across replicas (achieved by setting
-  /// asymmetric_autoscaling_options in autoscaling config), the node_count here
-  /// is the maximum node count across all replicas. For more information, see
+  /// in API responses for instances that are not yet in the `READY` state. For
+  /// more information, see
   /// [Compute capacity, nodes, and processing units](https://cloud.google.com/spanner/docs/compute-capacity).
   core.int? nodeCount;
 
@@ -8273,11 +8294,7 @@ class Instance {
   /// If autoscaling is enabled, `processing_units` is treated as an
   /// `OUTPUT_ONLY` field and reflects the current number of processing units
   /// allocated to the instance. This might be zero in API responses for
-  /// instances that are not yet in the `READY` state. If the instance has
-  /// varying processing units per replica (achieved by setting
-  /// asymmetric_autoscaling_options in autoscaling config), the
-  /// processing_units here is the maximum processing units across all replicas.
-  /// For more information, see
+  /// instances that are not yet in the `READY` state. For more information, see
   /// [Compute capacity, nodes and processing units](https://cloud.google.com/spanner/docs/compute-capacity).
   core.int? processingUnits;
 
@@ -8313,6 +8330,7 @@ class Instance {
     this.autoscalingConfig,
     this.config,
     this.createTime,
+    this.defaultBackupScheduleType,
     this.displayName,
     this.edition,
     this.endpointUris,
@@ -8335,6 +8353,8 @@ class Instance {
               : null,
           config: json_['config'] as core.String?,
           createTime: json_['createTime'] as core.String?,
+          defaultBackupScheduleType:
+              json_['defaultBackupScheduleType'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           edition: json_['edition'] as core.String?,
           endpointUris: (json_['endpointUris'] as core.List?)
@@ -8368,6 +8388,8 @@ class Instance {
         if (autoscalingConfig != null) 'autoscalingConfig': autoscalingConfig!,
         if (config != null) 'config': config!,
         if (createTime != null) 'createTime': createTime!,
+        if (defaultBackupScheduleType != null)
+          'defaultBackupScheduleType': defaultBackupScheduleType!,
         if (displayName != null) 'displayName': displayName!,
         if (edition != null) 'edition': edition!,
         if (endpointUris != null) 'endpointUris': endpointUris!,
@@ -11380,20 +11402,20 @@ class RestoreDatabaseEncryptionConfig {
   /// Optional.
   core.String? kmsKeyName;
 
-  /// Specifies the KMS configuration for the one or more keys used to encrypt
-  /// the database.
+  /// Specifies the KMS configuration for one or more keys used to encrypt the
+  /// database.
   ///
   /// Values have the form `projects//locations//keyRings//cryptoKeys/`. The
-  /// keys referenced by kms_key_names must fully cover all regions of the
-  /// database instance configuration. Some examples: * For single region
-  /// database instance configurations, specify a single regional location KMS
-  /// key. * For multi-regional database instance configurations of type
-  /// `GOOGLE_MANAGED`, either specify a multi-regional location KMS key or
-  /// multiple regional location KMS keys that cover all regions in the instance
-  /// configuration. * For a database instance configuration of type
-  /// `USER_MANAGED`, please specify only regional location KMS keys to cover
-  /// each region in the instance configuration. Multi-regional location KMS
-  /// keys are not supported for USER_MANAGED instance configurations.
+  /// keys referenced by `kms_key_names` must fully cover all regions of the
+  /// database's instance configuration. Some examples: * For regional
+  /// (single-region) instance configurations, specify a regional location KMS
+  /// key. * For multi-region instance configurations of type `GOOGLE_MANAGED`,
+  /// either specify a multi-region location KMS key or multiple regional
+  /// location KMS keys that cover all regions in the instance configuration. *
+  /// For an instance configuration of type `USER_MANAGED`, specify only
+  /// regional location KMS keys to cover each region in the instance
+  /// configuration. Multi-region location KMS keys aren't supported for
+  /// `USER_MANAGED` type instance configurations.
   ///
   /// Optional.
   core.List<core.String>? kmsKeyNames;
@@ -12614,11 +12636,11 @@ class UpdateDatabaseDdlRequest {
   /// Operation. Specifying an explicit operation ID simplifies determining
   /// whether the statements were executed in the event that the
   /// UpdateDatabaseDdl call is replayed, or the return value is otherwise lost:
-  /// the database and `operation_id` fields can be combined to form the name of
-  /// the resulting longrunning.Operation: `/operations/`. `operation_id` should
-  /// be unique within the database, and must be a valid identifier: `a-z*`.
-  /// Note that automatically-generated operation IDs always begin with an
-  /// underscore. If the named operation already exists, UpdateDatabaseDdl
+  /// the database and `operation_id` fields can be combined to form the `name`
+  /// of the resulting longrunning.Operation: `/operations/`. `operation_id`
+  /// should be unique within the database, and must be a valid identifier:
+  /// `a-z*`. Note that automatically-generated operation IDs always begin with
+  /// an underscore. If the named operation already exists, UpdateDatabaseDdl
   /// returns `ALREADY_EXISTS`.
   core.String? operationId;
 

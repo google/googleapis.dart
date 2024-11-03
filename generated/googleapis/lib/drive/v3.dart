@@ -2161,7 +2161,8 @@ class FilesAccessproposalsResource {
   /// [action] - Required. The action to take on the AccessProposal.
   /// Possible string values are:
   /// - "ACTION_UNSPECIFIED" : Unspecified action
-  /// - "ACCEPT" : The user accepts the proposal
+  /// - "ACCEPT" : The user accepts the proposal. Note: If this action is used,
+  /// the `role` field must have at least one value.
   /// - "DENY" : The user denies the proposal
   ///
   /// [role] - Optional. The roles the approver has allowed, if any. Note: This

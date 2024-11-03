@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241013",
+    "revision": "20241027",
     "rootUrl": "https://recaptchaenterprise.googleapis.com/",
     "servicePath": "",
     "title": "reCAPTCHA Enterprise API",
@@ -1805,7 +1805,7 @@
             "type": "object"
         },
         "GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest": {
-            "description": "The removeIpOverride request message.",
+            "description": "The RemoveIpOverride request message.",
             "id": "GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest",
             "properties": {
                 "ipOverrideData": {
@@ -1857,7 +1857,7 @@
             "id": "GoogleCloudRecaptchaenterpriseV1RiskAnalysis",
             "properties": {
                 "challenge": {
-                    "description": "Output only. Challenge information for SCORE_AND_CHALLENGE keys",
+                    "description": "Output only. Challenge information for SCORE_AND_CHALLENGE and INVISIBLE keys",
                     "enum": [
                         "CHALLENGE_UNSPECIFIED",
                         "NOCAPTCHA",

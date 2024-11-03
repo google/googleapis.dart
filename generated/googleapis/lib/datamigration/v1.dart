@@ -6392,35 +6392,7 @@ class ListPrivateConnectionsResponse {
 typedef Location = $Location00;
 
 /// Configuration to specify the Oracle directories to access the log files.
-class LogFileDirectories {
-  /// Oracle directory for archived logs.
-  ///
-  /// Required.
-  core.String? archivedLogDirectory;
-
-  /// Oracle directory for online logs.
-  ///
-  /// Required.
-  core.String? onlineLogDirectory;
-
-  LogFileDirectories({
-    this.archivedLogDirectory,
-    this.onlineLogDirectory,
-  });
-
-  LogFileDirectories.fromJson(core.Map json_)
-      : this(
-          archivedLogDirectory: json_['archivedLogDirectory'] as core.String?,
-          onlineLogDirectory: json_['onlineLogDirectory'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (archivedLogDirectory != null)
-          'archivedLogDirectory': archivedLogDirectory!,
-        if (onlineLogDirectory != null)
-          'onlineLogDirectory': onlineLogDirectory!,
-      };
-}
+typedef LogFileDirectories = $LogFileDirectories;
 
 /// Configuration to use LogMiner CDC method.
 typedef LogMiner = $Empty;
@@ -9548,6 +9520,9 @@ class SslConfig {
   /// - "SERVER_ONLY" : Only 'ca_certificate' specified.
   /// - "SERVER_CLIENT" : Both server ('ca_certificate'), and client
   /// ('client_key', 'client_certificate') specified.
+  /// - "REQUIRED" : Mandates SSL encryption for all connections. This doesn’t
+  /// require certificate verification.
+  /// - "NONE" : Connection is not encrypted.
   core.String? type;
 
   SslConfig({
