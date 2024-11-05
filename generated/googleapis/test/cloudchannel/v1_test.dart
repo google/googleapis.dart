@@ -253,6 +253,7 @@ api.GoogleCloudChannelV1ChangeOfferRequest
     o.billingAccount = 'foo';
     o.offer = 'foo';
     o.parameters = buildUnnamed0();
+    o.priceReferenceId = 'foo';
     o.purchaseOrderId = 'foo';
     o.requestId = 'foo';
   }
@@ -273,6 +274,10 @@ void checkGoogleCloudChannelV1ChangeOfferRequest(
       unittest.equals('foo'),
     );
     checkUnnamed0(o.parameters!);
+    unittest.expect(
+      o.priceReferenceId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.purchaseOrderId!,
       unittest.equals('foo'),
@@ -1069,6 +1074,7 @@ api.GoogleCloudChannelV1Entitlement buildGoogleCloudChannelV1Entitlement() {
     o.name = 'foo';
     o.offer = 'foo';
     o.parameters = buildUnnamed6();
+    o.priceReferenceId = 'foo';
     o.provisionedService = buildGoogleCloudChannelV1ProvisionedService();
     o.provisioningState = 'foo';
     o.purchaseOrderId = 'foo';
@@ -1103,6 +1109,10 @@ void checkGoogleCloudChannelV1Entitlement(
       unittest.equals('foo'),
     );
     checkUnnamed6(o.parameters!);
+    unittest.expect(
+      o.priceReferenceId!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudChannelV1ProvisionedService(o.provisionedService!);
     unittest.expect(
       o.provisioningState!,
@@ -2625,6 +2635,7 @@ api.GoogleCloudChannelV1PurchasableOffer
   buildCounterGoogleCloudChannelV1PurchasableOffer++;
   if (buildCounterGoogleCloudChannelV1PurchasableOffer < 3) {
     o.offer = buildGoogleCloudChannelV1Offer();
+    o.priceReferenceId = 'foo';
   }
   buildCounterGoogleCloudChannelV1PurchasableOffer--;
   return o;
@@ -2635,6 +2646,10 @@ void checkGoogleCloudChannelV1PurchasableOffer(
   buildCounterGoogleCloudChannelV1PurchasableOffer++;
   if (buildCounterGoogleCloudChannelV1PurchasableOffer < 3) {
     checkGoogleCloudChannelV1Offer(o.offer!);
+    unittest.expect(
+      o.priceReferenceId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudChannelV1PurchasableOffer--;
 }
@@ -3395,6 +3410,7 @@ api.GoogleCloudChannelV1TransferableOffer
   buildCounterGoogleCloudChannelV1TransferableOffer++;
   if (buildCounterGoogleCloudChannelV1TransferableOffer < 3) {
     o.offer = buildGoogleCloudChannelV1Offer();
+    o.priceReferenceId = 'foo';
   }
   buildCounterGoogleCloudChannelV1TransferableOffer--;
   return o;
@@ -3405,6 +3421,10 @@ void checkGoogleCloudChannelV1TransferableOffer(
   buildCounterGoogleCloudChannelV1TransferableOffer++;
   if (buildCounterGoogleCloudChannelV1TransferableOffer < 3) {
     checkGoogleCloudChannelV1Offer(o.offer!);
+    unittest.expect(
+      o.priceReferenceId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudChannelV1TransferableOffer--;
 }

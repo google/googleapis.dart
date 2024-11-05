@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241024",
+    "revision": "20241102",
     "rootUrl": "https://cloudchannel.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Channel API",
@@ -2431,6 +2431,10 @@
                     },
                     "type": "array"
                 },
+                "priceReferenceId": {
+                    "description": "Optional. Price reference ID for the offer. Optional field only for offers that require additional price information. Used to guarantee that the pricing is consistent between quoting the offer and placing the order. Yet to be implemented: this field is currently not evaluated in the API if populated in a request.",
+                    "type": "string"
+                },
                 "purchaseOrderId": {
                     "description": "Optional. Purchase order id provided by the reseller.",
                     "type": "string"
@@ -2957,7 +2961,7 @@
                     "type": "string"
                 },
                 "eventType": {
-                    "description": "Type of event which happened on the customer.",
+                    "description": "Type of event which happened for the customer.",
                     "enum": [
                         "TYPE_UNSPECIFIED",
                         "PRIMARY_DOMAIN_CHANGED",
@@ -3105,6 +3109,10 @@
                         "$ref": "GoogleCloudChannelV1Parameter"
                     },
                     "type": "array"
+                },
+                "priceReferenceId": {
+                    "description": "Optional. Price reference ID for the offer. Optional field only for offers that require additional price information. Used to guarantee that the pricing is consistent between quoting the offer and placing the order. Yet to be implemented: this field is currently not evaluated in the API if populated in a request.",
+                    "type": "string"
                 },
                 "provisionedService": {
                     "$ref": "GoogleCloudChannelV1ProvisionedService",
@@ -3326,7 +3334,7 @@
                     "type": "string"
                 },
                 "eventType": {
-                    "description": "Type of event which happened on the entitlement.",
+                    "description": "Type of event which happened for the entitlement.",
                     "enum": [
                         "TYPE_UNSPECIFIED",
                         "CREATED",
@@ -4318,6 +4326,10 @@
                 "offer": {
                     "$ref": "GoogleCloudChannelV1Offer",
                     "description": "Offer."
+                },
+                "priceReferenceId": {
+                    "description": "Optional. Price reference ID for the offer. Optional field only for offers that require additional price information. Used to guarantee that the pricing is consistent between quoting the offer and placing the order.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -4890,6 +4902,10 @@
                 "offer": {
                     "$ref": "GoogleCloudChannelV1Offer",
                     "description": "Offer with parameter constraints updated to allow the Transfer."
+                },
+                "priceReferenceId": {
+                    "description": "Optional. Price reference ID for the offer. Optional field only for offers that require additional price information. Used to guarantee that the pricing is consistent between quoting the offer and placing the order.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -5028,7 +5044,7 @@
                     "type": "string"
                 },
                 "eventType": {
-                    "description": "Type of event performed on the Channel Partner.",
+                    "description": "Type of event which happened for the channel partner.",
                     "enum": [
                         "TYPE_UNSPECIFIED",
                         "LINK_STATE_CHANGED",
@@ -5114,7 +5130,7 @@
                     "type": "string"
                 },
                 "eventType": {
-                    "description": "Type of event which happened on the customer.",
+                    "description": "Type of event which happened for the customer.",
                     "enum": [
                         "TYPE_UNSPECIFIED",
                         "PRIMARY_DOMAIN_CHANGED",
@@ -5304,7 +5320,7 @@
                     "type": "string"
                 },
                 "eventType": {
-                    "description": "Type of event which happened on the entitlement.",
+                    "description": "Type of event which happened for the entitlement.",
                     "enum": [
                         "TYPE_UNSPECIFIED",
                         "CREATED",
@@ -5380,6 +5396,31 @@
                         "Long Running Operation was triggered by ChangeParameters.",
                         "Long Running Operation was triggered by ProvisionCloudIdentity."
                     ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudChannelV1alpha1OpportunityEvent": {
+            "description": "Represents Pub/Sub message content describing opportunity updates.",
+            "id": "GoogleCloudChannelV1alpha1OpportunityEvent",
+            "properties": {
+                "eventType": {
+                    "description": "Type of event which happened for the opportunity.",
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "CREATED",
+                        "UPDATED"
+                    ],
+                    "enumDescriptions": [
+                        "Not used.",
+                        "New opportunity created.",
+                        "Existing opportunity updated."
+                    ],
+                    "type": "string"
+                },
+                "opportunity": {
+                    "description": "Resource name of the opportunity. Format: opportunities/{opportunity}",
                     "type": "string"
                 }
             },
@@ -5654,6 +5695,10 @@
                 "entitlementEvent": {
                     "$ref": "GoogleCloudChannelV1alpha1EntitlementEvent",
                     "description": "Entitlement event sent as part of Pub/Sub event to partners."
+                },
+                "opportunityEvent": {
+                    "$ref": "GoogleCloudChannelV1alpha1OpportunityEvent",
+                    "description": "Opportunity event sent as part of Pub/Sub event to partners/integrators."
                 }
             },
             "type": "object"
@@ -5887,7 +5932,7 @@
             "type": "object"
         },
         "GoogleTypeDecimal": {
-            "description": "A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's BigDecimal or Python's decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.org/3/library/decimal.html",
+            "description": "A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's [BigDecimal](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).",
             "id": "GoogleTypeDecimal",
             "properties": {
                 "value": {

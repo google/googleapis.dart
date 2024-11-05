@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240524",
+    "revision": "20241101",
     "rootUrl": "https://fcm.googleapis.com/",
     "servicePath": "",
     "title": "Firebase Cloud Messaging API",
@@ -395,6 +395,10 @@
                     },
                     "description": "HTTP request headers defined in Apple Push Notification Service. Refer to [APNs request headers](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns) for supported headers such as `apns-expiration` and `apns-priority`. The backend sets a default value for `apns-expiration` of 30 days and a default value for `apns-priority` of 10 if not explicitly set.",
                     "type": "object"
+                },
+                "liveActivityToken": {
+                    "description": "Optional. [Apple Live Activity](https://developer.apple.com/design/human-interface-guidelines/live-activities) token to send updates to. This token can either be a push token or [push-to-start](https://developer.apple.com/documentation/activitykit/activity/pushtostarttoken) token from Apple.",
+                    "type": "string"
                 },
                 "payload": {
                     "additionalProperties": {

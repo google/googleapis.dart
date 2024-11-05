@@ -2080,7 +2080,7 @@ class ProjectsLocationsIntegrationsExecutionsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Next ID: 3 The execution resource name. Format:
+  /// [name] - Required. Next ID: 5 The execution resource name. Format:
   /// projects/{gcp_project_id}/locations/{location}/integrations/{integration}/executions/{execution_id}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/integrations/\[^/\]+/executions/\[^/\]+$`.
@@ -12453,11 +12453,18 @@ class GoogleCloudConnectorsV1EventingRuntimeData {
   /// Output only.
   GoogleCloudConnectorsV1EventingRuntimeDataWebhookData? webhookData;
 
+  /// Webhook subscriptions.
+  ///
+  /// Output only.
+  GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions?
+      webhookSubscriptions;
+
   GoogleCloudConnectorsV1EventingRuntimeData({
     this.eventsListenerEndpoint,
     this.eventsListenerPscSa,
     this.status,
     this.webhookData,
+    this.webhookSubscriptions,
   });
 
   GoogleCloudConnectorsV1EventingRuntimeData.fromJson(core.Map json_)
@@ -12473,6 +12480,11 @@ class GoogleCloudConnectorsV1EventingRuntimeData {
               ? GoogleCloudConnectorsV1EventingRuntimeDataWebhookData.fromJson(
                   json_['webhookData'] as core.Map<core.String, core.dynamic>)
               : null,
+          webhookSubscriptions: json_.containsKey('webhookSubscriptions')
+              ? GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions
+                  .fromJson(json_['webhookSubscriptions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12482,6 +12494,8 @@ class GoogleCloudConnectorsV1EventingRuntimeData {
           'eventsListenerPscSa': eventsListenerPscSa!,
         if (status != null) 'status': status!,
         if (webhookData != null) 'webhookData': webhookData!,
+        if (webhookSubscriptions != null)
+          'webhookSubscriptions': webhookSubscriptions!,
       };
 }
 
@@ -12549,6 +12563,32 @@ class GoogleCloudConnectorsV1EventingRuntimeDataWebhookData {
         if (name != null) 'name': name!,
         if (nextRefreshTime != null) 'nextRefreshTime': nextRefreshTime!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// WebhookSubscriptions has details of webhook subscriptions.
+class GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions {
+  /// Webhook data.
+  ///
+  /// Output only.
+  core.List<GoogleCloudConnectorsV1EventingRuntimeDataWebhookData>? webhookData;
+
+  GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions({
+    this.webhookData,
+  });
+
+  GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions.fromJson(
+      core.Map json_)
+      : this(
+          webhookData: (json_['webhookData'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudConnectorsV1EventingRuntimeDataWebhookData
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (webhookData != null) 'webhookData': webhookData!,
       };
 }
 

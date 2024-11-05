@@ -6755,6 +6755,9 @@ class Policy {
   core.List<core.String>? accountTypesWithManagementDisabled;
 
   /// Whether adding new users and profiles is disabled.
+  ///
+  /// For devices where managementMode is DEVICE_OWNER this field is ignored and
+  /// the user is never allowed to add or remove users.
   core.bool? addUserDisabled;
 
   /// Whether adjusting the master volume is disabled.

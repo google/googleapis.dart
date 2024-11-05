@@ -2490,6 +2490,71 @@ class ProjectsLocationsVmwareAdminClustersResource {
   ProjectsLocationsVmwareAdminClustersResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates a new VMware admin cluster in a given project and location.
+  ///
+  /// The API needs to be combined with creating a bootstrap cluster to work.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent of the project and location where the
+  /// cluster is created in. Format: "projects/{project}/locations/{location}"
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [allowPreflightFailure] - Optional. If set to true, CLM will force CCFE to
+  /// persist the cluster resource in RMS when the creation fails during
+  /// standalone preflight checks. In that case the subsequent create call will
+  /// fail with "cluster already exists" error and hence a update cluster is
+  /// required to fix the cluster.
+  ///
+  /// [validateOnly] - Validate the request without actually doing any updates.
+  ///
+  /// [vmwareAdminClusterId] - Required. User provided identifier that is used
+  /// as part of the resource name; must conform to RFC-1034 and additionally
+  /// restrict to lower-cased letters. This comes out roughly to:
+  /// /^a-z+\[a-z0-9\]$/
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    VmwareAdminCluster request,
+    core.String parent, {
+    core.bool? allowPreflightFailure,
+    core.bool? validateOnly,
+    core.String? vmwareAdminClusterId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowPreflightFailure != null)
+        'allowPreflightFailure': ['${allowPreflightFailure}'],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if (vmwareAdminClusterId != null)
+        'vmwareAdminClusterId': [vmwareAdminClusterId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/vmwareAdminClusters';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Enrolls an existing VMware admin cluster to the Anthos On-Prem API within
   /// a given project and location.
   ///

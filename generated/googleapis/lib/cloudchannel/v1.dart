@@ -4177,6 +4177,16 @@ class GoogleCloudChannelV1ChangeOfferRequest {
   /// Optional.
   core.List<GoogleCloudChannelV1Parameter>? parameters;
 
+  /// Price reference ID for the offer.
+  ///
+  /// Optional field only for offers that require additional price information.
+  /// Used to guarantee that the pricing is consistent between quoting the offer
+  /// and placing the order. Yet to be implemented: this field is currently not
+  /// evaluated in the API if populated in a request.
+  ///
+  /// Optional.
+  core.String? priceReferenceId;
+
   /// Purchase order id provided by the reseller.
   ///
   /// Optional.
@@ -4199,6 +4209,7 @@ class GoogleCloudChannelV1ChangeOfferRequest {
     this.billingAccount,
     this.offer,
     this.parameters,
+    this.priceReferenceId,
     this.purchaseOrderId,
     this.requestId,
   });
@@ -4211,6 +4222,7 @@ class GoogleCloudChannelV1ChangeOfferRequest {
               ?.map((value) => GoogleCloudChannelV1Parameter.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          priceReferenceId: json_['priceReferenceId'] as core.String?,
           purchaseOrderId: json_['purchaseOrderId'] as core.String?,
           requestId: json_['requestId'] as core.String?,
         );
@@ -4219,6 +4231,7 @@ class GoogleCloudChannelV1ChangeOfferRequest {
         if (billingAccount != null) 'billingAccount': billingAccount!,
         if (offer != null) 'offer': offer!,
         if (parameters != null) 'parameters': parameters!,
+        if (priceReferenceId != null) 'priceReferenceId': priceReferenceId!,
         if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId!,
         if (requestId != null) 'requestId': requestId!,
       };
@@ -5327,6 +5340,16 @@ class GoogleCloudChannelV1Entitlement {
   /// the billing subaccount.
   core.List<GoogleCloudChannelV1Parameter>? parameters;
 
+  /// Price reference ID for the offer.
+  ///
+  /// Optional field only for offers that require additional price information.
+  /// Used to guarantee that the pricing is consistent between quoting the offer
+  /// and placing the order. Yet to be implemented: this field is currently not
+  /// evaluated in the API if populated in a request.
+  ///
+  /// Optional.
+  core.String? priceReferenceId;
+
   /// Service provisioning details for the entitlement.
   ///
   /// Output only.
@@ -5374,6 +5397,7 @@ class GoogleCloudChannelV1Entitlement {
     this.name,
     this.offer,
     this.parameters,
+    this.priceReferenceId,
     this.provisionedService,
     this.provisioningState,
     this.purchaseOrderId,
@@ -5402,6 +5426,7 @@ class GoogleCloudChannelV1Entitlement {
               ?.map((value) => GoogleCloudChannelV1Parameter.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          priceReferenceId: json_['priceReferenceId'] as core.String?,
           provisionedService: json_.containsKey('provisionedService')
               ? GoogleCloudChannelV1ProvisionedService.fromJson(
                   json_['provisionedService']
@@ -5428,6 +5453,7 @@ class GoogleCloudChannelV1Entitlement {
         if (name != null) 'name': name!,
         if (offer != null) 'offer': offer!,
         if (parameters != null) 'parameters': parameters!,
+        if (priceReferenceId != null) 'priceReferenceId': priceReferenceId!,
         if (provisionedService != null)
           'provisionedService': provisionedService!,
         if (provisioningState != null) 'provisioningState': provisioningState!,
@@ -7166,8 +7192,18 @@ class GoogleCloudChannelV1PurchasableOffer {
   /// Offer.
   GoogleCloudChannelV1Offer? offer;
 
+  /// Price reference ID for the offer.
+  ///
+  /// Optional field only for offers that require additional price information.
+  /// Used to guarantee that the pricing is consistent between quoting the offer
+  /// and placing the order.
+  ///
+  /// Optional.
+  core.String? priceReferenceId;
+
   GoogleCloudChannelV1PurchasableOffer({
     this.offer,
+    this.priceReferenceId,
   });
 
   GoogleCloudChannelV1PurchasableOffer.fromJson(core.Map json_)
@@ -7176,10 +7212,12 @@ class GoogleCloudChannelV1PurchasableOffer {
               ? GoogleCloudChannelV1Offer.fromJson(
                   json_['offer'] as core.Map<core.String, core.dynamic>)
               : null,
+          priceReferenceId: json_['priceReferenceId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (offer != null) 'offer': offer!,
+        if (priceReferenceId != null) 'priceReferenceId': priceReferenceId!,
       };
 }
 
@@ -8062,8 +8100,18 @@ class GoogleCloudChannelV1TransferableOffer {
   /// Offer with parameter constraints updated to allow the Transfer.
   GoogleCloudChannelV1Offer? offer;
 
+  /// Price reference ID for the offer.
+  ///
+  /// Optional field only for offers that require additional price information.
+  /// Used to guarantee that the pricing is consistent between quoting the offer
+  /// and placing the order.
+  ///
+  /// Optional.
+  core.String? priceReferenceId;
+
   GoogleCloudChannelV1TransferableOffer({
     this.offer,
+    this.priceReferenceId,
   });
 
   GoogleCloudChannelV1TransferableOffer.fromJson(core.Map json_)
@@ -8072,10 +8120,12 @@ class GoogleCloudChannelV1TransferableOffer {
               ? GoogleCloudChannelV1Offer.fromJson(
                   json_['offer'] as core.Map<core.String, core.dynamic>)
               : null,
+          priceReferenceId: json_['priceReferenceId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (offer != null) 'offer': offer!,
+        if (priceReferenceId != null) 'priceReferenceId': priceReferenceId!,
       };
 }
 
@@ -8564,9 +8614,10 @@ class GoogleTypeDateTime {
 /// A representation of a decimal value, such as 2.5.
 ///
 /// Clients may convert values into language-native decimal formats, such as
-/// Java's BigDecimal or Python's decimal.Decimal. \[BigDecimal\]:
-/// https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html
-/// \[decimal.Decimal\]: https://docs.python.org/3/library/decimal.html
+/// Java's
+/// [BigDecimal](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html)
+/// or Python's
+/// [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
 class GoogleTypeDecimal {
   /// The decimal value, as a string.
   ///

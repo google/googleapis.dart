@@ -801,7 +801,7 @@ class Entity {
   /// The representative name for the entity.
   core.String? name;
 
-  /// For calls to AnalyzeEntitySentiment or if
+  /// For calls to AnalyzeEntitySentimentRequest or if
   /// AnnotateTextRequest.Features.extract_entity_sentiment is set to true, this
   /// field will contain the aggregate sentiment expressed for this entity in
   /// the provided document.
@@ -886,7 +886,7 @@ class EntityMention {
   /// type. The score is in (0, 1\] range.
   core.double? probability;
 
-  /// For calls to AnalyzeEntitySentiment or if
+  /// For calls to AnalyzeEntitySentimentRequest or if
   /// AnnotateTextRequest.Features.extract_entity_sentiment is set to true, this
   /// field will contain the sentiment expressed for this mention of the entity
   /// in the provided document.
@@ -1014,7 +1014,7 @@ class ModerateTextResponse {
 
 /// Represents a sentence in the input document.
 class Sentence {
-  /// For calls to AnalyzeSentiment or if
+  /// For calls to AnalyzeSentimentRequest or if
   /// AnnotateTextRequest.Features.extract_document_sentiment is set to true,
   /// this field will contain the sentiment for the sentence.
   Sentiment? sentiment;
@@ -1047,7 +1047,32 @@ class Sentence {
 
 /// Represents the feeling associated with the entire text or entities in the
 /// text.
-typedef Sentiment = $Sentiment;
+class Sentiment {
+  /// A non-negative number in the \[0, +inf\] range, which represents the
+  /// absolute magnitude of sentiment regardless of score (positive or
+  /// negative).
+  core.double? magnitude;
+
+  /// Sentiment score between -1.0 (negative sentiment) and 1.0 (positive
+  /// sentiment).
+  core.double? score;
+
+  Sentiment({
+    this.magnitude,
+    this.score,
+  });
+
+  Sentiment.fromJson(core.Map json_)
+      : this(
+          magnitude: (json_['magnitude'] as core.num?)?.toDouble(),
+          score: (json_['score'] as core.num?)?.toDouble(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (magnitude != null) 'magnitude': magnitude!,
+        if (score != null) 'score': score!,
+      };
+}
 
 /// Represents a text span in the input document.
 typedef TextSpan = $TextSpan;

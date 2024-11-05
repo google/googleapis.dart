@@ -1431,6 +1431,11 @@ class SpacesMessagesResource {
   /// of message can only contain text (`text`).
   /// ![Message sent with user authentication](https://developers.google.com/workspace/chat/images/message-user-auth.svg)
   /// The maximum message size, including the message contents, is 32,000 bytes.
+  /// For
+  /// [webhook](https://developers.google.com/workspace/chat/quickstart/webhooks)
+  /// requests, the response doesn't contain the full message. The response only
+  /// populates the `name` and `thread.name` fields in addition to the
+  /// information that was in the request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3448,6 +3453,8 @@ class Emoji {
   CustomEmoji? customEmoji;
 
   /// A basic emoji represented by a unicode string.
+  ///
+  /// Optional.
   core.String? unicode;
 
   Emoji({
@@ -3473,9 +3480,13 @@ class Emoji {
 /// The number of people who reacted to a message with a specific emoji.
 class EmojiReactionSummary {
   /// Emoji associated with the reactions.
+  ///
+  /// Output only.
   Emoji? emoji;
 
   /// The total number of reactions using the associated emoji.
+  ///
+  /// Output only.
   core.int? reactionCount;
 
   EmojiReactionSummary({
@@ -7669,11 +7680,14 @@ class QuotedMessageMetadata {
 /// A reaction to a message.
 class Reaction {
   /// The emoji used in the reaction.
+  ///
+  /// Required.
   Emoji? emoji;
 
-  /// The resource name of the reaction.
+  /// Identifier.
   ///
-  /// Format: `spaces/{space}/messages/{message}/reactions/{reaction}`
+  /// The resource name of the reaction. Format:
+  /// `spaces/{space}/messages/{message}/reactions/{reaction}`
   core.String? name;
 
   /// The user who created the reaction.

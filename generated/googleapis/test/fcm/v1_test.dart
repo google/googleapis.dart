@@ -352,6 +352,7 @@ api.ApnsConfig buildApnsConfig() {
   if (buildCounterApnsConfig < 3) {
     o.fcmOptions = buildApnsFcmOptions();
     o.headers = buildUnnamed4();
+    o.liveActivityToken = 'foo';
     o.payload = buildUnnamed5();
   }
   buildCounterApnsConfig--;
@@ -363,6 +364,10 @@ void checkApnsConfig(api.ApnsConfig o) {
   if (buildCounterApnsConfig < 3) {
     checkApnsFcmOptions(o.fcmOptions!);
     checkUnnamed4(o.headers!);
+    unittest.expect(
+      o.liveActivityToken!,
+      unittest.equals('foo'),
+    );
     checkUnnamed5(o.payload!);
   }
   buildCounterApnsConfig--;

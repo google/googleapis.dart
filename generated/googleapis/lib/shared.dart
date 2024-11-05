@@ -19024,37 +19024,6 @@ class $SensitiveCategoryTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - language:v1 : Sentiment
-/// - language:v2 : Sentiment
-class $Sentiment {
-  /// A non-negative number in the \[0, +inf) range, which represents the
-  /// absolute magnitude of sentiment regardless of score (positive or
-  /// negative).
-  core.double? magnitude;
-
-  /// Sentiment score between -1.0 (negative sentiment) and 1.0 (positive
-  /// sentiment).
-  core.double? score;
-
-  $Sentiment({
-    this.magnitude,
-    this.score,
-  });
-
-  $Sentiment.fromJson(core.Map json_)
-      : this(
-          magnitude: (json_['magnitude'] as core.num?)?.toDouble(),
-          score: (json_['score'] as core.num?)?.toDouble(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (magnitude != null) 'magnitude': magnitude!,
-        if (score != null) 'score': score!,
-      };
-}
-
-/// Used by:
-///
 /// - cloudbuild:v2 : GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig
 /// - developerconnect:v1 : ServiceDirectoryConfig
 class $ServiceDirectoryConfig {
