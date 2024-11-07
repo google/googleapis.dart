@@ -5802,6 +5802,12 @@ class ClusterUpdate {
   /// autopilot clusters and node auto-provisioning enabled clusters.
   NodeKubeletConfig? desiredNodePoolAutoConfigKubeletConfig;
 
+  /// The desired Linux node config for all auto-provisioned node pools in
+  /// autopilot clusters and node auto-provisioning enabled clusters.
+  ///
+  /// Currently only `cgroup_mode` can be set here.
+  LinuxNodeConfig? desiredNodePoolAutoConfigLinuxNodeConfig;
+
   /// The desired network tags that apply to all auto-provisioned node pools in
   /// autopilot clusters and node auto-provisioning enabled clusters.
   NetworkTags? desiredNodePoolAutoConfigNetworkTags;
@@ -5967,6 +5973,7 @@ class ClusterUpdate {
     this.desiredNetworkPerformanceConfig,
     this.desiredNodeKubeletConfig,
     this.desiredNodePoolAutoConfigKubeletConfig,
+    this.desiredNodePoolAutoConfigLinuxNodeConfig,
     this.desiredNodePoolAutoConfigNetworkTags,
     this.desiredNodePoolAutoConfigResourceManagerTags,
     this.desiredNodePoolAutoscaling,
@@ -6160,6 +6167,12 @@ class ClusterUpdate {
                       json_['desiredNodePoolAutoConfigKubeletConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          desiredNodePoolAutoConfigLinuxNodeConfig:
+              json_.containsKey('desiredNodePoolAutoConfigLinuxNodeConfig')
+                  ? LinuxNodeConfig.fromJson(
+                      json_['desiredNodePoolAutoConfigLinuxNodeConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           desiredNodePoolAutoConfigNetworkTags:
               json_.containsKey('desiredNodePoolAutoConfigNetworkTags')
                   ? NetworkTags.fromJson(
@@ -6350,6 +6363,9 @@ class ClusterUpdate {
         if (desiredNodePoolAutoConfigKubeletConfig != null)
           'desiredNodePoolAutoConfigKubeletConfig':
               desiredNodePoolAutoConfigKubeletConfig!,
+        if (desiredNodePoolAutoConfigLinuxNodeConfig != null)
+          'desiredNodePoolAutoConfigLinuxNodeConfig':
+              desiredNodePoolAutoConfigLinuxNodeConfig!,
         if (desiredNodePoolAutoConfigNetworkTags != null)
           'desiredNodePoolAutoConfigNetworkTags':
               desiredNodePoolAutoConfigNetworkTags!,
@@ -9321,6 +9337,20 @@ class NodeConfig {
   /// information.
   core.int? localSsdCount;
 
+  /// Specifies which method should be used for encrypting the Local SSDs
+  /// attahced to the node.
+  /// Possible string values are:
+  /// - "LOCAL_SSD_ENCRYPTION_MODE_UNSPECIFIED" : The given node will be
+  /// encrypted using keys managed by Google infrastructure and the keys will be
+  /// deleted when the node is deleted.
+  /// - "STANDARD_ENCRYPTION" : The given node will be encrypted using keys
+  /// managed by Google infrastructure and the keys will be deleted when the
+  /// node is deleted.
+  /// - "EPHEMERAL_KEY_ENCRYPTION" : The given node will opt-in for using
+  /// ephemeral key for encryption of Local SSDs. The Local SSDs will not be
+  /// able to recover data in case of node crash.
+  core.String? localSsdEncryptionMode;
+
   /// Logging configuration.
   NodePoolLoggingConfig? loggingConfig;
 
@@ -9463,6 +9493,7 @@ class NodeConfig {
     this.linuxNodeConfig,
     this.localNvmeSsdBlockConfig,
     this.localSsdCount,
+    this.localSsdEncryptionMode,
     this.loggingConfig,
     this.machineType,
     this.metadata,
@@ -9552,6 +9583,8 @@ class NodeConfig {
                       as core.Map<core.String, core.dynamic>)
               : null,
           localSsdCount: json_['localSsdCount'] as core.int?,
+          localSsdEncryptionMode:
+              json_['localSsdEncryptionMode'] as core.String?,
           loggingConfig: json_.containsKey('loggingConfig')
               ? NodePoolLoggingConfig.fromJson(
                   json_['loggingConfig'] as core.Map<core.String, core.dynamic>)
@@ -9655,6 +9688,8 @@ class NodeConfig {
         if (localNvmeSsdBlockConfig != null)
           'localNvmeSsdBlockConfig': localNvmeSsdBlockConfig!,
         if (localSsdCount != null) 'localSsdCount': localSsdCount!,
+        if (localSsdEncryptionMode != null)
+          'localSsdEncryptionMode': localSsdEncryptionMode!,
         if (loggingConfig != null) 'loggingConfig': loggingConfig!,
         if (machineType != null) 'machineType': machineType!,
         if (metadata != null) 'metadata': metadata!,
@@ -10237,6 +10272,11 @@ class NodePool {
 /// Node pool configs that apply to all auto-provisioned node pools in autopilot
 /// clusters and node auto-provisioning enabled clusters.
 class NodePoolAutoConfig {
+  /// Configuration options for Linux nodes.
+  ///
+  /// Output only.
+  LinuxNodeConfig? linuxNodeConfig;
+
   /// The list of instance tags applied to all nodes.
   ///
   /// Tags are used to identify valid sources or targets for network firewalls
@@ -10254,6 +10294,7 @@ class NodePoolAutoConfig {
   ResourceManagerTags? resourceManagerTags;
 
   NodePoolAutoConfig({
+    this.linuxNodeConfig,
     this.networkTags,
     this.nodeKubeletConfig,
     this.resourceManagerTags,
@@ -10261,6 +10302,10 @@ class NodePoolAutoConfig {
 
   NodePoolAutoConfig.fromJson(core.Map json_)
       : this(
+          linuxNodeConfig: json_.containsKey('linuxNodeConfig')
+              ? LinuxNodeConfig.fromJson(json_['linuxNodeConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           networkTags: json_.containsKey('networkTags')
               ? NetworkTags.fromJson(
                   json_['networkTags'] as core.Map<core.String, core.dynamic>)
@@ -10276,6 +10321,7 @@ class NodePoolAutoConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (linuxNodeConfig != null) 'linuxNodeConfig': linuxNodeConfig!,
         if (networkTags != null) 'networkTags': networkTags!,
         if (nodeKubeletConfig != null) 'nodeKubeletConfig': nodeKubeletConfig!,
         if (resourceManagerTags != null)
@@ -10300,29 +10346,30 @@ class NodePoolAutoscaling {
   /// - "ANY" : ANY policy picks zones that have the highest capacity available.
   core.String? locationPolicy;
 
-  /// Maximum number of nodes for one location in the NodePool.
+  /// Maximum number of nodes for one location in the node pool.
   ///
   /// Must be \>= min_node_count. There has to be enough quota to scale up the
   /// cluster.
   core.int? maxNodeCount;
 
-  /// Minimum number of nodes for one location in the NodePool.
+  /// Minimum number of nodes for one location in the node pool.
   ///
-  /// Must be \>= 1 and \<= max_node_count.
+  /// Must be greater than or equal to 0 and less than or equal to
+  /// max_node_count.
   core.int? minNodeCount;
 
   /// Maximum number of nodes in the node pool.
   ///
-  /// Must be greater than total_min_node_count. There has to be enough quota to
-  /// scale up the cluster. The total_*_node_count fields are mutually exclusive
-  /// with the *_node_count fields.
+  /// Must be greater than or equal to total_min_node_count. There has to be
+  /// enough quota to scale up the cluster. The total_*_node_count fields are
+  /// mutually exclusive with the *_node_count fields.
   core.int? totalMaxNodeCount;
 
   /// Minimum number of nodes in the node pool.
   ///
-  /// Must be greater than 1 less than total_max_node_count. The
-  /// total_*_node_count fields are mutually exclusive with the *_node_count
-  /// fields.
+  /// Must be greater than or equal to 0 and less than or equal to
+  /// total_max_node_count. The total_*_node_count fields are mutually exclusive
+  /// with the *_node_count fields.
   core.int? totalMinNodeCount;
 
   NodePoolAutoscaling({

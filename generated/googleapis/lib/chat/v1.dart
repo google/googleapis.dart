@@ -458,9 +458,9 @@ class SpacesResource {
   /// `spaces/{space}`
   /// Value must have pattern `^spaces/\[^/\]+$`.
   ///
-  /// [useAdminAccess] - When `true`, the method runs using the user's Google
-  /// Workspace administrator privileges. The calling user must be a Google
-  /// Workspace administrator with the
+  /// [useAdminAccess] - Optional. When `true`, the method runs using the user's
+  /// Google Workspace administrator privileges. The calling user must be a
+  /// Google Workspace administrator with the
   /// [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245).
   /// Requires the `chat.admin.delete`
   /// [OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
@@ -575,9 +575,9 @@ class SpacesResource {
   /// `spaces/{space}`. Format: `spaces/{space}`
   /// Value must have pattern `^spaces/\[^/\]+$`.
   ///
-  /// [useAdminAccess] - When `true`, the method runs using the user's Google
-  /// Workspace administrator privileges. The calling user must be a Google
-  /// Workspace administrator with the
+  /// [useAdminAccess] - Optional. When `true`, the method runs using the user's
+  /// Google Workspace administrator privileges. The calling user must be a
+  /// Google Workspace administrator with the
   /// [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245).
   /// Requires the `chat.admin.spaces` or `chat.admin.spaces.readonly`
   /// [OAuth 2.0 scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
@@ -707,9 +707,9 @@ class SpacesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the space. Format: `spaces/{space}` Where
-  /// `{space}` represents the system-assigned ID for the space. You can obtain
-  /// the space ID by calling the
+  /// [name] - Identifier. Resource name of the space. Format: `spaces/{space}`
+  /// Where `{space}` represents the system-assigned ID for the space. You can
+  /// obtain the space ID by calling the
   /// \[`spaces.list()`\](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/list)
   /// method or from the space URL. For example, if the space URL is
   /// `https://mail.google.com/mail/u/0/#chat/space/AAAAAAAAA`, the space ID is
@@ -761,9 +761,9 @@ class SpacesResource {
   /// `permission_settings.useAtMentionAll` - `permission_settings.manageApps` -
   /// `permission_settings.manageWebhooks` - `permission_settings.replyMessages`
   ///
-  /// [useAdminAccess] - When `true`, the method runs using the user's Google
-  /// Workspace administrator privileges. The calling user must be a Google
-  /// Workspace administrator with the
+  /// [useAdminAccess] - Optional. When `true`, the method runs using the user's
+  /// Google Workspace administrator privileges. The calling user must be a
+  /// Google Workspace administrator with the
   /// [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245).
   /// Requires the `chat.admin.spaces`
   /// [OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
@@ -1541,9 +1541,9 @@ class SpacesMessagesResource {
   /// [Name a message](https://developers.google.com/workspace/chat/create-messages#name_a_created_message).
   /// Value must have pattern `^spaces/\[^/\]+/messages/\[^/\]+$`.
   ///
-  /// [force] - When `true`, deleting a message also deletes its threaded
-  /// replies. When `false`, if a message has threaded replies, deletion fails.
-  /// Only applies when
+  /// [force] - Optional. When `true`, deleting a message also deletes its
+  /// threaded replies. When `false`, if a message has threaded replies,
+  /// deletion fails. Only applies when
   /// [authenticating as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
   /// Has no effect when
   /// [authenticating as a Chat app](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
@@ -1643,9 +1643,9 @@ class SpacesMessagesResource {
   /// Format: `spaces/{space}`
   /// Value must have pattern `^spaces/\[^/\]+$`.
   ///
-  /// [filter] - A query filter. You can filter messages by date (`create_time`)
-  /// and thread (`thread.name`). To filter messages by the date they were
-  /// created, specify the `create_time` with a timestamp in
+  /// [filter] - Optional. A query filter. You can filter messages by date
+  /// (`create_time`) and thread (`thread.name`). To filter messages by the date
+  /// they were created, specify the `create_time` with a timestamp in
   /// \[RFC-3339\](https://www.rfc-editor.org/rfc/rfc3339) format and double
   /// quotation marks. For example, `"2023-04-21T11:30:00-04:00"`. You can use
   /// the greater than operator `>` to list messages that were created after a
@@ -1663,26 +1663,28 @@ class SpacesMessagesResource {
   /// spaces/AAAAAAAAAAA/threads/123 ``` Invalid queries are rejected by the
   /// server with an `INVALID_ARGUMENT` error.
   ///
-  /// [orderBy] - Optional, if resuming from a previous query. How the list of
-  /// messages is ordered. Specify a value to order by an ordering operation.
-  /// Valid ordering operation values are as follows: - `ASC` for ascending. -
-  /// `DESC` for descending. The default ordering is `create_time ASC`.
+  /// [orderBy] - Optional. Optional, if resuming from a previous query. How the
+  /// list of messages is ordered. Specify a value to order by an ordering
+  /// operation. Valid ordering operation values are as follows: - `ASC` for
+  /// ascending. - `DESC` for descending. The default ordering is `create_time
+  /// ASC`.
   ///
-  /// [pageSize] - The maximum number of messages returned. The service might
-  /// return fewer messages than this value. If unspecified, at most 25 are
-  /// returned. The maximum value is 1000. If you use a value more than 1000,
-  /// it's automatically changed to 1000. Negative values return an
+  /// [pageSize] - Optional. The maximum number of messages returned. The
+  /// service might return fewer messages than this value. If unspecified, at
+  /// most 25 are returned. The maximum value is 1000. If you use a value more
+  /// than 1000, it's automatically changed to 1000. Negative values return an
   /// `INVALID_ARGUMENT` error.
   ///
-  /// [pageToken] - Optional, if resuming from a previous query. A page token
-  /// received from a previous list messages call. Provide this parameter to
-  /// retrieve the subsequent page. When paginating, all other parameters
-  /// provided should match the call that provided the page token. Passing
-  /// different values to the other parameters might lead to unexpected results.
+  /// [pageToken] - Optional. Optional, if resuming from a previous query. A
+  /// page token received from a previous list messages call. Provide this
+  /// parameter to retrieve the subsequent page. When paginating, all other
+  /// parameters provided should match the call that provided the page token.
+  /// Passing different values to the other parameters might lead to unexpected
+  /// results.
   ///
-  /// [showDeleted] - Whether to include deleted messages. Deleted messages
-  /// include deleted time and metadata about their deletion, but message
-  /// content is unavailable.
+  /// [showDeleted] - Optional. Whether to include deleted messages. Deleted
+  /// messages include deleted time and metadata about their deletion, but
+  /// message content is unavailable.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1742,7 +1744,7 @@ class SpacesMessagesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the message. Format:
+  /// [name] - Identifier. Resource name of the message. Format:
   /// `spaces/{space}/messages/{message}` Where `{space}` is the ID of the space
   /// where the message is posted and `{message}` is a system-assigned ID for
   /// the message. For example,
@@ -1822,7 +1824,7 @@ class SpacesMessagesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the message. Format:
+  /// [name] - Identifier. Resource name of the message. Format:
   /// `spaces/{space}/messages/{message}` Where `{space}` is the ID of the space
   /// where the message is posted and `{message}` is a system-assigned ID for
   /// the message. For example,
@@ -6867,9 +6869,13 @@ class MembershipBatchUpdatedEventData {
 class MembershipCount {
   /// Count of human users that have directly joined the space, not counting
   /// users joined by having membership in a joined group.
+  ///
+  /// Output only.
   core.int? joinedDirectHumanUserCount;
 
   /// Count of all groups that have directly joined the space.
+  ///
+  /// Output only.
   core.int? joinedGroupCount;
 
   MembershipCount({
@@ -6975,6 +6981,8 @@ class Message {
   /// [Add interactive widgets at the bottom of a message](https://developers.google.com/workspace/chat/create-messages#add-accessory-widgets).
   /// Creating a message with accessory widgets requires
   /// [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
+  ///
+  /// Optional.
   core.List<AccessoryWidget>? accessoryWidgets;
 
   /// Input only.
@@ -6999,6 +7007,8 @@ class Message {
   core.List<AttachedGif>? attachedGifs;
 
   /// User-uploaded attachment.
+  ///
+  /// Optional.
   core.List<Attachment>? attachment;
 
   /// Deprecated: Use `cards_v2` instead.
@@ -7021,6 +7031,8 @@ class Message {
   /// contains cards, see
   /// [Send a message](https://developers.google.com/workspace/chat/create-messages).
   /// [Card builder](https://addons.gsuite.google.com/uikit/builder)
+  ///
+  /// Optional.
   core.List<CardWithId>? cardsV2;
 
   /// A custom ID for the message.
@@ -7065,6 +7077,8 @@ class Message {
 
   /// A plain-text description of the message's cards, used when the actual
   /// cards can't be displayed—for example, mobile notifications.
+  ///
+  /// Optional.
   core.String? fallbackText;
 
   /// Contains the message `text` with markups added to communicate formatting.
@@ -7101,11 +7115,11 @@ class Message {
   /// Output only.
   MatchedUrl? matchedUrl;
 
-  /// Resource name of the message.
+  /// Identifier.
   ///
-  /// Format: `spaces/{space}/messages/{message}` Where `{space}` is the ID of
-  /// the space where the message is posted and `{message}` is a system-assigned
-  /// ID for the message. For example,
+  /// Resource name of the message. Format: `spaces/{space}/messages/{message}`
+  /// Where `{space}` is the ID of the space where the message is posted and
+  /// `{message}` is a system-assigned ID for the message. For example,
   /// `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`. If you set a custom
   /// ID when you create a message, you can use this ID to specify the message
   /// in a request by replacing `{message}` with the value from the
@@ -7127,7 +7141,7 @@ class Message {
   /// For details, see
   /// [Send a message privately](https://developers.google.com/workspace/chat/create-messages#private).
   ///
-  /// Immutable.
+  /// Optional. Immutable.
   User? privateMessageViewer;
 
   /// Information about a message that's quoted by a Google Chat user in a
@@ -7156,9 +7170,11 @@ class Message {
 
   /// If your Chat app
   /// [authenticates as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user),
-  /// the output populates the
+  /// the output only populates the
   /// [space](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces)
   /// `name`.
+  ///
+  /// Output only.
   Space? space;
 
   /// Plain-text body of the message.
@@ -7169,6 +7185,8 @@ class Message {
   /// user\](https://developers.google.com/workspace/chat/format-messages#messages-@mention),
   /// or everyone in the space. To learn about creating text messages, see
   /// [Send a message](https://developers.google.com/workspace/chat/create-messages).
+  ///
+  /// Optional.
   core.String? text;
 
   /// The thread the message belongs to.
@@ -7530,9 +7548,13 @@ class OpenLink {
 /// Represents a space permission setting.
 class PermissionSetting {
   /// Whether spaces managers have this permission.
+  ///
+  /// Optional.
   core.bool? managersAllowed;
 
   /// Whether non-manager members have this permission.
+  ///
+  /// Optional.
   core.bool? membersAllowed;
 
   PermissionSetting({
@@ -7559,15 +7581,23 @@ class PermissionSetting {
 /// `PredefinedPermissionSettings` field in your request.
 class PermissionSettings {
   /// Setting for managing apps in a space.
+  ///
+  /// Optional.
   PermissionSetting? manageApps;
 
   /// Setting for managing members and groups in a space.
+  ///
+  /// Optional.
   PermissionSetting? manageMembersAndGroups;
 
   /// Setting for managing webhooks in a space.
+  ///
+  /// Optional.
   PermissionSetting? manageWebhooks;
 
   /// Setting for updating space name, avatar, description and guidelines.
+  ///
+  /// Optional.
   PermissionSetting? modifySpaceDetails;
 
   /// Setting for posting messages in a space.
@@ -7576,12 +7606,18 @@ class PermissionSettings {
   PermissionSetting? postMessages;
 
   /// Setting for replying to messages in a space.
+  ///
+  /// Optional.
   PermissionSetting? replyMessages;
 
   /// Setting for toggling space history on and off.
+  ///
+  /// Optional.
   PermissionSetting? toggleHistory;
 
   /// Setting for using @all in a space.
+  ///
+  /// Optional.
   PermissionSetting? useAtMentionAll;
 
   PermissionSettings({
@@ -8160,6 +8196,8 @@ class Space {
   /// a different `displayName`. An existing space within the Google Workspace
   /// organization might already use this display name. For direct messages,
   /// this field might be empty. Supports up to 128 characters.
+  ///
+  /// Optional.
   core.String? displayName;
 
   /// Whether this space permits any Google Chat user as a member.
@@ -8170,7 +8208,7 @@ class Space {
   /// default, a space created by a consumer account permits any Google Chat
   /// user. For existing spaces, this field is output only.
   ///
-  /// Immutable.
+  /// Optional. Immutable.
   core.bool? externalUserAllowed;
 
   /// Whether this space is created in `Import Mode` as part of a data migration
@@ -8196,10 +8234,11 @@ class Space {
   /// Output only.
   MembershipCount? membershipCount;
 
-  /// Resource name of the space.
+  /// Identifier.
   ///
-  /// Format: `spaces/{space}` Where `{space}` represents the system-assigned ID
-  /// for the space. You can obtain the space ID by calling the
+  /// Resource name of the space. Format: `spaces/{space}` Where `{space}`
+  /// represents the system-assigned ID for the space. You can obtain the space
+  /// ID by calling the
   /// \[`spaces.list()`\](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/list)
   /// method or from the space URL. For example, if the space URL is
   /// `https://mail.google.com/mail/u/0/#chat/space/AAAAAAAAA`, the space ID is
@@ -8236,9 +8275,13 @@ class Space {
   core.bool? singleUserBotDm;
 
   /// Details about the space including description and rules.
+  ///
+  /// Optional.
   SpaceDetails? spaceDetails;
 
   /// The message history state for messages and threads in this space.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "HISTORY_STATE_UNSPECIFIED" : Default value. Do not use.
   /// - "HISTORY_OFF" : History off.
@@ -8266,6 +8309,8 @@ class Space {
   ///
   /// Required when creating a space or updating the space type of a space.
   /// Output only for other usage.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "SPACE_TYPE_UNSPECIFIED" : Reserved.
   /// - "SPACE" : A place where people send messages, share files, and
@@ -8907,9 +8952,9 @@ class TextParagraph {
 /// \[`messageReplyOption`\](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.messages/create#messagereplyoption)
 /// field to determine what happens if no matching thread is found.
 class Thread {
-  /// Resource name of the thread.
+  /// Identifier.
   ///
-  /// Example: `spaces/{space}/threads/{thread}`
+  /// Resource name of the thread. Example: `spaces/{space}/threads/{thread}`
   core.String? name;
 
   /// Input for creating or updating a thread.

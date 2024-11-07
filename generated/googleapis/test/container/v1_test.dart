@@ -1290,6 +1290,7 @@ api.ClusterUpdate buildClusterUpdate() {
     o.desiredNetworkPerformanceConfig = buildClusterNetworkPerformanceConfig();
     o.desiredNodeKubeletConfig = buildNodeKubeletConfig();
     o.desiredNodePoolAutoConfigKubeletConfig = buildNodeKubeletConfig();
+    o.desiredNodePoolAutoConfigLinuxNodeConfig = buildLinuxNodeConfig();
     o.desiredNodePoolAutoConfigNetworkTags = buildNetworkTags();
     o.desiredNodePoolAutoConfigResourceManagerTags = buildResourceManagerTags();
     o.desiredNodePoolAutoscaling = buildNodePoolAutoscaling();
@@ -1382,6 +1383,7 @@ void checkClusterUpdate(api.ClusterUpdate o) {
     checkClusterNetworkPerformanceConfig(o.desiredNetworkPerformanceConfig!);
     checkNodeKubeletConfig(o.desiredNodeKubeletConfig!);
     checkNodeKubeletConfig(o.desiredNodePoolAutoConfigKubeletConfig!);
+    checkLinuxNodeConfig(o.desiredNodePoolAutoConfigLinuxNodeConfig!);
     checkNetworkTags(o.desiredNodePoolAutoConfigNetworkTags!);
     checkResourceManagerTags(o.desiredNodePoolAutoConfigResourceManagerTags!);
     checkNodePoolAutoscaling(o.desiredNodePoolAutoscaling!);
@@ -3854,6 +3856,7 @@ api.NodeConfig buildNodeConfig() {
     o.linuxNodeConfig = buildLinuxNodeConfig();
     o.localNvmeSsdBlockConfig = buildLocalNvmeSsdBlockConfig();
     o.localSsdCount = 42;
+    o.localSsdEncryptionMode = 'foo';
     o.loggingConfig = buildNodePoolLoggingConfig();
     o.machineType = 'foo';
     o.metadata = buildUnnamed42();
@@ -3920,6 +3923,10 @@ void checkNodeConfig(api.NodeConfig o) {
     unittest.expect(
       o.localSsdCount!,
       unittest.equals(42),
+    );
+    unittest.expect(
+      o.localSsdEncryptionMode!,
+      unittest.equals('foo'),
     );
     checkNodePoolLoggingConfig(o.loggingConfig!);
     unittest.expect(
@@ -4278,6 +4285,7 @@ api.NodePoolAutoConfig buildNodePoolAutoConfig() {
   final o = api.NodePoolAutoConfig();
   buildCounterNodePoolAutoConfig++;
   if (buildCounterNodePoolAutoConfig < 3) {
+    o.linuxNodeConfig = buildLinuxNodeConfig();
     o.networkTags = buildNetworkTags();
     o.nodeKubeletConfig = buildNodeKubeletConfig();
     o.resourceManagerTags = buildResourceManagerTags();
@@ -4289,6 +4297,7 @@ api.NodePoolAutoConfig buildNodePoolAutoConfig() {
 void checkNodePoolAutoConfig(api.NodePoolAutoConfig o) {
   buildCounterNodePoolAutoConfig++;
   if (buildCounterNodePoolAutoConfig < 3) {
+    checkLinuxNodeConfig(o.linuxNodeConfig!);
     checkNetworkTags(o.networkTags!);
     checkNodeKubeletConfig(o.nodeKubeletConfig!);
     checkResourceManagerTags(o.resourceManagerTags!);

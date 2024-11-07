@@ -16877,7 +16877,7 @@ class VideoLiveStreamingDetails {
   /// The time that the broadcast is scheduled to end.
   ///
   /// If the value is empty or the property is not present, then the broadcast
-  /// is scheduled to contiue indefinitely.
+  /// is scheduled to continue indefinitely.
   core.DateTime? scheduledEndTime;
 
   /// The time that the broadcast is scheduled to begin.
