@@ -1,7 +1,6 @@
 ## 1.6.1-wip
 
 - Require `sdk: ^3.5.0`
-- Migrate to `dart:js_interop`.
 
 ## 1.6.0
 
