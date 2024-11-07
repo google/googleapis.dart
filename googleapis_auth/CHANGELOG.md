@@ -1,6 +1,10 @@
 ## 1.6.1-wip
 
 - Require `sdk: ^3.5.0`
+- Remove `allowInterop` calls for callbacks passed to `CodeClientConfig`,
+  `TokenClientConfig`, and `revoke` as they only accept Dart functions.
+- Fix the type of the callback passed to `revoke`.
+- Migrate to `dart:js_interop`.
 
 ## 1.6.0
 
