@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:html';
-import 'dart:js';
+import 'dart:js_interop';
 
 import 'package:google_identity_services_web/loader.dart' as gis_loader;
 import 'package:google_identity_services_web/oauth2.dart' as gis;
@@ -10,8 +10,12 @@ import '../access_token.dart';
 import '../authentication_exception.dart';
 import '../utils.dart';
 
-JsObject get _googleAccountsId =>
-    ((context['google'] as JsObject)['accounts'] as JsObject)['id'] as JsObject;
+@JS('google.accounts.id')
+external _GoogleAccountsId get _googleAccountsId;
+
+extension type _GoogleAccountsId._(JSObject _) implements JSObject {
+  external void setLogLevel(String logLevel);
+}
 
 /// Obtains [AccessCredentials] using the
 /// [Google Identity Services](https://developers.google.com/identity/oauth2/web/guides/overview)
@@ -37,7 +41,7 @@ Future<AccessCredentials> requestAccessCredentials({
   String? logLevel,
 }) async {
   await gis_loader.loadWebSdk();
-  if (logLevel != null) _googleAccountsId.callMethod('setLogLevel', [logLevel]);
+  if (logLevel != null) _googleAccountsId.setLogLevel(logLevel);
 
   final completer = Completer<AccessCredentials>();
 
@@ -79,11 +83,11 @@ Future<AccessCredentials> requestAccessCredentials({
   }
 
   final config = gis.TokenClientConfig(
-    callback: allowInterop(callback),
+    callback: callback,
     client_id: clientId,
     scope: scopes.toList(),
     prompt: prompt,
-    error_callback: allowInterop(errorCallback),
+    error_callback: errorCallback,
   );
 
   final client = gis.oauth2.initTokenClient(config);
@@ -115,7 +119,7 @@ Future<CodeResponse> requestAuthorizationCode({
   String? logLevel,
 }) async {
   await gis_loader.loadWebSdk();
-  if (logLevel != null) _googleAccountsId.callMethod('setLogLevel', [logLevel]);
+  if (logLevel != null) _googleAccountsId.setLogLevel(logLevel);
 
   final completer = Completer<CodeResponse>();
 
@@ -153,13 +157,13 @@ Future<CodeResponse> requestAuthorizationCode({
   }
 
   final config = gis.CodeClientConfig(
-    callback: allowInterop(callback),
+    callback: callback,
     client_id: clientId,
     scope: scopes.toList(),
     state: state,
     login_hint: hint,
     hd: hostedDomain,
-    error_callback: allowInterop(errorCallback),
+    error_callback: errorCallback,
   );
 
   final client = gis.oauth2.initCodeClient(config);
@@ -175,12 +179,14 @@ Future<CodeResponse> requestAuthorizationCode({
 Future<void> revokeConsent(String accessTokenValue) {
   final completer = Completer<void>();
 
-  void done(Object? arg) {
+  void done(JSAny? arg) {
     window.console.log(arg);
     completer.complete();
   }
 
-  gis.oauth2.revoke(accessTokenValue, allowInterop(done));
+  // TODO(srujzs): Once `TokenRevocationResponse` is an extension type that
+  // extends `JSObject`, this cast can be removed.
+  gis.oauth2.revoke(accessTokenValue, done as gis.RevokeTokenDoneFn);
 
   return completer.future;
 }
