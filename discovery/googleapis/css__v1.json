@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240909",
+    "revision": "20241210",
     "rootUrl": "https://css.googleapis.com/",
     "servicePath": "",
     "title": "CSS API",
@@ -162,7 +162,7 @@
                             "type": "string"
                         },
                         "pageSize": {
-                            "description": "Optional. The maximum number of accounts to return. The service may return fewer than this value. If unspecified, at most 50 accounts will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
+                            "description": "Optional. The maximum number of accounts to return. The service may return fewer than this value. If unspecified, at most 50 accounts will be returned. The maximum value is 100; values above 100 will be coerced to 100.",
                             "format": "int32",
                             "location": "query",
                             "type": "integer"
@@ -261,7 +261,8 @@
                             ],
                             "parameters": {
                                 "feedId": {
-                                    "description": "Required. The primary or supplemental feed id. If CSS Product already exists and feed id provided is different, then the CSS Product will be moved to a new feed. Note: For now, CSSs do not need to provide feed ids as we create feeds on the fly. We do not have supplemental feed support for CSS Products yet.",
+                                    "deprecated": true,
+                                    "description": "Optional. The primary or supplemental feed id. If CSS Product already exists and feed id provided is different, then the CSS Product will be moved to a new feed. Note: For now, CSSs do not need to provide feed ids as we create feeds on the fly. We do not have supplemental feed support for CSS Products yet.",
                                     "format": "int64",
                                     "location": "query",
                                     "type": "string"
@@ -408,7 +409,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists the labels assigned to an account.",
+                            "description": "Lists the labels owned by an account.",
                             "flatPath": "v1/accounts/{accountsId}/labels",
                             "httpMethod": "GET",
                             "id": "css.accounts.labels.list",
@@ -707,11 +708,11 @@
                 },
                 "headlineOfferPrice": {
                     "$ref": "Price",
-                    "description": "Headline Price of the aggregate offer."
+                    "description": "Headline Price of the CSS Product."
                 },
                 "headlineOfferShippingPrice": {
                     "$ref": "Price",
-                    "description": "Headline Price of the aggregate offer."
+                    "description": "Headline Price of the CSS Product."
                 },
                 "headlineOfferSubscriptionCost": {
                     "$ref": "HeadlineOfferSubscriptionCost",
@@ -719,7 +720,7 @@
                 },
                 "highPrice": {
                     "$ref": "Price",
-                    "description": "High Price of the aggregate offer."
+                    "description": "High Price of the CSS Product."
                 },
                 "imageLink": {
                     "description": "URL of an image of the item.",
@@ -742,7 +743,7 @@
                 },
                 "lowPrice": {
                     "$ref": "Price",
-                    "description": "Low Price of the aggregate offer."
+                    "description": "Low Price of the CSS Product."
                 },
                 "material": {
                     "description": "The material of which the item is made.",
@@ -758,7 +759,7 @@
                     "type": "string"
                 },
                 "numberOfOffers": {
-                    "description": "The number of aggregate offers.",
+                    "description": "The number of CSS Products.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -849,7 +850,7 @@
             "type": "object"
         },
         "CssProduct": {
-            "description": "The processed CSS Product(a.k.a Aggregate Offer internally).",
+            "description": "The processed CSS Product.",
             "id": "CssProduct",
             "properties": {
                 "attributes": {
@@ -921,6 +922,7 @@
                     "type": "string"
                 },
                 "freshnessTime": {
+                    "deprecated": true,
                     "description": "Represents the existing version (freshness) of the CSS Product, which can be used to preserve the right order when multiple updates are done at the same time. This field must not be set to the future time. If set, the update is prevented if a newer version of the item already exists in our system (that is the last update time of the existing CSS products is later than the freshness time set in the update). If the update happens, the last update time is then set to this freshness time. If not set, the update will not be prevented and the last update time will default to when this request was received by the CSS API. If the operation is prevented, the aborted exception will be thrown.",
                     "format": "google-datetime",
                     "type": "string"
@@ -999,7 +1001,7 @@
             "id": "DestinationStatus",
             "properties": {
                 "approvedCountries": {
-                    "description": "List of country codes (ISO 3166-1 alpha-2) where the aggregate offer is approved.",
+                    "description": "List of country codes (ISO 3166-1 alpha-2) where the CSS Product is approved.",
                     "items": {
                         "type": "string"
                     },
@@ -1010,14 +1012,14 @@
                     "type": "string"
                 },
                 "disapprovedCountries": {
-                    "description": "List of country codes (ISO 3166-1 alpha-2) where the aggregate offer is disapproved.",
+                    "description": "List of country codes (ISO 3166-1 alpha-2) where the CSS Product is disapproved.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "pendingCountries": {
-                    "description": "List of country codes (ISO 3166-1 alpha-2) where the aggregate offer is pending approval.",
+                    "description": "List of country codes (ISO 3166-1 alpha-2) where the CSS Product is pending approval.",
                     "items": {
                         "type": "string"
                     },
@@ -1087,7 +1089,7 @@
             "id": "ItemLevelIssue",
             "properties": {
                 "applicableCountries": {
-                    "description": "List of country codes (ISO 3166-1 alpha-2) where issue applies to the aggregate offer.",
+                    "description": "List of country codes (ISO 3166-1 alpha-2) where issue applies to the CSS Product.",
                     "items": {
                         "type": "string"
                     },
@@ -1122,7 +1124,7 @@
                     "type": "string"
                 },
                 "servability": {
-                    "description": "How this issue affects serving of the aggregate offer.",
+                    "description": "How this issue affects serving of the CSS Product.",
                     "type": "string"
                 }
             },

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241104",
+    "revision": "20241204",
     "rootUrl": "https://androidmanagement.googleapis.com/",
     "servicePath": "",
     "title": "Android Management API",
@@ -1718,7 +1718,7 @@
                     "enumDescriptions": [
                         "Policy not specified. If no policy is specified for a permission at any level, then the PROMPT behavior is used by default.",
                         "Prompt the user to grant a permission.",
-                        "Automatically grant a permission.On Android 12 and above, Manifest.permission.READ_SMS (https://developer.android.com/reference/android/Manifest.permission#READ_SMS) and following sensor-related permissions can only be granted on fully managed devices: Manifest.permission.ACCESS_FINE_LOCATION (https://developer.android.com/reference/android/Manifest.permission#ACCESS_FINE_LOCATION) Manifest.permission.ACCESS_BACKGROUND_LOCATION (https://developer.android.com/reference/android/Manifest.permission#ACCESS_BACKGROUND_LOCATION) Manifest.permission.ACCESS_COARSE_LOCATION (https://developer.android.com/reference/android/Manifest.permission#ACCESS_COARSE_LOCATION) Manifest.permission.CAMERA (https://developer.android.com/reference/android/Manifest.permission#CAMERA) Manifest.permission.RECORD_AUDIO (https://developer.android.com/reference/android/Manifest.permission#RECORD_AUDIO) Manifest.permission.ACTIVITY_RECOGNITION (https://developer.android.com/reference/android/Manifest.permission#ACTIVITY_RECOGNITION) Manifest.permission.BODY_SENSORS (https://developer.android.com/reference/android/Manifest.permission#BODY_SENSORS)",
+                        "Automatically grant a permission.On Android 12 and above, READ_SMS (https://developer.android.com/reference/android/Manifest.permission#READ_SMS) and following sensor-related permissions can only be granted on fully managed devices: ACCESS_FINE_LOCATION (https://developer.android.com/reference/android/Manifest.permission#ACCESS_FINE_LOCATION) ACCESS_BACKGROUND_LOCATION (https://developer.android.com/reference/android/Manifest.permission#ACCESS_BACKGROUND_LOCATION) ACCESS_COARSE_LOCATION (https://developer.android.com/reference/android/Manifest.permission#ACCESS_COARSE_LOCATION) CAMERA (https://developer.android.com/reference/android/Manifest.permission#CAMERA) RECORD_AUDIO (https://developer.android.com/reference/android/Manifest.permission#RECORD_AUDIO) ACTIVITY_RECOGNITION (https://developer.android.com/reference/android/Manifest.permission#ACTIVITY_RECOGNITION) BODY_SENSORS (https://developer.android.com/reference/android/Manifest.permission#BODY_SENSORS)",
                         "Automatically deny a permission."
                     ],
                     "type": "string"
@@ -1740,15 +1740,15 @@
                         ],
                         "enumDescriptions": [
                             "No delegation scope specified.",
-                            "Grants access to certificate installation and management.",
-                            "Grants access to managed configurations management.",
-                            "Grants access to blocking uninstallation.",
-                            "Grants access to permission policy and permission grant state.",
-                            "Grants access to package access state.",
-                            "Grants access for enabling system apps.",
+                            "Grants access to certificate installation and management. This scope can be delegated to multiple applications.",
+                            "Grants access to managed configurations management. This scope can be delegated to multiple applications.",
+                            "Grants access to blocking uninstallation. This scope can be delegated to multiple applications.",
+                            "Grants access to permission policy and permission grant state. This scope can be delegated to multiple applications.",
+                            "Grants access to package access state. This scope can be delegated to multiple applications.",
+                            "Grants access for enabling system apps. This scope can be delegated to multiple applications.",
                             "Grants access to network activity logs. Allows the delegated application to call setNetworkLoggingEnabled (https://developer.android.com/reference/android/app/admin/DevicePolicyManager#setNetworkLoggingEnabled%28android.content.ComponentName,%20boolean%29), isNetworkLoggingEnabled (https://developer.android.com/reference/android/app/admin/DevicePolicyManager#isNetworkLoggingEnabled%28android.content.ComponentName%29) and retrieveNetworkLogs (https://developer.android.com/reference/android/app/admin/DevicePolicyManager#retrieveNetworkLogs%28android.content.ComponentName,%20long%29) methods. This scope can be delegated to at most one application. Supported for fully managed devices on Android 10 and above. Supported for a work profile on Android 12 and above. When delegation is supported and set, NETWORK_ACTIVITY_LOGS is ignored.",
                             "Grants access to security logs. Allows the delegated application to call setSecurityLoggingEnabled (https://developer.android.com/reference/android/app/admin/DevicePolicyManager#setSecurityLoggingEnabled%28android.content.ComponentName,%20boolean%29), isSecurityLoggingEnabled (https://developer.android.com/reference/android/app/admin/DevicePolicyManager#isSecurityLoggingEnabled%28android.content.ComponentName%29), retrieveSecurityLogs (https://developer.android.com/reference/android/app/admin/DevicePolicyManager#retrieveSecurityLogs%28android.content.ComponentName%29) and retrievePreRebootSecurityLogs (https://developer.android.com/reference/android/app/admin/DevicePolicyManager#retrievePreRebootSecurityLogs%28android.content.ComponentName%29) methods. This scope can be delegated to at most one application. Supported for fully managed devices and company-owned devices with a work profile on Android 12 and above. When delegation is supported and set, SECURITY_LOGS is ignored.",
-                            "Grants access to selection of KeyChain certificates on behalf of requesting apps. Once granted, the delegated application will start receiving DelegatedAdminReceiver#onChoosePrivateKeyAlias (https://developer.android.com/reference/android/app/admin/DelegatedAdminReceiver#onChoosePrivateKeyAlias%28android.content.Context,%20android.content.Intent,%20int,%20android.net.Uri,%20java.lang.String%29). Allows the delegated application to call grantKeyPairToApp (https://developer.android.com/reference/android/app/admin/DevicePolicyManager#grantKeyPairToApp%28android.content.ComponentName,%20java.lang.String,%20java.lang.String%29) and revokeKeyPairFromApp (https://developer.android.com/reference/android/app/admin/DevicePolicyManager#revokeKeyPairFromApp%28android.content.ComponentName,%20java.lang.String,%20java.lang.String%29) methods. There can be at most one app that has this delegation. choosePrivateKeyRules must be empty and privateKeySelectionEnabled has no effect if certificate selection is delegated to an application."
+                            "Grants access to selection of KeyChain certificates on behalf of requesting apps. Once granted, the delegated application will start receiving DelegatedAdminReceiver#onChoosePrivateKeyAlias (https://developer.android.com/reference/android/app/admin/DelegatedAdminReceiver#onChoosePrivateKeyAlias%28android.content.Context,%20android.content.Intent,%20int,%20android.net.Uri,%20java.lang.String%29). Allows the delegated application to call grantKeyPairToApp (https://developer.android.com/reference/android/app/admin/DevicePolicyManager#grantKeyPairToApp%28android.content.ComponentName,%20java.lang.String,%20java.lang.String%29) and revokeKeyPairFromApp (https://developer.android.com/reference/android/app/admin/DevicePolicyManager#revokeKeyPairFromApp%28android.content.ComponentName,%20java.lang.String,%20java.lang.String%29) methods. This scope can be delegated to at most one application. choosePrivateKeyRules must be empty and privateKeySelectionEnabled has no effect if certificate selection is delegated to an application."
                         ],
                         "type": "string"
                     },
@@ -4710,7 +4710,7 @@
                     "enumDescriptions": [
                         "Policy not specified. If no policy is specified for a permission at any level, then the PROMPT behavior is used by default.",
                         "Prompt the user to grant a permission.",
-                        "Automatically grant a permission.On Android 12 and above, Manifest.permission.READ_SMS (https://developer.android.com/reference/android/Manifest.permission#READ_SMS) and following sensor-related permissions can only be granted on fully managed devices: Manifest.permission.ACCESS_FINE_LOCATION (https://developer.android.com/reference/android/Manifest.permission#ACCESS_FINE_LOCATION) Manifest.permission.ACCESS_BACKGROUND_LOCATION (https://developer.android.com/reference/android/Manifest.permission#ACCESS_BACKGROUND_LOCATION) Manifest.permission.ACCESS_COARSE_LOCATION (https://developer.android.com/reference/android/Manifest.permission#ACCESS_COARSE_LOCATION) Manifest.permission.CAMERA (https://developer.android.com/reference/android/Manifest.permission#CAMERA) Manifest.permission.RECORD_AUDIO (https://developer.android.com/reference/android/Manifest.permission#RECORD_AUDIO) Manifest.permission.ACTIVITY_RECOGNITION (https://developer.android.com/reference/android/Manifest.permission#ACTIVITY_RECOGNITION) Manifest.permission.BODY_SENSORS (https://developer.android.com/reference/android/Manifest.permission#BODY_SENSORS)",
+                        "Automatically grant a permission.On Android 12 and above, READ_SMS (https://developer.android.com/reference/android/Manifest.permission#READ_SMS) and following sensor-related permissions can only be granted on fully managed devices: ACCESS_FINE_LOCATION (https://developer.android.com/reference/android/Manifest.permission#ACCESS_FINE_LOCATION) ACCESS_BACKGROUND_LOCATION (https://developer.android.com/reference/android/Manifest.permission#ACCESS_BACKGROUND_LOCATION) ACCESS_COARSE_LOCATION (https://developer.android.com/reference/android/Manifest.permission#ACCESS_COARSE_LOCATION) CAMERA (https://developer.android.com/reference/android/Manifest.permission#CAMERA) RECORD_AUDIO (https://developer.android.com/reference/android/Manifest.permission#RECORD_AUDIO) ACTIVITY_RECOGNITION (https://developer.android.com/reference/android/Manifest.permission#ACTIVITY_RECOGNITION) BODY_SENSORS (https://developer.android.com/reference/android/Manifest.permission#BODY_SENSORS)",
                         "Automatically deny a permission."
                     ],
                     "type": "string"
@@ -4814,6 +4814,20 @@
                         "All Play Store apps are available for installation in the personal profile, except those whose installType is BLOCKED in personalApplications.",
                         "All Play Store apps are available for installation in the personal profile, except those whose installType is BLOCKED in personalApplications.",
                         "Only apps explicitly specified in personalApplications with installType set to AVAILABLE are allowed to be installed in the personal profile."
+                    ],
+                    "type": "string"
+                },
+                "privateSpacePolicy": {
+                    "description": "Optional. Controls whether a private space is allowed on the device.",
+                    "enum": [
+                        "PRIVATE_SPACE_POLICY_UNSPECIFIED",
+                        "PRIVATE_SPACE_ALLOWED",
+                        "PRIVATE_SPACE_DISALLOWED"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified. Defaults to PRIVATE_SPACE_ALLOWED.",
+                        "Users can create a private space profile.",
+                        "Users cannot create a private space profile. Supported only for company-owned devices with a work profile. Caution: Any existing private space will be removed."
                     ],
                     "type": "string"
                 },
@@ -5030,7 +5044,7 @@
                     "enumDescriptions": [
                         "Policy not specified. If no policy is specified for a permission at any level, then the PROMPT behavior is used by default.",
                         "Prompt the user to grant a permission.",
-                        "Automatically grant a permission.On Android 12 and above, Manifest.permission.READ_SMS (https://developer.android.com/reference/android/Manifest.permission#READ_SMS) and following sensor-related permissions can only be granted on fully managed devices: Manifest.permission.ACCESS_FINE_LOCATION (https://developer.android.com/reference/android/Manifest.permission#ACCESS_FINE_LOCATION) Manifest.permission.ACCESS_BACKGROUND_LOCATION (https://developer.android.com/reference/android/Manifest.permission#ACCESS_BACKGROUND_LOCATION) Manifest.permission.ACCESS_COARSE_LOCATION (https://developer.android.com/reference/android/Manifest.permission#ACCESS_COARSE_LOCATION) Manifest.permission.CAMERA (https://developer.android.com/reference/android/Manifest.permission#CAMERA) Manifest.permission.RECORD_AUDIO (https://developer.android.com/reference/android/Manifest.permission#RECORD_AUDIO) Manifest.permission.ACTIVITY_RECOGNITION (https://developer.android.com/reference/android/Manifest.permission#ACTIVITY_RECOGNITION) Manifest.permission.BODY_SENSORS (https://developer.android.com/reference/android/Manifest.permission#BODY_SENSORS)",
+                        "Automatically grant a permission.On Android 12 and above, READ_SMS (https://developer.android.com/reference/android/Manifest.permission#READ_SMS) and following sensor-related permissions can only be granted on fully managed devices: ACCESS_FINE_LOCATION (https://developer.android.com/reference/android/Manifest.permission#ACCESS_FINE_LOCATION) ACCESS_BACKGROUND_LOCATION (https://developer.android.com/reference/android/Manifest.permission#ACCESS_BACKGROUND_LOCATION) ACCESS_COARSE_LOCATION (https://developer.android.com/reference/android/Manifest.permission#ACCESS_COARSE_LOCATION) CAMERA (https://developer.android.com/reference/android/Manifest.permission#CAMERA) RECORD_AUDIO (https://developer.android.com/reference/android/Manifest.permission#RECORD_AUDIO) ACTIVITY_RECOGNITION (https://developer.android.com/reference/android/Manifest.permission#ACTIVITY_RECOGNITION) BODY_SENSORS (https://developer.android.com/reference/android/Manifest.permission#BODY_SENSORS)",
                         "Automatically deny a permission."
                     ],
                     "type": "string"
@@ -5095,7 +5109,7 @@
                     "type": "boolean"
                 },
                 "keyguardDisabled": {
-                    "description": "If true, this disables the Lock Screen (https://source.android.com/docs/core/display/multi_display/lock-screen) for primary and/or secondary displays.",
+                    "description": "If true, this disables the Lock Screen (https://source.android.com/docs/core/display/multi_display/lock-screen) for primary and/or secondary displays. This policy is supported only in dedicated device management mode.",
                     "type": "boolean"
                 },
                 "keyguardDisabledFeatures": {
@@ -6628,11 +6642,13 @@
                     "description": "Required. Wi-Fi roaming mode for the specified SSID.",
                     "enum": [
                         "WIFI_ROAMING_MODE_UNSPECIFIED",
+                        "WIFI_ROAMING_DISABLED",
                         "WIFI_ROAMING_DEFAULT",
                         "WIFI_ROAMING_AGGRESSIVE"
                     ],
                     "enumDescriptions": [
                         "Unspecified. Defaults to WIFI_ROAMING_DEFAULT.",
+                        "Wi-Fi roaming is disabled. Supported on Android 15 and above on fully managed devices and work profiles on company-owned devices. A nonComplianceDetail with MANAGEMENT_MODE is reported for other management modes. A nonComplianceDetail with API_LEVEL is reported if the Android version is less than 15.",
                         "Default Wi-Fi roaming mode of the device.",
                         "Aggressive roaming mode which allows quicker Wi-Fi roaming. Supported on Android 15 and above on fully managed devices and work profiles on company-owned devices. A nonComplianceDetail with MANAGEMENT_MODE is reported for other management modes. A nonComplianceDetail with API_LEVEL is reported if the Android version is less than 15. A nonComplianceDetail with DEVICE_INCOMPATIBLE is reported if the device does not support aggressive roaming mode."
                     ],

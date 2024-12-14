@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241028",
+    "revision": "20241209",
     "rootUrl": "https://integrations.googleapis.com/",
     "servicePath": "",
     "title": "Application Integration API",
@@ -216,6 +216,34 @@
             "resources": {
                 "locations": {
                     "methods": {
+                        "generateOpenApiSpec": {
+                            "description": "Generate OpenAPI spec for the requested integrations and api triggers",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}:generateOpenApiSpec",
+                            "httpMethod": "POST",
+                            "id": "integrations.projects.locations.generateOpenApiSpec",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Required. Project and location from which the integrations should be fetched. Format: projects/{project}/location/{location}",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}:generateOpenApiSpec",
+                            "request": {
+                                "$ref": "GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest"
+                            },
+                            "response": {
+                                "$ref": "GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
                         "getClients": {
                             "description": "Gets the client configuration for the given project and location resource name",
                             "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/clients",
@@ -1417,7 +1445,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Required. Next ID: 5 The execution resource name. Format: projects/{gcp_project_id}/locations/{location}/integrations/{integration}/executions/{execution_id}",
+                                                    "description": "Required. Next ID: 6 The execution resource name. Format: projects/{gcp_project_id}/locations/{location}/integrations/{integration}/executions/{execution_id}",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/integrations/[^/]+/executions/[^/]+$",
                                                     "required": true,
@@ -8105,6 +8133,20 @@
                     "description": "If this execution is a replay of another execution, then this field contains the original execution id.",
                     "type": "string"
                 },
+                "replayMode": {
+                    "description": "Replay mode for the execution",
+                    "enum": [
+                        "REPLAY_MODE_UNSPECIFIED",
+                        "REPLAY_MODE_FROM_BEGINNING",
+                        "REPLAY_MODE_POINT_OF_FAILURE"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "Replay the original execution from the beginning.",
+                        "Replay the execution from the first failed task."
+                    ],
+                    "type": "string"
+                },
                 "replayReason": {
                     "description": "reason for replay",
                     "type": "string"
@@ -9440,6 +9482,7 @@
                         "PREVIEW",
                         "GA",
                         "DEPRECATED",
+                        "TEST",
                         "PRIVATE_PREVIEW"
                     ],
                     "enumDescriptions": [
@@ -9447,6 +9490,7 @@
                         "PREVIEW.",
                         "GA.",
                         "DEPRECATED.",
+                        "TEST.",
                         "PRIVATE_PREVIEW."
                     ],
                     "readOnly": true,
@@ -9637,7 +9681,7 @@
                     "type": "string"
                 },
                 "deploymentModel": {
-                    "description": "Optional. Indicates whether connector is deployed on GKE/CloudRun",
+                    "description": "Output only. Indicates whether connector is deployed on GKE/CloudRun",
                     "enum": [
                         "DEPLOYMENT_MODEL_UNSPECIFIED",
                         "GKE_MST",
@@ -9648,6 +9692,7 @@
                         "Default model gke mst.",
                         "Cloud run mst."
                     ],
+                    "readOnly": true,
                     "type": "string"
                 },
                 "deploymentModelMigrationState": {
@@ -9793,7 +9838,7 @@
             "id": "GoogleCloudConnectorsV1EventingConfig",
             "properties": {
                 "additionalVariables": {
-                    "description": "Additional eventing related field values",
+                    "description": "Optional. Additional eventing related field values",
                     "items": {
                         "$ref": "GoogleCloudConnectorsV1ConfigVariable"
                     },
@@ -9801,14 +9846,14 @@
                 },
                 "authConfig": {
                     "$ref": "GoogleCloudConnectorsV1AuthConfig",
-                    "description": "Auth details for the webhook adapter."
+                    "description": "Optional. Auth details for the webhook adapter."
                 },
                 "deadLetterConfig": {
                     "$ref": "GoogleCloudConnectorsV1EventingConfigDeadLetterConfig",
                     "description": "Optional. Dead letter configuration for eventing of a connection."
                 },
                 "enrichmentEnabled": {
-                    "description": "Enrichment Enabled.",
+                    "description": "Optional. Enrichment Enabled.",
                     "type": "boolean"
                 },
                 "eventsListenerIngressEndpoint": {
@@ -9829,7 +9874,7 @@
                 },
                 "registrationDestinationConfig": {
                     "$ref": "GoogleCloudConnectorsV1DestinationConfig",
-                    "description": "Registration endpoint for auto registration."
+                    "description": "Optional. Registration endpoint for auto registration."
                 }
             },
             "type": "object"
@@ -10096,14 +10141,14 @@
             "id": "GoogleCloudConnectorsV1SslConfig",
             "properties": {
                 "additionalVariables": {
-                    "description": "Additional SSL related field values",
+                    "description": "Optional. Additional SSL related field values",
                     "items": {
                         "$ref": "GoogleCloudConnectorsV1ConfigVariable"
                     },
                     "type": "array"
                 },
                 "clientCertType": {
-                    "description": "Type of Client Cert (PEM/JKS/.. etc.)",
+                    "description": "Optional. Type of Client Cert (PEM/JKS/.. etc.)",
                     "enum": [
                         "CERT_TYPE_UNSPECIFIED",
                         "PEM"
@@ -10116,22 +10161,22 @@
                 },
                 "clientCertificate": {
                     "$ref": "GoogleCloudConnectorsV1Secret",
-                    "description": "Client Certificate"
+                    "description": "Optional. Client Certificate"
                 },
                 "clientPrivateKey": {
                     "$ref": "GoogleCloudConnectorsV1Secret",
-                    "description": "Client Private Key"
+                    "description": "Optional. Client Private Key"
                 },
                 "clientPrivateKeyPass": {
                     "$ref": "GoogleCloudConnectorsV1Secret",
-                    "description": "Secret containing the passphrase protecting the Client Private Key"
+                    "description": "Optional. Secret containing the passphrase protecting the Client Private Key"
                 },
                 "privateServerCertificate": {
                     "$ref": "GoogleCloudConnectorsV1Secret",
-                    "description": "Private Server Certificate. Needs to be specified if trust model is `PRIVATE`."
+                    "description": "Optional. Private Server Certificate. Needs to be specified if trust model is `PRIVATE`."
                 },
                 "serverCertType": {
-                    "description": "Type of Server Cert (PEM/JKS/.. etc.)",
+                    "description": "Optional. Type of Server Cert (PEM/JKS/.. etc.)",
                     "enum": [
                         "CERT_TYPE_UNSPECIFIED",
                         "PEM"
@@ -10143,7 +10188,7 @@
                     "type": "string"
                 },
                 "trustModel": {
-                    "description": "Trust Model of the SSL connection",
+                    "description": "Optional. Trust Model of the SSL connection",
                     "enum": [
                         "PUBLIC",
                         "PRIVATE",
@@ -10157,7 +10202,7 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "Controls the ssl type for the given connector version.",
+                    "description": "Optional. Controls the ssl type for the given connector version.",
                     "enum": [
                         "SSL_TYPE_UNSPECIFIED",
                         "TLS",
@@ -10171,7 +10216,7 @@
                     "type": "string"
                 },
                 "useSsl": {
-                    "description": "Bool for enabling SSL",
+                    "description": "Optional. Bool for enabling SSL",
                     "type": "boolean"
                 }
             },
@@ -10206,12 +10251,30 @@
             },
             "type": "object"
         },
+        "GoogleCloudIntegrationsV1alphaApiTriggerResource": {
+            "description": "List of API triggerID and their workflow resource name.",
+            "id": "GoogleCloudIntegrationsV1alphaApiTriggerResource",
+            "properties": {
+                "integrationResource": {
+                    "description": "Required. Integration where the API is published",
+                    "type": "string"
+                },
+                "triggerId": {
+                    "description": "Required. Trigger Id of the API trigger(s) in the integration",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudIntegrationsV1alphaAssertion": {
-            "description": "An assertion which will check for a condition over task execution status or an expression for task output variables Next available id: 5",
+            "description": "An assertion which will check for a condition over task execution status or an expression for task output variables",
             "id": "GoogleCloudIntegrationsV1alphaAssertion",
             "properties": {
                 "assertionStrategy": {
-                    "description": "The type of assertion to perform.",
+                    "description": "Optional. The type of assertion to perform.",
                     "enum": [
                         "ASSERTION_STRATEGY_UNSPECIFIED",
                         "ASSERT_SUCCESSFUL_EXECUTION",
@@ -11394,6 +11457,20 @@
                     "description": "If this execution is a replay of another execution, then this field contains the original execution id.",
                     "type": "string"
                 },
+                "replayMode": {
+                    "description": "Replay mode for the execution",
+                    "enum": [
+                        "REPLAY_MODE_UNSPECIFIED",
+                        "REPLAY_MODE_FROM_BEGINNING",
+                        "REPLAY_MODE_POINT_OF_FAILURE"
+                    ],
+                    "enumDescriptions": [
+                        "Default value.",
+                        "Replay the original execution from the beginning.",
+                        "Replay the execution from the first failed task."
+                    ],
+                    "type": "string"
+                },
                 "replayReason": {
                     "description": "reason for replay",
                     "type": "string"
@@ -11557,6 +11634,45 @@
                         "Integration file.",
                         "Integration Config variables."
                     ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest": {
+            "description": "Request for GenerateOpenApiSpec.",
+            "id": "GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest",
+            "properties": {
+                "apiTriggerResources": {
+                    "description": "Required. List of api triggers",
+                    "items": {
+                        "$ref": "GoogleCloudIntegrationsV1alphaApiTriggerResource"
+                    },
+                    "type": "array"
+                },
+                "fileFormat": {
+                    "description": "Required. File format for generated spec.",
+                    "enum": [
+                        "FILE_FORMAT_UNSPECIFIED",
+                        "JSON",
+                        "YAML"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified file format",
+                        "JSON File Format",
+                        "YAML File Format"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse": {
+            "description": "Response of the GenerateOpenApiSpec API.",
+            "id": "GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse",
+            "properties": {
+                "openApiSpec": {
+                    "description": "Open API spec as per the required format",
                     "type": "string"
                 }
             },
@@ -13049,7 +13165,7 @@
             "type": "object"
         },
         "GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest": {
-            "description": "The request for scheduling an integration. Next available id: 11",
+            "description": "The request for scheduling an integration.",
             "id": "GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest",
             "properties": {
                 "inputParameters": {

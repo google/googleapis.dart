@@ -27,7 +27,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240515",
+    "revision": "20241211",
     "rootUrl": "https://adsense.googleapis.com/",
     "servicePath": "",
     "title": "AdSense Management API",
@@ -975,6 +975,7 @@
                                         "AD_UNIT_SIZE_CODE",
                                         "CUSTOM_CHANNEL_NAME",
                                         "CUSTOM_CHANNEL_ID",
+                                        "HOSTED_CUSTOM_CHANNEL_ID",
                                         "OWNED_SITE_DOMAIN_NAME",
                                         "OWNED_SITE_ID",
                                         "PAGE_URL",
@@ -1025,6 +1026,7 @@
                                         "The size code of an ad unit (e.g. \"728x90\", \"responsive\").",
                                         "Custom channel name. The members of this dimension match the values from CustomChannel.display_name.",
                                         "Unique ID of a custom channel. The members of this dimension match the values from CustomChannel.reporting_dimension_id.",
+                                        "Unique ID of a hosted client's custom channel.",
                                         "Domain name of a verified site (e.g. \"example.com\"). The members of this dimension match the values from Site.domain.",
                                         "Unique ID of a verified site. The members of this dimension match the values from Site.reporting_dimension_id.",
                                         "URL of the page upon which the ad was served. This is a complete URL including scheme and query parameters. Note that the URL that appears in this dimension may be a canonicalized version of the one that was used in the original request, and so may not exactly match the URL that a user might have seen. Note that there are also some caveats to be aware of when using this dimension. For more information, see [Page URL breakdown](https://support.google.com/adsense/answer/11988478).",
@@ -1295,6 +1297,7 @@
                                         "AD_UNIT_SIZE_CODE",
                                         "CUSTOM_CHANNEL_NAME",
                                         "CUSTOM_CHANNEL_ID",
+                                        "HOSTED_CUSTOM_CHANNEL_ID",
                                         "OWNED_SITE_DOMAIN_NAME",
                                         "OWNED_SITE_ID",
                                         "PAGE_URL",
@@ -1345,6 +1348,7 @@
                                         "The size code of an ad unit (e.g. \"728x90\", \"responsive\").",
                                         "Custom channel name. The members of this dimension match the values from CustomChannel.display_name.",
                                         "Unique ID of a custom channel. The members of this dimension match the values from CustomChannel.reporting_dimension_id.",
+                                        "Unique ID of a hosted client's custom channel.",
                                         "Domain name of a verified site (e.g. \"example.com\"). The members of this dimension match the values from Site.domain.",
                                         "Unique ID of a verified site. The members of this dimension match the values from Site.reporting_dimension_id.",
                                         "URL of the page upon which the ad was served. This is a complete URL including scheme and query parameters. Note that the URL that appears in this dimension may be a canonicalized version of the one that was used in the original request, and so may not exactly match the URL that a user might have seen. Note that there are also some caveats to be aware of when using this dimension. For more information, see [Page URL breakdown](https://support.google.com/adsense/answer/11988478).",
@@ -2788,11 +2792,11 @@
             "id": "TimeZone",
             "properties": {
                 "id": {
-                    "description": "IANA Time Zone Database time zone, e.g. \"America/New_York\".",
+                    "description": "IANA Time Zone Database time zone. For example \"America/New_York\".",
                     "type": "string"
                 },
                 "version": {
-                    "description": "Optional. IANA Time Zone Database version number, e.g. \"2019a\".",
+                    "description": "Optional. IANA Time Zone Database version number. For example \"2019a\".",
                     "type": "string"
                 }
             },

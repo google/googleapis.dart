@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241021",
+    "revision": "20241203",
     "rootUrl": "https://netapp.googleapis.com/",
     "servicePath": "",
     "title": "NetApp API",
@@ -1077,7 +1077,7 @@
                         "operations": {
                             "methods": {
                                 "cancel": {
-                                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "netapp.projects.locations.operations.cancel",
@@ -1389,6 +1389,34 @@
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
+                                },
+                                "validateDirectoryService": {
+                                    "description": "ValidateDirectoryService does a connectivity check for a directory service policy attached to the storage pool.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/storagePools/{storagePoolsId}:validateDirectoryService",
+                                    "httpMethod": "POST",
+                                    "id": "netapp.projects.locations.storagePools.validateDirectoryService",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Name of the storage pool",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/storagePools/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:validateDirectoryService",
+                                    "request": {
+                                        "$ref": "ValidateDirectoryServiceRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
                                 }
                             }
                         },
@@ -1652,6 +1680,34 @@
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
+                                        "establishPeering": {
+                                            "description": "Establish replication peering.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/volumes/{volumesId}/replications/{replicationsId}:establishPeering",
+                                            "httpMethod": "POST",
+                                            "id": "netapp.projects.locations.volumes.replications.establishPeering",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "description": "Required. The resource name of the replication, in the format of projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}.",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/volumes/[^/]+/replications/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+name}:establishPeering",
+                                            "request": {
+                                                "$ref": "EstablishPeeringRequest"
+                                            },
+                                            "response": {
+                                                "$ref": "Operation"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
                                         "get": {
                                             "description": "Describe a replication for a volume.",
                                             "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/volumes/{volumesId}/replications/{replicationsId}",
@@ -1833,6 +1889,34 @@
                                             "path": "v1/{+name}:stop",
                                             "request": {
                                                 "$ref": "StopReplicationRequest"
+                                            },
+                                            "response": {
+                                                "$ref": "Operation"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
+                                        "sync": {
+                                            "description": "Syncs the replication. This will invoke one time volume data transfer from source to destination.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/volumes/{volumesId}/replications/{replicationsId}:sync",
+                                            "httpMethod": "POST",
+                                            "id": "netapp.projects.locations.volumes.replications.sync",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "description": "Required. The resource name of the replication, in the format of projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}.",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/volumes/[^/]+/replications/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+name}:sync",
+                                            "request": {
+                                                "$ref": "SyncReplicationRequest"
                                             },
                                             "response": {
                                                 "$ref": "Operation"
@@ -2430,6 +2514,10 @@
                     "description": "Required. Existing destination StoragePool name.",
                     "type": "string"
                 },
+                "tieringPolicy": {
+                    "$ref": "TieringPolicy",
+                    "description": "Optional. Tiering policy for the volume."
+                },
                 "volumeId": {
                     "description": "Desired destination volume resource id. If not specified, source volume's resource id will be used. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.",
                     "type": "string"
@@ -2441,6 +2529,32 @@
             "description": "EncryptVolumesRequest specifies the KMS config to encrypt existing volumes.",
             "id": "EncryptVolumesRequest",
             "properties": {},
+            "type": "object"
+        },
+        "EstablishPeeringRequest": {
+            "description": "EstablishPeeringRequest establishes cluster and svm peerings between the source and the destination replications.",
+            "id": "EstablishPeeringRequest",
+            "properties": {
+                "peerClusterName": {
+                    "description": "Required. Name of the user's local source cluster to be peered with the destination cluster.",
+                    "type": "string"
+                },
+                "peerIpAddresses": {
+                    "description": "Optional. List of IPv4 ip addresses to be used for peering.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "peerSvmName": {
+                    "description": "Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.",
+                    "type": "string"
+                },
+                "peerVolumeName": {
+                    "description": "Required. Name of the user's local source volume to be peered with the destination volume.",
+                    "type": "string"
+                }
+            },
             "type": "object"
         },
         "ExportPolicy": {
@@ -2476,6 +2590,75 @@
                     "description": "The maximum number of Snapshots to keep for the hourly schedule",
                     "format": "double",
                     "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "HybridPeeringDetails": {
+            "description": "HybridPeeringDetails contains details about the hybrid peering.",
+            "id": "HybridPeeringDetails",
+            "properties": {
+                "command": {
+                    "description": "Optional. Copy-paste-able commands to be used on user's ONTAP to accept peering requests.",
+                    "type": "string"
+                },
+                "commandExpiryTime": {
+                    "description": "Optional. Expiration time for the peering command to be executed on user's ONTAP.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "passphrase": {
+                    "description": "Optional. Temporary passphrase generated to accept cluster peering command.",
+                    "type": "string"
+                },
+                "subnetIp": {
+                    "description": "Optional. IP address of the subnet.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "HybridReplicationParameters": {
+            "description": "The Hybrid Replication parameters for the volume.",
+            "id": "HybridReplicationParameters",
+            "properties": {
+                "clusterLocation": {
+                    "description": "Optional. Name of source cluster location associated with the Hybrid replication. This is a free-form field for the display purpose only.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Optional. Description of the replication.",
+                    "type": "string"
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Labels to be added to the replication as the key value pairs.",
+                    "type": "object"
+                },
+                "peerClusterName": {
+                    "description": "Required. Name of the user's local source cluster to be peered with the destination cluster.",
+                    "type": "string"
+                },
+                "peerIpAddresses": {
+                    "description": "Required. List of node ip addresses to be peered with.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "peerSvmName": {
+                    "description": "Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.",
+                    "type": "string"
+                },
+                "peerVolumeName": {
+                    "description": "Required. Name of the user's local source volume to be peered with the destination volume.",
+                    "type": "string"
+                },
+                "replication": {
+                    "description": "Required. Desired name for the replication of this volume.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3028,6 +3211,10 @@
             "description": "Replication is a nested resource under Volume, that describes a cross-region replication relationship between 2 volumes in different regions.",
             "id": "Replication",
             "properties": {
+                "clusterLocation": {
+                    "description": "Optional. Location of the user cluster.",
+                    "type": "string"
+                },
                 "createTime": {
                     "description": "Output only. Replication create time.",
                     "format": "google-datetime",
@@ -3052,6 +3239,26 @@
                     "readOnly": true,
                     "type": "boolean"
                 },
+                "hybridPeeringDetails": {
+                    "$ref": "HybridPeeringDetails",
+                    "description": "Output only. Hybrid peering details.",
+                    "readOnly": true
+                },
+                "hybridReplicationType": {
+                    "description": "Output only. Type of the hybrid replication.",
+                    "enum": [
+                        "HYBRID_REPLICATION_TYPE_UNSPECIFIED",
+                        "MIGRATION",
+                        "CONTINUOUS_REPLICATION"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified hybrid replication type.",
+                        "Hybrid replication type for migration.",
+                        "Hybrid replication type for continuous replication."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "labels": {
                     "additionalProperties": {
                         "type": "string"
@@ -3066,14 +3273,18 @@
                         "PREPARING",
                         "MIRRORED",
                         "STOPPED",
-                        "TRANSFERRING"
+                        "TRANSFERRING",
+                        "BASELINE_TRANSFERRING",
+                        "ABORTED"
                     ],
                     "enumDescriptions": [
                         "Unspecified MirrorState",
                         "Destination volume is being prepared.",
                         "Destination volume has been initialized and is ready to receive replication transfers.",
                         "Destination volume is not receiving replication transfers.",
-                        "Incremental replication is in progress."
+                        "Incremental replication is in progress.",
+                        "Baseline replication is in progress.",
+                        "Replication is aborted."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -3126,7 +3337,9 @@
                         "READY",
                         "UPDATING",
                         "DELETING",
-                        "ERROR"
+                        "ERROR",
+                        "PENDING_CLUSTER_PEERING",
+                        "PENDING_SVM_PEERING"
                     ],
                     "enumDescriptions": [
                         "Unspecified replication State",
@@ -3134,7 +3347,9 @@
                         "Replication is ready.",
                         "Replication is updating.",
                         "Replication is deleting.",
-                        "Replication is in error state."
+                        "Replication is in error state.",
+                        "Replication is waiting for cluster peering to be established.",
+                        "Replication is waiting for SVM peering to be established."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -3531,6 +3746,12 @@
             "properties": {},
             "type": "object"
         },
+        "SyncReplicationRequest": {
+            "description": "SyncReplicationRequest syncs the replication from source to destination.",
+            "id": "SyncReplicationRequest",
+            "properties": {},
+            "type": "object"
+        },
         "TieringPolicy": {
             "description": "Defines tiering policy for the volume.",
             "id": "TieringPolicy",
@@ -3598,6 +3819,25 @@
                 "updateTime": {
                     "description": "Time when progress was updated last.",
                     "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ValidateDirectoryServiceRequest": {
+            "description": "ValidateDirectoryServiceRequest validates the directory service policy attached to the storage pool.",
+            "id": "ValidateDirectoryServiceRequest",
+            "properties": {
+                "directoryServiceType": {
+                    "description": "Type of directory service policy attached to the storage pool.",
+                    "enum": [
+                        "DIRECTORY_SERVICE_TYPE_UNSPECIFIED",
+                        "ACTIVE_DIRECTORY"
+                    ],
+                    "enumDescriptions": [
+                        "Directory service type is not specified.",
+                        "Active directory policy attached to the storage pool."
+                    ],
                     "type": "string"
                 }
             },
@@ -3688,6 +3928,10 @@
                     "description": "Output only. Indicates whether the volume is part of a replication relationship.",
                     "readOnly": true,
                     "type": "boolean"
+                },
+                "hybridReplicationParameters": {
+                    "$ref": "HybridReplicationParameters",
+                    "description": "Optional. The Hybrid Replication parameters for the volume."
                 },
                 "kerberosEnabled": {
                     "description": "Optional. Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).",
@@ -3874,7 +4118,9 @@
                         "UPDATING",
                         "RESTORING",
                         "DISABLED",
-                        "ERROR"
+                        "ERROR",
+                        "PREPARING",
+                        "READ_ONLY"
                     ],
                     "enumDescriptions": [
                         "Unspecified Volume State",
@@ -3884,7 +4130,9 @@
                         "Volume State is Updating",
                         "Volume State is Restoring",
                         "Volume State is Disabled",
-                        "Volume State is Error"
+                        "Volume State is Error",
+                        "Volume State is Preparing. Note that this is different from CREATING where CREATING means the volume is being created, while PREPARING means the volume is created and now being prepared for the replication.",
+                        "Volume State is Read Only"
                     ],
                     "readOnly": true,
                     "type": "string"

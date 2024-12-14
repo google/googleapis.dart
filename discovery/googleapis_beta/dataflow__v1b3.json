@@ -110,7 +110,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241028",
+    "revision": "20241209",
     "rootUrl": "https://dataflow.googleapis.com/",
     "servicePath": "",
     "title": "Dataflow API",
@@ -2927,6 +2927,23 @@
             },
             "type": "object"
         },
+        "DataflowGaugeValue": {
+            "description": "The gauge value of a metric.",
+            "id": "DataflowGaugeValue",
+            "properties": {
+                "measuredTime": {
+                    "description": "The timestamp when the gauge was recorded.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The value of the gauge.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "DataflowHistogramValue": {
             "description": "Summary statistics for a population of values. HistogramValue contains a sequence of buckets and gives a count of values that fall into each bucket. Bucket boundares are defined by a formula and bucket widths are either fixed or exponentially increasing.",
             "id": "DataflowHistogramValue",
@@ -4757,6 +4774,10 @@
                     },
                     "description": "Optional. Set of metric labels for this metric.",
                     "type": "object"
+                },
+                "valueGauge64": {
+                    "$ref": "DataflowGaugeValue",
+                    "description": "Non-cumulative int64 value of this metric."
                 },
                 "valueHistogram": {
                     "$ref": "DataflowHistogramValue",

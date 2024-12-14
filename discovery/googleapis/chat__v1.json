@@ -100,7 +100,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241103",
+    "revision": "20241210",
     "rootUrl": "https://chat.googleapis.com/",
     "servicePath": "",
     "title": "Google Chat API",
@@ -294,7 +294,7 @@
                     ]
                 },
                 "create": {
-                    "description": "Creates a space with no members. Can be used to create a named space. Spaces grouped by topics aren't supported. For an example, see [Create a space](https://developers.google.com/workspace/chat/create-spaces). If you receive the error message `ALREADY_EXISTS` when creating a space, try a different `displayName`. An existing space within the Google Workspace organization might already use this display name. If you're a member of the [Developer Preview program](https://developers.google.com/workspace/preview), you can create a group chat in import mode using `spaceType.GROUP_CHAT`. Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer Preview](https://developers.google.com/workspace/preview) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) When authenticating as an app, the `space.customer` field must be set in the request.",
+                    "description": "Creates a space. Can be used to create a named space, or a group chat in `Import mode`. For an example, see [Create a space](https://developers.google.com/workspace/chat/create-spaces). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer Preview](https://developers.google.com/workspace/preview) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) When authenticating as an app, the `space.customer` field must be set in the request. Space membership upon creation depends on whether the space is created in `Import mode`: * **Import mode:** No members are created. * **All other modes:** The calling user is added as a member. This is: * The app itself when using app authentication. * The human user when using user authentication. If you receive the error message `ALREADY_EXISTS` when creating a space, try a different `displayName`. An existing space within the Google Workspace organization might already use this display name.",
                     "flatPath": "v1/spaces",
                     "httpMethod": "POST",
                     "id": "chat.spaces.create",
@@ -781,7 +781,7 @@
                                     "type": "string"
                                 },
                                 "messageReplyOption": {
-                                    "description": "Optional. Specifies whether a message starts a thread or replies to one. Only supported in named spaces.",
+                                    "description": "Optional. Specifies whether a message starts a thread or replies to one. Only supported in named spaces. When [responding to user interactions](https://developers.google.com/workspace/chat/receive-respond-interactions), this field is ignored. For interactions within a thread, the reply is created in the same thread. Otherwise, the reply is created as a new thread.",
                                     "enum": [
                                         "MESSAGE_REPLY_OPTION_UNSPECIFIED",
                                         "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD",
@@ -902,7 +902,7 @@
                                     "type": "string"
                                 },
                                 "orderBy": {
-                                    "description": "Optional. Optional, if resuming from a previous query. How the list of messages is ordered. Specify a value to order by an ordering operation. Valid ordering operation values are as follows: - `ASC` for ascending. - `DESC` for descending. The default ordering is `create_time ASC`.",
+                                    "description": "Optional. How the list of messages is ordered. Specify a value to order by an ordering operation. Valid ordering operation values are as follows: - `ASC` for ascending. - `DESC` for descending. The default ordering is `create_time ASC`.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -913,7 +913,7 @@
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "Optional. Optional, if resuming from a previous query. A page token received from a previous list messages call. Provide this parameter to retrieve the subsequent page. When paginating, all other parameters provided should match the call that provided the page token. Passing different values to the other parameters might lead to unexpected results.",
+                                    "description": "Optional. A page token received from a previous list messages call. Provide this parameter to retrieve the subsequent page. When paginating, all other parameters provided should match the call that provided the page token. Passing different values to the other parameters might lead to unexpected results.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -1558,7 +1558,7 @@
             "properties": {
                 "attachmentDataRef": {
                     "$ref": "AttachmentDataRef",
-                    "description": "A reference to the attachment data. This field is used with the media API to download the attachment data."
+                    "description": "Optional. A reference to the attachment data. This field is used to create or update messages with attachments, or with the media API to download the attachment data."
                 },
                 "contentName": {
                     "description": "Output only. The original file name for the content, not the full path.",
@@ -1581,7 +1581,7 @@
                     "readOnly": true
                 },
                 "name": {
-                    "description": "Resource name of the attachment, in the form `spaces/{space}/messages/{message}/attachments/{attachment}`.",
+                    "description": "Optional. Resource name of the attachment, in the form `spaces/{space}/messages/{message}/attachments/{attachment}`.",
                     "type": "string"
                 },
                 "source": {
@@ -1612,11 +1612,11 @@
             "id": "AttachmentDataRef",
             "properties": {
                 "attachmentUploadToken": {
-                    "description": "Opaque token containing a reference to an uploaded attachment. Treated by clients as an opaque string and used to create or update Chat messages with attachments.",
+                    "description": "Optional. Opaque token containing a reference to an uploaded attachment. Treated by clients as an opaque string and used to create or update Chat messages with attachments.",
                     "type": "string"
                 },
                 "resourceName": {
-                    "description": "The resource name of the attachment data. This field is used with the media API to download the attachment data.",
+                    "description": "Optional. The resource name of the attachment data. This field is used with the media API to download the attachment data.",
                     "type": "string"
                 }
             },
@@ -2322,7 +2322,7 @@
             "type": "object"
         },
         "GoogleAppsCardV1Card": {
-            "description": "A card interface displayed in a Google Chat message or Google Workspace Add-on. Cards support a defined layout, interactive UI elements like buttons, and rich media like images. Use cards to present detailed information, gather information from users, and guide users to take a next step. [Card builder](https://addons.gsuite.google.com/uikit/builder) To learn how to build cards, see the following documentation: * For Google Chat apps, see [Design the components of a card or dialog](https://developers.google.com/workspace/chat/design-components-card-dialog). * For Google Workspace Add-ons, see [Card-based interfaces](https://developers.google.com/apps-script/add-ons/concepts/cards). **Example: Card message for a Google Chat app** ![Example contact card](https://developers.google.com/workspace/chat/images/card_api_reference.png) To create the sample card message in Google Chat, use the following JSON: ``` { \"cardsV2\": [ { \"cardId\": \"unique-card-id\", \"card\": { \"header\": { \"title\": \"Sasha\", \"subtitle\": \"Software Engineer\", \"imageUrl\": \"https://developers.google.com/workspace/chat/images/quickstart-app-avatar.png\", \"imageType\": \"CIRCLE\", \"imageAltText\": \"Avatar for Sasha\" }, \"sections\": [ { \"header\": \"Contact Info\", \"collapsible\": true, \"uncollapsibleWidgetsCount\": 1, \"widgets\": [ { \"decoratedText\": { \"startIcon\": { \"knownIcon\": \"EMAIL\" }, \"text\": \"sasha@example.com\" } }, { \"decoratedText\": { \"startIcon\": { \"knownIcon\": \"PERSON\" }, \"text\": \"Online\" } }, { \"decoratedText\": { \"startIcon\": { \"knownIcon\": \"PHONE\" }, \"text\": \"+1 (555) 555-1234\" } }, { \"buttonList\": { \"buttons\": [ { \"text\": \"Share\", \"onClick\": { \"openLink\": { \"url\": \"https://example.com/share\" } } }, { \"text\": \"Edit\", \"onClick\": { \"action\": { \"function\": \"goToView\", \"parameters\": [ { \"key\": \"viewType\", \"value\": \"EDIT\" } ] } } } ] } } ] } ] } } ] } ```",
+            "description": "A card interface displayed in a Google Chat message or Google Workspace Add-on. Cards support a defined layout, interactive UI elements like buttons, and rich media like images. Use cards to present detailed information, gather information from users, and guide users to take a next step. [Card builder](https://addons.gsuite.google.com/uikit/builder) To learn how to build cards, see the following documentation: * For Google Chat apps, see [Design the components of a card or dialog](https://developers.google.com/workspace/chat/design-components-card-dialog). * For Google Workspace Add-ons, see [Card-based interfaces](https://developers.google.com/apps-script/add-ons/concepts/cards). Note: You can add up to 100 widgets per card. Any widgets beyond this limit are ignored. This limit applies to both card messages and dialogs in Google Chat apps, and to cards in Google Workspace Add-ons. **Example: Card message for a Google Chat app** ![Example contact card](https://developers.google.com/workspace/chat/images/card_api_reference.png) To create the sample card message in Google Chat, use the following JSON: ``` { \"cardsV2\": [ { \"cardId\": \"unique-card-id\", \"card\": { \"header\": { \"title\": \"Sasha\", \"subtitle\": \"Software Engineer\", \"imageUrl\": \"https://developers.google.com/workspace/chat/images/quickstart-app-avatar.png\", \"imageType\": \"CIRCLE\", \"imageAltText\": \"Avatar for Sasha\" }, \"sections\": [ { \"header\": \"Contact Info\", \"collapsible\": true, \"uncollapsibleWidgetsCount\": 1, \"widgets\": [ { \"decoratedText\": { \"startIcon\": { \"knownIcon\": \"EMAIL\" }, \"text\": \"sasha@example.com\" } }, { \"decoratedText\": { \"startIcon\": { \"knownIcon\": \"PERSON\" }, \"text\": \"Online\" } }, { \"decoratedText\": { \"startIcon\": { \"knownIcon\": \"PHONE\" }, \"text\": \"+1 (555) 555-1234\" } }, { \"buttonList\": { \"buttons\": [ { \"text\": \"Share\", \"onClick\": { \"openLink\": { \"url\": \"https://example.com/share\" } } }, { \"text\": \"Edit\", \"onClick\": { \"action\": { \"function\": \"goToView\", \"parameters\": [ { \"key\": \"viewType\", \"value\": \"EDIT\" } ] } } } ] } } ] } ] } } ] } ```",
             "id": "GoogleAppsCardV1Card",
             "properties": {
                 "cardActions": {
@@ -2447,6 +2447,41 @@
                 "title": {
                     "description": "Required. The title of the card header. The header has a fixed height: if both a title and subtitle are specified, each takes up one line. If only the title is specified, it takes up both lines.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleAppsCardV1Carousel": {
+            "description": "[Developer Preview](https://developers.google.com/workspace/preview): A carousel, also known as a slider, rotates and displays a list of widgets in a slideshow format, with buttons navigating to the previous or next widget. For example, this is a JSON representation of a carousel that contains three text paragraph widgets. ``` { \"carouselCards\": [ { \"widgets\": [ { \"textParagraph\": { \"text\": \"First text paragraph in carousel\", } } ] }, { \"widgets\": [ { \"textParagraph\": { \"text\": \"Second text paragraph in carousel\", } } ] }, { \"widgets\": [ { \"textParagraph\": { \"text\": \"Third text paragraph in carousel\", } } ] } ] } ``` [Google Chat apps](https://developers.google.com/workspace/chat):",
+            "id": "GoogleAppsCardV1Carousel",
+            "properties": {
+                "carouselCards": {
+                    "description": "A list of cards included in the carousel.",
+                    "items": {
+                        "$ref": "GoogleAppsCardV1CarouselCard"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleAppsCardV1CarouselCard": {
+            "description": "[Developer Preview](https://developers.google.com/workspace/preview): A card that can be displayed as a carousel item. [Google Chat apps](https://developers.google.com/workspace/chat):",
+            "id": "GoogleAppsCardV1CarouselCard",
+            "properties": {
+                "footerWidgets": {
+                    "description": "A list of widgets displayed at the bottom of the carousel card. The widgets are displayed in the order that they are specified.",
+                    "items": {
+                        "$ref": "GoogleAppsCardV1NestedWidget"
+                    },
+                    "type": "array"
+                },
+                "widgets": {
+                    "description": "A list of widgets displayed in the carousel card. The widgets are displayed in the order that they are specified.",
+                    "items": {
+                        "$ref": "GoogleAppsCardV1NestedWidget"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -2913,6 +2948,25 @@
             },
             "type": "object"
         },
+        "GoogleAppsCardV1NestedWidget": {
+            "description": "[Developer Preview](https://developers.google.com/workspace/preview): A list of widgets that can be displayed in a containing layout, such as a `CarouselCard`. [Google Chat apps](https://developers.google.com/workspace/chat):",
+            "id": "GoogleAppsCardV1NestedWidget",
+            "properties": {
+                "buttonList": {
+                    "$ref": "GoogleAppsCardV1ButtonList",
+                    "description": "A button list widget."
+                },
+                "image": {
+                    "$ref": "GoogleAppsCardV1Image",
+                    "description": "An image widget."
+                },
+                "textParagraph": {
+                    "$ref": "GoogleAppsCardV1TextParagraph",
+                    "description": "A text paragraph widget."
+                }
+            },
+            "type": "object"
+        },
         "GoogleAppsCardV1OnClick": {
             "description": "Represents how to respond when users click an interactive element on a card, such as a button. [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):",
             "id": "GoogleAppsCardV1OnClick",
@@ -3072,7 +3126,7 @@
             "properties": {
                 "externalDataSource": {
                     "$ref": "GoogleAppsCardV1Action",
-                    "description": "An external data source, such as a relational data base."
+                    "description": "An external data source, such as a relational database."
                 },
                 "items": {
                     "description": "An array of selectable items. For example, an array of radio buttons or checkboxes. Supports up to 100 items.",
@@ -3091,7 +3145,7 @@
                     "type": "integer"
                 },
                 "multiSelectMinQueryLength": {
-                    "description": "For multiselect menus, the number of text characters that a user inputs before the app queries autocomplete and displays suggested items in the menu. If unspecified, defaults to 0 characters for static data sources and 3 characters for external data sources.",
+                    "description": "For multiselect menus, the number of text characters that a user inputs before the menu returns suggested selection items. If unset, the multiselect menu uses the following default values: * If the menu uses a static array of `SelectionInput` items, defaults to 0 characters and immediately populates items from the array. * If the menu uses a dynamic data source (`multi_select_data_source`), defaults to 3 characters before querying the data source to return suggested items.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -3121,7 +3175,7 @@
                         "A set of radio buttons. Users can select one radio button.",
                         "A set of switches. Users can turn on one or more switches.",
                         "A dropdown menu. Users can select one item from the menu.",
-                        "A multiselect menu for static or dynamic data. From the menu bar, users select one or more items. Users can also input values to populate dynamic data. For example, users can start typing the name of a Google Chat space and the widget autosuggests the space. To populate items for a multiselect menu, you can use one of the following types of data sources: * Static data: Items are specified as `SelectionItem` objects in the widget. Up to 100 items. * Google Workspace data: Items are populated using data from Google Workspace, such as Google Workspace users or Google Chat spaces. * External data: Items are populated from an external data source outside of Google Workspace. For examples of how to implement multiselect menus, see [Add a multiselect menu](https://developers.google.com/workspace/chat/design-interactive-card-dialog#multiselect-menu). [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):"
+                        "A menu with a text box. Users can type and select one or more items. For Google Workspace Add-ons, you must populate items using a static array of `SelectionItem` objects. For Google Chat apps, you can also populate items using a dynamic data source and autosuggest items as users type in the menu. For example, users can start typing the name of a Google Chat space and the widget autosuggests the space. To dynamically populate items for a multiselect menu, use one of the following types of data sources: * Google Workspace data: Items are populated using data from Google Workspace, such as Google Workspace users or Google Chat spaces. * External data: Items are populated from an external data source outside of Google Workspace. For examples of how to implement multiselect menus for Chat apps, see [Add a multiselect menu](https://developers.google.com/workspace/chat/design-interactive-card-dialog#multiselect-menu). [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):"
                     ],
                     "type": "string"
                 }
@@ -3129,7 +3183,7 @@
             "type": "object"
         },
         "GoogleAppsCardV1SelectionItem": {
-            "description": "An item that users can select in a selection input, such as a checkbox or switch. [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):",
+            "description": "An item that users can select in a selection input, such as a checkbox or switch. Supports up to 100 items. [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):",
             "id": "GoogleAppsCardV1SelectionItem",
             "properties": {
                 "bottomText": {
@@ -3291,6 +3345,10 @@
                 "buttonList": {
                     "$ref": "GoogleAppsCardV1ButtonList",
                     "description": "A list of buttons. For example, the following JSON creates two buttons. The first is a blue text button and the second is an image button that opens a link: ``` \"buttonList\": { \"buttons\": [ { \"text\": \"Edit\", \"color\": { \"red\": 0, \"green\": 0, \"blue\": 1, }, \"disabled\": true, }, { \"icon\": { \"knownIcon\": \"INVITE\", \"altText\": \"check calendar\" }, \"onClick\": { \"openLink\": { \"url\": \"https://example.com/calendar\" } } } ] } ```"
+                },
+                "carousel": {
+                    "$ref": "GoogleAppsCardV1Carousel",
+                    "description": "A carousel contains a collection of nested widgets. For example, this is a JSON representation of a carousel that contains two text paragraphs. ``` { \"widgets\": [ { \"textParagraph\": { \"text\": \"First text paragraph in the carousel.\" } }, { \"textParagraph\": { \"text\": \"Second text paragraph in the carousel.\" } } ] } ```"
                 },
                 "chipList": {
                     "$ref": "GoogleAppsCardV1ChipList",
@@ -3975,7 +4033,7 @@
                     "type": "array"
                 },
                 "clientAssignedMessageId": {
-                    "description": "Optional. Optional. A custom ID for the message. You can use field to identify a message, or to get, delete, or update a message. To set a custom ID, specify the [`messageId`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.messages/create#body.QUERY_PARAMETERS.message_id) field when you create the message. For details, see [Name a message](https://developers.google.com/workspace/chat/create-messages#name_a_created_message).",
+                    "description": "Optional. A custom ID for the message. You can use field to identify a message, or to get, delete, or update a message. To set a custom ID, specify the [`messageId`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.messages/create#body.QUERY_PARAMETERS.message_id) field when you create the message. For details, see [Name a message](https://developers.google.com/workspace/chat/create-messages#name_a_created_message).",
                     "type": "string"
                 },
                 "createTime": {
@@ -4403,7 +4461,7 @@
             "id": "SetUpSpaceRequest",
             "properties": {
                 "memberships": {
-                    "description": "Optional. The Google Chat users or groups to invite to join the space. Omit the calling user, as they are added automatically. The set currently allows up to 20 memberships (in addition to the caller). For human membership, the `Membership.member` field must contain a `user` with `name` populated (format: `users/{user}`) and `type` set to `User.Type.HUMAN`. You can only add human users when setting up a space (adding Chat apps is only supported for direct message setup with the calling app). You can also add members using the user's email as an alias for {user}. For example, the `user.name` can be `users/example@gmail.com`. To invite Gmail users or users from external Google Workspace domains, user's email must be used for `{user}`. For Google group membership, the `Membership.group_member` field must contain a `group` with `name` populated (format `groups/{group}`). You can only add Google groups when setting `Space.spaceType` to `SPACE`. Optional when setting `Space.spaceType` to `SPACE`. Required when setting `Space.spaceType` to `GROUP_CHAT`, along with at least two memberships. Required when setting `Space.spaceType` to `DIRECT_MESSAGE` with a human user, along with exactly one membership. Must be empty when creating a 1:1 conversation between a human and the calling Chat app (when setting `Space.spaceType` to `DIRECT_MESSAGE` and `Space.singleUserBotDm` to `true`).",
+                    "description": "Optional. The Google Chat users or groups to invite to join the space. Omit the calling user, as they are added automatically. The set currently allows up to 49 memberships (in addition to the caller). For human membership, the `Membership.member` field must contain a `user` with `name` populated (format: `users/{user}`) and `type` set to `User.Type.HUMAN`. You can only add human users when setting up a space (adding Chat apps is only supported for direct message setup with the calling app). You can also add members using the user's email as an alias for {user}. For example, the `user.name` can be `users/example@gmail.com`. To invite Gmail users or users from external Google Workspace domains, user's email must be used for `{user}`. For Google group membership, the `Membership.group_member` field must contain a `group` with `name` populated (format `groups/{group}`). You can only add Google groups when setting `Space.spaceType` to `SPACE`. Optional when setting `Space.spaceType` to `SPACE`. Required when setting `Space.spaceType` to `GROUP_CHAT`, along with at least two memberships. Required when setting `Space.spaceType` to `DIRECT_MESSAGE` with a human user, along with exactly one membership. Must be empty when creating a 1:1 conversation between a human and the calling Chat app (when setting `Space.spaceType` to `DIRECT_MESSAGE` and `Space.singleUserBotDm` to `true`).",
                     "items": {
                         "$ref": "Membership"
                     },
@@ -4499,6 +4557,12 @@
                 "importMode": {
                     "description": "Optional. Whether this space is created in `Import Mode` as part of a data migration into Google Workspace. While spaces are being imported, they aren't visible to users until the import is complete. Creating a space in `Import Mode`requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).",
                     "type": "boolean"
+                },
+                "importModeExpireTime": {
+                    "description": "Output only. The time when the space will be automatically deleted by the system if it remains in import mode. Each space created in import mode must exit this mode before this expire time using `spaces.completeImport`. This field is only populated for spaces that were created with import mode.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
                 },
                 "lastActiveTime": {
                     "description": "Output only. Timestamp of the last message in the space.",
@@ -4908,7 +4972,7 @@
             "type": "object"
         },
         "UpdatedWidget": {
-            "description": "The response of the updated widget. Used to provide autocomplete options for a widget.",
+            "description": "For `selectionInput` widgets, returns autocomplete suggestions for a multiselect menu.",
             "id": "UpdatedWidget",
             "properties": {
                 "suggestions": {

@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240916",
+    "revision": "20241202",
     "rootUrl": "https://androiddeviceprovisioning.googleapis.com/",
     "servicePath": "",
     "title": "Android Device Provisioning Partner API",
@@ -110,7 +110,7 @@
                     "parameterOrder": [],
                     "parameters": {
                         "pageSize": {
-                            "description": "The maximum number of customers to show in a page of results. A number between 1 and 100 (inclusive).",
+                            "description": "Required. The maximum number of customers to show in a page of results. A number between 1 and 100 (inclusive).",
                             "format": "int32",
                             "location": "query",
                             "type": "integer"
@@ -313,7 +313,7 @@
                             ],
                             "parameters": {
                                 "pageSize": {
-                                    "description": "The maximum number of devices to show in a page of results. Must be between 1 and 100 inclusive.",
+                                    "description": "Required. The maximum number of devices to show in a page of results. Must be between 1 and 100 inclusive.",
                                     "format": "int64",
                                     "location": "query",
                                     "type": "string"

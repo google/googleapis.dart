@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241015",
+    "revision": "20241203",
     "rootUrl": "https://connectors.googleapis.com/",
     "servicePath": "",
     "title": "Connectors API",
@@ -1249,6 +1249,62 @@
                                             "scopes": [
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
+                                        },
+                                        "publish": {
+                                            "description": "Publish request for the CustomConnectorVersion. Once approved, the CustomConnectorVersion will be published as PartnerConnector.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/customConnectors/{customConnectorsId}/customConnectorVersions/{customConnectorVersionsId}:publish",
+                                            "httpMethod": "POST",
+                                            "id": "connectors.projects.locations.customConnectors.customConnectorVersions.publish",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "description": "Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}`",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/customConnectors/[^/]+/customConnectorVersions/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+name}:publish",
+                                            "request": {
+                                                "$ref": "PublishCustomConnectorVersionRequest"
+                                            },
+                                            "response": {
+                                                "$ref": "Operation"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
+                                        "withdraw": {
+                                            "description": "Withdraw the publish request for the CustomConnectorVersion. This can only be used before the CustomConnectorVersion is published.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/customConnectors/{customConnectorsId}/customConnectorVersions/{customConnectorVersionsId}:withdraw",
+                                            "httpMethod": "POST",
+                                            "id": "connectors.projects.locations.customConnectors.customConnectorVersions.withdraw",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "description": "Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}`",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/customConnectors/[^/]+/customConnectorVersions/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+name}:withdraw",
+                                            "request": {
+                                                "$ref": "WithdrawCustomConnectorVersionRequest"
+                                            },
+                                            "response": {
+                                                "$ref": "Operation"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
                                         }
                                     }
                                 }
@@ -1953,7 +2009,7 @@
                         "operations": {
                             "methods": {
                                 "cancel": {
-                                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "connectors.projects.locations.operations.cancel",
@@ -2806,7 +2862,7 @@
             "id": "AuthorizationCodeLink",
             "properties": {
                 "clientId": {
-                    "description": "The client ID assigned to the Google Cloud Connectors OAuth app for the connector data source.",
+                    "description": "Optional. The client ID assigned to the Google Cloud Connectors OAuth app for the connector data source.",
                     "type": "string"
                 },
                 "clientSecret": {
@@ -2814,7 +2870,7 @@
                     "description": "Optional. The client secret assigned to the Google Cloud Connectors OAuth app for the connector data source."
                 },
                 "enablePkce": {
-                    "description": "Whether to enable PKCE for the auth code flow.",
+                    "description": "Optional. Whether to enable PKCE for the auth code flow.",
                     "type": "boolean"
                 },
                 "omitQueryParams": {
@@ -2822,14 +2878,14 @@
                     "type": "boolean"
                 },
                 "scopes": {
-                    "description": "The scopes for which the user will authorize Google Cloud Connectors on the connector data source.",
+                    "description": "Optional. The scopes for which the user will authorize Google Cloud Connectors on the connector data source.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "uri": {
-                    "description": "The base URI the user must click to trigger the authorization code login flow.",
+                    "description": "Optional. The base URI the user must click to trigger the authorization code login flow.",
                     "type": "string"
                 }
             },
@@ -2923,18 +2979,18 @@
             "properties": {
                 "authorizationCodeLink": {
                     "$ref": "AuthorizationCodeLink",
-                    "description": "Authorization code link options. To be populated if `ValueType` is `AUTHORIZATION_CODE`"
+                    "description": "Optional. Authorization code link options. To be populated if `ValueType` is `AUTHORIZATION_CODE`"
                 },
                 "description": {
-                    "description": "Description.",
+                    "description": "Optional. Description.",
                     "type": "string"
                 },
                 "displayName": {
-                    "description": "Display name of the parameter.",
+                    "description": "Optional. Display name of the parameter.",
                     "type": "string"
                 },
                 "enumOptions": {
-                    "description": "Enum options. To be populated if `ValueType` is `ENUM`",
+                    "description": "Optional. Enum options. To be populated if `ValueType` is `ENUM`",
                     "items": {
                         "$ref": "EnumOption"
                     },
@@ -2953,11 +3009,11 @@
                     "type": "string"
                 },
                 "isAdvanced": {
-                    "description": "Indicates if current template is part of advanced settings",
+                    "description": "Optional. Indicates if current template is part of advanced settings",
                     "type": "boolean"
                 },
                 "key": {
-                    "description": "Key of the config variable.",
+                    "description": "Optional. Key of the config variable.",
                     "type": "string"
                 },
                 "locationType": {
@@ -2983,19 +3039,19 @@
                     "description": "Optional. MultipleSelectConfig represents the multiple options for a config variable."
                 },
                 "required": {
-                    "description": "Flag represents that this `ConfigVariable` must be provided for a connection.",
+                    "description": "Optional. Flag represents that this `ConfigVariable` must be provided for a connection.",
                     "type": "boolean"
                 },
                 "requiredCondition": {
                     "$ref": "LogicalExpression",
-                    "description": "Condition under which a field would be required. The condition can be represented in the form of a logical expression."
+                    "description": "Optional. Condition under which a field would be required. The condition can be represented in the form of a logical expression."
                 },
                 "roleGrant": {
                     "$ref": "RoleGrant",
-                    "description": "Role grant configuration for the config variable."
+                    "description": "Optional. Role grant configuration for the config variable."
                 },
                 "state": {
-                    "description": "State of the config variable.",
+                    "description": "Output only. State of the config variable.",
                     "enum": [
                         "STATE_UNSPECIFIED",
                         "ACTIVE",
@@ -3006,14 +3062,15 @@
                         "Config variable is active",
                         "Config variable is deprecated."
                     ],
+                    "readOnly": true,
                     "type": "string"
                 },
                 "validationRegex": {
-                    "description": "Regular expression in RE2 syntax used for validating the `value` of a `ConfigVariable`.",
+                    "description": "Optional. Regular expression in RE2 syntax used for validating the `value` of a `ConfigVariable`.",
                     "type": "string"
                 },
                 "valueType": {
-                    "description": "Type of the parameter: string, int, bool etc. consider custom type for the benefit for the validation.",
+                    "description": "Optional. Type of the parameter: string, int, bool etc. consider custom type for the benefit for the validation.",
                     "enum": [
                         "VALUE_TYPE_UNSPECIFIED",
                         "STRING",
@@ -3091,6 +3148,7 @@
                         "PREVIEW",
                         "GA",
                         "DEPRECATED",
+                        "TEST",
                         "PRIVATE_PREVIEW"
                     ],
                     "enumDescriptions": [
@@ -3098,6 +3156,7 @@
                         "PREVIEW.",
                         "GA.",
                         "DEPRECATED.",
+                        "TEST.",
                         "PRIVATE_PREVIEW."
                     ],
                     "readOnly": true,
@@ -3418,6 +3477,7 @@
                         "PREVIEW",
                         "GA",
                         "DEPRECATED",
+                        "TEST",
                         "PRIVATE_PREVIEW"
                     ],
                     "enumDescriptions": [
@@ -3425,10 +3485,16 @@
                         "PREVIEW.",
                         "GA.",
                         "DEPRECATED.",
+                        "TEST.",
                         "PRIVATE_PREVIEW."
                     ],
                     "readOnly": true,
                     "type": "string"
+                },
+                "marketplaceConnectorDetails": {
+                    "$ref": "MarketplaceConnectorDetails",
+                    "description": "Output only. Marketplace connector details. Will be null if the connector is not marketplace connector.",
+                    "readOnly": true
                 },
                 "name": {
                     "description": "Output only. Resource name of the Connector. Format: projects/{project}/locations/{location}/providers/{provider}/connectors/{connector} Only global location is supported for Connector resource.",
@@ -3623,6 +3689,7 @@
                         "PREVIEW",
                         "GA",
                         "DEPRECATED",
+                        "TEST",
                         "PRIVATE_PREVIEW"
                     ],
                     "enumDescriptions": [
@@ -3630,6 +3697,7 @@
                         "PREVIEW.",
                         "GA.",
                         "DEPRECATED.",
+                        "TEST.",
                         "PRIVATE_PREVIEW."
                     ],
                     "readOnly": true,
@@ -3728,7 +3796,7 @@
                     "type": "string"
                 },
                 "deploymentModel": {
-                    "description": "Optional. Indicates whether connector is deployed on GKE/CloudRun",
+                    "description": "Output only. Indicates whether connector is deployed on GKE/CloudRun",
                     "enum": [
                         "DEPLOYMENT_MODEL_UNSPECIFIED",
                         "GKE_MST",
@@ -3739,6 +3807,7 @@
                         "Default model gke mst.",
                         "Cloud run mst."
                     ],
+                    "readOnly": true,
                     "type": "string"
                 },
                 "deploymentModelMigrationState": {
@@ -3863,6 +3932,14 @@
                     "readOnly": true,
                     "type": "array"
                 },
+                "allMarketplaceVersions": {
+                    "description": "Output only. All marketplace versions.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
                 "createTime": {
                     "description": "Output only. Created time.",
                     "format": "google-datetime",
@@ -3905,6 +3982,14 @@
                 "name": {
                     "description": "Identifier. Resource name of the CustomConnector. Format: projects/{project}/locations/{location}/customConnectors/{connector}",
                     "type": "string"
+                },
+                "publishedMarketplaceVersions": {
+                    "description": "Output only. Published marketplace versions.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
                 },
                 "updateTime": {
                     "description": "Output only. Updated time.",
@@ -3958,6 +4043,15 @@
                     "description": "Output only. Identifier. Resource name of the Version. Format: projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}",
                     "readOnly": true,
                     "type": "string"
+                },
+                "partnerMetadata": {
+                    "$ref": "PartnerMetadata",
+                    "description": "Optional. Partner metadata details. This should be populated only when publishing the custom connector to partner connector."
+                },
+                "publishStatus": {
+                    "$ref": "PublishStatus",
+                    "description": "Output only. Publish status of a custom connector.",
+                    "readOnly": true
                 },
                 "serviceAccount": {
                     "description": "Optional. Service account used by runtime plane to access auth config secrets.",
@@ -4347,11 +4441,11 @@
             "id": "EnumOption",
             "properties": {
                 "displayName": {
-                    "description": "Display name of the option.",
+                    "description": "Optional. Display name of the option.",
                     "type": "string"
                 },
                 "id": {
-                    "description": "Id of the option.",
+                    "description": "Optional. Id of the option.",
                     "type": "string"
                 }
             },
@@ -4419,6 +4513,10 @@
                     "$ref": "EndPoint",
                     "description": "OPTION 1: Hit an endpoint when we receive an event."
                 },
+                "gsutil": {
+                    "$ref": "GSUtil",
+                    "description": "OPTION 2: Write the event to Cloud Storage bucket."
+                },
                 "serviceAccount": {
                     "description": "Service account needed for runtime plane to trigger IP workflow.",
                     "type": "string"
@@ -4427,11 +4525,15 @@
                     "description": "type of the destination",
                     "enum": [
                         "TYPE_UNSPECIFIED",
-                        "ENDPOINT"
+                        "ENDPOINT",
+                        "GCS",
+                        "PUBSUB"
                     ],
                     "enumDescriptions": [
                         "Default state.",
-                        "Endpoint - Hit the value of endpoint when event is received"
+                        "Endpoint - Hit the value of endpoint when event is received",
+                        "Cloud Storage - Write the event to Cloud Storage bucket",
+                        "Pub/Sub - Write the event to Pub/Sub topic"
                     ],
                     "type": "string"
                 }
@@ -4525,7 +4627,7 @@
             "id": "EventingConfig",
             "properties": {
                 "additionalVariables": {
-                    "description": "Additional eventing related field values",
+                    "description": "Optional. Additional eventing related field values",
                     "items": {
                         "$ref": "ConfigVariable"
                     },
@@ -4533,14 +4635,14 @@
                 },
                 "authConfig": {
                     "$ref": "AuthConfig",
-                    "description": "Auth details for the webhook adapter."
+                    "description": "Optional. Auth details for the webhook adapter."
                 },
                 "deadLetterConfig": {
                     "$ref": "DeadLetterConfig",
                     "description": "Optional. Dead letter configuration for eventing of a connection."
                 },
                 "enrichmentEnabled": {
-                    "description": "Enrichment Enabled.",
+                    "description": "Optional. Enrichment Enabled.",
                     "type": "boolean"
                 },
                 "eventsListenerIngressEndpoint": {
@@ -4561,7 +4663,7 @@
                 },
                 "registrationDestinationConfig": {
                     "$ref": "DestinationConfig",
-                    "description": "Registration endpoint for auto registration."
+                    "description": "Optional. Registration endpoint for auto registration."
                 }
             },
             "type": "object"
@@ -4674,6 +4776,7 @@
                         "PREVIEW",
                         "GA",
                         "DEPRECATED",
+                        "TEST",
                         "PRIVATE_PREVIEW"
                     ],
                     "enumDescriptions": [
@@ -4681,6 +4784,7 @@
                         "PREVIEW.",
                         "GA.",
                         "DEPRECATED.",
+                        "TEST.",
                         "PRIVATE_PREVIEW."
                     ],
                     "readOnly": true,
@@ -4739,6 +4843,11 @@
                 "webhookData": {
                     "$ref": "WebhookData",
                     "description": "Output only. Webhook data.",
+                    "readOnly": true
+                },
+                "webhookSubscriptions": {
+                    "$ref": "WebhookSubscriptions",
+                    "description": "Output only. Webhook subscriptions.",
                     "readOnly": true
                 }
             },
@@ -5040,7 +5149,7 @@
                     "type": "boolean"
                 },
                 "comparator": {
-                    "description": "Comparator to use for comparing the field value.",
+                    "description": "Optional. Comparator to use for comparing the field value.",
                     "enum": [
                         "COMPARATOR_UNSPECIFIED",
                         "EQUALS",
@@ -5059,11 +5168,22 @@
                     "type": "string"
                 },
                 "key": {
-                    "description": "Key of the field.",
+                    "description": "Optional. Key of the field.",
                     "type": "string"
                 },
                 "stringValue": {
                     "description": "String value",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GSUtil": {
+            "description": "GSUtil message includes details of the Destination Cloud Storage bucket.",
+            "id": "GSUtil",
+            "properties": {
+                "gsutilUri": {
+                    "description": "Required. The URI of the Cloud Storage bucket.",
                     "type": "string"
                 }
             },
@@ -6075,21 +6195,21 @@
             "id": "LogicalExpression",
             "properties": {
                 "fieldComparisons": {
-                    "description": "A list of fields to be compared.",
+                    "description": "Optional. A list of fields to be compared.",
                     "items": {
                         "$ref": "FieldComparison"
                     },
                     "type": "array"
                 },
                 "logicalExpressions": {
-                    "description": "A list of nested conditions to be compared.",
+                    "description": "Optional. A list of nested conditions to be compared.",
                     "items": {
                         "$ref": "LogicalExpression"
                     },
                     "type": "array"
                 },
                 "logicalOperator": {
-                    "description": "The logical operator to use between the fields and conditions.",
+                    "description": "Optional. The logical operator to use between the fields and conditions.",
                     "enum": [
                         "OPERATOR_UNSPECIFIED",
                         "AND",
@@ -6265,6 +6385,29 @@
                     "description": "Output only. Updated time.",
                     "format": "google-datetime",
                     "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "MarketplaceConnectorDetails": {
+            "description": "Marketplace connector details.",
+            "id": "MarketplaceConnectorDetails",
+            "properties": {
+                "marketplaceProduct": {
+                    "description": "Marketplace product name.",
+                    "type": "string"
+                },
+                "marketplaceProductId": {
+                    "description": "Marketplace product ID.",
+                    "type": "string"
+                },
+                "marketplaceProductUri": {
+                    "description": "Marketplace product URL.",
+                    "type": "string"
+                },
+                "partner": {
+                    "description": "The name of the partner.",
                     "type": "string"
                 }
             },
@@ -6567,6 +6710,75 @@
             },
             "type": "object"
         },
+        "PartnerMetadata": {
+            "description": "Partner metadata details. This will be populated when publishing the custom connector as a partner connector version. On publishing, parntner connector version will be created using the fields in PartnerMetadata.",
+            "id": "PartnerMetadata",
+            "properties": {
+                "acceptGcpTos": {
+                    "description": "Required. Whether the user has accepted the Google Cloud Platform Terms of Service (https://cloud.google.com/terms/) and the Google Cloud Marketplace Terms of Service (https://cloud.google.com/terms/marketplace/launcher?hl=en).",
+                    "type": "boolean"
+                },
+                "additionalComments": {
+                    "description": "Optional. Additional comments for the submission.",
+                    "type": "string"
+                },
+                "confirmPartnerRequirements": {
+                    "description": "Required. Confirmation that connector meets all applicable requirements mentioned in the Partner Connector Publishing requirements list and Partner onboardiong requirements list (https://cloud.google.com/marketplace/docs/partners/get-started#requirements).",
+                    "type": "boolean"
+                },
+                "demoUri": {
+                    "description": "Required. Public URL for the demo video.",
+                    "type": "string"
+                },
+                "integrationTemplates": {
+                    "description": "Required. Integration example templates for the custom connector.",
+                    "type": "string"
+                },
+                "marketplaceProduct": {
+                    "description": "Optional. Marketplace product name.",
+                    "type": "string"
+                },
+                "marketplaceProductId": {
+                    "description": "Required. Marketplace product ID.",
+                    "type": "string"
+                },
+                "marketplaceProductProjectId": {
+                    "description": "Optional. Marketplace product project ID.",
+                    "type": "string"
+                },
+                "marketplaceProductUri": {
+                    "description": "Optional. Marketplace product URL.",
+                    "type": "string"
+                },
+                "partner": {
+                    "description": "Required. Partner name.",
+                    "type": "string"
+                },
+                "partnerConnectorDisplayName": {
+                    "description": "Required. Partner connector display name.",
+                    "type": "string"
+                },
+                "publishRequestTime": {
+                    "description": "Output only. Publish request time.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "targetApplication": {
+                    "description": "Required. Target application for which partner connector is built.",
+                    "type": "string"
+                },
+                "targetCustomerSegment": {
+                    "description": "Required. Target customer segment for the partner connector.",
+                    "type": "string"
+                },
+                "useCases": {
+                    "description": "Required. Details about partner connector use cases.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "PerSliSloEligibility": {
             "description": "PerSliSloEligibility is a mapping from an SLI name to eligibility.",
             "id": "PerSliSloEligibility",
@@ -6657,6 +6869,7 @@
                         "PREVIEW",
                         "GA",
                         "DEPRECATED",
+                        "TEST",
                         "PRIVATE_PREVIEW"
                     ],
                     "enumDescriptions": [
@@ -6664,6 +6877,7 @@
                         "PREVIEW.",
                         "GA.",
                         "DEPRECATED.",
+                        "TEST.",
                         "PRIVATE_PREVIEW."
                     ],
                     "readOnly": true,
@@ -6698,6 +6912,57 @@
                 },
                 "resourceUrl": {
                     "description": "URL identifying the resource, e.g. \"https://www.googleapis.com/compute/v1/projects/...)\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PublishCustomConnectorVersionRequest": {
+            "description": "Request message for ConnectorsService.PublishCustomConnectorVersion",
+            "id": "PublishCustomConnectorVersionRequest",
+            "properties": {
+                "partnerMetadata": {
+                    "$ref": "PartnerMetadata",
+                    "description": "Required. Partner metadata details for validating and publishing the custom connector as a partner connector version."
+                }
+            },
+            "type": "object"
+        },
+        "PublishStatus": {
+            "description": "Publish status of a custom connector.",
+            "id": "PublishStatus",
+            "properties": {
+                "publishState": {
+                    "description": "Output only. Publish state of the custom connector.",
+                    "enum": [
+                        "PUBLISH_STATE_UNSPECIFIED",
+                        "PUBLISHED",
+                        "PUBLISH_IN_PROGRESS",
+                        "UNPUBLISHED"
+                    ],
+                    "enumDescriptions": [
+                        "State Unspecified.",
+                        "Connector version has been published as partner connector version.",
+                        "Connector version is in the process of being published as partner connector version.",
+                        "Connector version has been unpublished as partner connector version"
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "publishTime": {
+                    "description": "Output only. Publish time.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "publishedAs": {
+                    "description": "Output only. Partner connector name. Will be set on the custom connector. Format: providers/partner/connectors//versions/",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "publishedSource": {
+                    "description": "Output only. Custom connector name. Will be set on the partner connector. Format: providers/customconnectors/connectors//versions/",
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -6745,11 +7010,11 @@
             "id": "Resource",
             "properties": {
                 "pathTemplate": {
-                    "description": "Template to uniquely represent a Google Cloud resource in a format IAM expects This is a template that can have references to other values provided in the config variable template.",
+                    "description": "Optional. Template to uniquely represent a Google Cloud resource in a format IAM expects This is a template that can have references to other values provided in the config variable template.",
                     "type": "string"
                 },
                 "type": {
-                    "description": "Different types of resource supported.",
+                    "description": "Optional. Different types of resource supported.",
                     "enum": [
                         "TYPE_UNSPECIFIED",
                         "GCP_PROJECT",
@@ -6986,11 +7251,11 @@
             "id": "RoleGrant",
             "properties": {
                 "helperTextTemplate": {
-                    "description": "Template that UI can use to provide helper text to customers.",
+                    "description": "Optional. Template that UI can use to provide helper text to customers.",
                     "type": "string"
                 },
                 "principal": {
-                    "description": "Prinicipal/Identity for whom the role need to assigned.",
+                    "description": "Optional. Prinicipal/Identity for whom the role need to assigned.",
                     "enum": [
                         "PRINCIPAL_UNSPECIFIED",
                         "CONNECTOR_SA"
@@ -7003,10 +7268,10 @@
                 },
                 "resource": {
                     "$ref": "Resource",
-                    "description": "Resource on which the roles needs to be granted for the principal."
+                    "description": "Optional. Resource on which the roles needs to be granted for the principal."
                 },
                 "roles": {
-                    "description": "List of roles that need to be granted.",
+                    "description": "Optional. List of roles that need to be granted.",
                     "items": {
                         "type": "string"
                     },
@@ -7448,14 +7713,14 @@
             "id": "SslConfig",
             "properties": {
                 "additionalVariables": {
-                    "description": "Additional SSL related field values",
+                    "description": "Optional. Additional SSL related field values",
                     "items": {
                         "$ref": "ConfigVariable"
                     },
                     "type": "array"
                 },
                 "clientCertType": {
-                    "description": "Type of Client Cert (PEM/JKS/.. etc.)",
+                    "description": "Optional. Type of Client Cert (PEM/JKS/.. etc.)",
                     "enum": [
                         "CERT_TYPE_UNSPECIFIED",
                         "PEM"
@@ -7468,22 +7733,22 @@
                 },
                 "clientCertificate": {
                     "$ref": "Secret",
-                    "description": "Client Certificate"
+                    "description": "Optional. Client Certificate"
                 },
                 "clientPrivateKey": {
                     "$ref": "Secret",
-                    "description": "Client Private Key"
+                    "description": "Optional. Client Private Key"
                 },
                 "clientPrivateKeyPass": {
                     "$ref": "Secret",
-                    "description": "Secret containing the passphrase protecting the Client Private Key"
+                    "description": "Optional. Secret containing the passphrase protecting the Client Private Key"
                 },
                 "privateServerCertificate": {
                     "$ref": "Secret",
-                    "description": "Private Server Certificate. Needs to be specified if trust model is `PRIVATE`."
+                    "description": "Optional. Private Server Certificate. Needs to be specified if trust model is `PRIVATE`."
                 },
                 "serverCertType": {
-                    "description": "Type of Server Cert (PEM/JKS/.. etc.)",
+                    "description": "Optional. Type of Server Cert (PEM/JKS/.. etc.)",
                     "enum": [
                         "CERT_TYPE_UNSPECIFIED",
                         "PEM"
@@ -7495,7 +7760,7 @@
                     "type": "string"
                 },
                 "trustModel": {
-                    "description": "Trust Model of the SSL connection",
+                    "description": "Optional. Trust Model of the SSL connection",
                     "enum": [
                         "PUBLIC",
                         "PRIVATE",
@@ -7509,7 +7774,7 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "Controls the ssl type for the given connector version.",
+                    "description": "Optional. Controls the ssl type for the given connector version.",
                     "enum": [
                         "SSL_TYPE_UNSPECIFIED",
                         "TLS",
@@ -7523,7 +7788,7 @@
                     "type": "string"
                 },
                 "useSsl": {
-                    "description": "Bool for enabling SSL",
+                    "description": "Optional. Bool for enabling SSL",
                     "type": "boolean"
                 }
             },
@@ -7850,6 +8115,21 @@
             },
             "type": "object"
         },
+        "WebhookSubscriptions": {
+            "description": "WebhookSubscriptions has details of webhook subscriptions.",
+            "id": "WebhookSubscriptions",
+            "properties": {
+                "webhookData": {
+                    "description": "Output only. Webhook data.",
+                    "items": {
+                        "$ref": "WebhookData"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "WeeklyCycle": {
             "description": "Time window specified for weekly operations.",
             "id": "WeeklyCycle",
@@ -7862,6 +8142,12 @@
                     "type": "array"
                 }
             },
+            "type": "object"
+        },
+        "WithdrawCustomConnectorVersionRequest": {
+            "description": "Request message for ConnectorsService.WithdrawCustomConnectorVersion",
+            "id": "WithdrawCustomConnectorVersionRequest",
+            "properties": {},
             "type": "object"
         }
     }

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241024",
+    "revision": "20241203",
     "rootUrl": "https://container.googleapis.com/",
     "servicePath": "",
     "title": "Kubernetes Engine API",
@@ -2785,7 +2785,7 @@
                 },
                 "workloadPolicyConfig": {
                     "$ref": "WorkloadPolicyConfig",
-                    "description": "Workload policy configuration for Autopilot."
+                    "description": "WorkloadPolicyConfig is the configuration related to GCW workload policy"
                 }
             },
             "type": "object"
@@ -3577,7 +3577,7 @@
                 },
                 "desiredAutopilotWorkloadPolicyConfig": {
                     "$ref": "WorkloadPolicyConfig",
-                    "description": "The desired workload policy configuration for the autopilot cluster."
+                    "description": "WorkloadPolicyConfig is the configuration related to GCW workload policy"
                 },
                 "desiredBinaryAuthorization": {
                     "$ref": "BinaryAuthorization",
@@ -4931,7 +4931,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse",
+                    "description": "The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse kernel.shmmni kernel.shmmax kernel.shmall",
                     "type": "object"
                 }
             },
@@ -5656,6 +5656,11 @@
                 },
                 "machineType": {
                     "description": "The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types) If unspecified, the default machine type is `e2-medium`.",
+                    "type": "string"
+                },
+                "maxRunDuration": {
+                    "description": "The maximum duration for the nodes to exist. If unspecified, the nodes can exist indefinitely.",
+                    "format": "google-duration",
                     "type": "string"
                 },
                 "metadata": {
@@ -7854,6 +7859,11 @@
                     "description": "Optional. The desired [Google Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) for nodes in the node pool. Initiates an upgrade operation that migrates the nodes in the node pool to the specified machine type.",
                     "type": "string"
                 },
+                "maxRunDuration": {
+                    "description": "The maximum duration for the nodes to exist. If unspecified, the nodes can exist indefinitely.",
+                    "format": "google-duration",
+                    "type": "string"
+                },
                 "name": {
                     "description": "The name (project, location, cluster, node pool) of the node pool to update. Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`.",
                     "type": "string"
@@ -8287,7 +8297,7 @@
             "type": "object"
         },
         "WorkloadPolicyConfig": {
-            "description": "WorkloadPolicyConfig is the configuration of workload policy for autopilot clusters.",
+            "description": "WorkloadPolicyConfig is the configuration related to GCW workload policy",
             "id": "WorkloadPolicyConfig",
             "properties": {
                 "allowNetAdmin": {

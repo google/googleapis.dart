@@ -43,7 +43,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241105",
+    "revision": "20241203",
     "rootUrl": "https://youtube.googleapis.com/",
     "servicePath": "",
     "title": "YouTube Data API v3",
@@ -4070,67 +4070,6 @@
                                 "$ref": "CommentThread"
                             }
                         }
-                    },
-                    "resources": {
-                        "liveChat": {
-                            "resources": {
-                                "messages": {
-                                    "methods": {
-                                        "stream": {
-                                            "description": "Allows a user to load live chat through a server-streamed RPC.",
-                                            "flatPath": "youtube/v3/liveChat/messages/stream",
-                                            "httpMethod": "GET",
-                                            "id": "youtube.youtube.v3.liveChat.messages.stream",
-                                            "parameterOrder": [],
-                                            "parameters": {
-                                                "hl": {
-                                                    "description": "Specifies the localization language in which the system messages should be returned.",
-                                                    "location": "query",
-                                                    "type": "string"
-                                                },
-                                                "liveChatId": {
-                                                    "description": "The id of the live chat for which comments should be returned.",
-                                                    "location": "query",
-                                                    "type": "string"
-                                                },
-                                                "maxResults": {
-                                                    "default": "500",
-                                                    "description": "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set. Not used in the streaming RPC.",
-                                                    "format": "uint32",
-                                                    "location": "query",
-                                                    "maximum": "2000",
-                                                    "minimum": "200",
-                                                    "type": "integer"
-                                                },
-                                                "pageToken": {
-                                                    "description": "The *pageToken* parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken property identify other pages that could be retrieved.",
-                                                    "location": "query",
-                                                    "type": "string"
-                                                },
-                                                "part": {
-                                                    "description": "The *part* parameter specifies the liveChatComment resource parts that the API response will include. Supported values are id, snippet, and authorDetails.",
-                                                    "location": "query",
-                                                    "repeated": true,
-                                                    "type": "string"
-                                                },
-                                                "profileImageSize": {
-                                                    "description": "Specifies the size of the profile image that should be returned for each user.",
-                                                    "format": "uint32",
-                                                    "location": "query",
-                                                    "maximum": "720",
-                                                    "minimum": "16",
-                                                    "type": "integer"
-                                                }
-                                            },
-                                            "path": "youtube/v3/liveChat/messages/stream",
-                                            "response": {
-                                                "$ref": "LiveChatMessageListResponse"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
                     }
                 }
             }
@@ -5613,6 +5552,10 @@
                     "$ref": "ChannelToStoreLinkDetailsBillingDetails",
                     "description": "Information specific to billing (read-only)."
                 },
+                "merchantAffiliateProgramDetails": {
+                    "$ref": "ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails",
+                    "description": "Information specific to merchant affiliate program (read-only)."
+                },
                 "merchantId": {
                     "description": "Google Merchant Center id of the store.",
                     "format": "uint64",
@@ -5646,6 +5589,29 @@
                         "",
                         "",
                         ""
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails": {
+            "description": "Information specific to merchant affiliate program.",
+            "id": "ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails",
+            "properties": {
+                "status": {
+                    "description": "The current merchant affiliate program status.",
+                    "enum": [
+                        "merchantAffiliateProgramStatusUnspecified",
+                        "merchantAffiliateProgramStatusEligible",
+                        "merchantAffiliateProgramStatusActive",
+                        "merchantAffiliateProgramStatusPaused"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified status.",
+                        "Merchant is eligible for the merchant affiliate program.",
+                        "Merchant affiliate program is active.",
+                        "Merchant affiliate program is paused."
                     ],
                     "type": "string"
                 }

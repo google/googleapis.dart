@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241023",
+    "revision": "20241204",
     "rootUrl": "https://backupdr.googleapis.com/",
     "servicePath": "",
     "title": "Backup and DR Service API",
@@ -1542,7 +1542,7 @@
                         "operations": {
                             "methods": {
                                 "cancel": {
-                                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "backupdr.projects.locations.operations.cancel",
@@ -1655,6 +1655,38 @@
                                     "path": "v1/{+name}/operations",
                                     "response": {
                                         "$ref": "ListOperationsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
+                        },
+                        "serviceConfig": {
+                            "methods": {
+                                "initialize": {
+                                    "description": "Initializes the service related config for a project.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/serviceConfig:initialize",
+                                    "httpMethod": "POST",
+                                    "id": "backupdr.projects.locations.serviceConfig.initialize",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The resource name of the serviceConfig used to initialize the service. Format: `projects/{project_id}/locations/{location}/serviceConfig`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/serviceConfig$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:initialize",
+                                    "request": {
+                                        "$ref": "InitializeServiceRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -2107,6 +2139,16 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "satisfiesPzi": {
+                    "description": "Optional. Output only. Reserved for future use.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "satisfiesPzs": {
+                    "description": "Optional. Output only. Reserved for future use.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
                 "serviceLocks": {
                     "description": "Output only. The list of BackupLocks taken by the service to prevent the deletion of the backup.",
                     "items": {
@@ -2355,7 +2397,7 @@
                     "type": "string"
                 },
                 "resourceType": {
-                    "description": "Required. The resource type to which the `BackupPlan` will be applied. Examples include, \"compute.googleapis.com/Instance\", \"sqladmin.googleapis.com/Instance\" and \"storage.googleapis.com/Bucket\".",
+                    "description": "Required. The resource type to which the `BackupPlan` will be applied. Examples include, \"compute.googleapis.com/Instance\", \"sqladmin.googleapis.com/Instance\", or \"alloydb.googleapis.com/Cluster\".",
                     "type": "string"
                 },
                 "state": {
@@ -2401,7 +2443,7 @@
                     "type": "string"
                 },
                 "dataSource": {
-                    "description": "Output only. Output Only. Resource name of data source which will be used as storage location for backups taken. Format : projects/{project}/locations/{location}/backupVaults/{backupvault}/dataSources/{datasource}",
+                    "description": "Output only. Resource name of data source which will be used as storage location for backups taken. Format : projects/{project}/locations/{location}/backupVaults/{backupvault}/dataSources/{datasource}",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -2415,7 +2457,7 @@
                     "type": "string"
                 },
                 "resourceType": {
-                    "description": "Optional. Resource type of workload on which backupplan is applied",
+                    "description": "Required. Immutable. Resource type of workload on which backupplan is applied",
                     "type": "string"
                 },
                 "rulesConfigInfo": {
@@ -2461,7 +2503,7 @@
             "id": "BackupRule",
             "properties": {
                 "backupRetentionDays": {
-                    "description": "Required. Configures the duration for which backup data will be kept. It is defined in “days”. The value should be greater than or equal to minimum enforced retention of the backup vault.",
+                    "description": "Required. Configures the duration for which backup data will be kept. It is defined in “days”. The value should be greater than or equal to minimum enforced retention of the backup vault. Minimum value is 1 and maximum value is 90 for hourly backups. Minimum value is 1 and maximum value is 90 for daily backups. Minimum value is 7 and maximum value is 186 for weekly backups. Minimum value is 30 and maximum value is 732 for monthly backups. Minimum value is 365 and maximum value is 36159 for yearly backups.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -2481,7 +2523,7 @@
             "id": "BackupVault",
             "properties": {
                 "accessRestriction": {
-                    "description": "Optional. Note: This field is added for future use case and will not be supported in the current release. Optional. Access restriction for the backup vault. Default value is WITHIN_ORGANIZATION if not provided during creation.",
+                    "description": "Optional. Note: This field is added for future use case and will not be supported in the current release. Access restriction for the backup vault. Default value is WITHIN_ORGANIZATION if not provided during creation.",
                     "enum": [
                         "ACCESS_RESTRICTION_UNSPECIFIED",
                         "WITHIN_PROJECT",
@@ -2583,7 +2625,7 @@
                     "type": "string"
                 },
                 "uid": {
-                    "description": "Output only. Output only Immutable after resource creation until resource deletion.",
+                    "description": "Output only. Immutable after resource creation until resource deletion.",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -3386,6 +3428,21 @@
             },
             "type": "object"
         },
+        "InitializeServiceRequest": {
+            "description": "Request message for initializing the service.",
+            "id": "InitializeServiceRequest",
+            "properties": {
+                "requestId": {
+                    "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+                    "type": "string"
+                },
+                "resourceType": {
+                    "description": "Required. The resource type to which the default service config will be applied. Examples include, \"compute.googleapis.com/Instance\" and \"storage.googleapis.com/Bucket\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "InitiateBackupRequest": {
             "description": "request message for InitiateBackup.",
             "id": "InitiateBackupRequest",
@@ -4054,7 +4111,7 @@
                     "type": "string"
                 },
                 "requestedCancellation": {
-                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to 'Code.CANCELLED'.",
+                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1, corresponding to 'Code.CANCELLED'.",
                     "readOnly": true,
                     "type": "boolean"
                 },
@@ -4154,7 +4211,7 @@
             "properties": {
                 "lastBackupError": {
                     "$ref": "Status",
-                    "description": "Output only. Output Only. google.rpc.Status object to store the last backup error.",
+                    "description": "Output only. google.rpc.Status object to store the last backup error.",
                     "readOnly": true
                 },
                 "lastBackupState": {
@@ -4183,7 +4240,7 @@
                     "type": "string"
                 },
                 "ruleId": {
-                    "description": "Output only. Output Only. Backup Rule id fetched from backup plan.",
+                    "description": "Output only. Backup Rule id fetched from backup plan.",
                     "readOnly": true,
                     "type": "string"
                 }

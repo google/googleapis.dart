@@ -30,6 +30,26 @@
             "description": "Regional Endpoint",
             "endpointUrl": "https://speech.me-west1.rep.googleapis.com/",
             "location": "me-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://speech.europe-west1.rep.googleapis.com/",
+            "location": "europe-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://speech.europe-west2.rep.googleapis.com/",
+            "location": "europe-west2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://speech.europe-west3.rep.googleapis.com/",
+            "location": "europe-west3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://speech.europe-west4.rep.googleapis.com/",
+            "location": "europe-west4"
         }
     ],
     "icons": {
@@ -42,7 +62,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241024",
+    "revision": "20241111",
     "rootUrl": "https://speech.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Speech-to-Text API",

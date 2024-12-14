@@ -27,7 +27,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240917",
+    "revision": "20241105",
     "rootUrl": "https://testing.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Testing API",
@@ -973,9 +973,15 @@
                     "type": "array"
                 },
                 "usesPermission": {
-                    "description": "Permissions declared to be used by the application",
                     "items": {
                         "type": "string"
+                    },
+                    "type": "array"
+                },
+                "usesPermissionTags": {
+                    "description": "Permissions declared to be used by the application",
+                    "items": {
+                        "$ref": "UsesPermissionTag"
                     },
                     "type": "array"
                 },
@@ -2812,6 +2818,22 @@
                 "isRequired": {
                     "description": "The android:required value",
                     "type": "boolean"
+                },
+                "name": {
+                    "description": "The android:name value",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UsesPermissionTag": {
+            "description": "The tag within a manifest. https://developer.android.com/guide/topics/manifest/uses-permission-element.html",
+            "id": "UsesPermissionTag",
+            "properties": {
+                "maxSdkVersion": {
+                    "description": "The android:name value",
+                    "format": "int32",
+                    "type": "integer"
                 },
                 "name": {
                     "description": "The android:name value",

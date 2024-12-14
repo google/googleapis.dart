@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241024",
+    "revision": "20241205",
     "rootUrl": "https://identitytoolkit.googleapis.com/",
     "servicePath": "",
     "title": "Identity Toolkit API",
@@ -2357,7 +2357,7 @@
             "id": "GoogleCloudIdentitytoolkitV1ResetPasswordRequest",
             "properties": {
                 "email": {
-                    "description": "The email of the account to be modified. Specify this and the old password in order to change an account's password without using an out-of-band code.",
+                    "description": "Optional. The email of the account to be modified. Specify this and the old password in order to change an account's password without using an out-of-band code.",
                     "type": "string"
                 },
                 "newPassword": {
@@ -2373,7 +2373,7 @@
                     "type": "string"
                 },
                 "tenantId": {
-                    "description": "The tenant ID of the Identity Platform tenant the account belongs to.",
+                    "description": "Optional. The tenant ID of the Identity Platform tenant the account belongs to.",
                     "type": "string"
                 }
             },
