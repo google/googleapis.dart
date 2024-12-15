@@ -6278,8 +6278,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// Request parameters:
   ///
@@ -6644,8 +6644,8 @@ class ProjectsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// Request parameters:
   ///
@@ -7619,7 +7619,7 @@ class GoogleCloudDialogflowCxV3AudioInput {
 /// speech detection and may inform the client that an utterance has been
 /// detected. Note that no-speech event is not expected in this phase. The
 /// client provides this configuration in terms of the durations of those two
-/// phases. The durations are measured in terms of the audio length from the the
+/// phases. The durations are measured in terms of the audio length from the
 /// start of the input audio. No-speech event is a response with
 /// END_OF_UTTERANCE without any transcript following up.
 class GoogleCloudDialogflowCxV3BargeInConfig {

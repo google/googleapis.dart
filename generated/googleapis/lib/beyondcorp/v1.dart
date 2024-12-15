@@ -630,8 +630,8 @@ class OrganizationsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2967,8 +2967,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3529,54 +3529,6 @@ class ProjectsLocationsSecurityGatewaysResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// This is a custom method to allow customers to create a peering connections
-  /// between Google network and customer networks.
-  ///
-  /// This is enabled only for the allowlisted customers.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [securityGateway] - Required. BeyondCorp SecurityGateway name using the
-  /// form:
-  /// `projects/{project}/locations/{location}/securityGateways/{security_gateway}`
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/securityGateways/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> setPeering(
-    GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest request,
-    core.String securityGateway, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$securityGateway') + ':setPeering';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -5173,38 +5125,6 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse {
       };
 }
 
-/// VPC Peering details.
-class GoogleCloudBeyondcorpSecuritygatewaysV1Peering {
-  /// List of DNS zones for DNS peering with the customer VPC network.
-  ///
-  /// Optional.
-  core.List<core.String>? dnsZones;
-
-  /// The name of the Target VPC network name in the format:
-  /// \`projects/{project}/global/networks/{network}
-  ///
-  /// Required.
-  core.String? targetNetwork;
-
-  GoogleCloudBeyondcorpSecuritygatewaysV1Peering({
-    this.dnsZones,
-    this.targetNetwork,
-  });
-
-  GoogleCloudBeyondcorpSecuritygatewaysV1Peering.fromJson(core.Map json_)
-      : this(
-          dnsZones: (json_['dnsZones'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          targetNetwork: json_['targetNetwork'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dnsZones != null) 'dnsZones': dnsZones!,
-        if (targetNetwork != null) 'targetNetwork': targetNetwork!,
-      };
-}
-
 /// Information about a BeyoncCorp SecurityGateway resource.
 class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
   /// Timestamp when the resource was created.
@@ -5294,61 +5214,6 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
-
-/// Set Peering request for creating a VPC peering between Google network and
-/// customer networks.
-class GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest {
-  /// List of Peering connection information.
-  ///
-  /// Required.
-  core.List<GoogleCloudBeyondcorpSecuritygatewaysV1Peering>? peerings;
-
-  /// An optional request ID to identify requests.
-  ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  /// If set, validates request by executing a dry-run which would not alter the
-  /// resource in any way.
-  ///
-  /// Optional.
-  core.bool? validateOnly;
-
-  GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest({
-    this.peerings,
-    this.requestId,
-    this.validateOnly,
-  });
-
-  GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest.fromJson(
-      core.Map json_)
-      : this(
-          peerings: (json_['peerings'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudBeyondcorpSecuritygatewaysV1Peering.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          requestId: json_['requestId'] as core.String?,
-          validateOnly: json_['validateOnly'] as core.bool?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (peerings != null) 'peerings': peerings!,
-        if (requestId != null) 'requestId': requestId!,
-        if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
 

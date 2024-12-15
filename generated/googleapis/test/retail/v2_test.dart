@@ -2165,6 +2165,7 @@ api.GoogleCloudRetailV2LocalInventory buildGoogleCloudRetailV2LocalInventory() {
   buildCounterGoogleCloudRetailV2LocalInventory++;
   if (buildCounterGoogleCloudRetailV2LocalInventory < 3) {
     o.attributes = buildUnnamed39();
+    o.availability = 'foo';
     o.fulfillmentTypes = buildUnnamed40();
     o.placeId = 'foo';
     o.priceInfo = buildGoogleCloudRetailV2PriceInfo();
@@ -2178,6 +2179,10 @@ void checkGoogleCloudRetailV2LocalInventory(
   buildCounterGoogleCloudRetailV2LocalInventory++;
   if (buildCounterGoogleCloudRetailV2LocalInventory < 3) {
     checkUnnamed39(o.attributes!);
+    unittest.expect(
+      o.availability!,
+      unittest.equals('foo'),
+    );
     checkUnnamed40(o.fulfillmentTypes!);
     unittest.expect(
       o.placeId!,

@@ -11300,6 +11300,9 @@ class OfferTag {
       };
 }
 
+/// A single use promotion code.
+typedef OneTimeCode = $Empty;
+
 /// Represents a one-time transaction.
 class OneTimeExternalTransaction {
   /// Input only.
@@ -12753,6 +12756,37 @@ class SdkVersionTargeting {
       };
 }
 
+/// The promotion applied on this item when purchased.
+class SignupPromotion {
+  /// A one-time code was applied.
+  OneTimeCode? oneTimeCode;
+
+  /// A vanity code was applied.
+  VanityCode? vanityCode;
+
+  SignupPromotion({
+    this.oneTimeCode,
+    this.vanityCode,
+  });
+
+  SignupPromotion.fromJson(core.Map json_)
+      : this(
+          oneTimeCode: json_.containsKey('oneTimeCode')
+              ? OneTimeCode.fromJson(
+                  json_['oneTimeCode'] as core.Map<core.String, core.dynamic>)
+              : null,
+          vanityCode: json_.containsKey('vanityCode')
+              ? VanityCode.fromJson(
+                  json_['vanityCode'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (oneTimeCode != null) 'oneTimeCode': oneTimeCode!,
+        if (vanityCode != null) 'vanityCode': vanityCode!,
+      };
+}
+
 /// Holds data specific to Split APKs.
 class SplitApkMetadata {
   /// Indicates whether this APK is the main split of the module.
@@ -13749,6 +13783,11 @@ class SubscriptionPurchaseLineItem {
   /// The purchased product ID (for example, 'monthly001').
   core.String? productId;
 
+  /// Promotion details about this item.
+  ///
+  /// Only set if a promotion was applied during signup.
+  SignupPromotion? signupPromotion;
+
   SubscriptionPurchaseLineItem({
     this.autoRenewingPlan,
     this.deferredItemReplacement,
@@ -13756,6 +13795,7 @@ class SubscriptionPurchaseLineItem {
     this.offerDetails,
     this.prepaidPlan,
     this.productId,
+    this.signupPromotion,
   });
 
   SubscriptionPurchaseLineItem.fromJson(core.Map json_)
@@ -13779,6 +13819,10 @@ class SubscriptionPurchaseLineItem {
                   json_['prepaidPlan'] as core.Map<core.String, core.dynamic>)
               : null,
           productId: json_['productId'] as core.String?,
+          signupPromotion: json_.containsKey('signupPromotion')
+              ? SignupPromotion.fromJson(json_['signupPromotion']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13789,6 +13833,7 @@ class SubscriptionPurchaseLineItem {
         if (offerDetails != null) 'offerDetails': offerDetails!,
         if (prepaidPlan != null) 'prepaidPlan': prepaidPlan!,
         if (productId != null) 'productId': productId!,
+        if (signupPromotion != null) 'signupPromotion': signupPromotion!,
       };
 }
 
@@ -15385,6 +15430,25 @@ class UsesPermission {
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxSdkVersion != null) 'maxSdkVersion': maxSdkVersion!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// A multiple use, predefined promotion code.
+class VanityCode {
+  /// The promotion code.
+  core.String? promotionCode;
+
+  VanityCode({
+    this.promotionCode,
+  });
+
+  VanityCode.fromJson(core.Map json_)
+      : this(
+          promotionCode: json_['promotionCode'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (promotionCode != null) 'promotionCode': promotionCode!,
       };
 }
 

@@ -1251,6 +1251,7 @@ api.GalleryReference buildGalleryReference() {
     o.owner = 'foo';
     o.repository = 'foo';
     o.signature = 'foo';
+    o.templateDeveloperId = 'foo';
     o.version = 'foo';
   }
   buildCounterGalleryReference--;
@@ -1275,6 +1276,10 @@ void checkGalleryReference(api.GalleryReference o) {
     );
     unittest.expect(
       o.signature!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.templateDeveloperId!,
       unittest.equals('foo'),
     );
     unittest.expect(

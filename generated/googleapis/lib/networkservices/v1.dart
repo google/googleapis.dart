@@ -20,16 +20,19 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsAuthzExtensionsResource]
 ///     - [ProjectsLocationsEdgeCacheKeysetsResource]
 ///     - [ProjectsLocationsEdgeCacheOriginsResource]
 ///     - [ProjectsLocationsEdgeCacheServicesResource]
 ///     - [ProjectsLocationsEndpointPoliciesResource]
 ///     - [ProjectsLocationsGatewaysResource]
+///       - [ProjectsLocationsGatewaysRouteViewsResource]
 ///     - [ProjectsLocationsGrpcRoutesResource]
 ///     - [ProjectsLocationsHttpRoutesResource]
 ///     - [ProjectsLocationsLbRouteExtensionsResource]
 ///     - [ProjectsLocationsLbTrafficExtensionsResource]
 ///     - [ProjectsLocationsMeshesResource]
+///       - [ProjectsLocationsMeshesRouteViewsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsServiceBindingsResource]
 ///     - [ProjectsLocationsServiceLbPoliciesResource]
@@ -81,6 +84,8 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsAuthzExtensionsResource get authzExtensions =>
+      ProjectsLocationsAuthzExtensionsResource(_requester);
   ProjectsLocationsEdgeCacheKeysetsResource get edgeCacheKeysets =>
       ProjectsLocationsEdgeCacheKeysetsResource(_requester);
   ProjectsLocationsEdgeCacheOriginsResource get edgeCacheOrigins =>
@@ -201,6 +206,286 @@ class ProjectsLocationsResource {
     );
     return ListLocationsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAuthzExtensionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAuthzExtensionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new `AuthzExtension` resource in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the `AuthzExtension` resource.
+  /// Must be in the format `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [authzExtensionId] - Required. User-provided ID of the `AuthzExtension`
+  /// resource to be created.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server can ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    AuthzExtension request,
+    core.String parent, {
+    core.String? authzExtensionId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (authzExtensionId != null) 'authzExtensionId': [authzExtensionId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/authzExtensions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified `AuthzExtension` resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the `AuthzExtension` resource to delete.
+  /// Must be in the format
+  /// `projects/{project}/locations/{location}/authzExtensions/{authz_extension}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authzExtensions/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server can ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of the specified `AuthzExtension` resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the `AuthzExtension` resource to get. Must be
+  /// in the format
+  /// `projects/{project}/locations/{location}/authzExtensions/{authz_extension}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authzExtensions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AuthzExtension].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AuthzExtension> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AuthzExtension.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists `AuthzExtension` resources in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location from which the
+  /// `AuthzExtension` resources are listed, specified in the following format:
+  /// `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results.
+  ///
+  /// [pageSize] - Optional. Requested page size. The server might return fewer
+  /// items than requested. If unspecified, the server picks an appropriate
+  /// default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results that the
+  /// server returns.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAuthzExtensionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAuthzExtensionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/authzExtensions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAuthzExtensionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of the specified `AuthzExtension` resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Identifier. Name of the `AuthzExtension` resource in
+  /// the following format:
+  /// `projects/{project}/locations/{location}/authzExtensions/{authz_extension}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authzExtensions/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server can ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Used to specify the fields to be overwritten in
+  /// the `AuthzExtension` resource by the update. The fields specified in the
+  /// `update_mask` are relative to the resource, not the full request. A field
+  /// is overwritten if it is in the mask. If the user does not specify a mask,
+  /// then all fields are overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    AuthzExtension request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -921,6 +1206,9 @@ class ProjectsLocationsEndpointPoliciesResource {
 class ProjectsLocationsGatewaysResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsGatewaysRouteViewsResource get routeViews =>
+      ProjectsLocationsGatewaysRouteViewsResource(_requester);
+
   ProjectsLocationsGatewaysResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -1138,6 +1426,100 @@ class ProjectsLocationsGatewaysResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGatewaysRouteViewsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGatewaysRouteViewsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get a single RouteView of a Gateway.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the GatewayRouteView resource. Formats:
+  /// projects/{project_number}/locations/{location}/gateways/{gateway_name}/routeViews/{route_view_name}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gateways/\[^/\]+/routeViews/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GatewayRouteView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GatewayRouteView> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GatewayRouteView.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists RouteViews
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The Gateway to which a Route is associated. Formats:
+  /// projects/{project_number}/locations/{location}/gateways/{gateway_name}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gateways/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of GatewayRouteViews to return per call.
+  ///
+  /// [pageToken] - The value returned by the last
+  /// `ListGatewayRouteViewsResponse` Indicates that this is a continuation of a
+  /// prior `ListGatewayRouteViews` call, and that the system should return the
+  /// next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGatewayRouteViewsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGatewayRouteViewsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/routeViews';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListGatewayRouteViewsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2159,6 +2541,9 @@ class ProjectsLocationsLbTrafficExtensionsResource {
 class ProjectsLocationsMeshesResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsMeshesRouteViewsResource get routeViews =>
+      ProjectsLocationsMeshesRouteViewsResource(_requester);
+
   ProjectsLocationsMeshesResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -2379,6 +2764,99 @@ class ProjectsLocationsMeshesResource {
   }
 }
 
+class ProjectsLocationsMeshesRouteViewsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsMeshesRouteViewsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get a single RouteView of a Mesh.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the MeshRouteView resource. Format:
+  /// projects/{project_number}/locations/{location}/meshes/{mesh_name}/routeViews/{route_view_name}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/meshes/\[^/\]+/routeViews/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MeshRouteView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MeshRouteView> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return MeshRouteView.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists RouteViews
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The Mesh to which a Route is associated. Format:
+  /// projects/{project_number}/locations/{location}/meshes/{mesh_name}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/meshes/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of MeshRouteViews to return per call.
+  ///
+  /// [pageToken] - The value returned by the last `ListMeshRouteViewsResponse`
+  /// Indicates that this is a continuation of a prior `ListMeshRouteViews`
+  /// call, and that the system should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMeshRouteViewsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMeshRouteViewsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/routeViews';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMeshRouteViewsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -2393,8 +2871,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3524,14 +4002,16 @@ class ProjectsLocationsWasmPluginsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/wasmPlugins/\[^/\]+$`.
   ///
-  /// [view] - Determine how much data should be returned by the API. See
+  /// [view] - Determines how much data must be returned in the response. See
   /// \[AIP-157\](https://google.aip.dev/157).
   /// Possible string values are:
-  /// - "WASM_PLUGIN_VIEW_UNSPECIFIED" : The default / unset value. The API will
-  /// default to the BASIC view.
-  /// - "WASM_PLUGIN_VIEW_BASIC" : Include just WasmPlugin record.
-  /// - "WASM_PLUGIN_VIEW_FULL" : Include WasmPlugin record and all its
-  /// WasmPluginVersions.
+  /// - "WASM_PLUGIN_VIEW_UNSPECIFIED" : Unspecified value. Do not use.
+  /// - "WASM_PLUGIN_VIEW_BASIC" : If specified in the `GET` request for a
+  /// `WasmPlugin` resource, the server's response includes just the
+  /// `WasmPlugin` resource.
+  /// - "WASM_PLUGIN_VIEW_FULL" : If specified in the `GET` request for a
+  /// `WasmPlugin` resource, the server's response includes the `WasmPlugin`
+  /// resource with all its versions.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3574,8 +4054,8 @@ class ProjectsLocationsWasmPluginsResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of `WasmPlugin` resources to return per call.
-  /// If not specified, at most 50 `WasmPlugin`s are returned. The maximum value
-  /// is 1000; values above 1000 are coerced to 1000.
+  /// If not specified, at most 50 `WasmPlugin` resources are returned. The
+  /// maximum value is 1000; values above 1000 are coerced to 1000.
   ///
   /// [pageToken] - The value returned by the last `ListWasmPluginsResponse`
   /// call. Indicates that this is a continuation of a prior `ListWasmPlugins`
@@ -3813,8 +4293,9 @@ class ProjectsLocationsWasmPluginsVersionsResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/wasmPlugins/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of `WasmPluginVersion` resources to return per
-  /// call. If not specified, at most 50 `WasmPluginVersion`s are returned. The
-  /// maximum value is 1000; values above 1000 are coerced to 1000.
+  /// call. If not specified, at most 50 `WasmPluginVersion` resources are
+  /// returned. The maximum value is 1000; values above 1000 are coerced to
+  /// 1000.
   ///
   /// [pageToken] - The value returned by the last
   /// `ListWasmPluginVersionsResponse` call. Indicates that this is a
@@ -3909,6 +4390,196 @@ class AuditConfig {
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
+
+/// `AuthzExtension` is a resource that allows traffic forwarding to a callout
+/// backend service to make an authorization decision.
+class AuthzExtension {
+  /// The `:authority` header in the gRPC request sent from Envoy to the
+  /// extension service.
+  ///
+  /// Required.
+  core.String? authority;
+
+  /// The timestamp when the resource was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A human-readable description of the resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Determines how the proxy behaves if the call to the extension fails or
+  /// times out.
+  ///
+  /// When set to `TRUE`, request or response processing continues without
+  /// error. Any subsequent extensions in the extension chain are also executed.
+  /// When set to `FALSE` or the default setting of `FALSE` is used, one of the
+  /// following happens: * If response headers have not been delivered to the
+  /// downstream client, a generic 500 error is returned to the client. The
+  /// error response can be tailored by configuring a custom error response in
+  /// the load balancer. * If response headers have been delivered, then the
+  /// HTTP stream to the downstream client is reset.
+  ///
+  /// Optional.
+  core.bool? failOpen;
+
+  /// List of the HTTP headers to forward to the extension (from the client).
+  ///
+  /// If omitted, all headers are sent. Each element is a string indicating the
+  /// header name.
+  ///
+  /// Optional.
+  core.List<core.String>? forwardHeaders;
+
+  /// Set of labels associated with the `AuthzExtension` resource.
+  ///
+  /// The format must comply with \[the requirements for
+  /// labels\](/compute/docs/labeling-resources#requirements) for Google Cloud
+  /// resources.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// All backend services and forwarding rules referenced by this extension
+  /// must share the same load balancing scheme.
+  ///
+  /// Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more
+  /// information, refer to
+  /// [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "LOAD_BALANCING_SCHEME_UNSPECIFIED" : Default value. Do not use.
+  /// - "INTERNAL_MANAGED" : Signifies that this is used for Internal HTTP(S)
+  /// Load Balancing.
+  /// - "EXTERNAL_MANAGED" : Signifies that this is used for External Managed
+  /// HTTP(S) Load Balancing.
+  core.String? loadBalancingScheme;
+
+  /// The metadata provided here is included as part of the `metadata_context`
+  /// (of type `google.protobuf.Struct`) in the `ProcessingRequest` message sent
+  /// to the extension server.
+  ///
+  /// The metadata is available under the namespace
+  /// `com.google.authz_extension.`. The following variables are supported in
+  /// the metadata Struct: `{forwarding_rule_id}` - substituted with the
+  /// forwarding rule's fully qualified resource name.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// Identifier.
+  ///
+  /// Name of the `AuthzExtension` resource in the following format:
+  /// `projects/{project}/locations/{location}/authzExtensions/{authz_extension}`.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The reference to the service that runs the extension.
+  ///
+  /// To configure a callout extension, `service` must be a fully-qualified
+  /// reference to a
+  /// [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices)
+  /// in the format:
+  /// `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}`
+  /// or
+  /// `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`.
+  ///
+  /// Required.
+  core.String? service;
+
+  /// Specifies the timeout for each individual message on the stream.
+  ///
+  /// The timeout must be between 10-10000 milliseconds.
+  ///
+  /// Required.
+  core.String? timeout;
+
+  /// The timestamp when the resource was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// The format of communication supported by the callout extension.
+  ///
+  /// If not specified, the default is `EXT_PROC_GRPC`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "WIRE_FORMAT_UNSPECIFIED" : Not specified.
+  /// - "EXT_PROC_GRPC" : The extension service uses ExtProc GRPC API over a
+  /// gRPC stream. This is the default value if the wire format is not
+  /// specified. The backend service for the extension must use HTTP2 or H2C as
+  /// the protocol. All `supported_events` for a client request will be sent as
+  /// part of the same gRPC stream.
+  core.String? wireFormat;
+
+  AuthzExtension({
+    this.authority,
+    this.createTime,
+    this.description,
+    this.failOpen,
+    this.forwardHeaders,
+    this.labels,
+    this.loadBalancingScheme,
+    this.metadata,
+    this.name,
+    this.service,
+    this.timeout,
+    this.updateTime,
+    this.wireFormat,
+  });
+
+  AuthzExtension.fromJson(core.Map json_)
+      : this(
+          authority: json_['authority'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          failOpen: json_['failOpen'] as core.bool?,
+          forwardHeaders: (json_['forwardHeaders'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          loadBalancingScheme: json_['loadBalancingScheme'] as core.String?,
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
+              : null,
+          name: json_['name'] as core.String?,
+          service: json_['service'] as core.String?,
+          timeout: json_['timeout'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          wireFormat: json_['wireFormat'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authority != null) 'authority': authority!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (failOpen != null) 'failOpen': failOpen!,
+        if (forwardHeaders != null) 'forwardHeaders': forwardHeaders!,
+        if (labels != null) 'labels': labels!,
+        if (loadBalancingScheme != null)
+          'loadBalancingScheme': loadBalancingScheme!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (service != null) 'service': service!,
+        if (timeout != null) 'timeout': timeout!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (wireFormat != null) 'wireFormat': wireFormat!,
+      };
+}
 
 /// Associates `members`, or principals, with a `role`.
 class Binding {
@@ -4363,7 +5034,7 @@ class ExtensionChainExtension {
   /// extension service.
   ///
   /// Required for Callout extensions. This field is not supported for plugin
-  /// extensions and must not be set.
+  /// extensions. Setting it results in a validation error.
   ///
   /// Optional.
   core.String? authority;
@@ -4401,7 +5072,8 @@ class ExtensionChainExtension {
   /// `com.google.lb_traffic_extension.lbtrafficextension1.chain1.ext1`. The
   /// following variables are supported in the metadata: `{forwarding_rule_id}`
   /// - substituted with the forwarding rule's fully qualified resource name.
-  /// This field is not supported for plugin extensions and must not be set.
+  /// This field is not supported for plugin extensions. Setting it results in a
+  /// validation error.
   ///
   /// Optional.
   ///
@@ -4421,18 +5093,21 @@ class ExtensionChainExtension {
 
   /// The reference to the service that runs the extension.
   ///
-  /// Currently only callout extensions are supported here. To configure a
-  /// callout extension, `service` must be a fully-qualified reference to a
+  /// To configure a callout extension, `service` must be a fully-qualified
+  /// reference to a
   /// [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices)
   /// in the format:
   /// `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}`
   /// or
   /// `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`.
-  /// To configure a plugin extension, this must be a reference to a
-  /// [wasm plugin](https://cloud.google.com/service-extensions/docs/reference/rest/v1beta1/projects.locations.wasmPlugins)
+  /// To configure a plugin extension, `service` must be a reference to a
+  /// \[`WasmPlugin`
+  /// resource\](https://cloud.google.com/service-extensions/docs/reference/rest/v1beta1/projects.locations.wasmPlugins)
   /// in the format:
   /// `projects/{project}/locations/{location}/wasmPlugins/{plugin}` or
   /// `//networkservices.googleapis.com/projects/{project}/locations/{location}/wasmPlugins/{wasmPlugin}`.
+  /// Plugin extensions are currently supported for the `LbTrafficExtension` and
+  /// the `LbRouteExtension` resources.
   ///
   /// Required.
   core.String? service;
@@ -4441,16 +5116,17 @@ class ExtensionChainExtension {
   /// extension is called.
   ///
   /// This field is required for the `LbTrafficExtension` resource. It must not
-  /// be set for the `LbRouteExtension` resource.
+  /// be set for the `LbRouteExtension` resource, otherwise a validation error
+  /// is returned.
   ///
   /// Optional.
   core.List<core.String>? supportedEvents;
 
   /// Specifies the timeout for each individual message on the stream.
   ///
-  /// The timeout must be between 10-1000 milliseconds. Required for callout
-  /// extensions. This field is not supported for plugin extensions and must not
-  /// be set.
+  /// The timeout must be between `10`-`1000` milliseconds. Required for callout
+  /// extensions. This field is not supported for plugin extensions. Setting it
+  /// results in a validation error.
   ///
   /// Optional.
   core.String? timeout;
@@ -4770,6 +5446,63 @@ class Gateway {
         if (subnetwork != null) 'subnetwork': subnetwork!,
         if (type != null) 'type': type!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// GatewayRouteView defines view-only resource for Routes to a Gateway
+class GatewayRouteView {
+  /// Identifier.
+  ///
+  /// Full path name of the GatewayRouteView resource. Format:
+  /// projects/{project_number}/locations/{location}/gateways/{gateway_name}/routeViews/{route_view_name}
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The resource id for the route.
+  ///
+  /// Output only.
+  core.String? routeId;
+
+  /// Location where the route exists.
+  ///
+  /// Output only.
+  core.String? routeLocation;
+
+  /// Project number where the route exists.
+  ///
+  /// Output only.
+  core.String? routeProjectNumber;
+
+  /// Type of the route: HttpRoute,GrpcRoute,TcpRoute, or TlsRoute
+  ///
+  /// Output only.
+  core.String? routeType;
+
+  GatewayRouteView({
+    this.name,
+    this.routeId,
+    this.routeLocation,
+    this.routeProjectNumber,
+    this.routeType,
+  });
+
+  GatewayRouteView.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+          routeId: json_['routeId'] as core.String?,
+          routeLocation: json_['routeLocation'] as core.String?,
+          routeProjectNumber: json_['routeProjectNumber'] as core.String?,
+          routeType: json_['routeType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (routeId != null) 'routeId': routeId!,
+        if (routeLocation != null) 'routeLocation': routeLocation!,
+        if (routeProjectNumber != null)
+          'routeProjectNumber': routeProjectNumber!,
+        if (routeType != null) 'routeType': routeType!,
       };
 }
 
@@ -6438,7 +7171,7 @@ class LbRouteExtension {
   core.List<ExtensionChain>? extensionChains;
 
   /// A list of references to the forwarding rules to which this service
-  /// extension is attached to.
+  /// extension is attached.
   ///
   /// At least one forwarding rule is required. There can be only one
   /// `LbRouteExtension` resource per forwarding rule.
@@ -6479,7 +7212,7 @@ class LbRouteExtension {
   /// `com.google.lb_route_extension.`. The following variables are supported in
   /// the metadata Struct: `{forwarding_rule_id}` - substituted with the
   /// forwarding rule's fully qualified resource name. This field is not
-  /// supported for plugin extensions and must not be set.
+  /// supported for plugin extensions. Setting it results in a validation error.
   ///
   /// Optional.
   ///
@@ -6579,12 +7312,12 @@ class LbTrafficExtension {
   core.List<ExtensionChain>? extensionChains;
 
   /// A list of references to the forwarding rules to which this service
-  /// extension is attached to.
+  /// extension is attached.
   ///
   /// At least one forwarding rule is required. There can be only one
   /// `LBTrafficExtension` resource per forwarding rule.
   ///
-  /// Required.
+  /// Optional.
   core.List<core.String>? forwardingRules;
 
   /// Set of labels associated with the `LbTrafficExtension` resource.
@@ -6619,7 +7352,7 @@ class LbTrafficExtension {
   /// `com.google.lb_traffic_extension.`. The following variables are supported
   /// in the metadata: `{forwarding_rule_id}` - substituted with the forwarding
   /// rule's fully qualified resource name. This field is not supported for
-  /// plugin extensions and must not be set.
+  /// plugin extensions. Setting it results in a validation error.
   ///
   /// Optional.
   ///
@@ -6692,6 +7425,42 @@ class LbTrafficExtension {
       };
 }
 
+/// Message for response to listing `AuthzExtension` resources.
+class ListAuthzExtensionsResponse {
+  /// The list of `AuthzExtension` resources.
+  core.List<AuthzExtension>? authzExtensions;
+
+  /// A token identifying a page of results that the server returns.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListAuthzExtensionsResponse({
+    this.authzExtensions,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListAuthzExtensionsResponse.fromJson(core.Map json_)
+      : this(
+          authzExtensions: (json_['authzExtensions'] as core.List?)
+              ?.map((value) => AuthzExtension.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authzExtensions != null) 'authzExtensions': authzExtensions!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// Response returned by the ListEndpointPolicies method.
 class ListEndpointPoliciesResponse {
   /// List of EndpointPolicy resources.
@@ -6720,6 +7489,36 @@ class ListEndpointPoliciesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endpointPolicies != null) 'endpointPolicies': endpointPolicies!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response returned by the ListGatewayRouteViews method.
+class ListGatewayRouteViewsResponse {
+  /// List of GatewayRouteView resources.
+  core.List<GatewayRouteView>? gatewayRouteViews;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListGatewayRouteViewsResponse({
+    this.gatewayRouteViews,
+    this.nextPageToken,
+  });
+
+  ListGatewayRouteViewsResponse.fromJson(core.Map json_)
+      : this(
+          gatewayRouteViews: (json_['gatewayRouteViews'] as core.List?)
+              ?.map((value) => GatewayRouteView.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gatewayRouteViews != null) 'gatewayRouteViews': gatewayRouteViews!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -6925,6 +7724,36 @@ class ListLocationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (locations != null) 'locations': locations!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response returned by the ListMeshRouteViews method.
+class ListMeshRouteViewsResponse {
+  /// List of MeshRouteView resources.
+  core.List<MeshRouteView>? meshRouteViews;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListMeshRouteViewsResponse({
+    this.meshRouteViews,
+    this.nextPageToken,
+  });
+
+  ListMeshRouteViewsResponse.fromJson(core.Map json_)
+      : this(
+          meshRouteViews: (json_['meshRouteViews'] as core.List?)
+              ?.map((value) => MeshRouteView.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (meshRouteViews != null) 'meshRouteViews': meshRouteViews!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -7289,6 +8118,63 @@ class Mesh {
         if (name != null) 'name': name!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// MeshRouteView defines view-only resource for Routes to a Mesh
+class MeshRouteView {
+  /// Identifier.
+  ///
+  /// Full path name of the MeshRouteView resource. Format:
+  /// projects/{project_number}/locations/{location}/meshes/{mesh_name}/routeViews/{route_view_name}
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The resource id for the route.
+  ///
+  /// Output only.
+  core.String? routeId;
+
+  /// Location where the route exists.
+  ///
+  /// Output only.
+  core.String? routeLocation;
+
+  /// Project number where the route exists.
+  ///
+  /// Output only.
+  core.String? routeProjectNumber;
+
+  /// Type of the route: HttpRoute,GrpcRoute,TcpRoute, or TlsRoute
+  ///
+  /// Output only.
+  core.String? routeType;
+
+  MeshRouteView({
+    this.name,
+    this.routeId,
+    this.routeLocation,
+    this.routeProjectNumber,
+    this.routeType,
+  });
+
+  MeshRouteView.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+          routeId: json_['routeId'] as core.String?,
+          routeLocation: json_['routeLocation'] as core.String?,
+          routeProjectNumber: json_['routeProjectNumber'] as core.String?,
+          routeType: json_['routeType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (routeId != null) 'routeId': routeId!,
+        if (routeLocation != null) 'routeLocation': routeLocation!,
+        if (routeProjectNumber != null)
+          'routeProjectNumber': routeProjectNumber!,
+        if (routeType != null) 'routeType': routeType!,
       };
 }
 
@@ -8388,8 +9274,7 @@ class WasmPlugin {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
-  /// Specifies the logging options for the activity performed by this
-  /// `WasmPlugin`.
+  /// Specifies the logging options for the activity performed by this plugin.
   ///
   /// If logging is enabled, plugin logs are exported to Cloud Logging. Note
   /// that the settings relate to the logs generated by using logging statements
@@ -8418,24 +9303,24 @@ class WasmPlugin {
   core.String? updateTime;
 
   /// List of all
-  /// [Service Extensions](https://cloud.google.com/service-extensions/docs/overview)
-  /// that use this `WasmPlugin`.
+  /// [extensions](https://cloud.google.com/service-extensions/docs/overview)
+  /// that use this `WasmPlugin` resource.
   ///
   /// Output only.
   core.List<WasmPluginUsedBy>? usedBy;
 
-  /// All versions of this `WasmPlugin` in the key-value format.
+  /// All versions of this `WasmPlugin` resource in the key-value format.
   ///
-  /// The key is the resource ID, the value is the `VersionDetails`. Allows to
-  /// create or update `WasmPlugin` and its WasmPluginVersions in a single
-  /// request. When the `main_version_id` field is not empty it must point to
-  /// one of the VersionDetails in the map. If provided in the update request,
-  /// the new versions replace the previous set. Any version omitted from the
-  /// `versions` will be removed. Since the `WasmPluginVersion` resource is
-  /// immutable, if the WasmPluginVersion with the same name already exists and
-  /// differs the Update request will fail. Note: In the GET request, this field
-  /// is populated only if the GetWasmPluginRequest.view is set to
-  /// WASM_PLUGIN_VIEW_FULL.
+  /// The key is the resource ID, and the value is the `VersionDetails` object.
+  /// Lets you create or update a `WasmPlugin` resource and its versions in a
+  /// single request. When the `main_version_id` field is not empty, it must
+  /// point to one of the `VersionDetails` objects in the map. If provided in a
+  /// `PATCH` request, the new versions replace the previous set. Any version
+  /// omitted from the `versions` field is removed. Because the
+  /// `WasmPluginVersion` resource is immutable, if a `WasmPluginVersion`
+  /// resource with the same name already exists and differs, the request fails.
+  /// Note: In a `GET` request, this field is populated only if the field
+  /// `GetWasmPluginRequest.view` is set to `WASM_PLUGIN_VIEW_FULL`.
   ///
   /// Optional.
   core.Map<core.String, WasmPluginVersionDetails>? versions;
@@ -8497,12 +9382,11 @@ class WasmPlugin {
       };
 }
 
-/// Specifies the logging options for the activity performed by this
-/// `WasmPlugin`.
+/// Specifies the logging options for the activity performed by this plugin.
 ///
 /// If logging is enabled, plugin logs are exported to Cloud Logging.
 class WasmPluginLogConfig {
-  /// Specifies whether to enable logging for activity by this `WasmPlugin`.
+  /// Specifies whether to enable logging for activity by this plugin.
   ///
   /// Defaults to `false`.
   ///
@@ -8514,10 +9398,11 @@ class WasmPluginLogConfig {
   /// Specificies the lowest level of the plugin logs that are exported to Cloud
   /// Logging. This setting relates to the logs generated by using logging
   /// statements in your Wasm code. This field is can be set only if logging is
-  /// enabled for the `WasmPlugin` resource. If the field is not provided when
-  /// logging is enabled, it is set to `INFO` by default.
+  /// enabled for the plugin. If the field is not provided when logging is
+  /// enabled, it is set to `INFO` by default.
   /// Possible string values are:
-  /// - "LOG_LEVEL_UNSPECIFIED" : Unspecified value.
+  /// - "LOG_LEVEL_UNSPECIFIED" : Unspecified value. Defaults to
+  /// `LogLevel.INFO`.
   /// - "TRACE" : Report logs with TRACE level and above.
   /// - "DEBUG" : Report logs with DEBUG level and above.
   /// - "INFO" : Report logs with INFO level and above.
@@ -8533,8 +9418,7 @@ class WasmPluginLogConfig {
   /// floating point value between `0.0` and `1.0` indicates that a percentage
   /// of log messages is stored. The default value when logging is enabled is
   /// `1.0`. The value of the field must be between `0` and `1` (inclusive).
-  /// This field can only be specified if logging is enabled for this
-  /// `WasmPlugin`.
+  /// This field can be specified only if logging is enabled for this plugin.
   core.double? sampleRate;
 
   WasmPluginLogConfig({
@@ -8557,10 +9441,10 @@ class WasmPluginLogConfig {
       };
 }
 
-/// Defines a resource that uses the `WasmPlugin`.
+/// Defines a resource that uses the `WasmPlugin` resource.
 class WasmPluginUsedBy {
   /// Full name of the resource https://google.aip.dev/122#full-resource-names,
-  /// e.g.
+  /// for example
   /// `//networkservices.googleapis.com/projects/{project}/locations/{location}/lbRouteExtensions/{extension}`
   ///
   /// Output only.
@@ -8580,7 +9464,7 @@ class WasmPluginUsedBy {
       };
 }
 
-/// A single immutable version of a `WasmPlugin`.
+/// A single immutable version of a `WasmPlugin` resource.
 ///
 /// Defines the Wasm module used and optionally its runtime config.
 class WasmPluginVersion {
@@ -8594,17 +9478,17 @@ class WasmPluginVersion {
   /// Optional.
   core.String? description;
 
-  /// The resolved digest for the image specified in `image`.
+  /// The resolved digest for the image specified in the `image` field.
   ///
   /// The digest is resolved during the creation of `WasmPluginVersion`
-  /// resource. This field holds the digest value regardless of whether a tag or
-  /// digest was originally specified in the `image` field.
+  /// resource. This field holds the digest value, regardless of whether a tag
+  /// or digest was originally specified in the `image` field.
   ///
   /// Output only.
   core.String? imageDigest;
 
-  /// URI of the container image containing the Wasm plugin, stored in the
-  /// Artifact Registry.
+  /// URI of the container image containing the plugin, stored in the Artifact
+  /// Registry.
   ///
   /// When a new `WasmPluginVersion` resource is created, the digest of the
   /// container image is saved in the `image_digest` field. When downloading an
@@ -8625,9 +9509,9 @@ class WasmPluginVersion {
   /// versions/{wasm_plugin_version}`.
   core.String? name;
 
-  /// Configuration for the Wasm plugin.
+  /// Configuration for the plugin.
   ///
-  /// The configuration is provided to the Wasm plugin at runtime through the
+  /// The configuration is provided to the plugin at runtime through the
   /// `ON_CONFIGURE` callback. When a new `WasmPluginVersion` resource is
   /// created, the digest of the contents is saved in the `plugin_config_digest`
   /// field.
@@ -8643,13 +9527,13 @@ class WasmPluginVersion {
   /// This field holds the digest (usually checksum) value for the plugin
   /// configuration.
   ///
-  /// The value is calculated based on the contents of the `plugin_config_data`
-  /// or the container image defined by the `plugin_config_uri` field.
+  /// The value is calculated based on the contents of `plugin_config_data` or
+  /// the container image defined by the `plugin_config_uri` field.
   ///
   /// Output only.
   core.String? pluginConfigDigest;
 
-  /// URI of the Wasm plugin configuration stored in the Artifact Registry.
+  /// URI of the plugin configuration stored in the Artifact Registry.
   ///
   /// The configuration is provided to the plugin at runtime through the
   /// `ON_CONFIGURE` callback. The container image must contain only a single
@@ -8748,9 +9632,9 @@ class WasmPluginVersionDetails {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
-  /// Configuration for the Wasm plugin.
+  /// Configuration for the plugin.
   ///
-  /// The configuration is provided to the Wasm plugin at runtime through the
+  /// The configuration is provided to the plugin at runtime through the
   /// `ON_CONFIGURE` callback. When a new `WasmPluginVersion` version is
   /// created, the digest of the contents is saved in the `plugin_config_digest`
   /// field.
@@ -8767,14 +9651,14 @@ class WasmPluginVersionDetails {
   /// configuration.
   ///
   /// The value is calculated based on the contents of the `plugin_config_data`
-  /// or the container image defined by the `plugin_config_uri` field.
+  /// field or the container image defined by the `plugin_config_uri` field.
   ///
   /// Output only.
   core.String? pluginConfigDigest;
 
-  /// URI of the WasmPlugin configuration stored in the Artifact Registry.
+  /// URI of the plugin configuration stored in the Artifact Registry.
   ///
-  /// The configuration is provided to the Wasm plugin at runtime through the
+  /// The configuration is provided to the plugin at runtime through the
   /// `ON_CONFIGURE` callback. The container image must contain only a single
   /// file with the name `plugin.config`. When a new `WasmPluginVersion`
   /// resource is created, the digest of the container image is saved in the

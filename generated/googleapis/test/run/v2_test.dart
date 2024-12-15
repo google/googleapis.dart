@@ -84,6 +84,7 @@ api.GoogleCloudRunV2BuildpacksBuild buildGoogleCloudRunV2BuildpacksBuild() {
     o.enableAutomaticUpdates = true;
     o.environmentVariables = buildUnnamed0();
     o.functionTarget = 'foo';
+    o.projectDescriptor = 'foo';
     o.runtime = 'foo';
   }
   buildCounterGoogleCloudRunV2BuildpacksBuild--;
@@ -106,6 +107,10 @@ void checkGoogleCloudRunV2BuildpacksBuild(
     checkUnnamed0(o.environmentVariables!);
     unittest.expect(
       o.functionTarget!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectDescriptor!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2015,6 +2020,8 @@ api.GoogleCloudRunV2RevisionTemplate buildGoogleCloudRunV2RevisionTemplate() {
     o.annotations = buildUnnamed34();
     o.containers = buildUnnamed35();
     o.encryptionKey = 'foo';
+    o.encryptionKeyRevocationAction = 'foo';
+    o.encryptionKeyShutdownDuration = 'foo';
     o.executionEnvironment = 'foo';
     o.healthCheckDisabled = true;
     o.labels = buildUnnamed36();
@@ -2041,6 +2048,14 @@ void checkGoogleCloudRunV2RevisionTemplate(
     checkUnnamed35(o.containers!);
     unittest.expect(
       o.encryptionKey!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.encryptionKeyRevocationAction!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.encryptionKeyShutdownDuration!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2441,6 +2456,7 @@ api.GoogleCloudRunV2ServiceScaling buildGoogleCloudRunV2ServiceScaling() {
   final o = api.GoogleCloudRunV2ServiceScaling();
   buildCounterGoogleCloudRunV2ServiceScaling++;
   if (buildCounterGoogleCloudRunV2ServiceScaling < 3) {
+    o.manualInstanceCount = 42;
     o.minInstanceCount = 42;
     o.scalingMode = 'foo';
   }
@@ -2451,6 +2467,10 @@ api.GoogleCloudRunV2ServiceScaling buildGoogleCloudRunV2ServiceScaling() {
 void checkGoogleCloudRunV2ServiceScaling(api.GoogleCloudRunV2ServiceScaling o) {
   buildCounterGoogleCloudRunV2ServiceScaling++;
   if (buildCounterGoogleCloudRunV2ServiceScaling < 3) {
+    unittest.expect(
+      o.manualInstanceCount!,
+      unittest.equals(42),
+    );
     unittest.expect(
       o.minInstanceCount!,
       unittest.equals(42),

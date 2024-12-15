@@ -136,6 +136,7 @@ api.AppLinkData buildAppLinkData() {
   buildCounterAppLinkData++;
   if (buildCounterAppLinkData < 3) {
     o.androidAppLinkInfo = buildAppLinkDataAppLinkInfo();
+    o.displayText = buildLocalizedString();
     o.iosAppLinkInfo = buildAppLinkDataAppLinkInfo();
     o.webAppLinkInfo = buildAppLinkDataAppLinkInfo();
   }
@@ -147,6 +148,7 @@ void checkAppLinkData(api.AppLinkData o) {
   buildCounterAppLinkData++;
   if (buildCounterAppLinkData < 3) {
     checkAppLinkDataAppLinkInfo(o.androidAppLinkInfo!);
+    checkLocalizedString(o.displayText!);
     checkAppLinkDataAppLinkInfo(o.iosAppLinkInfo!);
     checkAppLinkDataAppLinkInfo(o.webAppLinkInfo!);
   }
@@ -1178,23 +1180,34 @@ void checkUnnamed4(core.List<api.LatLongPoint> o) {
   checkLatLongPoint(o[1]);
 }
 
-core.List<api.Message> buildUnnamed5() => [
+core.List<api.MerchantLocation> buildUnnamed5() => [
+      buildMerchantLocation(),
+      buildMerchantLocation(),
+    ];
+
+void checkUnnamed5(core.List<api.MerchantLocation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMerchantLocation(o[0]);
+  checkMerchantLocation(o[1]);
+}
+
+core.List<api.Message> buildUnnamed6() => [
       buildMessage(),
       buildMessage(),
     ];
 
-void checkUnnamed5(core.List<api.Message> o) {
+void checkUnnamed6(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
 }
 
-core.List<core.String> buildUnnamed6() => [
+core.List<core.String> buildUnnamed7() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6(core.List<core.String> o) {
+void checkUnnamed7(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1206,23 +1219,23 @@ void checkUnnamed6(core.List<core.String> o) {
   );
 }
 
-core.List<api.TextModuleData> buildUnnamed7() => [
+core.List<api.TextModuleData> buildUnnamed8() => [
       buildTextModuleData(),
       buildTextModuleData(),
     ];
 
-void checkUnnamed7(core.List<api.TextModuleData> o) {
+void checkUnnamed8(core.List<api.TextModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTextModuleData(o[0]);
   checkTextModuleData(o[1]);
 }
 
-core.List<api.ValueAddedModuleData> buildUnnamed8() => [
+core.List<api.ValueAddedModuleData> buildUnnamed9() => [
       buildValueAddedModuleData(),
       buildValueAddedModuleData(),
     ];
 
-void checkUnnamed8(core.List<api.ValueAddedModuleData> o) {
+void checkUnnamed9(core.List<api.ValueAddedModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValueAddedModuleData(o[0]);
   checkValueAddedModuleData(o[1]);
@@ -1262,18 +1275,19 @@ api.EventTicketClass buildEventTicketClass() {
     o.localizedIssuerName = buildLocalizedString();
     o.locations = buildUnnamed4();
     o.logo = buildImage();
-    o.messages = buildUnnamed5();
+    o.merchantLocations = buildUnnamed5();
+    o.messages = buildUnnamed6();
     o.multipleDevicesAndHoldersAllowedStatus = 'foo';
     o.notifyPreference = 'foo';
-    o.redemptionIssuers = buildUnnamed6();
+    o.redemptionIssuers = buildUnnamed7();
     o.review = buildReview();
     o.reviewStatus = 'foo';
     o.rowLabel = 'foo';
     o.seatLabel = 'foo';
     o.sectionLabel = 'foo';
     o.securityAnimation = buildSecurityAnimation();
-    o.textModulesData = buildUnnamed7();
-    o.valueAddedModuleData = buildUnnamed8();
+    o.textModulesData = buildUnnamed8();
+    o.valueAddedModuleData = buildUnnamed9();
     o.venue = buildEventVenue();
     o.version = 'foo';
     o.viewUnlockRequirement = 'foo';
@@ -1340,7 +1354,8 @@ void checkEventTicketClass(api.EventTicketClass o) {
     checkLocalizedString(o.localizedIssuerName!);
     checkUnnamed4(o.locations!);
     checkImage(o.logo!);
-    checkUnnamed5(o.messages!);
+    checkUnnamed5(o.merchantLocations!);
+    checkUnnamed6(o.messages!);
     unittest.expect(
       o.multipleDevicesAndHoldersAllowedStatus!,
       unittest.equals('foo'),
@@ -1349,7 +1364,7 @@ void checkEventTicketClass(api.EventTicketClass o) {
       o.notifyPreference!,
       unittest.equals('foo'),
     );
-    checkUnnamed6(o.redemptionIssuers!);
+    checkUnnamed7(o.redemptionIssuers!);
     checkReview(o.review!);
     unittest.expect(
       o.reviewStatus!,
@@ -1368,8 +1383,8 @@ void checkEventTicketClass(api.EventTicketClass o) {
       unittest.equals('foo'),
     );
     checkSecurityAnimation(o.securityAnimation!);
-    checkUnnamed7(o.textModulesData!);
-    checkUnnamed8(o.valueAddedModuleData!);
+    checkUnnamed8(o.textModulesData!);
+    checkUnnamed9(o.valueAddedModuleData!);
     checkEventVenue(o.venue!);
     unittest.expect(
       o.version!,
@@ -1406,12 +1421,12 @@ void checkEventTicketClassAddMessageResponse(
   buildCounterEventTicketClassAddMessageResponse--;
 }
 
-core.List<api.EventTicketClass> buildUnnamed9() => [
+core.List<api.EventTicketClass> buildUnnamed10() => [
       buildEventTicketClass(),
       buildEventTicketClass(),
     ];
 
-void checkUnnamed9(core.List<api.EventTicketClass> o) {
+void checkUnnamed10(core.List<api.EventTicketClass> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventTicketClass(o[0]);
   checkEventTicketClass(o[1]);
@@ -1423,7 +1438,7 @@ api.EventTicketClassListResponse buildEventTicketClassListResponse() {
   buildCounterEventTicketClassListResponse++;
   if (buildCounterEventTicketClassListResponse < 3) {
     o.pagination = buildPagination();
-    o.resources = buildUnnamed9();
+    o.resources = buildUnnamed10();
   }
   buildCounterEventTicketClassListResponse--;
   return o;
@@ -1433,37 +1448,20 @@ void checkEventTicketClassListResponse(api.EventTicketClassListResponse o) {
   buildCounterEventTicketClassListResponse++;
   if (buildCounterEventTicketClassListResponse < 3) {
     checkPagination(o.pagination!);
-    checkUnnamed9(o.resources!);
+    checkUnnamed10(o.resources!);
   }
   buildCounterEventTicketClassListResponse--;
 }
 
-core.List<api.ImageModuleData> buildUnnamed10() => [
+core.List<api.ImageModuleData> buildUnnamed11() => [
       buildImageModuleData(),
       buildImageModuleData(),
     ];
 
-void checkUnnamed10(core.List<api.ImageModuleData> o) {
+void checkUnnamed11(core.List<api.ImageModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImageModuleData(o[0]);
   checkImageModuleData(o[1]);
-}
-
-core.List<core.String> buildUnnamed11() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed11(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
 }
 
 core.List<core.String> buildUnnamed12() => [
@@ -1483,45 +1481,73 @@ void checkUnnamed12(core.List<core.String> o) {
   );
 }
 
-core.List<api.LatLongPoint> buildUnnamed13() => [
+core.List<core.String> buildUnnamed13() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed13(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<api.LatLongPoint> buildUnnamed14() => [
       buildLatLongPoint(),
       buildLatLongPoint(),
     ];
 
-void checkUnnamed13(core.List<api.LatLongPoint> o) {
+void checkUnnamed14(core.List<api.LatLongPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLatLongPoint(o[0]);
   checkLatLongPoint(o[1]);
 }
 
-core.List<api.Message> buildUnnamed14() => [
+core.List<api.MerchantLocation> buildUnnamed15() => [
+      buildMerchantLocation(),
+      buildMerchantLocation(),
+    ];
+
+void checkUnnamed15(core.List<api.MerchantLocation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMerchantLocation(o[0]);
+  checkMerchantLocation(o[1]);
+}
+
+core.List<api.Message> buildUnnamed16() => [
       buildMessage(),
       buildMessage(),
     ];
 
-void checkUnnamed14(core.List<api.Message> o) {
+void checkUnnamed16(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
 }
 
-core.List<api.TextModuleData> buildUnnamed15() => [
+core.List<api.TextModuleData> buildUnnamed17() => [
       buildTextModuleData(),
       buildTextModuleData(),
     ];
 
-void checkUnnamed15(core.List<api.TextModuleData> o) {
+void checkUnnamed17(core.List<api.TextModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTextModuleData(o[0]);
   checkTextModuleData(o[1]);
 }
 
-core.List<api.ValueAddedModuleData> buildUnnamed16() => [
+core.List<api.ValueAddedModuleData> buildUnnamed18() => [
       buildValueAddedModuleData(),
       buildValueAddedModuleData(),
     ];
 
-void checkUnnamed16(core.List<api.ValueAddedModuleData> o) {
+void checkUnnamed18(core.List<api.ValueAddedModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValueAddedModuleData(o[0]);
   checkValueAddedModuleData(o[1]);
@@ -1544,14 +1570,15 @@ api.EventTicketObject buildEventTicketObject() {
     o.heroImage = buildImage();
     o.hexBackgroundColor = 'foo';
     o.id = 'foo';
-    o.imageModulesData = buildUnnamed10();
+    o.imageModulesData = buildUnnamed11();
     o.infoModuleData = buildInfoModuleData();
     o.kind = 'foo';
-    o.linkedObjectIds = buildUnnamed11();
-    o.linkedOfferIds = buildUnnamed12();
+    o.linkedObjectIds = buildUnnamed12();
+    o.linkedOfferIds = buildUnnamed13();
     o.linksModuleData = buildLinksModuleData();
-    o.locations = buildUnnamed13();
-    o.messages = buildUnnamed14();
+    o.locations = buildUnnamed14();
+    o.merchantLocations = buildUnnamed15();
+    o.messages = buildUnnamed16();
     o.notifyPreference = 'foo';
     o.passConstraints = buildPassConstraints();
     o.reservationInfo = buildEventReservationInfo();
@@ -1560,12 +1587,12 @@ api.EventTicketObject buildEventTicketObject() {
     o.seatInfo = buildEventSeat();
     o.smartTapRedemptionValue = 'foo';
     o.state = 'foo';
-    o.textModulesData = buildUnnamed15();
+    o.textModulesData = buildUnnamed17();
     o.ticketHolderName = 'foo';
     o.ticketNumber = 'foo';
     o.ticketType = buildLocalizedString();
     o.validTimeInterval = buildTimeInterval();
-    o.valueAddedModuleData = buildUnnamed16();
+    o.valueAddedModuleData = buildUnnamed18();
     o.version = 'foo';
   }
   buildCounterEventTicketObject--;
@@ -1596,17 +1623,18 @@ void checkEventTicketObject(api.EventTicketObject o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed10(o.imageModulesData!);
+    checkUnnamed11(o.imageModulesData!);
     checkInfoModuleData(o.infoModuleData!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed11(o.linkedObjectIds!);
-    checkUnnamed12(o.linkedOfferIds!);
+    checkUnnamed12(o.linkedObjectIds!);
+    checkUnnamed13(o.linkedOfferIds!);
     checkLinksModuleData(o.linksModuleData!);
-    checkUnnamed13(o.locations!);
-    checkUnnamed14(o.messages!);
+    checkUnnamed14(o.locations!);
+    checkUnnamed15(o.merchantLocations!);
+    checkUnnamed16(o.messages!);
     unittest.expect(
       o.notifyPreference!,
       unittest.equals('foo'),
@@ -1624,7 +1652,7 @@ void checkEventTicketObject(api.EventTicketObject o) {
       o.state!,
       unittest.equals('foo'),
     );
-    checkUnnamed15(o.textModulesData!);
+    checkUnnamed17(o.textModulesData!);
     unittest.expect(
       o.ticketHolderName!,
       unittest.equals('foo'),
@@ -1635,7 +1663,7 @@ void checkEventTicketObject(api.EventTicketObject o) {
     );
     checkLocalizedString(o.ticketType!);
     checkTimeInterval(o.validTimeInterval!);
-    checkUnnamed16(o.valueAddedModuleData!);
+    checkUnnamed18(o.valueAddedModuleData!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -1665,12 +1693,12 @@ void checkEventTicketObjectAddMessageResponse(
   buildCounterEventTicketObjectAddMessageResponse--;
 }
 
-core.List<api.EventTicketObject> buildUnnamed17() => [
+core.List<api.EventTicketObject> buildUnnamed19() => [
       buildEventTicketObject(),
       buildEventTicketObject(),
     ];
 
-void checkUnnamed17(core.List<api.EventTicketObject> o) {
+void checkUnnamed19(core.List<api.EventTicketObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventTicketObject(o[0]);
   checkEventTicketObject(o[1]);
@@ -1682,7 +1710,7 @@ api.EventTicketObjectListResponse buildEventTicketObjectListResponse() {
   buildCounterEventTicketObjectListResponse++;
   if (buildCounterEventTicketObjectListResponse < 3) {
     o.pagination = buildPagination();
-    o.resources = buildUnnamed17();
+    o.resources = buildUnnamed19();
   }
   buildCounterEventTicketObjectListResponse--;
   return o;
@@ -1692,7 +1720,7 @@ void checkEventTicketObjectListResponse(api.EventTicketObjectListResponse o) {
   buildCounterEventTicketObjectListResponse++;
   if (buildCounterEventTicketObjectListResponse < 3) {
     checkPagination(o.pagination!);
-    checkUnnamed17(o.resources!);
+    checkUnnamed19(o.resources!);
   }
   buildCounterEventTicketObjectListResponse--;
 }
@@ -1769,12 +1797,12 @@ void checkFieldReference(api.FieldReference o) {
   buildCounterFieldReference--;
 }
 
-core.List<api.FieldReference> buildUnnamed18() => [
+core.List<api.FieldReference> buildUnnamed20() => [
       buildFieldReference(),
       buildFieldReference(),
     ];
 
-void checkUnnamed18(core.List<api.FieldReference> o) {
+void checkUnnamed20(core.List<api.FieldReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFieldReference(o[0]);
   checkFieldReference(o[1]);
@@ -1785,7 +1813,7 @@ api.FieldSelector buildFieldSelector() {
   final o = api.FieldSelector();
   buildCounterFieldSelector++;
   if (buildCounterFieldSelector < 3) {
-    o.fields = buildUnnamed18();
+    o.fields = buildUnnamed20();
   }
   buildCounterFieldSelector--;
   return o;
@@ -1794,7 +1822,7 @@ api.FieldSelector buildFieldSelector() {
 void checkFieldSelector(api.FieldSelector o) {
   buildCounterFieldSelector++;
   if (buildCounterFieldSelector < 3) {
-    checkUnnamed18(o.fields!);
+    checkUnnamed20(o.fields!);
   }
   buildCounterFieldSelector--;
 }
@@ -1863,45 +1891,56 @@ void checkFlightCarrier(api.FlightCarrier o) {
   buildCounterFlightCarrier--;
 }
 
-core.List<api.ImageModuleData> buildUnnamed19() => [
+core.List<api.ImageModuleData> buildUnnamed21() => [
       buildImageModuleData(),
       buildImageModuleData(),
     ];
 
-void checkUnnamed19(core.List<api.ImageModuleData> o) {
+void checkUnnamed21(core.List<api.ImageModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImageModuleData(o[0]);
   checkImageModuleData(o[1]);
 }
 
-core.List<api.LatLongPoint> buildUnnamed20() => [
+core.List<api.LatLongPoint> buildUnnamed22() => [
       buildLatLongPoint(),
       buildLatLongPoint(),
     ];
 
-void checkUnnamed20(core.List<api.LatLongPoint> o) {
+void checkUnnamed22(core.List<api.LatLongPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLatLongPoint(o[0]);
   checkLatLongPoint(o[1]);
 }
 
-core.List<api.Message> buildUnnamed21() => [
+core.List<api.MerchantLocation> buildUnnamed23() => [
+      buildMerchantLocation(),
+      buildMerchantLocation(),
+    ];
+
+void checkUnnamed23(core.List<api.MerchantLocation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMerchantLocation(o[0]);
+  checkMerchantLocation(o[1]);
+}
+
+core.List<api.Message> buildUnnamed24() => [
       buildMessage(),
       buildMessage(),
     ];
 
-void checkUnnamed21(core.List<api.Message> o) {
+void checkUnnamed24(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
 }
 
-core.List<core.String> buildUnnamed22() => [
+core.List<core.String> buildUnnamed25() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed22(core.List<core.String> o) {
+void checkUnnamed25(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1913,23 +1952,23 @@ void checkUnnamed22(core.List<core.String> o) {
   );
 }
 
-core.List<api.TextModuleData> buildUnnamed23() => [
+core.List<api.TextModuleData> buildUnnamed26() => [
       buildTextModuleData(),
       buildTextModuleData(),
     ];
 
-void checkUnnamed23(core.List<api.TextModuleData> o) {
+void checkUnnamed26(core.List<api.TextModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTextModuleData(o[0]);
   checkTextModuleData(o[1]);
 }
 
-core.List<api.ValueAddedModuleData> buildUnnamed24() => [
+core.List<api.ValueAddedModuleData> buildUnnamed27() => [
       buildValueAddedModuleData(),
       buildValueAddedModuleData(),
     ];
 
-void checkUnnamed24(core.List<api.ValueAddedModuleData> o) {
+void checkUnnamed27(core.List<api.ValueAddedModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValueAddedModuleData(o[0]);
   checkValueAddedModuleData(o[1]);
@@ -1954,7 +1993,7 @@ api.FlightClass buildFlightClass() {
     o.hexBackgroundColor = 'foo';
     o.homepageUri = buildUri();
     o.id = 'foo';
-    o.imageModulesData = buildUnnamed19();
+    o.imageModulesData = buildUnnamed21();
     o.infoModuleData = buildInfoModuleData();
     o.issuerName = 'foo';
     o.kind = 'foo';
@@ -1967,17 +2006,18 @@ api.FlightClass buildFlightClass() {
     o.localScheduledArrivalDateTime = 'foo';
     o.localScheduledDepartureDateTime = 'foo';
     o.localizedIssuerName = buildLocalizedString();
-    o.locations = buildUnnamed20();
-    o.messages = buildUnnamed21();
+    o.locations = buildUnnamed22();
+    o.merchantLocations = buildUnnamed23();
+    o.messages = buildUnnamed24();
     o.multipleDevicesAndHoldersAllowedStatus = 'foo';
     o.notifyPreference = 'foo';
     o.origin = buildAirportInfo();
-    o.redemptionIssuers = buildUnnamed22();
+    o.redemptionIssuers = buildUnnamed25();
     o.review = buildReview();
     o.reviewStatus = 'foo';
     o.securityAnimation = buildSecurityAnimation();
-    o.textModulesData = buildUnnamed23();
-    o.valueAddedModuleData = buildUnnamed24();
+    o.textModulesData = buildUnnamed26();
+    o.valueAddedModuleData = buildUnnamed27();
     o.version = 'foo';
     o.viewUnlockRequirement = 'foo';
     o.wordMark = buildImage();
@@ -2015,7 +2055,7 @@ void checkFlightClass(api.FlightClass o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed19(o.imageModulesData!);
+    checkUnnamed21(o.imageModulesData!);
     checkInfoModuleData(o.infoModuleData!);
     unittest.expect(
       o.issuerName!,
@@ -2055,8 +2095,9 @@ void checkFlightClass(api.FlightClass o) {
       unittest.equals('foo'),
     );
     checkLocalizedString(o.localizedIssuerName!);
-    checkUnnamed20(o.locations!);
-    checkUnnamed21(o.messages!);
+    checkUnnamed22(o.locations!);
+    checkUnnamed23(o.merchantLocations!);
+    checkUnnamed24(o.messages!);
     unittest.expect(
       o.multipleDevicesAndHoldersAllowedStatus!,
       unittest.equals('foo'),
@@ -2066,15 +2107,15 @@ void checkFlightClass(api.FlightClass o) {
       unittest.equals('foo'),
     );
     checkAirportInfo(o.origin!);
-    checkUnnamed22(o.redemptionIssuers!);
+    checkUnnamed25(o.redemptionIssuers!);
     checkReview(o.review!);
     unittest.expect(
       o.reviewStatus!,
       unittest.equals('foo'),
     );
     checkSecurityAnimation(o.securityAnimation!);
-    checkUnnamed23(o.textModulesData!);
-    checkUnnamed24(o.valueAddedModuleData!);
+    checkUnnamed26(o.textModulesData!);
+    checkUnnamed27(o.valueAddedModuleData!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -2107,12 +2148,12 @@ void checkFlightClassAddMessageResponse(api.FlightClassAddMessageResponse o) {
   buildCounterFlightClassAddMessageResponse--;
 }
 
-core.List<api.FlightClass> buildUnnamed25() => [
+core.List<api.FlightClass> buildUnnamed28() => [
       buildFlightClass(),
       buildFlightClass(),
     ];
 
-void checkUnnamed25(core.List<api.FlightClass> o) {
+void checkUnnamed28(core.List<api.FlightClass> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFlightClass(o[0]);
   checkFlightClass(o[1]);
@@ -2124,7 +2165,7 @@ api.FlightClassListResponse buildFlightClassListResponse() {
   buildCounterFlightClassListResponse++;
   if (buildCounterFlightClassListResponse < 3) {
     o.pagination = buildPagination();
-    o.resources = buildUnnamed25();
+    o.resources = buildUnnamed28();
   }
   buildCounterFlightClassListResponse--;
   return o;
@@ -2134,7 +2175,7 @@ void checkFlightClassListResponse(api.FlightClassListResponse o) {
   buildCounterFlightClassListResponse++;
   if (buildCounterFlightClassListResponse < 3) {
     checkPagination(o.pagination!);
-    checkUnnamed25(o.resources!);
+    checkUnnamed28(o.resources!);
   }
   buildCounterFlightClassListResponse--;
 }
@@ -2180,23 +2221,23 @@ void checkFlightHeader(api.FlightHeader o) {
   buildCounterFlightHeader--;
 }
 
-core.List<api.ImageModuleData> buildUnnamed26() => [
+core.List<api.ImageModuleData> buildUnnamed29() => [
       buildImageModuleData(),
       buildImageModuleData(),
     ];
 
-void checkUnnamed26(core.List<api.ImageModuleData> o) {
+void checkUnnamed29(core.List<api.ImageModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImageModuleData(o[0]);
   checkImageModuleData(o[1]);
 }
 
-core.List<core.String> buildUnnamed27() => [
+core.List<core.String> buildUnnamed30() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed27(core.List<core.String> o) {
+void checkUnnamed30(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2208,45 +2249,56 @@ void checkUnnamed27(core.List<core.String> o) {
   );
 }
 
-core.List<api.LatLongPoint> buildUnnamed28() => [
+core.List<api.LatLongPoint> buildUnnamed31() => [
       buildLatLongPoint(),
       buildLatLongPoint(),
     ];
 
-void checkUnnamed28(core.List<api.LatLongPoint> o) {
+void checkUnnamed31(core.List<api.LatLongPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLatLongPoint(o[0]);
   checkLatLongPoint(o[1]);
 }
 
-core.List<api.Message> buildUnnamed29() => [
+core.List<api.MerchantLocation> buildUnnamed32() => [
+      buildMerchantLocation(),
+      buildMerchantLocation(),
+    ];
+
+void checkUnnamed32(core.List<api.MerchantLocation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMerchantLocation(o[0]);
+  checkMerchantLocation(o[1]);
+}
+
+core.List<api.Message> buildUnnamed33() => [
       buildMessage(),
       buildMessage(),
     ];
 
-void checkUnnamed29(core.List<api.Message> o) {
+void checkUnnamed33(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
 }
 
-core.List<api.TextModuleData> buildUnnamed30() => [
+core.List<api.TextModuleData> buildUnnamed34() => [
       buildTextModuleData(),
       buildTextModuleData(),
     ];
 
-void checkUnnamed30(core.List<api.TextModuleData> o) {
+void checkUnnamed34(core.List<api.TextModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTextModuleData(o[0]);
   checkTextModuleData(o[1]);
 }
 
-core.List<api.ValueAddedModuleData> buildUnnamed31() => [
+core.List<api.ValueAddedModuleData> buildUnnamed35() => [
       buildValueAddedModuleData(),
       buildValueAddedModuleData(),
     ];
 
-void checkUnnamed31(core.List<api.ValueAddedModuleData> o) {
+void checkUnnamed35(core.List<api.ValueAddedModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValueAddedModuleData(o[0]);
   checkValueAddedModuleData(o[1]);
@@ -2269,13 +2321,14 @@ api.FlightObject buildFlightObject() {
     o.heroImage = buildImage();
     o.hexBackgroundColor = 'foo';
     o.id = 'foo';
-    o.imageModulesData = buildUnnamed26();
+    o.imageModulesData = buildUnnamed29();
     o.infoModuleData = buildInfoModuleData();
     o.kind = 'foo';
-    o.linkedObjectIds = buildUnnamed27();
+    o.linkedObjectIds = buildUnnamed30();
     o.linksModuleData = buildLinksModuleData();
-    o.locations = buildUnnamed28();
-    o.messages = buildUnnamed29();
+    o.locations = buildUnnamed31();
+    o.merchantLocations = buildUnnamed32();
+    o.messages = buildUnnamed33();
     o.notifyPreference = 'foo';
     o.passConstraints = buildPassConstraints();
     o.passengerName = 'foo';
@@ -2285,9 +2338,9 @@ api.FlightObject buildFlightObject() {
     o.securityProgramLogo = buildImage();
     o.smartTapRedemptionValue = 'foo';
     o.state = 'foo';
-    o.textModulesData = buildUnnamed30();
+    o.textModulesData = buildUnnamed34();
     o.validTimeInterval = buildTimeInterval();
-    o.valueAddedModuleData = buildUnnamed31();
+    o.valueAddedModuleData = buildUnnamed35();
     o.version = 'foo';
   }
   buildCounterFlightObject--;
@@ -2318,16 +2371,17 @@ void checkFlightObject(api.FlightObject o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed26(o.imageModulesData!);
+    checkUnnamed29(o.imageModulesData!);
     checkInfoModuleData(o.infoModuleData!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed27(o.linkedObjectIds!);
+    checkUnnamed30(o.linkedObjectIds!);
     checkLinksModuleData(o.linksModuleData!);
-    checkUnnamed28(o.locations!);
-    checkUnnamed29(o.messages!);
+    checkUnnamed31(o.locations!);
+    checkUnnamed32(o.merchantLocations!);
+    checkUnnamed33(o.messages!);
     unittest.expect(
       o.notifyPreference!,
       unittest.equals('foo'),
@@ -2349,9 +2403,9 @@ void checkFlightObject(api.FlightObject o) {
       o.state!,
       unittest.equals('foo'),
     );
-    checkUnnamed30(o.textModulesData!);
+    checkUnnamed34(o.textModulesData!);
     checkTimeInterval(o.validTimeInterval!);
-    checkUnnamed31(o.valueAddedModuleData!);
+    checkUnnamed35(o.valueAddedModuleData!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -2379,12 +2433,12 @@ void checkFlightObjectAddMessageResponse(api.FlightObjectAddMessageResponse o) {
   buildCounterFlightObjectAddMessageResponse--;
 }
 
-core.List<api.FlightObject> buildUnnamed32() => [
+core.List<api.FlightObject> buildUnnamed36() => [
       buildFlightObject(),
       buildFlightObject(),
     ];
 
-void checkUnnamed32(core.List<api.FlightObject> o) {
+void checkUnnamed36(core.List<api.FlightObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFlightObject(o[0]);
   checkFlightObject(o[1]);
@@ -2396,7 +2450,7 @@ api.FlightObjectListResponse buildFlightObjectListResponse() {
   buildCounterFlightObjectListResponse++;
   if (buildCounterFlightObjectListResponse < 3) {
     o.pagination = buildPagination();
-    o.resources = buildUnnamed32();
+    o.resources = buildUnnamed36();
   }
   buildCounterFlightObjectListResponse--;
   return o;
@@ -2406,7 +2460,7 @@ void checkFlightObjectListResponse(api.FlightObjectListResponse o) {
   buildCounterFlightObjectListResponse++;
   if (buildCounterFlightObjectListResponse < 3) {
     checkPagination(o.pagination!);
-    checkUnnamed32(o.resources!);
+    checkUnnamed36(o.resources!);
   }
   buildCounterFlightObjectListResponse--;
 }
@@ -2440,34 +2494,45 @@ void checkFrequentFlyerInfo(api.FrequentFlyerInfo o) {
   buildCounterFrequentFlyerInfo--;
 }
 
-core.List<api.ImageModuleData> buildUnnamed33() => [
+core.List<api.ImageModuleData> buildUnnamed37() => [
       buildImageModuleData(),
       buildImageModuleData(),
     ];
 
-void checkUnnamed33(core.List<api.ImageModuleData> o) {
+void checkUnnamed37(core.List<api.ImageModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImageModuleData(o[0]);
   checkImageModuleData(o[1]);
 }
 
-core.List<api.Message> buildUnnamed34() => [
+core.List<api.MerchantLocation> buildUnnamed38() => [
+      buildMerchantLocation(),
+      buildMerchantLocation(),
+    ];
+
+void checkUnnamed38(core.List<api.MerchantLocation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMerchantLocation(o[0]);
+  checkMerchantLocation(o[1]);
+}
+
+core.List<api.Message> buildUnnamed39() => [
       buildMessage(),
       buildMessage(),
     ];
 
-void checkUnnamed34(core.List<api.Message> o) {
+void checkUnnamed39(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
 }
 
-core.List<core.String> buildUnnamed35() => [
+core.List<core.String> buildUnnamed40() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed35(core.List<core.String> o) {
+void checkUnnamed40(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2479,23 +2544,23 @@ void checkUnnamed35(core.List<core.String> o) {
   );
 }
 
-core.List<api.TextModuleData> buildUnnamed36() => [
+core.List<api.TextModuleData> buildUnnamed41() => [
       buildTextModuleData(),
       buildTextModuleData(),
     ];
 
-void checkUnnamed36(core.List<api.TextModuleData> o) {
+void checkUnnamed41(core.List<api.TextModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTextModuleData(o[0]);
   checkTextModuleData(o[1]);
 }
 
-core.List<api.ValueAddedModuleData> buildUnnamed37() => [
+core.List<api.ValueAddedModuleData> buildUnnamed42() => [
       buildValueAddedModuleData(),
       buildValueAddedModuleData(),
     ];
 
-void checkUnnamed37(core.List<api.ValueAddedModuleData> o) {
+void checkUnnamed42(core.List<api.ValueAddedModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValueAddedModuleData(o[0]);
   checkValueAddedModuleData(o[1]);
@@ -2511,14 +2576,15 @@ api.GenericClass buildGenericClass() {
     o.classTemplateInfo = buildClassTemplateInfo();
     o.enableSmartTap = true;
     o.id = 'foo';
-    o.imageModulesData = buildUnnamed33();
+    o.imageModulesData = buildUnnamed37();
     o.linksModuleData = buildLinksModuleData();
-    o.messages = buildUnnamed34();
+    o.merchantLocations = buildUnnamed38();
+    o.messages = buildUnnamed39();
     o.multipleDevicesAndHoldersAllowedStatus = 'foo';
-    o.redemptionIssuers = buildUnnamed35();
+    o.redemptionIssuers = buildUnnamed40();
     o.securityAnimation = buildSecurityAnimation();
-    o.textModulesData = buildUnnamed36();
-    o.valueAddedModuleData = buildUnnamed37();
+    o.textModulesData = buildUnnamed41();
+    o.valueAddedModuleData = buildUnnamed42();
     o.viewUnlockRequirement = 'foo';
   }
   buildCounterGenericClass--;
@@ -2536,17 +2602,18 @@ void checkGenericClass(api.GenericClass o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed33(o.imageModulesData!);
+    checkUnnamed37(o.imageModulesData!);
     checkLinksModuleData(o.linksModuleData!);
-    checkUnnamed34(o.messages!);
+    checkUnnamed38(o.merchantLocations!);
+    checkUnnamed39(o.messages!);
     unittest.expect(
       o.multipleDevicesAndHoldersAllowedStatus!,
       unittest.equals('foo'),
     );
-    checkUnnamed35(o.redemptionIssuers!);
+    checkUnnamed40(o.redemptionIssuers!);
     checkSecurityAnimation(o.securityAnimation!);
-    checkUnnamed36(o.textModulesData!);
-    checkUnnamed37(o.valueAddedModuleData!);
+    checkUnnamed41(o.textModulesData!);
+    checkUnnamed42(o.valueAddedModuleData!);
     unittest.expect(
       o.viewUnlockRequirement!,
       unittest.equals('foo'),
@@ -2574,12 +2641,12 @@ void checkGenericClassAddMessageResponse(api.GenericClassAddMessageResponse o) {
   buildCounterGenericClassAddMessageResponse--;
 }
 
-core.List<api.GenericClass> buildUnnamed38() => [
+core.List<api.GenericClass> buildUnnamed43() => [
       buildGenericClass(),
       buildGenericClass(),
     ];
 
-void checkUnnamed38(core.List<api.GenericClass> o) {
+void checkUnnamed43(core.List<api.GenericClass> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGenericClass(o[0]);
   checkGenericClass(o[1]);
@@ -2591,7 +2658,7 @@ api.GenericClassListResponse buildGenericClassListResponse() {
   buildCounterGenericClassListResponse++;
   if (buildCounterGenericClassListResponse < 3) {
     o.pagination = buildPagination();
-    o.resources = buildUnnamed38();
+    o.resources = buildUnnamed43();
   }
   buildCounterGenericClassListResponse--;
   return o;
@@ -2601,28 +2668,28 @@ void checkGenericClassListResponse(api.GenericClassListResponse o) {
   buildCounterGenericClassListResponse++;
   if (buildCounterGenericClassListResponse < 3) {
     checkPagination(o.pagination!);
-    checkUnnamed38(o.resources!);
+    checkUnnamed43(o.resources!);
   }
   buildCounterGenericClassListResponse--;
 }
 
-core.List<api.ImageModuleData> buildUnnamed39() => [
+core.List<api.ImageModuleData> buildUnnamed44() => [
       buildImageModuleData(),
       buildImageModuleData(),
     ];
 
-void checkUnnamed39(core.List<api.ImageModuleData> o) {
+void checkUnnamed44(core.List<api.ImageModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImageModuleData(o[0]);
   checkImageModuleData(o[1]);
 }
 
-core.List<core.String> buildUnnamed40() => [
+core.List<core.String> buildUnnamed45() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed40(core.List<core.String> o) {
+void checkUnnamed45(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2634,34 +2701,45 @@ void checkUnnamed40(core.List<core.String> o) {
   );
 }
 
-core.List<api.Message> buildUnnamed41() => [
+core.List<api.MerchantLocation> buildUnnamed46() => [
+      buildMerchantLocation(),
+      buildMerchantLocation(),
+    ];
+
+void checkUnnamed46(core.List<api.MerchantLocation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMerchantLocation(o[0]);
+  checkMerchantLocation(o[1]);
+}
+
+core.List<api.Message> buildUnnamed47() => [
       buildMessage(),
       buildMessage(),
     ];
 
-void checkUnnamed41(core.List<api.Message> o) {
+void checkUnnamed47(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
 }
 
-core.List<api.TextModuleData> buildUnnamed42() => [
+core.List<api.TextModuleData> buildUnnamed48() => [
       buildTextModuleData(),
       buildTextModuleData(),
     ];
 
-void checkUnnamed42(core.List<api.TextModuleData> o) {
+void checkUnnamed48(core.List<api.TextModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTextModuleData(o[0]);
   checkTextModuleData(o[1]);
 }
 
-core.List<api.ValueAddedModuleData> buildUnnamed43() => [
+core.List<api.ValueAddedModuleData> buildUnnamed49() => [
       buildValueAddedModuleData(),
       buildValueAddedModuleData(),
     ];
 
-void checkUnnamed43(core.List<api.ValueAddedModuleData> o) {
+void checkUnnamed49(core.List<api.ValueAddedModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValueAddedModuleData(o[0]);
   checkValueAddedModuleData(o[1]);
@@ -2683,11 +2761,12 @@ api.GenericObject buildGenericObject() {
     o.heroImage = buildImage();
     o.hexBackgroundColor = 'foo';
     o.id = 'foo';
-    o.imageModulesData = buildUnnamed39();
-    o.linkedObjectIds = buildUnnamed40();
+    o.imageModulesData = buildUnnamed44();
+    o.linkedObjectIds = buildUnnamed45();
     o.linksModuleData = buildLinksModuleData();
     o.logo = buildImage();
-    o.messages = buildUnnamed41();
+    o.merchantLocations = buildUnnamed46();
+    o.messages = buildUnnamed47();
     o.notifications = buildNotifications();
     o.passConstraints = buildPassConstraints();
     o.rotatingBarcode = buildRotatingBarcode();
@@ -2695,9 +2774,9 @@ api.GenericObject buildGenericObject() {
     o.smartTapRedemptionValue = 'foo';
     o.state = 'foo';
     o.subheader = buildLocalizedString();
-    o.textModulesData = buildUnnamed42();
+    o.textModulesData = buildUnnamed48();
     o.validTimeInterval = buildTimeInterval();
-    o.valueAddedModuleData = buildUnnamed43();
+    o.valueAddedModuleData = buildUnnamed49();
     o.wideLogo = buildImage();
   }
   buildCounterGenericObject--;
@@ -2730,11 +2809,12 @@ void checkGenericObject(api.GenericObject o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed39(o.imageModulesData!);
-    checkUnnamed40(o.linkedObjectIds!);
+    checkUnnamed44(o.imageModulesData!);
+    checkUnnamed45(o.linkedObjectIds!);
     checkLinksModuleData(o.linksModuleData!);
     checkImage(o.logo!);
-    checkUnnamed41(o.messages!);
+    checkUnnamed46(o.merchantLocations!);
+    checkUnnamed47(o.messages!);
     checkNotifications(o.notifications!);
     checkPassConstraints(o.passConstraints!);
     checkRotatingBarcode(o.rotatingBarcode!);
@@ -2748,9 +2828,9 @@ void checkGenericObject(api.GenericObject o) {
       unittest.equals('foo'),
     );
     checkLocalizedString(o.subheader!);
-    checkUnnamed42(o.textModulesData!);
+    checkUnnamed48(o.textModulesData!);
     checkTimeInterval(o.validTimeInterval!);
-    checkUnnamed43(o.valueAddedModuleData!);
+    checkUnnamed49(o.valueAddedModuleData!);
     checkImage(o.wideLogo!);
   }
   buildCounterGenericObject--;
@@ -2776,12 +2856,12 @@ void checkGenericObjectAddMessageResponse(
   buildCounterGenericObjectAddMessageResponse--;
 }
 
-core.List<api.GenericObject> buildUnnamed44() => [
+core.List<api.GenericObject> buildUnnamed50() => [
       buildGenericObject(),
       buildGenericObject(),
     ];
 
-void checkUnnamed44(core.List<api.GenericObject> o) {
+void checkUnnamed50(core.List<api.GenericObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGenericObject(o[0]);
   checkGenericObject(o[1]);
@@ -2793,7 +2873,7 @@ api.GenericObjectListResponse buildGenericObjectListResponse() {
   buildCounterGenericObjectListResponse++;
   if (buildCounterGenericObjectListResponse < 3) {
     o.pagination = buildPagination();
-    o.resources = buildUnnamed44();
+    o.resources = buildUnnamed50();
   }
   buildCounterGenericObjectListResponse--;
   return o;
@@ -2803,50 +2883,61 @@ void checkGenericObjectListResponse(api.GenericObjectListResponse o) {
   buildCounterGenericObjectListResponse++;
   if (buildCounterGenericObjectListResponse < 3) {
     checkPagination(o.pagination!);
-    checkUnnamed44(o.resources!);
+    checkUnnamed50(o.resources!);
   }
   buildCounterGenericObjectListResponse--;
 }
 
-core.List<api.ImageModuleData> buildUnnamed45() => [
+core.List<api.ImageModuleData> buildUnnamed51() => [
       buildImageModuleData(),
       buildImageModuleData(),
     ];
 
-void checkUnnamed45(core.List<api.ImageModuleData> o) {
+void checkUnnamed51(core.List<api.ImageModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImageModuleData(o[0]);
   checkImageModuleData(o[1]);
 }
 
-core.List<api.LatLongPoint> buildUnnamed46() => [
+core.List<api.LatLongPoint> buildUnnamed52() => [
       buildLatLongPoint(),
       buildLatLongPoint(),
     ];
 
-void checkUnnamed46(core.List<api.LatLongPoint> o) {
+void checkUnnamed52(core.List<api.LatLongPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLatLongPoint(o[0]);
   checkLatLongPoint(o[1]);
 }
 
-core.List<api.Message> buildUnnamed47() => [
+core.List<api.MerchantLocation> buildUnnamed53() => [
+      buildMerchantLocation(),
+      buildMerchantLocation(),
+    ];
+
+void checkUnnamed53(core.List<api.MerchantLocation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMerchantLocation(o[0]);
+  checkMerchantLocation(o[1]);
+}
+
+core.List<api.Message> buildUnnamed54() => [
       buildMessage(),
       buildMessage(),
     ];
 
-void checkUnnamed47(core.List<api.Message> o) {
+void checkUnnamed54(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
 }
 
-core.List<core.String> buildUnnamed48() => [
+core.List<core.String> buildUnnamed55() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed48(core.List<core.String> o) {
+void checkUnnamed55(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2858,23 +2949,23 @@ void checkUnnamed48(core.List<core.String> o) {
   );
 }
 
-core.List<api.TextModuleData> buildUnnamed49() => [
+core.List<api.TextModuleData> buildUnnamed56() => [
       buildTextModuleData(),
       buildTextModuleData(),
     ];
 
-void checkUnnamed49(core.List<api.TextModuleData> o) {
+void checkUnnamed56(core.List<api.TextModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTextModuleData(o[0]);
   checkTextModuleData(o[1]);
 }
 
-core.List<api.ValueAddedModuleData> buildUnnamed50() => [
+core.List<api.ValueAddedModuleData> buildUnnamed57() => [
       buildValueAddedModuleData(),
       buildValueAddedModuleData(),
     ];
 
-void checkUnnamed50(core.List<api.ValueAddedModuleData> o) {
+void checkUnnamed57(core.List<api.ValueAddedModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValueAddedModuleData(o[0]);
   checkValueAddedModuleData(o[1]);
@@ -2898,7 +2989,7 @@ api.GiftCardClass buildGiftCardClass() {
     o.hexBackgroundColor = 'foo';
     o.homepageUri = buildUri();
     o.id = 'foo';
-    o.imageModulesData = buildUnnamed45();
+    o.imageModulesData = buildUnnamed51();
     o.infoModuleData = buildInfoModuleData();
     o.issuerName = 'foo';
     o.kind = 'foo';
@@ -2908,19 +2999,20 @@ api.GiftCardClass buildGiftCardClass() {
     o.localizedIssuerName = buildLocalizedString();
     o.localizedMerchantName = buildLocalizedString();
     o.localizedPinLabel = buildLocalizedString();
-    o.locations = buildUnnamed46();
+    o.locations = buildUnnamed52();
+    o.merchantLocations = buildUnnamed53();
     o.merchantName = 'foo';
-    o.messages = buildUnnamed47();
+    o.messages = buildUnnamed54();
     o.multipleDevicesAndHoldersAllowedStatus = 'foo';
     o.notifyPreference = 'foo';
     o.pinLabel = 'foo';
     o.programLogo = buildImage();
-    o.redemptionIssuers = buildUnnamed48();
+    o.redemptionIssuers = buildUnnamed55();
     o.review = buildReview();
     o.reviewStatus = 'foo';
     o.securityAnimation = buildSecurityAnimation();
-    o.textModulesData = buildUnnamed49();
-    o.valueAddedModuleData = buildUnnamed50();
+    o.textModulesData = buildUnnamed56();
+    o.valueAddedModuleData = buildUnnamed57();
     o.version = 'foo';
     o.viewUnlockRequirement = 'foo';
     o.wideProgramLogo = buildImage();
@@ -2961,7 +3053,7 @@ void checkGiftCardClass(api.GiftCardClass o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed45(o.imageModulesData!);
+    checkUnnamed51(o.imageModulesData!);
     checkInfoModuleData(o.infoModuleData!);
     unittest.expect(
       o.issuerName!,
@@ -2977,12 +3069,13 @@ void checkGiftCardClass(api.GiftCardClass o) {
     checkLocalizedString(o.localizedIssuerName!);
     checkLocalizedString(o.localizedMerchantName!);
     checkLocalizedString(o.localizedPinLabel!);
-    checkUnnamed46(o.locations!);
+    checkUnnamed52(o.locations!);
+    checkUnnamed53(o.merchantLocations!);
     unittest.expect(
       o.merchantName!,
       unittest.equals('foo'),
     );
-    checkUnnamed47(o.messages!);
+    checkUnnamed54(o.messages!);
     unittest.expect(
       o.multipleDevicesAndHoldersAllowedStatus!,
       unittest.equals('foo'),
@@ -2996,15 +3089,15 @@ void checkGiftCardClass(api.GiftCardClass o) {
       unittest.equals('foo'),
     );
     checkImage(o.programLogo!);
-    checkUnnamed48(o.redemptionIssuers!);
+    checkUnnamed55(o.redemptionIssuers!);
     checkReview(o.review!);
     unittest.expect(
       o.reviewStatus!,
       unittest.equals('foo'),
     );
     checkSecurityAnimation(o.securityAnimation!);
-    checkUnnamed49(o.textModulesData!);
-    checkUnnamed50(o.valueAddedModuleData!);
+    checkUnnamed56(o.textModulesData!);
+    checkUnnamed57(o.valueAddedModuleData!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -3039,12 +3132,12 @@ void checkGiftCardClassAddMessageResponse(
   buildCounterGiftCardClassAddMessageResponse--;
 }
 
-core.List<api.GiftCardClass> buildUnnamed51() => [
+core.List<api.GiftCardClass> buildUnnamed58() => [
       buildGiftCardClass(),
       buildGiftCardClass(),
     ];
 
-void checkUnnamed51(core.List<api.GiftCardClass> o) {
+void checkUnnamed58(core.List<api.GiftCardClass> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGiftCardClass(o[0]);
   checkGiftCardClass(o[1]);
@@ -3056,7 +3149,7 @@ api.GiftCardClassListResponse buildGiftCardClassListResponse() {
   buildCounterGiftCardClassListResponse++;
   if (buildCounterGiftCardClassListResponse < 3) {
     o.pagination = buildPagination();
-    o.resources = buildUnnamed51();
+    o.resources = buildUnnamed58();
   }
   buildCounterGiftCardClassListResponse--;
   return o;
@@ -3066,28 +3159,28 @@ void checkGiftCardClassListResponse(api.GiftCardClassListResponse o) {
   buildCounterGiftCardClassListResponse++;
   if (buildCounterGiftCardClassListResponse < 3) {
     checkPagination(o.pagination!);
-    checkUnnamed51(o.resources!);
+    checkUnnamed58(o.resources!);
   }
   buildCounterGiftCardClassListResponse--;
 }
 
-core.List<api.ImageModuleData> buildUnnamed52() => [
+core.List<api.ImageModuleData> buildUnnamed59() => [
       buildImageModuleData(),
       buildImageModuleData(),
     ];
 
-void checkUnnamed52(core.List<api.ImageModuleData> o) {
+void checkUnnamed59(core.List<api.ImageModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImageModuleData(o[0]);
   checkImageModuleData(o[1]);
 }
 
-core.List<core.String> buildUnnamed53() => [
+core.List<core.String> buildUnnamed60() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed53(core.List<core.String> o) {
+void checkUnnamed60(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3099,45 +3192,56 @@ void checkUnnamed53(core.List<core.String> o) {
   );
 }
 
-core.List<api.LatLongPoint> buildUnnamed54() => [
+core.List<api.LatLongPoint> buildUnnamed61() => [
       buildLatLongPoint(),
       buildLatLongPoint(),
     ];
 
-void checkUnnamed54(core.List<api.LatLongPoint> o) {
+void checkUnnamed61(core.List<api.LatLongPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLatLongPoint(o[0]);
   checkLatLongPoint(o[1]);
 }
 
-core.List<api.Message> buildUnnamed55() => [
+core.List<api.MerchantLocation> buildUnnamed62() => [
+      buildMerchantLocation(),
+      buildMerchantLocation(),
+    ];
+
+void checkUnnamed62(core.List<api.MerchantLocation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMerchantLocation(o[0]);
+  checkMerchantLocation(o[1]);
+}
+
+core.List<api.Message> buildUnnamed63() => [
       buildMessage(),
       buildMessage(),
     ];
 
-void checkUnnamed55(core.List<api.Message> o) {
+void checkUnnamed63(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
 }
 
-core.List<api.TextModuleData> buildUnnamed56() => [
+core.List<api.TextModuleData> buildUnnamed64() => [
       buildTextModuleData(),
       buildTextModuleData(),
     ];
 
-void checkUnnamed56(core.List<api.TextModuleData> o) {
+void checkUnnamed64(core.List<api.TextModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTextModuleData(o[0]);
   checkTextModuleData(o[1]);
 }
 
-core.List<api.ValueAddedModuleData> buildUnnamed57() => [
+core.List<api.ValueAddedModuleData> buildUnnamed65() => [
       buildValueAddedModuleData(),
       buildValueAddedModuleData(),
     ];
 
-void checkUnnamed57(core.List<api.ValueAddedModuleData> o) {
+void checkUnnamed65(core.List<api.ValueAddedModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValueAddedModuleData(o[0]);
   checkValueAddedModuleData(o[1]);
@@ -3162,13 +3266,14 @@ api.GiftCardObject buildGiftCardObject() {
     o.hasUsers = true;
     o.heroImage = buildImage();
     o.id = 'foo';
-    o.imageModulesData = buildUnnamed52();
+    o.imageModulesData = buildUnnamed59();
     o.infoModuleData = buildInfoModuleData();
     o.kind = 'foo';
-    o.linkedObjectIds = buildUnnamed53();
+    o.linkedObjectIds = buildUnnamed60();
     o.linksModuleData = buildLinksModuleData();
-    o.locations = buildUnnamed54();
-    o.messages = buildUnnamed55();
+    o.locations = buildUnnamed61();
+    o.merchantLocations = buildUnnamed62();
+    o.messages = buildUnnamed63();
     o.notifyPreference = 'foo';
     o.passConstraints = buildPassConstraints();
     o.pin = 'foo';
@@ -3176,9 +3281,9 @@ api.GiftCardObject buildGiftCardObject() {
     o.saveRestrictions = buildSaveRestrictions();
     o.smartTapRedemptionValue = 'foo';
     o.state = 'foo';
-    o.textModulesData = buildUnnamed56();
+    o.textModulesData = buildUnnamed64();
     o.validTimeInterval = buildTimeInterval();
-    o.valueAddedModuleData = buildUnnamed57();
+    o.valueAddedModuleData = buildUnnamed65();
     o.version = 'foo';
   }
   buildCounterGiftCardObject--;
@@ -3214,16 +3319,17 @@ void checkGiftCardObject(api.GiftCardObject o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed52(o.imageModulesData!);
+    checkUnnamed59(o.imageModulesData!);
     checkInfoModuleData(o.infoModuleData!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed53(o.linkedObjectIds!);
+    checkUnnamed60(o.linkedObjectIds!);
     checkLinksModuleData(o.linksModuleData!);
-    checkUnnamed54(o.locations!);
-    checkUnnamed55(o.messages!);
+    checkUnnamed61(o.locations!);
+    checkUnnamed62(o.merchantLocations!);
+    checkUnnamed63(o.messages!);
     unittest.expect(
       o.notifyPreference!,
       unittest.equals('foo'),
@@ -3243,9 +3349,9 @@ void checkGiftCardObject(api.GiftCardObject o) {
       o.state!,
       unittest.equals('foo'),
     );
-    checkUnnamed56(o.textModulesData!);
+    checkUnnamed64(o.textModulesData!);
     checkTimeInterval(o.validTimeInterval!);
-    checkUnnamed57(o.valueAddedModuleData!);
+    checkUnnamed65(o.valueAddedModuleData!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -3274,12 +3380,12 @@ void checkGiftCardObjectAddMessageResponse(
   buildCounterGiftCardObjectAddMessageResponse--;
 }
 
-core.List<api.GiftCardObject> buildUnnamed58() => [
+core.List<api.GiftCardObject> buildUnnamed66() => [
       buildGiftCardObject(),
       buildGiftCardObject(),
     ];
 
-void checkUnnamed58(core.List<api.GiftCardObject> o) {
+void checkUnnamed66(core.List<api.GiftCardObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGiftCardObject(o[0]);
   checkGiftCardObject(o[1]);
@@ -3291,7 +3397,7 @@ api.GiftCardObjectListResponse buildGiftCardObjectListResponse() {
   buildCounterGiftCardObjectListResponse++;
   if (buildCounterGiftCardObjectListResponse < 3) {
     o.pagination = buildPagination();
-    o.resources = buildUnnamed58();
+    o.resources = buildUnnamed66();
   }
   buildCounterGiftCardObjectListResponse--;
   return o;
@@ -3301,7 +3407,7 @@ void checkGiftCardObjectListResponse(api.GiftCardObjectListResponse o) {
   buildCounterGiftCardObjectListResponse++;
   if (buildCounterGiftCardObjectListResponse < 3) {
     checkPagination(o.pagination!);
-    checkUnnamed58(o.resources!);
+    checkUnnamed66(o.resources!);
   }
   buildCounterGiftCardObjectListResponse--;
 }
@@ -3412,12 +3518,12 @@ void checkImageUri(api.ImageUri o) {
   buildCounterImageUri--;
 }
 
-core.List<api.LabelValueRow> buildUnnamed59() => [
+core.List<api.LabelValueRow> buildUnnamed67() => [
       buildLabelValueRow(),
       buildLabelValueRow(),
     ];
 
-void checkUnnamed59(core.List<api.LabelValueRow> o) {
+void checkUnnamed67(core.List<api.LabelValueRow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLabelValueRow(o[0]);
   checkLabelValueRow(o[1]);
@@ -3428,7 +3534,7 @@ api.InfoModuleData buildInfoModuleData() {
   final o = api.InfoModuleData();
   buildCounterInfoModuleData++;
   if (buildCounterInfoModuleData < 3) {
-    o.labelValueRows = buildUnnamed59();
+    o.labelValueRows = buildUnnamed67();
     o.showLastUpdateTime = true;
   }
   buildCounterInfoModuleData--;
@@ -3438,7 +3544,7 @@ api.InfoModuleData buildInfoModuleData() {
 void checkInfoModuleData(api.InfoModuleData o) {
   buildCounterInfoModuleData++;
   if (buildCounterInfoModuleData < 3) {
-    checkUnnamed59(o.labelValueRows!);
+    checkUnnamed67(o.labelValueRows!);
     unittest.expect(o.showLastUpdateTime!, unittest.isTrue);
   }
   buildCounterInfoModuleData--;
@@ -3482,12 +3588,12 @@ void checkIssuer(api.Issuer o) {
   buildCounterIssuer--;
 }
 
-core.List<core.String> buildUnnamed60() => [
+core.List<core.String> buildUnnamed68() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed60(core.List<core.String> o) {
+void checkUnnamed68(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3504,7 +3610,7 @@ api.IssuerContactInfo buildIssuerContactInfo() {
   final o = api.IssuerContactInfo();
   buildCounterIssuerContactInfo++;
   if (buildCounterIssuerContactInfo < 3) {
-    o.alertsEmails = buildUnnamed60();
+    o.alertsEmails = buildUnnamed68();
     o.email = 'foo';
     o.name = 'foo';
     o.phone = 'foo';
@@ -3516,7 +3622,7 @@ api.IssuerContactInfo buildIssuerContactInfo() {
 void checkIssuerContactInfo(api.IssuerContactInfo o) {
   buildCounterIssuerContactInfo++;
   if (buildCounterIssuerContactInfo < 3) {
-    checkUnnamed60(o.alertsEmails!);
+    checkUnnamed68(o.alertsEmails!);
     unittest.expect(
       o.email!,
       unittest.equals('foo'),
@@ -3533,12 +3639,12 @@ void checkIssuerContactInfo(api.IssuerContactInfo o) {
   buildCounterIssuerContactInfo--;
 }
 
-core.List<api.Issuer> buildUnnamed61() => [
+core.List<api.Issuer> buildUnnamed69() => [
       buildIssuer(),
       buildIssuer(),
     ];
 
-void checkUnnamed61(core.List<api.Issuer> o) {
+void checkUnnamed69(core.List<api.Issuer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIssuer(o[0]);
   checkIssuer(o[1]);
@@ -3549,7 +3655,7 @@ api.IssuerListResponse buildIssuerListResponse() {
   final o = api.IssuerListResponse();
   buildCounterIssuerListResponse++;
   if (buildCounterIssuerListResponse < 3) {
-    o.resources = buildUnnamed61();
+    o.resources = buildUnnamed69();
   }
   buildCounterIssuerListResponse--;
   return o;
@@ -3558,7 +3664,7 @@ api.IssuerListResponse buildIssuerListResponse() {
 void checkIssuerListResponse(api.IssuerListResponse o) {
   buildCounterIssuerListResponse++;
   if (buildCounterIssuerListResponse < 3) {
-    checkUnnamed61(o.resources!);
+    checkUnnamed69(o.resources!);
   }
   buildCounterIssuerListResponse--;
 }
@@ -3674,12 +3780,12 @@ void checkLabelValue(api.LabelValue o) {
   buildCounterLabelValue--;
 }
 
-core.List<api.LabelValue> buildUnnamed62() => [
+core.List<api.LabelValue> buildUnnamed70() => [
       buildLabelValue(),
       buildLabelValue(),
     ];
 
-void checkUnnamed62(core.List<api.LabelValue> o) {
+void checkUnnamed70(core.List<api.LabelValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLabelValue(o[0]);
   checkLabelValue(o[1]);
@@ -3690,7 +3796,7 @@ api.LabelValueRow buildLabelValueRow() {
   final o = api.LabelValueRow();
   buildCounterLabelValueRow++;
   if (buildCounterLabelValueRow < 3) {
-    o.columns = buildUnnamed62();
+    o.columns = buildUnnamed70();
   }
   buildCounterLabelValueRow--;
   return o;
@@ -3699,7 +3805,7 @@ api.LabelValueRow buildLabelValueRow() {
 void checkLabelValueRow(api.LabelValueRow o) {
   buildCounterLabelValueRow++;
   if (buildCounterLabelValueRow < 3) {
-    checkUnnamed62(o.columns!);
+    checkUnnamed70(o.columns!);
   }
   buildCounterLabelValueRow--;
 }
@@ -3736,12 +3842,12 @@ void checkLatLongPoint(api.LatLongPoint o) {
   buildCounterLatLongPoint--;
 }
 
-core.List<api.Uri> buildUnnamed63() => [
+core.List<api.Uri> buildUnnamed71() => [
       buildUri(),
       buildUri(),
     ];
 
-void checkUnnamed63(core.List<api.Uri> o) {
+void checkUnnamed71(core.List<api.Uri> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUri(o[0]);
   checkUri(o[1]);
@@ -3752,7 +3858,7 @@ api.LinksModuleData buildLinksModuleData() {
   final o = api.LinksModuleData();
   buildCounterLinksModuleData++;
   if (buildCounterLinksModuleData < 3) {
-    o.uris = buildUnnamed63();
+    o.uris = buildUnnamed71();
   }
   buildCounterLinksModuleData--;
   return o;
@@ -3761,7 +3867,7 @@ api.LinksModuleData buildLinksModuleData() {
 void checkLinksModuleData(api.LinksModuleData o) {
   buildCounterLinksModuleData++;
   if (buildCounterLinksModuleData < 3) {
-    checkUnnamed63(o.uris!);
+    checkUnnamed71(o.uris!);
   }
   buildCounterLinksModuleData--;
 }
@@ -3789,12 +3895,12 @@ void checkListTemplateOverride(api.ListTemplateOverride o) {
   buildCounterListTemplateOverride--;
 }
 
-core.List<api.TranslatedString> buildUnnamed64() => [
+core.List<api.TranslatedString> buildUnnamed72() => [
       buildTranslatedString(),
       buildTranslatedString(),
     ];
 
-void checkUnnamed64(core.List<api.TranslatedString> o) {
+void checkUnnamed72(core.List<api.TranslatedString> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTranslatedString(o[0]);
   checkTranslatedString(o[1]);
@@ -3807,7 +3913,7 @@ api.LocalizedString buildLocalizedString() {
   if (buildCounterLocalizedString < 3) {
     o.defaultValue = buildTranslatedString();
     o.kind = 'foo';
-    o.translatedValues = buildUnnamed64();
+    o.translatedValues = buildUnnamed72();
   }
   buildCounterLocalizedString--;
   return o;
@@ -3821,50 +3927,61 @@ void checkLocalizedString(api.LocalizedString o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed64(o.translatedValues!);
+    checkUnnamed72(o.translatedValues!);
   }
   buildCounterLocalizedString--;
 }
 
-core.List<api.ImageModuleData> buildUnnamed65() => [
+core.List<api.ImageModuleData> buildUnnamed73() => [
       buildImageModuleData(),
       buildImageModuleData(),
     ];
 
-void checkUnnamed65(core.List<api.ImageModuleData> o) {
+void checkUnnamed73(core.List<api.ImageModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImageModuleData(o[0]);
   checkImageModuleData(o[1]);
 }
 
-core.List<api.LatLongPoint> buildUnnamed66() => [
+core.List<api.LatLongPoint> buildUnnamed74() => [
       buildLatLongPoint(),
       buildLatLongPoint(),
     ];
 
-void checkUnnamed66(core.List<api.LatLongPoint> o) {
+void checkUnnamed74(core.List<api.LatLongPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLatLongPoint(o[0]);
   checkLatLongPoint(o[1]);
 }
 
-core.List<api.Message> buildUnnamed67() => [
+core.List<api.MerchantLocation> buildUnnamed75() => [
+      buildMerchantLocation(),
+      buildMerchantLocation(),
+    ];
+
+void checkUnnamed75(core.List<api.MerchantLocation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMerchantLocation(o[0]);
+  checkMerchantLocation(o[1]);
+}
+
+core.List<api.Message> buildUnnamed76() => [
       buildMessage(),
       buildMessage(),
     ];
 
-void checkUnnamed67(core.List<api.Message> o) {
+void checkUnnamed76(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
 }
 
-core.List<core.String> buildUnnamed68() => [
+core.List<core.String> buildUnnamed77() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed68(core.List<core.String> o) {
+void checkUnnamed77(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3876,23 +3993,23 @@ void checkUnnamed68(core.List<core.String> o) {
   );
 }
 
-core.List<api.TextModuleData> buildUnnamed69() => [
+core.List<api.TextModuleData> buildUnnamed78() => [
       buildTextModuleData(),
       buildTextModuleData(),
     ];
 
-void checkUnnamed69(core.List<api.TextModuleData> o) {
+void checkUnnamed78(core.List<api.TextModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTextModuleData(o[0]);
   checkTextModuleData(o[1]);
 }
 
-core.List<api.ValueAddedModuleData> buildUnnamed70() => [
+core.List<api.ValueAddedModuleData> buildUnnamed79() => [
       buildValueAddedModuleData(),
       buildValueAddedModuleData(),
     ];
 
-void checkUnnamed70(core.List<api.ValueAddedModuleData> o) {
+void checkUnnamed79(core.List<api.ValueAddedModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValueAddedModuleData(o[0]);
   checkValueAddedModuleData(o[1]);
@@ -3916,7 +4033,7 @@ api.LoyaltyClass buildLoyaltyClass() {
     o.hexBackgroundColor = 'foo';
     o.homepageUri = buildUri();
     o.id = 'foo';
-    o.imageModulesData = buildUnnamed65();
+    o.imageModulesData = buildUnnamed73();
     o.infoModuleData = buildInfoModuleData();
     o.issuerName = 'foo';
     o.kind = 'foo';
@@ -3929,13 +4046,14 @@ api.LoyaltyClass buildLoyaltyClass() {
     o.localizedRewardsTierLabel = buildLocalizedString();
     o.localizedSecondaryRewardsTier = buildLocalizedString();
     o.localizedSecondaryRewardsTierLabel = buildLocalizedString();
-    o.locations = buildUnnamed66();
-    o.messages = buildUnnamed67();
+    o.locations = buildUnnamed74();
+    o.merchantLocations = buildUnnamed75();
+    o.messages = buildUnnamed76();
     o.multipleDevicesAndHoldersAllowedStatus = 'foo';
     o.notifyPreference = 'foo';
     o.programLogo = buildImage();
     o.programName = 'foo';
-    o.redemptionIssuers = buildUnnamed68();
+    o.redemptionIssuers = buildUnnamed77();
     o.review = buildReview();
     o.reviewStatus = 'foo';
     o.rewardsTier = 'foo';
@@ -3943,8 +4061,8 @@ api.LoyaltyClass buildLoyaltyClass() {
     o.secondaryRewardsTier = 'foo';
     o.secondaryRewardsTierLabel = 'foo';
     o.securityAnimation = buildSecurityAnimation();
-    o.textModulesData = buildUnnamed69();
-    o.valueAddedModuleData = buildUnnamed70();
+    o.textModulesData = buildUnnamed78();
+    o.valueAddedModuleData = buildUnnamed79();
     o.version = 'foo';
     o.viewUnlockRequirement = 'foo';
     o.wideProgramLogo = buildImage();
@@ -3985,7 +4103,7 @@ void checkLoyaltyClass(api.LoyaltyClass o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed65(o.imageModulesData!);
+    checkUnnamed73(o.imageModulesData!);
     checkInfoModuleData(o.infoModuleData!);
     unittest.expect(
       o.issuerName!,
@@ -4004,8 +4122,9 @@ void checkLoyaltyClass(api.LoyaltyClass o) {
     checkLocalizedString(o.localizedRewardsTierLabel!);
     checkLocalizedString(o.localizedSecondaryRewardsTier!);
     checkLocalizedString(o.localizedSecondaryRewardsTierLabel!);
-    checkUnnamed66(o.locations!);
-    checkUnnamed67(o.messages!);
+    checkUnnamed74(o.locations!);
+    checkUnnamed75(o.merchantLocations!);
+    checkUnnamed76(o.messages!);
     unittest.expect(
       o.multipleDevicesAndHoldersAllowedStatus!,
       unittest.equals('foo'),
@@ -4019,7 +4138,7 @@ void checkLoyaltyClass(api.LoyaltyClass o) {
       o.programName!,
       unittest.equals('foo'),
     );
-    checkUnnamed68(o.redemptionIssuers!);
+    checkUnnamed77(o.redemptionIssuers!);
     checkReview(o.review!);
     unittest.expect(
       o.reviewStatus!,
@@ -4042,8 +4161,8 @@ void checkLoyaltyClass(api.LoyaltyClass o) {
       unittest.equals('foo'),
     );
     checkSecurityAnimation(o.securityAnimation!);
-    checkUnnamed69(o.textModulesData!);
-    checkUnnamed70(o.valueAddedModuleData!);
+    checkUnnamed78(o.textModulesData!);
+    checkUnnamed79(o.valueAddedModuleData!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -4077,12 +4196,12 @@ void checkLoyaltyClassAddMessageResponse(api.LoyaltyClassAddMessageResponse o) {
   buildCounterLoyaltyClassAddMessageResponse--;
 }
 
-core.List<api.LoyaltyClass> buildUnnamed71() => [
+core.List<api.LoyaltyClass> buildUnnamed80() => [
       buildLoyaltyClass(),
       buildLoyaltyClass(),
     ];
 
-void checkUnnamed71(core.List<api.LoyaltyClass> o) {
+void checkUnnamed80(core.List<api.LoyaltyClass> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLoyaltyClass(o[0]);
   checkLoyaltyClass(o[1]);
@@ -4094,7 +4213,7 @@ api.LoyaltyClassListResponse buildLoyaltyClassListResponse() {
   buildCounterLoyaltyClassListResponse++;
   if (buildCounterLoyaltyClassListResponse < 3) {
     o.pagination = buildPagination();
-    o.resources = buildUnnamed71();
+    o.resources = buildUnnamed80();
   }
   buildCounterLoyaltyClassListResponse--;
   return o;
@@ -4104,28 +4223,28 @@ void checkLoyaltyClassListResponse(api.LoyaltyClassListResponse o) {
   buildCounterLoyaltyClassListResponse++;
   if (buildCounterLoyaltyClassListResponse < 3) {
     checkPagination(o.pagination!);
-    checkUnnamed71(o.resources!);
+    checkUnnamed80(o.resources!);
   }
   buildCounterLoyaltyClassListResponse--;
 }
 
-core.List<api.ImageModuleData> buildUnnamed72() => [
+core.List<api.ImageModuleData> buildUnnamed81() => [
       buildImageModuleData(),
       buildImageModuleData(),
     ];
 
-void checkUnnamed72(core.List<api.ImageModuleData> o) {
+void checkUnnamed81(core.List<api.ImageModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImageModuleData(o[0]);
   checkImageModuleData(o[1]);
 }
 
-core.List<core.String> buildUnnamed73() => [
+core.List<core.String> buildUnnamed82() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed73(core.List<core.String> o) {
+void checkUnnamed82(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4137,12 +4256,12 @@ void checkUnnamed73(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed74() => [
+core.List<core.String> buildUnnamed83() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed74(core.List<core.String> o) {
+void checkUnnamed83(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4154,45 +4273,56 @@ void checkUnnamed74(core.List<core.String> o) {
   );
 }
 
-core.List<api.LatLongPoint> buildUnnamed75() => [
+core.List<api.LatLongPoint> buildUnnamed84() => [
       buildLatLongPoint(),
       buildLatLongPoint(),
     ];
 
-void checkUnnamed75(core.List<api.LatLongPoint> o) {
+void checkUnnamed84(core.List<api.LatLongPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLatLongPoint(o[0]);
   checkLatLongPoint(o[1]);
 }
 
-core.List<api.Message> buildUnnamed76() => [
+core.List<api.MerchantLocation> buildUnnamed85() => [
+      buildMerchantLocation(),
+      buildMerchantLocation(),
+    ];
+
+void checkUnnamed85(core.List<api.MerchantLocation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMerchantLocation(o[0]);
+  checkMerchantLocation(o[1]);
+}
+
+core.List<api.Message> buildUnnamed86() => [
       buildMessage(),
       buildMessage(),
     ];
 
-void checkUnnamed76(core.List<api.Message> o) {
+void checkUnnamed86(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
 }
 
-core.List<api.TextModuleData> buildUnnamed77() => [
+core.List<api.TextModuleData> buildUnnamed87() => [
       buildTextModuleData(),
       buildTextModuleData(),
     ];
 
-void checkUnnamed77(core.List<api.TextModuleData> o) {
+void checkUnnamed87(core.List<api.TextModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTextModuleData(o[0]);
   checkTextModuleData(o[1]);
 }
 
-core.List<api.ValueAddedModuleData> buildUnnamed78() => [
+core.List<api.ValueAddedModuleData> buildUnnamed88() => [
       buildValueAddedModuleData(),
       buildValueAddedModuleData(),
     ];
 
-void checkUnnamed78(core.List<api.ValueAddedModuleData> o) {
+void checkUnnamed88(core.List<api.ValueAddedModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValueAddedModuleData(o[0]);
   checkValueAddedModuleData(o[1]);
@@ -4215,15 +4345,16 @@ api.LoyaltyObject buildLoyaltyObject() {
     o.hasUsers = true;
     o.heroImage = buildImage();
     o.id = 'foo';
-    o.imageModulesData = buildUnnamed72();
+    o.imageModulesData = buildUnnamed81();
     o.infoModuleData = buildInfoModuleData();
     o.kind = 'foo';
-    o.linkedObjectIds = buildUnnamed73();
-    o.linkedOfferIds = buildUnnamed74();
+    o.linkedObjectIds = buildUnnamed82();
+    o.linkedOfferIds = buildUnnamed83();
     o.linksModuleData = buildLinksModuleData();
-    o.locations = buildUnnamed75();
+    o.locations = buildUnnamed84();
     o.loyaltyPoints = buildLoyaltyPoints();
-    o.messages = buildUnnamed76();
+    o.merchantLocations = buildUnnamed85();
+    o.messages = buildUnnamed86();
     o.notifyPreference = 'foo';
     o.passConstraints = buildPassConstraints();
     o.rotatingBarcode = buildRotatingBarcode();
@@ -4231,9 +4362,9 @@ api.LoyaltyObject buildLoyaltyObject() {
     o.secondaryLoyaltyPoints = buildLoyaltyPoints();
     o.smartTapRedemptionValue = 'foo';
     o.state = 'foo';
-    o.textModulesData = buildUnnamed77();
+    o.textModulesData = buildUnnamed87();
     o.validTimeInterval = buildTimeInterval();
-    o.valueAddedModuleData = buildUnnamed78();
+    o.valueAddedModuleData = buildUnnamed88();
     o.version = 'foo';
   }
   buildCounterLoyaltyObject--;
@@ -4267,18 +4398,19 @@ void checkLoyaltyObject(api.LoyaltyObject o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed72(o.imageModulesData!);
+    checkUnnamed81(o.imageModulesData!);
     checkInfoModuleData(o.infoModuleData!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed73(o.linkedObjectIds!);
-    checkUnnamed74(o.linkedOfferIds!);
+    checkUnnamed82(o.linkedObjectIds!);
+    checkUnnamed83(o.linkedOfferIds!);
     checkLinksModuleData(o.linksModuleData!);
-    checkUnnamed75(o.locations!);
+    checkUnnamed84(o.locations!);
     checkLoyaltyPoints(o.loyaltyPoints!);
-    checkUnnamed76(o.messages!);
+    checkUnnamed85(o.merchantLocations!);
+    checkUnnamed86(o.messages!);
     unittest.expect(
       o.notifyPreference!,
       unittest.equals('foo'),
@@ -4295,9 +4427,9 @@ void checkLoyaltyObject(api.LoyaltyObject o) {
       o.state!,
       unittest.equals('foo'),
     );
-    checkUnnamed77(o.textModulesData!);
+    checkUnnamed87(o.textModulesData!);
     checkTimeInterval(o.validTimeInterval!);
-    checkUnnamed78(o.valueAddedModuleData!);
+    checkUnnamed88(o.valueAddedModuleData!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -4326,12 +4458,12 @@ void checkLoyaltyObjectAddMessageResponse(
   buildCounterLoyaltyObjectAddMessageResponse--;
 }
 
-core.List<api.LoyaltyObject> buildUnnamed79() => [
+core.List<api.LoyaltyObject> buildUnnamed89() => [
       buildLoyaltyObject(),
       buildLoyaltyObject(),
     ];
 
-void checkUnnamed79(core.List<api.LoyaltyObject> o) {
+void checkUnnamed89(core.List<api.LoyaltyObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLoyaltyObject(o[0]);
   checkLoyaltyObject(o[1]);
@@ -4343,7 +4475,7 @@ api.LoyaltyObjectListResponse buildLoyaltyObjectListResponse() {
   buildCounterLoyaltyObjectListResponse++;
   if (buildCounterLoyaltyObjectListResponse < 3) {
     o.pagination = buildPagination();
-    o.resources = buildUnnamed79();
+    o.resources = buildUnnamed89();
   }
   buildCounterLoyaltyObjectListResponse--;
   return o;
@@ -4353,7 +4485,7 @@ void checkLoyaltyObjectListResponse(api.LoyaltyObjectListResponse o) {
   buildCounterLoyaltyObjectListResponse++;
   if (buildCounterLoyaltyObjectListResponse < 3) {
     checkPagination(o.pagination!);
-    checkUnnamed79(o.resources!);
+    checkUnnamed89(o.resources!);
   }
   buildCounterLoyaltyObjectListResponse--;
 }
@@ -4418,12 +4550,12 @@ void checkLoyaltyPointsBalance(api.LoyaltyPointsBalance o) {
   buildCounterLoyaltyPointsBalance--;
 }
 
-core.List<api.CompositeMedia> buildUnnamed80() => [
+core.List<api.CompositeMedia> buildUnnamed90() => [
       buildCompositeMedia(),
       buildCompositeMedia(),
     ];
 
-void checkUnnamed80(core.List<api.CompositeMedia> o) {
+void checkUnnamed90(core.List<api.CompositeMedia> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCompositeMedia(o[0]);
   checkCompositeMedia(o[1]);
@@ -4438,7 +4570,7 @@ api.Media buildMedia() {
     o.bigstoreObjectRef = 'foo';
     o.blobRef = 'foo';
     o.blobstore2Info = buildBlobstore2Info();
-    o.compositeMedia = buildUnnamed80();
+    o.compositeMedia = buildUnnamed90();
     o.contentType = 'foo';
     o.contentTypeInfo = buildContentTypeInfo();
     o.cosmoBinaryReference = 'foo';
@@ -4485,7 +4617,7 @@ void checkMedia(api.Media o) {
       unittest.equals('foo'),
     );
     checkBlobstore2Info(o.blobstore2Info!);
-    checkUnnamed80(o.compositeMedia!);
+    checkUnnamed90(o.compositeMedia!);
     unittest.expect(
       o.contentType!,
       unittest.equals('foo'),
@@ -4619,6 +4751,33 @@ void checkMediaRequestInfo(api.MediaRequestInfo o) {
   buildCounterMediaRequestInfo--;
 }
 
+core.int buildCounterMerchantLocation = 0;
+api.MerchantLocation buildMerchantLocation() {
+  final o = api.MerchantLocation();
+  buildCounterMerchantLocation++;
+  if (buildCounterMerchantLocation < 3) {
+    o.latitude = 42.0;
+    o.longitude = 42.0;
+  }
+  buildCounterMerchantLocation--;
+  return o;
+}
+
+void checkMerchantLocation(api.MerchantLocation o) {
+  buildCounterMerchantLocation++;
+  if (buildCounterMerchantLocation < 3) {
+    unittest.expect(
+      o.latitude!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.longitude!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterMerchantLocation--;
+}
+
 core.int buildCounterMessage = 0;
 api.Message buildMessage() {
   final o = api.Message();
@@ -4667,12 +4826,12 @@ void checkMessage(api.Message o) {
   buildCounterMessage--;
 }
 
-core.List<core.String> buildUnnamed81() => [
+core.List<core.String> buildUnnamed91() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed81(core.List<core.String> o) {
+void checkUnnamed91(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4684,12 +4843,12 @@ void checkUnnamed81(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed82() => [
+core.List<core.String> buildUnnamed92() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed82(core.List<core.String> o) {
+void checkUnnamed92(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4706,8 +4865,8 @@ api.ModifyLinkedOfferObjects buildModifyLinkedOfferObjects() {
   final o = api.ModifyLinkedOfferObjects();
   buildCounterModifyLinkedOfferObjects++;
   if (buildCounterModifyLinkedOfferObjects < 3) {
-    o.addLinkedOfferObjectIds = buildUnnamed81();
-    o.removeLinkedOfferObjectIds = buildUnnamed82();
+    o.addLinkedOfferObjectIds = buildUnnamed91();
+    o.removeLinkedOfferObjectIds = buildUnnamed92();
   }
   buildCounterModifyLinkedOfferObjects--;
   return o;
@@ -4716,8 +4875,8 @@ api.ModifyLinkedOfferObjects buildModifyLinkedOfferObjects() {
 void checkModifyLinkedOfferObjects(api.ModifyLinkedOfferObjects o) {
   buildCounterModifyLinkedOfferObjects++;
   if (buildCounterModifyLinkedOfferObjects < 3) {
-    checkUnnamed81(o.addLinkedOfferObjectIds!);
-    checkUnnamed82(o.removeLinkedOfferObjectIds!);
+    checkUnnamed91(o.addLinkedOfferObjectIds!);
+    checkUnnamed92(o.removeLinkedOfferObjectIds!);
   }
   buildCounterModifyLinkedOfferObjects--;
 }
@@ -4846,45 +5005,56 @@ void checkObjectId(api.ObjectId o) {
   buildCounterObjectId--;
 }
 
-core.List<api.ImageModuleData> buildUnnamed83() => [
+core.List<api.ImageModuleData> buildUnnamed93() => [
       buildImageModuleData(),
       buildImageModuleData(),
     ];
 
-void checkUnnamed83(core.List<api.ImageModuleData> o) {
+void checkUnnamed93(core.List<api.ImageModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImageModuleData(o[0]);
   checkImageModuleData(o[1]);
 }
 
-core.List<api.LatLongPoint> buildUnnamed84() => [
+core.List<api.LatLongPoint> buildUnnamed94() => [
       buildLatLongPoint(),
       buildLatLongPoint(),
     ];
 
-void checkUnnamed84(core.List<api.LatLongPoint> o) {
+void checkUnnamed94(core.List<api.LatLongPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLatLongPoint(o[0]);
   checkLatLongPoint(o[1]);
 }
 
-core.List<api.Message> buildUnnamed85() => [
+core.List<api.MerchantLocation> buildUnnamed95() => [
+      buildMerchantLocation(),
+      buildMerchantLocation(),
+    ];
+
+void checkUnnamed95(core.List<api.MerchantLocation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMerchantLocation(o[0]);
+  checkMerchantLocation(o[1]);
+}
+
+core.List<api.Message> buildUnnamed96() => [
       buildMessage(),
       buildMessage(),
     ];
 
-void checkUnnamed85(core.List<api.Message> o) {
+void checkUnnamed96(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
 }
 
-core.List<core.String> buildUnnamed86() => [
+core.List<core.String> buildUnnamed97() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed86(core.List<core.String> o) {
+void checkUnnamed97(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4896,23 +5066,23 @@ void checkUnnamed86(core.List<core.String> o) {
   );
 }
 
-core.List<api.TextModuleData> buildUnnamed87() => [
+core.List<api.TextModuleData> buildUnnamed98() => [
       buildTextModuleData(),
       buildTextModuleData(),
     ];
 
-void checkUnnamed87(core.List<api.TextModuleData> o) {
+void checkUnnamed98(core.List<api.TextModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTextModuleData(o[0]);
   checkTextModuleData(o[1]);
 }
 
-core.List<api.ValueAddedModuleData> buildUnnamed88() => [
+core.List<api.ValueAddedModuleData> buildUnnamed99() => [
       buildValueAddedModuleData(),
       buildValueAddedModuleData(),
     ];
 
-void checkUnnamed88(core.List<api.ValueAddedModuleData> o) {
+void checkUnnamed99(core.List<api.ValueAddedModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValueAddedModuleData(o[0]);
   checkValueAddedModuleData(o[1]);
@@ -4936,7 +5106,7 @@ api.OfferClass buildOfferClass() {
     o.hexBackgroundColor = 'foo';
     o.homepageUri = buildUri();
     o.id = 'foo';
-    o.imageModulesData = buildUnnamed83();
+    o.imageModulesData = buildUnnamed93();
     o.infoModuleData = buildInfoModuleData();
     o.issuerName = 'foo';
     o.kind = 'foo';
@@ -4947,21 +5117,22 @@ api.OfferClass buildOfferClass() {
     o.localizedProvider = buildLocalizedString();
     o.localizedShortTitle = buildLocalizedString();
     o.localizedTitle = buildLocalizedString();
-    o.locations = buildUnnamed84();
-    o.messages = buildUnnamed85();
+    o.locations = buildUnnamed94();
+    o.merchantLocations = buildUnnamed95();
+    o.messages = buildUnnamed96();
     o.multipleDevicesAndHoldersAllowedStatus = 'foo';
     o.notifyPreference = 'foo';
     o.provider = 'foo';
     o.redemptionChannel = 'foo';
-    o.redemptionIssuers = buildUnnamed86();
+    o.redemptionIssuers = buildUnnamed97();
     o.review = buildReview();
     o.reviewStatus = 'foo';
     o.securityAnimation = buildSecurityAnimation();
     o.shortTitle = 'foo';
-    o.textModulesData = buildUnnamed87();
+    o.textModulesData = buildUnnamed98();
     o.title = 'foo';
     o.titleImage = buildImage();
-    o.valueAddedModuleData = buildUnnamed88();
+    o.valueAddedModuleData = buildUnnamed99();
     o.version = 'foo';
     o.viewUnlockRequirement = 'foo';
     o.wideTitleImage = buildImage();
@@ -5002,7 +5173,7 @@ void checkOfferClass(api.OfferClass o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed83(o.imageModulesData!);
+    checkUnnamed93(o.imageModulesData!);
     checkInfoModuleData(o.infoModuleData!);
     unittest.expect(
       o.issuerName!,
@@ -5019,8 +5190,9 @@ void checkOfferClass(api.OfferClass o) {
     checkLocalizedString(o.localizedProvider!);
     checkLocalizedString(o.localizedShortTitle!);
     checkLocalizedString(o.localizedTitle!);
-    checkUnnamed84(o.locations!);
-    checkUnnamed85(o.messages!);
+    checkUnnamed94(o.locations!);
+    checkUnnamed95(o.merchantLocations!);
+    checkUnnamed96(o.messages!);
     unittest.expect(
       o.multipleDevicesAndHoldersAllowedStatus!,
       unittest.equals('foo'),
@@ -5037,7 +5209,7 @@ void checkOfferClass(api.OfferClass o) {
       o.redemptionChannel!,
       unittest.equals('foo'),
     );
-    checkUnnamed86(o.redemptionIssuers!);
+    checkUnnamed97(o.redemptionIssuers!);
     checkReview(o.review!);
     unittest.expect(
       o.reviewStatus!,
@@ -5048,13 +5220,13 @@ void checkOfferClass(api.OfferClass o) {
       o.shortTitle!,
       unittest.equals('foo'),
     );
-    checkUnnamed87(o.textModulesData!);
+    checkUnnamed98(o.textModulesData!);
     unittest.expect(
       o.title!,
       unittest.equals('foo'),
     );
     checkImage(o.titleImage!);
-    checkUnnamed88(o.valueAddedModuleData!);
+    checkUnnamed99(o.valueAddedModuleData!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -5088,12 +5260,12 @@ void checkOfferClassAddMessageResponse(api.OfferClassAddMessageResponse o) {
   buildCounterOfferClassAddMessageResponse--;
 }
 
-core.List<api.OfferClass> buildUnnamed89() => [
+core.List<api.OfferClass> buildUnnamed100() => [
       buildOfferClass(),
       buildOfferClass(),
     ];
 
-void checkUnnamed89(core.List<api.OfferClass> o) {
+void checkUnnamed100(core.List<api.OfferClass> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOfferClass(o[0]);
   checkOfferClass(o[1]);
@@ -5105,7 +5277,7 @@ api.OfferClassListResponse buildOfferClassListResponse() {
   buildCounterOfferClassListResponse++;
   if (buildCounterOfferClassListResponse < 3) {
     o.pagination = buildPagination();
-    o.resources = buildUnnamed89();
+    o.resources = buildUnnamed100();
   }
   buildCounterOfferClassListResponse--;
   return o;
@@ -5115,28 +5287,28 @@ void checkOfferClassListResponse(api.OfferClassListResponse o) {
   buildCounterOfferClassListResponse++;
   if (buildCounterOfferClassListResponse < 3) {
     checkPagination(o.pagination!);
-    checkUnnamed89(o.resources!);
+    checkUnnamed100(o.resources!);
   }
   buildCounterOfferClassListResponse--;
 }
 
-core.List<api.ImageModuleData> buildUnnamed90() => [
+core.List<api.ImageModuleData> buildUnnamed101() => [
       buildImageModuleData(),
       buildImageModuleData(),
     ];
 
-void checkUnnamed90(core.List<api.ImageModuleData> o) {
+void checkUnnamed101(core.List<api.ImageModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImageModuleData(o[0]);
   checkImageModuleData(o[1]);
 }
 
-core.List<core.String> buildUnnamed91() => [
+core.List<core.String> buildUnnamed102() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed91(core.List<core.String> o) {
+void checkUnnamed102(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5148,45 +5320,56 @@ void checkUnnamed91(core.List<core.String> o) {
   );
 }
 
-core.List<api.LatLongPoint> buildUnnamed92() => [
+core.List<api.LatLongPoint> buildUnnamed103() => [
       buildLatLongPoint(),
       buildLatLongPoint(),
     ];
 
-void checkUnnamed92(core.List<api.LatLongPoint> o) {
+void checkUnnamed103(core.List<api.LatLongPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLatLongPoint(o[0]);
   checkLatLongPoint(o[1]);
 }
 
-core.List<api.Message> buildUnnamed93() => [
+core.List<api.MerchantLocation> buildUnnamed104() => [
+      buildMerchantLocation(),
+      buildMerchantLocation(),
+    ];
+
+void checkUnnamed104(core.List<api.MerchantLocation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMerchantLocation(o[0]);
+  checkMerchantLocation(o[1]);
+}
+
+core.List<api.Message> buildUnnamed105() => [
       buildMessage(),
       buildMessage(),
     ];
 
-void checkUnnamed93(core.List<api.Message> o) {
+void checkUnnamed105(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
 }
 
-core.List<api.TextModuleData> buildUnnamed94() => [
+core.List<api.TextModuleData> buildUnnamed106() => [
       buildTextModuleData(),
       buildTextModuleData(),
     ];
 
-void checkUnnamed94(core.List<api.TextModuleData> o) {
+void checkUnnamed106(core.List<api.TextModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTextModuleData(o[0]);
   checkTextModuleData(o[1]);
 }
 
-core.List<api.ValueAddedModuleData> buildUnnamed95() => [
+core.List<api.ValueAddedModuleData> buildUnnamed107() => [
       buildValueAddedModuleData(),
       buildValueAddedModuleData(),
     ];
 
-void checkUnnamed95(core.List<api.ValueAddedModuleData> o) {
+void checkUnnamed107(core.List<api.ValueAddedModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValueAddedModuleData(o[0]);
   checkValueAddedModuleData(o[1]);
@@ -5207,22 +5390,23 @@ api.OfferObject buildOfferObject() {
     o.hasUsers = true;
     o.heroImage = buildImage();
     o.id = 'foo';
-    o.imageModulesData = buildUnnamed90();
+    o.imageModulesData = buildUnnamed101();
     o.infoModuleData = buildInfoModuleData();
     o.kind = 'foo';
-    o.linkedObjectIds = buildUnnamed91();
+    o.linkedObjectIds = buildUnnamed102();
     o.linksModuleData = buildLinksModuleData();
-    o.locations = buildUnnamed92();
-    o.messages = buildUnnamed93();
+    o.locations = buildUnnamed103();
+    o.merchantLocations = buildUnnamed104();
+    o.messages = buildUnnamed105();
     o.notifyPreference = 'foo';
     o.passConstraints = buildPassConstraints();
     o.rotatingBarcode = buildRotatingBarcode();
     o.saveRestrictions = buildSaveRestrictions();
     o.smartTapRedemptionValue = 'foo';
     o.state = 'foo';
-    o.textModulesData = buildUnnamed94();
+    o.textModulesData = buildUnnamed106();
     o.validTimeInterval = buildTimeInterval();
-    o.valueAddedModuleData = buildUnnamed95();
+    o.valueAddedModuleData = buildUnnamed107();
     o.version = 'foo';
   }
   buildCounterOfferObject--;
@@ -5248,16 +5432,17 @@ void checkOfferObject(api.OfferObject o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed90(o.imageModulesData!);
+    checkUnnamed101(o.imageModulesData!);
     checkInfoModuleData(o.infoModuleData!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed91(o.linkedObjectIds!);
+    checkUnnamed102(o.linkedObjectIds!);
     checkLinksModuleData(o.linksModuleData!);
-    checkUnnamed92(o.locations!);
-    checkUnnamed93(o.messages!);
+    checkUnnamed103(o.locations!);
+    checkUnnamed104(o.merchantLocations!);
+    checkUnnamed105(o.messages!);
     unittest.expect(
       o.notifyPreference!,
       unittest.equals('foo'),
@@ -5273,9 +5458,9 @@ void checkOfferObject(api.OfferObject o) {
       o.state!,
       unittest.equals('foo'),
     );
-    checkUnnamed94(o.textModulesData!);
+    checkUnnamed106(o.textModulesData!);
     checkTimeInterval(o.validTimeInterval!);
-    checkUnnamed95(o.valueAddedModuleData!);
+    checkUnnamed107(o.valueAddedModuleData!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -5303,12 +5488,12 @@ void checkOfferObjectAddMessageResponse(api.OfferObjectAddMessageResponse o) {
   buildCounterOfferObjectAddMessageResponse--;
 }
 
-core.List<api.OfferObject> buildUnnamed96() => [
+core.List<api.OfferObject> buildUnnamed108() => [
       buildOfferObject(),
       buildOfferObject(),
     ];
 
-void checkUnnamed96(core.List<api.OfferObject> o) {
+void checkUnnamed108(core.List<api.OfferObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOfferObject(o[0]);
   checkOfferObject(o[1]);
@@ -5320,7 +5505,7 @@ api.OfferObjectListResponse buildOfferObjectListResponse() {
   buildCounterOfferObjectListResponse++;
   if (buildCounterOfferObjectListResponse < 3) {
     o.pagination = buildPagination();
-    o.resources = buildUnnamed96();
+    o.resources = buildUnnamed108();
   }
   buildCounterOfferObjectListResponse--;
   return o;
@@ -5330,7 +5515,7 @@ void checkOfferObjectListResponse(api.OfferObjectListResponse o) {
   buildCounterOfferObjectListResponse++;
   if (buildCounterOfferObjectListResponse < 3) {
     checkPagination(o.pagination!);
-    checkUnnamed96(o.resources!);
+    checkUnnamed108(o.resources!);
   }
   buildCounterOfferObjectListResponse--;
 }
@@ -5367,12 +5552,12 @@ void checkPagination(api.Pagination o) {
   buildCounterPagination--;
 }
 
-core.List<core.String> buildUnnamed97() => [
+core.List<core.String> buildUnnamed109() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed97(core.List<core.String> o) {
+void checkUnnamed109(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5389,7 +5574,7 @@ api.PassConstraints buildPassConstraints() {
   final o = api.PassConstraints();
   buildCounterPassConstraints++;
   if (buildCounterPassConstraints < 3) {
-    o.nfcConstraint = buildUnnamed97();
+    o.nfcConstraint = buildUnnamed109();
     o.screenshotEligibility = 'foo';
   }
   buildCounterPassConstraints--;
@@ -5399,7 +5584,7 @@ api.PassConstraints buildPassConstraints() {
 void checkPassConstraints(api.PassConstraints o) {
   buildCounterPassConstraints++;
   if (buildCounterPassConstraints < 3) {
-    checkUnnamed97(o.nfcConstraint!);
+    checkUnnamed109(o.nfcConstraint!);
     unittest.expect(
       o.screenshotEligibility!,
       unittest.equals('foo'),
@@ -5435,12 +5620,12 @@ void checkPermission(api.Permission o) {
   buildCounterPermission--;
 }
 
-core.List<api.Permission> buildUnnamed98() => [
+core.List<api.Permission> buildUnnamed110() => [
       buildPermission(),
       buildPermission(),
     ];
 
-void checkUnnamed98(core.List<api.Permission> o) {
+void checkUnnamed110(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermission(o[0]);
   checkPermission(o[1]);
@@ -5452,7 +5637,7 @@ api.Permissions buildPermissions() {
   buildCounterPermissions++;
   if (buildCounterPermissions < 3) {
     o.issuerId = 'foo';
-    o.permissions = buildUnnamed98();
+    o.permissions = buildUnnamed110();
   }
   buildCounterPermissions--;
   return o;
@@ -5465,7 +5650,7 @@ void checkPermissions(api.Permissions o) {
       o.issuerId!,
       unittest.equals('foo'),
     );
-    checkUnnamed98(o.permissions!);
+    checkUnnamed110(o.permissions!);
   }
   buildCounterPermissions--;
 }
@@ -5543,155 +5728,155 @@ void checkReservationInfo(api.ReservationInfo o) {
   buildCounterReservationInfo--;
 }
 
-core.List<api.EventTicketClass> buildUnnamed99() => [
+core.List<api.EventTicketClass> buildUnnamed111() => [
       buildEventTicketClass(),
       buildEventTicketClass(),
     ];
 
-void checkUnnamed99(core.List<api.EventTicketClass> o) {
+void checkUnnamed111(core.List<api.EventTicketClass> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventTicketClass(o[0]);
   checkEventTicketClass(o[1]);
 }
 
-core.List<api.EventTicketObject> buildUnnamed100() => [
+core.List<api.EventTicketObject> buildUnnamed112() => [
       buildEventTicketObject(),
       buildEventTicketObject(),
     ];
 
-void checkUnnamed100(core.List<api.EventTicketObject> o) {
+void checkUnnamed112(core.List<api.EventTicketObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventTicketObject(o[0]);
   checkEventTicketObject(o[1]);
 }
 
-core.List<api.FlightClass> buildUnnamed101() => [
+core.List<api.FlightClass> buildUnnamed113() => [
       buildFlightClass(),
       buildFlightClass(),
     ];
 
-void checkUnnamed101(core.List<api.FlightClass> o) {
+void checkUnnamed113(core.List<api.FlightClass> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFlightClass(o[0]);
   checkFlightClass(o[1]);
 }
 
-core.List<api.FlightObject> buildUnnamed102() => [
+core.List<api.FlightObject> buildUnnamed114() => [
       buildFlightObject(),
       buildFlightObject(),
     ];
 
-void checkUnnamed102(core.List<api.FlightObject> o) {
+void checkUnnamed114(core.List<api.FlightObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFlightObject(o[0]);
   checkFlightObject(o[1]);
 }
 
-core.List<api.GenericClass> buildUnnamed103() => [
+core.List<api.GenericClass> buildUnnamed115() => [
       buildGenericClass(),
       buildGenericClass(),
     ];
 
-void checkUnnamed103(core.List<api.GenericClass> o) {
+void checkUnnamed115(core.List<api.GenericClass> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGenericClass(o[0]);
   checkGenericClass(o[1]);
 }
 
-core.List<api.GenericObject> buildUnnamed104() => [
+core.List<api.GenericObject> buildUnnamed116() => [
       buildGenericObject(),
       buildGenericObject(),
     ];
 
-void checkUnnamed104(core.List<api.GenericObject> o) {
+void checkUnnamed116(core.List<api.GenericObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGenericObject(o[0]);
   checkGenericObject(o[1]);
 }
 
-core.List<api.GiftCardClass> buildUnnamed105() => [
+core.List<api.GiftCardClass> buildUnnamed117() => [
       buildGiftCardClass(),
       buildGiftCardClass(),
     ];
 
-void checkUnnamed105(core.List<api.GiftCardClass> o) {
+void checkUnnamed117(core.List<api.GiftCardClass> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGiftCardClass(o[0]);
   checkGiftCardClass(o[1]);
 }
 
-core.List<api.GiftCardObject> buildUnnamed106() => [
+core.List<api.GiftCardObject> buildUnnamed118() => [
       buildGiftCardObject(),
       buildGiftCardObject(),
     ];
 
-void checkUnnamed106(core.List<api.GiftCardObject> o) {
+void checkUnnamed118(core.List<api.GiftCardObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGiftCardObject(o[0]);
   checkGiftCardObject(o[1]);
 }
 
-core.List<api.LoyaltyClass> buildUnnamed107() => [
+core.List<api.LoyaltyClass> buildUnnamed119() => [
       buildLoyaltyClass(),
       buildLoyaltyClass(),
     ];
 
-void checkUnnamed107(core.List<api.LoyaltyClass> o) {
+void checkUnnamed119(core.List<api.LoyaltyClass> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLoyaltyClass(o[0]);
   checkLoyaltyClass(o[1]);
 }
 
-core.List<api.LoyaltyObject> buildUnnamed108() => [
+core.List<api.LoyaltyObject> buildUnnamed120() => [
       buildLoyaltyObject(),
       buildLoyaltyObject(),
     ];
 
-void checkUnnamed108(core.List<api.LoyaltyObject> o) {
+void checkUnnamed120(core.List<api.LoyaltyObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLoyaltyObject(o[0]);
   checkLoyaltyObject(o[1]);
 }
 
-core.List<api.OfferClass> buildUnnamed109() => [
+core.List<api.OfferClass> buildUnnamed121() => [
       buildOfferClass(),
       buildOfferClass(),
     ];
 
-void checkUnnamed109(core.List<api.OfferClass> o) {
+void checkUnnamed121(core.List<api.OfferClass> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOfferClass(o[0]);
   checkOfferClass(o[1]);
 }
 
-core.List<api.OfferObject> buildUnnamed110() => [
+core.List<api.OfferObject> buildUnnamed122() => [
       buildOfferObject(),
       buildOfferObject(),
     ];
 
-void checkUnnamed110(core.List<api.OfferObject> o) {
+void checkUnnamed122(core.List<api.OfferObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOfferObject(o[0]);
   checkOfferObject(o[1]);
 }
 
-core.List<api.TransitClass> buildUnnamed111() => [
+core.List<api.TransitClass> buildUnnamed123() => [
       buildTransitClass(),
       buildTransitClass(),
     ];
 
-void checkUnnamed111(core.List<api.TransitClass> o) {
+void checkUnnamed123(core.List<api.TransitClass> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTransitClass(o[0]);
   checkTransitClass(o[1]);
 }
 
-core.List<api.TransitObject> buildUnnamed112() => [
+core.List<api.TransitObject> buildUnnamed124() => [
       buildTransitObject(),
       buildTransitObject(),
     ];
 
-void checkUnnamed112(core.List<api.TransitObject> o) {
+void checkUnnamed124(core.List<api.TransitObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTransitObject(o[0]);
   checkTransitObject(o[1]);
@@ -5702,20 +5887,20 @@ api.Resources buildResources() {
   final o = api.Resources();
   buildCounterResources++;
   if (buildCounterResources < 3) {
-    o.eventTicketClasses = buildUnnamed99();
-    o.eventTicketObjects = buildUnnamed100();
-    o.flightClasses = buildUnnamed101();
-    o.flightObjects = buildUnnamed102();
-    o.genericClasses = buildUnnamed103();
-    o.genericObjects = buildUnnamed104();
-    o.giftCardClasses = buildUnnamed105();
-    o.giftCardObjects = buildUnnamed106();
-    o.loyaltyClasses = buildUnnamed107();
-    o.loyaltyObjects = buildUnnamed108();
-    o.offerClasses = buildUnnamed109();
-    o.offerObjects = buildUnnamed110();
-    o.transitClasses = buildUnnamed111();
-    o.transitObjects = buildUnnamed112();
+    o.eventTicketClasses = buildUnnamed111();
+    o.eventTicketObjects = buildUnnamed112();
+    o.flightClasses = buildUnnamed113();
+    o.flightObjects = buildUnnamed114();
+    o.genericClasses = buildUnnamed115();
+    o.genericObjects = buildUnnamed116();
+    o.giftCardClasses = buildUnnamed117();
+    o.giftCardObjects = buildUnnamed118();
+    o.loyaltyClasses = buildUnnamed119();
+    o.loyaltyObjects = buildUnnamed120();
+    o.offerClasses = buildUnnamed121();
+    o.offerObjects = buildUnnamed122();
+    o.transitClasses = buildUnnamed123();
+    o.transitObjects = buildUnnamed124();
   }
   buildCounterResources--;
   return o;
@@ -5724,20 +5909,20 @@ api.Resources buildResources() {
 void checkResources(api.Resources o) {
   buildCounterResources++;
   if (buildCounterResources < 3) {
-    checkUnnamed99(o.eventTicketClasses!);
-    checkUnnamed100(o.eventTicketObjects!);
-    checkUnnamed101(o.flightClasses!);
-    checkUnnamed102(o.flightObjects!);
-    checkUnnamed103(o.genericClasses!);
-    checkUnnamed104(o.genericObjects!);
-    checkUnnamed105(o.giftCardClasses!);
-    checkUnnamed106(o.giftCardObjects!);
-    checkUnnamed107(o.loyaltyClasses!);
-    checkUnnamed108(o.loyaltyObjects!);
-    checkUnnamed109(o.offerClasses!);
-    checkUnnamed110(o.offerObjects!);
-    checkUnnamed111(o.transitClasses!);
-    checkUnnamed112(o.transitObjects!);
+    checkUnnamed111(o.eventTicketClasses!);
+    checkUnnamed112(o.eventTicketObjects!);
+    checkUnnamed113(o.flightClasses!);
+    checkUnnamed114(o.flightObjects!);
+    checkUnnamed115(o.genericClasses!);
+    checkUnnamed116(o.genericObjects!);
+    checkUnnamed117(o.giftCardClasses!);
+    checkUnnamed118(o.giftCardObjects!);
+    checkUnnamed119(o.loyaltyClasses!);
+    checkUnnamed120(o.loyaltyObjects!);
+    checkUnnamed121(o.offerClasses!);
+    checkUnnamed122(o.offerObjects!);
+    checkUnnamed123(o.transitClasses!);
+    checkUnnamed124(o.transitObjects!);
   }
   buildCounterResources--;
 }
@@ -5807,12 +5992,12 @@ void checkRotatingBarcode(api.RotatingBarcode o) {
   buildCounterRotatingBarcode--;
 }
 
-core.List<api.RotatingBarcodeTotpDetailsTotpParameters> buildUnnamed113() => [
+core.List<api.RotatingBarcodeTotpDetailsTotpParameters> buildUnnamed125() => [
       buildRotatingBarcodeTotpDetailsTotpParameters(),
       buildRotatingBarcodeTotpDetailsTotpParameters(),
     ];
 
-void checkUnnamed113(
+void checkUnnamed125(
     core.List<api.RotatingBarcodeTotpDetailsTotpParameters> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRotatingBarcodeTotpDetailsTotpParameters(o[0]);
@@ -5825,7 +6010,7 @@ api.RotatingBarcodeTotpDetails buildRotatingBarcodeTotpDetails() {
   buildCounterRotatingBarcodeTotpDetails++;
   if (buildCounterRotatingBarcodeTotpDetails < 3) {
     o.algorithm = 'foo';
-    o.parameters = buildUnnamed113();
+    o.parameters = buildUnnamed125();
     o.periodMillis = 'foo';
   }
   buildCounterRotatingBarcodeTotpDetails--;
@@ -5839,7 +6024,7 @@ void checkRotatingBarcodeTotpDetails(api.RotatingBarcodeTotpDetails o) {
       o.algorithm!,
       unittest.equals('foo'),
     );
-    checkUnnamed113(o.parameters!);
+    checkUnnamed125(o.parameters!);
     unittest.expect(
       o.periodMillis!,
       unittest.equals('foo'),
@@ -5877,12 +6062,12 @@ void checkRotatingBarcodeTotpDetailsTotpParameters(
   buildCounterRotatingBarcodeTotpDetailsTotpParameters--;
 }
 
-core.List<core.String> buildUnnamed114() => [
+core.List<core.String> buildUnnamed126() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed114(core.List<core.String> o) {
+void checkUnnamed126(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5901,7 +6086,7 @@ api.RotatingBarcodeValues buildRotatingBarcodeValues() {
   if (buildCounterRotatingBarcodeValues < 3) {
     o.periodMillis = 'foo';
     o.startDateTime = 'foo';
-    o.values = buildUnnamed114();
+    o.values = buildUnnamed126();
   }
   buildCounterRotatingBarcodeValues--;
   return o;
@@ -5918,7 +6103,7 @@ void checkRotatingBarcodeValues(api.RotatingBarcodeValues o) {
       o.startDateTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed114(o.values!);
+    checkUnnamed126(o.values!);
   }
   buildCounterRotatingBarcodeValues--;
 }
@@ -5989,12 +6174,12 @@ void checkSignUpInfo(api.SignUpInfo o) {
   buildCounterSignUpInfo--;
 }
 
-core.List<api.IssuerToUserInfo> buildUnnamed115() => [
+core.List<api.IssuerToUserInfo> buildUnnamed127() => [
       buildIssuerToUserInfo(),
       buildIssuerToUserInfo(),
     ];
 
-void checkUnnamed115(core.List<api.IssuerToUserInfo> o) {
+void checkUnnamed127(core.List<api.IssuerToUserInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIssuerToUserInfo(o[0]);
   checkIssuerToUserInfo(o[1]);
@@ -6006,7 +6191,7 @@ api.SmartTap buildSmartTap() {
   buildCounterSmartTap++;
   if (buildCounterSmartTap < 3) {
     o.id = 'foo';
-    o.infos = buildUnnamed115();
+    o.infos = buildUnnamed127();
     o.kind = 'foo';
     o.merchantId = 'foo';
   }
@@ -6021,7 +6206,7 @@ void checkSmartTap(api.SmartTap o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed115(o.infos!);
+    checkUnnamed127(o.infos!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -6034,12 +6219,12 @@ void checkSmartTap(api.SmartTap o) {
   buildCounterSmartTap--;
 }
 
-core.List<api.AuthenticationKey> buildUnnamed116() => [
+core.List<api.AuthenticationKey> buildUnnamed128() => [
       buildAuthenticationKey(),
       buildAuthenticationKey(),
     ];
 
-void checkUnnamed116(core.List<api.AuthenticationKey> o) {
+void checkUnnamed128(core.List<api.AuthenticationKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuthenticationKey(o[0]);
   checkAuthenticationKey(o[1]);
@@ -6050,7 +6235,7 @@ api.SmartTapMerchantData buildSmartTapMerchantData() {
   final o = api.SmartTapMerchantData();
   buildCounterSmartTapMerchantData++;
   if (buildCounterSmartTapMerchantData < 3) {
-    o.authenticationKeys = buildUnnamed116();
+    o.authenticationKeys = buildUnnamed128();
     o.smartTapMerchantId = 'foo';
   }
   buildCounterSmartTapMerchantData--;
@@ -6060,7 +6245,7 @@ api.SmartTapMerchantData buildSmartTapMerchantData() {
 void checkSmartTapMerchantData(api.SmartTapMerchantData o) {
   buildCounterSmartTapMerchantData++;
   if (buildCounterSmartTapMerchantData < 3) {
-    checkUnnamed116(o.authenticationKeys!);
+    checkUnnamed128(o.authenticationKeys!);
     unittest.expect(
       o.smartTapMerchantId!,
       unittest.equals('foo'),
@@ -6154,12 +6339,12 @@ void checkTicketCost(api.TicketCost o) {
   buildCounterTicketCost--;
 }
 
-core.List<api.TicketSeat> buildUnnamed117() => [
+core.List<api.TicketSeat> buildUnnamed129() => [
       buildTicketSeat(),
       buildTicketSeat(),
     ];
 
-void checkUnnamed117(core.List<api.TicketSeat> o) {
+void checkUnnamed129(core.List<api.TicketSeat> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTicketSeat(o[0]);
   checkTicketSeat(o[1]);
@@ -6180,7 +6365,7 @@ api.TicketLeg buildTicketLeg() {
     o.originStationCode = 'foo';
     o.platform = 'foo';
     o.ticketSeat = buildTicketSeat();
-    o.ticketSeats = buildUnnamed117();
+    o.ticketSeats = buildUnnamed129();
     o.transitOperatorName = buildLocalizedString();
     o.transitTerminusName = buildLocalizedString();
     o.zone = 'foo';
@@ -6220,7 +6405,7 @@ void checkTicketLeg(api.TicketLeg o) {
       unittest.equals('foo'),
     );
     checkTicketSeat(o.ticketSeat!);
-    checkUnnamed117(o.ticketSeats!);
+    checkUnnamed129(o.ticketSeats!);
     checkLocalizedString(o.transitOperatorName!);
     checkLocalizedString(o.transitTerminusName!);
     unittest.expect(
@@ -6318,45 +6503,56 @@ void checkTimeInterval(api.TimeInterval o) {
   buildCounterTimeInterval--;
 }
 
-core.List<api.ImageModuleData> buildUnnamed118() => [
+core.List<api.ImageModuleData> buildUnnamed130() => [
       buildImageModuleData(),
       buildImageModuleData(),
     ];
 
-void checkUnnamed118(core.List<api.ImageModuleData> o) {
+void checkUnnamed130(core.List<api.ImageModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImageModuleData(o[0]);
   checkImageModuleData(o[1]);
 }
 
-core.List<api.LatLongPoint> buildUnnamed119() => [
+core.List<api.LatLongPoint> buildUnnamed131() => [
       buildLatLongPoint(),
       buildLatLongPoint(),
     ];
 
-void checkUnnamed119(core.List<api.LatLongPoint> o) {
+void checkUnnamed131(core.List<api.LatLongPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLatLongPoint(o[0]);
   checkLatLongPoint(o[1]);
 }
 
-core.List<api.Message> buildUnnamed120() => [
+core.List<api.MerchantLocation> buildUnnamed132() => [
+      buildMerchantLocation(),
+      buildMerchantLocation(),
+    ];
+
+void checkUnnamed132(core.List<api.MerchantLocation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMerchantLocation(o[0]);
+  checkMerchantLocation(o[1]);
+}
+
+core.List<api.Message> buildUnnamed133() => [
       buildMessage(),
       buildMessage(),
     ];
 
-void checkUnnamed120(core.List<api.Message> o) {
+void checkUnnamed133(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
 }
 
-core.List<core.String> buildUnnamed121() => [
+core.List<core.String> buildUnnamed134() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed121(core.List<core.String> o) {
+void checkUnnamed134(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6368,23 +6564,23 @@ void checkUnnamed121(core.List<core.String> o) {
   );
 }
 
-core.List<api.TextModuleData> buildUnnamed122() => [
+core.List<api.TextModuleData> buildUnnamed135() => [
       buildTextModuleData(),
       buildTextModuleData(),
     ];
 
-void checkUnnamed122(core.List<api.TextModuleData> o) {
+void checkUnnamed135(core.List<api.TextModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTextModuleData(o[0]);
   checkTextModuleData(o[1]);
 }
 
-core.List<api.ValueAddedModuleData> buildUnnamed123() => [
+core.List<api.ValueAddedModuleData> buildUnnamed136() => [
       buildValueAddedModuleData(),
       buildValueAddedModuleData(),
     ];
 
-void checkUnnamed123(core.List<api.ValueAddedModuleData> o) {
+void checkUnnamed136(core.List<api.ValueAddedModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValueAddedModuleData(o[0]);
   checkValueAddedModuleData(o[1]);
@@ -6426,25 +6622,26 @@ api.TransitClass buildTransitClass() {
     o.hexBackgroundColor = 'foo';
     o.homepageUri = buildUri();
     o.id = 'foo';
-    o.imageModulesData = buildUnnamed118();
+    o.imageModulesData = buildUnnamed130();
     o.infoModuleData = buildInfoModuleData();
     o.issuerName = 'foo';
     o.languageOverride = 'foo';
     o.linksModuleData = buildLinksModuleData();
     o.localizedIssuerName = buildLocalizedString();
-    o.locations = buildUnnamed119();
+    o.locations = buildUnnamed131();
     o.logo = buildImage();
-    o.messages = buildUnnamed120();
+    o.merchantLocations = buildUnnamed132();
+    o.messages = buildUnnamed133();
     o.multipleDevicesAndHoldersAllowedStatus = 'foo';
     o.notifyPreference = 'foo';
-    o.redemptionIssuers = buildUnnamed121();
+    o.redemptionIssuers = buildUnnamed134();
     o.review = buildReview();
     o.reviewStatus = 'foo';
     o.securityAnimation = buildSecurityAnimation();
-    o.textModulesData = buildUnnamed122();
+    o.textModulesData = buildUnnamed135();
     o.transitOperatorName = buildLocalizedString();
     o.transitType = 'foo';
-    o.valueAddedModuleData = buildUnnamed123();
+    o.valueAddedModuleData = buildUnnamed136();
     o.version = 'foo';
     o.viewUnlockRequirement = 'foo';
     o.watermark = buildImage();
@@ -6498,7 +6695,7 @@ void checkTransitClass(api.TransitClass o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed118(o.imageModulesData!);
+    checkUnnamed130(o.imageModulesData!);
     checkInfoModuleData(o.infoModuleData!);
     unittest.expect(
       o.issuerName!,
@@ -6510,9 +6707,10 @@ void checkTransitClass(api.TransitClass o) {
     );
     checkLinksModuleData(o.linksModuleData!);
     checkLocalizedString(o.localizedIssuerName!);
-    checkUnnamed119(o.locations!);
+    checkUnnamed131(o.locations!);
     checkImage(o.logo!);
-    checkUnnamed120(o.messages!);
+    checkUnnamed132(o.merchantLocations!);
+    checkUnnamed133(o.messages!);
     unittest.expect(
       o.multipleDevicesAndHoldersAllowedStatus!,
       unittest.equals('foo'),
@@ -6521,20 +6719,20 @@ void checkTransitClass(api.TransitClass o) {
       o.notifyPreference!,
       unittest.equals('foo'),
     );
-    checkUnnamed121(o.redemptionIssuers!);
+    checkUnnamed134(o.redemptionIssuers!);
     checkReview(o.review!);
     unittest.expect(
       o.reviewStatus!,
       unittest.equals('foo'),
     );
     checkSecurityAnimation(o.securityAnimation!);
-    checkUnnamed122(o.textModulesData!);
+    checkUnnamed135(o.textModulesData!);
     checkLocalizedString(o.transitOperatorName!);
     unittest.expect(
       o.transitType!,
       unittest.equals('foo'),
     );
-    checkUnnamed123(o.valueAddedModuleData!);
+    checkUnnamed136(o.valueAddedModuleData!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -6569,12 +6767,12 @@ void checkTransitClassAddMessageResponse(api.TransitClassAddMessageResponse o) {
   buildCounterTransitClassAddMessageResponse--;
 }
 
-core.List<api.TransitClass> buildUnnamed124() => [
+core.List<api.TransitClass> buildUnnamed137() => [
       buildTransitClass(),
       buildTransitClass(),
     ];
 
-void checkUnnamed124(core.List<api.TransitClass> o) {
+void checkUnnamed137(core.List<api.TransitClass> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTransitClass(o[0]);
   checkTransitClass(o[1]);
@@ -6586,7 +6784,7 @@ api.TransitClassListResponse buildTransitClassListResponse() {
   buildCounterTransitClassListResponse++;
   if (buildCounterTransitClassListResponse < 3) {
     o.pagination = buildPagination();
-    o.resources = buildUnnamed124();
+    o.resources = buildUnnamed137();
   }
   buildCounterTransitClassListResponse--;
   return o;
@@ -6596,28 +6794,28 @@ void checkTransitClassListResponse(api.TransitClassListResponse o) {
   buildCounterTransitClassListResponse++;
   if (buildCounterTransitClassListResponse < 3) {
     checkPagination(o.pagination!);
-    checkUnnamed124(o.resources!);
+    checkUnnamed137(o.resources!);
   }
   buildCounterTransitClassListResponse--;
 }
 
-core.List<api.ImageModuleData> buildUnnamed125() => [
+core.List<api.ImageModuleData> buildUnnamed138() => [
       buildImageModuleData(),
       buildImageModuleData(),
     ];
 
-void checkUnnamed125(core.List<api.ImageModuleData> o) {
+void checkUnnamed138(core.List<api.ImageModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImageModuleData(o[0]);
   checkImageModuleData(o[1]);
 }
 
-core.List<core.String> buildUnnamed126() => [
+core.List<core.String> buildUnnamed139() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed126(core.List<core.String> o) {
+void checkUnnamed139(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6629,56 +6827,67 @@ void checkUnnamed126(core.List<core.String> o) {
   );
 }
 
-core.List<api.LatLongPoint> buildUnnamed127() => [
+core.List<api.LatLongPoint> buildUnnamed140() => [
       buildLatLongPoint(),
       buildLatLongPoint(),
     ];
 
-void checkUnnamed127(core.List<api.LatLongPoint> o) {
+void checkUnnamed140(core.List<api.LatLongPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLatLongPoint(o[0]);
   checkLatLongPoint(o[1]);
 }
 
-core.List<api.Message> buildUnnamed128() => [
+core.List<api.MerchantLocation> buildUnnamed141() => [
+      buildMerchantLocation(),
+      buildMerchantLocation(),
+    ];
+
+void checkUnnamed141(core.List<api.MerchantLocation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMerchantLocation(o[0]);
+  checkMerchantLocation(o[1]);
+}
+
+core.List<api.Message> buildUnnamed142() => [
       buildMessage(),
       buildMessage(),
     ];
 
-void checkUnnamed128(core.List<api.Message> o) {
+void checkUnnamed142(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
 }
 
-core.List<api.TextModuleData> buildUnnamed129() => [
+core.List<api.TextModuleData> buildUnnamed143() => [
       buildTextModuleData(),
       buildTextModuleData(),
     ];
 
-void checkUnnamed129(core.List<api.TextModuleData> o) {
+void checkUnnamed143(core.List<api.TextModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTextModuleData(o[0]);
   checkTextModuleData(o[1]);
 }
 
-core.List<api.TicketLeg> buildUnnamed130() => [
+core.List<api.TicketLeg> buildUnnamed144() => [
       buildTicketLeg(),
       buildTicketLeg(),
     ];
 
-void checkUnnamed130(core.List<api.TicketLeg> o) {
+void checkUnnamed144(core.List<api.TicketLeg> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTicketLeg(o[0]);
   checkTicketLeg(o[1]);
 }
 
-core.List<api.ValueAddedModuleData> buildUnnamed131() => [
+core.List<api.ValueAddedModuleData> buildUnnamed145() => [
       buildValueAddedModuleData(),
       buildValueAddedModuleData(),
     ];
 
-void checkUnnamed131(core.List<api.ValueAddedModuleData> o) {
+void checkUnnamed145(core.List<api.ValueAddedModuleData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValueAddedModuleData(o[0]);
   checkValueAddedModuleData(o[1]);
@@ -6705,12 +6914,13 @@ api.TransitObject buildTransitObject() {
     o.heroImage = buildImage();
     o.hexBackgroundColor = 'foo';
     o.id = 'foo';
-    o.imageModulesData = buildUnnamed125();
+    o.imageModulesData = buildUnnamed138();
     o.infoModuleData = buildInfoModuleData();
-    o.linkedObjectIds = buildUnnamed126();
+    o.linkedObjectIds = buildUnnamed139();
     o.linksModuleData = buildLinksModuleData();
-    o.locations = buildUnnamed127();
-    o.messages = buildUnnamed128();
+    o.locations = buildUnnamed140();
+    o.merchantLocations = buildUnnamed141();
+    o.messages = buildUnnamed142();
     o.notifyPreference = 'foo';
     o.passConstraints = buildPassConstraints();
     o.passengerNames = 'foo';
@@ -6720,16 +6930,16 @@ api.TransitObject buildTransitObject() {
     o.saveRestrictions = buildSaveRestrictions();
     o.smartTapRedemptionValue = 'foo';
     o.state = 'foo';
-    o.textModulesData = buildUnnamed129();
+    o.textModulesData = buildUnnamed143();
     o.ticketLeg = buildTicketLeg();
-    o.ticketLegs = buildUnnamed130();
+    o.ticketLegs = buildUnnamed144();
     o.ticketNumber = 'foo';
     o.ticketRestrictions = buildTicketRestrictions();
     o.ticketStatus = 'foo';
     o.tripId = 'foo';
     o.tripType = 'foo';
     o.validTimeInterval = buildTimeInterval();
-    o.valueAddedModuleData = buildUnnamed131();
+    o.valueAddedModuleData = buildUnnamed145();
     o.version = 'foo';
   }
   buildCounterTransitObject--;
@@ -6767,12 +6977,13 @@ void checkTransitObject(api.TransitObject o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed125(o.imageModulesData!);
+    checkUnnamed138(o.imageModulesData!);
     checkInfoModuleData(o.infoModuleData!);
-    checkUnnamed126(o.linkedObjectIds!);
+    checkUnnamed139(o.linkedObjectIds!);
     checkLinksModuleData(o.linksModuleData!);
-    checkUnnamed127(o.locations!);
-    checkUnnamed128(o.messages!);
+    checkUnnamed140(o.locations!);
+    checkUnnamed141(o.merchantLocations!);
+    checkUnnamed142(o.messages!);
     unittest.expect(
       o.notifyPreference!,
       unittest.equals('foo'),
@@ -6797,9 +7008,9 @@ void checkTransitObject(api.TransitObject o) {
       o.state!,
       unittest.equals('foo'),
     );
-    checkUnnamed129(o.textModulesData!);
+    checkUnnamed143(o.textModulesData!);
     checkTicketLeg(o.ticketLeg!);
-    checkUnnamed130(o.ticketLegs!);
+    checkUnnamed144(o.ticketLegs!);
     unittest.expect(
       o.ticketNumber!,
       unittest.equals('foo'),
@@ -6818,7 +7029,7 @@ void checkTransitObject(api.TransitObject o) {
       unittest.equals('foo'),
     );
     checkTimeInterval(o.validTimeInterval!);
-    checkUnnamed131(o.valueAddedModuleData!);
+    checkUnnamed145(o.valueAddedModuleData!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -6847,12 +7058,12 @@ void checkTransitObjectAddMessageResponse(
   buildCounterTransitObjectAddMessageResponse--;
 }
 
-core.List<api.TransitObject> buildUnnamed132() => [
+core.List<api.TransitObject> buildUnnamed146() => [
       buildTransitObject(),
       buildTransitObject(),
     ];
 
-void checkUnnamed132(core.List<api.TransitObject> o) {
+void checkUnnamed146(core.List<api.TransitObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTransitObject(o[0]);
   checkTransitObject(o[1]);
@@ -6864,7 +7075,7 @@ api.TransitObjectListResponse buildTransitObjectListResponse() {
   buildCounterTransitObjectListResponse++;
   if (buildCounterTransitObjectListResponse < 3) {
     o.pagination = buildPagination();
-    o.resources = buildUnnamed132();
+    o.resources = buildUnnamed146();
   }
   buildCounterTransitObjectListResponse--;
   return o;
@@ -6874,7 +7085,7 @@ void checkTransitObjectListResponse(api.TransitObjectListResponse o) {
   buildCounterTransitObjectListResponse++;
   if (buildCounterTransitObjectListResponse < 3) {
     checkPagination(o.pagination!);
-    checkUnnamed132(o.resources!);
+    checkUnnamed146(o.resources!);
   }
   buildCounterTransitObjectListResponse--;
 }
@@ -8022,6 +8233,16 @@ void main() {
       final od = api.MediaRequestInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkMediaRequestInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-MerchantLocation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMerchantLocation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MerchantLocation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMerchantLocation(od);
     });
   });
 

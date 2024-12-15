@@ -30,6 +30,7 @@
 /// - [InboundSamlSsoProfilesResource]
 ///   - [InboundSamlSsoProfilesIdpCredentialsResource]
 /// - [InboundSsoAssignmentsResource]
+/// - [PoliciesResource]
 library;
 
 import 'dart:async' as async;
@@ -70,6 +71,24 @@ class CloudIdentityApi {
   static const cloudIdentityGroupsReadonlyScope =
       'https://www.googleapis.com/auth/cloud-identity.groups.readonly';
 
+  /// See and edit all of the Inbound SSO profiles and their assignments to any
+  /// Org Units or Google Groups in your Cloud Identity Organization.
+  static const cloudIdentityInboundssoScope =
+      'https://www.googleapis.com/auth/cloud-identity.inboundsso';
+
+  /// See all of the Inbound SSO profiles and their assignments to any Org Units
+  /// or Google Groups in your Cloud Identity Organization.
+  static const cloudIdentityInboundssoReadonlyScope =
+      'https://www.googleapis.com/auth/cloud-identity.inboundsso.readonly';
+
+  /// See and edit policies in your Cloud Identity Organization.
+  static const cloudIdentityPoliciesScope =
+      'https://www.googleapis.com/auth/cloud-identity.policies';
+
+  /// See policies in your Cloud Identity Organization.
+  static const cloudIdentityPoliciesReadonlyScope =
+      'https://www.googleapis.com/auth/cloud-identity.policies.readonly';
+
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
   static const cloudPlatformScope =
@@ -84,6 +103,7 @@ class CloudIdentityApi {
       InboundSamlSsoProfilesResource(_requester);
   InboundSsoAssignmentsResource get inboundSsoAssignments =>
       InboundSsoAssignmentsResource(_requester);
+  PoliciesResource get policies => PoliciesResource(_requester);
 
   CloudIdentityApi(http.Client client,
       {core.String rootUrl = 'https://cloudidentity.googleapis.com/',
@@ -2230,7 +2250,7 @@ class GroupsMembershipsResource {
   ///
   /// [pageSize] - The default page size is 200 (max 1000).
   ///
-  /// [pageToken] - The next_page_token value returned from a previous list
+  /// [pageToken] - The `next_page_token` value returned from a previous list
   /// request, if any
   ///
   /// [query] - Required. A CEL expression that MUST include member
@@ -2300,7 +2320,7 @@ class GroupsMembershipsResource {
   ///
   /// [pageSize] - The default page size is 200 (max 1000).
   ///
-  /// [pageToken] - The next_page_token value returned from a previous list
+  /// [pageToken] - The `next_page_token` value returned from a previous list
   /// request, if any.
   ///
   /// [query] - Required. A CEL expression that MUST include member
@@ -2313,7 +2333,7 @@ class GroupsMembershipsResource {
   /// operators on the parent of the group restricting the search within a
   /// particular customer, e.g. `parent == 'customers/{customer_id}'`. The
   /// `customer_id` must begin with "C" (for example, 'C046psxkn'). This
-  /// filtering is only supported for Admins with groups read permissons on the
+  /// filtering is only supported for Admins with groups read permissions on the
   /// input customer. Example query: `member_key_id == 'member_key_id_value' &&
   /// in labels && parent == 'customers/C046psxkn'`
   ///
@@ -2373,7 +2393,7 @@ class GroupsMembershipsResource {
   ///
   /// [pageSize] - The default page size is 200 (max 1000).
   ///
-  /// [pageToken] - The next_page_token value returned from a previous list
+  /// [pageToken] - The `next_page_token` value returned from a previous list
   /// request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3062,6 +3082,109 @@ class InboundSsoAssignmentsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class PoliciesResource {
+  final commons.ApiRequester _requester;
+
+  PoliciesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Get a Policy
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the policy to retrieve. Format:
+  /// "policies/{policy}".
+  /// Value must have pattern `^policies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List Policies
+  ///
+  /// Request parameters:
+  ///
+  /// [filter] - Optional. A CEL expression for filtering the results. Policies
+  /// can be filtered by application with this expression: setting.name =
+  /// 'settings/gmail.*' Policies can be filtered by setting type with this
+  /// expression: setting.name = '*.service_status' A maximum of one of the
+  /// above setting.name clauses can be used. Policies can be filtered by
+  /// customer with this expression: customer = "customers/{customer}" Where
+  /// `customer` is the `id` from the \[Admin SDK `Customer`
+  /// resource\](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers).
+  /// You may use `customers/my_customer` to specify your own organization. When
+  /// no customer is mentioned it will be default to customers/my_customer. A
+  /// maximum of one customer clause can be used. The above clauses can only be
+  /// combined together in a single filter expression with the `&&` operator.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return. The
+  /// service can return fewer than this number. If omitted or set to 0, the
+  /// default is 50 results per page. The maximum allowed value is 100.
+  /// `page_size` values greater than 100 default to 100.
+  ///
+  /// [pageToken] - Optional. The pagination token received from a prior call to
+  /// PoliciesService.ListPolicies to retrieve the next page of results. When
+  /// paginating, all other parameters provided to `ListPoliciesRequest` must
+  /// match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPoliciesResponse> list({
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1/policies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListPoliciesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4069,6 +4192,10 @@ class GoogleAppsCloudidentityDevicesV1Device {
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
   /// the Device in format: `devices/{device}`, where device is the unique id
   /// assigned to the Device.
+  ///
+  /// Important: Device API scopes require that you use domain-wide delegation
+  /// to access the API. For more information, see
+  /// [Set up the Devices API](https://cloud.google.com/identity/docs/how-to/setup-devices).
   ///
   /// Output only.
   core.String? name;
@@ -5189,6 +5316,36 @@ class ListMembershipsResponse {
       };
 }
 
+/// The response message for PoliciesService.ListPolicies.
+class ListPoliciesResponse {
+  /// The pagination token to retrieve the next page of results.
+  ///
+  /// If this field is empty, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The results
+  core.List<Policy>? policies;
+
+  ListPoliciesResponse({
+    this.nextPageToken,
+    this.policies,
+  });
+
+  ListPoliciesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          policies: (json_['policies'] as core.List?)
+              ?.map((value) =>
+                  Policy.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (policies != null) 'policies': policies!,
+      };
+}
+
 /// Response message for UserInvitation listing request.
 class ListUserInvitationsResponse {
   /// The token for the next page.
@@ -5756,6 +5913,148 @@ class Operation {
       };
 }
 
+/// A Policy resource binds an instance of a single Setting with the scope of a
+/// PolicyQuery.
+///
+/// The Setting instance will be applied to all entities that satisfy the query.
+class Policy {
+  /// Customer that the Policy belongs to.
+  ///
+  /// The value is in the format 'customers/{customerId}'. The `customerId` must
+  /// begin with "C" To find your customer ID in Admin Console see
+  /// https://support.google.com/a/answer/10070793.
+  ///
+  /// Immutable.
+  core.String? customer;
+
+  /// Identifier.
+  ///
+  /// The [resource name](https://cloud.google.com/apis/design/resource_names)
+  /// of the Policy. Format: policies/{policy}.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The PolicyQuery the Setting applies to.
+  ///
+  /// Required.
+  PolicyQuery? policyQuery;
+
+  /// The Setting configured by this Policy.
+  ///
+  /// Required.
+  Setting? setting;
+
+  /// The type of the policy.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "POLICY_TYPE_UNSPECIFIED" : Unspecified policy type.
+  /// - "SYSTEM" : Policy type denoting the system-configured policies.
+  /// - "ADMIN" : Policy type denoting the admin-configurable policies.
+  core.String? type;
+
+  Policy({
+    this.customer,
+    this.name,
+    this.policyQuery,
+    this.setting,
+    this.type,
+  });
+
+  Policy.fromJson(core.Map json_)
+      : this(
+          customer: json_['customer'] as core.String?,
+          name: json_['name'] as core.String?,
+          policyQuery: json_.containsKey('policyQuery')
+              ? PolicyQuery.fromJson(
+                  json_['policyQuery'] as core.Map<core.String, core.dynamic>)
+              : null,
+          setting: json_.containsKey('setting')
+              ? Setting.fromJson(
+                  json_['setting'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customer != null) 'customer': customer!,
+        if (name != null) 'name': name!,
+        if (policyQuery != null) 'policyQuery': policyQuery!,
+        if (setting != null) 'setting': setting!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// PolicyQuery
+class PolicyQuery {
+  /// The group that the query applies to.
+  ///
+  /// This field is only set if there is a single value for group that satisfies
+  /// all clauses of the query. If no group applies, this will be the empty
+  /// string.
+  ///
+  /// Immutable.
+  core.String? group;
+
+  /// Non-empty default.
+  ///
+  /// The OrgUnit the query applies to. This field is only set if there is a
+  /// single value for org_unit that satisfies all clauses of the query.
+  ///
+  /// Required. Immutable.
+  core.String? orgUnit;
+
+  /// The CEL query that defines which entities the Policy applies to (ex.
+  ///
+  /// a User entity). For details about CEL see
+  /// https://opensource.google.com/projects/cel. The OrgUnits the Policy
+  /// applies to are represented by a clause like so:
+  /// entity.org_units.exists(org_unit, org_unit.org_unit_id ==
+  /// orgUnitId('{orgUnitId}')) The Group the Policy applies to are represented
+  /// by a clause like so: entity.groups.exists(group, group.group_id ==
+  /// groupId('{groupId}')) The Licenses the Policy applies to are represented
+  /// by a clause like so: entity.licenses.exists(license, license in
+  /// \['/product/{productId}/sku/{skuId}'\]) The above clauses can be present
+  /// in any combination, and used in conjunction with the &&, || and !
+  /// operators. The org_unit and group fields below are helper fields that
+  /// contain the corresponding value(s) as the query to make the query easier
+  /// to use.
+  ///
+  /// Immutable.
+  core.String? query;
+
+  /// The decimal sort order of this PolicyQuery.
+  ///
+  /// The value is relative to all other policies with the same setting type for
+  /// the customer. (There are no duplicates within this set).
+  ///
+  /// Output only.
+  core.double? sortOrder;
+
+  PolicyQuery({
+    this.group,
+    this.orgUnit,
+    this.query,
+    this.sortOrder,
+  });
+
+  PolicyQuery.fromJson(core.Map json_)
+      : this(
+          group: json_['group'] as core.String?,
+          orgUnit: json_['orgUnit'] as core.String?,
+          query: json_['query'] as core.String?,
+          sortOrder: (json_['sortOrder'] as core.num?)?.toDouble(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (group != null) 'group': group!,
+        if (orgUnit != null) 'orgUnit': orgUnit!,
+        if (query != null) 'query': query!,
+        if (sortOrder != null) 'sortOrder': sortOrder!,
+      };
+}
+
 /// The evaluated state of this restriction.
 class RestrictionEvaluation {
   /// The current state of the restriction
@@ -6097,6 +6396,42 @@ class SecuritySettings {
 /// A request to send email for inviting target user corresponding to the
 /// UserInvitation.
 typedef SendUserInvitationRequest = $Empty;
+
+/// Setting
+class Setting {
+  /// The type of the Setting.
+  ///
+  /// .
+  ///
+  /// Required. Immutable.
+  core.String? type;
+
+  /// The value of the Setting.
+  ///
+  /// Required.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? value;
+
+  Setting({
+    this.type,
+    this.value,
+  });
+
+  Setting.fromJson(core.Map json_)
+      : this(
+          type: json_['type'] as core.String?,
+          value: json_.containsKey('value')
+              ? json_['value'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
+      };
+}
 
 /// Controls sign-in behavior.
 class SignInBehavior {

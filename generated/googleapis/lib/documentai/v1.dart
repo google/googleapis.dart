@@ -282,8 +282,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// Request parameters:
   ///
@@ -6564,19 +6564,19 @@ class GoogleTypeDateTime {
 /// Represents an amount of money with its currency type.
 typedef GoogleTypeMoney = $Money;
 
-/// Represents a postal address, e.g. for postal delivery or payments addresses.
+/// Represents a postal address.
 ///
-/// Given a postal address, a postal service can deliver items to a premise,
-/// P.O. Box or similar. It is not intended to model geographical locations
-/// (roads, towns, mountains). In typical usage an address would be created via
-/// user input or from importing existing data, depending on the type of
-/// process. Advice on address input / editing: - Use an
-/// internationalization-ready address widget such as
-/// https://github.com/google/libaddressinput) - Users should not be presented
-/// with UI elements for input or editing of fields outside countries where that
-/// field is used. For more guidance on how to use this schema, please see:
+/// For example for postal delivery or payments addresses. Given a postal
+/// address, a postal service can deliver items to a premise, P.O. Box or
+/// similar. It is not intended to model geographical locations (roads, towns,
+/// mountains). In typical usage an address would be created by user input or
+/// from importing existing data, depending on the type of process. Advice on
+/// address input / editing: - Use an internationalization-ready address widget
+/// such as https://github.com/google/libaddressinput) - Users should not be
+/// presented with UI elements for input or editing of fields outside countries
+/// where that field is used. For more guidance on how to use this schema, see:
 /// https://support.google.com/business/answer/6397478
-typedef GoogleTypePostalAddress = $PostalAddress;
+typedef GoogleTypePostalAddress = $PostalAddress00;
 
 /// Represents a time zone from the
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).

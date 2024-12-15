@@ -3859,6 +3859,7 @@ api.NodeConfig buildNodeConfig() {
     o.localSsdEncryptionMode = 'foo';
     o.loggingConfig = buildNodePoolLoggingConfig();
     o.machineType = 'foo';
+    o.maxRunDuration = 'foo';
     o.metadata = buildUnnamed42();
     o.minCpuPlatform = 'foo';
     o.nodeGroup = 'foo';
@@ -3931,6 +3932,10 @@ void checkNodeConfig(api.NodeConfig o) {
     checkNodePoolLoggingConfig(o.loggingConfig!);
     unittest.expect(
       o.machineType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxRunDuration!,
       unittest.equals('foo'),
     );
     checkUnnamed42(o.metadata!);
@@ -6575,6 +6580,7 @@ api.UpdateNodePoolRequest buildUpdateNodePoolRequest() {
     o.locations = buildUnnamed76();
     o.loggingConfig = buildNodePoolLoggingConfig();
     o.machineType = 'foo';
+    o.maxRunDuration = 'foo';
     o.name = 'foo';
     o.nodeNetworkConfig = buildNodeNetworkConfig();
     o.nodePoolId = 'foo';
@@ -6631,6 +6637,10 @@ void checkUpdateNodePoolRequest(api.UpdateNodePoolRequest o) {
     checkNodePoolLoggingConfig(o.loggingConfig!);
     unittest.expect(
       o.machineType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxRunDuration!,
       unittest.equals('foo'),
     );
     unittest.expect(

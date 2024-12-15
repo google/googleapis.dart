@@ -202,6 +202,7 @@ api.Evaluation buildEvaluation() {
     o.createTime = 'foo';
     o.customRulesBucket = 'foo';
     o.description = 'foo';
+    o.evaluationType = 'foo';
     o.labels = buildUnnamed1();
     o.name = 'foo';
     o.resourceFilter = buildResourceFilter();
@@ -229,6 +230,10 @@ void checkEvaluation(api.Evaluation o) {
     );
     unittest.expect(
       o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.evaluationType!,
       unittest.equals('foo'),
     );
     checkUnnamed1(o.labels!);
@@ -314,6 +319,7 @@ api.Execution buildExecution() {
     o.labels = buildUnnamed5();
     o.name = 'foo';
     o.notices = buildUnnamed6();
+    o.resultSummary = buildSummary();
     o.ruleResults = buildUnnamed7();
     o.runType = 'foo';
     o.startTime = 'foo';
@@ -345,6 +351,7 @@ void checkExecution(api.Execution o) {
       unittest.equals('foo'),
     );
     checkUnnamed6(o.notices!);
+    checkSummary(o.resultSummary!);
     checkUnnamed7(o.ruleResults!);
     unittest.expect(
       o.runType!,
@@ -504,6 +511,7 @@ api.Insight buildInsight() {
     o.sapValidation = buildSapValidation();
     o.sentTime = 'foo';
     o.sqlserverValidation = buildSqlserverValidation();
+    o.torsoValidation = buildTorsoValidation();
   }
   buildCounterInsight--;
   return o;
@@ -523,6 +531,7 @@ void checkInsight(api.Insight o) {
       unittest.equals('foo'),
     );
     checkSqlserverValidation(o.sqlserverValidation!);
+    checkTorsoValidation(o.torsoValidation!);
   }
   buildCounterInsight--;
 }
@@ -2240,6 +2249,38 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
+core.int buildCounterSummary = 0;
+api.Summary buildSummary() {
+  final o = api.Summary();
+  buildCounterSummary++;
+  if (buildCounterSummary < 3) {
+    o.failures = 'foo';
+    o.newFailures = 'foo';
+    o.newFixes = 'foo';
+  }
+  buildCounterSummary--;
+  return o;
+}
+
+void checkSummary(api.Summary o) {
+  buildCounterSummary++;
+  if (buildCounterSummary < 3) {
+    unittest.expect(
+      o.failures!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.newFailures!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.newFixes!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSummary--;
+}
+
 core.Map<core.String, core.String> buildUnnamed43() => {
       'x': 'foo',
       'y': 'foo',
@@ -2257,13 +2298,69 @@ void checkUnnamed43(core.Map<core.String, core.String> o) {
   );
 }
 
+core.int buildCounterTorsoValidation = 0;
+api.TorsoValidation buildTorsoValidation() {
+  final o = api.TorsoValidation();
+  buildCounterTorsoValidation++;
+  if (buildCounterTorsoValidation < 3) {
+    o.agentVersion = 'foo';
+    o.instanceName = 'foo';
+    o.projectId = 'foo';
+    o.validationDetails = buildUnnamed43();
+    o.workloadType = 'foo';
+  }
+  buildCounterTorsoValidation--;
+  return o;
+}
+
+void checkTorsoValidation(api.TorsoValidation o) {
+  buildCounterTorsoValidation++;
+  if (buildCounterTorsoValidation < 3) {
+    unittest.expect(
+      o.agentVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.instanceName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed43(o.validationDetails!);
+    unittest.expect(
+      o.workloadType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTorsoValidation--;
+}
+
+core.Map<core.String, core.String> buildUnnamed44() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed44(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterViolationDetails = 0;
 api.ViolationDetails buildViolationDetails() {
   final o = api.ViolationDetails();
   buildCounterViolationDetails++;
   if (buildCounterViolationDetails < 3) {
     o.asset = 'foo';
-    o.observed = buildUnnamed43();
+    o.observed = buildUnnamed44();
     o.serviceAccount = 'foo';
   }
   buildCounterViolationDetails--;
@@ -2277,7 +2374,7 @@ void checkViolationDetails(api.ViolationDetails o) {
       o.asset!,
       unittest.equals('foo'),
     );
-    checkUnnamed43(o.observed!);
+    checkUnnamed44(o.observed!);
     unittest.expect(
       o.serviceAccount!,
       unittest.equals('foo'),
@@ -2792,6 +2889,26 @@ void main() {
       final od =
           api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-Summary', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSummary();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Summary.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkSummary(od);
+    });
+  });
+
+  unittest.group('obj-schema-TorsoValidation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTorsoValidation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TorsoValidation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTorsoValidation(od);
     });
   });
 

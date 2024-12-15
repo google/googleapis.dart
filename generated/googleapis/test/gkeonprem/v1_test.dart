@@ -4048,14 +4048,18 @@ core.int buildCounterVmwareAdminMetalLbConfig = 0;
 api.VmwareAdminMetalLbConfig buildVmwareAdminMetalLbConfig() {
   final o = api.VmwareAdminMetalLbConfig();
   buildCounterVmwareAdminMetalLbConfig++;
-  if (buildCounterVmwareAdminMetalLbConfig < 3) {}
+  if (buildCounterVmwareAdminMetalLbConfig < 3) {
+    o.enabled = true;
+  }
   buildCounterVmwareAdminMetalLbConfig--;
   return o;
 }
 
 void checkVmwareAdminMetalLbConfig(api.VmwareAdminMetalLbConfig o) {
   buildCounterVmwareAdminMetalLbConfig++;
-  if (buildCounterVmwareAdminMetalLbConfig < 3) {}
+  if (buildCounterVmwareAdminMetalLbConfig < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+  }
   buildCounterVmwareAdminMetalLbConfig--;
 }
 

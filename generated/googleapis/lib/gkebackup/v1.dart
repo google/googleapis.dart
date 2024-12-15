@@ -1320,8 +1320,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3426,13 +3426,14 @@ class ClusterMetadata {
 ///
 /// Some group kinds are not reasonable choices for a restore, and will cause an
 /// error if selected here. Any scope selection that would restore "all valid"
-/// resources automatically excludes these group kinds. -
-/// gkebackup.gke.io/BackupJob - gkebackup.gke.io/RestoreJob -
+/// resources automatically excludes these group kinds. - Node - ComponentStatus
+/// - gkebackup.gke.io/BackupJob - gkebackup.gke.io/RestoreJob -
 /// metrics.k8s.io/NodeMetrics - migration.k8s.io/StorageState -
-/// migration.k8s.io/StorageVersionMigration - Node -
-/// snapshot.storage.k8s.io/VolumeSnapshotContent - storage.k8s.io/CSINode Some
-/// group kinds are driven by restore configuration elsewhere, and will cause an
-/// error if selected here. - Namespace - PersistentVolume
+/// migration.k8s.io/StorageVersionMigration -
+/// snapshot.storage.k8s.io/VolumeSnapshotContent - storage.k8s.io/CSINode -
+/// storage.k8s.io/VolumeAttachment Some group kinds are driven by restore
+/// configuration elsewhere, and will cause an error if selected here. -
+/// Namespace - PersistentVolume
 class ClusterResourceRestoreScope {
   /// If True, all valid cluster-scoped resources will be restored.
   ///

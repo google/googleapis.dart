@@ -1575,8 +1575,9 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// - "FEDRAMP_MODERATE" : FedRAMP Moderate data protection controls
   /// - "US_REGIONAL_ACCESS" : Assured Workloads For US Regions data protection
   /// controls
-  /// - "HIPAA" : Health Insurance Portability and Accountability Act controls
-  /// - "HITRUST" : Health Information Trust Alliance controls
+  /// - "HIPAA" : \[DEPRECATED\] Health Insurance Portability and Accountability
+  /// Act controls
+  /// - "HITRUST" : \[DEPRECATED\] Health Information Trust Alliance controls
   /// - "EU_REGIONS_AND_SUPPORT" : Assured Workloads For EU Regions and Support
   /// controls
   /// - "CA_REGIONS_AND_SUPPORT" : Assured Workloads For Canada Regions and
@@ -1599,6 +1600,7 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// - "HEALTHCARE_AND_LIFE_SCIENCES_CONTROLS_US_SUPPORT" : Healthcare and Life
   /// Science Controls with US Support
   /// - "IRS_1075" : Internal Revenue Service 1075 controls
+  /// - "CANADA_CONTROLLED_GOODS" : Canada Controlled Goods
   core.String? complianceRegime;
 
   /// Count of active Violations in the Workload.
@@ -1979,6 +1981,8 @@ class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse {
   core.String? ekmProvisioningErrorMapping;
 
   /// Indicates Ekm enrollment Provisioning of a given workload.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "EKM_PROVISIONING_STATE_UNSPECIFIED" : Default State for Ekm
   /// Provisioning
@@ -2063,6 +2067,8 @@ class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions {
   core.bool? assuredWorkloadsMonitoring;
 
   /// Allow the partner to view inspectability logs and monitoring violations.
+  ///
+  /// Optional.
   core.bool? dataLogsViewer;
 
   /// Allow partner to view access approval logs.
@@ -2105,6 +2111,8 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceInfo {
   /// Resource identifier.
   ///
   /// For a project this represents project_number.
+  ///
+  /// Output only.
   core.String? resourceId;
 
   /// Indicates the type of resource.
@@ -2190,6 +2198,8 @@ class GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse {
   core.List<core.String>? setupErrors;
 
   /// Indicates SAA enrollment status of a given workload.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "SETUP_STATE_UNSPECIFIED" : Unspecified.
   /// - "STATUS_PENDING" : SAA enrollment pending.

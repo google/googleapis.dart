@@ -14484,6 +14484,15 @@ class LoyaltyProgram {
   /// Required.
   core.String? programLabel;
 
+  /// The shipping label for the loyalty program.
+  ///
+  /// You can use this label to indicate whether this offer has the loyalty
+  /// shipping benefit. If not specified, the item is not eligible for loyalty
+  /// shipping for the given loyalty tier.
+  ///
+  /// Optional.
+  core.String? shippingLabel;
+
   /// The label of the tier within the loyalty program.
   ///
   /// Must match one of the labels within the program.
@@ -14497,6 +14506,7 @@ class LoyaltyProgram {
     this.memberPriceEffectiveDate,
     this.price,
     this.programLabel,
+    this.shippingLabel,
     this.tierLabel,
   });
 
@@ -14514,6 +14524,7 @@ class LoyaltyProgram {
                   json_['price'] as core.Map<core.String, core.dynamic>)
               : null,
           programLabel: json_['programLabel'] as core.String?,
+          shippingLabel: json_['shippingLabel'] as core.String?,
           tierLabel: json_['tierLabel'] as core.String?,
         );
 
@@ -14525,6 +14536,7 @@ class LoyaltyProgram {
           'memberPriceEffectiveDate': memberPriceEffectiveDate!,
         if (price != null) 'price': price!,
         if (programLabel != null) 'programLabel': programLabel!,
+        if (shippingLabel != null) 'shippingLabel': shippingLabel!,
         if (tierLabel != null) 'tierLabel': tierLabel!,
       };
 }

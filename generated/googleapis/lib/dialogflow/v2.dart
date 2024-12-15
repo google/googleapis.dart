@@ -4727,7 +4727,7 @@ class ProjectsConversationProfilesResource {
 
   /// Creates a conversation profile in the specified project.
   ///
-  /// ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't
+  /// ConversationProfile.create_time and ConversationProfile.update_time aren't
   /// populated in the response. You can retrieve them via
   /// GetConversationProfile API.
   ///
@@ -4897,7 +4897,7 @@ class ProjectsConversationProfilesResource {
 
   /// Updates the specified conversation profile.
   ///
-  /// ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't
+  /// ConversationProfile.create_time and ConversationProfile.update_time aren't
   /// populated in the response. You can retrieve them via
   /// GetConversationProfile API.
   ///
@@ -10925,7 +10925,7 @@ class ProjectsLocationsConversationProfilesResource {
 
   /// Creates a conversation profile in the specified project.
   ///
-  /// ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't
+  /// ConversationProfile.create_time and ConversationProfile.update_time aren't
   /// populated in the response. You can retrieve them via
   /// GetConversationProfile API.
   ///
@@ -11097,7 +11097,7 @@ class ProjectsLocationsConversationProfilesResource {
 
   /// Updates the specified conversation profile.
   ///
-  /// ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't
+  /// ConversationProfile.create_time and ConversationProfile.update_time aren't
   /// populated in the response. You can retrieve them via
   /// GetConversationProfile API.
   ///
@@ -12975,8 +12975,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// Request parameters:
   ///
@@ -13268,8 +13268,8 @@ class ProjectsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// Request parameters:
   ///
@@ -14043,9 +14043,10 @@ class GoogleCloudDialogflowV2AnalyzeContentRequest {
 class GoogleCloudDialogflowV2AnalyzeContentResponse {
   /// Only set if a Dialogflow automated agent has responded.
   ///
-  /// Note that: AutomatedAgentReply.detect_intent_response.output_audio and
-  /// AutomatedAgentReply.detect_intent_response.output_audio_config are always
-  /// empty, use reply_audio instead.
+  /// Note that in AutomatedAgentReply.DetectIntentResponse,
+  /// Sessions.DetectIntentResponse.output_audio and
+  /// Sessions.DetectIntentResponse.output_audio_config are always empty, use
+  /// reply_audio instead.
   GoogleCloudDialogflowV2AutomatedAgentReply? automatedAgentReply;
 
   /// Indicates the parameters of DTMF.
@@ -14277,8 +14278,8 @@ class GoogleCloudDialogflowV2AnswerFeedback {
 /// is: 1. For human agent assistant, customers get suggestion via
 /// ListSuggestions API. Together with the answers, AnswerRecord.name are
 /// returned to the customers. 2. The customer uses the AnswerRecord.name to
-/// call the UpdateAnswerRecord method to send feedback about a specific answer
-/// that they believe is wrong.
+/// call the AnswerRecords.UpdateAnswerRecord method to send feedback about a
+/// specific answer that they believe is wrong.
 class GoogleCloudDialogflowV2AnswerRecord {
   /// The record for human agent assistant.
   ///
@@ -14842,7 +14843,7 @@ class GoogleCloudDialogflowV2BatchUpdateIntentsRequest {
       };
 }
 
-/// The request message for ConversationProfiles.ClearFeature.
+/// The request message for ConversationProfiles.ClearSuggestionFeatureConfig.
 class GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest {
   /// The participant role to remove the suggestion feature config.
   ///
@@ -16746,8 +16747,6 @@ class GoogleCloudDialogflowV2FaqAnswer {
 
 /// Providing examples in the generator (i.e. building a few-shot generator)
 /// helps convey the desired format of the LLM response.
-///
-/// NEXT_ID: 10
 class GoogleCloudDialogflowV2FewShotExample {
   /// Conversation transcripts.
   ///
@@ -17219,12 +17218,12 @@ class GoogleCloudDialogflowV2GenerateStatelessSummaryRequestMinimalConversation 
 
 /// The response message for Conversations.GenerateStatelessSummary.
 class GoogleCloudDialogflowV2GenerateStatelessSummaryResponse {
-  /// Number of messages prior to and including last_conversation_message used
-  /// to compile the suggestion.
+  /// Number of messages prior to and including latest_message used to compile
+  /// the suggestion.
   ///
-  /// It may be smaller than the GenerateStatelessSummaryRequest.context_size
-  /// field in the request if there weren't that many messages in the
-  /// conversation.
+  /// It may be smaller than the
+  /// GenerateStatelessSummaryRequest.max_context_size field in the request if
+  /// there weren't that many messages in the conversation.
   core.int? contextSize;
 
   /// The name of the latest conversation message used as context for compiling
@@ -22594,8 +22593,8 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs {
   /// Data Stores where the boosting configuration is applied.
   ///
   /// The full names of the referenced data stores. Formats:
-  /// \`projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}\`
-  /// \`projects/{project}/locations/{location}/dataStores/{data_store}
+  /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+  /// `projects/{project}/locations/{location}/dataStores/{data_store}`
   ///
   /// Optional.
   core.List<core.String>? dataStores;
@@ -22921,10 +22920,9 @@ class GoogleCloudDialogflowV2SentimentAnalysisRequestConfig {
 ///
 /// Sentiment analysis inspects user input and identifies the prevailing
 /// subjective opinion, especially to determine a user's attitude as positive,
-/// negative, or neutral. For Participants.DetectIntent, it needs to be
-/// configured in DetectIntentRequest.query_params. For
-/// Participants.StreamingDetectIntent, it needs to be configured in
-/// StreamingDetectIntentRequest.query_params. And for
+/// negative, or neutral. For DetectIntent, it needs to be configured in
+/// DetectIntentRequest.query_params. For StreamingDetectIntent, it needs to be
+/// configured in StreamingDetectIntentRequest.query_params. And for
 /// Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it
 /// needs to be configured in ConversationProfile.human_agent_assistant_config
 class GoogleCloudDialogflowV2SentimentAnalysisResult {
@@ -23020,7 +23018,7 @@ class GoogleCloudDialogflowV2SessionEntityType {
       };
 }
 
-/// The request message for ConversationProfiles.SetSuggestionFeature.
+/// The request message for ConversationProfiles.SetSuggestionFeatureConfig.
 class GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest {
   /// The participant role to add or update the suggestion feature config.
   ///
@@ -23537,11 +23535,12 @@ class GoogleCloudDialogflowV2SuggestConversationSummaryRequest {
 
 /// The response message for Conversations.SuggestConversationSummary.
 class GoogleCloudDialogflowV2SuggestConversationSummaryResponse {
-  /// Number of messages prior to and including last_conversation_message used
-  /// to compile the suggestion.
+  /// Number of messages prior to and including latest_message used to compile
+  /// the suggestion.
   ///
-  /// It may be smaller than the SuggestSummaryRequest.context_size field in the
-  /// request if there weren't that many messages in the conversation.
+  /// It may be smaller than the SuggestConversationSummaryRequest.context_size
+  /// field in the request if there weren't that many messages in the
+  /// conversation.
   core.int? contextSize;
 
   /// The name of the latest conversation message used as context for compiling

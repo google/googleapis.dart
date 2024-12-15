@@ -733,6 +733,7 @@ api.CreateEnrollmentTokenResponse buildCreateEnrollmentTokenResponse() {
   buildCounterCreateEnrollmentTokenResponse++;
   if (buildCounterCreateEnrollmentTokenResponse < 3) {
     o.enrollmentToken = 'foo';
+    o.token = buildEnrollmentToken();
   }
   buildCounterCreateEnrollmentTokenResponse--;
   return o;
@@ -745,6 +746,7 @@ void checkCreateEnrollmentTokenResponse(api.CreateEnrollmentTokenResponse o) {
       o.enrollmentToken!,
       unittest.equals('foo'),
     );
+    checkEnrollmentToken(o.token!);
   }
   buildCounterCreateEnrollmentTokenResponse--;
 }
@@ -929,6 +931,38 @@ void checkDevicesListResponse(api.DevicesListResponse o) {
     checkUnnamed11(o.device!);
   }
   buildCounterDevicesListResponse--;
+}
+
+core.int buildCounterEnrollmentToken = 0;
+api.EnrollmentToken buildEnrollmentToken() {
+  final o = api.EnrollmentToken();
+  buildCounterEnrollmentToken++;
+  if (buildCounterEnrollmentToken < 3) {
+    o.duration = 'foo';
+    o.enrollmentTokenType = 'foo';
+    o.token = 'foo';
+  }
+  buildCounterEnrollmentToken--;
+  return o;
+}
+
+void checkEnrollmentToken(api.EnrollmentToken o) {
+  buildCounterEnrollmentToken++;
+  if (buildCounterEnrollmentToken < 3) {
+    unittest.expect(
+      o.duration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.enrollmentTokenType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.token!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEnrollmentToken--;
 }
 
 core.List<api.Administrator> buildUnnamed12() => [
@@ -3542,6 +3576,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-EnrollmentToken', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEnrollmentToken();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EnrollmentToken.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEnrollmentToken(od);
+    });
+  });
+
   unittest.group('obj-schema-Enterprise', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEnterprise();
@@ -4831,6 +4875,9 @@ void main() {
       final res = api.AndroidEnterpriseApi(mock).enterprises;
       final arg_enterpriseId = 'foo';
       final arg_deviceType = 'foo';
+      final arg_enrollmentToken_duration = 'foo';
+      final arg_enrollmentToken_enrollmentTokenType = 'foo';
+      final arg_enrollmentToken_token = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -4882,6 +4929,18 @@ void main() {
           unittest.equals(arg_deviceType),
         );
         unittest.expect(
+          queryMap['enrollmentToken.duration']!.first,
+          unittest.equals(arg_enrollmentToken_duration),
+        );
+        unittest.expect(
+          queryMap['enrollmentToken.enrollmentTokenType']!.first,
+          unittest.equals(arg_enrollmentToken_enrollmentTokenType),
+        );
+        unittest.expect(
+          queryMap['enrollmentToken.token']!.first,
+          unittest.equals(arg_enrollmentToken_token),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -4893,7 +4952,12 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.createEnrollmentToken(arg_enterpriseId,
-          deviceType: arg_deviceType, $fields: arg_$fields);
+          deviceType: arg_deviceType,
+          enrollmentToken_duration: arg_enrollmentToken_duration,
+          enrollmentToken_enrollmentTokenType:
+              arg_enrollmentToken_enrollmentTokenType,
+          enrollmentToken_token: arg_enrollmentToken_token,
+          $fields: arg_$fields);
       checkCreateEnrollmentTokenResponse(
           response as api.CreateEnrollmentTokenResponse);
     });

@@ -12388,6 +12388,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.CloudDataplexApi(mock).projects.locations.dataScans;
       final arg_name = 'foo';
+      final arg_force = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -12422,6 +12423,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['force']!.first,
+          unittest.equals('$arg_force'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -12432,7 +12437,8 @@ void main() {
         final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.delete(arg_name, $fields: arg_$fields);
+      final response =
+          await res.delete(arg_name, force: arg_force, $fields: arg_$fields);
       checkGoogleLongrunningOperation(
           response as api.GoogleLongrunningOperation);
     });
@@ -21237,6 +21243,7 @@ void main() {
       final arg_request = buildGoogleCloudDataplexV1MetadataJob();
       final arg_parent = 'foo';
       final arg_metadataJobId = 'foo';
+      final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.GoogleCloudDataplexV1MetadataJob.fromJson(
@@ -21279,6 +21286,10 @@ void main() {
           unittest.equals(arg_metadataJobId),
         );
         unittest.expect(
+          queryMap['validateOnly']!.first,
+          unittest.equals('$arg_validateOnly'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -21290,7 +21301,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
-          metadataJobId: arg_metadataJobId, $fields: arg_$fields);
+          metadataJobId: arg_metadataJobId,
+          validateOnly: arg_validateOnly,
+          $fields: arg_$fields);
       checkGoogleLongrunningOperation(
           response as api.GoogleLongrunningOperation);
     });

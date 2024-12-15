@@ -629,6 +629,18 @@ class GoogleMapsPlacesV1AuthorAttribution {
 
 /// Request proto for AutocompletePlaces.
 class GoogleMapsPlacesV1AutocompletePlacesRequest {
+  /// Include pure service area businesses if the field is set to true.
+  ///
+  /// Pure service area business is a business that visits or delivers to
+  /// customers directly but does not serve customers at their business address.
+  /// For example, businesses like cleaning services or plumbers. Those
+  /// businesses do not have a physical address or location on Google Maps.
+  /// Places will not return fields including `location`, `plus_code`, and other
+  /// location related fields for these businesses.
+  ///
+  /// Optional.
+  core.bool? includePureServiceAreaBusinesses;
+
   /// If true, the response will include both Place and query predictions.
   ///
   /// Otherwise the response will only return Place predictions.
@@ -745,6 +757,7 @@ class GoogleMapsPlacesV1AutocompletePlacesRequest {
   core.String? sessionToken;
 
   GoogleMapsPlacesV1AutocompletePlacesRequest({
+    this.includePureServiceAreaBusinesses,
     this.includeQueryPredictions,
     this.includedPrimaryTypes,
     this.includedRegionCodes,
@@ -760,6 +773,8 @@ class GoogleMapsPlacesV1AutocompletePlacesRequest {
 
   GoogleMapsPlacesV1AutocompletePlacesRequest.fromJson(core.Map json_)
       : this(
+          includePureServiceAreaBusinesses:
+              json_['includePureServiceAreaBusinesses'] as core.bool?,
           includeQueryPredictions:
               json_['includeQueryPredictions'] as core.bool?,
           includedPrimaryTypes: (json_['includedPrimaryTypes'] as core.List?)
@@ -790,6 +805,8 @@ class GoogleMapsPlacesV1AutocompletePlacesRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (includePureServiceAreaBusinesses != null)
+          'includePureServiceAreaBusinesses': includePureServiceAreaBusinesses!,
         if (includeQueryPredictions != null)
           'includeQueryPredictions': includeQueryPredictions!,
         if (includedPrimaryTypes != null)
@@ -1826,7 +1843,7 @@ class GoogleMapsPlacesV1Place {
   /// A set of data provider that must be shown with this result.
   core.List<GoogleMapsPlacesV1PlaceAttribution>? attributions;
 
-  ///
+  /// The business status for the place.
   /// Possible string values are:
   /// - "BUSINESS_STATUS_UNSPECIFIED" : Default value. This value is unused.
   /// - "OPERATIONAL" : The establishment is operational, not necessarily open
@@ -1834,6 +1851,9 @@ class GoogleMapsPlacesV1Place {
   /// - "CLOSED_TEMPORARILY" : The establishment is temporarily closed.
   /// - "CLOSED_PERMANENTLY" : The establishment is permanently closed.
   core.String? businessStatus;
+
+  /// List of places in which the current place is located.
+  core.List<GoogleMapsPlacesV1PlaceContainingPlace>? containingPlaces;
 
   /// Specifies if the business supports curbside pickup.
   core.bool? curbsidePickup;
@@ -1971,6 +1991,9 @@ class GoogleMapsPlacesV1Place {
   /// - "PRICE_LEVEL_VERY_EXPENSIVE" : Place provides very expensive services.
   core.String? priceLevel;
 
+  /// The price range associated with a Place.
+  GoogleMapsPlacesV1PriceRange? priceRange;
+
   /// The primary type of the given result.
   ///
   /// This type must one of the Places API supported types. For example,
@@ -1987,10 +2010,23 @@ class GoogleMapsPlacesV1Place {
   /// https://developers.google.com/maps/documentation/places/web-service/place-types
   GoogleTypeLocalizedText? primaryTypeDisplayName;
 
+  /// Indicates whether the place is a pure service area business.
+  ///
+  /// Pure service area business is a business that visits or delivers to
+  /// customers directly but does not serve customers at their business address.
+  /// For example, businesses like cleaning services or plumbers. Those
+  /// businesses may not have a physical address or location on Google Maps.
+  core.bool? pureServiceAreaBusiness;
+
   /// A rating between 1.0 and 5.0, based on user reviews of this place.
   core.double? rating;
 
   /// The regular hours of operation.
+  ///
+  /// Note that if a place is always open (24 hours), the `close` field will not
+  /// be set. Clients can rely on always open (24 hours) being represented as an
+  /// `open` period containing day with value `0`, hour with value `0`, and
+  /// minute with value `0`.
   GoogleMapsPlacesV1PlaceOpeningHours? regularOpeningHours;
 
   /// Contains an array of entries for information about regular secondary hours
@@ -2091,6 +2127,7 @@ class GoogleMapsPlacesV1Place {
     this.areaSummary,
     this.attributions,
     this.businessStatus,
+    this.containingPlaces,
     this.curbsidePickup,
     this.currentOpeningHours,
     this.currentSecondaryOpeningHours,
@@ -2122,8 +2159,10 @@ class GoogleMapsPlacesV1Place {
     this.photos,
     this.plusCode,
     this.priceLevel,
+    this.priceRange,
     this.primaryType,
     this.primaryTypeDisplayName,
+    this.pureServiceAreaBusiness,
     this.rating,
     this.regularOpeningHours,
     this.regularSecondaryOpeningHours,
@@ -2177,6 +2216,10 @@ class GoogleMapsPlacesV1Place {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           businessStatus: json_['businessStatus'] as core.String?,
+          containingPlaces: (json_['containingPlaces'] as core.List?)
+              ?.map((value) => GoogleMapsPlacesV1PlaceContainingPlace.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           curbsidePickup: json_['curbsidePickup'] as core.bool?,
           currentOpeningHours: json_.containsKey('currentOpeningHours')
               ? GoogleMapsPlacesV1PlaceOpeningHours.fromJson(
@@ -2255,11 +2298,17 @@ class GoogleMapsPlacesV1Place {
                   json_['plusCode'] as core.Map<core.String, core.dynamic>)
               : null,
           priceLevel: json_['priceLevel'] as core.String?,
+          priceRange: json_.containsKey('priceRange')
+              ? GoogleMapsPlacesV1PriceRange.fromJson(
+                  json_['priceRange'] as core.Map<core.String, core.dynamic>)
+              : null,
           primaryType: json_['primaryType'] as core.String?,
           primaryTypeDisplayName: json_.containsKey('primaryTypeDisplayName')
               ? GoogleTypeLocalizedText.fromJson(json_['primaryTypeDisplayName']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          pureServiceAreaBusiness:
+              json_['pureServiceAreaBusiness'] as core.bool?,
           rating: (json_['rating'] as core.num?)?.toDouble(),
           regularOpeningHours: json_.containsKey('regularOpeningHours')
               ? GoogleMapsPlacesV1PlaceOpeningHours.fromJson(
@@ -2315,6 +2364,7 @@ class GoogleMapsPlacesV1Place {
         if (areaSummary != null) 'areaSummary': areaSummary!,
         if (attributions != null) 'attributions': attributions!,
         if (businessStatus != null) 'businessStatus': businessStatus!,
+        if (containingPlaces != null) 'containingPlaces': containingPlaces!,
         if (curbsidePickup != null) 'curbsidePickup': curbsidePickup!,
         if (currentOpeningHours != null)
           'currentOpeningHours': currentOpeningHours!,
@@ -2352,9 +2402,12 @@ class GoogleMapsPlacesV1Place {
         if (photos != null) 'photos': photos!,
         if (plusCode != null) 'plusCode': plusCode!,
         if (priceLevel != null) 'priceLevel': priceLevel!,
+        if (priceRange != null) 'priceRange': priceRange!,
         if (primaryType != null) 'primaryType': primaryType!,
         if (primaryTypeDisplayName != null)
           'primaryTypeDisplayName': primaryTypeDisplayName!,
+        if (pureServiceAreaBusiness != null)
+          'pureServiceAreaBusiness': pureServiceAreaBusiness!,
         if (rating != null) 'rating': rating!,
         if (regularOpeningHours != null)
           'regularOpeningHours': regularOpeningHours!,
@@ -2536,6 +2589,31 @@ class GoogleMapsPlacesV1PlaceAttribution {
       };
 }
 
+/// Info about the place in which this place is located.
+class GoogleMapsPlacesV1PlaceContainingPlace {
+  /// The place id of the place in which this place is located.
+  core.String? id;
+
+  /// The resource name of the place in which this place is located.
+  core.String? name;
+
+  GoogleMapsPlacesV1PlaceContainingPlace({
+    this.id,
+    this.name,
+  });
+
+  GoogleMapsPlacesV1PlaceContainingPlace.fromJson(core.Map json_)
+      : this(
+          id: json_['id'] as core.String?,
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Experimental: See
 /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
 /// for more details.
@@ -2653,6 +2731,20 @@ class GoogleMapsPlacesV1PlaceGoogleMapsLinks {
 
 /// Information about business hour of the place.
 class GoogleMapsPlacesV1PlaceOpeningHours {
+  /// The next time the current opening hours period ends up to 7 days in the
+  /// future.
+  ///
+  /// This field is only populated if the opening hours period is active at the
+  /// time of serving the request.
+  core.String? nextCloseTime;
+
+  /// The next time the current opening hours period starts up to 7 days in the
+  /// future.
+  ///
+  /// This field is only populated if the opening hours period is not active at
+  /// the time of serving the request.
+  core.String? nextOpenTime;
+
   /// Whether the opening hours period is currently active.
   ///
   /// For regular opening hours and current opening hours, this field means
@@ -2704,6 +2796,8 @@ class GoogleMapsPlacesV1PlaceOpeningHours {
   core.List<core.String>? weekdayDescriptions;
 
   GoogleMapsPlacesV1PlaceOpeningHours({
+    this.nextCloseTime,
+    this.nextOpenTime,
     this.openNow,
     this.periods,
     this.secondaryHoursType,
@@ -2713,6 +2807,8 @@ class GoogleMapsPlacesV1PlaceOpeningHours {
 
   GoogleMapsPlacesV1PlaceOpeningHours.fromJson(core.Map json_)
       : this(
+          nextCloseTime: json_['nextCloseTime'] as core.String?,
+          nextOpenTime: json_['nextOpenTime'] as core.String?,
           openNow: json_['openNow'] as core.bool?,
           periods: (json_['periods'] as core.List?)
               ?.map((value) =>
@@ -2731,6 +2827,8 @@ class GoogleMapsPlacesV1PlaceOpeningHours {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (nextCloseTime != null) 'nextCloseTime': nextCloseTime!,
+        if (nextOpenTime != null) 'nextOpenTime': nextOpenTime!,
         if (openNow != null) 'openNow': openNow!,
         if (periods != null) 'periods': periods!,
         if (secondaryHoursType != null)
@@ -2782,14 +2880,14 @@ class GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint {
   /// 0 is Sunday, 1 is Monday, etc.
   core.int? day;
 
-  /// The hour in 2 digits.
+  /// The hour in 24 hour format.
   ///
-  /// Ranges from 00 to 23.
+  /// Ranges from 0 to 23.
   core.int? hour;
 
-  /// The minute in 2 digits.
+  /// The minute.
   ///
-  /// Ranges from 00 to 59.
+  /// Ranges from 0 to 59.
   core.int? minute;
 
   /// Whether or not this endpoint was truncated.
@@ -3014,6 +3112,44 @@ class GoogleMapsPlacesV1Polyline {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (encodedPolyline != null) 'encodedPolyline': encodedPolyline!,
+      };
+}
+
+/// The price range associated with a Place.
+///
+/// `end_price` could be unset, which indicates a range without upper bound
+/// (e.g. "More than $100").
+class GoogleMapsPlacesV1PriceRange {
+  /// The high end of the price range (exclusive).
+  ///
+  /// Price should be lower than this amount.
+  GoogleTypeMoney? endPrice;
+
+  /// The low end of the price range (inclusive).
+  ///
+  /// Price should be at or above this amount.
+  GoogleTypeMoney? startPrice;
+
+  GoogleMapsPlacesV1PriceRange({
+    this.endPrice,
+    this.startPrice,
+  });
+
+  GoogleMapsPlacesV1PriceRange.fromJson(core.Map json_)
+      : this(
+          endPrice: json_.containsKey('endPrice')
+              ? GoogleTypeMoney.fromJson(
+                  json_['endPrice'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startPrice: json_.containsKey('startPrice')
+              ? GoogleTypeMoney.fromJson(
+                  json_['startPrice'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endPrice != null) 'endPrice': endPrice!,
+        if (startPrice != null) 'startPrice': startPrice!,
       };
 }
 
@@ -3596,6 +3732,18 @@ class GoogleMapsPlacesV1SearchTextRequest {
   /// Optional.
   GoogleMapsPlacesV1SearchTextRequestEVOptions? evOptions;
 
+  /// Include pure service area businesses if the field is set to true.
+  ///
+  /// Pure service area business is a business that visits or delivers to
+  /// customers directly but does not serve customers at their business address.
+  /// For example, businesses like cleaning services or plumbers. Those
+  /// businesses do not have a physical address or location on Google Maps.
+  /// Places will not return fields including `location`, `plus_code`, and other
+  /// location related fields for these businesses.
+  ///
+  /// Optional.
+  core.bool? includePureServiceAreaBusinesses;
+
   /// The requested place type.
   ///
   /// Full list of types supported:
@@ -3727,6 +3875,7 @@ class GoogleMapsPlacesV1SearchTextRequest {
 
   GoogleMapsPlacesV1SearchTextRequest({
     this.evOptions,
+    this.includePureServiceAreaBusinesses,
     this.includedType,
     this.languageCode,
     this.locationBias,
@@ -3751,6 +3900,8 @@ class GoogleMapsPlacesV1SearchTextRequest {
               ? GoogleMapsPlacesV1SearchTextRequestEVOptions.fromJson(
                   json_['evOptions'] as core.Map<core.String, core.dynamic>)
               : null,
+          includePureServiceAreaBusinesses:
+              json_['includePureServiceAreaBusinesses'] as core.bool?,
           includedType: json_['includedType'] as core.String?,
           languageCode: json_['languageCode'] as core.String?,
           locationBias: json_.containsKey('locationBias')
@@ -3789,6 +3940,8 @@ class GoogleMapsPlacesV1SearchTextRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (evOptions != null) 'evOptions': evOptions!,
+        if (includePureServiceAreaBusinesses != null)
+          'includePureServiceAreaBusinesses': includePureServiceAreaBusinesses!,
         if (includedType != null) 'includedType': includedType!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (locationBias != null) 'locationBias': locationBias!,

@@ -2132,7 +2132,7 @@ class ProjectsLocationsOauthClientsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. The resource name of the OauthClient.
+  /// [name] - Immutable. Identifier. The resource name of the OauthClient.
   /// Format:`projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/oauthClients/\[^/\]+$`.
@@ -2398,8 +2398,8 @@ class ProjectsLocationsOauthClientsCredentialsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. The resource name of the OauthClientCredential.
-  /// Format:
+  /// [name] - Immutable. Identifier. The resource name of the
+  /// OauthClientCredential. Format:
   /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/oauthClients/\[^/\]+/credentials/\[^/\]+$`.
@@ -6805,8 +6805,9 @@ class OauthClient {
   /// Output only.
   core.String? expireTime;
 
-  /// The resource name of the OauthClient.
+  /// Identifier.
   ///
+  /// The resource name of the OauthClient.
   /// Format:`projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
   ///
   /// Immutable.
@@ -6902,9 +6903,9 @@ class OauthClientCredential {
   /// Optional.
   core.String? displayName;
 
-  /// The resource name of the OauthClientCredential.
+  /// Identifier.
   ///
-  /// Format:
+  /// The resource name of the OauthClientCredential. Format:
   /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}`
   ///
   /// Immutable.
@@ -6946,6 +6947,8 @@ class Oidc {
   /// //iam.googleapis.com/projects//locations//workloadIdentityPools//providers/
   /// https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/
   /// ```
+  ///
+  /// Optional.
   core.List<core.String>? allowedAudiences;
 
   /// The OIDC issuer URL.
@@ -8657,6 +8660,8 @@ class WorkloadIdentityPool {
   /// A description of the pool.
   ///
   /// Cannot exceed 256 characters.
+  ///
+  /// Optional.
   core.String? description;
 
   /// Whether the pool is disabled.
@@ -8664,11 +8669,15 @@ class WorkloadIdentityPool {
   /// You cannot use a disabled pool to exchange tokens, or use existing tokens
   /// to access resources. If the pool is re-enabled, existing tokens grant
   /// access again.
+  ///
+  /// Optional.
   core.bool? disabled;
 
   /// A display name for the pool.
   ///
   /// Cannot exceed 32 characters.
+  ///
+  /// Optional.
   core.String? displayName;
 
   /// Time after which the workload identity pool will be permanently purged and
@@ -8742,6 +8751,8 @@ class WorkloadIdentityPoolProvider {
   /// valid authentication credential are accepted. The following example shows
   /// how to only allow credentials with a mapped `google.groups` value of
   /// `admins`: ``` "'admins' in google.groups" ```
+  ///
+  /// Optional.
   core.String? attributeCondition;
 
   /// Maps attributes from authentication credentials issued by an external
@@ -8786,6 +8797,8 @@ class WorkloadIdentityPoolProvider {
   /// `google.subject` attribute. For example, the following maps the `sub`
   /// claim of the incoming credential to the `subject` attribute on a Google
   /// token: ``` {"google.subject": "assertion.sub"} ```
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? attributeMapping;
 
   /// An Amazon Web Services identity provider.
@@ -8794,17 +8807,23 @@ class WorkloadIdentityPoolProvider {
   /// A description for the provider.
   ///
   /// Cannot exceed 256 characters.
+  ///
+  /// Optional.
   core.String? description;
 
   /// Whether the provider is disabled.
   ///
   /// You cannot use a disabled provider to exchange tokens. However, existing
   /// tokens still grant access.
+  ///
+  /// Optional.
   core.bool? disabled;
 
   /// A display name for the provider.
   ///
   /// Cannot exceed 32 characters.
+  ///
+  /// Optional.
   core.String? displayName;
 
   /// Time after which the workload identity pool provider will be permanently

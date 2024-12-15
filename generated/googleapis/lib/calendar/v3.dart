@@ -3955,6 +3955,11 @@ class Event {
   /// to only update the participant's response. Optional. The default is False.
   core.bool? attendeesOmitted;
 
+  /// Birthday or special event data.
+  ///
+  /// Used if eventType is "birthday". Immutable.
+  EventBirthdayProperties? birthdayProperties;
+
   /// The color of the event.
   ///
   /// This is an ID referring to an entry in the event section of the colors
@@ -4227,6 +4232,7 @@ class Event {
     this.attachments,
     this.attendees,
     this.attendeesOmitted,
+    this.birthdayProperties,
     this.colorId,
     this.conferenceData,
     this.created,
@@ -4279,6 +4285,10 @@ class Event {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           attendeesOmitted: json_['attendeesOmitted'] as core.bool?,
+          birthdayProperties: json_.containsKey('birthdayProperties')
+              ? EventBirthdayProperties.fromJson(json_['birthdayProperties']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           colorId: json_['colorId'] as core.String?,
           conferenceData: json_.containsKey('conferenceData')
               ? ConferenceData.fromJson(json_['conferenceData']
@@ -4373,6 +4383,8 @@ class Event {
         if (attachments != null) 'attachments': attachments!,
         if (attendees != null) 'attendees': attendees!,
         if (attendeesOmitted != null) 'attendeesOmitted': attendeesOmitted!,
+        if (birthdayProperties != null)
+          'birthdayProperties': birthdayProperties!,
         if (colorId != null) 'colorId': colorId!,
         if (conferenceData != null) 'conferenceData': conferenceData!,
         if (created != null) 'created': created!.toUtc().toIso8601String(),
@@ -4576,6 +4588,54 @@ class EventAttendee {
         if (resource != null) 'resource': resource!,
         if (responseStatus != null) 'responseStatus': responseStatus!,
         if (self != null) 'self': self!,
+      };
+}
+
+class EventBirthdayProperties {
+  /// Resource name of the contact this birthday event is linked to.
+  ///
+  /// This can be used to fetch contact details from People API. Format:
+  /// "people/c12345". Read-only.
+  core.String? contact;
+
+  /// Custom type label specified for this event.
+  ///
+  /// This is populated if birthdayProperties.type is set to "custom".
+  /// Read-only.
+  core.String? customTypeName;
+
+  /// Type of birthday or special event.
+  ///
+  /// Possible values are:
+  /// - "anniversary" - An anniversary other than birthday. Always has a
+  /// contact.
+  /// - "birthday" - A birthday event. This is the default value.
+  /// - "custom" - A special date whose label is further specified in the
+  /// customTypeName field. Always has a contact.
+  /// - "other" - A special date which does not fall into the other categories,
+  /// and does not have a custom label. Always has a contact.
+  /// - "self" - Calendar owner's own birthday. Cannot have a contact. The
+  /// Calendar API only supports creating events with the type "birthday". The
+  /// type cannot be changed after the event is created.
+  core.String? type;
+
+  EventBirthdayProperties({
+    this.contact,
+    this.customTypeName,
+    this.type,
+  });
+
+  EventBirthdayProperties.fromJson(core.Map json_)
+      : this(
+          contact: json_['contact'] as core.String?,
+          customTypeName: json_['customTypeName'] as core.String?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contact != null) 'contact': contact!,
+        if (customTypeName != null) 'customTypeName': customTypeName!,
+        if (type != null) 'type': type!,
       };
 }
 

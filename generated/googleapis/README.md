@@ -921,7 +921,7 @@ Reads and writes Google Forms and responses.
 
 #### Google Play Game Services - `games/v1`
 
-The Google Play games service allows developers to enhance games with social leaderboards, achievements, game state, sign-in with Google, and more.
+The Google Play Games Service allows developers to enhance games with social leaderboards, achievements, game state, sign-in with Google, and more.
 
 - [Original documentation](https://developers.google.com/games/)
 - [Dart package details](https://pub.dev/documentation/googleapis/14.0.0-wip/games_v1/games_v1-library.html)
@@ -935,7 +935,7 @@ The Google Play Game Services Publishing API allows developers to configure thei
 
 #### Google Play Game Management - `gamesManagement/v1management`
 
-The Google Play Game Management API allows developers to manage resources from the Google Play Game service.
+The Google Play Games Management API allows developers to manage resources from the Google Play Game service.
 
 - [Original documentation](https://developers.google.com/games/)
 - [Dart package details](https://pub.dev/documentation/googleapis/14.0.0-wip/gamesManagement_v1management/gamesManagement_v1management-library.html)
@@ -1783,7 +1783,7 @@ API for Verified Access chrome extension to provide credential verification for 
 
 Version History API - Prod
 
-- [Original documentation](https://developer.chrome.com/docs/versionhistory/)
+- [Original documentation](https://developer.chrome.com/docs/web-platform/versionhistory/guide)
 - [Dart package details](https://pub.dev/documentation/googleapis/14.0.0-wip/versionhistory_v1/versionhistory_v1-library.html)
 
 #### Cloud Video Intelligence API - `videointelligence/v1`

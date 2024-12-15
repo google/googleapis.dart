@@ -166,6 +166,8 @@ api.Authority buildAuthority() {
     o.identityProvider = 'foo';
     o.issuer = 'foo';
     o.oidcJwks = 'foo';
+    o.scopeTenancyIdentityProvider = 'foo';
+    o.scopeTenancyWorkloadIdentityPool = 'foo';
     o.workloadIdentityPool = 'foo';
   }
   buildCounterAuthority--;
@@ -185,6 +187,14 @@ void checkAuthority(api.Authority o) {
     );
     unittest.expect(
       o.oidcJwks!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.scopeTenancyIdentityProvider!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.scopeTenancyWorkloadIdentityPool!,
       unittest.equals('foo'),
     );
     unittest.expect(

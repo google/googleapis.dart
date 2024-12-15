@@ -5081,6 +5081,8 @@ api.GoogleCloudApigeeV1EnvironmentConfig
   if (buildCounterGoogleCloudApigeeV1EnvironmentConfig < 3) {
     o.addonsConfig = buildGoogleCloudApigeeV1RuntimeAddonsConfig();
     o.arcConfigLocation = 'foo';
+    o.clientIpResolutionConfig =
+        buildGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig();
     o.createTime = 'foo';
     o.dataCollectors = buildUnnamed89();
     o.debugMask = buildGoogleCloudApigeeV1DebugMask();
@@ -5116,6 +5118,8 @@ void checkGoogleCloudApigeeV1EnvironmentConfig(
       o.arcConfigLocation!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig(
+        o.clientIpResolutionConfig!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -5169,6 +5173,68 @@ void checkGoogleCloudApigeeV1EnvironmentConfig(
     );
   }
   buildCounterGoogleCloudApigeeV1EnvironmentConfig--;
+}
+
+core.int
+    buildCounterGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig =
+    0;
+api.GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig
+    buildGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig() {
+  final o = api.GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig();
+  buildCounterGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig++;
+  if (buildCounterGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig <
+      3) {
+    o.headerIndexAlgorithm =
+        buildGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm();
+  }
+  buildCounterGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig--;
+  return o;
+}
+
+void checkGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig(
+    api.GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig o) {
+  buildCounterGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig++;
+  if (buildCounterGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig <
+      3) {
+    checkGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm(
+        o.headerIndexAlgorithm!);
+  }
+  buildCounterGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig--;
+}
+
+core.int
+    buildCounterGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm =
+    0;
+api.GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm
+    buildGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm() {
+  final o = api
+      .GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm();
+  buildCounterGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm++;
+  if (buildCounterGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm <
+      3) {
+    o.ipHeaderIndex = 42;
+    o.ipHeaderName = 'foo';
+  }
+  buildCounterGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm--;
+  return o;
+}
+
+void checkGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm(
+    api.GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm
+        o) {
+  buildCounterGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm++;
+  if (buildCounterGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm <
+      3) {
+    unittest.expect(
+      o.ipHeaderIndex!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.ipHeaderName!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm--;
 }
 
 core.List<core.String> buildUnnamed98() => [
@@ -15052,6 +15118,35 @@ void main() {
       final od = api.GoogleCloudApigeeV1EnvironmentConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1EnvironmentConfig(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm(
+          od);
     });
   });
 

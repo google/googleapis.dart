@@ -1405,8 +1405,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1961,13 +1961,15 @@ class Certificate {
   ///
   /// Optional. Immutable.
   /// Possible string values are:
-  /// - "DEFAULT" : Certificates with default scope are served from core Google
-  /// data centers. If unsure, choose this option.
-  /// - "EDGE_CACHE" : Certificates with scope EDGE_CACHE are special-purposed
-  /// certificates, served from Edge Points of Presence. See
-  /// https://cloud.google.com/vpc/docs/edge-locations.
-  /// - "ALL_REGIONS" : Certificates with ALL_REGIONS scope are served from all
-  /// Google Cloud regions. See
+  /// - "DEFAULT" : Use the DEFAULT scope if you plan to use the certificate
+  /// with global external Application Load Balancer, global external proxy
+  /// Network Load Balancer, or any of the regional Google Cloud services.
+  /// - "EDGE_CACHE" : Use the EDGE_CACHE scope if you plan to use the
+  /// certificate with Media CDN. The certificates are served from Edge Points
+  /// of Presence. See https://cloud.google.com/vpc/docs/edge-locations.
+  /// - "ALL_REGIONS" : Use the ALL_REGIONS scope if you plan to use the
+  /// certificate with cross-region internal Application Load Balancer. The
+  /// certificates are served from all Google Cloud regions. See
   /// https://cloud.google.com/compute/docs/regions-zones.
   core.String? scope;
 

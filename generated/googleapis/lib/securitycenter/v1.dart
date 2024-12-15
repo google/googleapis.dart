@@ -40,6 +40,7 @@
 ///       - [FoldersSourcesFindingsExternalSystemsResource]
 /// - [OrganizationsResource]
 ///   - [OrganizationsAssetsResource]
+///   - [OrganizationsAttackPathsResource]
 ///   - [OrganizationsBigQueryExportsResource]
 ///   - [OrganizationsEventThreatDetectionSettingsResource]
 ///     - [OrganizationsEventThreatDetectionSettingsCustomModulesResource]
@@ -2834,6 +2835,8 @@ class OrganizationsResource {
 
   OrganizationsAssetsResource get assets =>
       OrganizationsAssetsResource(_requester);
+  OrganizationsAttackPathsResource get attackPaths =>
+      OrganizationsAttackPathsResource(_requester);
   OrganizationsBigQueryExportsResource get bigQueryExports =>
       OrganizationsBigQueryExportsResource(_requester);
   OrganizationsEventThreatDetectionSettingsResource
@@ -3249,6 +3252,70 @@ class OrganizationsAssetsResource {
       queryParams: queryParams_,
     );
     return SecurityMarks.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsAttackPathsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsAttackPathsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the attack paths for a set of simulation results or valued resources
+  /// and filter.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of parent to list attack paths. Valid formats:
+  /// `organizations/{organization}`,
+  /// `organizations/{organization}/simulations/{simulation}`
+  /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
+  /// `organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}`
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [filter] - The filter expression that filters the attack path in the
+  /// response. Supported fields: * `valued_resources` supports =
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last `ListAttackPathsResponse`;
+  /// indicates that this is a continuation of a prior `ListAttackPaths` call,
+  /// and that the system should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAttackPathsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAttackPathsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/attackPaths';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAttackPathsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -4698,8 +4765,8 @@ class OrganizationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// Request parameters:
   ///
@@ -11861,6 +11928,68 @@ class DataFlowEvent {
       };
 }
 
+/// Details about data retention deletion violations, in which the data is
+/// non-compliant based on their retention or deletion time, as defined in the
+/// applicable data security policy.
+///
+/// The Data Retention Deletion (DRD) control is a control of the DSPM (Data
+/// Security Posture Management) suite that enables organizations to manage data
+/// retention and deletion policies in compliance with regulations, such as GDPR
+/// and CRPA. DRD supports two primary policy types: maximum storage length (max
+/// TTL) and minimum storage length (min TTL). Both are aimed at helping
+/// organizations meet regulatory and data management commitments.
+class DataRetentionDeletionEvent {
+  /// Number of objects that violated the policy for this resource.
+  ///
+  /// If the number is less than 1,000, then the value of this field is the
+  /// exact number. If the number of objects that violated the policy is greater
+  /// than or equal to 1,000, then the value of this field is 1000.
+  core.String? dataObjectCount;
+
+  /// Timestamp indicating when the event was detected.
+  core.String? eventDetectionTime;
+
+  /// Type of the DRD event.
+  /// Possible string values are:
+  /// - "EVENT_TYPE_UNSPECIFIED" : Unspecified event type.
+  /// - "EVENT_TYPE_MAX_TTL_EXCEEDED" : The maximum retention time has been
+  /// exceeded.
+  core.String? eventType;
+
+  /// Maximum duration of retention allowed from the DRD control.
+  ///
+  /// This comes from the DRD control where users set a max TTL for their data.
+  /// For example, suppose that a user set the max TTL for a Cloud Storage
+  /// bucket to 90 days. However, an object in that bucket is 100 days old. In
+  /// this case, a DataRetentionDeletionEvent will be generated for that Cloud
+  /// Storage bucket, and the max_retention_allowed is 90 days.
+  core.String? maxRetentionAllowed;
+
+  DataRetentionDeletionEvent({
+    this.dataObjectCount,
+    this.eventDetectionTime,
+    this.eventType,
+    this.maxRetentionAllowed,
+  });
+
+  DataRetentionDeletionEvent.fromJson(core.Map json_)
+      : this(
+          dataObjectCount: json_['dataObjectCount'] as core.String?,
+          eventDetectionTime: json_['eventDetectionTime'] as core.String?,
+          eventType: json_['eventType'] as core.String?,
+          maxRetentionAllowed: json_['maxRetentionAllowed'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataObjectCount != null) 'dataObjectCount': dataObjectCount!,
+        if (eventDetectionTime != null)
+          'eventDetectionTime': eventDetectionTime!,
+        if (eventType != null) 'eventType': eventType!,
+        if (maxRetentionAllowed != null)
+          'maxRetentionAllowed': maxRetentionAllowed!,
+      };
+}
+
 /// Represents database access information, such as queries.
 ///
 /// A database may be a sub-resource of an instance (as in the case of Cloud SQL
@@ -11962,6 +12091,26 @@ class Detection {
       };
 }
 
+/// Contains information about the disk associated with the finding.
+class Disk {
+  /// The name of the disk, for example,
+  /// "https://www.googleapis.com/compute/v1/projects/project-id/zones/zone-id/disks/disk-id".
+  core.String? name;
+
+  Disk({
+    this.name,
+  });
+
+  Disk.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Path of the file in terms of underlying disk/partition identifiers.
 class DiskPath {
   /// UUID of the partition (format
@@ -12030,6 +12179,14 @@ class DynamicMuteRecord {
 /// `enablement_state` for the module in all child folders or projects is also
 /// `enabled`. EffectiveEventThreatDetectionCustomModule is read-only.
 class EffectiveEventThreatDetectionCustomModule {
+  /// The cloud provider of the custom module.
+  /// Possible string values are:
+  /// - "CLOUD_PROVIDER_UNSPECIFIED" : Unspecified cloud provider.
+  /// - "GOOGLE_CLOUD_PLATFORM" : Google Cloud Platform.
+  /// - "AMAZON_WEB_SERVICES" : Amazon Web Services.
+  /// - "MICROSOFT_AZURE" : Microsoft Azure.
+  core.String? cloudProvider;
+
   /// Config for the effective module.
   ///
   /// Output only.
@@ -12078,6 +12235,7 @@ class EffectiveEventThreatDetectionCustomModule {
   core.String? type;
 
   EffectiveEventThreatDetectionCustomModule({
+    this.cloudProvider,
     this.config,
     this.description,
     this.displayName,
@@ -12088,6 +12246,7 @@ class EffectiveEventThreatDetectionCustomModule {
 
   EffectiveEventThreatDetectionCustomModule.fromJson(core.Map json_)
       : this(
+          cloudProvider: json_['cloudProvider'] as core.String?,
           config: json_.containsKey('config')
               ? json_['config'] as core.Map<core.String, core.dynamic>
               : null,
@@ -12099,6 +12258,7 @@ class EffectiveEventThreatDetectionCustomModule {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudProvider != null) 'cloudProvider': cloudProvider!,
         if (config != null) 'config': config!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
@@ -12158,6 +12318,14 @@ class EventThreatDetectionCustomModule {
   /// Output only.
   core.String? ancestorModule;
 
+  /// The cloud provider of the custom module.
+  /// Possible string values are:
+  /// - "CLOUD_PROVIDER_UNSPECIFIED" : Unspecified cloud provider.
+  /// - "GOOGLE_CLOUD_PLATFORM" : Google Cloud.
+  /// - "AMAZON_WEB_SERVICES" : Amazon Web Services (AWS).
+  /// - "MICROSOFT_AZURE" : Microsoft Azure.
+  core.String? cloudProvider;
+
   /// Config for the module.
   ///
   /// For the resident module, its config value is defined at this level. For
@@ -12211,6 +12379,7 @@ class EventThreatDetectionCustomModule {
 
   EventThreatDetectionCustomModule({
     this.ancestorModule,
+    this.cloudProvider,
     this.config,
     this.description,
     this.displayName,
@@ -12224,6 +12393,7 @@ class EventThreatDetectionCustomModule {
   EventThreatDetectionCustomModule.fromJson(core.Map json_)
       : this(
           ancestorModule: json_['ancestorModule'] as core.String?,
+          cloudProvider: json_['cloudProvider'] as core.String?,
           config: json_.containsKey('config')
               ? json_['config'] as core.Map<core.String, core.dynamic>
               : null,
@@ -12238,6 +12408,7 @@ class EventThreatDetectionCustomModule {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ancestorModule != null) 'ancestorModule': ancestorModule!,
+        if (cloudProvider != null) 'cloudProvider': cloudProvider!,
         if (config != null) 'config': config!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
@@ -12494,11 +12665,17 @@ class Finding {
   /// Data flow events associated with the finding.
   core.List<DataFlowEvent>? dataFlowEvents;
 
+  /// Data retention deletion events associated with the finding.
+  core.List<DataRetentionDeletionEvent>? dataRetentionDeletionEvents;
+
   /// Database associated with the finding.
   Database? database;
 
   /// Contains more details about the finding.
   core.String? description;
+
+  /// Disk associated with the finding.
+  Disk? disk;
 
   /// The time the finding was first detected.
   ///
@@ -12769,8 +12946,10 @@ class Finding {
     this.createTime,
     this.dataAccessEvents,
     this.dataFlowEvents,
+    this.dataRetentionDeletionEvents,
     this.database,
     this.description,
+    this.disk,
     this.eventTime,
     this.exfiltration,
     this.externalSystems,
@@ -12868,11 +13047,20 @@ class Finding {
               ?.map((value) => DataFlowEvent.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          dataRetentionDeletionEvents:
+              (json_['dataRetentionDeletionEvents'] as core.List?)
+                  ?.map((value) => DataRetentionDeletionEvent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
           database: json_.containsKey('database')
               ? Database.fromJson(
                   json_['database'] as core.Map<core.String, core.dynamic>)
               : null,
           description: json_['description'] as core.String?,
+          disk: json_.containsKey('disk')
+              ? Disk.fromJson(
+                  json_['disk'] as core.Map<core.String, core.dynamic>)
+              : null,
           eventTime: json_['eventTime'] as core.String?,
           exfiltration: json_.containsKey('exfiltration')
               ? Exfiltration.fromJson(
@@ -12993,8 +13181,11 @@ class Finding {
         if (createTime != null) 'createTime': createTime!,
         if (dataAccessEvents != null) 'dataAccessEvents': dataAccessEvents!,
         if (dataFlowEvents != null) 'dataFlowEvents': dataFlowEvents!,
+        if (dataRetentionDeletionEvents != null)
+          'dataRetentionDeletionEvents': dataRetentionDeletionEvents!,
         if (database != null) 'database': database!,
         if (description != null) 'description': description!,
+        if (disk != null) 'disk': disk!,
         if (eventTime != null) 'eventTime': eventTime!,
         if (exfiltration != null) 'exfiltration': exfiltration!,
         if (externalSystems != null) 'externalSystems': externalSystems!,
@@ -13376,6 +13567,14 @@ class GoogleCloudSecuritycenterV1CustomOutputSpec {
 /// enablement_state for the module in all child folders or projects is also
 /// `enabled`. EffectiveSecurityHealthAnalyticsCustomModule is read-only.
 class GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule {
+  /// The cloud provider of the custom module.
+  /// Possible string values are:
+  /// - "CLOUD_PROVIDER_UNSPECIFIED" : Unspecified cloud provider.
+  /// - "GOOGLE_CLOUD_PLATFORM" : Google Cloud Platform.
+  /// - "AMAZON_WEB_SERVICES" : Amazon Web Services.
+  /// - "MICROSOFT_AZURE" : Microsoft Azure.
+  core.String? cloudProvider;
+
   /// The user-specified configuration for the module.
   ///
   /// Output only.
@@ -13412,6 +13611,7 @@ class GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule {
   core.String? name;
 
   GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule({
+    this.cloudProvider,
     this.customConfig,
     this.displayName,
     this.enablementState,
@@ -13421,6 +13621,7 @@ class GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule {
   GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule.fromJson(
       core.Map json_)
       : this(
+          cloudProvider: json_['cloudProvider'] as core.String?,
           customConfig: json_.containsKey('customConfig')
               ? GoogleCloudSecuritycenterV1CustomConfig.fromJson(
                   json_['customConfig'] as core.Map<core.String, core.dynamic>)
@@ -13431,6 +13632,7 @@ class GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudProvider != null) 'cloudProvider': cloudProvider!,
         if (customConfig != null) 'customConfig': customConfig!,
         if (displayName != null) 'displayName': displayName!,
         if (enablementState != null) 'enablementState': enablementState!,
@@ -13778,8 +13980,9 @@ class GoogleCloudSecuritycenterV1ResourceValueConfig {
 
   /// Tag values combined with `AND` to check against.
   ///
-  /// Values in the form "tagValues/123" Example: `[ "tagValues/123",
-  /// "tagValues/456", "tagValues/789" ]`
+  /// For Google Cloud resources, they are tag value IDs in the form of
+  /// "tagValues/123". Example: `[ "tagValues/123", "tagValues/456",
+  /// "tagValues/789" ]`
   /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
   ///
   /// Required.
@@ -13868,6 +14071,14 @@ class GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule {
   /// Output only.
   core.String? ancestorModule;
 
+  /// The cloud provider of the custom module.
+  /// Possible string values are:
+  /// - "CLOUD_PROVIDER_UNSPECIFIED" : Unspecified cloud provider.
+  /// - "GOOGLE_CLOUD_PLATFORM" : Google Cloud.
+  /// - "AMAZON_WEB_SERVICES" : Amazon Web Services (AWS).
+  /// - "MICROSOFT_AZURE" : Microsoft Azure.
+  core.String? cloudProvider;
+
   /// The user specified custom configuration for the module.
   GoogleCloudSecuritycenterV1CustomConfig? customConfig;
 
@@ -13915,6 +14126,7 @@ class GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule {
 
   GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule({
     this.ancestorModule,
+    this.cloudProvider,
     this.customConfig,
     this.displayName,
     this.enablementState,
@@ -13927,6 +14139,7 @@ class GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule {
       core.Map json_)
       : this(
           ancestorModule: json_['ancestorModule'] as core.String?,
+          cloudProvider: json_['cloudProvider'] as core.String?,
           customConfig: json_.containsKey('customConfig')
               ? GoogleCloudSecuritycenterV1CustomConfig.fromJson(
                   json_['customConfig'] as core.Map<core.String, core.dynamic>)
@@ -13940,6 +14153,7 @@ class GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ancestorModule != null) 'ancestorModule': ancestorModule!,
+        if (cloudProvider != null) 'cloudProvider': cloudProvider!,
         if (customConfig != null) 'customConfig': customConfig!,
         if (displayName != null) 'displayName': displayName!,
         if (enablementState != null) 'enablementState': enablementState!,

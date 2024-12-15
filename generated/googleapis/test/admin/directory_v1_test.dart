@@ -4093,6 +4093,7 @@ api.RoleAssignment buildRoleAssignment() {
   if (buildCounterRoleAssignment < 3) {
     o.assignedTo = 'foo';
     o.assigneeType = 'foo';
+    o.condition = 'foo';
     o.etag = 'foo';
     o.kind = 'foo';
     o.orgUnitId = 'foo';
@@ -4113,6 +4114,10 @@ void checkRoleAssignment(api.RoleAssignment o) {
     );
     unittest.expect(
       o.assigneeType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.condition!,
       unittest.equals('foo'),
     );
     unittest.expect(

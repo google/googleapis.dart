@@ -78,8 +78,8 @@ class CustomersResource {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The maximum number of customers to show in a page of results.
-  /// A number between 1 and 100 (inclusive).
+  /// [pageSize] - Required. The maximum number of customers to show in a page
+  /// of results. A number between 1 and 100 (inclusive).
   ///
   /// [pageToken] - A token specifying which result page to return. This field
   /// has custom validations in ListCustomersRequestValidator
@@ -429,8 +429,8 @@ class CustomersDevicesResource {
   /// name in the format `customers/[CUSTOMER_ID]`.
   /// Value must have pattern `^customers/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of devices to show in a page of results.
-  /// Must be between 1 and 100 inclusive.
+  /// [pageSize] - Required. The maximum number of devices to show in a page of
+  /// results. Must be between 1 and 100 inclusive.
   ///
   /// [pageToken] - A token specifying which result page to return.
   ///

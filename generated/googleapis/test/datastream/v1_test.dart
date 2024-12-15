@@ -2653,6 +2653,7 @@ api.SpecificStartPosition buildSpecificStartPosition() {
   if (buildCounterSpecificStartPosition < 3) {
     o.mysqlLogPosition = buildMysqlLogPosition();
     o.oracleScnPosition = buildOracleScnPosition();
+    o.sqlServerLsnPosition = buildSqlServerLsnPosition();
   }
   buildCounterSpecificStartPosition--;
   return o;
@@ -2663,6 +2664,7 @@ void checkSpecificStartPosition(api.SpecificStartPosition o) {
   if (buildCounterSpecificStartPosition < 3) {
     checkMysqlLogPosition(o.mysqlLogPosition!);
     checkOracleScnPosition(o.oracleScnPosition!);
+    checkSqlServerLsnPosition(o.sqlServerLsnPosition!);
   }
   buildCounterSpecificStartPosition--;
 }
@@ -2731,6 +2733,28 @@ void checkSqlServerColumn(api.SqlServerColumn o) {
     );
   }
   buildCounterSqlServerColumn--;
+}
+
+core.int buildCounterSqlServerLsnPosition = 0;
+api.SqlServerLsnPosition buildSqlServerLsnPosition() {
+  final o = api.SqlServerLsnPosition();
+  buildCounterSqlServerLsnPosition++;
+  if (buildCounterSqlServerLsnPosition < 3) {
+    o.lsn = 'foo';
+  }
+  buildCounterSqlServerLsnPosition--;
+  return o;
+}
+
+void checkSqlServerLsnPosition(api.SqlServerLsnPosition o) {
+  buildCounterSqlServerLsnPosition++;
+  if (buildCounterSqlServerLsnPosition < 3) {
+    unittest.expect(
+      o.lsn!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSqlServerLsnPosition--;
 }
 
 core.int buildCounterSqlServerObjectIdentifier = 0;
@@ -4086,6 +4110,16 @@ void main() {
       final od = api.SqlServerColumn.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSqlServerColumn(od);
+    });
+  });
+
+  unittest.group('obj-schema-SqlServerLsnPosition', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlServerLsnPosition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlServerLsnPosition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSqlServerLsnPosition(od);
     });
   });
 

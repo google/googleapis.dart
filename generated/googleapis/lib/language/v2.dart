@@ -305,7 +305,7 @@ class AnalyzeEntitiesResponse {
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
   ///
-  /// See Document.language field for more details.
+  /// See Document.language_code field for more details.
   core.String? languageCode;
 
   /// Whether the language is officially supported.
@@ -387,7 +387,7 @@ class AnalyzeSentimentResponse {
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
   ///
-  /// See Document.language field for more details.
+  /// See Document.language_code field for more details.
   core.String? languageCode;
 
   /// Whether the language is officially supported.
@@ -545,14 +545,13 @@ class AnnotateTextResponse {
   /// Entities, along with their semantic information, in the input document.
   ///
   /// Populated if the user enables
-  /// AnnotateTextRequest.Features.extract_entities or
-  /// AnnotateTextRequest.Features.extract_entity_sentiment.
+  /// AnnotateTextRequest.Features.extract_entities .
   core.List<Entity>? entities;
 
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
   ///
-  /// See Document.language field for more details.
+  /// See Document.language_code field for more details.
   core.String? languageCode;
 
   /// Whether the language is officially supported by all requested features.
@@ -689,7 +688,7 @@ class ClassifyTextResponse {
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
   ///
-  /// See Document.language field for more details.
+  /// See Document.language_code field for more details.
   core.String? languageCode;
 
   /// Whether the language is officially supported.
@@ -801,10 +800,8 @@ class Entity {
   /// The representative name for the entity.
   core.String? name;
 
-  /// For calls to AnalyzeEntitySentimentRequest or if
-  /// AnnotateTextRequest.Features.extract_entity_sentiment is set to true, this
-  /// field will contain the aggregate sentiment expressed for this entity in
-  /// the provided document.
+  /// For calls to AnalyzeEntitySentiment this field will contain the aggregate
+  /// sentiment expressed for this entity in the provided document.
   Sentiment? sentiment;
 
   /// The entity type.
@@ -886,10 +883,8 @@ class EntityMention {
   /// type. The score is in (0, 1\] range.
   core.double? probability;
 
-  /// For calls to AnalyzeEntitySentimentRequest or if
-  /// AnnotateTextRequest.Features.extract_entity_sentiment is set to true, this
-  /// field will contain the sentiment expressed for this mention of the entity
-  /// in the provided document.
+  /// For calls to AnalyzeEntitySentiment this field will contain the sentiment
+  /// expressed for this mention of the entity in the provided document.
   Sentiment? sentiment;
 
   /// The mention text.
@@ -976,7 +971,7 @@ class ModerateTextResponse {
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
   ///
-  /// See Document.language field for more details.
+  /// See Document.language_code field for more details.
   core.String? languageCode;
 
   /// Whether the language is officially supported.
@@ -1014,7 +1009,7 @@ class ModerateTextResponse {
 
 /// Represents a sentence in the input document.
 class Sentence {
-  /// For calls to AnalyzeSentimentRequest or if
+  /// For calls to AnalyzeSentiment or if
   /// AnnotateTextRequest.Features.extract_document_sentiment is set to true,
   /// this field will contain the sentiment for the sentence.
   Sentiment? sentiment;

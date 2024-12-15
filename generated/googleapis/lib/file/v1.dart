@@ -946,6 +946,9 @@ class ProjectsLocationsInstancesSnapshotsResource {
   /// [pageToken] - The next_page_token value to use if there are additional
   /// results to retrieve for this list request.
   ///
+  /// [returnPartialSuccess] - Optional. If true, allow partial responses for
+  /// multi-regional Aggregated List requests.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -962,6 +965,7 @@ class ProjectsLocationsInstancesSnapshotsResource {
     core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -969,6 +973,8 @@ class ProjectsLocationsInstancesSnapshotsResource {
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1045,8 +1051,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1336,8 +1342,13 @@ class Backup {
 
   /// Input only.
   ///
-  /// Immutable. Tag key-value pairs are bound to this resource. For example:
-  /// "123/environment": "production", "123/costCenter": "marketing"
+  /// Immutable. Tag key-value pairs bound to this resource. Each key must be a
+  /// namespaced name and each value a short name. Example:
+  /// "123456789012/environment" : "production", "123456789013/costCenter" :
+  /// "marketing" See the documentation for more information: - Namespaced name:
+  /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_key
+  /// - Short name:
+  /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_value
   ///
   /// Optional.
   core.Map<core.String, core.String>? tags;
@@ -1484,30 +1495,17 @@ class FixedIOPS {
   /// Required.
   core.String? maxIops;
 
-  /// Deprecated: `max_iops` should be used instead of this parameter.
-  ///
-  /// Maximum raw read IOPS.
-  ///
-  /// Optional.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? maxReadIops;
-
   FixedIOPS({
     this.maxIops,
-    this.maxReadIops,
   });
 
   FixedIOPS.fromJson(core.Map json_)
       : this(
           maxIops: json_['maxIops'] as core.String?,
-          maxReadIops: json_['maxReadIops'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxIops != null) 'maxIops': maxIops!,
-        if (maxReadIops != null) 'maxReadIops': maxReadIops!,
       };
 }
 
@@ -1520,30 +1518,17 @@ class IOPSPerTB {
   /// Required.
   core.String? maxIopsPerTb;
 
-  /// Deprecated: `max_iops_per_tb` should be used instead of this parameter.
-  ///
-  /// Maximum read IOPS per TiB.
-  ///
-  /// Optional.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? maxReadIopsPerTb;
-
   IOPSPerTB({
     this.maxIopsPerTb,
-    this.maxReadIopsPerTb,
   });
 
   IOPSPerTB.fromJson(core.Map json_)
       : this(
           maxIopsPerTb: json_['maxIopsPerTb'] as core.String?,
-          maxReadIopsPerTb: json_['maxReadIopsPerTb'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxIopsPerTb != null) 'maxIopsPerTb': maxIopsPerTb!,
-        if (maxReadIopsPerTb != null) 'maxReadIopsPerTb': maxReadIopsPerTb!,
       };
 }
 
@@ -1673,8 +1658,13 @@ class Instance {
 
   /// Input only.
   ///
-  /// Immutable. Tag key-value pairs are bound to this resource. For example:
-  /// "123/environment": "production", "123/costCenter": "marketing"
+  /// Immutable. Tag key-value pairs bound to this resource. Each key must be a
+  /// namespaced name and each value a short name. Example:
+  /// "123456789012/environment" : "production", "123456789013/costCenter" :
+  /// "marketing" See the documentation for more information: - Namespaced name:
+  /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_key
+  /// - Short name:
+  /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_value
   ///
   /// Optional.
   core.Map<core.String, core.String>? tags;
@@ -1828,6 +1818,8 @@ class ListBackupsResponse {
   /// Not returned if there are no more results in the list.
   core.String? nextPageToken;
 
+  /// Unordered list.
+  ///
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
@@ -1872,6 +1864,8 @@ class ListInstancesResponse {
   /// Not returned if there are no more results in the list.
   core.String? nextPageToken;
 
+  /// Unordered list.
+  ///
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
@@ -1966,9 +1960,15 @@ class ListSnapshotsResponse {
   /// A list of snapshots in the project for the specified instance.
   core.List<Snapshot>? snapshots;
 
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
   ListSnapshotsResponse({
     this.nextPageToken,
     this.snapshots,
+    this.unreachable,
   });
 
   ListSnapshotsResponse.fromJson(core.Map json_)
@@ -1978,11 +1978,15 @@ class ListSnapshotsResponse {
               ?.map((value) => Snapshot.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (snapshots != null) 'snapshots': snapshots!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -2516,8 +2520,13 @@ class Snapshot {
 
   /// Input only.
   ///
-  /// Immutable. Tag key-value pairs are bound to this resource. For example:
-  /// "123/environment": "production", "123/costCenter": "marketing"
+  /// Immutable. Tag key-value pairs bound to this resource. Each key must be a
+  /// namespaced name and each value a short name. Example:
+  /// "123456789012/environment" : "production", "123456789013/costCenter" :
+  /// "marketing" See the documentation for more information: - Namespaced name:
+  /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_key
+  /// - Short name:
+  /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_value
   ///
   /// Optional.
   core.Map<core.String, core.String>? tags;

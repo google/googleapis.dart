@@ -328,7 +328,7 @@ class BuildingInsights {
   /// at 0.25 m/pixel.
   core.String? imageryQuality;
 
-  /// The resource name for the building, of the format `building/`.
+  /// The resource name for the building, of the format `buildings/{place_id}`.
   core.String? name;
 
   /// Postal code (e.g., US zip code) this building is contained by.

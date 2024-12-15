@@ -160,7 +160,6 @@ api.AccessSettings buildAccessSettings() {
   buildCounterAccessSettings++;
   if (buildCounterAccessSettings < 3) {
     o.accessLevels = buildUnnamed1();
-    o.reauthSettings = buildReauthSettings();
     o.sessionSettings = buildSessionSettings();
   }
   buildCounterAccessSettings--;
@@ -171,7 +170,6 @@ void checkAccessSettings(api.AccessSettings o) {
   buildCounterAccessSettings++;
   if (buildCounterAccessSettings < 3) {
     checkUnnamed1(o.accessLevels!);
-    checkReauthSettings(o.reauthSettings!);
     checkSessionSettings(o.sessionSettings!);
   }
   buildCounterAccessSettings--;
@@ -774,6 +772,7 @@ api.EgressPolicy buildEgressPolicy() {
   if (buildCounterEgressPolicy < 3) {
     o.egressFrom = buildEgressFrom();
     o.egressTo = buildEgressTo();
+    o.title = 'foo';
   }
   buildCounterEgressPolicy--;
   return o;
@@ -784,6 +783,10 @@ void checkEgressPolicy(api.EgressPolicy o) {
   if (buildCounterEgressPolicy < 3) {
     checkEgressFrom(o.egressFrom!);
     checkEgressTo(o.egressTo!);
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterEgressPolicy--;
 }
@@ -995,7 +998,6 @@ api.GcpUserAccessBinding buildGcpUserAccessBinding() {
     o.dryRunAccessLevels = buildUnnamed22();
     o.groupKey = 'foo';
     o.name = 'foo';
-    o.reauthSettings = buildReauthSettings();
     o.restrictedClientApplications = buildUnnamed23();
     o.scopedAccessSettings = buildUnnamed24();
     o.sessionSettings = buildSessionSettings();
@@ -1017,7 +1019,6 @@ void checkGcpUserAccessBinding(api.GcpUserAccessBinding o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkReauthSettings(o.reauthSettings!);
     checkUnnamed23(o.restrictedClientApplications!);
     checkUnnamed24(o.scopedAccessSettings!);
     checkSessionSettings(o.sessionSettings!);
@@ -1127,6 +1128,7 @@ api.IngressPolicy buildIngressPolicy() {
   if (buildCounterIngressPolicy < 3) {
     o.ingressFrom = buildIngressFrom();
     o.ingressTo = buildIngressTo();
+    o.title = 'foo';
   }
   buildCounterIngressPolicy--;
   return o;
@@ -1137,6 +1139,10 @@ void checkIngressPolicy(api.IngressPolicy o) {
   if (buildCounterIngressPolicy < 3) {
     checkIngressFrom(o.ingressFrom!);
     checkIngressTo(o.ingressTo!);
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterIngressPolicy--;
 }
@@ -1693,42 +1699,6 @@ void checkPolicy(api.Policy o) {
   buildCounterPolicy--;
 }
 
-core.int buildCounterReauthSettings = 0;
-api.ReauthSettings buildReauthSettings() {
-  final o = api.ReauthSettings();
-  buildCounterReauthSettings++;
-  if (buildCounterReauthSettings < 3) {
-    o.maxInactivity = 'foo';
-    o.reauthMethod = 'foo';
-    o.sessionLength = 'foo';
-    o.sessionLengthEnabled = true;
-    o.useOidcMaxAge = true;
-  }
-  buildCounterReauthSettings--;
-  return o;
-}
-
-void checkReauthSettings(api.ReauthSettings o) {
-  buildCounterReauthSettings++;
-  if (buildCounterReauthSettings < 3) {
-    unittest.expect(
-      o.maxInactivity!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.reauthMethod!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.sessionLength!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(o.sessionLengthEnabled!, unittest.isTrue);
-    unittest.expect(o.useOidcMaxAge!, unittest.isTrue);
-  }
-  buildCounterReauthSettings--;
-}
-
 core.List<api.AccessLevel> buildUnnamed40() => [
       buildAccessLevel(),
       buildAccessLevel(),
@@ -1829,6 +1799,7 @@ api.ServicePerimeter buildServicePerimeter() {
   buildCounterServicePerimeter++;
   if (buildCounterServicePerimeter < 3) {
     o.description = 'foo';
+    o.etag = 'foo';
     o.name = 'foo';
     o.perimeterType = 'foo';
     o.spec = buildServicePerimeterConfig();
@@ -1845,6 +1816,10 @@ void checkServicePerimeter(api.ServicePerimeter o) {
   if (buildCounterServicePerimeter < 3) {
     unittest.expect(
       o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.etag!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2745,16 +2720,6 @@ void main() {
       final od =
           api.Policy.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPolicy(od);
-    });
-  });
-
-  unittest.group('obj-schema-ReauthSettings', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildReauthSettings();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ReauthSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkReauthSettings(od);
     });
   });
 

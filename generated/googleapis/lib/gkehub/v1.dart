@@ -2013,8 +2013,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3286,6 +3286,18 @@ class Authority {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// The identity provider for the scope-tenancy workload identity pool.
+  ///
+  /// Optional. Output only.
+  core.String? scopeTenancyIdentityProvider;
+
+  /// The name of the scope-tenancy workload identity pool.
+  ///
+  /// This pool is set in the fleet-level feature.
+  ///
+  /// Optional. Output only.
+  core.String? scopeTenancyWorkloadIdentityPool;
+
   /// The name of the workload identity pool in which `issuer` will be
   /// recognized.
   ///
@@ -3301,6 +3313,8 @@ class Authority {
     this.identityProvider,
     this.issuer,
     this.oidcJwks,
+    this.scopeTenancyIdentityProvider,
+    this.scopeTenancyWorkloadIdentityPool,
     this.workloadIdentityPool,
   });
 
@@ -3309,6 +3323,10 @@ class Authority {
           identityProvider: json_['identityProvider'] as core.String?,
           issuer: json_['issuer'] as core.String?,
           oidcJwks: json_['oidcJwks'] as core.String?,
+          scopeTenancyIdentityProvider:
+              json_['scopeTenancyIdentityProvider'] as core.String?,
+          scopeTenancyWorkloadIdentityPool:
+              json_['scopeTenancyWorkloadIdentityPool'] as core.String?,
           workloadIdentityPool: json_['workloadIdentityPool'] as core.String?,
         );
 
@@ -3316,6 +3334,10 @@ class Authority {
         if (identityProvider != null) 'identityProvider': identityProvider!,
         if (issuer != null) 'issuer': issuer!,
         if (oidcJwks != null) 'oidcJwks': oidcJwks!,
+        if (scopeTenancyIdentityProvider != null)
+          'scopeTenancyIdentityProvider': scopeTenancyIdentityProvider!,
+        if (scopeTenancyWorkloadIdentityPool != null)
+          'scopeTenancyWorkloadIdentityPool': scopeTenancyWorkloadIdentityPool!,
         if (workloadIdentityPool != null)
           'workloadIdentityPool': workloadIdentityPool!,
       };

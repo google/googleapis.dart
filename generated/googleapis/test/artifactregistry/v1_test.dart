@@ -2272,6 +2272,7 @@ api.Repository buildRepository() {
     o.mavenConfig = buildMavenRepositoryConfig();
     o.mode = 'foo';
     o.name = 'foo';
+    o.registryUri = 'foo';
     o.remoteRepositoryConfig = buildRemoteRepositoryConfig();
     o.satisfiesPzi = true;
     o.satisfiesPzs = true;
@@ -2315,6 +2316,10 @@ void checkRepository(api.Repository o) {
     );
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.registryUri!,
       unittest.equals('foo'),
     );
     checkRemoteRepositoryConfig(o.remoteRepositoryConfig!);

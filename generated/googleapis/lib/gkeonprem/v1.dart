@@ -2309,8 +2309,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -8865,7 +8865,23 @@ class VmwareAdminManualLbConfig {
 /// load balancer.
 ///
 /// For admin clusters, currently no configurations is needed.
-typedef VmwareAdminMetalLbConfig = $Empty;
+class VmwareAdminMetalLbConfig {
+  /// Whether MetalLB is enabled.
+  core.bool? enabled;
+
+  VmwareAdminMetalLbConfig({
+    this.enabled,
+  });
+
+  VmwareAdminMetalLbConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_['enabled'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
 
 /// VmwareAdminNetworkConfig contains network configuration for VMware admin
 /// cluster.

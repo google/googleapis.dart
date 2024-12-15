@@ -1468,8 +1468,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1912,6 +1912,49 @@ class ProjectsLocationsStoragePoolsResource {
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// ValidateDirectoryService does a connectivity check for a directory service
+  /// policy attached to the storage pool.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the storage pool
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/storagePools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> validateDirectoryService(
+    ValidateDirectoryServiceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':validateDirectoryService';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsVolumesResource {
@@ -2292,6 +2335,48 @@ class ProjectsLocationsVolumesReplicationsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Establish replication peering.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the replication, in the format of
+  /// projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+/replications/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> establishPeering(
+    EstablishPeeringRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':establishPeering';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Describe a replication for a volume.
   ///
   /// Request parameters:
@@ -2552,6 +2637,50 @@ class ProjectsLocationsVolumesReplicationsResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':stop';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Syncs the replication.
+  ///
+  /// This will invoke one time volume data transfer from source to destination.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the replication, in the format of
+  /// projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+/replications/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> sync(
+    SyncReplicationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':sync';
 
     final response_ = await _requester.request(
       url_,
@@ -3395,6 +3524,11 @@ class DestinationVolumeParameters {
   /// Required.
   core.String? storagePool;
 
+  /// Tiering policy for the volume.
+  ///
+  /// Optional.
+  TieringPolicy? tieringPolicy;
+
   /// Desired destination volume resource id.
   ///
   /// If not specified, source volume's resource id will be used. This value
@@ -3406,6 +3540,7 @@ class DestinationVolumeParameters {
     this.description,
     this.shareName,
     this.storagePool,
+    this.tieringPolicy,
     this.volumeId,
   });
 
@@ -3414,6 +3549,10 @@ class DestinationVolumeParameters {
           description: json_['description'] as core.String?,
           shareName: json_['shareName'] as core.String?,
           storagePool: json_['storagePool'] as core.String?,
+          tieringPolicy: json_.containsKey('tieringPolicy')
+              ? TieringPolicy.fromJson(
+                  json_['tieringPolicy'] as core.Map<core.String, core.dynamic>)
+              : null,
           volumeId: json_['volumeId'] as core.String?,
         );
 
@@ -3421,12 +3560,64 @@ class DestinationVolumeParameters {
         if (description != null) 'description': description!,
         if (shareName != null) 'shareName': shareName!,
         if (storagePool != null) 'storagePool': storagePool!,
+        if (tieringPolicy != null) 'tieringPolicy': tieringPolicy!,
         if (volumeId != null) 'volumeId': volumeId!,
       };
 }
 
 /// EncryptVolumesRequest specifies the KMS config to encrypt existing volumes.
 typedef EncryptVolumesRequest = $Empty;
+
+/// EstablishPeeringRequest establishes cluster and svm peerings between the
+/// source and the destination replications.
+class EstablishPeeringRequest {
+  /// Name of the user's local source cluster to be peered with the destination
+  /// cluster.
+  ///
+  /// Required.
+  core.String? peerClusterName;
+
+  /// List of IPv4 ip addresses to be used for peering.
+  ///
+  /// Optional.
+  core.List<core.String>? peerIpAddresses;
+
+  /// Name of the user's local source vserver svm to be peered with the
+  /// destination vserver svm.
+  ///
+  /// Required.
+  core.String? peerSvmName;
+
+  /// Name of the user's local source volume to be peered with the destination
+  /// volume.
+  ///
+  /// Required.
+  core.String? peerVolumeName;
+
+  EstablishPeeringRequest({
+    this.peerClusterName,
+    this.peerIpAddresses,
+    this.peerSvmName,
+    this.peerVolumeName,
+  });
+
+  EstablishPeeringRequest.fromJson(core.Map json_)
+      : this(
+          peerClusterName: json_['peerClusterName'] as core.String?,
+          peerIpAddresses: (json_['peerIpAddresses'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          peerSvmName: json_['peerSvmName'] as core.String?,
+          peerVolumeName: json_['peerVolumeName'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (peerClusterName != null) 'peerClusterName': peerClusterName!,
+        if (peerIpAddresses != null) 'peerIpAddresses': peerIpAddresses!,
+        if (peerSvmName != null) 'peerSvmName': peerSvmName!,
+        if (peerVolumeName != null) 'peerVolumeName': peerVolumeName!,
+      };
+}
 
 /// Defines the export policy for the volume.
 class ExportPolicy {
@@ -3483,6 +3674,142 @@ class HourlySchedule {
   core.Map<core.String, core.dynamic> toJson() => {
         if (minute != null) 'minute': minute!,
         if (snapshotsToKeep != null) 'snapshotsToKeep': snapshotsToKeep!,
+      };
+}
+
+/// HybridPeeringDetails contains details about the hybrid peering.
+class HybridPeeringDetails {
+  /// Copy-paste-able commands to be used on user's ONTAP to accept peering
+  /// requests.
+  ///
+  /// Optional.
+  core.String? command;
+
+  /// Expiration time for the peering command to be executed on user's ONTAP.
+  ///
+  /// Optional.
+  core.String? commandExpiryTime;
+
+  /// Temporary passphrase generated to accept cluster peering command.
+  ///
+  /// Optional.
+  core.String? passphrase;
+
+  /// IP address of the subnet.
+  ///
+  /// Optional.
+  core.String? subnetIp;
+
+  HybridPeeringDetails({
+    this.command,
+    this.commandExpiryTime,
+    this.passphrase,
+    this.subnetIp,
+  });
+
+  HybridPeeringDetails.fromJson(core.Map json_)
+      : this(
+          command: json_['command'] as core.String?,
+          commandExpiryTime: json_['commandExpiryTime'] as core.String?,
+          passphrase: json_['passphrase'] as core.String?,
+          subnetIp: json_['subnetIp'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (command != null) 'command': command!,
+        if (commandExpiryTime != null) 'commandExpiryTime': commandExpiryTime!,
+        if (passphrase != null) 'passphrase': passphrase!,
+        if (subnetIp != null) 'subnetIp': subnetIp!,
+      };
+}
+
+/// The Hybrid Replication parameters for the volume.
+class HybridReplicationParameters {
+  /// Name of source cluster location associated with the Hybrid replication.
+  ///
+  /// This is a free-form field for the display purpose only.
+  ///
+  /// Optional.
+  core.String? clusterLocation;
+
+  /// Description of the replication.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Labels to be added to the replication as the key value pairs.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Name of the user's local source cluster to be peered with the destination
+  /// cluster.
+  ///
+  /// Required.
+  core.String? peerClusterName;
+
+  /// List of node ip addresses to be peered with.
+  ///
+  /// Required.
+  core.List<core.String>? peerIpAddresses;
+
+  /// Name of the user's local source vserver svm to be peered with the
+  /// destination vserver svm.
+  ///
+  /// Required.
+  core.String? peerSvmName;
+
+  /// Name of the user's local source volume to be peered with the destination
+  /// volume.
+  ///
+  /// Required.
+  core.String? peerVolumeName;
+
+  /// Desired name for the replication of this volume.
+  ///
+  /// Required.
+  core.String? replication;
+
+  HybridReplicationParameters({
+    this.clusterLocation,
+    this.description,
+    this.labels,
+    this.peerClusterName,
+    this.peerIpAddresses,
+    this.peerSvmName,
+    this.peerVolumeName,
+    this.replication,
+  });
+
+  HybridReplicationParameters.fromJson(core.Map json_)
+      : this(
+          clusterLocation: json_['clusterLocation'] as core.String?,
+          description: json_['description'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          peerClusterName: json_['peerClusterName'] as core.String?,
+          peerIpAddresses: (json_['peerIpAddresses'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          peerSvmName: json_['peerSvmName'] as core.String?,
+          peerVolumeName: json_['peerVolumeName'] as core.String?,
+          replication: json_['replication'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterLocation != null) 'clusterLocation': clusterLocation!,
+        if (description != null) 'description': description!,
+        if (labels != null) 'labels': labels!,
+        if (peerClusterName != null) 'peerClusterName': peerClusterName!,
+        if (peerIpAddresses != null) 'peerIpAddresses': peerIpAddresses!,
+        if (peerSvmName != null) 'peerSvmName': peerSvmName!,
+        if (peerVolumeName != null) 'peerVolumeName': peerVolumeName!,
+        if (replication != null) 'replication': replication!,
       };
 }
 
@@ -4146,6 +4473,11 @@ class Operation {
 /// Replication is a nested resource under Volume, that describes a cross-region
 /// replication relationship between 2 volumes in different regions.
 class Replication {
+  /// Location of the user cluster.
+  ///
+  /// Optional.
+  core.String? clusterLocation;
+
   /// Replication create time.
   ///
   /// Output only.
@@ -4178,6 +4510,22 @@ class Replication {
   /// Output only.
   core.bool? healthy;
 
+  /// Hybrid peering details.
+  ///
+  /// Output only.
+  HybridPeeringDetails? hybridPeeringDetails;
+
+  /// Type of the hybrid replication.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "HYBRID_REPLICATION_TYPE_UNSPECIFIED" : Unspecified hybrid replication
+  /// type.
+  /// - "MIGRATION" : Hybrid replication type for migration.
+  /// - "CONTINUOUS_REPLICATION" : Hybrid replication type for continuous
+  /// replication.
+  core.String? hybridReplicationType;
+
   /// Resource labels to represent user provided metadata.
   core.Map<core.String, core.String>? labels;
 
@@ -4191,6 +4539,8 @@ class Replication {
   /// receive replication transfers.
   /// - "STOPPED" : Destination volume is not receiving replication transfers.
   /// - "TRANSFERRING" : Incremental replication is in progress.
+  /// - "BASELINE_TRANSFERRING" : Baseline replication is in progress.
+  /// - "ABORTED" : Replication is aborted.
   core.String? mirrorState;
 
   /// Identifier.
@@ -4235,6 +4585,10 @@ class Replication {
   /// - "UPDATING" : Replication is updating.
   /// - "DELETING" : Replication is deleting.
   /// - "ERROR" : Replication is in error state.
+  /// - "PENDING_CLUSTER_PEERING" : Replication is waiting for cluster peering
+  /// to be established.
+  /// - "PENDING_SVM_PEERING" : Replication is waiting for SVM peering to be
+  /// established.
   core.String? state;
 
   /// State details of the replication.
@@ -4248,11 +4602,14 @@ class Replication {
   TransferStats? transferStats;
 
   Replication({
+    this.clusterLocation,
     this.createTime,
     this.description,
     this.destinationVolume,
     this.destinationVolumeParameters,
     this.healthy,
+    this.hybridPeeringDetails,
+    this.hybridReplicationType,
     this.labels,
     this.mirrorState,
     this.name,
@@ -4266,6 +4623,7 @@ class Replication {
 
   Replication.fromJson(core.Map json_)
       : this(
+          clusterLocation: json_['clusterLocation'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
           destinationVolume: json_['destinationVolume'] as core.String?,
@@ -4276,6 +4634,11 @@ class Replication {
                           as core.Map<core.String, core.dynamic>)
                   : null,
           healthy: json_['healthy'] as core.bool?,
+          hybridPeeringDetails: json_.containsKey('hybridPeeringDetails')
+              ? HybridPeeringDetails.fromJson(json_['hybridPeeringDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          hybridReplicationType: json_['hybridReplicationType'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -4297,12 +4660,17 @@ class Replication {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterLocation != null) 'clusterLocation': clusterLocation!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (destinationVolume != null) 'destinationVolume': destinationVolume!,
         if (destinationVolumeParameters != null)
           'destinationVolumeParameters': destinationVolumeParameters!,
         if (healthy != null) 'healthy': healthy!,
+        if (hybridPeeringDetails != null)
+          'hybridPeeringDetails': hybridPeeringDetails!,
+        if (hybridReplicationType != null)
+          'hybridReplicationType': hybridReplicationType!,
         if (labels != null) 'labels': labels!,
         if (mirrorState != null) 'mirrorState': mirrorState!,
         if (name != null) 'name': name!,
@@ -4879,6 +5247,9 @@ class StoragePool {
 /// storagePool.
 typedef SwitchActiveReplicaZoneRequest = $Empty;
 
+/// SyncReplicationRequest syncs the replication from source to destination.
+typedef SyncReplicationRequest = $Empty;
+
 /// Defines tiering policy for the volume.
 class TieringPolicy {
   /// Time in days to mark the volume's data block as cold and make it eligible
@@ -4985,6 +5356,32 @@ class TransferStats {
       };
 }
 
+/// ValidateDirectoryServiceRequest validates the directory service policy
+/// attached to the storage pool.
+class ValidateDirectoryServiceRequest {
+  /// Type of directory service policy attached to the storage pool.
+  /// Possible string values are:
+  /// - "DIRECTORY_SERVICE_TYPE_UNSPECIFIED" : Directory service type is not
+  /// specified.
+  /// - "ACTIVE_DIRECTORY" : Active directory policy attached to the storage
+  /// pool.
+  core.String? directoryServiceType;
+
+  ValidateDirectoryServiceRequest({
+    this.directoryServiceType,
+  });
+
+  ValidateDirectoryServiceRequest.fromJson(core.Map json_)
+      : this(
+          directoryServiceType: json_['directoryServiceType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (directoryServiceType != null)
+          'directoryServiceType': directoryServiceType!,
+      };
+}
+
 /// VerifyKmsConfigRequest specifies the KMS config to be validated.
 typedef VerifyKmsConfigRequest = $Empty;
 
@@ -5076,6 +5473,11 @@ class Volume {
   ///
   /// Output only.
   core.bool? hasReplication;
+
+  /// The Hybrid Replication parameters for the volume.
+  ///
+  /// Optional.
+  HybridReplicationParameters? hybridReplicationParameters;
 
   /// Flag indicating if the volume is a kerberos volume or not, export policy
   /// rules control kerberos security modes (krb5, krb5i, krb5p).
@@ -5219,6 +5621,11 @@ class Volume {
   /// - "RESTORING" : Volume State is Restoring
   /// - "DISABLED" : Volume State is Disabled
   /// - "ERROR" : Volume State is Error
+  /// - "PREPARING" : Volume State is Preparing. Note that this is different
+  /// from CREATING where CREATING means the volume is being created, while
+  /// PREPARING means the volume is created and now being prepared for the
+  /// replication.
+  /// - "READ_ONLY" : Volume State is Read Only
   core.String? state;
 
   /// State details of the volume
@@ -5265,6 +5672,7 @@ class Volume {
     this.encryptionType,
     this.exportPolicy,
     this.hasReplication,
+    this.hybridReplicationParameters,
     this.kerberosEnabled,
     this.kmsConfig,
     this.labels,
@@ -5312,6 +5720,12 @@ class Volume {
                   json_['exportPolicy'] as core.Map<core.String, core.dynamic>)
               : null,
           hasReplication: json_['hasReplication'] as core.bool?,
+          hybridReplicationParameters:
+              json_.containsKey('hybridReplicationParameters')
+                  ? HybridReplicationParameters.fromJson(
+                      json_['hybridReplicationParameters']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           kerberosEnabled: json_['kerberosEnabled'] as core.bool?,
           kmsConfig: json_['kmsConfig'] as core.String?,
           labels:
@@ -5376,6 +5790,8 @@ class Volume {
         if (encryptionType != null) 'encryptionType': encryptionType!,
         if (exportPolicy != null) 'exportPolicy': exportPolicy!,
         if (hasReplication != null) 'hasReplication': hasReplication!,
+        if (hybridReplicationParameters != null)
+          'hybridReplicationParameters': hybridReplicationParameters!,
         if (kerberosEnabled != null) 'kerberosEnabled': kerberosEnabled!,
         if (kmsConfig != null) 'kmsConfig': kmsConfig!,
         if (labels != null) 'labels': labels!,

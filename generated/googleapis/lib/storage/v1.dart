@@ -1272,37 +1272,46 @@ class BucketsResource {
   ///
   /// [generation] - Generation of a bucket.
   ///
+  /// [projection] - Set of properties to return. Defaults to full.
+  /// Possible string values are:
+  /// - "full" : Include all properties.
+  /// - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
+  /// Completes with a [Bucket].
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> restore(
+  async.Future<Bucket> restore(
     core.String bucket,
     core.String generation, {
+    core.String? projection,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'generation': [generation],
+      if (projection != null) 'projection': [projection],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
 
     final url_ = 'b/' + commons.escapeVariable('$bucket') + '/restore';
 
-    await _requester.request(
+    final response_ = await _requester.request(
       url_,
       'POST',
       queryParams: queryParams_,
-      downloadOptions: null,
     );
+    return Bucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an IAM policy for the specified bucket.
@@ -3845,6 +3854,134 @@ class ObjectsResource {
       queryParams: queryParams_,
     );
     return Objects.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Moves the source object to the destination object in the same bucket.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket in which the object resides.
+  ///
+  /// [sourceObject] - Name of the source object. For information about how to
+  /// URL encode object names to be path safe, see
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
+  ///
+  /// [destinationObject] - Name of the destination object. For information
+  /// about how to URL encode object names to be path safe, see
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
+  ///
+  /// [ifGenerationMatch] - Makes the operation conditional on whether the
+  /// destination object's current generation matches the given value. Setting
+  /// to 0 makes the operation succeed only if there are no live versions of the
+  /// object. `ifGenerationMatch` and `ifGenerationNotMatch` conditions are
+  /// mutually exclusive: it's an error for both of them to be set in the
+  /// request.
+  ///
+  /// [ifGenerationNotMatch] - Makes the operation conditional on whether the
+  /// destination object's current generation does not match the given value. If
+  /// no live object exists, the precondition fails. Setting to 0 makes the
+  /// operation succeed only if there is a live version of the
+  /// object.`ifGenerationMatch` and `ifGenerationNotMatch` conditions are
+  /// mutually exclusive: it's an error for both of them to be set in the
+  /// request.
+  ///
+  /// [ifMetagenerationMatch] - Makes the operation conditional on whether the
+  /// destination object's current metageneration matches the given value.
+  /// `ifMetagenerationMatch` and `ifMetagenerationNotMatch` conditions are
+  /// mutually exclusive: it's an error for both of them to be set in the
+  /// request.
+  ///
+  /// [ifMetagenerationNotMatch] - Makes the operation conditional on whether
+  /// the destination object's current metageneration does not match the given
+  /// value. `ifMetagenerationMatch` and `ifMetagenerationNotMatch` conditions
+  /// are mutually exclusive: it's an error for both of them to be set in the
+  /// request.
+  ///
+  /// [ifSourceGenerationMatch] - Makes the operation conditional on whether the
+  /// source object's current generation matches the given value.
+  /// `ifSourceGenerationMatch` and `ifSourceGenerationNotMatch` conditions are
+  /// mutually exclusive: it's an error for both of them to be set in the
+  /// request.
+  ///
+  /// [ifSourceGenerationNotMatch] - Makes the operation conditional on whether
+  /// the source object's current generation does not match the given value.
+  /// `ifSourceGenerationMatch` and `ifSourceGenerationNotMatch` conditions are
+  /// mutually exclusive: it's an error for both of them to be set in the
+  /// request.
+  ///
+  /// [ifSourceMetagenerationMatch] - Makes the operation conditional on whether
+  /// the source object's current metageneration matches the given value.
+  /// `ifSourceMetagenerationMatch` and `ifSourceMetagenerationNotMatch`
+  /// conditions are mutually exclusive: it's an error for both of them to be
+  /// set in the request.
+  ///
+  /// [ifSourceMetagenerationNotMatch] - Makes the operation conditional on
+  /// whether the source object's current metageneration does not match the
+  /// given value. `ifSourceMetagenerationMatch` and
+  /// `ifSourceMetagenerationNotMatch` conditions are mutually exclusive: it's
+  /// an error for both of them to be set in the request.
+  ///
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Object].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Object> move(
+    core.String bucket,
+    core.String sourceObject,
+    core.String destinationObject, {
+    core.String? ifGenerationMatch,
+    core.String? ifGenerationNotMatch,
+    core.String? ifMetagenerationMatch,
+    core.String? ifMetagenerationNotMatch,
+    core.String? ifSourceGenerationMatch,
+    core.String? ifSourceGenerationNotMatch,
+    core.String? ifSourceMetagenerationMatch,
+    core.String? ifSourceMetagenerationNotMatch,
+    core.String? userProject,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (ifGenerationMatch != null) 'ifGenerationMatch': [ifGenerationMatch],
+      if (ifGenerationNotMatch != null)
+        'ifGenerationNotMatch': [ifGenerationNotMatch],
+      if (ifMetagenerationMatch != null)
+        'ifMetagenerationMatch': [ifMetagenerationMatch],
+      if (ifMetagenerationNotMatch != null)
+        'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
+      if (ifSourceGenerationMatch != null)
+        'ifSourceGenerationMatch': [ifSourceGenerationMatch],
+      if (ifSourceGenerationNotMatch != null)
+        'ifSourceGenerationNotMatch': [ifSourceGenerationNotMatch],
+      if (ifSourceMetagenerationMatch != null)
+        'ifSourceMetagenerationMatch': [ifSourceMetagenerationMatch],
+      if (ifSourceMetagenerationNotMatch != null)
+        'ifSourceMetagenerationNotMatch': [ifSourceMetagenerationNotMatch],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' +
+        commons.escapeVariable('$bucket') +
+        '/o/' +
+        commons.escapeVariable('$sourceObject') +
+        '/moveTo/o/' +
+        commons.escapeVariable('$destinationObject');
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return Object.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Patches an object's metadata.
@@ -8042,6 +8179,9 @@ class Object {
   /// deleted.
   core.DateTime? timeDeleted;
 
+  /// The time when the object was finalized.
+  core.DateTime? timeFinalized;
+
   /// The time at which the object's storage class was last changed.
   ///
   /// When the object is initially created, it will be set to timeCreated.
@@ -8091,6 +8231,7 @@ class Object {
     this.temporaryHold,
     this.timeCreated,
     this.timeDeleted,
+    this.timeFinalized,
     this.timeStorageClassUpdated,
     this.updated,
   });
@@ -8162,6 +8303,9 @@ class Object {
           timeDeleted: json_.containsKey('timeDeleted')
               ? core.DateTime.parse(json_['timeDeleted'] as core.String)
               : null,
+          timeFinalized: json_.containsKey('timeFinalized')
+              ? core.DateTime.parse(json_['timeFinalized'] as core.String)
+              : null,
           timeStorageClassUpdated: json_.containsKey('timeStorageClassUpdated')
               ? core.DateTime.parse(
                   json_['timeStorageClassUpdated'] as core.String)
@@ -8215,6 +8359,8 @@ class Object {
           'timeCreated': timeCreated!.toUtc().toIso8601String(),
         if (timeDeleted != null)
           'timeDeleted': timeDeleted!.toUtc().toIso8601String(),
+        if (timeFinalized != null)
+          'timeFinalized': timeFinalized!.toUtc().toIso8601String(),
         if (timeStorageClassUpdated != null)
           'timeStorageClassUpdated':
               timeStorageClassUpdated!.toUtc().toIso8601String(),

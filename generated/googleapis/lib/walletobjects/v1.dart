@@ -4622,6 +4622,11 @@ class AppLinkData {
   /// Optional information about the partner app link.
   AppLinkDataAppLinkInfo? androidAppLinkInfo;
 
+  /// Optional display text for the app link button.
+  ///
+  /// Character limit is 30.
+  LocalizedString? displayText;
+
   /// Links to open iOS apps are not supported.
   ///
   /// Deprecated.
@@ -4635,6 +4640,7 @@ class AppLinkData {
 
   AppLinkData({
     this.androidAppLinkInfo,
+    this.displayText,
     this.iosAppLinkInfo,
     this.webAppLinkInfo,
   });
@@ -4644,6 +4650,10 @@ class AppLinkData {
           androidAppLinkInfo: json_.containsKey('androidAppLinkInfo')
               ? AppLinkDataAppLinkInfo.fromJson(json_['androidAppLinkInfo']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          displayText: json_.containsKey('displayText')
+              ? LocalizedString.fromJson(
+                  json_['displayText'] as core.Map<core.String, core.dynamic>)
               : null,
           iosAppLinkInfo: json_.containsKey('iosAppLinkInfo')
               ? AppLinkDataAppLinkInfo.fromJson(json_['iosAppLinkInfo']
@@ -4658,6 +4668,7 @@ class AppLinkData {
   core.Map<core.String, core.dynamic> toJson() => {
         if (androidAppLinkInfo != null)
           'androidAppLinkInfo': androidAppLinkInfo!,
+        if (displayText != null) 'displayText': displayText!,
         if (iosAppLinkInfo != null) 'iosAppLinkInfo': iosAppLinkInfo!,
         if (webAppLinkInfo != null) 'webAppLinkInfo': webAppLinkInfo!,
       };
@@ -5840,7 +5851,7 @@ class DiffUploadResponse {
 typedef DiffVersionResponse = $DiffVersionResponse;
 
 /// Information about how a class may be discovered and instantiated from within
-/// the Android Pay app.
+/// the Google Wallet app.
 ///
 /// This is done by searching for a loyalty or gift card program and scanning or
 /// manually entering.
@@ -6439,6 +6450,14 @@ class EventTicketClass {
   /// This image is displayed in the card detail view of the app.
   Image? logo;
 
+  /// Merchant locations.
+  ///
+  /// There is a maximum of ten on the class. Any additional MerchantLocations
+  /// added beyond the 10 will be rejected. These locations will trigger a
+  /// notification when a user enters within a Google-set radius of the point.
+  /// This field replaces the deprecated LatLongPoints.
+  core.List<MerchantLocation>? merchantLocations;
+
   /// An array of messages displayed in the app.
   ///
   /// All users of this object will receive its associated messages. The maximum
@@ -6643,6 +6662,7 @@ class EventTicketClass {
     this.localizedIssuerName,
     this.locations,
     this.logo,
+    this.merchantLocations,
     this.messages,
     this.multipleDevicesAndHoldersAllowedStatus,
     this.notifyPreference,
@@ -6752,6 +6772,10 @@ class EventTicketClass {
               ? Image.fromJson(
                   json_['logo'] as core.Map<core.String, core.dynamic>)
               : null,
+          merchantLocations: (json_['merchantLocations'] as core.List?)
+              ?.map((value) => MerchantLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           messages: (json_['messages'] as core.List?)
               ?.map((value) => Message.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -6834,6 +6858,7 @@ class EventTicketClass {
           'localizedIssuerName': localizedIssuerName!,
         if (locations != null) 'locations': locations!,
         if (logo != null) 'logo': logo!,
+        if (merchantLocations != null) 'merchantLocations': merchantLocations!,
         if (messages != null) 'messages': messages!,
         if (multipleDevicesAndHoldersAllowedStatus != null)
           'multipleDevicesAndHoldersAllowedStatus':
@@ -7039,6 +7064,14 @@ class EventTicketObject {
   )
   core.List<LatLongPoint>? locations;
 
+  /// Merchant locations.
+  ///
+  /// There is a maximum of ten on the object. Any additional MerchantLocations
+  /// added beyond the 10 will be rejected. These locations will trigger a
+  /// notification when a user enters within a Google-set radius of the point.
+  /// This field replaces the deprecated LatLongPoints.
+  core.List<MerchantLocation>? merchantLocations;
+
   /// An array of messages displayed in the app.
   ///
   /// All users of this object will receive its associated messages. The maximum
@@ -7171,6 +7204,7 @@ class EventTicketObject {
     this.linkedOfferIds,
     this.linksModuleData,
     this.locations,
+    this.merchantLocations,
     this.messages,
     this.notifyPreference,
     this.passConstraints,
@@ -7245,6 +7279,10 @@ class EventTicketObject {
               ?.map((value) => LatLongPoint.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          merchantLocations: (json_['merchantLocations'] as core.List?)
+              ?.map((value) => MerchantLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           messages: (json_['messages'] as core.List?)
               ?.map((value) => Message.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -7316,6 +7354,7 @@ class EventTicketObject {
         if (linkedOfferIds != null) 'linkedOfferIds': linkedOfferIds!,
         if (linksModuleData != null) 'linksModuleData': linksModuleData!,
         if (locations != null) 'locations': locations!,
+        if (merchantLocations != null) 'merchantLocations': merchantLocations!,
         if (messages != null) 'messages': messages!,
         if (notifyPreference != null) 'notifyPreference': notifyPreference!,
         if (passConstraints != null) 'passConstraints': passConstraints!,
@@ -7895,6 +7934,14 @@ class FlightClass {
   )
   core.List<LatLongPoint>? locations;
 
+  /// Merchant locations.
+  ///
+  /// There is a maximum of ten on the class. Any additional MerchantLocations
+  /// added beyond the 10 will be rejected by the validator. These locations
+  /// will trigger a notification when a user enters within a Google-set radius
+  /// of the point. This field replaces the deprecated LatLongPoints.
+  core.List<MerchantLocation>? merchantLocations;
+
   /// An array of messages displayed in the app.
   ///
   /// All users of this object will receive its associated messages. The maximum
@@ -8050,6 +8097,7 @@ class FlightClass {
     this.localScheduledDepartureDateTime,
     this.localizedIssuerName,
     this.locations,
+    this.merchantLocations,
     this.messages,
     this.multipleDevicesAndHoldersAllowedStatus,
     this.notifyPreference,
@@ -8142,6 +8190,10 @@ class FlightClass {
               ?.map((value) => LatLongPoint.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          merchantLocations: (json_['merchantLocations'] as core.List?)
+              ?.map((value) => MerchantLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           messages: (json_['messages'] as core.List?)
               ?.map((value) => Message.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -8222,6 +8274,7 @@ class FlightClass {
         if (localizedIssuerName != null)
           'localizedIssuerName': localizedIssuerName!,
         if (locations != null) 'locations': locations!,
+        if (merchantLocations != null) 'merchantLocations': merchantLocations!,
         if (messages != null) 'messages': messages!,
         if (multipleDevicesAndHoldersAllowedStatus != null)
           'multipleDevicesAndHoldersAllowedStatus':
@@ -8488,6 +8541,14 @@ class FlightObject {
   )
   core.List<LatLongPoint>? locations;
 
+  /// Merchant locations.
+  ///
+  /// There is a maximum of ten on the object. Any additional MerchantLocations
+  /// added beyond the 10 will be rejected. These locations will trigger a
+  /// notification when a user enters within a Google-set radius of the point.
+  /// This field replaces the deprecated LatLongPoints.
+  core.List<MerchantLocation>? merchantLocations;
+
   /// An array of messages displayed in the app.
   ///
   /// All users of this object will receive its associated messages. The maximum
@@ -8609,6 +8670,7 @@ class FlightObject {
     this.linkedObjectIds,
     this.linksModuleData,
     this.locations,
+    this.merchantLocations,
     this.messages,
     this.notifyPreference,
     this.passConstraints,
@@ -8678,6 +8740,10 @@ class FlightObject {
               ?.map((value) => LatLongPoint.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          merchantLocations: (json_['merchantLocations'] as core.List?)
+              ?.map((value) => MerchantLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           messages: (json_['messages'] as core.List?)
               ?.map((value) => Message.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -8744,6 +8810,7 @@ class FlightObject {
         if (linkedObjectIds != null) 'linkedObjectIds': linkedObjectIds!,
         if (linksModuleData != null) 'linksModuleData': linksModuleData!,
         if (locations != null) 'locations': locations!,
+        if (merchantLocations != null) 'merchantLocations': merchantLocations!,
         if (messages != null) 'messages': messages!,
         if (notifyPreference != null) 'notifyPreference': notifyPreference!,
         if (passConstraints != null) 'passConstraints': passConstraints!,
@@ -8909,6 +8976,14 @@ class GenericClass {
   /// and 10 from object.
   LinksModuleData? linksModuleData;
 
+  /// Merchant locations.
+  ///
+  /// There is a maximum of ten on the class. Any additional MerchantLocations
+  /// added beyond the 10 will be rejected. These locations will trigger a
+  /// notification when a user enters within a Google-set radius of the point.
+  /// This field replaces the deprecated LatLongPoints.
+  core.List<MerchantLocation>? merchantLocations;
+
   /// An array of messages displayed in the app.
   ///
   /// All users of this object will receive its associated messages. The maximum
@@ -8983,6 +9058,7 @@ class GenericClass {
     this.id,
     this.imageModulesData,
     this.linksModuleData,
+    this.merchantLocations,
     this.messages,
     this.multipleDevicesAndHoldersAllowedStatus,
     this.redemptionIssuers,
@@ -9016,6 +9092,10 @@ class GenericClass {
               ? LinksModuleData.fromJson(json_['linksModuleData']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          merchantLocations: (json_['merchantLocations'] as core.List?)
+              ?.map((value) => MerchantLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           messages: (json_['messages'] as core.List?)
               ?.map((value) => Message.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -9048,6 +9128,7 @@ class GenericClass {
         if (id != null) 'id': id!,
         if (imageModulesData != null) 'imageModulesData': imageModulesData!,
         if (linksModuleData != null) 'linksModuleData': linksModuleData!,
+        if (merchantLocations != null) 'merchantLocations': merchantLocations!,
         if (messages != null) 'messages': messages!,
         if (multipleDevicesAndHoldersAllowedStatus != null)
           'multipleDevicesAndHoldersAllowedStatus':
@@ -9247,6 +9328,14 @@ class GenericObject {
   /// `cardTitle` would be shown as logo.
   Image? logo;
 
+  /// Merchant locations.
+  ///
+  /// There is a maximum of ten on the object. Any additional MerchantLocations
+  /// added beyond the 10 will be rejected. These locations will trigger a
+  /// notification when a user enters within a Google-set radius of the point.
+  /// This field replaces the deprecated LatLongPoints.
+  core.List<MerchantLocation>? merchantLocations;
+
   /// An array of messages displayed in the app.
   ///
   /// All users of this object will receive its associated messages. The maximum
@@ -9342,6 +9431,7 @@ class GenericObject {
     this.linkedObjectIds,
     this.linksModuleData,
     this.logo,
+    this.merchantLocations,
     this.messages,
     this.notifications,
     this.passConstraints,
@@ -9402,6 +9492,10 @@ class GenericObject {
               ? Image.fromJson(
                   json_['logo'] as core.Map<core.String, core.dynamic>)
               : null,
+          merchantLocations: (json_['merchantLocations'] as core.List?)
+              ?.map((value) => MerchantLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           messages: (json_['messages'] as core.List?)
               ?.map((value) => Message.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -9464,6 +9558,7 @@ class GenericObject {
         if (linkedObjectIds != null) 'linkedObjectIds': linkedObjectIds!,
         if (linksModuleData != null) 'linksModuleData': linksModuleData!,
         if (logo != null) 'logo': logo!,
+        if (merchantLocations != null) 'merchantLocations': merchantLocations!,
         if (messages != null) 'messages': messages!,
         if (notifications != null) 'notifications': notifications!,
         if (passConstraints != null) 'passConstraints': passConstraints!,
@@ -9684,6 +9779,14 @@ class GiftCardClass {
   )
   core.List<LatLongPoint>? locations;
 
+  /// Merchant locations.
+  ///
+  /// There is a maximum of ten on the class. Any additional MerchantLocations
+  /// added beyond the 10 will be rejected. These locations will trigger a
+  /// notification when a user enters within a Google-set radius of the point.
+  /// This field replaces the deprecated LatLongPoints.
+  core.List<MerchantLocation>? merchantLocations;
+
   /// Merchant name, such as "Adam's Apparel".
   ///
   /// The app may display an ellipsis after the first 20 characters to ensure
@@ -9850,6 +9953,7 @@ class GiftCardClass {
     this.localizedMerchantName,
     this.localizedPinLabel,
     this.locations,
+    this.merchantLocations,
     this.merchantName,
     this.messages,
     this.multipleDevicesAndHoldersAllowedStatus,
@@ -9939,6 +10043,10 @@ class GiftCardClass {
               ?.map((value) => LatLongPoint.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          merchantLocations: (json_['merchantLocations'] as core.List?)
+              ?.map((value) => MerchantLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           merchantName: json_['merchantName'] as core.String?,
           messages: (json_['messages'] as core.List?)
               ?.map((value) => Message.fromJson(
@@ -10016,6 +10124,7 @@ class GiftCardClass {
           'localizedMerchantName': localizedMerchantName!,
         if (localizedPinLabel != null) 'localizedPinLabel': localizedPinLabel!,
         if (locations != null) 'locations': locations!,
+        if (merchantLocations != null) 'merchantLocations': merchantLocations!,
         if (merchantName != null) 'merchantName': merchantName!,
         if (messages != null) 'messages': messages!,
         if (multipleDevicesAndHoldersAllowedStatus != null)
@@ -10217,6 +10326,14 @@ class GiftCardObject {
   )
   core.List<LatLongPoint>? locations;
 
+  /// Merchant locations.
+  ///
+  /// There is a maximum of ten on the object. Any additional MerchantLocations
+  /// added beyond the 10 will be rejected. These locations will trigger a
+  /// notification when a user enters within a Google-set radius of the point.
+  /// This field replaces the deprecated LatLongPoints.
+  core.List<MerchantLocation>? merchantLocations;
+
   /// An array of messages displayed in the app.
   ///
   /// All users of this object will receive its associated messages. The maximum
@@ -10328,6 +10445,7 @@ class GiftCardObject {
     this.linkedObjectIds,
     this.linksModuleData,
     this.locations,
+    this.merchantLocations,
     this.messages,
     this.notifyPreference,
     this.passConstraints,
@@ -10400,6 +10518,10 @@ class GiftCardObject {
               ?.map((value) => LatLongPoint.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          merchantLocations: (json_['merchantLocations'] as core.List?)
+              ?.map((value) => MerchantLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           messages: (json_['messages'] as core.List?)
               ?.map((value) => Message.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -10458,6 +10580,7 @@ class GiftCardObject {
         if (linkedObjectIds != null) 'linkedObjectIds': linkedObjectIds!,
         if (linksModuleData != null) 'linksModuleData': linksModuleData!,
         if (locations != null) 'locations': locations!,
+        if (merchantLocations != null) 'merchantLocations': merchantLocations!,
         if (messages != null) 'messages': messages!,
         if (notifyPreference != null) 'notifyPreference': notifyPreference!,
         if (passConstraints != null) 'passConstraints': passConstraints!,
@@ -11330,6 +11453,14 @@ class LoyaltyClass {
   )
   core.List<LatLongPoint>? locations;
 
+  /// Merchant locations.
+  ///
+  /// There is a maximum of ten on the class. Any additional MerchantLocations
+  /// added beyond the 10 will be rejected. These locations will trigger a
+  /// notification when a user enters within a Google-set radius of the point.
+  /// This field replaces the deprecated LatLongPoints.
+  core.List<MerchantLocation>? merchantLocations;
+
   /// An array of messages displayed in the app.
   ///
   /// All users of this object will receive its associated messages. The maximum
@@ -11515,6 +11646,7 @@ class LoyaltyClass {
     this.localizedSecondaryRewardsTier,
     this.localizedSecondaryRewardsTierLabel,
     this.locations,
+    this.merchantLocations,
     this.messages,
     this.multipleDevicesAndHoldersAllowedStatus,
     this.notifyPreference,
@@ -11625,6 +11757,10 @@ class LoyaltyClass {
               ?.map((value) => LatLongPoint.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          merchantLocations: (json_['merchantLocations'] as core.List?)
+              ?.map((value) => MerchantLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           messages: (json_['messages'] as core.List?)
               ?.map((value) => Message.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -11714,6 +11850,7 @@ class LoyaltyClass {
           'localizedSecondaryRewardsTierLabel':
               localizedSecondaryRewardsTierLabel!,
         if (locations != null) 'locations': locations!,
+        if (merchantLocations != null) 'merchantLocations': merchantLocations!,
         if (messages != null) 'messages': messages!,
         if (multipleDevicesAndHoldersAllowedStatus != null)
           'multipleDevicesAndHoldersAllowedStatus':
@@ -11923,6 +12060,14 @@ class LoyaltyObject {
   /// The loyalty reward points label, balance, and type.
   LoyaltyPoints? loyaltyPoints;
 
+  /// Merchant locations.
+  ///
+  /// There is a maximum of ten on the object. Any additional MerchantLocations
+  /// added beyond the 10 will be rejected. These locations will trigger a
+  /// notification when a user enters within a Google-set radius of the point.
+  /// This field replaces the deprecated LatLongPoints.
+  core.List<MerchantLocation>? merchantLocations;
+
   /// An array of messages displayed in the app.
   ///
   /// All users of this object will receive its associated messages. The maximum
@@ -12038,6 +12183,7 @@ class LoyaltyObject {
     this.linksModuleData,
     this.locations,
     this.loyaltyPoints,
+    this.merchantLocations,
     this.messages,
     this.notifyPreference,
     this.passConstraints,
@@ -12109,6 +12255,10 @@ class LoyaltyObject {
               ? LoyaltyPoints.fromJson(
                   json_['loyaltyPoints'] as core.Map<core.String, core.dynamic>)
               : null,
+          merchantLocations: (json_['merchantLocations'] as core.List?)
+              ?.map((value) => MerchantLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           messages: (json_['messages'] as core.List?)
               ?.map((value) => Message.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -12170,6 +12320,7 @@ class LoyaltyObject {
         if (linksModuleData != null) 'linksModuleData': linksModuleData!,
         if (locations != null) 'locations': locations!,
         if (loyaltyPoints != null) 'loyaltyPoints': loyaltyPoints!,
+        if (merchantLocations != null) 'merchantLocations': merchantLocations!,
         if (messages != null) 'messages': messages!,
         if (notifyPreference != null) 'notifyPreference': notifyPreference!,
         if (passConstraints != null) 'passConstraints': passConstraints!,
@@ -12815,6 +12966,42 @@ class MediaRequestInfo {
       };
 }
 
+/// Locations of interest for this class or object.
+///
+/// Currently, this location is used for geofenced notifications. When a user is
+/// within a set radius of this lat/long, and dwells there, Google will trigger
+/// a notification. When a user exits this radius, the notification will be
+/// hidden.
+class MerchantLocation {
+  /// The latitude specified as any value in the range of -90.0 through +90.0,
+  /// both inclusive.
+  ///
+  /// Values outside these bounds will be rejected.
+  core.double? latitude;
+
+  /// The longitude specified in the range -180.0 through +180.0, both
+  /// inclusive.
+  ///
+  /// Values outside these bounds will be rejected.
+  core.double? longitude;
+
+  MerchantLocation({
+    this.latitude,
+    this.longitude,
+  });
+
+  MerchantLocation.fromJson(core.Map json_)
+      : this(
+          latitude: (json_['latitude'] as core.num?)?.toDouble(),
+          longitude: (json_['longitude'] as core.num?)?.toDouble(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (latitude != null) 'latitude': latitude!,
+        if (longitude != null) 'longitude': longitude!,
+      };
+}
+
 /// A message that will be displayed with a Valuable
 class Message {
   /// The message body.
@@ -13224,6 +13411,14 @@ class OfferClass {
   )
   core.List<LatLongPoint>? locations;
 
+  /// Merchant locations.
+  ///
+  /// There is a maximum of ten on the class. Any additional MerchantLocations
+  /// added beyond the 10 will be rejected. These locations will trigger a
+  /// notification when a user enters within a Google-set radius of the point.
+  /// This field replaces the deprecated LatLongPoints.
+  core.List<MerchantLocation>? merchantLocations;
+
   /// An array of messages displayed in the app.
   ///
   /// All users of this object will receive its associated messages. The maximum
@@ -13420,6 +13615,7 @@ class OfferClass {
     this.localizedShortTitle,
     this.localizedTitle,
     this.locations,
+    this.merchantLocations,
     this.messages,
     this.multipleDevicesAndHoldersAllowedStatus,
     this.notifyPreference,
@@ -13516,6 +13712,10 @@ class OfferClass {
               ?.map((value) => LatLongPoint.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          merchantLocations: (json_['merchantLocations'] as core.List?)
+              ?.map((value) => MerchantLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           messages: (json_['messages'] as core.List?)
               ?.map((value) => Message.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -13594,6 +13794,7 @@ class OfferClass {
           'localizedShortTitle': localizedShortTitle!,
         if (localizedTitle != null) 'localizedTitle': localizedTitle!,
         if (locations != null) 'locations': locations!,
+        if (merchantLocations != null) 'merchantLocations': merchantLocations!,
         if (messages != null) 'messages': messages!,
         if (multipleDevicesAndHoldersAllowedStatus != null)
           'multipleDevicesAndHoldersAllowedStatus':
@@ -13777,6 +13978,14 @@ class OfferObject {
   /// Note: This field is currently not supported to trigger geo notifications.
   core.List<LatLongPoint>? locations;
 
+  /// Merchant locations.
+  ///
+  /// There is a maximum of ten on the object. Any additional MerchantLocations
+  /// added beyond the 10 will be rejected. These locations will trigger a
+  /// notification when a user enters within a Google-set radius of the point.
+  /// This field replaces the deprecated LatLongPoints.
+  core.List<MerchantLocation>? merchantLocations;
+
   /// An array of messages displayed in the app.
   ///
   /// All users of this object will receive its associated messages. The maximum
@@ -13881,6 +14090,7 @@ class OfferObject {
     this.linkedObjectIds,
     this.linksModuleData,
     this.locations,
+    this.merchantLocations,
     this.messages,
     this.notifyPreference,
     this.passConstraints,
@@ -13942,6 +14152,10 @@ class OfferObject {
               ?.map((value) => LatLongPoint.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          merchantLocations: (json_['merchantLocations'] as core.List?)
+              ?.map((value) => MerchantLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           messages: (json_['messages'] as core.List?)
               ?.map((value) => Message.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -13995,6 +14209,7 @@ class OfferObject {
         if (linkedObjectIds != null) 'linkedObjectIds': linkedObjectIds!,
         if (linksModuleData != null) 'linksModuleData': linksModuleData!,
         if (locations != null) 'locations': locations!,
+        if (merchantLocations != null) 'merchantLocations': merchantLocations!,
         if (messages != null) 'messages': messages!,
         if (notifyPreference != null) 'notifyPreference': notifyPreference!,
         if (passConstraints != null) 'passConstraints': passConstraints!,
@@ -15594,6 +15809,14 @@ class TransitClass {
   /// Required.
   Image? logo;
 
+  /// Merchant locations.
+  ///
+  /// There is a maximum of ten on the class. Any additional MerchantLocations
+  /// added beyond the 10 will be rejected. These locations will trigger a
+  /// notification when a user enters within a Google-set radius of the point.
+  /// This field replaces the deprecated LatLongPoints.
+  core.List<MerchantLocation>? merchantLocations;
+
   /// An array of messages displayed in the app.
   ///
   /// All users of this object will receive its associated messages. The maximum
@@ -15785,6 +16008,7 @@ class TransitClass {
     this.localizedIssuerName,
     this.locations,
     this.logo,
+    this.merchantLocations,
     this.messages,
     this.multipleDevicesAndHoldersAllowedStatus,
     this.notifyPreference,
@@ -15952,6 +16176,10 @@ class TransitClass {
               ? Image.fromJson(
                   json_['logo'] as core.Map<core.String, core.dynamic>)
               : null,
+          merchantLocations: (json_['merchantLocations'] as core.List?)
+              ?.map((value) => MerchantLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           messages: (json_['messages'] as core.List?)
               ?.map((value) => Message.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -16061,6 +16289,7 @@ class TransitClass {
           'localizedIssuerName': localizedIssuerName!,
         if (locations != null) 'locations': locations!,
         if (logo != null) 'logo': logo!,
+        if (merchantLocations != null) 'merchantLocations': merchantLocations!,
         if (messages != null) 'messages': messages!,
         if (multipleDevicesAndHoldersAllowedStatus != null)
           'multipleDevicesAndHoldersAllowedStatus':
@@ -16278,6 +16507,14 @@ class TransitObject {
   )
   core.List<LatLongPoint>? locations;
 
+  /// Merchant locations.
+  ///
+  /// There is a maximum of ten on the object. Any additional MerchantLocations
+  /// added beyond the 10 will be rejected. These locations will trigger a
+  /// notification when a user enters within a Google-set radius of the point.
+  /// This field replaces the deprecated LatLongPoints.
+  core.List<MerchantLocation>? merchantLocations;
+
   /// An array of messages displayed in the app.
   ///
   /// All users of this object will receive its associated messages. The maximum
@@ -16465,6 +16702,7 @@ class TransitObject {
     this.linkedObjectIds,
     this.linksModuleData,
     this.locations,
+    this.merchantLocations,
     this.messages,
     this.notifyPreference,
     this.passConstraints,
@@ -16554,6 +16792,10 @@ class TransitObject {
               ?.map((value) => LatLongPoint.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          merchantLocations: (json_['merchantLocations'] as core.List?)
+              ?.map((value) => MerchantLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           messages: (json_['messages'] as core.List?)
               ?.map((value) => Message.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -16638,6 +16880,7 @@ class TransitObject {
         if (linkedObjectIds != null) 'linkedObjectIds': linkedObjectIds!,
         if (linksModuleData != null) 'linksModuleData': linksModuleData!,
         if (locations != null) 'locations': locations!,
+        if (merchantLocations != null) 'merchantLocations': merchantLocations!,
         if (messages != null) 'messages': messages!,
         if (notifyPreference != null) 'notifyPreference': notifyPreference!,
         if (passConstraints != null) 'passConstraints': passConstraints!,

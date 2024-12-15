@@ -4062,6 +4062,8 @@ class GoogleCloudIdentitytoolkitV1ResetPasswordRequest {
   ///
   /// Specify this and the old password in order to change an account's password
   /// without using an out-of-band code.
+  ///
+  /// Optional.
   core.String? email;
 
   /// The new password to be set for this account.
@@ -4086,6 +4088,8 @@ class GoogleCloudIdentitytoolkitV1ResetPasswordRequest {
   core.String? oobCode;
 
   /// The tenant ID of the Identity Platform tenant the account belongs to.
+  ///
+  /// Optional.
   core.String? tenantId;
 
   GoogleCloudIdentitytoolkitV1ResetPasswordRequest({

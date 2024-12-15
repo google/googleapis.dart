@@ -2747,8 +2747,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -7950,6 +7950,8 @@ class Release {
   /// Not all versions are valid; Cloud Deploy supports a specific set of
   /// versions. If unset, the most recent supported Skaffold version will be
   /// used.
+  ///
+  /// Optional.
   core.String? skaffoldVersion;
 
   /// Map from target ID to the target artifacts created during the render

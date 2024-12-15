@@ -9167,6 +9167,7 @@ class GooglePrivacyDlpV2ByteContentItem {
   /// - "AUDIO" : Audio file types. Only used for profiling.
   /// - "VIDEO" : Video file types. Only used for profiling.
   /// - "EXECUTABLE" : Executable file types. Only used for profiling.
+  /// - "AI_MODEL" : AI model file types. Only used for profiling.
   core.String? type;
 
   GooglePrivacyDlpV2ByteContentItem({
@@ -14143,6 +14144,7 @@ class GooglePrivacyDlpV2FileClusterType {
   /// - "CLUSTER_ARCHIVE" : Archives and containers like .zip, .tar etc.
   /// - "CLUSTER_MULTIMEDIA" : Multimedia like .mp4, .avi etc.
   /// - "CLUSTER_EXECUTABLE" : Executable files like .exe, .class, .apk etc.
+  /// - "CLUSTER_AI_MODEL" : AI models like .tflite etc.
   core.String? cluster;
 
   GooglePrivacyDlpV2FileClusterType({
@@ -15453,6 +15455,9 @@ class GooglePrivacyDlpV2InfoTypeDescription {
   /// Human readable form of the infoType name.
   core.String? displayName;
 
+  /// A sample true positive for this infoType.
+  core.String? example;
+
   /// Internal name of the infoType.
   core.String? name;
 
@@ -15469,6 +15474,7 @@ class GooglePrivacyDlpV2InfoTypeDescription {
     this.categories,
     this.description,
     this.displayName,
+    this.example,
     this.name,
     this.sensitivityScore,
     this.supportedBy,
@@ -15483,6 +15489,7 @@ class GooglePrivacyDlpV2InfoTypeDescription {
               .toList(),
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
+          example: json_['example'] as core.String?,
           name: json_['name'] as core.String?,
           sensitivityScore: json_.containsKey('sensitivityScore')
               ? GooglePrivacyDlpV2SensitivityScore.fromJson(
@@ -15502,6 +15509,7 @@ class GooglePrivacyDlpV2InfoTypeDescription {
         if (categories != null) 'categories': categories!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
+        if (example != null) 'example': example!,
         if (name != null) 'name': name!,
         if (sensitivityScore != null) 'sensitivityScore': sensitivityScore!,
         if (supportedBy != null) 'supportedBy': supportedBy!,

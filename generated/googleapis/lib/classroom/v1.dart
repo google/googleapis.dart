@@ -27,6 +27,7 @@
 ///   - [CoursesCourseWorkResource]
 ///     - [CoursesCourseWorkAddOnAttachmentsResource]
 ///       - [CoursesCourseWorkAddOnAttachmentsStudentSubmissionsResource]
+///     - [CoursesCourseWorkRubricsResource]
 ///     - [CoursesCourseWorkStudentSubmissionsResource]
 ///   - [CoursesCourseWorkMaterialsResource]
 ///     - [CoursesCourseWorkMaterialsAddOnAttachmentsResource]
@@ -1399,6 +1400,8 @@ class CoursesCourseWorkResource {
 
   CoursesCourseWorkAddOnAttachmentsResource get addOnAttachments =>
       CoursesCourseWorkAddOnAttachmentsResource(_requester);
+  CoursesCourseWorkRubricsResource get rubrics =>
+      CoursesCourseWorkRubricsResource(_requester);
   CoursesCourseWorkStudentSubmissionsResource get studentSubmissions =>
       CoursesCourseWorkStudentSubmissionsResource(_requester);
 
@@ -1828,6 +1831,88 @@ class CoursesCourseWorkResource {
     );
     return CourseWork.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a rubric.
+  ///
+  /// See google.classroom.v1.Rubric for details of which fields can be updated.
+  /// Rubric update capabilities are \[limited\](/classroom/rubrics/limitations)
+  /// once grading has started. The requesting user and course owner must have
+  /// rubrics creation capabilities. For details, see
+  /// [licensing requirements](https://developers.google.com/classroom/rubrics/limitations#license-requirements).
+  /// This request must be made by the Google Cloud console of the
+  /// [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to
+  /// create the parent course work item. This method returns the following
+  /// error codes: * `PERMISSION_DENIED` if the requesting developer project
+  /// didn't create the corresponding course work, if the user isn't permitted
+  /// to make the requested modification to the rubric, or for access errors.
+  /// This error code is also returned if grading has already started on the
+  /// rubric. * `INVALID_ARGUMENT` if the request is malformed and for the
+  /// following request error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if
+  /// the requested course, course work, or rubric doesn't exist or if the user
+  /// doesn't have access to the corresponding course work. * `INTERNAL` if
+  /// grading has already started on the rubric.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [courseWorkId] - Required. Identifier of the course work.
+  ///
+  /// [id] - Optional. Identifier of the rubric.
+  ///
+  /// [updateMask] - Optional. Mask that identifies which fields on the rubric
+  /// to update. This field is required to do an update. The update fails if
+  /// invalid fields are specified. There are multiple options to define the
+  /// criteria of a rubric: the `source_spreadsheet_id` and the `criteria` list.
+  /// Only one of these can be used at a time to define a rubric. The rubric
+  /// `criteria` list is fully replaced by the rubric criteria specified in the
+  /// update request. For example, if a criterion or level is missing from the
+  /// request, it is deleted. New criteria and levels are added and an ID is
+  /// assigned. Existing criteria and levels retain the previously assigned ID
+  /// if the ID is specified in the request. The following fields can be
+  /// specified by teachers: * `criteria` * `source_spreadsheet_id`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Rubric].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Rubric> updateRubric(
+    Rubric request,
+    core.String courseId,
+    core.String courseWorkId, {
+    core.String? id,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (id != null) 'id': [id],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/courseWork/' +
+        commons.escapeVariable('$courseWorkId') +
+        '/rubric';
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Rubric.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2309,6 +2394,326 @@ class CoursesCourseWorkAddOnAttachmentsStudentSubmissionsResource {
     );
     return AddOnAttachmentStudentSubmission.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class CoursesCourseWorkRubricsResource {
+  final commons.ApiRequester _requester;
+
+  CoursesCourseWorkRubricsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a rubric.
+  ///
+  /// The requesting user and course owner must have rubrics creation
+  /// capabilities. For details, see
+  /// [licensing requirements](https://developers.google.com/classroom/rubrics/limitations#license-requirements).
+  /// For further details, see \[Rubrics structure and known
+  /// limitations\](/classroom/rubrics/limitations). This request must be made
+  /// by the Google Cloud console of the
+  /// [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to
+  /// create the parent course work item. This method returns the following
+  /// error codes: * `PERMISSION_DENIED` if the requesting user isn't permitted
+  /// to create rubrics for course work in the requested course. * `INTERNAL` if
+  /// the request has insufficient OAuth scopes. * `INVALID_ARGUMENT` if the
+  /// request is malformed and for the following request error: *
+  /// `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested course or
+  /// course work don't exist or the user doesn't have access to the course or
+  /// course work. * `FAILED_PRECONDITION` for the following request error: *
+  /// `AttachmentNotVisible`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [courseWorkId] - Required. Identifier of the course work.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Rubric].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Rubric> create(
+    Rubric request,
+    core.String courseId,
+    core.String courseWorkId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/courseWork/' +
+        commons.escapeVariable('$courseWorkId') +
+        '/rubrics';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Rubric.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a rubric.
+  ///
+  /// The requesting user and course owner must have rubrics creation
+  /// capabilities. For details, see
+  /// [licensing requirements](https://developers.google.com/classroom/rubrics/limitations#license-requirements).
+  /// This request must be made by the Google Cloud console of the
+  /// [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to
+  /// create the corresponding rubric. This method returns the following error
+  /// codes: * `PERMISSION_DENIED` if the requesting developer project didn't
+  /// create the corresponding rubric, or if the requesting user isn't permitted
+  /// to delete the requested rubric. * `NOT_FOUND` if no rubric exists with the
+  /// requested ID or the user does not have access to the course, course work,
+  /// or rubric. * `INVALID_ARGUMENT` if grading has already started on the
+  /// rubric.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [courseWorkId] - Required. Identifier of the course work.
+  ///
+  /// [id] - Required. Identifier of the rubric.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String courseId,
+    core.String courseWorkId,
+    core.String id, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/courseWork/' +
+        commons.escapeVariable('$courseWorkId') +
+        '/rubrics/' +
+        commons.escapeVariable('$id');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a rubric.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` for
+  /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if the requested course, course work, or rubric doesn't exist
+  /// or if the user doesn't have access to the corresponding course work.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [courseWorkId] - Required. Identifier of the course work.
+  ///
+  /// [id] - Required. Identifier of the rubric.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Rubric].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Rubric> get(
+    core.String courseId,
+    core.String courseWorkId,
+    core.String id, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/courseWork/' +
+        commons.escapeVariable('$courseWorkId') +
+        '/rubrics/' +
+        commons.escapeVariable('$id');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Rubric.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of rubrics that the requester is permitted to view.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` for
+  /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if the requested course or course work doesn't exist or if the
+  /// user doesn't have access to the corresponding course work.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [courseWorkId] - Required. Identifier of the course work.
+  ///
+  /// [pageSize] - The maximum number of rubrics to return. If unspecified, at
+  /// most 1 rubric is returned. The maximum value is 1; values above 1 are
+  /// coerced to 1.
+  ///
+  /// [pageToken] - nextPageToken value returned from a previous list call,
+  /// indicating that the subsequent page of results should be returned. The
+  /// list request must be otherwise identical to the one that resulted in this
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRubricsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRubricsResponse> list(
+    core.String courseId,
+    core.String courseWorkId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/courseWork/' +
+        commons.escapeVariable('$courseWorkId') +
+        '/rubrics';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRubricsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a rubric.
+  ///
+  /// See google.classroom.v1.Rubric for details of which fields can be updated.
+  /// Rubric update capabilities are \[limited\](/classroom/rubrics/limitations)
+  /// once grading has started. The requesting user and course owner must have
+  /// rubrics creation capabilities. For details, see
+  /// [licensing requirements](https://developers.google.com/classroom/rubrics/limitations#license-requirements).
+  /// This request must be made by the Google Cloud console of the
+  /// [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to
+  /// create the parent course work item. This method returns the following
+  /// error codes: * `PERMISSION_DENIED` if the requesting developer project
+  /// didn't create the corresponding course work, if the user isn't permitted
+  /// to make the requested modification to the rubric, or for access errors.
+  /// This error code is also returned if grading has already started on the
+  /// rubric. * `INVALID_ARGUMENT` if the request is malformed and for the
+  /// following request error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if
+  /// the requested course, course work, or rubric doesn't exist or if the user
+  /// doesn't have access to the corresponding course work. * `INTERNAL` if
+  /// grading has already started on the rubric.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [courseWorkId] - Required. Identifier of the course work.
+  ///
+  /// [id] - Optional. Identifier of the rubric.
+  ///
+  /// [updateMask] - Optional. Mask that identifies which fields on the rubric
+  /// to update. This field is required to do an update. The update fails if
+  /// invalid fields are specified. There are multiple options to define the
+  /// criteria of a rubric: the `source_spreadsheet_id` and the `criteria` list.
+  /// Only one of these can be used at a time to define a rubric. The rubric
+  /// `criteria` list is fully replaced by the rubric criteria specified in the
+  /// update request. For example, if a criterion or level is missing from the
+  /// request, it is deleted. New criteria and levels are added and an ID is
+  /// assigned. Existing criteria and levels retain the previously assigned ID
+  /// if the ID is specified in the request. The following fields can be
+  /// specified by teachers: * `criteria` * `source_spreadsheet_id`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Rubric].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Rubric> patch(
+    Rubric request,
+    core.String courseId,
+    core.String courseWorkId,
+    core.String id, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/courseWork/' +
+        commons.escapeVariable('$courseWorkId') +
+        '/rubrics/' +
+        commons.escapeVariable('$id');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Rubric.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7001,6 +7406,50 @@ class CourseWorkMaterial {
       };
 }
 
+/// A rubric criterion.
+///
+/// Each criterion is a dimension on which performance is rated.
+class Criterion {
+  /// The description of the criterion.
+  core.String? description;
+
+  /// The criterion ID.
+  ///
+  /// On creation, an ID is assigned.
+  core.String? id;
+
+  /// The list of levels within this criterion.
+  core.List<Level>? levels;
+
+  /// The title of the criterion.
+  core.String? title;
+
+  Criterion({
+    this.description,
+    this.id,
+    this.levels,
+    this.title,
+  });
+
+  Criterion.fromJson(core.Map json_)
+      : this(
+          description: json_['description'] as core.String?,
+          id: json_['id'] as core.String?,
+          levels: (json_['levels'] as core.List?)
+              ?.map((value) =>
+                  Level.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          title: json_['title'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (id != null) 'id': id!,
+        if (levels != null) 'levels': levels!,
+        if (title != null) 'title': title!,
+      };
+}
+
 /// Represents a whole or partial calendar date, such as a birthday.
 ///
 /// The time of day and time zone are either specified elsewhere or are
@@ -7587,6 +8036,51 @@ class Invitation {
       };
 }
 
+/// A level of the criterion.
+class Level {
+  /// The description of the level.
+  core.String? description;
+
+  /// The level ID.
+  ///
+  /// On creation, an ID is assigned.
+  core.String? id;
+
+  /// Optional points associated with this level.
+  ///
+  /// If set, all levels within the rubric must specify points and the value
+  /// must be distinct across all levels within a single criterion. 0 is
+  /// distinct from no points.
+  core.double? points;
+
+  /// The title of the level.
+  ///
+  /// If the level has no points set, title must be set.
+  core.String? title;
+
+  Level({
+    this.description,
+    this.id,
+    this.points,
+    this.title,
+  });
+
+  Level.fromJson(core.Map json_)
+      : this(
+          description: json_['description'] as core.String?,
+          id: json_['id'] as core.String?,
+          points: (json_['points'] as core.num?)?.toDouble(),
+          title: json_['title'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (id != null) 'id': id!,
+        if (points != null) 'points': points!,
+        if (title != null) 'title': title!,
+      };
+}
+
 /// URL item.
 class Link {
   /// URL of a thumbnail image of the target URL.
@@ -7895,6 +8389,36 @@ class ListInvitationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (invitations != null) 'invitations': invitations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response when listing rubrics.
+class ListRubricsResponse {
+  /// Token identifying the next page of results to return.
+  ///
+  /// If empty, no further results are available.
+  core.String? nextPageToken;
+
+  /// Rubrics that match the request.
+  core.List<Rubric>? rubrics;
+
+  ListRubricsResponse({
+    this.nextPageToken,
+    this.rubrics,
+  });
+
+  ListRubricsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          rubrics: (json_['rubrics'] as core.List?)
+              ?.map((value) =>
+                  Rubric.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (rubrics != null) 'rubrics': rubrics!,
       };
 }
 
@@ -8341,6 +8865,136 @@ class Registration {
 /// Request to return a student submission.
 typedef ReturnStudentSubmissionRequest = $Empty;
 
+/// The rubric of the course work.
+///
+/// A rubric is a scoring guide used to evaluate student work and give feedback.
+/// For further details, see \[Rubrics structure and known
+/// limitations\](/classroom/rubrics/limitations).
+class Rubric {
+  /// Identifier of the course.
+  ///
+  /// Read-only.
+  core.String? courseId;
+
+  /// Identifier for the course work this corresponds to.
+  ///
+  /// Read-only.
+  core.String? courseWorkId;
+
+  /// Timestamp when this rubric was created.
+  ///
+  /// Read-only.
+  ///
+  /// Output only.
+  core.String? creationTime;
+
+  /// List of criteria.
+  ///
+  /// Each criterion is a dimension on which performance is rated.
+  core.List<Criterion>? criteria;
+
+  /// Classroom-assigned identifier for the rubric.
+  ///
+  /// This is unique among rubrics for the relevant course work. Read-only.
+  core.String? id;
+
+  /// Input only.
+  ///
+  /// Immutable. Google Sheets ID of the spreadsheet. This spreadsheet must
+  /// contain formatted rubric settings. See
+  /// [Create or reuse a rubric for an assignment](https://support.google.com/edu/classroom/answer/9335069).
+  /// Use of this field requires the
+  /// `https://www.googleapis.com/auth/spreadsheets.readonly` or
+  /// `https://www.googleapis.com/auth/spreadsheets` scope.
+  core.String? sourceSpreadsheetId;
+
+  /// Timestamp of the most recent change to this rubric.
+  ///
+  /// Read-only.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Rubric({
+    this.courseId,
+    this.courseWorkId,
+    this.creationTime,
+    this.criteria,
+    this.id,
+    this.sourceSpreadsheetId,
+    this.updateTime,
+  });
+
+  Rubric.fromJson(core.Map json_)
+      : this(
+          courseId: json_['courseId'] as core.String?,
+          courseWorkId: json_['courseWorkId'] as core.String?,
+          creationTime: json_['creationTime'] as core.String?,
+          criteria: (json_['criteria'] as core.List?)
+              ?.map((value) => Criterion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          id: json_['id'] as core.String?,
+          sourceSpreadsheetId: json_['sourceSpreadsheetId'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (courseId != null) 'courseId': courseId!,
+        if (courseWorkId != null) 'courseWorkId': courseWorkId!,
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (criteria != null) 'criteria': criteria!,
+        if (id != null) 'id': id!,
+        if (sourceSpreadsheetId != null)
+          'sourceSpreadsheetId': sourceSpreadsheetId!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// A rubric grade set for the student submission.
+///
+/// There is at most one entry per rubric criterion.
+class RubricGrade {
+  /// Criterion ID.
+  ///
+  /// Optional.
+  core.String? criterionId;
+
+  /// Optional level ID of the selected level.
+  ///
+  /// If empty, no level was selected.
+  ///
+  /// Optional.
+  core.String? levelId;
+
+  /// Optional points assigned for this criterion, typically based on the level.
+  ///
+  /// Levels might or might not have points. If unset, no points were set for
+  /// this criterion.
+  ///
+  /// Optional.
+  core.double? points;
+
+  RubricGrade({
+    this.criterionId,
+    this.levelId,
+    this.points,
+  });
+
+  RubricGrade.fromJson(core.Map json_)
+      : this(
+          criterionId: json_['criterionId'] as core.String?,
+          levelId: json_['levelId'] as core.String?,
+          points: (json_['points'] as core.num?)?.toDouble(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (criterionId != null) 'criterionId': criterionId!,
+        if (levelId != null) 'levelId': levelId!,
+        if (points != null) 'points': points!,
+      };
+}
+
 /// Drive file that is used as material for course work.
 class SharedDriveFile {
   /// Drive file details.
@@ -8531,6 +9185,14 @@ class StudentSubmission {
   /// places. This may be modified only by course teachers.
   core.double? assignedGrade;
 
+  /// Assigned rubric grades based on the rubric's Criteria.
+  ///
+  /// This map is empty if there is no rubric attached to this course work or if
+  /// a rubric is attached, but no grades have been set on any Criteria. Entries
+  /// are only populated for grades that have been set. Key: The rubric's
+  /// criterion ID. Read-only.
+  core.Map<core.String, RubricGrade>? assignedRubricGrades;
+
   /// Submission content when course_work_type is ASSIGNMENT.
   ///
   /// Students can modify this content using ModifyAttachments.
@@ -8574,6 +9236,14 @@ class StudentSubmission {
   /// is, non-integer) values are allowed, but are rounded to two decimal
   /// places. This is only visible to and modifiable by course teachers.
   core.double? draftGrade;
+
+  /// Pending rubric grades based on the rubric's criteria.
+  ///
+  /// This map is empty if there is no rubric attached to this course work or if
+  /// a rubric is attached, but no grades have been set on any criteria. Entries
+  /// are only populated for grades that have been set. Key: The rubric's
+  /// criterion ID. Read-only.
+  core.Map<core.String, RubricGrade>? draftRubricGrades;
 
   /// Classroom-assigned Identifier for the student submission.
   ///
@@ -8623,6 +9293,7 @@ class StudentSubmission {
   StudentSubmission({
     this.alternateLink,
     this.assignedGrade,
+    this.assignedRubricGrades,
     this.assignmentSubmission,
     this.associatedWithDeveloper,
     this.courseId,
@@ -8630,6 +9301,7 @@ class StudentSubmission {
     this.courseWorkType,
     this.creationTime,
     this.draftGrade,
+    this.draftRubricGrades,
     this.id,
     this.late,
     this.multipleChoiceSubmission,
@@ -8644,6 +9316,15 @@ class StudentSubmission {
       : this(
           alternateLink: json_['alternateLink'] as core.String?,
           assignedGrade: (json_['assignedGrade'] as core.num?)?.toDouble(),
+          assignedRubricGrades: (json_['assignedRubricGrades']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              RubricGrade.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           assignmentSubmission: json_.containsKey('assignmentSubmission')
               ? AssignmentSubmission.fromJson(json_['assignmentSubmission']
                   as core.Map<core.String, core.dynamic>)
@@ -8655,6 +9336,15 @@ class StudentSubmission {
           courseWorkType: json_['courseWorkType'] as core.String?,
           creationTime: json_['creationTime'] as core.String?,
           draftGrade: (json_['draftGrade'] as core.num?)?.toDouble(),
+          draftRubricGrades: (json_['draftRubricGrades']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              RubricGrade.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
           id: json_['id'] as core.String?,
           late: json_['late'] as core.bool?,
           multipleChoiceSubmission:
@@ -8679,6 +9369,8 @@ class StudentSubmission {
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternateLink != null) 'alternateLink': alternateLink!,
         if (assignedGrade != null) 'assignedGrade': assignedGrade!,
+        if (assignedRubricGrades != null)
+          'assignedRubricGrades': assignedRubricGrades!,
         if (assignmentSubmission != null)
           'assignmentSubmission': assignmentSubmission!,
         if (associatedWithDeveloper != null)
@@ -8688,6 +9380,7 @@ class StudentSubmission {
         if (courseWorkType != null) 'courseWorkType': courseWorkType!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (draftGrade != null) 'draftGrade': draftGrade!,
+        if (draftRubricGrades != null) 'draftRubricGrades': draftRubricGrades!,
         if (id != null) 'id': id!,
         if (late != null) 'late': late!,
         if (multipleChoiceSubmission != null)

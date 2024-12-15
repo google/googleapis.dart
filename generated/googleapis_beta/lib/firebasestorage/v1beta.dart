@@ -23,6 +23,7 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsBucketsResource]
+///   - [ProjectsDefaultBucketResource]
 library;
 
 import 'dart:async' as async;
@@ -64,8 +65,83 @@ class ProjectsResource {
   final commons.ApiRequester _requester;
 
   ProjectsBucketsResource get buckets => ProjectsBucketsResource(_requester);
+  ProjectsDefaultBucketResource get defaultBucket =>
+      ProjectsDefaultBucketResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Unlinks and deletes the default bucket.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the default bucket to delete,
+  /// `projects/{project_id_or_number}/defaultBucket`.
+  /// Value must have pattern `^projects/\[^/\]+/defaultBucket$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> deleteDefaultBucket(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the default bucket.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the default bucket to retrieve,
+  /// `projects/{project_id_or_number}/defaultBucket`.
+  /// Value must have pattern `^projects/\[^/\]+/defaultBucket$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DefaultBucket].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DefaultBucket> getDefaultBucket(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DefaultBucket.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsBucketsResource {
@@ -244,6 +320,60 @@ class ProjectsBucketsResource {
   }
 }
 
+class ProjectsDefaultBucketResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsDefaultBucketResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a Spark tier-eligible Cloud Storage bucket and links it to your
+  /// Firebase project.
+  ///
+  /// If the default bucket already exists, this method will re-link it to your
+  /// Firebase project. See https://firebase.google.com/pricing for pricing
+  /// details.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where the default bucket will be
+  /// created, `projects/{project_id_or_number}`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DefaultBucket].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DefaultBucket> create(
+    DefaultBucket request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/defaultBucket';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return DefaultBucket.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// The request used to link a Google Cloud Storage bucket to a Firebase
 /// project.
 typedef AddFirebaseRequest = $Empty;
@@ -266,6 +396,59 @@ class Bucket {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
+      };
+}
+
+/// Spark tier-eligible Cloud Storage bucket.
+///
+/// One per project. This resource exists if the underlying Cloud Storage bucket
+/// exists and it is linked to your Firebase project. See
+/// https://firebase.google.com/pricing for pricing details.
+class DefaultBucket {
+  /// Underlying bucket resource.
+  ///
+  /// Output only.
+  Bucket? bucket;
+
+  /// Location of the default bucket.
+  ///
+  /// Immutable.
+  core.String? location;
+
+  /// Resource name of the default bucket.
+  core.String? name;
+
+  /// Storage class of the default bucket.
+  ///
+  /// Supported values are available at
+  /// https://cloud.google.com/storage/docs/storage-classes#classes.
+  ///
+  /// Immutable.
+  core.String? storageClass;
+
+  DefaultBucket({
+    this.bucket,
+    this.location,
+    this.name,
+    this.storageClass,
+  });
+
+  DefaultBucket.fromJson(core.Map json_)
+      : this(
+          bucket: json_.containsKey('bucket')
+              ? Bucket.fromJson(
+                  json_['bucket'] as core.Map<core.String, core.dynamic>)
+              : null,
+          location: json_['location'] as core.String?,
+          name: json_['name'] as core.String?,
+          storageClass: json_['storageClass'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucket != null) 'bucket': bucket!,
+        if (location != null) 'location': location!,
+        if (name != null) 'name': name!,
+        if (storageClass != null) 'storageClass': storageClass!,
       };
 }
 

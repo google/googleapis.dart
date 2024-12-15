@@ -371,17 +371,11 @@ class SpacesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Creates a space with no members.
+  /// Creates a space.
   ///
-  /// Can be used to create a named space. Spaces grouped by topics aren't
-  /// supported. For an example, see
+  /// Can be used to create a named space, or a group chat in `Import mode`. For
+  /// an example, see
   /// [Create a space](https://developers.google.com/workspace/chat/create-spaces).
-  /// If you receive the error message `ALREADY_EXISTS` when creating a space,
-  /// try a different `displayName`. An existing space within the Google
-  /// Workspace organization might already use this display name. If you're a
-  /// member of the
-  /// [Developer Preview program](https://developers.google.com/workspace/preview),
-  /// you can create a group chat in import mode using `spaceType.GROUP_CHAT`.
   /// Supports the following types of
   /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize):
   /// -
@@ -391,7 +385,13 @@ class SpacesResource {
   /// [Developer Preview](https://developers.google.com/workspace/preview) -
   /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
   /// When authenticating as an app, the `space.customer` field must be set in
-  /// the request.
+  /// the request. Space membership upon creation depends on whether the space
+  /// is created in `Import mode`: * **Import mode:** No members are created. *
+  /// **All other modes:** The calling user is added as a member. This is: * The
+  /// app itself when using app authentication. * The human user when using user
+  /// authentication. If you receive the error message `ALREADY_EXISTS` when
+  /// creating a space, try a different `displayName`. An existing space within
+  /// the Google Workspace organization might already use this display name.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1457,7 +1457,11 @@ class SpacesMessagesResource {
   /// [Name a message](https://developers.google.com/workspace/chat/create-messages#name_a_created_message).
   ///
   /// [messageReplyOption] - Optional. Specifies whether a message starts a
-  /// thread or replies to one. Only supported in named spaces.
+  /// thread or replies to one. Only supported in named spaces. When
+  /// [responding to user interactions](https://developers.google.com/workspace/chat/receive-respond-interactions),
+  /// this field is ignored. For interactions within a thread, the reply is
+  /// created in the same thread. Otherwise, the reply is created as a new
+  /// thread.
   /// Possible string values are:
   /// - "MESSAGE_REPLY_OPTION_UNSPECIFIED" : Default. Starts a new thread. Using
   /// this option ignores any thread ID or `thread_key` that's included.
@@ -1663,11 +1667,10 @@ class SpacesMessagesResource {
   /// spaces/AAAAAAAAAAA/threads/123 ``` Invalid queries are rejected by the
   /// server with an `INVALID_ARGUMENT` error.
   ///
-  /// [orderBy] - Optional. Optional, if resuming from a previous query. How the
-  /// list of messages is ordered. Specify a value to order by an ordering
-  /// operation. Valid ordering operation values are as follows: - `ASC` for
-  /// ascending. - `DESC` for descending. The default ordering is `create_time
-  /// ASC`.
+  /// [orderBy] - Optional. How the list of messages is ordered. Specify a value
+  /// to order by an ordering operation. Valid ordering operation values are as
+  /// follows: - `ASC` for ascending. - `DESC` for descending. The default
+  /// ordering is `create_time ASC`.
   ///
   /// [pageSize] - Optional. The maximum number of messages returned. The
   /// service might return fewer messages than this value. If unspecified, at
@@ -1675,12 +1678,11 @@ class SpacesMessagesResource {
   /// than 1000, it's automatically changed to 1000. Negative values return an
   /// `INVALID_ARGUMENT` error.
   ///
-  /// [pageToken] - Optional. Optional, if resuming from a previous query. A
-  /// page token received from a previous list messages call. Provide this
-  /// parameter to retrieve the subsequent page. When paginating, all other
-  /// parameters provided should match the call that provided the page token.
-  /// Passing different values to the other parameters might lead to unexpected
-  /// results.
+  /// [pageToken] - Optional. A page token received from a previous list
+  /// messages call. Provide this parameter to retrieve the subsequent page.
+  /// When paginating, all other parameters provided should match the call that
+  /// provided the page token. Passing different values to the other parameters
+  /// might lead to unexpected results.
   ///
   /// [showDeleted] - Optional. Whether to include deleted messages. Deleted
   /// messages include deleted time and metadata about their deletion, but
@@ -2822,7 +2824,10 @@ class AttachedGif {
 class Attachment {
   /// A reference to the attachment data.
   ///
-  /// This field is used with the media API to download the attachment data.
+  /// This field is used to create or update messages with attachments, or with
+  /// the media API to download the attachment data.
+  ///
+  /// Optional.
   AttachmentDataRef? attachmentDataRef;
 
   /// The original file name for the content, not the full path.
@@ -2852,6 +2857,8 @@ class Attachment {
 
   /// Resource name of the attachment, in the form
   /// `spaces/{space}/messages/{message}/attachments/{attachment}`.
+  ///
+  /// Optional.
   core.String? name;
 
   /// The source of the attachment.
@@ -2918,11 +2925,15 @@ class AttachmentDataRef {
   ///
   /// Treated by clients as an opaque string and used to create or update Chat
   /// messages with attachments.
+  ///
+  /// Optional.
   core.String? attachmentUploadToken;
 
   /// The resource name of the attachment data.
   ///
   /// This field is used with the media API to download the attachment data.
+  ///
+  /// Optional.
   core.String? resourceName;
 
   AttachmentDataRef({
@@ -3866,7 +3877,10 @@ class GoogleAppsCardV1ButtonList {
 /// [Design the components of a card or dialog](https://developers.google.com/workspace/chat/design-components-card-dialog).
 /// * For Google Workspace Add-ons, see \[Card-based
 /// interfaces\](https://developers.google.com/apps-script/add-ons/concepts/cards).
-/// **Example: Card message for a Google Chat app**
+/// Note: You can add up to 100 widgets per card. Any widgets beyond this limit
+/// are ignored. This limit applies to both card messages and dialogs in Google
+/// Chat apps, and to cards in Google Workspace Add-ons. **Example: Card message
+/// for a Google Chat app**
 /// ![Example contact card](https://developers.google.com/workspace/chat/images/card_api_reference.png)
 /// To create the sample card message in Google Chat, use the following JSON:
 /// ``` { "cardsV2": [ { "cardId": "unique-card-id", "card": { "header": {
@@ -4147,6 +4161,76 @@ class GoogleAppsCardV1CardHeader {
         if (imageUrl != null) 'imageUrl': imageUrl!,
         if (subtitle != null) 'subtitle': subtitle!,
         if (title != null) 'title': title!,
+      };
+}
+
+/// [Developer Preview](https://developers.google.com/workspace/preview): A
+/// carousel, also known as a slider, rotates and displays a list of widgets in
+/// a slideshow format, with buttons navigating to the previous or next widget.
+///
+/// For example, this is a JSON representation of a carousel that contains three
+/// text paragraph widgets. ``` { "carouselCards": [ { "widgets": [ {
+/// "textParagraph": { "text": "First text paragraph in carousel", } } ] }, {
+/// "widgets": [ { "textParagraph": { "text": "Second text paragraph in
+/// carousel", } } ] }, { "widgets": [ { "textParagraph": { "text": "Third text
+/// paragraph in carousel", } } ] } ] } ```
+/// [Google Chat apps](https://developers.google.com/workspace/chat):
+class GoogleAppsCardV1Carousel {
+  /// A list of cards included in the carousel.
+  core.List<GoogleAppsCardV1CarouselCard>? carouselCards;
+
+  GoogleAppsCardV1Carousel({
+    this.carouselCards,
+  });
+
+  GoogleAppsCardV1Carousel.fromJson(core.Map json_)
+      : this(
+          carouselCards: (json_['carouselCards'] as core.List?)
+              ?.map((value) => GoogleAppsCardV1CarouselCard.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (carouselCards != null) 'carouselCards': carouselCards!,
+      };
+}
+
+/// [Developer Preview](https://developers.google.com/workspace/preview): A card
+/// that can be displayed as a carousel item.
+///
+/// [Google Chat apps](https://developers.google.com/workspace/chat):
+class GoogleAppsCardV1CarouselCard {
+  /// A list of widgets displayed at the bottom of the carousel card.
+  ///
+  /// The widgets are displayed in the order that they are specified.
+  core.List<GoogleAppsCardV1NestedWidget>? footerWidgets;
+
+  /// A list of widgets displayed in the carousel card.
+  ///
+  /// The widgets are displayed in the order that they are specified.
+  core.List<GoogleAppsCardV1NestedWidget>? widgets;
+
+  GoogleAppsCardV1CarouselCard({
+    this.footerWidgets,
+    this.widgets,
+  });
+
+  GoogleAppsCardV1CarouselCard.fromJson(core.Map json_)
+      : this(
+          footerWidgets: (json_['footerWidgets'] as core.List?)
+              ?.map((value) => GoogleAppsCardV1NestedWidget.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          widgets: (json_['widgets'] as core.List?)
+              ?.map((value) => GoogleAppsCardV1NestedWidget.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (footerWidgets != null) 'footerWidgets': footerWidgets!,
+        if (widgets != null) 'widgets': widgets!,
       };
 }
 
@@ -5067,6 +5151,50 @@ class GoogleAppsCardV1MaterialIcon {
       };
 }
 
+/// [Developer Preview](https://developers.google.com/workspace/preview): A list
+/// of widgets that can be displayed in a containing layout, such as a
+/// `CarouselCard`.
+///
+/// [Google Chat apps](https://developers.google.com/workspace/chat):
+class GoogleAppsCardV1NestedWidget {
+  /// A button list widget.
+  GoogleAppsCardV1ButtonList? buttonList;
+
+  /// An image widget.
+  GoogleAppsCardV1Image? image;
+
+  /// A text paragraph widget.
+  GoogleAppsCardV1TextParagraph? textParagraph;
+
+  GoogleAppsCardV1NestedWidget({
+    this.buttonList,
+    this.image,
+    this.textParagraph,
+  });
+
+  GoogleAppsCardV1NestedWidget.fromJson(core.Map json_)
+      : this(
+          buttonList: json_.containsKey('buttonList')
+              ? GoogleAppsCardV1ButtonList.fromJson(
+                  json_['buttonList'] as core.Map<core.String, core.dynamic>)
+              : null,
+          image: json_.containsKey('image')
+              ? GoogleAppsCardV1Image.fromJson(
+                  json_['image'] as core.Map<core.String, core.dynamic>)
+              : null,
+          textParagraph: json_.containsKey('textParagraph')
+              ? GoogleAppsCardV1TextParagraph.fromJson(
+                  json_['textParagraph'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buttonList != null) 'buttonList': buttonList!,
+        if (image != null) 'image': image!,
+        if (textParagraph != null) 'textParagraph': textParagraph!,
+      };
+}
+
 /// Represents how to respond when users click an interactive element on a card,
 /// such as a button.
 ///
@@ -5413,7 +5541,7 @@ class GoogleAppsCardV1Section {
 /// \[Google Workspace Add-ons and Chat
 /// apps\](https://developers.google.com/workspace/extend):
 class GoogleAppsCardV1SelectionInput {
-  /// An external data source, such as a relational data base.
+  /// An external data source, such as a relational database.
   GoogleAppsCardV1Action? externalDataSource;
 
   /// An array of selectable items.
@@ -5436,11 +5564,13 @@ class GoogleAppsCardV1SelectionInput {
   core.int? multiSelectMaxSelectedItems;
 
   /// For multiselect menus, the number of text characters that a user inputs
-  /// before the app queries autocomplete and displays suggested items in the
-  /// menu.
+  /// before the menu returns suggested selection items.
   ///
-  /// If unspecified, defaults to 0 characters for static data sources and 3
-  /// characters for external data sources.
+  /// If unset, the multiselect menu uses the following default values: * If the
+  /// menu uses a static array of `SelectionInput` items, defaults to 0
+  /// characters and immediately populates items from the array. * If the menu
+  /// uses a dynamic data source (`multi_select_data_source`), defaults to 3
+  /// characters before querying the data source to return suggested items.
   core.int? multiSelectMinQueryLength;
 
   /// The name that identifies the selection input in a form input event.
@@ -5474,17 +5604,18 @@ class GoogleAppsCardV1SelectionInput {
   /// button.
   /// - "SWITCH" : A set of switches. Users can turn on one or more switches.
   /// - "DROPDOWN" : A dropdown menu. Users can select one item from the menu.
-  /// - "MULTI_SELECT" : A multiselect menu for static or dynamic data. From the
-  /// menu bar, users select one or more items. Users can also input values to
-  /// populate dynamic data. For example, users can start typing the name of a
-  /// Google Chat space and the widget autosuggests the space. To populate items
-  /// for a multiselect menu, you can use one of the following types of data
-  /// sources: * Static data: Items are specified as `SelectionItem` objects in
-  /// the widget. Up to 100 items. * Google Workspace data: Items are populated
-  /// using data from Google Workspace, such as Google Workspace users or Google
-  /// Chat spaces. * External data: Items are populated from an external data
-  /// source outside of Google Workspace. For examples of how to implement
-  /// multiselect menus, see
+  /// - "MULTI_SELECT" : A menu with a text box. Users can type and select one
+  /// or more items. For Google Workspace Add-ons, you must populate items using
+  /// a static array of `SelectionItem` objects. For Google Chat apps, you can
+  /// also populate items using a dynamic data source and autosuggest items as
+  /// users type in the menu. For example, users can start typing the name of a
+  /// Google Chat space and the widget autosuggests the space. To dynamically
+  /// populate items for a multiselect menu, use one of the following types of
+  /// data sources: * Google Workspace data: Items are populated using data from
+  /// Google Workspace, such as Google Workspace users or Google Chat spaces. *
+  /// External data: Items are populated from an external data source outside of
+  /// Google Workspace. For examples of how to implement multiselect menus for
+  /// Chat apps, see
   /// [Add a multiselect menu](https://developers.google.com/workspace/chat/design-interactive-card-dialog#multiselect-menu).
   /// \[Google Workspace Add-ons and Chat
   /// apps\](https://developers.google.com/workspace/extend):
@@ -5550,7 +5681,7 @@ class GoogleAppsCardV1SelectionInput {
 /// An item that users can select in a selection input, such as a checkbox or
 /// switch.
 ///
-/// \[Google Workspace Add-ons and Chat
+/// Supports up to 100 items. \[Google Workspace Add-ons and Chat
 /// apps\](https://developers.google.com/workspace/extend):
 class GoogleAppsCardV1SelectionItem {
   /// For multiselect menus, a text description or label that's displayed below
@@ -5925,6 +6056,14 @@ class GoogleAppsCardV1Widget {
   /// "https://example.com/calendar" } } } ] } ```
   GoogleAppsCardV1ButtonList? buttonList;
 
+  /// A carousel contains a collection of nested widgets.
+  ///
+  /// For example, this is a JSON representation of a carousel that contains two
+  /// text paragraphs. ``` { "widgets": [ { "textParagraph": { "text": "First
+  /// text paragraph in the carousel." } }, { "textParagraph": { "text": "Second
+  /// text paragraph in the carousel." } } ] } ```
+  GoogleAppsCardV1Carousel? carousel;
+
   /// A list of chips.
   ///
   /// For example, the following JSON creates two chips. The first is a text
@@ -6042,6 +6181,7 @@ class GoogleAppsCardV1Widget {
 
   GoogleAppsCardV1Widget({
     this.buttonList,
+    this.carousel,
     this.chipList,
     this.columns,
     this.dateTimePicker,
@@ -6060,6 +6200,10 @@ class GoogleAppsCardV1Widget {
           buttonList: json_.containsKey('buttonList')
               ? GoogleAppsCardV1ButtonList.fromJson(
                   json_['buttonList'] as core.Map<core.String, core.dynamic>)
+              : null,
+          carousel: json_.containsKey('carousel')
+              ? GoogleAppsCardV1Carousel.fromJson(
+                  json_['carousel'] as core.Map<core.String, core.dynamic>)
               : null,
           chipList: json_.containsKey('chipList')
               ? GoogleAppsCardV1ChipList.fromJson(
@@ -6106,6 +6250,7 @@ class GoogleAppsCardV1Widget {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (buttonList != null) 'buttonList': buttonList!,
+        if (carousel != null) 'carousel': carousel!,
         if (chipList != null) 'chipList': chipList!,
         if (columns != null) 'columns': columns!,
         if (dateTimePicker != null) 'dateTimePicker': dateTimePicker!,
@@ -8004,7 +8149,7 @@ class SetUpSpaceRequest {
   /// The Google Chat users or groups to invite to join the space.
   ///
   /// Omit the calling user, as they are added automatically. The set currently
-  /// allows up to 20 memberships (in addition to the caller). For human
+  /// allows up to 49 memberships (in addition to the caller). For human
   /// membership, the `Membership.member` field must contain a `user` with
   /// `name` populated (format: `users/{user}`) and `type` set to
   /// `User.Type.HUMAN`. You can only add human users when setting up a space
@@ -8221,6 +8366,16 @@ class Space {
   /// Optional.
   core.bool? importMode;
 
+  /// The time when the space will be automatically deleted by the system if it
+  /// remains in import mode.
+  ///
+  /// Each space created in import mode must exit this mode before this expire
+  /// time using `spaces.completeImport`. This field is only populated for
+  /// spaces that were created with import mode.
+  ///
+  /// Output only.
+  core.String? importModeExpireTime;
+
   /// Timestamp of the last message in the space.
   ///
   /// Output only.
@@ -8359,6 +8514,7 @@ class Space {
     this.displayName,
     this.externalUserAllowed,
     this.importMode,
+    this.importModeExpireTime,
     this.lastActiveTime,
     this.membershipCount,
     this.name,
@@ -8385,6 +8541,7 @@ class Space {
           displayName: json_['displayName'] as core.String?,
           externalUserAllowed: json_['externalUserAllowed'] as core.bool?,
           importMode: json_['importMode'] as core.bool?,
+          importModeExpireTime: json_['importModeExpireTime'] as core.String?,
           lastActiveTime: json_['lastActiveTime'] as core.String?,
           membershipCount: json_.containsKey('membershipCount')
               ? MembershipCount.fromJson(json_['membershipCount']
@@ -8418,6 +8575,8 @@ class Space {
         if (externalUserAllowed != null)
           'externalUserAllowed': externalUserAllowed!,
         if (importMode != null) 'importMode': importMode!,
+        if (importModeExpireTime != null)
+          'importModeExpireTime': importModeExpireTime!,
         if (lastActiveTime != null) 'lastActiveTime': lastActiveTime!,
         if (membershipCount != null) 'membershipCount': membershipCount!,
         if (name != null) 'name': name!,
@@ -9016,9 +9175,8 @@ class ThreadReadState {
       };
 }
 
-/// The response of the updated widget.
-///
-/// Used to provide autocomplete options for a widget.
+/// For `selectionInput` widgets, returns autocomplete suggestions for a
+/// multiselect menu.
 class UpdatedWidget {
   /// List of widget autocomplete results
   SelectionItems? suggestions;

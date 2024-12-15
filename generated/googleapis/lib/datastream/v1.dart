@@ -491,7 +491,7 @@ class ProjectsLocationsConnectionProfilesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource's name.
+  /// [name] - Output only. Identifier. The resource's name.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connectionProfiles/\[^/\]+$`.
   ///
@@ -572,8 +572,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1409,7 +1409,7 @@ class ProjectsLocationsStreamsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The stream's name.
+  /// [name] - Output only. Identifier. The stream's name.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/streams/\[^/\]+$`.
   ///
@@ -2069,6 +2069,8 @@ class ConnectionProfile {
   /// MySQL ConnectionProfile configuration.
   MysqlProfile? mysqlProfile;
 
+  /// Identifier.
+  ///
   /// The resource's name.
   ///
   /// Output only.
@@ -3383,6 +3385,8 @@ class Operation {
 }
 
 /// Configuration for Oracle Automatic Storage Management (ASM) connection.
+///
+/// .
 class OracleAsmConfig {
   /// ASM service name for the Oracle ASM connection.
   ///
@@ -3406,7 +3410,7 @@ class OracleAsmConfig {
 
   /// Password for the Oracle ASM connection.
   ///
-  /// Required.
+  /// Optional.
   core.String? password;
 
   /// Port for the Oracle ASM connection.
@@ -4140,6 +4144,8 @@ class PrivateConnection {
   /// Labels.
   core.Map<core.String, core.String>? labels;
 
+  /// Identifier.
+  ///
   /// The resource's name.
   ///
   /// Output only.
@@ -4263,6 +4269,8 @@ class Route {
   /// Labels.
   core.Map<core.String, core.String>? labels;
 
+  /// Identifier.
+  ///
   /// The resource's name.
   ///
   /// Output only.
@@ -4516,9 +4524,13 @@ class SpecificStartPosition {
   /// Oracle SCN to start replicating from.
   OracleScnPosition? oracleScnPosition;
 
+  /// SqlServer LSN to start replicating from.
+  SqlServerLsnPosition? sqlServerLsnPosition;
+
   SpecificStartPosition({
     this.mysqlLogPosition,
     this.oracleScnPosition,
+    this.sqlServerLsnPosition,
   });
 
   SpecificStartPosition.fromJson(core.Map json_)
@@ -4531,11 +4543,17 @@ class SpecificStartPosition {
               ? OracleScnPosition.fromJson(json_['oracleScnPosition']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          sqlServerLsnPosition: json_.containsKey('sqlServerLsnPosition')
+              ? SqlServerLsnPosition.fromJson(json_['sqlServerLsnPosition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mysqlLogPosition != null) 'mysqlLogPosition': mysqlLogPosition!,
         if (oracleScnPosition != null) 'oracleScnPosition': oracleScnPosition!,
+        if (sqlServerLsnPosition != null)
+          'sqlServerLsnPosition': sqlServerLsnPosition!,
       };
 }
 
@@ -4600,6 +4618,27 @@ class SqlServerColumn {
         if (precision != null) 'precision': precision!,
         if (primaryKey != null) 'primaryKey': primaryKey!,
         if (scale != null) 'scale': scale!,
+      };
+}
+
+/// SQL Server LSN position
+class SqlServerLsnPosition {
+  /// Log sequence number (LSN) from where Logs will be read
+  ///
+  /// Required.
+  core.String? lsn;
+
+  SqlServerLsnPosition({
+    this.lsn,
+  });
+
+  SqlServerLsnPosition.fromJson(core.Map json_)
+      : this(
+          lsn: json_['lsn'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lsn != null) 'lsn': lsn!,
       };
 }
 
@@ -4927,6 +4966,8 @@ class Stream {
   /// Output only.
   core.String? lastRecoveryTime;
 
+  /// Identifier.
+  ///
   /// The stream's name.
   ///
   /// Output only.
@@ -5055,6 +5096,8 @@ class StreamObject {
   /// Output only.
   core.List<Error>? errors;
 
+  /// Identifier.
+  ///
   /// The object resource's name.
   ///
   /// Output only.

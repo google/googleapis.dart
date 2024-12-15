@@ -63,6 +63,40 @@ void checkBucket(api.Bucket o) {
   buildCounterBucket--;
 }
 
+core.int buildCounterDefaultBucket = 0;
+api.DefaultBucket buildDefaultBucket() {
+  final o = api.DefaultBucket();
+  buildCounterDefaultBucket++;
+  if (buildCounterDefaultBucket < 3) {
+    o.bucket = buildBucket();
+    o.location = 'foo';
+    o.name = 'foo';
+    o.storageClass = 'foo';
+  }
+  buildCounterDefaultBucket--;
+  return o;
+}
+
+void checkDefaultBucket(api.DefaultBucket o) {
+  buildCounterDefaultBucket++;
+  if (buildCounterDefaultBucket < 3) {
+    checkBucket(o.bucket!);
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.storageClass!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDefaultBucket--;
+}
+
 core.int buildCounterEmpty = 0;
 api.Empty buildEmpty() {
   final o = api.Empty();
@@ -149,6 +183,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DefaultBucket', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDefaultBucket();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DefaultBucket.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDefaultBucket(od);
+    });
+  });
+
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEmpty();
@@ -176,6 +220,114 @@ void main() {
       final od = api.RemoveFirebaseRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkRemoveFirebaseRequest(od);
+    });
+  });
+
+  unittest.group('resource-ProjectsResource', () {
+    unittest.test('method--deleteDefaultBucket', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebasestorageApi(mock).projects;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('v1beta/'),
+        );
+        pathOffset += 7;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.deleteDefaultBucket(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--getDefaultBucket', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebasestorageApi(mock).projects;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('v1beta/'),
+        );
+        pathOffset += 7;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildDefaultBucket());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getDefaultBucket(arg_name, $fields: arg_$fields);
+      checkDefaultBucket(response as api.DefaultBucket);
     });
   });
 
@@ -411,6 +563,66 @@ void main() {
       final response = await res.removeFirebase(arg_request, arg_bucket,
           $fields: arg_$fields);
       checkEmpty(response as api.Empty);
+    });
+  });
+
+  unittest.group('resource-ProjectsDefaultBucketResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebasestorageApi(mock).projects.defaultBucket;
+      final arg_request = buildDefaultBucket();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.DefaultBucket.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDefaultBucket(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('v1beta/'),
+        );
+        pathOffset += 7;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildDefaultBucket());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkDefaultBucket(response as api.DefaultBucket);
     });
   });
 }

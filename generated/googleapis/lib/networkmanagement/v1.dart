@@ -26,6 +26,7 @@
 ///     - [ProjectsLocationsGlobalResource]
 ///       - [ProjectsLocationsGlobalConnectivityTestsResource]
 ///       - [ProjectsLocationsGlobalOperationsResource]
+///     - [ProjectsLocationsVpcFlowLogsConfigsResource]
 library;
 
 import 'dart:async' as async;
@@ -74,6 +75,8 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsGlobalResource get global =>
       ProjectsLocationsGlobalResource(_requester);
+  ProjectsLocationsVpcFlowLogsConfigsResource get vpcFlowLogsConfigs =>
+      ProjectsLocationsVpcFlowLogsConfigsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -659,8 +662,8 @@ class ProjectsLocationsGlobalOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -828,6 +831,253 @@ class ProjectsLocationsGlobalOperationsResource {
     );
     return ListOperationsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsVpcFlowLogsConfigsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsVpcFlowLogsConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new `VpcFlowLogsConfig`.
+  ///
+  /// If a configuration with the exact same settings already exists (even if
+  /// the ID is different), the creation fails. Notes: 1. Creating a
+  /// configuration with state=DISABLED will fail 2. The following fields are
+  /// not considered as `settings` for the purpose of the check mentioned above,
+  /// therefore - creating another configuration with the same fields but
+  /// different values for the following fields will fail as well: * name *
+  /// create_time * update_time * labels * description
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the VPC Flow Logs
+  /// configuration to create: `projects/{project_id}/locations/global`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [vpcFlowLogsConfigId] - Required. ID of the `VpcFlowLogsConfig`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    VpcFlowLogsConfig request,
+    core.String parent, {
+    core.String? vpcFlowLogsConfigId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (vpcFlowLogsConfigId != null)
+        'vpcFlowLogsConfigId': [vpcFlowLogsConfigId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/vpcFlowLogsConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a specific `VpcFlowLogsConfig`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. `VpcFlowLogsConfig` resource name using the form:
+  /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/vpcFlowLogsConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the details of a specific `VpcFlowLogsConfig`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. `VpcFlowLogsConfig` resource name using the form:
+  /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/vpcFlowLogsConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [VpcFlowLogsConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<VpcFlowLogsConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return VpcFlowLogsConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all `VpcFlowLogsConfigs` in a given project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the VpcFlowLogsConfig:
+  /// `projects/{project_id}/locations/global`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Lists the `VpcFlowLogsConfigs` that match the filter
+  /// expression. A filter expression must use the supported
+  /// [CEL logic operators](https://cloud.google.com/vpc/docs/about-flow-logs-records#supported_cel_logic_operators).
+  ///
+  /// [orderBy] - Optional. Field to use to sort the list.
+  ///
+  /// [pageSize] - Optional. Number of `VpcFlowLogsConfigs` to return.
+  ///
+  /// [pageToken] - Optional. Page token from an earlier query, as returned in
+  /// `next_page_token`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListVpcFlowLogsConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListVpcFlowLogsConfigsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/vpcFlowLogsConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListVpcFlowLogsConfigsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing `VpcFlowLogsConfig`.
+  ///
+  /// If a configuration with the exact same settings already exists (even if
+  /// the ID is different), the creation fails. Notes: 1. Updating a
+  /// configuration with state=DISABLED will fail. 2. The following fields are
+  /// not considered as `settings` for the purpose of the check mentioned above,
+  /// therefore - updating another configuration with the same fields but
+  /// different values for the following fields will fail as well: * name *
+  /// create_time * update_time * labels * description
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Unique name of the configuration using the form:
+  /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/vpcFlowLogsConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Mask of fields to update. At least one path must
+  /// be supplied in this field.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    VpcFlowLogsConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1423,6 +1673,20 @@ class ConnectivityTest {
   /// This is applicable to scenarios where a test can cross project boundaries.
   core.List<core.String>? relatedProjects;
 
+  /// The reachability details of this test from the latest run for the return
+  /// path.
+  ///
+  /// The details are updated when creating a new test, updating an existing
+  /// test, or triggering a one-time rerun of an existing test.
+  ///
+  /// Output only.
+  ReachabilityDetails? returnReachabilityDetails;
+
+  /// Whether run analysis for the return path from destination to source.
+  ///
+  /// Default value is false.
+  core.bool? roundTrip;
+
   /// Source specification of the Connectivity Test.
   ///
   /// You can use a combination of source IP address, virtual machine (VM)
@@ -1459,6 +1723,8 @@ class ConnectivityTest {
     this.protocol,
     this.reachabilityDetails,
     this.relatedProjects,
+    this.returnReachabilityDetails,
+    this.roundTrip,
     this.source,
     this.updateTime,
   });
@@ -1493,6 +1759,12 @@ class ConnectivityTest {
           relatedProjects: (json_['relatedProjects'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          returnReachabilityDetails: json_
+                  .containsKey('returnReachabilityDetails')
+              ? ReachabilityDetails.fromJson(json_['returnReachabilityDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          roundTrip: json_['roundTrip'] as core.bool?,
           source: json_.containsKey('source')
               ? Endpoint.fromJson(
                   json_['source'] as core.Map<core.String, core.dynamic>)
@@ -1514,6 +1786,9 @@ class ConnectivityTest {
         if (reachabilityDetails != null)
           'reachabilityDetails': reachabilityDetails!,
         if (relatedProjects != null) 'relatedProjects': relatedProjects!,
+        if (returnReachabilityDetails != null)
+          'returnReachabilityDetails': returnReachabilityDetails!,
+        if (roundTrip != null) 'roundTrip': roundTrip!,
         if (source != null) 'source': source!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -1803,6 +2078,9 @@ class DropInfo {
   /// - "NO_KNOWN_ROUTE_FROM_PEERED_NETWORK_TO_DESTINATION" : Packet from the
   /// unknown peered network is dropped due to no known route from the source
   /// network to the destination IP address.
+  /// - "PRIVATE_NAT_TO_PSC_ENDPOINT_UNSUPPORTED" : Sending packets processed by
+  /// the Private NAT Gateways to the Private Service Connect endpoints is not
+  /// supported.
   core.String? cause;
 
   /// Destination IP address of the dropped packet (if relevant).
@@ -1913,7 +2191,7 @@ class Endpoint {
   /// [Google Kubernetes Engine cluster control plane](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
   ///
   /// Requires gke_master_cluster to be set, can't be used simultaneoulsly with
-  /// ip_address.
+  /// ip_address or network. Applicable only to destination endpoint.
   core.String? fqdn;
 
   /// A cluster URI for
@@ -2427,15 +2705,19 @@ class GKEMasterInfo {
   /// URI of a GKE cluster.
   core.String? clusterUri;
 
-  /// External IP address of a GKE cluster master.
+  /// DNS endpoint of a GKE cluster control plane.
+  core.String? dnsEndpoint;
+
+  /// External IP address of a GKE cluster control plane.
   core.String? externalIp;
 
-  /// Internal IP address of a GKE cluster master.
+  /// Internal IP address of a GKE cluster control plane.
   core.String? internalIp;
 
   GKEMasterInfo({
     this.clusterNetworkUri,
     this.clusterUri,
+    this.dnsEndpoint,
     this.externalIp,
     this.internalIp,
   });
@@ -2444,6 +2726,7 @@ class GKEMasterInfo {
       : this(
           clusterNetworkUri: json_['clusterNetworkUri'] as core.String?,
           clusterUri: json_['clusterUri'] as core.String?,
+          dnsEndpoint: json_['dnsEndpoint'] as core.String?,
           externalIp: json_['externalIp'] as core.String?,
           internalIp: json_['internalIp'] as core.String?,
         );
@@ -2451,6 +2734,7 @@ class GKEMasterInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterNetworkUri != null) 'clusterNetworkUri': clusterNetworkUri!,
         if (clusterUri != null) 'clusterUri': clusterUri!,
+        if (dnsEndpoint != null) 'dnsEndpoint': dnsEndpoint!,
         if (externalIp != null) 'externalIp': externalIp!,
         if (internalIp != null) 'internalIp': internalIp!,
       };
@@ -2720,6 +3004,44 @@ class ListOperationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null) 'operations': operations!,
+      };
+}
+
+/// Response for the `ListVpcFlowLogsConfigs` method.
+class ListVpcFlowLogsConfigsResponse {
+  /// Page token to fetch the next set of configurations.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached (when querying all locations with
+  /// `-`).
+  core.List<core.String>? unreachable;
+
+  /// List of VPC Flow Log configurations.
+  core.List<VpcFlowLogsConfig>? vpcFlowLogsConfigs;
+
+  ListVpcFlowLogsConfigsResponse({
+    this.nextPageToken,
+    this.unreachable,
+    this.vpcFlowLogsConfigs,
+  });
+
+  ListVpcFlowLogsConfigsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          vpcFlowLogsConfigs: (json_['vpcFlowLogsConfigs'] as core.List?)
+              ?.map((value) => VpcFlowLogsConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+        if (vpcFlowLogsConfigs != null)
+          'vpcFlowLogsConfigs': vpcFlowLogsConfigs!,
       };
 }
 
@@ -3700,13 +4022,18 @@ typedef RerunConnectivityTestRequest = $Empty;
 ///
 /// Metadata associated with a Compute Engine route.
 class RouteInfo {
-  /// For advertised routes, the URI of their next hop, i.e. the URI of the
+  /// For ADVERTISED routes, the URI of their next hop, i.e. the URI of the
   /// hybrid endpoint (VPN tunnel, Interconnect attachment, NCC router
   /// appliance) the advertised prefix is advertised through, or URI of the
   /// source peered network.
+  ///
+  /// Deprecated in favor of the next_hop_uri field, not used in new tests.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? advertisedRouteNextHopUri;
 
-  /// For advertised dynamic routes, the URI of the Cloud Router that advertised
+  /// For ADVERTISED dynamic routes, the URI of the Cloud Router that advertised
   /// the corresponding IP prefix.
   core.String? advertisedRouteSourceRouterUri;
 
@@ -3715,7 +4042,7 @@ class RouteInfo {
 
   /// Destination port ranges of the route.
   ///
-  /// Policy based routes only.
+  /// POLICY_BASED routes only.
   core.List<core.String>? destPortRanges;
 
   /// Name of a route.
@@ -3724,23 +4051,36 @@ class RouteInfo {
   /// Instance tags of the route.
   core.List<core.String>? instanceTags;
 
-  /// URI of a NCC Hub.
+  /// For PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC
+  /// Hub, the URI of the corresponding route in NCC Hub's routing table.
+  core.String? nccHubRouteUri;
+
+  /// URI of the NCC Hub the route is advertised by.
   ///
-  /// NCC_HUB routes only.
+  /// PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub
+  /// only.
   core.String? nccHubUri;
 
-  /// URI of a NCC Spoke.
+  /// URI of the destination NCC Spoke.
   ///
-  /// NCC_HUB routes only.
+  /// PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub
+  /// only.
   core.String? nccSpokeUri;
 
-  /// URI of a Compute Engine network.
-  ///
-  /// NETWORK routes only.
+  /// URI of a VPC network where route is located.
   core.String? networkUri;
 
-  /// Next hop of the route.
+  /// String type of the next hop of the route (for example, "VPN tunnel").
+  ///
+  /// Deprecated in favor of the next_hop_type and next_hop_uri fields, not used
+  /// in new tests.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? nextHop;
+
+  /// URI of a VPC network where the next hop resource is located.
+  core.String? nextHopNetworkUri;
 
   /// Type of next hop.
   /// Possible string values are:
@@ -3748,7 +4088,9 @@ class RouteInfo {
   /// - "NEXT_HOP_IP" : Next hop is an IP address.
   /// - "NEXT_HOP_INSTANCE" : Next hop is a Compute Engine instance.
   /// - "NEXT_HOP_NETWORK" : Next hop is a VPC network gateway.
-  /// - "NEXT_HOP_PEERING" : Next hop is a peering VPC.
+  /// - "NEXT_HOP_PEERING" : Next hop is a peering VPC. This scenario only
+  /// happens when the user doesn't have permissions to the project where the
+  /// next hop resource is located.
   /// - "NEXT_HOP_INTERCONNECT" : Next hop is an interconnect.
   /// - "NEXT_HOP_VPN_TUNNEL" : Next hop is a VPN tunnel.
   /// - "NEXT_HOP_VPN_GATEWAY" : Next hop is a VPN gateway. This scenario only
@@ -3758,31 +4100,54 @@ class RouteInfo {
   /// gateway.
   /// - "NEXT_HOP_INTERNET_GATEWAY" : Next hop is an internet gateway.
   /// - "NEXT_HOP_BLACKHOLE" : Next hop is blackhole; that is, the next hop
-  /// either does not exist or is not running.
+  /// either does not exist or is unusable.
   /// - "NEXT_HOP_ILB" : Next hop is the forwarding rule of an Internal Load
   /// Balancer.
   /// - "NEXT_HOP_ROUTER_APPLIANCE" : Next hop is a
   /// [router appliance instance](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/ra-overview).
-  /// - "NEXT_HOP_NCC_HUB" : Next hop is an NCC hub.
+  /// - "NEXT_HOP_NCC_HUB" : Next hop is an NCC hub. This scenario only happens
+  /// when the user doesn't have permissions to the project where the next hop
+  /// resource is located.
   core.String? nextHopType;
+
+  /// URI of the next hop resource.
+  core.String? nextHopUri;
+
+  /// For PEERING_SUBNET, PEERING_STATIC and PEERING_DYNAMIC routes, the name of
+  /// the originating SUBNET/STATIC/DYNAMIC route.
+  core.String? originatingRouteDisplayName;
+
+  /// For PEERING_SUBNET and PEERING_STATIC routes, the URI of the originating
+  /// SUBNET/STATIC route.
+  core.String? originatingRouteUri;
 
   /// Priority of the route.
   core.int? priority;
 
   /// Protocols of the route.
   ///
-  /// Policy based routes only.
+  /// POLICY_BASED routes only.
   core.List<core.String>? protocols;
 
-  /// Region of the route (if applicable).
+  /// Region of the route.
+  ///
+  /// DYNAMIC, PEERING_DYNAMIC, POLICY_BASED and ADVERTISED routes only. If set
+  /// for POLICY_BASED route, this is a region of VLAN attachments for Cloud
+  /// Interconnect the route applies to.
   core.String? region;
 
   /// Indicates where route is applicable.
+  ///
+  /// Deprecated, routes with NCC_HUB scope are not included in the trace in new
+  /// tests.
   /// Possible string values are:
   /// - "ROUTE_SCOPE_UNSPECIFIED" : Unspecified scope. Default value.
   /// - "NETWORK" : Route is applicable to packets in Network.
   /// - "NCC_HUB" : Route is applicable to packets using NCC Hub's routing
   /// table.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? routeScope;
 
   /// Type of route.
@@ -3792,9 +4157,11 @@ class RouteInfo {
   /// - "STATIC" : Static route created by the user, including the default route
   /// to the internet.
   /// - "DYNAMIC" : Dynamic route exchanged between BGP peers.
-  /// - "PEERING_SUBNET" : A subnet route received from peering network.
+  /// - "PEERING_SUBNET" : A subnet route received from peering network or NCC
+  /// Hub.
   /// - "PEERING_STATIC" : A static route received from peering network.
-  /// - "PEERING_DYNAMIC" : A dynamic route received from peering network.
+  /// - "PEERING_DYNAMIC" : A dynamic route received from peering network or NCC
+  /// Hub.
   /// - "POLICY_BASED" : Policy based route.
   /// - "ADVERTISED" : Advertised route. Synthetic route which is used to
   /// transition from the StartFromPrivateNetwork state in Connectivity tests.
@@ -3802,15 +4169,18 @@ class RouteInfo {
 
   /// Source IP address range of the route.
   ///
-  /// Policy based routes only.
+  /// POLICY_BASED routes only.
   core.String? srcIpRange;
 
   /// Source port ranges of the route.
   ///
-  /// Policy based routes only.
+  /// POLICY_BASED routes only.
   core.List<core.String>? srcPortRanges;
 
-  /// URI of a route (if applicable).
+  /// URI of a route.
+  ///
+  /// SUBNET, STATIC, PEERING_SUBNET (only for peering network) and POLICY_BASED
+  /// routes only.
   core.String? uri;
 
   RouteInfo({
@@ -3820,11 +4190,16 @@ class RouteInfo {
     this.destPortRanges,
     this.displayName,
     this.instanceTags,
+    this.nccHubRouteUri,
     this.nccHubUri,
     this.nccSpokeUri,
     this.networkUri,
     this.nextHop,
+    this.nextHopNetworkUri,
     this.nextHopType,
+    this.nextHopUri,
+    this.originatingRouteDisplayName,
+    this.originatingRouteUri,
     this.priority,
     this.protocols,
     this.region,
@@ -3849,11 +4224,17 @@ class RouteInfo {
           instanceTags: (json_['instanceTags'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          nccHubRouteUri: json_['nccHubRouteUri'] as core.String?,
           nccHubUri: json_['nccHubUri'] as core.String?,
           nccSpokeUri: json_['nccSpokeUri'] as core.String?,
           networkUri: json_['networkUri'] as core.String?,
           nextHop: json_['nextHop'] as core.String?,
+          nextHopNetworkUri: json_['nextHopNetworkUri'] as core.String?,
           nextHopType: json_['nextHopType'] as core.String?,
+          nextHopUri: json_['nextHopUri'] as core.String?,
+          originatingRouteDisplayName:
+              json_['originatingRouteDisplayName'] as core.String?,
+          originatingRouteUri: json_['originatingRouteUri'] as core.String?,
           priority: json_['priority'] as core.int?,
           protocols: (json_['protocols'] as core.List?)
               ?.map((value) => value as core.String)
@@ -3877,11 +4258,18 @@ class RouteInfo {
         if (destPortRanges != null) 'destPortRanges': destPortRanges!,
         if (displayName != null) 'displayName': displayName!,
         if (instanceTags != null) 'instanceTags': instanceTags!,
+        if (nccHubRouteUri != null) 'nccHubRouteUri': nccHubRouteUri!,
         if (nccHubUri != null) 'nccHubUri': nccHubUri!,
         if (nccSpokeUri != null) 'nccSpokeUri': nccSpokeUri!,
         if (networkUri != null) 'networkUri': networkUri!,
         if (nextHop != null) 'nextHop': nextHop!,
+        if (nextHopNetworkUri != null) 'nextHopNetworkUri': nextHopNetworkUri!,
         if (nextHopType != null) 'nextHopType': nextHopType!,
+        if (nextHopUri != null) 'nextHopUri': nextHopUri!,
+        if (originatingRouteDisplayName != null)
+          'originatingRouteDisplayName': originatingRouteDisplayName!,
+        if (originatingRouteUri != null)
+          'originatingRouteUri': originatingRouteUri!,
         if (priority != null) 'priority': priority!,
         if (protocols != null) 'protocols': protocols!,
         if (region != null) 'region': region!,
@@ -4447,6 +4835,187 @@ class VpcConnectorInfo {
         if (displayName != null) 'displayName': displayName!,
         if (location != null) 'location': location!,
         if (uri != null) 'uri': uri!,
+      };
+}
+
+/// A configuration to generate VPC Flow Logs.
+class VpcFlowLogsConfig {
+  /// The aggregation interval for the logs.
+  ///
+  /// Default value is INTERVAL_5_SEC.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "AGGREGATION_INTERVAL_UNSPECIFIED" : If not specified, will default to
+  /// INTERVAL_5_SEC.
+  /// - "INTERVAL_5_SEC" : Aggregate logs in 5s intervals.
+  /// - "INTERVAL_30_SEC" : Aggregate logs in 30s intervals.
+  /// - "INTERVAL_1_MIN" : Aggregate logs in 1m intervals.
+  /// - "INTERVAL_5_MIN" : Aggregate logs in 5m intervals.
+  /// - "INTERVAL_10_MIN" : Aggregate logs in 10m intervals.
+  /// - "INTERVAL_15_MIN" : Aggregate logs in 15m intervals.
+  core.String? aggregationInterval;
+
+  /// The time the config was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The user-supplied description of the VPC Flow Logs configuration.
+  ///
+  /// Maximum of 512 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Export filter used to define which VPC Flow Logs should be logged.
+  ///
+  /// Optional.
+  core.String? filterExpr;
+
+  /// The value of the field must be in (0, 1\].
+  ///
+  /// The sampling rate of VPC Flow Logs where 1.0 means all collected logs are
+  /// reported. Setting the sampling rate to 0.0 is not allowed. If you want to
+  /// disable VPC Flow Logs, use the state field instead. Default value is 1.0.
+  ///
+  /// Optional.
+  core.double? flowSampling;
+
+  /// Traffic will be logged from the Interconnect Attachment.
+  ///
+  /// Format:
+  /// projects/{project_id}/regions/{region}/interconnectAttachments/{name}
+  core.String? interconnectAttachment;
+
+  /// Resource labels to represent user-provided metadata.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Configures whether all, none or a subset of metadata fields should be
+  /// added to the reported VPC flow logs.
+  ///
+  /// Default value is INCLUDE_ALL_METADATA.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "METADATA_UNSPECIFIED" : If not specified, will default to
+  /// INCLUDE_ALL_METADATA.
+  /// - "INCLUDE_ALL_METADATA" : Include all metadata fields.
+  /// - "EXCLUDE_ALL_METADATA" : Exclude all metadata fields.
+  /// - "CUSTOM_METADATA" : Include only custom fields (specified in
+  /// metadata_fields).
+  core.String? metadata;
+
+  /// Custom metadata fields to include in the reported VPC flow logs.
+  ///
+  /// Can only be specified if "metadata" was set to CUSTOM_METADATA.
+  ///
+  /// Optional.
+  core.List<core.String>? metadataFields;
+
+  /// Identifier.
+  ///
+  /// Unique name of the configuration using the form:
+  /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+  core.String? name;
+
+  /// The state of the VPC Flow Log configuration.
+  ///
+  /// Default value is ENABLED. When creating a new configuration, it must be
+  /// enabled.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : If not specified, will default to ENABLED.
+  /// - "ENABLED" : When ENABLED, this configuration will generate logs.
+  /// - "DISABLED" : When DISABLED, this configuration will not generate logs.
+  core.String? state;
+
+  /// A diagnostic bit - describes the state of the configured target resource
+  /// for diagnostic purposes.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TARGET_RESOURCE_STATE_UNSPECIFIED" : Unspecified target resource state.
+  /// - "TARGET_RESOURCE_EXISTS" : Indicates that the target resource exists.
+  /// - "TARGET_RESOURCE_DOES_NOT_EXIST" : Indicates that the target resource
+  /// does not exist.
+  core.String? targetResourceState;
+
+  /// The time the config was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// Traffic will be logged from the VPN Tunnel.
+  ///
+  /// Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
+  core.String? vpnTunnel;
+
+  VpcFlowLogsConfig({
+    this.aggregationInterval,
+    this.createTime,
+    this.description,
+    this.filterExpr,
+    this.flowSampling,
+    this.interconnectAttachment,
+    this.labels,
+    this.metadata,
+    this.metadataFields,
+    this.name,
+    this.state,
+    this.targetResourceState,
+    this.updateTime,
+    this.vpnTunnel,
+  });
+
+  VpcFlowLogsConfig.fromJson(core.Map json_)
+      : this(
+          aggregationInterval: json_['aggregationInterval'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          filterExpr: json_['filterExpr'] as core.String?,
+          flowSampling: (json_['flowSampling'] as core.num?)?.toDouble(),
+          interconnectAttachment:
+              json_['interconnectAttachment'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          metadata: json_['metadata'] as core.String?,
+          metadataFields: (json_['metadataFields'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          name: json_['name'] as core.String?,
+          state: json_['state'] as core.String?,
+          targetResourceState: json_['targetResourceState'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          vpnTunnel: json_['vpnTunnel'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregationInterval != null)
+          'aggregationInterval': aggregationInterval!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (filterExpr != null) 'filterExpr': filterExpr!,
+        if (flowSampling != null) 'flowSampling': flowSampling!,
+        if (interconnectAttachment != null)
+          'interconnectAttachment': interconnectAttachment!,
+        if (labels != null) 'labels': labels!,
+        if (metadata != null) 'metadata': metadata!,
+        if (metadataFields != null) 'metadataFields': metadataFields!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (targetResourceState != null)
+          'targetResourceState': targetResourceState!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (vpnTunnel != null) 'vpnTunnel': vpnTunnel!,
       };
 }
 

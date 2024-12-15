@@ -2025,6 +2025,14 @@ class GoogleCloudRunV2BuildpacksBuild {
   /// Optional.
   core.String? functionTarget;
 
+  /// project_descriptor stores the path to the project descriptor file.
+  ///
+  /// When empty, it means that there is no project descriptor file in the
+  /// source.
+  ///
+  /// Optional.
+  core.String? projectDescriptor;
+
   /// The runtime name, e.g. 'go113'.
   ///
   /// Leave blank for generic builds.
@@ -2039,6 +2047,7 @@ class GoogleCloudRunV2BuildpacksBuild {
     this.enableAutomaticUpdates,
     this.environmentVariables,
     this.functionTarget,
+    this.projectDescriptor,
     this.runtime,
   });
 
@@ -2056,6 +2065,7 @@ class GoogleCloudRunV2BuildpacksBuild {
             ),
           ),
           functionTarget: json_['functionTarget'] as core.String?,
+          projectDescriptor: json_['projectDescriptor'] as core.String?,
           runtime: json_['runtime'] as core.String?,
         );
 
@@ -2067,6 +2077,7 @@ class GoogleCloudRunV2BuildpacksBuild {
         if (environmentVariables != null)
           'environmentVariables': environmentVariables!,
         if (functionTarget != null) 'functionTarget': functionTarget!,
+        if (projectDescriptor != null) 'projectDescriptor': projectDescriptor!,
         if (runtime != null) 'runtime': runtime!,
       };
 }
@@ -4628,6 +4639,24 @@ class GoogleCloudRunV2RevisionTemplate {
   /// https://cloud.google.com/run/docs/securing/using-cmek
   core.String? encryptionKey;
 
+  /// The action to take if the encryption key is revoked.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ENCRYPTION_KEY_REVOCATION_ACTION_UNSPECIFIED" : Unspecified
+  /// - "PREVENT_NEW" : Prevents the creation of new instances.
+  /// - "SHUTDOWN" : Shuts down existing instances, and prevents creation of new
+  /// ones.
+  core.String? encryptionKeyRevocationAction;
+
+  /// If encryption_key_revocation_action is SHUTDOWN, the duration before
+  /// shutting down all instances.
+  ///
+  /// The minimum increment is 1 hour.
+  ///
+  /// Optional.
+  core.String? encryptionKeyShutdownDuration;
+
   /// The sandbox environment to host this Revision.
   ///
   /// Optional.
@@ -4661,8 +4690,8 @@ class GoogleCloudRunV2RevisionTemplate {
   /// Sets the maximum number of requests that each serving instance can
   /// receive.
   ///
-  /// If not specified or 0, defaults to 80 when requested `CPU >= 1` and
-  /// defaults to 1 when requested `CPU < 1`.
+  /// If not specified or 0, concurrency defaults to 80 when requested `CPU >=
+  /// 1` and defaults to 1 when requested `CPU < 1`.
   ///
   /// Optional.
   core.int? maxInstanceRequestConcurrency;
@@ -4727,6 +4756,8 @@ class GoogleCloudRunV2RevisionTemplate {
     this.annotations,
     this.containers,
     this.encryptionKey,
+    this.encryptionKeyRevocationAction,
+    this.encryptionKeyShutdownDuration,
     this.executionEnvironment,
     this.healthCheckDisabled,
     this.labels,
@@ -4757,6 +4788,10 @@ class GoogleCloudRunV2RevisionTemplate {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           encryptionKey: json_['encryptionKey'] as core.String?,
+          encryptionKeyRevocationAction:
+              json_['encryptionKeyRevocationAction'] as core.String?,
+          encryptionKeyShutdownDuration:
+              json_['encryptionKeyShutdownDuration'] as core.String?,
           executionEnvironment: json_['executionEnvironment'] as core.String?,
           healthCheckDisabled: json_['healthCheckDisabled'] as core.bool?,
           labels:
@@ -4798,6 +4833,10 @@ class GoogleCloudRunV2RevisionTemplate {
         if (annotations != null) 'annotations': annotations!,
         if (containers != null) 'containers': containers!,
         if (encryptionKey != null) 'encryptionKey': encryptionKey!,
+        if (encryptionKeyRevocationAction != null)
+          'encryptionKeyRevocationAction': encryptionKeyRevocationAction!,
+        if (encryptionKeyShutdownDuration != null)
+          'encryptionKeyShutdownDuration': encryptionKeyShutdownDuration!,
         if (executionEnvironment != null)
           'executionEnvironment': executionEnvironment!,
         if (healthCheckDisabled != null)
@@ -4903,13 +4942,12 @@ class GoogleCloudRunV2SecretVolumeSource {
   /// Internally, a umask of 0222 will be applied to any non-zero value. * This
   /// is an integer representation of the mode bits. So, the octal integer value
   /// should look exactly as the chmod numeric notation with a leading zero.
-  /// Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511
-  /// (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10).
-  /// For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). *
-  /// This might be in conflict with other options that affect the file mode,
-  /// like fsGroup, and the result can be other mode bits set. This might be in
-  /// conflict with other options that affect the file mode, like fsGroup, and
-  /// as a result, other mode bits could be set.
+  /// Some examples: for chmod 640 (u=rw,g=r), set to 0640 (octal) or 416
+  /// (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493
+  /// (base-10). * This might be in conflict with other options that affect the
+  /// file mode, like fsGroup, and the result can be other mode bits set. This
+  /// might be in conflict with other options that affect the file mode, like
+  /// fsGroup, and as a result, other mode bits could be set.
   core.int? defaultMode;
 
   /// If unspecified, the volume will expose a file whose name is the secret,
@@ -5446,6 +5484,14 @@ class GoogleCloudRunV2ServiceMesh {
 /// Scaling settings applied at the service level rather than at the revision
 /// level.
 class GoogleCloudRunV2ServiceScaling {
+  /// total instance count for the service in manual scaling mode.
+  ///
+  /// This number of instances is divided among all revisions with specified
+  /// traffic based on the percent of traffic they are receiving.
+  ///
+  /// Optional.
+  core.int? manualInstanceCount;
+
   /// total min instances for the service.
   ///
   /// This number of instances is divided among all revisions with specified
@@ -5464,17 +5510,21 @@ class GoogleCloudRunV2ServiceScaling {
   core.String? scalingMode;
 
   GoogleCloudRunV2ServiceScaling({
+    this.manualInstanceCount,
     this.minInstanceCount,
     this.scalingMode,
   });
 
   GoogleCloudRunV2ServiceScaling.fromJson(core.Map json_)
       : this(
+          manualInstanceCount: json_['manualInstanceCount'] as core.int?,
           minInstanceCount: json_['minInstanceCount'] as core.int?,
           scalingMode: json_['scalingMode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (manualInstanceCount != null)
+          'manualInstanceCount': manualInstanceCount!,
         if (minInstanceCount != null) 'minInstanceCount': minInstanceCount!,
         if (scalingMode != null) 'scalingMode': scalingMode!,
       };
@@ -6269,11 +6319,10 @@ class GoogleCloudRunV2VersionToPath {
   /// Internally, a umask of 0222 will be applied to any non-zero value. * This
   /// is an integer representation of the mode bits. So, the octal integer value
   /// should look exactly as the chmod numeric notation with a leading zero.
-  /// Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511
-  /// (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10).
-  /// For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). *
-  /// This might be in conflict with other options that affect the file mode,
-  /// like fsGroup, and the result can be other mode bits set.
+  /// Some examples: for chmod 640 (u=rw,g=r), set to 0640 (octal) or 416
+  /// (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493
+  /// (base-10). * This might be in conflict with other options that affect the
+  /// file mode, like fsGroup, and the result can be other mode bits set.
   core.int? mode;
 
   /// The relative path of the secret in the container.

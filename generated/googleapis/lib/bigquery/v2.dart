@@ -173,7 +173,7 @@ class DatasetsResource {
   /// value will be rejected. Requests for conditional access policy binding in
   /// datasets must specify version 3. Dataset with no conditional role bindings
   /// in access policy may specify any valid value or leave the field unset.
-  /// This field will be maped to
+  /// This field will be mapped to
   /// [IAM Policy version](https://cloud.google.com/iam/docs/policies#versions)
   /// and will be used to fetch policy from IAM. If unset or if 0 or 1 value is
   /// used for dataset with conditional bindings, access entry with condition
@@ -251,9 +251,9 @@ class DatasetsResource {
   /// datasets must specify version 3. * But dataset with no conditional role
   /// bindings in access policy may specify any valid value or leave the field
   /// unset. If unset or if 0 or 1 value is used for dataset with conditional
-  /// bindings, request will be rejected. This field will be maped to IAM Policy
-  /// version (https://cloud.google.com/iam/docs/policies#versions) and will be
-  /// used to set policy in IAM.
+  /// bindings, request will be rejected. This field will be mapped to IAM
+  /// Policy version (https://cloud.google.com/iam/docs/policies#versions) and
+  /// will be used to set policy in IAM.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -378,7 +378,7 @@ class DatasetsResource {
   /// condition. * But dataset with no conditional role bindings in access
   /// policy may specify any valid value or leave the field unset. If unset or
   /// if 0 or 1 value is used for dataset with conditional bindings, request
-  /// will be rejected. This field will be maped to IAM Policy version
+  /// will be rejected. This field will be mapped to IAM Policy version
   /// (https://cloud.google.com/iam/docs/policies#versions) and will be used to
   /// set policy in IAM.
   ///
@@ -499,7 +499,7 @@ class DatasetsResource {
   /// condition. * But dataset with no conditional role bindings in access
   /// policy may specify any valid value or leave the field unset. If unset or
   /// if 0 or 1 value is used for dataset with conditional bindings, request
-  /// will be rejected. This field will be maped to IAM Policy version
+  /// will be rejected. This field will be mapped to IAM Policy version
   /// (https://cloud.google.com/iam/docs/policies#versions) and will be used to
   /// set policy in IAM.
   ///
@@ -2608,10 +2608,10 @@ class Argument {
   /// - "FIXED_TYPE" : The argument is a variable with fully specified type,
   /// which can be a struct or an array, but not a table.
   /// - "ANY_TYPE" : The argument is any type, including struct or array, but
-  /// not a table. To be added: FIXED_TABLE, ANY_TABLE
+  /// not a table.
   core.String? argumentKind;
 
-  /// Required unless argument_kind = ANY_TYPE.
+  /// Set if argument_kind == FIXED_TYPE.
   StandardSqlDataType? dataType;
 
   /// Whether the argument is an aggregate function parameter.
@@ -3281,12 +3281,12 @@ class BigLakeConfiguration {
   /// \`{project}.{location}.{connection_id}\` or
   /// \`projects/{project}/locations/{location}/connections/{connection_id}".
   ///
-  /// Required.
+  /// Optional.
   core.String? connectionId;
 
   /// The file format the table data is stored in.
   ///
-  /// Required.
+  /// Optional.
   /// Possible string values are:
   /// - "FILE_FORMAT_UNSPECIFIED" : Default Value.
   /// - "PARQUET" : Apache Parquet format.
@@ -3298,12 +3298,12 @@ class BigLakeConfiguration {
   /// The '*' wildcard character is not allowed. The URI should be in the format
   /// `gs://bucket/path_to_table/`
   ///
-  /// Required.
+  /// Optional.
   core.String? storageUri;
 
   /// The table format the metadata only snapshots are stored in.
   ///
-  /// Required.
+  /// Optional.
   /// Possible string values are:
   /// - "TABLE_FORMAT_UNSPECIFIED" : Default Value.
   /// - "ICEBERG" : Apache Iceberg format.
@@ -9483,7 +9483,7 @@ class JobStatistics {
   /// as ENTERPRISE.
   /// - "STANDARD" : Standard edition.
   /// - "ENTERPRISE" : Enterprise edition.
-  /// - "ENTERPRISE_PLUS" : Enterprise plus edition.
+  /// - "ENTERPRISE_PLUS" : Enterprise Plus edition.
   core.String? edition;
 
   /// End time of this job, in milliseconds since the epoch.
@@ -14901,6 +14901,16 @@ class Table {
   /// Output only.
   core.String? location;
 
+  /// If set, overrides the default managed table type configured in the
+  /// dataset.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MANAGED_TABLE_TYPE_UNSPECIFIED" : No managed table type specified.
+  /// - "NATIVE" : The managed table is a native BigQuery table.
+  /// - "ICEBERG" : The managed table is a BigQuery table for Apache Iceberg.
+  core.String? managedTableType;
+
   /// The materialized view definition.
   ///
   /// Optional.
@@ -15139,6 +15149,7 @@ class Table {
     this.labels,
     this.lastModifiedTime,
     this.location,
+    this.managedTableType,
     this.materializedView,
     this.materializedViewStatus,
     this.maxStaleness,
@@ -15223,6 +15234,7 @@ class Table {
           ),
           lastModifiedTime: json_['lastModifiedTime'] as core.String?,
           location: json_['location'] as core.String?,
+          managedTableType: json_['managedTableType'] as core.String?,
           materializedView: json_.containsKey('materializedView')
               ? MaterializedViewDefinition.fromJson(json_['materializedView']
                   as core.Map<core.String, core.dynamic>)
@@ -15339,6 +15351,7 @@ class Table {
         if (labels != null) 'labels': labels!,
         if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
         if (location != null) 'location': location!,
+        if (managedTableType != null) 'managedTableType': managedTableType!,
         if (materializedView != null) 'materializedView': materializedView!,
         if (materializedViewStatus != null)
           'materializedViewStatus': materializedViewStatus!,
@@ -16643,7 +16656,7 @@ class TrainingOptions {
   ///
   /// Applies to contribution analysis models. Allowed formats supported are for
   /// summable and summable ratio contribution metrics. These include
-  /// expressions such as "SUM(x)" or "SUM(x)/SUM(y)", where x and y are column
+  /// expressions such as `SUM(x)` or `SUM(x)/SUM(y)`, where x and y are column
   /// names from the base table.
   core.String? contributionMetric;
 

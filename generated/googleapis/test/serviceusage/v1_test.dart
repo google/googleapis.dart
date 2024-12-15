@@ -406,6 +406,7 @@ api.Documentation buildDocumentation() {
   final o = api.Documentation();
   buildCounterDocumentation++;
   if (buildCounterDocumentation < 3) {
+    o.additionalIamInfo = 'foo';
     o.documentationRootUrl = 'foo';
     o.overview = 'foo';
     o.pages = buildUnnamed9();
@@ -421,6 +422,10 @@ api.Documentation buildDocumentation() {
 void checkDocumentation(api.Documentation o) {
   buildCounterDocumentation++;
   if (buildCounterDocumentation < 3) {
+    unittest.expect(
+      o.additionalIamInfo!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.documentationRootUrl!,
       unittest.equals('foo'),

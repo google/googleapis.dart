@@ -21715,6 +21715,10 @@ class GoogleCloudApigeeV1EnvironmentConfig {
   /// This is only used by Envoy-based gateways.
   core.String? arcConfigLocation;
 
+  /// The algorithm to resolve IP.
+  GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig?
+      clientIpResolutionConfig;
+
   /// Time that the environment configuration was created.
   core.String? createTime;
 
@@ -21802,6 +21806,7 @@ class GoogleCloudApigeeV1EnvironmentConfig {
   GoogleCloudApigeeV1EnvironmentConfig({
     this.addonsConfig,
     this.arcConfigLocation,
+    this.clientIpResolutionConfig,
     this.createTime,
     this.dataCollectors,
     this.debugMask,
@@ -21832,6 +21837,12 @@ class GoogleCloudApigeeV1EnvironmentConfig {
                   json_['addonsConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           arcConfigLocation: json_['arcConfigLocation'] as core.String?,
+          clientIpResolutionConfig:
+              json_.containsKey('clientIpResolutionConfig')
+                  ? GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig
+                      .fromJson(json_['clientIpResolutionConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           createTime: json_['createTime'] as core.String?,
           dataCollectors: (json_['dataCollectors'] as core.List?)
               ?.map((value) => GoogleCloudApigeeV1DataCollectorConfig.fromJson(
@@ -21896,6 +21907,8 @@ class GoogleCloudApigeeV1EnvironmentConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (addonsConfig != null) 'addonsConfig': addonsConfig!,
         if (arcConfigLocation != null) 'arcConfigLocation': arcConfigLocation!,
+        if (clientIpResolutionConfig != null)
+          'clientIpResolutionConfig': clientIpResolutionConfig!,
         if (createTime != null) 'createTime': createTime!,
         if (dataCollectors != null) 'dataCollectors': dataCollectors!,
         if (debugMask != null) 'debugMask': debugMask!,
@@ -21920,6 +21933,60 @@ class GoogleCloudApigeeV1EnvironmentConfig {
         if (targets != null) 'targets': targets!,
         if (traceConfig != null) 'traceConfig': traceConfig!,
         if (uid != null) 'uid': uid!,
+      };
+}
+
+/// Configuration for resolving the client ip.
+class GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig {
+  /// Resolves the client ip based on a custom header.
+  GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm?
+      headerIndexAlgorithm;
+
+  GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig({
+    this.headerIndexAlgorithm,
+  });
+
+  GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig.fromJson(
+      core.Map json_)
+      : this(
+          headerIndexAlgorithm: json_.containsKey('headerIndexAlgorithm')
+              ? GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm
+                  .fromJson(json_['headerIndexAlgorithm']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (headerIndexAlgorithm != null)
+          'headerIndexAlgorithm': headerIndexAlgorithm!,
+      };
+}
+
+/// Resolves the client ip based on a custom header.
+class GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm {
+  /// The index of the ip in the header.
+  ///
+  /// (By default, value is 0 if missing)
+  core.int? ipHeaderIndex;
+
+  /// The name of the header to extract the client ip from.
+  core.String? ipHeaderName;
+
+  GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm({
+    this.ipHeaderIndex,
+    this.ipHeaderName,
+  });
+
+  GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm.fromJson(
+      core.Map json_)
+      : this(
+          ipHeaderIndex: json_['ipHeaderIndex'] as core.int?,
+          ipHeaderName: json_['ipHeaderName'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ipHeaderIndex != null) 'ipHeaderIndex': ipHeaderIndex!,
+        if (ipHeaderName != null) 'ipHeaderName': ipHeaderName!,
       };
 }
 
@@ -24951,11 +25018,18 @@ class GoogleCloudApigeeV1Organization {
   /// [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
   /// Valid only when \[RuntimeType\](#RuntimeType) is set to `CLOUD`. The value
   /// must be set before the creation of a runtime instance and can be updated
-  /// only when there are no runtime instances. For example: `default`. Apigee
-  /// also supports shared VPC (that is, the host network project is not the
-  /// same as the one that is peering with Apigee). See
-  /// [Shared VPC overview](https://cloud.google.com/vpc/docs/shared-vpc). To
-  /// use a shared VPC network, use the following format:
+  /// only when there are no runtime instances. For example: `default`. When
+  /// changing authorizedNetwork, you must reconfigure VPC peering. After VPC
+  /// peering with previous network is deleted,
+  /// [run the following command](https://cloud.google.com/sdk/gcloud/reference/services/vpc-peerings/delete):
+  /// `gcloud services vpc-peerings delete --network=NETWORK`, where `NETWORK`
+  /// is the name of the previous network. This will delete the previous Service
+  /// Networking. Otherwise, you will get the following error: `The resource
+  /// 'projects/...-tp' is already linked to another shared VPC host
+  /// 'projects/...-tp`. Apigee also supports shared VPC (that is, the host
+  /// network project is not the same as the one that is peering with Apigee).
+  /// See [Shared VPC overview](https://cloud.google.com/vpc/docs/shared-vpc).
+  /// To use a shared VPC network, use the following format:
   /// `projects/{host-project-id}/{region}/networks/{network-name}`. For
   /// example: `projects/my-sharedvpc-host/global/networks/mynetwork` **Note:**
   /// Not supported for Apigee hybrid.

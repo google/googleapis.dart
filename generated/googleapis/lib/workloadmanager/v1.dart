@@ -783,8 +783,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1143,6 +1143,15 @@ class Evaluation {
   /// Description of the Evaluation
   core.String? description;
 
+  /// Evaluation type
+  /// Possible string values are:
+  /// - "EVALUATION_TYPE_UNSPECIFIED" : Not specified
+  /// - "SAP" : SAP best practices
+  /// - "SQL_SERVER" : SQL best practices
+  /// - "OTHER" : Customized best practices
+  /// - "SCC_IAC" : SCC IaC (Infra as Code) best practices
+  core.String? evaluationType;
+
   /// Labels as key value pairs
   core.Map<core.String, core.String>? labels;
 
@@ -1181,6 +1190,7 @@ class Evaluation {
     this.createTime,
     this.customRulesBucket,
     this.description,
+    this.evaluationType,
     this.labels,
     this.name,
     this.resourceFilter,
@@ -1200,6 +1210,7 @@ class Evaluation {
           createTime: json_['createTime'] as core.String?,
           customRulesBucket: json_['customRulesBucket'] as core.String?,
           description: json_['description'] as core.String?,
+          evaluationType: json_['evaluationType'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -1232,6 +1243,7 @@ class Evaluation {
         if (createTime != null) 'createTime': createTime!,
         if (customRulesBucket != null) 'customRulesBucket': customRulesBucket!,
         if (description != null) 'description': description!,
+        if (evaluationType != null) 'evaluationType': evaluationType!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (resourceFilter != null) 'resourceFilter': resourceFilter!,
@@ -1279,6 +1291,11 @@ class Execution {
   /// Output only.
   core.List<Notice>? notices;
 
+  /// Result summary
+  ///
+  /// Output only.
+  Summary? resultSummary;
+
   /// execution result summary per rule
   ///
   /// Output only.
@@ -1315,6 +1332,7 @@ class Execution {
     this.labels,
     this.name,
     this.notices,
+    this.resultSummary,
     this.ruleResults,
     this.runType,
     this.startTime,
@@ -1342,6 +1360,10 @@ class Execution {
               ?.map((value) =>
                   Notice.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
+          resultSummary: json_.containsKey('resultSummary')
+              ? Summary.fromJson(
+                  json_['resultSummary'] as core.Map<core.String, core.dynamic>)
+              : null,
           ruleResults: (json_['ruleResults'] as core.List?)
               ?.map((value) => RuleExecutionResult.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -1360,6 +1382,7 @@ class Execution {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (notices != null) 'notices': notices!,
+        if (resultSummary != null) 'resultSummary': resultSummary!,
         if (ruleResults != null) 'ruleResults': ruleResults!,
         if (runType != null) 'runType': runType!,
         if (startTime != null) 'startTime': startTime!,
@@ -1541,12 +1564,16 @@ class Insight {
   /// The insights data for the sqlserver workload validation.
   SqlserverValidation? sqlserverValidation;
 
+  /// The insights data for workload validation of torso workloads.
+  TorsoValidation? torsoValidation;
+
   Insight({
     this.instanceId,
     this.sapDiscovery,
     this.sapValidation,
     this.sentTime,
     this.sqlserverValidation,
+    this.torsoValidation,
   });
 
   Insight.fromJson(core.Map json_)
@@ -1565,6 +1592,10 @@ class Insight {
               ? SqlserverValidation.fromJson(json_['sqlserverValidation']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          torsoValidation: json_.containsKey('torsoValidation')
+              ? TorsoValidation.fromJson(json_['torsoValidation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1574,6 +1605,7 @@ class Insight {
         if (sentTime != null) 'sentTime': sentTime!,
         if (sqlserverValidation != null)
           'sqlserverValidation': sqlserverValidation!,
+        if (torsoValidation != null) 'torsoValidation': torsoValidation!,
       };
 }
 
@@ -3217,6 +3249,111 @@ class SqlserverValidationValidationDetail {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
+
+/// Message for execution summary
+class Summary {
+  /// Number of failures
+  ///
+  /// Output only.
+  core.String? failures;
+
+  /// Number of new failures compared to the previous execution
+  ///
+  /// Output only.
+  core.String? newFailures;
+
+  /// Number of new fixes compared to the previous execution
+  ///
+  /// Output only.
+  core.String? newFixes;
+
+  Summary({
+    this.failures,
+    this.newFailures,
+    this.newFixes,
+  });
+
+  Summary.fromJson(core.Map json_)
+      : this(
+          failures: json_['failures'] as core.String?,
+          newFailures: json_['newFailures'] as core.String?,
+          newFixes: json_['newFixes'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (failures != null) 'failures': failures!,
+        if (newFailures != null) 'newFailures': newFailures!,
+        if (newFixes != null) 'newFixes': newFixes!,
+      };
+}
+
+/// The schema of torso workload validation data.
+class TorsoValidation {
+  /// agent_version lists the version of the agent that collected this data.
+  ///
+  /// Required.
+  core.String? agentVersion;
+
+  /// instance_name lists the human readable name of the instance that the data
+  /// comes from.
+  ///
+  /// Required.
+  core.String? instanceName;
+
+  /// project_id lists the human readable cloud project that the data comes
+  /// from.
+  ///
+  /// Required.
+  core.String? projectId;
+
+  /// validation_details contains the pairs of validation data: field name &
+  /// field value.
+  ///
+  /// Required.
+  core.Map<core.String, core.String>? validationDetails;
+
+  /// workload_type specifies the type of torso workload.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "WORKLOAD_TYPE_UNSPECIFIED" : Unspecified workload type.
+  /// - "MYSQL" : MySQL workload.
+  /// - "ORACLE" : Oracle workload.
+  /// - "REDIS" : Redis workload.
+  core.String? workloadType;
+
+  TorsoValidation({
+    this.agentVersion,
+    this.instanceName,
+    this.projectId,
+    this.validationDetails,
+    this.workloadType,
+  });
+
+  TorsoValidation.fromJson(core.Map json_)
+      : this(
+          agentVersion: json_['agentVersion'] as core.String?,
+          instanceName: json_['instanceName'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
+          validationDetails: (json_['validationDetails']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          workloadType: json_['workloadType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentVersion != null) 'agentVersion': agentVersion!,
+        if (instanceName != null) 'instanceName': instanceName!,
+        if (projectId != null) 'projectId': projectId!,
+        if (validationDetails != null) 'validationDetails': validationDetails!,
+        if (workloadType != null) 'workloadType': workloadType!,
+      };
+}
 
 /// Message describing the violation in an evaluation result.
 class ViolationDetails {

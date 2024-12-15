@@ -3502,6 +3502,7 @@ api.PrometheusQueryLanguageCondition buildPrometheusQueryLanguageCondition() {
   buildCounterPrometheusQueryLanguageCondition++;
   if (buildCounterPrometheusQueryLanguageCondition < 3) {
     o.alertRule = 'foo';
+    o.disableMetricValidation = true;
     o.duration = 'foo';
     o.evaluationInterval = 'foo';
     o.labels = buildUnnamed59();
@@ -3520,6 +3521,7 @@ void checkPrometheusQueryLanguageCondition(
       o.alertRule!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.disableMetricValidation!, unittest.isTrue);
     unittest.expect(
       o.duration!,
       unittest.equals('foo'),

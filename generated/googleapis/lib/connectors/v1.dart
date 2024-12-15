@@ -1705,6 +1705,95 @@ class ProjectsLocationsCustomConnectorsCustomConnectorVersionsResource {
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Publish request for the CustomConnectorVersion.
+  ///
+  /// Once approved, the CustomConnectorVersion will be published as
+  /// PartnerConnector.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the form:
+  /// `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/customConnectors/\[^/\]+/customConnectorVersions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> publish(
+    PublishCustomConnectorVersionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':publish';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Withdraw the publish request for the CustomConnectorVersion.
+  ///
+  /// This can only be used before the CustomConnectorVersion is published.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the form:
+  /// `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/customConnectors/\[^/\]+/customConnectorVersions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> withdraw(
+    WithdrawCustomConnectorVersionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':withdraw';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsEndpointAttachmentsResource {
@@ -2684,8 +2773,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3880,6 +3969,8 @@ class AuthSchema {
 class AuthorizationCodeLink {
   /// The client ID assigned to the Google Cloud Connectors OAuth app for the
   /// connector data source.
+  ///
+  /// Optional.
   core.String? clientId;
 
   /// The client secret assigned to the Google Cloud Connectors OAuth app for
@@ -3889,6 +3980,8 @@ class AuthorizationCodeLink {
   Secret? clientSecret;
 
   /// Whether to enable PKCE for the auth code flow.
+  ///
+  /// Optional.
   core.bool? enablePkce;
 
   /// Omit query params from the redirect URI.
@@ -3898,10 +3991,14 @@ class AuthorizationCodeLink {
 
   /// The scopes for which the user will authorize Google Cloud Connectors on
   /// the connector data source.
+  ///
+  /// Optional.
   core.List<core.String>? scopes;
 
   /// The base URI the user must click to trigger the authorization code login
   /// flow.
+  ///
+  /// Optional.
   core.String? uri;
 
   AuthorizationCodeLink({
@@ -4113,17 +4210,25 @@ class ConfigVariableTemplate {
   /// Authorization code link options.
   ///
   /// To be populated if `ValueType` is `AUTHORIZATION_CODE`
+  ///
+  /// Optional.
   AuthorizationCodeLink? authorizationCodeLink;
 
   /// Description.
+  ///
+  /// Optional.
   core.String? description;
 
   /// Display name of the parameter.
+  ///
+  /// Optional.
   core.String? displayName;
 
   /// Enum options.
   ///
   /// To be populated if `ValueType` is `ENUM`
+  ///
+  /// Optional.
   core.List<EnumOption>? enumOptions;
 
   /// enum source denotes the source of api to fill the enum options
@@ -4135,9 +4240,13 @@ class ConfigVariableTemplate {
   core.String? enumSource;
 
   /// Indicates if current template is part of advanced settings
+  ///
+  /// Optional.
   core.bool? isAdvanced;
 
   /// Key of the config variable.
+  ///
+  /// Optional.
   core.String? key;
 
   /// Location Tyep denotes where this value should be sent in BYOC connections.
@@ -4159,17 +4268,25 @@ class ConfigVariableTemplate {
 
   /// Flag represents that this `ConfigVariable` must be provided for a
   /// connection.
+  ///
+  /// Optional.
   core.bool? required;
 
   /// Condition under which a field would be required.
   ///
   /// The condition can be represented in the form of a logical expression.
+  ///
+  /// Optional.
   LogicalExpression? requiredCondition;
 
   /// Role grant configuration for the config variable.
+  ///
+  /// Optional.
   RoleGrant? roleGrant;
 
   /// State of the config variable.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Status is unspecified.
   /// - "ACTIVE" : Config variable is active
@@ -4178,11 +4295,15 @@ class ConfigVariableTemplate {
 
   /// Regular expression in RE2 syntax used for validating the `value` of a
   /// `ConfigVariable`.
+  ///
+  /// Optional.
   core.String? validationRegex;
 
   /// Type of the parameter: string, int, bool etc.
   ///
   /// consider custom type for the benefit for the validation.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "VALUE_TYPE_UNSPECIFIED" : Value type is not specified.
   /// - "STRING" : Value type is string.
@@ -4332,6 +4453,7 @@ class Connection {
   /// - "PREVIEW" : PREVIEW.
   /// - "GA" : GA.
   /// - "DEPRECATED" : DEPRECATED.
+  /// - "TEST" : TEST.
   /// - "PRIVATE_PREVIEW" : PRIVATE_PREVIEW.
   core.String? connectorVersionLaunchStage;
 
@@ -4793,8 +4915,16 @@ class Connector {
   /// - "PREVIEW" : PREVIEW.
   /// - "GA" : GA.
   /// - "DEPRECATED" : DEPRECATED.
+  /// - "TEST" : TEST.
   /// - "PRIVATE_PREVIEW" : PRIVATE_PREVIEW.
   core.String? launchStage;
+
+  /// Marketplace connector details.
+  ///
+  /// Will be null if the connector is not marketplace connector.
+  ///
+  /// Output only.
+  MarketplaceConnectorDetails? marketplaceConnectorDetails;
 
   /// Resource name of the Connector.
   ///
@@ -4831,6 +4961,7 @@ class Connector {
     this.externalUri,
     this.labels,
     this.launchStage,
+    this.marketplaceConnectorDetails,
     this.name,
     this.tags,
     this.updateTime,
@@ -4858,6 +4989,12 @@ class Connector {
             ),
           ),
           launchStage: json_['launchStage'] as core.String?,
+          marketplaceConnectorDetails:
+              json_.containsKey('marketplaceConnectorDetails')
+                  ? MarketplaceConnectorDetails.fromJson(
+                      json_['marketplaceConnectorDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           name: json_['name'] as core.String?,
           tags: (json_['tags'] as core.List?)
               ?.map((value) => value as core.String)
@@ -4877,6 +5014,8 @@ class Connector {
         if (externalUri != null) 'externalUri': externalUri!,
         if (labels != null) 'labels': labels!,
         if (launchStage != null) 'launchStage': launchStage!,
+        if (marketplaceConnectorDetails != null)
+          'marketplaceConnectorDetails': marketplaceConnectorDetails!,
         if (name != null) 'name': name!,
         if (tags != null) 'tags': tags!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -5085,6 +5224,7 @@ class ConnectorVersion {
   /// - "PREVIEW" : PREVIEW.
   /// - "GA" : GA.
   /// - "DEPRECATED" : DEPRECATED.
+  /// - "TEST" : TEST.
   /// - "PRIVATE_PREVIEW" : PRIVATE_PREVIEW.
   core.String? launchStage;
 
@@ -5315,7 +5455,7 @@ class ConnectorVersionInfraConfig {
 
   /// Indicates whether connector is deployed on GKE/CloudRun
   ///
-  /// Optional.
+  /// Output only.
   /// Possible string values are:
   /// - "DEPLOYMENT_MODEL_UNSPECIFIED" : Deployment model is not specified.
   /// - "GKE_MST" : Default model gke mst.
@@ -5458,6 +5598,11 @@ class CustomConnector {
   /// Output only.
   core.List<core.String>? allConnectorVersions;
 
+  /// All marketplace versions.
+  ///
+  /// Output only.
+  core.List<core.String>? allMarketplaceVersions;
+
   /// Created time.
   ///
   /// Output only.
@@ -5501,6 +5646,11 @@ class CustomConnector {
   /// projects/{project}/locations/{location}/customConnectors/{connector}
   core.String? name;
 
+  /// Published marketplace versions.
+  ///
+  /// Output only.
+  core.List<core.String>? publishedMarketplaceVersions;
+
   /// Updated time.
   ///
   /// Output only.
@@ -5509,6 +5659,7 @@ class CustomConnector {
   CustomConnector({
     this.activeConnectorVersions,
     this.allConnectorVersions,
+    this.allMarketplaceVersions,
     this.createTime,
     this.customConnectorType,
     this.description,
@@ -5516,6 +5667,7 @@ class CustomConnector {
     this.labels,
     this.logo,
     this.name,
+    this.publishedMarketplaceVersions,
     this.updateTime,
   });
 
@@ -5528,6 +5680,10 @@ class CustomConnector {
           allConnectorVersions: (json_['allConnectorVersions'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          allMarketplaceVersions:
+              (json_['allMarketplaceVersions'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           createTime: json_['createTime'] as core.String?,
           customConnectorType: json_['customConnectorType'] as core.String?,
           description: json_['description'] as core.String?,
@@ -5541,6 +5697,10 @@ class CustomConnector {
           ),
           logo: json_['logo'] as core.String?,
           name: json_['name'] as core.String?,
+          publishedMarketplaceVersions:
+              (json_['publishedMarketplaceVersions'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           updateTime: json_['updateTime'] as core.String?,
         );
 
@@ -5549,6 +5709,8 @@ class CustomConnector {
           'activeConnectorVersions': activeConnectorVersions!,
         if (allConnectorVersions != null)
           'allConnectorVersions': allConnectorVersions!,
+        if (allMarketplaceVersions != null)
+          'allMarketplaceVersions': allMarketplaceVersions!,
         if (createTime != null) 'createTime': createTime!,
         if (customConnectorType != null)
           'customConnectorType': customConnectorType!,
@@ -5557,6 +5719,8 @@ class CustomConnector {
         if (labels != null) 'labels': labels!,
         if (logo != null) 'logo': logo!,
         if (name != null) 'name': name!,
+        if (publishedMarketplaceVersions != null)
+          'publishedMarketplaceVersions': publishedMarketplaceVersions!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -5611,6 +5775,19 @@ class CustomConnectorVersion {
   /// Output only.
   core.String? name;
 
+  /// Partner metadata details.
+  ///
+  /// This should be populated only when publishing the custom connector to
+  /// partner connector.
+  ///
+  /// Optional.
+  PartnerMetadata? partnerMetadata;
+
+  /// Publish status of a custom connector.
+  ///
+  /// Output only.
+  PublishStatus? publishStatus;
+
   /// Service account used by runtime plane to access auth config secrets.
   ///
   /// Optional.
@@ -5651,6 +5828,8 @@ class CustomConnectorVersion {
     this.enableBackendDestinationConfig,
     this.labels,
     this.name,
+    this.partnerMetadata,
+    this.publishStatus,
     this.serviceAccount,
     this.specLocation,
     this.specServerUrls,
@@ -5684,6 +5863,14 @@ class CustomConnectorVersion {
             ),
           ),
           name: json_['name'] as core.String?,
+          partnerMetadata: json_.containsKey('partnerMetadata')
+              ? PartnerMetadata.fromJson(json_['partnerMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          publishStatus: json_.containsKey('publishStatus')
+              ? PublishStatus.fromJson(
+                  json_['publishStatus'] as core.Map<core.String, core.dynamic>)
+              : null,
           serviceAccount: json_['serviceAccount'] as core.String?,
           specLocation: json_['specLocation'] as core.String?,
           specServerUrls: (json_['specServerUrls'] as core.List?)
@@ -5704,6 +5891,8 @@ class CustomConnectorVersion {
           'enableBackendDestinationConfig': enableBackendDestinationConfig!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (partnerMetadata != null) 'partnerMetadata': partnerMetadata!,
+        if (publishStatus != null) 'publishStatus': publishStatus!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (specLocation != null) 'specLocation': specLocation!,
         if (specServerUrls != null) 'specServerUrls': specServerUrls!,
@@ -6063,9 +6252,13 @@ class EndpointAttachment {
 /// EnumOption definition
 class EnumOption {
   /// Display name of the option.
+  ///
+  /// Optional.
   core.String? displayName;
 
   /// Id of the option.
+  ///
+  /// Optional.
   core.String? id;
 
   EnumOption({
@@ -6200,6 +6393,9 @@ class EventSubscriptionDestination {
   /// OPTION 1: Hit an endpoint when we receive an event.
   EndPoint? endpoint;
 
+  /// OPTION 2: Write the event to Cloud Storage bucket.
+  GSUtil? gsutil;
+
   /// Service account needed for runtime plane to trigger IP workflow.
   core.String? serviceAccount;
 
@@ -6207,10 +6403,13 @@ class EventSubscriptionDestination {
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Default state.
   /// - "ENDPOINT" : Endpoint - Hit the value of endpoint when event is received
+  /// - "GCS" : Cloud Storage - Write the event to Cloud Storage bucket
+  /// - "PUBSUB" : Pub/Sub - Write the event to Pub/Sub topic
   core.String? type;
 
   EventSubscriptionDestination({
     this.endpoint,
+    this.gsutil,
     this.serviceAccount,
     this.type,
   });
@@ -6221,12 +6420,17 @@ class EventSubscriptionDestination {
               ? EndPoint.fromJson(
                   json_['endpoint'] as core.Map<core.String, core.dynamic>)
               : null,
+          gsutil: json_.containsKey('gsutil')
+              ? GSUtil.fromJson(
+                  json_['gsutil'] as core.Map<core.String, core.dynamic>)
+              : null,
           serviceAccount: json_['serviceAccount'] as core.String?,
           type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endpoint != null) 'endpoint': endpoint!,
+        if (gsutil != null) 'gsutil': gsutil!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (type != null) 'type': type!,
       };
@@ -6364,9 +6568,13 @@ class EventType {
 /// Eventing Configuration of a connection
 class EventingConfig {
   /// Additional eventing related field values
+  ///
+  /// Optional.
   core.List<ConfigVariable>? additionalVariables;
 
   /// Auth details for the webhook adapter.
+  ///
+  /// Optional.
   AuthConfig? authConfig;
 
   /// Dead letter configuration for eventing of a connection.
@@ -6375,6 +6583,8 @@ class EventingConfig {
   DeadLetterConfig? deadLetterConfig;
 
   /// Enrichment Enabled.
+  ///
+  /// Optional.
   core.bool? enrichmentEnabled;
 
   /// Ingress endpoint of the event listener.
@@ -6400,6 +6610,8 @@ class EventingConfig {
   DestinationConfig? proxyDestinationConfig;
 
   /// Registration endpoint for auto registration.
+  ///
+  /// Optional.
   DestinationConfig? registrationDestinationConfig;
 
   EventingConfig({
@@ -6626,6 +6838,7 @@ class EventingDetails {
   /// - "PREVIEW" : PREVIEW.
   /// - "GA" : GA.
   /// - "DEPRECATED" : DEPRECATED.
+  /// - "TEST" : TEST.
   /// - "PRIVATE_PREVIEW" : PRIVATE_PREVIEW.
   core.String? launchStage;
 
@@ -6713,11 +6926,17 @@ class EventingRuntimeData {
   /// Output only.
   WebhookData? webhookData;
 
+  /// Webhook subscriptions.
+  ///
+  /// Output only.
+  WebhookSubscriptions? webhookSubscriptions;
+
   EventingRuntimeData({
     this.eventsListenerEndpoint,
     this.eventsListenerPscSa,
     this.status,
     this.webhookData,
+    this.webhookSubscriptions,
   });
 
   EventingRuntimeData.fromJson(core.Map json_)
@@ -6733,6 +6952,10 @@ class EventingRuntimeData {
               ? WebhookData.fromJson(
                   json_['webhookData'] as core.Map<core.String, core.dynamic>)
               : null,
+          webhookSubscriptions: json_.containsKey('webhookSubscriptions')
+              ? WebhookSubscriptions.fromJson(json_['webhookSubscriptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6742,6 +6965,8 @@ class EventingRuntimeData {
           'eventsListenerPscSa': eventsListenerPscSa!,
         if (status != null) 'status': status!,
         if (webhookData != null) 'webhookData': webhookData!,
+        if (webhookSubscriptions != null)
+          'webhookSubscriptions': webhookSubscriptions!,
       };
 }
 
@@ -6992,6 +7217,8 @@ class FieldComparison {
   core.bool? boolValue;
 
   /// Comparator to use for comparing the field value.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "COMPARATOR_UNSPECIFIED" : The default value.
   /// - "EQUALS" : The field value must be equal to the specified value.
@@ -7002,6 +7229,8 @@ class FieldComparison {
   core.String? intValue;
 
   /// Key of the field.
+  ///
+  /// Optional.
   core.String? key;
 
   /// String value
@@ -7030,6 +7259,27 @@ class FieldComparison {
         if (intValue != null) 'intValue': intValue!,
         if (key != null) 'key': key!,
         if (stringValue != null) 'stringValue': stringValue!,
+      };
+}
+
+/// GSUtil message includes details of the Destination Cloud Storage bucket.
+class GSUtil {
+  /// The URI of the Cloud Storage bucket.
+  ///
+  /// Required.
+  core.String? gsutilUri;
+
+  GSUtil({
+    this.gsutilUri,
+  });
+
+  GSUtil.fromJson(core.Map json_)
+      : this(
+          gsutilUri: json_['gsutilUri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gsutilUri != null) 'gsutilUri': gsutilUri!,
       };
 }
 
@@ -7936,12 +8186,18 @@ typedef LockConfig = $LockConfig;
 /// Struct for representing boolean expressions.
 class LogicalExpression {
   /// A list of fields to be compared.
+  ///
+  /// Optional.
   core.List<FieldComparison>? fieldComparisons;
 
   /// A list of nested conditions to be compared.
+  ///
+  /// Optional.
   core.List<LogicalExpression>? logicalExpressions;
 
   /// The logical operator to use between the fields and conditions.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "OPERATOR_UNSPECIFIED" : The default value.
   /// - "AND" : AND operator; The conditions must all be true.
@@ -8060,6 +8316,46 @@ class ManagedZone {
         if (targetProject != null) 'targetProject': targetProject!,
         if (targetVpc != null) 'targetVpc': targetVpc!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Marketplace connector details.
+class MarketplaceConnectorDetails {
+  /// Marketplace product name.
+  core.String? marketplaceProduct;
+
+  /// Marketplace product ID.
+  core.String? marketplaceProductId;
+
+  /// Marketplace product URL.
+  core.String? marketplaceProductUri;
+
+  /// The name of the partner.
+  core.String? partner;
+
+  MarketplaceConnectorDetails({
+    this.marketplaceProduct,
+    this.marketplaceProductId,
+    this.marketplaceProductUri,
+    this.partner,
+  });
+
+  MarketplaceConnectorDetails.fromJson(core.Map json_)
+      : this(
+          marketplaceProduct: json_['marketplaceProduct'] as core.String?,
+          marketplaceProductId: json_['marketplaceProductId'] as core.String?,
+          marketplaceProductUri: json_['marketplaceProductUri'] as core.String?,
+          partner: json_['partner'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (marketplaceProduct != null)
+          'marketplaceProduct': marketplaceProduct!,
+        if (marketplaceProductId != null)
+          'marketplaceProductId': marketplaceProductId!,
+        if (marketplaceProductUri != null)
+          'marketplaceProductUri': marketplaceProductUri!,
+        if (partner != null) 'partner': partner!,
       };
 }
 
@@ -8409,6 +8705,161 @@ class Operation {
       };
 }
 
+/// Partner metadata details.
+///
+/// This will be populated when publishing the custom connector as a partner
+/// connector version. On publishing, parntner connector version will be created
+/// using the fields in PartnerMetadata.
+class PartnerMetadata {
+  /// Whether the user has accepted the Google Cloud Platform Terms of Service
+  /// (https://cloud.google.com/terms/) and the Google Cloud Marketplace Terms
+  /// of Service (https://cloud.google.com/terms/marketplace/launcher?hl=en).
+  ///
+  /// Required.
+  core.bool? acceptGcpTos;
+
+  /// Additional comments for the submission.
+  ///
+  /// Optional.
+  core.String? additionalComments;
+
+  /// Confirmation that connector meets all applicable requirements mentioned in
+  /// the Partner Connector Publishing requirements list and Partner onboardiong
+  /// requirements list
+  /// (https://cloud.google.com/marketplace/docs/partners/get-started#requirements).
+  ///
+  /// Required.
+  core.bool? confirmPartnerRequirements;
+
+  /// Public URL for the demo video.
+  ///
+  /// Required.
+  core.String? demoUri;
+
+  /// Integration example templates for the custom connector.
+  ///
+  /// Required.
+  core.String? integrationTemplates;
+
+  /// Marketplace product name.
+  ///
+  /// Optional.
+  core.String? marketplaceProduct;
+
+  /// Marketplace product ID.
+  ///
+  /// Required.
+  core.String? marketplaceProductId;
+
+  /// Marketplace product project ID.
+  ///
+  /// Optional.
+  core.String? marketplaceProductProjectId;
+
+  /// Marketplace product URL.
+  ///
+  /// Optional.
+  core.String? marketplaceProductUri;
+
+  /// Partner name.
+  ///
+  /// Required.
+  core.String? partner;
+
+  /// Partner connector display name.
+  ///
+  /// Required.
+  core.String? partnerConnectorDisplayName;
+
+  /// Publish request time.
+  ///
+  /// Output only.
+  core.String? publishRequestTime;
+
+  /// Target application for which partner connector is built.
+  ///
+  /// Required.
+  core.String? targetApplication;
+
+  /// Target customer segment for the partner connector.
+  ///
+  /// Required.
+  core.String? targetCustomerSegment;
+
+  /// Details about partner connector use cases.
+  ///
+  /// Required.
+  core.String? useCases;
+
+  PartnerMetadata({
+    this.acceptGcpTos,
+    this.additionalComments,
+    this.confirmPartnerRequirements,
+    this.demoUri,
+    this.integrationTemplates,
+    this.marketplaceProduct,
+    this.marketplaceProductId,
+    this.marketplaceProductProjectId,
+    this.marketplaceProductUri,
+    this.partner,
+    this.partnerConnectorDisplayName,
+    this.publishRequestTime,
+    this.targetApplication,
+    this.targetCustomerSegment,
+    this.useCases,
+  });
+
+  PartnerMetadata.fromJson(core.Map json_)
+      : this(
+          acceptGcpTos: json_['acceptGcpTos'] as core.bool?,
+          additionalComments: json_['additionalComments'] as core.String?,
+          confirmPartnerRequirements:
+              json_['confirmPartnerRequirements'] as core.bool?,
+          demoUri: json_['demoUri'] as core.String?,
+          integrationTemplates: json_['integrationTemplates'] as core.String?,
+          marketplaceProduct: json_['marketplaceProduct'] as core.String?,
+          marketplaceProductId: json_['marketplaceProductId'] as core.String?,
+          marketplaceProductProjectId:
+              json_['marketplaceProductProjectId'] as core.String?,
+          marketplaceProductUri: json_['marketplaceProductUri'] as core.String?,
+          partner: json_['partner'] as core.String?,
+          partnerConnectorDisplayName:
+              json_['partnerConnectorDisplayName'] as core.String?,
+          publishRequestTime: json_['publishRequestTime'] as core.String?,
+          targetApplication: json_['targetApplication'] as core.String?,
+          targetCustomerSegment: json_['targetCustomerSegment'] as core.String?,
+          useCases: json_['useCases'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (acceptGcpTos != null) 'acceptGcpTos': acceptGcpTos!,
+        if (additionalComments != null)
+          'additionalComments': additionalComments!,
+        if (confirmPartnerRequirements != null)
+          'confirmPartnerRequirements': confirmPartnerRequirements!,
+        if (demoUri != null) 'demoUri': demoUri!,
+        if (integrationTemplates != null)
+          'integrationTemplates': integrationTemplates!,
+        if (marketplaceProduct != null)
+          'marketplaceProduct': marketplaceProduct!,
+        if (marketplaceProductId != null)
+          'marketplaceProductId': marketplaceProductId!,
+        if (marketplaceProductProjectId != null)
+          'marketplaceProductProjectId': marketplaceProductProjectId!,
+        if (marketplaceProductUri != null)
+          'marketplaceProductUri': marketplaceProductUri!,
+        if (partner != null) 'partner': partner!,
+        if (partnerConnectorDisplayName != null)
+          'partnerConnectorDisplayName': partnerConnectorDisplayName!,
+        if (publishRequestTime != null)
+          'publishRequestTime': publishRequestTime!,
+        if (targetApplication != null) 'targetApplication': targetApplication!,
+        if (targetCustomerSegment != null)
+          'targetCustomerSegment': targetCustomerSegment!,
+        if (useCases != null) 'useCases': useCases!,
+      };
+}
+
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
 ///
@@ -8567,6 +9018,7 @@ class Provider {
   /// - "PREVIEW" : PREVIEW.
   /// - "GA" : GA.
   /// - "DEPRECATED" : DEPRECATED.
+  /// - "TEST" : TEST.
   /// - "PRIVATE_PREVIEW" : PRIVATE_PREVIEW.
   core.String? launchStage;
 
@@ -8635,6 +9087,90 @@ class Provider {
       };
 }
 
+/// Request message for ConnectorsService.PublishCustomConnectorVersion
+class PublishCustomConnectorVersionRequest {
+  /// Partner metadata details for validating and publishing the custom
+  /// connector as a partner connector version.
+  ///
+  /// Required.
+  PartnerMetadata? partnerMetadata;
+
+  PublishCustomConnectorVersionRequest({
+    this.partnerMetadata,
+  });
+
+  PublishCustomConnectorVersionRequest.fromJson(core.Map json_)
+      : this(
+          partnerMetadata: json_.containsKey('partnerMetadata')
+              ? PartnerMetadata.fromJson(json_['partnerMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (partnerMetadata != null) 'partnerMetadata': partnerMetadata!,
+      };
+}
+
+/// Publish status of a custom connector.
+class PublishStatus {
+  /// Publish state of the custom connector.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PUBLISH_STATE_UNSPECIFIED" : State Unspecified.
+  /// - "PUBLISHED" : Connector version has been published as partner connector
+  /// version.
+  /// - "PUBLISH_IN_PROGRESS" : Connector version is in the process of being
+  /// published as partner connector version.
+  /// - "UNPUBLISHED" : Connector version has been unpublished as partner
+  /// connector version
+  core.String? publishState;
+
+  /// Publish time.
+  ///
+  /// Output only.
+  core.String? publishTime;
+
+  /// Partner connector name.
+  ///
+  /// Will be set on the custom connector. Format:
+  /// providers/partner/connectors//versions/
+  ///
+  /// Output only.
+  core.String? publishedAs;
+
+  /// Custom connector name.
+  ///
+  /// Will be set on the partner connector. Format:
+  /// providers/customconnectors/connectors//versions/
+  ///
+  /// Output only.
+  core.String? publishedSource;
+
+  PublishStatus({
+    this.publishState,
+    this.publishTime,
+    this.publishedAs,
+    this.publishedSource,
+  });
+
+  PublishStatus.fromJson(core.Map json_)
+      : this(
+          publishState: json_['publishState'] as core.String?,
+          publishTime: json_['publishTime'] as core.String?,
+          publishedAs: json_['publishedAs'] as core.String?,
+          publishedSource: json_['publishedSource'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (publishState != null) 'publishState': publishState!,
+        if (publishTime != null) 'publishTime': publishTime!,
+        if (publishedAs != null) 'publishedAs': publishedAs!,
+        if (publishedSource != null) 'publishedSource': publishedSource!,
+      };
+}
+
 /// Request message for ConnectorsService.RefreshConnectionSchemaMetadata.
 typedef RefreshConnectionSchemaMetadataRequest = $Empty;
 
@@ -8699,9 +9235,13 @@ class Resource {
   /// Template to uniquely represent a Google Cloud resource in a format IAM
   /// expects This is a template that can have references to other values
   /// provided in the config variable template.
+  ///
+  /// Optional.
   core.String? pathTemplate;
 
   /// Different types of resource supported.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Value type is not specified.
   /// - "GCP_PROJECT" : Google Cloud Project Resource.
@@ -8852,9 +9392,13 @@ typedef RetryEventSubscriptionRequest = $Empty;
 /// a 'grant' button to do the same on behalf of the user.
 class RoleGrant {
   /// Template that UI can use to provide helper text to customers.
+  ///
+  /// Optional.
   core.String? helperTextTemplate;
 
   /// Prinicipal/Identity for whom the role need to assigned.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "PRINCIPAL_UNSPECIFIED" : Value type is not specified.
   /// - "CONNECTOR_SA" : Service Account used for Connector workload identity
@@ -8863,9 +9407,13 @@ class RoleGrant {
   core.String? principal;
 
   /// Resource on which the roles needs to be granted for the principal.
+  ///
+  /// Optional.
   Resource? resource;
 
   /// List of roles that need to be granted.
+  ///
+  /// Optional.
   core.List<core.String>? roles;
 
   RoleGrant({
@@ -9442,39 +9990,55 @@ class SshPublicKey {
 /// SSL Configuration of a connection
 class SslConfig {
   /// Additional SSL related field values
+  ///
+  /// Optional.
   core.List<ConfigVariable>? additionalVariables;
 
   /// Type of Client Cert (PEM/JKS/..
   ///
   /// etc.)
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "CERT_TYPE_UNSPECIFIED" : Cert type unspecified.
   /// - "PEM" : Privacy Enhanced Mail (PEM) Type
   core.String? clientCertType;
 
   /// Client Certificate
+  ///
+  /// Optional.
   Secret? clientCertificate;
 
   /// Client Private Key
+  ///
+  /// Optional.
   Secret? clientPrivateKey;
 
   /// Secret containing the passphrase protecting the Client Private Key
+  ///
+  /// Optional.
   Secret? clientPrivateKeyPass;
 
   /// Private Server Certificate.
   ///
   /// Needs to be specified if trust model is `PRIVATE`.
+  ///
+  /// Optional.
   Secret? privateServerCertificate;
 
   /// Type of Server Cert (PEM/JKS/..
   ///
   /// etc.)
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "CERT_TYPE_UNSPECIFIED" : Cert type unspecified.
   /// - "PEM" : Privacy Enhanced Mail (PEM) Type
   core.String? serverCertType;
 
   /// Trust Model of the SSL connection
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "PUBLIC" : Public Trust Model. Takes the Default Java trust store.
   /// - "PRIVATE" : Private Trust Model. Takes custom/private trust store.
@@ -9482,6 +10046,8 @@ class SslConfig {
   core.String? trustModel;
 
   /// Controls the ssl type for the given connector version.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "SSL_TYPE_UNSPECIFIED" : No SSL configuration required.
   /// - "TLS" : TLS Handshake
@@ -9489,6 +10055,8 @@ class SslConfig {
   core.String? type;
 
   /// Bool for enabling SSL
+  ///
+  /// Optional.
   core.bool? useSsl;
 
   SslConfig({
@@ -9849,3 +10417,30 @@ class WebhookData {
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
+
+/// WebhookSubscriptions has details of webhook subscriptions.
+class WebhookSubscriptions {
+  /// Webhook data.
+  ///
+  /// Output only.
+  core.List<WebhookData>? webhookData;
+
+  WebhookSubscriptions({
+    this.webhookData,
+  });
+
+  WebhookSubscriptions.fromJson(core.Map json_)
+      : this(
+          webhookData: (json_['webhookData'] as core.List?)
+              ?.map((value) => WebhookData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (webhookData != null) 'webhookData': webhookData!,
+      };
+}
+
+/// Request message for ConnectorsService.WithdrawCustomConnectorVersion
+typedef WithdrawCustomConnectorVersionRequest = $Empty;

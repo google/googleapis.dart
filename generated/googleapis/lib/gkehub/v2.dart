@@ -450,8 +450,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1945,44 +1945,6 @@ class ConfigManagementSyncState {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
-/// Information of the FeatureConfig applied on the MembershipFeature.
-class FeatureConfigRef {
-  /// Input only.
-  ///
-  /// Resource name of FeatureConfig, in the format:
-  /// `projects/{project}/locations/global/featureConfigs/{feature_config}`.
-  core.String? config;
-
-  /// When the FeatureConfig was last applied and copied to FeatureSpec.
-  ///
-  /// Output only.
-  core.String? configUpdateTime;
-
-  /// An id that uniquely identify a FeatureConfig object.
-  ///
-  /// Output only.
-  core.String? uuid;
-
-  FeatureConfigRef({
-    this.config,
-    this.configUpdateTime,
-    this.uuid,
-  });
-
-  FeatureConfigRef.fromJson(core.Map json_)
-      : this(
-          config: json_['config'] as core.String?,
-          configUpdateTime: json_['configUpdateTime'] as core.String?,
-          uuid: json_['uuid'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null) 'config': config!,
-        if (configUpdateTime != null) 'configUpdateTime': configUpdateTime!,
-        if (uuid != null) 'uuid': uuid!,
-      };
-}
-
 /// FeatureSpec contains user input per-feature spec information.
 class FeatureSpec {
   /// Cloudbuild-specific FeatureSpec.
@@ -2614,10 +2576,6 @@ class MembershipFeature {
   /// Output only.
   core.String? deleteTime;
 
-  /// Reference information for a FeatureConfig applied on the
-  /// MembershipFeature.
-  FeatureConfigRef? featureConfigRef;
-
   /// GCP labels for this MembershipFeature.
   core.Map<core.String, core.String>? labels;
 
@@ -2636,6 +2594,8 @@ class MembershipFeature {
   core.String? name;
 
   /// Spec of this membershipFeature.
+  ///
+  /// Optional.
   FeatureSpec? spec;
 
   /// State of the this membershipFeature.
@@ -2651,7 +2611,6 @@ class MembershipFeature {
   MembershipFeature({
     this.createTime,
     this.deleteTime,
-    this.featureConfigRef,
     this.labels,
     this.lifecycleState,
     this.name,
@@ -2664,10 +2623,6 @@ class MembershipFeature {
       : this(
           createTime: json_['createTime'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
-          featureConfigRef: json_.containsKey('featureConfigRef')
-              ? FeatureConfigRef.fromJson(json_['featureConfigRef']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -2694,7 +2649,6 @@ class MembershipFeature {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
-        if (featureConfigRef != null) 'featureConfigRef': featureConfigRef!,
         if (labels != null) 'labels': labels!,
         if (lifecycleState != null) 'lifecycleState': lifecycleState!,
         if (name != null) 'name': name!,

@@ -670,7 +670,9 @@ class ProjectsLocationsResource {
   /// in the following form: projects/{project}/locations/{location}.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [orderBy] - Optional. Specifies the ordering of results.
+  /// [orderBy] - Optional. Specifies the ordering of results. Supported values
+  /// are: * relevance (default) * last_modified_timestamp *
+  /// last_modified_timestamp asc
   ///
   /// [pageSize] - Optional. Number of results in the search page. If \<=0, then
   /// defaults to 10. Max limit for page_size is 1000. Throws an invalid
@@ -680,7 +682,8 @@ class ProjectsLocationsResource {
   /// call. Provide this to retrieve the subsequent page.
   ///
   /// [query] - Required. The query against which entries in scope should be
-  /// matched.
+  /// matched. The query syntax is defined in Search syntax for Dataplex Catalog
+  /// (https://cloud.google.com/dataplex/docs/search-syntax).
   ///
   /// [scope] - Optional. The scope under which the search should be operating.
   /// It must either be organizations/ or projects/. If it is unspecified, it
@@ -1640,6 +1643,10 @@ class ProjectsLocationsDataScansResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+$`.
   ///
+  /// [force] - Optional. If set to true, any child resources of this data scan
+  /// will also be deleted. (Otherwise, the request will only work if the data
+  /// scan has no child resources.)
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1652,9 +1659,11 @@ class ProjectsLocationsDataScansResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
+    core.bool? force,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1891,14 +1900,15 @@ class ProjectsLocationsDataScansResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The relative resource name of the scan, of the form:
+  /// [name] - Output only. Identifier. The relative resource name of the scan,
+  /// of the form:
   /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}, where
   /// project refers to a project_id or project_number and location_id refers to
   /// a GCP region.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. Mask of fields to update.
+  /// [updateMask] - Optional. Mask of fields to update.
   ///
   /// [validateOnly] - Optional. Only validate the request, but do not perform
   /// mutations. The default is false.
@@ -3757,8 +3767,8 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   /// should modify. It supports the following syntaxes: - matches an aspect of
   /// the given type and empty path. @path - matches an aspect of the given type
   /// and specified path. For example, to attach an aspect to a field that is
-  /// specified by the schema aspect, the path should have the format Schema.. *
-  /// - matches aspects of the given type for all paths. *@path - matches
+  /// specified by the schema aspect, the path should have the format Schema..
+  /// @* - matches aspects of the given type for all paths. *@path - matches
   /// aspects of all types on the given path.The service will not remove
   /// existing aspects matching the syntax unless delete_missing_aspects is set
   /// to true.If this field is left empty, the service treats it as specifying
@@ -8931,6 +8941,9 @@ class ProjectsLocationsMetadataJobsResource {
   /// [metadataJobId] - Optional. The metadata job ID. If not provided, a unique
   /// ID is generated with the prefix metadata-job-.
   ///
+  /// [validateOnly] - Optional. The service validates the request without
+  /// performing any mutations. The default is false.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -8945,11 +8958,13 @@ class ProjectsLocationsMetadataJobsResource {
     GoogleCloudDataplexV1MetadataJob request,
     core.String parent, {
     core.String? metadataJobId,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (metadataJobId != null) 'metadataJobId': [metadataJobId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -13097,6 +13112,8 @@ class GoogleCloudDataplexV1DataScan {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
+  /// Identifier.
+  ///
   /// The relative resource name of the scan, of the form:
   /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}, where
   /// project refers to a project_id or project_number and location_id refers to
@@ -13289,9 +13306,13 @@ class GoogleCloudDataplexV1DataScanExecutionStatus {
   core.String? latestJobCreateTime;
 
   /// The time when the latest DataScanJob ended.
+  ///
+  /// Optional.
   core.String? latestJobEndTime;
 
   /// The time when the latest DataScanJob started.
+  ///
+  /// Optional.
   core.String? latestJobStartTime;
 
   GoogleCloudDataplexV1DataScanExecutionStatus({
@@ -13363,6 +13384,8 @@ class GoogleCloudDataplexV1DataScanJob {
   /// Output only.
   core.String? message;
 
+  /// Identifier.
+  ///
   /// The relative resource name of the DataScanJob, of the form:
   /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}/jobs/{job_id},
   /// where project refers to a project_id or project_number and location_id

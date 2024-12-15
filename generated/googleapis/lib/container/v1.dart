@@ -4060,7 +4060,7 @@ class Autopilot {
   /// Enable Autopilot
   core.bool? enabled;
 
-  /// Workload policy configuration for Autopilot.
+  /// WorkloadPolicyConfig is the configuration related to GCW workload policy
   WorkloadPolicyConfig? workloadPolicyConfig;
 
   Autopilot({
@@ -5628,7 +5628,7 @@ class ClusterUpdate {
   /// The desired authenticator groups config for the cluster.
   AuthenticatorGroupsConfig? desiredAuthenticatorGroupsConfig;
 
-  /// The desired workload policy configuration for the autopilot cluster.
+  /// WorkloadPolicyConfig is the configuration related to GCW workload policy
   WorkloadPolicyConfig? desiredAutopilotWorkloadPolicyConfig;
 
   /// The desired configuration options for the Binary Authorization feature.
@@ -8208,7 +8208,7 @@ class LinuxNodeConfig {
   /// net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max
   /// net.core.wmem_default net.core.wmem_max net.core.optmem_max
   /// net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem
-  /// net.ipv4.tcp_tw_reuse
+  /// net.ipv4.tcp_tw_reuse kernel.shmmni kernel.shmmax kernel.shmall
   core.Map<core.String, core.String>? sysctls;
 
   LinuxNodeConfig({
@@ -9359,6 +9359,11 @@ class NodeConfig {
   /// unspecified, the default machine type is `e2-medium`.
   core.String? machineType;
 
+  /// The maximum duration for the nodes to exist.
+  ///
+  /// If unspecified, the nodes can exist indefinitely.
+  core.String? maxRunDuration;
+
   /// The metadata key/value pairs assigned to instances in the cluster.
   ///
   /// Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128
@@ -9496,6 +9501,7 @@ class NodeConfig {
     this.localSsdEncryptionMode,
     this.loggingConfig,
     this.machineType,
+    this.maxRunDuration,
     this.metadata,
     this.minCpuPlatform,
     this.nodeGroup,
@@ -9590,6 +9596,7 @@ class NodeConfig {
                   json_['loggingConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           machineType: json_['machineType'] as core.String?,
+          maxRunDuration: json_['maxRunDuration'] as core.String?,
           metadata:
               (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -9692,6 +9699,7 @@ class NodeConfig {
           'localSsdEncryptionMode': localSsdEncryptionMode!,
         if (loggingConfig != null) 'loggingConfig': loggingConfig!,
         if (machineType != null) 'machineType': machineType!,
+        if (maxRunDuration != null) 'maxRunDuration': maxRunDuration!,
         if (metadata != null) 'metadata': metadata!,
         if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform!,
         if (nodeGroup != null) 'nodeGroup': nodeGroup!,
@@ -13566,6 +13574,11 @@ class UpdateNodePoolRequest {
   /// Optional.
   core.String? machineType;
 
+  /// The maximum duration for the nodes to exist.
+  ///
+  /// If unspecified, the nodes can exist indefinitely.
+  core.String? maxRunDuration;
+
   /// The name (project, location, cluster, node pool) of the node pool to
   /// update.
   ///
@@ -13678,6 +13691,7 @@ class UpdateNodePoolRequest {
     this.locations,
     this.loggingConfig,
     this.machineType,
+    this.maxRunDuration,
     this.name,
     this.nodeNetworkConfig,
     this.nodePoolId,
@@ -13746,6 +13760,7 @@ class UpdateNodePoolRequest {
                   json_['loggingConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           machineType: json_['machineType'] as core.String?,
+          maxRunDuration: json_['maxRunDuration'] as core.String?,
           name: json_['name'] as core.String?,
           nodeNetworkConfig: json_.containsKey('nodeNetworkConfig')
               ? NodeNetworkConfig.fromJson(json_['nodeNetworkConfig']
@@ -13810,6 +13825,7 @@ class UpdateNodePoolRequest {
         if (locations != null) 'locations': locations!,
         if (loggingConfig != null) 'loggingConfig': loggingConfig!,
         if (machineType != null) 'machineType': machineType!,
+        if (maxRunDuration != null) 'maxRunDuration': maxRunDuration!,
         if (name != null) 'name': name!,
         if (nodeNetworkConfig != null) 'nodeNetworkConfig': nodeNetworkConfig!,
         if (nodePoolId != null) 'nodePoolId': nodePoolId!,
@@ -14218,8 +14234,7 @@ class WorkloadMetadataConfig {
       };
 }
 
-/// WorkloadPolicyConfig is the configuration of workload policy for autopilot
-/// clusters.
+/// WorkloadPolicyConfig is the configuration related to GCW workload policy
 class WorkloadPolicyConfig {
   /// If true, workloads can use NET_ADMIN capability.
   core.bool? allowNetAdmin;

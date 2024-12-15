@@ -733,6 +733,7 @@ api.Instance buildInstance() {
     o.createTime = 'foo';
     o.creator = 'foo';
     o.disableProxyAccess = true;
+    o.enableThirdPartyIdentity = true;
     o.gceSetup = buildGceSetup();
     o.healthInfo = buildUnnamed9();
     o.healthState = 'foo';
@@ -764,6 +765,7 @@ void checkInstance(api.Instance o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.disableProxyAccess!, unittest.isTrue);
+    unittest.expect(o.enableThirdPartyIdentity!, unittest.isTrue);
     checkGceSetup(o.gceSetup!);
     checkUnnamed9(o.healthInfo!);
     unittest.expect(

@@ -4819,7 +4819,7 @@ class Restore {
       };
 }
 
-/// Request message for DataprocMetastore.Restore.
+/// Request message for DataprocMetastore.RestoreService.
 class RestoreServiceRequest {
   /// The relative resource name of the metastore service backup to restore
   /// from, in the following

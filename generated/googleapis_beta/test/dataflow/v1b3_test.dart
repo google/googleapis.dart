@@ -939,6 +939,33 @@ void checkDataSamplingReport(api.DataSamplingReport o) {
   buildCounterDataSamplingReport--;
 }
 
+core.int buildCounterDataflowGaugeValue = 0;
+api.DataflowGaugeValue buildDataflowGaugeValue() {
+  final o = api.DataflowGaugeValue();
+  buildCounterDataflowGaugeValue++;
+  if (buildCounterDataflowGaugeValue < 3) {
+    o.measuredTime = 'foo';
+    o.value = 'foo';
+  }
+  buildCounterDataflowGaugeValue--;
+  return o;
+}
+
+void checkDataflowGaugeValue(api.DataflowGaugeValue o) {
+  buildCounterDataflowGaugeValue++;
+  if (buildCounterDataflowGaugeValue < 3) {
+    unittest.expect(
+      o.measuredTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDataflowGaugeValue--;
+}
+
 core.List<core.String> buildUnnamed7() => [
       'foo',
       'foo',
@@ -3892,6 +3919,7 @@ api.MetricValue buildMetricValue() {
   if (buildCounterMetricValue < 3) {
     o.metric = 'foo';
     o.metricLabels = buildUnnamed61();
+    o.valueGauge64 = buildDataflowGaugeValue();
     o.valueHistogram = buildDataflowHistogramValue();
     o.valueInt64 = 'foo';
   }
@@ -3907,6 +3935,7 @@ void checkMetricValue(api.MetricValue o) {
       unittest.equals('foo'),
     );
     checkUnnamed61(o.metricLabels!);
+    checkDataflowGaugeValue(o.valueGauge64!);
     checkDataflowHistogramValue(o.valueHistogram!);
     unittest.expect(
       o.valueInt64!,
@@ -9305,6 +9334,16 @@ void main() {
       final od = api.DataSamplingReport.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkDataSamplingReport(od);
+    });
+  });
+
+  unittest.group('obj-schema-DataflowGaugeValue', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDataflowGaugeValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DataflowGaugeValue.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDataflowGaugeValue(od);
     });
   });
 

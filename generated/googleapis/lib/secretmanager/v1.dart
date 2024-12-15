@@ -2835,7 +2835,7 @@ class Topic {
 }
 
 /// A replication policy that replicates the Secret payload into the locations
-/// specified in Secret.replication.user_managed.replicas
+/// specified in Replication.UserManaged.replicas
 class UserManaged {
   /// The list of Replicas for this Secret.
   ///

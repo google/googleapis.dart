@@ -663,6 +663,81 @@ class ProjectsLocationsGlobalHubsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Query PSC propagation status the status of a Network Connectivity Center
+  /// hub.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the hub.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/hubs/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression that filters the list of results. The
+  /// filter can be used to filter the results by the following fields: *
+  /// psc_propagation_status.source_spoke * psc_propagation_status.source_group
+  /// * psc_propagation_status.source_forwarding_rule *
+  /// psc_propagation_status.target_spoke * psc_propagation_status.target_group
+  /// * psc_propagation_status.code * psc_propagation_status.message
+  ///
+  /// [groupBy] - Optional. A field that counts are grouped by. A
+  /// comma-separated list of any of these fields: *
+  /// psc_propagation_status.source_spoke * psc_propagation_status.source_group
+  /// * psc_propagation_status.source_forwarding_rule *
+  /// psc_propagation_status.target_spoke * psc_propagation_status.target_group
+  /// * psc_propagation_status.code
+  ///
+  /// [orderBy] - Optional. Sort the results in the ascending order by specific
+  /// fields returned in the response. A comma-separated list of any of these
+  /// fields: * psc_propagation_status.source_spoke *
+  /// psc_propagation_status.source_group *
+  /// psc_propagation_status.source_forwarding_rule *
+  /// psc_propagation_status.target_spoke * psc_propagation_status.target_group
+  /// * psc_propagation_status.code If `group_by` is set, the value of the
+  /// `order_by` field must be the same as or a subset of the `group_by` field.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return per page.
+  ///
+  /// [pageToken] - Optional. The page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [QueryHubStatusResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<QueryHubStatusResponse> queryStatus(
+    core.String name, {
+    core.String? filter,
+    core.String? groupBy,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (groupBy != null) 'groupBy': [groupBy],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':queryStatus';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return QueryHubStatusResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Rejects a Network Connectivity Center spoke from being attached to a hub.
   ///
   /// If the spoke was previously in the `ACTIVE` state, it transitions to the
@@ -5341,6 +5416,43 @@ class Hub {
       };
 }
 
+/// The hub status entry.
+class HubStatusEntry {
+  /// The number of status.
+  ///
+  /// If group_by is not set in the request, the default is 1.
+  core.int? count;
+
+  /// The same group_by field from the request.
+  core.String? groupBy;
+
+  /// The PSC propagation status.
+  PscPropagationStatus? pscPropagationStatus;
+
+  HubStatusEntry({
+    this.count,
+    this.groupBy,
+    this.pscPropagationStatus,
+  });
+
+  HubStatusEntry.fromJson(core.Map json_)
+      : this(
+          count: json_['count'] as core.int?,
+          groupBy: json_['groupBy'] as core.String?,
+          pscPropagationStatus: json_.containsKey('pscPropagationStatus')
+              ? PscPropagationStatus.fromJson(json_['pscPropagationStatus']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (count != null) 'count': count!,
+        if (groupBy != null) 'groupBy': groupBy!,
+        if (pscPropagationStatus != null)
+          'pscPropagationStatus': pscPropagationStatus!,
+      };
+}
+
 /// InterconnectAttachment that this route applies to.
 class InterconnectAttachment {
   /// Cloud region to install this policy-based route on interconnect
@@ -5622,12 +5734,16 @@ class LinkedInterconnectAttachments {
       };
 }
 
-/// Next ID: 7
 class LinkedProducerVpcNetwork {
   /// IP ranges encompassing the subnets to be excluded from peering.
   ///
   /// Optional.
   core.List<core.String>? excludeExportRanges;
+
+  /// IP ranges allowed to be included from peering.
+  ///
+  /// Optional.
+  core.List<core.String>? includeExportRanges;
 
   /// The URI of the Service Consumer VPC that the Producer VPC is peered with.
   ///
@@ -5655,6 +5771,7 @@ class LinkedProducerVpcNetwork {
 
   LinkedProducerVpcNetwork({
     this.excludeExportRanges,
+    this.includeExportRanges,
     this.network,
     this.peering,
     this.producerNetwork,
@@ -5664,6 +5781,9 @@ class LinkedProducerVpcNetwork {
   LinkedProducerVpcNetwork.fromJson(core.Map json_)
       : this(
           excludeExportRanges: (json_['excludeExportRanges'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          includeExportRanges: (json_['includeExportRanges'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
           network: json_['network'] as core.String?,
@@ -5676,6 +5796,8 @@ class LinkedProducerVpcNetwork {
   core.Map<core.String, core.dynamic> toJson() => {
         if (excludeExportRanges != null)
           'excludeExportRanges': excludeExportRanges!,
+        if (includeExportRanges != null)
+          'includeExportRanges': includeExportRanges!,
         if (network != null) 'network': network!,
         if (peering != null) 'peering': peering!,
         if (producerNetwork != null) 'producerNetwork': producerNetwork!,
@@ -6046,7 +6168,7 @@ class ListLocationsResponse {
       };
 }
 
-/// Response for PolicyBasedRouting.ListPolicyBasedRoutes method.
+/// Response for PolicyBasedRoutingService.ListPolicyBasedRoutes method.
 class ListPolicyBasedRoutesResponse {
   /// The next pagination token in the List response.
   ///
@@ -7136,6 +7258,111 @@ class PscConnection {
       };
 }
 
+/// The PSC propagation status in a hub.
+class PscPropagationStatus {
+  /// The propagation status.
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : The code is unspecified.
+  /// - "READY" : The propagated PSC connection is ready.
+  /// - "PROPAGATING" : PSC connection is propagating. This is a transient
+  /// state.
+  /// - "ERROR_PRODUCER_PROPAGATED_CONNECTION_LIMIT_EXCEEDED" : The PSC
+  /// connection propagation failed because the VPC network or the project of
+  /// the target spoke has exceeded the connection limit set by the producer.
+  /// - "ERROR_PRODUCER_NAT_IP_SPACE_EXHAUSTED" : The PSC connection propagation
+  /// failed because the NAT IP subnet space has been exhausted. It is
+  /// equivalent to the `Needs attention` status of the PSC connection. See
+  /// https://cloud.google.com/vpc/docs/about-accessing-vpc-hosted-services-endpoints#connection-statuses.
+  /// - "ERROR_PRODUCER_QUOTA_EXCEEDED" : PSC connection propagation failed
+  /// because the `PSC_ILB_CONSUMER_FORWARDING_RULES_PER_PRODUCER_NETWORK` quota
+  /// in the producer VPC network has been exceeded.
+  /// - "ERROR_CONSUMER_QUOTA_EXCEEDED" : The PSC connection propagation failed
+  /// because the `PSC_PROPAGATED_CONNECTIONS_PER_VPC_NETWORK` quota in the
+  /// consumer VPC network has been exceeded.
+  core.String? code;
+
+  /// The human-readable summary of the PSC connection propagation status.
+  core.String? message;
+
+  /// The name of the forwarding rule exported to the hub.
+  core.String? sourceForwardingRule;
+
+  /// The name of the group that the source spoke belongs to.
+  core.String? sourceGroup;
+
+  /// The name of the spoke that the source forwarding rule belongs to.
+  core.String? sourceSpoke;
+
+  /// The name of the group that the target spoke belongs to.
+  core.String? targetGroup;
+
+  /// The name of the spoke that the source forwarding rule propagates to.
+  core.String? targetSpoke;
+
+  PscPropagationStatus({
+    this.code,
+    this.message,
+    this.sourceForwardingRule,
+    this.sourceGroup,
+    this.sourceSpoke,
+    this.targetGroup,
+    this.targetSpoke,
+  });
+
+  PscPropagationStatus.fromJson(core.Map json_)
+      : this(
+          code: json_['code'] as core.String?,
+          message: json_['message'] as core.String?,
+          sourceForwardingRule: json_['sourceForwardingRule'] as core.String?,
+          sourceGroup: json_['sourceGroup'] as core.String?,
+          sourceSpoke: json_['sourceSpoke'] as core.String?,
+          targetGroup: json_['targetGroup'] as core.String?,
+          targetSpoke: json_['targetSpoke'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (message != null) 'message': message!,
+        if (sourceForwardingRule != null)
+          'sourceForwardingRule': sourceForwardingRule!,
+        if (sourceGroup != null) 'sourceGroup': sourceGroup!,
+        if (sourceSpoke != null) 'sourceSpoke': sourceSpoke!,
+        if (targetGroup != null) 'targetGroup': targetGroup!,
+        if (targetSpoke != null) 'targetSpoke': targetSpoke!,
+      };
+}
+
+/// The response for HubService.QueryHubStatus.
+class QueryHubStatusResponse {
+  /// The list of hub status.
+  core.List<HubStatusEntry>? hubStatusEntries;
+
+  /// The token for the next page of the response.
+  ///
+  /// To see more results, use this value as the page_token for your next
+  /// request. If this value is empty, there are no more results.
+  core.String? nextPageToken;
+
+  QueryHubStatusResponse({
+    this.hubStatusEntries,
+    this.nextPageToken,
+  });
+
+  QueryHubStatusResponse.fromJson(core.Map json_)
+      : this(
+          hubStatusEntries: (json_['hubStatusEntries'] as core.List?)
+              ?.map((value) => HubStatusEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hubStatusEntries != null) 'hubStatusEntries': hubStatusEntries!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// The RegionalEndpoint resource.
 class RegionalEndpoint {
   /// The access type of this regional endpoint.
@@ -7156,7 +7383,8 @@ class RegionalEndpoint {
   /// When no address is provided, an IP from the subnetwork is allocated. Use
   /// one of the following formats: * IPv4 address as in `10.0.0.1` * Address
   /// resource URI as in
-  /// `projects/{project}/regions/{region}/addresses/{address_name}`
+  /// `projects/{project}/regions/{region}/addresses/{address_name}` for an IPv4
+  /// or IPv6 address.
   ///
   /// Optional.
   core.String? address;
@@ -7688,8 +7916,6 @@ class RoutingVPC {
 }
 
 /// The ServiceClass resource.
-///
-/// Next id: 9
 class ServiceClass {
   /// Time when the ServiceClass was created.
   ///
@@ -7769,8 +7995,6 @@ class ServiceClass {
 }
 
 /// The ServiceConnectionMap resource.
-///
-/// Next id: 15
 class ServiceConnectionMap {
   /// The PSC configurations on consumer side.
   core.List<ConsumerPscConfig>? consumerPscConfigs;
@@ -7911,8 +8135,6 @@ class ServiceConnectionMap {
 }
 
 /// The ServiceConnectionPolicy resource.
-///
-/// Next id: 12
 class ServiceConnectionPolicy {
   /// Time when the ServiceConnectionPolicy was created.
   ///
@@ -8036,8 +8258,6 @@ class ServiceConnectionPolicy {
 }
 
 /// The ServiceConnectionToken resource.
-///
-/// Next id: 10
 class ServiceConnectionToken {
   /// Time when the ServiceConnectionToken was created.
   ///
@@ -8224,8 +8444,6 @@ class Spoke {
   core.String? name;
 
   /// The reasons for current state of the spoke.
-  ///
-  /// Only present when the spoke is in the `INACTIVE` state.
   ///
   /// Output only.
   core.List<StateReason>? reasons;
@@ -8426,6 +8644,11 @@ class SpokeStateReasonCount {
   /// - "PAUSED" : The spoke has been deactivated internally.
   /// - "FAILED" : Network Connectivity Center encountered errors while
   /// accepting the spoke.
+  /// - "UPDATE_PENDING_REVIEW" : The proposed spoke update is pending review.
+  /// - "UPDATE_REJECTED" : The proposed spoke update has been rejected by the
+  /// hub administrator.
+  /// - "UPDATE_FAILED" : Network Connectivity Center encountered errors while
+  /// accepting the spoke update.
   core.String? stateReasonCode;
 
   SpokeStateReasonCount({
@@ -8551,6 +8774,11 @@ class StateReason {
   /// - "PAUSED" : The spoke has been deactivated internally.
   /// - "FAILED" : Network Connectivity Center encountered errors while
   /// accepting the spoke.
+  /// - "UPDATE_PENDING_REVIEW" : The proposed spoke update is pending review.
+  /// - "UPDATE_REJECTED" : The proposed spoke update has been rejected by the
+  /// hub administrator.
+  /// - "UPDATE_FAILED" : Network Connectivity Center encountered errors while
+  /// accepting the spoke update.
   core.String? code;
 
   /// Human-readable details about this reason.

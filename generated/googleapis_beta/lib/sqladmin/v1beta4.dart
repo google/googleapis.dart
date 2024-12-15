@@ -1033,11 +1033,6 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
-  /// [finalBackupExpiryTime] - Optional. Final Backup expiration time.
-  /// Timestamp in UTC of when this resource is considered expired.
-  ///
-  /// [finalBackupTtlDays] - Optional. Retention period of the final backup.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1051,15 +1046,9 @@ class InstancesResource {
   async.Future<Operation> delete(
     core.String project,
     core.String instance, {
-    core.String? finalBackupExpiryTime,
-    core.String? finalBackupTtlDays,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (finalBackupExpiryTime != null)
-        'finalBackupExpiryTime': [finalBackupExpiryTime],
-      if (finalBackupTtlDays != null)
-        'finalBackupTtlDays': [finalBackupTtlDays],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1569,12 +1558,12 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL read replica instance name.
   ///
-  /// [failover_1] - Set to true to invoke a replica failover to the designated
-  /// DR replica. As part of replica failover, the promote operation attempts to
-  /// add the original primary instance as a replica of the promoted DR replica
-  /// when the original primary instance comes back online. If set to false or
-  /// not specified, then the original primary instance becomes an independent
-  /// Cloud SQL primary instance. Only applicable to MySQL.
+  /// [failover_1] - Set to true to invoke a replica failover to the DR replica.
+  /// As part of replica failover, the promote operation attempts to add the
+  /// original primary instance as a replica of the promoted DR replica when the
+  /// original primary instance comes back online. If set to false or not
+  /// specified, then the original primary instance becomes an independent Cloud
+  /// SQL primary instance.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1967,8 +1956,7 @@ class InstancesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Switches over from the primary instance to the designated DR replica
-  /// instance.
+  /// Switches over from the primary instance to the DR replica instance.
   ///
   /// Request parameters:
   ///
@@ -1976,9 +1964,9 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL read replica instance name.
   ///
-  /// [dbTimeout] - Optional. (MySQL only) Cloud SQL instance operations
-  /// timeout, which is a sum of all database operations. Default value is 10
-  /// minutes and can be modified to a maximum value of 24 hours.
+  /// [dbTimeout] - Optional. (MySQL and PostgreSQL only) Cloud SQL instance
+  /// operations timeout, which is a sum of all database operations. Default
+  /// value is 10 minutes and can be modified to a maximum value of 24 hours.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3846,6 +3834,9 @@ class ConnectSettings {
   /// - "EXTERNAL" : On premises instance.
   core.String? backendType;
 
+  /// Custom subject alternative names for the server certificate.
+  core.List<core.String>? customSubjectAlternativeNames;
+
   /// The database engine type and version.
   ///
   /// The `databaseVersion` field cannot be changed after instance creation.
@@ -3864,22 +3855,6 @@ class ConnectSettings {
   /// - "MYSQL_5_5" : The database version is MySQL 5.5.
   /// - "MYSQL_5_6" : The database version is MySQL 5.6.
   /// - "MYSQL_5_7" : The database version is MySQL 5.7.
-  /// - "SQLSERVER_2017_STANDARD" : The database version is SQL Server 2017
-  /// Standard.
-  /// - "SQLSERVER_2017_ENTERPRISE" : The database version is SQL Server 2017
-  /// Enterprise.
-  /// - "SQLSERVER_2017_EXPRESS" : The database version is SQL Server 2017
-  /// Express.
-  /// - "SQLSERVER_2017_WEB" : The database version is SQL Server 2017 Web.
-  /// - "POSTGRES_9_6" : The database version is PostgreSQL 9.6.
-  /// - "POSTGRES_10" : The database version is PostgreSQL 10.
-  /// - "POSTGRES_11" : The database version is PostgreSQL 11.
-  /// - "POSTGRES_12" : The database version is PostgreSQL 12.
-  /// - "POSTGRES_13" : The database version is PostgreSQL 13.
-  /// - "POSTGRES_14" : The database version is PostgreSQL 14.
-  /// - "POSTGRES_15" : The database version is PostgreSQL 15.
-  /// - "POSTGRES_16" : The database version is PostgreSQL 16.
-  /// - "POSTGRES_17" : The database version is PostgreSQL 17.
   /// - "MYSQL_8_0" : The database version is MySQL 8.
   /// - "MYSQL_8_0_18" : The database major version is MySQL 8.0 and the minor
   /// version is 18.
@@ -3913,7 +3888,27 @@ class ConnectSettings {
   /// version is 39.
   /// - "MYSQL_8_0_40" : The database major version is MySQL 8.0 and the minor
   /// version is 40.
+  /// - "MYSQL_8_0_41" : The database major version is MySQL 8.0 and the minor
+  /// version is 41.
+  /// - "MYSQL_8_0_42" : The database major version is MySQL 8.0 and the minor
+  /// version is 42.
   /// - "MYSQL_8_4" : The database version is MySQL 8.4.
+  /// - "SQLSERVER_2017_STANDARD" : The database version is SQL Server 2017
+  /// Standard.
+  /// - "SQLSERVER_2017_ENTERPRISE" : The database version is SQL Server 2017
+  /// Enterprise.
+  /// - "SQLSERVER_2017_EXPRESS" : The database version is SQL Server 2017
+  /// Express.
+  /// - "SQLSERVER_2017_WEB" : The database version is SQL Server 2017 Web.
+  /// - "POSTGRES_9_6" : The database version is PostgreSQL 9.6.
+  /// - "POSTGRES_10" : The database version is PostgreSQL 10.
+  /// - "POSTGRES_11" : The database version is PostgreSQL 11.
+  /// - "POSTGRES_12" : The database version is PostgreSQL 12.
+  /// - "POSTGRES_13" : The database version is PostgreSQL 13.
+  /// - "POSTGRES_14" : The database version is PostgreSQL 14.
+  /// - "POSTGRES_15" : The database version is PostgreSQL 15.
+  /// - "POSTGRES_16" : The database version is PostgreSQL 16.
+  /// - "POSTGRES_17" : The database version is PostgreSQL 17.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
   /// Standard.
   /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
@@ -3962,6 +3957,7 @@ class ConnectSettings {
 
   ConnectSettings({
     this.backendType,
+    this.customSubjectAlternativeNames,
     this.databaseVersion,
     this.dnsName,
     this.ipAddresses,
@@ -3975,6 +3971,10 @@ class ConnectSettings {
   ConnectSettings.fromJson(core.Map json_)
       : this(
           backendType: json_['backendType'] as core.String?,
+          customSubjectAlternativeNames:
+              (json_['customSubjectAlternativeNames'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           databaseVersion: json_['databaseVersion'] as core.String?,
           dnsName: json_['dnsName'] as core.String?,
           ipAddresses: (json_['ipAddresses'] as core.List?)
@@ -3993,6 +3993,8 @@ class ConnectSettings {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backendType != null) 'backendType': backendType!,
+        if (customSubjectAlternativeNames != null)
+          'customSubjectAlternativeNames': customSubjectAlternativeNames!,
         if (databaseVersion != null) 'databaseVersion': databaseVersion!,
         if (dnsName != null) 'dnsName': dnsName!,
         if (ipAddresses != null) 'ipAddresses': ipAddresses!,
@@ -4225,22 +4227,6 @@ class DatabaseInstance {
   /// - "MYSQL_5_5" : The database version is MySQL 5.5.
   /// - "MYSQL_5_6" : The database version is MySQL 5.6.
   /// - "MYSQL_5_7" : The database version is MySQL 5.7.
-  /// - "SQLSERVER_2017_STANDARD" : The database version is SQL Server 2017
-  /// Standard.
-  /// - "SQLSERVER_2017_ENTERPRISE" : The database version is SQL Server 2017
-  /// Enterprise.
-  /// - "SQLSERVER_2017_EXPRESS" : The database version is SQL Server 2017
-  /// Express.
-  /// - "SQLSERVER_2017_WEB" : The database version is SQL Server 2017 Web.
-  /// - "POSTGRES_9_6" : The database version is PostgreSQL 9.6.
-  /// - "POSTGRES_10" : The database version is PostgreSQL 10.
-  /// - "POSTGRES_11" : The database version is PostgreSQL 11.
-  /// - "POSTGRES_12" : The database version is PostgreSQL 12.
-  /// - "POSTGRES_13" : The database version is PostgreSQL 13.
-  /// - "POSTGRES_14" : The database version is PostgreSQL 14.
-  /// - "POSTGRES_15" : The database version is PostgreSQL 15.
-  /// - "POSTGRES_16" : The database version is PostgreSQL 16.
-  /// - "POSTGRES_17" : The database version is PostgreSQL 17.
   /// - "MYSQL_8_0" : The database version is MySQL 8.
   /// - "MYSQL_8_0_18" : The database major version is MySQL 8.0 and the minor
   /// version is 18.
@@ -4274,7 +4260,27 @@ class DatabaseInstance {
   /// version is 39.
   /// - "MYSQL_8_0_40" : The database major version is MySQL 8.0 and the minor
   /// version is 40.
+  /// - "MYSQL_8_0_41" : The database major version is MySQL 8.0 and the minor
+  /// version is 41.
+  /// - "MYSQL_8_0_42" : The database major version is MySQL 8.0 and the minor
+  /// version is 42.
   /// - "MYSQL_8_4" : The database version is MySQL 8.4.
+  /// - "SQLSERVER_2017_STANDARD" : The database version is SQL Server 2017
+  /// Standard.
+  /// - "SQLSERVER_2017_ENTERPRISE" : The database version is SQL Server 2017
+  /// Enterprise.
+  /// - "SQLSERVER_2017_EXPRESS" : The database version is SQL Server 2017
+  /// Express.
+  /// - "SQLSERVER_2017_WEB" : The database version is SQL Server 2017 Web.
+  /// - "POSTGRES_9_6" : The database version is PostgreSQL 9.6.
+  /// - "POSTGRES_10" : The database version is PostgreSQL 10.
+  /// - "POSTGRES_11" : The database version is PostgreSQL 11.
+  /// - "POSTGRES_12" : The database version is PostgreSQL 12.
+  /// - "POSTGRES_13" : The database version is PostgreSQL 13.
+  /// - "POSTGRES_14" : The database version is PostgreSQL 14.
+  /// - "POSTGRES_15" : The database version is PostgreSQL 15.
+  /// - "POSTGRES_16" : The database version is PostgreSQL 16.
+  /// - "POSTGRES_17" : The database version is PostgreSQL 17.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
   /// Standard.
   /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
@@ -4410,8 +4416,8 @@ class DatabaseInstance {
   /// A primary instance and disaster recovery (DR) replica pair.
   ///
   /// A DR replica is a cross-region replica that you designate for failover in
-  /// the event that the primary instance experiences regional failure. Only
-  /// applicable to MySQL.
+  /// the event that the primary instance experiences regional failure.
+  /// Applicable to MySQL and PostgreSQL.
   ReplicationCluster? replicationCluster;
 
   /// Initial root password.
@@ -4489,6 +4495,18 @@ class DatabaseInstance {
   /// files from a data disk to Cloud Storage.
   core.bool? switchTransactionLogsToCloudStorageEnabled;
 
+  /// Input only.
+  ///
+  /// Immutable. Tag keys and tag values that are bound to this instance. You
+  /// must represent each item in the map as: `"" : ""`. For example, a single
+  /// resource can have the following tags: ``` "123/environment": "production",
+  /// "123/costCenter": "marketing", ``` For more information on tag creation
+  /// and management, see
+  /// https://cloud.google.com/resource-manager/docs/tags/tags-overview.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   /// All database versions that are available for upgrade.
   ///
   /// Output only.
@@ -4544,6 +4562,7 @@ class DatabaseInstance {
     this.state,
     this.suspensionReason,
     this.switchTransactionLogsToCloudStorageEnabled,
+    this.tags,
     this.upgradableDatabaseVersions,
     this.writeEndpoint,
   });
@@ -4646,6 +4665,12 @@ class DatabaseInstance {
               .toList(),
           switchTransactionLogsToCloudStorageEnabled:
               json_['switchTransactionLogsToCloudStorageEnabled'] as core.bool?,
+          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           upgradableDatabaseVersions:
               (json_['upgradableDatabaseVersions'] as core.List?)
                   ?.map((value) => AvailableDatabaseVersion.fromJson(
@@ -4714,6 +4739,7 @@ class DatabaseInstance {
         if (switchTransactionLogsToCloudStorageEnabled != null)
           'switchTransactionLogsToCloudStorageEnabled':
               switchTransactionLogsToCloudStorageEnabled!,
+        if (tags != null) 'tags': tags!,
         if (upgradableDatabaseVersions != null)
           'upgradableDatabaseVersions': upgradableDatabaseVersions!,
         if (writeEndpoint != null) 'writeEndpoint': writeEndpoint!,
@@ -5386,6 +5412,25 @@ class ExportContext {
         if (offload != null) 'offload': offload!,
         if (sqlExportOptions != null) 'sqlExportOptions': sqlExportOptions!,
         if (uri != null) 'uri': uri!,
+      };
+}
+
+/// The selected object that Cloud SQL migrates.
+class ExternalSyncSelectedObject {
+  /// The name of the database that Cloud SQL migrates.
+  core.String? database;
+
+  ExternalSyncSelectedObject({
+    this.database,
+  });
+
+  ExternalSyncSelectedObject.fromJson(core.Map json_)
+      : this(
+          database: json_['database'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (database != null) 'database': database!,
       };
 }
 
@@ -6556,6 +6601,11 @@ class IpConfiguration {
   /// `157.197.200.0/24`).
   core.List<AclEntry>? authorizedNetworks;
 
+  /// Custom Subject Alternative Name(SAN)s for a Cloud SQL instance.
+  ///
+  /// Optional.
+  core.List<core.String>? customSubjectAlternativeNames;
+
   /// Controls connectivity to private IP instances from Google services, such
   /// as BigQuery.
   core.bool? enablePrivatePathForGoogleCloudServices;
@@ -6591,7 +6641,17 @@ class IpConfiguration {
   /// - "GOOGLE_MANAGED_INTERNAL_CA" : Google-managed self-signed internal CA.
   /// - "GOOGLE_MANAGED_CAS_CA" : Google-managed regional CA part of root CA
   /// hierarchy hosted on Google Cloud's Certificate Authority Service (CAS).
+  /// - "CUSTOMER_MANAGED_CAS_CA" : Customer-managed CA hosted on Google Cloud's
+  /// Certificate Authority Service (CAS).
   core.String? serverCaMode;
+
+  /// The resource name of the server CA pool for an instance with
+  /// `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+  ///
+  /// Format: projects//locations//caPools/
+  ///
+  /// Optional.
+  core.String? serverCaPool;
 
   /// Specify how SSL/TLS is enforced in database connections.
   ///
@@ -6634,12 +6694,14 @@ class IpConfiguration {
   IpConfiguration({
     this.allocatedIpRange,
     this.authorizedNetworks,
+    this.customSubjectAlternativeNames,
     this.enablePrivatePathForGoogleCloudServices,
     this.ipv4Enabled,
     this.privateNetwork,
     this.pscConfig,
     this.requireSsl,
     this.serverCaMode,
+    this.serverCaPool,
     this.sslMode,
   });
 
@@ -6650,6 +6712,10 @@ class IpConfiguration {
               ?.map((value) => AclEntry.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          customSubjectAlternativeNames:
+              (json_['customSubjectAlternativeNames'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           enablePrivatePathForGoogleCloudServices:
               json_['enablePrivatePathForGoogleCloudServices'] as core.bool?,
           ipv4Enabled: json_['ipv4Enabled'] as core.bool?,
@@ -6660,6 +6726,7 @@ class IpConfiguration {
               : null,
           requireSsl: json_['requireSsl'] as core.bool?,
           serverCaMode: json_['serverCaMode'] as core.String?,
+          serverCaPool: json_['serverCaPool'] as core.String?,
           sslMode: json_['sslMode'] as core.String?,
         );
 
@@ -6667,6 +6734,8 @@ class IpConfiguration {
         if (allocatedIpRange != null) 'allocatedIpRange': allocatedIpRange!,
         if (authorizedNetworks != null)
           'authorizedNetworks': authorizedNetworks!,
+        if (customSubjectAlternativeNames != null)
+          'customSubjectAlternativeNames': customSubjectAlternativeNames!,
         if (enablePrivatePathForGoogleCloudServices != null)
           'enablePrivatePathForGoogleCloudServices':
               enablePrivatePathForGoogleCloudServices!,
@@ -6675,6 +6744,7 @@ class IpConfiguration {
         if (pscConfig != null) 'pscConfig': pscConfig!,
         if (requireSsl != null) 'requireSsl': requireSsl!,
         if (serverCaMode != null) 'serverCaMode': serverCaMode!,
+        if (serverCaPool != null) 'serverCaPool': serverCaPool!,
         if (sslMode != null) 'sslMode': sslMode!,
       };
 }
@@ -6989,8 +7059,28 @@ class OnPremisesConfiguration {
   /// The password for connecting to on-premises instance.
   core.String? password;
 
+  /// A list of objects that the user selects for replication from an external
+  /// source instance.
+  ///
+  /// Optional.
+  core.List<SelectedObjects>? selectedObjects;
+
   /// The reference to Cloud SQL instance if the source is Cloud SQL.
   InstanceReference? sourceInstance;
+
+  /// SslOption for replica connection to the on-premises source.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SSL_OPTION_UNSPECIFIED" : Unknown SSL option i.e. SSL option not
+  /// specified by user.
+  /// - "DISABLE" : SSL is disabled for replica connection to the on-premises
+  /// source.
+  /// - "REQUIRE" : SSL is required for replica connection to the on-premises
+  /// source.
+  /// - "VERIFY_CA" : Verify CA is required for replica connection to the
+  /// on-premises source.
+  core.String? sslOption;
 
   /// The username for connecting to on-premises instance.
   core.String? username;
@@ -7003,7 +7093,9 @@ class OnPremisesConfiguration {
     this.hostPort,
     this.kind,
     this.password,
+    this.selectedObjects,
     this.sourceInstance,
+    this.sslOption,
     this.username,
   });
 
@@ -7016,10 +7108,15 @@ class OnPremisesConfiguration {
           hostPort: json_['hostPort'] as core.String?,
           kind: json_['kind'] as core.String?,
           password: json_['password'] as core.String?,
+          selectedObjects: (json_['selectedObjects'] as core.List?)
+              ?.map((value) => SelectedObjects.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           sourceInstance: json_.containsKey('sourceInstance')
               ? InstanceReference.fromJson(json_['sourceInstance']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          sslOption: json_['sslOption'] as core.String?,
           username: json_['username'] as core.String?,
         );
 
@@ -7031,7 +7128,9 @@ class OnPremisesConfiguration {
         if (hostPort != null) 'hostPort': hostPort!,
         if (kind != null) 'kind': kind!,
         if (password != null) 'password': password!,
+        if (selectedObjects != null) 'selectedObjects': selectedObjects!,
         if (sourceInstance != null) 'sourceInstance': sourceInstance!,
+        if (sslOption != null) 'sslOption': sslOption!,
         if (username != null) 'username': username!,
       };
 }
@@ -7156,6 +7255,8 @@ class Operation {
   /// instance.
   /// - "MAJOR_VERSION_UPGRADE" : Updates the major version of a Cloud SQL
   /// instance.
+  /// - "ADVANCED_BACKUP" : Creates a backup for an Advanced BackupTier Cloud
+  /// SQL instance.
   core.String? operationType;
 
   /// The URI of this resource.
@@ -7174,6 +7275,11 @@ class Operation {
   /// - "RUNNING" : The operation is running.
   /// - "DONE" : The operation completed.
   core.String? status;
+
+  /// The sub operation based on the operation type.
+  ///
+  /// Optional.
+  SqlSubOperationType? subOperationType;
 
   /// Name of the database instance related to this operation.
   core.String? targetId;
@@ -7200,6 +7306,7 @@ class Operation {
     this.selfLink,
     this.startTime,
     this.status,
+    this.subOperationType,
     this.targetId,
     this.targetLink,
     this.targetProject,
@@ -7241,6 +7348,10 @@ class Operation {
           selfLink: json_['selfLink'] as core.String?,
           startTime: json_['startTime'] as core.String?,
           status: json_['status'] as core.String?,
+          subOperationType: json_.containsKey('subOperationType')
+              ? SqlSubOperationType.fromJson(json_['subOperationType']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           targetId: json_['targetId'] as core.String?,
           targetLink: json_['targetLink'] as core.String?,
           targetProject: json_['targetProject'] as core.String?,
@@ -7263,6 +7374,7 @@ class Operation {
         if (selfLink != null) 'selfLink': selfLink!,
         if (startTime != null) 'startTime': startTime!,
         if (status != null) 'status': status!,
+        if (subOperationType != null) 'subOperationType': subOperationType!,
         if (targetId != null) 'targetId': targetId!,
         if (targetLink != null) 'targetLink': targetLink!,
         if (targetProject != null) 'targetProject': targetProject!,
@@ -7651,8 +7763,8 @@ class ReplicaConfiguration {
 /// A primary instance and disaster recovery (DR) replica pair.
 ///
 /// A DR replica is a cross-region replica that you designate for failover in
-/// the event that the primary instance has regional failure. Only applicable to
-/// MySQL.
+/// the event that the primary instance has regional failure. Applicable to
+/// MySQL and PostgreSQL.
 class ReplicationCluster {
   /// Read-only field that indicates whether the replica is a DR replica.
   ///
@@ -7672,14 +7784,16 @@ class ReplicationCluster {
   /// Optional.
   core.String? failoverDrReplicaName;
 
-  /// If set, it indicates this instance has a private service access (PSA) dns
-  /// endpoint that is pointing to the primary instance of the cluster.
+  /// If set, this field indicates this instance has a private service access
+  /// (PSA) DNS endpoint that is pointing to the primary instance of the
+  /// cluster.
   ///
-  /// If this instance is the primary, the dns should be pointing to this
-  /// instance. After Switchover or Replica failover, this DNS endpoint points
-  /// to the promoted instance. This is a read-only field, returned to the user
-  /// as information. This field can exist even if a standalone instance does
-  /// not yet have a replica, or had a DR replica that was deleted.
+  /// If this instance is the primary, then the DNS endpoint points to this
+  /// instance. After a switchover or replica failover operation, this DNS
+  /// endpoint points to the promoted instance. This is a read-only field,
+  /// returned to the user as information. This field can exist even if a
+  /// standalone instance doesn't have a DR replica yet or the DR replica is
+  /// deleted.
   ///
   /// Output only.
   core.String? psaWriteEndpoint;
@@ -7838,6 +7952,28 @@ class RotateServerCertificateContext {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextVersion != null) 'nextVersion': nextVersion!,
+      };
+}
+
+/// A list of objects that the user selects for replication from an external
+/// source instance.
+class SelectedObjects {
+  /// The name of the database to migrate.
+  ///
+  /// Required.
+  core.String? database;
+
+  SelectedObjects({
+    this.database,
+  });
+
+  SelectedObjects.fromJson(core.Map json_)
+      : this(
+          database: json_['database'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (database != null) 'database': database!,
       };
 }
 
@@ -8643,6 +8779,13 @@ class SqlInstancesVerifyExternalSyncSettingsRequest {
   /// Optional.
   MySqlSyncConfig? mysqlSyncConfig;
 
+  /// Migrate only the specified objects from the source instance.
+  ///
+  /// If this field is empty, then migrate all objects.
+  ///
+  /// Optional.
+  core.List<ExternalSyncSelectedObject>? selectedObjects;
+
   /// External sync mode
   /// Possible string values are:
   /// - "EXTERNAL_SYNC_MODE_UNSPECIFIED" : Unknown external sync mode, will be
@@ -8677,6 +8820,7 @@ class SqlInstancesVerifyExternalSyncSettingsRequest {
   SqlInstancesVerifyExternalSyncSettingsRequest({
     this.migrationType,
     this.mysqlSyncConfig,
+    this.selectedObjects,
     this.syncMode,
     this.syncParallelLevel,
     this.verifyConnectionOnly,
@@ -8690,6 +8834,10 @@ class SqlInstancesVerifyExternalSyncSettingsRequest {
               ? MySqlSyncConfig.fromJson(json_['mysqlSyncConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          selectedObjects: (json_['selectedObjects'] as core.List?)
+              ?.map((value) => ExternalSyncSelectedObject.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           syncMode: json_['syncMode'] as core.String?,
           syncParallelLevel: json_['syncParallelLevel'] as core.String?,
           verifyConnectionOnly: json_['verifyConnectionOnly'] as core.bool?,
@@ -8699,6 +8847,7 @@ class SqlInstancesVerifyExternalSyncSettingsRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (migrationType != null) 'migrationType': migrationType!,
         if (mysqlSyncConfig != null) 'mysqlSyncConfig': mysqlSyncConfig!,
+        if (selectedObjects != null) 'selectedObjects': selectedObjects!,
         if (syncMode != null) 'syncMode': syncMode!,
         if (syncParallelLevel != null) 'syncParallelLevel': syncParallelLevel!,
         if (verifyConnectionOnly != null)
@@ -8911,6 +9060,41 @@ class SqlServerUserDetails {
   core.Map<core.String, core.dynamic> toJson() => {
         if (disabled != null) 'disabled': disabled!,
         if (serverRoles != null) 'serverRoles': serverRoles!,
+      };
+}
+
+/// The sub operation type based on the operation type.
+class SqlSubOperationType {
+  /// The type of maintenance to be performed on the instance.
+  /// Possible string values are:
+  /// - "SQL_MAINTENANCE_TYPE_UNSPECIFIED" : Maintenance type is unspecified.
+  /// - "INSTANCE_MAINTENANCE" : Indicates that a standalone instance is
+  /// undergoing maintenance. The instance can be either a primary instance or a
+  /// replica.
+  /// - "REPLICA_INCLUDED_MAINTENANCE" : Indicates that the primary instance and
+  /// all of its replicas, including cascading replicas, are undergoing
+  /// maintenance. Maintenance is performed on groups of replicas first,
+  /// followed by the primary instance.
+  /// - "INSTANCE_SELF_SERVICE_MAINTENANCE" : Indicates that the standalone
+  /// instance is undergoing maintenance, initiated by self-service. The
+  /// instance can be either a primary instance or a replica.
+  /// - "REPLICA_INCLUDED_SELF_SERVICE_MAINTENANCE" : Indicates that the primary
+  /// instance and all of its replicas are undergoing maintenance, initiated by
+  /// self-service. Maintenance is performed on groups of replicas first,
+  /// followed by the primary instance.
+  core.String? maintenanceType;
+
+  SqlSubOperationType({
+    this.maintenanceType,
+  });
+
+  SqlSubOperationType.fromJson(core.Map json_)
+      : this(
+          maintenanceType: json_['maintenanceType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maintenanceType != null) 'maintenanceType': maintenanceType!,
       };
 }
 

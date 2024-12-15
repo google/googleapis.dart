@@ -1388,7 +1388,6 @@ class $AuditAdvertiserResponse {
 /// - cloudresourcemanager:v3 : AuditLogConfig
 /// - config:v1 : AuditLogConfig
 /// - connectors:v1 : AuditLogConfig
-/// - contactcenterinsights:v1 : GoogleIamV1AuditLogConfig
 /// - contentwarehouse:v1 : GoogleIamV1AuditLogConfig
 /// - datafusion:v1 : AuditLogConfig
 /// - datamigration:v1 : AuditLogConfig
@@ -6600,12 +6599,15 @@ class $EgressSource {
 /// - aiplatform:v1 : GoogleCloudAiplatformV1CancelTrainingPipelineRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1CancelTuningJobRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1CheckTrialEarlyStoppingStateRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1DirectUploadSource
 /// - aiplatform:v1 : GoogleCloudAiplatformV1ExactMatchSpec
 /// - aiplatform:v1 : GoogleCloudAiplatformV1FeatureOnlineStoreOptimized
 /// - aiplatform:v1 : GoogleCloudAiplatformV1FeatureViewIndexConfigBruteForceConfig
 /// - aiplatform:v1 : GoogleCloudAiplatformV1ListOptimalTrialsRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1NotebookExecutionJobWorkbenchRuntime
 /// - aiplatform:v1 : GoogleCloudAiplatformV1PauseModelDeploymentMonitoringJobRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1PauseScheduleRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1RagVectorDbConfigRagManagedDb
 /// - aiplatform:v1 : GoogleCloudAiplatformV1RebootPersistentResourceRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1RemoveContextChildrenResponse
 /// - aiplatform:v1 : GoogleCloudAiplatformV1RemoveDatapointsResponse
@@ -6615,8 +6617,14 @@ class $EgressSource {
 /// - aiplatform:v1 : GoogleCloudAiplatformV1StopTrialRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1SyncFeatureViewRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1ToolCallValidSpec
+/// - aiplatform:v1 : GoogleCloudAiplatformV1ToolGoogleSearch
 /// - aiplatform:v1 : GoogleCloudAiplatformV1ToolNameMatchSpec
 /// - aiplatform:v1 : GoogleCloudAiplatformV1ToolParameterKeyMatchSpec
+/// - aiplatform:v1 : GoogleCloudAiplatformV1TrajectoryAnyOrderMatchSpec
+/// - aiplatform:v1 : GoogleCloudAiplatformV1TrajectoryExactMatchSpec
+/// - aiplatform:v1 : GoogleCloudAiplatformV1TrajectoryInOrderMatchSpec
+/// - aiplatform:v1 : GoogleCloudAiplatformV1TrajectoryPrecisionSpec
+/// - aiplatform:v1 : GoogleCloudAiplatformV1TrajectoryRecallSpec
 /// - aiplatform:v1 : GoogleCloudAiplatformV1UpgradeNotebookRuntimeRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1UpsertDatapointsResponse
 /// - aiplatform:v1 : GoogleCloudAiplatformV1WriteFeatureValuesResponse
@@ -6644,6 +6652,7 @@ class $EgressSource {
 /// - androidpublisher:v3 : ExternalTransactionTestPurchase
 /// - androidpublisher:v3 : FullRefund
 /// - androidpublisher:v3 : MigrateBasePlanPricesResponse
+/// - androidpublisher:v3 : OneTimeCode
 /// - androidpublisher:v3 : OtherRecurringProduct
 /// - androidpublisher:v3 : OtherRegionsSubscriptionOfferPhaseFreePriceOverride
 /// - androidpublisher:v3 : PendingCancellation
@@ -6850,6 +6859,7 @@ class $EgressSource {
 /// - connectors:v1 : RefreshConnectionSchemaMetadataRequest
 /// - connectors:v1 : RepairEventingRequest
 /// - connectors:v1 : RetryEventSubscriptionRequest
+/// - connectors:v1 : WithdrawCustomConnectorVersionRequest
 /// - connectors:v2 : Empty
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1HoldData
@@ -6890,7 +6900,6 @@ class $EgressSource {
 /// - datamigration:v1 : Empty
 /// - datamigration:v1 : LogMiner
 /// - datamigration:v1 : OracleAsmLogFileAccess
-/// - datamigration:v1 : PromoteMigrationJobRequest
 /// - datamigration:v1 : RollbackConversionWorkspaceRequest
 /// - datamigration:v1 : StaticIpConnectivity
 /// - datamigration:v1 : StaticServiceIpConnectivity
@@ -7059,7 +7068,6 @@ class $EgressSource {
 /// - gkehub:v2 : Empty
 /// - gkeonprem:v1 : CancelOperationRequest
 /// - gkeonprem:v1 : Empty
-/// - gkeonprem:v1 : VmwareAdminMetalLbConfig
 /// - gmail:v1 : DisableCseKeyPairRequest
 /// - gmail:v1 : EnableCseKeyPairRequest
 /// - gmail:v1 : ObliterateCseKeyPairRequest
@@ -7160,12 +7168,14 @@ class $EgressSource {
 /// - netapp:v1 : ResumeReplicationRequest
 /// - netapp:v1 : ReverseReplicationDirectionRequest
 /// - netapp:v1 : SwitchActiveReplicaZoneRequest
+/// - netapp:v1 : SyncReplicationRequest
 /// - netapp:v1 : VerifyKmsConfigRequest
 /// - networkconnectivity:v1 : Empty
 /// - networkconnectivity:v1 : GoogleLongrunningCancelOperationRequest
 /// - networkmanagement:v1 : CancelOperationRequest
 /// - networkmanagement:v1 : Empty
 /// - networkmanagement:v1 : RerunConnectivityTestRequest
+/// - networksecurity:v1 : AuthzPolicyCustomProviderCloudIap
 /// - networksecurity:v1 : CancelOperationRequest
 /// - networksecurity:v1 : Empty
 /// - networkservices:v1 : CancelOperationRequest
@@ -7985,6 +7995,7 @@ class $ExchangeAssignedTargetingOptionDetails {
   /// - "EXCHANGE_ADMOST_GBID" : AdMost.
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
   /// - "EXCHANGE_NETFLIX" : Netflix.
+  /// - "EXCHANGE_CORE" : Core.
   /// - "EXCHANGE_TUBI" : Tubi.
   core.String? exchange;
 
@@ -8094,6 +8105,7 @@ class $ExchangeConfigEnabledExchange {
   /// - "EXCHANGE_ADMOST_GBID" : AdMost.
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
   /// - "EXCHANGE_NETFLIX" : Netflix.
+  /// - "EXCHANGE_CORE" : Core.
   /// - "EXCHANGE_TUBI" : Tubi.
   core.String? exchange;
 
@@ -8235,6 +8247,7 @@ class $ExchangeReviewStatus {
   /// - "EXCHANGE_ADMOST_GBID" : AdMost.
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
   /// - "EXCHANGE_NETFLIX" : Netflix.
+  /// - "EXCHANGE_CORE" : Core.
   /// - "EXCHANGE_TUBI" : Tubi.
   core.String? exchange;
 
@@ -8358,6 +8371,7 @@ class $ExchangeTargetingOptionDetails {
   /// - "EXCHANGE_ADMOST_GBID" : AdMost.
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
   /// - "EXCHANGE_NETFLIX" : Netflix.
+  /// - "EXCHANGE_CORE" : Core.
   /// - "EXCHANGE_TUBI" : Tubi.
   core.String? exchange;
 
@@ -8720,7 +8734,6 @@ class $ExportOptions01 {
 /// - compute:v1 : Expr
 /// - config:v1 : Expr
 /// - connectors:v1 : Expr
-/// - contactcenterinsights:v1 : GoogleTypeExpr
 /// - containeranalysis:v1 : Expr
 /// - contentwarehouse:v1 : GoogleTypeExpr
 /// - datacatalog:v1 : Expr
@@ -11891,9 +11904,49 @@ class $Instance02 {
 
 /// Used by:
 ///
+/// - aiplatform:v1 : GoogleCloudAiplatformV1CometInstance
+/// - aiplatform:v1 : GoogleCloudAiplatformV1MetricxInstance
+class $Instance03 {
+  /// Output of the evaluated model.
+  ///
+  /// Required.
+  core.String? prediction;
+
+  /// Ground truth used to compare against the prediction.
+  ///
+  /// Optional.
+  core.String? reference;
+
+  /// Source text in original language.
+  ///
+  /// Optional.
+  core.String? source;
+
+  $Instance03({
+    this.prediction,
+    this.reference,
+    this.source,
+  });
+
+  $Instance03.fromJson(core.Map json_)
+      : this(
+          prediction: json_['prediction'] as core.String?,
+          reference: json_['reference'] as core.String?,
+          source: json_['source'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (prediction != null) 'prediction': prediction!,
+        if (reference != null) 'reference': reference!,
+        if (source != null) 'source': source!,
+      };
+}
+
+/// Used by:
+///
 /// - aiplatform:v1 : GoogleCloudAiplatformV1SummarizationHelpfulnessInstance
 /// - aiplatform:v1 : GoogleCloudAiplatformV1SummarizationVerbosityInstance
-class $Instance03 {
+class $Instance04 {
   /// Text to be summarized.
   ///
   /// Required.
@@ -11914,14 +11967,14 @@ class $Instance03 {
   /// Optional.
   core.String? reference;
 
-  $Instance03({
+  $Instance04({
     this.context,
     this.instruction,
     this.prediction,
     this.reference,
   });
 
-  $Instance03.fromJson(core.Map json_)
+  $Instance04.fromJson(core.Map json_)
       : this(
           context: json_['context'] as core.String?,
           instruction: json_['instruction'] as core.String?,
@@ -12038,6 +12091,128 @@ class $InstanceGroupManagersApplyUpdatesRequest {
         if (minimalAction != null) 'minimalAction': minimalAction!,
         if (mostDisruptiveAllowedAction != null)
           'mostDisruptiveAllowedAction': mostDisruptiveAllowedAction!,
+      };
+}
+
+/// Used by:
+///
+/// - compute:v1 : InstanceGroupManagersResumeInstancesRequest
+/// - compute:v1 : RegionInstanceGroupManagersResumeInstancesRequest
+class $InstanceGroupManagersResumeInstancesRequest {
+  /// The URLs of one or more instances to resume.
+  ///
+  /// This can be a full URL or a partial URL, such as
+  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
+  core.List<core.String>? instances;
+
+  $InstanceGroupManagersResumeInstancesRequest({
+    this.instances,
+  });
+
+  $InstanceGroupManagersResumeInstancesRequest.fromJson(core.Map json_)
+      : this(
+          instances: (json_['instances'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instances != null) 'instances': instances!,
+      };
+}
+
+/// Used by:
+///
+/// - compute:v1 : InstanceGroupManagersStartInstancesRequest
+/// - compute:v1 : RegionInstanceGroupManagersStartInstancesRequest
+class $InstanceGroupManagersStartInstancesRequest {
+  /// The URLs of one or more instances to start.
+  ///
+  /// This can be a full URL or a partial URL, such as
+  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
+  core.List<core.String>? instances;
+
+  $InstanceGroupManagersStartInstancesRequest({
+    this.instances,
+  });
+
+  $InstanceGroupManagersStartInstancesRequest.fromJson(core.Map json_)
+      : this(
+          instances: (json_['instances'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instances != null) 'instances': instances!,
+      };
+}
+
+/// Used by:
+///
+/// - compute:v1 : InstanceGroupManagersStopInstancesRequest
+/// - compute:v1 : RegionInstanceGroupManagersStopInstancesRequest
+class $InstanceGroupManagersStopInstancesRequest {
+  /// If this flag is set to true, the Instance Group Manager will proceed to
+  /// stop the instances, skipping initialization on them.
+  core.bool? forceStop;
+
+  /// The URLs of one or more instances to stop.
+  ///
+  /// This can be a full URL or a partial URL, such as
+  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
+  core.List<core.String>? instances;
+
+  $InstanceGroupManagersStopInstancesRequest({
+    this.forceStop,
+    this.instances,
+  });
+
+  $InstanceGroupManagersStopInstancesRequest.fromJson(core.Map json_)
+      : this(
+          forceStop: json_['forceStop'] as core.bool?,
+          instances: (json_['instances'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (forceStop != null) 'forceStop': forceStop!,
+        if (instances != null) 'instances': instances!,
+      };
+}
+
+/// Used by:
+///
+/// - compute:v1 : InstanceGroupManagersSuspendInstancesRequest
+/// - compute:v1 : RegionInstanceGroupManagersSuspendInstancesRequest
+class $InstanceGroupManagersSuspendInstancesRequest {
+  /// If this flag is set to true, the Instance Group Manager will proceed to
+  /// suspend the instances, skipping initialization on them.
+  core.bool? forceSuspend;
+
+  /// The URLs of one or more instances to suspend.
+  ///
+  /// This can be a full URL or a partial URL, such as
+  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
+  core.List<core.String>? instances;
+
+  $InstanceGroupManagersSuspendInstancesRequest({
+    this.forceSuspend,
+    this.instances,
+  });
+
+  $InstanceGroupManagersSuspendInstancesRequest.fromJson(core.Map json_)
+      : this(
+          forceSuspend: json_['forceSuspend'] as core.bool?,
+          instances: (json_['instances'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (forceSuspend != null) 'forceSuspend': forceSuspend!,
+        if (instances != null) 'instances': instances!,
       };
 }
 
@@ -15679,10 +15854,8 @@ class $Pacing {
   /// The type of pacing that defines how the budget amount will be spent across
   /// the pacing_period.
   ///
-  /// *Warning*: Starting on **November 5, 2024**, `PACING_TYPE_ASAP` will no
-  /// longer be compatible with pacing_period `PACING_PERIOD_FLIGHT` for
-  /// insertion orders. \[Read more about this announced
-  /// change\](/display-video/api/deprecations#features.io_asap).
+  /// `PACING_TYPE_ASAP` is not compatible with pacing_period
+  /// `PACING_PERIOD_FLIGHT` for insertion orders.
   ///
   /// Required.
   /// Possible string values are:
@@ -16341,7 +16514,6 @@ class $Permissions {
 /// - compute:v1 : TestPermissionsResponse
 /// - config:v1 : TestIamPermissionsResponse
 /// - connectors:v1 : TestIamPermissionsResponse
-/// - contactcenterinsights:v1 : GoogleIamV1TestIamPermissionsResponse
 /// - containeranalysis:v1 : TestIamPermissionsResponse
 /// - datacatalog:v1 : TestIamPermissionsResponse
 /// - datafusion:v1 : TestIamPermissionsResponse
@@ -16776,13 +16948,175 @@ class $PortConfig {
 /// - cloudchannel:v1 : GoogleTypePostalAddress
 /// - contentwarehouse:v1 : GoogleTypePostalAddress
 /// - documentai:v1 : GoogleTypePostalAddress
-/// - domains:v1 : PostalAddress
-/// - jobs:v3 : PostalAddress
-/// - jobs:v4 : PostalAddress
 /// - mybusinessaccountmanagement:v1 : PostalAddress
 /// - mybusinessbusinessinformation:v1 : PostalAddress
 /// - mybusinessverifications:v1 : PostalAddress
-class $PostalAddress {
+class $PostalAddress00 {
+  /// Unstructured address lines describing the lower levels of an address.
+  ///
+  /// Because values in address_lines do not have type information and may
+  /// sometimes contain multiple values in a single field (For example "Austin,
+  /// TX"), it is important that the line order is clear. The order of address
+  /// lines should be "envelope order" for the country/region of the address. In
+  /// places where this can vary (For example Japan), address_language is used
+  /// to make it explicit (For example "ja" for large-to-small ordering and
+  /// "ja-Latn" or "en" for small-to-large). This way, the most specific line of
+  /// an address can be selected based on the language. The minimum permitted
+  /// structural representation of an address consists of a region_code with all
+  /// remaining information placed in the address_lines. It would be possible to
+  /// format such an address very approximately without geocoding, but no
+  /// semantic reasoning could be made about any of the address components until
+  /// it was at least partially resolved. Creating an address only containing a
+  /// region_code and address_lines, and then geocoding is the recommended way
+  /// to handle completely unstructured addresses (as opposed to guessing which
+  /// parts of the address should be localities or administrative areas).
+  core.List<core.String>? addressLines;
+
+  /// Highest administrative subdivision which is used for postal addresses of a
+  /// country or region.
+  ///
+  /// For example, this can be a state, a province, an oblast, or a prefecture.
+  /// Specifically, for Spain this is the province and not the autonomous
+  /// community (For example "Barcelona" and not "Catalonia"). Many countries
+  /// don't use an administrative area in postal addresses. For example in
+  /// Switzerland this should be left unpopulated.
+  ///
+  /// Optional.
+  core.String? administrativeArea;
+
+  /// BCP-47 language code of the contents of this address (if known).
+  ///
+  /// This is often the UI language of the input form or is expected to match
+  /// one of the languages used in the address' country/region, or their
+  /// transliterated equivalents. This can affect formatting in certain
+  /// countries, but is not critical to the correctness of the data and will
+  /// never affect any validation or other non-formatting related operations. If
+  /// this value is not known, it should be omitted (rather than specifying a
+  /// possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
+  ///
+  /// Optional.
+  core.String? languageCode;
+
+  /// Generally refers to the city/town portion of the address.
+  ///
+  /// Examples: US city, IT comune, UK post town. In regions of the world where
+  /// localities are not well defined or do not fit into this structure well,
+  /// leave locality empty and use address_lines.
+  ///
+  /// Optional.
+  core.String? locality;
+
+  /// The name of the organization at the address.
+  ///
+  /// Optional.
+  core.String? organization;
+
+  /// Postal code of the address.
+  ///
+  /// Not all countries use or require postal codes to be present, but where
+  /// they are used, they may trigger additional validation with other parts of
+  /// the address (For example state/zip validation in the U.S.A.).
+  ///
+  /// Optional.
+  core.String? postalCode;
+
+  /// The recipient at the address.
+  ///
+  /// This field may, under certain circumstances, contain multiline
+  /// information. For example, it might contain "care of" information.
+  ///
+  /// Optional.
+  core.List<core.String>? recipients;
+
+  /// CLDR region code of the country/region of the address.
+  ///
+  /// This is never inferred and it is up to the user to ensure the value is
+  /// correct. See https://cldr.unicode.org/ and
+  /// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
+  /// for details. Example: "CH" for Switzerland.
+  ///
+  /// Required.
+  core.String? regionCode;
+
+  /// The schema revision of the `PostalAddress`.
+  ///
+  /// This must be set to 0, which is the latest revision. All new revisions
+  /// **must** be backward compatible with old revisions.
+  core.int? revision;
+
+  /// Additional, country-specific, sorting code.
+  ///
+  /// This is not used in most regions. Where it is used, the value is either a
+  /// string like "CEDEX", optionally followed by a number (For example "CEDEX
+  /// 7"), or just a number alone, representing the "sector code" (Jamaica),
+  /// "delivery area indicator" (Malawi) or "post office indicator" (For example
+  /// Côte d'Ivoire).
+  ///
+  /// Optional.
+  core.String? sortingCode;
+
+  /// Sublocality of the address.
+  ///
+  /// For example, this can be neighborhoods, boroughs, districts.
+  ///
+  /// Optional.
+  core.String? sublocality;
+
+  $PostalAddress00({
+    this.addressLines,
+    this.administrativeArea,
+    this.languageCode,
+    this.locality,
+    this.organization,
+    this.postalCode,
+    this.recipients,
+    this.regionCode,
+    this.revision,
+    this.sortingCode,
+    this.sublocality,
+  });
+
+  $PostalAddress00.fromJson(core.Map json_)
+      : this(
+          addressLines: (json_['addressLines'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          administrativeArea: json_['administrativeArea'] as core.String?,
+          languageCode: json_['languageCode'] as core.String?,
+          locality: json_['locality'] as core.String?,
+          organization: json_['organization'] as core.String?,
+          postalCode: json_['postalCode'] as core.String?,
+          recipients: (json_['recipients'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          regionCode: json_['regionCode'] as core.String?,
+          revision: json_['revision'] as core.int?,
+          sortingCode: json_['sortingCode'] as core.String?,
+          sublocality: json_['sublocality'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (addressLines != null) 'addressLines': addressLines!,
+        if (administrativeArea != null)
+          'administrativeArea': administrativeArea!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (locality != null) 'locality': locality!,
+        if (organization != null) 'organization': organization!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (recipients != null) 'recipients': recipients!,
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (revision != null) 'revision': revision!,
+        if (sortingCode != null) 'sortingCode': sortingCode!,
+        if (sublocality != null) 'sublocality': sublocality!,
+      };
+}
+
+/// Used by:
+///
+/// - domains:v1 : PostalAddress
+/// - jobs:v3 : PostalAddress
+/// - jobs:v4 : PostalAddress
+class $PostalAddress01 {
   /// Unstructured address lines describing the lower levels of an address.
   ///
   /// Because values in address_lines do not have type information and may
@@ -16892,7 +17226,7 @@ class $PostalAddress {
   /// Optional.
   core.String? sublocality;
 
-  $PostalAddress({
+  $PostalAddress01({
     this.addressLines,
     this.administrativeArea,
     this.languageCode,
@@ -16906,7 +17240,7 @@ class $PostalAddress {
     this.sublocality,
   });
 
-  $PostalAddress.fromJson(core.Map json_)
+  $PostalAddress01.fromJson(core.Map json_)
       : this(
           addressLines: (json_['addressLines'] as core.List?)
               ?.map((value) => value as core.String)
@@ -17427,8 +17761,8 @@ class $QuotaLimit {
 
   /// Specify the unit of the quota limit.
   ///
-  /// It uses the same syntax as Metric.unit. The supported unit kinds are
-  /// determined by the quota backend system. Here are some examples: *
+  /// It uses the same syntax as MetricDescriptor.unit. The supported unit kinds
+  /// are determined by the quota backend system. Here are some examples: *
   /// "1/min/{project}" for quota per minute per project. Note: the order of
   /// unit components is insignificant. The "1" at the beginning is required to
   /// follow the metric unit syntax.
@@ -17711,48 +18045,6 @@ class $ReplaceAllTextResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (occurrencesChanged != null)
           'occurrencesChanged': occurrencesChanged!,
-      };
-}
-
-/// Used by:
-///
-/// - integrations:v1 : EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo
-/// - integrations:v1 : GoogleCloudIntegrationsV1alphaExecutionReplayInfo
-class $ReplayInfo {
-  /// If this execution is a replay of another execution, then this field
-  /// contains the original execution id.
-  core.String? originalExecutionInfoId;
-
-  /// reason for replay
-  core.String? replayReason;
-
-  /// If this execution has been replayed, then this field contains the
-  /// execution ids of the replayed executions.
-  core.List<core.String>? replayedExecutionInfoIds;
-
-  $ReplayInfo({
-    this.originalExecutionInfoId,
-    this.replayReason,
-    this.replayedExecutionInfoIds,
-  });
-
-  $ReplayInfo.fromJson(core.Map json_)
-      : this(
-          originalExecutionInfoId:
-              json_['originalExecutionInfoId'] as core.String?,
-          replayReason: json_['replayReason'] as core.String?,
-          replayedExecutionInfoIds:
-              (json_['replayedExecutionInfoIds'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (originalExecutionInfoId != null)
-          'originalExecutionInfoId': originalExecutionInfoId!,
-        if (replayReason != null) 'replayReason': replayReason!,
-        if (replayedExecutionInfoIds != null)
-          'replayedExecutionInfoIds': replayedExecutionInfoIds!,
       };
 }
 
@@ -18779,8 +19071,9 @@ class $SdfConfig {
   /// - "SDF_VERSION_7_1" : SDF version 7.1. Read the \[v7 migration
   /// guide\](/display-video/api/structured-data-file/v7-migration-guide) before
   /// migrating to this version.
-  /// - "SDF_VERSION_8" : SDF version 8. **This SDF version is in beta. It is
-  /// only available to a subset of users.**
+  /// - "SDF_VERSION_8" : SDF version 8. Read the \[v8 migration
+  /// guide\](/display-video/api/structured-data-file/v8-migration-guide) before
+  /// migrating to this version.
   core.String? version;
 
   $SdfConfig({
@@ -20249,6 +20542,46 @@ class $Spec {
 
 /// Used by:
 ///
+/// - migrationcenter:v1 : MySqlProperty
+/// - migrationcenter:v1 : PostgreSqlProperty
+class $SqlProperty {
+  /// The property is enabled.
+  ///
+  /// Required.
+  core.bool? enabled;
+
+  /// The property numeric value.
+  ///
+  /// Required.
+  core.String? numericValue;
+
+  /// The property name.
+  ///
+  /// Required.
+  core.String? property;
+
+  $SqlProperty({
+    this.enabled,
+    this.numericValue,
+    this.property,
+  });
+
+  $SqlProperty.fromJson(core.Map json_)
+      : this(
+          enabled: json_['enabled'] as core.bool?,
+          numericValue: json_['numericValue'] as core.String?,
+          property: json_['property'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (numericValue != null) 'numericValue': numericValue!,
+        if (property != null) 'property': property!,
+      };
+}
+
+/// Used by:
+///
 /// - workflowexecutions:v1 : StateError
 /// - workflows:v1 : StateError
 class $StateError {
@@ -20901,7 +21234,6 @@ class $TenantProjectRequest {
 /// - cloudtasks:v2 : TestIamPermissionsRequest
 /// - config:v1 : TestIamPermissionsRequest
 /// - connectors:v1 : TestIamPermissionsRequest
-/// - contactcenterinsights:v1 : GoogleIamV1TestIamPermissionsRequest
 /// - containeranalysis:v1 : TestIamPermissionsRequest
 /// - datacatalog:v1 : TestIamPermissionsRequest
 /// - datafusion:v1 : TestIamPermissionsRequest
@@ -21365,10 +21697,14 @@ class $TimeRange {
 /// - oracledatabase:v1 : TimeZone
 /// - osconfig:v1 : TimeZone
 class $TimeZone {
-  /// IANA Time Zone Database time zone, e.g. "America/New_York".
+  /// IANA Time Zone Database time zone.
+  ///
+  /// For example "America/New_York".
   core.String? id;
 
-  /// IANA Time Zone Database version number, e.g. "2019a".
+  /// IANA Time Zone Database version number.
+  ///
+  /// For example "2019a".
   ///
   /// Optional.
   core.String? version;
@@ -22132,6 +22468,44 @@ class $VersionedPackage {
         if (architecture != null) 'architecture': architecture!,
         if (packageName != null) 'packageName': packageName!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// Used by:
+///
+/// - aiplatform:v1 : GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResource
+/// - aiplatform:v1 : GoogleCloudAiplatformV1VertexRagStoreRagResource
+class $VertexRagStoreRagResource {
+  /// RagCorpora resource name.
+  ///
+  /// Format: `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}`
+  ///
+  /// Optional.
+  core.String? ragCorpus;
+
+  /// rag_file_id.
+  ///
+  /// The files should be in the same rag_corpus set in rag_corpus field.
+  ///
+  /// Optional.
+  core.List<core.String>? ragFileIds;
+
+  $VertexRagStoreRagResource({
+    this.ragCorpus,
+    this.ragFileIds,
+  });
+
+  $VertexRagStoreRagResource.fromJson(core.Map json_)
+      : this(
+          ragCorpus: json_['ragCorpus'] as core.String?,
+          ragFileIds: (json_['ragFileIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ragCorpus != null) 'ragCorpus': ragCorpus!,
+        if (ragFileIds != null) 'ragFileIds': ragFileIds!,
       };
 }
 

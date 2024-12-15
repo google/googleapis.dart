@@ -3094,7 +3094,7 @@ class AutomatedBackupPolicy {
 
   /// How long the automated backups should be retained.
   ///
-  /// The only supported value at this time is 3 days.
+  /// Values must be at least 3 days and at most 90 days.
   ///
   /// Required.
   core.String? retentionPeriod;

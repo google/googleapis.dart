@@ -4356,6 +4356,21 @@ void checkOfferTag(api.OfferTag o) {
   buildCounterOfferTag--;
 }
 
+core.int buildCounterOneTimeCode = 0;
+api.OneTimeCode buildOneTimeCode() {
+  final o = api.OneTimeCode();
+  buildCounterOneTimeCode++;
+  if (buildCounterOneTimeCode < 3) {}
+  buildCounterOneTimeCode--;
+  return o;
+}
+
+void checkOneTimeCode(api.OneTimeCode o) {
+  buildCounterOneTimeCode++;
+  if (buildCounterOneTimeCode < 3) {}
+  buildCounterOneTimeCode--;
+}
+
 core.int buildCounterOneTimeExternalTransaction = 0;
 api.OneTimeExternalTransaction buildOneTimeExternalTransaction() {
   final o = api.OneTimeExternalTransaction();
@@ -5609,6 +5624,27 @@ void checkSdkVersionTargeting(api.SdkVersionTargeting o) {
   buildCounterSdkVersionTargeting--;
 }
 
+core.int buildCounterSignupPromotion = 0;
+api.SignupPromotion buildSignupPromotion() {
+  final o = api.SignupPromotion();
+  buildCounterSignupPromotion++;
+  if (buildCounterSignupPromotion < 3) {
+    o.oneTimeCode = buildOneTimeCode();
+    o.vanityCode = buildVanityCode();
+  }
+  buildCounterSignupPromotion--;
+  return o;
+}
+
+void checkSignupPromotion(api.SignupPromotion o) {
+  buildCounterSignupPromotion++;
+  if (buildCounterSignupPromotion < 3) {
+    checkOneTimeCode(o.oneTimeCode!);
+    checkVanityCode(o.vanityCode!);
+  }
+  buildCounterSignupPromotion--;
+}
+
 core.int buildCounterSplitApkMetadata = 0;
 api.SplitApkMetadata buildSplitApkMetadata() {
   final o = api.SplitApkMetadata();
@@ -6281,6 +6317,7 @@ api.SubscriptionPurchaseLineItem buildSubscriptionPurchaseLineItem() {
     o.offerDetails = buildOfferDetails();
     o.prepaidPlan = buildPrepaidPlan();
     o.productId = 'foo';
+    o.signupPromotion = buildSignupPromotion();
   }
   buildCounterSubscriptionPurchaseLineItem--;
   return o;
@@ -6301,6 +6338,7 @@ void checkSubscriptionPurchaseLineItem(api.SubscriptionPurchaseLineItem o) {
       o.productId!,
       unittest.equals('foo'),
     );
+    checkSignupPromotion(o.signupPromotion!);
   }
   buildCounterSubscriptionPurchaseLineItem--;
 }
@@ -7571,6 +7609,28 @@ void checkUsesPermission(api.UsesPermission o) {
     );
   }
   buildCounterUsesPermission--;
+}
+
+core.int buildCounterVanityCode = 0;
+api.VanityCode buildVanityCode() {
+  final o = api.VanityCode();
+  buildCounterVanityCode++;
+  if (buildCounterVanityCode < 3) {
+    o.promotionCode = 'foo';
+  }
+  buildCounterVanityCode--;
+  return o;
+}
+
+void checkVanityCode(api.VanityCode o) {
+  buildCounterVanityCode++;
+  if (buildCounterVanityCode < 3) {
+    unittest.expect(
+      o.promotionCode!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterVanityCode--;
 }
 
 core.int buildCounterVariant = 0;
@@ -9032,6 +9092,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-OneTimeCode', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOneTimeCode();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OneTimeCode.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkOneTimeCode(od);
+    });
+  });
+
   unittest.group('obj-schema-OneTimeExternalTransaction', () {
     unittest.test('to-json--from-json', () async {
       final o = buildOneTimeExternalTransaction();
@@ -9502,6 +9572,16 @@ void main() {
       final od = api.SdkVersionTargeting.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSdkVersionTargeting(od);
+    });
+  });
+
+  unittest.group('obj-schema-SignupPromotion', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSignupPromotion();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SignupPromotion.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSignupPromotion(od);
     });
   });
 
@@ -10042,6 +10122,16 @@ void main() {
       final od = api.UsesPermission.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkUsesPermission(od);
+    });
+  });
+
+  unittest.group('obj-schema-VanityCode', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVanityCode();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.VanityCode.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkVanityCode(od);
     });
   });
 

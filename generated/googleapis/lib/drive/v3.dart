@@ -21,13 +21,13 @@
 /// Create an instance of [DriveApi] to access these resources:
 ///
 /// - [AboutResource]
+/// - [AccessproposalsResource]
 /// - [AppsResource]
 /// - [ChangesResource]
 /// - [ChannelsResource]
 /// - [CommentsResource]
 /// - [DrivesResource]
 /// - [FilesResource]
-///   - [FilesAccessproposalsResource]
 /// - [OperationResource]
 /// - [OperationsResource]
 /// - [PermissionsResource]
@@ -102,6 +102,8 @@ class DriveApi {
   final commons.ApiRequester _requester;
 
   AboutResource get about => AboutResource(_requester);
+  AccessproposalsResource get accessproposals =>
+      AccessproposalsResource(_requester);
   AppsResource get apps => AppsResource(_requester);
   ChangesResource get changes => ChangesResource(_requester);
   ChannelsResource get channels => ChannelsResource(_requester);
@@ -129,6 +131,12 @@ class AboutResource {
 
   /// Gets information about the user, the user's Drive, and system
   /// capabilities.
+  ///
+  /// For more information, see
+  /// [Return user info](https://developers.google.com/drive/api/guides/user-info).
+  /// Required: The `fields` parameter must be set. To return the exact fields
+  /// you need, see
+  /// [Return specific fields](https://developers.google.com/drive/api/guides/fields-parameter).
   ///
   /// Request parameters:
   ///
@@ -160,12 +168,154 @@ class AboutResource {
   }
 }
 
+class AccessproposalsResource {
+  final commons.ApiRequester _requester;
+
+  AccessproposalsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Retrieves an AccessProposal by ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - Required. The id of the item the request is on.
+  ///
+  /// [proposalId] - Required. The id of the access proposal to resolve.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccessProposal].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessProposal> get(
+    core.String fileId,
+    core.String proposalId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'files/' +
+        commons.escapeVariable('$fileId') +
+        '/accessproposals/' +
+        commons.escapeVariable('$proposalId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AccessProposal.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List the AccessProposals on a file.
+  ///
+  /// Note: Only approvers are able to list AccessProposals on a file. If the
+  /// user is not an approver, returns a 403.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - Required. The id of the item the request is on.
+  ///
+  /// [pageSize] - Optional. The number of results per page
+  ///
+  /// [pageToken] - Optional. The continuation token on the list of access
+  /// requests.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAccessProposalsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAccessProposalsResponse> list(
+    core.String fileId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'files/' + commons.escapeVariable('$fileId') + '/accessproposals';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAccessProposalsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Used to approve or deny an Access Proposal.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - Required. The id of the item the request is on.
+  ///
+  /// [proposalId] - Required. The id of the access proposal to resolve.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> resolve(
+    ResolveAccessProposalRequest request,
+    core.String fileId,
+    core.String proposalId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'files/' +
+        commons.escapeVariable('$fileId') +
+        '/accessproposals/' +
+        commons.escapeVariable('$proposalId') +
+        ':resolve';
+
+    await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+}
+
 class AppsResource {
   final commons.ApiRequester _requester;
 
   AppsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets a specific app.
+  ///
+  /// For more information, see
+  /// [Return user info](https://developers.google.com/drive/api/guides/user-info).
   ///
   /// Request parameters:
   ///
@@ -200,6 +350,9 @@ class AppsResource {
   }
 
   /// Lists a user's installed apps.
+  ///
+  /// For more information, see
+  /// [Return user info](https://developers.google.com/drive/api/guides/user-info).
   ///
   /// Request parameters:
   ///
@@ -262,6 +415,9 @@ class ChangesResource {
 
   /// Gets the starting pageToken for listing future changes.
   ///
+  /// For more information, see
+  /// [Retrieve changes](https://developers.google.com/drive/api/guides/manage-changes).
+  ///
   /// Request parameters:
   ///
   /// [driveId] - The ID of the shared drive for which the starting pageToken
@@ -313,6 +469,9 @@ class ChangesResource {
   }
 
   /// Lists the changes for a user or shared drive.
+  ///
+  /// For more information, see
+  /// [Retrieve changes](https://developers.google.com/drive/api/guides/manage-changes).
   ///
   /// Request parameters:
   ///
@@ -427,6 +586,9 @@ class ChangesResource {
   }
 
   /// Subscribes to changes for a user.
+  ///
+  /// For more information, see
+  /// [Notifications for resource changes](https://developers.google.com/drive/api/guides/push).
   ///
   /// [request] - The metadata request object.
   ///
@@ -552,6 +714,9 @@ class ChannelsResource {
 
   /// Stops watching resources through this channel.
   ///
+  /// For more information, see
+  /// [Notifications for resource changes](https://developers.google.com/drive/api/guides/push).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -592,6 +757,12 @@ class CommentsResource {
 
   /// Creates a comment on a file.
   ///
+  /// For more information, see
+  /// [Manage comments and replies](https://developers.google.com/drive/api/guides/manage-comments).
+  /// Required: The `fields` parameter must be set. To return the exact fields
+  /// you need, see
+  /// [Return specific fields](https://developers.google.com/drive/api/guides/fields-parameter).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -631,6 +802,12 @@ class CommentsResource {
 
   /// Deletes a comment.
   ///
+  /// For more information, see
+  /// [Manage comments and replies](https://developers.google.com/drive/api/guides/manage-comments).
+  /// Required: The `fields` parameter must be set. To return the exact fields
+  /// you need, see
+  /// [Return specific fields](https://developers.google.com/drive/api/guides/fields-parameter).
+  ///
   /// Request parameters:
   ///
   /// [fileId] - The ID of the file.
@@ -668,6 +845,12 @@ class CommentsResource {
   }
 
   /// Gets a comment by ID.
+  ///
+  /// For more information, see
+  /// [Manage comments and replies](https://developers.google.com/drive/api/guides/manage-comments).
+  /// Required: The `fields` parameter must be set. To return the exact fields
+  /// you need, see
+  /// [Return specific fields](https://developers.google.com/drive/api/guides/fields-parameter).
   ///
   /// Request parameters:
   ///
@@ -713,6 +896,12 @@ class CommentsResource {
   }
 
   /// Lists a file's comments.
+  ///
+  /// For more information, see
+  /// [Manage comments and replies](https://developers.google.com/drive/api/guides/manage-comments).
+  /// Required: The `fields` parameter must be set. To return the exact fields
+  /// you need, see
+  /// [Return specific fields](https://developers.google.com/drive/api/guides/fields-parameter).
   ///
   /// Request parameters:
   ///
@@ -769,6 +958,12 @@ class CommentsResource {
   }
 
   /// Updates a comment with patch semantics.
+  ///
+  /// For more information, see
+  /// [Manage comments and replies](https://developers.google.com/drive/api/guides/manage-comments).
+  /// Required: The `fields` parameter must be set. To return the exact fields
+  /// you need, see
+  /// [Return specific fields](https://developers.google.com/drive/api/guides/fields-parameter).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1124,9 +1319,6 @@ class DrivesResource {
 
 class FilesResource {
   final commons.ApiRequester _requester;
-
-  FilesAccessproposalsResource get accessproposals =>
-      FilesAccessproposalsResource(_requester);
 
   FilesResource(commons.ApiRequester client) : _requester = client;
 
@@ -2096,125 +2288,6 @@ class FilesResource {
   }
 }
 
-class FilesAccessproposalsResource {
-  final commons.ApiRequester _requester;
-
-  FilesAccessproposalsResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// List the AccessProposals on a file.
-  ///
-  /// Note: Only approvers are able to list AccessProposals on a file. If the
-  /// user is not an approver, returns a 403.
-  ///
-  /// Request parameters:
-  ///
-  /// [fileId] - Required. The id of the item the request is on.
-  ///
-  /// [pageSize] - Optional. The number of results per page
-  ///
-  /// [pageToken] - Optional. The continuation token on the list of access
-  /// requests.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListAccessProposalsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListAccessProposalsResponse> list(
-    core.String fileId, {
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ =
-        'files/' + commons.escapeVariable('$fileId') + '/accessproposals';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListAccessProposalsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Used to approve or deny an Access Proposal.
-  ///
-  /// Request parameters:
-  ///
-  /// [fileId] - Required. The id of the item the request is on.
-  ///
-  /// [proposalId] - Required. The id of the access proposal to resolve.
-  ///
-  /// [action] - Required. The action to take on the AccessProposal.
-  /// Possible string values are:
-  /// - "ACTION_UNSPECIFIED" : Unspecified action
-  /// - "ACCEPT" : The user accepts the proposal. Note: If this action is used,
-  /// the `role` field must have at least one value.
-  /// - "DENY" : The user denies the proposal
-  ///
-  /// [role] - Optional. The roles the approver has allowed, if any. Note: This
-  /// field is required for the `ACCEPT` action.
-  ///
-  /// [sendNotification] - Optional. Whether to send an email to the requester
-  /// when the AccessProposal is denied or accepted.
-  ///
-  /// [view] - Optional. Indicates the view for this access proposal. This
-  /// should only be set when the proposal belongs to a view. `published` is the
-  /// only supported value.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<void> resolve(
-    core.String fileId,
-    core.String proposalId, {
-    core.String? action,
-    core.List<core.String>? role,
-    core.bool? sendNotification,
-    core.String? view,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (action != null) 'action': [action],
-      if (role != null) 'role': role,
-      if (sendNotification != null) 'sendNotification': ['${sendNotification}'],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'files/' +
-        commons.escapeVariable('$fileId') +
-        '/accessproposals/' +
-        commons.escapeVariable('$proposalId') +
-        ':resolve';
-
-    await _requester.request(
-      url_,
-      'POST',
-      queryParams: queryParams_,
-      downloadOptions: null,
-    );
-  }
-}
-
 class OperationResource {
   final commons.ApiRequester _requester;
 
@@ -2228,8 +2301,8 @@ class OperationResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// Request parameters:
   ///
@@ -7346,9 +7419,13 @@ class PermissionTeamDrivePermissionDetails {
 /// A permission for a file.
 ///
 /// A permission grants a user, group, domain, or the world access to a file or
-/// a folder hierarchy. Some resource methods (such as `permissions.update`)
-/// require a `permissionId`. Use the `permissions.list` method to retrieve the
-/// ID for a file, folder, or shared drive.
+/// a folder hierarchy. By default, permissions requests only return a subset of
+/// fields. Permission kind, ID, type, and role are always returned. To retrieve
+/// specific fields, see
+/// https://developers.google.com/drive/api/guides/fields-parameter. Some
+/// resource methods (such as `permissions.update`) require a `permissionId`.
+/// Use the `permissions.list` method to retrieve the ID for a file, folder, or
+/// shared drive.
 class Permission {
   /// Whether the permission allows the file to be discovered through search.
   ///
@@ -7707,6 +7784,64 @@ class ReplyList {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (replies != null) 'replies': replies!,
+      };
+}
+
+/// Request message for resolving an AccessProposal on a file.
+class ResolveAccessProposalRequest {
+  /// The action to take on the AccessProposal.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ACTION_UNSPECIFIED" : Unspecified action
+  /// - "ACCEPT" : The user accepts the proposal. Note: If this action is used,
+  /// the `role` field must have at least one value.
+  /// - "DENY" : The user denies the proposal
+  core.String? action;
+
+  /// The roles the approver has allowed, if any.
+  ///
+  /// Note: This field is required for the `ACCEPT` action.
+  ///
+  /// Optional.
+  core.List<core.String>? role;
+
+  /// Whether to send an email to the requester when the AccessProposal is
+  /// denied or accepted.
+  ///
+  /// Optional.
+  core.bool? sendNotification;
+
+  /// Indicates the view for this access proposal.
+  ///
+  /// This should only be set when the proposal belongs to a view. `published`
+  /// is the only supported value.
+  ///
+  /// Optional.
+  core.String? view;
+
+  ResolveAccessProposalRequest({
+    this.action,
+    this.role,
+    this.sendNotification,
+    this.view,
+  });
+
+  ResolveAccessProposalRequest.fromJson(core.Map json_)
+      : this(
+          action: json_['action'] as core.String?,
+          role: (json_['role'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          sendNotification: json_['sendNotification'] as core.bool?,
+          view: json_['view'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (role != null) 'role': role!,
+        if (sendNotification != null) 'sendNotification': sendNotification!,
+        if (view != null) 'view': view!,
       };
 }
 

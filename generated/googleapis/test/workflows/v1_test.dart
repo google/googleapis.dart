@@ -598,6 +598,23 @@ void checkUnnamed14(core.Map<core.String, core.String> o) {
   );
 }
 
+core.Map<core.String, core.String> buildUnnamed15() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed15(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterWorkflow = 0;
 api.Workflow buildWorkflow() {
   final o = api.Workflow();
@@ -619,8 +636,9 @@ api.Workflow buildWorkflow() {
     o.sourceContents = 'foo';
     o.state = 'foo';
     o.stateError = buildStateError();
+    o.tags = buildUnnamed14();
     o.updateTime = 'foo';
-    o.userEnvVars = buildUnnamed14();
+    o.userEnvVars = buildUnnamed15();
   }
   buildCounterWorkflow--;
   return o;
@@ -681,11 +699,12 @@ void checkWorkflow(api.Workflow o) {
       unittest.equals('foo'),
     );
     checkStateError(o.stateError!);
+    checkUnnamed14(o.tags!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed14(o.userEnvVars!);
+    checkUnnamed15(o.userEnvVars!);
   }
   buildCounterWorkflow--;
 }

@@ -1217,6 +1217,7 @@ api.Event buildEvent() {
     o.attachments = buildUnnamed11();
     o.attendees = buildUnnamed12();
     o.attendeesOmitted = true;
+    o.birthdayProperties = buildEventBirthdayProperties();
     o.colorId = 'foo';
     o.conferenceData = buildConferenceData();
     o.created = core.DateTime.parse('2002-02-27T14:01:02Z');
@@ -1267,6 +1268,7 @@ void checkEvent(api.Event o) {
     checkUnnamed11(o.attachments!);
     checkUnnamed12(o.attendees!);
     unittest.expect(o.attendeesOmitted!, unittest.isTrue);
+    checkEventBirthdayProperties(o.birthdayProperties!);
     unittest.expect(
       o.colorId!,
       unittest.equals('foo'),
@@ -1458,6 +1460,38 @@ void checkEventAttendee(api.EventAttendee o) {
     unittest.expect(o.self!, unittest.isTrue);
   }
   buildCounterEventAttendee--;
+}
+
+core.int buildCounterEventBirthdayProperties = 0;
+api.EventBirthdayProperties buildEventBirthdayProperties() {
+  final o = api.EventBirthdayProperties();
+  buildCounterEventBirthdayProperties++;
+  if (buildCounterEventBirthdayProperties < 3) {
+    o.contact = 'foo';
+    o.customTypeName = 'foo';
+    o.type = 'foo';
+  }
+  buildCounterEventBirthdayProperties--;
+  return o;
+}
+
+void checkEventBirthdayProperties(api.EventBirthdayProperties o) {
+  buildCounterEventBirthdayProperties++;
+  if (buildCounterEventBirthdayProperties < 3) {
+    unittest.expect(
+      o.contact!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.customTypeName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEventBirthdayProperties--;
 }
 
 core.int buildCounterEventDateTime = 0;
@@ -2519,6 +2553,16 @@ void main() {
       final od = api.EventAttendee.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkEventAttendee(od);
+    });
+  });
+
+  unittest.group('obj-schema-EventBirthdayProperties', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEventBirthdayProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EventBirthdayProperties.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEventBirthdayProperties(od);
     });
   });
 

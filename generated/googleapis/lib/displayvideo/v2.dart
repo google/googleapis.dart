@@ -8740,9 +8740,9 @@ class FirstAndThirdPartyAudiencesResource {
   /// suffix "desc" should be added to the field name. Example: `displayName
   /// desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
-  /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
-  /// if an invalid value is specified.
+  /// [pageSize] - Requested page size. Must be between `1` and `5000`. If
+  /// unspecified, this value defaults to `100`. Returns error code
+  /// `INVALID_ARGUMENT` if an invalid value is specified.
   ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of next_page_token returned from the
@@ -13219,6 +13219,21 @@ class AssetAssociation {
   /// - "ASSET_ROLE_COVER_IMAGE" : The cover image of a native video creative.
   /// This role is only supported and required in following creative_type: *
   /// `CREATIVE_TYPE_VIDEO`
+  /// - "ASSET_ROLE_BACKGROUND_COLOR" : The main color to use in a creative.
+  /// This role is only supported and required in following creative_type: *
+  /// `CREATIVE_TYPE_ASSET_BASED_CREATIVE`
+  /// - "ASSET_ROLE_ACCENT_COLOR" : The accent color to use in a creative. This
+  /// role is only supported and required in following creative_type: *
+  /// `CREATIVE_TYPE_ASSET_BASED_CREATIVE`
+  /// - "ASSET_ROLE_REQUIRE_LOGO" : Whether the creative must use a logo asset.
+  /// This role is only supported and required in following creative_type: *
+  /// `CREATIVE_TYPE_ASSET_BASED_CREATIVE`
+  /// - "ASSET_ROLE_REQUIRE_IMAGE" : Whether the creative must use an image
+  /// asset. This role is only supported and required in following
+  /// creative_type: * `CREATIVE_TYPE_ASSET_BASED_CREATIVE`
+  /// - "ASSET_ROLE_ENABLE_ASSET_ENHANCEMENTS" : Whether asset enhancements can
+  /// be applied to the creative. This role is only supported and required in
+  /// following creative_type: * `CREATIVE_TYPE_ASSET_BASED_CREATIVE`
   core.String? role;
 
   AssetAssociation({
@@ -16270,8 +16285,9 @@ class CreateSdfDownloadTaskRequest {
   /// - "SDF_VERSION_7_1" : SDF version 7.1. Read the \[v7 migration
   /// guide\](/display-video/api/structured-data-file/v7-migration-guide) before
   /// migrating to this version.
-  /// - "SDF_VERSION_8" : SDF version 8. **This SDF version is in beta. It is
-  /// only available to a subset of users.**
+  /// - "SDF_VERSION_8" : SDF version 8. Read the \[v8 migration
+  /// guide\](/display-video/api/structured-data-file/v8-migration-guide) before
+  /// migrating to this version.
   core.String? version;
 
   CreateSdfDownloadTaskRequest({
@@ -16439,6 +16455,9 @@ class Creative {
   /// - "CREATIVE_TYPE_TEMPLATED_APP_INSTALL_VIDEO" : Templated app install
   /// mobile video creative. Create and update methods are **not** supported for
   /// this creative type.
+  /// - "CREATIVE_TYPE_ASSET_BASED_CREATIVE" : Asset based creative. Create and
+  /// update methods are supported for this creative type if the hosting_source
+  /// is `HOSTING_SOURCE_HOSTED`.
   core.String? creativeType;
 
   /// Primary dimensions of the creative.
@@ -17048,6 +17067,9 @@ class CreativeConfig {
   /// - "CREATIVE_TYPE_TEMPLATED_APP_INSTALL_VIDEO" : Templated app install
   /// mobile video creative. Create and update methods are **not** supported for
   /// this creative type.
+  /// - "CREATIVE_TYPE_ASSET_BASED_CREATIVE" : Asset based creative. Create and
+  /// update methods are supported for this creative type if the hosting_source
+  /// is `HOSTING_SOURCE_HOSTED`.
   core.String? creativeType;
 
   /// The configuration for display creatives.
@@ -18624,6 +18646,7 @@ class GuaranteedOrder {
   /// - "EXCHANGE_ADMOST_GBID" : AdMost.
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
   /// - "EXCHANGE_NETFLIX" : Netflix.
+  /// - "EXCHANGE_CORE" : Core.
   /// - "EXCHANGE_TUBI" : Tubi.
   core.String? exchange;
 
@@ -19020,10 +19043,8 @@ class InsertionOrder {
 
   /// The budget spending speed setting of the insertion order.
   ///
-  /// *Warning*: Starting on **November 5, 2024**, pacing_type
-  /// `PACING_TYPE_ASAP` will no longer be compatible with pacing_period
-  /// `PACING_PERIOD_FLIGHT`. \[Read more about this announced
-  /// change\](/display-video/api/deprecations#features.io_asap).
+  /// pacing_type `PACING_TYPE_ASAP` is not compatible with pacing_period
+  /// `PACING_PERIOD_FLIGHT`.
   ///
   /// Required.
   Pacing? pacing;
@@ -19407,6 +19428,7 @@ class InventorySource {
   /// - "EXCHANGE_ADMOST_GBID" : AdMost.
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
   /// - "EXCHANGE_NETFLIX" : Netflix.
+  /// - "EXCHANGE_CORE" : Core.
   /// - "EXCHANGE_TUBI" : Tubi.
   core.String? exchange;
 

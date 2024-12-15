@@ -28,6 +28,7 @@
 ///         - [ProjectsLocationsBackupVaultsDataSourcesBackupsResource]
 ///     - [ProjectsLocationsManagementServersResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsServiceConfigResource]
 library;
 
 import 'dart:async' as async;
@@ -82,6 +83,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsManagementServersResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsServiceConfigResource get serviceConfig =>
+      ProjectsLocationsServiceConfigResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -2242,8 +2245,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2411,6 +2414,56 @@ class ProjectsLocationsOperationsResource {
     );
     return ListOperationsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsServiceConfigResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsServiceConfigResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Initializes the service related config for a project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the serviceConfig used to
+  /// initialize the service. Format:
+  /// `projects/{project_id}/locations/{location}/serviceConfig`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> initialize(
+    InitializeServiceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':initialize';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3048,6 +3101,16 @@ class Backup {
   /// Output only.
   core.String? resourceSizeBytes;
 
+  /// Reserved for future use.
+  ///
+  /// Optional. Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Optional. Output only.
+  core.bool? satisfiesPzs;
+
   /// The list of BackupLocks taken by the service to prevent the deletion of
   /// the backup.
   ///
@@ -3085,6 +3148,8 @@ class Backup {
     this.labels,
     this.name,
     this.resourceSizeBytes,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.serviceLocks,
     this.state,
     this.updateTime,
@@ -3129,6 +3194,8 @@ class Backup {
           ),
           name: json_['name'] as core.String?,
           resourceSizeBytes: json_['resourceSizeBytes'] as core.String?,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           serviceLocks: (json_['serviceLocks'] as core.List?)
               ?.map((value) => BackupLock.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -3156,6 +3223,8 @@ class Backup {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (resourceSizeBytes != null) 'resourceSizeBytes': resourceSizeBytes!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (serviceLocks != null) 'serviceLocks': serviceLocks!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -3519,7 +3588,7 @@ class BackupPlan {
   /// The resource type to which the `BackupPlan` will be applied.
   ///
   /// Examples include, "compute.googleapis.com/Instance",
-  /// "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+  /// "sqladmin.googleapis.com/Instance", or "alloydb.googleapis.com/Cluster".
   ///
   /// Required.
   core.String? resourceType;
@@ -3634,7 +3703,7 @@ class BackupPlanAssociation {
 
   /// Resource type of workload on which backupplan is applied
   ///
-  /// Optional.
+  /// Required. Immutable.
   core.String? resourceType;
 
   /// The config info related to backup rules.
@@ -3705,7 +3774,12 @@ class BackupRule {
   /// Configures the duration for which backup data will be kept.
   ///
   /// It is defined in “days”. The value should be greater than or equal to
-  /// minimum enforced retention of the backup vault.
+  /// minimum enforced retention of the backup vault. Minimum value is 1 and
+  /// maximum value is 90 for hourly backups. Minimum value is 1 and maximum
+  /// value is 90 for daily backups. Minimum value is 7 and maximum value is 186
+  /// for weekly backups. Minimum value is 30 and maximum value is 732 for
+  /// monthly backups. Minimum value is 365 and maximum value is 36159 for
+  /// yearly backups.
   ///
   /// Required.
   core.int? backupRetentionDays;
@@ -3754,7 +3828,7 @@ class BackupVault {
   /// Note: This field is added for future use case and will not be supported in
   /// the current release.
   ///
-  /// Optional. Access restriction for the backup vault. Default value is
+  /// Access restriction for the backup vault. Default value is
   /// WITHIN_ORGANIZATION if not provided during creation.
   ///
   /// Optional.
@@ -3861,7 +3935,7 @@ class BackupVault {
   /// Output only.
   core.String? totalStoredBytes;
 
-  /// Output only Immutable after resource creation until resource deletion.
+  /// Immutable after resource creation until resource deletion.
   ///
   /// Output only.
   core.String? uid;
@@ -5386,6 +5460,49 @@ class InitializeParams {
   core.Map<core.String, core.dynamic> toJson() => {
         if (diskName != null) 'diskName': diskName!,
         if (replicaZones != null) 'replicaZones': replicaZones!,
+      };
+}
+
+/// Request message for initializing the service.
+class InitializeServiceRequest {
+  /// An optional request ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and t he request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  /// The resource type to which the default service config will be applied.
+  ///
+  /// Examples include, "compute.googleapis.com/Instance" and
+  /// "storage.googleapis.com/Bucket".
+  ///
+  /// Required.
+  core.String? resourceType;
+
+  InitializeServiceRequest({
+    this.requestId,
+    this.resourceType,
+  });
+
+  InitializeServiceRequest.fromJson(core.Map json_)
+      : this(
+          requestId: json_['requestId'] as core.String?,
+          resourceType: json_['resourceType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
+        if (resourceType != null) 'resourceType': resourceType!,
       };
 }
 

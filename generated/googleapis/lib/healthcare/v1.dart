@@ -4695,6 +4695,120 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   ProjectsLocationsDatasetsFhirStoresResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Applies the admin Consent resources for the FHIR store and reindexes the
+  /// underlying resources in the FHIR store according to the aggregate
+  /// consents.
+  ///
+  /// This method also updates the `consent_config.enforced_admin_consents`
+  /// field of the FhirStore unless `validate_only=true` in
+  /// ApplyAdminConsentsRequest. Any admin Consent resource change after this
+  /// operation execution (including deletion) requires you to call
+  /// ApplyAdminConsents again for the change to take effect. This method
+  /// returns an Operation that can be used to track the progress of the
+  /// resources that were reindexed, by calling GetOperation. Upon completion,
+  /// the ApplyAdminConsentsResponse additionally contains the number of
+  /// resources that were reindexed. If at least one Consent resource contains
+  /// an error or fails be be enforced for any reason, the method returns an
+  /// error instead of an Operation. No resources will be reindexed and the
+  /// `consent_config.enforced_admin_consents` field will be unchanged. To
+  /// enforce a consent check for data access, `consent_config.access_enforced`
+  /// must be set to true for the FhirStore.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the FHIR store to enforce, in the format
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> applyAdminConsents(
+    ApplyAdminConsentsRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':applyAdminConsents';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Apply the Consent resources for the FHIR store and reindex the underlying
+  /// resources in the FHIR store according to the aggregate consent.
+  ///
+  /// The aggregate consent of the patient in scope in this request replaces any
+  /// previous call of this method. Any Consent resource change after this
+  /// operation execution (including deletion) requires you to call
+  /// ApplyConsents again to have effect. This method returns an Operation that
+  /// can be used to track the progress of the consent resources that were
+  /// processed by calling GetOperation. Upon completion, the
+  /// ApplyConsentsResponse additionally contains the number of resources that
+  /// was reindexed. Errors are logged to Cloud Logging (see
+  /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+  /// To enforce consent check for data access, `consent_config.access_enforced`
+  /// must be set to true for the FhirStore.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the FHIR store to enforce, in the format
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> applyConsents(
+    ApplyConsentsRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':applyConsents';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a new FHIR store within the parent dataset.
   ///
   /// [request] - The metadata request object.
@@ -4824,6 +4938,50 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Explains all the permitted/denied actor, purpose and environment for a
+  /// given resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the FHIR store to enforce, in the format
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
+  ///
+  /// [resourceId] - Required. The ID (`{resourceType}/{id}`) of the resource to
+  /// explain data access on.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExplainDataAccessResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExplainDataAccessResponse> explainDataAccess(
+    core.String name, {
+    core.String? resourceId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (resourceId != null) 'resourceId': [resourceId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':explainDataAccess';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ExplainDataAccessResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Export resources from the FHIR store to the specified destination.
@@ -5402,7 +5560,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// `DSTU2`) will be populated from the `X-Security-Context` header if it
   /// exists. At this time `securityContext` has no special behavior in the
   /// Cloud Healthcare API. Note: the limit on data ingested through this method
-  /// is 2 GB. For best performance, use a non-FHIR data type instead of
+  /// is 1 GB. For best performance, use a non-FHIR data type instead of
   /// wrapping the data in a Binary resource. Some of the Healthcare API
   /// features, such as
   /// [exporting to BigQuery](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery)
@@ -5617,6 +5775,108 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the consent enforcement status of a single consent resource.
+  ///
+  /// On success, the response body contains a JSON-encoded representation of a
+  /// `Parameters` (http://hl7.org/fhir/parameters.html) FHIR resource,
+  /// containing the current enforcement status. Does not support DSTU2.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the consent resource to find enforcement
+  /// status, in the format
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{consent_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/Consent/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> ConsentEnforcementStatus(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + '/\$consent-enforcement-status';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the consent enforcement status of all consent resources for a
+  /// patient.
+  ///
+  /// On success, the response body contains a JSON-encoded representation of a
+  /// bundle of `Parameters` (http://hl7.org/fhir/parameters.html) FHIR
+  /// resources, containing the current enforcement status for each consent
+  /// resource of the patient. Does not support DSTU2.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the patient to find enforcement statuses,
+  /// in the format
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Patient/{patient_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/Patient/\[^/\]+$`.
+  ///
+  /// [P_count] - Optional. The maximum number of results on a page. If not
+  /// specified, 100 is used. May not be larger than 1000.
+  ///
+  /// [P_pageToken] - Optional. Used to retrieve the first, previous, next, or
+  /// last page of consent enforcement statuses when using pagination. Value
+  /// should be set to the value of `_page_token` set in next or previous page
+  /// links' URLs. Next and previous page are returned in the response bundle's
+  /// links field, where `link.relation` is "previous" or "next". Omit
+  /// `_page_token` if no previous request has been made.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> PatientConsentEnforcementStatus(
+    core.String name, {
+    core.int? P_count,
+    core.String? P_pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (P_count != null) '_count': ['${P_count}'],
+      if (P_pageToken != null) '_page_token': [P_pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + '/\$consent-enforcement-status';
 
     final response_ = await _requester.request(
       url_,
@@ -7838,8 +8098,8 @@ class ProjectsLocationsDatasetsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -8036,6 +8296,51 @@ class ProjectsLocationsServicesNlpResource {
   }
 }
 
+/// Configures consent audit log config for FHIR create, read, update, and
+/// delete (CRUD) operations.
+///
+/// Cloud audit log for healthcare API must be
+/// [enabled](https://cloud.google.com/logging/docs/audit/configure-data-access#config-console-enable).
+/// The consent-related logs are included as part of `protoPayload.metadata`.
+class AccessDeterminationLogConfig {
+  /// Controls the amount of detail to include as part of the audit logs.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "LOG_LEVEL_UNSPECIFIED" : No log level specified. This value is unused.
+  /// - "DISABLED" : No additional consent-related logging is added to audit
+  /// logs.
+  /// - "MINIMUM" : The following information is included: * One of the
+  /// following
+  /// \[`consentMode`\](https://cloud.google.com/healthcare-api/docs/fhir-consent#audit_logs)
+  /// fields: (`off`|`emptyScope`|`enforced`|`btg`|`bypass`). * The accessor's
+  /// request headers * The `log_level` of the AccessDeterminationLogConfig *
+  /// The final consent evaluation (`PERMIT`, `DENY`, or `NO_CONSENT`) * A
+  /// human-readable summary of the evaluation
+  /// - "VERBOSE" : Includes `MINIMUM` and, for each resource owner, returns: *
+  /// The resource owner's name * Most specific part of the `X-Consent-Scope`
+  /// resulting in consensual determination * Timestamp of the applied
+  /// enforcement leading to the decision * Enforcement version at the time the
+  /// applicable consents were applied * The Consent resource name * The
+  /// timestamp of the Consent resource used for enforcement * Policy type
+  /// (`PATIENT` or `ADMIN`) Note that this mode adds some overhead to CRUD
+  /// operations.
+  core.String? logLevel;
+
+  AccessDeterminationLogConfig({
+    this.logLevel,
+  });
+
+  AccessDeterminationLogConfig.fromJson(core.Map json_)
+      : this(
+          logLevel: json_['logLevel'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (logLevel != null) 'logLevel': logLevel!,
+      };
+}
+
 /// Activates the latest revision of the specified Consent by committing a new
 /// revision with `state` updated to `ACTIVE`.
 ///
@@ -8076,6 +8381,33 @@ class ActivateConsentRequest {
         if (consentArtifact != null) 'consentArtifact': consentArtifact!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (ttl != null) 'ttl': ttl!,
+      };
+}
+
+/// List of admin Consent resources to be applied.
+class AdminConsents {
+  /// The versioned names of the admin Consent resource(s), in the format
+  /// `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}/_history/{version_id}`.
+  ///
+  /// For FHIR stores with `disable_resource_versioning=true`, the format is
+  /// `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`.
+  ///
+  /// Optional.
+  core.List<core.String>? names;
+
+  AdminConsents({
+    this.names,
+  });
+
+  AdminConsents.fromJson(core.Map json_)
+      : this(
+          names: (json_['names'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (names != null) 'names': names!,
       };
 }
 
@@ -8173,6 +8505,119 @@ class AnalyzeEntitiesResponse {
         if (entityMentions != null) 'entityMentions': entityMentions!,
         if (fhirBundle != null) 'fhirBundle': fhirBundle!,
         if (relationships != null) 'relationships': relationships!,
+      };
+}
+
+/// Request to apply the admin Consent resources for the specified FHIR store.
+class ApplyAdminConsentsRequest {
+  /// A new list of admin Consent resources to be applied.
+  ///
+  /// Any existing enforced Consents, which are specified in
+  /// `consent_config.enforced_admin_consents` of the FhirStore, that are not
+  /// part of this list will be disabled. An empty list is equivalent to
+  /// clearing or disabling all Consents enforced on the FHIR store. When a FHIR
+  /// store has `disable_resource_versioning=true` and this list contains a
+  /// Consent resource that exists in `consent_config.enforced_admin_consents`,
+  /// the method enforces any updates to the existing resource since the last
+  /// enforcement. If the existing resource hasn't been updated since the last
+  /// enforcement, the resource is unaffected. After the method finishes, the
+  /// resulting consent enforcement model is determined by the contents of the
+  /// Consent resource(s) when the method was called: * When
+  /// `disable_resource_versioning=true`, the result is identical to the current
+  /// resource(s) in the FHIR store. * When `disable_resource_versioning=false`,
+  /// the result is based on the historical version(s) of the Consent
+  /// resource(s) at the point in time when the method was called. At most 200
+  /// Consents can be specified.
+  AdminConsents? newConsentsList;
+
+  /// If true, the method only validates Consent resources to make sure they are
+  /// supported.
+  ///
+  /// Otherwise, the method applies the aggregate consent information to update
+  /// the enforcement model and reindex the FHIR resources. If all Consent
+  /// resources can be applied successfully, the ApplyAdminConsentsResponse is
+  /// returned containing the following fields: * `consent_apply_success` to
+  /// indicate the number of Consent resources applied. * `affected_resources`
+  /// to indicate the number of resources that might have had their consent
+  /// access changed. If, however, one or more Consent resources are unsupported
+  /// or cannot be applied, the method fails and ApplyAdminConsentsErrorDetail
+  /// is is returned with details about the unsupported Consent resources.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  ApplyAdminConsentsRequest({
+    this.newConsentsList,
+    this.validateOnly,
+  });
+
+  ApplyAdminConsentsRequest.fromJson(core.Map json_)
+      : this(
+          newConsentsList: json_.containsKey('newConsentsList')
+              ? AdminConsents.fromJson(json_['newConsentsList']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          validateOnly: json_['validateOnly'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (newConsentsList != null) 'newConsentsList': newConsentsList!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
+      };
+}
+
+/// Request to apply the Consent resources for the specified FHIR store.
+class ApplyConsentsRequest {
+  /// Scope down to a list of patients.
+  ///
+  /// Optional.
+  PatientScope? patientScope;
+
+  /// Scope down to patients whose most recent consent changes are in the time
+  /// range.
+  ///
+  /// Can only be used with a versioning store (i.e. when
+  /// disable_resource_versioning is set to false).
+  ///
+  /// Optional.
+  TimeRange? timeRange;
+
+  /// If true, the method only validates Consent resources to make sure they are
+  /// supported.
+  ///
+  /// When the operation completes, ApplyConsentsResponse is returned where
+  /// `consent_apply_success` and `consent_apply_failure` indicate supported and
+  /// unsupported (or invalid) Consent resources, respectively. Otherwise, the
+  /// method propagates the aggregate consensual information to the patient's
+  /// resources. Upon success, `affected_resources` in the ApplyConsentsResponse
+  /// indicates the number of resources that may have consensual access changed.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  ApplyConsentsRequest({
+    this.patientScope,
+    this.timeRange,
+    this.validateOnly,
+  });
+
+  ApplyConsentsRequest.fromJson(core.Map json_)
+      : this(
+          patientScope: json_.containsKey('patientScope')
+              ? PatientScope.fromJson(
+                  json_['patientScope'] as core.Map<core.String, core.dynamic>)
+              : null,
+          timeRange: json_.containsKey('timeRange')
+              ? TimeRange.fromJson(
+                  json_['timeRange'] as core.Map<core.String, core.dynamic>)
+              : null,
+          validateOnly: json_['validateOnly'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (patientScope != null) 'patientScope': patientScope!,
+        if (timeRange != null) 'timeRange': timeRange!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
 
@@ -8557,6 +9002,8 @@ class CharacterMaskConfig {
   /// Character to mask the sensitive values.
   ///
   /// If not supplied, defaults to "*".
+  ///
+  /// Optional.
   core.String? maskingCharacter;
 
   CharacterMaskConfig({
@@ -8814,6 +9261,47 @@ class Consent {
       };
 }
 
+/// The accessor scope that describes who can access, for what purpose, in which
+/// environment.
+class ConsentAccessorScope {
+  /// An individual, group, or access role that identifies the accessor or a
+  /// characteristic of the accessor.
+  ///
+  /// This can be a resource ID (such as `{resourceType}/{id}`) or an external
+  /// URI. This value must be present.
+  core.String? actor;
+
+  /// An abstract identifier that describes the environment or conditions under
+  /// which the accessor is acting.
+  ///
+  /// Can be "*" if it applies to all environments.
+  core.String? environment;
+
+  /// The intent of data use.
+  ///
+  /// Can be "*" if it applies to all purposes.
+  core.String? purpose;
+
+  ConsentAccessorScope({
+    this.actor,
+    this.environment,
+    this.purpose,
+  });
+
+  ConsentAccessorScope.fromJson(core.Map json_)
+      : this(
+          actor: json_['actor'] as core.String?,
+          environment: json_['environment'] as core.String?,
+          purpose: json_['purpose'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actor != null) 'actor': actor!,
+        if (environment != null) 'environment': environment!,
+        if (purpose != null) 'purpose': purpose!,
+      };
+}
+
 /// Documentation of a user's consent.
 class ConsentArtifact {
   /// Screenshots, PDFs, or other binary information documenting the user's
@@ -8918,6 +9406,98 @@ class ConsentArtifact {
       };
 }
 
+/// Configures whether to enforce consent for the FHIR store and which consent
+/// enforcement version is being used.
+class ConsentConfig {
+  /// Specifies how the server logs the consent-aware requests.
+  ///
+  /// If not specified, the `AccessDeterminationLogConfig.LogLevel.MINIMUM`
+  /// option is used.
+  ///
+  /// Optional.
+  AccessDeterminationLogConfig? accessDeterminationLogConfig;
+
+  /// The default value is false.
+  ///
+  /// If set to true, when accessing FHIR resources, the consent headers will be
+  /// verified against consents given by patients. See the
+  /// ConsentEnforcementVersion for the supported consent headers.
+  ///
+  /// Optional.
+  core.bool? accessEnforced;
+
+  /// Different options to configure the behaviour of the server when handling
+  /// the `X-Consent-Scope` header.
+  ///
+  /// Optional.
+  ConsentHeaderHandling? consentHeaderHandling;
+
+  /// The versioned names of the enforced admin Consent resource(s), in the
+  /// format
+  /// `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}/_history/{version_id}`.
+  ///
+  /// For FHIR stores with `disable_resource_versioning=true`, the format is
+  /// `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`.
+  /// This field can only be updated using ApplyAdminConsents.
+  ///
+  /// Output only.
+  core.List<core.String>? enforcedAdminConsents;
+
+  /// Specifies which consent enforcement version is being used for this FHIR
+  /// store.
+  ///
+  /// This field can only be set once by either CreateFhirStore or
+  /// UpdateFhirStore. After that, you must call ApplyConsents to change the
+  /// version.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED" : Users must specify an
+  /// enforcement version or an error is returned.
+  /// - "V1" : Enforcement version 1. See the
+  /// [FHIR Consent resources in the Cloud Healthcare API](https://cloud.google.com/healthcare-api/docs/fhir-consent)
+  /// guide for more details.
+  core.String? version;
+
+  ConsentConfig({
+    this.accessDeterminationLogConfig,
+    this.accessEnforced,
+    this.consentHeaderHandling,
+    this.enforcedAdminConsents,
+    this.version,
+  });
+
+  ConsentConfig.fromJson(core.Map json_)
+      : this(
+          accessDeterminationLogConfig:
+              json_.containsKey('accessDeterminationLogConfig')
+                  ? AccessDeterminationLogConfig.fromJson(
+                      json_['accessDeterminationLogConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          accessEnforced: json_['accessEnforced'] as core.bool?,
+          consentHeaderHandling: json_.containsKey('consentHeaderHandling')
+              ? ConsentHeaderHandling.fromJson(json_['consentHeaderHandling']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          enforcedAdminConsents: (json_['enforcedAdminConsents'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          version: json_['version'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessDeterminationLogConfig != null)
+          'accessDeterminationLogConfig': accessDeterminationLogConfig!,
+        if (accessEnforced != null) 'accessEnforced': accessEnforced!,
+        if (consentHeaderHandling != null)
+          'consentHeaderHandling': consentHeaderHandling!,
+        if (enforcedAdminConsents != null)
+          'enforcedAdminConsents': enforcedAdminConsents!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// The detailed evaluation of a particular Consent.
 class ConsentEvaluation {
   /// The evaluation result.
@@ -8949,6 +9529,43 @@ class ConsentEvaluation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (evaluationResult != null) 'evaluationResult': evaluationResult!,
+      };
+}
+
+/// How the server handles the consent header.
+class ConsentHeaderHandling {
+  /// Specifies the default server behavior when the header is empty.
+  ///
+  /// If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SCOPE_PROFILE_UNSPECIFIED" : If not specified, the default value
+  /// `PERMIT_EMPTY_SCOPE` is used.
+  /// - "PERMIT_EMPTY_SCOPE" : When no consent scopes are provided (for example,
+  /// if there's an empty or missing header), then consent check is disabled,
+  /// similar to when `access_enforced` is `false`. You can use audit logs to
+  /// differentiate these two cases by looking at the value of
+  /// `protopayload.metadata.consentMode`. If consents scopes are present, they
+  /// must be valid and within the allowed limits, otherwise the request will be
+  /// rejected with a `4xx` code.
+  /// - "REQUIRED_ON_READ" : The consent header must be non-empty when
+  /// performing read and search operations, otherwise the request is rejected
+  /// with a `4xx` code. Additionally, invalid consent scopes or scopes
+  /// exceeding the allowed limits are rejected.
+  core.String? profile;
+
+  ConsentHeaderHandling({
+    this.profile,
+  });
+
+  ConsentHeaderHandling.fromJson(core.Map json_)
+      : this(
+          profile: json_['profile'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (profile != null) 'profile': profile!,
       };
 }
 
@@ -9214,6 +9831,8 @@ class DateShiftConfig {
 class DeidentifiedStoreDestination {
   /// The configuration to use when de-identifying resources that are added to
   /// this store.
+  ///
+  /// Optional.
   DeidentifyConfig? config;
 
   /// The full resource name of a Cloud Healthcare FHIR store, for example,
@@ -9249,17 +9868,25 @@ class DeidentifiedStoreDestination {
 /// applied in a nested manner at runtime.
 class DeidentifyConfig {
   /// Configures de-id of application/DICOM content.
+  ///
+  /// Optional.
   DicomConfig? dicom;
 
   /// Configures de-id of application/FHIR content.
+  ///
+  /// Optional.
   FhirConfig? fhir;
 
   /// Configures de-identification of image pixels wherever they are found in
   /// the source_dataset.
+  ///
+  /// Optional.
   ImageConfig? image;
 
   /// Configures de-identification of text wherever it is found in the
   /// source_dataset.
+  ///
+  /// Optional.
   TextConfig? text;
 
   /// Ensures in-flight data remains in the region of origin during
@@ -9270,6 +9897,8 @@ class DeidentifyConfig {
   /// `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within
   /// TextConfig, and must also be excluded within ImageConfig if image
   /// redaction is required.
+  ///
+  /// Optional.
   core.bool? useRegionalDataProcessing;
 
   DeidentifyConfig({
@@ -9534,6 +10163,8 @@ class DicomConfig {
   /// to a database of the original images containing the UIDs, it would be
   /// possible to recover the individual's identity."
   /// http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.html
+  ///
+  /// Optional.
   core.bool? skipIdRedaction;
 
   DicomConfig({
@@ -10077,6 +10708,172 @@ class EvaluateUserConsentsResponse {
       };
 }
 
+/// The enforcing consent's metadata.
+class ExplainDataAccessConsentInfo {
+  /// The compartment base resources that matched a cascading policy.
+  ///
+  /// Each resource has the following format:
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/{resource_type}/{resource_id}`
+  core.List<core.String>? cascadeOrigins;
+
+  /// The resource name of this consent resource, in the format:
+  /// `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`.
+  core.String? consentResource;
+
+  /// Last enforcement timestamp of this consent resource.
+  core.String? enforcementTime;
+
+  /// A list of all the matching accessor scopes of this consent policy that
+  /// enforced ExplainDataAccessConsentScope.accessor_scope.
+  core.List<ConsentAccessorScope>? matchingAccessorScopes;
+
+  /// The patient owning the consent (only applicable for patient consents), in
+  /// the format:
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Patient/{patient_id}`
+  core.String? patientConsentOwner;
+
+  /// The policy type of consent resource (e.g. PATIENT, ADMIN).
+  /// Possible string values are:
+  /// - "CONSENT_POLICY_TYPE_UNSPECIFIED" : Unspecified policy type.
+  /// - "CONSENT_POLICY_TYPE_PATIENT" : Consent represent a patient consent.
+  /// - "CONSENT_POLICY_TYPE_ADMIN" : Consent represent an admin consent.
+  core.String? type;
+
+  /// The consent's variant combinations.
+  ///
+  /// A single consent may have multiple variants.
+  core.List<core.String>? variants;
+
+  ExplainDataAccessConsentInfo({
+    this.cascadeOrigins,
+    this.consentResource,
+    this.enforcementTime,
+    this.matchingAccessorScopes,
+    this.patientConsentOwner,
+    this.type,
+    this.variants,
+  });
+
+  ExplainDataAccessConsentInfo.fromJson(core.Map json_)
+      : this(
+          cascadeOrigins: (json_['cascadeOrigins'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          consentResource: json_['consentResource'] as core.String?,
+          enforcementTime: json_['enforcementTime'] as core.String?,
+          matchingAccessorScopes:
+              (json_['matchingAccessorScopes'] as core.List?)
+                  ?.map((value) => ConsentAccessorScope.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+          patientConsentOwner: json_['patientConsentOwner'] as core.String?,
+          type: json_['type'] as core.String?,
+          variants: (json_['variants'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cascadeOrigins != null) 'cascadeOrigins': cascadeOrigins!,
+        if (consentResource != null) 'consentResource': consentResource!,
+        if (enforcementTime != null) 'enforcementTime': enforcementTime!,
+        if (matchingAccessorScopes != null)
+          'matchingAccessorScopes': matchingAccessorScopes!,
+        if (patientConsentOwner != null)
+          'patientConsentOwner': patientConsentOwner!,
+        if (type != null) 'type': type!,
+        if (variants != null) 'variants': variants!,
+      };
+}
+
+/// A single consent scope that provides info on who has access to the requested
+/// resource scope for a particular purpose and environment, enforced by which
+/// consent.
+class ExplainDataAccessConsentScope {
+  /// The accessor scope that describes who can access, for what purpose, and in
+  /// which environment.
+  ConsentAccessorScope? accessorScope;
+
+  /// Whether the current consent scope is permitted or denied access on the
+  /// requested resource.
+  /// Possible string values are:
+  /// - "CONSENT_DECISION_TYPE_UNSPECIFIED" : Unspecified consent decision type.
+  /// - "CONSENT_DECISION_TYPE_PERMIT" : Consent permitted access.
+  /// - "CONSENT_DECISION_TYPE_DENY" : Consent denied access.
+  core.String? decision;
+
+  /// Metadata of the consent resources that enforce the consent scope's access.
+  core.List<ExplainDataAccessConsentInfo>? enforcingConsents;
+
+  /// Other consent scopes that created exceptions within this scope.
+  core.List<ExplainDataAccessConsentScope>? exceptions;
+
+  ExplainDataAccessConsentScope({
+    this.accessorScope,
+    this.decision,
+    this.enforcingConsents,
+    this.exceptions,
+  });
+
+  ExplainDataAccessConsentScope.fromJson(core.Map json_)
+      : this(
+          accessorScope: json_.containsKey('accessorScope')
+              ? ConsentAccessorScope.fromJson(
+                  json_['accessorScope'] as core.Map<core.String, core.dynamic>)
+              : null,
+          decision: json_['decision'] as core.String?,
+          enforcingConsents: (json_['enforcingConsents'] as core.List?)
+              ?.map((value) => ExplainDataAccessConsentInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          exceptions: (json_['exceptions'] as core.List?)
+              ?.map((value) => ExplainDataAccessConsentScope.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessorScope != null) 'accessorScope': accessorScope!,
+        if (decision != null) 'decision': decision!,
+        if (enforcingConsents != null) 'enforcingConsents': enforcingConsents!,
+        if (exceptions != null) 'exceptions': exceptions!,
+      };
+}
+
+/// List of consent scopes that are applicable to the explained access on a
+/// given resource.
+class ExplainDataAccessResponse {
+  /// List of applicable consent scopes.
+  ///
+  /// Sorted in order of actor such that scopes belonging to the same actor will
+  /// be adjacent to each other in the list.
+  core.List<ExplainDataAccessConsentScope>? consentScopes;
+
+  /// Warnings associated with this response.
+  ///
+  /// It inform user with exceeded scope limit errors.
+  core.String? warning;
+
+  ExplainDataAccessResponse({
+    this.consentScopes,
+    this.warning,
+  });
+
+  ExplainDataAccessResponse.fromJson(core.Map json_)
+      : this(
+          consentScopes: (json_['consentScopes'] as core.List?)
+              ?.map((value) => ExplainDataAccessConsentScope.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          warning: json_['warning'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (consentScopes != null) 'consentScopes': consentScopes!,
+        if (warning != null) 'warning': warning!,
+      };
+}
+
 /// Exports data from the specified DICOM store.
 ///
 /// If a given resource, such as a DICOM object with the same SOPInstance UID,
@@ -10349,6 +11146,8 @@ class FhirConfig {
   /// If true, all extensions are preserved during de-identification by default.
   /// If false or unspecified, all extensions are removed during
   /// de-identification by default.
+  ///
+  /// Optional.
   core.bool? defaultKeepExtensions;
 
   /// Specifies FHIR paths to match and how to transform them.
@@ -10356,6 +11155,8 @@ class FhirConfig {
   /// Any field that is not matched by a FieldMetadata is passed through to the
   /// output dataset unmodified. All extensions will be processed according to
   /// `default_keep_extensions`.
+  ///
+  /// Optional.
   core.List<FieldMetadata>? fieldMetadataList;
 
   FhirConfig({
@@ -10491,6 +11292,13 @@ class FhirStore {
   /// - "ENABLED" : References in complex data types are parsed.
   core.String? complexDataTypeReferenceParsing;
 
+  /// Specifies whether this store has consent enforcement.
+  ///
+  /// Not available for DSTU2 FHIR version due to absence of Consent resources.
+  ///
+  /// Optional.
+  ConsentConfig? consentConfig;
+
   /// If true, overrides the default search behavior for this FHIR store to
   /// `handling=strict` which returns an error for unrecognized search
   /// parameters.
@@ -10624,6 +11432,7 @@ class FhirStore {
 
   FhirStore({
     this.complexDataTypeReferenceParsing,
+    this.consentConfig,
     this.defaultSearchHandlingStrict,
     this.disableReferentialIntegrity,
     this.disableResourceVersioning,
@@ -10641,6 +11450,10 @@ class FhirStore {
       : this(
           complexDataTypeReferenceParsing:
               json_['complexDataTypeReferenceParsing'] as core.String?,
+          consentConfig: json_.containsKey('consentConfig')
+              ? ConsentConfig.fromJson(
+                  json_['consentConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           defaultSearchHandlingStrict:
               json_['defaultSearchHandlingStrict'] as core.bool?,
           disableReferentialIntegrity:
@@ -10678,6 +11491,7 @@ class FhirStore {
   core.Map<core.String, core.dynamic> toJson() => {
         if (complexDataTypeReferenceParsing != null)
           'complexDataTypeReferenceParsing': complexDataTypeReferenceParsing!,
+        if (consentConfig != null) 'consentConfig': consentConfig!,
         if (defaultSearchHandlingStrict != null)
           'defaultSearchHandlingStrict': defaultSearchHandlingStrict!,
         if (disableReferentialIntegrity != null)
@@ -10817,8 +11631,11 @@ class Field {
 /// matching fields.
 class FieldMetadata {
   /// Deidentify action for one field.
+  ///
+  /// Optional.
   /// Possible string values are:
-  /// - "ACTION_UNSPECIFIED" : No action specified.
+  /// - "ACTION_UNSPECIFIED" : No action specified. Defaults to
+  /// DO_NOT_TRANSFORM.
   /// - "TRANSFORM" : Transform the entire field.
   /// - "INSPECT_AND_TRANSFORM" : Inspect and transform any found PHI.
   /// - "DO_NOT_TRANSFORM" : Do not transform.
@@ -10834,6 +11651,8 @@ class FieldMetadata {
   /// Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id,
   /// Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String,
   /// UnsignedInt, Uri, Uuid, Xhtml.
+  ///
+  /// Optional.
   core.List<core.String>? paths;
 
   FieldMetadata({
@@ -11661,6 +12480,8 @@ class Image {
 /// Specifies how to handle de-identification of image pixels.
 class ImageConfig {
   /// Determines how to redact text from image.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "TEXT_REDACTION_MODE_UNSPECIFIED" : No text redaction specified. Same as
   /// REDACT_NO_TEXT.
@@ -11814,6 +12635,8 @@ class InfoTypeTransformation {
   /// InfoTypes to apply this transformation to.
   ///
   /// If this is not specified, the transformation applies to any info_type.
+  ///
+  /// Optional.
   core.List<core.String>? infoTypes;
 
   /// Config for text redaction.
@@ -12781,6 +13604,32 @@ class PatientId {
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
         if (value != null) 'value': value!,
+      };
+}
+
+/// Apply consents given by a list of patients.
+class PatientScope {
+  /// The list of patient IDs whose Consent resources will be enforced.
+  ///
+  /// At most 10,000 patients can be specified. An empty list is equivalent to
+  /// all patients (meaning the entire FHIR store).
+  ///
+  /// Optional.
+  core.List<core.String>? patientIds;
+
+  PatientScope({
+    this.patientIds,
+  });
+
+  PatientScope.fromJson(core.Map json_)
+      : this(
+          patientIds: (json_['patientIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (patientIds != null) 'patientIds': patientIds!,
       };
 }
 
@@ -14115,6 +14964,8 @@ class TagFilterList {
   /// http://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,.
   /// They may be provided by "Keyword" or "Tag". For example "PatientID",
   /// "00100010".
+  ///
+  /// Optional.
   core.List<core.String>? tags;
 
   TagFilterList({
@@ -14142,14 +14993,20 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 class TextConfig {
   /// Transformations to apply to the detected data, overridden by
   /// `exclude_info_types`.
+  ///
+  /// Optional.
   core.List<InfoTypeTransformation>? additionalTransformations;
 
   /// InfoTypes to skip transforming, overriding `additional_transformations`.
+  ///
+  /// Optional.
   core.List<core.String>? excludeInfoTypes;
 
   /// The transformations to apply to the detected data.
   ///
   /// Deprecated. Use `additional_transformations` instead.
+  ///
+  /// Optional.
   core.List<InfoTypeTransformation>? transformations;
 
   TextConfig({
@@ -14235,6 +15092,42 @@ class TimePartitioning {
   core.Map<core.String, core.dynamic> toJson() => {
         if (expirationMs != null) 'expirationMs': expirationMs!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Apply consents given by patients whose most recent consent changes are in
+/// the time range.
+///
+/// Note that after identifying these patients, the server applies all Consent
+/// resources given by those patients, not just the Consent resources within the
+/// timestamp in the range.
+class TimeRange {
+  /// The latest consent change time, in format YYYY-MM-DDThh:mm:ss.sss+zz:zz If
+  /// not specified, the system uses the time when ApplyConsents was called.
+  ///
+  /// Optional.
+  core.String? end;
+
+  /// The earliest consent change time, in format YYYY-MM-DDThh:mm:ss.sss+zz:zz
+  /// If not specified, the system uses the FHIR store creation time.
+  ///
+  /// Optional.
+  core.String? start;
+
+  TimeRange({
+    this.end,
+    this.start,
+  });
+
+  TimeRange.fromJson(core.Map json_)
+      : this(
+          end: json_['end'] as core.String?,
+          start: json_['start'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (end != null) 'end': end!,
+        if (start != null) 'start': start!,
       };
 }
 

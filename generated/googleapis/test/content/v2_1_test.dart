@@ -6790,6 +6790,7 @@ api.LoyaltyProgram buildLoyaltyProgram() {
     o.memberPriceEffectiveDate = 'foo';
     o.price = buildPrice();
     o.programLabel = 'foo';
+    o.shippingLabel = 'foo';
     o.tierLabel = 'foo';
   }
   buildCounterLoyaltyProgram--;
@@ -6811,6 +6812,10 @@ void checkLoyaltyProgram(api.LoyaltyProgram o) {
     checkPrice(o.price!);
     unittest.expect(
       o.programLabel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.shippingLabel!,
       unittest.equals('foo'),
     );
     unittest.expect(

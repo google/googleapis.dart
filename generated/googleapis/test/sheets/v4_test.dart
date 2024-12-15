@@ -6504,6 +6504,7 @@ api.SetDataValidationRequest buildSetDataValidationRequest() {
   final o = api.SetDataValidationRequest();
   buildCounterSetDataValidationRequest++;
   if (buildCounterSetDataValidationRequest < 3) {
+    o.filteredRowsIncluded = true;
     o.range = buildGridRange();
     o.rule = buildDataValidationRule();
   }
@@ -6514,6 +6515,7 @@ api.SetDataValidationRequest buildSetDataValidationRequest() {
 void checkSetDataValidationRequest(api.SetDataValidationRequest o) {
   buildCounterSetDataValidationRequest++;
   if (buildCounterSetDataValidationRequest < 3) {
+    unittest.expect(o.filteredRowsIncluded!, unittest.isTrue);
     checkGridRange(o.range!);
     checkDataValidationRule(o.rule!);
   }

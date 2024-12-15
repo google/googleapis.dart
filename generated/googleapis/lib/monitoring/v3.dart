@@ -2017,22 +2017,23 @@ class ProjectsMetricDescriptorsResource {
   /// execute the request. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - If this field is empty, all custom and system-defined metric
-  /// descriptors are returned. Otherwise, the filter
+  /// [filter] - Optional. If this field is empty, all custom and system-defined
+  /// metric descriptors are returned. Otherwise, the filter
   /// (https://cloud.google.com/monitoring/api/v3/filters) specifies which
   /// metric descriptors are to be returned. For example, the following filter
   /// matches all custom metrics
   /// (https://cloud.google.com/monitoring/custom-metrics): metric.type =
   /// starts_with("custom.googleapis.com/")
   ///
-  /// [pageSize] - A positive number that is the maximum number of results to
-  /// return. The default and maximum value is 10,000. If a page_size \<= 0 or
-  /// \> 10,000 is submitted, will instead return a maximum of 10,000 results.
+  /// [pageSize] - Optional. A positive number that is the maximum number of
+  /// results to return. The default and maximum value is 10,000. If a page_size
+  /// \<= 0 or \> 10,000 is submitted, will instead return a maximum of 10,000
+  /// results.
   ///
-  /// [pageToken] - If this field is not empty then it must contain the
-  /// nextPageToken value returned by a previous call to this method. Using this
-  /// field causes the method to return additional results from the previous
-  /// method call.
+  /// [pageToken] - Optional. If this field is not empty then it must contain
+  /// the nextPageToken value returned by a previous call to this method. Using
+  /// this field causes the method to return additional results from the
+  /// previous method call.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9089,6 +9090,16 @@ class PrometheusQueryLanguageCondition {
   /// Optional.
   core.String? alertRule;
 
+  /// Whether to disable metric existence validation for this condition.This
+  /// allows alerting policies to be defined on metrics that do not yet exist,
+  /// improving advanced customer workflows such as configuring alerting
+  /// policies using Terraform.Users with the monitoring.alertPolicyViewer role
+  /// are able to see the name of the non-existent metric in the alerting policy
+  /// condition.
+  ///
+  /// Optional.
+  core.bool? disableMetricValidation;
+
   /// Alerts are considered firing once their PromQL expression was evaluated to
   /// be "true" for this long.
   ///
@@ -9146,6 +9157,7 @@ class PrometheusQueryLanguageCondition {
 
   PrometheusQueryLanguageCondition({
     this.alertRule,
+    this.disableMetricValidation,
     this.duration,
     this.evaluationInterval,
     this.labels,
@@ -9156,6 +9168,8 @@ class PrometheusQueryLanguageCondition {
   PrometheusQueryLanguageCondition.fromJson(core.Map json_)
       : this(
           alertRule: json_['alertRule'] as core.String?,
+          disableMetricValidation:
+              json_['disableMetricValidation'] as core.bool?,
           duration: json_['duration'] as core.String?,
           evaluationInterval: json_['evaluationInterval'] as core.String?,
           labels:
@@ -9171,6 +9185,8 @@ class PrometheusQueryLanguageCondition {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alertRule != null) 'alertRule': alertRule!,
+        if (disableMetricValidation != null)
+          'disableMetricValidation': disableMetricValidation!,
         if (duration != null) 'duration': duration!,
         if (evaluationInterval != null)
           'evaluationInterval': evaluationInterval!,

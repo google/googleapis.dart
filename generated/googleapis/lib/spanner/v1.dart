@@ -4453,7 +4453,8 @@ class ProjectsInstancesInstancePartitionOperationsResource {
   /// [instancePartitionDeadline] - Optional. Deadline used while retrieving
   /// metadata for instance partition operations. Instance partitions whose
   /// operation metadata cannot be retrieved within this deadline will be added
-  /// to unreachable in ListInstancePartitionOperationsResponse.
+  /// to unreachable_instance_partitions in
+  /// ListInstancePartitionOperationsResponse.
   ///
   /// [pageSize] - Optional. Number of operations to be returned in the
   /// response. If 0 or less, defaults to the server's maximum allowed page
@@ -5763,8 +5764,6 @@ class BackupInfo {
 
 /// BackupSchedule expresses the automated backup creation specification for a
 /// Spanner database.
-///
-/// Next ID: 10
 class BackupSchedule {
   /// The encryption configuration that will be used to encrypt the backup.
   ///
@@ -6793,7 +6792,7 @@ class CreateDatabaseRequest {
       };
 }
 
-/// The request for CreateInstanceConfigRequest.
+/// The request for CreateInstanceConfig.
 class CreateInstanceConfigRequest {
   /// The `InstanceConfig` proto of the configuration to create.
   ///
@@ -8202,10 +8201,10 @@ class Instance {
   /// - "NONE" : No default backup schedule will be created automatically on
   /// creation of a database within the instance.
   /// - "AUTOMATIC" : A default backup schedule will be created automatically on
-  /// creation of a database within the instance. The default backup schedule
-  /// creates a full backup every 24 hours and retains the backup for a period
-  /// of 7 days. Once created, the default backup schedule can be edited/deleted
-  /// similar to any other backup schedule.
+  /// creation of a database within the instance. Once created, the default
+  /// backup schedule can be edited or deleted just like any other backup
+  /// schedule. Currently, the default backup schedule creates a full backup
+  /// every 24 hours and retains the backup for a period of 7 days.
   core.String? defaultBackupScheduleType;
 
   /// The descriptive name for this instance as it appears in UIs.
@@ -12693,7 +12692,7 @@ class UpdateDatabaseDdlRequest {
       };
 }
 
-/// The request for UpdateInstanceConfigRequest.
+/// The request for UpdateInstanceConfig.
 class UpdateInstanceConfigRequest {
   /// The user instance configuration to update, which must always include the
   /// instance configuration name.
