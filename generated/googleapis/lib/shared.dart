@@ -664,6 +664,97 @@ class $AliasContext {
 
 /// Used by:
 ///
+/// - metastore:v1 : AlterMetadataResourceLocationRequest
+/// - metastore:v2 : GoogleCloudMetastoreV2AlterMetadataResourceLocationRequest
+class $AlterMetadataResourceLocationRequest {
+  /// The new location URI for the metadata resource.
+  ///
+  /// Required.
+  core.String? locationUri;
+
+  /// The relative metadata resource name in the following
+  /// format.databases/{database_id} or
+  /// databases/{database_id}/tables/{table_id} or
+  /// databases/{database_id}/tables/{table_id}/partitions/{partition_id}
+  ///
+  /// Required.
+  core.String? resourceName;
+
+  $AlterMetadataResourceLocationRequest({
+    this.locationUri,
+    this.resourceName,
+  });
+
+  $AlterMetadataResourceLocationRequest.fromJson(core.Map json_)
+      : this(
+          locationUri: json_['locationUri'] as core.String?,
+          resourceName: json_['resourceName'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (locationUri != null) 'locationUri': locationUri!,
+        if (resourceName != null) 'resourceName': resourceName!,
+      };
+}
+
+/// Used by:
+///
+/// - metastore:v1 : AlterTablePropertiesRequest
+/// - metastore:v2 : GoogleCloudMetastoreV2AlterTablePropertiesRequest
+class $AlterTablePropertiesRequest {
+  /// A map that describes the desired values to mutate.
+  ///
+  /// If update_mask is empty, the properties will not update. Otherwise, the
+  /// properties only alters the value whose associated paths exist in the
+  /// update mask
+  core.Map<core.String, core.String>? properties;
+
+  /// The name of the table containing the properties you're altering in the
+  /// following format.databases/{database_id}/tables/{table_id}
+  ///
+  /// Required.
+  core.String? tableName;
+
+  /// A field mask that specifies the metadata table properties that are
+  /// overwritten by the update.
+  ///
+  /// Fields specified in the update_mask are relative to the resource (not to
+  /// the full request). A field is overwritten if it is in the mask.For
+  /// example, given the target properties: properties { a: 1 b: 2 } And an
+  /// update properties: properties { a: 2 b: 3 c: 4 } then if the field mask
+  /// is:paths: "properties.b", "properties.c"then the result will be:
+  /// properties { a: 1 b: 3 c: 4 }
+  core.String? updateMask;
+
+  $AlterTablePropertiesRequest({
+    this.properties,
+    this.tableName,
+    this.updateMask,
+  });
+
+  $AlterTablePropertiesRequest.fromJson(core.Map json_)
+      : this(
+          properties:
+              (json_['properties'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          tableName: json_['tableName'] as core.String?,
+          updateMask: json_['updateMask'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (properties != null) 'properties': properties!,
+        if (tableName != null) 'tableName': tableName!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// Used by:
+///
 /// - containeranalysis:v1 : AnalysisCompleted
 /// - ondemandscanning:v1 : AnalysisCompleted
 class $AnalysisCompleted {
@@ -4854,6 +4945,33 @@ class $CustomListTargetingSetting {
 
 /// Used by:
 ///
+/// - metastore:v1 : DataCatalogConfig
+/// - metastore:v2 : GoogleCloudMetastoreV2DataCatalogConfig
+class $DataCatalogConfig {
+  /// Defines whether the metastore metadata should be synced to Data Catalog.
+  ///
+  /// The default value is to disable syncing metastore metadata to Data
+  /// Catalog.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  $DataCatalogConfig({
+    this.enabled,
+  });
+
+  $DataCatalogConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_['enabled'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
+/// Used by:
+///
 /// - admob:v1 : Date
 /// - adsense:v2 : Date
 /// - aiplatform:v1 : GoogleTypeDate
@@ -7138,6 +7256,7 @@ class $EgressSource {
 /// - metastore:v1 : CancelOperationRequest
 /// - metastore:v1 : CompleteMigrationRequest
 /// - metastore:v1 : Empty
+/// - metastore:v2 : GoogleCloudMetastoreV2EncryptionConfig
 /// - migrationcenter:v1 : AggregationCount
 /// - migrationcenter:v1 : AggregationFrequency
 /// - migrationcenter:v1 : AggregationSum
@@ -7204,6 +7323,8 @@ class $EgressSource {
 /// - osconfig:v1 : PausePatchDeploymentRequest
 /// - osconfig:v1 : ResumePatchDeploymentRequest
 /// - oslogin:v1 : Empty
+/// - parallelstore:v1 : CancelOperationRequest
+/// - parallelstore:v1 : GoogleProtobufEmpty
 /// - paymentsresellersubscription:v1 : GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionRequest
 /// - people:v1 : Empty
 /// - playintegrity:v1 : WriteDeviceRecallResponse
@@ -7257,6 +7378,8 @@ class $EgressSource {
 /// - secretmanager:v1 : Empty
 /// - securitycenter:v1 : Empty
 /// - securitycenter:v1 : RunAssetDiscoveryRequest
+/// - securityposture:v1 : CancelOperationRequest
+/// - securityposture:v1 : Empty
 /// - serviceconsumermanagement:v1 : CancelOperationRequest
 /// - serviceconsumermanagement:v1 : Empty
 /// - servicedirectory:v1 : Empty
@@ -8647,6 +8770,62 @@ class $Exponential {
 
 /// Used by:
 ///
+/// - metastore:v1 : ExportMetadataRequest
+/// - metastore:v2 : GoogleCloudMetastoreV2ExportMetadataRequest
+class $ExportMetadataRequest {
+  /// The type of the database dump.
+  ///
+  /// If unspecified, defaults to MYSQL.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : The type of the database dump is unknown.
+  /// - "MYSQL" : Database dump is a MySQL dump file.
+  /// - "AVRO" : Database dump contains Avro files.
+  core.String? databaseDumpType;
+
+  /// A Cloud Storage URI of a folder, in the format gs:///.
+  ///
+  /// A sub-folder containing exported files will be created below it.
+  core.String? destinationGcsFolder;
+
+  /// A request ID.
+  ///
+  /// Specify a unique request ID to allow the server to ignore the request if
+  /// it has completed. The server will ignore subsequent requests that provide
+  /// a duplicate request ID for at least 60 minutes after the first request.For
+  /// example, if an initial request times out, followed by another request with
+  /// the same request ID, the server ignores the second request to prevent the
+  /// creation of duplicate commitments.The request ID must be a valid UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format). A
+  /// zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  $ExportMetadataRequest({
+    this.databaseDumpType,
+    this.destinationGcsFolder,
+    this.requestId,
+  });
+
+  $ExportMetadataRequest.fromJson(core.Map json_)
+      : this(
+          databaseDumpType: json_['databaseDumpType'] as core.String?,
+          destinationGcsFolder: json_['destinationGcsFolder'] as core.String?,
+          requestId: json_['requestId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseDumpType != null) 'databaseDumpType': databaseDumpType!,
+        if (destinationGcsFolder != null)
+          'destinationGcsFolder': destinationGcsFolder!,
+        if (requestId != null) 'requestId': requestId!,
+      };
+}
+
+/// Used by:
+///
 /// - vault:v1 : CalendarExportOptions
 /// - vault:v1 : VoiceExportOptions
 class $ExportOptions00 {
@@ -8774,6 +8953,7 @@ class $ExportOptions01 {
 /// - run:v2 : GoogleTypeExpr
 /// - secretmanager:v1 : Expr
 /// - securitycenter:v1 : Expr
+/// - securityposture:v1 : Expr
 /// - servicedirectory:v1 : Expr
 /// - servicemanagement:v1 : Expr
 /// - spanner:v1 : Expr
@@ -9411,6 +9591,32 @@ class $Gcloud {
         if (additionalLinks != null) 'additionalLinks': additionalLinks!,
         if (gcloudCommands != null) 'gcloudCommands': gcloudCommands!,
         if (steps != null) 'steps': steps!,
+      };
+}
+
+/// Used by:
+///
+/// - parallelstore:v1 : DestinationGcsBucket
+/// - parallelstore:v1 : SourceGcsBucket
+class $GcsBucket {
+  /// URI to a Cloud Storage bucket in the format: `gs:///`.
+  ///
+  /// The path inside the bucket is optional.
+  ///
+  /// Required.
+  core.String? uri;
+
+  $GcsBucket({
+    this.uri,
+  });
+
+  $GcsBucket.fromJson(core.Map json_)
+      : this(
+          uri: json_['uri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -13308,6 +13514,61 @@ class $LatLng {
 
 /// Used by:
 ///
+/// - metastore:v1 : LatestBackup
+/// - metastore:v2 : GoogleCloudMetastoreV2LatestBackup
+class $LatestBackup {
+  /// The ID of an in-progress scheduled backup.
+  ///
+  /// Empty if no backup is in progress.
+  ///
+  /// Output only.
+  core.String? backupId;
+
+  /// The duration of the backup completion.
+  ///
+  /// Output only.
+  core.String? duration;
+
+  /// The time when the backup was started.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  /// The current state of the backup.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state of the backup is unknown.
+  /// - "IN_PROGRESS" : The backup is in progress.
+  /// - "SUCCEEDED" : The backup completed.
+  /// - "FAILED" : The backup failed.
+  core.String? state;
+
+  $LatestBackup({
+    this.backupId,
+    this.duration,
+    this.startTime,
+    this.state,
+  });
+
+  $LatestBackup.fromJson(core.Map json_)
+      : this(
+          backupId: json_['backupId'] as core.String?,
+          duration: json_['duration'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupId != null) 'backupId': backupId!,
+        if (duration != null) 'duration': duration!,
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Used by:
+///
 /// - containeranalysis:v1 : Layer
 /// - ondemandscanning:v1 : Layer
 class $Layer {
@@ -13825,10 +14086,12 @@ class $LocalizedMessage {
 /// - notebooks:v1 : Location
 /// - notebooks:v2 : Location
 /// - oracledatabase:v1 : Location
+/// - parallelstore:v1 : Location
 /// - privateca:v1 : Location
 /// - rapidmigrationassessment:v1 : Location
 /// - run:v1 : Location
 /// - secretmanager:v1 : Location
+/// - securityposture:v1 : Location
 /// - servicedirectory:v1 : Location
 /// - tpu:v1 : Location
 /// - tpu:v2 : Location
@@ -14894,6 +15157,46 @@ class $MonitoringDestination {
 
 /// Used by:
 ///
+/// - metastore:v1 : MoveTableToDatabaseRequest
+/// - metastore:v2 : GoogleCloudMetastoreV2MoveTableToDatabaseRequest
+class $MoveTableToDatabaseRequest {
+  /// The name of the database where the table resides.
+  ///
+  /// Required.
+  core.String? dbName;
+
+  /// The name of the database where the table should be moved.
+  ///
+  /// Required.
+  core.String? destinationDbName;
+
+  /// The name of the table to be moved.
+  ///
+  /// Required.
+  core.String? tableName;
+
+  $MoveTableToDatabaseRequest({
+    this.dbName,
+    this.destinationDbName,
+    this.tableName,
+  });
+
+  $MoveTableToDatabaseRequest.fromJson(core.Map json_)
+      : this(
+          dbName: json_['dbName'] as core.String?,
+          destinationDbName: json_['destinationDbName'] as core.String?,
+          tableName: json_['tableName'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dbName != null) 'dbName': dbName!,
+        if (destinationDbName != null) 'destinationDbName': destinationDbName!,
+        if (tableName != null) 'tableName': tableName!,
+      };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : NativeContentPositionAssignedTargetingOptionDetails
 /// - displayvideo:v3 : NativeContentPositionAssignedTargetingOptionDetails
 class $NativeContentPositionAssignedTargetingOptionDetails {
@@ -15928,6 +16231,32 @@ class $PageInfo {
         if (resultPerPage != null) 'resultPerPage': resultPerPage!,
         if (startIndex != null) 'startIndex': startIndex!,
         if (totalResults != null) 'totalResults': totalResults!,
+      };
+}
+
+/// Used by:
+///
+/// - parallelstore:v1 : DestinationParallelstore
+/// - parallelstore:v1 : SourceParallelstore
+class $Parallelstore {
+  /// Root directory path to the Paralellstore filesystem, starting with `/`.
+  ///
+  /// Defaults to `/` if unset.
+  ///
+  /// Optional.
+  core.String? path;
+
+  $Parallelstore({
+    this.path,
+  });
+
+  $Parallelstore.fromJson(core.Map json_)
+      : this(
+          path: json_['path'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (path != null) 'path': path!,
       };
 }
 
@@ -17661,6 +17990,32 @@ class $Query {
 
 /// Used by:
 ///
+/// - metastore:v1 : QueryMetadataRequest
+/// - metastore:v2 : GoogleCloudMetastoreV2QueryMetadataRequest
+class $QueryMetadataRequest {
+  /// A read-only SQL query to execute against the metadata database.
+  ///
+  /// The query cannot change or mutate the data.
+  ///
+  /// Required.
+  core.String? query;
+
+  $QueryMetadataRequest({
+    this.query,
+  });
+
+  $QueryMetadataRequest.fromJson(core.Map json_)
+      : this(
+          query: json_['query'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (query != null) 'query': query!,
+      };
+}
+
+/// Used by:
+///
 /// - aiplatform:v1 : GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualitySpec
 /// - aiplatform:v1 : GoogleCloudAiplatformV1QuestionAnsweringQualitySpec
 class $QuestionAnsweringQualitySpec {
@@ -18662,6 +19017,78 @@ class $ResponseMetadata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
+      };
+}
+
+/// Used by:
+///
+/// - metastore:v1 : RestoreServiceRequest
+/// - metastore:v2 : GoogleCloudMetastoreV2RestoreServiceRequest
+class $RestoreServiceRequest {
+  /// The relative resource name of the metastore service backup to restore
+  /// from, in the following
+  /// form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
+  ///
+  /// Mutually exclusive with backup_location, and exactly one of the two must
+  /// be set.
+  ///
+  /// Optional.
+  core.String? backup;
+
+  /// A Cloud Storage URI specifying the location of the backup artifacts,
+  /// namely - backup avro files under "avro/", backup_metastore.json and
+  /// service.json, in the following form:gs://.
+  ///
+  /// Mutually exclusive with backup, and exactly one of the two must be set.
+  ///
+  /// Optional.
+  core.String? backupLocation;
+
+  /// A request ID.
+  ///
+  /// Specify a unique request ID to allow the server to ignore the request if
+  /// it has completed. The server will ignore subsequent requests that provide
+  /// a duplicate request ID for at least 60 minutes after the first request.For
+  /// example, if an initial request times out, followed by another request with
+  /// the same request ID, the server ignores the second request to prevent the
+  /// creation of duplicate commitments.The request ID must be a valid UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format). A
+  /// zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  /// The type of restore.
+  ///
+  /// If unspecified, defaults to METADATA_ONLY.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RESTORE_TYPE_UNSPECIFIED" : The restore type is unknown.
+  /// - "FULL" : The service's metadata and configuration are restored.
+  /// - "METADATA_ONLY" : Only the service's metadata is restored.
+  core.String? restoreType;
+
+  $RestoreServiceRequest({
+    this.backup,
+    this.backupLocation,
+    this.requestId,
+    this.restoreType,
+  });
+
+  $RestoreServiceRequest.fromJson(core.Map json_)
+      : this(
+          backup: json_['backup'] as core.String?,
+          backupLocation: json_['backupLocation'] as core.String?,
+          requestId: json_['requestId'] as core.String?,
+          restoreType: json_['restoreType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backup != null) 'backup': backup!,
+        if (backupLocation != null) 'backupLocation': backupLocation!,
+        if (requestId != null) 'requestId': requestId!,
+        if (restoreType != null) 'restoreType': restoreType!,
       };
 }
 
@@ -20801,6 +21228,7 @@ class $StaticRouteConfig {
 /// - managedidentities:v1 : Status
 /// - memcache:v1 : Status
 /// - metastore:v1 : Status
+/// - metastore:v2 : GoogleRpcStatus
 /// - migrationcenter:v1 : Status
 /// - ml:v1 : GoogleRpc__Status
 /// - monitoring:v3 : Status
@@ -20814,6 +21242,7 @@ class $StaticRouteConfig {
 /// - ondemandscanning:v1 : Status
 /// - oracledatabase:v1 : Status
 /// - osconfig:v1 : Status
+/// - parallelstore:v1 : Status
 /// - people:v1 : Status
 /// - policysimulator:v1 : GoogleRpcStatus
 /// - policytroubleshooter:v1 : GoogleRpcStatus
@@ -20827,6 +21256,7 @@ class $StaticRouteConfig {
 /// - run:v2 : GoogleRpcStatus
 /// - runtimeconfig:v1 : Status
 /// - securitycenter:v1 : Status
+/// - securityposture:v1 : Status
 /// - serviceconsumermanagement:v1 : Status
 /// - servicecontrol:v1 : Status
 /// - servicecontrol:v2 : Status

@@ -1183,6 +1183,13 @@ The Dataproc Metastore API is used to manage the lifecycle and configuration of 
 - [Original documentation](https://cloud.google.com/dataproc-metastore/docs)
 - [Dart package details](https://pub.dev/documentation/googleapis/14.0.0-wip/metastore_v1/metastore_v1-library.html)
 
+#### Dataproc Metastore API - `metastore/v2`
+
+The Dataproc Metastore API is used to manage the lifecycle and configuration of metastore services.
+
+- [Original documentation](https://cloud.google.com/dataproc-metastore/docs)
+- [Dart package details](https://pub.dev/documentation/googleapis/14.0.0-wip/metastore_v2/metastore_v2-library.html)
+
 #### Migration Center API - `migrationcenter/v1`
 
 A unified platform that helps you accelerate your end-to-end cloud journey from your current on-premises or cloud environments to Google Cloud.
@@ -1346,6 +1353,11 @@ The PageSpeed Insights API lets you analyze the performance of your website with
 
 - [Original documentation](https://developers.google.com/speed/docs/insights/v5/about)
 - [Dart package details](https://pub.dev/documentation/googleapis/14.0.0-wip/pagespeedonline_v5/pagespeedonline_v5-library.html)
+
+#### Parallelstore API - `parallelstore/v1`
+
+- [Original documentation](https://cloud.google.com/parallelstore)
+- [Dart package details](https://pub.dev/documentation/googleapis/14.0.0-wip/parallelstore_v1/parallelstore_v1-library.html)
 
 #### Payments Reseller Subscription API - `paymentsresellersubscription/v1`
 
@@ -1551,6 +1563,13 @@ Security Command Center API provides access to temporal views of assets and find
 
 - [Original documentation](https://cloud.google.com/security-command-center)
 - [Dart package details](https://pub.dev/documentation/googleapis/14.0.0-wip/securitycenter_v1/securitycenter_v1-library.html)
+
+#### Security Posture API - `securityposture/v1`
+
+Defines, assesses, and monitors the overall status of your security in Google Cloud. You can use security postures to evaluate your current cloud security against defined benchmarks and help maintain the level of security that your organization requires. 
+
+- [Original documentation](https://cloud.google.com/security-command-center)
+- [Dart package details](https://pub.dev/documentation/googleapis/14.0.0-wip/securityposture_v1/securityposture_v1-library.html)
 
 #### Service Consumer Management API - `serviceconsumermanagement/v1`
 
