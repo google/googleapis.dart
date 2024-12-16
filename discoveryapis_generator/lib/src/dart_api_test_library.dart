@@ -111,11 +111,13 @@ class DartApiTestLibrary extends TestHelper {
       "import 'package:test/test.dart' as unittest;",
     ]..sort();
 
-    final optionalSkip = skip ? '''
+    final optionalSkip = skip
+        ? '''
 \n@unittest.Skip()
 library;
 
-''' : '';
+'''
+        : '';
 
     return """
 ${ignoreForFileComments(_testIgnores)}
