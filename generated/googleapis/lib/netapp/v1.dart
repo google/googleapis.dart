@@ -3163,6 +3163,16 @@ class Backup {
   /// `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id}`.
   core.String? name;
 
+  /// Reserved for future use
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// If specified, backup will be created from the given snapshot.
   ///
   /// If not specified, there will be a new snapshot taken to initiate the
@@ -3207,6 +3217,8 @@ class Backup {
     this.description,
     this.labels,
     this.name,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.sourceSnapshot,
     this.sourceVolume,
     this.state,
@@ -3227,6 +3239,8 @@ class Backup {
             ),
           ),
           name: json_['name'] as core.String?,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           sourceSnapshot: json_['sourceSnapshot'] as core.String?,
           sourceVolume: json_['sourceVolume'] as core.String?,
           state: json_['state'] as core.String?,
@@ -3240,6 +3254,8 @@ class Backup {
         if (description != null) 'description': description!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (sourceSnapshot != null) 'sourceSnapshot': sourceSnapshot!,
         if (sourceVolume != null) 'sourceVolume': sourceVolume!,
         if (state != null) 'state': state!,
@@ -5120,6 +5136,16 @@ class StoragePool {
   /// Optional.
   core.String? replicaZone;
 
+  /// Reserved for future use
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// Service level of the storage pool
   ///
   /// Required.
@@ -5180,6 +5206,8 @@ class StoragePool {
     this.network,
     this.psaRange,
     this.replicaZone,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.serviceLevel,
     this.state,
     this.stateDetails,
@@ -5210,6 +5238,8 @@ class StoragePool {
           network: json_['network'] as core.String?,
           psaRange: json_['psaRange'] as core.String?,
           replicaZone: json_['replicaZone'] as core.String?,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           serviceLevel: json_['serviceLevel'] as core.String?,
           state: json_['state'] as core.String?,
           stateDetails: json_['stateDetails'] as core.String?,
@@ -5234,6 +5264,8 @@ class StoragePool {
         if (network != null) 'network': network!,
         if (psaRange != null) 'psaRange': psaRange!,
         if (replicaZone != null) 'replicaZone': replicaZone!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (serviceLevel != null) 'serviceLevel': serviceLevel!,
         if (state != null) 'state': state!,
         if (stateDetails != null) 'stateDetails': stateDetails!,

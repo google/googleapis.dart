@@ -497,6 +497,15 @@ class CheckRequest {
 
 /// Response message for the Check method.
 class CheckResponse {
+  /// Optional response metadata that will be emitted as dynamic metadata to be
+  /// consumed by the caller of ServiceController.
+  ///
+  /// For compatibility with the ext_authz interface.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? dynamicMetadata;
+
   /// Returns a set of request contexts generated from the `CheckRequest`.
   core.Map<core.String, core.String>? headers;
 
@@ -507,12 +516,16 @@ class CheckResponse {
   Status? status;
 
   CheckResponse({
+    this.dynamicMetadata,
     this.headers,
     this.status,
   });
 
   CheckResponse.fromJson(core.Map json_)
       : this(
+          dynamicMetadata: json_.containsKey('dynamicMetadata')
+              ? json_['dynamicMetadata'] as core.Map<core.String, core.dynamic>
+              : null,
           headers:
               (json_['headers'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -527,6 +540,7 @@ class CheckResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (dynamicMetadata != null) 'dynamicMetadata': dynamicMetadata!,
         if (headers != null) 'headers': headers!,
         if (status != null) 'status': status!,
       };

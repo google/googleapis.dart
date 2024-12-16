@@ -8715,6 +8715,11 @@ class RestartMigrationJobRequest {
   /// Optional.
   MigrationJobObjectsConfig? objectsFilter;
 
+  /// If true, only failed objects will be restarted.
+  ///
+  /// Optional.
+  core.bool? restartFailedObjects;
+
   /// Restart the migration job without running prior configuration
   /// verification.
   ///
@@ -8725,6 +8730,7 @@ class RestartMigrationJobRequest {
 
   RestartMigrationJobRequest({
     this.objectsFilter,
+    this.restartFailedObjects,
     this.skipValidation,
   });
 
@@ -8734,11 +8740,14 @@ class RestartMigrationJobRequest {
               ? MigrationJobObjectsConfig.fromJson(
                   json_['objectsFilter'] as core.Map<core.String, core.dynamic>)
               : null,
+          restartFailedObjects: json_['restartFailedObjects'] as core.bool?,
           skipValidation: json_['skipValidation'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (objectsFilter != null) 'objectsFilter': objectsFilter!,
+        if (restartFailedObjects != null)
+          'restartFailedObjects': restartFailedObjects!,
         if (skipValidation != null) 'skipValidation': skipValidation!,
       };
 }

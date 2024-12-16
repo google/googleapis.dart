@@ -225,6 +225,8 @@ api.Backup buildBackup() {
     o.description = 'foo';
     o.labels = buildUnnamed4();
     o.name = 'foo';
+    o.satisfiesPzi = true;
+    o.satisfiesPzs = true;
     o.sourceSnapshot = 'foo';
     o.sourceVolume = 'foo';
     o.state = 'foo';
@@ -258,6 +260,8 @@ void checkBackup(api.Backup o) {
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.sourceSnapshot!,
       unittest.equals('foo'),
@@ -2196,6 +2200,8 @@ api.StoragePool buildStoragePool() {
     o.network = 'foo';
     o.psaRange = 'foo';
     o.replicaZone = 'foo';
+    o.satisfiesPzi = true;
+    o.satisfiesPzs = true;
     o.serviceLevel = 'foo';
     o.state = 'foo';
     o.stateDetails = 'foo';
@@ -2254,6 +2260,8 @@ void checkStoragePool(api.StoragePool o) {
       o.replicaZone!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.serviceLevel!,
       unittest.equals('foo'),

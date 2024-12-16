@@ -17277,6 +17277,7 @@ class $PortConfig {
 /// - cloudchannel:v1 : GoogleTypePostalAddress
 /// - contentwarehouse:v1 : GoogleTypePostalAddress
 /// - documentai:v1 : GoogleTypePostalAddress
+/// - domains:v1 : PostalAddress
 /// - mybusinessaccountmanagement:v1 : PostalAddress
 /// - mybusinessbusinessinformation:v1 : PostalAddress
 /// - mybusinessverifications:v1 : PostalAddress
@@ -17442,7 +17443,6 @@ class $PostalAddress00 {
 
 /// Used by:
 ///
-/// - domains:v1 : PostalAddress
 /// - jobs:v3 : PostalAddress
 /// - jobs:v4 : PostalAddress
 class $PostalAddress01 {

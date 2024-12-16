@@ -382,6 +382,7 @@ class DatasetsResource {
   /// Request parameters:
   ///
   /// [name] - Output only. Identifier. The resource name of the Dataset.
+  /// Format: `projects/{project}/locations/{location}/datasets/{dataset}`
   /// Value must have pattern `^datasets/\[^/\]+$`.
   ///
   /// [updateMask] - Required. The update mask applies to the resource. For the
@@ -3109,6 +3110,7 @@ class ProjectsLocationsDatasetsResource {
   /// Request parameters:
   ///
   /// [name] - Output only. Identifier. The resource name of the Dataset.
+  /// Format: `projects/{project}/locations/{location}/datasets/{dataset}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
@@ -23751,6 +23753,50 @@ class ProjectsLocationsReasoningEnginesResource {
     return GoogleCloudAiplatformV1QueryReasoningEngineResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Streams queries using a reasoning engine.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ReasoningEngine resource to use.
+  /// Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleApiHttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleApiHttpBody> streamQuery(
+    GoogleCloudAiplatformV1StreamQueryReasoningEngineRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':streamQuery';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleApiHttpBody.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsReasoningEnginesOperationsResource {
@@ -34830,7 +34876,8 @@ class GoogleCloudAiplatformV1Dataset {
 
   /// Identifier.
   ///
-  /// The resource name of the Dataset.
+  /// The resource name of the Dataset. Format:
+  /// `projects/{project}/locations/{location}/datasets/{dataset}`
   ///
   /// Output only.
   core.String? name;
@@ -43107,6 +43154,17 @@ class GoogleCloudAiplatformV1GenerationConfig {
   /// Optional.
   core.int? maxOutputTokens;
 
+  /// If specified, the media resolution specified will be used.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MEDIA_RESOLUTION_UNSPECIFIED" : Media resolution has not been set.
+  /// - "MEDIA_RESOLUTION_LOW" : Media resolution set to low (64 tokens).
+  /// - "MEDIA_RESOLUTION_MEDIUM" : Media resolution set to medium (256 tokens).
+  /// - "MEDIA_RESOLUTION_HIGH" : Media resolution set to high (zoomed reframing
+  /// with 256 tokens).
+  core.String? mediaResolution;
+
   /// Positive penalties.
   ///
   /// Optional.
@@ -43168,17 +43226,6 @@ class GoogleCloudAiplatformV1GenerationConfig {
   /// Optional.
   core.double? temperature;
 
-  /// If specified, the token resolution specified will be used.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "TOKEN_RESOLUTION_UNSPECIFIED" : Token resolution has not been set.
-  /// - "TOKEN_RESOLUTION_LOW" : Token resolution set to low (64 tokens).
-  /// - "TOKEN_RESOLUTION_MEDIUM" : Token resolution set to medium (256 tokens).
-  /// - "TOKEN_RESOLUTION_HIGH" : Token resolution set to high (P&S with 256
-  /// tokens).
-  core.String? tokenResolution;
-
   /// If specified, top-k sampling will be used.
   ///
   /// Optional.
@@ -43195,6 +43242,7 @@ class GoogleCloudAiplatformV1GenerationConfig {
     this.frequencyPenalty,
     this.logprobs,
     this.maxOutputTokens,
+    this.mediaResolution,
     this.presencePenalty,
     this.responseLogprobs,
     this.responseMimeType,
@@ -43205,7 +43253,6 @@ class GoogleCloudAiplatformV1GenerationConfig {
     this.speechConfig,
     this.stopSequences,
     this.temperature,
-    this.tokenResolution,
     this.topK,
     this.topP,
   });
@@ -43218,6 +43265,7 @@ class GoogleCloudAiplatformV1GenerationConfig {
               (json_['frequencyPenalty'] as core.num?)?.toDouble(),
           logprobs: json_['logprobs'] as core.int?,
           maxOutputTokens: json_['maxOutputTokens'] as core.int?,
+          mediaResolution: json_['mediaResolution'] as core.String?,
           presencePenalty: (json_['presencePenalty'] as core.num?)?.toDouble(),
           responseLogprobs: json_['responseLogprobs'] as core.bool?,
           responseMimeType: json_['responseMimeType'] as core.String?,
@@ -43241,7 +43289,6 @@ class GoogleCloudAiplatformV1GenerationConfig {
               ?.map((value) => value as core.String)
               .toList(),
           temperature: (json_['temperature'] as core.num?)?.toDouble(),
-          tokenResolution: json_['tokenResolution'] as core.String?,
           topK: (json_['topK'] as core.num?)?.toDouble(),
           topP: (json_['topP'] as core.num?)?.toDouble(),
         );
@@ -43252,6 +43299,7 @@ class GoogleCloudAiplatformV1GenerationConfig {
         if (frequencyPenalty != null) 'frequencyPenalty': frequencyPenalty!,
         if (logprobs != null) 'logprobs': logprobs!,
         if (maxOutputTokens != null) 'maxOutputTokens': maxOutputTokens!,
+        if (mediaResolution != null) 'mediaResolution': mediaResolution!,
         if (presencePenalty != null) 'presencePenalty': presencePenalty!,
         if (responseLogprobs != null) 'responseLogprobs': responseLogprobs!,
         if (responseMimeType != null) 'responseMimeType': responseMimeType!,
@@ -43263,7 +43311,6 @@ class GoogleCloudAiplatformV1GenerationConfig {
         if (speechConfig != null) 'speechConfig': speechConfig!,
         if (stopSequences != null) 'stopSequences': stopSequences!,
         if (temperature != null) 'temperature': temperature!,
-        if (tokenResolution != null) 'tokenResolution': tokenResolution!,
         if (topK != null) 'topK': topK!,
         if (topP != null) 'topP': topP!,
       };
@@ -48981,6 +49028,11 @@ class GoogleCloudAiplatformV1ModelContainerSpec {
   /// Required. Immutable.
   core.String? imageUri;
 
+  /// Specification for Kubernetes liveness probe.
+  ///
+  /// Immutable.
+  GoogleCloudAiplatformV1Probe? livenessProbe;
+
   /// List of ports to expose from the container.
   ///
   /// Vertex AI sends any prediction requests that it receives to the first port
@@ -49040,6 +49092,7 @@ class GoogleCloudAiplatformV1ModelContainerSpec {
     this.healthProbe,
     this.healthRoute,
     this.imageUri,
+    this.livenessProbe,
     this.ports,
     this.predictRoute,
     this.sharedMemorySizeMb,
@@ -49069,6 +49122,10 @@ class GoogleCloudAiplatformV1ModelContainerSpec {
               : null,
           healthRoute: json_['healthRoute'] as core.String?,
           imageUri: json_['imageUri'] as core.String?,
+          livenessProbe: json_.containsKey('livenessProbe')
+              ? GoogleCloudAiplatformV1Probe.fromJson(
+                  json_['livenessProbe'] as core.Map<core.String, core.dynamic>)
+              : null,
           ports: (json_['ports'] as core.List?)
               ?.map((value) => GoogleCloudAiplatformV1Port.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -49090,6 +49147,7 @@ class GoogleCloudAiplatformV1ModelContainerSpec {
         if (healthProbe != null) 'healthProbe': healthProbe!,
         if (healthRoute != null) 'healthRoute': healthRoute!,
         if (imageUri != null) 'imageUri': imageUri!,
+        if (livenessProbe != null) 'livenessProbe': livenessProbe!,
         if (ports != null) 'ports': ports!,
         if (predictRoute != null) 'predictRoute': predictRoute!,
         if (sharedMemorySizeMb != null)
@@ -55141,11 +55199,22 @@ class GoogleCloudAiplatformV1Probe {
   /// ExecAction probes the health of a container by executing a command.
   GoogleCloudAiplatformV1ProbeExecAction? exec;
 
+  /// GrpcAction probes the health of a container by sending a gRPC request.
+  GoogleCloudAiplatformV1ProbeGrpcAction? grpc;
+
+  /// HttpGetAction probes the health of a container by sending an HTTP GET
+  /// request.
+  GoogleCloudAiplatformV1ProbeHttpGetAction? httpGet;
+
   /// How often (in seconds) to perform the probe.
   ///
   /// Default to 10 seconds. Minimum value is 1. Must be less than
   /// timeout_seconds. Maps to Kubernetes probe argument 'periodSeconds'.
   core.int? periodSeconds;
+
+  /// TcpSocketAction probes the health of a container by opening a TCP socket
+  /// connection.
+  GoogleCloudAiplatformV1ProbeTcpSocketAction? tcpSocket;
 
   /// Number of seconds after which the probe times out.
   ///
@@ -55155,7 +55224,10 @@ class GoogleCloudAiplatformV1Probe {
 
   GoogleCloudAiplatformV1Probe({
     this.exec,
+    this.grpc,
+    this.httpGet,
     this.periodSeconds,
+    this.tcpSocket,
     this.timeoutSeconds,
   });
 
@@ -55165,19 +55237,175 @@ class GoogleCloudAiplatformV1Probe {
               ? GoogleCloudAiplatformV1ProbeExecAction.fromJson(
                   json_['exec'] as core.Map<core.String, core.dynamic>)
               : null,
+          grpc: json_.containsKey('grpc')
+              ? GoogleCloudAiplatformV1ProbeGrpcAction.fromJson(
+                  json_['grpc'] as core.Map<core.String, core.dynamic>)
+              : null,
+          httpGet: json_.containsKey('httpGet')
+              ? GoogleCloudAiplatformV1ProbeHttpGetAction.fromJson(
+                  json_['httpGet'] as core.Map<core.String, core.dynamic>)
+              : null,
           periodSeconds: json_['periodSeconds'] as core.int?,
+          tcpSocket: json_.containsKey('tcpSocket')
+              ? GoogleCloudAiplatformV1ProbeTcpSocketAction.fromJson(
+                  json_['tcpSocket'] as core.Map<core.String, core.dynamic>)
+              : null,
           timeoutSeconds: json_['timeoutSeconds'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exec != null) 'exec': exec!,
+        if (grpc != null) 'grpc': grpc!,
+        if (httpGet != null) 'httpGet': httpGet!,
         if (periodSeconds != null) 'periodSeconds': periodSeconds!,
+        if (tcpSocket != null) 'tcpSocket': tcpSocket!,
         if (timeoutSeconds != null) 'timeoutSeconds': timeoutSeconds!,
       };
 }
 
 /// ExecAction specifies a command to execute.
 typedef GoogleCloudAiplatformV1ProbeExecAction = $ExecAction;
+
+/// GrpcAction checks the health of a container using a gRPC service.
+class GoogleCloudAiplatformV1ProbeGrpcAction {
+  /// Port number of the gRPC service.
+  ///
+  /// Number must be in the range 1 to 65535.
+  core.int? port;
+
+  /// Service is the name of the service to place in the gRPC HealthCheckRequest
+  /// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+  ///
+  /// If this is not specified, the default behavior is defined by gRPC.
+  core.String? service;
+
+  GoogleCloudAiplatformV1ProbeGrpcAction({
+    this.port,
+    this.service,
+  });
+
+  GoogleCloudAiplatformV1ProbeGrpcAction.fromJson(core.Map json_)
+      : this(
+          port: json_['port'] as core.int?,
+          service: json_['service'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (port != null) 'port': port!,
+        if (service != null) 'service': service!,
+      };
+}
+
+/// HttpGetAction describes an action based on HTTP Get requests.
+class GoogleCloudAiplatformV1ProbeHttpGetAction {
+  /// Host name to connect to, defaults to the model serving container's IP.
+  ///
+  /// You probably want to set "Host" in httpHeaders instead.
+  core.String? host;
+
+  /// Custom headers to set in the request.
+  ///
+  /// HTTP allows repeated headers.
+  core.List<GoogleCloudAiplatformV1ProbeHttpHeader>? httpHeaders;
+
+  /// Path to access on the HTTP server.
+  core.String? path;
+
+  /// Number of the port to access on the container.
+  ///
+  /// Number must be in the range 1 to 65535.
+  core.int? port;
+
+  /// Scheme to use for connecting to the host.
+  ///
+  /// Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+  core.String? scheme;
+
+  GoogleCloudAiplatformV1ProbeHttpGetAction({
+    this.host,
+    this.httpHeaders,
+    this.path,
+    this.port,
+    this.scheme,
+  });
+
+  GoogleCloudAiplatformV1ProbeHttpGetAction.fromJson(core.Map json_)
+      : this(
+          host: json_['host'] as core.String?,
+          httpHeaders: (json_['httpHeaders'] as core.List?)
+              ?.map((value) => GoogleCloudAiplatformV1ProbeHttpHeader.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          path: json_['path'] as core.String?,
+          port: json_['port'] as core.int?,
+          scheme: json_['scheme'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (host != null) 'host': host!,
+        if (httpHeaders != null) 'httpHeaders': httpHeaders!,
+        if (path != null) 'path': path!,
+        if (port != null) 'port': port!,
+        if (scheme != null) 'scheme': scheme!,
+      };
+}
+
+/// HttpHeader describes a custom header to be used in HTTP probes
+class GoogleCloudAiplatformV1ProbeHttpHeader {
+  /// The header field name.
+  ///
+  /// This will be canonicalized upon output, so case-variant names will be
+  /// understood as the same header.
+  core.String? name;
+
+  /// The header field value
+  core.String? value;
+
+  GoogleCloudAiplatformV1ProbeHttpHeader({
+    this.name,
+    this.value,
+  });
+
+  GoogleCloudAiplatformV1ProbeHttpHeader.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+          value: json_['value'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// TcpSocketAction probes the health of a container by opening a TCP socket
+/// connection.
+class GoogleCloudAiplatformV1ProbeTcpSocketAction {
+  /// Optional: Host name to connect to, defaults to the model serving
+  /// container's IP.
+  core.String? host;
+
+  /// Number of the port to access on the container.
+  ///
+  /// Number must be in the range 1 to 65535.
+  core.int? port;
+
+  GoogleCloudAiplatformV1ProbeTcpSocketAction({
+    this.host,
+    this.port,
+  });
+
+  GoogleCloudAiplatformV1ProbeTcpSocketAction.fromJson(core.Map json_)
+      : this(
+          host: json_['host'] as core.String?,
+          port: json_['port'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (host != null) 'host': host!,
+        if (port != null) 'port': port!,
+      };
+}
 
 /// PscAutomatedEndpoints defines the output of the forwarding rule
 /// automatically created by each PscAutomationConfig.
@@ -60818,6 +61046,46 @@ class GoogleCloudAiplatformV1StratifiedSplit {
         if (trainingFraction != null) 'trainingFraction': trainingFraction!,
         if (validationFraction != null)
           'validationFraction': validationFraction!,
+      };
+}
+
+/// Request message for ReasoningEngineExecutionService.StreamQuery.
+class GoogleCloudAiplatformV1StreamQueryReasoningEngineRequest {
+  /// Class method to be used for the stream query.
+  ///
+  /// It is optional and defaults to "stream_query" if unspecified.
+  ///
+  /// Optional.
+  core.String? classMethod;
+
+  /// Input content provided by users in JSON object format.
+  ///
+  /// Examples include text query, function calling parameters, media bytes,
+  /// etc.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? input;
+
+  GoogleCloudAiplatformV1StreamQueryReasoningEngineRequest({
+    this.classMethod,
+    this.input,
+  });
+
+  GoogleCloudAiplatformV1StreamQueryReasoningEngineRequest.fromJson(
+      core.Map json_)
+      : this(
+          classMethod: json_['classMethod'] as core.String?,
+          input: json_.containsKey('input')
+              ? json_['input'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (classMethod != null) 'classMethod': classMethod!,
+        if (input != null) 'input': input!,
       };
 }
 

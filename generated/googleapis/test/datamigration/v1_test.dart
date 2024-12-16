@@ -4367,6 +4367,7 @@ api.RestartMigrationJobRequest buildRestartMigrationJobRequest() {
   buildCounterRestartMigrationJobRequest++;
   if (buildCounterRestartMigrationJobRequest < 3) {
     o.objectsFilter = buildMigrationJobObjectsConfig();
+    o.restartFailedObjects = true;
     o.skipValidation = true;
   }
   buildCounterRestartMigrationJobRequest--;
@@ -4377,6 +4378,7 @@ void checkRestartMigrationJobRequest(api.RestartMigrationJobRequest o) {
   buildCounterRestartMigrationJobRequest++;
   if (buildCounterRestartMigrationJobRequest < 3) {
     checkMigrationJobObjectsConfig(o.objectsFilter!);
+    unittest.expect(o.restartFailedObjects!, unittest.isTrue);
     unittest.expect(o.skipValidation!, unittest.isTrue);
   }
   buildCounterRestartMigrationJobRequest--;
