@@ -2000,8 +2000,8 @@ class ProjectsDatabasesOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3460,8 +3460,8 @@ class FindNearest {
   ///
   /// The behavior of the specified `distance_measure` will affect the meaning
   /// of the distance threshold. Since DOT_PRODUCT distances increase when the
-  /// vectors are more similar, the comparison is inverted. For EUCLIDEAN,
-  /// COSINE: WHERE distance \<= distance_threshold For DOT_PRODUCT: WHERE
+  /// vectors are more similar, the comparison is inverted. * For EUCLIDEAN,
+  /// COSINE: WHERE distance \<= distance_threshold * For DOT_PRODUCT: WHERE
   /// distance \>= distance_threshold
   ///
   /// Optional.
@@ -5816,7 +5816,7 @@ class StructuredAggregationQuery {
 /// A Firestore query.
 ///
 /// The query stages are executed in the following order: 1. from 2. where 3.
-/// select 4. order_by + start_at + end_at 5. offset 6. limit
+/// select 4. order_by + start_at + end_at 5. offset 6. limit 7. find_nearest
 class StructuredQuery {
   /// A potential prefix of a position in the result set to end the query at.
   ///

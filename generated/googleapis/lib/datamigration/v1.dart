@@ -1930,6 +1930,47 @@ class ProjectsLocationsMigrationJobsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Retrieves objects from the source database that can be selected for data
+  /// migration.
+  ///
+  /// This is applicable for the following migrations: 1. PostgreSQL to Cloud
+  /// SQL for PostgreSQL 2. PostgreSQL to AlloyDB for PostgreSQL.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name for the migration job for which
+  /// source objects should be returned.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/migrationJobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> fetchSourceObjects(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':fetchSourceObjects';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Generate a SSH configuration script to configure the reverse SSH
   /// connectivity.
   ///
@@ -2594,6 +2635,43 @@ class ProjectsLocationsMigrationJobsObjectsResource {
   ProjectsLocationsMigrationJobsObjectsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Use this method to get details about a migration job object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the migration job object resource to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/migrationJobs/\[^/\]+/objects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MigrationJobObject].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MigrationJobObject> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return MigrationJobObject.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -2649,6 +2727,101 @@ class ProjectsLocationsMigrationJobsObjectsResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Use this method to list the objects of a specific migration job.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent migration job that owns the collection of
+  /// objects.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/migrationJobs/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of objects to return. Default is 50. The
+  /// maximum value is 1000; values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Page token received from a previous
+  /// `ListMigrationJObObjectsRequest` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListMigrationJobObjectsRequest` must match the call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMigrationJobObjectsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMigrationJobObjectsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/objects';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMigrationJobObjectsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Use this method to look up a migration job object by its source object
+  /// identifier.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent migration job that owns the collection of
+  /// objects.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/migrationJobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MigrationJobObject].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MigrationJobObject> lookup(
+    LookupMigrationJobObjectRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert_1.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/objects:lookup';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return MigrationJobObject.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2764,8 +2937,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6283,6 +6456,35 @@ class ListMappingRulesResponse {
       };
 }
 
+/// Response containing the objects for a migration job.
+class ListMigrationJobObjectsResponse {
+  /// List of migration job objects.
+  core.List<MigrationJobObject>? migrationJobObjects;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  core.String? nextPageToken;
+
+  ListMigrationJobObjectsResponse({
+    this.migrationJobObjects,
+    this.nextPageToken,
+  });
+
+  ListMigrationJobObjectsResponse.fromJson(core.Map json_)
+      : this(
+          migrationJobObjects: (json_['migrationJobObjects'] as core.List?)
+              ?.map((value) => MigrationJobObject.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (migrationJobObjects != null)
+          'migrationJobObjects': migrationJobObjects!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response message for 'ListMigrationJobs' request.
 class ListMigrationJobsResponse {
   /// The list of migration jobs objects.
@@ -6392,38 +6594,36 @@ class ListPrivateConnectionsResponse {
 typedef Location = $Location00;
 
 /// Configuration to specify the Oracle directories to access the log files.
-class LogFileDirectories {
-  /// Oracle directory for archived logs.
-  ///
-  /// Required.
-  core.String? archivedLogDirectory;
-
-  /// Oracle directory for online logs.
-  ///
-  /// Required.
-  core.String? onlineLogDirectory;
-
-  LogFileDirectories({
-    this.archivedLogDirectory,
-    this.onlineLogDirectory,
-  });
-
-  LogFileDirectories.fromJson(core.Map json_)
-      : this(
-          archivedLogDirectory: json_['archivedLogDirectory'] as core.String?,
-          onlineLogDirectory: json_['onlineLogDirectory'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (archivedLogDirectory != null)
-          'archivedLogDirectory': archivedLogDirectory!,
-        if (onlineLogDirectory != null)
-          'onlineLogDirectory': onlineLogDirectory!,
-      };
-}
+typedef LogFileDirectories = $LogFileDirectories;
 
 /// Configuration to use LogMiner CDC method.
 typedef LogMiner = $Empty;
+
+/// Request for looking up a specific migration job object by its source object
+/// identifier.
+class LookupMigrationJobObjectRequest {
+  /// The source object identifier which maps to the migration job object.
+  ///
+  /// Required.
+  SourceObjectIdentifier? sourceObjectIdentifier;
+
+  LookupMigrationJobObjectRequest({
+    this.sourceObjectIdentifier,
+  });
+
+  LookupMigrationJobObjectRequest.fromJson(core.Map json_)
+      : this(
+          sourceObjectIdentifier: json_.containsKey('sourceObjectIdentifier')
+              ? SourceObjectIdentifier.fromJson(json_['sourceObjectIdentifier']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sourceObjectIdentifier != null)
+          'sourceObjectIdentifier': sourceObjectIdentifier!,
+      };
+}
 
 /// MachineConfig describes the configuration of a machine.
 typedef MachineConfig = $MachineConfig;
@@ -6756,11 +6956,15 @@ class MaterializedViewEntity {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? customFeatures;
 
+  /// View indices.
+  core.List<IndexEntity>? indices;
+
   /// The SQL code which creates the view.
   core.String? sqlCode;
 
   MaterializedViewEntity({
     this.customFeatures,
+    this.indices,
     this.sqlCode,
   });
 
@@ -6769,11 +6973,16 @@ class MaterializedViewEntity {
           customFeatures: json_.containsKey('customFeatures')
               ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
               : null,
+          indices: (json_['indices'] as core.List?)
+              ?.map((value) => IndexEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           sqlCode: json_['sqlCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customFeatures != null) 'customFeatures': customFeatures!,
+        if (indices != null) 'indices': indices!,
         if (sqlCode != null) 'sqlCode': sqlCode!,
       };
 }
@@ -6873,6 +7082,11 @@ class MigrationJob {
   /// The name (URI) of this migration job resource, in the form of:
   /// projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
   core.String? name;
+
+  /// The objects that need to be migrated.
+  ///
+  /// Optional.
+  MigrationJobObjectsConfig? objectsConfig;
 
   /// Configuration for heterogeneous **Oracle to Cloud SQL for PostgreSQL** and
   /// **Oracle to AlloyDB for PostgreSQL** migrations.
@@ -6976,6 +7190,7 @@ class MigrationJob {
     this.filter,
     this.labels,
     this.name,
+    this.objectsConfig,
     this.oracleToPostgresConfig,
     this.performanceConfig,
     this.phase,
@@ -7025,6 +7240,10 @@ class MigrationJob {
             ),
           ),
           name: json_['name'] as core.String?,
+          objectsConfig: json_.containsKey('objectsConfig')
+              ? MigrationJobObjectsConfig.fromJson(
+                  json_['objectsConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           oracleToPostgresConfig: json_.containsKey('oracleToPostgresConfig')
               ? OracleToPostgresConfig.fromJson(json_['oracleToPostgresConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -7080,6 +7299,7 @@ class MigrationJob {
         if (filter != null) 'filter': filter!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (objectsConfig != null) 'objectsConfig': objectsConfig!,
         if (oracleToPostgresConfig != null)
           'oracleToPostgresConfig': oracleToPostgresConfig!,
         if (performanceConfig != null) 'performanceConfig': performanceConfig!,
@@ -7098,6 +7318,119 @@ class MigrationJob {
         if (updateTime != null) 'updateTime': updateTime!,
         if (vpcPeeringConnectivity != null)
           'vpcPeeringConnectivity': vpcPeeringConnectivity!,
+      };
+}
+
+/// A specific Migration Job Object (e.g. a specifc DB Table)
+class MigrationJobObject {
+  /// The creation time of the migration job object.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The error details in case of failure.
+  ///
+  /// Output only.
+  Status? error;
+
+  /// The object's name.
+  core.String? name;
+
+  /// The phase of the migration job object.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PHASE_UNSPECIFIED" : The phase of the migration job is unknown.
+  /// - "FULL_DUMP" : The migration job object is in the full dump phase.
+  /// - "CDC" : The migration job object is in CDC phase.
+  /// - "READY_FOR_PROMOTE" : The migration job object is ready to be promoted.
+  /// - "PROMOTE_IN_PROGRESS" : The migration job object is in running the
+  /// promote phase.
+  /// - "PROMOTED" : The migration job is promoted.
+  /// - "DIFF_BACKUP" : The migration job object is in the differential backup
+  /// phase.
+  core.String? phase;
+
+  /// The object identifier in the data source.
+  SourceObjectIdentifier? sourceObject;
+
+  /// The state of the migration job object.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state of the migration job object is unknown.
+  /// - "NOT_STARTED" : The migration job object is not started.
+  /// - "RUNNING" : The migration job object is running.
+  /// - "STOPPING" : The migration job object is being stopped.
+  /// - "STOPPED" : The migration job object is currently stopped.
+  /// - "RESTARTING" : The migration job object is restarting.
+  /// - "FAILED" : The migration job object failed.
+  /// - "REMOVING" : The migration job object is deleting.
+  /// - "NOT_SELECTED" : The migration job object is not selected for migration.
+  /// - "COMPLETED" : The migration job object is completed.
+  core.String? state;
+
+  /// The last update time of the migration job object.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  MigrationJobObject({
+    this.createTime,
+    this.error,
+    this.name,
+    this.phase,
+    this.sourceObject,
+    this.state,
+    this.updateTime,
+  });
+
+  MigrationJobObject.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          error: json_.containsKey('error')
+              ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_['name'] as core.String?,
+          phase: json_['phase'] as core.String?,
+          sourceObject: json_.containsKey('sourceObject')
+              ? SourceObjectIdentifier.fromJson(
+                  json_['sourceObject'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (error != null) 'error': error!,
+        if (name != null) 'name': name!,
+        if (phase != null) 'phase': phase!,
+        if (sourceObject != null) 'sourceObject': sourceObject!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Configuration for the objects to be migrated.
+class MigrationJobObjectsConfig {
+  /// The list of the migration job objects.
+  SourceObjectsConfig? sourceObjectsConfig;
+
+  MigrationJobObjectsConfig({
+    this.sourceObjectsConfig,
+  });
+
+  MigrationJobObjectsConfig.fromJson(core.Map json_)
+      : this(
+          sourceObjectsConfig: json_.containsKey('sourceObjectsConfig')
+              ? SourceObjectsConfig.fromJson(json_['sourceObjectsConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sourceObjectsConfig != null)
+          'sourceObjectsConfig': sourceObjectsConfig!,
       };
 }
 
@@ -7961,6 +8294,11 @@ class PostgreSqlConnectionProfile {
   /// SQL instance ID of the source.
   core.String? cloudSqlId;
 
+  /// The name of the specific database within the host.
+  ///
+  /// Optional.
+  core.String? database;
+
   /// The IP or hostname of the source PostgreSQL database.
   ///
   /// Required.
@@ -8017,6 +8355,7 @@ class PostgreSqlConnectionProfile {
   PostgreSqlConnectionProfile({
     this.alloydbClusterId,
     this.cloudSqlId,
+    this.database,
     this.host,
     this.networkArchitecture,
     this.password,
@@ -8032,6 +8371,7 @@ class PostgreSqlConnectionProfile {
       : this(
           alloydbClusterId: json_['alloydbClusterId'] as core.String?,
           cloudSqlId: json_['cloudSqlId'] as core.String?,
+          database: json_['database'] as core.String?,
           host: json_['host'] as core.String?,
           networkArchitecture: json_['networkArchitecture'] as core.String?,
           password: json_['password'] as core.String?,
@@ -8057,6 +8397,7 @@ class PostgreSqlConnectionProfile {
   core.Map<core.String, core.dynamic> toJson() => {
         if (alloydbClusterId != null) 'alloydbClusterId': alloydbClusterId!,
         if (cloudSqlId != null) 'cloudSqlId': cloudSqlId!,
+        if (database != null) 'database': database!,
         if (host != null) 'host': host!,
         if (networkArchitecture != null)
           'networkArchitecture': networkArchitecture!,
@@ -8344,10 +8685,41 @@ class PrivateServiceConnectConnectivity {
 }
 
 /// Request message for 'PromoteMigrationJob' request.
-typedef PromoteMigrationJobRequest = $Empty;
+class PromoteMigrationJobRequest {
+  /// The object filter to apply to the migration job.
+  ///
+  /// Optional.
+  MigrationJobObjectsConfig? objectsFilter;
+
+  PromoteMigrationJobRequest({
+    this.objectsFilter,
+  });
+
+  PromoteMigrationJobRequest.fromJson(core.Map json_)
+      : this(
+          objectsFilter: json_.containsKey('objectsFilter')
+              ? MigrationJobObjectsConfig.fromJson(
+                  json_['objectsFilter'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (objectsFilter != null) 'objectsFilter': objectsFilter!,
+      };
+}
 
 /// Request message for 'RestartMigrationJob' request.
 class RestartMigrationJobRequest {
+  /// The object filter to apply to the migration job.
+  ///
+  /// Optional.
+  MigrationJobObjectsConfig? objectsFilter;
+
+  /// If true, only failed objects will be restarted.
+  ///
+  /// Optional.
+  core.bool? restartFailedObjects;
+
   /// Restart the migration job without running prior configuration
   /// verification.
   ///
@@ -8357,15 +8729,25 @@ class RestartMigrationJobRequest {
   core.bool? skipValidation;
 
   RestartMigrationJobRequest({
+    this.objectsFilter,
+    this.restartFailedObjects,
     this.skipValidation,
   });
 
   RestartMigrationJobRequest.fromJson(core.Map json_)
       : this(
+          objectsFilter: json_.containsKey('objectsFilter')
+              ? MigrationJobObjectsConfig.fromJson(
+                  json_['objectsFilter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          restartFailedObjects: json_['restartFailedObjects'] as core.bool?,
           skipValidation: json_['skipValidation'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (objectsFilter != null) 'objectsFilter': objectsFilter!,
+        if (restartFailedObjects != null)
+          'restartFailedObjects': restartFailedObjects!,
         if (skipValidation != null) 'skipValidation': skipValidation!,
       };
 }
@@ -9038,6 +9420,98 @@ class SourceNumericFilter {
       };
 }
 
+/// Config for a single migration job object.
+class SourceObjectConfig {
+  /// The object identifier.
+  SourceObjectIdentifier? objectIdentifier;
+
+  SourceObjectConfig({
+    this.objectIdentifier,
+  });
+
+  SourceObjectConfig.fromJson(core.Map json_)
+      : this(
+          objectIdentifier: json_.containsKey('objectIdentifier')
+              ? SourceObjectIdentifier.fromJson(json_['objectIdentifier']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (objectIdentifier != null) 'objectIdentifier': objectIdentifier!,
+      };
+}
+
+/// An identifier for the Migration Job Object.
+class SourceObjectIdentifier {
+  /// The database name.
+  ///
+  /// This will be required only if the object uses a database name as part of
+  /// its unique identifier.
+  core.String? database;
+
+  /// The type of the migration job object.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "MIGRATION_JOB_OBJECT_TYPE_UNSPECIFIED" : The type of the migration job
+  /// object is unknown.
+  /// - "DATABASE" : The migration job object is a database.
+  core.String? type;
+
+  SourceObjectIdentifier({
+    this.database,
+    this.type,
+  });
+
+  SourceObjectIdentifier.fromJson(core.Map json_)
+      : this(
+          database: json_['database'] as core.String?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (database != null) 'database': database!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// List of configurations for the source objects to be migrated.
+class SourceObjectsConfig {
+  /// The list of the objects to be migrated.
+  core.List<SourceObjectConfig>? objectConfigs;
+
+  /// The objects selection type of the migration job.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "OBJECTS_SELECTION_TYPE_UNSPECIFIED" : The type of the objects selection
+  /// is unknown, indicating that the migration job is at instance level.
+  /// - "ALL_OBJECTS" : Migrate all of the objects.
+  /// - "SPECIFIED_OBJECTS" : Migrate specific objects.
+  core.String? objectsSelectionType;
+
+  SourceObjectsConfig({
+    this.objectConfigs,
+    this.objectsSelectionType,
+  });
+
+  SourceObjectsConfig.fromJson(core.Map json_)
+      : this(
+          objectConfigs: (json_['objectConfigs'] as core.List?)
+              ?.map((value) => SourceObjectConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          objectsSelectionType: json_['objectsSelectionType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (objectConfigs != null) 'objectConfigs': objectConfigs!,
+        if (objectsSelectionType != null)
+          'objectsSelectionType': objectsSelectionType!,
+      };
+}
+
 /// Options to configure rule type SourceSqlChange.
 ///
 /// The rule is used to alter the sql code for database entities. The rule
@@ -9401,19 +9875,27 @@ class SqlServerDatabaseBackup {
 
 /// Encryption settings for the SQL Server database.
 class SqlServerEncryptionOptions {
-  /// Path to certificate.
+  /// Path to the Certificate (.cer) in Cloud Storage, in the form
+  /// `gs://bucketName/fileName`.
+  ///
+  /// The instance must have write permissions to the bucket and read access to
+  /// the file.
   ///
   /// Required.
   core.String? certPath;
 
   /// Input only.
   ///
-  /// Private key password.
+  /// Password that encrypts the private key.
   ///
   /// Required.
   core.String? pvkPassword;
 
-  /// Path to certificate private key.
+  /// Path to the Certificate Private Key (.pvk) in Cloud Storage, in the form
+  /// `gs://bucketName/fileName`.
+  ///
+  /// The instance must have write permissions to the bucket and read access to
+  /// the file.
   ///
   /// Required.
   core.String? pvkPath;
@@ -9548,6 +10030,9 @@ class SslConfig {
   /// - "SERVER_ONLY" : Only 'ca_certificate' specified.
   /// - "SERVER_CLIENT" : Both server ('ca_certificate'), and client
   /// ('client_key', 'client_certificate') specified.
+  /// - "REQUIRED" : Mandates SSL encryption for all connections. This doesn’t
+  /// require certificate verification.
+  /// - "NONE" : Connection is not encrypted.
   core.String? type;
 
   SslConfig({

@@ -670,7 +670,9 @@ class ProjectsLocationsResource {
   /// in the following form: projects/{project}/locations/{location}.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [orderBy] - Optional. Specifies the ordering of results.
+  /// [orderBy] - Optional. Specifies the ordering of results. Supported values
+  /// are: * relevance (default) * last_modified_timestamp *
+  /// last_modified_timestamp asc
   ///
   /// [pageSize] - Optional. Number of results in the search page. If \<=0, then
   /// defaults to 10. Max limit for page_size is 1000. Throws an invalid
@@ -680,7 +682,8 @@ class ProjectsLocationsResource {
   /// call. Provide this to retrieve the subsequent page.
   ///
   /// [query] - Required. The query against which entries in scope should be
-  /// matched.
+  /// matched. The query syntax is defined in Search syntax for Dataplex Catalog
+  /// (https://cloud.google.com/dataplex/docs/search-syntax).
   ///
   /// [scope] - Optional. The scope under which the search should be operating.
   /// It must either be organizations/ or projects/. If it is unspecified, it
@@ -1640,6 +1643,10 @@ class ProjectsLocationsDataScansResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+$`.
   ///
+  /// [force] - Optional. If set to true, any child resources of this data scan
+  /// will also be deleted. (Otherwise, the request will only work if the data
+  /// scan has no child resources.)
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1652,9 +1659,11 @@ class ProjectsLocationsDataScansResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
+    core.bool? force,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1891,14 +1900,15 @@ class ProjectsLocationsDataScansResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The relative resource name of the scan, of the form:
+  /// [name] - Output only. Identifier. The relative resource name of the scan,
+  /// of the form:
   /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}, where
   /// project refers to a project_id or project_number and location_id refers to
   /// a GCP region.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. Mask of fields to update.
+  /// [updateMask] - Optional. Mask of fields to update.
   ///
   /// [validateOnly] - Optional. Only validate the request, but do not perform
   /// mutations. The default is false.
@@ -3757,8 +3767,8 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   /// should modify. It supports the following syntaxes: - matches an aspect of
   /// the given type and empty path. @path - matches an aspect of the given type
   /// and specified path. For example, to attach an aspect to a field that is
-  /// specified by the schema aspect, the path should have the format Schema.. *
-  /// - matches aspects of the given type for all paths. *@path - matches
+  /// specified by the schema aspect, the path should have the format Schema..
+  /// @* - matches aspects of the given type for all paths. *@path - matches
   /// aspects of all types on the given path.The service will not remove
   /// existing aspects matching the syntax unless delete_missing_aspects is set
   /// to true.If this field is left empty, the service treats it as specifying
@@ -8931,6 +8941,9 @@ class ProjectsLocationsMetadataJobsResource {
   /// [metadataJobId] - Optional. The metadata job ID. If not provided, a unique
   /// ID is generated with the prefix metadata-job-.
   ///
+  /// [validateOnly] - Optional. The service validates the request without
+  /// performing any mutations. The default is false.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -8945,11 +8958,13 @@ class ProjectsLocationsMetadataJobsResource {
     GoogleCloudDataplexV1MetadataJob request,
     core.String parent, {
     core.String? metadataJobId,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (metadataJobId != null) 'metadataJobId': [metadataJobId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -11176,6 +11191,306 @@ class GoogleCloudDataplexV1DataAttributeBindingPath {
       };
 }
 
+/// The output of a data discovery scan.
+class GoogleCloudDataplexV1DataDiscoveryResult {
+  /// Configuration for metadata publishing.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing?
+      bigqueryPublishing;
+
+  GoogleCloudDataplexV1DataDiscoveryResult({
+    this.bigqueryPublishing,
+  });
+
+  GoogleCloudDataplexV1DataDiscoveryResult.fromJson(core.Map json_)
+      : this(
+          bigqueryPublishing: json_.containsKey('bigqueryPublishing')
+              ? GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing
+                  .fromJson(json_['bigqueryPublishing']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bigqueryPublishing != null)
+          'bigqueryPublishing': bigqueryPublishing!,
+      };
+}
+
+/// Describes BigQuery publishing configurations.
+class GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing {
+  /// The BigQuery dataset to publish to.
+  ///
+  /// It takes the form projects/{project_id}/datasets/{dataset_id}. If not set,
+  /// the service creates a default publishing dataset.
+  ///
+  /// Output only.
+  core.String? dataset;
+
+  GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing({
+    this.dataset,
+  });
+
+  GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing.fromJson(
+      core.Map json_)
+      : this(
+          dataset: json_['dataset'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataset != null) 'dataset': dataset!,
+      };
+}
+
+/// Spec for a data discovery scan.
+class GoogleCloudDataplexV1DataDiscoverySpec {
+  /// Configuration for metadata publishing.
+  ///
+  /// Optional.
+  GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig?
+      bigqueryPublishingConfig;
+
+  /// Cloud Storage related configurations.
+  GoogleCloudDataplexV1DataDiscoverySpecStorageConfig? storageConfig;
+
+  GoogleCloudDataplexV1DataDiscoverySpec({
+    this.bigqueryPublishingConfig,
+    this.storageConfig,
+  });
+
+  GoogleCloudDataplexV1DataDiscoverySpec.fromJson(core.Map json_)
+      : this(
+          bigqueryPublishingConfig: json_
+                  .containsKey('bigqueryPublishingConfig')
+              ? GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig
+                  .fromJson(json_['bigqueryPublishingConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          storageConfig: json_.containsKey('storageConfig')
+              ? GoogleCloudDataplexV1DataDiscoverySpecStorageConfig.fromJson(
+                  json_['storageConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bigqueryPublishingConfig != null)
+          'bigqueryPublishingConfig': bigqueryPublishingConfig!,
+        if (storageConfig != null) 'storageConfig': storageConfig!,
+      };
+}
+
+/// Describes BigQuery publishing configurations.
+class GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig {
+  /// The BigQuery connection used to create BigLake tables.
+  ///
+  /// Must be in the form
+  /// projects/{project_id}/locations/{location_id}/connections/{connection_id}
+  ///
+  /// Optional.
+  core.String? connection;
+
+  /// Determines whether to publish discovered tables as BigLake external tables
+  /// or non-BigLake external tables.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TABLE_TYPE_UNSPECIFIED" : Table type unspecified.
+  /// - "EXTERNAL" : Default. Discovered tables are published as BigQuery
+  /// external tables whose data is accessed using the credentials of the user
+  /// querying the table.
+  /// - "BIGLAKE" : Discovered tables are published as BigLake external tables
+  /// whose data is accessed using the credentials of the associated BigQuery
+  /// connection.
+  core.String? tableType;
+
+  GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig({
+    this.connection,
+    this.tableType,
+  });
+
+  GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig.fromJson(
+      core.Map json_)
+      : this(
+          connection: json_['connection'] as core.String?,
+          tableType: json_['tableType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connection != null) 'connection': connection!,
+        if (tableType != null) 'tableType': tableType!,
+      };
+}
+
+/// Configurations related to Cloud Storage as the data source.
+class GoogleCloudDataplexV1DataDiscoverySpecStorageConfig {
+  /// Configuration for CSV data.
+  ///
+  /// Optional.
+  GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions? csvOptions;
+
+  /// Defines the data to exclude during discovery.
+  ///
+  /// Provide a list of patterns that identify the data to exclude. For Cloud
+  /// Storage bucket assets, these patterns are interpreted as glob patterns
+  /// used to match object names. For BigQuery dataset assets, these patterns
+  /// are interpreted as patterns to match table names.
+  ///
+  /// Optional.
+  core.List<core.String>? excludePatterns;
+
+  /// Defines the data to include during discovery when only a subset of the
+  /// data should be considered.
+  ///
+  /// Provide a list of patterns that identify the data to include. For Cloud
+  /// Storage bucket assets, these patterns are interpreted as glob patterns
+  /// used to match object names. For BigQuery dataset assets, these patterns
+  /// are interpreted as patterns to match table names.
+  ///
+  /// Optional.
+  core.List<core.String>? includePatterns;
+
+  /// Configuration for JSON data.
+  ///
+  /// Optional.
+  GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions? jsonOptions;
+
+  GoogleCloudDataplexV1DataDiscoverySpecStorageConfig({
+    this.csvOptions,
+    this.excludePatterns,
+    this.includePatterns,
+    this.jsonOptions,
+  });
+
+  GoogleCloudDataplexV1DataDiscoverySpecStorageConfig.fromJson(core.Map json_)
+      : this(
+          csvOptions: json_.containsKey('csvOptions')
+              ? GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions
+                  .fromJson(json_['csvOptions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          excludePatterns: (json_['excludePatterns'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          includePatterns: (json_['includePatterns'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          jsonOptions: json_.containsKey('jsonOptions')
+              ? GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions
+                  .fromJson(json_['jsonOptions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (csvOptions != null) 'csvOptions': csvOptions!,
+        if (excludePatterns != null) 'excludePatterns': excludePatterns!,
+        if (includePatterns != null) 'includePatterns': includePatterns!,
+        if (jsonOptions != null) 'jsonOptions': jsonOptions!,
+      };
+}
+
+/// Describes CSV and similar semi-structured data formats.
+class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions {
+  /// The delimiter that is used to separate values.
+  ///
+  /// The default is , (comma).
+  ///
+  /// Optional.
+  core.String? delimiter;
+
+  /// The character encoding of the data.
+  ///
+  /// The default is UTF-8.
+  ///
+  /// Optional.
+  core.String? encoding;
+
+  /// The number of rows to interpret as header rows that should be skipped when
+  /// reading data rows.
+  ///
+  /// Optional.
+  core.int? headerRows;
+
+  /// The character used to quote column values.
+  ///
+  /// Accepts " (double quotation mark) or ' (single quotation mark). If
+  /// unspecified, defaults to " (double quotation mark).
+  ///
+  /// Optional.
+  core.String? quote;
+
+  /// Whether to disable the inference of data types for CSV data.
+  ///
+  /// If true, all columns are registered as strings.
+  ///
+  /// Optional.
+  core.bool? typeInferenceDisabled;
+
+  GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions({
+    this.delimiter,
+    this.encoding,
+    this.headerRows,
+    this.quote,
+    this.typeInferenceDisabled,
+  });
+
+  GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions.fromJson(
+      core.Map json_)
+      : this(
+          delimiter: json_['delimiter'] as core.String?,
+          encoding: json_['encoding'] as core.String?,
+          headerRows: json_['headerRows'] as core.int?,
+          quote: json_['quote'] as core.String?,
+          typeInferenceDisabled: json_['typeInferenceDisabled'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (delimiter != null) 'delimiter': delimiter!,
+        if (encoding != null) 'encoding': encoding!,
+        if (headerRows != null) 'headerRows': headerRows!,
+        if (quote != null) 'quote': quote!,
+        if (typeInferenceDisabled != null)
+          'typeInferenceDisabled': typeInferenceDisabled!,
+      };
+}
+
+/// Describes JSON data format.
+class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions {
+  /// The character encoding of the data.
+  ///
+  /// The default is UTF-8.
+  ///
+  /// Optional.
+  core.String? encoding;
+
+  /// Whether to disable the inference of data types for JSON data.
+  ///
+  /// If true, all columns are registered as their primitive types (strings,
+  /// number, or boolean).
+  ///
+  /// Optional.
+  core.bool? typeInferenceDisabled;
+
+  GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions({
+    this.encoding,
+    this.typeInferenceDisabled,
+  });
+
+  GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions.fromJson(
+      core.Map json_)
+      : this(
+          encoding: json_['encoding'] as core.String?,
+          typeInferenceDisabled: json_['typeInferenceDisabled'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (encoding != null) 'encoding': encoding!,
+        if (typeInferenceDisabled != null)
+          'typeInferenceDisabled': typeInferenceDisabled!,
+      };
+}
+
 /// DataProfileResult defines the output of DataProfileScan.
 ///
 /// Each field of the table will have field type specific profile result.
@@ -12743,6 +13058,14 @@ class GoogleCloudDataplexV1DataScan {
   /// Required.
   GoogleCloudDataplexV1DataSource? data;
 
+  /// The result of a data discovery scan.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataDiscoveryResult? dataDiscoveryResult;
+
+  /// Settings for a data discovery scan.
+  GoogleCloudDataplexV1DataDiscoverySpec? dataDiscoverySpec;
+
   /// The result of a data profile scan.
   ///
   /// Output only.
@@ -12789,6 +13112,8 @@ class GoogleCloudDataplexV1DataScan {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
+  /// Identifier.
+  ///
   /// The relative resource name of the scan, of the form:
   /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}, where
   /// project refers to a project_id or project_number and location_id refers to
@@ -12815,6 +13140,7 @@ class GoogleCloudDataplexV1DataScan {
   /// - "DATA_SCAN_TYPE_UNSPECIFIED" : The data scan type is unspecified.
   /// - "DATA_QUALITY" : Data quality scan.
   /// - "DATA_PROFILE" : Data profile scan.
+  /// - "DATA_DISCOVERY" : Data discovery scan.
   core.String? type;
 
   /// System generated globally unique ID for the scan.
@@ -12833,6 +13159,8 @@ class GoogleCloudDataplexV1DataScan {
   GoogleCloudDataplexV1DataScan({
     this.createTime,
     this.data,
+    this.dataDiscoveryResult,
+    this.dataDiscoverySpec,
     this.dataProfileResult,
     this.dataProfileSpec,
     this.dataQualityResult,
@@ -12855,6 +13183,16 @@ class GoogleCloudDataplexV1DataScan {
           data: json_.containsKey('data')
               ? GoogleCloudDataplexV1DataSource.fromJson(
                   json_['data'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dataDiscoveryResult: json_.containsKey('dataDiscoveryResult')
+              ? GoogleCloudDataplexV1DataDiscoveryResult.fromJson(
+                  json_['dataDiscoveryResult']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          dataDiscoverySpec: json_.containsKey('dataDiscoverySpec')
+              ? GoogleCloudDataplexV1DataDiscoverySpec.fromJson(
+                  json_['dataDiscoverySpec']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           dataProfileResult: json_.containsKey('dataProfileResult')
               ? GoogleCloudDataplexV1DataProfileResult.fromJson(
@@ -12904,6 +13242,9 @@ class GoogleCloudDataplexV1DataScan {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (data != null) 'data': data!,
+        if (dataDiscoveryResult != null)
+          'dataDiscoveryResult': dataDiscoveryResult!,
+        if (dataDiscoverySpec != null) 'dataDiscoverySpec': dataDiscoverySpec!,
         if (dataProfileResult != null) 'dataProfileResult': dataProfileResult!,
         if (dataProfileSpec != null) 'dataProfileSpec': dataProfileSpec!,
         if (dataQualityResult != null) 'dataQualityResult': dataQualityResult!,
@@ -12965,9 +13306,13 @@ class GoogleCloudDataplexV1DataScanExecutionStatus {
   core.String? latestJobCreateTime;
 
   /// The time when the latest DataScanJob ended.
+  ///
+  /// Optional.
   core.String? latestJobEndTime;
 
   /// The time when the latest DataScanJob started.
+  ///
+  /// Optional.
   core.String? latestJobStartTime;
 
   GoogleCloudDataplexV1DataScanExecutionStatus({
@@ -12999,6 +13344,16 @@ class GoogleCloudDataplexV1DataScanJob {
   /// Output only.
   core.String? createTime;
 
+  /// The result of a data discovery scan.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataDiscoveryResult? dataDiscoveryResult;
+
+  /// Settings for a data discovery scan.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataDiscoverySpec? dataDiscoverySpec;
+
   /// The result of a data profile scan.
   ///
   /// Output only.
@@ -13029,6 +13384,8 @@ class GoogleCloudDataplexV1DataScanJob {
   /// Output only.
   core.String? message;
 
+  /// Identifier.
+  ///
   /// The relative resource name of the DataScanJob, of the form:
   /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}/jobs/{job_id},
   /// where project refers to a project_id or project_number and location_id
@@ -13062,6 +13419,7 @@ class GoogleCloudDataplexV1DataScanJob {
   /// - "DATA_SCAN_TYPE_UNSPECIFIED" : The data scan type is unspecified.
   /// - "DATA_QUALITY" : Data quality scan.
   /// - "DATA_PROFILE" : Data profile scan.
+  /// - "DATA_DISCOVERY" : Data discovery scan.
   core.String? type;
 
   /// System generated globally unique ID for the DataScanJob.
@@ -13071,6 +13429,8 @@ class GoogleCloudDataplexV1DataScanJob {
 
   GoogleCloudDataplexV1DataScanJob({
     this.createTime,
+    this.dataDiscoveryResult,
+    this.dataDiscoverySpec,
     this.dataProfileResult,
     this.dataProfileSpec,
     this.dataQualityResult,
@@ -13087,6 +13447,16 @@ class GoogleCloudDataplexV1DataScanJob {
   GoogleCloudDataplexV1DataScanJob.fromJson(core.Map json_)
       : this(
           createTime: json_['createTime'] as core.String?,
+          dataDiscoveryResult: json_.containsKey('dataDiscoveryResult')
+              ? GoogleCloudDataplexV1DataDiscoveryResult.fromJson(
+                  json_['dataDiscoveryResult']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          dataDiscoverySpec: json_.containsKey('dataDiscoverySpec')
+              ? GoogleCloudDataplexV1DataDiscoverySpec.fromJson(
+                  json_['dataDiscoverySpec']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           dataProfileResult: json_.containsKey('dataProfileResult')
               ? GoogleCloudDataplexV1DataProfileResult.fromJson(
                   json_['dataProfileResult']
@@ -13118,6 +13488,9 @@ class GoogleCloudDataplexV1DataScanJob {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (dataDiscoveryResult != null)
+          'dataDiscoveryResult': dataDiscoveryResult!,
+        if (dataDiscoverySpec != null) 'dataDiscoverySpec': dataDiscoverySpec!,
         if (dataProfileResult != null) 'dataProfileResult': dataProfileResult!,
         if (dataProfileSpec != null) 'dataProfileSpec': dataProfileSpec!,
         if (dataQualityResult != null) 'dataQualityResult': dataQualityResult!,

@@ -1720,10 +1720,16 @@ typedef DimensionOrderBy = $DimensionOrderBy;
 /// The value of a dimension.
 typedef DimensionValue = $DimensionValue;
 
+/// Filter for empty values.
+typedef EmptyFilter = $Empty;
+
 /// An expression to filter dimension or metric values.
 class Filter {
   /// A filter for two values.
   BetweenFilter? betweenFilter;
+
+  /// A filter for empty values such as "(not set)" and "" values.
+  EmptyFilter? emptyFilter;
 
   /// The dimension name or metric name.
   ///
@@ -1744,6 +1750,7 @@ class Filter {
 
   Filter({
     this.betweenFilter,
+    this.emptyFilter,
     this.fieldName,
     this.inListFilter,
     this.numericFilter,
@@ -1755,6 +1762,10 @@ class Filter {
           betweenFilter: json_.containsKey('betweenFilter')
               ? BetweenFilter.fromJson(
                   json_['betweenFilter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          emptyFilter: json_.containsKey('emptyFilter')
+              ? EmptyFilter.fromJson(
+                  json_['emptyFilter'] as core.Map<core.String, core.dynamic>)
               : null,
           fieldName: json_['fieldName'] as core.String?,
           inListFilter: json_.containsKey('inListFilter')
@@ -1773,6 +1784,7 @@ class Filter {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (betweenFilter != null) 'betweenFilter': betweenFilter!,
+        if (emptyFilter != null) 'emptyFilter': emptyFilter!,
         if (fieldName != null) 'fieldName': fieldName!,
         if (inListFilter != null) 'inListFilter': inListFilter!,
         if (numericFilter != null) 'numericFilter': numericFilter!,

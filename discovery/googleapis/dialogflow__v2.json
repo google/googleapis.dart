@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241018",
+    "revision": "20241212",
     "rootUrl": "https://dialogflow.googleapis.com/",
     "servicePath": "",
     "title": "Dialogflow API",
@@ -3064,7 +3064,7 @@
                             ]
                         },
                         "create": {
-                            "description": "Creates a conversation profile in the specified project. ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via GetConversationProfile API.",
+                            "description": "Creates a conversation profile in the specified project. ConversationProfile.create_time and ConversationProfile.update_time aren't populated in the response. You can retrieve them via GetConversationProfile API.",
                             "flatPath": "v2/projects/{projectsId}/conversationProfiles",
                             "httpMethod": "POST",
                             "id": "dialogflow.projects.conversationProfiles.create",
@@ -3182,7 +3182,7 @@
                             ]
                         },
                         "patch": {
-                            "description": "Updates the specified conversation profile. ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via GetConversationProfile API.",
+                            "description": "Updates the specified conversation profile. ConversationProfile.create_time and ConversationProfile.update_time aren't populated in the response. You can retrieve them via GetConversationProfile API.",
                             "flatPath": "v2/projects/{projectsId}/conversationProfiles/{conversationProfilesId}",
                             "httpMethod": "PATCH",
                             "id": "dialogflow.projects.conversationProfiles.patch",
@@ -7037,7 +7037,7 @@
                                     ]
                                 },
                                 "create": {
-                                    "description": "Creates a conversation profile in the specified project. ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via GetConversationProfile API.",
+                                    "description": "Creates a conversation profile in the specified project. ConversationProfile.create_time and ConversationProfile.update_time aren't populated in the response. You can retrieve them via GetConversationProfile API.",
                                     "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/conversationProfiles",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.locations.conversationProfiles.create",
@@ -7155,7 +7155,7 @@
                                     ]
                                 },
                                 "patch": {
-                                    "description": "Updates the specified conversation profile. ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via GetConversationProfile API.",
+                                    "description": "Updates the specified conversation profile. ConversationProfile.create_time and ConversationProfile.update_time aren't populated in the response. You can retrieve them via GetConversationProfile API.",
                                     "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/conversationProfiles/{conversationProfilesId}",
                                     "httpMethod": "PATCH",
                                     "id": "dialogflow.projects.locations.conversationProfiles.patch",
@@ -8363,7 +8363,7 @@
                         "operations": {
                             "methods": {
                                 "cancel": {
-                                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
                                     "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.locations.operations.cancel",
@@ -8558,7 +8558,7 @@
                 "operations": {
                     "methods": {
                         "cancel": {
-                            "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                            "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
                             "flatPath": "v2/projects/{projectsId}/operations/{operationsId}:cancel",
                             "httpMethod": "POST",
                             "id": "dialogflow.projects.operations.cancel",
@@ -8836,7 +8836,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowCxV3BargeInConfig": {
-            "description": "Configuration of the barge-in behavior. Barge-in instructs the API to return a detected utterance at a proper time while the client is playing back the response audio from a previous request. When the client sees the utterance, it should stop the playback and immediately get ready for receiving the responses for the current request. The barge-in handling requires the client to start streaming audio input as soon as it starts playing back the audio from the previous response. The playback is modeled into two phases: * No barge-in phase: which goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no barge-in phase and during which the API starts speech detection and may inform the client that an utterance has been detected. Note that no-speech event is not expected in this phase. The client provides this configuration in terms of the durations of those two phases. The durations are measured in terms of the audio length from the the start of the input audio. No-speech event is a response with END_OF_UTTERANCE without any transcript following up.",
+            "description": "Configuration of the barge-in behavior. Barge-in instructs the API to return a detected utterance at a proper time while the client is playing back the response audio from a previous request. When the client sees the utterance, it should stop the playback and immediately get ready for receiving the responses for the current request. The barge-in handling requires the client to start streaming audio input as soon as it starts playing back the audio from the previous response. The playback is modeled into two phases: * No barge-in phase: which goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no barge-in phase and during which the API starts speech detection and may inform the client that an utterance has been detected. Note that no-speech event is not expected in this phase. The client provides this configuration in terms of the durations of those two phases. The durations are measured in terms of the audio length from the start of the input audio. No-speech event is a response with END_OF_UTTERANCE without any transcript following up.",
             "id": "GoogleCloudDialogflowCxV3BargeInConfig",
             "properties": {
                 "noBargeInDuration": {
@@ -9836,6 +9836,7 @@
             "properties": {
                 "id": {
                     "description": "Output only. The unique identifier of the training phrase.",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "parts": {
@@ -11143,7 +11144,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowCxV3beta1BargeInConfig": {
-            "description": "Configuration of the barge-in behavior. Barge-in instructs the API to return a detected utterance at a proper time while the client is playing back the response audio from a previous request. When the client sees the utterance, it should stop the playback and immediately get ready for receiving the responses for the current request. The barge-in handling requires the client to start streaming audio input as soon as it starts playing back the audio from the previous response. The playback is modeled into two phases: * No barge-in phase: which goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no barge-in phase and during which the API starts speech detection and may inform the client that an utterance has been detected. Note that no-speech event is not expected in this phase. The client provides this configuration in terms of the durations of those two phases. The durations are measured in terms of the audio length from the the start of the input audio. No-speech event is a response with END_OF_UTTERANCE without any transcript following up.",
+            "description": "Configuration of the barge-in behavior. Barge-in instructs the API to return a detected utterance at a proper time while the client is playing back the response audio from a previous request. When the client sees the utterance, it should stop the playback and immediately get ready for receiving the responses for the current request. The barge-in handling requires the client to start streaming audio input as soon as it starts playing back the audio from the previous response. The playback is modeled into two phases: * No barge-in phase: which goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no barge-in phase and during which the API starts speech detection and may inform the client that an utterance has been detected. Note that no-speech event is not expected in this phase. The client provides this configuration in terms of the durations of those two phases. The durations are measured in terms of the audio length from the start of the input audio. No-speech event is a response with END_OF_UTTERANCE without any transcript following up.",
             "id": "GoogleCloudDialogflowCxV3beta1BargeInConfig",
             "properties": {
                 "noBargeInDuration": {
@@ -12143,6 +12144,7 @@
             "properties": {
                 "id": {
                     "description": "Output only. The unique identifier of the training phrase.",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "parts": {
@@ -13682,7 +13684,7 @@
             "properties": {
                 "automatedAgentReply": {
                     "$ref": "GoogleCloudDialogflowV2AutomatedAgentReply",
-                    "description": "Only set if a Dialogflow automated agent has responded. Note that: AutomatedAgentReply.detect_intent_response.output_audio and AutomatedAgentReply.detect_intent_response.output_audio_config are always empty, use reply_audio instead."
+                    "description": "Only set if a Dialogflow automated agent has responded. Note that in AutomatedAgentReply.DetectIntentResponse, Sessions.DetectIntentResponse.output_audio and Sessions.DetectIntentResponse.output_audio_config are always empty, use reply_audio instead."
                 },
                 "dtmfParameters": {
                     "$ref": "GoogleCloudDialogflowV2DtmfParameters",
@@ -13782,7 +13784,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowV2AnswerRecord": {
-            "description": "Answer records are records to manage answer history and feedbacks for Dialogflow. Currently, answer record includes: - human agent assistant article suggestion - human agent assistant faq article It doesn't include: - `DetectIntent` intent matching - `DetectIntent` knowledge Answer records are not related to the conversation history in the Dialogflow Console. A Record is generated even when the end-user disables conversation history in the console. Records are created when there's a human agent assistant suggestion generated. A typical workflow for customers provide feedback to an answer is: 1. For human agent assistant, customers get suggestion via ListSuggestions API. Together with the answers, AnswerRecord.name are returned to the customers. 2. The customer uses the AnswerRecord.name to call the UpdateAnswerRecord method to send feedback about a specific answer that they believe is wrong.",
+            "description": "Answer records are records to manage answer history and feedbacks for Dialogflow. Currently, answer record includes: - human agent assistant article suggestion - human agent assistant faq article It doesn't include: - `DetectIntent` intent matching - `DetectIntent` knowledge Answer records are not related to the conversation history in the Dialogflow Console. A Record is generated even when the end-user disables conversation history in the console. Records are created when there's a human agent assistant suggestion generated. A typical workflow for customers provide feedback to an answer is: 1. For human agent assistant, customers get suggestion via ListSuggestions API. Together with the answers, AnswerRecord.name are returned to the customers. 2. The customer uses the AnswerRecord.name to call the AnswerRecords.UpdateAnswerRecord method to send feedback about a specific answer that they believe is wrong.",
             "id": "GoogleCloudDialogflowV2AnswerRecord",
             "properties": {
                 "agentAssistantRecord": {
@@ -14098,7 +14100,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowV2ClearSuggestionFeatureConfigOperationMetadata": {
-            "description": "Metadata for a ConversationProfile.ClearSuggestionFeatureConfig operation.",
+            "description": "Metadata for a ConversationProfiles.ClearSuggestionFeatureConfig operation.",
             "id": "GoogleCloudDialogflowV2ClearSuggestionFeatureConfigOperationMetadata",
             "properties": {
                 "conversationProfile": {
@@ -14150,7 +14152,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest": {
-            "description": "The request message for ConversationProfiles.ClearFeature.",
+            "description": "The request message for ConversationProfiles.ClearSuggestionFeatureConfig.",
             "id": "GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest",
             "properties": {
                 "participantRole": {
@@ -14596,7 +14598,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata": {
-            "description": "Metadata for ConversationDatasets.",
+            "description": "Metadata for CreateConversationDataset.",
             "id": "GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata",
             "properties": {
                 "conversationDataset": {
@@ -14696,7 +14698,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowV2DeleteConversationDatasetOperationMetadata": {
-            "description": "Metadata for ConversationDatasets.",
+            "description": "Metadata for DeleteConversationDataset.",
             "id": "GoogleCloudDialogflowV2DeleteConversationDatasetOperationMetadata",
             "properties": {},
             "type": "object"
@@ -15295,7 +15297,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowV2FewShotExample": {
-            "description": "Providing examples in the generator (i.e. building a few-shot generator) helps convey the desired format of the LLM response. NEXT_ID: 10",
+            "description": "Providing examples in the generator (i.e. building a few-shot generator) helps convey the desired format of the LLM response.",
             "id": "GoogleCloudDialogflowV2FewShotExample",
             "properties": {
                 "conversationContext": {
@@ -15515,7 +15517,7 @@
             "id": "GoogleCloudDialogflowV2GenerateStatelessSummaryResponse",
             "properties": {
                 "contextSize": {
-                    "description": "Number of messages prior to and including last_conversation_message used to compile the suggestion. It may be smaller than the GenerateStatelessSummaryRequest.context_size field in the request if there weren't that many messages in the conversation.",
+                    "description": "Number of messages prior to and including latest_message used to compile the suggestion. It may be smaller than the GenerateStatelessSummaryRequest.max_context_size field in the request if there weren't that many messages in the conversation.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -15766,6 +15768,11 @@
                 "contextFilterSettings": {
                     "$ref": "GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings",
                     "description": "Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped."
+                },
+                "contextSize": {
+                    "description": "Optional. The number of recent messages to include in the context. Supported features: KNOWLEDGE_ASSIST.",
+                    "format": "int32",
+                    "type": "integer"
                 },
                 "dialogflowQuerySource": {
                     "$ref": "GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource",
@@ -16243,6 +16250,13 @@
                 "phraseHints": {
                     "deprecated": true,
                     "description": "A list of strings containing words and phrases that the speech recognizer should recognize with higher likelihood. See [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints) for more details. This field is deprecated. Please use [`speech_contexts`]() instead. If you specify both [`phrase_hints`]() and [`speech_contexts`](), Dialogflow will treat the [`phrase_hints`]() as a single additional [`SpeechContext`]().",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "phraseSets": {
+                    "description": "A collection of phrase set resources to use for speech adaptation.",
                     "items": {
                         "type": "string"
                     },
@@ -17178,6 +17192,7 @@
             "properties": {
                 "name": {
                     "description": "Output only. The unique identifier of this training phrase.",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "parts": {
@@ -17304,6 +17319,14 @@
             "description": "Snippet Source for a Generative Prediction.",
             "id": "GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet",
             "properties": {
+                "metadata": {
+                    "additionalProperties": {
+                        "description": "Properties of the object.",
+                        "type": "any"
+                    },
+                    "description": "Metadata of the document.",
+                    "type": "object"
+                },
                 "text": {
                     "description": "Text taken from that URI.",
                     "type": "string"
@@ -18219,6 +18242,14 @@
             "description": "The sources of the answers.",
             "id": "GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource",
             "properties": {
+                "metadata": {
+                    "additionalProperties": {
+                        "description": "Properties of the object.",
+                        "type": "any"
+                    },
+                    "description": "Metadata associated with the article.",
+                    "type": "object"
+                },
                 "snippet": {
                     "description": "The relevant snippet of the article.",
                     "type": "string"
@@ -18246,6 +18277,18 @@
                     "description": "Required. The conversation profile used to configure the search. Format: `projects//locations//conversationProfiles/`.",
                     "type": "string"
                 },
+                "endUserMetadata": {
+                    "additionalProperties": {
+                        "description": "Properties of the object.",
+                        "type": "any"
+                    },
+                    "description": "Optional. Information about the end-user to improve the relevance and accuracy of generative answers. This will be interpreted and used by a language model, so, for good results, the data should be self-descriptive, and in a simple structure. Example: ```json { \"subscription plan\": \"Business Premium Plus\", \"devices owned\": [ {\"model\": \"Google Pixel 7\"}, {\"model\": \"Google Pixel Tablet\"} ] } ```",
+                    "type": "object"
+                },
+                "exactSearch": {
+                    "description": "Optional. Whether to search the query exactly without query rewrite.",
+                    "type": "boolean"
+                },
                 "latestMessage": {
                     "description": "Optional. The name of the latest conversation message when the request is triggered. Format: `projects//locations//conversations//messages/`.",
                     "type": "string"
@@ -18258,8 +18301,180 @@
                     "$ref": "GoogleCloudDialogflowV2TextInput",
                     "description": "Required. The natural language text query for knowledge search."
                 },
+                "querySource": {
+                    "description": "Optional. The source of the query in the request.",
+                    "enum": [
+                        "QUERY_SOURCE_UNSPECIFIED",
+                        "AGENT_QUERY",
+                        "SUGGESTED_QUERY"
+                    ],
+                    "enumDescriptions": [
+                        "Unknown query source.",
+                        "The query is from agents.",
+                        "The query is a suggested query from Participants.SuggestKnowledgeAssist."
+                    ],
+                    "type": "string"
+                },
+                "searchConfig": {
+                    "$ref": "GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig",
+                    "description": "Optional. Configuration specific to search queries with data stores."
+                },
                 "sessionId": {
                     "description": "Required. The ID of the search session. The session_id can be combined with Dialogflow V3 Agent ID retrieved from conversation profile or on its own to identify a search session. The search history of the same session will impact the search result. It's up to the API caller to choose an appropriate `Session ID`. It can be a random number or some type of session identifiers (preferably hashed). The length must not exceed 36 characters.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig": {
+            "description": "Configuration specific to search queries with data stores.",
+            "id": "GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig",
+            "properties": {
+                "boostSpecs": {
+                    "description": "Optional. Boost specifications for data stores.",
+                    "items": {
+                        "$ref": "GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs"
+                    },
+                    "type": "array"
+                },
+                "filterSpecs": {
+                    "description": "Optional. Filter specification for data store queries.",
+                    "items": {
+                        "$ref": "GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs": {
+            "description": "Boost specifications for data stores.",
+            "id": "GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs",
+            "properties": {
+                "dataStores": {
+                    "description": "Optional. Data Stores where the boosting configuration is applied. The full names of the referenced data stores. Formats: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}` `projects/{project}/locations/{location}/dataStores/{data_store}`",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "spec": {
+                    "description": "Optional. A list of boosting specifications.",
+                    "items": {
+                        "$ref": "GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec": {
+            "description": "Boost specification to boost certain documents. A copy of google.cloud.discoveryengine.v1main.BoostSpec, field documentation is available at https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1alpha/BoostSpec",
+            "id": "GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec",
+            "properties": {
+                "conditionBoostSpecs": {
+                    "description": "Optional. Condition boost specifications. If a document matches multiple conditions in the specifictions, boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 20.",
+                    "items": {
+                        "$ref": "GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec": {
+            "description": "Boost applies to documents which match a condition.",
+            "id": "GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec",
+            "properties": {
+                "boost": {
+                    "description": "Optional. Strength of the condition boost, which should be in [-1, 1]. Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the document a big promotion. However, it does not necessarily mean that the boosted document will be the top result at all times, nor that other documents will be excluded. Results could still be shown even when none of them matches the condition. And results that are significantly more relevant to the search query can still trump your heavily favored but irrelevant documents. Setting to -1.0 gives the document a big demotion. However, results that are deeply relevant might still be shown. The document will have an upstream battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0 means no boost applied. The boosting condition is ignored.",
+                    "format": "float",
+                    "type": "number"
+                },
+                "boostControlSpec": {
+                    "$ref": "GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec",
+                    "description": "Optional. Complex specification for custom ranking based on customer defined attribute value."
+                },
+                "condition": {
+                    "description": "Optional. An expression which specifies a boost condition. The syntax and supported fields are the same as a filter expression. Examples: * To boost documents with document ID \"doc_1\" or \"doc_2\", and color \"Red\" or \"Blue\": * (id: ANY(\"doc_1\", \"doc_2\")) AND (color: ANY(\"Red\",\"Blue\"))",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec": {
+            "description": "Specification for custom ranking based on customer specified attribute value. It provides more controls for customized ranking than the simple (condition, boost) combination above.",
+            "id": "GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec",
+            "properties": {
+                "attributeType": {
+                    "description": "Optional. The attribute type to be used to determine the boost amount. The attribute value can be derived from the field value of the specified field_name. In the case of numerical it is straightforward i.e. attribute_value = numerical_field_value. In the case of freshness however, attribute_value = (time.now() - datetime_field_value).",
+                    "enum": [
+                        "ATTRIBUTE_TYPE_UNSPECIFIED",
+                        "NUMERICAL",
+                        "FRESHNESS"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified AttributeType.",
+                        "The value of the numerical field will be used to dynamically update the boost amount. In this case, the attribute_value (the x value) of the control point will be the actual value of the numerical field for which the boost_amount is specified.",
+                        "For the freshness use case the attribute value will be the duration between the current time and the date in the datetime field specified. The value must be formatted as an XSD `dayTimeDuration` value (a restricted subset of an ISO 8601 duration value). The pattern for this is: `nDnM]`. E.g. `5D`, `3DT12H30M`, `T24H`."
+                    ],
+                    "type": "string"
+                },
+                "controlPoints": {
+                    "description": "Optional. The control points used to define the curve. The monotonic function (defined through the interpolation_type above) passes through the control points listed here.",
+                    "items": {
+                        "$ref": "GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint"
+                    },
+                    "type": "array"
+                },
+                "fieldName": {
+                    "description": "Optional. The name of the field whose value will be used to determine the boost amount.",
+                    "type": "string"
+                },
+                "interpolationType": {
+                    "description": "Optional. The interpolation type to be applied to connect the control points listed below.",
+                    "enum": [
+                        "INTERPOLATION_TYPE_UNSPECIFIED",
+                        "LINEAR"
+                    ],
+                    "enumDescriptions": [
+                        "Interpolation type is unspecified. In this case, it defaults to Linear.",
+                        "Piecewise linear interpolation will be applied."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint": {
+            "description": "The control points used to define the curve. The curve defined through these control points can only be monotonically increasing or decreasing(constant values are acceptable).",
+            "id": "GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint",
+            "properties": {
+                "attributeValue": {
+                    "description": "Optional. Can be one of: 1. The numerical field value. 2. The duration spec for freshness: The value must be formatted as an XSD `dayTimeDuration` value (a restricted subset of an ISO 8601 duration value). The pattern for this is: `nDnM]`.",
+                    "type": "string"
+                },
+                "boostAmount": {
+                    "description": "Optional. The value between -1 to 1 by which to boost the score if the attribute_value evaluates to the value specified above.",
+                    "format": "float",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs": {
+            "description": "Filter specification for data store queries.",
+            "id": "GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs",
+            "properties": {
+                "dataStores": {
+                    "description": "Optional. The data store where the filter configuration is applied. Full resource name of data store, such as projects/{project}/locations/{location}/collections/{collectionId}/ dataStores/{dataStoreId}.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "filter": {
+                    "description": "Optional. The filter expression to be applied. Expression syntax is documented at https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata#filter-expression-syntax",
                     "type": "string"
                 }
             },
@@ -18312,7 +18527,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowV2SentimentAnalysisResult": {
-            "description": "The result of sentiment analysis. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral. For Participants.DetectIntent, it needs to be configured in DetectIntentRequest.query_params. For Participants.StreamingDetectIntent, it needs to be configured in StreamingDetectIntentRequest.query_params. And for Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it needs to be configured in ConversationProfile.human_agent_assistant_config",
+            "description": "The result of sentiment analysis. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral. For DetectIntent, it needs to be configured in DetectIntentRequest.query_params. For StreamingDetectIntent, it needs to be configured in StreamingDetectIntentRequest.query_params. And for Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it needs to be configured in ConversationProfile.human_agent_assistant_config",
             "id": "GoogleCloudDialogflowV2SentimentAnalysisResult",
             "properties": {
                 "queryTextSentiment": {
@@ -18355,7 +18570,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowV2SetSuggestionFeatureConfigOperationMetadata": {
-            "description": "Metadata for a ConversationProfile.SetSuggestionFeatureConfig operation.",
+            "description": "Metadata for a ConversationProfiles.SetSuggestionFeatureConfig operation.",
             "id": "GoogleCloudDialogflowV2SetSuggestionFeatureConfigOperationMetadata",
             "properties": {
                 "conversationProfile": {
@@ -18407,7 +18622,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest": {
-            "description": "The request message for ConversationProfiles.SetSuggestionFeature.",
+            "description": "The request message for ConversationProfiles.SetSuggestionFeatureConfig.",
             "id": "GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest",
             "properties": {
                 "participantRole": {
@@ -18576,6 +18791,13 @@
                     "description": "Which Speech model to select. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then Dialogflow auto-selects a model based on other parameters in the SpeechToTextConfig and Agent settings. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search Leave this field unspecified to use [Agent Speech settings](https://cloud.google.com/dialogflow/cx/docs/concept/agent#settings-speech) for model selection.",
                     "type": "string"
                 },
+                "phraseSets": {
+                    "description": "List of names of Cloud Speech phrase sets that are used for transcription.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "sampleRateHertz": {
                     "description": "Sample rate (in Hertz) of the audio content sent in the query. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics) for more details.",
                     "format": "int32",
@@ -18672,7 +18894,7 @@
             "id": "GoogleCloudDialogflowV2SuggestConversationSummaryResponse",
             "properties": {
                 "contextSize": {
-                    "description": "Number of messages prior to and including last_conversation_message used to compile the suggestion. It may be smaller than the SuggestSummaryRequest.context_size field in the request if there weren't that many messages in the conversation.",
+                    "description": "Number of messages prior to and including latest_message used to compile the suggestion. It may be smaller than the SuggestConversationSummaryRequest.context_size field in the request if there weren't that many messages in the conversation.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -20963,6 +21185,7 @@
             "properties": {
                 "name": {
                     "description": "Output only. The unique identifier of this training phrase.",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "parts": {
@@ -21143,6 +21366,14 @@
             "description": "Snippet Source for a Generative Prediction.",
             "id": "GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet",
             "properties": {
+                "metadata": {
+                    "additionalProperties": {
+                        "description": "Properties of the object.",
+                        "type": "any"
+                    },
+                    "description": "Metadata of the document.",
+                    "type": "object"
+                },
                 "text": {
                     "description": "Text taken from that URI.",
                     "type": "string"

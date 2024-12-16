@@ -2622,23 +2622,59 @@ void checkListMappingRulesResponse(api.ListMappingRulesResponse o) {
   buildCounterListMappingRulesResponse--;
 }
 
-core.List<api.MigrationJob> buildUnnamed39() => [
+core.List<api.MigrationJobObject> buildUnnamed39() => [
+      buildMigrationJobObject(),
+      buildMigrationJobObject(),
+    ];
+
+void checkUnnamed39(core.List<api.MigrationJobObject> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMigrationJobObject(o[0]);
+  checkMigrationJobObject(o[1]);
+}
+
+core.int buildCounterListMigrationJobObjectsResponse = 0;
+api.ListMigrationJobObjectsResponse buildListMigrationJobObjectsResponse() {
+  final o = api.ListMigrationJobObjectsResponse();
+  buildCounterListMigrationJobObjectsResponse++;
+  if (buildCounterListMigrationJobObjectsResponse < 3) {
+    o.migrationJobObjects = buildUnnamed39();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterListMigrationJobObjectsResponse--;
+  return o;
+}
+
+void checkListMigrationJobObjectsResponse(
+    api.ListMigrationJobObjectsResponse o) {
+  buildCounterListMigrationJobObjectsResponse++;
+  if (buildCounterListMigrationJobObjectsResponse < 3) {
+    checkUnnamed39(o.migrationJobObjects!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterListMigrationJobObjectsResponse--;
+}
+
+core.List<api.MigrationJob> buildUnnamed40() => [
       buildMigrationJob(),
       buildMigrationJob(),
     ];
 
-void checkUnnamed39(core.List<api.MigrationJob> o) {
+void checkUnnamed40(core.List<api.MigrationJob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMigrationJob(o[0]);
   checkMigrationJob(o[1]);
 }
 
-core.List<core.String> buildUnnamed40() => [
+core.List<core.String> buildUnnamed41() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed40(core.List<core.String> o) {
+void checkUnnamed41(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2655,9 +2691,9 @@ api.ListMigrationJobsResponse buildListMigrationJobsResponse() {
   final o = api.ListMigrationJobsResponse();
   buildCounterListMigrationJobsResponse++;
   if (buildCounterListMigrationJobsResponse < 3) {
-    o.migrationJobs = buildUnnamed39();
+    o.migrationJobs = buildUnnamed40();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed40();
+    o.unreachable = buildUnnamed41();
   }
   buildCounterListMigrationJobsResponse--;
   return o;
@@ -2666,22 +2702,22 @@ api.ListMigrationJobsResponse buildListMigrationJobsResponse() {
 void checkListMigrationJobsResponse(api.ListMigrationJobsResponse o) {
   buildCounterListMigrationJobsResponse++;
   if (buildCounterListMigrationJobsResponse < 3) {
-    checkUnnamed39(o.migrationJobs!);
+    checkUnnamed40(o.migrationJobs!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed40(o.unreachable!);
+    checkUnnamed41(o.unreachable!);
   }
   buildCounterListMigrationJobsResponse--;
 }
 
-core.List<api.Operation> buildUnnamed41() => [
+core.List<api.Operation> buildUnnamed42() => [
       buildOperation(),
       buildOperation(),
     ];
 
-void checkUnnamed41(core.List<api.Operation> o) {
+void checkUnnamed42(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -2693,7 +2729,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed41();
+    o.operations = buildUnnamed42();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -2706,28 +2742,28 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed41(o.operations!);
+    checkUnnamed42(o.operations!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.List<api.PrivateConnection> buildUnnamed42() => [
+core.List<api.PrivateConnection> buildUnnamed43() => [
       buildPrivateConnection(),
       buildPrivateConnection(),
     ];
 
-void checkUnnamed42(core.List<api.PrivateConnection> o) {
+void checkUnnamed43(core.List<api.PrivateConnection> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPrivateConnection(o[0]);
   checkPrivateConnection(o[1]);
 }
 
-core.List<core.String> buildUnnamed43() => [
+core.List<core.String> buildUnnamed44() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed43(core.List<core.String> o) {
+void checkUnnamed44(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2745,8 +2781,8 @@ api.ListPrivateConnectionsResponse buildListPrivateConnectionsResponse() {
   buildCounterListPrivateConnectionsResponse++;
   if (buildCounterListPrivateConnectionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.privateConnections = buildUnnamed42();
-    o.unreachable = buildUnnamed43();
+    o.privateConnections = buildUnnamed43();
+    o.unreachable = buildUnnamed44();
   }
   buildCounterListPrivateConnectionsResponse--;
   return o;
@@ -2759,18 +2795,18 @@ void checkListPrivateConnectionsResponse(api.ListPrivateConnectionsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed42(o.privateConnections!);
-    checkUnnamed43(o.unreachable!);
+    checkUnnamed43(o.privateConnections!);
+    checkUnnamed44(o.unreachable!);
   }
   buildCounterListPrivateConnectionsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed44() => {
+core.Map<core.String, core.String> buildUnnamed45() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed44(core.Map<core.String, core.String> o) {
+void checkUnnamed45(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2782,7 +2818,7 @@ void checkUnnamed44(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed45() => {
+core.Map<core.String, core.Object?> buildUnnamed46() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2795,7 +2831,7 @@ core.Map<core.String, core.Object?> buildUnnamed45() => {
       },
     };
 
-void checkUnnamed45(core.Map<core.String, core.Object?> o) {
+void checkUnnamed46(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted13 = (o['x']!) as core.Map;
   unittest.expect(casted13, unittest.hasLength(3));
@@ -2833,9 +2869,9 @@ api.Location buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed44();
+    o.labels = buildUnnamed45();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed45();
+    o.metadata = buildUnnamed46();
     o.name = 'foo';
   }
   buildCounterLocation--;
@@ -2849,12 +2885,12 @@ void checkLocation(api.Location o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed44(o.labels!);
+    checkUnnamed45(o.labels!);
     unittest.expect(
       o.locationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed45(o.metadata!);
+    checkUnnamed46(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -2903,6 +2939,26 @@ void checkLogMiner(api.LogMiner o) {
   buildCounterLogMiner++;
   if (buildCounterLogMiner < 3) {}
   buildCounterLogMiner--;
+}
+
+core.int buildCounterLookupMigrationJobObjectRequest = 0;
+api.LookupMigrationJobObjectRequest buildLookupMigrationJobObjectRequest() {
+  final o = api.LookupMigrationJobObjectRequest();
+  buildCounterLookupMigrationJobObjectRequest++;
+  if (buildCounterLookupMigrationJobObjectRequest < 3) {
+    o.sourceObjectIdentifier = buildSourceObjectIdentifier();
+  }
+  buildCounterLookupMigrationJobObjectRequest--;
+  return o;
+}
+
+void checkLookupMigrationJobObjectRequest(
+    api.LookupMigrationJobObjectRequest o) {
+  buildCounterLookupMigrationJobObjectRequest++;
+  if (buildCounterLookupMigrationJobObjectRequest < 3) {
+    checkSourceObjectIdentifier(o.sourceObjectIdentifier!);
+  }
+  buildCounterLookupMigrationJobObjectRequest--;
 }
 
 core.int buildCounterMachineConfig = 0;
@@ -3003,12 +3059,12 @@ void checkMappingRule(api.MappingRule o) {
   buildCounterMappingRule--;
 }
 
-core.List<core.String> buildUnnamed46() => [
+core.List<core.String> buildUnnamed47() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed46(core.List<core.String> o) {
+void checkUnnamed47(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3025,7 +3081,7 @@ api.MappingRuleFilter buildMappingRuleFilter() {
   final o = api.MappingRuleFilter();
   buildCounterMappingRuleFilter++;
   if (buildCounterMappingRuleFilter < 3) {
-    o.entities = buildUnnamed46();
+    o.entities = buildUnnamed47();
     o.entityNameContains = 'foo';
     o.entityNamePrefix = 'foo';
     o.entityNameSuffix = 'foo';
@@ -3038,7 +3094,7 @@ api.MappingRuleFilter buildMappingRuleFilter() {
 void checkMappingRuleFilter(api.MappingRuleFilter o) {
   buildCounterMappingRuleFilter++;
   if (buildCounterMappingRuleFilter < 3) {
-    checkUnnamed46(o.entities!);
+    checkUnnamed47(o.entities!);
     unittest.expect(
       o.entityNameContains!,
       unittest.equals('foo'),
@@ -3059,7 +3115,7 @@ void checkMappingRuleFilter(api.MappingRuleFilter o) {
   buildCounterMappingRuleFilter--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed47() => {
+core.Map<core.String, core.Object?> buildUnnamed48() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3072,7 +3128,7 @@ core.Map<core.String, core.Object?> buildUnnamed47() => {
       },
     };
 
-void checkUnnamed47(core.Map<core.String, core.Object?> o) {
+void checkUnnamed48(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted15 = (o['x']!) as core.Map;
   unittest.expect(casted15, unittest.hasLength(3));
@@ -3104,12 +3160,24 @@ void checkUnnamed47(core.Map<core.String, core.Object?> o) {
   );
 }
 
+core.List<api.IndexEntity> buildUnnamed49() => [
+      buildIndexEntity(),
+      buildIndexEntity(),
+    ];
+
+void checkUnnamed49(core.List<api.IndexEntity> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkIndexEntity(o[0]);
+  checkIndexEntity(o[1]);
+}
+
 core.int buildCounterMaterializedViewEntity = 0;
 api.MaterializedViewEntity buildMaterializedViewEntity() {
   final o = api.MaterializedViewEntity();
   buildCounterMaterializedViewEntity++;
   if (buildCounterMaterializedViewEntity < 3) {
-    o.customFeatures = buildUnnamed47();
+    o.customFeatures = buildUnnamed48();
+    o.indices = buildUnnamed49();
     o.sqlCode = 'foo';
   }
   buildCounterMaterializedViewEntity--;
@@ -3119,7 +3187,8 @@ api.MaterializedViewEntity buildMaterializedViewEntity() {
 void checkMaterializedViewEntity(api.MaterializedViewEntity o) {
   buildCounterMaterializedViewEntity++;
   if (buildCounterMaterializedViewEntity < 3) {
-    checkUnnamed47(o.customFeatures!);
+    checkUnnamed48(o.customFeatures!);
+    checkUnnamed49(o.indices!);
     unittest.expect(
       o.sqlCode!,
       unittest.equals('foo'),
@@ -3128,12 +3197,12 @@ void checkMaterializedViewEntity(api.MaterializedViewEntity o) {
   buildCounterMaterializedViewEntity--;
 }
 
-core.Map<core.String, core.String> buildUnnamed48() => {
+core.Map<core.String, core.String> buildUnnamed50() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed48(core.Map<core.String, core.String> o) {
+void checkUnnamed50(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -3163,8 +3232,9 @@ api.MigrationJob buildMigrationJob() {
     o.endTime = 'foo';
     o.error = buildStatus();
     o.filter = 'foo';
-    o.labels = buildUnnamed48();
+    o.labels = buildUnnamed50();
     o.name = 'foo';
+    o.objectsConfig = buildMigrationJobObjectsConfig();
     o.oracleToPostgresConfig = buildOracleToPostgresConfig();
     o.performanceConfig = buildPerformanceConfig();
     o.phase = 'foo';
@@ -3226,11 +3296,12 @@ void checkMigrationJob(api.MigrationJob o) {
       o.filter!,
       unittest.equals('foo'),
     );
-    checkUnnamed48(o.labels!);
+    checkUnnamed50(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
+    checkMigrationJobObjectsConfig(o.objectsConfig!);
     checkOracleToPostgresConfig(o.oracleToPostgresConfig!);
     checkPerformanceConfig(o.performanceConfig!);
     unittest.expect(
@@ -3263,7 +3334,72 @@ void checkMigrationJob(api.MigrationJob o) {
   buildCounterMigrationJob--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed49() => {
+core.int buildCounterMigrationJobObject = 0;
+api.MigrationJobObject buildMigrationJobObject() {
+  final o = api.MigrationJobObject();
+  buildCounterMigrationJobObject++;
+  if (buildCounterMigrationJobObject < 3) {
+    o.createTime = 'foo';
+    o.error = buildStatus();
+    o.name = 'foo';
+    o.phase = 'foo';
+    o.sourceObject = buildSourceObjectIdentifier();
+    o.state = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterMigrationJobObject--;
+  return o;
+}
+
+void checkMigrationJobObject(api.MigrationJobObject o) {
+  buildCounterMigrationJobObject++;
+  if (buildCounterMigrationJobObject < 3) {
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    checkStatus(o.error!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.phase!,
+      unittest.equals('foo'),
+    );
+    checkSourceObjectIdentifier(o.sourceObject!);
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterMigrationJobObject--;
+}
+
+core.int buildCounterMigrationJobObjectsConfig = 0;
+api.MigrationJobObjectsConfig buildMigrationJobObjectsConfig() {
+  final o = api.MigrationJobObjectsConfig();
+  buildCounterMigrationJobObjectsConfig++;
+  if (buildCounterMigrationJobObjectsConfig < 3) {
+    o.sourceObjectsConfig = buildSourceObjectsConfig();
+  }
+  buildCounterMigrationJobObjectsConfig--;
+  return o;
+}
+
+void checkMigrationJobObjectsConfig(api.MigrationJobObjectsConfig o) {
+  buildCounterMigrationJobObjectsConfig++;
+  if (buildCounterMigrationJobObjectsConfig < 3) {
+    checkSourceObjectsConfig(o.sourceObjectsConfig!);
+  }
+  buildCounterMigrationJobObjectsConfig--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed51() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3276,7 +3412,7 @@ core.Map<core.String, core.Object?> buildUnnamed49() => {
       },
     };
 
-void checkUnnamed49(core.Map<core.String, core.Object?> o) {
+void checkUnnamed51(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted17 = (o['x']!) as core.Map;
   unittest.expect(casted17, unittest.hasLength(3));
@@ -3313,7 +3449,7 @@ api.MultiColumnDatatypeChange buildMultiColumnDatatypeChange() {
   final o = api.MultiColumnDatatypeChange();
   buildCounterMultiColumnDatatypeChange++;
   if (buildCounterMultiColumnDatatypeChange < 3) {
-    o.customFeatures = buildUnnamed49();
+    o.customFeatures = buildUnnamed51();
     o.newDataType = 'foo';
     o.overrideFractionalSecondsPrecision = 42;
     o.overrideLength = 'foo';
@@ -3330,7 +3466,7 @@ api.MultiColumnDatatypeChange buildMultiColumnDatatypeChange() {
 void checkMultiColumnDatatypeChange(api.MultiColumnDatatypeChange o) {
   buildCounterMultiColumnDatatypeChange++;
   if (buildCounterMultiColumnDatatypeChange < 3) {
-    checkUnnamed49(o.customFeatures!);
+    checkUnnamed51(o.customFeatures!);
     unittest.expect(
       o.newDataType!,
       unittest.equals('foo'),
@@ -3434,7 +3570,7 @@ void checkMySqlConnectionProfile(api.MySqlConnectionProfile o) {
   buildCounterMySqlConnectionProfile--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed50() => {
+core.Map<core.String, core.Object?> buildUnnamed52() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3447,7 +3583,7 @@ core.Map<core.String, core.Object?> buildUnnamed50() => {
       },
     };
 
-void checkUnnamed50(core.Map<core.String, core.Object?> o) {
+void checkUnnamed52(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted19 = (o['x']!) as core.Map;
   unittest.expect(casted19, unittest.hasLength(3));
@@ -3479,7 +3615,7 @@ void checkUnnamed50(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed51() => {
+core.Map<core.String, core.Object?> buildUnnamed53() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3492,7 +3628,7 @@ core.Map<core.String, core.Object?> buildUnnamed51() => {
       },
     };
 
-void checkUnnamed51(core.Map<core.String, core.Object?> o) {
+void checkUnnamed53(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted21 = (o['x']!) as core.Map;
   unittest.expect(casted21, unittest.hasLength(3));
@@ -3531,9 +3667,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed50();
+    o.metadata = buildUnnamed52();
     o.name = 'foo';
-    o.response = buildUnnamed51();
+    o.response = buildUnnamed53();
   }
   buildCounterOperation--;
   return o;
@@ -3544,12 +3680,12 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed50(o.metadata!);
+    checkUnnamed52(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed51(o.response!);
+    checkUnnamed53(o.response!);
   }
   buildCounterOperation--;
 }
@@ -3728,7 +3864,7 @@ void checkOracleToPostgresConfig(api.OracleToPostgresConfig o) {
   buildCounterOracleToPostgresConfig--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed52() => {
+core.Map<core.String, core.Object?> buildUnnamed54() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3741,7 +3877,7 @@ core.Map<core.String, core.Object?> buildUnnamed52() => {
       },
     };
 
-void checkUnnamed52(core.Map<core.String, core.Object?> o) {
+void checkUnnamed54(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted23 = (o['x']!) as core.Map;
   unittest.expect(casted23, unittest.hasLength(3));
@@ -3778,7 +3914,7 @@ api.PackageEntity buildPackageEntity() {
   final o = api.PackageEntity();
   buildCounterPackageEntity++;
   if (buildCounterPackageEntity < 3) {
-    o.customFeatures = buildUnnamed52();
+    o.customFeatures = buildUnnamed54();
     o.packageBody = 'foo';
     o.packageSqlCode = 'foo';
   }
@@ -3789,7 +3925,7 @@ api.PackageEntity buildPackageEntity() {
 void checkPackageEntity(api.PackageEntity o) {
   buildCounterPackageEntity++;
   if (buildCounterPackageEntity < 3) {
-    checkUnnamed52(o.customFeatures!);
+    checkUnnamed54(o.customFeatures!);
     unittest.expect(
       o.packageBody!,
       unittest.equals('foo'),
@@ -3824,23 +3960,23 @@ void checkPerformanceConfig(api.PerformanceConfig o) {
   buildCounterPerformanceConfig--;
 }
 
-core.List<api.AuditConfig> buildUnnamed53() => [
+core.List<api.AuditConfig> buildUnnamed55() => [
       buildAuditConfig(),
       buildAuditConfig(),
     ];
 
-void checkUnnamed53(core.List<api.AuditConfig> o) {
+void checkUnnamed55(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditConfig(o[0]);
   checkAuditConfig(o[1]);
 }
 
-core.List<api.Binding> buildUnnamed54() => [
+core.List<api.Binding> buildUnnamed56() => [
       buildBinding(),
       buildBinding(),
     ];
 
-void checkUnnamed54(core.List<api.Binding> o) {
+void checkUnnamed56(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -3851,8 +3987,8 @@ api.Policy buildPolicy() {
   final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.auditConfigs = buildUnnamed53();
-    o.bindings = buildUnnamed54();
+    o.auditConfigs = buildUnnamed55();
+    o.bindings = buildUnnamed56();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -3863,8 +3999,8 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed53(o.auditConfigs!);
-    checkUnnamed54(o.bindings!);
+    checkUnnamed55(o.auditConfigs!);
+    checkUnnamed56(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -3921,6 +4057,7 @@ api.PostgreSqlConnectionProfile buildPostgreSqlConnectionProfile() {
   if (buildCounterPostgreSqlConnectionProfile < 3) {
     o.alloydbClusterId = 'foo';
     o.cloudSqlId = 'foo';
+    o.database = 'foo';
     o.host = 'foo';
     o.networkArchitecture = 'foo';
     o.password = 'foo';
@@ -3945,6 +4082,10 @@ void checkPostgreSqlConnectionProfile(api.PostgreSqlConnectionProfile o) {
     );
     unittest.expect(
       o.cloudSqlId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.database!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -4003,12 +4144,12 @@ void checkPostgresDestinationConfig(api.PostgresDestinationConfig o) {
   buildCounterPostgresDestinationConfig--;
 }
 
-core.Map<core.String, core.String> buildUnnamed55() => {
+core.Map<core.String, core.String> buildUnnamed57() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed55(core.Map<core.String, core.String> o) {
+void checkUnnamed57(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -4018,77 +4159,6 @@ void checkUnnamed55(core.Map<core.String, core.String> o) {
     o['y']!,
     unittest.equals('foo'),
   );
-}
-
-core.Map<core.String, core.String> buildUnnamed56() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
-
-void checkUnnamed56(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed57() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed57(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterPrimaryInstanceSettings = 0;
-api.PrimaryInstanceSettings buildPrimaryInstanceSettings() {
-  final o = api.PrimaryInstanceSettings();
-  buildCounterPrimaryInstanceSettings++;
-  if (buildCounterPrimaryInstanceSettings < 3) {
-    o.databaseFlags = buildUnnamed55();
-    o.id = 'foo';
-    o.instanceNetworkConfig = buildInstanceNetworkConfig();
-    o.labels = buildUnnamed56();
-    o.machineConfig = buildMachineConfig();
-    o.outboundPublicIpAddresses = buildUnnamed57();
-    o.privateIp = 'foo';
-  }
-  buildCounterPrimaryInstanceSettings--;
-  return o;
-}
-
-void checkPrimaryInstanceSettings(api.PrimaryInstanceSettings o) {
-  buildCounterPrimaryInstanceSettings++;
-  if (buildCounterPrimaryInstanceSettings < 3) {
-    checkUnnamed55(o.databaseFlags!);
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
-    checkInstanceNetworkConfig(o.instanceNetworkConfig!);
-    checkUnnamed56(o.labels!);
-    checkMachineConfig(o.machineConfig!);
-    checkUnnamed57(o.outboundPublicIpAddresses!);
-    unittest.expect(
-      o.privateIp!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterPrimaryInstanceSettings--;
 }
 
 core.Map<core.String, core.String> buildUnnamed58() => {
@@ -4108,6 +4178,77 @@ void checkUnnamed58(core.Map<core.String, core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed59() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed59(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterPrimaryInstanceSettings = 0;
+api.PrimaryInstanceSettings buildPrimaryInstanceSettings() {
+  final o = api.PrimaryInstanceSettings();
+  buildCounterPrimaryInstanceSettings++;
+  if (buildCounterPrimaryInstanceSettings < 3) {
+    o.databaseFlags = buildUnnamed57();
+    o.id = 'foo';
+    o.instanceNetworkConfig = buildInstanceNetworkConfig();
+    o.labels = buildUnnamed58();
+    o.machineConfig = buildMachineConfig();
+    o.outboundPublicIpAddresses = buildUnnamed59();
+    o.privateIp = 'foo';
+  }
+  buildCounterPrimaryInstanceSettings--;
+  return o;
+}
+
+void checkPrimaryInstanceSettings(api.PrimaryInstanceSettings o) {
+  buildCounterPrimaryInstanceSettings++;
+  if (buildCounterPrimaryInstanceSettings < 3) {
+    checkUnnamed57(o.databaseFlags!);
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    checkInstanceNetworkConfig(o.instanceNetworkConfig!);
+    checkUnnamed58(o.labels!);
+    checkMachineConfig(o.machineConfig!);
+    checkUnnamed59(o.outboundPublicIpAddresses!);
+    unittest.expect(
+      o.privateIp!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPrimaryInstanceSettings--;
+}
+
+core.Map<core.String, core.String> buildUnnamed60() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed60(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterPrivateConnection = 0;
 api.PrivateConnection buildPrivateConnection() {
   final o = api.PrivateConnection();
@@ -4116,7 +4257,7 @@ api.PrivateConnection buildPrivateConnection() {
     o.createTime = 'foo';
     o.displayName = 'foo';
     o.error = buildStatus();
-    o.labels = buildUnnamed58();
+    o.labels = buildUnnamed60();
     o.name = 'foo';
     o.state = 'foo';
     o.updateTime = 'foo';
@@ -4138,7 +4279,7 @@ void checkPrivateConnection(api.PrivateConnection o) {
       unittest.equals('foo'),
     );
     checkStatus(o.error!);
-    checkUnnamed58(o.labels!);
+    checkUnnamed60(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -4205,14 +4346,18 @@ core.int buildCounterPromoteMigrationJobRequest = 0;
 api.PromoteMigrationJobRequest buildPromoteMigrationJobRequest() {
   final o = api.PromoteMigrationJobRequest();
   buildCounterPromoteMigrationJobRequest++;
-  if (buildCounterPromoteMigrationJobRequest < 3) {}
+  if (buildCounterPromoteMigrationJobRequest < 3) {
+    o.objectsFilter = buildMigrationJobObjectsConfig();
+  }
   buildCounterPromoteMigrationJobRequest--;
   return o;
 }
 
 void checkPromoteMigrationJobRequest(api.PromoteMigrationJobRequest o) {
   buildCounterPromoteMigrationJobRequest++;
-  if (buildCounterPromoteMigrationJobRequest < 3) {}
+  if (buildCounterPromoteMigrationJobRequest < 3) {
+    checkMigrationJobObjectsConfig(o.objectsFilter!);
+  }
   buildCounterPromoteMigrationJobRequest--;
 }
 
@@ -4221,6 +4366,8 @@ api.RestartMigrationJobRequest buildRestartMigrationJobRequest() {
   final o = api.RestartMigrationJobRequest();
   buildCounterRestartMigrationJobRequest++;
   if (buildCounterRestartMigrationJobRequest < 3) {
+    o.objectsFilter = buildMigrationJobObjectsConfig();
+    o.restartFailedObjects = true;
     o.skipValidation = true;
   }
   buildCounterRestartMigrationJobRequest--;
@@ -4230,6 +4377,8 @@ api.RestartMigrationJobRequest buildRestartMigrationJobRequest() {
 void checkRestartMigrationJobRequest(api.RestartMigrationJobRequest o) {
   buildCounterRestartMigrationJobRequest++;
   if (buildCounterRestartMigrationJobRequest < 3) {
+    checkMigrationJobObjectsConfig(o.objectsFilter!);
+    unittest.expect(o.restartFailedObjects!, unittest.isTrue);
     unittest.expect(o.skipValidation!, unittest.isTrue);
   }
   buildCounterRestartMigrationJobRequest--;
@@ -4357,7 +4506,7 @@ void checkRulesFile(api.RulesFile o) {
   buildCounterRulesFile--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed59() => {
+core.Map<core.String, core.Object?> buildUnnamed61() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -4370,7 +4519,7 @@ core.Map<core.String, core.Object?> buildUnnamed59() => {
       },
     };
 
-void checkUnnamed59(core.Map<core.String, core.Object?> o) {
+void checkUnnamed61(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted25 = (o['x']!) as core.Map;
   unittest.expect(casted25, unittest.hasLength(3));
@@ -4407,7 +4556,7 @@ api.SchemaEntity buildSchemaEntity() {
   final o = api.SchemaEntity();
   buildCounterSchemaEntity++;
   if (buildCounterSchemaEntity < 3) {
-    o.customFeatures = buildUnnamed59();
+    o.customFeatures = buildUnnamed61();
   }
   buildCounterSchemaEntity--;
   return o;
@@ -4416,17 +4565,17 @@ api.SchemaEntity buildSchemaEntity() {
 void checkSchemaEntity(api.SchemaEntity o) {
   buildCounterSchemaEntity++;
   if (buildCounterSchemaEntity < 3) {
-    checkUnnamed59(o.customFeatures!);
+    checkUnnamed61(o.customFeatures!);
   }
   buildCounterSchemaEntity--;
 }
 
-core.List<api.BackgroundJobLogEntry> buildUnnamed60() => [
+core.List<api.BackgroundJobLogEntry> buildUnnamed62() => [
       buildBackgroundJobLogEntry(),
       buildBackgroundJobLogEntry(),
     ];
 
-void checkUnnamed60(core.List<api.BackgroundJobLogEntry> o) {
+void checkUnnamed62(core.List<api.BackgroundJobLogEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBackgroundJobLogEntry(o[0]);
   checkBackgroundJobLogEntry(o[1]);
@@ -4437,7 +4586,7 @@ api.SearchBackgroundJobsResponse buildSearchBackgroundJobsResponse() {
   final o = api.SearchBackgroundJobsResponse();
   buildCounterSearchBackgroundJobsResponse++;
   if (buildCounterSearchBackgroundJobsResponse < 3) {
-    o.jobs = buildUnnamed60();
+    o.jobs = buildUnnamed62();
   }
   buildCounterSearchBackgroundJobsResponse--;
   return o;
@@ -4446,7 +4595,7 @@ api.SearchBackgroundJobsResponse buildSearchBackgroundJobsResponse() {
 void checkSearchBackgroundJobsResponse(api.SearchBackgroundJobsResponse o) {
   buildCounterSearchBackgroundJobsResponse++;
   if (buildCounterSearchBackgroundJobsResponse < 3) {
-    checkUnnamed60(o.jobs!);
+    checkUnnamed62(o.jobs!);
   }
   buildCounterSearchBackgroundJobsResponse--;
 }
@@ -4502,7 +4651,7 @@ void checkSeedJobDetails(api.SeedJobDetails o) {
   buildCounterSeedJobDetails--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed61() => {
+core.Map<core.String, core.Object?> buildUnnamed63() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -4515,7 +4664,7 @@ core.Map<core.String, core.Object?> buildUnnamed61() => {
       },
     };
 
-void checkUnnamed61(core.Map<core.String, core.Object?> o) {
+void checkUnnamed63(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted27 = (o['x']!) as core.Map;
   unittest.expect(casted27, unittest.hasLength(3));
@@ -4553,7 +4702,7 @@ api.SequenceEntity buildSequenceEntity() {
   buildCounterSequenceEntity++;
   if (buildCounterSequenceEntity < 3) {
     o.cache = 'foo';
-    o.customFeatures = buildUnnamed61();
+    o.customFeatures = buildUnnamed63();
     o.cycle = true;
     o.increment = 'foo';
     o.maxValue = 'foo';
@@ -4571,7 +4720,7 @@ void checkSequenceEntity(api.SequenceEntity o) {
       o.cache!,
       unittest.equals('foo'),
     );
-    checkUnnamed61(o.customFeatures!);
+    checkUnnamed63(o.customFeatures!);
     unittest.expect(o.cycle!, unittest.isTrue);
     unittest.expect(
       o.increment!,
@@ -4617,12 +4766,12 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed62() => [
+core.List<core.String> buildUnnamed64() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed62(core.List<core.String> o) {
+void checkUnnamed64(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4640,7 +4789,7 @@ api.SetTablePrimaryKey buildSetTablePrimaryKey() {
   buildCounterSetTablePrimaryKey++;
   if (buildCounterSetTablePrimaryKey < 3) {
     o.primaryKey = 'foo';
-    o.primaryKeyColumns = buildUnnamed62();
+    o.primaryKeyColumns = buildUnnamed64();
   }
   buildCounterSetTablePrimaryKey--;
   return o;
@@ -4653,12 +4802,12 @@ void checkSetTablePrimaryKey(api.SetTablePrimaryKey o) {
       o.primaryKey!,
       unittest.equals('foo'),
     );
-    checkUnnamed62(o.primaryKeyColumns!);
+    checkUnnamed64(o.primaryKeyColumns!);
   }
   buildCounterSetTablePrimaryKey--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed63() => {
+core.Map<core.String, core.Object?> buildUnnamed65() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -4671,7 +4820,7 @@ core.Map<core.String, core.Object?> buildUnnamed63() => {
       },
     };
 
-void checkUnnamed63(core.Map<core.String, core.Object?> o) {
+void checkUnnamed65(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted29 = (o['x']!) as core.Map;
   unittest.expect(casted29, unittest.hasLength(3));
@@ -4703,12 +4852,12 @@ void checkUnnamed63(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.String> buildUnnamed64() => [
+core.List<core.String> buildUnnamed66() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed64(core.List<core.String> o) {
+void checkUnnamed66(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4731,14 +4880,14 @@ api.SingleColumnChange buildSingleColumnChange() {
     o.charset = 'foo';
     o.collation = 'foo';
     o.comment = 'foo';
-    o.customFeatures = buildUnnamed63();
+    o.customFeatures = buildUnnamed65();
     o.dataType = 'foo';
     o.fractionalSecondsPrecision = 42;
     o.length = 'foo';
     o.nullable = true;
     o.precision = 42;
     o.scale = 42;
-    o.setValues = buildUnnamed64();
+    o.setValues = buildUnnamed66();
     o.udt = true;
   }
   buildCounterSingleColumnChange--;
@@ -4766,7 +4915,7 @@ void checkSingleColumnChange(api.SingleColumnChange o) {
       o.comment!,
       unittest.equals('foo'),
     );
-    checkUnnamed63(o.customFeatures!);
+    checkUnnamed65(o.customFeatures!);
     unittest.expect(
       o.dataType!,
       unittest.equals('foo'),
@@ -4788,7 +4937,7 @@ void checkSingleColumnChange(api.SingleColumnChange o) {
       o.scale!,
       unittest.equals(42),
     );
-    checkUnnamed64(o.setValues!);
+    checkUnnamed66(o.setValues!);
     unittest.expect(o.udt!, unittest.isTrue);
   }
   buildCounterSingleColumnChange--;
@@ -4885,6 +5034,87 @@ void checkSourceNumericFilter(api.SourceNumericFilter o) {
   buildCounterSourceNumericFilter--;
 }
 
+core.int buildCounterSourceObjectConfig = 0;
+api.SourceObjectConfig buildSourceObjectConfig() {
+  final o = api.SourceObjectConfig();
+  buildCounterSourceObjectConfig++;
+  if (buildCounterSourceObjectConfig < 3) {
+    o.objectIdentifier = buildSourceObjectIdentifier();
+  }
+  buildCounterSourceObjectConfig--;
+  return o;
+}
+
+void checkSourceObjectConfig(api.SourceObjectConfig o) {
+  buildCounterSourceObjectConfig++;
+  if (buildCounterSourceObjectConfig < 3) {
+    checkSourceObjectIdentifier(o.objectIdentifier!);
+  }
+  buildCounterSourceObjectConfig--;
+}
+
+core.int buildCounterSourceObjectIdentifier = 0;
+api.SourceObjectIdentifier buildSourceObjectIdentifier() {
+  final o = api.SourceObjectIdentifier();
+  buildCounterSourceObjectIdentifier++;
+  if (buildCounterSourceObjectIdentifier < 3) {
+    o.database = 'foo';
+    o.type = 'foo';
+  }
+  buildCounterSourceObjectIdentifier--;
+  return o;
+}
+
+void checkSourceObjectIdentifier(api.SourceObjectIdentifier o) {
+  buildCounterSourceObjectIdentifier++;
+  if (buildCounterSourceObjectIdentifier < 3) {
+    unittest.expect(
+      o.database!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSourceObjectIdentifier--;
+}
+
+core.List<api.SourceObjectConfig> buildUnnamed67() => [
+      buildSourceObjectConfig(),
+      buildSourceObjectConfig(),
+    ];
+
+void checkUnnamed67(core.List<api.SourceObjectConfig> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSourceObjectConfig(o[0]);
+  checkSourceObjectConfig(o[1]);
+}
+
+core.int buildCounterSourceObjectsConfig = 0;
+api.SourceObjectsConfig buildSourceObjectsConfig() {
+  final o = api.SourceObjectsConfig();
+  buildCounterSourceObjectsConfig++;
+  if (buildCounterSourceObjectsConfig < 3) {
+    o.objectConfigs = buildUnnamed67();
+    o.objectsSelectionType = 'foo';
+  }
+  buildCounterSourceObjectsConfig--;
+  return o;
+}
+
+void checkSourceObjectsConfig(api.SourceObjectsConfig o) {
+  buildCounterSourceObjectsConfig++;
+  if (buildCounterSourceObjectsConfig < 3) {
+    checkUnnamed67(o.objectConfigs!);
+    unittest.expect(
+      o.objectsSelectionType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSourceObjectsConfig--;
+}
+
 core.int buildCounterSourceSqlChange = 0;
 api.SourceSqlChange buildSourceSqlChange() {
   final o = api.SourceSqlChange();
@@ -4971,12 +5201,12 @@ void checkSqlAclEntry(api.SqlAclEntry o) {
   buildCounterSqlAclEntry--;
 }
 
-core.List<api.SqlAclEntry> buildUnnamed65() => [
+core.List<api.SqlAclEntry> buildUnnamed68() => [
       buildSqlAclEntry(),
       buildSqlAclEntry(),
     ];
 
-void checkUnnamed65(core.List<api.SqlAclEntry> o) {
+void checkUnnamed68(core.List<api.SqlAclEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSqlAclEntry(o[0]);
   checkSqlAclEntry(o[1]);
@@ -4988,7 +5218,7 @@ api.SqlIpConfig buildSqlIpConfig() {
   buildCounterSqlIpConfig++;
   if (buildCounterSqlIpConfig < 3) {
     o.allocatedIpRange = 'foo';
-    o.authorizedNetworks = buildUnnamed65();
+    o.authorizedNetworks = buildUnnamed68();
     o.enableIpv4 = true;
     o.privateNetwork = 'foo';
     o.requireSsl = true;
@@ -5004,7 +5234,7 @@ void checkSqlIpConfig(api.SqlIpConfig o) {
       o.allocatedIpRange!,
       unittest.equals('foo'),
     );
-    checkUnnamed65(o.authorizedNetworks!);
+    checkUnnamed68(o.authorizedNetworks!);
     unittest.expect(o.enableIpv4!, unittest.isTrue);
     unittest.expect(
       o.privateNetwork!,
@@ -5156,12 +5386,12 @@ void checkSqlServerEncryptionOptions(api.SqlServerEncryptionOptions o) {
   buildCounterSqlServerEncryptionOptions--;
 }
 
-core.List<api.SqlServerDatabaseBackup> buildUnnamed66() => [
+core.List<api.SqlServerDatabaseBackup> buildUnnamed69() => [
       buildSqlServerDatabaseBackup(),
       buildSqlServerDatabaseBackup(),
     ];
 
-void checkUnnamed66(core.List<api.SqlServerDatabaseBackup> o) {
+void checkUnnamed69(core.List<api.SqlServerDatabaseBackup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSqlServerDatabaseBackup(o[0]);
   checkSqlServerDatabaseBackup(o[1]);
@@ -5174,7 +5404,7 @@ api.SqlServerHomogeneousMigrationJobConfig
   buildCounterSqlServerHomogeneousMigrationJobConfig++;
   if (buildCounterSqlServerHomogeneousMigrationJobConfig < 3) {
     o.backupFilePattern = 'foo';
-    o.databaseBackups = buildUnnamed66();
+    o.databaseBackups = buildUnnamed69();
     o.promoteWhenReady = true;
     o.useDiffBackup = true;
   }
@@ -5190,7 +5420,7 @@ void checkSqlServerHomogeneousMigrationJobConfig(
       o.backupFilePattern!,
       unittest.equals('foo'),
     );
-    checkUnnamed66(o.databaseBackups!);
+    checkUnnamed69(o.databaseBackups!);
     unittest.expect(o.promoteWhenReady!, unittest.isTrue);
     unittest.expect(o.useDiffBackup!, unittest.isTrue);
   }
@@ -5305,7 +5535,7 @@ void checkStaticServiceIpConnectivity(api.StaticServiceIpConnectivity o) {
   buildCounterStaticServiceIpConnectivity--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed67() => {
+core.Map<core.String, core.Object?> buildUnnamed70() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -5318,7 +5548,7 @@ core.Map<core.String, core.Object?> buildUnnamed67() => {
       },
     };
 
-void checkUnnamed67(core.Map<core.String, core.Object?> o) {
+void checkUnnamed70(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted31 = (o['x']!) as core.Map;
   unittest.expect(casted31, unittest.hasLength(3));
@@ -5350,15 +5580,15 @@ void checkUnnamed67(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed68() => [
-      buildUnnamed67(),
-      buildUnnamed67(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed71() => [
+      buildUnnamed70(),
+      buildUnnamed70(),
     ];
 
-void checkUnnamed68(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed71(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed67(o[0]);
-  checkUnnamed67(o[1]);
+  checkUnnamed70(o[0]);
+  checkUnnamed70(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -5367,7 +5597,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed68();
+    o.details = buildUnnamed71();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -5381,7 +5611,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed68(o.details!);
+    checkUnnamed71(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -5405,7 +5635,7 @@ void checkStopMigrationJobRequest(api.StopMigrationJobRequest o) {
   buildCounterStopMigrationJobRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed69() => {
+core.Map<core.String, core.Object?> buildUnnamed72() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -5418,7 +5648,7 @@ core.Map<core.String, core.Object?> buildUnnamed69() => {
       },
     };
 
-void checkUnnamed69(core.Map<core.String, core.Object?> o) {
+void checkUnnamed72(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted33 = (o['x']!) as core.Map;
   unittest.expect(casted33, unittest.hasLength(3));
@@ -5455,7 +5685,7 @@ api.StoredProcedureEntity buildStoredProcedureEntity() {
   final o = api.StoredProcedureEntity();
   buildCounterStoredProcedureEntity++;
   if (buildCounterStoredProcedureEntity < 3) {
-    o.customFeatures = buildUnnamed69();
+    o.customFeatures = buildUnnamed72();
     o.sqlCode = 'foo';
   }
   buildCounterStoredProcedureEntity--;
@@ -5465,7 +5695,7 @@ api.StoredProcedureEntity buildStoredProcedureEntity() {
 void checkStoredProcedureEntity(api.StoredProcedureEntity o) {
   buildCounterStoredProcedureEntity++;
   if (buildCounterStoredProcedureEntity < 3) {
-    checkUnnamed69(o.customFeatures!);
+    checkUnnamed72(o.customFeatures!);
     unittest.expect(
       o.sqlCode!,
       unittest.equals('foo'),
@@ -5474,7 +5704,7 @@ void checkStoredProcedureEntity(api.StoredProcedureEntity o) {
   buildCounterStoredProcedureEntity--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed70() => {
+core.Map<core.String, core.Object?> buildUnnamed73() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -5487,7 +5717,7 @@ core.Map<core.String, core.Object?> buildUnnamed70() => {
       },
     };
 
-void checkUnnamed70(core.Map<core.String, core.Object?> o) {
+void checkUnnamed73(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted35 = (o['x']!) as core.Map;
   unittest.expect(casted35, unittest.hasLength(3));
@@ -5524,7 +5754,7 @@ api.SynonymEntity buildSynonymEntity() {
   final o = api.SynonymEntity();
   buildCounterSynonymEntity++;
   if (buildCounterSynonymEntity < 3) {
-    o.customFeatures = buildUnnamed70();
+    o.customFeatures = buildUnnamed73();
     o.sourceEntity = 'foo';
     o.sourceType = 'foo';
   }
@@ -5535,7 +5765,7 @@ api.SynonymEntity buildSynonymEntity() {
 void checkSynonymEntity(api.SynonymEntity o) {
   buildCounterSynonymEntity++;
   if (buildCounterSynonymEntity < 3) {
-    checkUnnamed70(o.customFeatures!);
+    checkUnnamed73(o.customFeatures!);
     unittest.expect(
       o.sourceEntity!,
       unittest.equals('foo'),
@@ -5548,29 +5778,29 @@ void checkSynonymEntity(api.SynonymEntity o) {
   buildCounterSynonymEntity--;
 }
 
-core.List<api.ColumnEntity> buildUnnamed71() => [
+core.List<api.ColumnEntity> buildUnnamed74() => [
       buildColumnEntity(),
       buildColumnEntity(),
     ];
 
-void checkUnnamed71(core.List<api.ColumnEntity> o) {
+void checkUnnamed74(core.List<api.ColumnEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkColumnEntity(o[0]);
   checkColumnEntity(o[1]);
 }
 
-core.List<api.ConstraintEntity> buildUnnamed72() => [
+core.List<api.ConstraintEntity> buildUnnamed75() => [
       buildConstraintEntity(),
       buildConstraintEntity(),
     ];
 
-void checkUnnamed72(core.List<api.ConstraintEntity> o) {
+void checkUnnamed75(core.List<api.ConstraintEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkConstraintEntity(o[0]);
   checkConstraintEntity(o[1]);
 }
 
-core.Map<core.String, core.Object?> buildUnnamed73() => {
+core.Map<core.String, core.Object?> buildUnnamed76() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -5583,7 +5813,7 @@ core.Map<core.String, core.Object?> buildUnnamed73() => {
       },
     };
 
-void checkUnnamed73(core.Map<core.String, core.Object?> o) {
+void checkUnnamed76(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted37 = (o['x']!) as core.Map;
   unittest.expect(casted37, unittest.hasLength(3));
@@ -5615,23 +5845,23 @@ void checkUnnamed73(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<api.IndexEntity> buildUnnamed74() => [
+core.List<api.IndexEntity> buildUnnamed77() => [
       buildIndexEntity(),
       buildIndexEntity(),
     ];
 
-void checkUnnamed74(core.List<api.IndexEntity> o) {
+void checkUnnamed77(core.List<api.IndexEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIndexEntity(o[0]);
   checkIndexEntity(o[1]);
 }
 
-core.List<api.TriggerEntity> buildUnnamed75() => [
+core.List<api.TriggerEntity> buildUnnamed78() => [
       buildTriggerEntity(),
       buildTriggerEntity(),
     ];
 
-void checkUnnamed75(core.List<api.TriggerEntity> o) {
+void checkUnnamed78(core.List<api.TriggerEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTriggerEntity(o[0]);
   checkTriggerEntity(o[1]);
@@ -5642,12 +5872,12 @@ api.TableEntity buildTableEntity() {
   final o = api.TableEntity();
   buildCounterTableEntity++;
   if (buildCounterTableEntity < 3) {
-    o.columns = buildUnnamed71();
+    o.columns = buildUnnamed74();
     o.comment = 'foo';
-    o.constraints = buildUnnamed72();
-    o.customFeatures = buildUnnamed73();
-    o.indices = buildUnnamed74();
-    o.triggers = buildUnnamed75();
+    o.constraints = buildUnnamed75();
+    o.customFeatures = buildUnnamed76();
+    o.indices = buildUnnamed77();
+    o.triggers = buildUnnamed78();
   }
   buildCounterTableEntity--;
   return o;
@@ -5656,15 +5886,15 @@ api.TableEntity buildTableEntity() {
 void checkTableEntity(api.TableEntity o) {
   buildCounterTableEntity++;
   if (buildCounterTableEntity < 3) {
-    checkUnnamed71(o.columns!);
+    checkUnnamed74(o.columns!);
     unittest.expect(
       o.comment!,
       unittest.equals('foo'),
     );
-    checkUnnamed72(o.constraints!);
-    checkUnnamed73(o.customFeatures!);
-    checkUnnamed74(o.indices!);
-    checkUnnamed75(o.triggers!);
+    checkUnnamed75(o.constraints!);
+    checkUnnamed76(o.customFeatures!);
+    checkUnnamed77(o.indices!);
+    checkUnnamed78(o.triggers!);
   }
   buildCounterTableEntity--;
 }
@@ -5691,12 +5921,12 @@ void checkTcpProxyScript(api.TcpProxyScript o) {
   buildCounterTcpProxyScript--;
 }
 
-core.List<core.String> buildUnnamed76() => [
+core.List<core.String> buildUnnamed79() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed76(core.List<core.String> o) {
+void checkUnnamed79(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5713,7 +5943,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   final o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed76();
+    o.permissions = buildUnnamed79();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -5722,17 +5952,17 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed76(o.permissions!);
+    checkUnnamed79(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed77() => [
+core.List<core.String> buildUnnamed80() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed77(core.List<core.String> o) {
+void checkUnnamed80(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5749,7 +5979,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed77();
+    o.permissions = buildUnnamed80();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -5758,12 +5988,12 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed77(o.permissions!);
+    checkUnnamed80(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed78() => {
+core.Map<core.String, core.Object?> buildUnnamed81() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -5776,7 +6006,7 @@ core.Map<core.String, core.Object?> buildUnnamed78() => {
       },
     };
 
-void checkUnnamed78(core.Map<core.String, core.Object?> o) {
+void checkUnnamed81(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted39 = (o['x']!) as core.Map;
   unittest.expect(casted39, unittest.hasLength(3));
@@ -5808,12 +6038,12 @@ void checkUnnamed78(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.String> buildUnnamed79() => [
+core.List<core.String> buildUnnamed82() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed79(core.List<core.String> o) {
+void checkUnnamed82(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5830,11 +6060,11 @@ api.TriggerEntity buildTriggerEntity() {
   final o = api.TriggerEntity();
   buildCounterTriggerEntity++;
   if (buildCounterTriggerEntity < 3) {
-    o.customFeatures = buildUnnamed78();
+    o.customFeatures = buildUnnamed81();
     o.name = 'foo';
     o.sqlCode = 'foo';
     o.triggerType = 'foo';
-    o.triggeringEvents = buildUnnamed79();
+    o.triggeringEvents = buildUnnamed82();
   }
   buildCounterTriggerEntity--;
   return o;
@@ -5843,7 +6073,7 @@ api.TriggerEntity buildTriggerEntity() {
 void checkTriggerEntity(api.TriggerEntity o) {
   buildCounterTriggerEntity++;
   if (buildCounterTriggerEntity < 3) {
-    checkUnnamed78(o.customFeatures!);
+    checkUnnamed81(o.customFeatures!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -5856,12 +6086,12 @@ void checkTriggerEntity(api.TriggerEntity o) {
       o.triggerType!,
       unittest.equals('foo'),
     );
-    checkUnnamed79(o.triggeringEvents!);
+    checkUnnamed82(o.triggeringEvents!);
   }
   buildCounterTriggerEntity--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed80() => {
+core.Map<core.String, core.Object?> buildUnnamed83() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -5874,7 +6104,7 @@ core.Map<core.String, core.Object?> buildUnnamed80() => {
       },
     };
 
-void checkUnnamed80(core.Map<core.String, core.Object?> o) {
+void checkUnnamed83(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted41 = (o['x']!) as core.Map;
   unittest.expect(casted41, unittest.hasLength(3));
@@ -5911,7 +6141,7 @@ api.UDTEntity buildUDTEntity() {
   final o = api.UDTEntity();
   buildCounterUDTEntity++;
   if (buildCounterUDTEntity < 3) {
-    o.customFeatures = buildUnnamed80();
+    o.customFeatures = buildUnnamed83();
     o.udtBody = 'foo';
     o.udtSqlCode = 'foo';
   }
@@ -5922,7 +6152,7 @@ api.UDTEntity buildUDTEntity() {
 void checkUDTEntity(api.UDTEntity o) {
   buildCounterUDTEntity++;
   if (buildCounterUDTEntity < 3) {
-    checkUnnamed80(o.customFeatures!);
+    checkUnnamed83(o.customFeatures!);
     unittest.expect(
       o.udtBody!,
       unittest.equals('foo'),
@@ -5964,12 +6194,12 @@ void checkUserPassword(api.UserPassword o) {
   buildCounterUserPassword--;
 }
 
-core.List<core.String> buildUnnamed81() => [
+core.List<core.String> buildUnnamed84() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed81(core.List<core.String> o) {
+void checkUnnamed84(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5988,7 +6218,7 @@ api.ValueListFilter buildValueListFilter() {
   if (buildCounterValueListFilter < 3) {
     o.ignoreCase = true;
     o.valuePresentList = 'foo';
-    o.values = buildUnnamed81();
+    o.values = buildUnnamed84();
   }
   buildCounterValueListFilter--;
   return o;
@@ -6002,7 +6232,7 @@ void checkValueListFilter(api.ValueListFilter o) {
       o.valuePresentList!,
       unittest.equals('foo'),
     );
-    checkUnnamed81(o.values!);
+    checkUnnamed84(o.values!);
   }
   buildCounterValueListFilter--;
 }
@@ -6068,18 +6298,18 @@ void checkVerifyMigrationJobRequest(api.VerifyMigrationJobRequest o) {
   buildCounterVerifyMigrationJobRequest--;
 }
 
-core.List<api.ConstraintEntity> buildUnnamed82() => [
+core.List<api.ConstraintEntity> buildUnnamed85() => [
       buildConstraintEntity(),
       buildConstraintEntity(),
     ];
 
-void checkUnnamed82(core.List<api.ConstraintEntity> o) {
+void checkUnnamed85(core.List<api.ConstraintEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkConstraintEntity(o[0]);
   checkConstraintEntity(o[1]);
 }
 
-core.Map<core.String, core.Object?> buildUnnamed83() => {
+core.Map<core.String, core.Object?> buildUnnamed86() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -6092,7 +6322,7 @@ core.Map<core.String, core.Object?> buildUnnamed83() => {
       },
     };
 
-void checkUnnamed83(core.Map<core.String, core.Object?> o) {
+void checkUnnamed86(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted43 = (o['x']!) as core.Map;
   unittest.expect(casted43, unittest.hasLength(3));
@@ -6129,8 +6359,8 @@ api.ViewEntity buildViewEntity() {
   final o = api.ViewEntity();
   buildCounterViewEntity++;
   if (buildCounterViewEntity < 3) {
-    o.constraints = buildUnnamed82();
-    o.customFeatures = buildUnnamed83();
+    o.constraints = buildUnnamed85();
+    o.customFeatures = buildUnnamed86();
     o.sqlCode = 'foo';
   }
   buildCounterViewEntity--;
@@ -6140,8 +6370,8 @@ api.ViewEntity buildViewEntity() {
 void checkViewEntity(api.ViewEntity o) {
   buildCounterViewEntity++;
   if (buildCounterViewEntity < 3) {
-    checkUnnamed82(o.constraints!);
-    checkUnnamed83(o.customFeatures!);
+    checkUnnamed85(o.constraints!);
+    checkUnnamed86(o.customFeatures!);
     unittest.expect(
       o.sqlCode!,
       unittest.equals('foo'),
@@ -6844,6 +7074,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ListMigrationJobObjectsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListMigrationJobObjectsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListMigrationJobObjectsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListMigrationJobObjectsResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-ListMigrationJobsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListMigrationJobsResponse();
@@ -6904,6 +7144,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-LookupMigrationJobObjectRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLookupMigrationJobObjectRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LookupMigrationJobObjectRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkLookupMigrationJobObjectRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-MachineConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildMachineConfig();
@@ -6951,6 +7201,26 @@ void main() {
       final od = api.MigrationJob.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkMigrationJob(od);
+    });
+  });
+
+  unittest.group('obj-schema-MigrationJobObject', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMigrationJobObject();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MigrationJobObject.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMigrationJobObject(od);
+    });
+  });
+
+  unittest.group('obj-schema-MigrationJobObjectsConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMigrationJobObjectsConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MigrationJobObjectsConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMigrationJobObjectsConfig(od);
     });
   });
 
@@ -7321,6 +7591,36 @@ void main() {
       final od = api.SourceNumericFilter.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSourceNumericFilter(od);
+    });
+  });
+
+  unittest.group('obj-schema-SourceObjectConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSourceObjectConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SourceObjectConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSourceObjectConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-SourceObjectIdentifier', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSourceObjectIdentifier();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SourceObjectIdentifier.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSourceObjectIdentifier(od);
+    });
+  });
+
+  unittest.group('obj-schema-SourceObjectsConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSourceObjectsConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SourceObjectsConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSourceObjectsConfig(od);
     });
   });
 
@@ -10006,6 +10306,62 @@ void main() {
       checkOperation(response as api.Operation);
     });
 
+    unittest.test('method--fetchSourceObjects', () async {
+      final mock = HttpServerMock();
+      final res = api.DatabaseMigrationServiceApi(mock)
+          .projects
+          .locations
+          .migrationJobs;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.fetchSourceObjects(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--generateSshScript', () async {
       final mock = HttpServerMock();
       final res = api.DatabaseMigrationServiceApi(mock)
@@ -10891,6 +11247,62 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsMigrationJobsObjectsResource', () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.DatabaseMigrationServiceApi(mock)
+          .projects
+          .locations
+          .migrationJobs
+          .objects;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildMigrationJobObject());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkMigrationJobObject(response as api.MigrationJobObject);
+    });
+
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
       final res = api.DatabaseMigrationServiceApi(mock)
@@ -10952,6 +11364,139 @@ void main() {
           options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
           $fields: arg_$fields);
       checkPolicy(response as api.Policy);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.DatabaseMigrationServiceApi(mock)
+          .projects
+          .locations
+          .migrationJobs
+          .objects;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildListMigrationJobObjectsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListMigrationJobObjectsResponse(
+          response as api.ListMigrationJobObjectsResponse);
+    });
+
+    unittest.test('method--lookup', () async {
+      final mock = HttpServerMock();
+      final res = api.DatabaseMigrationServiceApi(mock)
+          .projects
+          .locations
+          .migrationJobs
+          .objects;
+      final arg_request = buildLookupMigrationJobObjectRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.LookupMigrationJobObjectRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLookupMigrationJobObjectRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildMigrationJobObject());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.lookup(arg_request, arg_parent, $fields: arg_$fields);
+      checkMigrationJobObject(response as api.MigrationJobObject);
     });
 
     unittest.test('method--setIamPolicy', () async {

@@ -7260,6 +7260,35 @@ class Buildings {
       };
 }
 
+/// Represents a data capacity with some amount of current usage in bytes.
+class ByteUsage {
+  /// The total capacity value, in bytes.
+  ///
+  /// Output only.
+  core.String? capacityBytes;
+
+  /// The current usage value, in bytes.
+  ///
+  /// Output only.
+  core.String? usedBytes;
+
+  ByteUsage({
+    this.capacityBytes,
+    this.usedBytes,
+  });
+
+  ByteUsage.fromJson(core.Map json_)
+      : this(
+          capacityBytes: json_['capacityBytes'] as core.String?,
+          usedBytes: json_['usedBytes'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (capacityBytes != null) 'capacityBytes': capacityBytes!,
+        if (usedBytes != null) 'usedBytes': usedBytes!,
+      };
+}
+
 /// Public API: Resources.calendars
 class CalendarResource {
   /// Unique ID for the building a resource is located in.
@@ -8147,6 +8176,11 @@ class ChromeOsDevice {
   /// - "kioskUpgrade" : The device has an annual Kiosk Upgrade.
   core.String? deviceLicenseType;
 
+  /// How much disk space the device has available and is currently using.
+  ///
+  /// Output only.
+  ByteUsage? diskSpaceUsage;
+
   /// Reports of disk space and other info about mounted/connected volumes.
   core.List<ChromeOsDeviceDiskVolumeReports>? diskVolumeReports;
 
@@ -8340,6 +8374,7 @@ class ChromeOsDevice {
     this.deviceFiles,
     this.deviceId,
     this.deviceLicenseType,
+    this.diskSpaceUsage,
     this.diskVolumeReports,
     this.dockMacAddress,
     this.etag,
@@ -8410,6 +8445,10 @@ class ChromeOsDevice {
               .toList(),
           deviceId: json_['deviceId'] as core.String?,
           deviceLicenseType: json_['deviceLicenseType'] as core.String?,
+          diskSpaceUsage: json_.containsKey('diskSpaceUsage')
+              ? ByteUsage.fromJson(json_['diskSpaceUsage']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           diskVolumeReports: (json_['diskVolumeReports'] as core.List?)
               ?.map((value) => ChromeOsDeviceDiskVolumeReports.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -8497,6 +8536,7 @@ class ChromeOsDevice {
         if (deviceFiles != null) 'deviceFiles': deviceFiles!,
         if (deviceId != null) 'deviceId': deviceId!,
         if (deviceLicenseType != null) 'deviceLicenseType': deviceLicenseType!,
+        if (diskSpaceUsage != null) 'diskSpaceUsage': diskSpaceUsage!,
         if (diskVolumeReports != null) 'diskVolumeReports': diskVolumeReports!,
         if (dockMacAddress != null) 'dockMacAddress': dockMacAddress!,
         if (etag != null) 'etag': etag!,
@@ -10412,15 +10452,7 @@ class MobileDevices {
 /// The customer's organizational unit hierarchy is limited to 35 levels of
 /// depth.
 class OrgUnit {
-  /// Determines if a sub-organizational unit can inherit the settings of the
-  /// parent organization.
-  ///
-  /// The default value is `false`, meaning a sub-organizational unit inherits
-  /// the settings of the nearest parent organizational unit. This field is
-  /// deprecated. Setting it to `true` is no longer supported and can have
-  /// _unintended consequences_. For more information about inheritance and
-  /// users in an organization structure, see the
-  /// [administration help center](https://support.google.com/a/answer/4352075).
+  /// This field is deprecated and setting its value has no effect.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -11150,6 +11182,39 @@ class RoleAssignment {
   /// - "group" : A group within the domain.
   core.String? assigneeType;
 
+  /// The condition associated with this role assignment.
+  ///
+  /// Note: Feature is available to Enterprise Standard, Enterprise Plus, Google
+  /// Workspace for Education Plus and Cloud Identity Premium customers. A
+  /// `RoleAssignment` with the `condition` field set will only take effect when
+  /// the resource being accessed meets the condition. If `condition` is empty,
+  /// the role (`role_id`) is applied to the actor (`assigned_to`) at the scope
+  /// (`scope_type`) unconditionally. Currently, the following conditions are
+  /// supported: - To make the `RoleAssignment` only applicable to
+  /// [Security Groups](https://cloud.google.com/identity/docs/groups#group_types):
+  /// `api.getAttribute('cloudidentity.googleapis.com/groups.labels',
+  /// []).hasAny(['groups.security']) && resource.type ==
+  /// 'cloudidentity.googleapis.com/Group'` - To make the `RoleAssignment` not
+  /// applicable to
+  /// [Security Groups](https://cloud.google.com/identity/docs/groups#group_types):
+  /// `!api.getAttribute('cloudidentity.googleapis.com/groups.labels',
+  /// []).hasAny(['groups.security']) && resource.type ==
+  /// 'cloudidentity.googleapis.com/Group'` Currently, the condition strings
+  /// have to be verbatim and they only work with the following \[pre-built
+  /// administrator roles\](https://support.google.com/a/answer/2405986): -
+  /// Groups Editor - Groups Reader The condition follows
+  /// [Cloud IAM condition syntax](https://cloud.google.com/iam/docs/conditions-overview).
+  /// Additional conditions related to Locked Groups are available under Open
+  /// Beta. - To make the `RoleAssignment` not applicable to
+  /// [Locked Groups](https://cloud.google.com/identity/docs/groups#group_types):
+  /// `!api.getAttribute('cloudidentity.googleapis.com/groups.labels',
+  /// []).hasAny(['groups.locked']) && resource.type ==
+  /// 'cloudidentity.googleapis.com/Group'` This condition can also be used in
+  /// conjunction with a Security-related condition.
+  ///
+  /// Optional.
+  core.String? condition;
+
   /// ETag of the resource.
   core.String? etag;
 
@@ -11174,6 +11239,7 @@ class RoleAssignment {
   RoleAssignment({
     this.assignedTo,
     this.assigneeType,
+    this.condition,
     this.etag,
     this.kind,
     this.orgUnitId,
@@ -11186,6 +11252,7 @@ class RoleAssignment {
       : this(
           assignedTo: json_['assignedTo'] as core.String?,
           assigneeType: json_['assigneeType'] as core.String?,
+          condition: json_['condition'] as core.String?,
           etag: json_['etag'] as core.String?,
           kind: json_['kind'] as core.String?,
           orgUnitId: json_['orgUnitId'] as core.String?,
@@ -11197,6 +11264,7 @@ class RoleAssignment {
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTo != null) 'assignedTo': assignedTo!,
         if (assigneeType != null) 'assigneeType': assigneeType!,
+        if (condition != null) 'condition': condition!,
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
         if (orgUnitId != null) 'orgUnitId': orgUnitId!,

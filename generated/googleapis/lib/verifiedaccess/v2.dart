@@ -277,8 +277,8 @@ class DeviceSignals {
   /// The state of the OS level firewall.
   ///
   /// On ChromeOS, the value will always be ENABLED on regular devices and
-  /// UNKNOWN on devices in developer mode. The signal is currently not
-  /// available on MacOS 15 (Sequoia) and later.
+  /// UNKNOWN on devices in developer mode. Support for MacOS 15 (Sequoia) and
+  /// later has been introduced in Chrome M131.
   /// Possible string values are:
   /// - "OS_FIREWALL_UNSPECIFIED" : Unspecified.
   /// - "OS_FIREWALL_UNKNOWN" : Chrome could not evaluate the OS firewall state.

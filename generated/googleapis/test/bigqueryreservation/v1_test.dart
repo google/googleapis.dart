@@ -32,6 +32,7 @@ api.Assignment buildAssignment() {
   buildCounterAssignment++;
   if (buildCounterAssignment < 3) {
     o.assignee = 'foo';
+    o.enableGeminiInBigquery = true;
     o.jobType = 'foo';
     o.name = 'foo';
     o.state = 'foo';
@@ -47,6 +48,7 @@ void checkAssignment(api.Assignment o) {
       o.assignee!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.enableGeminiInBigquery!, unittest.isTrue);
     unittest.expect(
       o.jobType!,
       unittest.equals('foo'),
@@ -398,6 +400,23 @@ void checkMoveAssignmentRequest(api.MoveAssignmentRequest o) {
   buildCounterMoveAssignmentRequest--;
 }
 
+core.Map<core.String, core.String> buildUnnamed5() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed5(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterReservation = 0;
 api.Reservation buildReservation() {
   final o = api.Reservation();
@@ -408,6 +427,7 @@ api.Reservation buildReservation() {
     o.creationTime = 'foo';
     o.edition = 'foo';
     o.ignoreIdleSlots = true;
+    o.labels = buildUnnamed5();
     o.multiRegionAuxiliary = true;
     o.name = 'foo';
     o.originalPrimaryLocation = 'foo';
@@ -437,6 +457,7 @@ void checkReservation(api.Reservation o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.ignoreIdleSlots!, unittest.isTrue);
+    checkUnnamed5(o.labels!);
     unittest.expect(o.multiRegionAuxiliary!, unittest.isTrue);
     unittest.expect(
       o.name!,
@@ -466,41 +487,6 @@ void checkReservation(api.Reservation o) {
   buildCounterReservation--;
 }
 
-core.List<api.Assignment> buildUnnamed5() => [
-      buildAssignment(),
-      buildAssignment(),
-    ];
-
-void checkUnnamed5(core.List<api.Assignment> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkAssignment(o[0]);
-  checkAssignment(o[1]);
-}
-
-core.int buildCounterSearchAllAssignmentsResponse = 0;
-api.SearchAllAssignmentsResponse buildSearchAllAssignmentsResponse() {
-  final o = api.SearchAllAssignmentsResponse();
-  buildCounterSearchAllAssignmentsResponse++;
-  if (buildCounterSearchAllAssignmentsResponse < 3) {
-    o.assignments = buildUnnamed5();
-    o.nextPageToken = 'foo';
-  }
-  buildCounterSearchAllAssignmentsResponse--;
-  return o;
-}
-
-void checkSearchAllAssignmentsResponse(api.SearchAllAssignmentsResponse o) {
-  buildCounterSearchAllAssignmentsResponse++;
-  if (buildCounterSearchAllAssignmentsResponse < 3) {
-    checkUnnamed5(o.assignments!);
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterSearchAllAssignmentsResponse--;
-}
-
 core.List<api.Assignment> buildUnnamed6() => [
       buildAssignment(),
       buildAssignment(),
@@ -512,12 +498,47 @@ void checkUnnamed6(core.List<api.Assignment> o) {
   checkAssignment(o[1]);
 }
 
+core.int buildCounterSearchAllAssignmentsResponse = 0;
+api.SearchAllAssignmentsResponse buildSearchAllAssignmentsResponse() {
+  final o = api.SearchAllAssignmentsResponse();
+  buildCounterSearchAllAssignmentsResponse++;
+  if (buildCounterSearchAllAssignmentsResponse < 3) {
+    o.assignments = buildUnnamed6();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterSearchAllAssignmentsResponse--;
+  return o;
+}
+
+void checkSearchAllAssignmentsResponse(api.SearchAllAssignmentsResponse o) {
+  buildCounterSearchAllAssignmentsResponse++;
+  if (buildCounterSearchAllAssignmentsResponse < 3) {
+    checkUnnamed6(o.assignments!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSearchAllAssignmentsResponse--;
+}
+
+core.List<api.Assignment> buildUnnamed7() => [
+      buildAssignment(),
+      buildAssignment(),
+    ];
+
+void checkUnnamed7(core.List<api.Assignment> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAssignment(o[0]);
+  checkAssignment(o[1]);
+}
+
 core.int buildCounterSearchAssignmentsResponse = 0;
 api.SearchAssignmentsResponse buildSearchAssignmentsResponse() {
   final o = api.SearchAssignmentsResponse();
   buildCounterSearchAssignmentsResponse++;
   if (buildCounterSearchAssignmentsResponse < 3) {
-    o.assignments = buildUnnamed6();
+    o.assignments = buildUnnamed7();
     o.nextPageToken = 'foo';
   }
   buildCounterSearchAssignmentsResponse--;
@@ -527,7 +548,7 @@ api.SearchAssignmentsResponse buildSearchAssignmentsResponse() {
 void checkSearchAssignmentsResponse(api.SearchAssignmentsResponse o) {
   buildCounterSearchAssignmentsResponse++;
   if (buildCounterSearchAssignmentsResponse < 3) {
-    checkUnnamed6(o.assignments!);
+    checkUnnamed7(o.assignments!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -580,7 +601,7 @@ void checkSplitCapacityCommitmentResponse(
   buildCounterSplitCapacityCommitmentResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed7() => {
+core.Map<core.String, core.Object?> buildUnnamed8() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -593,7 +614,7 @@ core.Map<core.String, core.Object?> buildUnnamed7() => {
       },
     };
 
-void checkUnnamed7(core.Map<core.String, core.Object?> o) {
+void checkUnnamed8(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -625,15 +646,15 @@ void checkUnnamed7(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed8() => [
-      buildUnnamed7(),
-      buildUnnamed7(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed9() => [
+      buildUnnamed8(),
+      buildUnnamed8(),
     ];
 
-void checkUnnamed8(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed9(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed7(o[0]);
-  checkUnnamed7(o[1]);
+  checkUnnamed8(o[0]);
+  checkUnnamed8(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -642,7 +663,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed8();
+    o.details = buildUnnamed9();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -656,7 +677,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed8(o.details!);
+    checkUnnamed9(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),

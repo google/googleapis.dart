@@ -32,6 +32,7 @@
 library;
 
 import 'dart:async' as async;
+import 'dart:convert' as convert;
 import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
@@ -127,6 +128,90 @@ class OrganizationsLocationsCustomersResource {
   OrganizationsLocationsCustomersResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates a new customer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource Format:
+  /// `organizations/{organization}/locations/{location}`
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [customerId] - Required. The customer id to use for the customer, which
+  /// will become the final component of the customer's resource name. The
+  /// specified value must be a valid Google cloud organization id.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Customer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Customer> create(
+    Customer request,
+    core.String parent, {
+    core.String? customerId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (customerId != null) 'customerId': [customerId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customers';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Customer.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete details of a single customer
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. name of the resource to be deleted format:
+  /// name=organizations / * /locations / * /customers / *
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets details of a single customer
   ///
   /// Request parameters:
@@ -219,6 +304,52 @@ class OrganizationsLocationsCustomersResource {
     );
     return ListCustomersResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update details of a single customer
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Format:
+  /// `organizations/{organization}/locations/{location}/customers/{customer}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/customers/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Customer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Customer> patch(
+    Customer request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Customer.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -752,11 +883,20 @@ class Customer {
   /// `organizations/{organization}/locations/{location}/customers/{customer}`
   core.String? name;
 
+  /// The customer organization domain, extracted from CRM Organization’s
+  /// display_name field.
+  ///
+  /// e.g. "google.com"
+  ///
+  /// Output only.
+  core.String? organizationDomain;
+
   Customer({
     this.customerOnboardingState,
     this.displayName,
     this.isOnboarded,
     this.name,
+    this.organizationDomain,
   });
 
   Customer.fromJson(core.Map json_)
@@ -769,6 +909,7 @@ class Customer {
           displayName: json_['displayName'] as core.String?,
           isOnboarded: json_['isOnboarded'] as core.bool?,
           name: json_['name'] as core.String?,
+          organizationDomain: json_['organizationDomain'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -777,6 +918,8 @@ class Customer {
         if (displayName != null) 'displayName': displayName!,
         if (isOnboarded != null) 'isOnboarded': isOnboarded!,
         if (name != null) 'name': name!,
+        if (organizationDomain != null)
+          'organizationDomain': organizationDomain!,
       };
 }
 
@@ -956,6 +1099,14 @@ class EkmMetadata {
         if (ekmSolution != null) 'ekmSolution': ekmSolution!,
       };
 }
+
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); }
+typedef Empty = $Empty;
 
 /// Remediation instructions to resolve violation via gcloud cli
 typedef Gcloud = $Gcloud;

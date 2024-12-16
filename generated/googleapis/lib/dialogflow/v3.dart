@@ -6278,8 +6278,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// Request parameters:
   ///
@@ -6644,8 +6644,8 @@ class ProjectsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// Request parameters:
   ///
@@ -7619,7 +7619,7 @@ class GoogleCloudDialogflowCxV3AudioInput {
 /// speech detection and may inform the client that an utterance has been
 /// detected. Note that no-speech event is not expected in this phase. The
 /// client provides this configuration in terms of the durations of those two
-/// phases. The durations are measured in terms of the audio length from the the
+/// phases. The durations are measured in terms of the audio length from the
 /// start of the input audio. No-speech event is a response with
 /// END_OF_UTTERANCE without any transcript following up.
 class GoogleCloudDialogflowCxV3BargeInConfig {
@@ -7883,39 +7883,8 @@ class GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec {
 ///
 /// The curve defined through these control points can only be monotonically
 /// increasing or decreasing(constant values are acceptable).
-class GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint {
-  /// Can be one of: 1.
-  ///
-  /// The numerical field value. 2. The duration spec for freshness: The value
-  /// must be formatted as an XSD `dayTimeDuration` value (a restricted subset
-  /// of an ISO 8601 duration value). The pattern for this is: `nDnM]`.
-  ///
-  /// Optional.
-  core.String? attributeValue;
-
-  /// The value between -1 to 1 by which to boost the score if the
-  /// attribute_value evaluates to the value specified above.
-  ///
-  /// Optional.
-  core.double? boostAmount;
-
-  GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint({
-    this.attributeValue,
-    this.boostAmount,
-  });
-
-  GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint.fromJson(
-      core.Map json_)
-      : this(
-          attributeValue: json_['attributeValue'] as core.String?,
-          boostAmount: (json_['boostAmount'] as core.num?)?.toDouble(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (attributeValue != null) 'attributeValue': attributeValue!,
-        if (boostAmount != null) 'boostAmount': boostAmount!,
-      };
-}
+typedef GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint
+    = $BoostSpecConditionBoostSpecBoostControlSpecControlPoint;
 
 /// Boost specifications for data stores.
 class GoogleCloudDialogflowCxV3BoostSpecs {
@@ -11246,6 +11215,9 @@ class GoogleCloudDialogflowCxV3Generator {
   /// Required.
   core.String? displayName;
 
+  /// Parameters passed to the LLM to configure its behavior.
+  GoogleCloudDialogflowCxV3GeneratorModelParameter? modelParameter;
+
   /// The unique identifier of the generator.
   ///
   /// Must be set for the Generators.UpdateGenerator method.
@@ -11265,6 +11237,7 @@ class GoogleCloudDialogflowCxV3Generator {
 
   GoogleCloudDialogflowCxV3Generator({
     this.displayName,
+    this.modelParameter,
     this.name,
     this.placeholders,
     this.promptText,
@@ -11273,6 +11246,11 @@ class GoogleCloudDialogflowCxV3Generator {
   GoogleCloudDialogflowCxV3Generator.fromJson(core.Map json_)
       : this(
           displayName: json_['displayName'] as core.String?,
+          modelParameter: json_.containsKey('modelParameter')
+              ? GoogleCloudDialogflowCxV3GeneratorModelParameter.fromJson(
+                  json_['modelParameter']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_['name'] as core.String?,
           placeholders: (json_['placeholders'] as core.List?)
               ?.map((value) =>
@@ -11287,9 +11265,62 @@ class GoogleCloudDialogflowCxV3Generator {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
+        if (modelParameter != null) 'modelParameter': modelParameter!,
         if (name != null) 'name': name!,
         if (placeholders != null) 'placeholders': placeholders!,
         if (promptText != null) 'promptText': promptText!,
+      };
+}
+
+/// Parameters to be passed to the LLM.
+///
+/// If not set, default values will be used.
+class GoogleCloudDialogflowCxV3GeneratorModelParameter {
+  /// The maximum number of tokens to generate.
+  core.int? maxDecodeSteps;
+
+  /// The temperature used for sampling.
+  ///
+  /// Temperature sampling occurs after both topP and topK have been applied.
+  /// Valid range: \[0.0, 1.0\] Low temperature = less random. High temperature
+  /// = more random.
+  core.double? temperature;
+
+  /// If set, the sampling process in each step is limited to the top_k tokens
+  /// with highest probabilities.
+  ///
+  /// Valid range: \[1, 40\] or 1000+. Small topK = less random. Large topK =
+  /// more random.
+  core.int? topK;
+
+  /// If set, only the tokens comprising the top top_p probability mass are
+  /// considered.
+  ///
+  /// If both top_p and top_k are set, top_p will be used for further refining
+  /// candidates selected with top_k. Valid range: (0.0, 1.0\]. Small topP =
+  /// less random. Large topP = more random.
+  core.double? topP;
+
+  GoogleCloudDialogflowCxV3GeneratorModelParameter({
+    this.maxDecodeSteps,
+    this.temperature,
+    this.topK,
+    this.topP,
+  });
+
+  GoogleCloudDialogflowCxV3GeneratorModelParameter.fromJson(core.Map json_)
+      : this(
+          maxDecodeSteps: json_['maxDecodeSteps'] as core.int?,
+          temperature: (json_['temperature'] as core.num?)?.toDouble(),
+          topK: json_['topK'] as core.int?,
+          topP: (json_['topP'] as core.num?)?.toDouble(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxDecodeSteps != null) 'maxDecodeSteps': maxDecodeSteps!,
+        if (temperature != null) 'temperature': temperature!,
+        if (topK != null) 'topK': topK!,
+        if (topP != null) 'topP': topP!,
       };
 }
 
@@ -14867,7 +14898,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings {
 /// Sentiment analysis inspects user input and identifies the prevailing
 /// subjective opinion, especially to determine a user's attitude as positive,
 /// negative, or neutral.
-typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared11;
+typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared12;
 
 /// Session entity types are referred to as **User** entity types and are
 /// entities that are built for an individual user such as favorites,

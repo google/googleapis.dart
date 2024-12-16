@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241011",
+    "revision": "20241204",
     "rootUrl": "https://beyondcorp.googleapis.com/",
     "servicePath": "",
     "title": "BeyondCorp API",
@@ -395,7 +395,7 @@
                         "operations": {
                             "methods": {
                                 "cancel": {
-                                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
                                     "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "beyondcorp.organizations.locations.operations.cancel",
@@ -1837,7 +1837,7 @@
                         "operations": {
                             "methods": {
                                 "cancel": {
-                                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "beyondcorp.projects.locations.operations.cancel",
@@ -2173,29 +2173,29 @@
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
-                                "setPeering": {
-                                    "description": "This is a custom method to allow customers to create a peering connections between Google network and customer networks. This is enabled only for the allowlisted customers.",
-                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/securityGateways/{securityGatewaysId}:setPeering",
+                                "setIamPolicy": {
+                                    "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/securityGateways/{securityGatewaysId}:setIamPolicy",
                                     "httpMethod": "POST",
-                                    "id": "beyondcorp.projects.locations.securityGateways.setPeering",
+                                    "id": "beyondcorp.projects.locations.securityGateways.setIamPolicy",
                                     "parameterOrder": [
-                                        "securityGateway"
+                                        "resource"
                                     ],
                                     "parameters": {
-                                        "securityGateway": {
-                                            "description": "Required. BeyondCorp SecurityGateway name using the form: `projects/{project}/locations/{location}/securityGateways/{security_gateway}`",
+                                        "resource": {
+                                            "description": "REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/securityGateways/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1/{+securityGateway}:setPeering",
+                                    "path": "v1/{+resource}:setIamPolicy",
                                     "request": {
-                                        "$ref": "GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest"
+                                        "$ref": "GoogleIamV1SetIamPolicyRequest"
                                     },
                                     "response": {
-                                        "$ref": "GoogleLongrunningOperation"
+                                        "$ref": "GoogleIamV1Policy"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -2405,50 +2405,6 @@
                     }
                 }
             }
-        },
-        "v": {
-            "resources": {
-                "projects": {
-                    "resources": {
-                        "locations": {
-                            "resources": {
-                                "securityGateways": {
-                                    "methods": {
-                                        "setIamPolicy": {
-                                            "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
-                                            "flatPath": "v/projects/{projectsId}/locations/{locationsId}/securityGateways/{securityGatewaysId}:setIamPolicy",
-                                            "httpMethod": "POST",
-                                            "id": "beyondcorp.v.projects.locations.securityGateways.setIamPolicy",
-                                            "parameterOrder": [
-                                                "resource"
-                                            ],
-                                            "parameters": {
-                                                "resource": {
-                                                    "description": "REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
-                                                    "location": "path",
-                                                    "pattern": "^projects/[^/]+/locations/[^/]+/securityGateways/[^/]+$",
-                                                    "required": true,
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "path": "v/{+resource}:setIamPolicy",
-                                            "request": {
-                                                "$ref": "GoogleIamV1SetIamPolicyRequest"
-                                            },
-                                            "response": {
-                                                "$ref": "GoogleIamV1Policy"
-                                            },
-                                            "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
-                                            ]
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
         }
     },
     "schemas": {
@@ -2597,7 +2553,7 @@
                     "type": "string"
                 },
                 "requestedCancellation": {
-                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
                     "readOnly": true,
                     "type": "boolean"
                 },
@@ -2883,7 +2839,7 @@
                     "type": "string"
                 },
                 "requestedCancellation": {
-                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
                     "readOnly": true,
                     "type": "boolean"
                 },
@@ -2995,7 +2951,7 @@
                     "type": "string"
                 },
                 "requestedCancellation": {
-                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
                     "readOnly": true,
                     "type": "boolean"
                 },
@@ -3135,7 +3091,7 @@
                     "type": "string"
                 },
                 "requestedCancellation": {
-                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
                     "readOnly": true,
                     "type": "boolean"
                 },
@@ -3374,7 +3330,7 @@
                     "type": "string"
                 },
                 "requestedCancellation": {
-                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
                     "readOnly": true,
                     "type": "boolean"
                 },
@@ -3450,7 +3406,7 @@
                     "type": "string"
                 },
                 "requestedCancellation": {
-                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
                     "readOnly": true,
                     "type": "boolean"
                 },
@@ -3809,24 +3765,6 @@
             },
             "type": "object"
         },
-        "GoogleCloudBeyondcorpSecuritygatewaysV1Peering": {
-            "description": "VPC Peering details.",
-            "id": "GoogleCloudBeyondcorpSecuritygatewaysV1Peering",
-            "properties": {
-                "dnsZones": {
-                    "description": "Optional. List of DNS zones for DNS peering with the customer VPC network.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "targetNetwork": {
-                    "description": "Required. The name of the Target VPC network name in the format: `projects/{project}/global/networks/{network}",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway": {
             "description": "Information about a BeyoncCorp SecurityGateway resource.",
             "id": "GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway",
@@ -3932,28 +3870,6 @@
                     "description": "Output only. Name of the verb executed by the operation.",
                     "readOnly": true,
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest": {
-            "description": "Set Peering request for creating a VPC peering between Google network and customer networks.",
-            "id": "GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest",
-            "properties": {
-                "peerings": {
-                    "description": "Required. List of Peering connection information.",
-                    "items": {
-                        "$ref": "GoogleCloudBeyondcorpSecuritygatewaysV1Peering"
-                    },
-                    "type": "array"
-                },
-                "requestId": {
-                    "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
-                    "type": "string"
-                },
-                "validateOnly": {
-                    "description": "Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.",
-                    "type": "boolean"
                 }
             },
             "type": "object"

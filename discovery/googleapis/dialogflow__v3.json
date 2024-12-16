@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241019",
+    "revision": "20241212",
     "rootUrl": "https://dialogflow.googleapis.com/",
     "servicePath": "",
     "title": "Dialogflow API",
@@ -4102,7 +4102,7 @@
                         "operations": {
                             "methods": {
                                 "cancel": {
-                                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
                                     "flatPath": "v3/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "dialogflow.projects.locations.operations.cancel",
@@ -4359,7 +4359,7 @@
                 "operations": {
                     "methods": {
                         "cancel": {
-                            "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                            "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
                             "flatPath": "v3/projects/{projectsId}/operations/{operationsId}:cancel",
                             "httpMethod": "POST",
                             "id": "dialogflow.projects.operations.cancel",
@@ -4832,7 +4832,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowCxV3BargeInConfig": {
-            "description": "Configuration of the barge-in behavior. Barge-in instructs the API to return a detected utterance at a proper time while the client is playing back the response audio from a previous request. When the client sees the utterance, it should stop the playback and immediately get ready for receiving the responses for the current request. The barge-in handling requires the client to start streaming audio input as soon as it starts playing back the audio from the previous response. The playback is modeled into two phases: * No barge-in phase: which goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no barge-in phase and during which the API starts speech detection and may inform the client that an utterance has been detected. Note that no-speech event is not expected in this phase. The client provides this configuration in terms of the durations of those two phases. The durations are measured in terms of the audio length from the the start of the input audio. No-speech event is a response with END_OF_UTTERANCE without any transcript following up.",
+            "description": "Configuration of the barge-in behavior. Barge-in instructs the API to return a detected utterance at a proper time while the client is playing back the response audio from a previous request. When the client sees the utterance, it should stop the playback and immediately get ready for receiving the responses for the current request. The barge-in handling requires the client to start streaming audio input as soon as it starts playing back the audio from the previous response. The playback is modeled into two phases: * No barge-in phase: which goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no barge-in phase and during which the API starts speech detection and may inform the client that an utterance has been detected. Note that no-speech event is not expected in this phase. The client provides this configuration in terms of the durations of those two phases. The durations are measured in terms of the audio length from the start of the input audio. No-speech event is a response with END_OF_UTTERANCE without any transcript following up.",
             "id": "GoogleCloudDialogflowCxV3BargeInConfig",
             "properties": {
                 "noBargeInDuration": {
@@ -6916,6 +6916,10 @@
                     "description": "Required. The human-readable name of the generator, unique within the agent. The prompt contains pre-defined parameters such as $conversation, $last-user-utterance, etc. populated by Dialogflow. It can also contain custom placeholders which will be resolved during fulfillment.",
                     "type": "string"
                 },
+                "modelParameter": {
+                    "$ref": "GoogleCloudDialogflowCxV3GeneratorModelParameter",
+                    "description": "Parameters passed to the LLM to configure its behavior."
+                },
                 "name": {
                     "description": "The unique identifier of the generator. Must be set for the Generators.UpdateGenerator method. Generators.CreateGenerate populates the name automatically. Format: `projects//locations//agents//generators/`.",
                     "type": "string"
@@ -6930,6 +6934,33 @@
                 "promptText": {
                     "$ref": "GoogleCloudDialogflowCxV3Phrase",
                     "description": "Required. Prompt for the LLM model."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowCxV3GeneratorModelParameter": {
+            "description": "Parameters to be passed to the LLM. If not set, default values will be used.",
+            "id": "GoogleCloudDialogflowCxV3GeneratorModelParameter",
+            "properties": {
+                "maxDecodeSteps": {
+                    "description": "The maximum number of tokens to generate.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "temperature": {
+                    "description": "The temperature used for sampling. Temperature sampling occurs after both topP and topK have been applied. Valid range: [0.0, 1.0] Low temperature = less random. High temperature = more random.",
+                    "format": "float",
+                    "type": "number"
+                },
+                "topK": {
+                    "description": "If set, the sampling process in each step is limited to the top_k tokens with highest probabilities. Valid range: [1, 40] or 1000+. Small topK = less random. Large topK = more random.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "topP": {
+                    "description": "If set, only the tokens comprising the top top_p probability mass are considered. If both top_p and top_k are set, top_p will be used for further refining candidates selected with top_k. Valid range: (0.0, 1.0]. Small topP = less random. Large topP = more random.",
+                    "format": "float",
+                    "type": "number"
                 }
             },
             "type": "object"
@@ -7442,6 +7473,7 @@
             "properties": {
                 "id": {
                     "description": "Output only. The unique identifier of the training phrase.",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "parts": {
@@ -10342,7 +10374,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowCxV3beta1BargeInConfig": {
-            "description": "Configuration of the barge-in behavior. Barge-in instructs the API to return a detected utterance at a proper time while the client is playing back the response audio from a previous request. When the client sees the utterance, it should stop the playback and immediately get ready for receiving the responses for the current request. The barge-in handling requires the client to start streaming audio input as soon as it starts playing back the audio from the previous response. The playback is modeled into two phases: * No barge-in phase: which goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no barge-in phase and during which the API starts speech detection and may inform the client that an utterance has been detected. Note that no-speech event is not expected in this phase. The client provides this configuration in terms of the durations of those two phases. The durations are measured in terms of the audio length from the the start of the input audio. No-speech event is a response with END_OF_UTTERANCE without any transcript following up.",
+            "description": "Configuration of the barge-in behavior. Barge-in instructs the API to return a detected utterance at a proper time while the client is playing back the response audio from a previous request. When the client sees the utterance, it should stop the playback and immediately get ready for receiving the responses for the current request. The barge-in handling requires the client to start streaming audio input as soon as it starts playing back the audio from the previous response. The playback is modeled into two phases: * No barge-in phase: which goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no barge-in phase and during which the API starts speech detection and may inform the client that an utterance has been detected. Note that no-speech event is not expected in this phase. The client provides this configuration in terms of the durations of those two phases. The durations are measured in terms of the audio length from the start of the input audio. No-speech event is a response with END_OF_UTTERANCE without any transcript following up.",
             "id": "GoogleCloudDialogflowCxV3beta1BargeInConfig",
             "properties": {
                 "noBargeInDuration": {
@@ -11342,6 +11374,7 @@
             "properties": {
                 "id": {
                     "description": "Output only. The unique identifier of the training phrase.",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "parts": {
@@ -12692,7 +12725,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowV2ClearSuggestionFeatureConfigOperationMetadata": {
-            "description": "Metadata for a ConversationProfile.ClearSuggestionFeatureConfig operation.",
+            "description": "Metadata for a ConversationProfiles.ClearSuggestionFeatureConfig operation.",
             "id": "GoogleCloudDialogflowV2ClearSuggestionFeatureConfigOperationMetadata",
             "properties": {
                 "conversationProfile": {
@@ -12884,7 +12917,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata": {
-            "description": "Metadata for ConversationDatasets.",
+            "description": "Metadata for CreateConversationDataset.",
             "id": "GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata",
             "properties": {
                 "conversationDataset": {
@@ -12973,7 +13006,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowV2DeleteConversationDatasetOperationMetadata": {
-            "description": "Metadata for ConversationDatasets.",
+            "description": "Metadata for DeleteConversationDataset.",
             "id": "GoogleCloudDialogflowV2DeleteConversationDatasetOperationMetadata",
             "properties": {},
             "type": "object"
@@ -14158,6 +14191,7 @@
             "properties": {
                 "name": {
                     "description": "Output only. The unique identifier of this training phrase.",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "parts": {
@@ -14562,7 +14596,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowV2SentimentAnalysisResult": {
-            "description": "The result of sentiment analysis. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral. For Participants.DetectIntent, it needs to be configured in DetectIntentRequest.query_params. For Participants.StreamingDetectIntent, it needs to be configured in StreamingDetectIntentRequest.query_params. And for Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it needs to be configured in ConversationProfile.human_agent_assistant_config",
+            "description": "The result of sentiment analysis. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral. For DetectIntent, it needs to be configured in DetectIntentRequest.query_params. For StreamingDetectIntent, it needs to be configured in StreamingDetectIntentRequest.query_params. And for Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it needs to be configured in ConversationProfile.human_agent_assistant_config",
             "id": "GoogleCloudDialogflowV2SentimentAnalysisResult",
             "properties": {
                 "queryTextSentiment": {
@@ -14605,7 +14639,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowV2SetSuggestionFeatureConfigOperationMetadata": {
-            "description": "Metadata for a ConversationProfile.SetSuggestionFeatureConfig operation.",
+            "description": "Metadata for a ConversationProfiles.SetSuggestionFeatureConfig operation.",
             "id": "GoogleCloudDialogflowV2SetSuggestionFeatureConfigOperationMetadata",
             "properties": {
                 "conversationProfile": {
@@ -16534,6 +16568,7 @@
             "properties": {
                 "name": {
                     "description": "Output only. The unique identifier of this training phrase.",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "parts": {

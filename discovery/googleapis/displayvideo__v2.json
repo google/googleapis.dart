@@ -34,7 +34,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241017",
+    "revision": "20241212",
     "rootUrl": "https://displayvideo.googleapis.com/",
     "servicePath": "",
     "title": "Display & Video 360 API",
@@ -6326,7 +6326,7 @@
                             "type": "string"
                         },
                         "pageSize": {
-                            "description": "Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.",
+                            "description": "Requested page size. Must be between `1` and `5000`. If unspecified, this value defaults to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.",
                             "format": "int32",
                             "location": "query",
                             "type": "integer"
@@ -9423,11 +9423,11 @@
             "type": "object"
         },
         "Adloox": {
-            "description": "Details of Adloox settings.",
+            "description": "Details of Adloox brand safety settings.",
             "id": "Adloox",
             "properties": {
                 "excludedAdlooxCategories": {
-                    "description": "Adloox's brand safety settings.",
+                    "description": "Adloox categories to exclude.",
                     "items": {
                         "enum": [
                             "ADLOOX_UNSPECIFIED",
@@ -9441,7 +9441,7 @@
                             "FRAUD"
                         ],
                         "enumDescriptions": [
-                            "This enum is only a placeholder and it doesn't specify any Adloox option.",
+                            "Default value when a Adloox category is not specified or is unknown in this version.",
                             "Adult content (hard).",
                             "Adult content (soft).",
                             "Illegal content.",
@@ -9474,7 +9474,7 @@
                 },
                 "billingConfig": {
                     "$ref": "AdvertiserBillingConfig",
-                    "description": "Optional. Required. Billing related settings of the advertiser."
+                    "description": "Required. Billing related settings of the advertiser."
                 },
                 "creativeConfig": {
                     "$ref": "AdvertiserCreativeConfig",
@@ -9563,7 +9563,7 @@
             "id": "AdvertiserBillingConfig",
             "properties": {
                 "billingProfileId": {
-                    "description": "Optional. The ID of a billing profile assigned to the advertiser.",
+                    "description": "Required. The ID of a billing profile assigned to the advertiser.",
                     "format": "int64",
                     "type": "string"
                 }
@@ -9883,7 +9883,12 @@
                         "ASSET_ROLE_IOS_APP_ID",
                         "ASSET_ROLE_RATING",
                         "ASSET_ROLE_ICON",
-                        "ASSET_ROLE_COVER_IMAGE"
+                        "ASSET_ROLE_COVER_IMAGE",
+                        "ASSET_ROLE_BACKGROUND_COLOR",
+                        "ASSET_ROLE_ACCENT_COLOR",
+                        "ASSET_ROLE_REQUIRE_LOGO",
+                        "ASSET_ROLE_REQUIRE_IMAGE",
+                        "ASSET_ROLE_ENABLE_ASSET_ENHANCEMENTS"
                     ],
                     "enumDescriptions": [
                         "Asset role is not specified or is unknown in this version.",
@@ -9902,7 +9907,12 @@
                         "The ID of an iOS app in the Apple app store. This ID number can be found in the Apple App Store URL as the string of numbers directly after \"id\". For example, in https://apps.apple.com/us/app/gmail-email-by-google/id422689480 the ID is 422689480. Assets of this role are read-only.",
                         "The rating of an app in the Google play store or iOS app store. Note that this value is not automatically synced with the actual rating in the store. It will always be the one provided when save the creative. Assets of this role are read-only.",
                         "The icon of a creative. This role is only supported and required in following creative_type: * `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE`",
-                        "The cover image of a native video creative. This role is only supported and required in following creative_type: * `CREATIVE_TYPE_VIDEO`"
+                        "The cover image of a native video creative. This role is only supported and required in following creative_type: * `CREATIVE_TYPE_VIDEO`",
+                        "The main color to use in a creative. This role is only supported and required in following creative_type: * `CREATIVE_TYPE_ASSET_BASED_CREATIVE`",
+                        "The accent color to use in a creative. This role is only supported and required in following creative_type: * `CREATIVE_TYPE_ASSET_BASED_CREATIVE`",
+                        "Whether the creative must use a logo asset. This role is only supported and required in following creative_type: * `CREATIVE_TYPE_ASSET_BASED_CREATIVE`",
+                        "Whether the creative must use an image asset. This role is only supported and required in following creative_type: * `CREATIVE_TYPE_ASSET_BASED_CREATIVE`",
+                        "Whether asset enhancements can be applied to the creative. This role is only supported and required in following creative_type: * `CREATIVE_TYPE_ASSET_BASED_CREATIVE`"
                     ],
                     "type": "string"
                 }
@@ -12369,7 +12379,7 @@
                         "SDF version 6",
                         "SDF version 7. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version.",
                         "SDF version 7.1. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version.",
-                        "SDF version 8. **This SDF version is in beta. It is only available to a subset of users.**"
+                        "SDF version 8. Read the [v8 migration guide](/display-video/api/structured-data-file/v8-migration-guide) before migrating to this version."
                     ],
                     "type": "string"
                 }
@@ -12478,7 +12488,8 @@
                         "CREATIVE_TYPE_AUDIO",
                         "CREATIVE_TYPE_PUBLISHER_HOSTED",
                         "CREATIVE_TYPE_NATIVE_VIDEO",
-                        "CREATIVE_TYPE_TEMPLATED_APP_INSTALL_VIDEO"
+                        "CREATIVE_TYPE_TEMPLATED_APP_INSTALL_VIDEO",
+                        "CREATIVE_TYPE_ASSET_BASED_CREATIVE"
                     ],
                     "enumDescriptions": [
                         "Type value is not specified or is unknown in this version.",
@@ -12495,7 +12506,8 @@
                         "Audio creative. Create and update methods are supported for this creative type if the hosting_source is `HOSTING_SOURCE_HOSTED`",
                         "Publisher hosted creative. Create and update methods are **not** supported for this creative type.",
                         "Native video creative. Create and update methods are supported for this creative type if the hosting_source is `HOSTING_SOURCE_HOSTED`",
-                        "Templated app install mobile video creative. Create and update methods are **not** supported for this creative type."
+                        "Templated app install mobile video creative. Create and update methods are **not** supported for this creative type.",
+                        "Asset based creative. Create and update methods are supported for this creative type if the hosting_source is `HOSTING_SOURCE_HOSTED`."
                     ],
                     "type": "string"
                 },
@@ -12755,7 +12767,8 @@
                         "CREATIVE_TYPE_AUDIO",
                         "CREATIVE_TYPE_PUBLISHER_HOSTED",
                         "CREATIVE_TYPE_NATIVE_VIDEO",
-                        "CREATIVE_TYPE_TEMPLATED_APP_INSTALL_VIDEO"
+                        "CREATIVE_TYPE_TEMPLATED_APP_INSTALL_VIDEO",
+                        "CREATIVE_TYPE_ASSET_BASED_CREATIVE"
                     ],
                     "enumDescriptions": [
                         "Type value is not specified or is unknown in this version.",
@@ -12772,7 +12785,8 @@
                         "Audio creative. Create and update methods are supported for this creative type if the hosting_source is `HOSTING_SOURCE_HOSTED`",
                         "Publisher hosted creative. Create and update methods are **not** supported for this creative type.",
                         "Native video creative. Create and update methods are supported for this creative type if the hosting_source is `HOSTING_SOURCE_HOSTED`",
-                        "Templated app install mobile video creative. Create and update methods are **not** supported for this creative type."
+                        "Templated app install mobile video creative. Create and update methods are **not** supported for this creative type.",
+                        "Asset based creative. Create and update methods are supported for this creative type if the hosting_source is `HOSTING_SOURCE_HOSTED`."
                     ],
                     "type": "string"
                 },
@@ -14115,7 +14129,9 @@
                         "EXCHANGE_CHARTBOOST_GBID",
                         "EXCHANGE_ADMOST_GBID",
                         "EXCHANGE_TOPON_GBID",
-                        "EXCHANGE_NETFLIX"
+                        "EXCHANGE_NETFLIX",
+                        "EXCHANGE_CORE",
+                        "EXCHANGE_TUBI"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -14200,7 +14216,9 @@
                         "Chartboost Mediation.",
                         "AdMost.",
                         "TopOn.",
-                        "Netflix."
+                        "Netflix.",
+                        "Core.",
+                        "Tubi."
                     ],
                     "type": "string"
                 }
@@ -14310,7 +14328,9 @@
                         "EXCHANGE_CHARTBOOST_GBID",
                         "EXCHANGE_ADMOST_GBID",
                         "EXCHANGE_TOPON_GBID",
-                        "EXCHANGE_NETFLIX"
+                        "EXCHANGE_NETFLIX",
+                        "EXCHANGE_CORE",
+                        "EXCHANGE_TUBI"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -14395,7 +14415,9 @@
                         "Chartboost Mediation.",
                         "AdMost.",
                         "TopOn.",
-                        "Netflix."
+                        "Netflix.",
+                        "Core.",
+                        "Tubi."
                     ],
                     "type": "string"
                 },
@@ -14506,7 +14528,9 @@
                         "EXCHANGE_CHARTBOOST_GBID",
                         "EXCHANGE_ADMOST_GBID",
                         "EXCHANGE_TOPON_GBID",
-                        "EXCHANGE_NETFLIX"
+                        "EXCHANGE_NETFLIX",
+                        "EXCHANGE_CORE",
+                        "EXCHANGE_TUBI"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -14591,7 +14615,9 @@
                         "Chartboost Mediation.",
                         "AdMost.",
                         "TopOn.",
-                        "Netflix."
+                        "Netflix.",
+                        "Core.",
+                        "Tubi."
                     ],
                     "type": "string"
                 },
@@ -14703,7 +14729,9 @@
                         "EXCHANGE_CHARTBOOST_GBID",
                         "EXCHANGE_ADMOST_GBID",
                         "EXCHANGE_TOPON_GBID",
-                        "EXCHANGE_NETFLIX"
+                        "EXCHANGE_NETFLIX",
+                        "EXCHANGE_CORE",
+                        "EXCHANGE_TUBI"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -14788,7 +14816,9 @@
                         "Chartboost Mediation.",
                         "AdMost.",
                         "TopOn.",
-                        "Netflix."
+                        "Netflix.",
+                        "Core.",
+                        "Tubi."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -15751,7 +15781,9 @@
                         "EXCHANGE_CHARTBOOST_GBID",
                         "EXCHANGE_ADMOST_GBID",
                         "EXCHANGE_TOPON_GBID",
-                        "EXCHANGE_NETFLIX"
+                        "EXCHANGE_NETFLIX",
+                        "EXCHANGE_CORE",
+                        "EXCHANGE_TUBI"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -15836,7 +15868,9 @@
                         "Chartboost Mediation.",
                         "AdMost.",
                         "TopOn.",
-                        "Netflix."
+                        "Netflix.",
+                        "Core.",
+                        "Tubi."
                     ],
                     "type": "string"
                 },
@@ -16200,7 +16234,7 @@
                 },
                 "pacing": {
                     "$ref": "Pacing",
-                    "description": "Required. The budget spending speed setting of the insertion order. *Warning*: Starting on **November 5, 2024**, pacing_type `PACING_TYPE_ASAP` will no longer be compatible with pacing_period `PACING_PERIOD_FLIGHT`. [Read more about this announced change](/display-video/api/deprecations#features.io_asap)."
+                    "description": "Required. The budget spending speed setting of the insertion order. pacing_type `PACING_TYPE_ASAP` is not compatible with pacing_period `PACING_PERIOD_FLIGHT`."
                 },
                 "partnerCosts": {
                     "description": "The partner costs associated with the insertion order. If absent or empty in CreateInsertionOrder method, the newly created insertion order will inherit partner costs from the partner settings.",
@@ -16664,7 +16698,9 @@
                         "EXCHANGE_CHARTBOOST_GBID",
                         "EXCHANGE_ADMOST_GBID",
                         "EXCHANGE_TOPON_GBID",
-                        "EXCHANGE_NETFLIX"
+                        "EXCHANGE_NETFLIX",
+                        "EXCHANGE_CORE",
+                        "EXCHANGE_TUBI"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -16749,7 +16785,9 @@
                         "Chartboost Mediation.",
                         "AdMost.",
                         "TopOn.",
-                        "Netflix."
+                        "Netflix.",
+                        "Core.",
+                        "Tubi."
                     ],
                     "type": "string"
                 },
@@ -18852,7 +18890,7 @@
                     "type": "string"
                 },
                 "pacingType": {
-                    "description": "Required. The type of pacing that defines how the budget amount will be spent across the pacing_period. *Warning*: Starting on **November 5, 2024**, `PACING_TYPE_ASAP` will no longer be compatible with pacing_period `PACING_PERIOD_FLIGHT` for insertion orders. [Read more about this announced change](/display-video/api/deprecations#features.io_asap).",
+                    "description": "Required. The type of pacing that defines how the budget amount will be spent across the pacing_period. `PACING_TYPE_ASAP` is not compatible with pacing_period `PACING_PERIOD_FLIGHT` for insertion orders.",
                     "enum": [
                         "PACING_TYPE_UNSPECIFIED",
                         "PACING_TYPE_AHEAD",
@@ -19889,7 +19927,7 @@
                         "SDF version 6",
                         "SDF version 7. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version.",
                         "SDF version 7.1. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version.",
-                        "SDF version 8. **This SDF version is in beta. It is only available to a subset of users.**"
+                        "SDF version 8. Read the [v8 migration guide](/display-video/api/structured-data-file/v8-migration-guide) before migrating to this version."
                     ],
                     "type": "string"
                 }
@@ -19972,7 +20010,7 @@
                         "SDF version 6",
                         "SDF version 7. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version.",
                         "SDF version 7.1. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version.",
-                        "SDF version 8. **This SDF version is in beta. It is only available to a subset of users.**"
+                        "SDF version 8. Read the [v8 migration guide](/display-video/api/structured-data-file/v8-migration-guide) before migrating to this version."
                     ],
                     "type": "string"
                 }

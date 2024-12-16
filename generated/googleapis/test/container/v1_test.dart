@@ -1268,6 +1268,7 @@ api.ClusterUpdate buildClusterUpdate() {
     o.desiredEnableFqdnNetworkPolicy = true;
     o.desiredEnableMultiNetworking = true;
     o.desiredEnablePrivateEndpoint = true;
+    o.desiredEnterpriseConfig = buildDesiredEnterpriseConfig();
     o.desiredFleet = buildFleet();
     o.desiredGatewayApiConfig = buildGatewayAPIConfig();
     o.desiredGcfsConfig = buildGcfsConfig();
@@ -1289,6 +1290,7 @@ api.ClusterUpdate buildClusterUpdate() {
     o.desiredNetworkPerformanceConfig = buildClusterNetworkPerformanceConfig();
     o.desiredNodeKubeletConfig = buildNodeKubeletConfig();
     o.desiredNodePoolAutoConfigKubeletConfig = buildNodeKubeletConfig();
+    o.desiredNodePoolAutoConfigLinuxNodeConfig = buildLinuxNodeConfig();
     o.desiredNodePoolAutoConfigNetworkTags = buildNetworkTags();
     o.desiredNodePoolAutoConfigResourceManagerTags = buildResourceManagerTags();
     o.desiredNodePoolAutoscaling = buildNodePoolAutoscaling();
@@ -1344,6 +1346,7 @@ void checkClusterUpdate(api.ClusterUpdate o) {
     unittest.expect(o.desiredEnableFqdnNetworkPolicy!, unittest.isTrue);
     unittest.expect(o.desiredEnableMultiNetworking!, unittest.isTrue);
     unittest.expect(o.desiredEnablePrivateEndpoint!, unittest.isTrue);
+    checkDesiredEnterpriseConfig(o.desiredEnterpriseConfig!);
     checkFleet(o.desiredFleet!);
     checkGatewayAPIConfig(o.desiredGatewayApiConfig!);
     checkGcfsConfig(o.desiredGcfsConfig!);
@@ -1380,6 +1383,7 @@ void checkClusterUpdate(api.ClusterUpdate o) {
     checkClusterNetworkPerformanceConfig(o.desiredNetworkPerformanceConfig!);
     checkNodeKubeletConfig(o.desiredNodeKubeletConfig!);
     checkNodeKubeletConfig(o.desiredNodePoolAutoConfigKubeletConfig!);
+    checkLinuxNodeConfig(o.desiredNodePoolAutoConfigLinuxNodeConfig!);
     checkNetworkTags(o.desiredNodePoolAutoConfigNetworkTags!);
     checkResourceManagerTags(o.desiredNodePoolAutoConfigResourceManagerTags!);
     checkNodePoolAutoscaling(o.desiredNodePoolAutoscaling!);
@@ -1892,6 +1896,28 @@ void checkDefaultSnatStatus(api.DefaultSnatStatus o) {
   buildCounterDefaultSnatStatus--;
 }
 
+core.int buildCounterDesiredEnterpriseConfig = 0;
+api.DesiredEnterpriseConfig buildDesiredEnterpriseConfig() {
+  final o = api.DesiredEnterpriseConfig();
+  buildCounterDesiredEnterpriseConfig++;
+  if (buildCounterDesiredEnterpriseConfig < 3) {
+    o.desiredTier = 'foo';
+  }
+  buildCounterDesiredEnterpriseConfig--;
+  return o;
+}
+
+void checkDesiredEnterpriseConfig(api.DesiredEnterpriseConfig o) {
+  buildCounterDesiredEnterpriseConfig++;
+  if (buildCounterDesiredEnterpriseConfig < 3) {
+    unittest.expect(
+      o.desiredTier!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDesiredEnterpriseConfig--;
+}
+
 core.int buildCounterDnsCacheConfig = 0;
 api.DnsCacheConfig buildDnsCacheConfig() {
   final o = api.DnsCacheConfig();
@@ -1932,6 +1958,7 @@ api.EnterpriseConfig buildEnterpriseConfig() {
   buildCounterEnterpriseConfig++;
   if (buildCounterEnterpriseConfig < 3) {
     o.clusterTier = 'foo';
+    o.desiredTier = 'foo';
   }
   buildCounterEnterpriseConfig--;
   return o;
@@ -1942,6 +1969,10 @@ void checkEnterpriseConfig(api.EnterpriseConfig o) {
   if (buildCounterEnterpriseConfig < 3) {
     unittest.expect(
       o.clusterTier!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.desiredTier!,
       unittest.equals('foo'),
     );
   }
@@ -3825,8 +3856,10 @@ api.NodeConfig buildNodeConfig() {
     o.linuxNodeConfig = buildLinuxNodeConfig();
     o.localNvmeSsdBlockConfig = buildLocalNvmeSsdBlockConfig();
     o.localSsdCount = 42;
+    o.localSsdEncryptionMode = 'foo';
     o.loggingConfig = buildNodePoolLoggingConfig();
     o.machineType = 'foo';
+    o.maxRunDuration = 'foo';
     o.metadata = buildUnnamed42();
     o.minCpuPlatform = 'foo';
     o.nodeGroup = 'foo';
@@ -3892,9 +3925,17 @@ void checkNodeConfig(api.NodeConfig o) {
       o.localSsdCount!,
       unittest.equals(42),
     );
+    unittest.expect(
+      o.localSsdEncryptionMode!,
+      unittest.equals('foo'),
+    );
     checkNodePoolLoggingConfig(o.loggingConfig!);
     unittest.expect(
       o.machineType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxRunDuration!,
       unittest.equals('foo'),
     );
     checkUnnamed42(o.metadata!);
@@ -4249,6 +4290,7 @@ api.NodePoolAutoConfig buildNodePoolAutoConfig() {
   final o = api.NodePoolAutoConfig();
   buildCounterNodePoolAutoConfig++;
   if (buildCounterNodePoolAutoConfig < 3) {
+    o.linuxNodeConfig = buildLinuxNodeConfig();
     o.networkTags = buildNetworkTags();
     o.nodeKubeletConfig = buildNodeKubeletConfig();
     o.resourceManagerTags = buildResourceManagerTags();
@@ -4260,6 +4302,7 @@ api.NodePoolAutoConfig buildNodePoolAutoConfig() {
 void checkNodePoolAutoConfig(api.NodePoolAutoConfig o) {
   buildCounterNodePoolAutoConfig++;
   if (buildCounterNodePoolAutoConfig < 3) {
+    checkLinuxNodeConfig(o.linuxNodeConfig!);
     checkNetworkTags(o.networkTags!);
     checkNodeKubeletConfig(o.nodeKubeletConfig!);
     checkResourceManagerTags(o.resourceManagerTags!);
@@ -6537,6 +6580,7 @@ api.UpdateNodePoolRequest buildUpdateNodePoolRequest() {
     o.locations = buildUnnamed76();
     o.loggingConfig = buildNodePoolLoggingConfig();
     o.machineType = 'foo';
+    o.maxRunDuration = 'foo';
     o.name = 'foo';
     o.nodeNetworkConfig = buildNodeNetworkConfig();
     o.nodePoolId = 'foo';
@@ -6593,6 +6637,10 @@ void checkUpdateNodePoolRequest(api.UpdateNodePoolRequest o) {
     checkNodePoolLoggingConfig(o.loggingConfig!);
     unittest.expect(
       o.machineType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxRunDuration!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -7391,6 +7439,16 @@ void main() {
       final od = api.DefaultSnatStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkDefaultSnatStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-DesiredEnterpriseConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDesiredEnterpriseConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DesiredEnterpriseConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDesiredEnterpriseConfig(od);
     });
   });
 

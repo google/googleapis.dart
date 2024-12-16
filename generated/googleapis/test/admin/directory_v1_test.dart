@@ -899,6 +899,33 @@ void checkBuildings(api.Buildings o) {
   buildCounterBuildings--;
 }
 
+core.int buildCounterByteUsage = 0;
+api.ByteUsage buildByteUsage() {
+  final o = api.ByteUsage();
+  buildCounterByteUsage++;
+  if (buildCounterByteUsage < 3) {
+    o.capacityBytes = 'foo';
+    o.usedBytes = 'foo';
+  }
+  buildCounterByteUsage--;
+  return o;
+}
+
+void checkByteUsage(api.ByteUsage o) {
+  buildCounterByteUsage++;
+  if (buildCounterByteUsage < 3) {
+    unittest.expect(
+      o.capacityBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.usedBytes!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterByteUsage--;
+}
+
 core.int buildCounterCalendarResource = 0;
 api.CalendarResource buildCalendarResource() {
   final o = api.CalendarResource();
@@ -1829,6 +1856,7 @@ api.ChromeOsDevice buildChromeOsDevice() {
     o.deviceFiles = buildUnnamed29();
     o.deviceId = 'foo';
     o.deviceLicenseType = 'foo';
+    o.diskSpaceUsage = buildByteUsage();
     o.diskVolumeReports = buildUnnamed31();
     o.dockMacAddress = 'foo';
     o.etag = 'foo';
@@ -1918,6 +1946,7 @@ void checkChromeOsDevice(api.ChromeOsDevice o) {
       o.deviceLicenseType!,
       unittest.equals('foo'),
     );
+    checkByteUsage(o.diskSpaceUsage!);
     checkUnnamed31(o.diskVolumeReports!);
     unittest.expect(
       o.dockMacAddress!,
@@ -4064,6 +4093,7 @@ api.RoleAssignment buildRoleAssignment() {
   if (buildCounterRoleAssignment < 3) {
     o.assignedTo = 'foo';
     o.assigneeType = 'foo';
+    o.condition = 'foo';
     o.etag = 'foo';
     o.kind = 'foo';
     o.orgUnitId = 'foo';
@@ -4084,6 +4114,10 @@ void checkRoleAssignment(api.RoleAssignment o) {
     );
     unittest.expect(
       o.assigneeType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.condition!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -5539,6 +5573,16 @@ void main() {
       final od =
           api.Buildings.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBuildings(od);
+    });
+  });
+
+  unittest.group('obj-schema-ByteUsage', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildByteUsage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.ByteUsage.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkByteUsage(od);
     });
   });
 

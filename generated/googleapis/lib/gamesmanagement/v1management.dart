@@ -14,7 +14,7 @@
 
 /// Google Play Game Management - v1management
 ///
-/// The Google Play Game Management API allows developers to manage resources
+/// The Google Play Games Management API allows developers to manage resources
 /// from the Google Play Game service.
 ///
 /// For more information, see <https://developers.google.com/games/>
@@ -40,7 +40,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// The Google Play Game Management API allows developers to manage resources
+/// The Google Play Games Management API allows developers to manage resources
 /// from the Google Play Game service.
 class GamesManagementApi {
   /// Create, edit, and delete your Google Play Games activity

@@ -491,7 +491,7 @@ class ProjectsLocationsConnectionProfilesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource's name.
+  /// [name] - Output only. Identifier. The resource's name.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connectionProfiles/\[^/\]+$`.
   ///
@@ -572,8 +572,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1409,7 +1409,7 @@ class ProjectsLocationsStreamsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The stream's name.
+  /// [name] - Output only. Identifier. The stream's name.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/streams/\[^/\]+$`.
   ///
@@ -1950,6 +1950,42 @@ class BigQueryDestinationConfig {
 /// BigQuery warehouse profile.
 typedef BigQueryProfile = $Empty;
 
+/// Configuration to use Binary Log Parser CDC technique.
+class BinaryLogParser {
+  /// Use Oracle directories.
+  LogFileDirectories? logFileDirectories;
+
+  /// Use Oracle ASM.
+  OracleAsmLogFileAccess? oracleAsmLogFileAccess;
+
+  BinaryLogParser({
+    this.logFileDirectories,
+    this.oracleAsmLogFileAccess,
+  });
+
+  BinaryLogParser.fromJson(core.Map json_)
+      : this(
+          logFileDirectories: json_.containsKey('logFileDirectories')
+              ? LogFileDirectories.fromJson(json_['logFileDirectories']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          oracleAsmLogFileAccess: json_.containsKey('oracleAsmLogFileAccess')
+              ? OracleAsmLogFileAccess.fromJson(json_['oracleAsmLogFileAccess']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (logFileDirectories != null)
+          'logFileDirectories': logFileDirectories!,
+        if (oracleAsmLogFileAccess != null)
+          'oracleAsmLogFileAccess': oracleAsmLogFileAccess!,
+      };
+}
+
+/// Use Binary log position based replication.
+typedef BinaryLogPosition = $Empty;
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
@@ -2033,6 +2069,8 @@ class ConnectionProfile {
   /// MySQL ConnectionProfile configuration.
   MysqlProfile? mysqlProfile;
 
+  /// Identifier.
+  ///
   /// The resource's name.
   ///
   /// Output only.
@@ -2544,6 +2582,9 @@ class GcsProfile {
       };
 }
 
+/// Use GTID based replication.
+typedef Gtid = $Empty;
+
 /// JSON file format configuration.
 class JsonFileFormat {
   /// Compression of the loaded JSON file.
@@ -2818,6 +2859,12 @@ class ListStreamsResponse {
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
+/// Configuration to specify the Oracle directories to access the log files.
+typedef LogFileDirectories = $LogFileDirectories;
+
+/// Configuration to use LogMiner CDC method.
+typedef LogMiner = $Empty;
+
 /// Request for looking up a specific stream object by its source object
 /// identifier.
 class LookupStreamObjectRequest {
@@ -3091,8 +3138,14 @@ class MysqlRdbms {
 
 /// MySQL source configuration
 class MysqlSourceConfig {
+  /// Use Binary log position based replication.
+  BinaryLogPosition? binaryLogPosition;
+
   /// MySQL objects to exclude from the stream.
   MysqlRdbms? excludeObjects;
+
+  /// Use GTID based replication.
+  Gtid? gtid;
 
   /// MySQL objects to retrieve from the source.
   MysqlRdbms? includeObjects;
@@ -3110,7 +3163,9 @@ class MysqlSourceConfig {
   core.int? maxConcurrentCdcTasks;
 
   MysqlSourceConfig({
+    this.binaryLogPosition,
     this.excludeObjects,
+    this.gtid,
     this.includeObjects,
     this.maxConcurrentBackfillTasks,
     this.maxConcurrentCdcTasks,
@@ -3118,9 +3173,17 @@ class MysqlSourceConfig {
 
   MysqlSourceConfig.fromJson(core.Map json_)
       : this(
+          binaryLogPosition: json_.containsKey('binaryLogPosition')
+              ? BinaryLogPosition.fromJson(json_['binaryLogPosition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           excludeObjects: json_.containsKey('excludeObjects')
               ? MysqlRdbms.fromJson(json_['excludeObjects']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          gtid: json_.containsKey('gtid')
+              ? Gtid.fromJson(
+                  json_['gtid'] as core.Map<core.String, core.dynamic>)
               : null,
           includeObjects: json_.containsKey('includeObjects')
               ? MysqlRdbms.fromJson(json_['includeObjects']
@@ -3132,7 +3195,9 @@ class MysqlSourceConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (binaryLogPosition != null) 'binaryLogPosition': binaryLogPosition!,
         if (excludeObjects != null) 'excludeObjects': excludeObjects!,
+        if (gtid != null) 'gtid': gtid!,
         if (includeObjects != null) 'includeObjects': includeObjects!,
         if (maxConcurrentBackfillTasks != null)
           'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
@@ -3319,6 +3384,91 @@ class Operation {
       };
 }
 
+/// Configuration for Oracle Automatic Storage Management (ASM) connection.
+///
+/// .
+class OracleAsmConfig {
+  /// ASM service name for the Oracle ASM connection.
+  ///
+  /// Required.
+  core.String? asmService;
+
+  /// Connection string attributes
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? connectionAttributes;
+
+  /// Hostname for the Oracle ASM connection.
+  ///
+  /// Required.
+  core.String? hostname;
+
+  /// SSL configuration for the Oracle connection.
+  ///
+  /// Optional.
+  OracleSslConfig? oracleSslConfig;
+
+  /// Password for the Oracle ASM connection.
+  ///
+  /// Optional.
+  core.String? password;
+
+  /// Port for the Oracle ASM connection.
+  ///
+  /// Required.
+  core.int? port;
+
+  /// Username for the Oracle ASM connection.
+  ///
+  /// Required.
+  core.String? username;
+
+  OracleAsmConfig({
+    this.asmService,
+    this.connectionAttributes,
+    this.hostname,
+    this.oracleSslConfig,
+    this.password,
+    this.port,
+    this.username,
+  });
+
+  OracleAsmConfig.fromJson(core.Map json_)
+      : this(
+          asmService: json_['asmService'] as core.String?,
+          connectionAttributes: (json_['connectionAttributes']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          hostname: json_['hostname'] as core.String?,
+          oracleSslConfig: json_.containsKey('oracleSslConfig')
+              ? OracleSslConfig.fromJson(json_['oracleSslConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          password: json_['password'] as core.String?,
+          port: json_['port'] as core.int?,
+          username: json_['username'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (asmService != null) 'asmService': asmService!,
+        if (connectionAttributes != null)
+          'connectionAttributes': connectionAttributes!,
+        if (hostname != null) 'hostname': hostname!,
+        if (oracleSslConfig != null) 'oracleSslConfig': oracleSslConfig!,
+        if (password != null) 'password': password!,
+        if (port != null) 'port': port!,
+        if (username != null) 'username': username!,
+      };
+}
+
+/// Configuration to use Oracle ASM to access the log files.
+typedef OracleAsmLogFileAccess = $Empty;
+
 /// Oracle Column.
 class OracleColumn {
   /// Column name.
@@ -3406,6 +3556,11 @@ class OracleProfile {
   /// Required.
   core.String? hostname;
 
+  /// Configuration for Oracle ASM connection.
+  ///
+  /// Optional.
+  OracleAsmConfig? oracleAsmConfig;
+
   /// SSL configuration for the Oracle connection.
   ///
   /// Optional.
@@ -3421,6 +3576,14 @@ class OracleProfile {
   /// Port for the Oracle connection, default value is 1521.
   core.int? port;
 
+  /// A reference to a Secret Manager resource name storing the Oracle
+  /// connection password.
+  ///
+  /// Mutually exclusive with the `password` field.
+  ///
+  /// Optional.
+  core.String? secretManagerStoredPassword;
+
   /// Username for the Oracle connection.
   ///
   /// Required.
@@ -3430,9 +3593,11 @@ class OracleProfile {
     this.connectionAttributes,
     this.databaseService,
     this.hostname,
+    this.oracleAsmConfig,
     this.oracleSslConfig,
     this.password,
     this.port,
+    this.secretManagerStoredPassword,
     this.username,
   });
 
@@ -3448,12 +3613,18 @@ class OracleProfile {
           ),
           databaseService: json_['databaseService'] as core.String?,
           hostname: json_['hostname'] as core.String?,
+          oracleAsmConfig: json_.containsKey('oracleAsmConfig')
+              ? OracleAsmConfig.fromJson(json_['oracleAsmConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           oracleSslConfig: json_.containsKey('oracleSslConfig')
               ? OracleSslConfig.fromJson(json_['oracleSslConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
           password: json_['password'] as core.String?,
           port: json_['port'] as core.int?,
+          secretManagerStoredPassword:
+              json_['secretManagerStoredPassword'] as core.String?,
           username: json_['username'] as core.String?,
         );
 
@@ -3462,9 +3633,12 @@ class OracleProfile {
           'connectionAttributes': connectionAttributes!,
         if (databaseService != null) 'databaseService': databaseService!,
         if (hostname != null) 'hostname': hostname!,
+        if (oracleAsmConfig != null) 'oracleAsmConfig': oracleAsmConfig!,
         if (oracleSslConfig != null) 'oracleSslConfig': oracleSslConfig!,
         if (password != null) 'password': password!,
         if (port != null) 'port': port!,
+        if (secretManagerStoredPassword != null)
+          'secretManagerStoredPassword': secretManagerStoredPassword!,
         if (username != null) 'username': username!,
       };
 }
@@ -3542,6 +3716,9 @@ class OracleScnPosition {
 
 /// Oracle data source configuration
 class OracleSourceConfig {
+  /// Use Binary Log Parser.
+  BinaryLogParser? binaryLogParser;
+
   /// Drop large object values.
   DropLargeObjects? dropLargeObjects;
 
@@ -3550,6 +3727,9 @@ class OracleSourceConfig {
 
   /// Oracle objects to include in the stream.
   OracleRdbms? includeObjects;
+
+  /// Use LogMiner.
+  LogMiner? logMiner;
 
   /// Maximum number of concurrent backfill tasks.
   ///
@@ -3567,9 +3747,11 @@ class OracleSourceConfig {
   StreamLargeObjects? streamLargeObjects;
 
   OracleSourceConfig({
+    this.binaryLogParser,
     this.dropLargeObjects,
     this.excludeObjects,
     this.includeObjects,
+    this.logMiner,
     this.maxConcurrentBackfillTasks,
     this.maxConcurrentCdcTasks,
     this.streamLargeObjects,
@@ -3577,6 +3759,10 @@ class OracleSourceConfig {
 
   OracleSourceConfig.fromJson(core.Map json_)
       : this(
+          binaryLogParser: json_.containsKey('binaryLogParser')
+              ? BinaryLogParser.fromJson(json_['binaryLogParser']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           dropLargeObjects: json_.containsKey('dropLargeObjects')
               ? DropLargeObjects.fromJson(json_['dropLargeObjects']
                   as core.Map<core.String, core.dynamic>)
@@ -3589,6 +3775,10 @@ class OracleSourceConfig {
               ? OracleRdbms.fromJson(json_['includeObjects']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          logMiner: json_.containsKey('logMiner')
+              ? LogMiner.fromJson(
+                  json_['logMiner'] as core.Map<core.String, core.dynamic>)
+              : null,
           maxConcurrentBackfillTasks:
               json_['maxConcurrentBackfillTasks'] as core.int?,
           maxConcurrentCdcTasks: json_['maxConcurrentCdcTasks'] as core.int?,
@@ -3599,9 +3789,11 @@ class OracleSourceConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (binaryLogParser != null) 'binaryLogParser': binaryLogParser!,
         if (dropLargeObjects != null) 'dropLargeObjects': dropLargeObjects!,
         if (excludeObjects != null) 'excludeObjects': excludeObjects!,
         if (includeObjects != null) 'includeObjects': includeObjects!,
+        if (logMiner != null) 'logMiner': logMiner!,
         if (maxConcurrentBackfillTasks != null)
           'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
         if (maxConcurrentCdcTasks != null)
@@ -3738,8 +3930,6 @@ class PostgresqlColumn {
 typedef PostgresqlObjectIdentifier = $ObjectIdentifier;
 
 /// PostgreSQL database profile.
-///
-/// Next ID: 7.
 class PostgresqlProfile {
   /// Database for the PostgreSQL connection.
   ///
@@ -3954,6 +4144,8 @@ class PrivateConnection {
   /// Labels.
   core.Map<core.String, core.String>? labels;
 
+  /// Identifier.
+  ///
   /// The resource's name.
   ///
   /// Output only.
@@ -4077,6 +4269,8 @@ class Route {
   /// Labels.
   core.Map<core.String, core.String>? labels;
 
+  /// Identifier.
+  ///
   /// The resource's name.
   ///
   /// Output only.
@@ -4330,9 +4524,13 @@ class SpecificStartPosition {
   /// Oracle SCN to start replicating from.
   OracleScnPosition? oracleScnPosition;
 
+  /// SqlServer LSN to start replicating from.
+  SqlServerLsnPosition? sqlServerLsnPosition;
+
   SpecificStartPosition({
     this.mysqlLogPosition,
     this.oracleScnPosition,
+    this.sqlServerLsnPosition,
   });
 
   SpecificStartPosition.fromJson(core.Map json_)
@@ -4345,11 +4543,17 @@ class SpecificStartPosition {
               ? OracleScnPosition.fromJson(json_['oracleScnPosition']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          sqlServerLsnPosition: json_.containsKey('sqlServerLsnPosition')
+              ? SqlServerLsnPosition.fromJson(json_['sqlServerLsnPosition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mysqlLogPosition != null) 'mysqlLogPosition': mysqlLogPosition!,
         if (oracleScnPosition != null) 'oracleScnPosition': oracleScnPosition!,
+        if (sqlServerLsnPosition != null)
+          'sqlServerLsnPosition': sqlServerLsnPosition!,
       };
 }
 
@@ -4414,6 +4618,27 @@ class SqlServerColumn {
         if (precision != null) 'precision': precision!,
         if (primaryKey != null) 'primaryKey': primaryKey!,
         if (scale != null) 'scale': scale!,
+      };
+}
+
+/// SQL Server LSN position
+class SqlServerLsnPosition {
+  /// Log sequence number (LSN) from where Logs will be read
+  ///
+  /// Required.
+  core.String? lsn;
+
+  SqlServerLsnPosition({
+    this.lsn,
+  });
+
+  SqlServerLsnPosition.fromJson(core.Map json_)
+      : this(
+          lsn: json_['lsn'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lsn != null) 'lsn': lsn!,
       };
 }
 
@@ -4741,6 +4966,8 @@ class Stream {
   /// Output only.
   core.String? lastRecoveryTime;
 
+  /// Identifier.
+  ///
   /// The stream's name.
   ///
   /// Output only.
@@ -4869,6 +5096,8 @@ class StreamObject {
   /// Output only.
   core.List<Error>? errors;
 
+  /// Identifier.
+  ///
   /// The object resource's name.
   ///
   /// Output only.

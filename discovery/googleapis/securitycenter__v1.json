@@ -42,7 +42,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241018",
+    "revision": "20241206",
     "rootUrl": "https://securitycenter.googleapis.com/",
     "servicePath": "",
     "title": "Security Command Center API",
@@ -1513,6 +1513,7 @@
                                     ],
                                     "parameters": {
                                         "compareDuration": {
+                                            "deprecated": true,
                                             "description": "When compare_duration is set, the ListFindingsResult's \"state_change\" attribute is updated to indicate whether the finding had its state changed, the finding's state remained unchanged, or if the finding was added in any state during the compare_duration period of time that precedes the read_time. This is the time between (read_time - compare_duration) and read_time. The state_change value is derived based on the presence and state of the finding at the two points in time. Intermediate state changes between the two times don't affect the result. For example, the results aren't affected if the finding is made inactive and then active again. Possible \"state_change\" values when compare_duration is specified: * \"CHANGED\": indicates that the finding was present and matched the given filter at the start of compare_duration, but changed its state at read_time. * \"UNCHANGED\": indicates that the finding was present and matched the given filter at the start of compare_duration and did not change state at read_time. * \"ADDED\": indicates that the finding did not match the given filter or was not present at the start of compare_duration, but was present at read_time. * \"REMOVED\": indicates that the finding was present and matched the filter at the start of compare_duration, but did not match the filter at read_time. If compare_duration is not specified, then the only possible state_change is \"UNUSED\", which will be the state_change set for all findings present at read_time.",
                                             "format": "google-duration",
                                             "location": "query",
@@ -1553,6 +1554,7 @@
                                             "type": "string"
                                         },
                                         "readTime": {
+                                            "deprecated": true,
                                             "description": "Time used as a reference point when filtering findings. The filter is limited to findings existing at the supplied time and their values are those at that specific time. Absence of this field will default to the API's version of NOW.",
                                             "format": "google-datetime",
                                             "location": "query",
@@ -1966,6 +1968,51 @@
                             },
                             "response": {
                                 "$ref": "SecurityMarks"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        }
+                    }
+                },
+                "attackPaths": {
+                    "methods": {
+                        "list": {
+                            "description": "Lists the attack paths for a set of simulation results or valued resources and filter.",
+                            "flatPath": "v1/organizations/{organizationsId}/attackPaths",
+                            "httpMethod": "GET",
+                            "id": "securitycenter.organizations.attackPaths.list",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "filter": {
+                                    "description": "The filter expression that filters the attack path in the response. Supported fields: * `valued_resources` supports =",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "pageSize": {
+                                    "description": "The maximum number of results to return in a single response. Default is 10, minimum is 1, maximum is 1000.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "description": "The value returned by the last `ListAttackPathsResponse`; indicates that this is a continuation of a prior `ListAttackPaths` call, and that the system should return the next page of data.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "parent": {
+                                    "description": "Required. Name of parent to list attack paths. Valid formats: `organizations/{organization}`, `organizations/{organization}/simulations/{simulation}` `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}` `organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}`",
+                                    "location": "path",
+                                    "pattern": "^organizations/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/attackPaths",
+                            "response": {
+                                "$ref": "ListAttackPathsResponse"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform"
@@ -2858,7 +2905,7 @@
                 "operations": {
                     "methods": {
                         "cancel": {
-                            "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                            "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
                             "flatPath": "v1/organizations/{organizationsId}/operations/{operationsId}:cancel",
                             "httpMethod": "POST",
                             "id": "securitycenter.organizations.operations.cancel",
@@ -3993,6 +4040,7 @@
                                     ],
                                     "parameters": {
                                         "compareDuration": {
+                                            "deprecated": true,
                                             "description": "When compare_duration is set, the ListFindingsResult's \"state_change\" attribute is updated to indicate whether the finding had its state changed, the finding's state remained unchanged, or if the finding was added in any state during the compare_duration period of time that precedes the read_time. This is the time between (read_time - compare_duration) and read_time. The state_change value is derived based on the presence and state of the finding at the two points in time. Intermediate state changes between the two times don't affect the result. For example, the results aren't affected if the finding is made inactive and then active again. Possible \"state_change\" values when compare_duration is specified: * \"CHANGED\": indicates that the finding was present and matched the given filter at the start of compare_duration, but changed its state at read_time. * \"UNCHANGED\": indicates that the finding was present and matched the given filter at the start of compare_duration and did not change state at read_time. * \"ADDED\": indicates that the finding did not match the given filter or was not present at the start of compare_duration, but was present at read_time. * \"REMOVED\": indicates that the finding was present and matched the filter at the start of compare_duration, but did not match the filter at read_time. If compare_duration is not specified, then the only possible state_change is \"UNUSED\", which will be the state_change set for all findings present at read_time.",
                                             "format": "google-duration",
                                             "location": "query",
@@ -4033,6 +4081,7 @@
                                             "type": "string"
                                         },
                                         "readTime": {
+                                            "deprecated": true,
                                             "description": "Time used as a reference point when filtering findings. The filter is limited to findings existing at the supplied time and their values are those at that specific time. Absence of this field will default to the API's version of NOW.",
                                             "format": "google-datetime",
                                             "location": "query",
@@ -5660,6 +5709,7 @@
                                     ],
                                     "parameters": {
                                         "compareDuration": {
+                                            "deprecated": true,
                                             "description": "When compare_duration is set, the ListFindingsResult's \"state_change\" attribute is updated to indicate whether the finding had its state changed, the finding's state remained unchanged, or if the finding was added in any state during the compare_duration period of time that precedes the read_time. This is the time between (read_time - compare_duration) and read_time. The state_change value is derived based on the presence and state of the finding at the two points in time. Intermediate state changes between the two times don't affect the result. For example, the results aren't affected if the finding is made inactive and then active again. Possible \"state_change\" values when compare_duration is specified: * \"CHANGED\": indicates that the finding was present and matched the given filter at the start of compare_duration, but changed its state at read_time. * \"UNCHANGED\": indicates that the finding was present and matched the given filter at the start of compare_duration and did not change state at read_time. * \"ADDED\": indicates that the finding did not match the given filter or was not present at the start of compare_duration, but was present at read_time. * \"REMOVED\": indicates that the finding was present and matched the filter at the start of compare_duration, but did not match the filter at read_time. If compare_duration is not specified, then the only possible state_change is \"UNUSED\", which will be the state_change set for all findings present at read_time.",
                                             "format": "google-duration",
                                             "location": "query",
@@ -5700,6 +5750,7 @@
                                             "type": "string"
                                         },
                                         "readTime": {
+                                            "deprecated": true,
                                             "description": "Time used as a reference point when filtering findings. The filter is limited to findings existing at the supplied time and their values are those at that specific time. Absence of this field will default to the API's version of NOW.",
                                             "format": "google-datetime",
                                             "location": "query",
@@ -7239,6 +7290,40 @@
             },
             "type": "object"
         },
+        "DataRetentionDeletionEvent": {
+            "description": "Details about data retention deletion violations, in which the data is non-compliant based on their retention or deletion time, as defined in the applicable data security policy. The Data Retention Deletion (DRD) control is a control of the DSPM (Data Security Posture Management) suite that enables organizations to manage data retention and deletion policies in compliance with regulations, such as GDPR and CRPA. DRD supports two primary policy types: maximum storage length (max TTL) and minimum storage length (min TTL). Both are aimed at helping organizations meet regulatory and data management commitments.",
+            "id": "DataRetentionDeletionEvent",
+            "properties": {
+                "dataObjectCount": {
+                    "description": "Number of objects that violated the policy for this resource. If the number is less than 1,000, then the value of this field is the exact number. If the number of objects that violated the policy is greater than or equal to 1,000, then the value of this field is 1000.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "eventDetectionTime": {
+                    "description": "Timestamp indicating when the event was detected.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "eventType": {
+                    "description": "Type of the DRD event.",
+                    "enum": [
+                        "EVENT_TYPE_UNSPECIFIED",
+                        "EVENT_TYPE_MAX_TTL_EXCEEDED"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified event type.",
+                        "The maximum retention time has been exceeded."
+                    ],
+                    "type": "string"
+                },
+                "maxRetentionAllowed": {
+                    "description": "Maximum duration of retention allowed from the DRD control. This comes from the DRD control where users set a max TTL for their data. For example, suppose that a user set the max TTL for a Cloud Storage bucket to 90 days. However, an object in that bucket is 100 days old. In this case, a DataRetentionDeletionEvent will be generated for that Cloud Storage bucket, and the max_retention_allowed is 90 days.",
+                    "format": "google-duration",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Database": {
             "description": "Represents database access information, such as queries. A database may be a sub-resource of an instance (as in the case of Cloud SQL instances or Cloud Spanner instances), or the database instance itself. Some database resources might not have the [full resource name](https://google.aip.dev/122#full-resource-names) populated because these resource types, such as Cloud SQL databases, are not yet supported by Cloud Asset Inventory. In these cases only the display name is provided.",
             "id": "Database",
@@ -7289,6 +7374,17 @@
             },
             "type": "object"
         },
+        "Disk": {
+            "description": "Contains information about the disk associated with the finding.",
+            "id": "Disk",
+            "properties": {
+                "name": {
+                    "description": "The name of the disk, for example, \"https://www.googleapis.com/compute/v1/projects/project-id/zones/zone-id/disks/disk-id\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "DiskPath": {
             "description": "Path of the file in terms of underlying disk/partition identifiers.",
             "id": "DiskPath",
@@ -7324,6 +7420,22 @@
             "description": "An EffectiveEventThreatDetectionCustomModule is the representation of an Event Threat Detection custom module at a specified level of the resource hierarchy: organization, folder, or project. If a custom module is inherited from a parent organization or folder, the value of the `enablement_state` property in EffectiveEventThreatDetectionCustomModule is set to the value that is effective in the parent, instead of `INHERITED`. For example, if the module is enabled in a parent organization or folder, the effective `enablement_state` for the module in all child folders or projects is also `enabled`. EffectiveEventThreatDetectionCustomModule is read-only.",
             "id": "EffectiveEventThreatDetectionCustomModule",
             "properties": {
+                "cloudProvider": {
+                    "description": "The cloud provider of the custom module.",
+                    "enum": [
+                        "CLOUD_PROVIDER_UNSPECIFIED",
+                        "GOOGLE_CLOUD_PLATFORM",
+                        "AMAZON_WEB_SERVICES",
+                        "MICROSOFT_AZURE"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified cloud provider.",
+                        "Google Cloud Platform.",
+                        "Amazon Web Services.",
+                        "Microsoft Azure."
+                    ],
+                    "type": "string"
+                },
                 "config": {
                     "additionalProperties": {
                         "description": "Properties of the object.",
@@ -7399,6 +7511,22 @@
                 "ancestorModule": {
                     "description": "Output only. The closest ancestor module that this module inherits the enablement state from. The format is the same as the EventThreatDetectionCustomModule resource name.",
                     "readOnly": true,
+                    "type": "string"
+                },
+                "cloudProvider": {
+                    "description": "The cloud provider of the custom module.",
+                    "enum": [
+                        "CLOUD_PROVIDER_UNSPECIFIED",
+                        "GOOGLE_CLOUD_PLATFORM",
+                        "AMAZON_WEB_SERVICES",
+                        "MICROSOFT_AZURE"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified cloud provider.",
+                        "Google Cloud.",
+                        "Amazon Web Services (AWS).",
+                        "Microsoft Azure."
+                    ],
                     "type": "string"
                 },
                 "config": {
@@ -7647,6 +7775,13 @@
                     },
                     "type": "array"
                 },
+                "dataRetentionDeletionEvents": {
+                    "description": "Data retention deletion events associated with the finding.",
+                    "items": {
+                        "$ref": "DataRetentionDeletionEvent"
+                    },
+                    "type": "array"
+                },
                 "database": {
                     "$ref": "Database",
                     "description": "Database associated with the finding."
@@ -7654,6 +7789,10 @@
                 "description": {
                     "description": "Contains more details about the finding.",
                     "type": "string"
+                },
+                "disk": {
+                    "$ref": "Disk",
+                    "description": "Disk associated with the finding."
                 },
                 "eventTime": {
                     "description": "The time the finding was first detected. If an existing finding is updated, then this is the time the update occurred. For example, if the finding represents an open firewall, this property captures the time the detector believes the firewall became open. The accuracy is determined by the detector. If the finding is later resolved, then this time reflects when the finding was resolved. This must not be set to a value greater than the current timestamp.",
@@ -8110,6 +8249,22 @@
             "description": "An EffectiveSecurityHealthAnalyticsCustomModule is the representation of a Security Health Analytics custom module at a specified level of the resource hierarchy: organization, folder, or project. If a custom module is inherited from a parent organization or folder, the value of the `enablementState` property in EffectiveSecurityHealthAnalyticsCustomModule is set to the value that is effective in the parent, instead of `INHERITED`. For example, if the module is enabled in a parent organization or folder, the effective enablement_state for the module in all child folders or projects is also `enabled`. EffectiveSecurityHealthAnalyticsCustomModule is read-only.",
             "id": "GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule",
             "properties": {
+                "cloudProvider": {
+                    "description": "The cloud provider of the custom module.",
+                    "enum": [
+                        "CLOUD_PROVIDER_UNSPECIFIED",
+                        "GOOGLE_CLOUD_PLATFORM",
+                        "AMAZON_WEB_SERVICES",
+                        "MICROSOFT_AZURE"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified cloud provider.",
+                        "Google Cloud Platform.",
+                        "Amazon Web Services.",
+                        "Microsoft Azure."
+                    ],
+                    "type": "string"
+                },
                 "customConfig": {
                     "$ref": "GoogleCloudSecuritycenterV1CustomConfig",
                     "description": "Output only. The user-specified configuration for the module.",
@@ -8468,7 +8623,7 @@
                     "description": "A mapping of the sensitivity on Sensitive Data Protection finding to resource values. This mapping can only be used in combination with a resource_type that is related to BigQuery, e.g. \"bigquery.googleapis.com/Dataset\"."
                 },
                 "tagValues": {
-                    "description": "Required. Tag values combined with `AND` to check against. Values in the form \"tagValues/123\" Example: `[ \"tagValues/123\", \"tagValues/456\", \"tagValues/789\" ]` https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing",
+                    "description": "Required. Tag values combined with `AND` to check against. For Google Cloud resources, they are tag value IDs in the form of \"tagValues/123\". Example: `[ \"tagValues/123\", \"tagValues/456\", \"tagValues/789\" ]` https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing",
                     "items": {
                         "type": "string"
                     },
@@ -8518,6 +8673,22 @@
                 "ancestorModule": {
                     "description": "Output only. If empty, indicates that the custom module was created in the organization, folder, or project in which you are viewing the custom module. Otherwise, `ancestor_module` specifies the organization or folder from which the custom module is inherited.",
                     "readOnly": true,
+                    "type": "string"
+                },
+                "cloudProvider": {
+                    "description": "The cloud provider of the custom module.",
+                    "enum": [
+                        "CLOUD_PROVIDER_UNSPECIFIED",
+                        "GOOGLE_CLOUD_PLATFORM",
+                        "AMAZON_WEB_SERVICES",
+                        "MICROSOFT_AZURE"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified cloud provider.",
+                        "Google Cloud.",
+                        "Amazon Web Services (AWS).",
+                        "Microsoft Azure."
+                    ],
                     "type": "string"
                 },
                 "customConfig": {
@@ -9830,6 +10001,40 @@
             },
             "type": "object"
         },
+        "GoogleCloudSecuritycenterV2DataRetentionDeletionEvent": {
+            "description": "Details about data retention deletion violations, in which the data is non-compliant based on their retention or deletion time, as defined in the applicable data security policy. The Data Retention Deletion (DRD) control is a control of the DSPM (Data Security Posture Management) suite that enables organizations to manage data retention and deletion policies in compliance with regulations, such as GDPR and CRPA. DRD supports two primary policy types: maximum storage length (max TTL) and minimum storage length (min TTL). Both are aimed at helping organizations meet regulatory and data management commitments.",
+            "id": "GoogleCloudSecuritycenterV2DataRetentionDeletionEvent",
+            "properties": {
+                "dataObjectCount": {
+                    "description": "Number of objects that violated the policy for this resource. If the number is less than 1,000, then the value of this field is the exact number. If the number of objects that violated the policy is greater than or equal to 1,000, then the value of this field is 1000.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "eventDetectionTime": {
+                    "description": "Timestamp indicating when the event was detected.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "eventType": {
+                    "description": "Type of the DRD event.",
+                    "enum": [
+                        "EVENT_TYPE_UNSPECIFIED",
+                        "EVENT_TYPE_MAX_TTL_EXCEEDED"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified event type.",
+                        "The maximum retention time has been exceeded."
+                    ],
+                    "type": "string"
+                },
+                "maxRetentionAllowed": {
+                    "description": "Maximum duration of retention allowed from the DRD control. This comes from the DRD control where users set a max TTL for their data. For example, suppose that a user set the max TTL for a Cloud Storage bucket to 90 days. However, an object in that bucket is 100 days old. In this case, a DataRetentionDeletionEvent will be generated for that Cloud Storage bucket, and the max_retention_allowed is 90 days.",
+                    "format": "google-duration",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudSecuritycenterV2Database": {
             "description": "Represents database access information, such as queries. A database may be a sub-resource of an instance (as in the case of Cloud SQL instances or Cloud Spanner instances), or the database instance itself. Some database resources might not have the [full resource name](https://google.aip.dev/122#full-resource-names) populated because these resource types, such as Cloud SQL databases, are not yet supported by Cloud Asset Inventory. In these cases only the display name is provided.",
             "id": "GoogleCloudSecuritycenterV2Database",
@@ -9876,6 +10081,17 @@
                     "description": "The percentage of memory page hashes in the signature that were matched.",
                     "format": "double",
                     "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2Disk": {
+            "description": "Contains information about the disk associated with the finding.",
+            "id": "GoogleCloudSecuritycenterV2Disk",
+            "properties": {
+                "name": {
+                    "description": "The name of the disk, for example, \"https://www.googleapis.com/compute/v1/projects/project-id/zones/zone-id/disks/disk-id\".",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -10155,6 +10371,13 @@
                     },
                     "type": "array"
                 },
+                "dataRetentionDeletionEvents": {
+                    "description": "Data retention deletion events associated with the finding.",
+                    "items": {
+                        "$ref": "GoogleCloudSecuritycenterV2DataRetentionDeletionEvent"
+                    },
+                    "type": "array"
+                },
                 "database": {
                     "$ref": "GoogleCloudSecuritycenterV2Database",
                     "description": "Database associated with the finding."
@@ -10162,6 +10385,10 @@
                 "description": {
                     "description": "Contains more details about the finding.",
                     "type": "string"
+                },
+                "disk": {
+                    "$ref": "GoogleCloudSecuritycenterV2Disk",
+                    "description": "Disk associated with the finding."
                 },
                 "eventTime": {
                     "description": "The time the finding was first detected. If an existing finding is updated, then this is the time the update occurred. For example, if the finding represents an open firewall, this property captures the time the detector believes the firewall became open. The accuracy is determined by the detector. If the finding is later resolved, then this time reflects when the finding was resolved. This must not be set to a value greater than the current timestamp.",
@@ -10500,6 +10727,403 @@
                 },
                 "uris": {
                     "description": "The list of URIs associated to the Findings.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2Issue": {
+            "description": "Security Command Center Issue.",
+            "id": "GoogleCloudSecuritycenterV2Issue",
+            "properties": {
+                "createTime": {
+                    "description": "Output only. The time the issue was created.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "description": {
+                    "description": "The description of the issue in Markdown format.",
+                    "type": "string"
+                },
+                "detection": {
+                    "description": "The finding category or rule name that generated the issue.",
+                    "type": "string"
+                },
+                "domains": {
+                    "description": "The domains of the issue.",
+                    "items": {
+                        "$ref": "GoogleCloudSecuritycenterV2IssueDomain"
+                    },
+                    "type": "array"
+                },
+                "exposureScore": {
+                    "description": "The exposure score of the issue.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "issueType": {
+                    "description": "The type of the issue.",
+                    "enum": [
+                        "ISSUE_TYPE_UNSPECIFIED",
+                        "CHOKEPOINT",
+                        "TOXIC_COMBINATION",
+                        "INSIGHT"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified issue type.",
+                        "Chokepoint issue type.",
+                        "Toxic combination issue type.",
+                        "Insight issue type."
+                    ],
+                    "type": "string"
+                },
+                "lastObservationTime": {
+                    "description": "The time the issue was last observed.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "mute": {
+                    "$ref": "GoogleCloudSecuritycenterV2IssueMute",
+                    "description": "The mute information of the issue."
+                },
+                "name": {
+                    "description": "Identifier. The name of the issue. Format: organizations/{organization}/locations/{location}/issues/{issue}",
+                    "type": "string"
+                },
+                "primaryResource": {
+                    "$ref": "GoogleCloudSecuritycenterV2IssueResource",
+                    "description": "The primary resource associated with the issue."
+                },
+                "relatedFindings": {
+                    "description": "The findings related to the issue.",
+                    "items": {
+                        "$ref": "GoogleCloudSecuritycenterV2IssueFinding"
+                    },
+                    "type": "array"
+                },
+                "remediations": {
+                    "description": "Approaches to remediate the issue in Markdown format.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "secondaryResources": {
+                    "description": "Additional resources associated with the issue.",
+                    "items": {
+                        "$ref": "GoogleCloudSecuritycenterV2IssueResource"
+                    },
+                    "type": "array"
+                },
+                "securityContexts": {
+                    "description": "The security context of the issue.",
+                    "items": {
+                        "$ref": "GoogleCloudSecuritycenterV2IssueSecurityContext"
+                    },
+                    "type": "array"
+                },
+                "severity": {
+                    "description": "The severity of the issue.",
+                    "enum": [
+                        "SEVERITY_UNSPECIFIED",
+                        "CRITICAL",
+                        "HIGH",
+                        "MEDIUM",
+                        "LOW"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified severity.",
+                        "Critical severity.",
+                        "High severity.",
+                        "Medium severity.",
+                        "Low severity."
+                    ],
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Output only. The state of the issue.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "ACTIVE",
+                        "INACTIVE"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified state.",
+                        "Active state.",
+                        "Inactive state."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Output only. The time the issue was last updated.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2IssueDomain": {
+            "description": "The domains of an issue.",
+            "id": "GoogleCloudSecuritycenterV2IssueDomain",
+            "properties": {
+                "domainCategory": {
+                    "description": "The domain category of the issue.",
+                    "enum": [
+                        "DOMAIN_CATEGORY_UNSPECIFIED",
+                        "AI",
+                        "CODE",
+                        "CONTAINER",
+                        "DATA",
+                        "IDENTITY_AND_ACCESS",
+                        "VULNERABILITY"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified domain category.",
+                        "Issues in the AI domain.",
+                        "Issues in the code domain.",
+                        "Issues in the container domain.",
+                        "Issues in the data domain.",
+                        "Issues in the identity and access domain.",
+                        "Issues in the vulnerability domain."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2IssueFinding": {
+            "description": "Finding related to an issue.",
+            "id": "GoogleCloudSecuritycenterV2IssueFinding",
+            "properties": {
+                "cve": {
+                    "$ref": "GoogleCloudSecuritycenterV2IssueFindingCve",
+                    "description": "The CVE of the finding."
+                },
+                "name": {
+                    "description": "The name of the finding.",
+                    "type": "string"
+                },
+                "securityBulletin": {
+                    "$ref": "GoogleCloudSecuritycenterV2IssueFindingSecurityBulletin",
+                    "description": "The security bulletin of the finding."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2IssueFindingCve": {
+            "description": "The CVE of the finding.",
+            "id": "GoogleCloudSecuritycenterV2IssueFindingCve",
+            "properties": {
+                "name": {
+                    "description": "The CVE name.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2IssueFindingSecurityBulletin": {
+            "description": "The security bulletin of the finding.",
+            "id": "GoogleCloudSecuritycenterV2IssueFindingSecurityBulletin",
+            "properties": {
+                "name": {
+                    "description": "The security bulletin name.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2IssueMute": {
+            "description": "The mute information of the issue.",
+            "id": "GoogleCloudSecuritycenterV2IssueMute",
+            "properties": {
+                "muteInitiator": {
+                    "description": "The email address of the user who last changed the mute state of the issue.",
+                    "type": "string"
+                },
+                "muteReason": {
+                    "description": "The user-provided reason for muting the issue.",
+                    "type": "string"
+                },
+                "muteState": {
+                    "description": "Output only. The mute state of the issue.",
+                    "enum": [
+                        "MUTE_STATE_UNSPECIFIED",
+                        "NOT_MUTED",
+                        "MUTED"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified mute state.",
+                        "Not muted.",
+                        "Muted."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "muteUpdateTime": {
+                    "description": "The time the issue was muted.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2IssueResource": {
+            "description": "A resource associated with the an issue.",
+            "id": "GoogleCloudSecuritycenterV2IssueResource",
+            "properties": {
+                "awsMetadata": {
+                    "$ref": "GoogleCloudSecuritycenterV2IssueResourceAwsMetadata",
+                    "description": "The AWS metadata of the resource associated with the issue. Only populated for AWS resources."
+                },
+                "azureMetadata": {
+                    "$ref": "GoogleCloudSecuritycenterV2IssueResourceAzureMetadata",
+                    "description": "The Azure metadata of the resource associated with the issue. Only populated for Azure resources."
+                },
+                "cloudProvider": {
+                    "description": "The cloud provider of the resource associated with the issue.",
+                    "enum": [
+                        "CLOUD_PROVIDER_UNSPECIFIED",
+                        "GOOGLE_CLOUD",
+                        "AMAZON_WEB_SERVICES",
+                        "MICROSOFT_AZURE"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified cloud provider.",
+                        "Google Cloud.",
+                        "Amazon Web Services.",
+                        "Microsoft Azure."
+                    ],
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "The resource-type specific display name of the resource associated with the issue.",
+                    "type": "string"
+                },
+                "googleCloudMetadata": {
+                    "$ref": "GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata",
+                    "description": "The Google Cloud metadata of the resource associated with the issue. Only populated for Google Cloud resources."
+                },
+                "name": {
+                    "description": "The full resource name of the resource associated with the issue.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The type of the resource associated with the issue.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2IssueResourceAwsMetadata": {
+            "description": "The AWS metadata of a resource associated with an issue.",
+            "id": "GoogleCloudSecuritycenterV2IssueResourceAwsMetadata",
+            "properties": {
+                "account": {
+                    "$ref": "GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount",
+                    "description": "The AWS account of the resource associated with the issue."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount": {
+            "description": "The AWS account of the resource associated with the issue.",
+            "id": "GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount",
+            "properties": {
+                "id": {
+                    "description": "The AWS account ID of the resource associated with the issue.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The AWS account name of the resource associated with the issue.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2IssueResourceAzureMetadata": {
+            "description": "The Azure metadata of a resource associated with an issue.",
+            "id": "GoogleCloudSecuritycenterV2IssueResourceAzureMetadata",
+            "properties": {
+                "subscription": {
+                    "$ref": "GoogleCloudSecuritycenterV2IssueResourceAzureMetadataAzureSubscription",
+                    "description": "The Azure subscription of the resource associated with the issue."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2IssueResourceAzureMetadataAzureSubscription": {
+            "description": "The Azure subscription of the resource associated with the issue.",
+            "id": "GoogleCloudSecuritycenterV2IssueResourceAzureMetadataAzureSubscription",
+            "properties": {
+                "displayName": {
+                    "description": "The Azure subscription display name of the resource associated with the issue.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "The Azure subscription ID of the resource associated with the issue.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata": {
+            "description": "Google Cloud metadata of a resource associated with an issue.",
+            "id": "GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata",
+            "properties": {
+                "projectId": {
+                    "description": "The project ID that the resource associated with the issue belongs to.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2IssueSecurityContext": {
+            "description": "Security context associated with an issue.",
+            "id": "GoogleCloudSecuritycenterV2IssueSecurityContext",
+            "properties": {
+                "aggregatedCount": {
+                    "$ref": "GoogleCloudSecuritycenterV2IssueSecurityContextAggregatedCount",
+                    "description": "The aggregated count of the security context."
+                },
+                "context": {
+                    "$ref": "GoogleCloudSecuritycenterV2IssueSecurityContextContext",
+                    "description": "The context of the security context."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2IssueSecurityContextAggregatedCount": {
+            "description": "Aggregated count of a security context.",
+            "id": "GoogleCloudSecuritycenterV2IssueSecurityContextAggregatedCount",
+            "properties": {
+                "key": {
+                    "description": "Aggregation key.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "Aggregation value.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2IssueSecurityContextContext": {
+            "description": "Context of a security context.",
+            "id": "GoogleCloudSecuritycenterV2IssueSecurityContextContext",
+            "properties": {
+                "type": {
+                    "description": "Context type.",
+                    "type": "string"
+                },
+                "values": {
+                    "description": "Context values.",
                     "items": {
                         "type": "string"
                     },
@@ -11620,7 +12244,7 @@
                     "description": "A mapping of the sensitivity on Sensitive Data Protection finding to resource values. This mapping can only be used in combination with a resource_type that is related to BigQuery, e.g. \"bigquery.googleapis.com/Dataset\"."
                 },
                 "tagValues": {
-                    "description": "Tag values combined with `AND` to check against. Values in the form \"tagValues/123\" Example: `[ \"tagValues/123\", \"tagValues/456\", \"tagValues/789\" ]` https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing",
+                    "description": "Tag values combined with `AND` to check against. For Google Cloud resources, they are tag value IDs in the form of \"tagValues/123\". Example: `[ \"tagValues/123\", \"tagValues/456\", \"tagValues/789\" ]` https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing",
                     "items": {
                         "type": "string"
                     },
@@ -12036,6 +12660,7 @@
             "id": "GroupFindingsRequest",
             "properties": {
                 "compareDuration": {
+                    "deprecated": true,
                     "description": "When compare_duration is set, the GroupResult's \"state_change\" attribute is updated to indicate whether the finding had its state changed, the finding's state remained unchanged, or if the finding was added during the compare_duration period of time that precedes the read_time. This is the time between (read_time - compare_duration) and read_time. The state_change value is derived based on the presence and state of the finding at the two points in time. Intermediate state changes between the two times don't affect the result. For example, the results aren't affected if the finding is made inactive and then active again. Possible \"state_change\" values when compare_duration is specified: * \"CHANGED\": indicates that the finding was present and matched the given filter at the start of compare_duration, but changed its state at read_time. * \"UNCHANGED\": indicates that the finding was present and matched the given filter at the start of compare_duration and did not change state at read_time. * \"ADDED\": indicates that the finding did not match the given filter or was not present at the start of compare_duration, but was present at read_time. * \"REMOVED\": indicates that the finding was present and matched the filter at the start of compare_duration, but did not match the filter at read_time. If compare_duration is not specified, then the only possible state_change is \"UNUSED\", which will be the state_change set for all findings present at read_time. If this field is set then `state_change` must be a specified field in `group_by`.",
                     "format": "google-duration",
                     "type": "string"
@@ -12058,6 +12683,7 @@
                     "type": "string"
                 },
                 "readTime": {
+                    "deprecated": true,
                     "description": "Time used as a reference point when filtering findings. The filter is limited to findings existing at the supplied time and their values are those at that specific time. Absence of this field will default to the API's version of NOW.",
                     "format": "google-datetime",
                     "type": "string"
@@ -13938,6 +14564,7 @@
             "id": "SetFindingStateRequest",
             "properties": {
                 "startTime": {
+                    "deprecated": true,
                     "description": "Optional. The time at which the updated state takes effect. If unset, defaults to the request time.",
                     "format": "google-datetime",
                     "type": "string"

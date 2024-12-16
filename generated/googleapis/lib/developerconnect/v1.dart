@@ -1095,8 +1095,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1343,7 +1343,7 @@ class Connection {
   /// Output only.
   core.bool? reconciling;
 
-  /// A system-assigned unique identifier for a the GitRepositoryLink.
+  /// A system-assigned unique identifier for the Connection.
   ///
   /// Output only.
   core.String? uid;
@@ -1922,7 +1922,7 @@ class GitRepositoryLink {
   /// Output only.
   core.bool? reconciling;
 
-  /// A system-assigned unique identifier for a the GitRepositoryLink.
+  /// A system-assigned unique identifier for the GitRepositoryLink.
   ///
   /// Output only.
   core.String? uid;

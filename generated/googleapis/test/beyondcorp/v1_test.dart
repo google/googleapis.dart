@@ -1341,56 +1341,13 @@ void checkUnnamed22(core.List<core.String> o) {
   );
 }
 
-core.int buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Peering = 0;
-api.GoogleCloudBeyondcorpSecuritygatewaysV1Peering
-    buildGoogleCloudBeyondcorpSecuritygatewaysV1Peering() {
-  final o = api.GoogleCloudBeyondcorpSecuritygatewaysV1Peering();
-  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Peering++;
-  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Peering < 3) {
-    o.dnsZones = buildUnnamed22();
-    o.targetNetwork = 'foo';
-  }
-  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Peering--;
-  return o;
-}
-
-void checkGoogleCloudBeyondcorpSecuritygatewaysV1Peering(
-    api.GoogleCloudBeyondcorpSecuritygatewaysV1Peering o) {
-  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Peering++;
-  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Peering < 3) {
-    checkUnnamed22(o.dnsZones!);
-    unittest.expect(
-      o.targetNetwork!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1Peering--;
-}
-
-core.List<core.String> buildUnnamed23() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed23(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.Map<core.String, api.GoogleCloudBeyondcorpSecuritygatewaysV1Hub>
-    buildUnnamed24() => {
+    buildUnnamed23() => {
           'x': buildGoogleCloudBeyondcorpSecuritygatewaysV1Hub(),
           'y': buildGoogleCloudBeyondcorpSecuritygatewaysV1Hub(),
         };
 
-void checkUnnamed24(
+void checkUnnamed23(
     core.Map<core.String, api.GoogleCloudBeyondcorpSecuritygatewaysV1Hub> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudBeyondcorpSecuritygatewaysV1Hub(o['x']!);
@@ -1405,8 +1362,8 @@ api.GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway
   if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway < 3) {
     o.createTime = 'foo';
     o.displayName = 'foo';
-    o.externalIps = buildUnnamed23();
-    o.hubs = buildUnnamed24();
+    o.externalIps = buildUnnamed22();
+    o.hubs = buildUnnamed23();
     o.name = 'foo';
     o.state = 'foo';
     o.updateTime = 'foo';
@@ -1427,8 +1384,8 @@ void checkGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway(
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed23(o.externalIps!);
-    checkUnnamed24(o.hubs!);
+    checkUnnamed22(o.externalIps!);
+    checkUnnamed23(o.hubs!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1445,56 +1402,12 @@ void checkGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway(
   buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway--;
 }
 
-core.List<api.GoogleCloudBeyondcorpSecuritygatewaysV1Peering>
-    buildUnnamed25() => [
-          buildGoogleCloudBeyondcorpSecuritygatewaysV1Peering(),
-          buildGoogleCloudBeyondcorpSecuritygatewaysV1Peering(),
-        ];
-
-void checkUnnamed25(
-    core.List<api.GoogleCloudBeyondcorpSecuritygatewaysV1Peering> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudBeyondcorpSecuritygatewaysV1Peering(o[0]);
-  checkGoogleCloudBeyondcorpSecuritygatewaysV1Peering(o[1]);
-}
-
-core.int buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest =
-    0;
-api.GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest
-    buildGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest() {
-  final o = api.GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest();
-  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest++;
-  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest <
-      3) {
-    o.peerings = buildUnnamed25();
-    o.requestId = 'foo';
-    o.validateOnly = true;
-  }
-  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest--;
-  return o;
-}
-
-void checkGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest(
-    api.GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest o) {
-  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest++;
-  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest <
-      3) {
-    checkUnnamed25(o.peerings!);
-    unittest.expect(
-      o.requestId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(o.validateOnly!, unittest.isTrue);
-  }
-  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest--;
-}
-
-core.List<api.GoogleCloudLocationLocation> buildUnnamed26() => [
+core.List<api.GoogleCloudLocationLocation> buildUnnamed24() => [
       buildGoogleCloudLocationLocation(),
       buildGoogleCloudLocationLocation(),
     ];
 
-void checkUnnamed26(core.List<api.GoogleCloudLocationLocation> o) {
+void checkUnnamed24(core.List<api.GoogleCloudLocationLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudLocationLocation(o[0]);
   checkGoogleCloudLocationLocation(o[1]);
@@ -1506,7 +1419,7 @@ api.GoogleCloudLocationListLocationsResponse
   final o = api.GoogleCloudLocationListLocationsResponse();
   buildCounterGoogleCloudLocationListLocationsResponse++;
   if (buildCounterGoogleCloudLocationListLocationsResponse < 3) {
-    o.locations = buildUnnamed26();
+    o.locations = buildUnnamed24();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudLocationListLocationsResponse--;
@@ -1517,7 +1430,7 @@ void checkGoogleCloudLocationListLocationsResponse(
     api.GoogleCloudLocationListLocationsResponse o) {
   buildCounterGoogleCloudLocationListLocationsResponse++;
   if (buildCounterGoogleCloudLocationListLocationsResponse < 3) {
-    checkUnnamed26(o.locations!);
+    checkUnnamed24(o.locations!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1526,12 +1439,12 @@ void checkGoogleCloudLocationListLocationsResponse(
   buildCounterGoogleCloudLocationListLocationsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed27() => {
+core.Map<core.String, core.String> buildUnnamed25() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed27(core.Map<core.String, core.String> o) {
+void checkUnnamed25(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1543,7 +1456,7 @@ void checkUnnamed27(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed28() => {
+core.Map<core.String, core.Object?> buildUnnamed26() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1556,7 +1469,7 @@ core.Map<core.String, core.Object?> buildUnnamed28() => {
       },
     };
 
-void checkUnnamed28(core.Map<core.String, core.Object?> o) {
+void checkUnnamed26(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1594,9 +1507,9 @@ api.GoogleCloudLocationLocation buildGoogleCloudLocationLocation() {
   buildCounterGoogleCloudLocationLocation++;
   if (buildCounterGoogleCloudLocationLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed27();
+    o.labels = buildUnnamed25();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed28();
+    o.metadata = buildUnnamed26();
     o.name = 'foo';
   }
   buildCounterGoogleCloudLocationLocation--;
@@ -1610,12 +1523,12 @@ void checkGoogleCloudLocationLocation(api.GoogleCloudLocationLocation o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed27(o.labels!);
+    checkUnnamed25(o.labels!);
     unittest.expect(
       o.locationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed28(o.metadata!);
+    checkUnnamed26(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1624,12 +1537,12 @@ void checkGoogleCloudLocationLocation(api.GoogleCloudLocationLocation o) {
   buildCounterGoogleCloudLocationLocation--;
 }
 
-core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed29() => [
+core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed27() => [
       buildGoogleIamV1AuditLogConfig(),
       buildGoogleIamV1AuditLogConfig(),
     ];
 
-void checkUnnamed29(core.List<api.GoogleIamV1AuditLogConfig> o) {
+void checkUnnamed27(core.List<api.GoogleIamV1AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditLogConfig(o[0]);
   checkGoogleIamV1AuditLogConfig(o[1]);
@@ -1640,7 +1553,7 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
   final o = api.GoogleIamV1AuditConfig();
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed29();
+    o.auditLogConfigs = buildUnnamed27();
     o.service = 'foo';
   }
   buildCounterGoogleIamV1AuditConfig--;
@@ -1650,7 +1563,7 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
 void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    checkUnnamed29(o.auditLogConfigs!);
+    checkUnnamed27(o.auditLogConfigs!);
     unittest.expect(
       o.service!,
       unittest.equals('foo'),
@@ -1659,12 +1572,12 @@ void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
   buildCounterGoogleIamV1AuditConfig--;
 }
 
-core.List<core.String> buildUnnamed30() => [
+core.List<core.String> buildUnnamed28() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed30(core.List<core.String> o) {
+void checkUnnamed28(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1681,7 +1594,7 @@ api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
   final o = api.GoogleIamV1AuditLogConfig();
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed30();
+    o.exemptedMembers = buildUnnamed28();
     o.logType = 'foo';
   }
   buildCounterGoogleIamV1AuditLogConfig--;
@@ -1691,7 +1604,7 @@ api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
 void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    checkUnnamed30(o.exemptedMembers!);
+    checkUnnamed28(o.exemptedMembers!);
     unittest.expect(
       o.logType!,
       unittest.equals('foo'),
@@ -1700,12 +1613,12 @@ void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
   buildCounterGoogleIamV1AuditLogConfig--;
 }
 
-core.List<core.String> buildUnnamed31() => [
+core.List<core.String> buildUnnamed29() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed31(core.List<core.String> o) {
+void checkUnnamed29(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1723,7 +1636,7 @@ api.GoogleIamV1Binding buildGoogleIamV1Binding() {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     o.condition = buildGoogleTypeExpr();
-    o.members = buildUnnamed31();
+    o.members = buildUnnamed29();
     o.role = 'foo';
   }
   buildCounterGoogleIamV1Binding--;
@@ -1734,7 +1647,7 @@ void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     checkGoogleTypeExpr(o.condition!);
-    checkUnnamed31(o.members!);
+    checkUnnamed29(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -1743,23 +1656,23 @@ void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding--;
 }
 
-core.List<api.GoogleIamV1AuditConfig> buildUnnamed32() => [
+core.List<api.GoogleIamV1AuditConfig> buildUnnamed30() => [
       buildGoogleIamV1AuditConfig(),
       buildGoogleIamV1AuditConfig(),
     ];
 
-void checkUnnamed32(core.List<api.GoogleIamV1AuditConfig> o) {
+void checkUnnamed30(core.List<api.GoogleIamV1AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditConfig(o[0]);
   checkGoogleIamV1AuditConfig(o[1]);
 }
 
-core.List<api.GoogleIamV1Binding> buildUnnamed33() => [
+core.List<api.GoogleIamV1Binding> buildUnnamed31() => [
       buildGoogleIamV1Binding(),
       buildGoogleIamV1Binding(),
     ];
 
-void checkUnnamed33(core.List<api.GoogleIamV1Binding> o) {
+void checkUnnamed31(core.List<api.GoogleIamV1Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1Binding(o[0]);
   checkGoogleIamV1Binding(o[1]);
@@ -1770,8 +1683,8 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
   final o = api.GoogleIamV1Policy();
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    o.auditConfigs = buildUnnamed32();
-    o.bindings = buildUnnamed33();
+    o.auditConfigs = buildUnnamed30();
+    o.bindings = buildUnnamed31();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -1782,8 +1695,8 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
 void checkGoogleIamV1Policy(api.GoogleIamV1Policy o) {
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    checkUnnamed32(o.auditConfigs!);
-    checkUnnamed33(o.bindings!);
+    checkUnnamed30(o.auditConfigs!);
+    checkUnnamed31(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -1820,12 +1733,12 @@ void checkGoogleIamV1SetIamPolicyRequest(api.GoogleIamV1SetIamPolicyRequest o) {
   buildCounterGoogleIamV1SetIamPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed34() => [
+core.List<core.String> buildUnnamed32() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed34(core.List<core.String> o) {
+void checkUnnamed32(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1843,7 +1756,7 @@ api.GoogleIamV1TestIamPermissionsRequest
   final o = api.GoogleIamV1TestIamPermissionsRequest();
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed34();
+    o.permissions = buildUnnamed32();
   }
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
   return o;
@@ -1853,17 +1766,17 @@ void checkGoogleIamV1TestIamPermissionsRequest(
     api.GoogleIamV1TestIamPermissionsRequest o) {
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    checkUnnamed34(o.permissions!);
+    checkUnnamed32(o.permissions!);
   }
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed35() => [
+core.List<core.String> buildUnnamed33() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed35(core.List<core.String> o) {
+void checkUnnamed33(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1881,7 +1794,7 @@ api.GoogleIamV1TestIamPermissionsResponse
   final o = api.GoogleIamV1TestIamPermissionsResponse();
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed35();
+    o.permissions = buildUnnamed33();
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
   return o;
@@ -1891,7 +1804,7 @@ void checkGoogleIamV1TestIamPermissionsResponse(
     api.GoogleIamV1TestIamPermissionsResponse o) {
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    checkUnnamed35(o.permissions!);
+    checkUnnamed33(o.permissions!);
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
 }
@@ -1913,12 +1826,12 @@ void checkGoogleLongrunningCancelOperationRequest(
   buildCounterGoogleLongrunningCancelOperationRequest--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed36() => [
+core.List<api.GoogleLongrunningOperation> buildUnnamed34() => [
       buildGoogleLongrunningOperation(),
       buildGoogleLongrunningOperation(),
     ];
 
-void checkUnnamed36(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed34(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -1931,7 +1844,7 @@ api.GoogleLongrunningListOperationsResponse
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed36();
+    o.operations = buildUnnamed34();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -1945,12 +1858,12 @@ void checkGoogleLongrunningListOperationsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed36(o.operations!);
+    checkUnnamed34(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed37() => {
+core.Map<core.String, core.Object?> buildUnnamed35() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1963,7 +1876,7 @@ core.Map<core.String, core.Object?> buildUnnamed37() => {
       },
     };
 
-void checkUnnamed37(core.Map<core.String, core.Object?> o) {
+void checkUnnamed35(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1995,7 +1908,7 @@ void checkUnnamed37(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed38() => {
+core.Map<core.String, core.Object?> buildUnnamed36() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2008,7 +1921,7 @@ core.Map<core.String, core.Object?> buildUnnamed38() => {
       },
     };
 
-void checkUnnamed38(core.Map<core.String, core.Object?> o) {
+void checkUnnamed36(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -2047,9 +1960,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed37();
+    o.metadata = buildUnnamed35();
     o.name = 'foo';
-    o.response = buildUnnamed38();
+    o.response = buildUnnamed36();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -2060,17 +1973,17 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed37(o.metadata!);
+    checkUnnamed35(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed38(o.response!);
+    checkUnnamed36(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed39() => {
+core.Map<core.String, core.Object?> buildUnnamed37() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2083,7 +1996,7 @@ core.Map<core.String, core.Object?> buildUnnamed39() => {
       },
     };
 
-void checkUnnamed39(core.Map<core.String, core.Object?> o) {
+void checkUnnamed37(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted11 = (o['x']!) as core.Map;
   unittest.expect(casted11, unittest.hasLength(3));
@@ -2115,15 +2028,15 @@ void checkUnnamed39(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed40() => [
-      buildUnnamed39(),
-      buildUnnamed39(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed38() => [
+      buildUnnamed37(),
+      buildUnnamed37(),
     ];
 
-void checkUnnamed40(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed38(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed39(o[0]);
-  checkUnnamed39(o[1]);
+  checkUnnamed37(o[0]);
+  checkUnnamed37(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -2132,7 +2045,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed40();
+    o.details = buildUnnamed38();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -2146,7 +2059,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed40(o.details!);
+    checkUnnamed38(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -2192,23 +2105,23 @@ void checkGoogleTypeExpr(api.GoogleTypeExpr o) {
   buildCounterGoogleTypeExpr--;
 }
 
-core.List<api.AppGateway> buildUnnamed41() => [
+core.List<api.AppGateway> buildUnnamed39() => [
       buildAppGateway(),
       buildAppGateway(),
     ];
 
-void checkUnnamed41(core.List<api.AppGateway> o) {
+void checkUnnamed39(core.List<api.AppGateway> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAppGateway(o[0]);
   checkAppGateway(o[1]);
 }
 
-core.List<core.String> buildUnnamed42() => [
+core.List<core.String> buildUnnamed40() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed42(core.List<core.String> o) {
+void checkUnnamed40(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2225,9 +2138,9 @@ api.ListAppGatewaysResponse buildListAppGatewaysResponse() {
   final o = api.ListAppGatewaysResponse();
   buildCounterListAppGatewaysResponse++;
   if (buildCounterListAppGatewaysResponse < 3) {
-    o.appGateways = buildUnnamed41();
+    o.appGateways = buildUnnamed39();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed42();
+    o.unreachable = buildUnnamed40();
   }
   buildCounterListAppGatewaysResponse--;
   return o;
@@ -2236,12 +2149,12 @@ api.ListAppGatewaysResponse buildListAppGatewaysResponse() {
 void checkListAppGatewaysResponse(api.ListAppGatewaysResponse o) {
   buildCounterListAppGatewaysResponse++;
   if (buildCounterListAppGatewaysResponse < 3) {
-    checkUnnamed41(o.appGateways!);
+    checkUnnamed39(o.appGateways!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed42(o.unreachable!);
+    checkUnnamed40(o.unreachable!);
   }
   buildCounterListAppGatewaysResponse--;
 }
@@ -2599,17 +2512,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-GoogleCloudBeyondcorpSecuritygatewaysV1Peering',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudBeyondcorpSecuritygatewaysV1Peering();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudBeyondcorpSecuritygatewaysV1Peering.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudBeyondcorpSecuritygatewaysV1Peering(od);
-    });
-  });
-
   unittest.group(
       'obj-schema-GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway', () {
     unittest.test('to-json--from-json', () async {
@@ -2619,19 +2521,6 @@ void main() {
           api.GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest(od);
     });
   });
 
@@ -6753,17 +6642,16 @@ void main() {
           response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--setPeering', () async {
+    unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
       final res = api.BeyondCorpApi(mock).projects.locations.securityGateways;
-      final arg_request =
-          buildGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest();
-      final arg_securityGateway = 'foo';
+      final arg_request = buildGoogleIamV1SetIamPolicyRequest();
+      final arg_resource = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest
-            .fromJson(json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest(obj);
+        final obj = api.GoogleIamV1SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleIamV1SetIamPolicyRequest(obj);
 
         final path = req.url.path;
         var pathOffset = 0;
@@ -6804,13 +6692,12 @@ void main() {
         final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        final resp = convert.json.encode(buildGoogleIamV1Policy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.setPeering(arg_request, arg_securityGateway,
+      final response = await res.setIamPolicy(arg_request, arg_resource,
           $fields: arg_$fields);
-      checkGoogleLongrunningOperation(
-          response as api.GoogleLongrunningOperation);
+      checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
     });
 
     unittest.test('method--testIamPermissions', () async {
@@ -7180,66 +7067,6 @@ void main() {
           unittest.equals('v1/'),
         );
         pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleIamV1Policy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.setIamPolicy(arg_request, arg_resource,
-          $fields: arg_$fields);
-      checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
-    });
-  });
-
-  unittest.group('resource-VProjectsLocationsSecurityGatewaysResource', () {
-    unittest.test('method--setIamPolicy', () async {
-      final mock = HttpServerMock();
-      final res = api.BeyondCorpApi(mock).v.projects.locations.securityGateways;
-      final arg_request = buildGoogleIamV1SetIamPolicyRequest();
-      final arg_resource = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleIamV1SetIamPolicyRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGoogleIamV1SetIamPolicyRequest(obj);
-
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 2),
-          unittest.equals('v/'),
-        );
-        pathOffset += 2;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = req.url.query;

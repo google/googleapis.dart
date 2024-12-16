@@ -128,8 +128,8 @@ class AccountsResource {
   ///
   /// [pageSize] - Optional. The maximum number of accounts to return. The
   /// service may return fewer than this value. If unspecified, at most 50
-  /// accounts will be returned. The maximum value is 1000; values above 1000
-  /// will be coerced to 1000.
+  /// accounts will be returned. The maximum value is 100; values above 100 will
+  /// be coerced to 100.
   ///
   /// [pageToken] - Optional. A page token, received from a previous
   /// `ListChildAccounts` call. Provide this to retrieve the subsequent page.
@@ -282,7 +282,7 @@ class AccountsCssProductInputsResource {
   /// Format: accounts/{account}
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
-  /// [feedId] - Required. The primary or supplemental feed id. If CSS Product
+  /// [feedId] - Optional. The primary or supplemental feed id. If CSS Product
   /// already exists and feed id provided is different, then the CSS Product
   /// will be moved to a new feed. Note: For now, CSSs do not need to provide
   /// feed ids as we create feeds on the fly. We do not have supplemental feed
@@ -508,7 +508,7 @@ class AccountsLabelsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists the labels assigned to an account.
+  /// Lists the labels owned by an account.
   ///
   /// Request parameters:
   ///
@@ -841,17 +841,17 @@ class Attributes {
   /// Mobile Link to the headline offer.
   core.String? headlineOfferMobileLink;
 
-  /// Headline Price of the aggregate offer.
+  /// Headline Price of the CSS Product.
   Price? headlineOfferPrice;
 
-  /// Headline Price of the aggregate offer.
+  /// Headline Price of the CSS Product.
   Price? headlineOfferShippingPrice;
 
   /// Number of periods (months or years) and amount of payment per period for
   /// an item with an associated subscription contract.
   HeadlineOfferSubscriptionCost? headlineOfferSubscriptionCost;
 
-  /// High Price of the aggregate offer.
+  /// High Price of the CSS Product.
   Price? highPrice;
 
   /// URL of an image of the item.
@@ -873,7 +873,7 @@ class Attributes {
   /// Shared identifier for all variants of the same product.
   core.String? itemGroupId;
 
-  /// Low Price of the aggregate offer.
+  /// Low Price of the CSS Product.
   Price? lowPrice;
 
   /// The material of which the item is made.
@@ -887,7 +887,7 @@ class Attributes {
   /// The number of identical products in a merchant-defined multipack.
   core.String? multipack;
 
-  /// The number of aggregate offers.
+  /// The number of CSS Products.
   core.String? numberOfOffers;
 
   /// The item's pattern (e.g. polka dots).
@@ -1220,7 +1220,7 @@ class Certification {
       };
 }
 
-/// The processed CSS Product(a.k.a Aggregate Offer internally).
+/// The processed CSS Product.
 class CssProduct {
   /// A list of product attributes.
   ///
@@ -1355,6 +1355,9 @@ class CssProductInput {
   /// will not be prevented and the last update time will default to when this
   /// request was received by the CSS API. If the operation is prevented, the
   /// aborted exception will be thrown.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? freshnessTime;
 
   /// The name of the CSS Product input.
@@ -1510,18 +1513,18 @@ class CustomAttribute {
 
 /// The destination status of the product status.
 class DestinationStatus {
-  /// List of country codes (ISO 3166-1 alpha-2) where the aggregate offer is
+  /// List of country codes (ISO 3166-1 alpha-2) where the CSS Product is
   /// approved.
   core.List<core.String>? approvedCountries;
 
   /// The name of the destination
   core.String? destination;
 
-  /// List of country codes (ISO 3166-1 alpha-2) where the aggregate offer is
+  /// List of country codes (ISO 3166-1 alpha-2) where the CSS Product is
   /// disapproved.
   core.List<core.String>? disapprovedCountries;
 
-  /// List of country codes (ISO 3166-1 alpha-2) where the aggregate offer is
+  /// List of country codes (ISO 3166-1 alpha-2) where the CSS Product is
   /// pending approval.
   core.List<core.String>? pendingCountries;
 
@@ -1643,8 +1646,8 @@ class HeadlineOfferSubscriptionCost {
 
 /// The ItemLevelIssue of the product status.
 class ItemLevelIssue {
-  /// List of country codes (ISO 3166-1 alpha-2) where issue applies to the
-  /// aggregate offer.
+  /// List of country codes (ISO 3166-1 alpha-2) where issue applies to the CSS
+  /// Product.
   core.List<core.String>? applicableCountries;
 
   /// The attribute's name, if the issue is caused by a single attribute.
@@ -1668,7 +1671,7 @@ class ItemLevelIssue {
   /// Whether the issue can be resolved by the merchant.
   core.String? resolution;
 
-  /// How this issue affects serving of the aggregate offer.
+  /// How this issue affects serving of the CSS Product.
   core.String? servability;
 
   ItemLevelIssue({

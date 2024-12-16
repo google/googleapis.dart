@@ -3826,7 +3826,7 @@ class GoogleCloudRetailV2AttributesConfig {
   /// - "PRODUCT_LEVEL_ATTRIBUTE_CONFIG" : At this level, we honor the attribute
   /// configurations set in Product.attributes.
   /// - "CATALOG_LEVEL_ATTRIBUTE_CONFIG" : At this level, we honor the attribute
-  /// configurations set in CatalogConfig.attribute_configs.
+  /// configurations set in `CatalogConfig.attribute_configs`.
   core.String? attributeConfigLevel;
 
   /// Enable attribute(s) config at catalog level.
@@ -4008,8 +4008,6 @@ class GoogleCloudRetailV2BigQuerySource {
   core.String? gcsStagingDir;
 
   /// BigQuery time partitioned table's _PARTITIONDATE in YYYY-MM-DD format.
-  ///
-  /// Only supported in ImportProductsRequest.
   GoogleTypeDate? partitionDate;
 
   /// The project ID (can be project # or ID) that the BigQuery source is in
@@ -4141,8 +4139,7 @@ class GoogleCloudRetailV2CatalogAttribute {
   ///
   /// `True` if at least one Product is using this attribute in
   /// Product.attributes. Otherwise, this field is `False`. CatalogAttribute can
-  /// be pre-loaded by using CatalogService.AddCatalogAttribute,
-  /// CatalogService.ImportCatalogAttributes, or
+  /// be pre-loaded by using CatalogService.AddCatalogAttribute or
   /// CatalogService.UpdateAttributesConfig APIs. This field is `False` for
   /// pre-loaded CatalogAttributes. Only pre-loaded catalog attributes that are
   /// neither in use by products nor predefined can be deleted. Catalog
@@ -5205,7 +5202,7 @@ class GoogleCloudRetailV2CustomAttribute {
       };
 }
 
-/// Metadata for active A/B testing Experiment.
+/// Metadata for active A/B testing experiment.
 class GoogleCloudRetailV2ExperimentInfo {
   /// The fully qualified resource name of the experiment that provides the
   /// serving config under test, should an active experiment exist.
@@ -5243,7 +5240,7 @@ class GoogleCloudRetailV2ExperimentInfo {
 /// Metadata for active serving config A/B tests.
 class GoogleCloudRetailV2ExperimentInfoServingConfigExperiment {
   /// The fully qualified resource name of the serving config
-  /// Experiment.VariantArm.serving_config_id responsible for generating the
+  /// `Experiment.VariantArm.serving_config_id` responsible for generating the
   /// search response.
   ///
   /// For example: `projects / * /locations / * /catalogs / * /servingConfigs /
@@ -5563,9 +5560,10 @@ class GoogleCloudRetailV2GetDefaultBranchResponse {
 
 /// Product image.
 ///
-/// Recommendations AI and Retail Search do not use product images to improve
-/// prediction and search results. However, product images can be returned in
-/// results, and are shown in prediction or search previews in the console.
+/// Recommendations AI and Retail Search use product images to improve
+/// prediction and search results. Product images can be returned in results,
+/// and are shown in prediction or search previews in the console. Please try to
+/// provide correct product images and avoid using images with size too small.
 class GoogleCloudRetailV2Image {
   /// Height of the image in number of pixels.
   ///
@@ -6020,32 +6018,63 @@ class GoogleCloudRetailV2LocalInventory {
   /// search. The `searchable` field should be unset or set to false. * The max
   /// summed total bytes of custom attribute keys and values per product is
   /// 5MiB.
+  ///
+  /// Optional.
   core.Map<core.String, GoogleCloudRetailV2CustomAttribute>? attributes;
 
-  /// Input only.
+  /// The availability of the Product at this place_id.
   ///
-  /// Supported fulfillment types. Valid fulfillment type values include
-  /// commonly used types (such as pickup in store and same day delivery), and
-  /// custom types. Customers have to map custom types to their display names
-  /// before rendering UI. Supported values: * "pickup-in-store" *
-  /// "ship-to-store" * "same-day-delivery" * "next-day-delivery" *
-  /// "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" *
-  /// "custom-type-5" If this field is set to an invalid value other than these,
-  /// an INVALID_ARGUMENT error is returned. All the elements must be distinct.
-  /// Otherwise, an INVALID_ARGUMENT error is returned.
+  /// Default to Availability.IN_STOCK. For primary products with variants set
+  /// the availability of the primary as Availability.OUT_OF_STOCK and set the
+  /// true availability at the variant level. This way the primary product will
+  /// be considered "in stock" as long as it has at least one variant in stock.
+  /// For primary products with no variants set the true availability at the
+  /// primary level. Corresponding properties: Google Merchant Center property
+  /// [availability](https://support.google.com/merchants/answer/6324448).
+  /// Schema.org property [Offer.availability](https://schema.org/availability).
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "AVAILABILITY_UNSPECIFIED" : Default product availability. Default to
+  /// Availability.IN_STOCK if unset.
+  /// - "IN_STOCK" : Product in stock.
+  /// - "OUT_OF_STOCK" : Product out of stock.
+  /// - "PREORDER" : Product that is in pre-order state.
+  /// - "BACKORDER" : Product that is back-ordered (i.e. temporarily out of
+  /// stock).
+  core.String? availability;
+
+  /// Supported fulfillment types.
+  ///
+  /// Valid fulfillment type values include commonly used types (such as pickup
+  /// in store and same day delivery), and custom types. Customers have to map
+  /// custom types to their display names before rendering UI. Supported values:
+  /// * "pickup-in-store" * "ship-to-store" * "same-day-delivery" *
+  /// "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3"
+  /// * "custom-type-4" * "custom-type-5" If this field is set to an invalid
+  /// value other than these, an INVALID_ARGUMENT error is returned. All the
+  /// elements must be distinct. Otherwise, an INVALID_ARGUMENT error is
+  /// returned.
+  ///
+  /// Optional.
   core.List<core.String>? fulfillmentTypes;
 
   /// The place ID for the current set of inventory information.
+  ///
+  /// Required.
   core.String? placeId;
 
   /// Product price and cost information.
   ///
   /// Google Merchant Center property
   /// [price](https://support.google.com/merchants/answer/6324371).
+  ///
+  /// Optional.
   GoogleCloudRetailV2PriceInfo? priceInfo;
 
   GoogleCloudRetailV2LocalInventory({
     this.attributes,
+    this.availability,
     this.fulfillmentTypes,
     this.placeId,
     this.priceInfo,
@@ -6062,6 +6091,7 @@ class GoogleCloudRetailV2LocalInventory {
                   value as core.Map<core.String, core.dynamic>),
             ),
           ),
+          availability: json_['availability'] as core.String?,
           fulfillmentTypes: (json_['fulfillmentTypes'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -6074,6 +6104,7 @@ class GoogleCloudRetailV2LocalInventory {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null) 'attributes': attributes!,
+        if (availability != null) 'availability': availability!,
         if (fulfillmentTypes != null) 'fulfillmentTypes': fulfillmentTypes!,
         if (placeId != null) 'placeId': placeId!,
         if (priceInfo != null) 'priceInfo': priceInfo!,
@@ -6506,6 +6537,73 @@ class GoogleCloudRetailV2OutputConfigGcsDestination {
 
 /// Request for pausing training of a model.
 typedef GoogleCloudRetailV2PauseModelRequest = $Empty;
+
+/// Metadata for pinning to be returned in the response.
+///
+/// This is used for distinguishing between applied vs dropped pins.
+class GoogleCloudRetailV2PinControlMetadata {
+  /// Map of all matched pins, keyed by pin position.
+  core.Map<core.String, GoogleCloudRetailV2PinControlMetadataProductPins>?
+      allMatchedPins;
+
+  /// Map of pins that were dropped due to overlap with other matching pins,
+  /// keyed by pin position.
+  core.Map<core.String, GoogleCloudRetailV2PinControlMetadataProductPins>?
+      droppedPins;
+
+  GoogleCloudRetailV2PinControlMetadata({
+    this.allMatchedPins,
+    this.droppedPins,
+  });
+
+  GoogleCloudRetailV2PinControlMetadata.fromJson(core.Map json_)
+      : this(
+          allMatchedPins:
+              (json_['allMatchedPins'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudRetailV2PinControlMetadataProductPins.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+          droppedPins:
+              (json_['droppedPins'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              GoogleCloudRetailV2PinControlMetadataProductPins.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allMatchedPins != null) 'allMatchedPins': allMatchedPins!,
+        if (droppedPins != null) 'droppedPins': droppedPins!,
+      };
+}
+
+/// List of product ids which have associated pins.
+class GoogleCloudRetailV2PinControlMetadataProductPins {
+  /// List of product ids which have associated pins.
+  core.List<core.String>? productId;
+
+  GoogleCloudRetailV2PinControlMetadataProductPins({
+    this.productId,
+  });
+
+  GoogleCloudRetailV2PinControlMetadataProductPins.fromJson(core.Map json_)
+      : this(
+          productId: (json_['productId'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (productId != null) 'productId': productId!,
+      };
+}
 
 /// Request message for Predict method.
 class GoogleCloudRetailV2PredictRequest {
@@ -9575,7 +9673,7 @@ class GoogleCloudRetailV2SearchResponse {
   /// based on corrected_query. Otherwise the original query is used for search.
   core.String? correctedQuery;
 
-  /// Metadata related to A/B testing Experiment associated with this response.
+  /// Metadata related to A/B testing experiment associated with this response.
   ///
   /// Only exists when an experiment is triggered.
   core.List<GoogleCloudRetailV2ExperimentInfo>? experimentInfo;
@@ -9593,6 +9691,14 @@ class GoogleCloudRetailV2SearchResponse {
   ///
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
+
+  /// Metadata for pin controls which were applicable to the request.
+  ///
+  /// This contains two map fields, one for all matched pins and one for pins
+  /// which were matched but not applied. The two maps are keyed by pin
+  /// position, and the values are the product ids which were matched to that
+  /// pin.
+  GoogleCloudRetailV2PinControlMetadata? pinControlMetadata;
 
   /// Query expansion information for the returned results.
   GoogleCloudRetailV2SearchResponseQueryExpansionInfo? queryExpansionInfo;
@@ -9627,6 +9733,7 @@ class GoogleCloudRetailV2SearchResponse {
     this.facets,
     this.invalidConditionBoostSpecs,
     this.nextPageToken,
+    this.pinControlMetadata,
     this.queryExpansionInfo,
     this.redirectUri,
     this.results,
@@ -9662,6 +9769,11 @@ class GoogleCloudRetailV2SearchResponse {
                       .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
+          pinControlMetadata: json_.containsKey('pinControlMetadata')
+              ? GoogleCloudRetailV2PinControlMetadata.fromJson(
+                  json_['pinControlMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           queryExpansionInfo: json_.containsKey('queryExpansionInfo')
               ? GoogleCloudRetailV2SearchResponseQueryExpansionInfo.fromJson(
                   json_['queryExpansionInfo']
@@ -9692,6 +9804,8 @@ class GoogleCloudRetailV2SearchResponse {
         if (invalidConditionBoostSpecs != null)
           'invalidConditionBoostSpecs': invalidConditionBoostSpecs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (pinControlMetadata != null)
+          'pinControlMetadata': pinControlMetadata!,
         if (queryExpansionInfo != null)
           'queryExpansionInfo': queryExpansionInfo!,
         if (redirectUri != null) 'redirectUri': redirectUri!,
@@ -10995,11 +11109,11 @@ class GoogleCloudRetailV2UserInfo {
 
   /// User agent as included in the HTTP header.
   ///
-  /// Required for getting SearchResponse.sponsored_results. The field must be a
-  /// UTF-8 encoded string with a length limit of 1,000 characters. Otherwise,
-  /// an INVALID_ARGUMENT error is returned. This should not be set when using
-  /// the client side event reporting with GTM or JavaScript tag in
-  /// UserEventService.CollectUserEvent or if direct_user_request is set.
+  /// The field must be a UTF-8 encoded string with a length limit of 1,000
+  /// characters. Otherwise, an INVALID_ARGUMENT error is returned. This should
+  /// not be set when using the client side event reporting with GTM or
+  /// JavaScript tag in UserEventService.CollectUserEvent or if
+  /// direct_user_request is set.
   core.String? userAgent;
 
   /// Highly recommended for logged-in users.

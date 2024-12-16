@@ -2016,6 +2016,7 @@ api.Instance buildInstance() {
     o.autoscalingConfig = buildAutoscalingConfig();
     o.config = 'foo';
     o.createTime = 'foo';
+    o.defaultBackupScheduleType = 'foo';
     o.displayName = 'foo';
     o.edition = 'foo';
     o.endpointUris = buildUnnamed25();
@@ -2043,6 +2044,10 @@ void checkInstance(api.Instance o) {
     );
     unittest.expect(
       o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.defaultBackupScheduleType!,
       unittest.equals('foo'),
     );
     unittest.expect(

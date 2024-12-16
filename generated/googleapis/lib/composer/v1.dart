@@ -1217,7 +1217,7 @@ class ProjectsLocationsEnvironmentsWorkloadsResource {
   ///
   /// Workload is a unit that runs a single Composer component. This method is
   /// supported for Cloud Composer environments in versions
-  /// composer-3.*.*-airflow-*.*.* and newer.
+  /// composer-2.*.*-airflow-*.*.* and newer.
   ///
   /// Request parameters:
   ///
@@ -1905,6 +1905,8 @@ class EncryptionConfig {
 /// An environment for running orchestration tasks.
 class Environment {
   /// Configuration parameters for this environment.
+  ///
+  /// Optional.
   EnvironmentConfig? config;
 
   /// The time at which this environment was created.
@@ -1923,6 +1925,8 @@ class Environment {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
+  /// Identifier.
+  ///
   /// The resource name of the environment, in the form:
   /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
   /// EnvironmentId must start with a lowercase letter followed by up to 63
@@ -2113,6 +2117,8 @@ class EnvironmentConfig {
   MasterAuthorizedNetworksConfig? masterAuthorizedNetworksConfig;
 
   /// The configuration used for the Kubernetes Engine cluster.
+  ///
+  /// Optional.
   NodeConfig? nodeConfig;
 
   /// The number of nodes in the Kubernetes Engine cluster that will be used to
@@ -2123,6 +2129,8 @@ class EnvironmentConfig {
   core.int? nodeCount;
 
   /// The configuration used for the Private IP Cloud Composer environment.
+  ///
+  /// Optional.
   PrivateEnvironmentConfig? privateEnvironmentConfig;
 
   /// The Recovery settings configuration of an environment.
@@ -2147,6 +2155,8 @@ class EnvironmentConfig {
   core.String? resilienceMode;
 
   /// The configuration settings for software inside the environment.
+  ///
+  /// Optional.
   SoftwareConfig? softwareConfig;
 
   /// The configuration settings for the Airflow web server App Engine instance.
@@ -3726,6 +3736,8 @@ class SoftwareConfig {
   /// list\](/composer/docs/concepts/versioning/composer-versions) and
   /// \[versioning
   /// overview\](/composer/docs/concepts/versioning/composer-versioning-overview).
+  ///
+  /// Optional.
   core.String? imageVersion;
 
   /// Custom Python Package Index (PyPI) packages to be installed in the
@@ -4004,7 +4016,8 @@ class UserWorkloadsConfigMap {
   /// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
   ///
   /// For details see:
-  /// https://kubernetes.io/docs/concepts/configuration/configmap/
+  /// https://kubernetes.io/docs/concepts/configuration/configmap/ Example: {
+  /// "example_key": "example_value", "another_key": "another_value" }
   ///
   /// Optional.
   core.Map<core.String, core.String>? data;
@@ -4044,7 +4057,9 @@ class UserWorkloadsSecret {
   /// can contain sensitive values such as a password, a token, or a key.
   ///
   /// The values for all keys have to be base64-encoded strings. For details
-  /// see: https://kubernetes.io/docs/concepts/configuration/secret/
+  /// see: https://kubernetes.io/docs/concepts/configuration/secret/ Example: {
+  /// "example": "ZXhhbXBsZV92YWx1ZQ==", "another-example":
+  /// "YW5vdGhlcl9leGFtcGxlX3ZhbHVl" }
   ///
   /// Optional.
   core.Map<core.String, core.String>? data;

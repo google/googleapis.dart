@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241010",
+    "revision": "20241206",
     "rootUrl": "https://gkehub.googleapis.com/",
     "servicePath": "",
     "title": "GKE Hub API",
@@ -1353,7 +1353,7 @@
                         "operations": {
                             "methods": {
                                 "cancel": {
-                                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "gkehub.projects.locations.operations.cancel",
@@ -2210,6 +2210,16 @@
                     "format": "byte",
                     "type": "string"
                 },
+                "scopeTenancyIdentityProvider": {
+                    "description": "Optional. Output only. The identity provider for the scope-tenancy workload identity pool.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "scopeTenancyWorkloadIdentityPool": {
+                    "description": "Optional. Output only. The name of the scope-tenancy workload identity pool. This pool is set in the fleet-level feature.",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "workloadIdentityPool": {
                     "description": "Output only. The name of the workload identity pool in which `issuer` will be recognized. There is a single Workload Identity Pool per Hub that is shared between all Memberships that belong to that Hub. For a Hub hosted in {PROJECT_ID}, the workload pool format is `{PROJECT_ID}.hub.id.goog`, although this is subject to change in newer versions of this API.",
                     "readOnly": true,
@@ -2651,7 +2661,8 @@
                     "description": "Git repo configuration for the cluster."
                 },
                 "metricsGcpServiceAccountEmail": {
-                    "description": "The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.",
+                    "deprecated": true,
+                    "description": "The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA. Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.",
                     "type": "string"
                 },
                 "oci": {
@@ -2665,6 +2676,10 @@
                 "sourceFormat": {
                     "description": "Specifies whether the Config Sync Repo is in \"hierarchical\" or \"unstructured\" mode.",
                     "type": "string"
+                },
+                "stopSyncing": {
+                    "description": "Set to true to stop syncing configs for a single cluster. Default to false.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -2868,6 +2883,12 @@
                         "Syncing resources to the cluster is stopped at the cluster level."
                     ],
                     "type": "string"
+                },
+                "crCount": {
+                    "description": "Output only. The number of RootSync and RepoSync CRs in the cluster.",
+                    "format": "int32",
+                    "readOnly": true,
+                    "type": "integer"
                 },
                 "deploymentState": {
                     "$ref": "ConfigManagementConfigSyncDeploymentState",
@@ -4861,6 +4882,21 @@
                     "$ref": "Authority",
                     "description": "Optional. How to identify workloads from this Membership. See the documentation on Workload Identity for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity"
                 },
+                "clusterTier": {
+                    "description": "Output only. The tier of the cluster.",
+                    "enum": [
+                        "CLUSTER_TIER_UNSPECIFIED",
+                        "STANDARD",
+                        "ENTERPRISE"
+                    ],
+                    "enumDescriptions": [
+                        "The ClusterTier is not set.",
+                        "The ClusterTier is standard.",
+                        "The ClusterTier is enterprise."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "createTime": {
                     "description": "Output only. When the Membership was created.",
                     "format": "google-datetime",
@@ -5362,7 +5398,7 @@
                     "type": "string"
                 },
                 "cancelRequested": {
-                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
                     "readOnly": true,
                     "type": "boolean"
                 },
@@ -6311,6 +6347,20 @@
             "description": "**Service Mesh**: Spec for a single Membership for the servicemesh feature",
             "id": "ServiceMeshMembershipSpec",
             "properties": {
+                "configApi": {
+                    "description": "Optional. Specifies the API that will be used for configuring the mesh workloads.",
+                    "enum": [
+                        "CONFIG_API_UNSPECIFIED",
+                        "CONFIG_API_ISTIO",
+                        "CONFIG_API_GATEWAY"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified",
+                        "Use the Istio API for configuration.",
+                        "Use the K8s Gateway API for configuration."
+                    ],
+                    "type": "string"
+                },
                 "controlPlane": {
                     "deprecated": true,
                     "description": "Deprecated: use `management` instead Enables automatic control plane management.",

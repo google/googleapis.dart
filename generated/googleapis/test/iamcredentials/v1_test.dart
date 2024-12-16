@@ -195,12 +195,53 @@ void checkUnnamed3(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterServiceAccountAllowedLocations = 0;
+api.ServiceAccountAllowedLocations buildServiceAccountAllowedLocations() {
+  final o = api.ServiceAccountAllowedLocations();
+  buildCounterServiceAccountAllowedLocations++;
+  if (buildCounterServiceAccountAllowedLocations < 3) {
+    o.encodedLocations = 'foo';
+    o.locations = buildUnnamed3();
+  }
+  buildCounterServiceAccountAllowedLocations--;
+  return o;
+}
+
+void checkServiceAccountAllowedLocations(api.ServiceAccountAllowedLocations o) {
+  buildCounterServiceAccountAllowedLocations++;
+  if (buildCounterServiceAccountAllowedLocations < 3) {
+    unittest.expect(
+      o.encodedLocations!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3(o.locations!);
+  }
+  buildCounterServiceAccountAllowedLocations--;
+}
+
+core.List<core.String> buildUnnamed4() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed4(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterSignBlobRequest = 0;
 api.SignBlobRequest buildSignBlobRequest() {
   final o = api.SignBlobRequest();
   buildCounterSignBlobRequest++;
   if (buildCounterSignBlobRequest < 3) {
-    o.delegates = buildUnnamed3();
+    o.delegates = buildUnnamed4();
     o.payload = 'foo';
   }
   buildCounterSignBlobRequest--;
@@ -210,7 +251,7 @@ api.SignBlobRequest buildSignBlobRequest() {
 void checkSignBlobRequest(api.SignBlobRequest o) {
   buildCounterSignBlobRequest++;
   if (buildCounterSignBlobRequest < 3) {
-    checkUnnamed3(o.delegates!);
+    checkUnnamed4(o.delegates!);
     unittest.expect(
       o.payload!,
       unittest.equals('foo'),
@@ -246,12 +287,12 @@ void checkSignBlobResponse(api.SignBlobResponse o) {
   buildCounterSignBlobResponse--;
 }
 
-core.List<core.String> buildUnnamed4() => [
+core.List<core.String> buildUnnamed5() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed4(core.List<core.String> o) {
+void checkUnnamed5(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -268,7 +309,7 @@ api.SignJwtRequest buildSignJwtRequest() {
   final o = api.SignJwtRequest();
   buildCounterSignJwtRequest++;
   if (buildCounterSignJwtRequest < 3) {
-    o.delegates = buildUnnamed4();
+    o.delegates = buildUnnamed5();
     o.payload = 'foo';
   }
   buildCounterSignJwtRequest--;
@@ -278,7 +319,7 @@ api.SignJwtRequest buildSignJwtRequest() {
 void checkSignJwtRequest(api.SignJwtRequest o) {
   buildCounterSignJwtRequest++;
   if (buildCounterSignJwtRequest < 3) {
-    checkUnnamed4(o.delegates!);
+    checkUnnamed5(o.delegates!);
     unittest.expect(
       o.payload!,
       unittest.equals('foo'),
@@ -352,6 +393,16 @@ void main() {
       final od = api.GenerateIdTokenResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGenerateIdTokenResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ServiceAccountAllowedLocations', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildServiceAccountAllowedLocations();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ServiceAccountAllowedLocations.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkServiceAccountAllowedLocations(od);
     });
   });
 
@@ -511,6 +562,60 @@ void main() {
       final response = await res.generateIdToken(arg_request, arg_name,
           $fields: arg_$fields);
       checkGenerateIdTokenResponse(response as api.GenerateIdTokenResponse);
+    });
+
+    unittest.test('method--getAllowedLocations', () async {
+      final mock = HttpServerMock();
+      final res = api.IAMCredentialsApi(mock).projects.serviceAccounts;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildServiceAccountAllowedLocations());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getAllowedLocations(arg_name, $fields: arg_$fields);
+      checkServiceAccountAllowedLocations(
+          response as api.ServiceAccountAllowedLocations);
     });
 
     unittest.test('method--signBlob', () async {

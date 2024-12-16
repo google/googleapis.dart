@@ -1011,6 +1011,148 @@ class ProjectsLocationsEnrollmentsResource {
   ProjectsLocationsEnrollmentsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Create a new Enrollment in a particular project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent collection in which to add this
+  /// enrollment.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [enrollmentId] - Required. The user-provided ID to be assigned to the
+  /// Enrollment. It should match the format
+  /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and preview the
+  /// review, but do not post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    Enrollment request,
+    core.String parent, {
+    core.String? enrollmentId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (enrollmentId != null) 'enrollmentId': [enrollmentId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/enrollments';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a single Enrollment.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Enrollment to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/enrollments/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, and the Enrollment is not
+  /// found, the request will succeed but no action will be taken on the server.
+  ///
+  /// [etag] - Optional. If provided, the Enrollment will only be deleted if the
+  /// etag matches the current etag on the resource.
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and preview the
+  /// review, but do not post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? etag,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (etag != null) 'etag': [etag],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a single Enrollment.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Enrollment to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/enrollments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Enrollment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Enrollment> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Enrollment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -1066,6 +1208,127 @@ class ProjectsLocationsEnrollmentsResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List Enrollments.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent collection to list triggers on.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filter field that the list request will filter
+  /// on. Possible filtersare described in https://google.aip.dev/160.
+  ///
+  /// [orderBy] - Optional. The sorting order of the resources returned. Value
+  /// should be a comma-separated list of fields. The default sorting order is
+  /// ascending. To specify descending order for a field, append a `desc`
+  /// suffix; for example: `name desc, update_time`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return on each
+  /// page. Note: The service may send fewer.
+  ///
+  /// [pageToken] - Optional. The page token; provide the value from the
+  /// `next_page_token` field in a previous call to retrieve the subsequent
+  /// page. When paginating, all other parameters provided must match the
+  /// previous call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListEnrollmentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListEnrollmentsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/enrollments';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListEnrollmentsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update a single Enrollment.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Resource name of the form
+  /// projects/{project}/locations/{location}/enrollments/{enrollment}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/enrollments/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, and the Enrollment is not
+  /// found, a new Enrollment will be created. In this situation, `update_mask`
+  /// is ignored.
+  ///
+  /// [updateMask] - Optional. The fields to be updated; only fields explicitly
+  /// provided are updated. If no field mask is provided, all provided fields in
+  /// the request are updated. To update all fields, provide a field mask of
+  /// "*".
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and preview the
+  /// review, but do not post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    Enrollment request,
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1173,6 +1436,148 @@ class ProjectsLocationsGoogleApiSourcesResource {
   ProjectsLocationsGoogleApiSourcesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Create a new GoogleApiSource in a particular project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent collection in which to add this google api
+  /// source.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [googleApiSourceId] - Required. The user-provided ID to be assigned to the
+  /// GoogleApiSource. It should match the format
+  /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and preview the
+  /// review, but do not post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleApiSource request,
+    core.String parent, {
+    core.String? googleApiSourceId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (googleApiSourceId != null) 'googleApiSourceId': [googleApiSourceId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/googleApiSources';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a single GoogleApiSource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the GoogleApiSource to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/googleApiSources/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, and the MessageBus is not
+  /// found, the request will succeed but no action will be taken on the server.
+  ///
+  /// [etag] - Optional. If provided, the MessageBus will only be deleted if the
+  /// etag matches the current etag on the resource.
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and preview the
+  /// review, but do not post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? etag,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (etag != null) 'etag': [etag],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a single GoogleApiSource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the google api source to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/googleApiSources/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleApiSource].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleApiSource> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleApiSource.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -1228,6 +1633,127 @@ class ProjectsLocationsGoogleApiSourcesResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List GoogleApiSources.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent collection to list GoogleApiSources on.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filter field that the list request will filter
+  /// on. Possible filtersare described in https://google.aip.dev/160.
+  ///
+  /// [orderBy] - Optional. The sorting order of the resources returned. Value
+  /// should be a comma-separated list of fields. The default sorting order is
+  /// ascending. To specify descending order for a field, append a `desc`
+  /// suffix; for example: `name desc, update_time`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return on each
+  /// page. Note: The service may send fewer.
+  ///
+  /// [pageToken] - Optional. The page token; provide the value from the
+  /// `next_page_token` field in a previous call to retrieve the subsequent
+  /// page. When paginating, all other parameters provided must match the
+  /// previous call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGoogleApiSourcesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGoogleApiSourcesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/googleApiSources';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListGoogleApiSourcesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update a single GoogleApiSource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Resource name of the form
+  /// projects/{project}/locations/{location}/googleApiSources/{google_api_source}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/googleApiSources/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, and the GoogleApiSource is not
+  /// found, a new GoogleApiSource will be created. In this situation,
+  /// `update_mask` is ignored.
+  ///
+  /// [updateMask] - Optional. The fields to be updated; only fields explicitly
+  /// provided are updated. If no field mask is provided, all provided fields in
+  /// the request are updated. To update all fields, provide a field mask of
+  /// "*".
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and preview the
+  /// review, but do not post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GoogleApiSource request,
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1335,6 +1861,148 @@ class ProjectsLocationsMessageBusesResource {
   ProjectsLocationsMessageBusesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Create a new MessageBus in a particular project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent collection in which to add this message
+  /// bus.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [messageBusId] - Required. The user-provided ID to be assigned to the
+  /// MessageBus. It should match the format
+  /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and preview the
+  /// review, but do not post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    MessageBus request,
+    core.String parent, {
+    core.String? messageBusId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (messageBusId != null) 'messageBusId': [messageBusId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/messageBuses';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a single message bus.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the MessageBus to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/messageBuses/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, and the MessageBus is not
+  /// found, the request will succeed but no action will be taken on the server.
+  ///
+  /// [etag] - Optional. If provided, the MessageBus will only be deleted if the
+  /// etag matches the current etag on the resource.
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and preview the
+  /// review, but do not post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? etag,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (etag != null) 'etag': [etag],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a single MessageBus.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the message bus to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/messageBuses/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MessageBus].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MessageBus> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return MessageBus.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -1390,6 +2058,176 @@ class ProjectsLocationsMessageBusesResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List message buses.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent collection to list message buses on.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filter field that the list request will filter
+  /// on. Possible filtersare described in https://google.aip.dev/160.
+  ///
+  /// [orderBy] - Optional. The sorting order of the resources returned. Value
+  /// should be a comma-separated list of fields. The default sorting order is
+  /// ascending. To specify descending order for a field, append a `desc`
+  /// suffix; for example: `name desc, update_time`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return on each
+  /// page. Note: The service may send fewer.
+  ///
+  /// [pageToken] - Optional. The page token; provide the value from the
+  /// `next_page_token` field in a previous call to retrieve the subsequent
+  /// page. When paginating, all other parameters provided must match the
+  /// previous call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMessageBusesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMessageBusesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/messageBuses';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMessageBusesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List message bus enrollments.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent message bus to list enrollments on.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/messageBuses/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return on each
+  /// page. Note: The service may send fewer.
+  ///
+  /// [pageToken] - Optional. The page token; provide the value from the
+  /// `next_page_token` field in a previous call to retrieve the subsequent
+  /// page. When paginating, all other parameters provided must match the
+  /// previous call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMessageBusEnrollmentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMessageBusEnrollmentsResponse> listEnrollments(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':listEnrollments';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMessageBusEnrollmentsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update a single message bus.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Resource name of the form
+  /// projects/{project}/locations/{location}/messageBuses/{message_bus}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/messageBuses/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, and the MessageBus is not
+  /// found, a new MessageBus will be created. In this situation, `update_mask`
+  /// is ignored.
+  ///
+  /// [updateMask] - Optional. The fields to be updated; only fields explicitly
+  /// provided are updated. If no field mask is provided, all provided fields in
+  /// the request are updated. To update all fields, provide a field mask of
+  /// "*".
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and preview the
+  /// review, but do not post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    MessageBus request,
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1505,8 +2343,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1684,6 +2522,145 @@ class ProjectsLocationsPipelinesResource {
   ProjectsLocationsPipelinesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Create a new Pipeline in a particular project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent collection in which to add this pipeline.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pipelineId] - Required. The user-provided ID to be assigned to the
+  /// Pipeline. It should match the format `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and preview the
+  /// review, but do not post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    Pipeline request,
+    core.String parent, {
+    core.String? pipelineId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pipelineId != null) 'pipelineId': [pipelineId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/pipelines';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a single pipeline.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Pipeline to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/pipelines/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, and the Pipeline is not found,
+  /// the request will succeed but no action will be taken on the server.
+  ///
+  /// [etag] - Optional. If provided, the Pipeline will only be deleted if the
+  /// etag matches the current etag on the resource.
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and preview the
+  /// review, but do not post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? etag,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (etag != null) 'etag': [etag],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a single Pipeline.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the pipeline to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/pipelines/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Pipeline].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Pipeline> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Pipeline.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -1739,6 +2716,128 @@ class ProjectsLocationsPipelinesResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List pipelines.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent collection to list pipelines on.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filter field that the list request will filter
+  /// on. Possible filters are described in https://google.aip.dev/160.
+  ///
+  /// [orderBy] - Optional. The sorting order of the resources returned. Value
+  /// should be a comma-separated list of fields. The default sorting order is
+  /// ascending. To specify descending order for a field, append a `desc`
+  /// suffix; for example: `name desc, update_time`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return on each
+  /// page. Note: The service may send fewer.
+  ///
+  /// [pageToken] - Optional. The page token; provide the value from the
+  /// `next_page_token` field in a previous call to retrieve the subsequent
+  /// page. When paginating, all other parameters provided must match the
+  /// previous call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListPipelinesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPipelinesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/pipelines';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListPipelinesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update a single pipeline.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the Pipeline. Must be unique
+  /// within the location of the project and must be in
+  /// `projects/{project}/locations/{location}/pipelines/{pipeline}` format.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/pipelines/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, and the Pipeline is not found,
+  /// a new Pipeline will be created. In this situation, `update_mask` is
+  /// ignored.
+  ///
+  /// [updateMask] - Optional. The fields to be updated; only fields explicitly
+  /// provided are updated. If no field mask is provided, all provided fields in
+  /// the request are updated. To update all fields, provide a field mask of
+  /// "*".
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and preview the
+  /// review, but do not post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    Pipeline request,
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2550,6 +3649,11 @@ class Channel {
   /// /cryptoKeys / * `.
   core.String? cryptoKeyName;
 
+  /// Resource labels.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
   /// The resource name of the channel.
   ///
   /// Must be unique within the location on the project and must be in
@@ -2617,6 +3721,7 @@ class Channel {
     this.activationToken,
     this.createTime,
     this.cryptoKeyName,
+    this.labels,
     this.name,
     this.provider,
     this.pubsubTopic,
@@ -2631,6 +3736,13 @@ class Channel {
           activationToken: json_['activationToken'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           cryptoKeyName: json_['cryptoKeyName'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           provider: json_['provider'] as core.String?,
           pubsubTopic: json_['pubsubTopic'] as core.String?,
@@ -2644,6 +3756,7 @@ class Channel {
         if (activationToken != null) 'activationToken': activationToken!,
         if (createTime != null) 'createTime': createTime!,
         if (cryptoKeyName != null) 'cryptoKeyName': cryptoKeyName!,
+        if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (provider != null) 'provider': provider!,
         if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
@@ -2681,6 +3794,11 @@ class ChannelConnection {
   /// Output only.
   core.String? createTime;
 
+  /// Resource labels.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
   /// The name of the connection.
   ///
   /// Required.
@@ -2702,6 +3820,7 @@ class ChannelConnection {
     this.activationToken,
     this.channel,
     this.createTime,
+    this.labels,
     this.name,
     this.uid,
     this.updateTime,
@@ -2712,6 +3831,13 @@ class ChannelConnection {
           activationToken: json_['activationToken'] as core.String?,
           channel: json_['channel'] as core.String?,
           createTime: json_['createTime'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
@@ -2721,6 +3847,7 @@ class ChannelConnection {
         if (activationToken != null) 'activationToken': activationToken!,
         if (channel != null) 'channel': channel!,
         if (createTime != null) 'createTime': createTime!,
+        if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -2860,6 +3987,136 @@ class Destination {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// An enrollment represents a subscription for messages on a particular message
+/// bus.
+///
+/// It defines a matching criteria for messages on the bus and the subscriber
+/// endpoint where matched messages should be delivered.
+class Enrollment {
+  /// Resource annotations.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? annotations;
+
+  /// A CEL expression identifying which messages this enrollment applies to.
+  ///
+  /// Required.
+  core.String? celMatch;
+
+  /// The creation time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Destination is the Pipeline that the Enrollment is delivering to.
+  ///
+  /// It must point to the full resource name of a Pipeline. Format:
+  /// "projects/{PROJECT_ID}/locations/{region}/pipelines/{PIPELINE_ID)"
+  ///
+  /// Required.
+  core.String? destination;
+
+  /// Resource display name.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and might be sent only on update and delete requests to ensure
+  /// that the client has an up-to-date value before proceeding.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Resource labels.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Resource name of the message bus identifying the source of the messages.
+  ///
+  /// It matches the form
+  /// projects/{project}/locations/{location}/messageBuses/{messageBus}.
+  ///
+  /// Required.
+  core.String? messageBus;
+
+  /// Identifier.
+  ///
+  /// Resource name of the form
+  /// projects/{project}/locations/{location}/enrollments/{enrollment}
+  core.String? name;
+
+  /// Server assigned unique identifier for the channel.
+  ///
+  /// The value is a UUID4 string and guaranteed to remain unchanged until the
+  /// resource is deleted.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The last-modified time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Enrollment({
+    this.annotations,
+    this.celMatch,
+    this.createTime,
+    this.destination,
+    this.displayName,
+    this.etag,
+    this.labels,
+    this.messageBus,
+    this.name,
+    this.uid,
+    this.updateTime,
+  });
+
+  Enrollment.fromJson(core.Map json_)
+      : this(
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          celMatch: json_['celMatch'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          destination: json_['destination'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          messageBus: json_['messageBus'] as core.String?,
+          name: json_['name'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (celMatch != null) 'celMatch': celMatch!,
+        if (createTime != null) 'createTime': createTime!,
+        if (destination != null) 'destination': destination!,
+        if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (messageBus != null) 'messageBus': messageBus!,
+        if (name != null) 'name': name!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
 
 /// Filters events based on exact matches on the CloudEvents attributes.
 class EventFilter {
@@ -3100,6 +4357,136 @@ class GKE {
       };
 }
 
+/// A GoogleApiSource represents a subscription of 1P events from a MessageBus.
+class GoogleApiSource {
+  /// Resource annotations.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? annotations;
+
+  /// The creation time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Resource name of a KMS crypto key (managed by the user) used to
+  /// encrypt/decrypt their event data.
+  ///
+  /// It must match the pattern `projects / * /locations / * /keyRings / *
+  /// /cryptoKeys / * `.
+  ///
+  /// Optional.
+  core.String? cryptoKeyName;
+
+  /// Destination is the message bus that the GoogleApiSource is delivering to.
+  ///
+  /// It must be point to the full resource name of a MessageBus. Format:
+  /// "projects/{PROJECT_ID}/locations/{region}/messagesBuses/{MESSAGE_BUS_ID)
+  ///
+  /// Required.
+  core.String? destination;
+
+  /// Resource display name.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and might be sent only on update and delete requests to ensure
+  /// that the client has an up-to-date value before proceeding.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Resource labels.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Config to control Platform logging for the GoogleApiSource.
+  ///
+  /// Optional.
+  LoggingConfig? loggingConfig;
+
+  /// Identifier.
+  ///
+  /// Resource name of the form
+  /// projects/{project}/locations/{location}/googleApiSources/{google_api_source}
+  core.String? name;
+
+  /// Server assigned unique identifier for the channel.
+  ///
+  /// The value is a UUID4 string and guaranteed to remain unchanged until the
+  /// resource is deleted.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The last-modified time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleApiSource({
+    this.annotations,
+    this.createTime,
+    this.cryptoKeyName,
+    this.destination,
+    this.displayName,
+    this.etag,
+    this.labels,
+    this.loggingConfig,
+    this.name,
+    this.uid,
+    this.updateTime,
+  });
+
+  GoogleApiSource.fromJson(core.Map json_)
+      : this(
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          createTime: json_['createTime'] as core.String?,
+          cryptoKeyName: json_['cryptoKeyName'] as core.String?,
+          destination: json_['destination'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          loggingConfig: json_.containsKey('loggingConfig')
+              ? LoggingConfig.fromJson(
+                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_['name'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (createTime != null) 'createTime': createTime!,
+        if (cryptoKeyName != null) 'cryptoKeyName': cryptoKeyName!,
+        if (destination != null) 'destination': destination!,
+        if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!,
+        if (name != null) 'name': name!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// A GoogleChannelConfig is a resource that stores the custom settings
 /// respected by Eventarc first-party triggers in the matching region.
 ///
@@ -3146,6 +4533,619 @@ class GoogleChannelConfig {
         if (cryptoKeyName != null) 'cryptoKeyName': cryptoKeyName!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Represents a target of an invocation over HTTP.
+class GoogleCloudEventarcV1PipelineDestination {
+  /// An authentication config used to authenticate message requests, such that
+  /// destinations can verify the source.
+  ///
+  /// For example, this can be used with private GCP destinations that require
+  /// GCP credentials to access like Cloud Run. This field is optional and
+  /// should be set only by users interested in authenticated push
+  ///
+  /// Optional.
+  GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig?
+      authenticationConfig;
+
+  /// An HTTP endpoint destination described by an URI.
+  ///
+  /// If a DNS FQDN is provided as the endpoint, Pipeline will create a peering
+  /// zone to the consumer VPC and forward DNS requests to the VPC specified by
+  /// network config to resolve the service endpoint. See:
+  /// https://cloud.google.com/dns/docs/zones/zones-overview#peering_zones
+  ///
+  /// Optional.
+  GoogleCloudEventarcV1PipelineDestinationHttpEndpoint? httpEndpoint;
+
+  /// The resource name of the Message Bus to which events should be published.
+  ///
+  /// The Message Bus resource should exist in the same project as the Pipeline.
+  /// Format:
+  /// `projects/{project}/locations/{location}/messageBuses/{message_bus}`
+  ///
+  /// Optional.
+  core.String? messageBus;
+
+  /// Network config is used to configure how Pipeline resolves and connects to
+  /// a destination.
+  ///
+  /// Optional.
+  GoogleCloudEventarcV1PipelineDestinationNetworkConfig? networkConfig;
+
+  /// The message format before it is delivered to the destination.
+  ///
+  /// If not set, the message will be delivered in the format it was originally
+  /// delivered to the Pipeline. This field can only be set if
+  /// Pipeline.input_payload_format is also set.
+  ///
+  /// Optional.
+  GoogleCloudEventarcV1PipelineMessagePayloadFormat? outputPayloadFormat;
+
+  /// The resource name of the Pub/Sub topic to which events should be
+  /// published.
+  ///
+  /// Format: `projects/{project}/locations/{location}/topics/{topic}`
+  ///
+  /// Optional.
+  core.String? topic;
+
+  /// The resource name of the Workflow whose Executions are triggered by the
+  /// events.
+  ///
+  /// The Workflow resource should be deployed in the same project as the
+  /// Pipeline. Format:
+  /// `projects/{project}/locations/{location}/workflows/{workflow}`
+  ///
+  /// Optional.
+  core.String? workflow;
+
+  GoogleCloudEventarcV1PipelineDestination({
+    this.authenticationConfig,
+    this.httpEndpoint,
+    this.messageBus,
+    this.networkConfig,
+    this.outputPayloadFormat,
+    this.topic,
+    this.workflow,
+  });
+
+  GoogleCloudEventarcV1PipelineDestination.fromJson(core.Map json_)
+      : this(
+          authenticationConfig: json_.containsKey('authenticationConfig')
+              ? GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig
+                  .fromJson(json_['authenticationConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          httpEndpoint: json_.containsKey('httpEndpoint')
+              ? GoogleCloudEventarcV1PipelineDestinationHttpEndpoint.fromJson(
+                  json_['httpEndpoint'] as core.Map<core.String, core.dynamic>)
+              : null,
+          messageBus: json_['messageBus'] as core.String?,
+          networkConfig: json_.containsKey('networkConfig')
+              ? GoogleCloudEventarcV1PipelineDestinationNetworkConfig.fromJson(
+                  json_['networkConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          outputPayloadFormat: json_.containsKey('outputPayloadFormat')
+              ? GoogleCloudEventarcV1PipelineMessagePayloadFormat.fromJson(
+                  json_['outputPayloadFormat']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          topic: json_['topic'] as core.String?,
+          workflow: json_['workflow'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authenticationConfig != null)
+          'authenticationConfig': authenticationConfig!,
+        if (httpEndpoint != null) 'httpEndpoint': httpEndpoint!,
+        if (messageBus != null) 'messageBus': messageBus!,
+        if (networkConfig != null) 'networkConfig': networkConfig!,
+        if (outputPayloadFormat != null)
+          'outputPayloadFormat': outputPayloadFormat!,
+        if (topic != null) 'topic': topic!,
+        if (workflow != null) 'workflow': workflow!,
+      };
+}
+
+/// Represents a config used to authenticate message requests.
+class GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig {
+  /// This authenticate method will apply Google OIDC tokens signed by a GCP
+  /// service account to the requests.
+  ///
+  /// Optional.
+  GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken?
+      googleOidc;
+
+  /// If specified, an
+  /// [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
+  /// will be generated and attached as an `Authorization` header in the HTTP
+  /// request.
+  ///
+  /// This type of authorization should generally only be used when calling
+  /// Google APIs hosted on *.googleapis.com.
+  ///
+  /// Optional.
+  GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken?
+      oauthToken;
+
+  GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig({
+    this.googleOidc,
+    this.oauthToken,
+  });
+
+  GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig.fromJson(
+      core.Map json_)
+      : this(
+          googleOidc: json_.containsKey('googleOidc')
+              ? GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken
+                  .fromJson(json_['googleOidc']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          oauthToken: json_.containsKey('oauthToken')
+              ? GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken
+                  .fromJson(json_['oauthToken']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (googleOidc != null) 'googleOidc': googleOidc!,
+        if (oauthToken != null) 'oauthToken': oauthToken!,
+      };
+}
+
+/// Contains information needed for generating an
+/// [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
+///
+/// This type of authorization should generally only be used when calling Google
+/// APIs hosted on *.googleapis.com.
+class GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken {
+  /// OAuth scope to be used for generating OAuth access token.
+  ///
+  /// If not specified, "https://www.googleapis.com/auth/cloud-platform" will be
+  /// used.
+  ///
+  /// Optional.
+  core.String? scope;
+
+  /// Service account email used to generate the
+  /// [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
+  ///
+  /// The principal who calls this API must have iam.serviceAccounts.actAs
+  /// permission in the service account. See
+  /// https://cloud.google.com/iam/docs/understanding-service-accounts for more
+  /// information. Eventarc service agents must have
+  /// roles/roles/iam.serviceAccountTokenCreator role to allow Pipeline to
+  /// create OAuth2 tokens for authenticated requests.
+  ///
+  /// Required.
+  core.String? serviceAccount;
+
+  GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken({
+    this.scope,
+    this.serviceAccount,
+  });
+
+  GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken.fromJson(
+      core.Map json_)
+      : this(
+          scope: json_['scope'] as core.String?,
+          serviceAccount: json_['serviceAccount'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scope != null) 'scope': scope!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+      };
+}
+
+/// Represents a config used to authenticate with a Google OIDC token using a
+/// GCP service account.
+///
+/// Use this authentication method to invoke your Cloud Run and Cloud Functions
+/// destinations or HTTP endpoints that support Google OIDC.
+class GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken {
+  /// Audience to be used to generate the OIDC Token.
+  ///
+  /// The audience claim identifies the recipient that the JWT is intended for.
+  /// If unspecified, the destination URI will be used.
+  ///
+  /// Optional.
+  core.String? audience;
+
+  /// Service account email used to generate the OIDC Token.
+  ///
+  /// The principal who calls this API must have iam.serviceAccounts.actAs
+  /// permission in the service account. See
+  /// https://cloud.google.com/iam/docs/understanding-service-accounts for more
+  /// information. Eventarc service agents must have
+  /// roles/roles/iam.serviceAccountTokenCreator role to allow the Pipeline to
+  /// create OpenID tokens for authenticated requests.
+  ///
+  /// Required.
+  core.String? serviceAccount;
+
+  GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken({
+    this.audience,
+    this.serviceAccount,
+  });
+
+  GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken.fromJson(
+      core.Map json_)
+      : this(
+          audience: json_['audience'] as core.String?,
+          serviceAccount: json_['serviceAccount'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (audience != null) 'audience': audience!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+      };
+}
+
+/// Represents a HTTP endpoint destination.
+class GoogleCloudEventarcV1PipelineDestinationHttpEndpoint {
+  /// The CEL expression used to modify how the destination-bound HTTP request
+  /// is constructed.
+  ///
+  /// If a binding expression is not specified here, the message is treated as a
+  /// CloudEvent and is mapped to the HTTP request according to the CloudEvent
+  /// HTTP Protocol Binding Binary Content Mode
+  /// (https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/http-protocol-binding.md#31-binary-content-mode).
+  /// In this representation, all fields except the `data` and `datacontenttype`
+  /// field on the message are mapped to HTTP request headers with a prefix of
+  /// `ce-`. To construct the HTTP request payload and the value of the
+  /// content-type HTTP header, the payload format is defined as follows: 1) Use
+  /// the output_payload_format_type on the Pipeline.Destination if it is set,
+  /// else: 2) Use the input_payload_format_type on the Pipeline if it is set,
+  /// else: 3) Treat the payload as opaque binary data. The `data` field of the
+  /// message is converted to the payload format or left as-is for case 3) and
+  /// then attached as the payload of the HTTP request. The `content-type`
+  /// header on the HTTP request is set to the payload format type or left empty
+  /// for case 3). However, if a mediation has updated the `datacontenttype`
+  /// field on the message so that it is not the same as the payload format type
+  /// but it is still a prefix of the payload format type, then the
+  /// `content-type` header on the HTTP request is set to this `datacontenttype`
+  /// value. For example, if the `datacontenttype` is "application/json" and the
+  /// payload format type is "application/json; charset=utf-8", then the
+  /// `content-type` header on the HTTP request is set to "application/json;
+  /// charset=utf-8". If a non-empty binding expression is specified then this
+  /// expression is used to modify the default CloudEvent HTTP Protocol Binding
+  /// Binary Content representation. The result of the CEL expression must be a
+  /// map of key/value pairs which is used as follows: - If a map named
+  /// `headers` exists on the result of the expression, then its key/value pairs
+  /// are directly mapped to the HTTP request headers. The headers values are
+  /// constructed from the corresponding value type's canonical representation.
+  /// If the `headers` field doesn't exist then the resulting HTTP request will
+  /// be the headers of the CloudEvent HTTP Binding Binary Content Mode
+  /// representation of the final message. Note: If the specified binding
+  /// expression, has updated the `datacontenttype` field on the message so that
+  /// it is not the same as the payload format type but it is still a prefix of
+  /// the payload format type, then the `content-type` header in the `headers`
+  /// map is set to this `datacontenttype` value. - If a field named `body`
+  /// exists on the result of the expression then its value is directly mapped
+  /// to the body of the request. If the value of the `body` field is of type
+  /// bytes or string then it is used for the HTTP request body as-is, with no
+  /// conversion. If the body field is of any other type then it is converted to
+  /// a JSON string. If the body field does not exist then the resulting payload
+  /// of the HTTP request will be data value of the CloudEvent HTTP Binding
+  /// Binary Content Mode representation of the final message as described
+  /// earlier. - Any other fields in the resulting expression will be ignored.
+  /// The CEL expression may access the incoming CloudEvent message in its
+  /// definition, as follows: - The `data` field of the incoming CloudEvent
+  /// message can be accessed using the `message.data` value. Subfields of
+  /// `message.data` may also be accessed if an input_payload_format has been
+  /// specified on the Pipeline. - Each attribute of the incoming CloudEvent
+  /// message can be accessed using the `message.` value, where is replaced with
+  /// the name of the attribute. - Existing headers can be accessed in the CEL
+  /// expression using the `headers` variable. The `headers` variable defines a
+  /// map of key/value pairs corresponding to the HTTP headers of the CloudEvent
+  /// HTTP Binding Binary Content Mode representation of the final message as
+  /// described earlier. For example, the following CEL expression can be used
+  /// to construct an HTTP request by adding an additional header to the HTTP
+  /// headers of the CloudEvent HTTP Binding Binary Content Mode representation
+  /// of the final message and by overwriting the body of the request: ``` {
+  /// "headers": headers.merge({"new-header-key": "new-header-value"}), "body":
+  /// "new-body" } ``` - The default binding for the message payload can be
+  /// accessed using the `body` variable. It conatins a string representation of
+  /// the message payload in the format specified by the `output_payload_format`
+  /// field. If the `input_payload_format` field is not set, the `body` variable
+  /// contains the same message payload bytes that were published. Additionally,
+  /// the following CEL extension functions are provided for use in this CEL
+  /// expression: - toBase64Url: map.toBase64Url() -\> string - Converts a
+  /// CelValue to a base64url encoded string - toJsonString: map.toJsonString()
+  /// -\> string - Converts a CelValue to a JSON string - merge:
+  /// map1.merge(map2) -\> map3 - Merges the passed CEL map with the existing
+  /// CEL map the function is applied to. - If the same key exists in both maps,
+  /// if the key's value is type map both maps are merged else the value from
+  /// the passed map is used. - denormalize: map.denormalize() -\> map -
+  /// Denormalizes a CEL map such that every value of type map or key in the map
+  /// is expanded to return a single level map. - The resulting keys are "."
+  /// separated indices of the map keys. - For example: { "a": 1, "b": { "c": 2,
+  /// "d": 3 } "e": \[4, 5\] } .denormalize() -\> { "a": 1, "b.c": 2, "b.d": 3,
+  /// "e.0": 4, "e.1": 5 } - setField: map.setField(key, value) -\> message -
+  /// Sets the field of the message with the given key to the given value. - If
+  /// the field is not present it will be added. - If the field is present it
+  /// will be overwritten. - The key can be a dot separated path to set a field
+  /// in a nested message. - Key must be of type string. - Value may be any
+  /// valid type. - removeFields: map.removeFields(\[key1, key2, ...\]) -\>
+  /// message - Removes the fields of the map with the given keys. - The keys
+  /// can be a dot separated path to remove a field in a nested message. - If a
+  /// key is not found it will be ignored. - Keys must be of type string. -
+  /// toMap: \[map1, map2, ...\].toMap() -\> map - Converts a CEL list of CEL
+  /// maps to a single CEL map - toCloudEventJsonWithPayloadFormat:
+  /// message.toCloudEventJsonWithPayloadFormat() -\> map - Converts a message
+  /// to the corresponding structure of JSON format for CloudEvents. - It
+  /// converts `data` to destination payload format specified in
+  /// `output_payload_format`. If `output_payload_format` is not set, the data
+  /// will remain unchanged. - It also sets the corresponding datacontenttype of
+  /// the CloudEvent, as indicated by `output_payload_format`. If no
+  /// `output_payload_format` is set it will use the value of the
+  /// "datacontenttype" attribute on the CloudEvent if present, else remove
+  /// "datacontenttype" attribute. - This function expects that the content of
+  /// the message will adhere to the standard CloudEvent format. If it doesn't
+  /// then this function will fail. - The result is a CEL map that corresponds
+  /// to the JSON representation of the CloudEvent. To convert that data to a
+  /// JSON string it can be chained with the toJsonString function. The Pipeline
+  /// expects that the message it receives adheres to the standard CloudEvent
+  /// format. If it doesn't then the outgoing message request may fail with a
+  /// persistent error.
+  ///
+  /// Optional.
+  core.String? messageBindingTemplate;
+
+  /// The URI of the HTTP enpdoint.
+  ///
+  /// The value must be a RFC2396 URI string. Examples:
+  /// `https://svc.us-central1.p.local:8080/route`. Only the HTTPS protocol is
+  /// supported.
+  ///
+  /// Required.
+  core.String? uri;
+
+  GoogleCloudEventarcV1PipelineDestinationHttpEndpoint({
+    this.messageBindingTemplate,
+    this.uri,
+  });
+
+  GoogleCloudEventarcV1PipelineDestinationHttpEndpoint.fromJson(core.Map json_)
+      : this(
+          messageBindingTemplate:
+              json_['messageBindingTemplate'] as core.String?,
+          uri: json_['uri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (messageBindingTemplate != null)
+          'messageBindingTemplate': messageBindingTemplate!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Represents a network config to be used for destination resolution and
+/// connectivity.
+class GoogleCloudEventarcV1PipelineDestinationNetworkConfig {
+  /// Name of the NetworkAttachment that allows access to the consumer VPC.
+  ///
+  /// Format:
+  /// `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+  ///
+  /// Required.
+  core.String? networkAttachment;
+
+  GoogleCloudEventarcV1PipelineDestinationNetworkConfig({
+    this.networkAttachment,
+  });
+
+  GoogleCloudEventarcV1PipelineDestinationNetworkConfig.fromJson(core.Map json_)
+      : this(
+          networkAttachment: json_['networkAttachment'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (networkAttachment != null) 'networkAttachment': networkAttachment!,
+      };
+}
+
+/// Mediation defines different ways to modify the Pipeline.
+class GoogleCloudEventarcV1PipelineMediation {
+  /// How the Pipeline is to transform messages
+  ///
+  /// Optional.
+  GoogleCloudEventarcV1PipelineMediationTransformation? transformation;
+
+  GoogleCloudEventarcV1PipelineMediation({
+    this.transformation,
+  });
+
+  GoogleCloudEventarcV1PipelineMediation.fromJson(core.Map json_)
+      : this(
+          transformation: json_.containsKey('transformation')
+              ? GoogleCloudEventarcV1PipelineMediationTransformation.fromJson(
+                  json_['transformation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (transformation != null) 'transformation': transformation!,
+      };
+}
+
+/// Transformation defines the way to transform an incoming message.
+class GoogleCloudEventarcV1PipelineMediationTransformation {
+  /// The CEL expression template to apply to transform messages.
+  ///
+  /// The following CEL extension functions are provided for use in this CEL
+  /// expression: - merge: map1.merge(map2) -\> map3 - Merges the passed CEL map
+  /// with the existing CEL map the function is applied to. - If the same key
+  /// exists in both maps, if the key's value is type map both maps are merged
+  /// else the value from the passed map is used. - denormalize:
+  /// map.denormalize() -\> map - Denormalizes a CEL map such that every value
+  /// of type map or key in the map is expanded to return a single level map. -
+  /// The resulting keys are "." separated indices of the map keys. - For
+  /// example: { "a": 1, "b": { "c": 2, "d": 3 } "e": \[4, 5\] } .denormalize()
+  /// -\> { "a": 1, "b.c": 2, "b.d": 3, "e.0": 4, "e.1": 5 } - setField:
+  /// map.setField(key, value) -\> message - Sets the field of the message with
+  /// the given key to the given value. - If the field is not present it will be
+  /// added. - If the field is present it will be overwritten. - The key can be
+  /// a dot separated path to set a field in a nested message. - Key must be of
+  /// type string. - Value may be any valid type. - removeFields:
+  /// map.removeFields(\[key1, key2, ...\]) -\> message - Removes the fields of
+  /// the map with the given keys. - The keys can be a dot separated path to
+  /// remove a field in a nested message. - If a key is not found it will be
+  /// ignored. - Keys must be of type string. - toMap: \[map1, map2,
+  /// ...\].toMap() -\> map - Converts a CEL list of CEL maps to a single CEL
+  /// map - toDestinationPayloadFormat():
+  /// message.data.toDestinationPayloadFormat() -\> string or bytes - Converts
+  /// the message data to the destination payload format specified in
+  /// Pipeline.Destination.output_payload_format - This function is meant to be
+  /// applied to the message.data field. - If the destination payload format is
+  /// not set, the function will return the message data unchanged. -
+  /// toCloudEventJsonWithPayloadFormat:
+  /// message.toCloudEventJsonWithPayloadFormat() -\> map - Converts a message
+  /// to the corresponding structure of JSON format for CloudEvents - This
+  /// function applies toDestinationPayloadFormat() to the message data. It also
+  /// sets the corresponding datacontenttype of the CloudEvent, as indicated by
+  /// Pipeline.Destination.output_payload_format. If no output_payload_format is
+  /// set it will use the existing datacontenttype on the CloudEvent if present,
+  /// else leave datacontenttype absent. - This function expects that the
+  /// content of the message will adhere to the standard CloudEvent format. If
+  /// it doesn't then this function will fail. - The result is a CEL map that
+  /// corresponds to the JSON representation of the CloudEvent. To convert that
+  /// data to a JSON string it can be chained with the toJsonString function.
+  ///
+  /// Optional.
+  core.String? transformationTemplate;
+
+  GoogleCloudEventarcV1PipelineMediationTransformation({
+    this.transformationTemplate,
+  });
+
+  GoogleCloudEventarcV1PipelineMediationTransformation.fromJson(core.Map json_)
+      : this(
+          transformationTemplate:
+              json_['transformationTemplate'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (transformationTemplate != null)
+          'transformationTemplate': transformationTemplate!,
+      };
+}
+
+/// Represents the format of message data.
+class GoogleCloudEventarcV1PipelineMessagePayloadFormat {
+  /// Avro format.
+  ///
+  /// Optional.
+  GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat? avro;
+
+  /// JSON format.
+  ///
+  /// Optional.
+  GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat? json;
+
+  /// Protobuf format.
+  ///
+  /// Optional.
+  GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat? protobuf;
+
+  GoogleCloudEventarcV1PipelineMessagePayloadFormat({
+    this.avro,
+    this.json,
+    this.protobuf,
+  });
+
+  GoogleCloudEventarcV1PipelineMessagePayloadFormat.fromJson(core.Map json_)
+      : this(
+          avro: json_.containsKey('avro')
+              ? GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat
+                  .fromJson(
+                      json_['avro'] as core.Map<core.String, core.dynamic>)
+              : null,
+          json: json_.containsKey('json')
+              ? GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat
+                  .fromJson(
+                      json_['json'] as core.Map<core.String, core.dynamic>)
+              : null,
+          protobuf: json_.containsKey('protobuf')
+              ? GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat
+                  .fromJson(
+                      json_['protobuf'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (avro != null) 'avro': avro!,
+        if (json != null) 'json': json!,
+        if (protobuf != null) 'protobuf': protobuf!,
+      };
+}
+
+/// The format of an AVRO message payload.
+typedef GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat = $Format;
+
+/// The format of a JSON message payload.
+typedef GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat = $Empty;
+
+/// The format of a Protobuf message payload.
+typedef GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat
+    = $Format;
+
+/// The retry policy configuration for the Pipeline.
+///
+/// The pipeline exponentially backs off in case the destination is non
+/// responsive or returns a retryable error code. The default semantics are as
+/// follows: The backoff starts with a 5 second delay and doubles the delay
+/// after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.). The
+/// delay is capped at 60 seconds by default. Please note that if you set the
+/// min_retry_delay and max_retry_delay fields to the same value this will make
+/// the duration between retries constant.
+class GoogleCloudEventarcV1PipelineRetryPolicy {
+  /// The maximum number of delivery attempts for any message.
+  ///
+  /// The value must be between 1 and 100. The default value for this field is
+  /// 5.
+  ///
+  /// Optional.
+  core.int? maxAttempts;
+
+  /// The maximum amount of seconds to wait between retry attempts.
+  ///
+  /// The value must be between 1 and 600. The default value for this field is
+  /// 60.
+  ///
+  /// Optional.
+  core.String? maxRetryDelay;
+
+  /// The minimum amount of seconds to wait between retry attempts.
+  ///
+  /// The value must be between 1 and 600. The default value for this field is
+  /// 5.
+  ///
+  /// Optional.
+  core.String? minRetryDelay;
+
+  GoogleCloudEventarcV1PipelineRetryPolicy({
+    this.maxAttempts,
+    this.maxRetryDelay,
+    this.minRetryDelay,
+  });
+
+  GoogleCloudEventarcV1PipelineRetryPolicy.fromJson(core.Map json_)
+      : this(
+          maxAttempts: json_['maxAttempts'] as core.int?,
+          maxRetryDelay: json_['maxRetryDelay'] as core.String?,
+          minRetryDelay: json_['minRetryDelay'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxAttempts != null) 'maxAttempts': maxAttempts!,
+        if (maxRetryDelay != null) 'maxRetryDelay': maxRetryDelay!,
+        if (minRetryDelay != null) 'minRetryDelay': minRetryDelay!,
       };
 }
 
@@ -3371,6 +5371,84 @@ class ListChannelsResponse {
       };
 }
 
+/// The response message for the `ListEnrollments` method.
+class ListEnrollmentsResponse {
+  /// The requested Enrollments, up to the number specified in `page_size`.
+  core.List<Enrollment>? enrollments;
+
+  /// A page token that can be sent to `ListEnrollments` to request the next
+  /// page.
+  ///
+  /// If this is empty, then there are no more pages.
+  core.String? nextPageToken;
+
+  /// Unreachable resources, if any.
+  core.List<core.String>? unreachable;
+
+  ListEnrollmentsResponse({
+    this.enrollments,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListEnrollmentsResponse.fromJson(core.Map json_)
+      : this(
+          enrollments: (json_['enrollments'] as core.List?)
+              ?.map((value) => Enrollment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enrollments != null) 'enrollments': enrollments!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// The response message for the `ListGoogleApiSources` method.
+class ListGoogleApiSourcesResponse {
+  /// The requested GoogleApiSources, up to the number specified in `page_size`.
+  core.List<GoogleApiSource>? googleApiSources;
+
+  /// A page token that can be sent to `ListMessageBusEnrollments` to request
+  /// the next page.
+  ///
+  /// If this is empty, then there are no more pages.
+  core.String? nextPageToken;
+
+  /// Unreachable resources, if any.
+  core.List<core.String>? unreachable;
+
+  ListGoogleApiSourcesResponse({
+    this.googleApiSources,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListGoogleApiSourcesResponse.fromJson(core.Map json_)
+      : this(
+          googleApiSources: (json_['googleApiSources'] as core.List?)
+              ?.map((value) => GoogleApiSource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (googleApiSources != null) 'googleApiSources': googleApiSources!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
@@ -3396,6 +5474,121 @@ class ListLocationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The response message for the \`ListMessageBusEnrollments\` method.\`
+class ListMessageBusEnrollmentsResponse {
+  /// The requested enrollments, up to the number specified in `page_size`.
+  core.List<core.String>? enrollments;
+
+  /// A page token that can be sent to `ListMessageBusEnrollments` to request
+  /// the next page.
+  ///
+  /// If this is empty, then there are no more pages.
+  core.String? nextPageToken;
+
+  /// Unreachable resources, if any.
+  core.List<core.String>? unreachable;
+
+  ListMessageBusEnrollmentsResponse({
+    this.enrollments,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListMessageBusEnrollmentsResponse.fromJson(core.Map json_)
+      : this(
+          enrollments: (json_['enrollments'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enrollments != null) 'enrollments': enrollments!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// The response message for the `ListMessageBuses` method.
+class ListMessageBusesResponse {
+  /// The requested message buses, up to the number specified in `page_size`.
+  core.List<MessageBus>? messageBuses;
+
+  /// A page token that can be sent to `ListMessageBuses` to request the next
+  /// page.
+  ///
+  /// If this is empty, then there are no more pages.
+  core.String? nextPageToken;
+
+  /// Unreachable resources, if any.
+  core.List<core.String>? unreachable;
+
+  ListMessageBusesResponse({
+    this.messageBuses,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListMessageBusesResponse.fromJson(core.Map json_)
+      : this(
+          messageBuses: (json_['messageBuses'] as core.List?)
+              ?.map((value) => MessageBus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (messageBuses != null) 'messageBuses': messageBuses!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// The response message for the ListPipelines method.
+class ListPipelinesResponse {
+  /// A page token that can be sent to `ListPipelines` to request the next page.
+  ///
+  /// If this is empty, then there are no more pages.
+  core.String? nextPageToken;
+
+  /// The requested pipelines, up to the number specified in `page_size`.
+  core.List<Pipeline>? pipelines;
+
+  /// Unreachable resources, if any.
+  core.List<core.String>? unreachable;
+
+  ListPipelinesResponse({
+    this.nextPageToken,
+    this.pipelines,
+    this.unreachable,
+  });
+
+  ListPipelinesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          pipelines: (json_['pipelines'] as core.List?)
+              ?.map((value) => Pipeline.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (pipelines != null) 'pipelines': pipelines!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -3478,6 +5671,172 @@ class ListTriggersResponse {
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
+/// The configuration for Platform Telemetry logging for Eventarc Advanced
+/// resources.
+class LoggingConfig {
+  /// The minimum severity of logs that will be sent to Stackdriver/Platform
+  /// Telemetry.
+  ///
+  /// Logs at severitiy ≥ this value will be sent, unless it is NONE.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "LOG_SEVERITY_UNSPECIFIED" : Log severity is not specified. This value
+  /// is treated the same as NONE, but is used to distinguish between no update
+  /// and update to NONE in update_masks.
+  /// - "NONE" : Default value at resource creation, presence of this value must
+  /// be treated as no logging/disable logging.
+  /// - "DEBUG" : Debug or trace level logging.
+  /// - "INFO" : Routine information, such as ongoing status or performance.
+  /// - "NOTICE" : Normal but significant events, such as start up, shut down,
+  /// or a configuration change.
+  /// - "WARNING" : Warning events might cause problems.
+  /// - "ERROR" : Error events are likely to cause problems.
+  /// - "CRITICAL" : Critical events cause more severe problems or outages.
+  /// - "ALERT" : A person must take action immediately.
+  /// - "EMERGENCY" : One or more systems are unusable.
+  core.String? logSeverity;
+
+  LoggingConfig({
+    this.logSeverity,
+  });
+
+  LoggingConfig.fromJson(core.Map json_)
+      : this(
+          logSeverity: json_['logSeverity'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (logSeverity != null) 'logSeverity': logSeverity!,
+      };
+}
+
+/// MessageBus for the messages flowing through the system.
+///
+/// The admin has visibility and control over the messages being published and
+/// consumed and can restrict publishers and subscribers to only a subset of
+/// data available in the system by defining authorization policies.
+class MessageBus {
+  /// Resource annotations.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? annotations;
+
+  /// The creation time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Resource name of a KMS crypto key (managed by the user) used to
+  /// encrypt/decrypt their event data.
+  ///
+  /// It must match the pattern `projects / * /locations / * /keyRings / *
+  /// /cryptoKeys / * `.
+  ///
+  /// Optional.
+  core.String? cryptoKeyName;
+
+  /// Resource display name.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and might be sent only on update and delete requests to ensure
+  /// that the client has an up-to-date value before proceeding.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Resource labels.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Config to control Platform logging for the Message Bus.
+  ///
+  /// This log configuration is applied to the Message Bus itself, and all the
+  /// Enrollments attached to it.
+  ///
+  /// Optional.
+  LoggingConfig? loggingConfig;
+
+  /// Identifier.
+  ///
+  /// Resource name of the form
+  /// projects/{project}/locations/{location}/messageBuses/{message_bus}
+  core.String? name;
+
+  /// Server assigned unique identifier for the channel.
+  ///
+  /// The value is a UUID4 string and guaranteed to remain unchanged until the
+  /// resource is deleted.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The last-modified time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  MessageBus({
+    this.annotations,
+    this.createTime,
+    this.cryptoKeyName,
+    this.displayName,
+    this.etag,
+    this.labels,
+    this.loggingConfig,
+    this.name,
+    this.uid,
+    this.updateTime,
+  });
+
+  MessageBus.fromJson(core.Map json_)
+      : this(
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          createTime: json_['createTime'] as core.String?,
+          cryptoKeyName: json_['cryptoKeyName'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          loggingConfig: json_.containsKey('loggingConfig')
+              ? LoggingConfig.fromJson(
+                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_['name'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (createTime != null) 'createTime': createTime!,
+        if (cryptoKeyName != null) 'cryptoKeyName': cryptoKeyName!,
+        if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!,
+        if (name != null) 'name': name!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// Network Configuration that can be inherited by other protos.
 class NetworkConfig {
   /// Name of the NetworkAttachment that allows access to the customer's VPC.
@@ -3499,6 +5858,199 @@ class NetworkConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (networkAttachment != null) 'networkAttachment': networkAttachment!,
+      };
+}
+
+/// A representation of the Pipeline resource.
+class Pipeline {
+  /// User-defined annotations.
+  ///
+  /// See https://google.aip.dev/128#annotations.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? annotations;
+
+  /// The creation time.
+  ///
+  /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+  /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+  /// "2014-10-02T15:01:23.045123456Z".
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Resource name of a KMS crypto key (managed by the user) used to
+  /// encrypt/decrypt the event data.
+  ///
+  /// If not set, an internal Google-owned key will be used to encrypt messages.
+  /// It must match the pattern
+  /// "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
+  ///
+  /// Optional.
+  core.String? cryptoKeyName;
+
+  /// List of destinations to which messages will be forwarded.
+  ///
+  /// Currently, exactly one destination is supported per Pipeline.
+  ///
+  /// Required.
+  core.List<GoogleCloudEventarcV1PipelineDestination>? destinations;
+
+  /// Display name of resource.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and might be sent only on create requests to ensure that the
+  /// client has an up-to-date value before proceeding.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// The payload format expected for the messages received by the Pipeline.
+  ///
+  /// If input_payload_format is set then any messages not matching this format
+  /// will be treated as persistent errors. If input_payload_format is not set,
+  /// then the message data will be treated as an opaque binary and no output
+  /// format can be set on the Pipeline through the
+  /// Pipeline.Destination.output_payload_format field. Any Mediations on the
+  /// Pipeline that involve access to the data field will fail as persistent
+  /// errors.
+  ///
+  /// Optional.
+  GoogleCloudEventarcV1PipelineMessagePayloadFormat? inputPayloadFormat;
+
+  /// User labels attached to the Pipeline that can be used to group resources.
+  ///
+  /// An object containing a list of "key": value pairs. Example: { "name":
+  /// "wrench", "mass": "1.3kg", "count": "3" }.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Config to control Platform Logging for Pipelines.
+  ///
+  /// Optional.
+  LoggingConfig? loggingConfig;
+
+  /// List of mediation operations to be performed on the message.
+  ///
+  /// Currently, only one Transformation operation is allowed in each Pipeline.
+  ///
+  /// Optional.
+  core.List<GoogleCloudEventarcV1PipelineMediation>? mediations;
+
+  /// Identifier.
+  ///
+  /// The resource name of the Pipeline. Must be unique within the location of
+  /// the project and must be in
+  /// `projects/{project}/locations/{location}/pipelines/{pipeline}` format.
+  core.String? name;
+
+  /// The retry policy to use in the pipeline.
+  ///
+  /// Optional.
+  GoogleCloudEventarcV1PipelineRetryPolicy? retryPolicy;
+
+  /// Server-assigned unique identifier for the Pipeline.
+  ///
+  /// The value is a UUID4 string and guaranteed to remain unchanged until the
+  /// resource is deleted.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The last-modified time.
+  ///
+  /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+  /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+  /// "2014-10-02T15:01:23.045123456Z".
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Pipeline({
+    this.annotations,
+    this.createTime,
+    this.cryptoKeyName,
+    this.destinations,
+    this.displayName,
+    this.etag,
+    this.inputPayloadFormat,
+    this.labels,
+    this.loggingConfig,
+    this.mediations,
+    this.name,
+    this.retryPolicy,
+    this.uid,
+    this.updateTime,
+  });
+
+  Pipeline.fromJson(core.Map json_)
+      : this(
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          createTime: json_['createTime'] as core.String?,
+          cryptoKeyName: json_['cryptoKeyName'] as core.String?,
+          destinations: (json_['destinations'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudEventarcV1PipelineDestination.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          inputPayloadFormat: json_.containsKey('inputPayloadFormat')
+              ? GoogleCloudEventarcV1PipelineMessagePayloadFormat.fromJson(
+                  json_['inputPayloadFormat']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          loggingConfig: json_.containsKey('loggingConfig')
+              ? LoggingConfig.fromJson(
+                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          mediations: (json_['mediations'] as core.List?)
+              ?.map((value) => GoogleCloudEventarcV1PipelineMediation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          name: json_['name'] as core.String?,
+          retryPolicy: json_.containsKey('retryPolicy')
+              ? GoogleCloudEventarcV1PipelineRetryPolicy.fromJson(
+                  json_['retryPolicy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (createTime != null) 'createTime': createTime!,
+        if (cryptoKeyName != null) 'cryptoKeyName': cryptoKeyName!,
+        if (destinations != null) 'destinations': destinations!,
+        if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
+        if (inputPayloadFormat != null)
+          'inputPayloadFormat': inputPayloadFormat!,
+        if (labels != null) 'labels': labels!,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!,
+        if (mediations != null) 'mediations': mediations!,
+        if (name != null) 'name': name!,
+        if (retryPolicy != null) 'retryPolicy': retryPolicy!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 

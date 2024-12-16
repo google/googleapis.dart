@@ -166,6 +166,8 @@ api.Authority buildAuthority() {
     o.identityProvider = 'foo';
     o.issuer = 'foo';
     o.oidcJwks = 'foo';
+    o.scopeTenancyIdentityProvider = 'foo';
+    o.scopeTenancyWorkloadIdentityPool = 'foo';
     o.workloadIdentityPool = 'foo';
   }
   buildCounterAuthority--;
@@ -185,6 +187,14 @@ void checkAuthority(api.Authority o) {
     );
     unittest.expect(
       o.oidcJwks!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.scopeTenancyIdentityProvider!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.scopeTenancyWorkloadIdentityPool!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -849,6 +859,7 @@ api.ConfigManagementConfigSync buildConfigManagementConfigSync() {
     o.oci = buildConfigManagementOciConfig();
     o.preventDrift = true;
     o.sourceFormat = 'foo';
+    o.stopSyncing = true;
   }
   buildCounterConfigManagementConfigSync--;
   return o;
@@ -870,6 +881,7 @@ void checkConfigManagementConfigSync(api.ConfigManagementConfigSync o) {
       o.sourceFormat!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.stopSyncing!, unittest.isTrue);
   }
   buildCounterConfigManagementConfigSync--;
 }
@@ -978,6 +990,7 @@ api.ConfigManagementConfigSyncState buildConfigManagementConfigSyncState() {
   buildCounterConfigManagementConfigSyncState++;
   if (buildCounterConfigManagementConfigSyncState < 3) {
     o.clusterLevelStopSyncingState = 'foo';
+    o.crCount = 42;
     o.deploymentState = buildConfigManagementConfigSyncDeploymentState();
     o.errors = buildUnnamed13();
     o.reposyncCrd = 'foo';
@@ -997,6 +1010,10 @@ void checkConfigManagementConfigSyncState(
     unittest.expect(
       o.clusterLevelStopSyncingState!,
       unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.crCount!,
+      unittest.equals(42),
     );
     checkConfigManagementConfigSyncDeploymentState(o.deploymentState!);
     checkUnnamed13(o.errors!);
@@ -3896,6 +3913,7 @@ api.Membership buildMembership() {
   buildCounterMembership++;
   if (buildCounterMembership < 3) {
     o.authority = buildAuthority();
+    o.clusterTier = 'foo';
     o.createTime = 'foo';
     o.deleteTime = 'foo';
     o.description = 'foo';
@@ -3917,6 +3935,10 @@ void checkMembership(api.Membership o) {
   buildCounterMembership++;
   if (buildCounterMembership < 3) {
     checkAuthority(o.authority!);
+    unittest.expect(
+      o.clusterTier!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -5535,6 +5557,7 @@ api.ServiceMeshMembershipSpec buildServiceMeshMembershipSpec() {
   final o = api.ServiceMeshMembershipSpec();
   buildCounterServiceMeshMembershipSpec++;
   if (buildCounterServiceMeshMembershipSpec < 3) {
+    o.configApi = 'foo';
     o.controlPlane = 'foo';
     o.management = 'foo';
   }
@@ -5545,6 +5568,10 @@ api.ServiceMeshMembershipSpec buildServiceMeshMembershipSpec() {
 void checkServiceMeshMembershipSpec(api.ServiceMeshMembershipSpec o) {
   buildCounterServiceMeshMembershipSpec++;
   if (buildCounterServiceMeshMembershipSpec < 3) {
+    unittest.expect(
+      o.configApi!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.controlPlane!,
       unittest.equals('foo'),

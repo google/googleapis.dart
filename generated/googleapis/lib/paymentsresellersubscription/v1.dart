@@ -24,6 +24,7 @@
 ///   - [PartnersProductsResource]
 ///   - [PartnersPromotionsResource]
 ///   - [PartnersSubscriptionsResource]
+///   - [PartnersUserSessionsResource]
 library;
 
 import 'dart:async' as async;
@@ -63,6 +64,8 @@ class PartnersResource {
       PartnersPromotionsResource(_requester);
   PartnersSubscriptionsResource get subscriptions =>
       PartnersSubscriptionsResource(_requester);
+  PartnersUserSessionsResource get userSessions =>
+      PartnersUserSessionsResource(_requester);
 
   PartnersResource(commons.ApiRequester client) : _requester = client;
 }
@@ -625,6 +628,66 @@ class PartnersSubscriptionsResource {
   }
 }
 
+class PartnersUserSessionsResource {
+  final commons.ApiRequester _requester;
+
+  PartnersUserSessionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// This API replaces user authorized OAuth consent based APIs (Create,
+  /// Entitle).
+  ///
+  /// Generates a short-lived token for a user session based on the user intent.
+  /// You can use the session token to redirect the user to Google to finish the
+  /// signup flow. You can re-generate new session token repeatedly for the same
+  /// request if necessary, regardless of the previous tokens being expired or
+  /// not.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, the partner that can resell. Format:
+  /// partners/{partner}
+  /// Value must have pattern `^partners/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+          GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse>
+      generate(
+    GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/userSessions:generate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// Describes the amount unit including the currency code.
 class GoogleCloudPaymentsResellerSubscriptionV1Amount {
   /// Amount in micros (1_000_000 micros = 1 currency unit)
@@ -735,6 +798,51 @@ class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse {
       };
 }
 
+/// Intent message for creating a Subscription resource.
+class GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent {
+  /// The parent resource name, which is the identifier of the partner.
+  ///
+  /// Required.
+  core.String? parent;
+
+  /// The Subscription to be created.
+  ///
+  /// Required.
+  GoogleCloudPaymentsResellerSubscriptionV1Subscription? subscription;
+
+  /// Identifies the subscription resource on the Partner side.
+  ///
+  /// The value is restricted to 63 ASCII characters at the maximum. If a
+  /// subscription was previously created with the same subscription_id, we will
+  /// directly return that one.
+  ///
+  /// Required.
+  core.String? subscriptionId;
+
+  GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent({
+    this.parent,
+    this.subscription,
+    this.subscriptionId,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent.fromJson(
+      core.Map json_)
+      : this(
+          parent: json_['parent'] as core.String?,
+          subscription: json_.containsKey('subscription')
+              ? GoogleCloudPaymentsResellerSubscriptionV1Subscription.fromJson(
+                  json_['subscription'] as core.Map<core.String, core.dynamic>)
+              : null,
+          subscriptionId: json_['subscriptionId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (parent != null) 'parent': parent!,
+        if (subscription != null) 'subscription': subscription!,
+        if (subscriptionId != null) 'subscriptionId': subscriptionId!,
+      };
+}
+
 /// Describes the length of a period of a time.
 class GoogleCloudPaymentsResellerSubscriptionV1Duration {
   /// number of duration units to be included.
@@ -766,8 +874,31 @@ class GoogleCloudPaymentsResellerSubscriptionV1Duration {
       };
 }
 
-/// LINT.IfChange Partner request for entitling the previously provisioned
-/// subscription to an end user.
+/// Intent for entitling the previously provisioned subscription to an end user.
+class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent {
+  /// The name of the subscription resource that is entitled to the current end
+  /// user.
+  ///
+  /// Required.
+  core.String? name;
+
+  GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent({
+    this.name,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent.fromJson(
+      core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Partner request for entitling the previously provisioned subscription to an
+/// end user.
 ///
 /// The end user identity is inferred from the request OAuth context.
 class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest {
@@ -1096,6 +1227,55 @@ class GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails {
       };
 }
 
+/// \[Preview only\] Request to generate a user session.
+class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest {
+  /// The user intent to generate the user session.
+  GoogleCloudPaymentsResellerSubscriptionV1IntentPayload? intentPayload;
+
+  GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest({
+    this.intentPayload,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest.fromJson(
+      core.Map json_)
+      : this(
+          intentPayload: json_.containsKey('intentPayload')
+              ? GoogleCloudPaymentsResellerSubscriptionV1IntentPayload.fromJson(
+                  json_['intentPayload'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (intentPayload != null) 'intentPayload': intentPayload!,
+      };
+}
+
+/// \[Preview only\] Response that contains the details for generated user
+/// session.
+class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse {
+  /// The generated user session.
+  ///
+  /// The token size is proportional to the size of the intent payload.
+  GoogleCloudPaymentsResellerSubscriptionV1UserSession? userSession;
+
+  GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse({
+    this.userSession,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse.fromJson(
+      core.Map json_)
+      : this(
+          userSession: json_.containsKey('userSession')
+              ? GoogleCloudPaymentsResellerSubscriptionV1UserSession.fromJson(
+                  json_['userSession'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (userSession != null) 'userSession': userSession!,
+      };
+}
+
 /// Payload specific to Google One products.
 class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload {
   /// Campaign attributed to sales of this subscription.
@@ -1154,6 +1334,42 @@ class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload {
         if (offering != null) 'offering': offering!,
         if (salesChannel != null) 'salesChannel': salesChannel!,
         if (storeId != null) 'storeId': storeId!,
+      };
+}
+
+/// The payload that describes the user intent.
+class GoogleCloudPaymentsResellerSubscriptionV1IntentPayload {
+  /// The request to create a subscription.
+  GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent?
+      createIntent;
+
+  /// The request to entitle a subscription.
+  GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent?
+      entitleIntent;
+
+  GoogleCloudPaymentsResellerSubscriptionV1IntentPayload({
+    this.createIntent,
+    this.entitleIntent,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1IntentPayload.fromJson(
+      core.Map json_)
+      : this(
+          createIntent: json_.containsKey('createIntent')
+              ? GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent
+                  .fromJson(json_['createIntent']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          entitleIntent: json_.containsKey('entitleIntent')
+              ? GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent
+                  .fromJson(json_['entitleIntent']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createIntent != null) 'createIntent': createIntent!,
+        if (entitleIntent != null) 'entitleIntent': entitleIntent!,
       };
 }
 
@@ -1755,6 +1971,14 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   core.List<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem>?
       lineItems;
 
+  /// Describes the details of the migrated subscription.
+  ///
+  /// Only populated if this subscription is migrated from another system.
+  ///
+  /// Output only.
+  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails?
+      migrationDetails;
+
   /// Identifier.
   ///
   /// Resource name of the subscription. It will have the format of
@@ -1887,6 +2111,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
     this.endUserEntitled,
     this.freeTrialEndTime,
     this.lineItems,
+    this.migrationDetails,
     this.name,
     this.partnerUserToken,
     this.processingState,
@@ -1918,6 +2143,11 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
                   GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem
                       .fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
+          migrationDetails: json_.containsKey('migrationDetails')
+              ? GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails
+                  .fromJson(json_['migrationDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_['name'] as core.String?,
           partnerUserToken: json_['partnerUserToken'] as core.String?,
           processingState: json_['processingState'] as core.String?,
@@ -1957,6 +2187,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
         if (endUserEntitled != null) 'endUserEntitled': endUserEntitled!,
         if (freeTrialEndTime != null) 'freeTrialEndTime': freeTrialEndTime!,
         if (lineItems != null) 'lineItems': lineItems!,
+        if (migrationDetails != null) 'migrationDetails': migrationDetails!,
         if (name != null) 'name': name!,
         if (partnerUserToken != null) 'partnerUserToken': partnerUserToken!,
         if (processingState != null) 'processingState': processingState!,
@@ -2259,6 +2490,30 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurr
       };
 }
 
+/// Describes the details of the migrated subscription.
+class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails {
+  /// The migrated subscription id in the legacy system.
+  ///
+  /// Output only.
+  core.String? migratedSubscriptionId;
+
+  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails({
+    this.migratedSubscriptionId,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails.fromJson(
+      core.Map json_)
+      : this(
+          migratedSubscriptionId:
+              json_['migratedSubscriptionId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (migratedSubscriptionId != null)
+          'migratedSubscriptionId': migratedSubscriptionId!,
+      };
+}
+
 /// Describes the spec for one promotion.
 class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec {
   /// The duration of the free trial if the promotion is of type FREE_TRIAL.
@@ -2391,6 +2646,50 @@ class GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (subscription != null) 'subscription': subscription!,
+      };
+}
+
+/// A user session contains a short-lived token that includes information
+/// required to interact with Google Payments Reseller Platform using the
+/// following web endpoints.
+///
+/// - A user session token should be generated dynamically for an authenticated
+/// user. You should refrain from sharing a token directly with a user in an
+/// unauthenticated context, such as SMS, or email. - You can re-generate new
+/// session tokens repeatedly for same `generate` request if necessary,
+/// regardless of the previous tokens being expired or not. You don't need to
+/// worry about multiple sessions resulting in duplicate fulfillments as
+/// guaranteed by the same subscription id. Please refer to the \[Google Managed
+/// Signup\](/payments/reseller/subscription/reference/index/User.Signup.Integration/Google.Managed.Signup.\(In.Preview\))
+/// documentation for additional integration details.
+class GoogleCloudPaymentsResellerSubscriptionV1UserSession {
+  /// The time at which the user session expires.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
+  /// The encrypted token of the user session, including the information of the
+  /// user's intent and request.
+  ///
+  /// This token should be provided when redirecting the user to Google.
+  ///
+  /// Output only.
+  core.String? token;
+
+  GoogleCloudPaymentsResellerSubscriptionV1UserSession({
+    this.expireTime,
+    this.token,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1UserSession.fromJson(core.Map json_)
+      : this(
+          expireTime: json_['expireTime'] as core.String?,
+          token: json_['token'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (token != null) 'token': token!,
       };
 }
 

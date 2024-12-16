@@ -1229,8 +1229,7 @@ class BuildConfig {
   /// managed encryption key. Otherwise, GCF will create and use a repository
   /// named 'gcf-artifacts' for every deployed region. It must match the pattern
   /// `projects/{project}/locations/{location}/repositories/{repository}`.
-  /// Cross-project repositories are not supported. Cross-location repositories
-  /// are not supported. Repository format must be 'DOCKER'.
+  /// Repository format must be 'DOCKER'.
   core.String? dockerRepository;
 
   /// The name of the function (as defined in source code) that will be
@@ -2883,7 +2882,9 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// Information related to: * A function's eligibility for 1st Gen to 2nd Gen
-/// migration * Current state of migration for function undergoing migration.
+/// migration and 2nd Gen to CRf detach.
+///
+/// * Current state of migration for function undergoing migration/detach.
 class UpgradeInfo {
   /// Describes the Build step of the function that builds a container to
   /// prepare for 2nd gen upgrade.
@@ -2921,6 +2922,8 @@ class UpgradeInfo {
   /// RollbackFunctionUpgradeTraffic API was un-successful.
   /// - "COMMIT_FUNCTION_UPGRADE_ERROR" : CommitFunctionUpgrade API was
   /// un-successful.
+  /// - "DETACH_IN_PROGRESS" : Function is requested to be detached from 2nd Gen
+  /// to CRf.
   core.String? upgradeState;
 
   UpgradeInfo({

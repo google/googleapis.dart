@@ -858,12 +858,28 @@ void checkDimensionValue(api.DimensionValue o) {
   buildCounterDimensionValue--;
 }
 
+core.int buildCounterEmptyFilter = 0;
+api.EmptyFilter buildEmptyFilter() {
+  final o = api.EmptyFilter();
+  buildCounterEmptyFilter++;
+  if (buildCounterEmptyFilter < 3) {}
+  buildCounterEmptyFilter--;
+  return o;
+}
+
+void checkEmptyFilter(api.EmptyFilter o) {
+  buildCounterEmptyFilter++;
+  if (buildCounterEmptyFilter < 3) {}
+  buildCounterEmptyFilter--;
+}
+
 core.int buildCounterFilter = 0;
 api.Filter buildFilter() {
   final o = api.Filter();
   buildCounterFilter++;
   if (buildCounterFilter < 3) {
     o.betweenFilter = buildBetweenFilter();
+    o.emptyFilter = buildEmptyFilter();
     o.fieldName = 'foo';
     o.inListFilter = buildInListFilter();
     o.numericFilter = buildNumericFilter();
@@ -877,6 +893,7 @@ void checkFilter(api.Filter o) {
   buildCounterFilter++;
   if (buildCounterFilter < 3) {
     checkBetweenFilter(o.betweenFilter!);
+    checkEmptyFilter(o.emptyFilter!);
     unittest.expect(
       o.fieldName!,
       unittest.equals('foo'),
@@ -3067,6 +3084,16 @@ void main() {
       final od = api.DimensionValue.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkDimensionValue(od);
+    });
+  });
+
+  unittest.group('obj-schema-EmptyFilter', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEmptyFilter();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EmptyFilter.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEmptyFilter(od);
     });
   });
 

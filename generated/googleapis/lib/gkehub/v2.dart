@@ -450,8 +450,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -844,7 +844,13 @@ class ConfigManagementConfigSync {
   /// The GSA should have the Monitoring Metric Writer
   /// (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount
   /// `default` in the namespace `config-management-monitoring` should be bound
-  /// to the GSA.
+  /// to the GSA. Deprecated: If Workload Identity Federation for GKE is
+  /// enabled, Google Cloud Service Account is no longer needed for exporting
+  /// Config Sync metrics:
+  /// https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? metricsGcpServiceAccountEmail;
 
   /// OCI repo configuration for the cluster.
@@ -860,6 +866,11 @@ class ConfigManagementConfigSync {
   /// "unstructured" mode.
   core.String? sourceFormat;
 
+  /// Set to true to stop syncing configs for a single cluster.
+  ///
+  /// Default to false.
+  core.bool? stopSyncing;
+
   ConfigManagementConfigSync({
     this.allowVerticalScale,
     this.enabled,
@@ -868,6 +879,7 @@ class ConfigManagementConfigSync {
     this.oci,
     this.preventDrift,
     this.sourceFormat,
+    this.stopSyncing,
   });
 
   ConfigManagementConfigSync.fromJson(core.Map json_)
@@ -886,6 +898,7 @@ class ConfigManagementConfigSync {
               : null,
           preventDrift: json_['preventDrift'] as core.bool?,
           sourceFormat: json_['sourceFormat'] as core.String?,
+          stopSyncing: json_['stopSyncing'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -898,6 +911,7 @@ class ConfigManagementConfigSync {
         if (oci != null) 'oci': oci!,
         if (preventDrift != null) 'preventDrift': preventDrift!,
         if (sourceFormat != null) 'sourceFormat': sourceFormat!,
+        if (stopSyncing != null) 'stopSyncing': stopSyncing!,
       };
 }
 
@@ -1049,6 +1063,11 @@ class ConfigManagementConfigSyncState {
   /// level.
   core.String? clusterLevelStopSyncingState;
 
+  /// The number of RootSync and RepoSync CRs in the cluster.
+  ///
+  /// Output only.
+  core.int? crCount;
+
   /// Information about the deployment of ConfigSync, including the version.
   ///
   /// of the various Pods deployed
@@ -1095,6 +1114,7 @@ class ConfigManagementConfigSyncState {
 
   ConfigManagementConfigSyncState({
     this.clusterLevelStopSyncingState,
+    this.crCount,
     this.deploymentState,
     this.errors,
     this.reposyncCrd,
@@ -1108,6 +1128,7 @@ class ConfigManagementConfigSyncState {
       : this(
           clusterLevelStopSyncingState:
               json_['clusterLevelStopSyncingState'] as core.String?,
+          crCount: json_['crCount'] as core.int?,
           deploymentState: json_.containsKey('deploymentState')
               ? ConfigManagementConfigSyncDeploymentState.fromJson(
                   json_['deploymentState']
@@ -1133,6 +1154,7 @@ class ConfigManagementConfigSyncState {
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterLevelStopSyncingState != null)
           'clusterLevelStopSyncingState': clusterLevelStopSyncingState!,
+        if (crCount != null) 'crCount': crCount!,
         if (deploymentState != null) 'deploymentState': deploymentState!,
         if (errors != null) 'errors': errors!,
         if (reposyncCrd != null) 'reposyncCrd': reposyncCrd!,
@@ -1923,44 +1945,6 @@ class ConfigManagementSyncState {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
-/// Information of the FeatureConfig applied on the MembershipFeature.
-class FeatureConfigRef {
-  /// Input only.
-  ///
-  /// Resource name of FeatureConfig, in the format:
-  /// `projects/{project}/locations/global/featureConfigs/{feature_config}`.
-  core.String? config;
-
-  /// When the FeatureConfig was last applied and copied to FeatureSpec.
-  ///
-  /// Output only.
-  core.String? configUpdateTime;
-
-  /// An id that uniquely identify a FeatureConfig object.
-  ///
-  /// Output only.
-  core.String? uuid;
-
-  FeatureConfigRef({
-    this.config,
-    this.configUpdateTime,
-    this.uuid,
-  });
-
-  FeatureConfigRef.fromJson(core.Map json_)
-      : this(
-          config: json_['config'] as core.String?,
-          configUpdateTime: json_['configUpdateTime'] as core.String?,
-          uuid: json_['uuid'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null) 'config': config!,
-        if (configUpdateTime != null) 'configUpdateTime': configUpdateTime!,
-        if (uuid != null) 'uuid': uuid!,
-      };
-}
-
 /// FeatureSpec contains user input per-feature spec information.
 class FeatureSpec {
   /// Cloudbuild-specific FeatureSpec.
@@ -2592,10 +2576,6 @@ class MembershipFeature {
   /// Output only.
   core.String? deleteTime;
 
-  /// Reference information for a FeatureConfig applied on the
-  /// MembershipFeature.
-  FeatureConfigRef? featureConfigRef;
-
   /// GCP labels for this MembershipFeature.
   core.Map<core.String, core.String>? labels;
 
@@ -2614,6 +2594,8 @@ class MembershipFeature {
   core.String? name;
 
   /// Spec of this membershipFeature.
+  ///
+  /// Optional.
   FeatureSpec? spec;
 
   /// State of the this membershipFeature.
@@ -2629,7 +2611,6 @@ class MembershipFeature {
   MembershipFeature({
     this.createTime,
     this.deleteTime,
-    this.featureConfigRef,
     this.labels,
     this.lifecycleState,
     this.name,
@@ -2642,10 +2623,6 @@ class MembershipFeature {
       : this(
           createTime: json_['createTime'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
-          featureConfigRef: json_.containsKey('featureConfigRef')
-              ? FeatureConfigRef.fromJson(json_['featureConfigRef']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -2672,7 +2649,6 @@ class MembershipFeature {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
-        if (featureConfigRef != null) 'featureConfigRef': featureConfigRef!,
         if (labels != null) 'labels': labels!,
         if (lifecycleState != null) 'lifecycleState': lifecycleState!,
         if (name != null) 'name': name!,

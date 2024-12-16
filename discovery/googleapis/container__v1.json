@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241008",
+    "revision": "20241203",
     "rootUrl": "https://container.googleapis.com/",
     "servicePath": "",
     "title": "Kubernetes Engine API",
@@ -2785,7 +2785,7 @@
                 },
                 "workloadPolicyConfig": {
                     "$ref": "WorkloadPolicyConfig",
-                    "description": "Workload policy configuration for Autopilot."
+                    "description": "WorkloadPolicyConfig is the configuration related to GCW workload policy"
                 }
             },
             "type": "object"
@@ -3577,7 +3577,7 @@
                 },
                 "desiredAutopilotWorkloadPolicyConfig": {
                     "$ref": "WorkloadPolicyConfig",
-                    "description": "The desired workload policy configuration for the autopilot cluster."
+                    "description": "WorkloadPolicyConfig is the configuration related to GCW workload policy"
                 },
                 "desiredBinaryAuthorization": {
                     "$ref": "BinaryAuthorization",
@@ -3649,6 +3649,10 @@
                     "deprecated": true,
                     "description": "Enable/Disable private endpoint for the cluster's master. Deprecated: Use desired_control_plane_endpoints_config.ip_endpoints_config.enable_public_endpoint instead. Note that the value of enable_public_endpoint is reversed: if enable_private_endpoint is false, then enable_public_endpoint will be true.",
                     "type": "boolean"
+                },
+                "desiredEnterpriseConfig": {
+                    "$ref": "DesiredEnterpriseConfig",
+                    "description": "The desired enterprise configuration for the cluster."
                 },
                 "desiredFleet": {
                     "$ref": "Fleet",
@@ -3743,6 +3747,10 @@
                 "desiredNodePoolAutoConfigKubeletConfig": {
                     "$ref": "NodeKubeletConfig",
                     "description": "The desired node kubelet config for all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters."
+                },
+                "desiredNodePoolAutoConfigLinuxNodeConfig": {
+                    "$ref": "LinuxNodeConfig",
+                    "description": "The desired Linux node config for all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters. Currently only `cgroup_mode` can be set here."
                 },
                 "desiredNodePoolAutoConfigNetworkTags": {
                     "$ref": "NetworkTags",
@@ -4214,6 +4222,27 @@
             },
             "type": "object"
         },
+        "DesiredEnterpriseConfig": {
+            "description": "DesiredEnterpriseConfig is a wrapper used for updating enterprise_config.",
+            "id": "DesiredEnterpriseConfig",
+            "properties": {
+                "desiredTier": {
+                    "description": "desired_tier specifies the desired tier of the cluster.",
+                    "enum": [
+                        "CLUSTER_TIER_UNSPECIFIED",
+                        "STANDARD",
+                        "ENTERPRISE"
+                    ],
+                    "enumDescriptions": [
+                        "CLUSTER_TIER_UNSPECIFIED is when cluster_tier is not set.",
+                        "STANDARD indicates a standard GKE cluster.",
+                        "ENTERPRISE indicates a GKE Enterprise cluster."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "DnsCacheConfig": {
             "description": "Configuration for NodeLocal DNSCache",
             "id": "DnsCacheConfig",
@@ -4248,6 +4277,20 @@
                         "ENTERPRISE indicates a GKE Enterprise cluster."
                     ],
                     "readOnly": true,
+                    "type": "string"
+                },
+                "desiredTier": {
+                    "description": "desired_tier specifies the desired tier of the cluster.",
+                    "enum": [
+                        "CLUSTER_TIER_UNSPECIFIED",
+                        "STANDARD",
+                        "ENTERPRISE"
+                    ],
+                    "enumDescriptions": [
+                        "CLUSTER_TIER_UNSPECIFIED is when cluster_tier is not set.",
+                        "STANDARD indicates a standard GKE cluster.",
+                        "ENTERPRISE indicates a GKE Enterprise cluster."
+                    ],
                     "type": "string"
                 }
             },
@@ -4888,7 +4931,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse",
+                    "description": "The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse kernel.shmmni kernel.shmmax kernel.shmall",
                     "type": "object"
                 }
             },
@@ -5593,12 +5636,31 @@
                     "format": "int32",
                     "type": "integer"
                 },
+                "localSsdEncryptionMode": {
+                    "description": "Specifies which method should be used for encrypting the Local SSDs attahced to the node.",
+                    "enum": [
+                        "LOCAL_SSD_ENCRYPTION_MODE_UNSPECIFIED",
+                        "STANDARD_ENCRYPTION",
+                        "EPHEMERAL_KEY_ENCRYPTION"
+                    ],
+                    "enumDescriptions": [
+                        "The given node will be encrypted using keys managed by Google infrastructure and the keys will be deleted when the node is deleted.",
+                        "The given node will be encrypted using keys managed by Google infrastructure and the keys will be deleted when the node is deleted.",
+                        "The given node will opt-in for using ephemeral key for encryption of Local SSDs. The Local SSDs will not be able to recover data in case of node crash."
+                    ],
+                    "type": "string"
+                },
                 "loggingConfig": {
                     "$ref": "NodePoolLoggingConfig",
                     "description": "Logging configuration."
                 },
                 "machineType": {
                     "description": "The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types) If unspecified, the default machine type is `e2-medium`.",
+                    "type": "string"
+                },
+                "maxRunDuration": {
+                    "description": "The maximum duration for the nodes to exist. If unspecified, the nodes can exist indefinitely.",
+                    "format": "google-duration",
                     "type": "string"
                 },
                 "metadata": {
@@ -5971,6 +6033,11 @@
             "description": "Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.",
             "id": "NodePoolAutoConfig",
             "properties": {
+                "linuxNodeConfig": {
+                    "$ref": "LinuxNodeConfig",
+                    "description": "Output only. Configuration options for Linux nodes.",
+                    "readOnly": true
+                },
                 "networkTags": {
                     "$ref": "NetworkTags",
                     "description": "The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035."
@@ -6013,22 +6080,22 @@
                     "type": "string"
                 },
                 "maxNodeCount": {
-                    "description": "Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.",
+                    "description": "Maximum number of nodes for one location in the node pool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "minNodeCount": {
-                    "description": "Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.",
+                    "description": "Minimum number of nodes for one location in the node pool. Must be greater than or equal to 0 and less than or equal to max_node_count.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "totalMaxNodeCount": {
-                    "description": "Maximum number of nodes in the node pool. Must be greater than total_min_node_count. There has to be enough quota to scale up the cluster. The total_*_node_count fields are mutually exclusive with the *_node_count fields.",
+                    "description": "Maximum number of nodes in the node pool. Must be greater than or equal to total_min_node_count. There has to be enough quota to scale up the cluster. The total_*_node_count fields are mutually exclusive with the *_node_count fields.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "totalMinNodeCount": {
-                    "description": "Minimum number of nodes in the node pool. Must be greater than 1 less than total_max_node_count. The total_*_node_count fields are mutually exclusive with the *_node_count fields.",
+                    "description": "Minimum number of nodes in the node pool. Must be greater than or equal to 0 and less than or equal to total_max_node_count. The total_*_node_count fields are mutually exclusive with the *_node_count fields.",
                     "format": "int32",
                     "type": "integer"
                 }
@@ -7792,6 +7859,11 @@
                     "description": "Optional. The desired [Google Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) for nodes in the node pool. Initiates an upgrade operation that migrates the nodes in the node pool to the specified machine type.",
                     "type": "string"
                 },
+                "maxRunDuration": {
+                    "description": "The maximum duration for the nodes to exist. If unspecified, the nodes can exist indefinitely.",
+                    "format": "google-duration",
+                    "type": "string"
+                },
                 "name": {
                     "description": "The name (project, location, cluster, node pool) of the node pool to update. Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`.",
                     "type": "string"
@@ -7927,6 +7999,76 @@
                         "Master / control plane",
                         "Node pool"
                     ],
+                    "type": "string"
+                },
+                "targetVersion": {
+                    "description": "The target version for the upgrade.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UpgradeInfoEvent": {
+            "description": "UpgradeInfoEvent is a notification sent to customers about the upgrade information of a resource.",
+            "id": "UpgradeInfoEvent",
+            "properties": {
+                "currentVersion": {
+                    "description": "The current version before the upgrade.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "A brief description of the event.",
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "The time when the operation ended.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "operation": {
+                    "description": "The operation associated with this upgrade.",
+                    "type": "string"
+                },
+                "resource": {
+                    "description": "Optional relative path to the resource. For example in node pool upgrades, the relative path of the node pool.",
+                    "type": "string"
+                },
+                "resourceType": {
+                    "description": "The resource type associated with the upgrade.",
+                    "enum": [
+                        "UPGRADE_RESOURCE_TYPE_UNSPECIFIED",
+                        "MASTER",
+                        "NODE_POOL"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. This shouldn't be used.",
+                        "Master / control plane",
+                        "Node pool"
+                    ],
+                    "type": "string"
+                },
+                "startTime": {
+                    "description": "The time when the operation was started.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Output only. The state of the upgrade.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "STARTED",
+                        "SUCCEEDED",
+                        "FAILED",
+                        "CANCELED"
+                    ],
+                    "enumDescriptions": [
+                        "STATE_UNSPECIFIED indicates the state is unspecified.",
+                        "STARTED indicates the upgrade has started.",
+                        "SUCCEEDED indicates the upgrade has completed successfully.",
+                        "FAILED indicates the upgrade has failed.",
+                        "CANCELED indicates the upgrade has canceled."
+                    ],
+                    "readOnly": true,
                     "type": "string"
                 },
                 "targetVersion": {
@@ -8155,7 +8297,7 @@
             "type": "object"
         },
         "WorkloadPolicyConfig": {
-            "description": "WorkloadPolicyConfig is the configuration of workload policy for autopilot clusters.",
+            "description": "WorkloadPolicyConfig is the configuration related to GCW workload policy",
             "id": "WorkloadPolicyConfig",
             "properties": {
                 "allowNetAdmin": {

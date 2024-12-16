@@ -1078,6 +1078,7 @@ api.Question buildQuestion() {
     o.fileUploadQuestion = buildFileUploadQuestion();
     o.grading = buildGrading();
     o.questionId = 'foo';
+    o.ratingQuestion = buildRatingQuestion();
     o.required = true;
     o.rowQuestion = buildRowQuestion();
     o.scaleQuestion = buildScaleQuestion();
@@ -1099,6 +1100,7 @@ void checkQuestion(api.Question o) {
       o.questionId!,
       unittest.equals('foo'),
     );
+    checkRatingQuestion(o.ratingQuestion!);
     unittest.expect(o.required!, unittest.isTrue);
     checkRowQuestion(o.rowQuestion!);
     checkScaleQuestion(o.scaleQuestion!);
@@ -1180,6 +1182,33 @@ void checkQuizSettings(api.QuizSettings o) {
     unittest.expect(o.isQuiz!, unittest.isTrue);
   }
   buildCounterQuizSettings--;
+}
+
+core.int buildCounterRatingQuestion = 0;
+api.RatingQuestion buildRatingQuestion() {
+  final o = api.RatingQuestion();
+  buildCounterRatingQuestion++;
+  if (buildCounterRatingQuestion < 3) {
+    o.iconType = 'foo';
+    o.ratingScaleLevel = 42;
+  }
+  buildCounterRatingQuestion--;
+  return o;
+}
+
+void checkRatingQuestion(api.RatingQuestion o) {
+  buildCounterRatingQuestion++;
+  if (buildCounterRatingQuestion < 3) {
+    unittest.expect(
+      o.iconType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ratingScaleLevel!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterRatingQuestion--;
 }
 
 core.int buildCounterRenewWatchRequest = 0;
@@ -2068,6 +2097,16 @@ void main() {
       final od = api.QuizSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkQuizSettings(od);
+    });
+  });
+
+  unittest.group('obj-schema-RatingQuestion', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRatingQuestion();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RatingQuestion.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRatingQuestion(od);
     });
   });
 

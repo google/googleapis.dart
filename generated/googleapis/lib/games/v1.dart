@@ -14,7 +14,7 @@
 
 /// Google Play Game Services - v1
 ///
-/// The Google Play games service allows developers to enhance games with social
+/// The Google Play Games Service allows developers to enhance games with social
 /// leaderboards, achievements, game state, sign-in with Google, and more.
 ///
 /// For more information, see <https://developers.google.com/games/>
@@ -48,7 +48,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// The Google Play games service allows developers to enhance games with social
+/// The Google Play Games Service allows developers to enhance games with social
 /// leaderboards, achievements, game state, sign-in with Google, and more.
 class GamesApi {
   /// View and manage your Google Play Developer account

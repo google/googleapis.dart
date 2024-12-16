@@ -588,6 +588,21 @@ class ApnsConfig {
   /// default value for `apns-priority` of 10 if not explicitly set.
   core.Map<core.String, core.String>? headers;
 
+  /// [Apple Live Activity](https://developer.apple.com/design/human-interface-guidelines/live-activities)
+  /// token to send updates to.
+  ///
+  /// This token can either be a push token or
+  /// \[push-to-start\](https://developer.apple.com/documentation/activitykit/activity/pushtostarttoken)
+  /// token from Apple. To start, update, or end a live activity remotely using
+  /// FCM, construct an \[`aps
+  /// payload`\](https://developer.apple.com/documentation/activitykit/starting-and-updating-live-activities-with-activitykit-push-notifications#Construct-the-payload-that-starts-a-Live-Activity)
+  /// and put it in the
+  /// \[`apns.payload`\](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#ApnsConfig)
+  /// field.
+  ///
+  /// Optional.
+  core.String? liveActivityToken;
+
   /// APNs payload as a JSON object, including both `aps` dictionary and custom
   /// payload.
   ///
@@ -603,6 +618,7 @@ class ApnsConfig {
   ApnsConfig({
     this.fcmOptions,
     this.headers,
+    this.liveActivityToken,
     this.payload,
   });
 
@@ -619,6 +635,7 @@ class ApnsConfig {
               value as core.String,
             ),
           ),
+          liveActivityToken: json_['liveActivityToken'] as core.String?,
           payload: json_.containsKey('payload')
               ? json_['payload'] as core.Map<core.String, core.dynamic>
               : null,
@@ -627,6 +644,7 @@ class ApnsConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (fcmOptions != null) 'fcmOptions': fcmOptions!,
         if (headers != null) 'headers': headers!,
+        if (liveActivityToken != null) 'liveActivityToken': liveActivityToken!,
         if (payload != null) 'payload': payload!,
       };
 }

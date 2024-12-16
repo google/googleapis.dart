@@ -1,8 +1,8 @@
 diff --git a/discovery/googleapis/chromemanagement__v1.json b/discovery/googleapis/chromemanagement__v1.json
-index 537f0163d..e33fcefab 100644
+index 688456f2d..29e3dfc9b 100644
 --- a/discovery/googleapis/chromemanagement__v1.json
 +++ b/discovery/googleapis/chromemanagement__v1.json
-@@ -17,7 +17,7 @@
+@@ -20,7 +20,7 @@
      "canonicalName": "Chrome Management",
      "description": "The Chrome Management API is a suite of services that allows Chrome administrators to view, manage and gain insights on their Chrome OS and Chrome Browser devices.",
      "discoveryVersion": "v1",
@@ -12,7 +12,7 @@ index 537f0163d..e33fcefab 100644
          "x16": "http://www.google.com/images/icons/product/search-16.gif",
          "x32": "http://www.google.com/images/icons/product/search-32.gif"
 diff --git a/discovery/googleapis/chromepolicy__v1.json b/discovery/googleapis/chromepolicy__v1.json
-index 8a9583c22..48cd14409 100644
+index ab44260d2..89ac4ce6b 100644
 --- a/discovery/googleapis/chromepolicy__v1.json
 +++ b/discovery/googleapis/chromepolicy__v1.json
 @@ -17,7 +17,7 @@
@@ -25,7 +25,7 @@ index 8a9583c22..48cd14409 100644
          "x16": "http://www.google.com/images/icons/product/search-16.gif",
          "x32": "http://www.google.com/images/icons/product/search-32.gif"
 diff --git a/discovery/googleapis/sts__v1.json b/discovery/googleapis/sts__v1.json
-index 4817ca793..dd48d71a9 100644
+index 8854b81c9..a943922e7 100644
 --- a/discovery/googleapis/sts__v1.json
 +++ b/discovery/googleapis/sts__v1.json
 @@ -5,7 +5,7 @@
@@ -34,11 +34,11 @@ index 4817ca793..dd48d71a9 100644
      "discoveryVersion": "v1",
 -    "documentationLink": "http://cloud.google.com/iam/docs/workload-identity-federation",
 +    "documentationLink": "https://cloud.google.com/iam/docs/workload-identity-federation",
-     "icons": {
-         "x16": "http://www.google.com/images/icons/product/search-16.gif",
-         "x32": "http://www.google.com/images/icons/product/search-32.gif"
+     "endpoints": [
+         {
+             "description": "Regional Endpoint",
 diff --git a/discovery/googleapis/versionhistory__v1.json b/discovery/googleapis/versionhistory__v1.json
-index 9c8e53aa0..60fdc75ba 100644
+index b58039a1c..96384ec58 100644
 --- a/discovery/googleapis/versionhistory__v1.json
 +++ b/discovery/googleapis/versionhistory__v1.json
 @@ -5,7 +5,7 @@
@@ -46,7 +46,7 @@ index 9c8e53aa0..60fdc75ba 100644
      "description": "Version History API - Prod",
      "discoveryVersion": "v1",
 -    "documentationLink": "https://developers.chrome.com/versionhistory",
-+    "documentationLink": "https://developer.chrome.com/docs/versionhistory/",
++    "documentationLink": "https://developer.chrome.com/docs/web-platform/versionhistory/guide",
      "icons": {
          "x16": "http://www.google.com/images/icons/product/search-16.gif",
          "x32": "http://www.google.com/images/icons/product/search-32.gif"

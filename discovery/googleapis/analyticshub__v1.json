@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240925",
+    "revision": "20241028",
     "rootUrl": "https://analyticshub.googleapis.com/",
     "servicePath": "",
     "title": "Analytics Hub API",
@@ -2229,6 +2229,10 @@
                 "destination": {
                     "description": "Required. The parent resource path of the Subscription. e.g. `projects/subscriberproject/locations/US`",
                     "type": "string"
+                },
+                "destinationDataset": {
+                    "$ref": "DestinationDataset",
+                    "description": "Optional. BigQuery destination dataset to create for the subscriber."
                 },
                 "subscriberContact": {
                     "description": "Email of the subscriber.",

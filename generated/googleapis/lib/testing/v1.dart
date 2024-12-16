@@ -1448,9 +1448,10 @@ class ApkManifest {
 
   /// Feature usage tags defined in the manifest.
   core.List<UsesFeature>? usesFeature;
+  core.List<core.String>? usesPermission;
 
   /// Permissions declared to be used by the application
-  core.List<core.String>? usesPermission;
+  core.List<UsesPermissionTag>? usesPermissionTags;
 
   /// Version number used internally by the app.
   core.String? versionCode;
@@ -1469,6 +1470,7 @@ class ApkManifest {
     this.targetSdkVersion,
     this.usesFeature,
     this.usesPermission,
+    this.usesPermissionTags,
     this.versionCode,
     this.versionName,
   });
@@ -1499,6 +1501,10 @@ class ApkManifest {
           usesPermission: (json_['usesPermission'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          usesPermissionTags: (json_['usesPermissionTags'] as core.List?)
+              ?.map((value) => UsesPermissionTag.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           versionCode: json_['versionCode'] as core.String?,
           versionName: json_['versionName'] as core.String?,
         );
@@ -1514,6 +1520,8 @@ class ApkManifest {
         if (targetSdkVersion != null) 'targetSdkVersion': targetSdkVersion!,
         if (usesFeature != null) 'usesFeature': usesFeature!,
         if (usesPermission != null) 'usesPermission': usesPermission!,
+        if (usesPermissionTags != null)
+          'usesPermissionTags': usesPermissionTags!,
         if (versionCode != null) 'versionCode': versionCode!,
         if (versionName != null) 'versionName': versionName!,
       };
@@ -4720,6 +4728,33 @@ class UsesFeature {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (isRequired != null) 'isRequired': isRequired!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// The tag within a manifest.
+///
+/// https://developer.android.com/guide/topics/manifest/uses-permission-element.html
+class UsesPermissionTag {
+  /// The android:name value
+  core.int? maxSdkVersion;
+
+  /// The android:name value
+  core.String? name;
+
+  UsesPermissionTag({
+    this.maxSdkVersion,
+    this.name,
+  });
+
+  UsesPermissionTag.fromJson(core.Map json_)
+      : this(
+          maxSdkVersion: json_['maxSdkVersion'] as core.int?,
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxSdkVersion != null) 'maxSdkVersion': maxSdkVersion!,
         if (name != null) 'name': name!,
       };
 }

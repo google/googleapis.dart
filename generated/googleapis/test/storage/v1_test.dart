@@ -2549,6 +2549,7 @@ api.Object buildObject() {
     o.temporaryHold = true;
     o.timeCreated = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.timeDeleted = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.timeFinalized = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.timeStorageClassUpdated = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.updated = core.DateTime.parse('2002-02-27T14:01:02Z');
   }
@@ -2672,6 +2673,10 @@ void checkObject(api.Object o) {
     );
     unittest.expect(
       o.timeDeleted!,
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
+    );
+    unittest.expect(
+      o.timeFinalized!,
       unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
@@ -5773,6 +5778,7 @@ void main() {
       final res = api.StorageApi(mock).buckets;
       final arg_bucket = 'foo';
       final arg_generation = 'foo';
+      final arg_projection = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5830,6 +5836,10 @@ void main() {
           unittest.equals(arg_generation),
         );
         unittest.expect(
+          queryMap['projection']!.first,
+          unittest.equals(arg_projection),
+        );
+        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -5841,11 +5851,14 @@ void main() {
         final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        final resp = '';
+        final resp = convert.json.encode(buildBucket());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      await res.restore(arg_bucket, arg_generation,
-          userProject: arg_userProject, $fields: arg_$fields);
+      final response = await res.restore(arg_bucket, arg_generation,
+          projection: arg_projection,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkBucket(response as api.Bucket);
     });
 
     unittest.test('method--setIamPolicy', () async {
@@ -9793,6 +9806,154 @@ void main() {
           versions: arg_versions,
           $fields: arg_$fields);
       checkObjects(response as api.Objects);
+    });
+
+    unittest.test('method--move', () async {
+      final mock = HttpServerMock();
+      final res = api.StorageApi(mock).objects;
+      final arg_bucket = 'foo';
+      final arg_sourceObject = 'foo';
+      final arg_destinationObject = 'foo';
+      final arg_ifGenerationMatch = 'foo';
+      final arg_ifGenerationNotMatch = 'foo';
+      final arg_ifMetagenerationMatch = 'foo';
+      final arg_ifMetagenerationNotMatch = 'foo';
+      final arg_ifSourceGenerationMatch = 'foo';
+      final arg_ifSourceGenerationNotMatch = 'foo';
+      final arg_ifSourceMetagenerationMatch = 'foo';
+      final arg_ifSourceMetagenerationNotMatch = 'foo';
+      final arg_userProject = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('storage/v1/'),
+        );
+        pathOffset += 11;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals('b/'),
+        );
+        pathOffset += 2;
+        index = path.indexOf('/o/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('/o/'),
+        );
+        pathOffset += 3;
+        index = path.indexOf('/moveTo/o/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_sourceObject'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals('/moveTo/o/'),
+        );
+        pathOffset += 10;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_destinationObject'),
+        );
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['ifGenerationMatch']!.first,
+          unittest.equals(arg_ifGenerationMatch),
+        );
+        unittest.expect(
+          queryMap['ifGenerationNotMatch']!.first,
+          unittest.equals(arg_ifGenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap['ifMetagenerationMatch']!.first,
+          unittest.equals(arg_ifMetagenerationMatch),
+        );
+        unittest.expect(
+          queryMap['ifMetagenerationNotMatch']!.first,
+          unittest.equals(arg_ifMetagenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap['ifSourceGenerationMatch']!.first,
+          unittest.equals(arg_ifSourceGenerationMatch),
+        );
+        unittest.expect(
+          queryMap['ifSourceGenerationNotMatch']!.first,
+          unittest.equals(arg_ifSourceGenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap['ifSourceMetagenerationMatch']!.first,
+          unittest.equals(arg_ifSourceMetagenerationMatch),
+        );
+        unittest.expect(
+          queryMap['ifSourceMetagenerationNotMatch']!.first,
+          unittest.equals(arg_ifSourceMetagenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap['userProject']!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildObject());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.move(
+          arg_bucket, arg_sourceObject, arg_destinationObject,
+          ifGenerationMatch: arg_ifGenerationMatch,
+          ifGenerationNotMatch: arg_ifGenerationNotMatch,
+          ifMetagenerationMatch: arg_ifMetagenerationMatch,
+          ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
+          ifSourceGenerationMatch: arg_ifSourceGenerationMatch,
+          ifSourceGenerationNotMatch: arg_ifSourceGenerationNotMatch,
+          ifSourceMetagenerationMatch: arg_ifSourceMetagenerationMatch,
+          ifSourceMetagenerationNotMatch: arg_ifSourceMetagenerationNotMatch,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkObject(response as api.Object);
     });
 
     unittest.test('method--patch', () async {

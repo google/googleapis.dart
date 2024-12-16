@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240820",
+    "revision": "20241211",
     "rootUrl": "https://solar.googleapis.com/",
     "servicePath": "",
     "title": "Solar API",
@@ -347,7 +347,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "The resource name for the building, of the format `building/`.",
+                    "description": "The resource name for the building, of the format `buildings/{place_id}`.",
                     "type": "string"
                 },
                 "postalCode": {

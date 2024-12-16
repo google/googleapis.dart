@@ -2747,8 +2747,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3979,10 +3979,17 @@ class AutomationRule {
   /// Optional.
   RepairRolloutRule? repairRolloutRule;
 
+  /// The `TimedPromoteReleaseRule` will automatically promote a release from
+  /// the current target(s) to the specified target(s) on a configured schedule.
+  ///
+  /// Optional.
+  TimedPromoteReleaseRule? timedPromoteReleaseRule;
+
   AutomationRule({
     this.advanceRolloutRule,
     this.promoteReleaseRule,
     this.repairRolloutRule,
+    this.timedPromoteReleaseRule,
   });
 
   AutomationRule.fromJson(core.Map json_)
@@ -3999,6 +4006,11 @@ class AutomationRule {
               ? RepairRolloutRule.fromJson(json_['repairRolloutRule']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          timedPromoteReleaseRule: json_.containsKey('timedPromoteReleaseRule')
+              ? TimedPromoteReleaseRule.fromJson(
+                  json_['timedPromoteReleaseRule']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4007,6 +4019,8 @@ class AutomationRule {
         if (promoteReleaseRule != null)
           'promoteReleaseRule': promoteReleaseRule!,
         if (repairRolloutRule != null) 'repairRolloutRule': repairRolloutRule!,
+        if (timedPromoteReleaseRule != null)
+          'timedPromoteReleaseRule': timedPromoteReleaseRule!,
       };
 }
 
@@ -4018,8 +4032,15 @@ class AutomationRuleCondition {
   /// Optional.
   TargetsPresentCondition? targetsPresentCondition;
 
+  /// TimedPromoteReleaseCondition contains rule conditions specific to a an
+  /// Automation with a timed promote release rule defined.
+  ///
+  /// Optional.
+  TimedPromoteReleaseCondition? timedPromoteReleaseCondition;
+
   AutomationRuleCondition({
     this.targetsPresentCondition,
+    this.timedPromoteReleaseCondition,
   });
 
   AutomationRuleCondition.fromJson(core.Map json_)
@@ -4029,11 +4050,19 @@ class AutomationRuleCondition {
                   json_['targetsPresentCondition']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          timedPromoteReleaseCondition:
+              json_.containsKey('timedPromoteReleaseCondition')
+                  ? TimedPromoteReleaseCondition.fromJson(
+                      json_['timedPromoteReleaseCondition']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (targetsPresentCondition != null)
           'targetsPresentCondition': targetsPresentCondition!,
+        if (timedPromoteReleaseCondition != null)
+          'timedPromoteReleaseCondition': timedPromoteReleaseCondition!,
       };
 }
 
@@ -4132,13 +4161,18 @@ class AutomationRun {
   /// Output only.
   core.String? stateDescription;
 
-  /// The ID of the target that represents the promotion stage that initiates
-  /// the `AutomationRun`.
+  /// The ID of the source target that initiates the `AutomationRun`.
   ///
   /// The value of this field is the last segment of a target name.
   ///
   /// Output only.
   core.String? targetId;
+
+  /// Promotes a release to a specified 'Target' as defined in a Timed Promote
+  /// Release rule.
+  ///
+  /// Output only.
+  TimedPromoteReleaseOperation? timedPromoteReleaseOperation;
 
   /// Time at which the automationRun was updated.
   ///
@@ -4168,6 +4202,7 @@ class AutomationRun {
     this.state,
     this.stateDescription,
     this.targetId,
+    this.timedPromoteReleaseOperation,
     this.updateTime,
     this.waitUntilTime,
   });
@@ -4206,6 +4241,12 @@ class AutomationRun {
           state: json_['state'] as core.String?,
           stateDescription: json_['stateDescription'] as core.String?,
           targetId: json_['targetId'] as core.String?,
+          timedPromoteReleaseOperation:
+              json_.containsKey('timedPromoteReleaseOperation')
+                  ? TimedPromoteReleaseOperation.fromJson(
+                      json_['timedPromoteReleaseOperation']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           updateTime: json_['updateTime'] as core.String?,
           waitUntilTime: json_['waitUntilTime'] as core.String?,
         );
@@ -4230,6 +4271,8 @@ class AutomationRun {
         if (state != null) 'state': state!,
         if (stateDescription != null) 'stateDescription': stateDescription!,
         if (targetId != null) 'targetId': targetId!,
+        if (timedPromoteReleaseOperation != null)
+          'timedPromoteReleaseOperation': timedPromoteReleaseOperation!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (waitUntilTime != null) 'waitUntilTime': waitUntilTime!,
       };
@@ -7907,6 +7950,8 @@ class Release {
   /// Not all versions are valid; Cloud Deploy supports a specific set of
   /// versions. If unset, the most recent supported Skaffold version will be
   /// used.
+  ///
+  /// Optional.
   core.String? skaffoldVersion;
 
   /// Map from target ID to the target artifacts created during the render
@@ -10152,6 +10197,36 @@ class TargetRender {
       };
 }
 
+/// The targets involved in a single timed promotion.
+class Targets {
+  /// The destination target ID.
+  ///
+  /// Optional.
+  core.String? destinationTargetId;
+
+  /// The source target ID.
+  ///
+  /// Optional.
+  core.String? sourceTargetId;
+
+  Targets({
+    this.destinationTargetId,
+    this.sourceTargetId,
+  });
+
+  Targets.fromJson(core.Map json_)
+      : this(
+          destinationTargetId: json_['destinationTargetId'] as core.String?,
+          sourceTargetId: json_['sourceTargetId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destinationTargetId != null)
+          'destinationTargetId': destinationTargetId!,
+        if (sourceTargetId != null) 'sourceTargetId': sourceTargetId!,
+      };
+}
+
 /// `TargetsPresentCondition` contains information on any Targets referenced in
 /// the Delivery Pipeline that do not actually exist.
 class TargetsPresentCondition {
@@ -10283,6 +10358,158 @@ class TimeWindows {
         if (oneTimeWindows != null) 'oneTimeWindows': oneTimeWindows!,
         if (timeZone != null) 'timeZone': timeZone!,
         if (weeklyWindows != null) 'weeklyWindows': weeklyWindows!,
+      };
+}
+
+/// `TimedPromoteReleaseCondition` contains conditions specific to an Automation
+/// with a Timed Promote Release rule defined.
+class TimedPromoteReleaseCondition {
+  /// When the next scheduled promotion(s) will occur.
+  ///
+  /// Output only.
+  core.String? nextPromotionTime;
+
+  /// A list of targets involved in the upcoming timed promotion(s).
+  ///
+  /// Output only.
+  core.List<Targets>? targetsList;
+
+  TimedPromoteReleaseCondition({
+    this.nextPromotionTime,
+    this.targetsList,
+  });
+
+  TimedPromoteReleaseCondition.fromJson(core.Map json_)
+      : this(
+          nextPromotionTime: json_['nextPromotionTime'] as core.String?,
+          targetsList: (json_['targetsList'] as core.List?)
+              ?.map((value) => Targets.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPromotionTime != null) 'nextPromotionTime': nextPromotionTime!,
+        if (targetsList != null) 'targetsList': targetsList!,
+      };
+}
+
+/// Contains the information of an automated timed promote-release operation.
+class TimedPromoteReleaseOperation {
+  /// The starting phase of the rollout created by this operation.
+  ///
+  /// Output only.
+  core.String? phase;
+
+  /// The name of the release to be promoted.
+  ///
+  /// Output only.
+  core.String? release;
+
+  /// The ID of the target that represents the promotion stage to which the
+  /// release will be promoted.
+  ///
+  /// The value of this field is the last segment of a target name.
+  ///
+  /// Output only.
+  core.String? targetId;
+
+  TimedPromoteReleaseOperation({
+    this.phase,
+    this.release,
+    this.targetId,
+  });
+
+  TimedPromoteReleaseOperation.fromJson(core.Map json_)
+      : this(
+          phase: json_['phase'] as core.String?,
+          release: json_['release'] as core.String?,
+          targetId: json_['targetId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (phase != null) 'phase': phase!,
+        if (release != null) 'release': release!,
+        if (targetId != null) 'targetId': targetId!,
+      };
+}
+
+/// The `TimedPromoteReleaseRule` will automatically promote a release from the
+/// current target(s) to the specified target(s) on a configured schedule.
+class TimedPromoteReleaseRule {
+  /// Information around the state of the Automation rule.
+  ///
+  /// Output only.
+  AutomationRuleCondition? condition;
+
+  /// The starting phase of the rollout created by this rule.
+  ///
+  /// Default to the first phase.
+  ///
+  /// Optional.
+  core.String? destinationPhase;
+
+  /// The ID of the stage in the pipeline to which this `Release` is deploying.
+  ///
+  /// If unspecified, default it to the next stage in the promotion flow. The
+  /// value of this field could be one of the following: * The last segment of a
+  /// target name * "@next", the next target in the promotion sequence
+  ///
+  /// Optional.
+  core.String? destinationTargetId;
+
+  /// ID of the rule.
+  ///
+  /// This ID must be unique in the `Automation` resource to which this rule
+  /// belongs. The format is `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// Schedule in crontab format.
+  ///
+  /// e.g. "0 9 * * 1" for every Monday at 9am.
+  ///
+  /// Required.
+  core.String? schedule;
+
+  /// The time zone in IANA format
+  /// [IANA Time Zone Database](https://www.iana.org/time-zones) (e.g.
+  /// America/New_York).
+  ///
+  /// Required.
+  core.String? timeZone;
+
+  TimedPromoteReleaseRule({
+    this.condition,
+    this.destinationPhase,
+    this.destinationTargetId,
+    this.id,
+    this.schedule,
+    this.timeZone,
+  });
+
+  TimedPromoteReleaseRule.fromJson(core.Map json_)
+      : this(
+          condition: json_.containsKey('condition')
+              ? AutomationRuleCondition.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          destinationPhase: json_['destinationPhase'] as core.String?,
+          destinationTargetId: json_['destinationTargetId'] as core.String?,
+          id: json_['id'] as core.String?,
+          schedule: json_['schedule'] as core.String?,
+          timeZone: json_['timeZone'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (condition != null) 'condition': condition!,
+        if (destinationPhase != null) 'destinationPhase': destinationPhase!,
+        if (destinationTargetId != null)
+          'destinationTargetId': destinationTargetId!,
+        if (id != null) 'id': id!,
+        if (schedule != null) 'schedule': schedule!,
+        if (timeZone != null) 'timeZone': timeZone!,
       };
 }
 

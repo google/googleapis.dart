@@ -77,8 +77,8 @@ class OperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -408,7 +408,7 @@ class VoicesResource {
 
 /// Used for advanced voice options.
 class AdvancedVoiceOptions {
-  /// Only for Jounrney voices.
+  /// Only for Journey voices.
   ///
   /// If false, the synthesis will be context aware and have higher latency.
   core.bool? lowLatencyJourneySynthesis;
@@ -703,6 +703,30 @@ class ListVoicesResponse {
       };
 }
 
+/// A collection of turns for multi-speaker synthesis.
+class MultiSpeakerMarkup {
+  /// Speaker turns.
+  ///
+  /// Required.
+  core.List<Turn>? turns;
+
+  MultiSpeakerMarkup({
+    this.turns,
+  });
+
+  MultiSpeakerMarkup.fromJson(core.Map json_)
+      : this(
+          turns: (json_['turns'] as core.List?)
+              ?.map((value) =>
+                  Turn.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (turns != null) 'turns': turns!,
+      };
+}
+
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -806,6 +830,11 @@ class SynthesisInput {
   /// Optional.
   CustomPronunciations? customPronunciations;
 
+  /// The multi-speaker input to be synthesized.
+  ///
+  /// Only applicable for multi-speaker synthesis.
+  MultiSpeakerMarkup? multiSpeakerMarkup;
+
   /// The SSML document to be synthesized.
   ///
   /// The SSML document must be valid and well-formed. Otherwise the RPC will
@@ -818,6 +847,7 @@ class SynthesisInput {
 
   SynthesisInput({
     this.customPronunciations,
+    this.multiSpeakerMarkup,
     this.ssml,
     this.text,
   });
@@ -828,6 +858,10 @@ class SynthesisInput {
               ? CustomPronunciations.fromJson(json_['customPronunciations']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          multiSpeakerMarkup: json_.containsKey('multiSpeakerMarkup')
+              ? MultiSpeakerMarkup.fromJson(json_['multiSpeakerMarkup']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           ssml: json_['ssml'] as core.String?,
           text: json_['text'] as core.String?,
         );
@@ -835,6 +869,8 @@ class SynthesisInput {
   core.Map<core.String, core.dynamic> toJson() => {
         if (customPronunciations != null)
           'customPronunciations': customPronunciations!,
+        if (multiSpeakerMarkup != null)
+          'multiSpeakerMarkup': multiSpeakerMarkup!,
         if (ssml != null) 'ssml': ssml!,
         if (text != null) 'text': text!,
       };
@@ -900,7 +936,7 @@ class SynthesizeLongAudioRequest {
 
 /// The top-level message sent by the client for the `SynthesizeSpeech` method.
 class SynthesizeSpeechRequest {
-  /// Adnanced voice options.
+  /// Advanced voice options.
   AdvancedVoiceOptions? advancedVoiceOptions;
 
   /// The configuration of the synthesized audio.
@@ -985,6 +1021,37 @@ class SynthesizeSpeechResponse {
       };
 }
 
+/// A Multi-speaker turn.
+class Turn {
+  /// The speaker of the turn, for example, 'O' or 'Q'.
+  ///
+  /// Please refer to documentation for available speakers.
+  ///
+  /// Required.
+  core.String? speaker;
+
+  /// The text to speak.
+  ///
+  /// Required.
+  core.String? text;
+
+  Turn({
+    this.speaker,
+    this.text,
+  });
+
+  Turn.fromJson(core.Map json_)
+      : this(
+          speaker: json_['speaker'] as core.String?,
+          text: json_['text'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (speaker != null) 'speaker': speaker!,
+        if (text != null) 'text': text!,
+      };
+}
+
 /// Description of a voice supported by the TTS service.
 class Voice {
   /// The languages that this voice supports, expressed as
@@ -1038,6 +1105,27 @@ class Voice {
       };
 }
 
+/// The configuration of Voice Clone feature.
+class VoiceCloneParams {
+  /// Created by GenerateVoiceCloningKey.
+  ///
+  /// Required.
+  core.String? voiceCloningKey;
+
+  VoiceCloneParams({
+    this.voiceCloningKey,
+  });
+
+  VoiceCloneParams.fromJson(core.Map json_)
+      : this(
+          voiceCloningKey: json_['voiceCloningKey'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (voiceCloningKey != null) 'voiceCloningKey': voiceCloningKey!,
+      };
+}
+
 /// Description of which voice to use for a synthesis request.
 class VoiceSelectionParams {
   /// The configuration for a custom voice.
@@ -1086,11 +1174,20 @@ class VoiceSelectionParams {
   /// - "NEUTRAL" : A gender-neutral voice. This voice is not yet supported.
   core.String? ssmlGender;
 
+  /// The configuration for a voice clone.
+  ///
+  /// If \[VoiceCloneParams.voice_clone_key\] is set, the service will choose
+  /// the voice clone matching the specified configuration.
+  ///
+  /// Optional.
+  VoiceCloneParams? voiceClone;
+
   VoiceSelectionParams({
     this.customVoice,
     this.languageCode,
     this.name,
     this.ssmlGender,
+    this.voiceClone,
   });
 
   VoiceSelectionParams.fromJson(core.Map json_)
@@ -1102,6 +1199,10 @@ class VoiceSelectionParams {
           languageCode: json_['languageCode'] as core.String?,
           name: json_['name'] as core.String?,
           ssmlGender: json_['ssmlGender'] as core.String?,
+          voiceClone: json_.containsKey('voiceClone')
+              ? VoiceCloneParams.fromJson(
+                  json_['voiceClone'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1109,5 +1210,6 @@ class VoiceSelectionParams {
         if (languageCode != null) 'languageCode': languageCode!,
         if (name != null) 'name': name!,
         if (ssmlGender != null) 'ssmlGender': ssmlGender!,
+        if (voiceClone != null) 'voiceClone': voiceClone!,
       };
 }

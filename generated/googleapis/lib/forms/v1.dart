@@ -1876,6 +1876,9 @@ class Question {
   /// already used in the form. If not provided, a new ID is assigned.
   core.String? questionId;
 
+  /// A respondent can choose a rating from a pre-defined set of icons.
+  RatingQuestion? ratingQuestion;
+
   /// Whether the question must be answered in order for a respondent to submit
   /// their response.
   core.bool? required;
@@ -1898,6 +1901,7 @@ class Question {
     this.fileUploadQuestion,
     this.grading,
     this.questionId,
+    this.ratingQuestion,
     this.required,
     this.rowQuestion,
     this.scaleQuestion,
@@ -1924,6 +1928,10 @@ class Question {
                   json_['grading'] as core.Map<core.String, core.dynamic>)
               : null,
           questionId: json_['questionId'] as core.String?,
+          ratingQuestion: json_.containsKey('ratingQuestion')
+              ? RatingQuestion.fromJson(json_['ratingQuestion']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           required: json_['required'] as core.bool?,
           rowQuestion: json_.containsKey('rowQuestion')
               ? RowQuestion.fromJson(
@@ -1950,6 +1958,7 @@ class Question {
           'fileUploadQuestion': fileUploadQuestion!,
         if (grading != null) 'grading': grading!,
         if (questionId != null) 'questionId': questionId!,
+        if (ratingQuestion != null) 'ratingQuestion': ratingQuestion!,
         if (required != null) 'required': required!,
         if (rowQuestion != null) 'rowQuestion': rowQuestion!,
         if (scaleQuestion != null) 'scaleQuestion': scaleQuestion!,
@@ -2061,6 +2070,42 @@ class QuizSettings {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (isQuiz != null) 'isQuiz': isQuiz!,
+      };
+}
+
+/// A rating question.
+///
+/// The user has a range of icons to choose from.
+class RatingQuestion {
+  /// The icon type to use for the rating.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "RATING_ICON_TYPE_UNSPECIFIED" : Default value. Unused.
+  /// - "STAR" : A star icon.
+  /// - "HEART" : A heart icon.
+  /// - "THUMB_UP" : A thumbs down icon.
+  core.String? iconType;
+
+  /// The rating scale level of the rating question.
+  ///
+  /// Required.
+  core.int? ratingScaleLevel;
+
+  RatingQuestion({
+    this.iconType,
+    this.ratingScaleLevel,
+  });
+
+  RatingQuestion.fromJson(core.Map json_)
+      : this(
+          iconType: json_['iconType'] as core.String?,
+          ratingScaleLevel: json_['ratingScaleLevel'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (iconType != null) 'iconType': iconType!,
+        if (ratingScaleLevel != null) 'ratingScaleLevel': ratingScaleLevel!,
       };
 }
 

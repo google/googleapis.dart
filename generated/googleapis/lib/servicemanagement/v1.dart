@@ -2573,6 +2573,12 @@ class Diagnostic {
 /// directive `suppress_warning` does not directly affect documentation and is
 /// documented together with service config validation.
 class Documentation {
+  /// Optional information about the IAM configuration.
+  ///
+  /// This is typically used to link to documentation about a product's IAM
+  /// roles and permissions.
+  core.String? additionalIamInfo;
+
   /// The URL to the root of documentation.
   core.String? documentationRootUrl;
 
@@ -2614,6 +2620,7 @@ class Documentation {
   core.String? summary;
 
   Documentation({
+    this.additionalIamInfo,
     this.documentationRootUrl,
     this.overview,
     this.pages,
@@ -2625,6 +2632,7 @@ class Documentation {
 
   Documentation.fromJson(core.Map json_)
       : this(
+          additionalIamInfo: json_['additionalIamInfo'] as core.String?,
           documentationRootUrl: json_['documentationRootUrl'] as core.String?,
           overview: json_['overview'] as core.String?,
           pages: (json_['pages'] as core.List?)
@@ -2644,6 +2652,7 @@ class Documentation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalIamInfo != null) 'additionalIamInfo': additionalIamInfo!,
         if (documentationRootUrl != null)
           'documentationRootUrl': documentationRootUrl!,
         if (overview != null) 'overview': overview!,
@@ -2866,6 +2875,13 @@ class EnumValue {
 /// These fields will be deprecated once the feature graduates and is enabled by
 /// default.
 class ExperimentalFeatures {
+  /// Enables generation of protobuf code using new types that are more Pythonic
+  /// which are included in `protobuf>=5.29.x`.
+  ///
+  /// This feature will be enabled by default 1 month after launching the
+  /// feature in preview packages.
+  core.bool? protobufPythonicTypesEnabled;
+
   /// Enables generation of asynchronous REST clients if `rest` transport is
   /// enabled.
   ///
@@ -2875,15 +2891,20 @@ class ExperimentalFeatures {
   core.bool? restAsyncIoEnabled;
 
   ExperimentalFeatures({
+    this.protobufPythonicTypesEnabled,
     this.restAsyncIoEnabled,
   });
 
   ExperimentalFeatures.fromJson(core.Map json_)
       : this(
+          protobufPythonicTypesEnabled:
+              json_['protobufPythonicTypesEnabled'] as core.bool?,
           restAsyncIoEnabled: json_['restAsyncIoEnabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (protobufPythonicTypesEnabled != null)
+          'protobufPythonicTypesEnabled': protobufPythonicTypesEnabled!,
         if (restAsyncIoEnabled != null)
           'restAsyncIoEnabled': restAsyncIoEnabled!,
       };
@@ -3191,8 +3212,16 @@ class GoSettings {
   /// Some settings.
   CommonLanguageSettings? common;
 
+  /// Map of service names to renamed services.
+  ///
+  /// Keys are the package relative service names and values are the name to be
+  /// used for the service client and call options. publishing: go_settings:
+  /// renamed_services: Publisher: TopicAdmin
+  core.Map<core.String, core.String>? renamedServices;
+
   GoSettings({
     this.common,
+    this.renamedServices,
   });
 
   GoSettings.fromJson(core.Map json_)
@@ -3201,10 +3230,19 @@ class GoSettings {
               ? CommonLanguageSettings.fromJson(
                   json_['common'] as core.Map<core.String, core.dynamic>)
               : null,
+          renamedServices:
+              (json_['renamedServices'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (common != null) 'common': common!,
+        if (renamedServices != null) 'renamedServices': renamedServices!,
       };
 }
 

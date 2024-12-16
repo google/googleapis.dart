@@ -242,8 +242,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1470,8 +1470,9 @@ class GoogleCloudDatacatalogLineageV1Origin {
   /// Type of the source.
   ///
   /// Use of a source_type other than `CUSTOM` for process creation or updating
-  /// is highly discouraged. It may cause additional billing costs and be
-  /// restricted in the future without notice.
+  /// is highly discouraged. It might be restricted in the future without
+  /// notice. There will be increase in cost if you use any of the source types
+  /// other than `CUSTOM`.
   /// Possible string values are:
   /// - "SOURCE_TYPE_UNSPECIFIED" : Source is Unspecified
   /// - "CUSTOM" : A custom source

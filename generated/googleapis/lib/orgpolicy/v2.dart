@@ -1500,6 +1500,9 @@ class GoogleCloudOrgpolicyV2Constraint {
   /// Shows if dry run is supported for this constraint or not.
   core.bool? supportsDryRun;
 
+  /// Shows if simulation is supported for this constraint or not.
+  core.bool? supportsSimulation;
+
   GoogleCloudOrgpolicyV2Constraint({
     this.booleanConstraint,
     this.constraintDefault,
@@ -1508,6 +1511,7 @@ class GoogleCloudOrgpolicyV2Constraint {
     this.listConstraint,
     this.name,
     this.supportsDryRun,
+    this.supportsSimulation,
   });
 
   GoogleCloudOrgpolicyV2Constraint.fromJson(core.Map json_)
@@ -1527,6 +1531,7 @@ class GoogleCloudOrgpolicyV2Constraint {
               : null,
           name: json_['name'] as core.String?,
           supportsDryRun: json_['supportsDryRun'] as core.bool?,
+          supportsSimulation: json_['supportsSimulation'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1537,6 +1542,8 @@ class GoogleCloudOrgpolicyV2Constraint {
         if (listConstraint != null) 'listConstraint': listConstraint!,
         if (name != null) 'name': name!,
         if (supportsDryRun != null) 'supportsDryRun': supportsDryRun!,
+        if (supportsSimulation != null)
+          'supportsSimulation': supportsSimulation!,
       };
 }
 
@@ -2159,6 +2166,19 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
   /// only in policies for boolean constraints.
   core.bool? enforce;
 
+  /// Required for GMCs if parameters defined in constraints.
+  ///
+  /// Pass parameter values when policy enforcement is enabled. Ensure that
+  /// parameter value types match those defined in the constraint definition.
+  /// For example: { "allowedLocations" : \["us-east1", "us-west1"\], "allowAll"
+  /// : true }
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? parameters;
+
   /// List of values to be used for this policy rule.
   ///
   /// This field can be set only in policies for list constraints.
@@ -2169,6 +2189,7 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
     this.condition,
     this.denyAll,
     this.enforce,
+    this.parameters,
     this.values,
   });
 
@@ -2181,6 +2202,9 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
               : null,
           denyAll: json_['denyAll'] as core.bool?,
           enforce: json_['enforce'] as core.bool?,
+          parameters: json_.containsKey('parameters')
+              ? json_['parameters'] as core.Map<core.String, core.dynamic>
+              : null,
           values: json_.containsKey('values')
               ? GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues.fromJson(
                   json_['values'] as core.Map<core.String, core.dynamic>)
@@ -2192,6 +2216,7 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
         if (condition != null) 'condition': condition!,
         if (denyAll != null) 'denyAll': denyAll!,
         if (enforce != null) 'enforce': enforce!,
+        if (parameters != null) 'parameters': parameters!,
         if (values != null) 'values': values!,
       };
 }

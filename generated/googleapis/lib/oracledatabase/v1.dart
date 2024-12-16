@@ -1408,8 +1408,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3801,7 +3801,7 @@ class CloudVmClusterProperties {
 
   /// Operating system version of the image.
   ///
-  /// Output only.
+  /// Optional.
   core.String? systemVersion;
 
   /// Time zone of VM Cluster to set.
@@ -4542,6 +4542,7 @@ class Entitlement {
   /// - "ACCOUNT_NOT_LINKED" : Account not linked.
   /// - "ACCOUNT_NOT_ACTIVE" : Account is linked but not active.
   /// - "ACTIVE" : Entitlement and Account are active.
+  /// - "ACCOUNT_SUSPENDED" : Account is suspended.
   core.String? state;
 
   Entitlement({

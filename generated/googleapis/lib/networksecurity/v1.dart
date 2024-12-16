@@ -836,8 +836,8 @@ class OrganizationsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2615,6 +2615,157 @@ class ProjectsLocationsAuthzPoliciesResource {
   ProjectsLocationsAuthzPoliciesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates a new AuthzPolicy in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the `AuthzPolicy` resource.
+  /// Must be in the format `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [authzPolicyId] - Required. User-provided ID of the `AuthzPolicy` resource
+  /// to be created.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server can ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    AuthzPolicy request,
+    core.String parent, {
+    core.String? authzPolicyId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (authzPolicyId != null) 'authzPolicyId': [authzPolicyId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/authzPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single AuthzPolicy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the `AuthzPolicy` resource to delete. Must
+  /// be in the format
+  /// `projects/{project}/locations/{location}/authzPolicies/{authz_policy}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authzPolicies/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server can ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single AuthzPolicy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the `AuthzPolicy` resource to get. Must be in
+  /// the format
+  /// `projects/{project}/locations/{location}/authzPolicies/{authz_policy}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authzPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AuthzPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AuthzPolicy> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AuthzPolicy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -2671,6 +2822,128 @@ class ProjectsLocationsAuthzPoliciesResource {
     );
     return GoogleIamV1Policy.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists AuthzPolicies in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location from which the `AuthzPolicy`
+  /// resources are listed, specified in the following format:
+  /// `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results.
+  ///
+  /// [pageSize] - Optional. Requested page size. The server might return fewer
+  /// items than requested. If unspecified, the server picks an appropriate
+  /// default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results that the
+  /// server returns.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAuthzPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAuthzPoliciesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/authzPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAuthzPoliciesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single AuthzPolicy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Identifier. Name of the `AuthzPolicy` resource in the
+  /// following format:
+  /// `projects/{project}/locations/{location}/authzPolicies/{authz_policy}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authzPolicies/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server can ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Used to specify the fields to be overwritten in
+  /// the `AuthzPolicy` resource by the update. The fields specified in the
+  /// `update_mask` are relative to the resource, not the full request. A field
+  /// is overwritten if it is in the mask. If the user does not specify a mask,
+  /// then all fields are overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    AuthzPolicy request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -3930,8 +4203,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5211,6 +5484,708 @@ class AuthorizationPolicy {
       };
 }
 
+/// `AuthzPolicy` is a resource that allows to forward traffic to a callout
+/// backend designed to scan the traffic for security purposes.
+class AuthzPolicy {
+  /// Can be one of `ALLOW`, `DENY`, `CUSTOM`.
+  ///
+  /// When the action is `CUSTOM`, `customProvider` must be specified. When the
+  /// action is `ALLOW`, only requests matching the policy will be allowed. When
+  /// the action is `DENY`, only requests matching the policy will be denied.
+  /// When a request arrives, the policies are evaluated in the following order:
+  /// 1. If there is a `CUSTOM` policy that matches the request, the `CUSTOM`
+  /// policy is evaluated using the custom authorization providers and the
+  /// request is denied if the provider rejects the request. 2. If there are any
+  /// `DENY` policies that match the request, the request is denied. 3. If there
+  /// are no `ALLOW` policies for the resource or if any of the `ALLOW` policies
+  /// match the request, the request is allowed. 4. Else the request is denied
+  /// by default if none of the configured AuthzPolicies with `ALLOW` action
+  /// match the request.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "AUTHZ_ACTION_UNSPECIFIED" : Unspecified action.
+  /// - "ALLOW" : Allow request to pass through to the backend.
+  /// - "DENY" : Deny the request and return a HTTP 404 to the client.
+  /// - "CUSTOM" : Delegate the authorization decision to an external
+  /// authorization engine.
+  core.String? action;
+
+  /// The timestamp when the resource was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Required if the action is `CUSTOM`.
+  ///
+  /// Allows delegating authorization decisions to Cloud IAP or to Service
+  /// Extensions. One of `cloudIap` or `authzExtension` must be specified.
+  ///
+  /// Optional.
+  AuthzPolicyCustomProvider? customProvider;
+
+  /// A human-readable description of the resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// A list of authorization HTTP rules to match against the incoming request.
+  ///
+  /// A policy match occurs when at least one HTTP rule matches the request or
+  /// when no HTTP rules are specified in the policy. At least one HTTP Rule is
+  /// required for Allow or Deny Action. Limited to 5 rules.
+  ///
+  /// Optional.
+  core.List<AuthzPolicyAuthzRule>? httpRules;
+
+  /// Set of labels associated with the `AuthzPolicy` resource.
+  ///
+  /// The format must comply with \[the following
+  /// requirements\](/compute/docs/labeling-resources#requirements).
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// Name of the `AuthzPolicy` resource in the following format:
+  /// `projects/{project}/locations/{location}/authzPolicies/{authz_policy}`.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Specifies the set of resources to which this policy should be applied to.
+  ///
+  /// Required.
+  AuthzPolicyTarget? target;
+
+  /// The timestamp when the resource was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  AuthzPolicy({
+    this.action,
+    this.createTime,
+    this.customProvider,
+    this.description,
+    this.httpRules,
+    this.labels,
+    this.name,
+    this.target,
+    this.updateTime,
+  });
+
+  AuthzPolicy.fromJson(core.Map json_)
+      : this(
+          action: json_['action'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          customProvider: json_.containsKey('customProvider')
+              ? AuthzPolicyCustomProvider.fromJson(json_['customProvider']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          description: json_['description'] as core.String?,
+          httpRules: (json_['httpRules'] as core.List?)
+              ?.map((value) => AuthzPolicyAuthzRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          name: json_['name'] as core.String?,
+          target: json_.containsKey('target')
+              ? AuthzPolicyTarget.fromJson(
+                  json_['target'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (createTime != null) 'createTime': createTime!,
+        if (customProvider != null) 'customProvider': customProvider!,
+        if (description != null) 'description': description!,
+        if (httpRules != null) 'httpRules': httpRules!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (target != null) 'target': target!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Conditions to match against the incoming request.
+class AuthzPolicyAuthzRule {
+  /// Describes properties of a source of a request.
+  ///
+  /// Optional.
+  AuthzPolicyAuthzRuleFrom? from;
+
+  /// Describes properties of a target of a request.
+  ///
+  /// Optional.
+  AuthzPolicyAuthzRuleTo? to;
+
+  /// CEL expression that describes the conditions to be satisfied for the
+  /// action.
+  ///
+  /// The result of the CEL expression is ANDed with the from and to. Refer to
+  /// the CEL language reference for a list of available attributes.
+  ///
+  /// Optional.
+  core.String? when;
+
+  AuthzPolicyAuthzRule({
+    this.from,
+    this.to,
+    this.when,
+  });
+
+  AuthzPolicyAuthzRule.fromJson(core.Map json_)
+      : this(
+          from: json_.containsKey('from')
+              ? AuthzPolicyAuthzRuleFrom.fromJson(
+                  json_['from'] as core.Map<core.String, core.dynamic>)
+              : null,
+          to: json_.containsKey('to')
+              ? AuthzPolicyAuthzRuleTo.fromJson(
+                  json_['to'] as core.Map<core.String, core.dynamic>)
+              : null,
+          when: json_['when'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (from != null) 'from': from!,
+        if (to != null) 'to': to!,
+        if (when != null) 'when': when!,
+      };
+}
+
+/// Describes properties of one or more sources of a request.
+class AuthzPolicyAuthzRuleFrom {
+  /// Describes the negated properties of request sources.
+  ///
+  /// Matches requests from sources that do not match the criteria specified in
+  /// this field. At least one of sources or notSources must be specified.
+  ///
+  /// Optional.
+  core.List<AuthzPolicyAuthzRuleFromRequestSource>? notSources;
+
+  /// Describes the properties of a request's sources.
+  ///
+  /// At least one of sources or notSources must be specified. Limited to 1
+  /// source. A match occurs when ANY source (in sources or notSources) matches
+  /// the request. Within a single source, the match follows AND semantics
+  /// across fields and OR semantics within a single field, i.e. a match occurs
+  /// when ANY principal matches AND ANY ipBlocks match.
+  ///
+  /// Optional.
+  core.List<AuthzPolicyAuthzRuleFromRequestSource>? sources;
+
+  AuthzPolicyAuthzRuleFrom({
+    this.notSources,
+    this.sources,
+  });
+
+  AuthzPolicyAuthzRuleFrom.fromJson(core.Map json_)
+      : this(
+          notSources: (json_['notSources'] as core.List?)
+              ?.map((value) => AuthzPolicyAuthzRuleFromRequestSource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          sources: (json_['sources'] as core.List?)
+              ?.map((value) => AuthzPolicyAuthzRuleFromRequestSource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (notSources != null) 'notSources': notSources!,
+        if (sources != null) 'sources': sources!,
+      };
+}
+
+/// Describes the properties of a single source.
+class AuthzPolicyAuthzRuleFromRequestSource {
+  /// A list of identities derived from the client's certificate.
+  ///
+  /// This field will not match on a request unless mutual TLS is enabled for
+  /// the Forwarding rule or Gateway. Each identity is a string whose value is
+  /// matched against the URI SAN, or DNS SAN or the subject field in the
+  /// client's certificate. The match can be exact, prefix, suffix or a
+  /// substring match. One of exact, prefix, suffix or contains must be
+  /// specified. Limited to 5 principals.
+  ///
+  /// Optional.
+  core.List<AuthzPolicyAuthzRuleStringMatch>? principals;
+
+  /// A list of resources to match against the resource of the source VM of a
+  /// request.
+  ///
+  /// Limited to 5 resources.
+  ///
+  /// Optional.
+  core.List<AuthzPolicyAuthzRuleRequestResource>? resources;
+
+  AuthzPolicyAuthzRuleFromRequestSource({
+    this.principals,
+    this.resources,
+  });
+
+  AuthzPolicyAuthzRuleFromRequestSource.fromJson(core.Map json_)
+      : this(
+          principals: (json_['principals'] as core.List?)
+              ?.map((value) => AuthzPolicyAuthzRuleStringMatch.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          resources: (json_['resources'] as core.List?)
+              ?.map((value) => AuthzPolicyAuthzRuleRequestResource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (principals != null) 'principals': principals!,
+        if (resources != null) 'resources': resources!,
+      };
+}
+
+/// Determines how a HTTP header should be matched.
+class AuthzPolicyAuthzRuleHeaderMatch {
+  /// Specifies the name of the header in the request.
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// Specifies how the header match will be performed.
+  ///
+  /// Optional.
+  AuthzPolicyAuthzRuleStringMatch? value;
+
+  AuthzPolicyAuthzRuleHeaderMatch({
+    this.name,
+    this.value,
+  });
+
+  AuthzPolicyAuthzRuleHeaderMatch.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+          value: json_.containsKey('value')
+              ? AuthzPolicyAuthzRuleStringMatch.fromJson(
+                  json_['value'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Describes the properties of a client VM resource accessing the internal
+/// application load balancers.
+class AuthzPolicyAuthzRuleRequestResource {
+  /// An IAM service account to match against the source service account of the
+  /// VM sending the request.
+  ///
+  /// Optional.
+  AuthzPolicyAuthzRuleStringMatch? iamServiceAccount;
+
+  /// A list of resource tag value permanent IDs to match against the resource
+  /// manager tags value associated with the source VM of a request.
+  ///
+  /// Optional.
+  AuthzPolicyAuthzRuleRequestResourceTagValueIdSet? tagValueIdSet;
+
+  AuthzPolicyAuthzRuleRequestResource({
+    this.iamServiceAccount,
+    this.tagValueIdSet,
+  });
+
+  AuthzPolicyAuthzRuleRequestResource.fromJson(core.Map json_)
+      : this(
+          iamServiceAccount: json_.containsKey('iamServiceAccount')
+              ? AuthzPolicyAuthzRuleStringMatch.fromJson(
+                  json_['iamServiceAccount']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          tagValueIdSet: json_.containsKey('tagValueIdSet')
+              ? AuthzPolicyAuthzRuleRequestResourceTagValueIdSet.fromJson(
+                  json_['tagValueIdSet'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (iamServiceAccount != null) 'iamServiceAccount': iamServiceAccount!,
+        if (tagValueIdSet != null) 'tagValueIdSet': tagValueIdSet!,
+      };
+}
+
+/// Describes a set of resource tag value permanent IDs to match against the
+/// resource manager tags value associated with the source VM of a request.
+class AuthzPolicyAuthzRuleRequestResourceTagValueIdSet {
+  /// A list of resource tag value permanent IDs to match against the resource
+  /// manager tags value associated with the source VM of a request.
+  ///
+  /// The match follows AND semantics which means all the ids must match.
+  /// Limited to 5 matches.
+  ///
+  /// Required.
+  core.List<core.String>? ids;
+
+  AuthzPolicyAuthzRuleRequestResourceTagValueIdSet({
+    this.ids,
+  });
+
+  AuthzPolicyAuthzRuleRequestResourceTagValueIdSet.fromJson(core.Map json_)
+      : this(
+          ids: (json_['ids'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ids != null) 'ids': ids!,
+      };
+}
+
+/// Determines how a string value should be matched.
+class AuthzPolicyAuthzRuleStringMatch {
+  /// The input string must have the substring specified here.
+  ///
+  /// Note: empty contains match is not allowed, please use regex instead.
+  /// Examples: * ``abc`` matches the value ``xyz.abc.def``
+  core.String? contains;
+
+  /// The input string must match exactly the string specified here.
+  ///
+  /// Examples: * ``abc`` only matches the value ``abc``.
+  core.String? exact;
+
+  /// If true, indicates the exact/prefix/suffix/contains matching should be
+  /// case insensitive.
+  ///
+  /// For example, the matcher ``data`` will match both input string ``Data``
+  /// and ``data`` if set to true.
+  core.bool? ignoreCase;
+
+  /// The input string must have the prefix specified here.
+  ///
+  /// Note: empty prefix is not allowed, please use regex instead. Examples: *
+  /// ``abc`` matches the value ``abc.xyz``
+  core.String? prefix;
+
+  /// The input string must have the suffix specified here.
+  ///
+  /// Note: empty prefix is not allowed, please use regex instead. Examples: *
+  /// ``abc`` matches the value ``xyz.abc``
+  core.String? suffix;
+
+  AuthzPolicyAuthzRuleStringMatch({
+    this.contains,
+    this.exact,
+    this.ignoreCase,
+    this.prefix,
+    this.suffix,
+  });
+
+  AuthzPolicyAuthzRuleStringMatch.fromJson(core.Map json_)
+      : this(
+          contains: json_['contains'] as core.String?,
+          exact: json_['exact'] as core.String?,
+          ignoreCase: json_['ignoreCase'] as core.bool?,
+          prefix: json_['prefix'] as core.String?,
+          suffix: json_['suffix'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contains != null) 'contains': contains!,
+        if (exact != null) 'exact': exact!,
+        if (ignoreCase != null) 'ignoreCase': ignoreCase!,
+        if (prefix != null) 'prefix': prefix!,
+        if (suffix != null) 'suffix': suffix!,
+      };
+}
+
+/// Describes properties of one or more targets of a request.
+class AuthzPolicyAuthzRuleTo {
+  /// Describes the negated properties of the targets of a request.
+  ///
+  /// Matches requests for operations that do not match the criteria specified
+  /// in this field. At least one of operations or notOperations must be
+  /// specified.
+  ///
+  /// Optional.
+  core.List<AuthzPolicyAuthzRuleToRequestOperation>? notOperations;
+
+  /// Describes properties of one or more targets of a request.
+  ///
+  /// At least one of operations or notOperations must be specified. Limited to
+  /// 1 operation. A match occurs when ANY operation (in operations or
+  /// notOperations) matches. Within an operation, the match follows AND
+  /// semantics across fields and OR semantics within a field, i.e. a match
+  /// occurs when ANY path matches AND ANY header matches and ANY method
+  /// matches.
+  ///
+  /// Optional.
+  core.List<AuthzPolicyAuthzRuleToRequestOperation>? operations;
+
+  AuthzPolicyAuthzRuleTo({
+    this.notOperations,
+    this.operations,
+  });
+
+  AuthzPolicyAuthzRuleTo.fromJson(core.Map json_)
+      : this(
+          notOperations: (json_['notOperations'] as core.List?)
+              ?.map((value) => AuthzPolicyAuthzRuleToRequestOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          operations: (json_['operations'] as core.List?)
+              ?.map((value) => AuthzPolicyAuthzRuleToRequestOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (notOperations != null) 'notOperations': notOperations!,
+        if (operations != null) 'operations': operations!,
+      };
+}
+
+/// Describes properties of one or more targets of a request.
+class AuthzPolicyAuthzRuleToRequestOperation {
+  /// A list of headers to match against in http header.
+  ///
+  /// Optional.
+  AuthzPolicyAuthzRuleToRequestOperationHeaderSet? headerSet;
+
+  /// A list of HTTP Hosts to match against.
+  ///
+  /// The match can be one of exact, prefix, suffix, or contains (substring
+  /// match). Matches are always case sensitive unless the ignoreCase is set.
+  /// Limited to 5 matches.
+  ///
+  /// Optional.
+  core.List<AuthzPolicyAuthzRuleStringMatch>? hosts;
+
+  /// A list of HTTP methods to match against.
+  ///
+  /// Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH,
+  /// DELETE, OPTIONS). It only allows exact match and is always case sensitive.
+  ///
+  /// Optional.
+  core.List<core.String>? methods;
+
+  /// A list of paths to match against.
+  ///
+  /// The match can be one of exact, prefix, suffix, or contains (substring
+  /// match). Matches are always case sensitive unless the ignoreCase is set.
+  /// Limited to 5 matches. Note that this path match includes the query
+  /// parameters. For gRPC services, this should be a fully-qualified name of
+  /// the form /package.service/method.
+  ///
+  /// Optional.
+  core.List<AuthzPolicyAuthzRuleStringMatch>? paths;
+
+  AuthzPolicyAuthzRuleToRequestOperation({
+    this.headerSet,
+    this.hosts,
+    this.methods,
+    this.paths,
+  });
+
+  AuthzPolicyAuthzRuleToRequestOperation.fromJson(core.Map json_)
+      : this(
+          headerSet: json_.containsKey('headerSet')
+              ? AuthzPolicyAuthzRuleToRequestOperationHeaderSet.fromJson(
+                  json_['headerSet'] as core.Map<core.String, core.dynamic>)
+              : null,
+          hosts: (json_['hosts'] as core.List?)
+              ?.map((value) => AuthzPolicyAuthzRuleStringMatch.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          methods: (json_['methods'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          paths: (json_['paths'] as core.List?)
+              ?.map((value) => AuthzPolicyAuthzRuleStringMatch.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (headerSet != null) 'headerSet': headerSet!,
+        if (hosts != null) 'hosts': hosts!,
+        if (methods != null) 'methods': methods!,
+        if (paths != null) 'paths': paths!,
+      };
+}
+
+/// Describes a set of HTTP headers to match against.
+class AuthzPolicyAuthzRuleToRequestOperationHeaderSet {
+  /// A list of headers to match against in http header.
+  ///
+  /// The match can be one of exact, prefix, suffix, or contains (substring
+  /// match). The match follows AND semantics which means all the headers must
+  /// match. Matches are always case sensitive unless the ignoreCase is set.
+  /// Limited to 5 matches.
+  ///
+  /// Required.
+  core.List<AuthzPolicyAuthzRuleHeaderMatch>? headers;
+
+  AuthzPolicyAuthzRuleToRequestOperationHeaderSet({
+    this.headers,
+  });
+
+  AuthzPolicyAuthzRuleToRequestOperationHeaderSet.fromJson(core.Map json_)
+      : this(
+          headers: (json_['headers'] as core.List?)
+              ?.map((value) => AuthzPolicyAuthzRuleHeaderMatch.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (headers != null) 'headers': headers!,
+      };
+}
+
+/// Allows delegating authorization decisions to Cloud IAP or to Service
+/// Extensions.
+class AuthzPolicyCustomProvider {
+  /// Delegate authorization decision to user authored Service Extension.
+  ///
+  /// Only one of cloudIap or authzExtension can be specified.
+  ///
+  /// Optional.
+  AuthzPolicyCustomProviderAuthzExtension? authzExtension;
+
+  /// Delegates authorization decisions to Cloud IAP.
+  ///
+  /// Applicable only for managed load balancers. Enabling Cloud IAP at the
+  /// AuthzPolicy level is not compatible with Cloud IAP settings in the
+  /// BackendService. Enabling IAP in both places will result in request
+  /// failure. Ensure that IAP is enabled in either the AuthzPolicy or the
+  /// BackendService but not in both places.
+  ///
+  /// Optional.
+  AuthzPolicyCustomProviderCloudIap? cloudIap;
+
+  AuthzPolicyCustomProvider({
+    this.authzExtension,
+    this.cloudIap,
+  });
+
+  AuthzPolicyCustomProvider.fromJson(core.Map json_)
+      : this(
+          authzExtension: json_.containsKey('authzExtension')
+              ? AuthzPolicyCustomProviderAuthzExtension.fromJson(
+                  json_['authzExtension']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          cloudIap: json_.containsKey('cloudIap')
+              ? AuthzPolicyCustomProviderCloudIap.fromJson(
+                  json_['cloudIap'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authzExtension != null) 'authzExtension': authzExtension!,
+        if (cloudIap != null) 'cloudIap': cloudIap!,
+      };
+}
+
+/// Delegate authorization decision to user authored extension.
+///
+/// Only one of cloudIap or authzExtension can be specified.
+///
+/// Optional.
+class AuthzPolicyCustomProviderAuthzExtension {
+  /// A list of references to authorization extensions that will be invoked for
+  /// requests matching this policy.
+  ///
+  /// Limited to 1 custom provider.
+  ///
+  /// Required.
+  core.List<core.String>? resources;
+
+  AuthzPolicyCustomProviderAuthzExtension({
+    this.resources,
+  });
+
+  AuthzPolicyCustomProviderAuthzExtension.fromJson(core.Map json_)
+      : this(
+          resources: (json_['resources'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resources != null) 'resources': resources!,
+      };
+}
+
+/// Delegates authorization decisions to Cloud IAP.
+///
+/// Applicable only for managed load balancers. Enabling Cloud IAP at the
+/// AuthzPolicy level is not compatible with Cloud IAP settings in the
+/// BackendService. Enabling IAP in both places will result in request failure.
+/// Ensure that IAP is enabled in either the AuthzPolicy or the BackendService
+/// but not in both places.
+///
+/// Optional.
+typedef AuthzPolicyCustomProviderCloudIap = $Empty;
+
+/// Specifies the set of targets to which this policy should be applied to.
+class AuthzPolicyTarget {
+  /// All gateways and forwarding rules referenced by this policy and extensions
+  /// must share the same load balancing scheme.
+  ///
+  /// Supported values: `INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. For more
+  /// information, refer to
+  /// [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "LOAD_BALANCING_SCHEME_UNSPECIFIED" : Default value. Do not use.
+  /// - "INTERNAL_MANAGED" : Signifies that this is used for Regional internal
+  /// or Cross-region internal Application Load Balancing.
+  /// - "EXTERNAL_MANAGED" : Signifies that this is used for Global external or
+  /// Regional external Application Load Balancing.
+  /// - "INTERNAL_SELF_MANAGED" : Signifies that this is used for Cloud Service
+  /// Mesh. Meant for use by CSM GKE controller only.
+  core.String? loadBalancingScheme;
+
+  /// A list of references to the Forwarding Rules on which this policy will be
+  /// applied.
+  ///
+  /// Required.
+  core.List<core.String>? resources;
+
+  AuthzPolicyTarget({
+    this.loadBalancingScheme,
+    this.resources,
+  });
+
+  AuthzPolicyTarget.fromJson(core.Map json_)
+      : this(
+          loadBalancingScheme: json_['loadBalancingScheme'] as core.String?,
+          resources: (json_['resources'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (loadBalancingScheme != null)
+          'loadBalancingScheme': loadBalancingScheme!,
+        if (resources != null) 'resources': resources!,
+      };
+}
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
@@ -5389,6 +6364,31 @@ class CloneAddressGroupItemsRequest {
         if (requestId != null) 'requestId': requestId!,
         if (sourceAddressGroup != null)
           'sourceAddressGroup': sourceAddressGroup!,
+      };
+}
+
+/// CustomInterceptProfile defines the Packet Intercept Endpoint Group used to
+/// intercept traffic to a third-party firewall in a Firewall rule.
+class CustomInterceptProfile {
+  /// The InterceptEndpointGroup to which traffic associated with the SP should
+  /// be mirrored.
+  ///
+  /// Required.
+  core.String? interceptEndpointGroup;
+
+  CustomInterceptProfile({
+    this.interceptEndpointGroup,
+  });
+
+  CustomInterceptProfile.fromJson(core.Map json_)
+      : this(
+          interceptEndpointGroup:
+              json_['interceptEndpointGroup'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (interceptEndpointGroup != null)
+          'interceptEndpointGroup': interceptEndpointGroup!,
       };
 }
 
@@ -5690,7 +6690,7 @@ class FirewallEndpointAssociation {
   /// - "ACTIVE" : Active and ready for traffic.
   /// - "DELETING" : Being deleted.
   /// - "INACTIVE" : Down or in an error state.
-  /// - "ORPHAN" : The GCP project that housed the association has been deleted.
+  /// - "ORPHAN" : The project that housed the association has been deleted.
   core.String? state;
 
   /// The URL of the TlsInspectionPolicy that is being associated.
@@ -6507,6 +7507,42 @@ class ListAuthorizationPoliciesResponse {
       };
 }
 
+/// Message for response to listing `AuthzPolicy` resources.
+class ListAuthzPoliciesResponse {
+  /// The list of `AuthzPolicy` resources.
+  core.List<AuthzPolicy>? authzPolicies;
+
+  /// A token identifying a page of results that the server returns.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListAuthzPoliciesResponse({
+    this.authzPolicies,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListAuthzPoliciesResponse.fromJson(core.Map json_)
+      : this(
+          authzPolicies: (json_['authzPolicies'] as core.List?)
+              ?.map((value) => AuthzPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authzPolicies != null) 'authzPolicies': authzPolicies!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// Response returned by the ListClientTlsPolicies method.
 class ListClientTlsPoliciesResponse {
   /// List of ClientTlsPolicy resources.
@@ -7163,13 +8199,14 @@ class Rule {
 
 /// SecurityProfile is a resource that defines the behavior for one of many
 /// ProfileTypes.
-///
-/// Next ID: 12
 class SecurityProfile {
   /// Resource creation timestamp.
   ///
   /// Output only.
   core.String? createTime;
+
+  /// The custom TPPI configuration for the SecurityProfile.
+  CustomInterceptProfile? customInterceptProfile;
 
   /// The custom Packet Mirroring v2 configuration for the SecurityProfile.
   CustomMirroringProfile? customMirroringProfile;
@@ -7212,6 +8249,7 @@ class SecurityProfile {
   /// - "PROFILE_TYPE_UNSPECIFIED" : Profile type not specified.
   /// - "THREAT_PREVENTION" : Profile type for threat prevention.
   /// - "CUSTOM_MIRRORING" : Profile type for packet mirroring v2
+  /// - "CUSTOM_INTERCEPT" : Profile type for TPPI.
   core.String? type;
 
   /// Last resource update timestamp.
@@ -7221,6 +8259,7 @@ class SecurityProfile {
 
   SecurityProfile({
     this.createTime,
+    this.customInterceptProfile,
     this.customMirroringProfile,
     this.description,
     this.etag,
@@ -7234,6 +8273,10 @@ class SecurityProfile {
   SecurityProfile.fromJson(core.Map json_)
       : this(
           createTime: json_['createTime'] as core.String?,
+          customInterceptProfile: json_.containsKey('customInterceptProfile')
+              ? CustomInterceptProfile.fromJson(json_['customInterceptProfile']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           customMirroringProfile: json_.containsKey('customMirroringProfile')
               ? CustomMirroringProfile.fromJson(json_['customMirroringProfile']
                   as core.Map<core.String, core.dynamic>)
@@ -7259,6 +8302,8 @@ class SecurityProfile {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (customInterceptProfile != null)
+          'customInterceptProfile': customInterceptProfile!,
         if (customMirroringProfile != null)
           'customMirroringProfile': customMirroringProfile!,
         if (description != null) 'description': description!,
@@ -7274,13 +8319,16 @@ class SecurityProfile {
 
 /// SecurityProfileGroup is a resource that defines the behavior for various
 /// ProfileTypes.
-///
-/// Next ID: 11
 class SecurityProfileGroup {
   /// Resource creation timestamp.
   ///
   /// Output only.
   core.String? createTime;
+
+  /// Reference to a SecurityProfile with the CustomIntercept configuration.
+  ///
+  /// Optional.
+  core.String? customInterceptProfile;
 
   /// Reference to a SecurityProfile with the CustomMirroring configuration.
   ///
@@ -7327,6 +8375,7 @@ class SecurityProfileGroup {
 
   SecurityProfileGroup({
     this.createTime,
+    this.customInterceptProfile,
     this.customMirroringProfile,
     this.description,
     this.etag,
@@ -7339,6 +8388,8 @@ class SecurityProfileGroup {
   SecurityProfileGroup.fromJson(core.Map json_)
       : this(
           createTime: json_['createTime'] as core.String?,
+          customInterceptProfile:
+              json_['customInterceptProfile'] as core.String?,
           customMirroringProfile:
               json_['customMirroringProfile'] as core.String?,
           description: json_['description'] as core.String?,
@@ -7358,6 +8409,8 @@ class SecurityProfileGroup {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (customInterceptProfile != null)
+          'customInterceptProfile': customInterceptProfile!,
         if (customMirroringProfile != null)
           'customMirroringProfile': customMirroringProfile!,
         if (description != null) 'description': description!,

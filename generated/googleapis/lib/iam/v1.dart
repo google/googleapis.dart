@@ -224,15 +224,15 @@ class LocationsWorkforcePoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [location] - The location of the pool to create. Format:
+  /// [location] - Optional. The location of the pool to create. Format:
   /// `locations/{location}`.
   /// Value must have pattern `^locations/\[^/\]+$`.
   ///
-  /// [workforcePoolId] - The ID to use for the pool, which becomes the final
-  /// component of the resource name. The IDs must be a globally unique string
-  /// of 6 to 63 lowercase letters, digits, or hyphens. It must start with a
-  /// letter, and cannot have a trailing hyphen. The prefix `gcp-` is reserved
-  /// for use by Google, and may not be specified.
+  /// [workforcePoolId] - Optional. The ID to use for the pool, which becomes
+  /// the final component of the resource name. The IDs must be a globally
+  /// unique string of 6 to 63 lowercase letters, digits, or hyphens. It must
+  /// start with a letter, and cannot have a trailing hyphen. The prefix `gcp-`
+  /// is reserved for use by Google, and may not be specified.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2132,7 +2132,7 @@ class ProjectsLocationsOauthClientsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. The resource name of the OauthClient.
+  /// [name] - Immutable. Identifier. The resource name of the OauthClient.
   /// Format:`projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/oauthClients/\[^/\]+$`.
@@ -2398,8 +2398,8 @@ class ProjectsLocationsOauthClientsCredentialsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. The resource name of the OauthClientCredential.
-  /// Format:
+  /// [name] - Immutable. Identifier. The resource name of the
+  /// OauthClientCredential. Format:
   /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/oauthClients/\[^/\]+/credentials/\[^/\]+$`.
@@ -5973,6 +5973,8 @@ class GoogleIamAdminV1WorkforcePoolProviderOidc {
   /// The optional client secret.
   ///
   /// Required to enable Authorization Code flow for web sign-in.
+  ///
+  /// Optional.
   GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret? clientSecret;
 
   /// The OIDC issuer URI.
@@ -5991,6 +5993,8 @@ class GoogleIamAdminV1WorkforcePoolProviderOidc {
   /// must use following format and include only the following fields: { "keys":
   /// \[ { "kty": "RSA/EC", "alg": "", "use": "sig", "kid": "", "n": "", "e":
   /// "", "x": "", "y": "", "crv": "" } \] }
+  ///
+  /// Optional.
   core.String? jwksJson;
 
   /// Configuration for web single sign-on for the OIDC provider.
@@ -6062,6 +6066,8 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue {
   ///
   /// The plain text of the client secret value. For security reasons, this
   /// field is only used for input and will never be populated in any response.
+  ///
+  /// Optional.
   core.String? plainText;
 
   /// A thumbprint to represent the current client secret value.
@@ -6095,6 +6101,8 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig {
   /// By default, the `openid`, `profile` and `email` scopes that are supported
   /// by the identity provider are requested. Each additional scope may be at
   /// most 256 characters. A maximum of 10 additional scopes may be configured.
+  ///
+  /// Optional.
   core.List<core.String>? additionalScopes;
 
   /// The behavior for how OIDC Claims are included in the `assertion` object
@@ -6797,8 +6805,9 @@ class OauthClient {
   /// Output only.
   core.String? expireTime;
 
-  /// The resource name of the OauthClient.
+  /// Identifier.
   ///
+  /// The resource name of the OauthClient.
   /// Format:`projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
   ///
   /// Immutable.
@@ -6894,9 +6903,9 @@ class OauthClientCredential {
   /// Optional.
   core.String? displayName;
 
-  /// The resource name of the OauthClientCredential.
+  /// Identifier.
   ///
-  /// Format:
+  /// The resource name of the OauthClientCredential. Format:
   /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}`
   ///
   /// Immutable.
@@ -6938,6 +6947,8 @@ class Oidc {
   /// //iam.googleapis.com/projects//locations//workloadIdentityPools//providers/
   /// https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/
   /// ```
+  ///
+  /// Optional.
   core.List<core.String>? allowedAudiences;
 
   /// The OIDC issuer URL.
@@ -8259,6 +8270,8 @@ class WorkforcePool {
   /// A user-specified description of the pool.
   ///
   /// Cannot exceed 256 characters.
+  ///
+  /// Optional.
   core.String? description;
 
   /// Disables the workforce pool.
@@ -8266,11 +8279,15 @@ class WorkforcePool {
   /// You cannot use a disabled pool to exchange tokens, or use existing tokens
   /// to access resources. If the pool is re-enabled, existing tokens grant
   /// access again.
+  ///
+  /// Optional.
   core.bool? disabled;
 
   /// A user-specified display name of the pool in Google Cloud Console.
   ///
   /// Cannot exceed 32 characters.
+  ///
+  /// Optional.
   core.String? displayName;
 
   /// Time after which the workforce pool will be permanently purged and cannot
@@ -8301,6 +8318,8 @@ class WorkforcePool {
   /// duration of one hour (3600s). For SAML providers, the lifetime of the
   /// token is the minimum of the `session_duration` and the
   /// `SessionNotOnOrAfter` claim in the SAML assertion.
+  ///
+  /// Optional.
   core.String? sessionDuration;
 
   /// The state of the pool.
@@ -8376,6 +8395,8 @@ class WorkforcePoolProvider {
   /// If unspecified, all valid authentication credentials will be accepted. The
   /// following example shows how to only allow credentials with a mapped
   /// `google.groups` value of `admins`: ``` "'admins' in google.groups" ```
+  ///
+  /// Optional.
   core.String? attributeCondition;
 
   /// Maps attributes from the authentication credentials issued by an external
@@ -8432,17 +8453,23 @@ class WorkforcePoolProvider {
   /// A user-specified description of the provider.
   ///
   /// Cannot exceed 256 characters.
+  ///
+  /// Optional.
   core.String? description;
 
   /// Disables the workforce pool provider.
   ///
   /// You cannot use a disabled provider to exchange tokens. However, existing
   /// tokens still grant access.
+  ///
+  /// Optional.
   core.bool? disabled;
 
   /// A user-specified display name for the provider.
   ///
   /// Cannot exceed 32 characters.
+  ///
+  /// Optional.
   core.String? displayName;
 
   /// Time after which the workload pool provider will be permanently purged and
@@ -8633,6 +8660,8 @@ class WorkloadIdentityPool {
   /// A description of the pool.
   ///
   /// Cannot exceed 256 characters.
+  ///
+  /// Optional.
   core.String? description;
 
   /// Whether the pool is disabled.
@@ -8640,11 +8669,15 @@ class WorkloadIdentityPool {
   /// You cannot use a disabled pool to exchange tokens, or use existing tokens
   /// to access resources. If the pool is re-enabled, existing tokens grant
   /// access again.
+  ///
+  /// Optional.
   core.bool? disabled;
 
   /// A display name for the pool.
   ///
   /// Cannot exceed 32 characters.
+  ///
+  /// Optional.
   core.String? displayName;
 
   /// Time after which the workload identity pool will be permanently purged and
@@ -8718,6 +8751,8 @@ class WorkloadIdentityPoolProvider {
   /// valid authentication credential are accepted. The following example shows
   /// how to only allow credentials with a mapped `google.groups` value of
   /// `admins`: ``` "'admins' in google.groups" ```
+  ///
+  /// Optional.
   core.String? attributeCondition;
 
   /// Maps attributes from authentication credentials issued by an external
@@ -8762,6 +8797,8 @@ class WorkloadIdentityPoolProvider {
   /// `google.subject` attribute. For example, the following maps the `sub`
   /// claim of the incoming credential to the `subject` attribute on a Google
   /// token: ``` {"google.subject": "assertion.sub"} ```
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? attributeMapping;
 
   /// An Amazon Web Services identity provider.
@@ -8770,17 +8807,23 @@ class WorkloadIdentityPoolProvider {
   /// A description for the provider.
   ///
   /// Cannot exceed 256 characters.
+  ///
+  /// Optional.
   core.String? description;
 
   /// Whether the provider is disabled.
   ///
   /// You cannot use a disabled provider to exchange tokens. However, existing
   /// tokens still grant access.
+  ///
+  /// Optional.
   core.bool? disabled;
 
   /// A display name for the provider.
   ///
   /// Cannot exceed 32 characters.
+  ///
+  /// Optional.
   core.String? displayName;
 
   /// Time after which the workload identity pool provider will be permanently

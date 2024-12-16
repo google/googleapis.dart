@@ -1173,8 +1173,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2082,7 +2082,7 @@ class Deployment {
   ///
   /// Format: `projects/{projectID}/serviceAccounts/{serviceAccount}`
   ///
-  /// Optional.
+  /// Required.
   core.String? serviceAccount;
 
   /// Current state of the deployment.
@@ -2504,7 +2504,7 @@ class ListPreviewsResponse {
   /// obtain the next set of results.
   core.String? nextPageToken;
 
-  /// List of Previewss.
+  /// List of Previews.
   core.List<Preview>? previews;
 
   /// Locations that could not be reached.
@@ -2546,7 +2546,7 @@ class ListResourcesResponse {
   /// return.
   core.String? nextPageToken;
 
-  /// List of Resourcess.
+  /// List of Resources.
   core.List<Resource>? resources;
 
   /// Locations that could not be reached.
@@ -3017,7 +3017,7 @@ class Preview {
   ///
   /// Format: `projects/{projectID}/serviceAccounts/{serviceAccount}`
   ///
-  /// Optional.
+  /// Required.
   core.String? serviceAccount;
 
   /// Current state of the preview.
@@ -3705,6 +3705,8 @@ class TerraformBlueprint {
   GitSource? gitSource;
 
   /// Input variable values for the Terraform blueprint.
+  ///
+  /// Optional.
   core.Map<core.String, TerraformVariable>? inputValues;
 
   TerraformBlueprint({
@@ -3741,6 +3743,8 @@ class TerraformBlueprint {
 /// Errors encountered during actuation using Terraform
 class TerraformError {
   /// Original error response from underlying Google API, if available.
+  ///
+  /// Output only.
   Status? error;
 
   /// A human-readable error description.
@@ -3814,6 +3818,8 @@ class TerraformOutput {
 /// A Terraform input variable.
 class TerraformVariable {
   /// Input variable value.
+  ///
+  /// Optional.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.

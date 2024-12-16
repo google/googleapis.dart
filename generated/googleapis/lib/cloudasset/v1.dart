@@ -1947,7 +1947,8 @@ class AnalyzeIamPolicyResponse {
   IamPolicyAnalysis? mainAnalysis;
 
   /// The service account impersonation analysis if
-  /// AnalyzeIamPolicyRequest.analyze_service_account_impersonation is enabled.
+  /// IamPolicyAnalysisQuery.Options.analyze_service_account_impersonation is
+  /// enabled.
   core.List<IamPolicyAnalysis>? serviceAccountImpersonationAnalysis;
 
   AnalyzeIamPolicyResponse({
@@ -2928,7 +2929,7 @@ class EffectiveIamPolicy {
 class EffectiveTagDetails {
   /// The
   /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
-  /// of the ancestor from which an effective_tag is inherited, according to
+  /// of the ancestor from which effective_tags are inherited, according to
   /// [tag inheritance](https://cloud.google.com/resource-manager/docs/tags/tags-overview#inheritance).
   core.String? attachedResource;
 
@@ -3437,8 +3438,8 @@ class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset {
       governedResource;
 
   /// The ordered list of all organization policies from the
-  /// AnalyzeOrgPoliciesResponse.OrgPolicyResult.consolidated_policy.attached_resource
-  /// to the scope specified in the request.
+  /// consolidated_policy.attached_resource to the scope specified in the
+  /// request.
   ///
   /// If the constraint is defined with default policy, it will also appear in
   /// the list.
@@ -3964,7 +3965,7 @@ class GoogleCloudAssetV1GovernedContainer {
   core.String? parent;
 
   /// The ordered list of all organization policies from the
-  /// AnalyzeOrgPoliciesResponse.OrgPolicyResult.consolidated_policy.attached_resource.
+  /// consolidated_policy.attached_resource.
   ///
   /// to the scope specified in the request. If the constraint is defined with
   /// default policy, it will also appear in the list.
@@ -4884,9 +4885,19 @@ class GoogleIdentityAccesscontextmanagerV1EgressPolicy {
   /// cause this EgressPolicy to apply.
   GoogleIdentityAccesscontextmanagerV1EgressTo? egressTo;
 
+  /// Human-readable title for the egress rule.
+  ///
+  /// The title must be unique within the perimeter and can not exceed 100
+  /// characters. Within the access policy, the combined length of all rule
+  /// titles must not exceed 240,000 characters.
+  ///
+  /// Optional.
+  core.String? title;
+
   GoogleIdentityAccesscontextmanagerV1EgressPolicy({
     this.egressFrom,
     this.egressTo,
+    this.title,
   });
 
   GoogleIdentityAccesscontextmanagerV1EgressPolicy.fromJson(core.Map json_)
@@ -4899,11 +4910,13 @@ class GoogleIdentityAccesscontextmanagerV1EgressPolicy {
               ? GoogleIdentityAccesscontextmanagerV1EgressTo.fromJson(
                   json_['egressTo'] as core.Map<core.String, core.dynamic>)
               : null,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (egressFrom != null) 'egressFrom': egressFrom!,
         if (egressTo != null) 'egressTo': egressTo!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -5053,9 +5066,19 @@ class GoogleIdentityAccesscontextmanagerV1IngressPolicy {
   /// cause this IngressPolicy to apply.
   GoogleIdentityAccesscontextmanagerV1IngressTo? ingressTo;
 
+  /// Human-readable title for the ingress rule.
+  ///
+  /// The title must be unique within the perimeter and can not exceed 100
+  /// characters. Within the access policy, the combined length of all rule
+  /// titles must not exceed 240,000 characters.
+  ///
+  /// Optional.
+  core.String? title;
+
   GoogleIdentityAccesscontextmanagerV1IngressPolicy({
     this.ingressFrom,
     this.ingressTo,
+    this.title,
   });
 
   GoogleIdentityAccesscontextmanagerV1IngressPolicy.fromJson(core.Map json_)
@@ -5068,11 +5091,13 @@ class GoogleIdentityAccesscontextmanagerV1IngressPolicy {
               ? GoogleIdentityAccesscontextmanagerV1IngressTo.fromJson(
                   json_['ingressTo'] as core.Map<core.String, core.dynamic>)
               : null,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ingressFrom != null) 'ingressFrom': ingressFrom!,
         if (ingressTo != null) 'ingressTo': ingressTo!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -5144,6 +5169,14 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
   /// Does not affect behavior.
   core.String? description;
 
+  /// An opaque identifier for the current version of the `ServicePerimeter`.
+  ///
+  /// This identifier does not follow any specific format. If an etag is not
+  /// provided, the operation will be performed as if a valid etag is provided.
+  ///
+  /// Optional.
+  core.String? etag;
+
   /// Identifier.
   ///
   /// Resource name for the `ServicePerimeter`. Format:
@@ -5200,6 +5233,7 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
 
   GoogleIdentityAccesscontextmanagerV1ServicePerimeter({
     this.description,
+    this.etag,
     this.name,
     this.perimeterType,
     this.spec,
@@ -5211,6 +5245,7 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
   GoogleIdentityAccesscontextmanagerV1ServicePerimeter.fromJson(core.Map json_)
       : this(
           description: json_['description'] as core.String?,
+          etag: json_['etag'] as core.String?,
           name: json_['name'] as core.String?,
           perimeterType: json_['perimeterType'] as core.String?,
           spec: json_.containsKey('spec')
@@ -5229,6 +5264,7 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
         if (name != null) 'name': name!,
         if (perimeterType != null) 'perimeterType': perimeterType!,
         if (spec != null) 'spec': spec!,
@@ -6360,8 +6396,7 @@ class OrgPolicyResult {
   /// The consolidated organization policy for the analyzed resource.
   ///
   /// The consolidated organization policy is computed by merging and evaluating
-  /// AnalyzeOrgPoliciesResponse.policy_bundle. The evaluation will respect the
-  /// organization policy
+  /// policy_bundle. The evaluation will respect the organization policy
   /// [hierarchy rules](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-hierarchy).
   AnalyzerOrgPolicy? consolidatedPolicy;
 
@@ -6380,7 +6415,7 @@ class OrgPolicyResult {
   core.String? organization;
 
   /// The ordered list of all organization policies from the
-  /// AnalyzeOrgPoliciesResponse.OrgPolicyResult.consolidated_policy.attached_resource.
+  /// consolidated_policy.attached_resource.
   ///
   /// to the scope specified in the request. If the constraint is defined with
   /// default policy, it will also appear in the list.

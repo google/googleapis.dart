@@ -2013,8 +2013,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3286,6 +3286,18 @@ class Authority {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// The identity provider for the scope-tenancy workload identity pool.
+  ///
+  /// Optional. Output only.
+  core.String? scopeTenancyIdentityProvider;
+
+  /// The name of the scope-tenancy workload identity pool.
+  ///
+  /// This pool is set in the fleet-level feature.
+  ///
+  /// Optional. Output only.
+  core.String? scopeTenancyWorkloadIdentityPool;
+
   /// The name of the workload identity pool in which `issuer` will be
   /// recognized.
   ///
@@ -3301,6 +3313,8 @@ class Authority {
     this.identityProvider,
     this.issuer,
     this.oidcJwks,
+    this.scopeTenancyIdentityProvider,
+    this.scopeTenancyWorkloadIdentityPool,
     this.workloadIdentityPool,
   });
 
@@ -3309,6 +3323,10 @@ class Authority {
           identityProvider: json_['identityProvider'] as core.String?,
           issuer: json_['issuer'] as core.String?,
           oidcJwks: json_['oidcJwks'] as core.String?,
+          scopeTenancyIdentityProvider:
+              json_['scopeTenancyIdentityProvider'] as core.String?,
+          scopeTenancyWorkloadIdentityPool:
+              json_['scopeTenancyWorkloadIdentityPool'] as core.String?,
           workloadIdentityPool: json_['workloadIdentityPool'] as core.String?,
         );
 
@@ -3316,6 +3334,10 @@ class Authority {
         if (identityProvider != null) 'identityProvider': identityProvider!,
         if (issuer != null) 'issuer': issuer!,
         if (oidcJwks != null) 'oidcJwks': oidcJwks!,
+        if (scopeTenancyIdentityProvider != null)
+          'scopeTenancyIdentityProvider': scopeTenancyIdentityProvider!,
+        if (scopeTenancyWorkloadIdentityPool != null)
+          'scopeTenancyWorkloadIdentityPool': scopeTenancyWorkloadIdentityPool!,
         if (workloadIdentityPool != null)
           'workloadIdentityPool': workloadIdentityPool!,
       };
@@ -4084,7 +4106,13 @@ class ConfigManagementConfigSync {
   /// The GSA should have the Monitoring Metric Writer
   /// (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount
   /// `default` in the namespace `config-management-monitoring` should be bound
-  /// to the GSA.
+  /// to the GSA. Deprecated: If Workload Identity Federation for GKE is
+  /// enabled, Google Cloud Service Account is no longer needed for exporting
+  /// Config Sync metrics:
+  /// https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? metricsGcpServiceAccountEmail;
 
   /// OCI repo configuration for the cluster
@@ -4100,6 +4128,11 @@ class ConfigManagementConfigSync {
   /// "unstructured" mode.
   core.String? sourceFormat;
 
+  /// Set to true to stop syncing configs for a single cluster.
+  ///
+  /// Default to false.
+  core.bool? stopSyncing;
+
   ConfigManagementConfigSync({
     this.allowVerticalScale,
     this.enabled,
@@ -4108,6 +4141,7 @@ class ConfigManagementConfigSync {
     this.oci,
     this.preventDrift,
     this.sourceFormat,
+    this.stopSyncing,
   });
 
   ConfigManagementConfigSync.fromJson(core.Map json_)
@@ -4126,6 +4160,7 @@ class ConfigManagementConfigSync {
               : null,
           preventDrift: json_['preventDrift'] as core.bool?,
           sourceFormat: json_['sourceFormat'] as core.String?,
+          stopSyncing: json_['stopSyncing'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4138,6 +4173,7 @@ class ConfigManagementConfigSync {
         if (oci != null) 'oci': oci!,
         if (preventDrift != null) 'preventDrift': preventDrift!,
         if (sourceFormat != null) 'sourceFormat': sourceFormat!,
+        if (stopSyncing != null) 'stopSyncing': stopSyncing!,
       };
 }
 
@@ -4280,6 +4316,11 @@ class ConfigManagementConfigSyncState {
   /// level.
   core.String? clusterLevelStopSyncingState;
 
+  /// The number of RootSync and RepoSync CRs in the cluster.
+  ///
+  /// Output only.
+  core.int? crCount;
+
   /// Information about the deployment of ConfigSync, including the version of
   /// the various Pods deployed
   ConfigManagementConfigSyncDeploymentState? deploymentState;
@@ -4325,6 +4366,7 @@ class ConfigManagementConfigSyncState {
 
   ConfigManagementConfigSyncState({
     this.clusterLevelStopSyncingState,
+    this.crCount,
     this.deploymentState,
     this.errors,
     this.reposyncCrd,
@@ -4338,6 +4380,7 @@ class ConfigManagementConfigSyncState {
       : this(
           clusterLevelStopSyncingState:
               json_['clusterLevelStopSyncingState'] as core.String?,
+          crCount: json_['crCount'] as core.int?,
           deploymentState: json_.containsKey('deploymentState')
               ? ConfigManagementConfigSyncDeploymentState.fromJson(
                   json_['deploymentState']
@@ -4363,6 +4406,7 @@ class ConfigManagementConfigSyncState {
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterLevelStopSyncingState != null)
           'clusterLevelStopSyncingState': clusterLevelStopSyncingState!,
+        if (crCount != null) 'crCount': crCount!,
         if (deploymentState != null) 'deploymentState': deploymentState!,
         if (errors != null) 'errors': errors!,
         if (reposyncCrd != null) 'reposyncCrd': reposyncCrd!,
@@ -6887,6 +6931,15 @@ class Membership {
   /// Optional.
   Authority? authority;
 
+  /// The tier of the cluster.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLUSTER_TIER_UNSPECIFIED" : The ClusterTier is not set.
+  /// - "STANDARD" : The ClusterTier is standard.
+  /// - "ENTERPRISE" : The ClusterTier is enterprise.
+  core.String? clusterTier;
+
   /// When the Membership was created.
   ///
   /// Output only.
@@ -6973,6 +7026,7 @@ class Membership {
 
   Membership({
     this.authority,
+    this.clusterTier,
     this.createTime,
     this.deleteTime,
     this.description,
@@ -6993,6 +7047,7 @@ class Membership {
               ? Authority.fromJson(
                   json_['authority'] as core.Map<core.String, core.dynamic>)
               : null,
+          clusterTier: json_['clusterTier'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
           description: json_['description'] as core.String?,
@@ -7024,6 +7079,7 @@ class Membership {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authority != null) 'authority': authority!,
+        if (clusterTier != null) 'clusterTier': clusterTier!,
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (description != null) 'description': description!,
@@ -9054,6 +9110,15 @@ class ServiceMeshDataPlaneManagement {
 
 /// **Service Mesh**: Spec for a single Membership for the servicemesh feature
 class ServiceMeshMembershipSpec {
+  /// Specifies the API that will be used for configuring the mesh workloads.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CONFIG_API_UNSPECIFIED" : Unspecified
+  /// - "CONFIG_API_ISTIO" : Use the Istio API for configuration.
+  /// - "CONFIG_API_GATEWAY" : Use the K8s Gateway API for configuration.
+  core.String? configApi;
+
   /// Deprecated: use `management` instead Enables automatic control plane
   /// management.
   /// Possible string values are:
@@ -9081,17 +9146,20 @@ class ServiceMeshMembershipSpec {
   core.String? management;
 
   ServiceMeshMembershipSpec({
+    this.configApi,
     this.controlPlane,
     this.management,
   });
 
   ServiceMeshMembershipSpec.fromJson(core.Map json_)
       : this(
+          configApi: json_['configApi'] as core.String?,
           controlPlane: json_['controlPlane'] as core.String?,
           management: json_['management'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (configApi != null) 'configApi': configApi!,
         if (controlPlane != null) 'controlPlane': controlPlane!,
         if (management != null) 'management': management!,
       };

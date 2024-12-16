@@ -334,6 +334,7 @@ api.ConfigManagementConfigSync buildConfigManagementConfigSync() {
     o.oci = buildConfigManagementOciConfig();
     o.preventDrift = true;
     o.sourceFormat = 'foo';
+    o.stopSyncing = true;
   }
   buildCounterConfigManagementConfigSync--;
   return o;
@@ -355,6 +356,7 @@ void checkConfigManagementConfigSync(api.ConfigManagementConfigSync o) {
       o.sourceFormat!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.stopSyncing!, unittest.isTrue);
   }
   buildCounterConfigManagementConfigSync--;
 }
@@ -463,6 +465,7 @@ api.ConfigManagementConfigSyncState buildConfigManagementConfigSyncState() {
   buildCounterConfigManagementConfigSyncState++;
   if (buildCounterConfigManagementConfigSyncState < 3) {
     o.clusterLevelStopSyncingState = 'foo';
+    o.crCount = 42;
     o.deploymentState = buildConfigManagementConfigSyncDeploymentState();
     o.errors = buildUnnamed1();
     o.reposyncCrd = 'foo';
@@ -482,6 +485,10 @@ void checkConfigManagementConfigSyncState(
     unittest.expect(
       o.clusterLevelStopSyncingState!,
       unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.crCount!,
+      unittest.equals(42),
     );
     checkConfigManagementConfigSyncDeploymentState(o.deploymentState!);
     checkUnnamed1(o.errors!);
@@ -1297,38 +1304,6 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty++;
   if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
-}
-
-core.int buildCounterFeatureConfigRef = 0;
-api.FeatureConfigRef buildFeatureConfigRef() {
-  final o = api.FeatureConfigRef();
-  buildCounterFeatureConfigRef++;
-  if (buildCounterFeatureConfigRef < 3) {
-    o.config = 'foo';
-    o.configUpdateTime = 'foo';
-    o.uuid = 'foo';
-  }
-  buildCounterFeatureConfigRef--;
-  return o;
-}
-
-void checkFeatureConfigRef(api.FeatureConfigRef o) {
-  buildCounterFeatureConfigRef++;
-  if (buildCounterFeatureConfigRef < 3) {
-    unittest.expect(
-      o.config!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.configUpdateTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.uuid!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterFeatureConfigRef--;
 }
 
 core.int buildCounterFeatureSpec = 0;
@@ -2321,7 +2296,6 @@ api.MembershipFeature buildMembershipFeature() {
   if (buildCounterMembershipFeature < 3) {
     o.createTime = 'foo';
     o.deleteTime = 'foo';
-    o.featureConfigRef = buildFeatureConfigRef();
     o.labels = buildUnnamed18();
     o.lifecycleState = buildLifecycleState();
     o.name = 'foo';
@@ -2344,7 +2318,6 @@ void checkMembershipFeature(api.MembershipFeature o) {
       o.deleteTime!,
       unittest.equals('foo'),
     );
-    checkFeatureConfigRef(o.featureConfigRef!);
     checkUnnamed18(o.labels!);
     checkLifecycleState(o.lifecycleState!);
     unittest.expect(
@@ -3808,16 +3781,6 @@ void main() {
       final od =
           api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od);
-    });
-  });
-
-  unittest.group('obj-schema-FeatureConfigRef', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildFeatureConfigRef();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.FeatureConfigRef.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkFeatureConfigRef(od);
     });
   });
 

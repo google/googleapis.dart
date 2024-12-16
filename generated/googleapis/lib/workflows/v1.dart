@@ -983,6 +983,13 @@ class Workflow {
   /// Output only.
   StateError? stateError;
 
+  /// Input only.
+  ///
+  /// Immutable. Tags associated with this workflow.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   /// The timestamp for when the workflow was last updated.
   ///
   /// This is a workflow-wide field and is not tied to a specific revision.
@@ -1015,6 +1022,7 @@ class Workflow {
     this.sourceContents,
     this.state,
     this.stateError,
+    this.tags,
     this.updateTime,
     this.userEnvVars,
   });
@@ -1050,6 +1058,12 @@ class Workflow {
               ? StateError.fromJson(
                   json_['stateError'] as core.Map<core.String, core.dynamic>)
               : null,
+          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           updateTime: json_['updateTime'] as core.String?,
           userEnvVars:
               (json_['userEnvVars'] as core.Map<core.String, core.dynamic>?)
@@ -1081,6 +1095,7 @@ class Workflow {
         if (sourceContents != null) 'sourceContents': sourceContents!,
         if (state != null) 'state': state!,
         if (stateError != null) 'stateError': stateError!,
+        if (tags != null) 'tags': tags!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (userEnvVars != null) 'userEnvVars': userEnvVars!,
       };

@@ -273,8 +273,8 @@ class ProjectsReleasesResource {
   /// `projects/{project_id}/releases/{release_id}`
   /// Value must have pattern `^projects/\[^/\]+/releases/.*$`.
   ///
-  /// [executableVersion] - The requested runtime executable version. Defaults
-  /// to FIREBASE_RULES_EXECUTABLE_V1.
+  /// [executableVersion] - Optional. The requested runtime executable version.
+  /// Defaults to FIREBASE_RULES_EXECUTABLE_V1.
   /// Possible string values are:
   /// - "RELEASE_EXECUTABLE_VERSION_UNSPECIFIED" : Executable format
   /// unspecified. Defaults to FIREBASE_RULES_EXECUTABLE_V1
@@ -325,10 +325,10 @@ class ProjectsReleasesResource {
   /// `projects/{project_id}`
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - `Release` filter. The list method supports filters with
-  /// restrictions on the `Release.name`, and `Release.ruleset_name`. Example 1:
-  /// A filter of 'name=prod*' might return `Release`s with names within
-  /// 'projects/foo' prefixed with 'prod': Name -\> Ruleset Name: *
+  /// [filter] - Optional. `Release` filter. The list method supports filters
+  /// with restrictions on the `Release.name`, and `Release.ruleset_name`.
+  /// Example 1: A filter of 'name=prod*' might return `Release`s with names
+  /// within 'projects/foo' prefixed with 'prod': Name -\> Ruleset Name: *
   /// projects/foo/releases/prod -\> projects/foo/rulesets/uuid1234 *
   /// projects/foo/releases/prod/v1 -\> projects/foo/rulesets/uuid1234 *
   /// projects/foo/releases/prod/v2 -\> projects/foo/rulesets/uuid8888 Example
@@ -340,13 +340,14 @@ class ProjectsReleasesResource {
   /// examples, the filter parameters refer to the search filters are relative
   /// to the project. Fully qualified prefixed may also be used.
   ///
-  /// [pageSize] - Page size to load. Maximum of 100. Defaults to 10. Note:
-  /// `page_size` is just a hint and the service may choose to load fewer than
-  /// `page_size` results due to the size of the output. To traverse all of the
-  /// releases, the caller should iterate until the `page_token` on the response
-  /// is empty.
+  /// [pageSize] - Optional. Page size to load. Maximum of 100. Defaults to 10.
+  /// Note: `page_size` is just a hint and the service may choose to load fewer
+  /// than `page_size` results due to the size of the output. To traverse all of
+  /// the releases, the caller should iterate until the `page_token` on the
+  /// response is empty.
   ///
-  /// [pageToken] - Next page token for the next batch of `Release` instances.
+  /// [pageToken] - Optional. Next page token for the next batch of `Release`
+  /// instances.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -565,19 +566,19 @@ class ProjectsRulesetsResource {
   /// `projects/{project_id}`
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - `Ruleset` filter. The list method supports filters with
-  /// restrictions on `Ruleset.name`. Filters on `Ruleset.create_time` should
-  /// use the `date` function which parses strings that conform to the RFC 3339
-  /// date/time specifications. Example: `create_time >
+  /// [filter] - Optional. `Ruleset` filter. The list method supports filters
+  /// with restrictions on `Ruleset.name`. Filters on `Ruleset.create_time`
+  /// should use the `date` function which parses strings that conform to the
+  /// RFC 3339 date/time specifications. Example: `create_time >
   /// date("2017-01-01T00:00:00Z") AND name=UUID-*`
   ///
-  /// [pageSize] - Page size to load. Maximum of 100. Defaults to 10. Note:
-  /// `page_size` is just a hint and the service may choose to load less than
-  /// `page_size` due to the size of the output. To traverse all of the
+  /// [pageSize] - Optional. Page size to load. Maximum of 100. Defaults to 10.
+  /// Note: `page_size` is just a hint and the service may choose to load less
+  /// than `page_size` due to the size of the output. To traverse all of the
   /// releases, caller should iterate until the `page_token` is empty.
   ///
-  /// [pageToken] - Next page token for loading the next batch of `Ruleset`
-  /// instances.
+  /// [pageToken] - Optional. Next page token for loading the next batch of
+  /// `Ruleset` instances.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1429,6 +1430,8 @@ class TestRulesetRequest {
   /// Optional `Source` to be checked for correctness.
   ///
   /// This field must not be set when the resource name refers to a `Ruleset`.
+  ///
+  /// Optional.
   Source? source;
 
   /// The tests to execute against the `Source`.
@@ -1436,6 +1439,8 @@ class TestRulesetRequest {
   /// When `Source` is provided inline, the test cases will only be run if the
   /// `Source` is syntactically and semantically valid. Inline `TestSuite` to
   /// run.
+  ///
+  /// Required.
   TestSuite? testSuite;
 
   TestRulesetRequest({
@@ -1531,6 +1536,8 @@ class UpdateReleaseRequest {
   Release? release;
 
   /// Specifies which fields to update.
+  ///
+  /// Optional.
   core.String? updateMask;
 
   UpdateReleaseRequest({

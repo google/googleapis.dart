@@ -1973,8 +1973,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3661,6 +3661,16 @@ class Asset {
   /// Output only.
   core.String? createTime;
 
+  /// Asset information specific for database deployments.
+  ///
+  /// Output only.
+  DatabaseDeploymentDetails? databaseDeploymentDetails;
+
+  /// Asset information specific for logical databases.
+  ///
+  /// Output only.
+  DatabaseDetails? databaseDetails;
+
   /// The list of insights associated with the asset.
   ///
   /// Output only.
@@ -3689,6 +3699,11 @@ class Asset {
   /// Output only.
   core.List<core.String>? sources;
 
+  /// Server generated human readable name of the asset.
+  ///
+  /// Output only.
+  core.String? title;
+
   /// The timestamp when the asset was last updated.
   ///
   /// Output only.
@@ -3698,12 +3713,15 @@ class Asset {
     this.assignedGroups,
     this.attributes,
     this.createTime,
+    this.databaseDeploymentDetails,
+    this.databaseDetails,
     this.insightList,
     this.labels,
     this.machineDetails,
     this.name,
     this.performanceData,
     this.sources,
+    this.title,
     this.updateTime,
   });
 
@@ -3721,6 +3739,16 @@ class Asset {
             ),
           ),
           createTime: json_['createTime'] as core.String?,
+          databaseDeploymentDetails:
+              json_.containsKey('databaseDeploymentDetails')
+                  ? DatabaseDeploymentDetails.fromJson(
+                      json_['databaseDeploymentDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          databaseDetails: json_.containsKey('databaseDetails')
+              ? DatabaseDetails.fromJson(json_['databaseDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           insightList: json_.containsKey('insightList')
               ? InsightList.fromJson(
                   json_['insightList'] as core.Map<core.String, core.dynamic>)
@@ -3744,6 +3772,7 @@ class Asset {
           sources: (json_['sources'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          title: json_['title'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );
 
@@ -3751,12 +3780,16 @@ class Asset {
         if (assignedGroups != null) 'assignedGroups': assignedGroups!,
         if (attributes != null) 'attributes': attributes!,
         if (createTime != null) 'createTime': createTime!,
+        if (databaseDeploymentDetails != null)
+          'databaseDeploymentDetails': databaseDeploymentDetails!,
+        if (databaseDetails != null) 'databaseDetails': databaseDetails!,
         if (insightList != null) 'insightList': insightList!,
         if (labels != null) 'labels': labels!,
         if (machineDetails != null) 'machineDetails': machineDetails!,
         if (name != null) 'name': name!,
         if (performanceData != null) 'performanceData': performanceData!,
         if (sources != null) 'sources': sources!,
+        if (title != null) 'title': title!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -3778,6 +3811,12 @@ class AssetFrame {
   /// - "SOURCE_TYPE_CUSTOM" : Third-party owned sources.
   /// - "SOURCE_TYPE_DISCOVERY_CLIENT" : Discovery clients
   core.String? collectionType;
+
+  /// Asset information specific for database deployments.
+  DatabaseDeploymentDetails? databaseDeploymentDetails;
+
+  /// Asset information specific for logical databases.
+  DatabaseDetails? databaseDetails;
 
   /// Labels as key value pairs.
   core.Map<core.String, core.String>? labels;
@@ -3802,6 +3841,8 @@ class AssetFrame {
   AssetFrame({
     this.attributes,
     this.collectionType,
+    this.databaseDeploymentDetails,
+    this.databaseDetails,
     this.labels,
     this.machineDetails,
     this.performanceSamples,
@@ -3820,6 +3861,16 @@ class AssetFrame {
             ),
           ),
           collectionType: json_['collectionType'] as core.String?,
+          databaseDeploymentDetails:
+              json_.containsKey('databaseDeploymentDetails')
+                  ? DatabaseDeploymentDetails.fromJson(
+                      json_['databaseDeploymentDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          databaseDetails: json_.containsKey('databaseDetails')
+              ? DatabaseDetails.fromJson(json_['databaseDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -3842,6 +3893,9 @@ class AssetFrame {
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null) 'attributes': attributes!,
         if (collectionType != null) 'collectionType': collectionType!,
+        if (databaseDeploymentDetails != null)
+          'databaseDeploymentDetails': databaseDeploymentDetails!,
+        if (databaseDetails != null) 'databaseDetails': databaseDetails!,
         if (labels != null) 'labels': labels!,
         if (machineDetails != null) 'machineDetails': machineDetails!,
         if (performanceSamples != null)
@@ -4177,9 +4231,8 @@ class ComputeEnginePreferences {
   /// If unspecified (default), all types are considered, based on available
   /// usage data.
   /// Possible string values are:
-  /// - "PERSISTENT_DISK_TYPE_UNSPECIFIED" : Unspecified (default value).
-  /// Selecting this value allows the system to use any disk type according to
-  /// reported usage. This a good value to start with.
+  /// - "PERSISTENT_DISK_TYPE_UNSPECIFIED" : Unspecified. Fallback to default
+  /// value based on context.
   /// - "PERSISTENT_DISK_TYPE_STANDARD" : Standard HDD Persistent Disk.
   /// - "PERSISTENT_DISK_TYPE_BALANCED" : Balanced Persistent Disk.
   /// - "PERSISTENT_DISK_TYPE_SSD" : SSD Persistent Disk.
@@ -4283,9 +4336,8 @@ class ComputeStorageDescriptor {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "PERSISTENT_DISK_TYPE_UNSPECIFIED" : Unspecified (default value).
-  /// Selecting this value allows the system to use any disk type according to
-  /// reported usage. This a good value to start with.
+  /// - "PERSISTENT_DISK_TYPE_UNSPECIFIED" : Unspecified. Fallback to default
+  /// value based on context.
   /// - "PERSISTENT_DISK_TYPE_STANDARD" : Standard HDD Persistent Disk.
   /// - "PERSISTENT_DISK_TYPE_BALANCED" : Balanced Persistent Disk.
   /// - "PERSISTENT_DISK_TYPE_SSD" : SSD Persistent Disk.
@@ -4419,10 +4471,24 @@ class DailyResourceUsageAggregationCPU {
 /// Statistical aggregation of disk usage.
 class DailyResourceUsageAggregationDisk {
   /// Disk I/O operations per second.
+  ///
+  /// Optional.
   DailyResourceUsageAggregationStats? iops;
+
+  /// Disk read I/O operations per second.
+  ///
+  /// Optional.
+  DailyResourceUsageAggregationStats? readIops;
+
+  /// Disk write I/O operations per second.
+  ///
+  /// Optional.
+  DailyResourceUsageAggregationStats? writeIops;
 
   DailyResourceUsageAggregationDisk({
     this.iops,
+    this.readIops,
+    this.writeIops,
   });
 
   DailyResourceUsageAggregationDisk.fromJson(core.Map json_)
@@ -4431,10 +4497,20 @@ class DailyResourceUsageAggregationDisk {
               ? DailyResourceUsageAggregationStats.fromJson(
                   json_['iops'] as core.Map<core.String, core.dynamic>)
               : null,
+          readIops: json_.containsKey('readIops')
+              ? DailyResourceUsageAggregationStats.fromJson(
+                  json_['readIops'] as core.Map<core.String, core.dynamic>)
+              : null,
+          writeIops: json_.containsKey('writeIops')
+              ? DailyResourceUsageAggregationStats.fromJson(
+                  json_['writeIops'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (iops != null) 'iops': iops!,
+        if (readIops != null) 'readIops': readIops!,
+        if (writeIops != null) 'writeIops': writeIops!,
       };
 }
 
@@ -4529,6 +4605,497 @@ class DailyResourceUsageAggregationStats {
         if (ninteyFifthPercentile != null)
           'ninteyFifthPercentile': ninteyFifthPercentile!,
         if (peak != null) 'peak': peak!,
+      };
+}
+
+/// The details of a database deployment asset.
+class DatabaseDeploymentDetails {
+  /// Aggregated stats for the database deployment.
+  ///
+  /// Output only.
+  DatabaseDeploymentDetailsAggregatedStats? aggregatedStats;
+
+  /// The database deployment edition.
+  ///
+  /// Optional.
+  core.String? edition;
+
+  /// The database deployment generated ID.
+  ///
+  /// Optional.
+  core.String? generatedId;
+
+  /// A manual unique ID set by the user.
+  ///
+  /// Optional.
+  core.String? manualUniqueId;
+
+  /// Details of a MYSQL database deployment.
+  ///
+  /// Optional.
+  MysqlDatabaseDeployment? mysql;
+
+  /// Details of a PostgreSQL database deployment.
+  ///
+  /// Optional.
+  PostgreSqlDatabaseDeployment? postgresql;
+
+  /// Details of a Microsoft SQL Server database deployment.
+  ///
+  /// Optional.
+  SqlServerDatabaseDeployment? sqlServer;
+
+  /// Details of the database deployment topology.
+  ///
+  /// Optional.
+  DatabaseDeploymentTopology? topology;
+
+  /// The database deployment version.
+  ///
+  /// Optional.
+  core.String? version;
+
+  DatabaseDeploymentDetails({
+    this.aggregatedStats,
+    this.edition,
+    this.generatedId,
+    this.manualUniqueId,
+    this.mysql,
+    this.postgresql,
+    this.sqlServer,
+    this.topology,
+    this.version,
+  });
+
+  DatabaseDeploymentDetails.fromJson(core.Map json_)
+      : this(
+          aggregatedStats: json_.containsKey('aggregatedStats')
+              ? DatabaseDeploymentDetailsAggregatedStats.fromJson(
+                  json_['aggregatedStats']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          edition: json_['edition'] as core.String?,
+          generatedId: json_['generatedId'] as core.String?,
+          manualUniqueId: json_['manualUniqueId'] as core.String?,
+          mysql: json_.containsKey('mysql')
+              ? MysqlDatabaseDeployment.fromJson(
+                  json_['mysql'] as core.Map<core.String, core.dynamic>)
+              : null,
+          postgresql: json_.containsKey('postgresql')
+              ? PostgreSqlDatabaseDeployment.fromJson(
+                  json_['postgresql'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sqlServer: json_.containsKey('sqlServer')
+              ? SqlServerDatabaseDeployment.fromJson(
+                  json_['sqlServer'] as core.Map<core.String, core.dynamic>)
+              : null,
+          topology: json_.containsKey('topology')
+              ? DatabaseDeploymentTopology.fromJson(
+                  json_['topology'] as core.Map<core.String, core.dynamic>)
+              : null,
+          version: json_['version'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregatedStats != null) 'aggregatedStats': aggregatedStats!,
+        if (edition != null) 'edition': edition!,
+        if (generatedId != null) 'generatedId': generatedId!,
+        if (manualUniqueId != null) 'manualUniqueId': manualUniqueId!,
+        if (mysql != null) 'mysql': mysql!,
+        if (postgresql != null) 'postgresql': postgresql!,
+        if (sqlServer != null) 'sqlServer': sqlServer!,
+        if (topology != null) 'topology': topology!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// Aggregated stats for the database deployment.
+class DatabaseDeploymentDetailsAggregatedStats {
+  /// The number of databases in the deployment.
+  ///
+  /// Output only.
+  core.int? databaseCount;
+
+  DatabaseDeploymentDetailsAggregatedStats({
+    this.databaseCount,
+  });
+
+  DatabaseDeploymentDetailsAggregatedStats.fromJson(core.Map json_)
+      : this(
+          databaseCount: json_['databaseCount'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseCount != null) 'databaseCount': databaseCount!,
+      };
+}
+
+/// Details of database deployment's topology.
+class DatabaseDeploymentTopology {
+  /// Number of total logical cores.
+  ///
+  /// Optional.
+  core.int? coreCount;
+
+  /// Number of total logical cores limited by db deployment.
+  ///
+  /// Optional.
+  core.int? coreLimit;
+
+  /// Disk allocated in bytes.
+  ///
+  /// Optional.
+  core.String? diskAllocatedBytes;
+
+  /// Disk used in bytes.
+  ///
+  /// Optional.
+  core.String? diskUsedBytes;
+
+  /// List of database instances.
+  ///
+  /// Optional.
+  core.List<DatabaseInstance>? instances;
+
+  /// Total memory in bytes.
+  ///
+  /// Optional.
+  core.String? memoryBytes;
+
+  /// Total memory in bytes limited by db deployment.
+  ///
+  /// Optional.
+  core.String? memoryLimitBytes;
+
+  /// Number of total physical cores.
+  ///
+  /// Optional.
+  core.int? physicalCoreCount;
+
+  /// Number of total physical cores limited by db deployment.
+  ///
+  /// Optional.
+  core.int? physicalCoreLimit;
+
+  DatabaseDeploymentTopology({
+    this.coreCount,
+    this.coreLimit,
+    this.diskAllocatedBytes,
+    this.diskUsedBytes,
+    this.instances,
+    this.memoryBytes,
+    this.memoryLimitBytes,
+    this.physicalCoreCount,
+    this.physicalCoreLimit,
+  });
+
+  DatabaseDeploymentTopology.fromJson(core.Map json_)
+      : this(
+          coreCount: json_['coreCount'] as core.int?,
+          coreLimit: json_['coreLimit'] as core.int?,
+          diskAllocatedBytes: json_['diskAllocatedBytes'] as core.String?,
+          diskUsedBytes: json_['diskUsedBytes'] as core.String?,
+          instances: (json_['instances'] as core.List?)
+              ?.map((value) => DatabaseInstance.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          memoryBytes: json_['memoryBytes'] as core.String?,
+          memoryLimitBytes: json_['memoryLimitBytes'] as core.String?,
+          physicalCoreCount: json_['physicalCoreCount'] as core.int?,
+          physicalCoreLimit: json_['physicalCoreLimit'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (coreCount != null) 'coreCount': coreCount!,
+        if (coreLimit != null) 'coreLimit': coreLimit!,
+        if (diskAllocatedBytes != null)
+          'diskAllocatedBytes': diskAllocatedBytes!,
+        if (diskUsedBytes != null) 'diskUsedBytes': diskUsedBytes!,
+        if (instances != null) 'instances': instances!,
+        if (memoryBytes != null) 'memoryBytes': memoryBytes!,
+        if (memoryLimitBytes != null) 'memoryLimitBytes': memoryLimitBytes!,
+        if (physicalCoreCount != null) 'physicalCoreCount': physicalCoreCount!,
+        if (physicalCoreLimit != null) 'physicalCoreLimit': physicalCoreLimit!,
+      };
+}
+
+/// Details of a logical database.
+class DatabaseDetails {
+  /// The allocated storage for the database in bytes.
+  ///
+  /// Optional.
+  core.String? allocatedStorageBytes;
+
+  /// The name of the database.
+  ///
+  /// Required.
+  core.String? databaseName;
+
+  /// The parent database deployment that contains the logical database.
+  ///
+  /// Required.
+  DatabaseDetailsParentDatabaseDeployment? parentDatabaseDeployment;
+
+  /// The database schemas.
+  ///
+  /// Optional.
+  core.List<DatabaseSchema>? schemas;
+
+  DatabaseDetails({
+    this.allocatedStorageBytes,
+    this.databaseName,
+    this.parentDatabaseDeployment,
+    this.schemas,
+  });
+
+  DatabaseDetails.fromJson(core.Map json_)
+      : this(
+          allocatedStorageBytes: json_['allocatedStorageBytes'] as core.String?,
+          databaseName: json_['databaseName'] as core.String?,
+          parentDatabaseDeployment:
+              json_.containsKey('parentDatabaseDeployment')
+                  ? DatabaseDetailsParentDatabaseDeployment.fromJson(
+                      json_['parentDatabaseDeployment']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          schemas: (json_['schemas'] as core.List?)
+              ?.map((value) => DatabaseSchema.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allocatedStorageBytes != null)
+          'allocatedStorageBytes': allocatedStorageBytes!,
+        if (databaseName != null) 'databaseName': databaseName!,
+        if (parentDatabaseDeployment != null)
+          'parentDatabaseDeployment': parentDatabaseDeployment!,
+        if (schemas != null) 'schemas': schemas!,
+      };
+}
+
+/// The identifiers of the parent database deployment.
+class DatabaseDetailsParentDatabaseDeployment {
+  /// The parent database deployment generated ID.
+  ///
+  /// Optional.
+  core.String? generatedId;
+
+  /// The parent database deployment optional manual unique ID set by the user.
+  ///
+  /// Optional.
+  core.String? manualUniqueId;
+
+  DatabaseDetailsParentDatabaseDeployment({
+    this.generatedId,
+    this.manualUniqueId,
+  });
+
+  DatabaseDetailsParentDatabaseDeployment.fromJson(core.Map json_)
+      : this(
+          generatedId: json_['generatedId'] as core.String?,
+          manualUniqueId: json_['manualUniqueId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (generatedId != null) 'generatedId': generatedId!,
+        if (manualUniqueId != null) 'manualUniqueId': manualUniqueId!,
+      };
+}
+
+/// Details of a database instance.
+class DatabaseInstance {
+  /// The instance's name.
+  ///
+  /// Optional.
+  core.String? instanceName;
+
+  /// Networking details.
+  ///
+  /// Optional.
+  DatabaseInstanceNetwork? network;
+
+  /// The instance role in the database engine.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ROLE_UNSPECIFIED" : Unspecified.
+  /// - "PRIMARY" : Primary.
+  /// - "SECONDARY" : Secondary.
+  /// - "ARBITER" : Arbiter.
+  core.String? role;
+
+  DatabaseInstance({
+    this.instanceName,
+    this.network,
+    this.role,
+  });
+
+  DatabaseInstance.fromJson(core.Map json_)
+      : this(
+          instanceName: json_['instanceName'] as core.String?,
+          network: json_.containsKey('network')
+              ? DatabaseInstanceNetwork.fromJson(
+                  json_['network'] as core.Map<core.String, core.dynamic>)
+              : null,
+          role: json_['role'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instanceName != null) 'instanceName': instanceName!,
+        if (network != null) 'network': network!,
+        if (role != null) 'role': role!,
+      };
+}
+
+/// Network details of a database instance.
+class DatabaseInstanceNetwork {
+  /// The instance's host names.
+  ///
+  /// Optional.
+  core.List<core.String>? hostNames;
+
+  /// The instance's IP addresses.
+  ///
+  /// Optional.
+  core.List<core.String>? ipAddresses;
+
+  /// The instance's primary MAC address.
+  ///
+  /// Optional.
+  core.String? primaryMacAddress;
+
+  DatabaseInstanceNetwork({
+    this.hostNames,
+    this.ipAddresses,
+    this.primaryMacAddress,
+  });
+
+  DatabaseInstanceNetwork.fromJson(core.Map json_)
+      : this(
+          hostNames: (json_['hostNames'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          ipAddresses: (json_['ipAddresses'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          primaryMacAddress: json_['primaryMacAddress'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hostNames != null) 'hostNames': hostNames!,
+        if (ipAddresses != null) 'ipAddresses': ipAddresses!,
+        if (primaryMacAddress != null) 'primaryMacAddress': primaryMacAddress!,
+      };
+}
+
+/// Details of a group of database objects.
+class DatabaseObjects {
+  /// The category of the objects.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CATEGORY_UNSPECIFIED" : Unspecified type.
+  /// - "TABLE" : Table.
+  /// - "INDEX" : Index.
+  /// - "CONSTRAINTS" : Constraints.
+  /// - "VIEWS" : Views.
+  /// - "SOURCE_CODE" : Source code, e.g. procedures.
+  /// - "OTHER" : Uncategorized objects.
+  core.String? category;
+
+  /// The number of objects.
+  ///
+  /// Optional.
+  core.String? count;
+
+  DatabaseObjects({
+    this.category,
+    this.count,
+  });
+
+  DatabaseObjects.fromJson(core.Map json_)
+      : this(
+          category: json_['category'] as core.String?,
+          count: json_['count'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (category != null) 'category': category!,
+        if (count != null) 'count': count!,
+      };
+}
+
+/// Details of a database schema.
+class DatabaseSchema {
+  /// Details of a Mysql schema.
+  ///
+  /// Optional.
+  MySqlSchemaDetails? mysql;
+
+  /// List of details of objects by category.
+  ///
+  /// Optional.
+  core.List<DatabaseObjects>? objects;
+
+  /// Details of a PostgreSql schema.
+  ///
+  /// Optional.
+  PostgreSqlSchemaDetails? postgresql;
+
+  /// The name of the schema.
+  ///
+  /// Required.
+  core.String? schemaName;
+
+  /// Details of a SqlServer schema.
+  ///
+  /// Optional.
+  SqlServerSchemaDetails? sqlServer;
+
+  /// The total size of tables in bytes.
+  ///
+  /// Optional.
+  core.String? tablesSizeBytes;
+
+  DatabaseSchema({
+    this.mysql,
+    this.objects,
+    this.postgresql,
+    this.schemaName,
+    this.sqlServer,
+    this.tablesSizeBytes,
+  });
+
+  DatabaseSchema.fromJson(core.Map json_)
+      : this(
+          mysql: json_.containsKey('mysql')
+              ? MySqlSchemaDetails.fromJson(
+                  json_['mysql'] as core.Map<core.String, core.dynamic>)
+              : null,
+          objects: (json_['objects'] as core.List?)
+              ?.map((value) => DatabaseObjects.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          postgresql: json_.containsKey('postgresql')
+              ? PostgreSqlSchemaDetails.fromJson(
+                  json_['postgresql'] as core.Map<core.String, core.dynamic>)
+              : null,
+          schemaName: json_['schemaName'] as core.String?,
+          sqlServer: json_.containsKey('sqlServer')
+              ? SqlServerSchemaDetails.fromJson(
+                  json_['sqlServer'] as core.Map<core.String, core.dynamic>)
+              : null,
+          tablesSizeBytes: json_['tablesSizeBytes'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mysql != null) 'mysql': mysql!,
+        if (objects != null) 'objects': objects!,
+        if (postgresql != null) 'postgresql': postgresql!,
+        if (schemaName != null) 'schemaName': schemaName!,
+        if (sqlServer != null) 'sqlServer': sqlServer!,
+        if (tablesSizeBytes != null) 'tablesSizeBytes': tablesSizeBytes!,
       };
 }
 
@@ -4896,20 +5463,44 @@ class DiskPartitionList {
 class DiskUsageSample {
   /// Average IOPS sampled over a short window.
   ///
-  /// Must be non-negative.
+  /// Must be non-negative. Must be equal to the sum of read and write if one of
+  /// them is positive. if both read and write are zero they are ignored.
+  ///
+  /// Optional.
   core.double? averageIops;
+
+  /// Average read IOPS sampled over a short window.
+  ///
+  /// Must be non-negative.
+  ///
+  /// Optional.
+  core.double? averageReadIops;
+
+  /// Average write IOPS sampled over a short window.
+  ///
+  /// Must be non-negative.
+  ///
+  /// Optional.
+  core.double? averageWriteIops;
 
   DiskUsageSample({
     this.averageIops,
+    this.averageReadIops,
+    this.averageWriteIops,
   });
 
   DiskUsageSample.fromJson(core.Map json_)
       : this(
           averageIops: (json_['averageIops'] as core.num?)?.toDouble(),
+          averageReadIops: (json_['averageReadIops'] as core.num?)?.toDouble(),
+          averageWriteIops:
+              (json_['averageWriteIops'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (averageIops != null) 'averageIops': averageIops!,
+        if (averageReadIops != null) 'averageReadIops': averageReadIops!,
+        if (averageWriteIops != null) 'averageWriteIops': averageWriteIops!,
       };
 }
 
@@ -5685,6 +6276,8 @@ class ImportDataFile {
   /// - "IMPORT_JOB_FORMAT_STRATOZONE_CSV" : CSV format created manually and
   /// following the StratoZone format. For more information, see Manually create
   /// and upload data tables.
+  /// - "IMPORT_JOB_FORMAT_DATABASE_ZIP" : ZIP file with nested CSV files
+  /// generated by a database collector.
   core.String? format;
 
   /// The name of the file.
@@ -5886,6 +6479,14 @@ class ImportJob {
 
 /// A resource that reports the import job errors at row level.
 class ImportRowError {
+  /// Error details for an archive file.
+  ImportRowErrorArchiveErrorDetails? archiveError;
+
+  /// The asset title.
+  ///
+  /// Output only.
+  core.String? assetTitle;
+
   /// Error details for a CSV file.
   ImportRowErrorCsvErrorDetails? csvError;
 
@@ -5908,6 +6509,8 @@ class ImportRowError {
   ImportRowErrorXlsxErrorDetails? xlsxError;
 
   ImportRowError({
+    this.archiveError,
+    this.assetTitle,
     this.csvError,
     this.errors,
     this.rowNumber,
@@ -5918,6 +6521,11 @@ class ImportRowError {
 
   ImportRowError.fromJson(core.Map json_)
       : this(
+          archiveError: json_.containsKey('archiveError')
+              ? ImportRowErrorArchiveErrorDetails.fromJson(
+                  json_['archiveError'] as core.Map<core.String, core.dynamic>)
+              : null,
+          assetTitle: json_['assetTitle'] as core.String?,
           csvError: json_.containsKey('csvError')
               ? ImportRowErrorCsvErrorDetails.fromJson(
                   json_['csvError'] as core.Map<core.String, core.dynamic>)
@@ -5936,12 +6544,44 @@ class ImportRowError {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (archiveError != null) 'archiveError': archiveError!,
+        if (assetTitle != null) 'assetTitle': assetTitle!,
         if (csvError != null) 'csvError': csvError!,
         if (errors != null) 'errors': errors!,
         if (rowNumber != null) 'rowNumber': rowNumber!,
         if (vmName != null) 'vmName': vmName!,
         if (vmUuid != null) 'vmUuid': vmUuid!,
         if (xlsxError != null) 'xlsxError': xlsxError!,
+      };
+}
+
+/// Error details for an archive file.
+class ImportRowErrorArchiveErrorDetails {
+  /// Error details for a CSV file.
+  ImportRowErrorCsvErrorDetails? csvError;
+
+  /// The file path inside the archive where the error was detected.
+  ///
+  /// Output only.
+  core.String? filePath;
+
+  ImportRowErrorArchiveErrorDetails({
+    this.csvError,
+    this.filePath,
+  });
+
+  ImportRowErrorArchiveErrorDetails.fromJson(core.Map json_)
+      : this(
+          csvError: json_.containsKey('csvError')
+              ? ImportRowErrorCsvErrorDetails.fromJson(
+                  json_['csvError'] as core.Map<core.String, core.dynamic>)
+              : null,
+          filePath: json_['filePath'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (csvError != null) 'csvError': csvError!,
+        if (filePath != null) 'filePath': filePath!,
       };
 }
 
@@ -5991,7 +6631,7 @@ class ImportRowErrorXlsxErrorDetails {
 
 /// An insight about an asset.
 class Insight {
-  /// A generic insight about an asset
+  /// A generic insight about an asset.
   ///
   /// Output only.
   GenericInsight? genericInsight;
@@ -6487,6 +7127,11 @@ class MachineArchitectureDetails {
   /// CPU architecture, e.g., "x64-based PC", "x86_64", "i686" etc.
   core.String? cpuArchitecture;
 
+  /// CPU manufacturer, e.g., "Intel", "AMD".
+  ///
+  /// Optional.
+  core.String? cpuManufacturer;
+
   /// CPU name, e.g., "Intel Xeon E5-2690", "AMD EPYC 7571" etc.
   core.String? cpuName;
 
@@ -6521,6 +7166,7 @@ class MachineArchitectureDetails {
   MachineArchitectureDetails({
     this.bios,
     this.cpuArchitecture,
+    this.cpuManufacturer,
     this.cpuName,
     this.cpuSocketCount,
     this.cpuThreadCount,
@@ -6536,6 +7182,7 @@ class MachineArchitectureDetails {
                   json_['bios'] as core.Map<core.String, core.dynamic>)
               : null,
           cpuArchitecture: json_['cpuArchitecture'] as core.String?,
+          cpuManufacturer: json_['cpuManufacturer'] as core.String?,
           cpuName: json_['cpuName'] as core.String?,
           cpuSocketCount: json_['cpuSocketCount'] as core.int?,
           cpuThreadCount: json_['cpuThreadCount'] as core.int?,
@@ -6547,6 +7194,7 @@ class MachineArchitectureDetails {
   core.Map<core.String, core.dynamic> toJson() => {
         if (bios != null) 'bios': bios!,
         if (cpuArchitecture != null) 'cpuArchitecture': cpuArchitecture!,
+        if (cpuManufacturer != null) 'cpuManufacturer': cpuManufacturer!,
         if (cpuName != null) 'cpuName': cpuName!,
         if (cpuSocketCount != null) 'cpuSocketCount': cpuSocketCount!,
         if (cpuThreadCount != null) 'cpuThreadCount': cpuThreadCount!,
@@ -6858,6 +7506,213 @@ class MigrationInsight {
 
 /// Represents an amount of money with its currency type.
 typedef Money = $Money;
+
+/// MySql plugin.
+class MySqlPlugin {
+  /// The plugin is active.
+  ///
+  /// Required.
+  core.bool? enabled;
+
+  /// The plugin name.
+  ///
+  /// Required.
+  core.String? plugin;
+
+  /// The plugin version.
+  ///
+  /// Required.
+  core.String? version;
+
+  MySqlPlugin({
+    this.enabled,
+    this.plugin,
+    this.version,
+  });
+
+  MySqlPlugin.fromJson(core.Map json_)
+      : this(
+          enabled: json_['enabled'] as core.bool?,
+          plugin: json_['plugin'] as core.String?,
+          version: json_['version'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (plugin != null) 'plugin': plugin!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// MySql property.
+typedef MySqlProperty = $SqlProperty;
+
+/// Specific details for a Mysql database.
+class MySqlSchemaDetails {
+  /// Mysql storage engine tables.
+  ///
+  /// Optional.
+  core.List<MySqlStorageEngineDetails>? storageEngines;
+
+  MySqlSchemaDetails({
+    this.storageEngines,
+  });
+
+  MySqlSchemaDetails.fromJson(core.Map json_)
+      : this(
+          storageEngines: (json_['storageEngines'] as core.List?)
+              ?.map((value) => MySqlStorageEngineDetails.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (storageEngines != null) 'storageEngines': storageEngines!,
+      };
+}
+
+/// Mysql storage engine tables.
+class MySqlStorageEngineDetails {
+  /// The number of encrypted tables.
+  ///
+  /// Optional.
+  core.int? encryptedTableCount;
+
+  /// The storage engine.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ENGINE_UNSPECIFIED" : Unspecified storage engine.
+  /// - "INNODB" : InnoDB.
+  /// - "MYISAM" : MyISAM.
+  /// - "MEMORY" : Memory.
+  /// - "CSV" : CSV.
+  /// - "ARCHIVE" : Archive.
+  /// - "BLACKHOLE" : Blackhole.
+  /// - "NDB" : NDB.
+  /// - "MERGE" : Merge.
+  /// - "FEDERATED" : Federated.
+  /// - "EXAMPLE" : Example.
+  /// - "OTHER" : Other.
+  core.String? engine;
+
+  /// The number of tables.
+  ///
+  /// Optional.
+  core.int? tableCount;
+
+  MySqlStorageEngineDetails({
+    this.encryptedTableCount,
+    this.engine,
+    this.tableCount,
+  });
+
+  MySqlStorageEngineDetails.fromJson(core.Map json_)
+      : this(
+          encryptedTableCount: json_['encryptedTableCount'] as core.int?,
+          engine: json_['engine'] as core.String?,
+          tableCount: json_['tableCount'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (encryptedTableCount != null)
+          'encryptedTableCount': encryptedTableCount!,
+        if (engine != null) 'engine': engine!,
+        if (tableCount != null) 'tableCount': tableCount!,
+      };
+}
+
+/// MySql variable.
+class MySqlVariable {
+  /// The variable category.
+  ///
+  /// Required.
+  core.String? category;
+
+  /// The variable value.
+  ///
+  /// Required.
+  core.String? value;
+
+  /// The variable name.
+  ///
+  /// Required.
+  core.String? variable;
+
+  MySqlVariable({
+    this.category,
+    this.value,
+    this.variable,
+  });
+
+  MySqlVariable.fromJson(core.Map json_)
+      : this(
+          category: json_['category'] as core.String?,
+          value: json_['value'] as core.String?,
+          variable: json_['variable'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (category != null) 'category': category!,
+        if (value != null) 'value': value!,
+        if (variable != null) 'variable': variable!,
+      };
+}
+
+/// Specific details for a Mysql database deployment.
+class MysqlDatabaseDeployment {
+  /// List of MySql plugins.
+  ///
+  /// Optional.
+  core.List<MySqlPlugin>? plugins;
+
+  /// List of MySql properties.
+  ///
+  /// Optional.
+  core.List<MySqlProperty>? properties;
+
+  /// Number of resource groups.
+  ///
+  /// Optional.
+  core.int? resourceGroupsCount;
+
+  /// List of MySql variables.
+  ///
+  /// Optional.
+  core.List<MySqlVariable>? variables;
+
+  MysqlDatabaseDeployment({
+    this.plugins,
+    this.properties,
+    this.resourceGroupsCount,
+    this.variables,
+  });
+
+  MysqlDatabaseDeployment.fromJson(core.Map json_)
+      : this(
+          plugins: (json_['plugins'] as core.List?)
+              ?.map((value) => MySqlPlugin.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          properties: (json_['properties'] as core.List?)
+              ?.map((value) => MySqlProperty.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          resourceGroupsCount: json_['resourceGroupsCount'] as core.int?,
+          variables: (json_['variables'] as core.List?)
+              ?.map((value) => MySqlVariable.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (plugins != null) 'plugins': plugins!,
+        if (properties != null) 'properties': properties!,
+        if (resourceGroupsCount != null)
+          'resourceGroupsCount': resourceGroupsCount!,
+        if (variables != null) 'variables': variables!,
+      };
+}
 
 /// Details of network adapter.
 class NetworkAdapterDetails {
@@ -7437,6 +8292,178 @@ class PlatformDetails {
         if (genericDetails != null) 'genericDetails': genericDetails!,
         if (physicalDetails != null) 'physicalDetails': physicalDetails!,
         if (vmwareDetails != null) 'vmwareDetails': vmwareDetails!,
+      };
+}
+
+/// Specific details for a PostgreSQL database deployment.
+class PostgreSqlDatabaseDeployment {
+  /// List of PostgreSql properties.
+  ///
+  /// Optional.
+  core.List<PostgreSqlProperty>? properties;
+
+  /// List of PostgreSql settings.
+  ///
+  /// Optional.
+  core.List<PostgreSqlSetting>? settings;
+
+  PostgreSqlDatabaseDeployment({
+    this.properties,
+    this.settings,
+  });
+
+  PostgreSqlDatabaseDeployment.fromJson(core.Map json_)
+      : this(
+          properties: (json_['properties'] as core.List?)
+              ?.map((value) => PostgreSqlProperty.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          settings: (json_['settings'] as core.List?)
+              ?.map((value) => PostgreSqlSetting.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (properties != null) 'properties': properties!,
+        if (settings != null) 'settings': settings!,
+      };
+}
+
+/// PostgreSql extension.
+class PostgreSqlExtension {
+  /// The extension name.
+  ///
+  /// Required.
+  core.String? extension;
+
+  /// The extension version.
+  ///
+  /// Required.
+  core.String? version;
+
+  PostgreSqlExtension({
+    this.extension,
+    this.version,
+  });
+
+  PostgreSqlExtension.fromJson(core.Map json_)
+      : this(
+          extension: json_['extension'] as core.String?,
+          version: json_['version'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (extension != null) 'extension': extension!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// PostgreSql property.
+typedef PostgreSqlProperty = $SqlProperty;
+
+/// Specific details for a PostgreSql schema.
+class PostgreSqlSchemaDetails {
+  /// PostgreSql foreign tables.
+  ///
+  /// Optional.
+  core.int? foreignTablesCount;
+
+  /// PostgreSql extensions.
+  ///
+  /// Optional.
+  core.List<PostgreSqlExtension>? postgresqlExtensions;
+
+  PostgreSqlSchemaDetails({
+    this.foreignTablesCount,
+    this.postgresqlExtensions,
+  });
+
+  PostgreSqlSchemaDetails.fromJson(core.Map json_)
+      : this(
+          foreignTablesCount: json_['foreignTablesCount'] as core.int?,
+          postgresqlExtensions: (json_['postgresqlExtensions'] as core.List?)
+              ?.map((value) => PostgreSqlExtension.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (foreignTablesCount != null)
+          'foreignTablesCount': foreignTablesCount!,
+        if (postgresqlExtensions != null)
+          'postgresqlExtensions': postgresqlExtensions!,
+      };
+}
+
+/// PostgreSql setting.
+class PostgreSqlSetting {
+  /// The setting boolean value.
+  ///
+  /// Required.
+  core.bool? boolValue;
+
+  /// The setting int value.
+  ///
+  /// Required.
+  core.String? intValue;
+
+  /// The setting real value.
+  ///
+  /// Required.
+  core.double? realValue;
+
+  /// The setting name.
+  ///
+  /// Required.
+  core.String? setting;
+
+  /// The setting source.
+  ///
+  /// Required.
+  core.String? source;
+
+  /// The setting string value.
+  ///
+  /// Notice that enum values are stored as strings.
+  ///
+  /// Required.
+  core.String? stringValue;
+
+  /// The setting unit.
+  ///
+  /// Optional.
+  core.String? unit;
+
+  PostgreSqlSetting({
+    this.boolValue,
+    this.intValue,
+    this.realValue,
+    this.setting,
+    this.source,
+    this.stringValue,
+    this.unit,
+  });
+
+  PostgreSqlSetting.fromJson(core.Map json_)
+      : this(
+          boolValue: json_['boolValue'] as core.bool?,
+          intValue: json_['intValue'] as core.String?,
+          realValue: (json_['realValue'] as core.num?)?.toDouble(),
+          setting: json_['setting'] as core.String?,
+          source: json_['source'] as core.String?,
+          stringValue: json_['stringValue'] as core.String?,
+          unit: json_['unit'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
+        if (intValue != null) 'intValue': intValue!,
+        if (realValue != null) 'realValue': realValue!,
+        if (setting != null) 'setting': setting!,
+        if (source != null) 'source': source!,
+        if (stringValue != null) 'stringValue': stringValue!,
+        if (unit != null) 'unit': unit!,
       };
 }
 
@@ -8914,6 +9941,177 @@ class Source {
       };
 }
 
+/// Specific details for a Microsoft SQL Server database deployment.
+class SqlServerDatabaseDeployment {
+  /// List of SQL Server features.
+  ///
+  /// Optional.
+  core.List<SqlServerFeature>? features;
+
+  /// List of SQL Server server flags.
+  ///
+  /// Optional.
+  core.List<SqlServerServerFlag>? serverFlags;
+
+  /// List of SQL Server trace flags.
+  ///
+  /// Optional.
+  core.List<SqlServerTraceFlag>? traceFlags;
+
+  SqlServerDatabaseDeployment({
+    this.features,
+    this.serverFlags,
+    this.traceFlags,
+  });
+
+  SqlServerDatabaseDeployment.fromJson(core.Map json_)
+      : this(
+          features: (json_['features'] as core.List?)
+              ?.map((value) => SqlServerFeature.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          serverFlags: (json_['serverFlags'] as core.List?)
+              ?.map((value) => SqlServerServerFlag.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          traceFlags: (json_['traceFlags'] as core.List?)
+              ?.map((value) => SqlServerTraceFlag.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (features != null) 'features': features!,
+        if (serverFlags != null) 'serverFlags': serverFlags!,
+        if (traceFlags != null) 'traceFlags': traceFlags!,
+      };
+}
+
+/// SQL Server feature details.
+class SqlServerFeature {
+  /// Field enabled is set when a feature is used on the source deployment.
+  ///
+  /// Required.
+  core.bool? enabled;
+
+  /// The feature name.
+  ///
+  /// Required.
+  core.String? featureName;
+
+  SqlServerFeature({
+    this.enabled,
+    this.featureName,
+  });
+
+  SqlServerFeature.fromJson(core.Map json_)
+      : this(
+          enabled: json_['enabled'] as core.bool?,
+          featureName: json_['featureName'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (featureName != null) 'featureName': featureName!,
+      };
+}
+
+/// Specific details for a SqlServer database.
+class SqlServerSchemaDetails {
+  /// SqlServer number of CLR objects.
+  ///
+  /// Optional.
+  core.int? clrObjectCount;
+
+  SqlServerSchemaDetails({
+    this.clrObjectCount,
+  });
+
+  SqlServerSchemaDetails.fromJson(core.Map json_)
+      : this(
+          clrObjectCount: json_['clrObjectCount'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clrObjectCount != null) 'clrObjectCount': clrObjectCount!,
+      };
+}
+
+/// SQL Server server flag details.
+class SqlServerServerFlag {
+  /// The server flag name.
+  ///
+  /// Required.
+  core.String? serverFlagName;
+
+  /// The server flag value set by the user.
+  ///
+  /// Required.
+  core.String? value;
+
+  /// The server flag actual value.
+  ///
+  /// If `value_in_use` is different from `value` it means that either the
+  /// configuration change was not applied or it is an expected behavior. See
+  /// SQL Server documentation for more details.
+  ///
+  /// Required.
+  core.String? valueInUse;
+
+  SqlServerServerFlag({
+    this.serverFlagName,
+    this.value,
+    this.valueInUse,
+  });
+
+  SqlServerServerFlag.fromJson(core.Map json_)
+      : this(
+          serverFlagName: json_['serverFlagName'] as core.String?,
+          value: json_['value'] as core.String?,
+          valueInUse: json_['valueInUse'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (serverFlagName != null) 'serverFlagName': serverFlagName!,
+        if (value != null) 'value': value!,
+        if (valueInUse != null) 'valueInUse': valueInUse!,
+      };
+}
+
+/// SQL Server trace flag details.
+class SqlServerTraceFlag {
+  /// The trace flag scope.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "SCOPE_UNSPECIFIED" : Unspecified.
+  /// - "OFF" : Off.
+  /// - "GLOBAL" : Global.
+  /// - "SESSION" : Session.
+  core.String? scope;
+
+  /// The trace flag name.
+  ///
+  /// Required.
+  core.String? traceFlagName;
+
+  SqlServerTraceFlag({
+    this.scope,
+    this.traceFlagName,
+  });
+
+  SqlServerTraceFlag.fromJson(core.Map json_)
+      : this(
+          scope: json_['scope'] as core.String?,
+          traceFlagName: json_['traceFlagName'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scope != null) 'scope': scope!,
+        if (traceFlagName != null) 'traceFlagName': traceFlagName!,
+      };
+}
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -9117,7 +10315,7 @@ class VirtualMachinePreferences {
   /// - "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE" : Prefer to migrate to
   /// Google Cloud Compute Engine.
   /// - "COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE" : Prefer to migrate to
-  /// Google Cloud VMware Engine.
+  /// Google Cloud VMware Engine.6278
   /// - "COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY" : Prefer to migrate to
   /// Google Cloud Sole Tenant Nodes.
   core.String? targetProduct;

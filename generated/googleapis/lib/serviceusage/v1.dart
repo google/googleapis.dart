@@ -82,8 +82,8 @@ class OperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -961,6 +961,12 @@ class DisableServiceRequest {
 /// directive `suppress_warning` does not directly affect documentation and is
 /// documented together with service config validation.
 class Documentation {
+  /// Optional information about the IAM configuration.
+  ///
+  /// This is typically used to link to documentation about a product's IAM
+  /// roles and permissions.
+  core.String? additionalIamInfo;
+
   /// The URL to the root of documentation.
   core.String? documentationRootUrl;
 
@@ -1002,6 +1008,7 @@ class Documentation {
   core.String? summary;
 
   Documentation({
+    this.additionalIamInfo,
     this.documentationRootUrl,
     this.overview,
     this.pages,
@@ -1013,6 +1020,7 @@ class Documentation {
 
   Documentation.fromJson(core.Map json_)
       : this(
+          additionalIamInfo: json_['additionalIamInfo'] as core.String?,
           documentationRootUrl: json_['documentationRootUrl'] as core.String?,
           overview: json_['overview'] as core.String?,
           pages: (json_['pages'] as core.List?)
@@ -1032,6 +1040,7 @@ class Documentation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalIamInfo != null) 'additionalIamInfo': additionalIamInfo!,
         if (documentationRootUrl != null)
           'documentationRootUrl': documentationRootUrl!,
         if (overview != null) 'overview': overview!,

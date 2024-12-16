@@ -4001,6 +4001,31 @@ class DataSamplingReport {
       };
 }
 
+/// The gauge value of a metric.
+class DataflowGaugeValue {
+  /// The timestamp when the gauge was recorded.
+  core.String? measuredTime;
+
+  /// The value of the gauge.
+  core.String? value;
+
+  DataflowGaugeValue({
+    this.measuredTime,
+    this.value,
+  });
+
+  DataflowGaugeValue.fromJson(core.Map json_)
+      : this(
+          measuredTime: json_['measuredTime'] as core.String?,
+          value: json_['value'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (measuredTime != null) 'measuredTime': measuredTime!,
+        if (value != null) 'value': value!,
+      };
+}
+
 /// Summary statistics for a population of values.
 ///
 /// HistogramValue contains a sequence of buckets and gives a count of values
@@ -5222,6 +5247,60 @@ class FloatingPointMean {
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
         if (sum != null) 'sum': sum!,
+      };
+}
+
+/// Information about the GPU usage on the worker.
+class GPUUsage {
+  /// Timestamp of the measurement.
+  ///
+  /// Required.
+  core.String? timestamp;
+
+  /// Utilization info about the GPU.
+  ///
+  /// Required.
+  GPUUtilization? utilization;
+
+  GPUUsage({
+    this.timestamp,
+    this.utilization,
+  });
+
+  GPUUsage.fromJson(core.Map json_)
+      : this(
+          timestamp: json_['timestamp'] as core.String?,
+          utilization: json_.containsKey('utilization')
+              ? GPUUtilization.fromJson(
+                  json_['utilization'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (timestamp != null) 'timestamp': timestamp!,
+        if (utilization != null) 'utilization': utilization!,
+      };
+}
+
+/// Utilization details about the GPU.
+class GPUUtilization {
+  /// GPU utilization rate of any kernel over the last sample period in the
+  /// range of \[0, 1\].
+  ///
+  /// Required.
+  core.double? rate;
+
+  GPUUtilization({
+    this.rate,
+  });
+
+  GPUUtilization.fromJson(core.Map json_)
+      : this(
+          rate: (json_['rate'] as core.num?)?.toDouble(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rate != null) 'rate': rate!,
       };
 }
 
@@ -7263,6 +7342,9 @@ class MetricValue {
   /// Optional.
   core.Map<core.String, core.String>? metricLabels;
 
+  /// Non-cumulative int64 value of this metric.
+  DataflowGaugeValue? valueGauge64;
+
   /// Histogram value of this metric.
   DataflowHistogramValue? valueHistogram;
 
@@ -7272,6 +7354,7 @@ class MetricValue {
   MetricValue({
     this.metric,
     this.metricLabels,
+    this.valueGauge64,
     this.valueHistogram,
     this.valueInt64,
   });
@@ -7287,6 +7370,10 @@ class MetricValue {
               value as core.String,
             ),
           ),
+          valueGauge64: json_.containsKey('valueGauge64')
+              ? DataflowGaugeValue.fromJson(
+                  json_['valueGauge64'] as core.Map<core.String, core.dynamic>)
+              : null,
           valueHistogram: json_.containsKey('valueHistogram')
               ? DataflowHistogramValue.fromJson(json_['valueHistogram']
                   as core.Map<core.String, core.dynamic>)
@@ -7297,6 +7384,7 @@ class MetricValue {
   core.Map<core.String, core.dynamic> toJson() => {
         if (metric != null) 'metric': metric!,
         if (metricLabels != null) 'metricLabels': metricLabels!,
+        if (valueGauge64 != null) 'valueGauge64': valueGauge64!,
         if (valueHistogram != null) 'valueHistogram': valueHistogram!,
         if (valueInt64 != null) 'valueInt64': valueInt64!,
       };
@@ -8470,12 +8558,18 @@ class ResourceUtilizationReport {
   /// CPU utilization samples.
   core.List<CPUTime>? cpuTime;
 
+  /// GPU usage samples.
+  ///
+  /// Optional.
+  core.List<GPUUsage>? gpuUsage;
+
   /// Memory utilization samples.
   core.List<MemInfo>? memoryInfo;
 
   ResourceUtilizationReport({
     this.containers,
     this.cpuTime,
+    this.gpuUsage,
     this.memoryInfo,
   });
 
@@ -8494,6 +8588,10 @@ class ResourceUtilizationReport {
               ?.map((value) => CPUTime.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          gpuUsage: (json_['gpuUsage'] as core.List?)
+              ?.map((value) => GPUUsage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           memoryInfo: (json_['memoryInfo'] as core.List?)
               ?.map((value) => MemInfo.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -8503,6 +8601,7 @@ class ResourceUtilizationReport {
   core.Map<core.String, core.dynamic> toJson() => {
         if (containers != null) 'containers': containers!,
         if (cpuTime != null) 'cpuTime': cpuTime!,
+        if (gpuUsage != null) 'gpuUsage': gpuUsage!,
         if (memoryInfo != null) 'memoryInfo': memoryInfo!,
       };
 }

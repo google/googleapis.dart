@@ -420,31 +420,77 @@ class DecodeIntegrityTokenResponse {
       };
 }
 
+/// Contains information about the device for which the integrity token was
+/// generated, e.g. Android SDK version.
+class DeviceAttributes {
+  /// Android SDK version of the device, as defined in the public Android
+  /// documentation:
+  /// https://developer.android.com/reference/android/os/Build.VERSION_CODES.
+  ///
+  /// It won't be set if a necessary requirement was missed. For example
+  /// DeviceIntegrity did not meet the minimum bar.
+  core.int? sdkVersion;
+
+  DeviceAttributes({
+    this.sdkVersion,
+  });
+
+  DeviceAttributes.fromJson(core.Map json_)
+      : this(
+          sdkVersion: json_['sdkVersion'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sdkVersion != null) 'sdkVersion': sdkVersion!,
+      };
+}
+
 /// Contains the device attestation information.
 class DeviceIntegrity {
+  /// Attributes of the device where the integrity token was generated.
+  DeviceAttributes? deviceAttributes;
+
   /// Details about the device recall bits set by the developer.
   DeviceRecall? deviceRecall;
 
   /// Details about the integrity of the device the app is running on.
   core.List<core.String>? deviceRecognitionVerdict;
 
+  /// Contains legacy details about the integrity of the device the app is
+  /// running on.
+  ///
+  /// Only for devices with Android version T or higher and only for apps opted
+  /// in to the new verdicts. Only available during the transition period to the
+  /// new verdicts system and will be removed afterwards.
+  core.List<core.String>? legacyDeviceRecognitionVerdict;
+
   /// Details about the device activity of the device the app is running on.
   RecentDeviceActivity? recentDeviceActivity;
 
   DeviceIntegrity({
+    this.deviceAttributes,
     this.deviceRecall,
     this.deviceRecognitionVerdict,
+    this.legacyDeviceRecognitionVerdict,
     this.recentDeviceActivity,
   });
 
   DeviceIntegrity.fromJson(core.Map json_)
       : this(
+          deviceAttributes: json_.containsKey('deviceAttributes')
+              ? DeviceAttributes.fromJson(json_['deviceAttributes']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           deviceRecall: json_.containsKey('deviceRecall')
               ? DeviceRecall.fromJson(
                   json_['deviceRecall'] as core.Map<core.String, core.dynamic>)
               : null,
           deviceRecognitionVerdict:
               (json_['deviceRecognitionVerdict'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+          legacyDeviceRecognitionVerdict:
+              (json_['legacyDeviceRecognitionVerdict'] as core.List?)
                   ?.map((value) => value as core.String)
                   .toList(),
           recentDeviceActivity: json_.containsKey('recentDeviceActivity')
@@ -454,9 +500,12 @@ class DeviceIntegrity {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceAttributes != null) 'deviceAttributes': deviceAttributes!,
         if (deviceRecall != null) 'deviceRecall': deviceRecall!,
         if (deviceRecognitionVerdict != null)
           'deviceRecognitionVerdict': deviceRecognitionVerdict!,
+        if (legacyDeviceRecognitionVerdict != null)
+          'legacyDeviceRecognitionVerdict': legacyDeviceRecognitionVerdict!,
         if (recentDeviceActivity != null)
           'recentDeviceActivity': recentDeviceActivity!,
       };

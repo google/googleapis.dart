@@ -22,6 +22,8 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsBackupCollectionsResource]
+///       - [ProjectsLocationsBackupCollectionsBackupsResource]
 ///     - [ProjectsLocationsClustersResource]
 ///     - [ProjectsLocationsInstancesResource]
 ///     - [ProjectsLocationsOperationsResource]
@@ -70,6 +72,8 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsBackupCollectionsResource get backupCollections =>
+      ProjectsLocationsBackupCollectionsResource(_requester);
   ProjectsLocationsClustersResource get clusters =>
       ProjectsLocationsClustersResource(_requester);
   ProjectsLocationsInstancesResource get instances =>
@@ -167,11 +171,349 @@ class ProjectsLocationsResource {
   }
 }
 
+class ProjectsLocationsBackupCollectionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBackupCollectionsBackupsResource get backups =>
+      ProjectsLocationsBackupCollectionsBackupsResource(_requester);
+
+  ProjectsLocationsBackupCollectionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get a backup collection.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Redis backupCollection resource name using the form:
+  /// `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}`
+  /// where `location_id` refers to a GCP region.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backupCollections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BackupCollection].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BackupCollection> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BackupCollection.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all backup collections owned by a consumer project in either the
+  /// specified location (region) or all locations.
+  ///
+  /// If `location_id` is specified as `-` (wildcard), then all regions
+  /// available to the project are queried, and the results are aggregated.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the backupCollection location
+  /// using the form: `projects/{project_id}/locations/{location_id}` where
+  /// `location_id` refers to a GCP region.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. If not
+  /// specified, a default value of 1000 will be used by the service. Regardless
+  /// of the page_size value, the response may include a partial list and a
+  /// caller should only rely on response's `next_page_token` to determine if
+  /// there are more clusters left to be queried.
+  ///
+  /// [pageToken] - Optional. The `next_page_token` value returned from a
+  /// previous \[ListBackupCollections\] request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBackupCollectionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBackupCollectionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/backupCollections';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBackupCollectionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsBackupCollectionsBackupsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBackupCollectionsBackupsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes a specific backup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Redis backup resource name using the form:
+  /// `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}/backups/{backup_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backupCollections/\[^/\]+/backups/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. Idempotent request UUID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Exports a specific backup to a customer target Cloud Storage URI.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Redis backup resource name using the form:
+  /// `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}/backups/{backup_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backupCollections/\[^/\]+/backups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> export(
+    ExportBackupRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':export';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the details of a specific backup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Redis backup resource name using the form:
+  /// `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}/backups/{backup_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backupCollections/\[^/\]+/backups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Backup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Backup> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Backup.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all backups owned by a backup collection.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the backupCollection using the
+  /// form:
+  /// `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backupCollections/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. If not
+  /// specified, a default value of 1000 will be used by the service. Regardless
+  /// of the page_size value, the response may include a partial list and a
+  /// caller should only rely on response's `next_page_token` to determine if
+  /// there are more clusters left to be queried.
+  ///
+  /// [pageToken] - Optional. The `next_page_token` value returned from a
+  /// previous \[ListBackupCollections\] request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBackupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBackupsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/backups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBackupsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsClustersResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsClustersResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Backup Redis Cluster.
+  ///
+  /// If this is the first time a backup is being created, a backup collection
+  /// will be created at the backend, and this backup belongs to this
+  /// collection. Both collection and backup will have a resource name. Backup
+  /// will be executed for each shard. A replica (primary if nonHA) will be
+  /// selected to perform the execution. Backup call will be rejected if there
+  /// is an ongoing backup or update operation. Be aware that during preview, if
+  /// the cluster's internal software version is too old, critical update will
+  /// be performed before actual backup. Once the internal software version is
+  /// updated to the minimum version required by the backup feature, subsequent
+  /// backups will not require critical update. After preview, there will be no
+  /// critical update needed for backup.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Redis cluster resource name using the form:
+  /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
+  /// where `location_id` refers to a GCP region.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> backup(
+    BackupClusterRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':backup';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Creates a Redis cluster based on the specified properties.
   ///
@@ -1059,8 +1401,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// Request parameters:
   ///
@@ -1255,6 +1597,324 @@ class AOFConfig {
       };
 }
 
+/// The automated backup config for a cluster.
+class AutomatedBackupConfig {
+  /// The automated backup mode.
+  ///
+  /// If the mode is disabled, the other fields will be ignored.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "AUTOMATED_BACKUP_MODE_UNSPECIFIED" : Default value. Automated backup
+  /// config is not specified.
+  /// - "DISABLED" : Automated backup config disabled.
+  /// - "ENABLED" : Automated backup config enabled.
+  core.String? automatedBackupMode;
+
+  /// Trigger automated backups at a fixed frequency.
+  ///
+  /// Optional.
+  FixedFrequencySchedule? fixedFrequencySchedule;
+
+  /// How long to keep automated backups before the backups are deleted.
+  ///
+  /// The value should be between 1 day and 365 days. If not specified, the
+  /// default value is 35 days.
+  ///
+  /// Optional.
+  core.String? retention;
+
+  AutomatedBackupConfig({
+    this.automatedBackupMode,
+    this.fixedFrequencySchedule,
+    this.retention,
+  });
+
+  AutomatedBackupConfig.fromJson(core.Map json_)
+      : this(
+          automatedBackupMode: json_['automatedBackupMode'] as core.String?,
+          fixedFrequencySchedule: json_.containsKey('fixedFrequencySchedule')
+              ? FixedFrequencySchedule.fromJson(json_['fixedFrequencySchedule']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          retention: json_['retention'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (automatedBackupMode != null)
+          'automatedBackupMode': automatedBackupMode!,
+        if (fixedFrequencySchedule != null)
+          'fixedFrequencySchedule': fixedFrequencySchedule!,
+        if (retention != null) 'retention': retention!,
+      };
+}
+
+/// Backup of a cluster.
+class Backup {
+  /// List of backup files of the backup.
+  ///
+  /// Output only.
+  core.List<BackupFile>? backupFiles;
+
+  /// Type of the backup.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "BACKUP_TYPE_UNSPECIFIED" : The default value, not set.
+  /// - "ON_DEMAND" : On-demand backup.
+  /// - "AUTOMATED" : Automated backup.
+  core.String? backupType;
+
+  /// Cluster resource path of this backup.
+  ///
+  /// Output only.
+  core.String? cluster;
+
+  /// Cluster uid of this backup.
+  ///
+  /// Output only.
+  core.String? clusterUid;
+
+  /// The time when the backup was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// redis-7.2, valkey-7.5
+  ///
+  /// Output only.
+  core.String? engineVersion;
+
+  /// The time when the backup will expire.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
+  /// Identifier.
+  ///
+  /// Full resource path of the backup. the last part of the name is the backup
+  /// id with the following format: \[YYYYMMDDHHMMSS\]_\[Shorted Cluster UID\]
+  /// OR customer specified while backup cluster. Example: 20240515123000_1234
+  core.String? name;
+
+  /// Node type of the cluster.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "NODE_TYPE_UNSPECIFIED" : Node type unspecified
+  /// - "REDIS_SHARED_CORE_NANO" : Redis shared core nano node_type.
+  /// - "REDIS_HIGHMEM_MEDIUM" : Redis highmem medium node_type.
+  /// - "REDIS_HIGHMEM_XLARGE" : Redis highmem xlarge node_type.
+  /// - "REDIS_STANDARD_SMALL" : Redis standard small node_type.
+  core.String? nodeType;
+
+  /// Number of replicas for the cluster.
+  ///
+  /// Output only.
+  core.int? replicaCount;
+
+  /// Number of shards for the cluster.
+  ///
+  /// Output only.
+  core.int? shardCount;
+
+  /// State of the backup.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The default value, not set.
+  /// - "CREATING" : The backup is being created.
+  /// - "ACTIVE" : The backup is active to be used.
+  /// - "DELETING" : The backup is being deleted.
+  /// - "SUSPENDED" : The backup is currently suspended due to reasons like
+  /// project deletion, billing account closure, etc.
+  core.String? state;
+
+  /// Total size of the backup in bytes.
+  ///
+  /// Output only.
+  core.String? totalSizeBytes;
+
+  /// System assigned unique identifier of the backup.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  Backup({
+    this.backupFiles,
+    this.backupType,
+    this.cluster,
+    this.clusterUid,
+    this.createTime,
+    this.engineVersion,
+    this.expireTime,
+    this.name,
+    this.nodeType,
+    this.replicaCount,
+    this.shardCount,
+    this.state,
+    this.totalSizeBytes,
+    this.uid,
+  });
+
+  Backup.fromJson(core.Map json_)
+      : this(
+          backupFiles: (json_['backupFiles'] as core.List?)
+              ?.map((value) => BackupFile.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          backupType: json_['backupType'] as core.String?,
+          cluster: json_['cluster'] as core.String?,
+          clusterUid: json_['clusterUid'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          engineVersion: json_['engineVersion'] as core.String?,
+          expireTime: json_['expireTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          nodeType: json_['nodeType'] as core.String?,
+          replicaCount: json_['replicaCount'] as core.int?,
+          shardCount: json_['shardCount'] as core.int?,
+          state: json_['state'] as core.String?,
+          totalSizeBytes: json_['totalSizeBytes'] as core.String?,
+          uid: json_['uid'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupFiles != null) 'backupFiles': backupFiles!,
+        if (backupType != null) 'backupType': backupType!,
+        if (cluster != null) 'cluster': cluster!,
+        if (clusterUid != null) 'clusterUid': clusterUid!,
+        if (createTime != null) 'createTime': createTime!,
+        if (engineVersion != null) 'engineVersion': engineVersion!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (name != null) 'name': name!,
+        if (nodeType != null) 'nodeType': nodeType!,
+        if (replicaCount != null) 'replicaCount': replicaCount!,
+        if (shardCount != null) 'shardCount': shardCount!,
+        if (state != null) 'state': state!,
+        if (totalSizeBytes != null) 'totalSizeBytes': totalSizeBytes!,
+        if (uid != null) 'uid': uid!,
+      };
+}
+
+/// Request for \[BackupCluster\].
+class BackupClusterRequest {
+  /// The id of the backup to be created.
+  ///
+  /// If not specified, the default value (\[YYYYMMDDHHMMSS\]_\[Shortened
+  /// Cluster UID\] is used.
+  ///
+  /// Optional.
+  core.String? backupId;
+
+  /// TTL for the backup to expire.
+  ///
+  /// Value range is 1 day to 100 years. If not specified, the default value is
+  /// 100 years.
+  ///
+  /// Optional.
+  core.String? ttl;
+
+  BackupClusterRequest({
+    this.backupId,
+    this.ttl,
+  });
+
+  BackupClusterRequest.fromJson(core.Map json_)
+      : this(
+          backupId: json_['backupId'] as core.String?,
+          ttl: json_['ttl'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupId != null) 'backupId': backupId!,
+        if (ttl != null) 'ttl': ttl!,
+      };
+}
+
+/// BackupCollection of a cluster.
+class BackupCollection {
+  /// The full resource path of the cluster the backup collection belongs to.
+  ///
+  /// Example: projects/{project}/locations/{location}/clusters/{cluster}
+  ///
+  /// Output only.
+  core.String? cluster;
+
+  /// The cluster uid of the backup collection.
+  ///
+  /// Output only.
+  core.String? clusterUid;
+
+  /// Identifier.
+  ///
+  /// Full resource path of the backup collection.
+  core.String? name;
+
+  /// System assigned unique identifier of the backup collection.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  BackupCollection({
+    this.cluster,
+    this.clusterUid,
+    this.name,
+    this.uid,
+  });
+
+  BackupCollection.fromJson(core.Map json_)
+      : this(
+          cluster: json_['cluster'] as core.String?,
+          clusterUid: json_['clusterUid'] as core.String?,
+          name: json_['name'] as core.String?,
+          uid: json_['uid'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cluster != null) 'cluster': cluster!,
+        if (clusterUid != null) 'clusterUid': clusterUid!,
+        if (name != null) 'name': name!,
+        if (uid != null) 'uid': uid!,
+      };
+}
+
+/// Backup is consisted of multiple backup files.
+class BackupFile {
+  /// The time when the backup file was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// e.g: .rdb
+  ///
+  /// Output only.
+  core.String? fileName;
+
+  /// Size of the backup file in bytes.
+  ///
+  /// Output only.
+  core.String? sizeBytes;
+
+  BackupFile({
+    this.createTime,
+    this.fileName,
+    this.sizeBytes,
+  });
+
+  BackupFile.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          fileName: json_['fileName'] as core.String?,
+          sizeBytes: json_['sizeBytes'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (fileName != null) 'fileName': fileName!,
+        if (sizeBytes != null) 'sizeBytes': sizeBytes!,
+      };
+}
+
 typedef CertChain = $CertChain;
 
 /// Redis cluster certificate authority
@@ -1301,6 +1961,19 @@ class Cluster {
   /// - "AUTH_MODE_DISABLED" : Authorization disabled mode
   core.String? authorizationMode;
 
+  /// The automated backup config for the cluster.
+  ///
+  /// Optional.
+  AutomatedBackupConfig? automatedBackupConfig;
+
+  /// The backup collection full resource name.
+  ///
+  /// Example:
+  /// projects/{project}/locations/{location}/backupCollections/{collection}
+  ///
+  /// Optional. Output only.
+  core.String? backupCollection;
+
   /// A list of cluster enpoints.
   ///
   /// Optional.
@@ -1329,6 +2002,14 @@ class Cluster {
   /// Output only.
   core.List<DiscoveryEndpoint>? discoveryEndpoints;
 
+  /// Backups stored in Cloud Storage buckets.
+  ///
+  /// The Cloud Storage buckets need to be the same region as the clusters. Read
+  /// permission is required to import from the provided Cloud Storage objects.
+  ///
+  /// Optional.
+  GcsBackupSource? gcsSource;
+
   /// ClusterMaintenancePolicy determines when to allow or deny updates.
   ///
   /// Optional.
@@ -1338,6 +2019,11 @@ class Cluster {
   ///
   /// Output only.
   ClusterMaintenanceSchedule? maintenanceSchedule;
+
+  /// Backups generated and managed by memorystore service.
+  ///
+  /// Optional.
+  ManagedBackupSource? managedBackupSource;
 
   /// Identifier.
   ///
@@ -1455,13 +2141,17 @@ class Cluster {
 
   Cluster({
     this.authorizationMode,
+    this.automatedBackupConfig,
+    this.backupCollection,
     this.clusterEndpoints,
     this.createTime,
     this.crossClusterReplicationConfig,
     this.deletionProtectionEnabled,
     this.discoveryEndpoints,
+    this.gcsSource,
     this.maintenancePolicy,
     this.maintenanceSchedule,
+    this.managedBackupSource,
     this.name,
     this.nodeType,
     this.persistenceConfig,
@@ -1483,6 +2173,11 @@ class Cluster {
   Cluster.fromJson(core.Map json_)
       : this(
           authorizationMode: json_['authorizationMode'] as core.String?,
+          automatedBackupConfig: json_.containsKey('automatedBackupConfig')
+              ? AutomatedBackupConfig.fromJson(json_['automatedBackupConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          backupCollection: json_['backupCollection'] as core.String?,
           clusterEndpoints: (json_['clusterEndpoints'] as core.List?)
               ?.map((value) => ClusterEndpoint.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -1500,12 +2195,20 @@ class Cluster {
               ?.map((value) => DiscoveryEndpoint.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          gcsSource: json_.containsKey('gcsSource')
+              ? GcsBackupSource.fromJson(
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>)
+              : null,
           maintenancePolicy: json_.containsKey('maintenancePolicy')
               ? ClusterMaintenancePolicy.fromJson(json_['maintenancePolicy']
                   as core.Map<core.String, core.dynamic>)
               : null,
           maintenanceSchedule: json_.containsKey('maintenanceSchedule')
               ? ClusterMaintenanceSchedule.fromJson(json_['maintenanceSchedule']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          managedBackupSource: json_.containsKey('managedBackupSource')
+              ? ManagedBackupSource.fromJson(json_['managedBackupSource']
                   as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
@@ -1553,6 +2256,9 @@ class Cluster {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authorizationMode != null) 'authorizationMode': authorizationMode!,
+        if (automatedBackupConfig != null)
+          'automatedBackupConfig': automatedBackupConfig!,
+        if (backupCollection != null) 'backupCollection': backupCollection!,
         if (clusterEndpoints != null) 'clusterEndpoints': clusterEndpoints!,
         if (createTime != null) 'createTime': createTime!,
         if (crossClusterReplicationConfig != null)
@@ -1561,9 +2267,12 @@ class Cluster {
           'deletionProtectionEnabled': deletionProtectionEnabled!,
         if (discoveryEndpoints != null)
           'discoveryEndpoints': discoveryEndpoints!,
+        if (gcsSource != null) 'gcsSource': gcsSource!,
         if (maintenancePolicy != null) 'maintenancePolicy': maintenancePolicy!,
         if (maintenanceSchedule != null)
           'maintenanceSchedule': maintenanceSchedule!,
+        if (managedBackupSource != null)
+          'managedBackupSource': managedBackupSource!,
         if (name != null) 'name': name!,
         if (nodeType != null) 'nodeType': nodeType!,
         if (persistenceConfig != null) 'persistenceConfig': persistenceConfig!,
@@ -1782,16 +2491,25 @@ class ClusterWeeklyMaintenanceWindow {
 
 /// Detailed information of each PSC connection.
 class ConnectionDetail {
+  /// Detailed information of a PSC connection that is created through service
+  /// connectivity automation.
+  PscAutoConnection? pscAutoConnection;
+
   /// Detailed information of a PSC connection that is created by the customer
   /// who owns the cluster.
   PscConnection? pscConnection;
 
   ConnectionDetail({
+    this.pscAutoConnection,
     this.pscConnection,
   });
 
   ConnectionDetail.fromJson(core.Map json_)
       : this(
+          pscAutoConnection: json_.containsKey('pscAutoConnection')
+              ? PscAutoConnection.fromJson(json_['pscAutoConnection']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           pscConnection: json_.containsKey('pscConnection')
               ? PscConnection.fromJson(
                   json_['pscConnection'] as core.Map<core.String, core.dynamic>)
@@ -1799,6 +2517,7 @@ class ConnectionDetail {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (pscAutoConnection != null) 'pscAutoConnection': pscAutoConnection!,
         if (pscConnection != null) 'pscConnection': pscConnection!,
       };
 }
@@ -1937,6 +2656,25 @@ class DiscoveryEndpoint {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// Request for \[ExportBackup\].
+class ExportBackupRequest {
+  /// Google Cloud Storage bucket, like "my-bucket".
+  core.String? gcsBucket;
+
+  ExportBackupRequest({
+    this.gcsBucket,
+  });
+
+  ExportBackupRequest.fromJson(core.Map json_)
+      : this(
+          gcsBucket: json_['gcsBucket'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcsBucket != null) 'gcsBucket': gcsBucket!,
+      };
+}
+
 /// Request for Export.
 class ExportInstanceRequest {
   /// Specify data to be exported.
@@ -1992,6 +2730,60 @@ class FailoverInstanceRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataProtectionMode != null)
           'dataProtectionMode': dataProtectionMode!,
+      };
+}
+
+/// This schedule allows the backup to be triggered at a fixed frequency
+/// (currently only daily is supported).
+class FixedFrequencySchedule {
+  /// The start time of every automated backup in UTC.
+  ///
+  /// It must be set to the start of an hour. This field is required.
+  ///
+  /// Required.
+  TimeOfDay? startTime;
+
+  FixedFrequencySchedule({
+    this.startTime,
+  });
+
+  FixedFrequencySchedule.fromJson(core.Map json_)
+      : this(
+          startTime: json_.containsKey('startTime')
+              ? TimeOfDay.fromJson(
+                  json_['startTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// Backups stored in Cloud Storage buckets.
+///
+/// The Cloud Storage buckets need to be the same region as the clusters.
+class GcsBackupSource {
+  /// URIs of the GCS objects to import.
+  ///
+  /// Example: gs://bucket1/object1, gs://bucket2/folder2/object2
+  ///
+  /// Optional.
+  core.List<core.String>? uris;
+
+  GcsBackupSource({
+    this.uris,
+  });
+
+  GcsBackupSource.fromJson(core.Map json_)
+      : this(
+          uris: (json_['uris'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uris != null) 'uris': uris!,
       };
 }
 
@@ -2572,6 +3364,89 @@ class InstanceAuthString {
       };
 }
 
+/// Response for \[ListBackupCollections\].
+class ListBackupCollectionsResponse {
+  /// A list of backupCollections in the project.
+  ///
+  /// If the `location_id` in the parent field of the request is "-", all
+  /// regions available to the project are queried, and the results aggregated.
+  /// If in such an aggregated query a location is unavailable, a placeholder
+  /// backupCollection entry is included in the response with the `name` field
+  /// set to a value of the form
+  /// `projects/{project_id}/locations/{location_id}/backupCollections/`- and
+  /// the `status` field set to ERROR and `status_message` field set to
+  /// "location not available for ListBackupCollections".
+  core.List<BackupCollection>? backupCollections;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListBackupCollectionsResponse({
+    this.backupCollections,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListBackupCollectionsResponse.fromJson(core.Map json_)
+      : this(
+          backupCollections: (json_['backupCollections'] as core.List?)
+              ?.map((value) => BackupCollection.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupCollections != null) 'backupCollections': backupCollections!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response for \[ListBackups\].
+class ListBackupsResponse {
+  /// A list of backups in the project.
+  core.List<Backup>? backups;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// Backups that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListBackupsResponse({
+    this.backups,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListBackupsResponse.fromJson(core.Map json_)
+      : this(
+          backups: (json_['backups'] as core.List?)
+              ?.map((value) =>
+                  Backup.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backups != null) 'backups': backups!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// Response for ListClusters.
 class ListClustersResponse {
   /// A list of Redis clusters in the project in the specified location, or
@@ -2896,6 +3771,32 @@ class MaintenanceSchedule {
       };
 }
 
+/// Backups that generated and managed by memorystore.
+class ManagedBackupSource {
+  /// Example:
+  /// //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}
+  /// A shorter version (without the prefix) of the backup name is also
+  /// supported, like
+  /// projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup_id}
+  /// In this case, it assumes the backup is under redis.googleapis.com.
+  ///
+  /// Optional.
+  core.String? backup;
+
+  ManagedBackupSource({
+    this.backup,
+  });
+
+  ManagedBackupSource.fromJson(core.Map json_)
+      : this(
+          backup: json_['backup'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backup != null) 'backup': backup!,
+      };
+}
+
 class ManagedCertificateAuthority {
   /// The PEM encoded CA certificate chains for redis managed server
   /// authentication
@@ -3155,6 +4056,108 @@ class PersistenceConfig {
         if (rdbSnapshotPeriod != null) 'rdbSnapshotPeriod': rdbSnapshotPeriod!,
         if (rdbSnapshotStartTime != null)
           'rdbSnapshotStartTime': rdbSnapshotStartTime!,
+      };
+}
+
+/// Details of consumer resources in a PSC connection that is created through
+/// Service Connectivity Automation.
+class PscAutoConnection {
+  /// The IP allocated on the consumer network for the PSC forwarding rule.
+  ///
+  /// Output only.
+  core.String? address;
+
+  /// Type of the PSC connection.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CONNECTION_TYPE_UNSPECIFIED" : Cluster endpoint Type is not set
+  /// - "CONNECTION_TYPE_DISCOVERY" : Cluster endpoint that will be used as for
+  /// cluster topology discovery.
+  /// - "CONNECTION_TYPE_PRIMARY" : Cluster endpoint that will be used as
+  /// primary endpoint to access primary.
+  /// - "CONNECTION_TYPE_READER" : Cluster endpoint that will be used as reader
+  /// endpoint to access replicas.
+  core.String? connectionType;
+
+  /// The URI of the consumer side forwarding rule.
+  ///
+  /// Example:
+  /// projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
+  ///
+  /// Output only.
+  core.String? forwardingRule;
+
+  /// The consumer network where the IP address resides, in the form of
+  /// projects/{project_id}/global/networks/{network_id}.
+  ///
+  /// Required.
+  core.String? network;
+
+  /// The consumer project_id where the forwarding rule is created from.
+  ///
+  /// Required.
+  core.String? projectId;
+
+  /// The PSC connection id of the forwarding rule connected to the service
+  /// attachment.
+  ///
+  /// Output only.
+  core.String? pscConnectionId;
+
+  /// The status of the PSC connection.
+  ///
+  /// Please note that this value is updated periodically. Please use Private
+  /// Service Connect APIs for the latest status.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PSC_CONNECTION_STATUS_UNSPECIFIED" : PSC connection status is not
+  /// specified.
+  /// - "PSC_CONNECTION_STATUS_ACTIVE" : The connection is active
+  /// - "PSC_CONNECTION_STATUS_NOT_FOUND" : Connection not found
+  core.String? pscConnectionStatus;
+
+  /// The service attachment which is the target of the PSC connection, in the
+  /// form of
+  /// projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+  ///
+  /// Output only.
+  core.String? serviceAttachment;
+
+  PscAutoConnection({
+    this.address,
+    this.connectionType,
+    this.forwardingRule,
+    this.network,
+    this.projectId,
+    this.pscConnectionId,
+    this.pscConnectionStatus,
+    this.serviceAttachment,
+  });
+
+  PscAutoConnection.fromJson(core.Map json_)
+      : this(
+          address: json_['address'] as core.String?,
+          connectionType: json_['connectionType'] as core.String?,
+          forwardingRule: json_['forwardingRule'] as core.String?,
+          network: json_['network'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
+          pscConnectionId: json_['pscConnectionId'] as core.String?,
+          pscConnectionStatus: json_['pscConnectionStatus'] as core.String?,
+          serviceAttachment: json_['serviceAttachment'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (address != null) 'address': address!,
+        if (connectionType != null) 'connectionType': connectionType!,
+        if (forwardingRule != null) 'forwardingRule': forwardingRule!,
+        if (network != null) 'network': network!,
+        if (projectId != null) 'projectId': projectId!,
+        if (pscConnectionId != null) 'pscConnectionId': pscConnectionId!,
+        if (pscConnectionStatus != null)
+          'pscConnectionStatus': pscConnectionStatus!,
+        if (serviceAttachment != null) 'serviceAttachment': serviceAttachment!,
       };
 }
 

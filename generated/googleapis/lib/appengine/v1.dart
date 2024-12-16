@@ -2245,6 +2245,57 @@ class ProjectsLocationsApplicationsServicesResource {
 
   ProjectsLocationsApplicationsServicesResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Deletes the specified service and all enclosed versions.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `name`. Name of the resource requested. Example:
+  /// apps/myapp/services/default.
+  ///
+  /// [locationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [servicesId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId,
+    core.String servicesId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId') +
+        '/services/' +
+        commons.escapeVariable('$servicesId');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsApplicationsServicesVersionsResource {

@@ -1448,8 +1448,8 @@ class OperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1828,18 +1828,19 @@ class OrganizationsGcpUserAccessBindingsResource {
   /// [append] - Optional. This field controls whether or not certain repeated
   /// settings in the update request overwrite or append to existing settings on
   /// the binding. If true, then append. Otherwise overwrite. So far, only
-  /// scoped_access_settings supports appending. Global access_levels,
-  /// dry_run_access_levels, and reauth_settings are not compatible with append
-  /// functionality, and the request will return an error if append=true when
-  /// these settings are in the update_mask. The request will also return an
-  /// error if append=true when "scoped_access_settings" is not set in the
-  /// update_mask.
+  /// scoped_access_settings with reauth_settings supports appending. Global
+  /// access_levels, access_levels in scoped_access_settings,
+  /// dry_run_access_levels, reauth_settings, and session_settings are not
+  /// compatible with append functionality, and the request will return an error
+  /// if append=true when these settings are in the update_mask. The request
+  /// will also return an error if append=true when "scoped_access_settings" is
+  /// not set in the update_mask.
   ///
   /// [updateMask] - Required. Only the fields specified in this mask are
   /// updated. Because name and group_key cannot be changed, update_mask is
   /// required and may only contain the following fields: `access_levels`,
-  /// `dry_run_access_levels`, `reauth_settings`, `scoped_access_settings`.
-  /// update_mask { paths: "access_levels" }
+  /// `dry_run_access_levels`, `reauth_settings` `session_settings`,
+  /// `scoped_access_settings`. update_mask { paths: "access_levels" }
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2070,14 +2071,14 @@ class AccessSettings {
   /// Optional.
   core.List<core.String>? accessLevels;
 
-  /// Reauth settings applied to user access on a given AccessScope.
+  /// Session settings applied to user access on a given AccessScope.
   ///
   /// Optional.
-  ReauthSettings? reauthSettings;
+  SessionSettings? sessionSettings;
 
   AccessSettings({
     this.accessLevels,
-    this.reauthSettings,
+    this.sessionSettings,
   });
 
   AccessSettings.fromJson(core.Map json_)
@@ -2085,15 +2086,15 @@ class AccessSettings {
           accessLevels: (json_['accessLevels'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
-          reauthSettings: json_.containsKey('reauthSettings')
-              ? ReauthSettings.fromJson(json_['reauthSettings']
+          sessionSettings: json_.containsKey('sessionSettings')
+              ? SessionSettings.fromJson(json_['sessionSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessLevels != null) 'accessLevels': accessLevels!,
-        if (reauthSettings != null) 'reauthSettings': reauthSettings!,
+        if (sessionSettings != null) 'sessionSettings': sessionSettings!,
       };
 }
 
@@ -2815,9 +2816,19 @@ class EgressPolicy {
   /// cause this EgressPolicy to apply.
   EgressTo? egressTo;
 
+  /// Human-readable title for the egress rule.
+  ///
+  /// The title must be unique within the perimeter and can not exceed 100
+  /// characters. Within the access policy, the combined length of all rule
+  /// titles must not exceed 240,000 characters.
+  ///
+  /// Optional.
+  core.String? title;
+
   EgressPolicy({
     this.egressFrom,
     this.egressTo,
+    this.title,
   });
 
   EgressPolicy.fromJson(core.Map json_)
@@ -2830,11 +2841,13 @@ class EgressPolicy {
               ? EgressTo.fromJson(
                   json_['egressTo'] as core.Map<core.String, core.dynamic>)
               : null,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (egressFrom != null) 'egressFrom': egressFrom!,
         if (egressTo != null) 'egressTo': egressTo!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -2974,11 +2987,6 @@ class GcpUserAccessBinding {
   /// Immutable.
   core.String? name;
 
-  /// GCSL policy for the group key.
-  ///
-  /// Optional.
-  ReauthSettings? reauthSettings;
-
   /// A list of applications that are subject to this binding's restrictions.
   ///
   /// If the list is empty, the binding restrictions will universally apply to
@@ -2995,14 +3003,19 @@ class GcpUserAccessBinding {
   /// Optional.
   core.List<ScopedAccessSettings>? scopedAccessSettings;
 
+  /// The Google Cloud session length (GCSL) policy for the group key.
+  ///
+  /// Optional.
+  SessionSettings? sessionSettings;
+
   GcpUserAccessBinding({
     this.accessLevels,
     this.dryRunAccessLevels,
     this.groupKey,
     this.name,
-    this.reauthSettings,
     this.restrictedClientApplications,
     this.scopedAccessSettings,
+    this.sessionSettings,
   });
 
   GcpUserAccessBinding.fromJson(core.Map json_)
@@ -3015,10 +3028,6 @@ class GcpUserAccessBinding {
               .toList(),
           groupKey: json_['groupKey'] as core.String?,
           name: json_['name'] as core.String?,
-          reauthSettings: json_.containsKey('reauthSettings')
-              ? ReauthSettings.fromJson(json_['reauthSettings']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
           restrictedClientApplications:
               (json_['restrictedClientApplications'] as core.List?)
                   ?.map((value) => Application.fromJson(
@@ -3028,6 +3037,10 @@ class GcpUserAccessBinding {
               ?.map((value) => ScopedAccessSettings.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          sessionSettings: json_.containsKey('sessionSettings')
+              ? SessionSettings.fromJson(json_['sessionSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3036,11 +3049,11 @@ class GcpUserAccessBinding {
           'dryRunAccessLevels': dryRunAccessLevels!,
         if (groupKey != null) 'groupKey': groupKey!,
         if (name != null) 'name': name!,
-        if (reauthSettings != null) 'reauthSettings': reauthSettings!,
         if (restrictedClientApplications != null)
           'restrictedClientApplications': restrictedClientApplications!,
         if (scopedAccessSettings != null)
           'scopedAccessSettings': scopedAccessSettings!,
+        if (sessionSettings != null) 'sessionSettings': sessionSettings!,
       };
 }
 
@@ -3149,9 +3162,19 @@ class IngressPolicy {
   /// cause this IngressPolicy to apply.
   IngressTo? ingressTo;
 
+  /// Human-readable title for the ingress rule.
+  ///
+  /// The title must be unique within the perimeter and can not exceed 100
+  /// characters. Within the access policy, the combined length of all rule
+  /// titles must not exceed 240,000 characters.
+  ///
+  /// Optional.
+  core.String? title;
+
   IngressPolicy({
     this.ingressFrom,
     this.ingressTo,
+    this.title,
   });
 
   IngressPolicy.fromJson(core.Map json_)
@@ -3164,11 +3187,13 @@ class IngressPolicy {
               ? IngressTo.fromJson(
                   json_['ingressTo'] as core.Map<core.String, core.dynamic>)
               : null,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ingressFrom != null) 'ingressFrom': ingressFrom!,
         if (ingressTo != null) 'ingressTo': ingressTo!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -3622,87 +3647,6 @@ class Policy {
       };
 }
 
-/// Stores settings related to Google Cloud Session Length including session
-/// duration, the type of challenge (i.e. method) they should face when their
-/// session expires, and other related settings.
-class ReauthSettings {
-  /// How long a user is allowed to take between actions before a new access
-  /// token must be issued.
-  ///
-  /// Presently only set for Cloud Apps.
-  ///
-  /// Optional.
-  core.String? maxInactivity;
-
-  /// Reauth method when users GCP session is up.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "REAUTH_METHOD_UNSPECIFIED" : If method undefined in API, we will use
-  /// LOGIN by default.
-  /// - "LOGIN" : The user will prompted to perform regular login. Users who are
-  /// enrolled for two-step verification and haven't chosen to "Remember this
-  /// computer" will be prompted for their second factor.
-  /// - "SECURITY_KEY" : The user will be prompted to autheticate using their
-  /// security key. If no security key has been configured, then we will
-  /// fallback to LOGIN.
-  /// - "PASSWORD" : The user will be prompted for their password.
-  core.String? reauthMethod;
-
-  /// The session length.
-  ///
-  /// Setting this field to zero is equal to disabling. Reauth. Also can set
-  /// infinite session by flipping the enabled bit to false below. If
-  /// use_oidc_max_age is true, for OIDC apps, the session length will be the
-  /// minimum of this field and OIDC max_age param.
-  ///
-  /// Optional.
-  core.String? sessionLength;
-
-  /// Big red button to turn off GCSL.
-  ///
-  /// When false, all fields set above will be disregarded and the session
-  /// length is basically infinite.
-  ///
-  /// Optional.
-  core.bool? sessionLengthEnabled;
-
-  /// Only useful for OIDC apps.
-  ///
-  /// When false, the OIDC max_age param, if passed in the authentication
-  /// request will be ignored. When true, the re-auth period will be the minimum
-  /// of the session_length field and the max_age OIDC param.
-  ///
-  /// Optional.
-  core.bool? useOidcMaxAge;
-
-  ReauthSettings({
-    this.maxInactivity,
-    this.reauthMethod,
-    this.sessionLength,
-    this.sessionLengthEnabled,
-    this.useOidcMaxAge,
-  });
-
-  ReauthSettings.fromJson(core.Map json_)
-      : this(
-          maxInactivity: json_['maxInactivity'] as core.String?,
-          reauthMethod: json_['reauthMethod'] as core.String?,
-          sessionLength: json_['sessionLength'] as core.String?,
-          sessionLengthEnabled: json_['sessionLengthEnabled'] as core.bool?,
-          useOidcMaxAge: json_['useOidcMaxAge'] as core.bool?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (maxInactivity != null) 'maxInactivity': maxInactivity!,
-        if (reauthMethod != null) 'reauthMethod': reauthMethod!,
-        if (sessionLength != null) 'sessionLength': sessionLength!,
-        if (sessionLengthEnabled != null)
-          'sessionLengthEnabled': sessionLengthEnabled!,
-        if (useOidcMaxAge != null) 'useOidcMaxAge': useOidcMaxAge!,
-      };
-}
-
 /// A request to replace all existing Access Levels in an Access Policy with the
 /// Access Levels provided.
 ///
@@ -3860,6 +3804,14 @@ class ServicePerimeter {
   /// Does not affect behavior.
   core.String? description;
 
+  /// An opaque identifier for the current version of the `ServicePerimeter`.
+  ///
+  /// This identifier does not follow any specific format. If an etag is not
+  /// provided, the operation will be performed as if a valid etag is provided.
+  ///
+  /// Optional.
+  core.String? etag;
+
   /// Identifier.
   ///
   /// Resource name for the `ServicePerimeter`. Format:
@@ -3916,6 +3868,7 @@ class ServicePerimeter {
 
   ServicePerimeter({
     this.description,
+    this.etag,
     this.name,
     this.perimeterType,
     this.spec,
@@ -3927,6 +3880,7 @@ class ServicePerimeter {
   ServicePerimeter.fromJson(core.Map json_)
       : this(
           description: json_['description'] as core.String?,
+          etag: json_['etag'] as core.String?,
           name: json_['name'] as core.String?,
           perimeterType: json_['perimeterType'] as core.String?,
           spec: json_.containsKey('spec')
@@ -3943,6 +3897,7 @@ class ServicePerimeter {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
         if (name != null) 'name': name!,
         if (perimeterType != null) 'perimeterType': perimeterType!,
         if (spec != null) 'spec': spec!,
@@ -4043,6 +3998,88 @@ class ServicePerimeterConfig {
           'restrictedServices': restrictedServices!,
         if (vpcAccessibleServices != null)
           'vpcAccessibleServices': vpcAccessibleServices!,
+      };
+}
+
+/// Stores settings related to Google Cloud Session Length including session
+/// duration, the type of challenge (i.e. method) they should face when their
+/// session expires, and other related settings.
+class SessionSettings {
+  /// How long a user is allowed to take between actions before a new access
+  /// token must be issued.
+  ///
+  /// Only set for Google Cloud apps.
+  ///
+  /// Optional.
+  core.String? maxInactivity;
+
+  /// The session length.
+  ///
+  /// Setting this field to zero is equal to disabling session. Also can set
+  /// infinite session by flipping the enabled bit to false below. If
+  /// use_oidc_max_age is true, for OIDC apps, the session length will be the
+  /// minimum of this field and OIDC max_age param.
+  ///
+  /// Optional.
+  core.String? sessionLength;
+
+  /// This field enables or disables Google Cloud session length.
+  ///
+  /// When false, all fields set above will be disregarded and the session
+  /// length is basically infinite.
+  ///
+  /// Optional.
+  core.bool? sessionLengthEnabled;
+
+  /// Session method when user's Google Cloud session is up.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SESSION_REAUTH_METHOD_UNSPECIFIED" : If method is undefined in the API,
+  /// LOGIN will be used by default.
+  /// - "LOGIN" : The user will be prompted to perform regular login. Users who
+  /// are enrolled for two-step verification and haven't chosen "Remember this
+  /// computer" will be prompted for their second factor.
+  /// - "SECURITY_KEY" : The user will be prompted to authenticate using their
+  /// security key. If no security key has been configured, then authentication
+  /// will fallback to LOGIN.
+  /// - "PASSWORD" : The user will be prompted for their password.
+  core.String? sessionReauthMethod;
+
+  /// Only useful for OIDC apps.
+  ///
+  /// When false, the OIDC max_age param, if passed in the authentication
+  /// request will be ignored. When true, the re-auth period will be the minimum
+  /// of the session_length field and the max_age OIDC param.
+  ///
+  /// Optional.
+  core.bool? useOidcMaxAge;
+
+  SessionSettings({
+    this.maxInactivity,
+    this.sessionLength,
+    this.sessionLengthEnabled,
+    this.sessionReauthMethod,
+    this.useOidcMaxAge,
+  });
+
+  SessionSettings.fromJson(core.Map json_)
+      : this(
+          maxInactivity: json_['maxInactivity'] as core.String?,
+          sessionLength: json_['sessionLength'] as core.String?,
+          sessionLengthEnabled: json_['sessionLengthEnabled'] as core.bool?,
+          sessionReauthMethod: json_['sessionReauthMethod'] as core.String?,
+          useOidcMaxAge: json_['useOidcMaxAge'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxInactivity != null) 'maxInactivity': maxInactivity!,
+        if (sessionLength != null) 'sessionLength': sessionLength!,
+        if (sessionLengthEnabled != null)
+          'sessionLengthEnabled': sessionLengthEnabled!,
+        if (sessionReauthMethod != null)
+          'sessionReauthMethod': sessionReauthMethod!,
+        if (useOidcMaxAge != null) 'useOidcMaxAge': useOidcMaxAge!,
       };
 }
 

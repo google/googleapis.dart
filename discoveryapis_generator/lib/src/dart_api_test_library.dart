@@ -16,7 +16,8 @@ import 'utils.dart';
 class DartApiTestLibrary extends TestHelper {
   final DartApiLibrary apiLibrary;
   final String apiImportPath;
-  final String? packageName;
+  final String packageName;
+  final bool skip;
 
   final Map<DartSchemaType, SchemaTest> schemaTests = {};
   final List<ResourceTest> resourceTests = [];
@@ -26,8 +27,9 @@ class DartApiTestLibrary extends TestHelper {
   DartApiTestLibrary.build(
     this.apiLibrary,
     this.apiImportPath,
-    this.packageName,
-  ) {
+    this.packageName, {
+    required this.skip,
+  }) {
     void handleType(DartSchemaType schema) {
       schemaTests.putIfAbsent(schema, () => testFromSchema(this, schema));
     }
@@ -109,9 +111,17 @@ class DartApiTestLibrary extends TestHelper {
       "import 'package:test/test.dart' as unittest;",
     ]..sort();
 
+    final optionalSkip = skip
+        ? '''
+\n@unittest.Skip()
+library;
+
+'''
+        : '';
+
     return """
 ${ignoreForFileComments(_testIgnores)}
-
+$optionalSkip
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
@@ -1048,7 +1058,7 @@ class AnySchemaTest extends SchemaTest<AnyType> {
 }
 
 /// Helps generating unittests.
-class TestHelper {
+abstract class TestHelper {
   void withFunc(
     int indentation,
     StringBuffer buffer,

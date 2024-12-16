@@ -1079,8 +1079,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1676,7 +1676,7 @@ class DiagnoseInstanceRequest {
   /// Required.
   DiagnosticConfig? diagnosticConfig;
 
-  /// Maxmium amount of time in minutes before the operation times out.
+  /// Maximum amount of time in minutes before the operation times out.
   ///
   /// Optional.
   core.int? timeoutMinutes;
@@ -2130,6 +2130,12 @@ class Instance {
   /// Optional.
   core.bool? disableProxyAccess;
 
+  /// Flag that specifies that a notebook can be accessed with third party
+  /// identity provider.
+  ///
+  /// Optional.
+  core.bool? enableThirdPartyIdentity;
+
   /// Compute Engine setup for the notebook.
   ///
   /// Uses notebook-defined fields.
@@ -2243,6 +2249,7 @@ class Instance {
     this.createTime,
     this.creator,
     this.disableProxyAccess,
+    this.enableThirdPartyIdentity,
     this.gceSetup,
     this.healthInfo,
     this.healthState,
@@ -2264,6 +2271,8 @@ class Instance {
           createTime: json_['createTime'] as core.String?,
           creator: json_['creator'] as core.String?,
           disableProxyAccess: json_['disableProxyAccess'] as core.bool?,
+          enableThirdPartyIdentity:
+              json_['enableThirdPartyIdentity'] as core.bool?,
           gceSetup: json_.containsKey('gceSetup')
               ? GceSetup.fromJson(
                   json_['gceSetup'] as core.Map<core.String, core.dynamic>)
@@ -2306,6 +2315,8 @@ class Instance {
         if (creator != null) 'creator': creator!,
         if (disableProxyAccess != null)
           'disableProxyAccess': disableProxyAccess!,
+        if (enableThirdPartyIdentity != null)
+          'enableThirdPartyIdentity': enableThirdPartyIdentity!,
         if (gceSetup != null) 'gceSetup': gceSetup!,
         if (healthInfo != null) 'healthInfo': healthInfo!,
         if (healthState != null) 'healthState': healthState!,

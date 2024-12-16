@@ -5555,6 +5555,11 @@ class Repository {
   /// For each location in a project, repository names must be unique.
   core.String? name;
 
+  /// The repository endpoint, for example: `us-docker.pkg.dev/my-proj/my-repo`.
+  ///
+  /// Output only.
+  core.String? registryUri;
+
   /// Configuration specific for a Remote Repository.
   RemoteRepositoryConfig? remoteRepositoryConfig;
 
@@ -5603,6 +5608,7 @@ class Repository {
     this.mavenConfig,
     this.mode,
     this.name,
+    this.registryUri,
     this.remoteRepositoryConfig,
     this.satisfiesPzi,
     this.satisfiesPzs,
@@ -5647,6 +5653,7 @@ class Repository {
               : null,
           mode: json_['mode'] as core.String?,
           name: json_['name'] as core.String?,
+          registryUri: json_['registryUri'] as core.String?,
           remoteRepositoryConfig: json_.containsKey('remoteRepositoryConfig')
               ? RemoteRepositoryConfig.fromJson(json_['remoteRepositoryConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -5683,6 +5690,7 @@ class Repository {
         if (mavenConfig != null) 'mavenConfig': mavenConfig!,
         if (mode != null) 'mode': mode!,
         if (name != null) 'name': name!,
+        if (registryUri != null) 'registryUri': registryUri!,
         if (remoteRepositoryConfig != null)
           'remoteRepositoryConfig': remoteRepositoryConfig!,
         if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,

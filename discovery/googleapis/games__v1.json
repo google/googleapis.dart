@@ -18,7 +18,7 @@
     "baseUrl": "https://games.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "Games",
-    "description": "The Google Play games service allows developers to enhance games with social leaderboards, achievements, game state, sign-in with Google, and more.",
+    "description": "The Google Play Games Service allows developers to enhance games with social leaderboards, achievements, game state, sign-in with Google, and more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/games/",
     "icons": {
@@ -31,7 +31,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240701",
+    "revision": "20241209",
     "rootUrl": "https://games.googleapis.com/",
     "servicePath": "",
     "title": "Google Play Game Services",

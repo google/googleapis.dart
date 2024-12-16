@@ -86,9 +86,9 @@ class AvailableProjectsResource {
 
   AvailableProjectsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Lists each \[Google Cloud Platform (GCP)
+  /// Lists each \[Google Cloud
   /// `Project`\](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
-  /// that can have Firebase resources added to it.
+  /// that can have Firebase resources added and Firebase services enabled.
   ///
   /// A Project will only be listed if: - The caller has sufficient
   /// [Google IAM](https://cloud.google.com/iam) permissions to call
@@ -198,24 +198,25 @@ class ProjectsResource {
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Adds Firebase resources to the specified existing \[Google Cloud Platform
-  /// (GCP)
+  /// Adds Firebase resources and enables Firebase services in the specified
+  /// existing \[Google Cloud
   /// `Project`\](https://cloud.google.com/resource-manager/reference/rest/v1/projects).
   ///
-  /// Since a FirebaseProject is actually also a GCP `Project`, a
-  /// `FirebaseProject` has the same underlying GCP identifiers (`projectNumber`
-  /// and `projectId`). This allows for easy interop with Google APIs. The
-  /// result of this call is an \[`Operation`\](../../v1beta1/operations). Poll
-  /// the `Operation` to track the provisioning process by calling GetOperation
-  /// until \[`done`\](../../v1beta1/operations#Operation.FIELDS.done) is
-  /// `true`. When `done` is `true`, the `Operation` has either succeeded or
-  /// failed. If the `Operation` succeeded, its
+  /// Since a FirebaseProject is actually also a Google Cloud `Project`, a
+  /// `FirebaseProject` has the same underlying Google Cloud identifiers
+  /// (`projectNumber` and `projectId`). This allows for easy interop with
+  /// Google APIs. The result of this call is an
+  /// \[`Operation`\](../../v1beta1/operations). Poll the `Operation` to track
+  /// the provisioning process by calling GetOperation until
+  /// \[`done`\](../../v1beta1/operations#Operation.FIELDS.done) is `true`. When
+  /// `done` is `true`, the `Operation` has either succeeded or failed. If the
+  /// `Operation` succeeded, its
   /// \[`response`\](../../v1beta1/operations#Operation.FIELDS.response) is set
   /// to a FirebaseProject; if the `Operation` failed, its
   /// \[`error`\](../../v1beta1/operations#Operation.FIELDS.error) is set to a
   /// google.rpc.Status. The `Operation` is automatically deleted after
   /// completion, so there is no need to call DeleteOperation. This method does
-  /// not modify any billing account information on the underlying GCP
+  /// not modify any billing account information on the underlying Google Cloud
   /// `Project`. To call `AddFirebase`, a project member or service account must
   /// have the following permissions (the IAM roles of Editor and Owner contain
   /// these permissions): `firebase.projects.update`,
@@ -226,16 +227,16 @@ class ProjectsResource {
   ///
   /// Request parameters:
   ///
-  /// [project] - The resource name of the GCP `Project` to which Firebase
-  /// resources will be added, in the format: projects/PROJECT_IDENTIFIER Refer
-  /// to the `FirebaseProject`
+  /// [project] - The resource name of the Google Cloud `Project` in which
+  /// Firebase resources will be added and Firebase services enabled, in the
+  /// format: projects/ PROJECT_IDENTIFIER Refer to the `FirebaseProject`
   /// \[`name`\](../projects#FirebaseProject.FIELDS.name) field for details
   /// about PROJECT_IDENTIFIER values. After calling `AddFirebase`, the unique
   /// Project identifiers (
   /// \[`projectNumber`\](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project.FIELDS.project_number)
   /// and
   /// \[`projectId`\](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project.FIELDS.project_id))
-  /// of the underlying GCP `Project` are also the identifiers of the
+  /// of the underlying Google Cloud `Project` are also the identifiers of the
   /// FirebaseProject.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
@@ -1238,23 +1239,25 @@ class ProjectsAvailableLocationsResource {
   ProjectsAvailableLocationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// **DEPRECATED.** _Instead, use the applicable resource-specific REST API
-  /// (or associated documentation, as needed) to determine valid locations for
-  /// each resource used in your Project._ Lists the valid Google Cloud Platform
-  /// (GCP) resource locations for the specified Project (including a
-  /// FirebaseProject).
+  /// **DECOMMISSIONED.** **If called, this endpoint will return a 404 error.**
+  /// _Instead, use the applicable resource-specific REST API (or associated
+  /// documentation, as needed) to determine valid locations for each resource
+  /// used in your Project._ Lists the valid \["locations for default Google
+  /// Cloud
+  /// resources"\](https://firebase.google.com/docs/projects/locations#default-cloud-location)
+  /// for the specified Project (including a FirebaseProject).
   ///
-  /// One of these locations can be selected as the Project's
-  /// [_default_ GCP resource location](https://firebase.google.com/docs/projects/locations),
-  /// which is the geographical location where the Project's resources, such as
-  /// Cloud Firestore, will be provisioned by default. However, if the default
-  /// GCP resource location has already been set for the Project, then this
-  /// setting cannot be changed. This call checks for any possible
+  /// One of these locations can be selected as the Project's location for
+  /// default Google Cloud resources, which is the geographical location where
+  /// the Project's resources associated with Google App Engine (such as the
+  /// default Cloud Firestore instance) will be provisioned by default. However,
+  /// if the location for default Google Cloud resources has already been set
+  /// for the Project, then this setting cannot be changed. This call checks for
+  /// any possible
   /// [location restrictions](https://cloud.google.com/resource-manager/docs/organization-policy/defining-locations)
   /// for the specified Project and, thus, might return a subset of all possible
-  /// GCP resource locations. To list all GCP resource locations (regardless of
-  /// any restrictions), call the endpoint without specifying a unique project
-  /// identifier (that is,
+  /// locations. To list all locations (regardless of any restrictions), call
+  /// the endpoint without specifying a unique project identifier (that is,
   /// `/v1beta1/{parent=projects/-}/listAvailableLocations`). To call
   /// `ListAvailableLocations` with a specified project, a member must be at
   /// minimum a Viewer of the Project. Calls without a specified project do not
@@ -1262,7 +1265,8 @@ class ProjectsAvailableLocationsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The FirebaseProject for which to list GCP resource locations,
+  /// [parent] - The FirebaseProject for which to list
+  /// [locations for default Google Cloud resources](https://firebase.google.com/docs/projects/locations#default-cloud-location),
   /// in the format: projects/PROJECT_IDENTIFIER Refer to the `FirebaseProject`
   /// \[`name`\](../projects#FirebaseProject.FIELDS.name) field for details
   /// about PROJECT_IDENTIFIER values. If no unique project identifier is
@@ -1326,26 +1330,27 @@ class ProjectsDefaultLocationResource {
   ProjectsDefaultLocationResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// **DEPRECATED.** _Instead, use the applicable resource-specific REST API to
-  /// set the location for each resource used in your Project._ Sets the default
-  /// Google Cloud Platform (GCP) resource location for the specified
-  /// FirebaseProject.
+  /// **DECOMMISSIONED.** **If called, this endpoint will return a 404 error.**
+  /// _Instead, use the applicable resource-specific REST API to set the
+  /// location for each resource used in your Project._ Sets the \["location for
+  /// default Google Cloud
+  /// resources"\](https://firebase.google.com/docs/projects/locations#default-cloud-location)
+  /// for the specified FirebaseProject.
   ///
-  /// This method creates an App Engine application with a
+  /// This method creates a Google App Engine application with a
   /// [default Cloud Storage bucket](https://cloud.google.com/appengine/docs/standard/python/googlecloudstorageclient/setting-up-cloud-storage#activating_a_cloud_storage_bucket),
   /// located in the specified
   /// \[`locationId`\](#body.request_body.FIELDS.location_id). This location
   /// must be one of the available
-  /// [GCP resource locations](https://firebase.google.com/docs/projects/locations).
-  /// After the default GCP resource location is finalized, or if it was already
-  /// set, it cannot be changed. The default GCP resource location for the
-  /// specified `FirebaseProject` might already be set because either the
-  /// underlying GCP `Project` already has an App Engine application or
-  /// `FinalizeDefaultLocation` was previously called with a specified
-  /// `locationId`. Any new calls to `FinalizeDefaultLocation` with a
-  /// *different* specified `locationId` will return a 409 error. The result of
-  /// this call is an \[`Operation`\](../../v1beta1/operations), which can be
-  /// used to track the provisioning process. The
+  /// [App Engine locations](https://cloud.google.com/about/locations#region).
+  /// After the location for default Google Cloud resources is finalized, or if
+  /// it was already set, it cannot be changed. The location for default Google
+  /// Cloud resources for the specified `FirebaseProject` might already be set
+  /// because either the underlying Google Cloud `Project` already has an App
+  /// Engine application or `FinalizeDefaultLocation` was previously called with
+  /// a specified `locationId`. The result of this call is an
+  /// \[`Operation`\](../../v1beta1/operations), which can be used to track the
+  /// provisioning process. The
   /// \[`response`\](../../v1beta1/operations#Operation.FIELDS.response) type of
   /// the `Operation` is google.protobuf.Empty. The `Operation` can be polled by
   /// its `name` using GetOperation until `done` is true. When `done` is true,
@@ -1362,11 +1367,12 @@ class ProjectsDefaultLocationResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The resource name of the FirebaseProject for which the default
-  /// GCP resource location will be set, in the format:
-  /// projects/PROJECT_IDENTIFIER Refer to the `FirebaseProject`
-  /// \[`name`\](../projects#FirebaseProject.FIELDS.name) field for details
-  /// about PROJECT_IDENTIFIER values.
+  /// [parent] - The resource name of the FirebaseProject for which the
+  /// \["location for default Google Cloud
+  /// resources"\](https://firebase.google.com/docs/projects/locations#default-cloud-location)
+  /// will be set, in the format: projects/PROJECT_IDENTIFIER Refer to the
+  /// `FirebaseProject` \[`name`\](../projects#FirebaseProject.FIELDS.name)
+  /// field for details about PROJECT_IDENTIFIER values.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2094,15 +2100,16 @@ class ProjectsWebAppsResource {
 
 /// All fields are required.
 class AddFirebaseRequest {
-  /// Instead, to set a Project's default GCP resource location, call
-  /// \[`FinalizeDefaultLocation`\](../projects.defaultLocation/finalize) after
-  /// you add Firebase resources to the GCP `Project`.
+  /// **DEPRECATED.** _Instead, use product-specific REST APIs to work with the
+  /// location of each resource in a Project.
   ///
-  /// The ID of the Project's default GCP resource location. The location must
+  /// This field may be ignored, especially for newly provisioned projects after
+  /// October 30, 2024._ The ID of the Project's \["location for default Google
+  /// Cloud
+  /// resources"\](https://firebase.google.com/docs/projects/locations#default-cloud-location),
+  /// which are resources associated with Google App Engine. The location must
   /// be one of the available
-  /// [GCP resource locations](https://firebase.google.com/docs/projects/locations).
-  ///
-  /// Deprecated.
+  /// [Google App Engine locations](https://cloud.google.com/about/locations#region).
   core.String? locationId;
 
   AddFirebaseRequest({
@@ -2153,29 +2160,33 @@ class AddGoogleAnalyticsRequest {
 }
 
 class AdminSdkConfig {
-  /// **DEPRECATED.** _Instead, find the default Firebase Realtime Database
-  /// instance name using the
+  /// **DEPRECATED.** _Instead, find the URL of the default Realtime Database
+  /// instance using the
   /// [list endpoint](https://firebase.google.com/docs/reference/rest/database/database-management/rest/v1beta/projects.locations.instances/list)
   /// within the Firebase Realtime Database REST API.
   ///
-  /// Note that the default instance for the Project might not yet be
-  /// provisioned, so the return might not contain a default instance._ The
-  /// default Firebase Realtime Database URL.
+  /// If the default instance for the Project has not yet been provisioned, the
+  /// return might not contain a default instance. Note that the config that's
+  /// generated for the Firebase console or the Firebase CLI uses the Realtime
+  /// Database endpoint to populate this value for that config._ The URL of the
+  /// default Firebase Realtime Database instance.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   core.String? databaseURL;
 
   /// **DEPRECATED.** _Instead, use product-specific REST APIs to find the
-  /// location of resources._ The ID of the Project's default GCP resource
-  /// location.
+  /// location of each resource in a Project.
   ///
-  /// The location is one of the available
-  /// [GCP resource locations](https://firebase.google.com/docs/projects/locations).
-  /// This field is omitted if the default GCP resource location has not been
-  /// finalized yet. To set a Project's default GCP resource location, call
-  /// \[`FinalizeDefaultLocation`\](../projects.defaultLocation/finalize) after
-  /// you add Firebase resources to the Project.
+  /// This field may not be populated, especially for newly provisioned projects
+  /// after October 30, 2024._ The ID of the Project's \["location for default
+  /// Google Cloud
+  /// resources"\](https://firebase.google.com/docs/projects/locations#default-cloud-location),
+  /// which are resources associated with Google App Engine. The location is one
+  /// of the available
+  /// [App Engine locations](https://cloud.google.com/about/locations#region).
+  /// This field is omitted if the location for default Google Cloud resources
+  /// has not been set.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -2190,14 +2201,16 @@ class AdminSdkConfig {
   /// Immutable.
   core.String? projectId;
 
-  /// **DEPRECATED.** _Instead, find the default Cloud Storage for Firebase
-  /// bucket using the
+  /// **DEPRECATED.** _Instead, find the name of the default Cloud Storage for
+  /// Firebase bucket using the
   /// [list endpoint](https://firebase.google.com/docs/reference/rest/storage/rest/v1beta/projects.buckets/list)
   /// within the Cloud Storage for Firebase REST API.
   ///
-  /// Note that the default bucket for the Project might not yet be provisioned,
-  /// so the return might not contain a default bucket._ The default Cloud
-  /// Storage for Firebase storage bucket name.
+  /// If the default bucket for the Project has not yet been provisioned, the
+  /// return might not contain a default bucket. Note that the config that's
+  /// generated for the Firebase console or the Firebase CLI uses the Cloud
+  /// Storage for Firebase endpoint to populate this value for that config._ The
+  /// name of the default Cloud Storage for Firebase bucket.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -2352,10 +2365,12 @@ class AndroidApp {
   /// This etag is strongly validated.
   core.String? etag;
 
-  /// Timestamp of when the App will be considered expired and cannot be
-  /// undeleted.
+  /// If the App has been removed from the Project, this is the timestamp of
+  /// when the App is considered expired and will be permanently deleted.
   ///
-  /// This value is only provided if the App is in the `DELETED` state.
+  /// After this time, the App cannot be undeleted (that is, restored to the
+  /// Project). This value is only provided if the App is in the `DELETED`
+  /// state.
   ///
   /// Output only.
   core.String? expireTime;
@@ -2497,16 +2512,16 @@ class AndroidAppConfig {
 /// resource-specific API._ The default auto-provisioned resources associated
 /// with the Project.
 class DefaultResources {
-  /// **DEPRECATED.** _Instead, find the default Firebase Hosting site name
-  /// using the
+  /// **DEPRECATED.** _Instead, find the name of the default Firebase Hosting
+  /// site using
   /// [ListSites](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/projects.sites/list)
   /// within the Firebase Hosting REST API.
   ///
-  /// Note that the default site for the Project might not yet be provisioned,
-  /// so the return might not contain a default site._ The default Firebase
-  /// Hosting site name, in the format: PROJECT_ID Though rare, your `projectId`
-  /// might already be used as the name for an existing Hosting site in another
-  /// project (learn more about creating non-default,
+  /// If the default Hosting site for the Project has not yet been provisioned,
+  /// the return might not contain a default site._ The name of the default
+  /// Firebase Hosting site, in the format: PROJECT_ID Though rare, your
+  /// `projectId` might already be used as the name for an existing Hosting site
+  /// in another project (learn more about creating non-default,
   /// [additional sites](https://firebase.google.com/docs/hosting/multisites)).
   /// In these cases, your `projectId` is appended with a hyphen then five
   /// alphanumeric characters to create your default Hosting site name. For
@@ -2520,15 +2535,17 @@ class DefaultResources {
   core.String? hostingSite;
 
   /// **DEPRECATED.** _Instead, use product-specific REST APIs to find the
-  /// location of resources._ The ID of the Project's default GCP resource
-  /// location.
+  /// location of each resource in a Project.
   ///
-  /// The location is one of the available
-  /// [GCP resource locations](https://firebase.google.com/docs/projects/locations).
-  /// This field is omitted if the default GCP resource location has not been
-  /// finalized yet. To set a Project's default GCP resource location, call
-  /// \[`FinalizeDefaultLocation`\](../projects.defaultLocation/finalize) after
-  /// you add Firebase resources to the Project.
+  /// This field may not be populated, especially for newly provisioned projects
+  /// after October 30, 2024._ The ID of the Project's \["location for default
+  /// Google Cloud
+  /// resources"\](https://firebase.google.com/docs/projects/locations#default-cloud-location),
+  /// which are resources associated with Google App Engine. The location is one
+  /// of the available
+  /// [Google App Engine locations](https://cloud.google.com/about/locations#region).
+  /// This field is omitted if the location for default Google Cloud resources
+  /// has not been set.
   ///
   /// Output only.
   @core.Deprecated(
@@ -2536,17 +2553,16 @@ class DefaultResources {
   )
   core.String? locationId;
 
-  /// **DEPRECATED.** _Instead, find the default Firebase Realtime Database
-  /// instance name using the
+  /// **DEPRECATED.** _Instead, find the name of the default Realtime Database
+  /// instance using the
   /// [list endpoint](https://firebase.google.com/docs/reference/rest/database/database-management/rest/v1beta/projects.locations.instances/list)
   /// within the Firebase Realtime Database REST API.
   ///
-  /// Note that the default instance for the Project might not yet be
-  /// provisioned, so the return might not contain a default instance._ The
-  /// default Firebase Realtime Database instance name, in the format:
-  /// PROJECT_ID Though rare, your `projectId` might already be used as the name
-  /// for an existing Realtime Database instance in another project (learn more
-  /// about
+  /// If the default Realtime Database instance for a Project has not yet been
+  /// provisioned, the return might not contain a default instance._ The default
+  /// Firebase Realtime Database instance name, in the format: PROJECT_ID Though
+  /// rare, your `projectId` might already be used as the name for an existing
+  /// Realtime Database instance in another project (learn more about
   /// [database sharding](https://firebase.google.com/docs/database/usage/sharding)).
   /// In these cases, your `projectId` is appended with a hyphen then five
   /// alphanumeric characters to create your default Realtime Database instance
@@ -2559,14 +2575,16 @@ class DefaultResources {
   )
   core.String? realtimeDatabaseInstance;
 
-  /// **DEPRECATED.** _Instead, find the default Cloud Storage for Firebase
-  /// bucket using the
+  /// **DEPRECATED.** _Instead, find the name of the default Cloud Storage for
+  /// Firebase bucket using the
   /// [list endpoint](https://firebase.google.com/docs/reference/rest/storage/rest/v1beta/projects.buckets/list)
   /// within the Cloud Storage for Firebase REST API.
   ///
-  /// Note that the default bucket for the Project might not yet be provisioned,
-  /// so the return might not contain a default bucket._ The default Cloud
-  /// Storage for Firebase storage bucket, in the format: PROJECT_ID.appspot.com
+  /// If the default bucket for the Project has not yet been provisioned, the
+  /// return might not contain a default bucket._ The name of the default Cloud
+  /// Storage for Firebase bucket, in one of the following formats: * If
+  /// provisioned _before_ October 30, 2024: PROJECT_ID.firebasestorage.app * If
+  /// provisioned _on or after_ October 30, 2024: PROJECT_ID.firebasestorage.app
   ///
   /// Output only.
   @core.Deprecated(
@@ -2608,10 +2626,13 @@ class DefaultResources {
 typedef Empty = $Empty;
 
 class FinalizeDefaultLocationRequest {
-  /// The ID of the Project's default GCP resource location.
+  /// **DEPRECATED** The ID of the Project's \["location for default Google
+  /// Cloud
+  /// resources"\](https://firebase.google.com/docs/projects/locations#default-cloud-location),
+  /// which are resources associated with Google App Engine.
   ///
   /// The location must be one of the available
-  /// [GCP resource locations](https://firebase.google.com/docs/projects/locations).
+  /// [Google App Engine locations](https://cloud.google.com/about/locations#region).
   core.String? locationId;
 
   FinalizeDefaultLocationRequest({
@@ -2660,10 +2681,12 @@ class FirebaseAppInfo {
   /// The user-assigned display name of the Firebase App.
   core.String? displayName;
 
-  /// Timestamp of when the App will be considered expired and cannot be
-  /// undeleted.
+  /// If the App has been removed from the Project, this is the timestamp of
+  /// when the App is considered expired and will be permanently deleted.
   ///
-  /// This value is only provided if the App is in the `DELETED` state.
+  /// After this time, the App cannot be undeleted (that is, restored to the
+  /// Project). This value is only provided if the App is in the `DELETED`
+  /// state.
   ///
   /// Output only.
   core.String? expireTime;
@@ -2747,14 +2770,15 @@ class FirebaseAppInfo {
 ///
 /// It is the container for Firebase Apps, Firebase Hosting sites, storage
 /// systems (Firebase Realtime Database, Cloud Firestore, Cloud Storage
-/// buckets), and other Firebase and Google Cloud Platform (GCP) resources. You
-/// create a `FirebaseProject` by calling AddFirebase and specifying an
-/// *existing* \[GCP
+/// buckets), and other Firebase and Google Cloud resources. You create a
+/// `FirebaseProject` by calling AddFirebase and specifying an *existing*
+/// \[Google Cloud
 /// `Project`\](https://cloud.google.com/resource-manager/reference/rest/v1/projects).
-/// This adds Firebase resources to the existing GCP `Project`. Since a
-/// FirebaseProject is actually also a GCP `Project`, a `FirebaseProject` has
-/// the same underlying GCP identifiers (`projectNumber` and `projectId`). This
-/// allows for easy interop with Google APIs.
+/// This adds Firebase resources to the existing Google Cloud `Project`. Since a
+/// FirebaseProject is actually also a Google Cloud `Project`, a
+/// `FirebaseProject` has the same underlying Google Cloud identifiers
+/// (`projectNumber` and `projectId`). This allows for easy interop with Google
+/// APIs.
 class FirebaseProject {
   /// A set of user-defined annotations for the FirebaseProject.
   ///
@@ -2923,10 +2947,12 @@ class IosApp {
   /// This etag is strongly validated.
   core.String? etag;
 
-  /// Timestamp of when the App will be considered expired and cannot be
-  /// undeleted.
+  /// If the App has been removed from the Project, this is the timestamp of
+  /// when the App is considered expired and will be permanently deleted.
   ///
-  /// This value is only provided if the App is in the `DELETED` state.
+  /// After this time, the App cannot be undeleted (that is, restored to the
+  /// Project). This value is only provided if the App is in the `DELETED`
+  /// state.
   ///
   /// Output only.
   core.String? expireTime;
@@ -3123,8 +3149,8 @@ class ListAvailableProjectsResponse {
   /// not be persisted.
   core.String? nextPageToken;
 
-  /// The list of GCP `Projects` which can have Firebase resources added to
-  /// them.
+  /// The list of Google Cloud `Projects` which can have Firebase resources
+  /// added to them.
   core.List<ProjectInfo>? projectInfo;
 
   ListAvailableProjectsResponse({
@@ -3271,20 +3297,23 @@ class ListWebAppsResponse {
 /// resource locations.
 ///
 /// Instead, consult product documentation to determine valid locations for each
-/// resource used in your Project._ A GCP resource location that can be selected
-/// for a FirebaseProject.
+/// resource used in your Project._ A \["location for default Google Cloud
+/// resources"\](https://firebase.google.com/docs/projects/locations#default-cloud-location)
+/// that can be selected for a FirebaseProject. These are resources associated
+/// with Google App Engine.
 class Location {
-  /// Products and services that are available in the GCP resource location.
+  /// Products and services that are available in the location for default
+  /// Google Cloud resources.
   core.List<core.String>? features;
 
-  /// The ID of the GCP resource location.
+  /// The ID of the Project's location for default Google Cloud resources.
   ///
   /// It will be one of the available
-  /// [GCP resource locations](https://firebase.google.com/docs/projects/locations#types).
+  /// [Google App Engine locations](https://cloud.google.com/about/locations#region).
   core.String? locationId;
 
-  /// Indicates whether the GCP resource location is a \[regional or
-  /// multi-regional
+  /// Indicates whether the location for default Google Cloud resources is a
+  /// \[regional or multi-regional
   /// location\](https://firebase.google.com/docs/projects/locations#types) for
   /// data replication.
   /// Possible string values are:
@@ -3395,26 +3424,31 @@ class Operation {
       };
 }
 
-/// A reference to a Google Cloud Platform (GCP) `Project`.
+/// A reference to a Google Cloud `Project`.
 class ProjectInfo {
-  /// The user-assigned display name of the GCP `Project`, for example: `My App`
+  /// The user-assigned display name of the Google Cloud `Project`, for example:
+  /// `My App`.
   core.String? displayName;
 
-  /// The ID of the Project's default GCP resource location.
+  /// **DEPRECATED** _Instead, use product-specific REST APIs to work with the
+  /// location of each resource in a Project.
   ///
+  /// This field may not be populated, especially for newly provisioned projects
+  /// after October 30, 2024._ The ID of the Project's \["location for default
+  /// Google Cloud
+  /// resources"\](https://firebase.google.com/docs/projects/locations#default-cloud-location).
   /// The location is one of the available
-  /// [GCP resource locations](https://firebase.google.com/docs/projects/locations).
+  /// [Google App Engine locations](https://cloud.google.com/about/locations#region).
   /// Not all Projects will have this field populated. If it is not populated,
-  /// it means that the Project does not yet have a default GCP resource
-  /// location. To set a Project's default GCP resource location, call
-  /// \[`FinalizeDefaultLocation`\](../projects.defaultLocation/finalize) after
-  /// you add Firebase resources to the Project.
+  /// it means that the Project does not yet have a location for default Google
+  /// Cloud resources.
   core.String? locationId;
 
-  /// The resource name of the GCP `Project` to which Firebase resources can be
-  /// added, in the format: projects/PROJECT_IDENTIFIER Refer to the
-  /// `FirebaseProject` \[`name`\](../projects#FirebaseProject.FIELDS.name)
-  /// field for details about PROJECT_IDENTIFIER values.
+  /// The resource name of the Google Cloud `Project` to which Firebase
+  /// resources can be added, in the format: projects/PROJECT_IDENTIFIER Refer
+  /// to the `FirebaseProject`
+  /// \[`name`\](../projects#FirebaseProject.FIELDS.name) field for details
+  /// about PROJECT_IDENTIFIER values.
   core.String? project;
 
   ProjectInfo({
@@ -3479,9 +3513,9 @@ class RemoveAndroidAppRequest {
   /// Determines whether to _immediately_ delete the AndroidApp.
   ///
   /// If set to true, the App is immediately deleted from the Project and cannot
-  /// be restored to the Project. If not set, defaults to false, which means the
-  /// App will be set to expire in 30 days. Within the 30 days, the App may be
-  /// restored to the Project using UndeleteAndroidApp.
+  /// be undeleted (that is, restored to the Project). If not set, defaults to
+  /// false, which means the App will be set to expire in 30 days. Within the 30
+  /// days, the App may be restored to the Project using UndeleteAndroidApp.
   core.bool? immediate;
 
   /// If set to true, the request is only validated.
@@ -3526,9 +3560,9 @@ class RemoveIosAppRequest {
   /// Determines whether to _immediately_ delete the IosApp.
   ///
   /// If set to true, the App is immediately deleted from the Project and cannot
-  /// be restored to the Project. If not set, defaults to false, which means the
-  /// App will be set to expire in 30 days. Within the 30 days, the App may be
-  /// restored to the Project using UndeleteIosApp
+  /// be undeleted (that is, restored to the Project). If not set, defaults to
+  /// false, which means the App will be set to expire in 30 days. Within the 30
+  /// days, the App may be restored to the Project using UndeleteIosApp
   core.bool? immediate;
 
   /// If set to true, the request is only validated.
@@ -3573,9 +3607,9 @@ class RemoveWebAppRequest {
   /// Determines whether to _immediately_ delete the WebApp.
   ///
   /// If set to true, the App is immediately deleted from the Project and cannot
-  /// be restored to the Project. If not set, defaults to false, which means the
-  /// App will be set to expire in 30 days. Within the 30 days, the App may be
-  /// restored to the Project using UndeleteWebApp
+  /// be undeleted (that is, restored to the Project). If not set, defaults to
+  /// false, which means the App will be set to expire in 30 days. Within the 30
+  /// days, the App may be restored to the Project using UndeleteWebApp
   core.bool? immediate;
 
   /// If set to true, the request is only validated.
@@ -3874,10 +3908,12 @@ class WebApp {
   /// This etag is strongly validated.
   core.String? etag;
 
-  /// Timestamp of when the App will be considered expired and cannot be
-  /// undeleted.
+  /// If the App has been removed from the Project, this is the timestamp of
+  /// when the App is considered expired and will be permanently deleted.
   ///
-  /// This value is only provided if the App is in the `DELETED` state.
+  /// After this time, the App cannot be undeleted (that is, restored to the
+  /// Project). This value is only provided if the App is in the `DELETED`
+  /// state.
   ///
   /// Output only.
   core.String? expireTime;
@@ -3991,29 +4027,33 @@ class WebAppConfig {
   /// PROJECT_ID.firebaseapp.com
   core.String? authDomain;
 
-  /// **DEPRECATED.** _Instead, find the default Firebase Realtime Database
-  /// instance name using the
+  /// **DEPRECATED.** _Instead, find the URL of the default Realtime Database
+  /// instance using the
   /// [list endpoint](https://firebase.google.com/docs/reference/rest/database/database-management/rest/v1beta/projects.locations.instances/list)
   /// within the Firebase Realtime Database REST API.
   ///
-  /// Note that the default instance for the Project might not yet be
-  /// provisioned, so the return might not contain a default instance._ The
-  /// default Firebase Realtime Database URL.
+  /// If the default instance for the Project has not yet been provisioned, the
+  /// return might not contain a default instance. Note that the config that's
+  /// generated for the Firebase console or the Firebase CLI uses the Realtime
+  /// Database endpoint to populate this value for that config._ The URL of the
+  /// default Firebase Realtime Database instance.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   core.String? databaseURL;
 
   /// **DEPRECATED.** _Instead, use product-specific REST APIs to find the
-  /// location of resources._ The ID of the Project's default GCP resource
-  /// location.
+  /// location of each resource in a Project.
   ///
-  /// The location is one of the available
-  /// [GCP resource locations](https://firebase.google.com/docs/projects/locations).
-  /// This field is omitted if the default GCP resource location has not been
-  /// finalized yet. To set a Project's default GCP resource location, call
-  /// \[`FinalizeDefaultLocation`\](../projects.defaultLocation/finalize) after
-  /// you add Firebase resources to the Project.
+  /// This field may not be populated, especially for newly provisioned projects
+  /// after October 30, 2024._ The ID of the Project's \["location for default
+  /// Google Cloud
+  /// resources"\](https://firebase.google.com/docs/projects/locations#default-cloud-location),
+  /// which are resources associated with Google App Engine. The location is one
+  /// of the available
+  /// [App Engine locations](https://cloud.google.com/about/locations#region).
+  /// This field is omitted if the location for default Google Cloud resources
+  /// has not been set.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -4052,26 +4092,25 @@ class WebAppConfig {
   /// Output only. Immutable.
   core.String? projectNumber;
 
-  /// Duplicate field for the URL of the default RTDB instances (if there is
-  /// one) that uses the same field name as the unified V2 config file format.
+  /// Duplicate field for the URL of the default Realtime Database instances (if
+  /// the default instance has been provisioned).
   ///
-  /// We wanted to make a single config file format for all the app platforms
-  /// (Android, iOS and web) and we had to pick consistent names for all the
-  /// fields since there was some varience between the platforms. If the request
-  /// asks for the V2 format we will populate this field instead of
-  /// realtime_database_instance_uri.
+  /// If the request asks for the V2 config format, this field will be populated
+  /// instead of `realtime_database_instance_uri`.
   ///
   /// Optional.
   core.String? realtimeDatabaseUrl;
 
-  /// **DEPRECATED.** _Instead, find the default Cloud Storage for Firebase
-  /// bucket using the
+  /// **DEPRECATED.** _Instead, find the name of the default Cloud Storage for
+  /// Firebase bucket using the
   /// [list endpoint](https://firebase.google.com/docs/reference/rest/storage/rest/v1beta/projects.buckets/list)
   /// within the Cloud Storage for Firebase REST API.
   ///
-  /// Note that the default bucket for the Project might not yet be provisioned,
-  /// so the return might not contain a default bucket._ The default Cloud
-  /// Storage for Firebase storage bucket name.
+  /// If the default bucket for the Project has not yet been provisioned, the
+  /// return might not contain a default bucket. Note that the config that's
+  /// generated for the Firebase console or the Firebase CLI uses the Cloud
+  /// Storage for Firebase endpoint to populate this value for that config._ The
+  /// name of the default Cloud Storage for Firebase bucket.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )

@@ -77,7 +77,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241017",
+    "revision": "20241205",
     "rootUrl": "https://developerconnect.googleapis.com/",
     "servicePath": "",
     "title": "Developer Connect API",
@@ -812,10 +812,7 @@
                                             },
                                             "response": {
                                                 "$ref": "Empty"
-                                            },
-                                            "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
-                                            ]
+                                            }
                                         },
                                         "processGitLabWebhook": {
                                             "description": "ProcessGitLabWebhook is called by the GitLab.com for notifying events.",
@@ -849,7 +846,7 @@
                         "operations": {
                             "methods": {
                                 "cancel": {
-                                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                                     "httpMethod": "POST",
                                     "id": "developerconnect.projects.locations.operations.cancel",
@@ -1054,7 +1051,7 @@
                     "type": "boolean"
                 },
                 "uid": {
-                    "description": "Output only. A system-assigned unique identifier for a the GitRepositoryLink.",
+                    "description": "Output only. A system-assigned unique identifier for the Connection.",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -1376,7 +1373,7 @@
                     "type": "boolean"
                 },
                 "uid": {
-                    "description": "Output only. A system-assigned unique identifier for a the GitRepositoryLink.",
+                    "description": "Output only. A system-assigned unique identifier for the GitRepositoryLink.",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -1681,7 +1678,7 @@
                     "type": "string"
                 },
                 "requestedCancellation": {
-                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have google.longrunning.Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
                     "readOnly": true,
                     "type": "boolean"
                 },

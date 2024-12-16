@@ -11370,6 +11370,12 @@ class SetBasicFilterRequest {
 ///
 /// To clear validation in a range, call this with no rule specified.
 class SetDataValidationRequest {
+  /// If true, the data validation rule will be applied to the filtered rows as
+  /// well.
+  ///
+  /// Optional.
+  core.bool? filteredRowsIncluded;
+
   /// The range the data validation rule should apply to.
   GridRange? range;
 
@@ -11378,12 +11384,14 @@ class SetDataValidationRequest {
   DataValidationRule? rule;
 
   SetDataValidationRequest({
+    this.filteredRowsIncluded,
     this.range,
     this.rule,
   });
 
   SetDataValidationRequest.fromJson(core.Map json_)
       : this(
+          filteredRowsIncluded: json_['filteredRowsIncluded'] as core.bool?,
           range: json_.containsKey('range')
               ? GridRange.fromJson(
                   json_['range'] as core.Map<core.String, core.dynamic>)
@@ -11395,6 +11403,8 @@ class SetDataValidationRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (filteredRowsIncluded != null)
+          'filteredRowsIncluded': filteredRowsIncluded!,
         if (range != null) 'range': range!,
         if (rule != null) 'rule': rule!,
       };

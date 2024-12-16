@@ -210,6 +210,28 @@ void checkDecodeIntegrityTokenResponse(api.DecodeIntegrityTokenResponse o) {
   buildCounterDecodeIntegrityTokenResponse--;
 }
 
+core.int buildCounterDeviceAttributes = 0;
+api.DeviceAttributes buildDeviceAttributes() {
+  final o = api.DeviceAttributes();
+  buildCounterDeviceAttributes++;
+  if (buildCounterDeviceAttributes < 3) {
+    o.sdkVersion = 42;
+  }
+  buildCounterDeviceAttributes--;
+  return o;
+}
+
+void checkDeviceAttributes(api.DeviceAttributes o) {
+  buildCounterDeviceAttributes++;
+  if (buildCounterDeviceAttributes < 3) {
+    unittest.expect(
+      o.sdkVersion!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterDeviceAttributes--;
+}
+
 core.List<core.String> buildUnnamed2() => [
       'foo',
       'foo',
@@ -227,13 +249,32 @@ void checkUnnamed2(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed3() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed3(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterDeviceIntegrity = 0;
 api.DeviceIntegrity buildDeviceIntegrity() {
   final o = api.DeviceIntegrity();
   buildCounterDeviceIntegrity++;
   if (buildCounterDeviceIntegrity < 3) {
+    o.deviceAttributes = buildDeviceAttributes();
     o.deviceRecall = buildDeviceRecall();
     o.deviceRecognitionVerdict = buildUnnamed2();
+    o.legacyDeviceRecognitionVerdict = buildUnnamed3();
     o.recentDeviceActivity = buildRecentDeviceActivity();
   }
   buildCounterDeviceIntegrity--;
@@ -243,8 +284,10 @@ api.DeviceIntegrity buildDeviceIntegrity() {
 void checkDeviceIntegrity(api.DeviceIntegrity o) {
   buildCounterDeviceIntegrity++;
   if (buildCounterDeviceIntegrity < 3) {
+    checkDeviceAttributes(o.deviceAttributes!);
     checkDeviceRecall(o.deviceRecall!);
     checkUnnamed2(o.deviceRecognitionVerdict!);
+    checkUnnamed3(o.legacyDeviceRecognitionVerdict!);
     checkRecentDeviceActivity(o.recentDeviceActivity!);
   }
   buildCounterDeviceIntegrity--;
@@ -554,6 +597,16 @@ void main() {
       final od = api.DecodeIntegrityTokenResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkDecodeIntegrityTokenResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-DeviceAttributes', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDeviceAttributes();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeviceAttributes.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDeviceAttributes(od);
     });
   });
 

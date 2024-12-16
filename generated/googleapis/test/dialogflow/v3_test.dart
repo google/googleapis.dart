@@ -3810,6 +3810,7 @@ api.GoogleCloudDialogflowCxV3Generator
   buildCounterGoogleCloudDialogflowCxV3Generator++;
   if (buildCounterGoogleCloudDialogflowCxV3Generator < 3) {
     o.displayName = 'foo';
+    o.modelParameter = buildGoogleCloudDialogflowCxV3GeneratorModelParameter();
     o.name = 'foo';
     o.placeholders = buildUnnamed48();
     o.promptText = buildGoogleCloudDialogflowCxV3Phrase();
@@ -3826,6 +3827,7 @@ void checkGoogleCloudDialogflowCxV3Generator(
       o.displayName!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudDialogflowCxV3GeneratorModelParameter(o.modelParameter!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -3834,6 +3836,45 @@ void checkGoogleCloudDialogflowCxV3Generator(
     checkGoogleCloudDialogflowCxV3Phrase(o.promptText!);
   }
   buildCounterGoogleCloudDialogflowCxV3Generator--;
+}
+
+core.int buildCounterGoogleCloudDialogflowCxV3GeneratorModelParameter = 0;
+api.GoogleCloudDialogflowCxV3GeneratorModelParameter
+    buildGoogleCloudDialogflowCxV3GeneratorModelParameter() {
+  final o = api.GoogleCloudDialogflowCxV3GeneratorModelParameter();
+  buildCounterGoogleCloudDialogflowCxV3GeneratorModelParameter++;
+  if (buildCounterGoogleCloudDialogflowCxV3GeneratorModelParameter < 3) {
+    o.maxDecodeSteps = 42;
+    o.temperature = 42.0;
+    o.topK = 42;
+    o.topP = 42.0;
+  }
+  buildCounterGoogleCloudDialogflowCxV3GeneratorModelParameter--;
+  return o;
+}
+
+void checkGoogleCloudDialogflowCxV3GeneratorModelParameter(
+    api.GoogleCloudDialogflowCxV3GeneratorModelParameter o) {
+  buildCounterGoogleCloudDialogflowCxV3GeneratorModelParameter++;
+  if (buildCounterGoogleCloudDialogflowCxV3GeneratorModelParameter < 3) {
+    unittest.expect(
+      o.maxDecodeSteps!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.temperature!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.topK!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.topP!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterGoogleCloudDialogflowCxV3GeneratorModelParameter--;
 }
 
 core.int buildCounterGoogleCloudDialogflowCxV3GeneratorPlaceholder = 0;
@@ -9763,6 +9804,17 @@ void main() {
       final od = api.GoogleCloudDialogflowCxV3Generator.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDialogflowCxV3Generator(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudDialogflowCxV3GeneratorModelParameter',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDialogflowCxV3GeneratorModelParameter();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDialogflowCxV3GeneratorModelParameter.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDialogflowCxV3GeneratorModelParameter(od);
     });
   });
 

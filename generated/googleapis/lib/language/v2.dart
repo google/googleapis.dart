@@ -305,7 +305,7 @@ class AnalyzeEntitiesResponse {
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
   ///
-  /// See Document.language field for more details.
+  /// See Document.language_code field for more details.
   core.String? languageCode;
 
   /// Whether the language is officially supported.
@@ -387,7 +387,7 @@ class AnalyzeSentimentResponse {
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
   ///
-  /// See Document.language field for more details.
+  /// See Document.language_code field for more details.
   core.String? languageCode;
 
   /// Whether the language is officially supported.
@@ -545,14 +545,13 @@ class AnnotateTextResponse {
   /// Entities, along with their semantic information, in the input document.
   ///
   /// Populated if the user enables
-  /// AnnotateTextRequest.Features.extract_entities or
-  /// AnnotateTextRequest.Features.extract_entity_sentiment.
+  /// AnnotateTextRequest.Features.extract_entities .
   core.List<Entity>? entities;
 
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
   ///
-  /// See Document.language field for more details.
+  /// See Document.language_code field for more details.
   core.String? languageCode;
 
   /// Whether the language is officially supported by all requested features.
@@ -689,7 +688,7 @@ class ClassifyTextResponse {
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
   ///
-  /// See Document.language field for more details.
+  /// See Document.language_code field for more details.
   core.String? languageCode;
 
   /// Whether the language is officially supported.
@@ -801,10 +800,8 @@ class Entity {
   /// The representative name for the entity.
   core.String? name;
 
-  /// For calls to AnalyzeEntitySentiment or if
-  /// AnnotateTextRequest.Features.extract_entity_sentiment is set to true, this
-  /// field will contain the aggregate sentiment expressed for this entity in
-  /// the provided document.
+  /// For calls to AnalyzeEntitySentiment this field will contain the aggregate
+  /// sentiment expressed for this entity in the provided document.
   Sentiment? sentiment;
 
   /// The entity type.
@@ -886,10 +883,8 @@ class EntityMention {
   /// type. The score is in (0, 1\] range.
   core.double? probability;
 
-  /// For calls to AnalyzeEntitySentiment or if
-  /// AnnotateTextRequest.Features.extract_entity_sentiment is set to true, this
-  /// field will contain the sentiment expressed for this mention of the entity
-  /// in the provided document.
+  /// For calls to AnalyzeEntitySentiment this field will contain the sentiment
+  /// expressed for this mention of the entity in the provided document.
   Sentiment? sentiment;
 
   /// The mention text.
@@ -976,7 +971,7 @@ class ModerateTextResponse {
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
   ///
-  /// See Document.language field for more details.
+  /// See Document.language_code field for more details.
   core.String? languageCode;
 
   /// Whether the language is officially supported.
@@ -1047,7 +1042,32 @@ class Sentence {
 
 /// Represents the feeling associated with the entire text or entities in the
 /// text.
-typedef Sentiment = $Sentiment;
+class Sentiment {
+  /// A non-negative number in the \[0, +inf\] range, which represents the
+  /// absolute magnitude of sentiment regardless of score (positive or
+  /// negative).
+  core.double? magnitude;
+
+  /// Sentiment score between -1.0 (negative sentiment) and 1.0 (positive
+  /// sentiment).
+  core.double? score;
+
+  Sentiment({
+    this.magnitude,
+    this.score,
+  });
+
+  Sentiment.fromJson(core.Map json_)
+      : this(
+          magnitude: (json_['magnitude'] as core.num?)?.toDouble(),
+          score: (json_['score'] as core.num?)?.toDouble(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (magnitude != null) 'magnitude': magnitude!,
+        if (score != null) 'score': score!,
+      };
+}
 
 /// Represents a text span in the input document.
 typedef TextSpan = $TextSpan;

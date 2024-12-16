@@ -848,8 +848,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1538,6 +1538,10 @@ class Instance {
   /// - "LOOKER_CORE_STANDARD_ANNUAL" : Subscription Standard.
   /// - "LOOKER_CORE_ENTERPRISE_ANNUAL" : Subscription Enterprise.
   /// - "LOOKER_CORE_EMBED_ANNUAL" : Subscription Embed.
+  /// - "LOOKER_CORE_NONPROD_STANDARD_ANNUAL" : Nonprod Subscription Standard.
+  /// - "LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL" : Nonprod Subscription
+  /// Enterprise.
+  /// - "LOOKER_CORE_NONPROD_EMBED_ANNUAL" : Nonprod Subscription Embed.
   core.String? platformEdition;
 
   /// Whether private IP is enabled on the Looker instance.
@@ -1587,6 +1591,8 @@ class Instance {
   core.String? updateTime;
 
   /// User metadata.
+  ///
+  /// Optional.
   UserMetadata? userMetadata;
 
   Instance({
@@ -2269,7 +2275,7 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-typedef TimeOfDay = $TimeOfDay01;
+typedef TimeOfDay = $TimeOfDay00;
 
 /// Metadata about users for a Looker instance.
 class UserMetadata {

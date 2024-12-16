@@ -43,7 +43,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240701",
+    "revision": "20241204",
     "rootUrl": "https://tagmanager.googleapis.com/",
     "servicePath": "",
     "title": "Tag Manager API",
@@ -5144,6 +5144,10 @@
                 },
                 "signature": {
                     "description": "The signature of the community gallery template as computed at import time. This value is recomputed whenever the template is updated from the gallery.",
+                    "type": "string"
+                },
+                "templateDeveloperId": {
+                    "description": "The developer id of the community gallery template. This value is set whenever the template is created from the gallery.",
                     "type": "string"
                 },
                 "version": {

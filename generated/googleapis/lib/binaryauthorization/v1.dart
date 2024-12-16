@@ -1133,17 +1133,6 @@ class AdmissionRule {
   /// all of the images in the pod spec.
   /// - "ALWAYS_DENY" : This rule denies all pod creations.
   core.String? evaluationMode;
-
-  /// The resource names of the attestors that must attest to a container image,
-  /// in the format `projects / * /attestors / * `.
-  ///
-  /// Each attestor must exist before a policy can reference it. To add an
-  /// attestor to a policy the principal issuing the policy change request must
-  /// be able to read the attestor resource. Note: this field must be non-empty
-  /// when the `evaluation_mode` field specifies `REQUIRE_ATTESTATION`,
-  /// otherwise it must be empty.
-  ///
-  /// Optional.
   core.List<core.String>? requireAttestationsBy;
 
   AdmissionRule({

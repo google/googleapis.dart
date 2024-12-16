@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240821",
+    "revision": "20241125",
     "rootUrl": "https://firebasedynamiclinks.googleapis.com/",
     "servicePath": "",
     "title": "Firebase Dynamic Links API",

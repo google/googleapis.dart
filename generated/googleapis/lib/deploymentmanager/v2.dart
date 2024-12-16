@@ -150,6 +150,8 @@ class DeploymentsResource {
   /// - "DELETE"
   /// - "ABANDON"
   ///
+  /// [header_bypassBillingFilter] - null
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -164,10 +166,13 @@ class DeploymentsResource {
     core.String project,
     core.String deployment, {
     core.String? deletePolicy,
+    core.bool? header_bypassBillingFilter,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (deletePolicy != null) 'deletePolicy': [deletePolicy],
+      if (header_bypassBillingFilter != null)
+        'header.bypassBillingFilter': ['${header_bypassBillingFilter}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -195,6 +200,8 @@ class DeploymentsResource {
   /// [deployment] - The name of the deployment for this request.
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
+  /// [header_bypassBillingFilter] - null
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -208,9 +215,12 @@ class DeploymentsResource {
   async.Future<Deployment> get(
     core.String project,
     core.String deployment, {
+    core.bool? header_bypassBillingFilter,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (header_bypassBillingFilter != null)
+        'header.bypassBillingFilter': ['${header_bypassBillingFilter}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -242,6 +252,8 @@ class DeploymentsResource {
   /// Value must have pattern
   /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
+  /// [header_bypassBillingFilter] - null
+  ///
   /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -257,10 +269,13 @@ class DeploymentsResource {
   async.Future<Policy> getIamPolicy(
     core.String project,
     core.String resource, {
+    core.bool? header_bypassBillingFilter,
     core.int? optionsRequestedPolicyVersion,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (header_bypassBillingFilter != null)
+        'header.bypassBillingFilter': ['${header_bypassBillingFilter}'],
       if (optionsRequestedPolicyVersion != null)
         'optionsRequestedPolicyVersion': ['${optionsRequestedPolicyVersion}'],
       if ($fields != null) 'fields': [$fields],
@@ -296,6 +311,8 @@ class DeploymentsResource {
   /// - "CREATE_OR_ACQUIRE"
   /// - "ACQUIRE"
   ///
+  /// [header_bypassBillingFilter] - null
+  ///
   /// [preview] - If set to true, creates a deployment and creates "shell"
   /// resources but does not actually instantiate these resources. This allows
   /// you to preview what your deployment looks like. After previewing a
@@ -319,12 +336,15 @@ class DeploymentsResource {
     Deployment request,
     core.String project, {
     core.String? createPolicy,
+    core.bool? header_bypassBillingFilter,
     core.bool? preview,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (createPolicy != null) 'createPolicy': [createPolicy],
+      if (header_bypassBillingFilter != null)
+        'header.bypassBillingFilter': ['${header_bypassBillingFilter}'],
       if (preview != null) 'preview': ['${preview}'],
       if ($fields != null) 'fields': [$fields],
     };
@@ -465,6 +485,8 @@ class DeploymentsResource {
   /// - "DELETE"
   /// - "ABANDON"
   ///
+  /// [header_bypassBillingFilter] - null
+  ///
   /// [preview] - If set to true, updates the deployment and creates and updates
   /// the "shell" resources but does not actually alter or instantiate these
   /// resources. This allows you to preview what your deployment will look like.
@@ -492,6 +514,7 @@ class DeploymentsResource {
     core.String deployment, {
     core.String? createPolicy,
     core.String? deletePolicy,
+    core.bool? header_bypassBillingFilter,
     core.bool? preview,
     core.String? $fields,
   }) async {
@@ -499,6 +522,8 @@ class DeploymentsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (createPolicy != null) 'createPolicy': [createPolicy],
       if (deletePolicy != null) 'deletePolicy': [deletePolicy],
+      if (header_bypassBillingFilter != null)
+        'header.bypassBillingFilter': ['${header_bypassBillingFilter}'],
       if (preview != null) 'preview': ['${preview}'],
       if ($fields != null) 'fields': [$fields],
     };
@@ -635,6 +660,8 @@ class DeploymentsResource {
   /// Value must have pattern
   /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
+  /// [header_bypassBillingFilter] - null
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -649,10 +676,13 @@ class DeploymentsResource {
     TestPermissionsRequest request,
     core.String project,
     core.String resource, {
+    core.bool? header_bypassBillingFilter,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (header_bypassBillingFilter != null)
+        'header.bypassBillingFilter': ['${header_bypassBillingFilter}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -696,6 +726,8 @@ class DeploymentsResource {
   /// - "DELETE"
   /// - "ABANDON"
   ///
+  /// [header_bypassBillingFilter] - null
+  ///
   /// [preview] - If set to true, updates the deployment and creates and updates
   /// the "shell" resources but does not actually alter or instantiate these
   /// resources. This allows you to preview what your deployment will look like.
@@ -723,6 +755,7 @@ class DeploymentsResource {
     core.String deployment, {
     core.String? createPolicy,
     core.String? deletePolicy,
+    core.bool? header_bypassBillingFilter,
     core.bool? preview,
     core.String? $fields,
   }) async {
@@ -730,6 +763,8 @@ class DeploymentsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (createPolicy != null) 'createPolicy': [createPolicy],
       if (deletePolicy != null) 'deletePolicy': [deletePolicy],
+      if (header_bypassBillingFilter != null)
+        'header.bypassBillingFilter': ['${header_bypassBillingFilter}'],
       if (preview != null) 'preview': ['${preview}'],
       if ($fields != null) 'fields': [$fields],
     };
@@ -768,6 +803,8 @@ class ManifestsResource {
   /// [manifest] - The name of the manifest for this request.
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
+  /// [header_bypassBillingFilter] - null
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -782,9 +819,12 @@ class ManifestsResource {
     core.String project,
     core.String deployment,
     core.String manifest, {
+    core.bool? header_bypassBillingFilter,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (header_bypassBillingFilter != null)
+        'header.bypassBillingFilter': ['${header_bypassBillingFilter}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -924,6 +964,8 @@ class OperationsResource {
   ///
   /// [operation] - The name of the operation for this request.
   ///
+  /// [header_bypassBillingFilter] - null
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -937,9 +979,12 @@ class OperationsResource {
   async.Future<Operation> get(
     core.String project,
     core.String operation, {
+    core.bool? header_bypassBillingFilter,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (header_bypassBillingFilter != null)
+        'header.bypassBillingFilter': ['${header_bypassBillingFilter}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1074,6 +1119,8 @@ class ResourcesResource {
   ///
   /// [resource] - The name of the resource for this request.
   ///
+  /// [header_bypassBillingFilter] - null
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1088,9 +1135,12 @@ class ResourcesResource {
     core.String project,
     core.String deployment,
     core.String resource, {
+    core.bool? header_bypassBillingFilter,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (header_bypassBillingFilter != null)
+        'header.bypassBillingFilter': ['${header_bypassBillingFilter}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1557,6 +1607,33 @@ class ConfigFile {
       };
 }
 
+/// Describes additional debugging info.
+class DebugInfo {
+  /// Additional debugging information provided by the server.
+  core.String? detail;
+
+  /// The stack trace entries indicating where the error occurred.
+  core.List<core.String>? stackEntries;
+
+  DebugInfo({
+    this.detail,
+    this.stackEntries,
+  });
+
+  DebugInfo.fromJson(core.Map json_)
+      : this(
+          detail: json_['detail'] as core.String?,
+          stackEntries: (json_['stackEntries'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (detail != null) 'detail': detail!,
+        if (stackEntries != null) 'stackEntries': stackEntries!,
+      };
+}
+
 class Deployment {
   /// An optional user-provided description of the deployment.
   core.String? description;
@@ -1850,6 +1927,18 @@ class DeploymentsStopRequest {
       };
 }
 
+/// Describes the cause of the error with structured details.
+///
+/// Example of an error when contacting the "pubsub.googleapis.com" API when it
+/// is not enabled: { "reason": "API_DISABLED" "domain": "googleapis.com"
+/// "metadata": { "resource": "projects/123", "service": "pubsub.googleapis.com"
+/// } } This response indicates that the pubsub.googleapis.com API is not
+/// enabled. Example of an error that is returned when attempting to create a
+/// Spanner instance in a region that is out of stock: { "reason": "STOCKOUT"
+/// "domain": "spanner.googleapis.com", "metadata": { "availableRegions":
+/// "us-central1,us-east2" } }
+typedef ErrorInfo = $ErrorInfo;
+
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
 ///
@@ -1893,11 +1982,13 @@ class GlobalSetPolicyRequest {
   /// in general a valid policy but certain services (like Projects) might
   /// reject them.
   Policy? policy;
+  core.String? updateMask;
 
   GlobalSetPolicyRequest({
     this.bindings,
     this.etag,
     this.policy,
+    this.updateMask,
   });
 
   GlobalSetPolicyRequest.fromJson(core.Map json_)
@@ -1911,14 +2002,45 @@ class GlobalSetPolicyRequest {
               ? Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (policy != null) 'policy': policy!,
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
+
+/// Provides links to documentation or for performing an out of band action.
+///
+/// For example, if a quota check failed with an error indicating the calling
+/// project hasn't enabled the accessed service, this can contain a URL pointing
+/// directly to the right place in the developer console to flip the bit.
+class Help {
+  /// URL(s) pointing to additional information on handling the current error.
+  core.List<HelpLink>? links;
+
+  Help({
+    this.links,
+  });
+
+  Help.fromJson(core.Map json_)
+      : this(
+          links: (json_['links'] as core.List?)
+              ?.map((value) => HelpLink.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (links != null) 'links': links!,
+      };
+}
+
+/// Describes a URL link.
+typedef HelpLink = $Link;
 
 class ImportFile {
   /// The contents of the file.
@@ -1971,6 +2093,10 @@ class InstancesBulkInsertOperationMetadata {
         if (perLocationStatus != null) 'perLocationStatus': perLocationStatus!,
       };
 }
+
+/// Provides a localized error message that is safe to return to the user which
+/// can be attached to an RPC error.
+typedef LocalizedMessage = $LocalizedMessage;
 
 class Manifest {
   /// The YAML configuration for this manifest.
@@ -2102,11 +2228,70 @@ class ManifestsListResponse {
       };
 }
 
+class OperationErrorErrorsErrorDetails {
+  ErrorInfo? errorInfo;
+  Help? help;
+  LocalizedMessage? localizedMessage;
+  QuotaExceededInfo? quotaInfo;
+
+  OperationErrorErrorsErrorDetails({
+    this.errorInfo,
+    this.help,
+    this.localizedMessage,
+    this.quotaInfo,
+  });
+
+  OperationErrorErrorsErrorDetails.fromJson(core.Map json_)
+      : this(
+          errorInfo: json_.containsKey('errorInfo')
+              ? ErrorInfo.fromJson(
+                  json_['errorInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          help: json_.containsKey('help')
+              ? Help.fromJson(
+                  json_['help'] as core.Map<core.String, core.dynamic>)
+              : null,
+          localizedMessage: json_.containsKey('localizedMessage')
+              ? LocalizedMessage.fromJson(json_['localizedMessage']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          quotaInfo: json_.containsKey('quotaInfo')
+              ? QuotaExceededInfo.fromJson(
+                  json_['quotaInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errorInfo != null) 'errorInfo': errorInfo!,
+        if (help != null) 'help': help!,
+        if (localizedMessage != null) 'localizedMessage': localizedMessage!,
+        if (quotaInfo != null) 'quotaInfo': quotaInfo!,
+      };
+}
+
 class OperationErrorErrors {
+  /// Optional error details WARNING: DO NOT MAKE VISIBLE This is for internal
+  /// use-only (like componentization) (thus the visibility "none") and in case
+  /// of public exposure it is strongly recommended to follow pattern of:
+  /// https://aip.dev/193 and expose as details field.
+  ///
+  /// Output only.
+  core.List<core.String>? arguments;
+
   /// The error type identifier for this error.
   ///
   /// Output only.
   core.String? code;
+  DebugInfo? debugInfo;
+
+  /// An optional list of messages that contain the error details.
+  ///
+  /// There is a set of defined message types to use for providing details.The
+  /// syntax depends on the error code. For example, QuotaExceededInfo will have
+  /// details when the error code is QUOTA_EXCEEDED.
+  ///
+  /// Output only.
+  core.List<OperationErrorErrorsErrorDetails>? errorDetails;
 
   /// Indicates the field in the request that caused the error.
   ///
@@ -2121,20 +2306,37 @@ class OperationErrorErrors {
   core.String? message;
 
   OperationErrorErrors({
+    this.arguments,
     this.code,
+    this.debugInfo,
+    this.errorDetails,
     this.location,
     this.message,
   });
 
   OperationErrorErrors.fromJson(core.Map json_)
       : this(
+          arguments: (json_['arguments'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           code: json_['code'] as core.String?,
+          debugInfo: json_.containsKey('debugInfo')
+              ? DebugInfo.fromJson(
+                  json_['debugInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          errorDetails: (json_['errorDetails'] as core.List?)
+              ?.map((value) => OperationErrorErrorsErrorDetails.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           location: json_['location'] as core.String?,
           message: json_['message'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (arguments != null) 'arguments': arguments!,
         if (code != null) 'code': code!,
+        if (debugInfo != null) 'debugInfo': debugInfo!,
+        if (errorDetails != null) 'errorDetails': errorDetails!,
         if (location != null) 'location': location!,
         if (message != null) 'message': message!,
       };
@@ -2243,6 +2445,14 @@ class OperationWarnings {
   /// overridden. Deprecated unused field.
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
   /// in use.
+  /// - "NETWORK_ENDPOINT_NOT_DETACHED" : Warning that network endpoint was not
+  /// detached.
+  /// - "PAGE_MISSING_RESULTS" : Current page contains less results than
+  /// requested but a next page token exists.
+  /// - "SSL_POLICY_ENABLED_FEATURES_NOT_FETCHED" : Warning that SSL policy
+  /// resource in the response does not contain information about the list of
+  /// enabled features.
+  /// - "RESOURCE_NOT_FOUND_WARNING" : Warning that a resource is not found.
   /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
   /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
   /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
@@ -2266,6 +2476,19 @@ class OperationWarnings {
   /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
   /// overhead quota exceed which captures the amount of resources filtered out
   /// by user-defined list filter.
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g: regions.list).
+  /// - "RESOURCE_USES_GLOBAL_DNS" : Indicates that a VM is using global DNS.
+  /// Can also be used to indicate that a resource has attributes that could
+  /// result in the creation of a VM that uses global DNS.
+  /// - "RATE_LIMIT_EXCEEDED" : Resource can't be retrieved due to api quota
+  /// exceeded.
+  /// - "RESERVED_ENTRY_135" : Reserved entries for quickly adding new warnings
+  /// without breaking dependent clients.
+  /// - "RESERVED_ENTRY_136"
+  /// - "RESERVED_ENTRY_139"
+  /// - "RESERVED_ENTRY_141"
+  /// - "RESERVED_ENTRY_142"
   core.String? code;
 
   /// Metadata about this warning in key: value format.
@@ -2422,6 +2645,11 @@ class Operation {
   /// Output only.
   core.String? selfLink;
 
+  /// Server-defined URL for this resource with the resource id.
+  ///
+  /// Output only.
+  core.String? selfLinkWithId;
+
   /// If the operation is for projects.setCommonInstanceMetadata, this field
   /// will contain information on all underlying zonal actions and their state.
   ///
@@ -2459,8 +2687,8 @@ class Operation {
 
   /// The URL of the resource that the operation modifies.
   ///
-  /// For operations related to creating a snapshot, this points to the
-  /// persistent disk that the snapshot was created from.
+  /// For operations related to creating a snapshot, this points to the disk
+  /// that the snapshot was created from.
   ///
   /// Output only.
   core.String? targetLink;
@@ -2502,6 +2730,7 @@ class Operation {
     this.progress,
     this.region,
     this.selfLink,
+    this.selfLinkWithId,
     this.setCommonInstanceMetadataOperationMetadata,
     this.startTime,
     this.status,
@@ -2540,6 +2769,7 @@ class Operation {
           progress: json_['progress'] as core.int?,
           region: json_['region'] as core.String?,
           selfLink: json_['selfLink'] as core.String?,
+          selfLinkWithId: json_['selfLinkWithId'] as core.String?,
           setCommonInstanceMetadataOperationMetadata:
               json_.containsKey('setCommonInstanceMetadataOperationMetadata')
                   ? SetCommonInstanceMetadataOperationMetadata.fromJson(
@@ -2580,6 +2810,7 @@ class Operation {
         if (progress != null) 'progress': progress!,
         if (region != null) 'region': region!,
         if (selfLink != null) 'selfLink': selfLink!,
+        if (selfLinkWithId != null) 'selfLinkWithId': selfLinkWithId!,
         if (setCommonInstanceMetadataOperationMetadata != null)
           'setCommonInstanceMetadataOperationMetadata':
               setCommonInstanceMetadataOperationMetadata!,
@@ -2742,6 +2973,71 @@ class Policy {
       };
 }
 
+/// Additional details for quota exceeded error for resource quota.
+class QuotaExceededInfo {
+  /// The map holding related quota dimensions.
+  core.Map<core.String, core.String>? dimensions;
+
+  /// Future quota limit being rolled out.
+  ///
+  /// The limit's unit depends on the quota type or metric.
+  core.double? futureLimit;
+
+  /// Current effective quota limit.
+  ///
+  /// The limit's unit depends on the quota type or metric.
+  core.double? limit;
+
+  /// The name of the quota limit.
+  core.String? limitName;
+
+  /// The Compute Engine quota metric name.
+  core.String? metricName;
+
+  /// Rollout status of the future quota limit.
+  /// Possible string values are:
+  /// - "ROLLOUT_STATUS_UNSPECIFIED" : ROLLOUT_STATUS_UNSPECIFIED - Rollout
+  /// status is not specified. The default value.
+  /// - "IN_PROGRESS" : IN_PROGRESS - A rollout is in process which will change
+  /// the limit value to future limit.
+  core.String? rolloutStatus;
+
+  QuotaExceededInfo({
+    this.dimensions,
+    this.futureLimit,
+    this.limit,
+    this.limitName,
+    this.metricName,
+    this.rolloutStatus,
+  });
+
+  QuotaExceededInfo.fromJson(core.Map json_)
+      : this(
+          dimensions:
+              (json_['dimensions'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          futureLimit: (json_['futureLimit'] as core.num?)?.toDouble(),
+          limit: (json_['limit'] as core.num?)?.toDouble(),
+          limitName: json_['limitName'] as core.String?,
+          metricName: json_['metricName'] as core.String?,
+          rolloutStatus: json_['rolloutStatus'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (futureLimit != null) 'futureLimit': futureLimit!,
+        if (limit != null) 'limit': limit!,
+        if (limitName != null) 'limitName': limitName!,
+        if (metricName != null) 'metricName': metricName!,
+        if (rolloutStatus != null) 'rolloutStatus': rolloutStatus!,
+      };
+}
+
 class ResourceWarningsData {
   /// A key that provides more detail on the warning being returned.
   ///
@@ -2818,6 +3114,14 @@ class ResourceWarnings {
   /// overridden. Deprecated unused field.
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
   /// in use.
+  /// - "NETWORK_ENDPOINT_NOT_DETACHED" : Warning that network endpoint was not
+  /// detached.
+  /// - "PAGE_MISSING_RESULTS" : Current page contains less results than
+  /// requested but a next page token exists.
+  /// - "SSL_POLICY_ENABLED_FEATURES_NOT_FETCHED" : Warning that SSL policy
+  /// resource in the response does not contain information about the list of
+  /// enabled features.
+  /// - "RESOURCE_NOT_FOUND_WARNING" : Warning that a resource is not found.
   /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
   /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
   /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
@@ -2841,6 +3145,19 @@ class ResourceWarnings {
   /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
   /// overhead quota exceed which captures the amount of resources filtered out
   /// by user-defined list filter.
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g: regions.list).
+  /// - "RESOURCE_USES_GLOBAL_DNS" : Indicates that a VM is using global DNS.
+  /// Can also be used to indicate that a resource has attributes that could
+  /// result in the creation of a VM that uses global DNS.
+  /// - "RATE_LIMIT_EXCEEDED" : Resource can't be retrieved due to api quota
+  /// exceeded.
+  /// - "RESERVED_ENTRY_135" : Reserved entries for quickly adding new warnings
+  /// without breaking dependent clients.
+  /// - "RESERVED_ENTRY_136"
+  /// - "RESERVED_ENTRY_139"
+  /// - "RESERVED_ENTRY_141"
+  /// - "RESERVED_ENTRY_142"
   core.String? code;
 
   /// Metadata about this warning in key: value format.
@@ -3017,11 +3334,70 @@ class ResourceAccessControl {
       };
 }
 
+class ResourceUpdateErrorErrorsErrorDetails {
+  ErrorInfo? errorInfo;
+  Help? help;
+  LocalizedMessage? localizedMessage;
+  QuotaExceededInfo? quotaInfo;
+
+  ResourceUpdateErrorErrorsErrorDetails({
+    this.errorInfo,
+    this.help,
+    this.localizedMessage,
+    this.quotaInfo,
+  });
+
+  ResourceUpdateErrorErrorsErrorDetails.fromJson(core.Map json_)
+      : this(
+          errorInfo: json_.containsKey('errorInfo')
+              ? ErrorInfo.fromJson(
+                  json_['errorInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          help: json_.containsKey('help')
+              ? Help.fromJson(
+                  json_['help'] as core.Map<core.String, core.dynamic>)
+              : null,
+          localizedMessage: json_.containsKey('localizedMessage')
+              ? LocalizedMessage.fromJson(json_['localizedMessage']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          quotaInfo: json_.containsKey('quotaInfo')
+              ? QuotaExceededInfo.fromJson(
+                  json_['quotaInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errorInfo != null) 'errorInfo': errorInfo!,
+        if (help != null) 'help': help!,
+        if (localizedMessage != null) 'localizedMessage': localizedMessage!,
+        if (quotaInfo != null) 'quotaInfo': quotaInfo!,
+      };
+}
+
 class ResourceUpdateErrorErrors {
+  /// Optional error details WARNING: DO NOT MAKE VISIBLE This is for internal
+  /// use-only (like componentization) (thus the visibility "none") and in case
+  /// of public exposure it is strongly recommended to follow pattern of:
+  /// https://aip.dev/193 and expose as details field.
+  ///
+  /// Output only.
+  core.List<core.String>? arguments;
+
   /// The error type identifier for this error.
   ///
   /// Output only.
   core.String? code;
+  DebugInfo? debugInfo;
+
+  /// An optional list of messages that contain the error details.
+  ///
+  /// There is a set of defined message types to use for providing details.The
+  /// syntax depends on the error code. For example, QuotaExceededInfo will have
+  /// details when the error code is QUOTA_EXCEEDED.
+  ///
+  /// Output only.
+  core.List<ResourceUpdateErrorErrorsErrorDetails>? errorDetails;
 
   /// Indicates the field in the request that caused the error.
   ///
@@ -3036,20 +3412,37 @@ class ResourceUpdateErrorErrors {
   core.String? message;
 
   ResourceUpdateErrorErrors({
+    this.arguments,
     this.code,
+    this.debugInfo,
+    this.errorDetails,
     this.location,
     this.message,
   });
 
   ResourceUpdateErrorErrors.fromJson(core.Map json_)
       : this(
+          arguments: (json_['arguments'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           code: json_['code'] as core.String?,
+          debugInfo: json_.containsKey('debugInfo')
+              ? DebugInfo.fromJson(
+                  json_['debugInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          errorDetails: (json_['errorDetails'] as core.List?)
+              ?.map((value) => ResourceUpdateErrorErrorsErrorDetails.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           location: json_['location'] as core.String?,
           message: json_['message'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (arguments != null) 'arguments': arguments!,
         if (code != null) 'code': code!,
+        if (debugInfo != null) 'debugInfo': debugInfo!,
+        if (errorDetails != null) 'errorDetails': errorDetails!,
         if (location != null) 'location': location!,
         if (message != null) 'message': message!,
       };
@@ -3158,6 +3551,14 @@ class ResourceUpdateWarnings {
   /// overridden. Deprecated unused field.
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
   /// in use.
+  /// - "NETWORK_ENDPOINT_NOT_DETACHED" : Warning that network endpoint was not
+  /// detached.
+  /// - "PAGE_MISSING_RESULTS" : Current page contains less results than
+  /// requested but a next page token exists.
+  /// - "SSL_POLICY_ENABLED_FEATURES_NOT_FETCHED" : Warning that SSL policy
+  /// resource in the response does not contain information about the list of
+  /// enabled features.
+  /// - "RESOURCE_NOT_FOUND_WARNING" : Warning that a resource is not found.
   /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
   /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
   /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
@@ -3181,6 +3582,19 @@ class ResourceUpdateWarnings {
   /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
   /// overhead quota exceed which captures the amount of resources filtered out
   /// by user-defined list filter.
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g: regions.list).
+  /// - "RESOURCE_USES_GLOBAL_DNS" : Indicates that a VM is using global DNS.
+  /// Can also be used to indicate that a resource has attributes that could
+  /// result in the creation of a VM that uses global DNS.
+  /// - "RATE_LIMIT_EXCEEDED" : Resource can't be retrieved due to api quota
+  /// exceeded.
+  /// - "RESERVED_ENTRY_135" : Reserved entries for quickly adding new warnings
+  /// without breaking dependent clients.
+  /// - "RESERVED_ENTRY_136"
+  /// - "RESERVED_ENTRY_139"
+  /// - "RESERVED_ENTRY_141"
+  /// - "RESERVED_ENTRY_142"
   core.String? code;
 
   /// Metadata about this warning in key: value format.

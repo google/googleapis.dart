@@ -8397,6 +8397,7 @@ api.Table buildTable() {
     o.labels = buildUnnamed136();
     o.lastModifiedTime = 'foo';
     o.location = 'foo';
+    o.managedTableType = 'foo';
     o.materializedView = buildMaterializedViewDefinition();
     o.materializedViewStatus = buildMaterializedViewStatus();
     o.maxStaleness = 'foo';
@@ -8487,6 +8488,10 @@ void checkTable(api.Table o) {
     );
     unittest.expect(
       o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.managedTableType!,
       unittest.equals('foo'),
     );
     checkMaterializedViewDefinition(o.materializedView!);

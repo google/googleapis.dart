@@ -266,6 +266,50 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
+  /// Generate OpenAPI spec for the requested integrations and api triggers
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Project and location from which the integrations should
+  /// be fetched. Format: projects/{project}/location/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse>
+      generateOpenApiSpec(
+    GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':generateOpenApiSpec';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the client configuration for the given project and location resource
   /// name
   ///
@@ -2080,7 +2124,7 @@ class ProjectsLocationsIntegrationsExecutionsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Next ID: 3 The execution resource name. Format:
+  /// [name] - Required. Next ID: 6 The execution resource name. Format:
   /// projects/{gcp_project_id}/locations/{location}/integrations/{integration}/executions/{execution_id}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/integrations/\[^/\]+/executions/\[^/\]+$`.
@@ -10012,8 +10056,56 @@ class EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo {
 
 /// Contains the details of the execution info: this includes the replay reason
 /// and replay tree connecting executions in a parent-child relationship
-typedef EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo
-    = $ReplayInfo;
+class EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo {
+  /// If this execution is a replay of another execution, then this field
+  /// contains the original execution id.
+  core.String? originalExecutionInfoId;
+
+  /// Replay mode for the execution
+  /// Possible string values are:
+  /// - "REPLAY_MODE_UNSPECIFIED"
+  /// - "REPLAY_MODE_FROM_BEGINNING" : Replay the original execution from the
+  /// beginning.
+  /// - "REPLAY_MODE_POINT_OF_FAILURE" : Replay the execution from the first
+  /// failed task.
+  core.String? replayMode;
+
+  /// reason for replay
+  core.String? replayReason;
+
+  /// If this execution has been replayed, then this field contains the
+  /// execution ids of the replayed executions.
+  core.List<core.String>? replayedExecutionInfoIds;
+
+  EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo({
+    this.originalExecutionInfoId,
+    this.replayMode,
+    this.replayReason,
+    this.replayedExecutionInfoIds,
+  });
+
+  EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo.fromJson(
+      core.Map json_)
+      : this(
+          originalExecutionInfoId:
+              json_['originalExecutionInfoId'] as core.String?,
+          replayMode: json_['replayMode'] as core.String?,
+          replayReason: json_['replayReason'] as core.String?,
+          replayedExecutionInfoIds:
+              (json_['replayedExecutionInfoIds'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (originalExecutionInfoId != null)
+          'originalExecutionInfoId': originalExecutionInfoId!,
+        if (replayMode != null) 'replayMode': replayMode!,
+        if (replayReason != null) 'replayReason': replayReason!,
+        if (replayedExecutionInfoIds != null)
+          'replayedExecutionInfoIds': replayedExecutionInfoIds!,
+      };
+}
 
 class EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot {
   /// Indicates "right after which checkpoint task's execution" this snapshot is
@@ -10963,7 +11055,7 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
   /// List of input variables for the api trigger.
   ///
   /// Optional.
-  core.List<core.String>? inputVariables;
+  EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables? inputVariables;
 
   /// The user created label for a particular trigger.
   core.String? label;
@@ -10980,7 +11072,7 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
   /// List of output variables for the api trigger.
   ///
   /// Optional.
-  core.List<core.String>? outputVariables;
+  EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables? outputVariables;
 
   /// If set to true, any upcoming requests for this trigger config will be
   /// paused and the executions will be resumed later when the flag is reset.
@@ -11094,15 +11186,19 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
               ?.map((value) => value as core.String)
               .toList(),
           errorCatcherId: json_['errorCatcherId'] as core.String?,
-          inputVariables: (json_['inputVariables'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
+          inputVariables: json_.containsKey('inputVariables')
+              ? EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables
+                  .fromJson(json_['inputVariables']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           label: json_['label'] as core.String?,
           nextTasksExecutionPolicy:
               json_['nextTasksExecutionPolicy'] as core.String?,
-          outputVariables: (json_['outputVariables'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
+          outputVariables: json_.containsKey('outputVariables')
+              ? EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables
+                  .fromJson(json_['outputVariables']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           pauseWorkflowExecutions:
               json_['pauseWorkflowExecutions'] as core.bool?,
           position: json_.containsKey('position')
@@ -11156,6 +11252,10 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
         if (triggerType != null) 'triggerType': triggerType!,
       };
 }
+
+/// Variables names mapped to api trigger.
+typedef EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables
+    = $TriggerConfigVariables;
 
 class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry {
   /// Metadata information about the parameters.
@@ -11819,6 +11919,7 @@ class GoogleCloudConnectorsV1Connection {
   /// - "PREVIEW" : PREVIEW.
   /// - "GA" : GA.
   /// - "DEPRECATED" : DEPRECATED.
+  /// - "TEST" : TEST.
   /// - "PRIVATE_PREVIEW" : PRIVATE_PREVIEW.
   core.String? connectorVersionLaunchStage;
 
@@ -12141,7 +12242,7 @@ class GoogleCloudConnectorsV1ConnectorVersionInfraConfig {
 
   /// Indicates whether connector is deployed on GKE/CloudRun
   ///
-  /// Optional.
+  /// Output only.
   /// Possible string values are:
   /// - "DEPLOYMENT_MODEL_UNSPECIFIED" : Deployment model is not specified.
   /// - "GKE_MST" : Default model gke mst.
@@ -12306,9 +12407,13 @@ typedef GoogleCloudConnectorsV1EncryptionKey = $EncryptionKey;
 /// Eventing Configuration of a connection
 class GoogleCloudConnectorsV1EventingConfig {
   /// Additional eventing related field values
+  ///
+  /// Optional.
   core.List<GoogleCloudConnectorsV1ConfigVariable>? additionalVariables;
 
   /// Auth details for the webhook adapter.
+  ///
+  /// Optional.
   GoogleCloudConnectorsV1AuthConfig? authConfig;
 
   /// Dead letter configuration for eventing of a connection.
@@ -12317,6 +12422,8 @@ class GoogleCloudConnectorsV1EventingConfig {
   GoogleCloudConnectorsV1EventingConfigDeadLetterConfig? deadLetterConfig;
 
   /// Enrichment Enabled.
+  ///
+  /// Optional.
   core.bool? enrichmentEnabled;
 
   /// Ingress endpoint of the event listener.
@@ -12342,6 +12449,8 @@ class GoogleCloudConnectorsV1EventingConfig {
   GoogleCloudConnectorsV1DestinationConfig? proxyDestinationConfig;
 
   /// Registration endpoint for auto registration.
+  ///
+  /// Optional.
   GoogleCloudConnectorsV1DestinationConfig? registrationDestinationConfig;
 
   GoogleCloudConnectorsV1EventingConfig({
@@ -12445,11 +12554,18 @@ class GoogleCloudConnectorsV1EventingRuntimeData {
   /// Output only.
   GoogleCloudConnectorsV1EventingRuntimeDataWebhookData? webhookData;
 
+  /// Webhook subscriptions.
+  ///
+  /// Output only.
+  GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions?
+      webhookSubscriptions;
+
   GoogleCloudConnectorsV1EventingRuntimeData({
     this.eventsListenerEndpoint,
     this.eventsListenerPscSa,
     this.status,
     this.webhookData,
+    this.webhookSubscriptions,
   });
 
   GoogleCloudConnectorsV1EventingRuntimeData.fromJson(core.Map json_)
@@ -12465,6 +12581,11 @@ class GoogleCloudConnectorsV1EventingRuntimeData {
               ? GoogleCloudConnectorsV1EventingRuntimeDataWebhookData.fromJson(
                   json_['webhookData'] as core.Map<core.String, core.dynamic>)
               : null,
+          webhookSubscriptions: json_.containsKey('webhookSubscriptions')
+              ? GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions
+                  .fromJson(json_['webhookSubscriptions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12474,6 +12595,8 @@ class GoogleCloudConnectorsV1EventingRuntimeData {
           'eventsListenerPscSa': eventsListenerPscSa!,
         if (status != null) 'status': status!,
         if (webhookData != null) 'webhookData': webhookData!,
+        if (webhookSubscriptions != null)
+          'webhookSubscriptions': webhookSubscriptions!,
       };
 }
 
@@ -12544,6 +12667,32 @@ class GoogleCloudConnectorsV1EventingRuntimeDataWebhookData {
       };
 }
 
+/// WebhookSubscriptions has details of webhook subscriptions.
+class GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions {
+  /// Webhook data.
+  ///
+  /// Output only.
+  core.List<GoogleCloudConnectorsV1EventingRuntimeDataWebhookData>? webhookData;
+
+  GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions({
+    this.webhookData,
+  });
+
+  GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions.fromJson(
+      core.Map json_)
+      : this(
+          webhookData: (json_['webhookData'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudConnectorsV1EventingRuntimeDataWebhookData
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (webhookData != null) 'webhookData': webhookData!,
+      };
+}
+
 /// EventingStatus indicates the state of eventing.
 typedef GoogleCloudConnectorsV1EventingStatus = $EventingStatus;
 
@@ -12573,39 +12722,55 @@ typedef GoogleCloudConnectorsV1Secret = $Secret;
 /// SSL Configuration of a connection
 class GoogleCloudConnectorsV1SslConfig {
   /// Additional SSL related field values
+  ///
+  /// Optional.
   core.List<GoogleCloudConnectorsV1ConfigVariable>? additionalVariables;
 
   /// Type of Client Cert (PEM/JKS/..
   ///
   /// etc.)
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "CERT_TYPE_UNSPECIFIED" : Cert type unspecified.
   /// - "PEM" : Privacy Enhanced Mail (PEM) Type
   core.String? clientCertType;
 
   /// Client Certificate
+  ///
+  /// Optional.
   GoogleCloudConnectorsV1Secret? clientCertificate;
 
   /// Client Private Key
+  ///
+  /// Optional.
   GoogleCloudConnectorsV1Secret? clientPrivateKey;
 
   /// Secret containing the passphrase protecting the Client Private Key
+  ///
+  /// Optional.
   GoogleCloudConnectorsV1Secret? clientPrivateKeyPass;
 
   /// Private Server Certificate.
   ///
   /// Needs to be specified if trust model is `PRIVATE`.
+  ///
+  /// Optional.
   GoogleCloudConnectorsV1Secret? privateServerCertificate;
 
   /// Type of Server Cert (PEM/JKS/..
   ///
   /// etc.)
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "CERT_TYPE_UNSPECIFIED" : Cert type unspecified.
   /// - "PEM" : Privacy Enhanced Mail (PEM) Type
   core.String? serverCertType;
 
   /// Trust Model of the SSL connection
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "PUBLIC" : Public Trust Model. Takes the Default Java trust store.
   /// - "PRIVATE" : Private Trust Model. Takes custom/private trust store.
@@ -12613,6 +12778,8 @@ class GoogleCloudConnectorsV1SslConfig {
   core.String? trustModel;
 
   /// Controls the ssl type for the given connector version.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "SSL_TYPE_UNSPECIFIED" : No SSL configuration required.
   /// - "TLS" : TLS Handshake
@@ -12620,6 +12787,8 @@ class GoogleCloudConnectorsV1SslConfig {
   core.String? type;
 
   /// Bool for enabling SSL
+  ///
+  /// Optional.
   core.bool? useSsl;
 
   GoogleCloudConnectorsV1SslConfig({
@@ -12737,10 +12906,44 @@ class GoogleCloudIntegrationsV1alphaAccessToken {
       };
 }
 
+/// List of API triggerID and their workflow resource name.
+class GoogleCloudIntegrationsV1alphaApiTriggerResource {
+  /// Integration where the API is published
+  ///
+  /// Required.
+  core.String? integrationResource;
+
+  /// Trigger Id of the API trigger(s) in the integration
+  ///
+  /// Required.
+  core.List<core.String>? triggerId;
+
+  GoogleCloudIntegrationsV1alphaApiTriggerResource({
+    this.integrationResource,
+    this.triggerId,
+  });
+
+  GoogleCloudIntegrationsV1alphaApiTriggerResource.fromJson(core.Map json_)
+      : this(
+          integrationResource: json_['integrationResource'] as core.String?,
+          triggerId: (json_['triggerId'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (integrationResource != null)
+          'integrationResource': integrationResource!,
+        if (triggerId != null) 'triggerId': triggerId!,
+      };
+}
+
 /// An assertion which will check for a condition over task execution status or
-/// an expression for task output variables Next available id: 5
+/// an expression for task output variables
 class GoogleCloudIntegrationsV1alphaAssertion {
   /// The type of assertion to perform.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "ASSERTION_STRATEGY_UNSPECIFIED" : Unspecified Assertion strategy
   /// - "ASSERT_SUCCESSFUL_EXECUTION" : Test a successful execution
@@ -14677,7 +14880,55 @@ class GoogleCloudIntegrationsV1alphaExecutionDetails {
 
 /// Contains the details of the execution info: this includes the replay reason
 /// and replay tree connecting executions in a parent-child relationship
-typedef GoogleCloudIntegrationsV1alphaExecutionReplayInfo = $ReplayInfo;
+class GoogleCloudIntegrationsV1alphaExecutionReplayInfo {
+  /// If this execution is a replay of another execution, then this field
+  /// contains the original execution id.
+  core.String? originalExecutionInfoId;
+
+  /// Replay mode for the execution
+  /// Possible string values are:
+  /// - "REPLAY_MODE_UNSPECIFIED" : Default value.
+  /// - "REPLAY_MODE_FROM_BEGINNING" : Replay the original execution from the
+  /// beginning.
+  /// - "REPLAY_MODE_POINT_OF_FAILURE" : Replay the execution from the first
+  /// failed task.
+  core.String? replayMode;
+
+  /// reason for replay
+  core.String? replayReason;
+
+  /// If this execution has been replayed, then this field contains the
+  /// execution ids of the replayed executions.
+  core.List<core.String>? replayedExecutionInfoIds;
+
+  GoogleCloudIntegrationsV1alphaExecutionReplayInfo({
+    this.originalExecutionInfoId,
+    this.replayMode,
+    this.replayReason,
+    this.replayedExecutionInfoIds,
+  });
+
+  GoogleCloudIntegrationsV1alphaExecutionReplayInfo.fromJson(core.Map json_)
+      : this(
+          originalExecutionInfoId:
+              json_['originalExecutionInfoId'] as core.String?,
+          replayMode: json_['replayMode'] as core.String?,
+          replayReason: json_['replayReason'] as core.String?,
+          replayedExecutionInfoIds:
+              (json_['replayedExecutionInfoIds'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (originalExecutionInfoId != null)
+          'originalExecutionInfoId': originalExecutionInfoId!,
+        if (replayMode != null) 'replayMode': replayMode!,
+        if (replayReason != null) 'replayReason': replayReason!,
+        if (replayedExecutionInfoIds != null)
+          'replayedExecutionInfoIds': replayedExecutionInfoIds!,
+      };
+}
 
 /// Contains the snapshot of the execution for a given checkpoint.
 class GoogleCloudIntegrationsV1alphaExecutionSnapshot {
@@ -14937,6 +15188,66 @@ class GoogleCloudIntegrationsV1alphaFile {
         if (integrationVersion != null)
           'integrationVersion': integrationVersion!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Request for GenerateOpenApiSpec.
+class GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest {
+  /// List of api triggers
+  ///
+  /// Required.
+  core.List<GoogleCloudIntegrationsV1alphaApiTriggerResource>?
+      apiTriggerResources;
+
+  /// File format for generated spec.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "FILE_FORMAT_UNSPECIFIED" : Unspecified file format
+  /// - "JSON" : JSON File Format
+  /// - "YAML" : YAML File Format
+  core.String? fileFormat;
+
+  GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest({
+    this.apiTriggerResources,
+    this.fileFormat,
+  });
+
+  GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest.fromJson(
+      core.Map json_)
+      : this(
+          apiTriggerResources: (json_['apiTriggerResources'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudIntegrationsV1alphaApiTriggerResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          fileFormat: json_['fileFormat'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiTriggerResources != null)
+          'apiTriggerResources': apiTriggerResources!,
+        if (fileFormat != null) 'fileFormat': fileFormat!,
+      };
+}
+
+/// Response of the GenerateOpenApiSpec API.
+class GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse {
+  /// Open API spec as per the required format
+  core.String? openApiSpec;
+
+  GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse({
+    this.openApiSpec,
+  });
+
+  GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse.fromJson(
+      core.Map json_)
+      : this(
+          openApiSpec: json_['openApiSpec'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (openApiSpec != null) 'openApiSpec': openApiSpec!,
       };
 }
 
@@ -17380,8 +17691,6 @@ class GoogleCloudIntegrationsV1alphaRuntimeEntitySchema {
 }
 
 /// The request for scheduling an integration.
-///
-/// Next available id: 11
 class GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest {
   /// Input parameters used by integration execution.
   ///
@@ -19108,7 +19417,7 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
   /// List of input variables for the api trigger.
   ///
   /// Optional.
-  core.List<core.String>? inputVariables;
+  GoogleCloudIntegrationsV1alphaTriggerConfigVariables? inputVariables;
 
   /// The user created label for a particular trigger.
   ///
@@ -19129,7 +19438,7 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
   /// List of output variables for the api trigger.
   ///
   /// Optional.
-  core.List<core.String>? outputVariables;
+  GoogleCloudIntegrationsV1alphaTriggerConfigVariables? outputVariables;
 
   /// Informs the front-end application where to draw this error catcher config
   /// on the UI.
@@ -19229,15 +19538,19 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
               : null,
           description: json_['description'] as core.String?,
           errorCatcherId: json_['errorCatcherId'] as core.String?,
-          inputVariables: (json_['inputVariables'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
+          inputVariables: json_.containsKey('inputVariables')
+              ? GoogleCloudIntegrationsV1alphaTriggerConfigVariables.fromJson(
+                  json_['inputVariables']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           label: json_['label'] as core.String?,
           nextTasksExecutionPolicy:
               json_['nextTasksExecutionPolicy'] as core.String?,
-          outputVariables: (json_['outputVariables'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
+          outputVariables: json_.containsKey('outputVariables')
+              ? GoogleCloudIntegrationsV1alphaTriggerConfigVariables.fromJson(
+                  json_['outputVariables']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           position: json_.containsKey('position')
               ? GoogleCloudIntegrationsV1alphaCoordinate.fromJson(
                   json_['position'] as core.Map<core.String, core.dynamic>)
@@ -19280,6 +19593,10 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
         if (triggerType != null) 'triggerType': triggerType!,
       };
 }
+
+/// Variables names mapped to api trigger.
+typedef GoogleCloudIntegrationsV1alphaTriggerConfigVariables
+    = $TriggerConfigVariables;
 
 /// Request for UnpublishIntegrationVersion.
 typedef GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest

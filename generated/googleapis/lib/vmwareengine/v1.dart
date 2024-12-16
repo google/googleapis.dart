@@ -8094,7 +8094,7 @@ class NodeTypeConfig {
 }
 
 /// Details about a NSX Manager appliance.
-typedef Nsx = $Shared13;
+typedef Nsx = $Shared14;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -9132,7 +9132,7 @@ class UndeletePrivateCloudRequest {
 }
 
 /// Details about a vCenter Server management appliance.
-typedef Vcenter = $Shared13;
+typedef Vcenter = $Shared14;
 
 /// VMware Engine network resource that provides connectivity for VMware Engine
 /// private clouds.

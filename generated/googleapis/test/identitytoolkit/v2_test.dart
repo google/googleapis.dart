@@ -1541,6 +1541,8 @@ api.GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig
     o.recaptchaKeys = buildUnnamed16();
     o.tollFraudManagedRules = buildUnnamed17();
     o.useAccountDefender = true;
+    o.useSmsBotScore = true;
+    o.useSmsTollFraudProtection = true;
   }
   buildCounterGoogleCloudIdentitytoolkitAdminV2RecaptchaConfig--;
   return o;
@@ -1562,6 +1564,8 @@ void checkGoogleCloudIdentitytoolkitAdminV2RecaptchaConfig(
     checkUnnamed16(o.recaptchaKeys!);
     checkUnnamed17(o.tollFraudManagedRules!);
     unittest.expect(o.useAccountDefender!, unittest.isTrue);
+    unittest.expect(o.useSmsBotScore!, unittest.isTrue);
+    unittest.expect(o.useSmsTollFraudProtection!, unittest.isTrue);
   }
   buildCounterGoogleCloudIdentitytoolkitAdminV2RecaptchaConfig--;
 }
@@ -2571,6 +2575,8 @@ api.GoogleCloudIdentitytoolkitV2RecaptchaConfig
   if (buildCounterGoogleCloudIdentitytoolkitV2RecaptchaConfig < 3) {
     o.recaptchaEnforcementState = buildUnnamed21();
     o.recaptchaKey = 'foo';
+    o.useSmsBotScore = true;
+    o.useSmsTollFraudProtection = true;
   }
   buildCounterGoogleCloudIdentitytoolkitV2RecaptchaConfig--;
   return o;
@@ -2585,6 +2591,8 @@ void checkGoogleCloudIdentitytoolkitV2RecaptchaConfig(
       o.recaptchaKey!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.useSmsBotScore!, unittest.isTrue);
+    unittest.expect(o.useSmsTollFraudProtection!, unittest.isTrue);
   }
   buildCounterGoogleCloudIdentitytoolkitV2RecaptchaConfig--;
 }

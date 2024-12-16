@@ -181,8 +181,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1178,6 +1178,9 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResource
   /// Returns a short-lived credential that can be used to send authenticated
   /// and authorized traffic to a workstation.
   ///
+  /// Once generated this token cannot be revoked and is good for the lifetime
+  /// of the token.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1836,7 +1839,14 @@ class Binding {
       };
 }
 
-/// A configuration that workstations can boost to.
+/// A boost configuration is a set of resources that a workstation can use to
+/// increase its performance.
+///
+/// If a boost configuration is specified, when starting a workstation, users
+/// can choose to use a VM provisioned under the boost config by passing the
+/// boost config id in the start request. If no boost config id is provided in
+/// the start request, the system will choose a VM from the pool provisioned
+/// under the default config.
 class BoostConfig {
   /// A list of the type and count of accelerator cards attached to the boost
   /// instance.
@@ -1877,7 +1887,7 @@ class BoostConfig {
 
   /// The id to be used for the boost configuration.
   ///
-  /// Optional. Required.
+  /// Required.
   core.String? id;
 
   /// The type of machine that boosted VM instances will use—for example,
@@ -2168,6 +2178,9 @@ class GceInstance {
 
   /// A list of the boost configurations that workstations created using this
   /// workstation configuration are allowed to use.
+  ///
+  /// If specified, users will have the option to choose from the list of boost
+  /// configs when starting a workstation.
   ///
   /// Optional.
   core.List<BoostConfig>? boostConfigs;

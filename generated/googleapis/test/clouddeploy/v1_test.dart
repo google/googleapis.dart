@@ -638,6 +638,7 @@ api.AutomationRule buildAutomationRule() {
     o.advanceRolloutRule = buildAdvanceRolloutRule();
     o.promoteReleaseRule = buildPromoteReleaseRule();
     o.repairRolloutRule = buildRepairRolloutRule();
+    o.timedPromoteReleaseRule = buildTimedPromoteReleaseRule();
   }
   buildCounterAutomationRule--;
   return o;
@@ -649,6 +650,7 @@ void checkAutomationRule(api.AutomationRule o) {
     checkAdvanceRolloutRule(o.advanceRolloutRule!);
     checkPromoteReleaseRule(o.promoteReleaseRule!);
     checkRepairRolloutRule(o.repairRolloutRule!);
+    checkTimedPromoteReleaseRule(o.timedPromoteReleaseRule!);
   }
   buildCounterAutomationRule--;
 }
@@ -659,6 +661,7 @@ api.AutomationRuleCondition buildAutomationRuleCondition() {
   buildCounterAutomationRuleCondition++;
   if (buildCounterAutomationRuleCondition < 3) {
     o.targetsPresentCondition = buildTargetsPresentCondition();
+    o.timedPromoteReleaseCondition = buildTimedPromoteReleaseCondition();
   }
   buildCounterAutomationRuleCondition--;
   return o;
@@ -668,6 +671,7 @@ void checkAutomationRuleCondition(api.AutomationRuleCondition o) {
   buildCounterAutomationRuleCondition++;
   if (buildCounterAutomationRuleCondition < 3) {
     checkTargetsPresentCondition(o.targetsPresentCondition!);
+    checkTimedPromoteReleaseCondition(o.timedPromoteReleaseCondition!);
   }
   buildCounterAutomationRuleCondition--;
 }
@@ -692,6 +696,7 @@ api.AutomationRun buildAutomationRun() {
     o.state = 'foo';
     o.stateDescription = 'foo';
     o.targetId = 'foo';
+    o.timedPromoteReleaseOperation = buildTimedPromoteReleaseOperation();
     o.updateTime = 'foo';
     o.waitUntilTime = 'foo';
   }
@@ -747,6 +752,7 @@ void checkAutomationRun(api.AutomationRun o) {
       o.targetId!,
       unittest.equals('foo'),
     );
+    checkTimedPromoteReleaseOperation(o.timedPromoteReleaseOperation!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -5730,6 +5736,33 @@ void checkTargetRender(api.TargetRender o) {
   buildCounterTargetRender--;
 }
 
+core.int buildCounterTargets = 0;
+api.Targets buildTargets() {
+  final o = api.Targets();
+  buildCounterTargets++;
+  if (buildCounterTargets < 3) {
+    o.destinationTargetId = 'foo';
+    o.sourceTargetId = 'foo';
+  }
+  buildCounterTargets--;
+  return o;
+}
+
+void checkTargets(api.Targets o) {
+  buildCounterTargets++;
+  if (buildCounterTargets < 3) {
+    unittest.expect(
+      o.destinationTargetId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sourceTargetId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTargets--;
+}
+
 core.List<core.String> buildUnnamed108() => [
       'foo',
       'foo',
@@ -6005,6 +6038,117 @@ void checkTimeWindows(api.TimeWindows o) {
   buildCounterTimeWindows--;
 }
 
+core.List<api.Targets> buildUnnamed114() => [
+      buildTargets(),
+      buildTargets(),
+    ];
+
+void checkUnnamed114(core.List<api.Targets> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTargets(o[0]);
+  checkTargets(o[1]);
+}
+
+core.int buildCounterTimedPromoteReleaseCondition = 0;
+api.TimedPromoteReleaseCondition buildTimedPromoteReleaseCondition() {
+  final o = api.TimedPromoteReleaseCondition();
+  buildCounterTimedPromoteReleaseCondition++;
+  if (buildCounterTimedPromoteReleaseCondition < 3) {
+    o.nextPromotionTime = 'foo';
+    o.targetsList = buildUnnamed114();
+  }
+  buildCounterTimedPromoteReleaseCondition--;
+  return o;
+}
+
+void checkTimedPromoteReleaseCondition(api.TimedPromoteReleaseCondition o) {
+  buildCounterTimedPromoteReleaseCondition++;
+  if (buildCounterTimedPromoteReleaseCondition < 3) {
+    unittest.expect(
+      o.nextPromotionTime!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed114(o.targetsList!);
+  }
+  buildCounterTimedPromoteReleaseCondition--;
+}
+
+core.int buildCounterTimedPromoteReleaseOperation = 0;
+api.TimedPromoteReleaseOperation buildTimedPromoteReleaseOperation() {
+  final o = api.TimedPromoteReleaseOperation();
+  buildCounterTimedPromoteReleaseOperation++;
+  if (buildCounterTimedPromoteReleaseOperation < 3) {
+    o.phase = 'foo';
+    o.release = 'foo';
+    o.targetId = 'foo';
+  }
+  buildCounterTimedPromoteReleaseOperation--;
+  return o;
+}
+
+void checkTimedPromoteReleaseOperation(api.TimedPromoteReleaseOperation o) {
+  buildCounterTimedPromoteReleaseOperation++;
+  if (buildCounterTimedPromoteReleaseOperation < 3) {
+    unittest.expect(
+      o.phase!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.release!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.targetId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTimedPromoteReleaseOperation--;
+}
+
+core.int buildCounterTimedPromoteReleaseRule = 0;
+api.TimedPromoteReleaseRule buildTimedPromoteReleaseRule() {
+  final o = api.TimedPromoteReleaseRule();
+  buildCounterTimedPromoteReleaseRule++;
+  if (buildCounterTimedPromoteReleaseRule < 3) {
+    o.condition = buildAutomationRuleCondition();
+    o.destinationPhase = 'foo';
+    o.destinationTargetId = 'foo';
+    o.id = 'foo';
+    o.schedule = 'foo';
+    o.timeZone = 'foo';
+  }
+  buildCounterTimedPromoteReleaseRule--;
+  return o;
+}
+
+void checkTimedPromoteReleaseRule(api.TimedPromoteReleaseRule o) {
+  buildCounterTimedPromoteReleaseRule++;
+  if (buildCounterTimedPromoteReleaseRule < 3) {
+    checkAutomationRuleCondition(o.condition!);
+    unittest.expect(
+      o.destinationPhase!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.destinationTargetId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.schedule!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.timeZone!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTimedPromoteReleaseRule--;
+}
+
 core.int buildCounterVerifyJob = 0;
 api.VerifyJob buildVerifyJob() {
   final o = api.VerifyJob();
@@ -6062,46 +6206,6 @@ void checkVerifyJobRun(api.VerifyJobRun o) {
   buildCounterVerifyJobRun--;
 }
 
-core.List<core.String> buildUnnamed114() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed114(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterWeeklyWindow = 0;
-api.WeeklyWindow buildWeeklyWindow() {
-  final o = api.WeeklyWindow();
-  buildCounterWeeklyWindow++;
-  if (buildCounterWeeklyWindow < 3) {
-    o.daysOfWeek = buildUnnamed114();
-    o.endTime = buildTimeOfDay();
-    o.startTime = buildTimeOfDay();
-  }
-  buildCounterWeeklyWindow--;
-  return o;
-}
-
-void checkWeeklyWindow(api.WeeklyWindow o) {
-  buildCounterWeeklyWindow++;
-  if (buildCounterWeeklyWindow < 3) {
-    checkUnnamed114(o.daysOfWeek!);
-    checkTimeOfDay(o.endTime!);
-    checkTimeOfDay(o.startTime!);
-  }
-  buildCounterWeeklyWindow--;
-}
-
 core.List<core.String> buildUnnamed115() => [
       'foo',
       'foo',
@@ -6119,12 +6223,52 @@ void checkUnnamed115(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterWeeklyWindow = 0;
+api.WeeklyWindow buildWeeklyWindow() {
+  final o = api.WeeklyWindow();
+  buildCounterWeeklyWindow++;
+  if (buildCounterWeeklyWindow < 3) {
+    o.daysOfWeek = buildUnnamed115();
+    o.endTime = buildTimeOfDay();
+    o.startTime = buildTimeOfDay();
+  }
+  buildCounterWeeklyWindow--;
+  return o;
+}
+
+void checkWeeklyWindow(api.WeeklyWindow o) {
+  buildCounterWeeklyWindow++;
+  if (buildCounterWeeklyWindow < 3) {
+    checkUnnamed115(o.daysOfWeek!);
+    checkTimeOfDay(o.endTime!);
+    checkTimeOfDay(o.startTime!);
+  }
+  buildCounterWeeklyWindow--;
+}
+
 core.List<core.String> buildUnnamed116() => [
       'foo',
       'foo',
     ];
 
 void checkUnnamed116(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed117() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed117(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -7516,6 +7660,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Targets', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTargets();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Targets.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkTargets(od);
+    });
+  });
+
   unittest.group('obj-schema-TargetsPresentCondition', () {
     unittest.test('to-json--from-json', () async {
       final o = buildTargetsPresentCondition();
@@ -7593,6 +7747,36 @@ void main() {
       final od = api.TimeWindows.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTimeWindows(od);
+    });
+  });
+
+  unittest.group('obj-schema-TimedPromoteReleaseCondition', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTimedPromoteReleaseCondition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TimedPromoteReleaseCondition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTimedPromoteReleaseCondition(od);
+    });
+  });
+
+  unittest.group('obj-schema-TimedPromoteReleaseOperation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTimedPromoteReleaseOperation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TimedPromoteReleaseOperation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTimedPromoteReleaseOperation(od);
+    });
+  });
+
+  unittest.group('obj-schema-TimedPromoteReleaseRule', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTimedPromoteReleaseRule();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TimedPromoteReleaseRule.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTimedPromoteReleaseRule(od);
     });
   });
 
@@ -9558,7 +9742,7 @@ void main() {
           .releases;
       final arg_request = buildRelease();
       final arg_parent = 'foo';
-      final arg_overrideDeployPolicy = buildUnnamed115();
+      final arg_overrideDeployPolicy = buildUnnamed116();
       final arg_releaseId = 'foo';
       final arg_requestId = 'foo';
       final arg_validateOnly = true;
@@ -9975,7 +10159,7 @@ void main() {
           .rollouts;
       final arg_request = buildRollout();
       final arg_parent = 'foo';
-      final arg_overrideDeployPolicy = buildUnnamed116();
+      final arg_overrideDeployPolicy = buildUnnamed117();
       final arg_requestId = 'foo';
       final arg_rolloutId = 'foo';
       final arg_startingPhaseId = 'foo';

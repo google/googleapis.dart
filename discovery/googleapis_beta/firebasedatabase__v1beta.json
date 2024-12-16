@@ -34,10 +34,10 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20221214",
+    "revision": "20241202",
     "rootUrl": "https://firebasedatabase.googleapis.com/",
     "servicePath": "",
-    "title": "Firebase Realtime Database API",
+    "title": "Firebase Realtime Database Management API",
     "version": "v1beta",
     "version_module": true,
     "parameters": {

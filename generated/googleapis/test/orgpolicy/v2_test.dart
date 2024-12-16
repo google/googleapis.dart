@@ -65,6 +65,7 @@ api.GoogleCloudOrgpolicyV2Constraint buildGoogleCloudOrgpolicyV2Constraint() {
     o.listConstraint = buildGoogleCloudOrgpolicyV2ConstraintListConstraint();
     o.name = 'foo';
     o.supportsDryRun = true;
+    o.supportsSimulation = true;
   }
   buildCounterGoogleCloudOrgpolicyV2Constraint--;
   return o;
@@ -94,6 +95,7 @@ void checkGoogleCloudOrgpolicyV2Constraint(
       unittest.equals('foo'),
     );
     unittest.expect(o.supportsDryRun!, unittest.isTrue);
+    unittest.expect(o.supportsSimulation!, unittest.isTrue);
   }
   buildCounterGoogleCloudOrgpolicyV2Constraint--;
 }
@@ -607,6 +609,51 @@ void checkGoogleCloudOrgpolicyV2PolicySpec(
   buildCounterGoogleCloudOrgpolicyV2PolicySpec--;
 }
 
+core.Map<core.String, core.Object?> buildUnnamed9() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
+
+void checkUnnamed9(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted2 = (o['x']!) as core.Map;
+  unittest.expect(casted2, unittest.hasLength(3));
+  unittest.expect(
+    casted2['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted2['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted2['string'],
+    unittest.equals('foo'),
+  );
+  var casted3 = (o['y']!) as core.Map;
+  unittest.expect(casted3, unittest.hasLength(3));
+  unittest.expect(
+    casted3['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted3['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted3['string'],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRule = 0;
 api.GoogleCloudOrgpolicyV2PolicySpecPolicyRule
     buildGoogleCloudOrgpolicyV2PolicySpecPolicyRule() {
@@ -617,6 +664,7 @@ api.GoogleCloudOrgpolicyV2PolicySpecPolicyRule
     o.condition = buildGoogleTypeExpr();
     o.denyAll = true;
     o.enforce = true;
+    o.parameters = buildUnnamed9();
     o.values = buildGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues();
   }
   buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRule--;
@@ -631,26 +679,10 @@ void checkGoogleCloudOrgpolicyV2PolicySpecPolicyRule(
     checkGoogleTypeExpr(o.condition!);
     unittest.expect(o.denyAll!, unittest.isTrue);
     unittest.expect(o.enforce!, unittest.isTrue);
+    checkUnnamed9(o.parameters!);
     checkGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues(o.values!);
   }
   buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRule--;
-}
-
-core.List<core.String> buildUnnamed9() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed9(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
 }
 
 core.List<core.String> buildUnnamed10() => [
@@ -670,14 +702,31 @@ void checkUnnamed10(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed11() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed11(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues = 0;
 api.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues
     buildGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues() {
   final o = api.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues();
   buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues++;
   if (buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues < 3) {
-    o.allowedValues = buildUnnamed9();
-    o.deniedValues = buildUnnamed10();
+    o.allowedValues = buildUnnamed10();
+    o.deniedValues = buildUnnamed11();
   }
   buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues--;
   return o;
@@ -687,8 +736,8 @@ void checkGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues(
     api.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues o) {
   buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues++;
   if (buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues < 3) {
-    checkUnnamed9(o.allowedValues!);
-    checkUnnamed10(o.deniedValues!);
+    checkUnnamed10(o.allowedValues!);
+    checkUnnamed11(o.deniedValues!);
   }
   buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues--;
 }

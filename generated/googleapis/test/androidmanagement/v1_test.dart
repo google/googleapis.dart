@@ -3645,6 +3645,7 @@ api.PersonalUsagePolicies buildPersonalUsagePolicies() {
     o.maxDaysWithWorkOff = 42;
     o.personalApplications = buildUnnamed68();
     o.personalPlayStoreMode = 'foo';
+    o.privateSpacePolicy = 'foo';
     o.screenCaptureDisabled = true;
   }
   buildCounterPersonalUsagePolicies--;
@@ -3663,6 +3664,10 @@ void checkPersonalUsagePolicies(api.PersonalUsagePolicies o) {
     checkUnnamed68(o.personalApplications!);
     unittest.expect(
       o.personalPlayStoreMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.privateSpacePolicy!,
       unittest.equals('foo'),
     );
     unittest.expect(o.screenCaptureDisabled!, unittest.isTrue);

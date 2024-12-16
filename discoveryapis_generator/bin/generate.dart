@@ -111,6 +111,7 @@ void main(List<String> arguments) {
         commandOptions['input-dir'] as String,
         commandOptions['output-dir'] as String,
         pubspec,
+        skipTests: {},
       ));
     case 'files':
       final updatePubspec = (commandOptions['update-pubspec'] as String)

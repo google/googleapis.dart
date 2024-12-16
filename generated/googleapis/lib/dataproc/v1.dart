@@ -14128,7 +14128,7 @@ class PySparkBatch {
 }
 
 /// A Dataproc job for running Apache PySpark
-/// (https://spark.apache.org/docs/0.9.0/python-programming-guide.html)
+/// (https://spark.apache.org/docs/latest/api/python/index.html#pyspark-overview)
 /// applications on YARN.
 class PySparkJob {
   /// HCFS URIs of archives to be extracted into the working directory of each

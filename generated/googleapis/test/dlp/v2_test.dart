@@ -5202,6 +5202,7 @@ api.GooglePrivacyDlpV2InfoTypeDescription
     o.categories = buildUnnamed60();
     o.description = 'foo';
     o.displayName = 'foo';
+    o.example = 'foo';
     o.name = 'foo';
     o.sensitivityScore = buildGooglePrivacyDlpV2SensitivityScore();
     o.supportedBy = buildUnnamed61();
@@ -5222,6 +5223,10 @@ void checkGooglePrivacyDlpV2InfoTypeDescription(
     );
     unittest.expect(
       o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.example!,
       unittest.equals('foo'),
     );
     unittest.expect(

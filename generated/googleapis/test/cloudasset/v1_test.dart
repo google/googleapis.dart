@@ -2607,6 +2607,7 @@ api.GoogleIdentityAccesscontextmanagerV1EgressPolicy
   if (buildCounterGoogleIdentityAccesscontextmanagerV1EgressPolicy < 3) {
     o.egressFrom = buildGoogleIdentityAccesscontextmanagerV1EgressFrom();
     o.egressTo = buildGoogleIdentityAccesscontextmanagerV1EgressTo();
+    o.title = 'foo';
   }
   buildCounterGoogleIdentityAccesscontextmanagerV1EgressPolicy--;
   return o;
@@ -2618,6 +2619,10 @@ void checkGoogleIdentityAccesscontextmanagerV1EgressPolicy(
   if (buildCounterGoogleIdentityAccesscontextmanagerV1EgressPolicy < 3) {
     checkGoogleIdentityAccesscontextmanagerV1EgressFrom(o.egressFrom!);
     checkGoogleIdentityAccesscontextmanagerV1EgressTo(o.egressTo!);
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleIdentityAccesscontextmanagerV1EgressPolicy--;
 }
@@ -2784,6 +2789,7 @@ api.GoogleIdentityAccesscontextmanagerV1IngressPolicy
   if (buildCounterGoogleIdentityAccesscontextmanagerV1IngressPolicy < 3) {
     o.ingressFrom = buildGoogleIdentityAccesscontextmanagerV1IngressFrom();
     o.ingressTo = buildGoogleIdentityAccesscontextmanagerV1IngressTo();
+    o.title = 'foo';
   }
   buildCounterGoogleIdentityAccesscontextmanagerV1IngressPolicy--;
   return o;
@@ -2795,6 +2801,10 @@ void checkGoogleIdentityAccesscontextmanagerV1IngressPolicy(
   if (buildCounterGoogleIdentityAccesscontextmanagerV1IngressPolicy < 3) {
     checkGoogleIdentityAccesscontextmanagerV1IngressFrom(o.ingressFrom!);
     checkGoogleIdentityAccesscontextmanagerV1IngressTo(o.ingressTo!);
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleIdentityAccesscontextmanagerV1IngressPolicy--;
 }
@@ -2948,6 +2958,7 @@ api.GoogleIdentityAccesscontextmanagerV1ServicePerimeter
   buildCounterGoogleIdentityAccesscontextmanagerV1ServicePerimeter++;
   if (buildCounterGoogleIdentityAccesscontextmanagerV1ServicePerimeter < 3) {
     o.description = 'foo';
+    o.etag = 'foo';
     o.name = 'foo';
     o.perimeterType = 'foo';
     o.spec = buildGoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig();
@@ -2966,6 +2977,10 @@ void checkGoogleIdentityAccesscontextmanagerV1ServicePerimeter(
   if (buildCounterGoogleIdentityAccesscontextmanagerV1ServicePerimeter < 3) {
     unittest.expect(
       o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.etag!,
       unittest.equals('foo'),
     );
     unittest.expect(

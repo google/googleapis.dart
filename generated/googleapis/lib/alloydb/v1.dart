@@ -709,6 +709,49 @@ class ProjectsLocationsClustersResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Exports data from the cluster.
+  ///
+  /// Imperative only.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the cluster.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> export(
+    ExportClusterRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':export';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets details of a single Cluster.
   ///
   /// Request parameters:
@@ -1962,8 +2005,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3263,6 +3306,62 @@ class ContinuousBackupSource {
       };
 }
 
+/// Options for exporting data in CSV format.
+class CsvExportOptions {
+  /// Specifies the character that should appear before a data character that
+  /// needs to be escaped.
+  ///
+  /// The default is the same as quote character. The value of this argument has
+  /// to be a character in Hex ASCII Code.
+  ///
+  /// Optional.
+  core.String? escapeCharacter;
+
+  /// Specifies the character that separates columns within each row (line) of
+  /// the file.
+  ///
+  /// The default is comma. The value of this argument has to be a character in
+  /// Hex ASCII Code.
+  ///
+  /// Optional.
+  core.String? fieldDelimiter;
+
+  /// Specifies the quoting character to be used when a data value is quoted.
+  ///
+  /// The default is double-quote. The value of this argument has to be a
+  /// character in Hex ASCII Code.
+  ///
+  /// Optional.
+  core.String? quoteCharacter;
+
+  /// The SELECT query used to extract the data.
+  ///
+  /// Required.
+  core.String? selectQuery;
+
+  CsvExportOptions({
+    this.escapeCharacter,
+    this.fieldDelimiter,
+    this.quoteCharacter,
+    this.selectQuery,
+  });
+
+  CsvExportOptions.fromJson(core.Map json_)
+      : this(
+          escapeCharacter: json_['escapeCharacter'] as core.String?,
+          fieldDelimiter: json_['fieldDelimiter'] as core.String?,
+          quoteCharacter: json_['quoteCharacter'] as core.String?,
+          selectQuery: json_['selectQuery'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (escapeCharacter != null) 'escapeCharacter': escapeCharacter!,
+        if (fieldDelimiter != null) 'fieldDelimiter': fieldDelimiter!,
+        if (quoteCharacter != null) 'quoteCharacter': quoteCharacter!,
+        if (selectQuery != null) 'selectQuery': selectQuery!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -3316,8 +3415,91 @@ class EncryptionInfo {
       };
 }
 
+/// Export cluster request.
+class ExportClusterRequest {
+  /// Options for exporting data in CSV format.
+  ///
+  /// Required field to be set for CSV file type.
+  CsvExportOptions? csvExportOptions;
+
+  /// Name of the database where the export command will be executed.
+  ///
+  /// Note - Value provided should be the same as expected from `SELECT
+  /// current_database();` and NOT as a resource reference.
+  ///
+  /// Required.
+  core.String? database;
+
+  /// Option to export data to cloud storage.
+  ///
+  /// Required.
+  GcsDestination? gcsDestination;
+
+  /// Options for exporting data in SQL format.
+  ///
+  /// Required field to be set for SQL file type.
+  SqlExportOptions? sqlExportOptions;
+
+  ExportClusterRequest({
+    this.csvExportOptions,
+    this.database,
+    this.gcsDestination,
+    this.sqlExportOptions,
+  });
+
+  ExportClusterRequest.fromJson(core.Map json_)
+      : this(
+          csvExportOptions: json_.containsKey('csvExportOptions')
+              ? CsvExportOptions.fromJson(json_['csvExportOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          database: json_['database'] as core.String?,
+          gcsDestination: json_.containsKey('gcsDestination')
+              ? GcsDestination.fromJson(json_['gcsDestination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sqlExportOptions: json_.containsKey('sqlExportOptions')
+              ? SqlExportOptions.fromJson(json_['sqlExportOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (csvExportOptions != null) 'csvExportOptions': csvExportOptions!,
+        if (database != null) 'database': database!,
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
+        if (sqlExportOptions != null) 'sqlExportOptions': sqlExportOptions!,
+      };
+}
+
 /// Message for triggering failover on an Instance
 typedef FailoverInstanceRequest = $Request05;
+
+/// Destination for Export.
+///
+/// Export will be done to cloud storage.
+class GcsDestination {
+  /// The path to the file in Google Cloud Storage where the export will be
+  /// stored.
+  ///
+  /// The URI is in the form `gs://bucketName/fileName`.
+  ///
+  /// Required.
+  core.String? uri;
+
+  GcsDestination({
+    this.uri,
+  });
+
+  GcsDestination.fromJson(core.Map json_)
+      : this(
+          uri: json_['uri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
 
 /// The response message for Locations.ListLocations.
 class GoogleCloudLocationListLocationsResponse {
@@ -3443,16 +3625,18 @@ class Instance {
 
   /// Database flags.
   ///
-  /// Set at instance level. * They are copied from primary instance on read
-  /// instance creation. * Read instances can set new or override existing flags
-  /// that are relevant for reads, e.g. for enabling columnar cache on a read
-  /// instance. Flags set on read instance may or may not be present on primary.
-  /// This is a list of "key": "value" pairs. "key": The name of the flag. These
-  /// flags are passed at instance setup time, so include both server options
-  /// and system variables for Postgres. Flags are specified with underscores,
-  /// not hyphens. "value": The value of the flag. Booleans are set to **on**
-  /// for true and **off** for false. This field must be omitted if the flag
-  /// doesn't take a value.
+  /// Set at the instance level. They are copied from the primary instance on
+  /// secondary instance creation. Flags that have restrictions default to the
+  /// value at primary instance on read instances during creation. Read
+  /// instances can set new flags or override existing flags that are relevant
+  /// for reads, for example, for enabling columnar cache on a read instance.
+  /// Flags set on read instance might or might not be present on the primary
+  /// instance. This is a list of "key": "value" pairs. "key": The name of the
+  /// flag. These flags are passed at instance setup time, so include both
+  /// server options and system variables for Postgres. Flags are specified with
+  /// underscores, not hyphens. "value": The value of the flag. Booleans are set
+  /// to **on** for true and **off** for false. This field must be omitted if
+  /// the flag doesn't take a value.
   core.Map<core.String, core.String>? databaseFlags;
 
   /// Delete time stamp
@@ -4760,6 +4944,59 @@ class SecondaryConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (primaryClusterName != null)
           'primaryClusterName': primaryClusterName!,
+      };
+}
+
+/// Options for exporting data in SQL format.
+class SqlExportOptions {
+  /// If true, output commands to DROP all the dumped database objects prior to
+  /// outputting the commands for creating them.
+  ///
+  /// Optional.
+  core.bool? cleanTargetObjects;
+
+  /// If true, use DROP ...
+  ///
+  /// IF EXISTS commands to check for the object's existence before dropping it
+  /// in clean_target_objects mode.
+  ///
+  /// Optional.
+  core.bool? ifExistTargetObjects;
+
+  /// If true, only export the schema.
+  ///
+  /// Optional.
+  core.bool? schemaOnly;
+
+  /// Tables to export from.
+  ///
+  /// Optional.
+  core.List<core.String>? tables;
+
+  SqlExportOptions({
+    this.cleanTargetObjects,
+    this.ifExistTargetObjects,
+    this.schemaOnly,
+    this.tables,
+  });
+
+  SqlExportOptions.fromJson(core.Map json_)
+      : this(
+          cleanTargetObjects: json_['cleanTargetObjects'] as core.bool?,
+          ifExistTargetObjects: json_['ifExistTargetObjects'] as core.bool?,
+          schemaOnly: json_['schemaOnly'] as core.bool?,
+          tables: (json_['tables'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cleanTargetObjects != null)
+          'cleanTargetObjects': cleanTargetObjects!,
+        if (ifExistTargetObjects != null)
+          'ifExistTargetObjects': ifExistTargetObjects!,
+        if (schemaOnly != null) 'schemaOnly': schemaOnly!,
+        if (tables != null) 'tables': tables!,
       };
 }
 

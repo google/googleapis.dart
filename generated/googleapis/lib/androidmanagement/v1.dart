@@ -2305,22 +2305,22 @@ class ApplicationPolicy {
   /// by default.
   /// - "PROMPT" : Prompt the user to grant a permission.
   /// - "GRANT" : Automatically grant a permission.On Android 12 and above,
-  /// Manifest.permission.READ_SMS
+  /// READ_SMS
   /// (https://developer.android.com/reference/android/Manifest.permission#READ_SMS)
   /// and following sensor-related permissions can only be granted on fully
-  /// managed devices: Manifest.permission.ACCESS_FINE_LOCATION
+  /// managed devices: ACCESS_FINE_LOCATION
   /// (https://developer.android.com/reference/android/Manifest.permission#ACCESS_FINE_LOCATION)
-  /// Manifest.permission.ACCESS_BACKGROUND_LOCATION
+  /// ACCESS_BACKGROUND_LOCATION
   /// (https://developer.android.com/reference/android/Manifest.permission#ACCESS_BACKGROUND_LOCATION)
-  /// Manifest.permission.ACCESS_COARSE_LOCATION
+  /// ACCESS_COARSE_LOCATION
   /// (https://developer.android.com/reference/android/Manifest.permission#ACCESS_COARSE_LOCATION)
-  /// Manifest.permission.CAMERA
+  /// CAMERA
   /// (https://developer.android.com/reference/android/Manifest.permission#CAMERA)
-  /// Manifest.permission.RECORD_AUDIO
+  /// RECORD_AUDIO
   /// (https://developer.android.com/reference/android/Manifest.permission#RECORD_AUDIO)
-  /// Manifest.permission.ACTIVITY_RECOGNITION
+  /// ACTIVITY_RECOGNITION
   /// (https://developer.android.com/reference/android/Manifest.permission#ACTIVITY_RECOGNITION)
-  /// Manifest.permission.BODY_SENSORS
+  /// BODY_SENSORS
   /// (https://developer.android.com/reference/android/Manifest.permission#BODY_SENSORS)
   /// - "DENY" : Automatically deny a permission.
   core.String? defaultPermissionPolicy;
@@ -4584,12 +4584,12 @@ class Enterprise {
 /// Configuration to enable an app as an extension app, with the capability of
 /// interacting with Android Device Policy offline.
 ///
-/// For Android versions 13 and above, extension apps are exempt from battery
+/// For Android versions 11 and above, extension apps are exempt from battery
 /// restrictions so will not be placed into the restricted App Standby Bucket
 /// (https://developer.android.com/topic/performance/appstandby#restricted-bucket).
 /// Extensions apps are also protected against users clearing their data or
 /// force-closing the application, although admins can continue to use the clear
-/// app data command on extension apps if needed for Android 13 and above.
+/// app data command on extension apps if needed for Android 11 and above.
 class ExtensionConfig {
   /// Fully qualified class name of the receiver service class for Android
   /// Device Policy to notify the extension app of any local command status
@@ -6545,22 +6545,22 @@ class PermissionGrant {
   /// by default.
   /// - "PROMPT" : Prompt the user to grant a permission.
   /// - "GRANT" : Automatically grant a permission.On Android 12 and above,
-  /// Manifest.permission.READ_SMS
+  /// READ_SMS
   /// (https://developer.android.com/reference/android/Manifest.permission#READ_SMS)
   /// and following sensor-related permissions can only be granted on fully
-  /// managed devices: Manifest.permission.ACCESS_FINE_LOCATION
+  /// managed devices: ACCESS_FINE_LOCATION
   /// (https://developer.android.com/reference/android/Manifest.permission#ACCESS_FINE_LOCATION)
-  /// Manifest.permission.ACCESS_BACKGROUND_LOCATION
+  /// ACCESS_BACKGROUND_LOCATION
   /// (https://developer.android.com/reference/android/Manifest.permission#ACCESS_BACKGROUND_LOCATION)
-  /// Manifest.permission.ACCESS_COARSE_LOCATION
+  /// ACCESS_COARSE_LOCATION
   /// (https://developer.android.com/reference/android/Manifest.permission#ACCESS_COARSE_LOCATION)
-  /// Manifest.permission.CAMERA
+  /// CAMERA
   /// (https://developer.android.com/reference/android/Manifest.permission#CAMERA)
-  /// Manifest.permission.RECORD_AUDIO
+  /// RECORD_AUDIO
   /// (https://developer.android.com/reference/android/Manifest.permission#RECORD_AUDIO)
-  /// Manifest.permission.ACTIVITY_RECOGNITION
+  /// ACTIVITY_RECOGNITION
   /// (https://developer.android.com/reference/android/Manifest.permission#ACTIVITY_RECOGNITION)
-  /// Manifest.permission.BODY_SENSORS
+  /// BODY_SENSORS
   /// (https://developer.android.com/reference/android/Manifest.permission#BODY_SENSORS)
   /// - "DENY" : Automatically deny a permission.
   core.String? policy;
@@ -6704,6 +6704,18 @@ class PersonalUsagePolicies {
   /// personal profile.
   core.String? personalPlayStoreMode;
 
+  /// Controls whether a private space is allowed on the device.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRIVATE_SPACE_POLICY_UNSPECIFIED" : Unspecified. Defaults to
+  /// PRIVATE_SPACE_ALLOWED.
+  /// - "PRIVATE_SPACE_ALLOWED" : Users can create a private space profile.
+  /// - "PRIVATE_SPACE_DISALLOWED" : Users cannot create a private space
+  /// profile. Supported only for company-owned devices with a work profile.
+  /// Caution: Any existing private space will be removed.
+  core.String? privateSpacePolicy;
+
   /// If true, screen capture is disabled for all users.
   core.bool? screenCaptureDisabled;
 
@@ -6713,6 +6725,7 @@ class PersonalUsagePolicies {
     this.maxDaysWithWorkOff,
     this.personalApplications,
     this.personalPlayStoreMode,
+    this.privateSpacePolicy,
     this.screenCaptureDisabled,
   });
 
@@ -6729,6 +6742,7 @@ class PersonalUsagePolicies {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           personalPlayStoreMode: json_['personalPlayStoreMode'] as core.String?,
+          privateSpacePolicy: json_['privateSpacePolicy'] as core.String?,
           screenCaptureDisabled: json_['screenCaptureDisabled'] as core.bool?,
         );
 
@@ -6743,6 +6757,8 @@ class PersonalUsagePolicies {
           'personalApplications': personalApplications!,
         if (personalPlayStoreMode != null)
           'personalPlayStoreMode': personalPlayStoreMode!,
+        if (privateSpacePolicy != null)
+          'privateSpacePolicy': privateSpacePolicy!,
         if (screenCaptureDisabled != null)
           'screenCaptureDisabled': screenCaptureDisabled!,
       };
@@ -6755,6 +6771,9 @@ class Policy {
   core.List<core.String>? accountTypesWithManagementDisabled;
 
   /// Whether adding new users and profiles is disabled.
+  ///
+  /// For devices where managementMode is DEVICE_OWNER this field is ignored and
+  /// the user is never allowed to add or remove users.
   core.bool? addUserDisabled;
 
   /// Whether adjusting the master volume is disabled.
@@ -6964,22 +6983,22 @@ class Policy {
   /// by default.
   /// - "PROMPT" : Prompt the user to grant a permission.
   /// - "GRANT" : Automatically grant a permission.On Android 12 and above,
-  /// Manifest.permission.READ_SMS
+  /// READ_SMS
   /// (https://developer.android.com/reference/android/Manifest.permission#READ_SMS)
   /// and following sensor-related permissions can only be granted on fully
-  /// managed devices: Manifest.permission.ACCESS_FINE_LOCATION
+  /// managed devices: ACCESS_FINE_LOCATION
   /// (https://developer.android.com/reference/android/Manifest.permission#ACCESS_FINE_LOCATION)
-  /// Manifest.permission.ACCESS_BACKGROUND_LOCATION
+  /// ACCESS_BACKGROUND_LOCATION
   /// (https://developer.android.com/reference/android/Manifest.permission#ACCESS_BACKGROUND_LOCATION)
-  /// Manifest.permission.ACCESS_COARSE_LOCATION
+  /// ACCESS_COARSE_LOCATION
   /// (https://developer.android.com/reference/android/Manifest.permission#ACCESS_COARSE_LOCATION)
-  /// Manifest.permission.CAMERA
+  /// CAMERA
   /// (https://developer.android.com/reference/android/Manifest.permission#CAMERA)
-  /// Manifest.permission.RECORD_AUDIO
+  /// RECORD_AUDIO
   /// (https://developer.android.com/reference/android/Manifest.permission#RECORD_AUDIO)
-  /// Manifest.permission.ACTIVITY_RECOGNITION
+  /// ACTIVITY_RECOGNITION
   /// (https://developer.android.com/reference/android/Manifest.permission#ACTIVITY_RECOGNITION)
-  /// Manifest.permission.BODY_SENSORS
+  /// BODY_SENSORS
   /// (https://developer.android.com/reference/android/Manifest.permission#BODY_SENSORS)
   /// - "DENY" : Automatically deny a permission.
   core.String? defaultPermissionPolicy;
@@ -7043,6 +7062,8 @@ class Policy {
   /// If true, this disables the Lock Screen
   /// (https://source.android.com/docs/core/display/multi_display/lock-screen)
   /// for primary and/or secondary displays.
+  ///
+  /// This policy is supported only in dedicated device management mode.
   core.bool? keyguardDisabled;
 
   /// Disabled keyguard customizations, such as widgets.
@@ -9374,6 +9395,11 @@ class WifiRoamingSetting {
   /// Possible string values are:
   /// - "WIFI_ROAMING_MODE_UNSPECIFIED" : Unspecified. Defaults to
   /// WIFI_ROAMING_DEFAULT.
+  /// - "WIFI_ROAMING_DISABLED" : Wi-Fi roaming is disabled. Supported on
+  /// Android 15 and above on fully managed devices and work profiles on
+  /// company-owned devices. A nonComplianceDetail with MANAGEMENT_MODE is
+  /// reported for other management modes. A nonComplianceDetail with API_LEVEL
+  /// is reported if the Android version is less than 15.
   /// - "WIFI_ROAMING_DEFAULT" : Default Wi-Fi roaming mode of the device.
   /// - "WIFI_ROAMING_AGGRESSIVE" : Aggressive roaming mode which allows quicker
   /// Wi-Fi roaming. Supported on Android 15 and above on fully managed devices

@@ -53,8 +53,6 @@
 /// - [ReturnaddressResource]
 /// - [ReturnpolicyResource]
 /// - [ReturnpolicyonlineResource]
-/// - [SettlementreportsResource]
-/// - [SettlementtransactionsResource]
 /// - [ShippingsettingsResource]
 /// - [ShoppingadsprogramResource]
 library;
@@ -121,10 +119,6 @@ class ShoppingContentApi {
   ReturnpolicyResource get returnpolicy => ReturnpolicyResource(_requester);
   ReturnpolicyonlineResource get returnpolicyonline =>
       ReturnpolicyonlineResource(_requester);
-  SettlementreportsResource get settlementreports =>
-      SettlementreportsResource(_requester);
-  SettlementtransactionsResource get settlementtransactions =>
-      SettlementtransactionsResource(_requester);
   ShippingsettingsResource get shippingsettings =>
       ShippingsettingsResource(_requester);
   ShoppingadsprogramResource get shoppingadsprogram =>
@@ -5959,170 +5953,6 @@ class ReturnpolicyonlineResource {
       queryParams: queryParams_,
     );
     return ReturnPolicyOnline.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class SettlementreportsResource {
-  final commons.ApiRequester _requester;
-
-  SettlementreportsResource(commons.ApiRequester client) : _requester = client;
-
-  /// Retrieves a settlement report from your Merchant Center account.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - The Merchant Center account of the settlement report.
-  ///
-  /// [settlementId] - The Google-provided ID of the settlement.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [SettlementReport].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<SettlementReport> get(
-    core.String merchantId,
-    core.String settlementId, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = commons.escapeVariable('$merchantId') +
-        '/settlementreports/' +
-        commons.escapeVariable('$settlementId');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return SettlementReport.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Retrieves a list of settlement reports from your Merchant Center account.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - The Merchant Center account to list settlements for.
-  ///
-  /// [maxResults] - The maximum number of settlements to return in the
-  /// response, used for paging. The default value is 200 returns per page, and
-  /// the maximum allowed value is 5000 returns per page.
-  ///
-  /// [pageToken] - The token returned by the previous request.
-  ///
-  /// [transferEndDate] - Obtains settlements which have transactions before
-  /// this date (inclusively), in ISO 8601 format.
-  ///
-  /// [transferStartDate] - Obtains settlements which have transactions after
-  /// this date (inclusively), in ISO 8601 format.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [SettlementreportsListResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<SettlementreportsListResponse> list(
-    core.String merchantId, {
-    core.int? maxResults,
-    core.String? pageToken,
-    core.String? transferEndDate,
-    core.String? transferStartDate,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (transferEndDate != null) 'transferEndDate': [transferEndDate],
-      if (transferStartDate != null) 'transferStartDate': [transferStartDate],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = commons.escapeVariable('$merchantId') + '/settlementreports';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return SettlementreportsListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class SettlementtransactionsResource {
-  final commons.ApiRequester _requester;
-
-  SettlementtransactionsResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Retrieves a list of transactions for the settlement.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - The Merchant Center account to list transactions for.
-  ///
-  /// [settlementId] - The Google-provided ID of the settlement.
-  ///
-  /// [maxResults] - The maximum number of transactions to return in the
-  /// response, used for paging. The default value is 200 transactions per page,
-  /// and the maximum allowed value is 5000 transactions per page.
-  ///
-  /// [pageToken] - The token returned by the previous request.
-  ///
-  /// [transactionIds] - The list of transactions to return. If not set, all
-  /// transactions will be returned.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [SettlementtransactionsListResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<SettlementtransactionsListResponse> list(
-    core.String merchantId,
-    core.String settlementId, {
-    core.int? maxResults,
-    core.String? pageToken,
-    core.List<core.String>? transactionIds,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (transactionIds != null) 'transactionIds': transactionIds,
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = commons.escapeVariable('$merchantId') +
-        '/settlementreports/' +
-        commons.escapeVariable('$settlementId') +
-        '/transactions';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return SettlementtransactionsListResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -14654,6 +14484,15 @@ class LoyaltyProgram {
   /// Required.
   core.String? programLabel;
 
+  /// The shipping label for the loyalty program.
+  ///
+  /// You can use this label to indicate whether this offer has the loyalty
+  /// shipping benefit. If not specified, the item is not eligible for loyalty
+  /// shipping for the given loyalty tier.
+  ///
+  /// Optional.
+  core.String? shippingLabel;
+
   /// The label of the tier within the loyalty program.
   ///
   /// Must match one of the labels within the program.
@@ -14667,6 +14506,7 @@ class LoyaltyProgram {
     this.memberPriceEffectiveDate,
     this.price,
     this.programLabel,
+    this.shippingLabel,
     this.tierLabel,
   });
 
@@ -14684,6 +14524,7 @@ class LoyaltyProgram {
                   json_['price'] as core.Map<core.String, core.dynamic>)
               : null,
           programLabel: json_['programLabel'] as core.String?,
+          shippingLabel: json_['shippingLabel'] as core.String?,
           tierLabel: json_['tierLabel'] as core.String?,
         );
 
@@ -14695,6 +14536,7 @@ class LoyaltyProgram {
           'memberPriceEffectiveDate': memberPriceEffectiveDate!,
         if (price != null) 'price': price!,
         if (programLabel != null) 'programLabel': programLabel!,
+        if (shippingLabel != null) 'shippingLabel': shippingLabel!,
         if (tierLabel != null) 'tierLabel': tierLabel!,
       };
 }
@@ -22875,395 +22717,6 @@ class ServiceStoreConfigCutoffConfigLocalCutoffTime {
   core.Map<core.String, core.dynamic> toJson() => {
         if (hour != null) 'hour': hour!,
         if (minute != null) 'minute': minute!,
-      };
-}
-
-/// Settlement reports detail order-level and item-level credits and debits
-/// between you and Google.
-class SettlementReport {
-  /// The end date on which all transactions are included in the report, in ISO
-  /// 8601 format.
-  core.String? endDate;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "`content#settlementReport`"
-  core.String? kind;
-
-  /// The residual amount from the previous invoice.
-  ///
-  /// This is set only if the previous invoices are not paid because of negative
-  /// balance.
-  Price? previousBalance;
-
-  /// The ID of the settlement report.
-  core.String? settlementId;
-
-  /// The start date on which all transactions are included in the report, in
-  /// ISO 8601 format.
-  core.String? startDate;
-
-  /// The money due to the merchant.
-  Price? transferAmount;
-
-  /// Date on which transfer for this payment was initiated by Google, in ISO
-  /// 8601 format.
-  core.String? transferDate;
-
-  /// The list of bank identifiers used for the transfer.
-  ///
-  /// For example, Trace ID for Federal Automated Clearing House (ACH). This may
-  /// also be known as the Wire ID.
-  core.List<core.String>? transferIds;
-
-  SettlementReport({
-    this.endDate,
-    this.kind,
-    this.previousBalance,
-    this.settlementId,
-    this.startDate,
-    this.transferAmount,
-    this.transferDate,
-    this.transferIds,
-  });
-
-  SettlementReport.fromJson(core.Map json_)
-      : this(
-          endDate: json_['endDate'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          previousBalance: json_.containsKey('previousBalance')
-              ? Price.fromJson(json_['previousBalance']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          settlementId: json_['settlementId'] as core.String?,
-          startDate: json_['startDate'] as core.String?,
-          transferAmount: json_.containsKey('transferAmount')
-              ? Price.fromJson(json_['transferAmount']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          transferDate: json_['transferDate'] as core.String?,
-          transferIds: (json_['transferIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endDate != null) 'endDate': endDate!,
-        if (kind != null) 'kind': kind!,
-        if (previousBalance != null) 'previousBalance': previousBalance!,
-        if (settlementId != null) 'settlementId': settlementId!,
-        if (startDate != null) 'startDate': startDate!,
-        if (transferAmount != null) 'transferAmount': transferAmount!,
-        if (transferDate != null) 'transferDate': transferDate!,
-        if (transferIds != null) 'transferIds': transferIds!,
-      };
-}
-
-/// Settlement transactions give a detailed breakdown of the settlement report.
-class SettlementTransaction {
-  /// The amount for the transaction.
-  SettlementTransactionAmount? amount;
-
-  /// Identifiers of the transaction.
-  SettlementTransactionIdentifiers? identifiers;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "`content#settlementTransaction`"
-  core.String? kind;
-
-  /// Details of the transaction.
-  SettlementTransactionTransaction? transaction;
-
-  SettlementTransaction({
-    this.amount,
-    this.identifiers,
-    this.kind,
-    this.transaction,
-  });
-
-  SettlementTransaction.fromJson(core.Map json_)
-      : this(
-          amount: json_.containsKey('amount')
-              ? SettlementTransactionAmount.fromJson(
-                  json_['amount'] as core.Map<core.String, core.dynamic>)
-              : null,
-          identifiers: json_.containsKey('identifiers')
-              ? SettlementTransactionIdentifiers.fromJson(
-                  json_['identifiers'] as core.Map<core.String, core.dynamic>)
-              : null,
-          kind: json_['kind'] as core.String?,
-          transaction: json_.containsKey('transaction')
-              ? SettlementTransactionTransaction.fromJson(
-                  json_['transaction'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (amount != null) 'amount': amount!,
-        if (identifiers != null) 'identifiers': identifiers!,
-        if (kind != null) 'kind': kind!,
-        if (transaction != null) 'transaction': transaction!,
-      };
-}
-
-class SettlementTransactionAmount {
-  SettlementTransactionAmountCommission? commission;
-
-  /// The description of the event.
-  ///
-  /// Acceptable values are: - "`taxWithhold`" - "`principal`" -
-  /// "`principalAdjustment`" - "`shippingFee`" - "`merchantRemittedSalesTax`" -
-  /// "`googleRemittedSalesTax`" - "`merchantCoupon`" - "`merchantCouponTax`" -
-  /// "`merchantRemittedDisposalTax`" - "`googleRemittedDisposalTax`" -
-  /// "`merchantRemittedRedemptionFee`" - "`googleRemittedRedemptionFee`" -
-  /// "`eeeEcoFee`" - "`furnitureEcoFee`" - "`copyPrivateFee`" -
-  /// "`eeeEcoFeeCommission`" - "`furnitureEcoFeeCommission`" -
-  /// "`copyPrivateFeeCommission`" - "`principalRefund`" -
-  /// "`principalRefundTax`" - "`itemCommission`" - "`adjustmentCommission`" -
-  /// "`shippingFeeCommission`" - "`commissionRefund`" - "`damaged`" -
-  /// "`damagedOrDefectiveItem`" - "`expiredItem`" - "`faultyItem`" -
-  /// "`incorrectItemReceived`" - "`itemMissing`" - "`qualityNotExpected`" -
-  /// "`receivedTooLate`" - "`storePackageMissing`" - "`transitPackageMissing`"
-  /// - "`unsuccessfulDeliveryUndeliverable`" - "`wrongChargeInStore`" -
-  /// "`wrongItem`" - "`returns`" - "`undeliverable`" -
-  /// "`issueRelatedRefundAndReplacementAmountDescription`" -
-  /// "`refundFromMerchant`" - "`returnLabelShippingFee`" -
-  /// "`lumpSumCorrection`" - "`pspFee`" - "`principalRefundDoesNotFit`" -
-  /// "`principalRefundOrderedWrongItem`" -
-  /// "`principalRefundQualityNotExpected`" -
-  /// "`principalRefundBetterPriceFound`" - "`principalRefundNoLongerNeeded`" -
-  /// "`principalRefundChangedMind`" - "`principalRefundReceivedTooLate`" -
-  /// "`principalRefundIncorrectItemReceived`" -
-  /// "`principalRefundDamagedOrDefectiveItem`" -
-  /// "`principalRefundDidNotMatchDescription`" - "`principalRefundExpiredItem`"
-  core.String? description;
-
-  /// The amount that contributes to the line item price.
-  Price? transactionAmount;
-
-  /// The type of the amount.
-  ///
-  /// Acceptable values are: - "`itemPrice`" - "`orderPrice`" - "`refund`" -
-  /// "`earlyRefund`" - "`courtesyRefund`" - "`returnRefund`" -
-  /// "`returnLabelShippingFeeAmount`" - "`lumpSumCorrectionAmount`"
-  core.String? type;
-
-  SettlementTransactionAmount({
-    this.commission,
-    this.description,
-    this.transactionAmount,
-    this.type,
-  });
-
-  SettlementTransactionAmount.fromJson(core.Map json_)
-      : this(
-          commission: json_.containsKey('commission')
-              ? SettlementTransactionAmountCommission.fromJson(
-                  json_['commission'] as core.Map<core.String, core.dynamic>)
-              : null,
-          description: json_['description'] as core.String?,
-          transactionAmount: json_.containsKey('transactionAmount')
-              ? Price.fromJson(json_['transactionAmount']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          type: json_['type'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (commission != null) 'commission': commission!,
-        if (description != null) 'description': description!,
-        if (transactionAmount != null) 'transactionAmount': transactionAmount!,
-        if (type != null) 'type': type!,
-      };
-}
-
-class SettlementTransactionAmountCommission {
-  /// The category of the commission.
-  ///
-  /// Acceptable values are: - "`animalsAndPetSupplies`" -
-  /// "`dogCatFoodAndCatLitter`" - "`apparelAndAccessories`" -
-  /// "`shoesHandbagsAndSunglasses`" - "`costumesAndAccessories`" - "`jewelry`"
-  /// - "`watches`" - "`hobbiesArtsAndCrafts`" - "`homeAndGarden`" -
-  /// "`entertainmentCollectibles`" - "`collectibleCoins`" -
-  /// "`sportsCollectibles`" - "`sportingGoods`" - "`toysAndGames`" -
-  /// "`musicalInstruments`" - "`giftCards`" - "`babyAndToddler`" -
-  /// "`babyFoodWipesAndDiapers`" - "`businessAndIndustrial`" -
-  /// "`camerasOpticsAndPhotography`" - "`consumerElectronics`" -
-  /// "`electronicsAccessories`" - "`personalComputers`" - "`videoGameConsoles`"
-  /// - "`foodAndGrocery`" - "`beverages`" - "`tobaccoProducts`" - "`furniture`"
-  /// - "`hardware`" - "`buildingMaterials`" - "`tools`" -
-  /// "`healthAndPersonalCare`" - "`beauty`" - "`householdSupplies`" -
-  /// "`kitchenAndDining`" - "`majorAppliances`" - "`luggageAndBags`" -
-  /// "`media`" - "`officeSupplies`" - "`softwareAndVideoGames`" -
-  /// "`vehiclePartsAndAccessories`" - "`vehicleTiresAndWheels`" - "`vehicles`"
-  /// - "`everythingElse`"
-  core.String? category;
-
-  /// Rate of the commission in percentage.
-  core.String? rate;
-
-  SettlementTransactionAmountCommission({
-    this.category,
-    this.rate,
-  });
-
-  SettlementTransactionAmountCommission.fromJson(core.Map json_)
-      : this(
-          category: json_['category'] as core.String?,
-          rate: json_['rate'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (category != null) 'category': category!,
-        if (rate != null) 'rate': rate!,
-      };
-}
-
-class SettlementTransactionIdentifiers {
-  /// The identifier of the adjustments, if it's available.
-  core.String? adjustmentId;
-
-  /// The merchant provided order ID.
-  core.String? merchantOrderId;
-
-  /// The identifier of the item.
-  core.String? orderItemId;
-
-  /// The unique ID of the settlement transaction entry.
-  core.String? settlementEntryId;
-
-  /// The shipment ids for the item.
-  core.List<core.String>? shipmentIds;
-
-  /// The Google transaction ID.
-  core.String? transactionId;
-
-  SettlementTransactionIdentifiers({
-    this.adjustmentId,
-    this.merchantOrderId,
-    this.orderItemId,
-    this.settlementEntryId,
-    this.shipmentIds,
-    this.transactionId,
-  });
-
-  SettlementTransactionIdentifiers.fromJson(core.Map json_)
-      : this(
-          adjustmentId: json_['adjustmentId'] as core.String?,
-          merchantOrderId: json_['merchantOrderId'] as core.String?,
-          orderItemId: json_['orderItemId'] as core.String?,
-          settlementEntryId: json_['settlementEntryId'] as core.String?,
-          shipmentIds: (json_['shipmentIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          transactionId: json_['transactionId'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (adjustmentId != null) 'adjustmentId': adjustmentId!,
-        if (merchantOrderId != null) 'merchantOrderId': merchantOrderId!,
-        if (orderItemId != null) 'orderItemId': orderItemId!,
-        if (settlementEntryId != null) 'settlementEntryId': settlementEntryId!,
-        if (shipmentIds != null) 'shipmentIds': shipmentIds!,
-        if (transactionId != null) 'transactionId': transactionId!,
-      };
-}
-
-class SettlementTransactionTransaction {
-  /// The time on which the event occurred in ISO 8601 format.
-  core.String? postDate;
-
-  /// The type of the transaction that occurred.
-  ///
-  /// Acceptable values are: - "`order`" - "`reversal`" - "`orderRefund`" -
-  /// "`reversalRefund`" - "`issueRelatedRefundAndReplacement`" -
-  /// "`returnLabelShippingFeeTransaction`" -
-  /// "`reversalIssueRelatedRefundAndReplacement`" -
-  /// "`reversalReturnLabelShippingFeeTransaction`" -
-  /// "`lumpSumCorrectionTransaction`"
-  core.String? type;
-
-  SettlementTransactionTransaction({
-    this.postDate,
-    this.type,
-  });
-
-  SettlementTransactionTransaction.fromJson(core.Map json_)
-      : this(
-          postDate: json_['postDate'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (postDate != null) 'postDate': postDate!,
-        if (type != null) 'type': type!,
-      };
-}
-
-class SettlementreportsListResponse {
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "`content#settlementreportsListResponse`".
-  core.String? kind;
-
-  /// The token for the retrieval of the next page of returns.
-  core.String? nextPageToken;
-  core.List<SettlementReport>? resources;
-
-  SettlementreportsListResponse({
-    this.kind,
-    this.nextPageToken,
-    this.resources,
-  });
-
-  SettlementreportsListResponse.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          resources: (json_['resources'] as core.List?)
-              ?.map((value) => SettlementReport.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resources != null) 'resources': resources!,
-      };
-}
-
-class SettlementtransactionsListResponse {
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "`content#settlementtransactionsListResponse`".
-  core.String? kind;
-
-  /// The token for the retrieval of the next page of returns.
-  core.String? nextPageToken;
-  core.List<SettlementTransaction>? resources;
-
-  SettlementtransactionsListResponse({
-    this.kind,
-    this.nextPageToken,
-    this.resources,
-  });
-
-  SettlementtransactionsListResponse.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          resources: (json_['resources'] as core.List?)
-              ?.map((value) => SettlementTransaction.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resources != null) 'resources': resources!,
       };
 }
 

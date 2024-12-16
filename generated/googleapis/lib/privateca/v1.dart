@@ -510,8 +510,8 @@ class ProjectsLocationsCaPoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Identifier. The resource name for this CaPool in the
-  /// format `projects / * /locations / * /caPools / * `.
+  /// [name] - Identifier. The resource name for this CaPool in the format
+  /// `projects / * /locations / * /caPools / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/caPools/\[^/\]+$`.
   ///
@@ -1096,9 +1096,9 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Identifier. The resource name for this
-  /// CertificateAuthority in the format `projects / * /locations / * /caPools /
-  /// * /certificateAuthorities / * `.
+  /// [name] - Identifier. The resource name for this CertificateAuthority in
+  /// the format `projects / * /locations / * /caPools / *
+  /// /certificateAuthorities / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/caPools/\[^/\]+/certificateAuthorities/\[^/\]+$`.
   ///
@@ -1364,7 +1364,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRe
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name for this CertificateRevocationList
+  /// [name] - Identifier. The resource name for this CertificateRevocationList
   /// in the format `projects / * /locations / * /caPools / *
   /// certificateAuthorities / * / certificateRevocationLists / * `.
   /// Value must have pattern
@@ -1538,7 +1538,7 @@ class ProjectsLocationsCaPoolsCertificatesResource {
   ///
   /// [certificateId] - Optional. It must be unique within a location and match
   /// the regular expression `[a-zA-Z0-9_-]{1,63}`. This field is required when
-  /// using a CertificateAuthority in the Enterprise CertificateAuthority.Tier,
+  /// using a CertificateAuthority in the Enterprise CertificateAuthority.tier,
   /// but is optional and its value is ignored otherwise.
   ///
   /// [issuingCertificateAuthorityId] - Optional. The resource ID of the
@@ -1718,7 +1718,7 @@ class ProjectsLocationsCaPoolsCertificatesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name for this Certificate in the format
+  /// [name] - Identifier. The resource name for this Certificate in the format
   /// `projects / * /locations / * /caPools / * /certificates / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/caPools/\[^/\]+/certificates/\[^/\]+$`.
@@ -2096,8 +2096,8 @@ class ProjectsLocationsCertificateTemplatesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name for this CertificateTemplate in
-  /// the format `projects / * /locations / * /certificateTemplates / * `.
+  /// [name] - Identifier. The resource name for this CertificateTemplate in the
+  /// format `projects / * /locations / * /certificateTemplates / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/certificateTemplates/\[^/\]+$`.
   ///
@@ -2263,8 +2263,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2779,8 +2779,6 @@ class CaPool {
   ///
   /// The resource name for this CaPool in the format `projects / * /locations /
   /// * /caPools / * `.
-  ///
-  /// Output only.
   core.String? name;
 
   /// The PublishingOptions to follow when issuing Certificates from any
@@ -2890,10 +2888,10 @@ class Certificate {
   /// Required. Immutable.
   core.String? lifetime;
 
+  /// Identifier.
+  ///
   /// The resource name for this Certificate in the format `projects / *
   /// /locations / * /caPools / * /certificates / * `.
-  ///
-  /// Output only.
   core.String? name;
 
   /// The pem-encoded, signed X.509 certificate.
@@ -3097,8 +3095,6 @@ class CertificateAuthority {
   ///
   /// The resource name for this CertificateAuthority in the format `projects /
   /// * /locations / * /caPools / * /certificateAuthorities / * `.
-  ///
-  /// Output only.
   core.String? name;
 
   /// This CertificateAuthority's certificate chain, including the current
@@ -3602,11 +3598,11 @@ class CertificateRevocationList {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
+  /// Identifier.
+  ///
   /// The resource name for this CertificateRevocationList in the format
   /// `projects / * /locations / * /caPools / * certificateAuthorities / * /
   /// certificateRevocationLists / * `.
-  ///
-  /// Output only.
   core.String? name;
 
   /// The PEM-encoded X.509 CRL.
@@ -3736,10 +3732,10 @@ class CertificateTemplate {
   /// Optional.
   core.String? maximumLifetime;
 
+  /// Identifier.
+  ///
   /// The resource name for this CertificateTemplate in the format `projects / *
   /// /locations / * /certificateTemplates / * `.
-  ///
-  /// Output only.
   core.String? name;
 
   /// Describes the set of X.509 extensions that may appear in a Certificate
@@ -4391,7 +4387,7 @@ class ListCaPoolsResponse {
 
   /// A token to retrieve next page of results.
   ///
-  /// Pass this value in ListCertificateAuthoritiesRequest.next_page_token to
+  /// Pass this value in ListCertificateAuthoritiesRequest.page_token to
   /// retrieve the next page of results.
   core.String? nextPageToken;
 
@@ -4430,7 +4426,7 @@ class ListCertificateAuthoritiesResponse {
 
   /// A token to retrieve next page of results.
   ///
-  /// Pass this value in ListCertificateAuthoritiesRequest.next_page_token to
+  /// Pass this value in ListCertificateAuthoritiesRequest.page_token to
   /// retrieve the next page of results.
   core.String? nextPageToken;
 
@@ -4472,8 +4468,8 @@ class ListCertificateRevocationListsResponse {
 
   /// A token to retrieve next page of results.
   ///
-  /// Pass this value in ListCertificateRevocationListsRequest.next_page_token
-  /// to retrieve the next page of results.
+  /// Pass this value in ListCertificateRevocationListsRequest.page_token to
+  /// retrieve the next page of results.
   core.String? nextPageToken;
 
   /// A list of locations (e.g. "us-west1") that could not be reached.
@@ -4513,8 +4509,8 @@ class ListCertificateTemplatesResponse {
 
   /// A token to retrieve next page of results.
   ///
-  /// Pass this value in ListCertificateTemplatesRequest.next_page_token to
-  /// retrieve the next page of results.
+  /// Pass this value in ListCertificateTemplatesRequest.page_token to retrieve
+  /// the next page of results.
   core.String? nextPageToken;
 
   /// A list of locations (e.g. "us-west1") that could not be reached.
@@ -4553,8 +4549,8 @@ class ListCertificatesResponse {
 
   /// A token to retrieve next page of results.
   ///
-  /// Pass this value in ListCertificatesRequest.next_page_token to retrieve the
-  /// next page of results.
+  /// Pass this value in ListCertificatesRequest.page_token to retrieve the next
+  /// page of results.
   core.String? nextPageToken;
 
   /// A list of locations (e.g. "us-west1") that could not be reached.

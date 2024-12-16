@@ -4060,7 +4060,7 @@ class Autopilot {
   /// Enable Autopilot
   core.bool? enabled;
 
-  /// Workload policy configuration for Autopilot.
+  /// WorkloadPolicyConfig is the configuration related to GCW workload policy
   WorkloadPolicyConfig? workloadPolicyConfig;
 
   Autopilot({
@@ -5628,7 +5628,7 @@ class ClusterUpdate {
   /// The desired authenticator groups config for the cluster.
   AuthenticatorGroupsConfig? desiredAuthenticatorGroupsConfig;
 
-  /// The desired workload policy configuration for the autopilot cluster.
+  /// WorkloadPolicyConfig is the configuration related to GCW workload policy
   WorkloadPolicyConfig? desiredAutopilotWorkloadPolicyConfig;
 
   /// The desired configuration options for the Binary Authorization feature.
@@ -5692,6 +5692,9 @@ class ClusterUpdate {
     'Not supported. Member documentation may have more information.',
   )
   core.bool? desiredEnablePrivateEndpoint;
+
+  /// The desired enterprise configuration for the cluster.
+  DesiredEnterpriseConfig? desiredEnterpriseConfig;
 
   /// The desired fleet configuration for the cluster.
   Fleet? desiredFleet;
@@ -5798,6 +5801,12 @@ class ClusterUpdate {
   /// The desired node kubelet config for all auto-provisioned node pools in
   /// autopilot clusters and node auto-provisioning enabled clusters.
   NodeKubeletConfig? desiredNodePoolAutoConfigKubeletConfig;
+
+  /// The desired Linux node config for all auto-provisioned node pools in
+  /// autopilot clusters and node auto-provisioning enabled clusters.
+  ///
+  /// Currently only `cgroup_mode` can be set here.
+  LinuxNodeConfig? desiredNodePoolAutoConfigLinuxNodeConfig;
 
   /// The desired network tags that apply to all auto-provisioned node pools in
   /// autopilot clusters and node auto-provisioning enabled clusters.
@@ -5943,6 +5952,7 @@ class ClusterUpdate {
     this.desiredEnableFqdnNetworkPolicy,
     this.desiredEnableMultiNetworking,
     this.desiredEnablePrivateEndpoint,
+    this.desiredEnterpriseConfig,
     this.desiredFleet,
     this.desiredGatewayApiConfig,
     this.desiredGcfsConfig,
@@ -5963,6 +5973,7 @@ class ClusterUpdate {
     this.desiredNetworkPerformanceConfig,
     this.desiredNodeKubeletConfig,
     this.desiredNodePoolAutoConfigKubeletConfig,
+    this.desiredNodePoolAutoConfigLinuxNodeConfig,
     this.desiredNodePoolAutoConfigNetworkTags,
     this.desiredNodePoolAutoConfigResourceManagerTags,
     this.desiredNodePoolAutoscaling,
@@ -6072,6 +6083,11 @@ class ClusterUpdate {
               json_['desiredEnableMultiNetworking'] as core.bool?,
           desiredEnablePrivateEndpoint:
               json_['desiredEnablePrivateEndpoint'] as core.bool?,
+          desiredEnterpriseConfig: json_.containsKey('desiredEnterpriseConfig')
+              ? DesiredEnterpriseConfig.fromJson(
+                  json_['desiredEnterpriseConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           desiredFleet: json_.containsKey('desiredFleet')
               ? Fleet.fromJson(
                   json_['desiredFleet'] as core.Map<core.String, core.dynamic>)
@@ -6149,6 +6165,12 @@ class ClusterUpdate {
               json_.containsKey('desiredNodePoolAutoConfigKubeletConfig')
                   ? NodeKubeletConfig.fromJson(
                       json_['desiredNodePoolAutoConfigKubeletConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          desiredNodePoolAutoConfigLinuxNodeConfig:
+              json_.containsKey('desiredNodePoolAutoConfigLinuxNodeConfig')
+                  ? LinuxNodeConfig.fromJson(
+                      json_['desiredNodePoolAutoConfigLinuxNodeConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           desiredNodePoolAutoConfigNetworkTags:
@@ -6301,6 +6323,8 @@ class ClusterUpdate {
           'desiredEnableMultiNetworking': desiredEnableMultiNetworking!,
         if (desiredEnablePrivateEndpoint != null)
           'desiredEnablePrivateEndpoint': desiredEnablePrivateEndpoint!,
+        if (desiredEnterpriseConfig != null)
+          'desiredEnterpriseConfig': desiredEnterpriseConfig!,
         if (desiredFleet != null) 'desiredFleet': desiredFleet!,
         if (desiredGatewayApiConfig != null)
           'desiredGatewayApiConfig': desiredGatewayApiConfig!,
@@ -6339,6 +6363,9 @@ class ClusterUpdate {
         if (desiredNodePoolAutoConfigKubeletConfig != null)
           'desiredNodePoolAutoConfigKubeletConfig':
               desiredNodePoolAutoConfigKubeletConfig!,
+        if (desiredNodePoolAutoConfigLinuxNodeConfig != null)
+          'desiredNodePoolAutoConfigLinuxNodeConfig':
+              desiredNodePoolAutoConfigLinuxNodeConfig!,
         if (desiredNodePoolAutoConfigNetworkTags != null)
           'desiredNodePoolAutoConfigNetworkTags':
               desiredNodePoolAutoConfigNetworkTags!,
@@ -6988,6 +7015,30 @@ class DefaultSnatStatus {
       };
 }
 
+/// DesiredEnterpriseConfig is a wrapper used for updating enterprise_config.
+class DesiredEnterpriseConfig {
+  /// desired_tier specifies the desired tier of the cluster.
+  /// Possible string values are:
+  /// - "CLUSTER_TIER_UNSPECIFIED" : CLUSTER_TIER_UNSPECIFIED is when
+  /// cluster_tier is not set.
+  /// - "STANDARD" : STANDARD indicates a standard GKE cluster.
+  /// - "ENTERPRISE" : ENTERPRISE indicates a GKE Enterprise cluster.
+  core.String? desiredTier;
+
+  DesiredEnterpriseConfig({
+    this.desiredTier,
+  });
+
+  DesiredEnterpriseConfig.fromJson(core.Map json_)
+      : this(
+          desiredTier: json_['desiredTier'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (desiredTier != null) 'desiredTier': desiredTier!,
+      };
+}
+
 /// Configuration for NodeLocal DNSCache
 class DnsCacheConfig {
   /// Whether NodeLocal DNSCache is enabled for this cluster.
@@ -7027,17 +7078,28 @@ class EnterpriseConfig {
   /// - "ENTERPRISE" : ENTERPRISE indicates a GKE Enterprise cluster.
   core.String? clusterTier;
 
+  /// desired_tier specifies the desired tier of the cluster.
+  /// Possible string values are:
+  /// - "CLUSTER_TIER_UNSPECIFIED" : CLUSTER_TIER_UNSPECIFIED is when
+  /// cluster_tier is not set.
+  /// - "STANDARD" : STANDARD indicates a standard GKE cluster.
+  /// - "ENTERPRISE" : ENTERPRISE indicates a GKE Enterprise cluster.
+  core.String? desiredTier;
+
   EnterpriseConfig({
     this.clusterTier,
+    this.desiredTier,
   });
 
   EnterpriseConfig.fromJson(core.Map json_)
       : this(
           clusterTier: json_['clusterTier'] as core.String?,
+          desiredTier: json_['desiredTier'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterTier != null) 'clusterTier': clusterTier!,
+        if (desiredTier != null) 'desiredTier': desiredTier!,
       };
 }
 
@@ -8146,7 +8208,7 @@ class LinuxNodeConfig {
   /// net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max
   /// net.core.wmem_default net.core.wmem_max net.core.optmem_max
   /// net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem
-  /// net.ipv4.tcp_tw_reuse
+  /// net.ipv4.tcp_tw_reuse kernel.shmmni kernel.shmmax kernel.shmall
   core.Map<core.String, core.String>? sysctls;
 
   LinuxNodeConfig({
@@ -9275,6 +9337,20 @@ class NodeConfig {
   /// information.
   core.int? localSsdCount;
 
+  /// Specifies which method should be used for encrypting the Local SSDs
+  /// attahced to the node.
+  /// Possible string values are:
+  /// - "LOCAL_SSD_ENCRYPTION_MODE_UNSPECIFIED" : The given node will be
+  /// encrypted using keys managed by Google infrastructure and the keys will be
+  /// deleted when the node is deleted.
+  /// - "STANDARD_ENCRYPTION" : The given node will be encrypted using keys
+  /// managed by Google infrastructure and the keys will be deleted when the
+  /// node is deleted.
+  /// - "EPHEMERAL_KEY_ENCRYPTION" : The given node will opt-in for using
+  /// ephemeral key for encryption of Local SSDs. The Local SSDs will not be
+  /// able to recover data in case of node crash.
+  core.String? localSsdEncryptionMode;
+
   /// Logging configuration.
   NodePoolLoggingConfig? loggingConfig;
 
@@ -9282,6 +9358,11 @@ class NodeConfig {
   /// [machine type](https://cloud.google.com/compute/docs/machine-types) If
   /// unspecified, the default machine type is `e2-medium`.
   core.String? machineType;
+
+  /// The maximum duration for the nodes to exist.
+  ///
+  /// If unspecified, the nodes can exist indefinitely.
+  core.String? maxRunDuration;
 
   /// The metadata key/value pairs assigned to instances in the cluster.
   ///
@@ -9417,8 +9498,10 @@ class NodeConfig {
     this.linuxNodeConfig,
     this.localNvmeSsdBlockConfig,
     this.localSsdCount,
+    this.localSsdEncryptionMode,
     this.loggingConfig,
     this.machineType,
+    this.maxRunDuration,
     this.metadata,
     this.minCpuPlatform,
     this.nodeGroup,
@@ -9506,11 +9589,14 @@ class NodeConfig {
                       as core.Map<core.String, core.dynamic>)
               : null,
           localSsdCount: json_['localSsdCount'] as core.int?,
+          localSsdEncryptionMode:
+              json_['localSsdEncryptionMode'] as core.String?,
           loggingConfig: json_.containsKey('loggingConfig')
               ? NodePoolLoggingConfig.fromJson(
                   json_['loggingConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           machineType: json_['machineType'] as core.String?,
+          maxRunDuration: json_['maxRunDuration'] as core.String?,
           metadata:
               (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -9609,8 +9695,11 @@ class NodeConfig {
         if (localNvmeSsdBlockConfig != null)
           'localNvmeSsdBlockConfig': localNvmeSsdBlockConfig!,
         if (localSsdCount != null) 'localSsdCount': localSsdCount!,
+        if (localSsdEncryptionMode != null)
+          'localSsdEncryptionMode': localSsdEncryptionMode!,
         if (loggingConfig != null) 'loggingConfig': loggingConfig!,
         if (machineType != null) 'machineType': machineType!,
+        if (maxRunDuration != null) 'maxRunDuration': maxRunDuration!,
         if (metadata != null) 'metadata': metadata!,
         if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform!,
         if (nodeGroup != null) 'nodeGroup': nodeGroup!,
@@ -10191,6 +10280,11 @@ class NodePool {
 /// Node pool configs that apply to all auto-provisioned node pools in autopilot
 /// clusters and node auto-provisioning enabled clusters.
 class NodePoolAutoConfig {
+  /// Configuration options for Linux nodes.
+  ///
+  /// Output only.
+  LinuxNodeConfig? linuxNodeConfig;
+
   /// The list of instance tags applied to all nodes.
   ///
   /// Tags are used to identify valid sources or targets for network firewalls
@@ -10208,6 +10302,7 @@ class NodePoolAutoConfig {
   ResourceManagerTags? resourceManagerTags;
 
   NodePoolAutoConfig({
+    this.linuxNodeConfig,
     this.networkTags,
     this.nodeKubeletConfig,
     this.resourceManagerTags,
@@ -10215,6 +10310,10 @@ class NodePoolAutoConfig {
 
   NodePoolAutoConfig.fromJson(core.Map json_)
       : this(
+          linuxNodeConfig: json_.containsKey('linuxNodeConfig')
+              ? LinuxNodeConfig.fromJson(json_['linuxNodeConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           networkTags: json_.containsKey('networkTags')
               ? NetworkTags.fromJson(
                   json_['networkTags'] as core.Map<core.String, core.dynamic>)
@@ -10230,6 +10329,7 @@ class NodePoolAutoConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (linuxNodeConfig != null) 'linuxNodeConfig': linuxNodeConfig!,
         if (networkTags != null) 'networkTags': networkTags!,
         if (nodeKubeletConfig != null) 'nodeKubeletConfig': nodeKubeletConfig!,
         if (resourceManagerTags != null)
@@ -10254,29 +10354,30 @@ class NodePoolAutoscaling {
   /// - "ANY" : ANY policy picks zones that have the highest capacity available.
   core.String? locationPolicy;
 
-  /// Maximum number of nodes for one location in the NodePool.
+  /// Maximum number of nodes for one location in the node pool.
   ///
   /// Must be \>= min_node_count. There has to be enough quota to scale up the
   /// cluster.
   core.int? maxNodeCount;
 
-  /// Minimum number of nodes for one location in the NodePool.
+  /// Minimum number of nodes for one location in the node pool.
   ///
-  /// Must be \>= 1 and \<= max_node_count.
+  /// Must be greater than or equal to 0 and less than or equal to
+  /// max_node_count.
   core.int? minNodeCount;
 
   /// Maximum number of nodes in the node pool.
   ///
-  /// Must be greater than total_min_node_count. There has to be enough quota to
-  /// scale up the cluster. The total_*_node_count fields are mutually exclusive
-  /// with the *_node_count fields.
+  /// Must be greater than or equal to total_min_node_count. There has to be
+  /// enough quota to scale up the cluster. The total_*_node_count fields are
+  /// mutually exclusive with the *_node_count fields.
   core.int? totalMaxNodeCount;
 
   /// Minimum number of nodes in the node pool.
   ///
-  /// Must be greater than 1 less than total_max_node_count. The
-  /// total_*_node_count fields are mutually exclusive with the *_node_count
-  /// fields.
+  /// Must be greater than or equal to 0 and less than or equal to
+  /// total_max_node_count. The total_*_node_count fields are mutually exclusive
+  /// with the *_node_count fields.
   core.int? totalMinNodeCount;
 
   NodePoolAutoscaling({
@@ -13473,6 +13574,11 @@ class UpdateNodePoolRequest {
   /// Optional.
   core.String? machineType;
 
+  /// The maximum duration for the nodes to exist.
+  ///
+  /// If unspecified, the nodes can exist indefinitely.
+  core.String? maxRunDuration;
+
   /// The name (project, location, cluster, node pool) of the node pool to
   /// update.
   ///
@@ -13585,6 +13691,7 @@ class UpdateNodePoolRequest {
     this.locations,
     this.loggingConfig,
     this.machineType,
+    this.maxRunDuration,
     this.name,
     this.nodeNetworkConfig,
     this.nodePoolId,
@@ -13653,6 +13760,7 @@ class UpdateNodePoolRequest {
                   json_['loggingConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           machineType: json_['machineType'] as core.String?,
+          maxRunDuration: json_['maxRunDuration'] as core.String?,
           name: json_['name'] as core.String?,
           nodeNetworkConfig: json_.containsKey('nodeNetworkConfig')
               ? NodeNetworkConfig.fromJson(json_['nodeNetworkConfig']
@@ -13717,6 +13825,7 @@ class UpdateNodePoolRequest {
         if (locations != null) 'locations': locations!,
         if (loggingConfig != null) 'loggingConfig': loggingConfig!,
         if (machineType != null) 'machineType': machineType!,
+        if (maxRunDuration != null) 'maxRunDuration': maxRunDuration!,
         if (name != null) 'name': name!,
         if (nodeNetworkConfig != null) 'nodeNetworkConfig': nodeNetworkConfig!,
         if (nodePoolId != null) 'nodePoolId': nodePoolId!,
@@ -14125,8 +14234,7 @@ class WorkloadMetadataConfig {
       };
 }
 
-/// WorkloadPolicyConfig is the configuration of workload policy for autopilot
-/// clusters.
+/// WorkloadPolicyConfig is the configuration related to GCW workload policy
 class WorkloadPolicyConfig {
   /// If true, workloads can use NET_ADMIN capability.
   core.bool? allowNetAdmin;

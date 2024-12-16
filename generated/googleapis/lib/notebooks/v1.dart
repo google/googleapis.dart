@@ -1695,8 +1695,8 @@ class ProjectsLocationsOperationsResource {
   /// or other methods to check whether the cancellation succeeded or whether
   /// the operation completed despite cancellation. On successful cancellation,
   /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3108,7 +3108,7 @@ class DiagnoseInstanceRequest {
   /// Required.
   DiagnosticConfig? diagnosticConfig;
 
-  /// Maxmium amount of time in minutes before the operation times out.
+  /// Maximum amount of time in minutes before the operation times out.
   ///
   /// Optional.
   core.int? timeoutMinutes;
@@ -3140,7 +3140,7 @@ class DiagnoseRuntimeRequest {
   /// Required.
   DiagnosticConfig? diagnosticConfig;
 
-  /// Maxmium amount of time in minutes before the operation times out.
+  /// Maximum amount of time in minutes before the operation times out.
   ///
   /// Optional.
   core.int? timeoutMinutes;
@@ -4030,7 +4030,7 @@ class Instance {
   core.Map<core.String, core.String>? labels;
 
   /// The
-  /// [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types)
+  /// [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-resource)
   /// of this instance.
   ///
   /// Required.
@@ -5970,12 +5970,15 @@ class Schedule {
   /// - "STATE_UNSPECIFIED" : Unspecified state.
   /// - "ENABLED" : The job is executing normally.
   /// - "PAUSED" : The job is paused by the user. It will not execute. A user
-  /// can intentionally pause the job using PauseJobRequest.
+  /// can intentionally pause the job using
+  /// [Cloud Scheduler](https://cloud.google.com/scheduler/docs/creating#pause).
   /// - "DISABLED" : The job is disabled by the system due to error. The user
   /// cannot directly set a job to be disabled.
   /// - "UPDATE_FAILED" : The job state resulting from a failed
-  /// CloudScheduler.UpdateJob operation. To recover a job from this state,
-  /// retry CloudScheduler.UpdateJob until a successful response is received.
+  /// [CloudScheduler.UpdateJob](https://cloud.google.com/scheduler/docs/creating#edit)
+  /// operation. To recover a job from this state, retry
+  /// [CloudScheduler.UpdateJob](https://cloud.google.com/scheduler/docs/creating#edit)
+  /// until a successful response is received.
   /// - "INITIALIZING" : The schedule resource is being created.
   /// - "DELETING" : The schedule resource is being deleted.
   core.String? state;
@@ -6191,7 +6194,7 @@ class SetInstanceLabelsRequest {
 /// Request for setting instance machine type.
 class SetInstanceMachineTypeRequest {
   /// The
-  /// [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types).
+  /// [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-resource).
   ///
   /// Required.
   core.String? machineType;

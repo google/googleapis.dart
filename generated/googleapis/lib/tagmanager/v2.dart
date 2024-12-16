@@ -6366,6 +6366,11 @@ class GalleryReference {
   /// gallery.
   core.String? signature;
 
+  /// The developer id of the community gallery template.
+  ///
+  /// This value is set whenever the template is created from the gallery.
+  core.String? templateDeveloperId;
+
   /// The version of the community gallery template.
   core.String? version;
 
@@ -6375,6 +6380,7 @@ class GalleryReference {
     this.owner,
     this.repository,
     this.signature,
+    this.templateDeveloperId,
     this.version,
   });
 
@@ -6385,6 +6391,7 @@ class GalleryReference {
           owner: json_['owner'] as core.String?,
           repository: json_['repository'] as core.String?,
           signature: json_['signature'] as core.String?,
+          templateDeveloperId: json_['templateDeveloperId'] as core.String?,
           version: json_['version'] as core.String?,
         );
 
@@ -6394,6 +6401,8 @@ class GalleryReference {
         if (owner != null) 'owner': owner!,
         if (repository != null) 'repository': repository!,
         if (signature != null) 'signature': signature!,
+        if (templateDeveloperId != null)
+          'templateDeveloperId': templateDeveloperId!,
         if (version != null) 'version': version!,
       };
 }
