@@ -332,6 +332,9 @@ packages:
     - sqladmin:v1beta4
     - toolresults:v1beta3 # https://developers.google.com/cloud-test-lab/
 
+skip_tests:
+- chat:v1 # generates classes that are too big to JSON encode/decode
+
 # APIs that we do not wish to include in this package
 skipped_apis:
 - admob:v1beta #v1 included

@@ -31,6 +31,7 @@ class ApisPackageGenerator with DedupeMixin {
   final String packageFolderPath;
   final Pubspec pubspec;
   final bool deleteExisting;
+  final Set<String> skipTests;
 
   /// [descriptions] is a list of API descriptions we want to generate code for.
   ///
@@ -44,6 +45,7 @@ class ApisPackageGenerator with DedupeMixin {
     this.pubspec,
     this.packageFolderPath, {
     this.deleteExisting = true,
+    required this.skipTests,
   });
 
   /// Starts generating the API package with all the APIs given in the
@@ -116,7 +118,13 @@ ${requestHeadersField(pubspec.version)}
 
           // Create Test for API.
           Directory(apiTestFolderPath).createSync();
-          _generateApiTestLibrary(apiTestVersionFile, packagePath, apiLibrary);
+          _generateApiTestLibrary(
+            apiTestVersionFile,
+            packagePath,
+            apiLibrary,
+            skip: skipTests
+                .contains('${description.name}:${description.version}'),
+          );
 
           results.add(GenerateResult(name, version, packagePath));
         } catch (error, stack) {
@@ -170,9 +178,17 @@ ${duplicateItems.map((e) => e.definition).join('\n\n')}
       });
 
   void _generateApiTestLibrary(
-      String outputFile, String packageImportPath, DartApiLibrary apiLibrary) {
-    final testLib =
-        DartApiTestLibrary.build(apiLibrary, packageImportPath, pubspec.name);
+    String outputFile,
+    String packageImportPath,
+    DartApiLibrary apiLibrary, {
+    required bool skip,
+  }) {
+    final testLib = DartApiTestLibrary.build(
+      apiLibrary,
+      packageImportPath,
+      pubspec.name,
+      skip: skip,
+    );
     writeDartSource(outputFile, testLib.librarySource);
   }
 

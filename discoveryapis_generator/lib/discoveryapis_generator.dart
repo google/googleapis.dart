@@ -21,12 +21,14 @@ List<GenerateResult> generateApiPackage(
   String outputDirectory,
   Pubspec pubspec, {
   bool deleteExisting = true,
+  required Set<String> skipTests,
 }) {
   final apisPackageGenerator = ApisPackageGenerator(
     descriptions,
     pubspec,
     outputDirectory,
     deleteExisting: deleteExisting,
+    skipTests: skipTests,
   );
 
   return apisPackageGenerator.generateApiPackage();
@@ -37,6 +39,7 @@ List<GenerateResult> generateAllLibraries(
   String outputDirectory,
   Pubspec pubspec, {
   bool deleteExisting = true,
+  required Set<String> skipTests,
 }) {
   final apiDescriptions = Directory(inputDirectory)
       .listSync()
@@ -51,6 +54,7 @@ List<GenerateResult> generateAllLibraries(
     outputDirectory,
     pubspec,
     deleteExisting: deleteExisting,
+    skipTests: skipTests,
   );
 }
 

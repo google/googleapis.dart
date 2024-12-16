@@ -45,6 +45,7 @@ class DiscoveryPackagesConfiguration {
 
   late final Set<String> excessApis;
   late final List<String> missingApis;
+  late final Set<String> skipTests;
   final existingApiRevisions = <String, String>{};
   Map<String?, String>? newRevisions;
   Map<String?, String>? oldRevisions;
@@ -168,12 +169,15 @@ class DiscoveryPackagesConfiguration {
     _initialize(allApis);
 
     // Generate packages.
-    packages.forEach((name, package) {
+    for (var entry in packages.entries) {
+      final name = entry.key;
+      final package = entry.value;
       final results = generateAllLibraries(
         '$discoveryDocsDir/$name',
         '$generatedApisDir/$name',
         package.pubspec,
         deleteExisting: deleteExisting,
+        skipTests: skipTests,
       );
       for (final result in results) {
         if (!result.success) {
@@ -196,7 +200,7 @@ class DiscoveryPackagesConfiguration {
         File('$generatedApisDir/$name/example/main.dart')
             .writeAsStringSync(package.example!);
       }
-    });
+    }
   }
 
   /// Initializes the missingApis/excessApis/packages properties from a list
@@ -204,6 +208,7 @@ class DiscoveryPackagesConfiguration {
   void _initialize(List<RestDescription> allApis) {
     packages =
         _packagesFromYaml(yaml['packages'] as YamlList, configFile, allApis);
+    skipTests = _listFromYaml(yaml['skip_tests'] as YamlList?).toSet();
     final knownApis = _calculateKnownApis(
       packages,
       _listFromYaml(yaml['skipped_apis'] as YamlList?),
@@ -232,7 +237,8 @@ class DiscoveryPackagesConfiguration {
   }
 
   // Return empty list for YAML null value.
-  static List _listFromYaml(List? value) => value ?? [];
+  static List<String> _listFromYaml(YamlList? value) =>
+      value?.cast<String>() ?? [];
 
   static String _generateReadme(
     String? readmeFile,
@@ -313,7 +319,7 @@ package.
     String configFile,
     List<RestDescription?> allApis,
   ) {
-    final apis = _listFromYaml(values['apis'] as List?).cast<String>();
+    final apis = _listFromYaml(values['apis'] as YamlList).cast<String>();
     final version = values['version'] as String?;
     final author = values['author'] as String?;
     final repository = values['repository'] as String?;
@@ -393,7 +399,7 @@ package.
     );
     return Package(
       name,
-      List<String>.from(apis),
+      apis,
       pubspec,
       readme,
       license,
@@ -407,12 +413,12 @@ package.
   /// the APIs explicitly skipped.
   static Set<String> _calculateKnownApis(
     Map<String, Package> packages,
-    List skippedApis,
-  ) {
-    final knownApis = <String>{...skippedApis.cast<String>()};
-    packages.forEach((_, package) => knownApis.addAll(package.apis));
-    return knownApis;
-  }
+    List<String> skippedApis,
+  ) =>
+      <String>{
+        ...skippedApis,
+        ...packages.values.expand((v) => v.apis),
+      };
 
   /// The missing APIs are the APIs returned from the Discovery Service
   /// but not mentioned in the configuration.
